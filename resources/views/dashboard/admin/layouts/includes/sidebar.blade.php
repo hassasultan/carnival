@@ -24,6 +24,9 @@
           </a>
           <ul class="collapse list-unstyled w-100" id="dashboard">
             <li class="nav-item active">
+              <a class="nav-link" href="{{ route('roles.index') }}"><span class="ml-1 item-text">Roles</span></a>
+            </li>
+            <li class="nav-item active">
               <a class="nav-link" href="../dist/index.html"><span class="ml-1 item-text">Default</span></a>
             </li>
             <li class="nav-item">

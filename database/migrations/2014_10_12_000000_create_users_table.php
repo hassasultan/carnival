@@ -14,15 +14,26 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->bigIncrements('id')->unsigned();
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
+            $table->unsignedBigInteger('role_id');
+            $table->string('phone');
+            $table->unsignedTinyInteger('status')->default(1);
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('country')->nullable();
+            $table->string('zipcode')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->timestamp('deleted_at')->nullable(); // Soft delete column
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
