@@ -22,7 +22,7 @@ use App\Http\Controllers\SubVendorController;
 */
 
 Route::get('/', function () {
-    return view('dashboard.admin.pages.user_management.index');
+    return redirect()->route('login');
 });
 
 Route::get('/unauthorized', function () {
