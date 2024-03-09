@@ -55,4 +55,39 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAdmin()
+    {
+        return $this->role_id === 1;
+    }
+    
+    public function isVendor()
+    {
+        return $this->role_id === 2;
+    }
+    
+    public function isSubVendor()
+    {
+        return $this->role_id === 3;
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    public function hasPermission($permission)
+    {
+        // Check if the user has a role
+        if (!$this->role_id) {
+            return false;
+        }
+
+        // Get the user's role
+        $role = $this->role;
+
+        // Check if the role has the specified permission
+        return $role->permissions->pluck('name')->contains($permission);
+    }
+    
 }

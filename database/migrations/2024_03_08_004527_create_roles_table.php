@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedTinyInteger('status')->default(1);
+            $table->string('guard_name')->default('web');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable(); // Soft delete column
         });
