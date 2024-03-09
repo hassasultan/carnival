@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionsController;
+use App\Http\Controllers\RolePermissionController;
+use App\Http\Controllers\VendorController;
+use App\Http\Controllers\SubVendorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +25,44 @@ Route::get('/', function () {
     return view('dashboard.admin.pages.user_management.index');
 });
 
+Route::get('/unauthorized', function () {
+    return view('unauthorized');
+})->name('unauthorized');
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
-Route::resource('roles', RoleController::class);
+// Admin Routes
+Route::middleware('admin')->prefix('admin')->group(function () {
+
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    
+    // Roles Crud
+    Route::resource('roles', RoleController::class);
+    
+    // Permissions Crud
+    Route::resource('permissions', PermissionsController::class);
+    
+    // RolesPermissions Crud
+    Route::resource('role_permissions', RolePermissionController::class);
+});
+
+
+// Vendor Routes
+Route::middleware('vendor')->prefix('vendor')->group(function () {
+
+    Route::get('/', [VendorController::class, 'index'])->name('vendor');
+    
+    // Permissions Crud
+    Route::resource('permissions', PermissionsController::class);
+});
+
+
+// SubVendor Routes
+Route::middleware('subVendor')->prefix('subVendor')->group(function () {
+
+    Route::get('/', [SubVendorController::class, 'index'])->name('subVendor');
+    
+});

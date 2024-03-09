@@ -8,7 +8,6 @@ class AdminController extends Controller
 {
     public function index()
     {
-        // dd('ok');
         return view('dashboard.admin.pages.user_management.index');
     }
 }
