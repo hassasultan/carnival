@@ -5,6 +5,8 @@
 /storage/*.key
 /vendor
 .env
+.htacess
+index.php
 composer.lock
 .env.backup
 .env.production
