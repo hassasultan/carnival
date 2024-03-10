@@ -4,12 +4,12 @@
 
 <div class="row justify-content-center">
     <div class="col-12">
-        <h2 class="mb-2 page-title">Roles</h2>
-        <p class="card-text">Roles table.</p>
+        <h2 class="mb-2 page-title">Packages</h2>
+        <p class="card-text">Packages table.</p>
         <div class="row my-4">
             <!-- data table -->
             <div class="col-md-12">
-                <a href="{{ route('roles.create') }}" class="btn btn-primary mb-2">Add New Role</a>
+                <a href="{{ route('packages.create') }}" class="btn btn-primary mb-2">Add New Package</a>
                 <div class="card shadow">
                     <div class="card-body">
                         <!-- table -->
@@ -18,7 +18,7 @@
                                 <tr>
                                     <th></th>
                                     <th>Sr#</th>
-                                    <th>Name</th>
+                                    <th>Title</th>
                                     <th>Status</th>
                                     <th>Date</th>
                                     <th>Action</th>
@@ -26,7 +26,7 @@
                             </thead>
                             <tbody>
                                 @php $counter = 1 @endphp <!-- Initialize counter -->
-                                @foreach ($roles as $role)
+                                @foreach ($packages as $package)
                                 <tr>
                                     <td>
                                         <div class="custom-control custom-checkbox">
@@ -35,15 +35,15 @@
                                         </div>
                                     </td>
                                     <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
-                                    <td>{{ $role->name }}</td>
+                                    <td>{{ $package->title }}</td>
                                     <td>
-                                        @if($role->status == 1)
+                                        @if($package->status == 1)
                                             Active
                                         @else
                                             Inactive
                                         @endif
                                     </td>
-                                    <td>{{ $role->created_at }}</td>
+                                    <td>{{ $package->created_at }}</td>
                                     <td>
                                         <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted"
                                             type="button" data-toggle="dropdown" aria-haspopup="true"
@@ -51,9 +51,9 @@
                                             <span class="text-muted sr-only">Action</span>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right shadow">
-                                            <a class="dropdown-item" href="{{ route('roles.edit', $role->id) }}"><i
+                                            <a class="dropdown-item" href="{{ route('packages.edit', $package->id) }}"><i
                                                     class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>
-                                            <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
+                                            <form action="{{ route('packages.destroy', $package->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="dropdown-item"><i

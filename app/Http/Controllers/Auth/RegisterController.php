@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use App\Models\Vendor;
+use App\Models\SubVendor;
 
 class RegisterController extends Controller
 {
@@ -61,6 +63,10 @@ class RegisterController extends Controller
             'country' => ['required', 'string', 'max:255'],
             'zipcode' => ['required', 'string', 'max:255'],
             'role_id' => ['required', 'numeric', Rule::in([1, 2, 3])], // Example rule for role_id
+            'package_id' => ['nullable', 'numeric'],
+            'vendor_id' => ['nullable', 'numeric'],
+            'package_id' => 'required_without_all:vendor_id',
+            'vendor_id' => 'required_without_all:package_id',
         ]);
     }
 
@@ -73,7 +79,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // dd($data);
-        return User::create([
+        $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
@@ -86,5 +92,23 @@ class RegisterController extends Controller
             'zipcode' => $data['zipcode'],
             'role_id' => $data['role_id'], // Include role_id here
         ]);
+
+        if ($data['role_id'] == 2) {
+            Vendor::create([
+                'user_id' => $user->id,
+                'package_id' => $data['package_id'],
+                'status' => 1,
+            ]);
+        }
+    
+        if ($data['role_id'] == 3) {
+            SubVendor::create([
+                'user_id' => $user->id,
+                'vendor_id' => $data['vendor_id'],
+                'status' => 1,
+            ]);
+        }
+
+        return $user;
     }
 }

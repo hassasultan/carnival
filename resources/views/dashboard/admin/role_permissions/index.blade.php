@@ -17,7 +17,7 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>#</th>
+                                    <th>Sr#</th>
                                     <th>Role</th>
                                     <th>Permissions</th>
                                     <th>Date</th>
@@ -25,6 +25,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php $counter = 1; @endphp <!-- Initialize counter -->
                                 @foreach ($rolePermissions as $role)
                                 <tr>
                                     <td>
@@ -33,7 +34,7 @@
                                             <label class="custom-control-label"></label>
                                         </div>
                                     </td>
-                                    <td>{{ $role->id }}</td>
+                                    <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
                                     <td>{{ $role->name }}</td>
                                     <td>
                                         @foreach($role->permissions as $permission)
@@ -49,8 +50,8 @@
                                                 <span class="text-muted sr-only">Action</span>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right shadow">
-                                                <a class="dropdown-item" href="{{ route('role_permissions.edit', $role->id) }}"><i
-                                                        class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>
+                                                {{-- <a class="dropdown-item" href="{{ route('role_permissions.edit', $role->id) }}"><i
+                                                        class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a> --}}
                                                 <form action="{{ route('role_permissions.destroy', $role->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')

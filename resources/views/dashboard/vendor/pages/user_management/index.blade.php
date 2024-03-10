@@ -1,9 +1,9 @@
-@extends('dashboard.admin.layouts.app')
+@extends('dashboard.vendor.layouts.app')
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-12">
-          @include('dashboard.admin.layouts.includes.toolbar')
+          @include('dashboard.vendor.layouts.includes.toolbar')
             <div class="mb-2 align-items-center">
               <div class="card shadow mb-4">
                 <div class="card-body">

@@ -34,8 +34,8 @@
 
 <body class="vertical dark  ">
     <div id="app" class="wrapper">
-        @include('dashboard.admin.layouts.includes.header')
-        @include('dashboard.admin.layouts.includes.sidebar')
+        @include('dashboard.subVendor.layouts.includes.header')
+        @include('dashboard.subVendor.layouts.includes.sidebar')
         <main role="main" class="main-content">
           @yield('content')
           <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog"

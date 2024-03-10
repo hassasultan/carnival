@@ -22,6 +22,7 @@ class AdminMiddleware
         }
 
         // If not an admin, redirect to unauthorized page or return a 403 response
-        return redirect()->route('unauthorized');
+        // return redirect()->route('unauthorized');
+        return redirect()->route('login');
     }
 }

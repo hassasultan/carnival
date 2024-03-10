@@ -3,24 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class SubVendor extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
-        'name',
         'user_id',
+        'vendor_id',
         'status',
-        'deleted_at',
     ];
 
-   public function permissions()
-    {
-        return $this->belongsToMany(Permission::class, 'role_permissions');
-    }
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 
     public function user()
     {

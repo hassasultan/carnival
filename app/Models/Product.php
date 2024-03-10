@@ -6,20 +6,30 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Role extends Model
+class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name',
         'user_id',
+        'title',
+        'slug',
+        'category_id',
+        'description',
+        'old_price',
+        'new_price',
         'status',
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
         'deleted_at',
     ];
 
-   public function permissions()
+    public function category()
     {
-        return $this->belongsToMany(Permission::class, 'role_permissions');
+        return $this->belongsTo(Category::class);
     }
 
     public function user()

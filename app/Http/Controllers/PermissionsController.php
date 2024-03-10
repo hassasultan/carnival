@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Permission;
+use Illuminate\Support\Facades\Auth;
 
 class PermissionsController extends Controller
 {
@@ -42,7 +43,8 @@ class PermissionsController extends Controller
             'description' => 'nullable',
         ]);
 
-        $data = $request->except('_token');
+        $data = $request->all();
+        $data['user_id'] = Auth::id(); // Get the currently authenticated user's ID
 
         Permission::create($data);
 

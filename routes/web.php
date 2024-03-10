@@ -8,6 +8,9 @@ use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\SubVendorController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 
 /*
@@ -22,7 +25,8 @@ use App\Http\Controllers\SubVendorController;
 */
 
 Route::get('/', function () {
-    return view('dashboard.admin.pages.user_management.index');
+    // return view('dashboard.admin.pages.user_management.index');
+    return redirect()->route('login');
 });
 
 Route::get('/unauthorized', function () {
@@ -47,6 +51,15 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     
     // RolesPermissions Crud
     Route::resource('role_permissions', RolePermissionController::class);
+    
+    // Packages Crud
+    Route::resource('packages', PackageController::class);
+    
+    // Categories Crud
+    Route::resource('categories', CategoryController::class);
+    
+    // Products Crud
+    Route::resource('products', ProductController::class);
 });
 
 
@@ -54,9 +67,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 Route::middleware('vendor')->prefix('vendor')->group(function () {
 
     Route::get('/', [VendorController::class, 'index'])->name('vendor');
-    
-    // Permissions Crud
-    Route::resource('permissions', PermissionsController::class);
 });
 
 

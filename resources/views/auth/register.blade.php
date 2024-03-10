@@ -117,13 +117,17 @@
     </div>
     @php
         $roles = \App\Models\Role::where('status', 1)->get();
+        $packages = \App\Models\Package::where('status', 1)->get();
+        $vendors = \App\Models\Vendor::with('user')->where('status', 1)->get();
     @endphp
     <div class="form-group">
         <label for="role">Role</label>
         <select id="role" class="form-control @error('role_id') is-invalid @enderror" name="role_id" required>
             <option value="">Select Role</option>
             @foreach($roles as $role)
-                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                @if($role->name !== 'Admin')
+                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                @endif
             @endforeach
         </select>
         @error('role_id')
@@ -132,7 +136,54 @@
             </span>
         @enderror
     </div>
+    <div class="form-group" id="package_input" style="display: none;">
+        <label for="package">Package</label>
+        <select id="package" class="form-control @error('package_id') is-invalid @enderror" name="package_id">
+            <option value="">Select Package</option>
+            @foreach($packages as $package)
+                <option value="{{ $package->id }}">{{ $package->title }}</option>
+            @endforeach
+        </select>
+        @error('package_id')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+
+    <div class="form-group" id="vendors_input" style="display: none;">
+        <label for="vendor">Vendors</label>
+        <select id="vendor" class="form-control @error('vendor_id') is-invalid @enderror" name="vendor_id">
+            <option value="">Select vendor</option>
+            @foreach($vendors as $vendor)
+                <option value="{{ $vendor->id }}">{{ $vendor->user->first_name . ' ' . $vendor->user->last_name}}</option>
+            @endforeach
+        </select>
+        @error('vendor_id')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
     <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Register') }}</button>
     <p class="mt-5 mb-3 text-muted text-center">© 2020</p>
 </form>
+@endsection
+
+@section('bottom_script')
+    <script>
+        document.getElementById('role').addEventListener('change', function() {
+            var role = this.value;
+            if (role == 2) {
+                document.getElementById('package_input').style.display = 'block';
+                document.getElementById('vendors_input').style.display = 'none';
+            } else if (role == 3) {
+                document.getElementById('package_input').style.display = 'none';
+                document.getElementById('vendors_input').style.display = 'block';
+            } else {
+                document.getElementById('package_input').style.display = 'none';
+                document.getElementById('vendors_input').style.display = 'none';
+            }
+        });
+    </script>
 @endsection

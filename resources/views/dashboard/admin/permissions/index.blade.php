@@ -9,9 +9,9 @@
         <div class="row my-4">
             <!-- data table -->
             <div class="col-md-12">
-            @if(auth()->user()->hasPermission('add.permission'))
-            <a href="{{ route('permissions.create') }}" class="btn btn-primary mb-2">Add New Permission</a>
-            @endif    
+            {{-- @if(auth()->user()->hasPermission('add.permission'))
+                @endif  --}}   
+                <a href="{{ route('permissions.create') }}" class="btn btn-primary mb-2">Add New Permission</a>
                 <div class="card shadow">
                     <div class="card-body">
                         <!-- table -->
@@ -19,7 +19,7 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>#</th>
+                                    <th>Sr#</th>
                                     <th>Name</th>
                                     <th>Display Name</th>
                                     <th>Description</th>
@@ -28,6 +28,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php $counter = 1 @endphp <!-- Initialize counter -->
                                 @foreach ($permissions as $permission)
                                 <tr>
                                     <td>
@@ -36,7 +37,7 @@
                                             <label class="custom-control-label"></label>
                                         </div>
                                     </td>
-                                    <td>{{ $permission->id }}</td>
+                                    <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
                                     <td>{{ $permission->name }}</td>
                                     <td>{{ $permission->display_name }}</td>
                                     <td>{{ $permission->description }}</td>
