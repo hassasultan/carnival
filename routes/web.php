@@ -25,7 +25,6 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    // return view('dashboard.admin.pages.user_management.index');
     return redirect()->route('login');
 });
 
