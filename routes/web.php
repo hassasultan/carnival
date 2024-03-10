@@ -11,6 +11,7 @@ use App\Http\Controllers\SubVendorController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\EventController;
 
 
 /*
@@ -59,6 +60,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     
     // Products Crud
     Route::resource('products', ProductController::class);
+    
+    // Events Crud
+    Route::resource('events', EventController::class);
 });
 
 
