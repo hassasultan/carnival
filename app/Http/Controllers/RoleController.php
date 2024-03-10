@@ -44,11 +44,15 @@ class RoleController extends Controller
         $data = $request->all();
         $data['user_id'] = Auth::id();
 
-        Role::create($data);
+        $role = Role::create($data);
 
-        return redirect()->route('roles.index')
-            ->with('success', 'Role created successfully.');
+        if ($role) {
+            return response()->json(['success' => true, 'message' => 'Role created successfully.']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Failed to create role.'], 500);
+        }
     }
+
 
     /**
      * Display the specified resource.
@@ -88,10 +92,13 @@ class RoleController extends Controller
         ]);
 
         $role = Role::findOrFail($id);
-        $role->update($request->all());
+        $role->update(array_merge($request->all(), ['user_id' => Auth::id()]));
 
-        return redirect()->route('roles.index')
-            ->with('success', 'Role updated successfully');
+        if ($role) {
+            return response()->json(['success' => true, 'message' => 'Role updated successfully.']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Failed to update role.'], 500);
+        }
     }
 
     /**

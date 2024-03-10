@@ -10,7 +10,7 @@
                 <strong class="card-title">Role Information</strong>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('roles.update', $role->id) }}">
+                <form id="editRoleForm" method="POST" action="{{ route('roles.update', $role->id) }}">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -26,7 +26,9 @@
                                     <option value="0" {{ $role->status == 0 ? 'selected' : '' }}>Inactive</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary">Update Role</button>
+                            <button type="submit" id="updateRoleBtn" class="btn btn-primary">Update Role</button>
+                            <!-- Success message container -->
+                            <div id="successMessage" class="alert alert-success mt-3" style="display: none;"></div>
                         </div>
                     </div>
                 </form>
@@ -35,4 +37,36 @@
     </div> <!-- .col-12 -->
 </div> <!-- .row -->
 
+@endsection
+
+@section('bottom_script')
+<script>
+    $(document).ready(function() {
+        $('#editRoleForm').submit(function(e) {
+            e.preventDefault(); // Prevent form submission
+            
+            // Serialize form data
+            var formData = $(this).serialize();
+            
+            // Submit form via AJAX
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: formData,
+                success: function(response) {
+                    // Show success message
+                    $('#successMessage').html('Role updated successfully.').show();
+                    // Hide success message after 3 seconds
+                    setTimeout(function() {
+                        $('#successMessage').hide();
+                    }, 3000);
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
 @endsection

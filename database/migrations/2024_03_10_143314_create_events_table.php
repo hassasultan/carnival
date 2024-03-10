@@ -14,15 +14,16 @@ class CreateEventsTable extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->id(); // This will create an unsigned bigint auto-incrementing primary key
+            $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('package_id')->nullable()->constrained()->onDelete('set null');
             $table->string('name');
             $table->text('description');
             $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->bigInteger('total_no_of_tickets')->unsigned()->nullable();
             $table->timestamps();
-            $table->softDeletes(); // This will add a 'deleted_at' column for soft deletes
+            $table->softDeletes();
         });
     }
 

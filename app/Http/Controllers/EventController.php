@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\Package;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -13,7 +14,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::with('package', 'category')->get();
-        return view('events.index', compact('events'));
+        return view('dashboard.admin.events.index', compact('events'));
     }
 
     // Show the form for creating a new event.
@@ -21,7 +22,7 @@ class EventController extends Controller
     {
         $packages = Package::all();
         $categories = Category::all();
-        return view('events.create', compact('packages', 'categories'));
+        return view('dashboard.admin.events.create', compact('packages', 'categories'));
     }
 
     // Store a newly created event in the database.
@@ -33,12 +34,12 @@ class EventController extends Controller
             'category_id' => 'required|exists:categories,id',
             'description' => 'nullable|string',
             'status' => 'required|in:active,inactive', // Adjust options as needed
-            // Add validation rules for other fields here
         ]);
 
-        $event = new Event();
-        $event->fill($request->all());
-        $event->save();
+        $data = $request->all();
+        $data['user_id'] = Auth::id();
+
+        Event::create($data);
 
         return redirect()->route('events.index')
                         ->with('success', 'Event created successfully.');
@@ -49,7 +50,7 @@ class EventController extends Controller
     {
         $packages = Package::all();
         $categories = Category::all();
-        return view('events.edit', compact('event', 'packages', 'categories'));
+        return view('dashboard.admin.events.edit', compact('event', 'packages', 'categories'));
     }
 
     // Update the specified event in the database.

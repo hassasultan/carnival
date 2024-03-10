@@ -49,6 +49,10 @@
                         <a class="nav-link" href="{{ route('products.index') }}"><span
                                 class="ml-1 item-text">Products</span></a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('events.index') }}"><span
+                                class="ml-1 item-text">Events</span></a>
+                    </li>
                     {{-- <li class="nav-item active">
               <a class="nav-link" href="../dist/index.html"><span class="ml-1 item-text">Default</span></a>
             </li>

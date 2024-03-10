@@ -17,6 +17,7 @@ class Event extends Model
         'name',
         'description',
         'status',
+        'total_no_of_tickets',
     ];
 
     /**
