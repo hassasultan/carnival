@@ -36,6 +36,10 @@ class HomeController extends Controller
         { 
             return redirect()->route('subVendor');
         }
+        else
+        {
+            return redirect()->route('unauthorized');
+        }
         
     }
 }
