@@ -24,8 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd(Auth::user()->toArray());
-        if (Auth::user()->isAdmin()) 
+        // dd(Auth::user()->toArray());
+        if (Auth::user()->role == 1) 
         {
             return redirect()->route('admin');
         }
