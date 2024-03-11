@@ -58,18 +58,18 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        dd($this->role_id === "1");
-        return $this->role_id === 1;
+        // dd($this->role_id === "1");
+        return $this->role_id === "1";
     }
     
     public function isVendor()
     {
-        return $this->role_id === 2;
+        return $this->role_id === "2";
     }
     
     public function isSubVendor()
     {
-        return $this->role_id === 3;
+        return $this->role_id === "3";
     }
 
     public function role()
