@@ -12,6 +12,7 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\SubcategoryController;
 
 
 /*
@@ -63,6 +64,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     
     // Events Crud
     Route::resource('events', EventController::class);
+    
+    // Subcategories Crud
+    Route::resource('subcategories', SubcategoryController::class);
 });
 
 
