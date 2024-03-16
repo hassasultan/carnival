@@ -35,9 +35,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group mb-3">
-                                    <label for="name">Name</label>
+                                    <label for="name">Title</label>
                                     <input type="text" id="name" name="name" class="form-control"
-                                        placeholder="Enter event name" required>
+                                        placeholder="Enter event title" required>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="package_id">Package</label>
@@ -87,7 +87,7 @@
                                                 name="start_date" value="04/24/2020">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6 timeFields">
                                         <label for="startDate">Start Time</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -111,8 +111,8 @@
                                                 name="end_date" value="04/24/2020">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="startDate">End Time</label>
+                                    <div class="form-group col-md-6 timeFields">
+                                        <label for="endDate">End Time</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text" id="button-addon-time"><span
@@ -126,7 +126,7 @@
                                 <div class="form-group mb-3">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" id="all_day"
-                                            name="all_day" checked>
+                                            name="all_day">
                                         <label class="custom-control-label" for="all_day">All day</label>
                                     </div>
                                 </div>
@@ -138,20 +138,19 @@
                                     </select>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="banner">Banner Image</label>
-                                    <input type="file" id="banner" name="banner" class="form-control"
-                                        placeholder="Enter Total No of Tickets" required>
+                                    {{-- <input type="file" id="banner" name="banner" class="form-control"
+                                        placeholder="Enter Total No of Tickets" required> --}}
+                                    <label for="customFile">banner</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="customFile">
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
                                 </div>
-                                {{-- <div class="modal-footer d-flex justify-content-between"> --}}
                                 <button type="button" class="btn mb-2 btn-primary" id="saveEventBtn">Save Event</button>
-                                {{-- </div> --}}
                             </div>
                         </div>
                     </form>
                 </div>
-                {{-- <div class="modal-footer d-flex justify-content-between">
-                    <button type="button" class="btn mb-2 btn-primary" id="saveEventBtn">Save Event</button>
-                </div> --}}
             </div>
         </div>
     </div> <!-- new event modal -->
@@ -163,9 +162,19 @@
 
     <!-- Your custom JavaScript code using FullCalendar and AJAX -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        $(document).ready(function() {
             var calendarEl = document.getElementById('calendar');
-            var events = {!! $events->toJson() !!}; // Convert Eloquent Collection to JSON
+            var eventsObject = {!! $events->filter(function ($event) {
+                    return $event->start_date && $event->end_date;
+                })->toJson() !!}; // Filter out events without start/end dates
+
+            var events = Object.values(eventsObject); // Convert the events object to an array
+
+            // Function to convert date strings to ISO 8601 format
+            function convertToISODate(dateString) {
+                var parts = dateString.split('/');
+                return parts[2] + '-' + parts[0].padStart(2, '0') + '-' + parts[1].padStart(2, '0');
+            }
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 plugins: ['dayGrid', 'timeGrid', 'list', 'bootstrap'], // Include necessary plugins
@@ -187,7 +196,8 @@
                 events: events.map(function(event) {
                     return {
                         title: event.name,
-                        start: event.created_at, // Assuming created_at holds the event date
+                        start: convertToISODate(event.start_date),
+                        end: convertToISODate(event.end_date),
                         allDay: true // Assuming all events are full-day events
                     };
                 })
@@ -196,13 +206,15 @@
             calendar.render();
 
             // Open the event modal when clicking the "New Event" button
-            document.getElementById('openEventModal').addEventListener('click', function() {
+            $('#openEventModal').click(function() {
                 $('#eventModal').modal('show');
             });
 
             // Handle form submission via AJAX
-            document.getElementById('saveEventBtn').addEventListener('click', function() {
-                var formData = new FormData(document.getElementById('createEventForm'));
+            $('#saveEventBtn').click(function() {
+                var formData = new FormData($('#createEventForm')[0]);
+                formData.append('all_day', $('#all_day').is(':checked') ? true : false);
+
                 $.ajax({
                     url: '{{ route('events.store') }}',
                     type: 'POST',
@@ -210,11 +222,29 @@
                     processData: false,
                     contentType: false,
                     success: function(response) {
-                        console.log(response);
-                        // You can handle success response here
+                        console.log("Success! Response:", response);
+
+                        // Log the event object to ensure its structure
+                        console.log("New Event:", response.event);
+
+                        // Convert date strings to ISO 8601 format
+                        var startISO = convertToISODate(response.event.start_date);
+                        var endISO = convertToISODate(response.event.end_date);
+
+                        // Construct the new event object
+                        var newEvent = {
+                            title: response.event.name,
+                            start: startISO,
+                            end: endISO,
+                            allDay: response.event
+                                .all_day // Assuming this property exists in the response
+                        };
+
+                        // Add the new event to the calendar
+                        calendar.addEvent(newEvent);
+
+                        // Hide the event modal
                         $('#eventModal').modal('hide');
-                        // Reload the calendar to update events
-                        calendar.refetchEvents();
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
@@ -222,6 +252,19 @@
                     }
                 });
             });
+
+            $('#all_day').change(function() {
+                if ($(this).prop('checked')) {
+                    $('.timeFields').hide();
+                } else {
+                    $('.timeFields').show();
+                }
+            });
+
+            function convertToISODate(dateString) {
+                var parts = dateString.split('/');
+                return parts[2] + '-' + parts[0].padStart(2, '0') + '-' + parts[1].padStart(2, '0');
+            }
         });
     </script>
 @endsection

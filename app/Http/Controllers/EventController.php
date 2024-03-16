@@ -16,7 +16,7 @@ class EventController extends Controller
         // $events = Event::with('package', 'category')->get();
         $packages = Package::all();
         $categories = Category::all();
-        $events = Event::all(['id', 'name', 'created_at']); // Fetch only necessary fields
+        $events = Event::all(['id', 'name', 'start_date', 'end_date']); // Fetch only necessary fields
         return view('dashboard.admin.events.index', compact('packages', 'categories', 'events'));
     }
 
@@ -39,22 +39,24 @@ class EventController extends Controller
             'status' => 'required|in:active,inactive',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
-            'start_time' => 'nullable|date_format:H:i',
-            'end_time' => 'nullable|date_format:H:i|after:start_time',
-            'all_day' => 'nullable|boolean',
+            'start_time' => 'nullable',
+            'end_time' => 'nullable|after:start_time',
+            'all_day' => 'nullable',
             'banner' => 'nullable|image|max:2048', // Assuming max file size is 2MB
         ]);
 
         $data = $request->except('_token', 'banner');
         $data['user_id'] = Auth::id();
 
+        // dd($request->toArray());
+
         // Upload banner image
-        $bannerPath = $request->file('banner')->store('public/banners');
-        $data['banner'] = str_replace('public/', 'storage/', $bannerPath);
+        // $bannerPath = $request->file('banner')->store('public/banners');
+        // $data['banner'] = str_replace('public/', 'storage/', $bannerPath);
 
-        Event::create($data);
+        $event = Event::create($data);
 
-        return response()->json(['success' => 'Event created successfully.']);
+        return response()->json(['success' => 'Event created successfully.', 'event' => $event]);
     }
 
 
