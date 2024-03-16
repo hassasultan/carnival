@@ -23,6 +23,15 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/app-light.css') }}" id="lightTheme" disabled>
     <link rel="stylesheet" href="{{ asset('assets/css/app-dark.css') }}" id="darkTheme">
+    
+    <!-- FullCalendar CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/fullcalendar.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/dropzone.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/uppy.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery.steps.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery.timepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/quill.snow.css') }}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -182,6 +191,9 @@
     <script src="{{ asset('assets/js/theme.switcher.js') }}"></script>
     <script src="{{ asset('assets/js/d3.min.js') }}"></script>
   <script src="{{ asset('assets/js/leaflet.js') }}"></script>
+  
+  <script src="{{ asset('assets/js/fullcalendar.js') }}"></script>
+  <script src="{{ asset('assets/js/fullcalendar.custom.js') }}"></script>
 
   <script src="{{ asset('assets/js/map.world.js') }}"></script>
   <script src="{{ asset('assets/js/map.euro.js') }}"></script>

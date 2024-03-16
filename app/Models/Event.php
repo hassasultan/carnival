@@ -18,6 +18,11 @@ class Event extends Model
         'description',
         'status',
         'total_no_of_tickets',
+        'eventType',
+        'start_date',
+        'start_time',
+        'end_date',
+        'end_time',
     ];
 
     /**
