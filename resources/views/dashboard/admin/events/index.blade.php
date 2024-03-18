@@ -70,14 +70,14 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <div>
-                                        <label for="tickets_types">Tickets type</label>
+                                        <label for="ticket_id">Tickets type</label>
                                     </div>
-                                    @foreach ($ticktes_types as $row)
+                                    @foreach ($ticktes as $row)
                                         <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->name }}"/>
                                     @endforeach
                                     {{-- <div class="form-control"> --}}
-                                        <select id="tickets_types" name="tickets_types[]" class="form-control select2" multiple>
-                                            @foreach ($ticktes_types as $row)
+                                        <select id="ticket_id" name="ticket_id[]" class="form-control select2" multiple>
+                                            @foreach ($ticktes as $row)
                                                 <option value="{{ $row->id }}" data-name-{{ $row->id }}="{{ $row->name }}">{{ $row->name }}</option>
                                             @endforeach
                                         </select>
@@ -293,7 +293,7 @@
                 return parts[2] + '-' + parts[0].padStart(2, '0') + '-' + parts[1].padStart(2, '0');
             }
         });
-        $("#tickets_types").change(function(){
+        $("#ticket_id").change(function(){
             $("embed-div").html();
             allTickets = $(this).val();
             // TicketsName = $(this).attr('data-name');

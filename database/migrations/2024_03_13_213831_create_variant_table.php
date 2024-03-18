@@ -21,6 +21,7 @@ class CreateVariantTable extends Migration
             $table->longText('description')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index('category_id');
         });

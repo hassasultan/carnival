@@ -14,6 +14,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\VariantController;
 
 
 /*
@@ -75,6 +76,13 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('tickets.edit');
     Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
     Route::delete('/tickets/{ticket}', [TicketController::class, 'destroy'])->name('tickets.destroy');
+
+    // Variants Crud
+    Route::get('/variants', [VariantController::class, 'index'])->name('variants.index');
+    Route::post('/variants', [VariantController::class, 'store'])->name('variants.store');
+    Route::get('/variants/{variant}/edit', [VariantController::class, 'edit'])->name('variants.edit');
+    Route::put('/variants/{variant}', [VariantController::class, 'update'])->name('variants.update');
+    Route::delete('/variants/{variant}', [VariantController::class, 'destroy'])->name('variants.destroy');
 });
 
 

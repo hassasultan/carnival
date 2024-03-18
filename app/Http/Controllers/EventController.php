@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\Ticket;
 use App\Models\Package;
 use App\Models\Category;
+use App\Models\EventTicket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,10 +17,10 @@ class EventController extends Controller
     {
         // $events = Event::with('package', 'category')->get();
         $packages = Package::all();
-        $ticktes_types = Ticket::all();
+        $ticktes = Ticket::all();
         $categories = Category::all();
         $events = Event::all(['id', 'name', 'start_date', 'end_date']); // Fetch only necessary fields
-        return view('dashboard.admin.events.index', compact('packages', 'categories', 'events','ticktes_types'));
+        return view('dashboard.admin.events.index', compact('packages', 'categories', 'events', 'ticktes'));
     }
 
     // Show the form for creating a new event.
@@ -33,12 +34,15 @@ class EventController extends Controller
     // Store a newly created event in the database.
     public function store(Request $request)
     {
+        // dd($request->toArray());
         $request->validate([
             'name' => 'required|string|max:255',
             'package_id' => 'required|exists:packages,id',
             'category_id' => 'required|exists:categories,id',
             'description' => 'nullable|string',
             'status' => 'required|in:active,inactive',
+            'ticket_id' => 'required|array',
+            'ticket_id.*' => 'exists:tickets,id',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'start_time' => 'nullable',
@@ -47,7 +51,7 @@ class EventController extends Controller
             'banner' => 'nullable|image|max:2048', // Assuming max file size is 2MB
         ]);
 
-        $data = $request->except('_token', 'banner');
+        $data = $request->except('_token', 'banner', 'ticket_id');
         $data['user_id'] = Auth::id();
 
         // dd($request->toArray());
@@ -57,6 +61,19 @@ class EventController extends Controller
         // $data['banner'] = str_replace('public/', 'storage/', $bannerPath);
 
         $event = Event::create($data);
+
+        // Save the event ticket details
+        foreach ($request->ticket_id as $key => $ticketId) {
+            $eventTicketData = [
+                'ticket_id' => $ticketId,
+                'event_id' => $event->id,
+                'price' => $request->price[$key],
+                'quantity' => $request->quantity[$key],
+                'status' => 1,
+            ];
+
+            EventTicket::create($eventTicketData);
+        }
 
         return response()->json(['success' => 'Event created successfully.', 'event' => $event]);
     }
