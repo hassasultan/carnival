@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Ticket;
 use App\Models\Package;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -15,9 +16,10 @@ class EventController extends Controller
     {
         // $events = Event::with('package', 'category')->get();
         $packages = Package::all();
+        $ticktes_types = Ticket::all();
         $categories = Category::all();
         $events = Event::all(['id', 'name', 'start_date', 'end_date']); // Fetch only necessary fields
-        return view('dashboard.admin.events.index', compact('packages', 'categories', 'events'));
+        return view('dashboard.admin.events.index', compact('packages', 'categories', 'events','ticktes_types'));
     }
 
     // Show the form for creating a new event.

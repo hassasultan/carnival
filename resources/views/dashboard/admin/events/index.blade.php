@@ -1,6 +1,12 @@
 @extends('dashboard.admin.layouts.app')
 
 @section('content')
+<style>
+    .select2-container
+    {
+        width: 100% !important;
+    }
+</style>
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row align-items-center my-3">
@@ -63,11 +69,28 @@
                                         class="form-control" placeholder="Enter Total No of Tickets" required>
                                 </div>
                                 <div class="form-group mb-3">
+                                    <div>
+                                        <label for="tickets_types">Tickets type</label>
+                                    </div>
+                                    @foreach ($ticktes_types as $row)
+                                        <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->name }}"/>
+                                    @endforeach
+                                    {{-- <div class="form-control"> --}}
+                                        <select id="tickets_types" name="tickets_types[]" class="form-control select2" multiple>
+                                            @foreach ($ticktes_types as $row)
+                                                <option value="{{ $row->id }}" data-name-{{ $row->id }}="{{ $row->name }}">{{ $row->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    {{-- </div> --}}
+                                </div>
+                                <div id="embed-div">
+                                </div>
+                                <div class="form-group mb-3">
                                     <label for="description">Note</label>
                                     <textarea id="description" name="description" class="form-control" placeholder="Enter event description"></textarea>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <div class="form-group col-md-8">
+                                    <div class="form-group">
                                         <label for="eventType">Event type</label>
                                         <select id="eventType" name="eventType" class="form-control select2">
                                             <option value="work">Work</option>
@@ -75,6 +98,7 @@
                                         </select>
                                     </div>
                                 </div>
+
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="date-input1">Start Date</label>
@@ -154,6 +178,7 @@
             </div>
         </div>
     </div> <!-- new event modal -->
+    
 @endsection
 
 @section('bottom_script')
@@ -167,6 +192,7 @@
             var eventsObject = {!! $events->filter(function ($event) {
                     return $event->start_date && $event->end_date;
                 })->toJson() !!}; // Filter out events without start/end dates
+                console.log(eventsObject);
 
             var events = Object.values(eventsObject); // Convert the events object to an array
 
@@ -194,6 +220,7 @@
                 weekNumbers: true,
                 eventLimit: true, // allow "more" link when too many events
                 events: events.map(function(event) {
+                console.log(event);
                     return {
                         title: event.name,
                         start: convertToISODate(event.start_date),
@@ -265,6 +292,30 @@
                 var parts = dateString.split('/');
                 return parts[2] + '-' + parts[0].padStart(2, '0') + '-' + parts[1].padStart(2, '0');
             }
+        });
+        $("#tickets_types").change(function(){
+            $("embed-div").html();
+            allTickets = $(this).val();
+            // TicketsName = $(this).attr('data-name');
+            // console.log(TicketsName);
+            html = '';
+            $.each(allTickets , function(index, val) { 
+                id = val;
+                html += '<div class="form-group mb-3">';
+                html += '<h6>'+$('#div-'+val).val()+'</h6>'
+                html += '<div class="form-row">';
+                html += '<div class="form-group col-md-6">';
+                html += '<label for="price-'+id+'">Price</label>';
+                html += '<input type="number" class="form-control" name="price[]" required>';
+                html += '</div>';
+                html += '<div class="form-group col-md-6">';
+                html += '<label for="quantity-'+id+'">Quantity</label>';
+                html += '<input type="number" class="form-control" name="quantity[]" required>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+            });
+            $("#embed-div").html(html);
         });
     </script>
 @endsection

@@ -92,12 +92,24 @@
             <span>Events</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <a class="nav-link" href="{{ route('events.index') }}">
+            <li class="nav-item dropdown">
+                <a href="#ui-events" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="fe fe-layers fe-16"></i>
                     <span class="ml-3 item-text">Events</span>
                 </a>
+                <ul class="collapse list-unstyled w-100" id="ui-events">
+                    <li class="nav-item @if(Route::is('events.index')) active @endif">
+                        <a class="nav-link" href="{{ route('events.index') }}"><span
+                                class="ml-1 item-text">Events</span></a>
+                    </li>
+                    <li class="nav-item @if(Route::is('tickets.index')) active @endif">
+                        <a class="nav-link" href="{{ route('tickets.index') }}">
+                            Tickets Types
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
+
     </nav>
 </aside>
