@@ -13,6 +13,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\TicketController;
 
 
 /*
@@ -43,30 +44,37 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::middleware('admin')->prefix('admin')->group(function () {
 
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-    
+
     // Roles Crud
     Route::resource('roles', RoleController::class);
-    
+
     // Permissions Crud
     Route::resource('permissions', PermissionsController::class);
-    
+
     // RolesPermissions Crud
     Route::resource('role_permissions', RolePermissionController::class);
-    
+
     // Packages Crud
     Route::resource('packages', PackageController::class);
-    
+
     // Categories Crud
     Route::resource('categories', CategoryController::class);
-    
+
     // Products Crud
     Route::resource('products', ProductController::class);
-    
+
     // Events Crud
     Route::resource('events', EventController::class);
-    
+
     // Subcategories Crud
     Route::resource('subcategories', SubcategoryController::class);
+
+    // Tickets Crud
+    Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
+    Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store');
+    Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('tickets.edit');
+    Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
+    Route::delete('/tickets/{ticket}', [TicketController::class, 'destroy'])->name('tickets.destroy');
 });
 
 
@@ -81,5 +89,5 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
 Route::middleware('subVendor')->prefix('subVendor')->group(function () {
 
     Route::get('/', [SubVendorController::class, 'index'])->name('subVendor');
-    
+
 });
