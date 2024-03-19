@@ -34,31 +34,58 @@ class EventController extends Controller
     // Store a newly created event in the database.
     public function store(Request $request)
     {
-        // dd($request->toArray());
         $request->validate([
             'name' => 'required|string|max:255',
             'package_id' => 'required|exists:packages,id',
             'category_id' => 'required|exists:categories,id',
-            'description' => 'nullable|string',
-            'status' => 'required|in:active,inactive',
+            'total_no_of_tickets' => 'required|integer|min:1',
+            'venue' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'dress_code' => 'nullable|array',
+            'dress_code.*' => 'nullable|string|max:255',
             'ticket_id' => 'required|array',
             'ticket_id.*' => 'exists:tickets,id',
+            'description' => 'nullable|string',
+            'eventType' => 'required|in:private,public',
             'start_date' => 'nullable|date',
-            'end_date' => 'nullable|date|after_or_equal:start_date',
             'start_time' => 'nullable',
+            'end_date' => 'nullable|date|after_or_equal:start_date',
             'end_time' => 'nullable|after:start_time',
             'all_day' => 'nullable',
-            'banner' => 'nullable|image|max:2048', // Assuming max file size is 2MB
+            'status' => 'required|in:active,inactive',
+            // 'promotional_Video' => 'nullable|file|mimes:mp4,mov,avi',
+            'banner' => 'nullable|image|max:2048',
+            // 'additional_images.*' => 'nullable|image|max:2048',
         ]);
 
-        $data = $request->except('_token', 'banner', 'ticket_id');
+        $data = $request->except('_token', 'banner', 'ticket_id', 'promotional_Video', 'dress_code', 'additional_images');
         $data['user_id'] = Auth::id();
 
-        // dd($request->toArray());
+        // Handle dress code
+        if ($request->has('dress_code')) {
+            $data['dress_code'] = implode(',', $request->dress_code);
+        }
 
-        // Upload banner image
-        // $bannerPath = $request->file('banner')->store('public/banners');
-        // $data['banner'] = str_replace('public/', 'storage/', $bannerPath);
+        // Handle promotional video
+        // if ($request->hasFile('promotional_Video')) {
+        //     $videoPath = $request->file('promotional_Video')->store('public/videos');
+        //     $data['promotional_Video'] = str_replace('public/', 'storage/', $videoPath);
+        // }
+
+        // Handle banner image
+        // if ($request->hasFile('banner')) {
+        //     $bannerPath = $request->file('banner')->store('public/banners');
+        //     $data['banner'] = str_replace('public/', 'storage/', $bannerPath);
+        // }
+
+        // Handle additional images
+        // if ($request->hasFile('additional_images')) {
+        //     foreach ($request->file('additional_images') as $file) {
+        //         $imagePath = $file->store('public/additional_images');
+        //         $imageUrl = str_replace('public/', 'storage/', $imagePath);
+        //         EventImage::create(['event_id' => $event->id, 'image_url' => $imageUrl]);
+        //     }
+        // }
 
         $event = Event::create($data);
 
@@ -77,6 +104,7 @@ class EventController extends Controller
 
         return response()->json(['success' => 'Event created successfully.', 'event' => $event]);
     }
+
 
 
     // Show the form for editing the specified event.
