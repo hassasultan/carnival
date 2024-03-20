@@ -43,10 +43,10 @@
                             <label for="title">Title</label>
                             <input type="text" class="form-control" id="title" name="title" required>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="slug">Slug</label>
                             <input type="text" class="form-control" id="slug" name="slug" required>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea class="form-control" id="description" name="description" required></textarea>
@@ -62,16 +62,16 @@
                         </div>
                         <div class="form-group">
                             <div>
-                                <label for="ticket_id">Variants</label>
+                                <label for="variant_id">Variants</label>
                             </div>
                             @foreach ($variants as $row)
                                 <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->title }}" />
                             @endforeach
                             {{-- <div class="form-control"> --}}
-                            <select id="ticket_id" name="ticket_id[]" class="form-control select2" multiple>
+                            <select id="variant_id" name="variant_id[]" class="form-control select2" multiple>
                                 @foreach ($variants as $row)
-                                    <option value="{{ $row->id }}"
-                                        data-name-{{ $row->id }}="{{ $row->title }}">{{ $row->title }}
+                                    <option value="{{ $row->id }}" data-name-{{ $row->id }}="{{ $row->title }}">
+                                        {{ $row->title }}
                                     </option>
                                 @endforeach
                             </select>
@@ -88,21 +88,21 @@
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select class="form-control" id="status" name="status" required>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
                             </select>
                         </div>
                         <div id="hash_tags" class="mb-3">
                             <label for="tags">Tags</label><br>
-                            @foreach ($categories as $row)
-                                <span class="badge badge-primary tag badge-lg" data-id="{{ $row->id }}"
-                                    style="font-size: 1.25em;">
-                                    {{ $row->title }}
-                                </span>
-                                <input type="hidden" name="tags[]" value="{{ $row->title }}">
-                            @endforeach
+                            {{-- @foreach ($categories as $row) --}}
+                            <span class="badge badge-primary tag badge-lg" data-id="1" style="font-size: 1.25em;">
+                                #all
+                            </span>
+                            <input type="hidden" name="tags[]" value="{{ $row->title }}">
+                            {{-- @endforeach --}}
                         </div>
-                        <p id="addNewTagText" style="color: blue; text-decoration: underline; cursor: pointer;">Add
+                        <p id="addNewTagText"
+                            style="color: rgb(255, 255, 255); text-decoration: underline; cursor: pointer;">Add
                             New</p>
                         <div class="form-group">
                             <label for="condition">Condition</label>
@@ -127,10 +127,9 @@
                         <div class="form-group mb-3">
                             <label for="media">Media</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input select2" id="media"
-                                    name="media[]" multiple>
-                                <label class="custom-file-label" for="media"
-                                    id="media_label">Choose file</label>
+                                <input type="file" class="custom-file-input select2" id="media" name="media[]"
+                                    multiple>
+                                <label class="custom-file-label" for="media" id="media_label">Choose file</label>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary" id="saveProductBtn">Save Product</button>
@@ -141,12 +140,12 @@
     </div>
 
     <!-- Edit Product modal -->
-    <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel"
+    <div class="modal fade" id="editproductModal" tabindex="-1" role="dialog" aria-labelledby="editproductModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+                    <h5 class="modal-title" id="editproductModalLabel">Edit Product</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -154,13 +153,89 @@
                 <div class="modal-body">
                     <form id="editProductForm">
                         @csrf
-                        @method('PUT')
+                        @method('PUT') <!-- Use PUT method for update -->
                         <input type="hidden" id="edit_id" name="edit_id">
                         <div class="form-group">
                             <label for="edit_title">Title</label>
                             <input type="text" class="form-control" id="edit_title" name="title" required>
                         </div>
-                        <!-- Add other product fields here -->
+                        <div class="form-group">
+                            <label for="edit_description">Description</label>
+                            <textarea class="form-control" id="edit_description" name="description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_category">Category</label>
+                            <select class="form-control" id="edit_category" name="category_id" required>
+                                <option value="">Select Category</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_old_price">Old Price</label>
+                            <input type="text" class="form-control" id="edit_old_price" name="old_price">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_new_price">New Price</label>
+                            <input type="text" class="form-control" id="edit_new_price" name="new_price">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_status">Status</label>
+                            <select class="form-control" id="edit_status" name="status" required>
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_discount">Discount</label>
+                            <input type="text" class="form-control" id="edit_discount" name="discount">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_condition">Condition</label>
+                            <select class="form-control" id="edit_condition" name="condition" required>
+                                <option value="Old">Old</option>
+                                <option value="New">New</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_stock_condition">Stock Condition</label>
+                            <select class="form-control" id="edit_stock_condition" name="stock_condition" required>
+                                <option value="Low">Low</option>
+                                <option value="In Stock">In Stock</option>
+                                <option value="Out of Stock">Out of Stock</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <label for="edit_variant_id">Variants</label>
+                            </div>
+                            @foreach ($variants as $row)
+                                <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->title }}" />
+                            @endforeach
+                            <select id="edit_variant_id" name="variant_id[]" class="form-control select2" multiple>
+                                @foreach ($variants as $row)
+                                    <option value="{{ $row->id }}" data-name-{{ $row->id }}="{{ $row->title }}">
+                                        {{ $row->title }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div id="edit_hash_tags" class="mb-3">
+                            <label for="edit_tags">Tags</label><br>
+                            @foreach ($categories as $row)
+                                <span class="badge badge-primary tag badge-lg" data-id="{{ $row->id }}"
+                                    style="font-size: 1.25em;">
+                                    #{{ $row->title }}
+                                </span>
+                                <input type="hidden" name="tags[]" value="{{ $row->title }}">
+                            @endforeach
+                        </div>
+                        <p id="edit_addNewTagText"
+                            style="color: rgb(255, 255, 255); text-decoration: underline; cursor: pointer;">Add
+                            New</p>
+                        <!-- End of additional fields -->
                         <button type="submit" class="btn btn-primary" id="updateProductBtn">Update Product</button>
                     </form>
                 </div>
@@ -192,34 +267,106 @@
 @endsection
 
 @section('bottom_script')
-<script src="https://cdn.tiny.cloud/1/API_KEY/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
-        $(document).ready(function() {
-            // Code for handling DataTables and AJAX requests can be added here
+        // Function to clear edit modal fields
+        function clearEditModalFields() {
+            $('#edit_title').val('');
+            $('#edit_type').val('');
+            $('#edit_description').val('');
+            $('#edit_category').val('');
+            $('#edit_status').val('');
+        }
 
+        $(document).ready(function() {
             // Open the product modal when clicking the "New Product" button
             $('#openProductModal').click(function() {
                 $('#productModal').modal('show');
             });
 
+            // Handle click event for editing a product using event delegation
+            $(document).on('click', '.editProductBtn', function() {
+                var productId = $(this).data('id');
+                $.ajax({
+                    url: '{{ route('products.edit', ':id') }}'.replace(':id', productId),
+                    type: 'GET',
+                    success: function(response) {
+                        console.log('edit', response);
+                        // Populate the edit form fields with product details
+                        $('#edit_id').val(response.product.id);
+                        $('#edit_title').val(response.product.title);
+                        $('#edit_description').val(response.product.description);
+                        $('#edit_category').val(response.product.category_id);
+                        $('#edit_status').val(response.product.status);
+                        $('#edit_old_price').val(response.product.old_price);
+                        $('#edit_new_price').val(response.product.new_price);
+                        $('#edit_discount').val(response.product.discount);
+                        $('#edit_condition').val(response.product.condition);
+                        $('#edit_stock_condition').val(response.product.stock_condition);
+
+                        // Autopopulate variant select with the product's variants
+                        var variantIds = response.product.variants.map(variant => variant.id);
+                        $('#edit_variant_id').val(variantIds);
+
+                        // Autopopulate tags if available
+                        if (response.product.tags) {
+                            var tags = response.product.tags;
+                            $('#edit_hash_tags').empty();
+                            tags.forEach(tag => {
+                                var tagElement = $(
+                                    '<span class="badge badge-primary tag badge-lg" data-id="' +
+                                    tag.id +
+                                    '" style="font-size: 1.25em;">#' + tag.title +
+                                    '</span>');
+                                var hiddenInput = $(
+                                    '<input type="hidden" name="tags[]" value="' +
+                                    tag.title + '">');
+                                $('#edit_hash_tags').append(tagElement).append(
+                                    hiddenInput);
+                            });
+                        }
+
+                        // Show the edit modal
+                        $('#editproductModal').modal('show');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        $('#productMessage').html(
+                            '<div class="alert alert-danger" role="alert">Failed to fetch product details for editing</div>'
+                        );
+                    }
+                });
+            });
+
+
+
             // Clear edit modal fields when the modal dismisses
-            $('#editProductModal').on('hidden.bs.modal', function() {
-                $('#edit_id').val('');
-                $('#edit_title').val('');
-                // Clear other fields as needed
+            $('#editproductModal').on('hidden.bs.modal', function() {
+                clearEditModalFields();
             });
 
             // Handle form submission via AJAX for creating a new product
             $('#createProductForm').submit(function(event) {
                 event.preventDefault();
-                var formData = $(this).serialize();
+                var formData = new FormData($(this)[0]); // Use FormData object to include media files
                 $.ajax({
                     url: '{{ route('products.store') }}',
                     type: 'POST',
-                    data: formData,
+                    data: formData, // Send FormData object instead of serialized data
+                    contentType: false, // Set contentType to false when sending FormData
+                    processData: false, // Set processData to false when sending FormData
                     success: function(response) {
                         $('#productModal').modal('hide');
                         $('#tableData').html(response.table_html);
+
+                        // Reinitialize DataTables after updating table content
+                        $('#dataTable-1').DataTable({
+                            autoWidth: true,
+                            "lengthMenu": [
+                                [16, 32, 64, -1],
+                                [16, 32, 64, "All"]
+                            ]
+                        });
+
                         $('#productMessage').html(
                             '<div class="alert alert-success" role="alert">Product created successfully</div>'
                         );
@@ -242,13 +389,26 @@
                 event.preventDefault();
                 var formData = $(this).serialize();
                 var url = '{{ route('products.update', ['product' => ':id']) }}'.replace(':id', productId);
+                console.log('url', url, productId);
+
                 $.ajax({
                     url: url,
                     type: 'PUT',
                     data: formData,
                     success: function(response) {
-                        $('#editProductModal').modal('hide');
-                        $('#tableData').html(response.table_html);
+                        $('#editproductModal').modal('hide');
+                        $('#tableData').html(response
+                            .table_html);
+
+                        // Reinitialize DataTables after updating table content
+                        $('#dataTable-1').DataTable({
+                            autoWidth: true,
+                            "lengthMenu": [
+                                [16, 32, 64, -1],
+                                [16, 32, 64, "All"]
+                            ]
+                        });
+
                         $('#productMessage').html(
                             '<div class="alert alert-success" role="alert">Product updated successfully</div>'
                         );
@@ -264,14 +424,17 @@
                     }
                 });
             });
-
-            // Delete record
+            // Delete recrod
             $('.deleteProductBtn').click(function(event) {
                 event.preventDefault();
                 var deleteForm = $(this).closest('form');
                 var formData = deleteForm.serialize();
                 var url = deleteForm.attr('action');
+
+                // Show confirmation modal before deleting
                 $('#deleteConfirmationModal').modal('show');
+
+                // Handle deletion confirmation
                 $('#confirmDeleteBtn').click(function() {
                     $.ajax({
                         url: url,
@@ -279,9 +442,12 @@
                         data: formData,
                         success: function(response) {
                             $('#deleteConfirmationModal').modal('hide');
+                            // Show success message on the page
                             $('#productMessage').html(
                                 '<div class="alert alert-success" role="alert">' +
                                 response.message + '</div>');
+
+                            // Optionally, you can remove the deleted product row from the table
                             deleteForm.closest('tr').remove();
                         },
                         error: function(xhr, status, error) {
@@ -299,8 +465,16 @@
                 var tagId = $(this).data('id');
                 var isSelected = $(this).hasClass('badge-primary');
                 if (isSelected) {
+                    // Remove the hidden input field for the unselected tag
+                    $(this).next('input[name="tags[]"]').remove();
                     $(this).removeClass('badge-primary').addClass('badge-secondary');
                 } else {
+                    // Create a hidden input field for the selected tag
+                    var tagName = $(this).text().trim().replace('#', '');
+                    var newInput = $('<input type="hidden" name="tags[]" value="#' + tagName +
+                        '">');
+                    // Append the new input field to the form
+                    $('#hash_tags').append(newInput);
                     $(this).removeClass('badge-secondary').addClass('badge-primary');
                 }
             });
@@ -313,21 +487,20 @@
                     var newTagId = 'random_' + Math.floor(Math.random() * 1000000);
                     // Create the new tag
                     var newTag = $('<span class="badge badge-primary tag badge-lg" data-id="' + newTagId +
-                        '" style="font-size: 1.25em;">' + newTagName + '</span>');
+                        '" style="font-size: 1.25em;">#' + newTagName + '</span>');
                     // Append the new tag after the last tag in the container
                     $('#hash_tags').append(newTag);
 
                     // Create a hidden input field for the new tag code name
-                    var newInput = $('<input type="hidden" name="tags[]" value="' + newTagName +
+                    var newInput = $('<input type="hidden" name="tags[]" value="#' + newTagName +
                         '">');
                     // Append the new input field to the form
                     $('#hash_tags').append(newInput);
                 }
             });
-        });
 
-        // Update label text when files are selected for additional images
-        $('#media').on('change', function() {
+            // Update label text when files are selected for additional images
+            $('#media').on('change', function() {
                 // Get the file names
                 var files = $(this)[0].files;
                 var fileNames = '';
@@ -340,19 +513,31 @@
                 // Update the label text
                 $('#media_label').text(fileNames);
             });
-    </script>
-    <script>
-        tinymce.init({
-            selector: '#description',
-            plugins: 'lists link',
-            toolbar: 'undo redo | bold italic underline | bullist numlist | link',
-            menubar: false,
-            height: 200,
-            setup: function (editor) {
-                editor.on('change', function () {
-                    editor.save();
-                });
-            }
         });
+
+        // select2 initialization for edit modal
+        $('#editproductModal').on('shown.bs.modal', function() {
+            $('#edit_variant_id').select2();
+        });
+
+        // Functionality to add a new tag when clicking on the "Add New" text in edit modal
+        // $('#edit_addNewTagText').click(function() {
+        //     var newTagName = prompt('Enter the name for the new tag:');
+        //     if (newTagName) {
+        //         // Generate a unique ID for the new tag
+        //         var newTagId = 'random_' + Math.floor(Math.random() * 1000000);
+        //         // Create the new tag
+        //         var newTag = $('<span class="badge badge-primary tag badge-lg" data-id="' + newTagId +
+        //             '" style="font-size: 1.25em;">#' + newTagName + '</span>');
+        //         // Append the new tag after the last tag in the container
+        //         $('#edit_hash_tags').append(newTag);
+
+        //         // Create a hidden input field for the new tag code name
+        //         var newInput = $('<input type="hidden" name="tags[]" value="#' + newTagName +
+        //             '">');
+        //         // Append the new input field to the form
+        //         $('#edit_hash_tags').append(newInput);
+        //     }
+        // });
     </script>
 @endsection

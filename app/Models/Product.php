@@ -22,8 +22,6 @@ class Product extends Model
         'tags',
         'condition',
         'stock_condition',
-        'old_price',
-        'new_price',
         'discount',
     ];
 
