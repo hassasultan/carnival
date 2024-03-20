@@ -78,7 +78,7 @@
                                         placeholder="Enter Venue Address" required>
                                 </div>
                                 <div id="dress_code_tags" class="mb-3">
-                                    <label for="address">Dress Code</label><br>
+                                    <label for="dress_code">Dress Code</label><br>
                                     @foreach ($categories as $row)
                                         <span class="badge badge-primary tag badge-lg" data-id="{{ $row->id }}"
                                             style="font-size: 1.25em;">

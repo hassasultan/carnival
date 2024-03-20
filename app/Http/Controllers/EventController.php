@@ -7,11 +7,15 @@ use App\Models\Ticket;
 use App\Models\Package;
 use App\Models\Category;
 use App\Models\EventTicket;
+use App\Models\EventImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\ImageTrait;
+use App\Traits\MultipleImageTrait;
 
 class EventController extends Controller
 {
+    use ImageTrait, MultipleImageTrait;
     // Display a listing of the events.
     public function index()
     {
@@ -34,6 +38,7 @@ class EventController extends Controller
     // Store a newly created event in the database.
     public function store(Request $request)
     {
+        // dd($request->toArray());
         $request->validate([
             'name' => 'required|string|max:255',
             'package_id' => 'required|exists:packages,id',
@@ -54,40 +59,63 @@ class EventController extends Controller
             'all_day' => 'nullable',
             'status' => 'required|in:active,inactive',
             // 'promotional_Video' => 'nullable|file|mimes:mp4,mov,avi',
-            'banner' => 'nullable|image|max:2048',
+            // 'banner' => 'nullable|image|max:2048',
             // 'additional_images.*' => 'nullable|image|max:2048',
         ]);
 
-        $data = $request->except('_token', 'banner', 'ticket_id', 'promotional_Video', 'dress_code', 'additional_images');
+        // Handle banner image upload
+        $bannerPath = null;
+        if ($request->hasFile('banner')) {
+            $bannerPath = $this->uploadImage($request->file('banner'), 'banners');
+        }
+        // @if ($bannerPath)
+        //     <img src="{{ asset('storage/' . $bannerPath) }}" alt="Banner">
+        // @endif
+
+        // Handle promotional video upload
+        $videoPath = null;
+        if ($request->hasFile('promotional_video')) {
+            $videoPath = $this->uploadImage($request->file('promotional_video'), 'videos');
+        }
+        // @if ($videoPath)
+        //     <video controls>
+        //         <source src="{{ asset('storage/' . $videoPath) }}" type="video/mp4">
+        //         Your browser does not support the video tag.
+        //     </video>
+        // @endif
+
+        $data = $request->except('_token', 'banner', 'ticket_id', 'promotional_video', 'dress_code', 'additional_images', 'price', 'quantity');
         $data['user_id'] = Auth::id();
+        $data['banner'] = $bannerPath;
+        $data['promotional_video'] = $videoPath;
 
         // Handle dress code
         if ($request->has('dress_code')) {
             $data['dress_code'] = implode(',', $request->dress_code);
         }
+        if ($request->has('all_day')) {
+            $data['all_day'] = $request->all_day ? 1 : 0;
+        }
 
-        // Handle promotional video
-        // if ($request->hasFile('promotional_Video')) {
-        //     $videoPath = $request->file('promotional_Video')->store('public/videos');
-        //     $data['promotional_Video'] = str_replace('public/', 'storage/', $videoPath);
-        // }
 
-        // Handle banner image
-        // if ($request->hasFile('banner')) {
-        //     $bannerPath = $request->file('banner')->store('public/banners');
-        //     $data['banner'] = str_replace('public/', 'storage/', $bannerPath);
-        // }
+        // Save event data
+        $event = Event::create($data);
 
         // Handle additional images
-        // if ($request->hasFile('additional_images')) {
-        //     foreach ($request->file('additional_images') as $file) {
-        //         $imagePath = $file->store('public/additional_images');
-        //         $imageUrl = str_replace('public/', 'storage/', $imagePath);
-        //         EventImage::create(['event_id' => $event->id, 'image_url' => $imageUrl]);
-        //     }
-        // }
-
-        $event = Event::create($data);
+        $additionalImagePaths = [];
+        if ($request->hasFile('additional_images')) {
+            $additionalImagePaths = $this->uploadMultipleImages($request->file('additional_images'), 'additional_images');
+            foreach ($additionalImagePaths as $additionalImage) {
+                EventImage::create([
+                    'event_id' => $event->id,
+                    'image_url' => $additionalImage['path'],
+                    'image_name' => $additionalImage['original_name'],
+                ]);
+            }
+        }
+        // @foreach ($additionalImagePaths as $additionalImage)
+        //     <img src="{{ asset('storage/' . $additionalImage['path']) }}" alt="{{ $additionalImage['original_name'] }}">
+        // @endforeach
 
         // Save the event ticket details
         foreach ($request->ticket_id as $key => $ticketId) {
@@ -98,9 +126,9 @@ class EventController extends Controller
                 'quantity' => $request->quantity[$key],
                 'status' => 1,
             ];
-
             EventTicket::create($eventTicketData);
         }
+
 
         return response()->json(['success' => 'Event created successfully.', 'event' => $event]);
     }

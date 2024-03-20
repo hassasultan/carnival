@@ -23,6 +23,13 @@ class Event extends Model
         'start_time',
         'end_date',
         'end_time',
+        'dress_code',
+        'all_day',
+        'banner',
+        'promotional_Video',
+        'additional_images',
+        'venue',
+        'address',
     ];
 
     /**

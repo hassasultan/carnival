@@ -21,8 +21,7 @@ class CreateProductVariantTable extends Migration
             $table->integer('status')->default(1);
             $table->timestamps();
 
-            $table->index('product_id');
-            $table->index('variant_id');
+            $table->index(['product_id', 'variant_id']);
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('variant_id')->references('id')->on('variants')->onDelete('cascade');

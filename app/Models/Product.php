@@ -19,6 +19,12 @@ class Product extends Model
         'old_price',
         'new_price',
         'status',
+        'tags',
+        'condition',
+        'stock_condition',
+        'old_price',
+        'new_price',
+        'discount',
     ];
 
     protected $dates = [
@@ -35,5 +41,10 @@ class Product extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    
+    public function variants()
+    {
+        return $this->belongsToMany(Variant::class)->withPivot('value', 'status');
     }
 }

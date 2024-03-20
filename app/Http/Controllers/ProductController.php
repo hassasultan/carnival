@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Variant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,8 +12,10 @@ class ProductController extends Controller
 {
     public function index()
     {
+        $categories = Category::all();
+        $variants = Variant::all();
         $products = Product::all();
-        return view('dashboard.admin.products.index', compact('products'));
+        return view('dashboard.admin.products.index', compact('products', 'variants', 'categories'));
     }
 
     public function create()
