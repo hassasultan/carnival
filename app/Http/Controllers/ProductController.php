@@ -9,9 +9,17 @@ use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Services\ProductService;
 
 class ProductController extends Controller
 {
+    protected $productService;
+
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+    }
+
     public function index()
     {
         $categories = Category::all();
@@ -40,57 +48,59 @@ class ProductController extends Controller
             'variant_id.*' => 'exists:variants,id',
         ]);
 
-        // Extract the product data from the request
-        $productData = $request->only([
-            'title',
-            'category_id',
-            'description',
-            'old_price',
-            'new_price',
-            'condition',
-            'stock_condition',
-            'discount',
-        ]);
+        // // Extract the product data from the request
+        // $productData = $request->only([
+        //     'title',
+        //     'category_id',
+        //     'description',
+        //     'old_price',
+        //     'new_price',
+        //     'condition',
+        //     'stock_condition',
+        //     'discount',
+        // ]);
 
-        // Generate a unique slug from the product title
-        $slug = Str::slug($request->input('title'));
-        $uniqueSlug = $slug;
-        $counter = 1;
-        while (Product::where('slug', $uniqueSlug)->exists()) {
-            // If the slug already exists, append a counter to make it unique
-            $uniqueSlug = $slug . '-' . $counter++;
-        }
-
-        $productData['slug'] = $uniqueSlug;
-        
-        $productData['tags'] = implode(',', $request->tags);
-
-        // Add the user_id to the product data
-        $productData['user_id'] = Auth::id();
-
-        // if ($request->status == 'inactive') {
-        //     $productData['status'] = 0;
-        // } else {
-        //     $productData['status'] = 1;
+        // // Generate a unique slug from the product title
+        // $slug = Str::slug($request->input('title'));
+        // $uniqueSlug = $slug;
+        // $counter = 1;
+        // while (Product::where('slug', $uniqueSlug)->exists()) {
+        //     // If the slug already exists, append a counter to make it unique
+        //     $uniqueSlug = $slug . '-' . $counter++;
         // }
 
-        // dd(dd($productData));
+        // $productData['slug'] = $uniqueSlug;
+        
+        // $productData['tags'] = implode(',', $request->tags);
 
-        // Create the product
-        $product = Product::create($productData);
+        // // Add the user_id to the product data
+        // $productData['user_id'] = Auth::id();
 
-        // Handle variants
-        if ($request->has('variant_id')) {
-            foreach ($request->input('variant_id') as $variantId) {
-                // Save each variant for the product
-                ProductVariant::create([
-                    'product_id' => $product->id,
-                    'variant_id' => $variantId,
-                    'value' => 'value',
-                    'status' => 1,
-                ]);
-            }
-        }
+        // // if ($request->status == 'inactive') {
+        // //     $productData['status'] = 0;
+        // // } else {
+        // //     $productData['status'] = 1;
+        // // }
+
+        // // dd(dd($productData));
+
+        // // Create the product
+        // $product = Product::create($productData);
+
+        // // Handle variants
+        // if ($request->has('variant_id')) {
+        //     foreach ($request->input('variant_id') as $variantId) {
+        //         // Save each variant for the product
+        //         ProductVariant::create([
+        //             'product_id' => $product->id,
+        //             'variant_id' => $variantId,
+        //             'value' => 'value',
+        //             'status' => 1,
+        //         ]);
+        //     }
+        // }
+
+        $product = $this->productService->createProduct($request->all());
 
         if ($product) {
             $products = Product::all();
@@ -129,37 +139,40 @@ class ProductController extends Controller
             'variant_id.*' => 'exists:variants,id',
         ]);
 
+        // $product = Product::findOrFail($id);
+
+        // // Check if the title has changed
+        // if ($request->has('title') && $request->title !== $product->title) {
+        //     // Generate a unique slug based on the updated title
+        //     $slug = Str::slug($request->input('title'));
+        //     $uniqueSlug = $slug;
+        //     $counter = 1;
+        //     while (Product::where('slug', $uniqueSlug)->where('id', '!=', $product->id)->exists()) {
+        //         // If the slug already exists, append a counter to make it unique
+        //         $uniqueSlug = $slug . '-' . $counter++;
+        //     }
+        //     $product->slug = $uniqueSlug;
+        // }
+
+        // // Update other product data
+        // $product->title = $request->input('title');
+        // $product->category_id = $request->input('category_id');
+        // $product->description = $request->input('description');
+        // $product->old_price = $request->input('old_price');
+        // $product->new_price = $request->input('new_price');
+        // $product->condition = $request->input('condition');
+        // $product->stock_condition = $request->input('stock_condition');
+        // $product->discount = $request->input('discount');
+        // $product->status = $request->input('status');
+
+        // // Save the updated product
+        // $product->save();
+
+        // // Handle variants
+        // $product->variants()->sync($request->input('variant_id'));
+
         $product = Product::findOrFail($id);
-
-        // Check if the title has changed
-        if ($request->has('title') && $request->title !== $product->title) {
-            // Generate a unique slug based on the updated title
-            $slug = Str::slug($request->input('title'));
-            $uniqueSlug = $slug;
-            $counter = 1;
-            while (Product::where('slug', $uniqueSlug)->where('id', '!=', $product->id)->exists()) {
-                // If the slug already exists, append a counter to make it unique
-                $uniqueSlug = $slug . '-' . $counter++;
-            }
-            $product->slug = $uniqueSlug;
-        }
-
-        // Update other product data
-        $product->title = $request->input('title');
-        $product->category_id = $request->input('category_id');
-        $product->description = $request->input('description');
-        $product->old_price = $request->input('old_price');
-        $product->new_price = $request->input('new_price');
-        $product->condition = $request->input('condition');
-        $product->stock_condition = $request->input('stock_condition');
-        $product->discount = $request->input('discount');
-        $product->status = $request->input('status');
-
-        // Save the updated product
-        $product->save();
-
-        // Handle variants
-        $product->variants()->sync($request->input('variant_id'));
+        $this->productService->updateProduct($product, $request->all());
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }

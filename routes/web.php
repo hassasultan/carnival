@@ -54,6 +54,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // RolesPermissions Crud
     Route::resource('role_permissions', RolePermissionController::class);
+    Route::post('/get_permissions', [RolePermissionController::class, 'getPermissions'])->name('get_permissions_by_role');
 
     // Packages Crud
     Route::resource('packages', PackageController::class);
@@ -83,6 +84,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/variants/{variant}/edit', [VariantController::class, 'edit'])->name('variants.edit');
     Route::put('/variants/{variant}', [VariantController::class, 'update'])->name('variants.update');
     Route::delete('/variants/{variant}', [VariantController::class, 'destroy'])->name('variants.destroy');
+    
+    // get categories
+    Route::get('/get-categories/{packageId}', [EventController::class, 'getCategories'])->name('get.categories');
 });
 
 
@@ -90,6 +94,18 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 Route::middleware('vendor')->prefix('vendor')->group(function () {
 
     Route::get('/', [VendorController::class, 'index'])->name('vendor');
+
+    // products
+    Route::get('/products', [VendorController::class, 'indexProduct'])->name('vendor.products');
+    Route::get('/products/edit/{id}', [VendorController::class, 'editProduct'])->name('vendor.products.edit');
+    Route::post('/products/store', [VendorController::class, 'storeProduct'])->name('vendor.products.store');
+    Route::put('/products/update/', [VendorController::class, 'updateProduct'])->name('vendor.products.update');
+
+    // events
+    Route::get('/events', [VendorController::class, 'indexEvent'])->name('vendor.events');
+    Route::get('/events/edit/{event}', [VendorController::class, 'editEvent'])->name('vendor.events.edit');
+    Route::post('/events/store', [VendorController::class, 'storeEvent'])->name('vendor.events.store');
+    Route::put('/events/update/{event}', [VendorController::class, 'updateEvent'])->name('vendor.events.update');
 });
 
 
@@ -97,5 +113,17 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
 Route::middleware('subVendor')->prefix('subVendor')->group(function () {
 
     Route::get('/', [SubVendorController::class, 'index'])->name('subVendor');
+
+    // products
+    Route::get('/my_products', [SubVendorController::class, 'indexProducts'])->name('subVendor.products');
+    Route::get('/my_products/edit/{id}', [SubVendorController::class, 'editProducts'])->name('subVendor.products.edit');
+    Route::post('/my_products/store', [SubVendorController::class, 'storeProducts'])->name('subVendor.products.store');
+    Route::put('/my_products/update/', [SubVendorController::class, 'updateProducts'])->name('subVendor.products.update');
+
+    // events
+    Route::get('/my_events', [SubVendorController::class, 'indexEvents'])->name('subVendor.events');
+    Route::get('/my_events/edit/{event}', [SubVendorController::class, 'editEvents'])->name('subVendor.events.edit');
+    Route::post('/my_events/store', [SubVendorController::class, 'storeEvents'])->name('subVendor.events.store');
+    Route::put('/my_events/update/{event}', [SubVendorController::class, 'updateEvents'])->name('subVendor.events.update');
 
 });

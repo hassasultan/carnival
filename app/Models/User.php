@@ -91,4 +91,13 @@ class User extends Authenticatable
         return $role->permissions->pluck('name')->contains($permission);
     }
     
+    public function vendor()
+    {
+        return $this->hasOne(Vendor::class);
+    }
+    
+    public function subVendor()
+    {
+        return $this->hasOne(SubVendor::class);
+    }
 }

@@ -1,4 +1,4 @@
-@extends('dashboard.admin.layouts.app')
+@extends('dashboard.vendor.layouts.app')
 
 @section('content')
     <style>
@@ -35,7 +35,7 @@
                     </button>
                 </div>
                 <div class="modal-body p-4">
-                    <form id="createEventForm" method="POST" action="{{ route('events.store') }}">
+                    <form id="createEventForm" method="POST" action="{{ route('vendor.events.store') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
@@ -46,18 +46,15 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="package_id">Package</label>
-                                    <select id="package_id" name="package_id" class="form-control" required>
-                                        <option value="">Select Package</option>
-                                        @foreach ($packages as $package)
-                                            <option value="{{ $package->id }}">{{ $package->title }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" disabled name="package_id" class="form-control"
+                                        value="{{ Auth::user()->vendor->package->title ?? 'No Package Found' }}"
+                                        id="package_id">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="category_id">Category</label>
                                     <select id="category_id" name="category_id" class="form-control" required>
                                         <option value="">Select Category</option>
-                                        @foreach ($categories as $category)
+                                        @foreach (Auth::user()->vendor->package->category as $category)
                                             <option value="{{ $category->id }}">{{ $category->title }}</option>
                                         @endforeach
                                     </select>
@@ -300,7 +297,7 @@
                 formData.append('all_day', $('#all_day').is(':checked') ? true : false);
 
                 $.ajax({
-                    url: '{{ route('events.store') }}',
+                    url: '{{ route('vendor.events.store') }}',
                     type: 'POST',
                     data: formData,
                     processData: false,
@@ -430,37 +427,6 @@
                 }
                 // Update the label text
                 $('#additional_images_label').text(fileNames);
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#package_id').on('change', function() {
-                var packageId = $(this).val();
-                var categorySelect = $('#category_id');
-                console.log(packageId, 'packageIdpackageId');
-
-                // Clear existing options
-                categorySelect.empty().append('<option value="">Select Category</option>');
-
-                // Fetch categories based on the selected package
-                $.ajax({
-                    url: '{{ route('get.categories', ':id') }}'.replace(':id', packageId),
-                    data: {
-                        packageId: packageId
-                    }, // Pass the packageId as data
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(data) {
-                        $.each(data, function(index, category) {
-                            categorySelect.append('<option value="' + category.id +
-                                '">' + category.title + '</option>');
-                        });
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error:', error);
-                    }
-                });
             });
         });
     </script>

@@ -10,12 +10,21 @@ use App\Models\EventTicket;
 use App\Models\EventImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Services\EventService;
 use App\Traits\ImageTrait;
 use App\Traits\MultipleImageTrait;
 
 class EventController extends Controller
 {
-    use ImageTrait, MultipleImageTrait;
+    // use ImageTrait, MultipleImageTrait;
+    
+    protected $eventService;
+
+    public function __construct(EventService $eventService)
+    {
+        $this->eventService = $eventService;
+    }
+
     // Display a listing of the events.
     public function index()
     {
@@ -64,71 +73,73 @@ class EventController extends Controller
         ]);
 
         // Handle banner image upload
-        $bannerPath = null;
-        if ($request->hasFile('banner')) {
-            $bannerPath = $this->uploadImage($request->file('banner'), 'banners');
-        }
-        // @if ($bannerPath)
-        //     <img src="{{ asset('storage/' . $bannerPath) }}" alt="Banner">
-        // @endif
+        // $bannerPath = null;
+        // if ($request->hasFile('banner')) {
+        //     $bannerPath = $this->uploadImage($request->file('banner'), 'banners');
+        // }
+        // // @if ($bannerPath)
+        // //     <img src="{{ asset('storage/' . $bannerPath) }}" alt="Banner">
+        // // @endif
 
-        // Handle promotional video upload
-        $videoPath = null;
-        if ($request->hasFile('promotional_video')) {
-            $videoPath = $this->uploadImage($request->file('promotional_video'), 'videos');
-        }
-        // @if ($videoPath)
-        //     <video controls>
-        //         <source src="{{ asset('storage/' . $videoPath) }}" type="video/mp4">
-        //         Your browser does not support the video tag.
-        //     </video>
-        // @endif
+        // // Handle promotional video upload
+        // $videoPath = null;
+        // if ($request->hasFile('promotional_video')) {
+        //     $videoPath = $this->uploadImage($request->file('promotional_video'), 'videos');
+        // }
+        // // @if ($videoPath)
+        // //     <video controls>
+        // //         <source src="{{ asset('storage/' . $videoPath) }}" type="video/mp4">
+        // //         Your browser does not support the video tag.
+        // //     </video>
+        // // @endif
 
-        $data = $request->except('_token', 'banner', 'ticket_id', 'promotional_video', 'dress_code', 'additional_images', 'price', 'quantity');
-        $data['user_id'] = Auth::id();
-        $data['banner'] = $bannerPath;
-        $data['promotional_video'] = $videoPath;
+        // $data = $request->except('_token', 'banner', 'ticket_id', 'promotional_video', 'dress_code', 'additional_images', 'price', 'quantity');
+        $request['user_id'] = Auth::id();
+        // $data['banner'] = $bannerPath;
+        // $data['promotional_video'] = $videoPath;
 
-        // Handle dress code
-        if ($request->has('dress_code')) {
-            $data['dress_code'] = implode(',', $request->dress_code);
-        }
+        // // Handle dress code
+        // if ($request->has('dress_code')) {
+        //     $request['dress_code'] = implode(',', $request->dress_code);
+        // }
         if ($request->has('all_day')) {
-            $data['all_day'] = $request->all_day ? 1 : 0;
+            $request['all_day'] = $request->all_day ? 1 : 0;
         }
 
 
-        // Save event data
-        $event = Event::create($data);
+        // // Save event data
+        // $event = Event::create($data);
 
-        // Handle additional images
-        $additionalImagePaths = [];
-        if ($request->hasFile('additional_images')) {
-            $additionalImagePaths = $this->uploadMultipleImages($request->file('additional_images'), 'additional_images');
-            foreach ($additionalImagePaths as $additionalImage) {
-                EventImage::create([
-                    'event_id' => $event->id,
-                    'image_url' => $additionalImage['path'],
-                    'image_name' => $additionalImage['original_name'],
-                ]);
-            }
-        }
-        // @foreach ($additionalImagePaths as $additionalImage)
-        //     <img src="{{ asset('storage/' . $additionalImage['path']) }}" alt="{{ $additionalImage['original_name'] }}">
-        // @endforeach
+        // // Handle additional images
+        // $additionalImagePaths = [];
+        // if ($request->hasFile('additional_images')) {
+        //     $additionalImagePaths = $this->uploadMultipleImages($request->file('additional_images'), 'additional_images');
+        //     foreach ($additionalImagePaths as $additionalImage) {
+        //         EventImage::create([
+        //             'event_id' => $event->id,
+        //             'image_url' => $additionalImage['path'],
+        //             'image_name' => $additionalImage['original_name'],
+        //         ]);
+        //     }
+        // }
+        // // @foreach ($additionalImagePaths as $additionalImage)
+        // //     <img src="{{ asset('storage/' . $additionalImage['path']) }}" alt="{{ $additionalImage['original_name'] }}">
+        // // @endforeach
 
-        // Save the event ticket details
-        foreach ($request->ticket_id as $key => $ticketId) {
-            $eventTicketData = [
-                'ticket_id' => $ticketId,
-                'event_id' => $event->id,
-                'price' => $request->price[$key],
-                'quantity' => $request->quantity[$key],
-                'status' => 1,
-            ];
-            EventTicket::create($eventTicketData);
-        }
+        // // Save the event ticket details
+        // foreach ($request->ticket_id as $key => $ticketId) {
+        //     $eventTicketData = [
+        //         'ticket_id' => $ticketId,
+        //         'event_id' => $event->id,
+        //         'price' => $request->price[$key],
+        //         'quantity' => $request->quantity[$key],
+        //         'status' => 1,
+        //     ];
+        //     EventTicket::create($eventTicketData);
+        // }
 
+        // dd($request->all());
+        $event = $this->eventService->createEvent($request->all());
 
         return response()->json(['success' => 'Event created successfully.', 'event' => $event]);
     }
@@ -155,7 +166,8 @@ class EventController extends Controller
             // Add validation rules for other fields here
         ]);
 
-        $event->update($request->all());
+        // $event->update($request->all());
+        $event = $this->eventService->updateEvent($event, $request->all());
 
         return redirect()->route('events.index')
             ->with('success', 'Event updated successfully.');
@@ -167,5 +179,14 @@ class EventController extends Controller
         $event->delete();
         return redirect()->route('events.index')
             ->with('success', 'Event deleted successfully.');
+    }
+
+    public function getCategories($packageId)
+    {
+        // Fetch categories based on the provided package ID
+        $categories = Category::where('package_id', $packageId)->get();
+    
+        // Return categories as JSON response
+        return response()->json($categories);
     }
 }
