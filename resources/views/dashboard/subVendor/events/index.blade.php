@@ -46,8 +46,10 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="package_id">Package</label>
-                                    <input type="text" disabled name="package_id" class="form-control"
-                                        value="{{ Auth::user()->subVendor->vendor->package->title ?? 'No Package Found' }}"
+                                    <input type="text" disabled class="form-control"
+                                        value="{{ Auth::user()->subVendor->vendor->package->title ?? 'No Package Found' }}">
+                                    <input type="text" hidden name="package_id" class="form-control"
+                                        value="{{ Auth::user()->subVendor->vendor->package->id ?? 0 }}"
                                         id="package_id">
                                 </div>
                                 <div class="form-group mb-3">

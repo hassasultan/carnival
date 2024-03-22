@@ -16,7 +16,7 @@
                             <div id="productMessage"></div>
                             <!-- Table Data -->
                             <div id="tableData">
-                                @include('dashboard.admin.products.table')
+                                @include('dashboard.vendor.products.table')
                             </div>
                         </div>
                     </div>

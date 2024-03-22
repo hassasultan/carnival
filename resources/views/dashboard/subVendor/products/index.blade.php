@@ -16,7 +16,7 @@
                             <div id="productMessage"></div>
                             <!-- Table Data -->
                             <div id="tableData">
-                                @include('dashboard.admin.products.table')
+                                @include('dashboard.subvendor.products.table')
                             </div>
                         </div>
                     </div>
@@ -287,7 +287,7 @@
             $(document).on('click', '.editProductBtn', function() {
                 var productId = $(this).data('id');
                 $.ajax({
-                    url: '{{ route('vendor.products.edit', ':id') }}'.replace(':id', productId),
+                    url: '{{ route('subVendor.products.edit', ':id') }}'.replace(':id', productId),
                     type: 'GET',
                     success: function(response) {
                         console.log('edit', response);
@@ -349,7 +349,7 @@
                 event.preventDefault();
                 var formData = new FormData($(this)[0]); // Use FormData object to include media files
                 $.ajax({
-                    url: '{{ route('vendor.products.store') }}',
+                    url: '{{ route('subVendor.products.store') }}',
                     type: 'POST',
                     data: formData, // Send FormData object instead of serialized data
                     contentType: false, // Set contentType to false when sending FormData
@@ -388,7 +388,7 @@
                 var productId = $(this).find('#edit_id').val();
                 event.preventDefault();
                 var formData = $(this).serialize();
-                var url = '{{ route('vendor.products.update', ['product' => ':id']) }}'.replace(':id', productId);
+                var url = '{{ route('subVendor.products.update', ['product' => ':id']) }}'.replace(':id', productId);
                 console.log('url', url, productId);
 
                 $.ajax({

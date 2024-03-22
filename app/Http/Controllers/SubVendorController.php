@@ -100,6 +100,7 @@ class SubVendorController extends Controller
 
     public function storeEvents(Request $request)
     {
+        // dd($request->package_id);
         $request->validate([
             'name' => 'required|string|max:255',
             'package_id' => 'required|exists:packages,id',
@@ -123,8 +124,6 @@ class SubVendorController extends Controller
             // 'banner' => 'nullable|image|max:2048',
             // 'additional_images.*' => 'nullable|image|max:2048',
         ]);
-
-        // dd($request->all());
 
         $request['user_id'] = Auth::id();
 
