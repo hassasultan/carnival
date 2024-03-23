@@ -15,6 +15,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\VariantController;
+use App\Http\Controllers\UserManagementController;
 
 
 /*
@@ -87,6 +88,11 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     
     // get categories
     Route::get('/get-categories/{packageId}', [EventController::class, 'getCategories'])->name('get.categories');
+    
+    // user management
+    Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');
+    // Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.package');
+    Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.categories');
 });
 
 
