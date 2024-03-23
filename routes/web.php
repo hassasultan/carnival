@@ -90,6 +90,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/get-categories/{packageId}', [EventController::class, 'getCategories'])->name('get.categories');
     
     // user management
+    Route::get('/users', [UserManagementController::class, 'indexUser'])->name('users.index');
     Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');
     // Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.package');
     Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.categories');
