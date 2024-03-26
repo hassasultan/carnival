@@ -1,7 +1,7 @@
 @extends('dashboard.admin.layouts.app')
 
 @section('content')
-    <form method="POST" action="{{ route('register') }}" class="col-lg-6 col-md-8 col-10 mx-auto">
+    <form method="POST" action="{{ route('users.register') }}" class="col-lg-6 col-md-8 col-10 mx-auto">
         @csrf
         <div class="mx-auto text-center my-4">
             <h2 class="my-3">Register New User</h2>
@@ -107,31 +107,34 @@
                 @enderror
             </div>
         </div>
-        <div class="form-group">
-            <label for="zipcode">Zipcode</label>
-            <input id="zipcode" type="text" class="form-control @error('zipcode') is-invalid @enderror"
-                name="zipcode" value="{{ old('zipcode') }}" autocomplete="zipcode">
-            @error('zipcode')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-        <div class="form-group">
-            <label for="role">Role</label>
-            <select id="role" class="form-control @error('role_id') is-invalid @enderror" name="role_id" required>
-                <option value="">Select Role</option>
-                @foreach ($roles as $role)
-                    @if ($role->name !== 'Admin')
-                        <option value="{{ $role->id }}">{{ $role->name }}</option>
-                    @endif
-                @endforeach
-            </select>
-            @error('role_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="zipcode">Zipcode</label>
+                <input id="zipcode" type="text" class="form-control @error('zipcode') is-invalid @enderror"
+                    name="zipcode" value="{{ old('zipcode') }}" autocomplete="zipcode">
+                @error('zipcode')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="form-group col-md-6">
+                <label for="role">Role</label>
+                <select id="role" class="form-control @error('role_id') is-invalid @enderror" name="role_id"
+                    required>
+                    <option value="">Select Role</option>
+                    @foreach ($roles as $role)
+                        @if ($role->name !== 'Admin')
+                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                        @endif
+                    @endforeach
+                </select>
+                @error('role_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
         </div>
         <div class="form-group" id="package_input" style="display: none;">
             <label for="package">Package</label>
@@ -188,48 +191,34 @@
                     $('#package_input').hide();
                     $('#vendors_input').hide();
                 }
-                // $.ajax({
-                //     type: 'GET',
-                //     url: `{{ route('users.get.categories') }}`,
-                //     data: {
-                //         role:role,
-                //     },
-                //     success: function(response) {
-                //         $('#createSubcategoryForm')[0].reset();
-                //         $('#successMessage').html('New subcategory created successfully.')
-                //             .show();
-                //         setTimeout(function() {
-                //             $('#successMessage').hide();
-                //         }, 3000);
-                //     },
-                //     error: function(xhr, status, error) {
-                //         console.error(xhr.responseText);
-                //     }
-                // });
             });
-            $('#package').on('change', function() {
-                var package = $(this).val();
-                var role = $('#role').val();
-                $.ajax({
-                    type: 'GET',
-                    url: `{{ route('users.get.categories') }}`,
-                    data: {
-                        package: package,
-                        role: role,
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        $('#category_input').show();
 
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                    }
-                });
+            $('#package').on('change', function() {
+                var packageId = $(this).val();
+                $('#category_id').empty().append($('<option>', {
+                    value: '',
+                    text: 'Select Category'
+                }));
+                if (packageId) {
+                    $.ajax({
+                        type: 'GET',
+                        url: `{{ route('users.get.categories') }}`,
+                        data: {
+                            package: packageId,
+                            role: $('#role').val(),
+                        },
+                        success: function(response) {
+                            populateCategories(response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+                    });
+                }
             });
+
             $('#vendor').on('change', function() {
                 var vendor = $(this).val();
-                var role = $('#role').val();
                 $.ajax({
                     type: 'GET',
                     url: `{{ route('users.get.categories') }}`,
@@ -237,15 +226,24 @@
                         vendor: vendor,
                     },
                     success: function(response) {
-                        console.log(response);
-                        $('#category_input').show();
-
+                        populateCategories(response);
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
                     }
                 });
             });
+
+            function populateCategories(categories) {
+                var categoryDropdown = $('#category_id');
+                categories.forEach(function(category) {
+                    categoryDropdown.append($('<option>', {
+                        value: category.id,
+                        text: category.title
+                    }));
+                });
+                $('#category_input').show();
+            }
         });
     </script>
 @endsection

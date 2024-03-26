@@ -61,12 +61,12 @@ class User extends Authenticatable
         // dd($this->role_id === "1");
         return $this->role->name === "Admin";
     }
-    
+
     public function isVendor()
     {
         return $this->role->name === "Vendor";
     }
-    
+
     public function isSubVendor()
     {
         return $this->role->name === "SubVendor";
@@ -80,22 +80,24 @@ class User extends Authenticatable
     public function hasPermission($permission)
     {
         // Check if the user has a role
-        if (!$this->role_id) {
+        if (!$this->role) {
             return false;
         }
 
-        // Get the user's role
-        $role = $this->role;
+        // Check if the role has permissions
+        if (!$this->role->permissions) {
+            return false;
+        }
 
         // Check if the role has the specified permission
-        return $role->permissions->pluck('name')->contains($permission);
+        return $this->role->permissions->pluck('name')->contains($permission);
     }
-    
+
     public function vendor()
     {
         return $this->hasOne(Vendor::class);
     }
-    
+
     public function subVendor()
     {
         return $this->hasOne(SubVendor::class);

@@ -57,6 +57,13 @@ class ProductService
             'tags' => implode(',', $data['tags'] ?? []),
             'slug' => $this->generateUniqueSlug($data['title']),
             'user_id' => auth()->id(),
+            'facebook' => $data['facebook'] ?? null,
+            'instagram' => $data['instagram'] ?? null,
+            'youtube' => $data['youtube'] ?? null,
+            'twitter' => $data['twitter'] ?? null,
+            'tiktok' => $data['tiktok'] ?? null,
+            'pinterest' => $data['pinterest'] ?? null,
+            'linkedin' => $data['linkedin'] ?? null,
         ];
 
         return $productData;

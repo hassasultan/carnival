@@ -78,11 +78,11 @@
                             {{-- </div> --}}
                         </div>
                         <div class="form-group">
-                            <label for="old_price">Old Price</label>
+                            <label for="old_price">Regular Price</label>
                             <input type="text" class="form-control" id="old_price" name="old_price">
                         </div>
                         <div class="form-group">
-                            <label for="new_price">New Price</label>
+                            <label for="new_price">Discounted Price</label>
                             <input type="text" class="form-control" id="new_price" name="new_price">
                         </div>
                         <div class="form-group">
@@ -94,16 +94,10 @@
                         </div>
                         <div id="hash_tags" class="mb-3">
                             <label for="tags">Tags</label><br>
-                            {{-- @foreach ($categories as $row) --}}
-                            <span class="badge badge-primary tag badge-lg" data-id="1" style="font-size: 1.25em;">
-                                #all
-                            </span>
                             <input type="hidden" name="tags[]" value="{{ $row->title }}">
-                            {{-- @endforeach --}}
+                            {{-- Input field for adding new tags --}}
+                            <input type="text" id="tagInput" class="form-control" placeholder="Add a new tag...">
                         </div>
-                        <p id="addNewTagText"
-                            style="color: rgb(255, 255, 255); text-decoration: underline; cursor: pointer;">Add
-                            New</p>
                         <div class="form-group">
                             <label for="condition">Condition</label>
                             <select class="form-control" id="condition" name="condition" required>
@@ -122,7 +116,42 @@
                         </div>
                         <div class="form-group">
                             <label for="discount">Discount</label>
-                            <input type="text" class="form-control" id="discount" name="discount">
+                            <input type="number" class="form-control" id="discount" name="discount">
+                        </div>
+                        <div class="form-group">
+                            <label for="facebook">Facebook</label>
+                            <input type="text" class="form-control" id="facebook" name="facebook">
+                        </div>
+                        <div class="form-group">
+                            <label for="instagram">Instagram</label>
+                            <input type="text" class="form-control" id="instagram" name="instagram">
+                        </div>
+                        <div class="form-group">
+                            <label for="youtube">Youtube</label>
+                            <input type="text" class="form-control" id="youtube" name="youtube">
+                        </div>
+                        <div class="form-group">
+                            <label for="twitter">Twitter(X)</label>
+                            <input type="text" class="form-control" id="twitter" name="twitter">
+                        </div>
+                        <div class="form-group">
+                            <label for="tiktok">Tiktok</label>
+                            <input type="text" class="form-control" id="tiktok" name="tiktok">
+                        </div>
+                        <div class="form-group">
+                            <label for="pinterest">Pinterest</label>
+                            <input type="text" class="form-control" id="pinterest" name="pinterest">
+                        </div>
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn</label>
+                            <input type="text" class="form-control" id="linkedin" name="linkedin">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="image">Image</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="image" name="image">
+                                <label class="custom-file-label" for="image" id="image_label">Choose file</label>
+                            </div>
                         </div>
                         <div class="form-group mb-3">
                             <label for="media">Media</label>
@@ -173,11 +202,11 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="edit_old_price">Old Price</label>
+                            <label for="edit_old_price">Regular Price</label>
                             <input type="text" class="form-control" id="edit_old_price" name="old_price">
                         </div>
                         <div class="form-group">
-                            <label for="edit_new_price">New Price</label>
+                            <label for="edit_new_price">Discounted Price</label>
                             <input type="text" class="form-control" id="edit_new_price" name="new_price">
                         </div>
                         <div class="form-group">
@@ -189,7 +218,7 @@
                         </div>
                         <div class="form-group">
                             <label for="edit_discount">Discount</label>
-                            <input type="text" class="form-control" id="edit_discount" name="discount">
+                            <input type="number" class="form-control" id="edit_discount" name="discount">
                         </div>
                         <div class="form-group">
                             <label for="edit_condition">Condition</label>
@@ -216,7 +245,8 @@
                             @endforeach
                             <select id="edit_variant_id" name="variant_id[]" class="form-control select2" multiple>
                                 @foreach ($variants as $row)
-                                    <option value="{{ $row->id }}" data-name-{{ $row->id }}="{{ $row->title }}">
+                                    <option value="{{ $row->id }}"
+                                        data-name-{{ $row->id }}="{{ $row->title }}">
                                         {{ $row->title }}
                                     </option>
                                 @endforeach
@@ -479,23 +509,40 @@
                 }
             });
 
-            // Add functionality to add a new tag when clicking on the "Add New" text
-            $('#addNewTagText').click(function() {
-                var newTagName = prompt('Enter the name for the new tag:');
-                if (newTagName) {
-                    // Generate a unique ID for the new tag
-                    var newTagId = 'random_' + Math.floor(Math.random() * 1000000);
-                    // Create the new tag
-                    var newTag = $('<span class="badge badge-primary tag badge-lg" data-id="' + newTagId +
-                        '" style="font-size: 1.25em;">#' + newTagName + '</span>');
-                    // Append the new tag after the last tag in the container
-                    $('#hash_tags').append(newTag);
+            // Allow selecting or deselecting options by clicking on tags
+            $(document).on('click', '.tag', function() {
+                var tagId = $(this).data('id');
+                var tagInput = $(this).next('input[name="tags[]"]');
+                if (tagInput.length) {
+                    // Remove the hidden input field for the tag
+                    tagInput.remove();
+                }
+                $(this).remove(); // Remove the tag from the UI
+            });
 
-                    // Create a hidden input field for the new tag code name
-                    var newInput = $('<input type="hidden" name="tags[]" value="#' + newTagName +
-                        '">');
-                    // Append the new input field to the form
-                    $('#hash_tags').append(newInput);
+            // Functionality to add a new tag when pressing Enter in the input field
+            $('#tagInput').keypress(function(event) {
+                if (event.which === 13) { // Check if Enter key is pressed
+                    var newTagName = $(this).val().trim();
+                    if (newTagName) {
+                        // Generate a unique ID for the new tag
+                        var newTagId = 'random_' + Math.floor(Math.random() * 1000000);
+                        // Create the new tag
+                        var newTag = $('<span class="badge badge-primary tag badge-lg" data-id="' +
+                            newTagId +
+                            '" style="font-size: 1.25em;">#' + newTagName + '</span>');
+                        // Append the new tag after the input field
+                        $('#tagInput').before(newTag);
+
+                        // Create a hidden input field for the new tag code name
+                        var newInput = $('<input type="hidden" name="tags[]" value="#' + newTagName +
+                            '">'); // Add '#' symbol here
+                        // Append the new input field to the form
+                        $('#hash_tags').append(newInput);
+
+                        // Clear the input field
+                        $(this).val('');
+                    }
                 }
             });
 
@@ -512,6 +559,21 @@
                 }
                 // Update the label text
                 $('#media_label').text(fileNames);
+            });
+
+            // Update label text when files are selected for additional images
+            $('#image').on('change', function() {
+                // Get the file names
+                var files = $(this)[0].files;
+                var fileNames = '';
+                for (var i = 0; i < files.length; i++) {
+                    fileNames += files[i].name;
+                    if (i < files.length - 1) {
+                        fileNames += ', ';
+                    }
+                }
+                // Update the label text
+                $('#image_label').text(fileNames);
             });
         });
 

@@ -23,6 +23,13 @@ class Product extends Model
         'condition',
         'stock_condition',
         'discount',
+        'facebook',
+        'instagram',
+        'youtube',
+        'twitter',
+        'tiktok',
+        'pinterest',
+        'linkedin',
     ];
 
     protected $dates = [

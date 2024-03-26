@@ -92,7 +92,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     // user management
     Route::get('/users', [UserManagementController::class, 'indexUser'])->name('users.index');
     Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');
-    // Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.package');
+    Route::post('/users/register', [UserManagementController::class, 'register'])->name('users.register');
     Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.categories');
 });
 
