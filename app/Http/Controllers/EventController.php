@@ -28,10 +28,9 @@ class EventController extends Controller
     // Display a listing of the events.
     public function index(Request $request)
     {
-        // $events = Event::with('package', 'category')->get();
         $packages = Package::all();
         $ticktes = Ticket::all();
-        $categories = Category::all();
+        $categories = Category::where('type','events')->get();
         $show_events = Event::with("category","package");
         if($request->has('search') && $request->search != null && $request->search != '')
         {
@@ -53,7 +52,6 @@ class EventController extends Controller
         return view('dashboard.admin.events.index', compact('packages', 'categories', 'events', 'ticktes'));
     }
 
-    // Show the form for creating a new event.
     public function create()
     {
         $packages = Package::all();
@@ -61,10 +59,8 @@ class EventController extends Controller
         return view('dashboard.admin.events.create', compact('packages', 'categories'));
     }
 
-    // Store a newly created event in the database.
     public function store(Request $request)
     {
-        // dd($request->toArray());
         $request->validate([
             'name' => 'required|string|max:255',
             'package_id' => 'required|exists:packages,id',

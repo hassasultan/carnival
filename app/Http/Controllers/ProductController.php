@@ -22,7 +22,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::where('type','ecommerce')->get();
         $variants = Variant::all();
         $products = Product::all();
         return view('dashboard.admin.products.index', compact('products', 'variants', 'categories'));

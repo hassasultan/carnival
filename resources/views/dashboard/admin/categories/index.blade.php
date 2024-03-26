@@ -19,6 +19,7 @@
                                     <th></th>
                                     <th>Sr#</th>
                                     <th>Title</th>
+                                    <th>Type</th>
                                     <th>Status</th>
                                     <th>Date</th>
                                     <th>Action</th>
@@ -36,6 +37,7 @@
                                     </td>
                                     <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
                                     <td>{{ $category->title }}</td>
+                                    <td>{{ $category->type }}</td>
                                     <td>
                                         @if($category->status == 1)
                                             Active

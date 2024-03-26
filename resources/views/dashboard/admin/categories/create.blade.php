@@ -27,6 +27,18 @@
                                 <textarea id="description" name="description" class="form-control" placeholder="Enter category description"></textarea>
                             </div>
                             <div class="form-group mb-3">
+                                <label for="type">Category Type</label>
+                                <select id="type" name="type" class="form-control" required>
+                                    <option value="" selected disabled>Select Package</option>
+                                    <option value="ecommerce">ecommerce</option>
+                                    <option value="events">events</option>
+                                    <option value="music">music</option>
+                                    <option value="appointment">appointment</option>
+                                    <option value="ad_space">ad_space</option>
+                                    <option value="blogging">blogging</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
                                 <label for="package_id">Package</label>
                                 <select id="package_id" name="package_id" class="form-control" required>
                                     <option value="">Select Package</option>

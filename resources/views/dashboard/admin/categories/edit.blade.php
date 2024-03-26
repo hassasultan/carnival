@@ -35,6 +35,18 @@
                                 </select>
                             </div>
                             <div class="form-group mb-3">
+                                <label for="type">Category Type</label>
+                                <select id="type" name="type" class="form-control" required>
+                                    <option value="">Select Package</option>
+                                    <option {{ $category->type == 'ecommerce' ? 'selected' : '' }} value="ecommerce">ecommerce</option>
+                                    <option {{ $category->type == 'events' ? 'selected' : '' }} value="events">events</option>
+                                    <option {{ $category->type == 'music' ? 'selected' : '' }} value="music">music</option>
+                                    <option {{ $category->type == 'appointment' ? 'selected' : '' }} value="appointment">appointment</option>
+                                    <option {{ $category->type == 'ad_space' ? 'selected' : '' }} value="ad_space">ad_space</option>
+                                    <option {{ $category->type == 'blogging' ? 'selected' : '' }} value="blogging">blogging</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
                                 <label for="package_id">Package</label>
                                 <select id="package_id" name="package_id" class="form-control" required>
                                     <option value="">Select Package</option>

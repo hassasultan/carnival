@@ -5,13 +5,30 @@
         .select2-container {
             width: 100% !important;
         }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #e0e0e0;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .tag-remove {
+            margin-left: 5px;
+            color: #888;
+            cursor: pointer;
+        }
     </style>
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="row align-items-center my-3">
                 <div class="col">
                     <h2 class="page-title">Calendar</h2>
-                    <button type="button" class="btn btn-primary" id="view-btn"><i class='fe fe-calendar fe-16'></i> Calender View</button>
+                    <button type="button" class="btn btn-primary" id="view-btn"><i class='fe fe-calendar fe-16'></i> Calender
+                        View</button>
                 </div>
                 <div class="col-auto">
                     <button type="button" class="btn" data-toggle="modal" data-target=".modal-calendar"><span
@@ -22,55 +39,55 @@
             </div>
             <div class="col-md-12 my-4 d-none" id="list-view">
                 <div class="card shadow">
-                  <div class="card-body">
-                    <div class="card-title">
-                        <h5>
-                            Events List
-                        </h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional
-                            content.</p>
-                    </div>
-                    <div class="toolbar">
-                        <form class="form">
-                            <div class="form-row">
-                                <div class="form-group col-auto mr-auto">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5>
+                                Events List
+                            </h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.</p>
+                        </div>
+                        <div class="toolbar">
+                            <form class="form">
+                                <div class="form-row">
+                                    <div class="form-group col-auto mr-auto">
+                                    </div>
+                                    <div class="form-group col-auto">
+                                        <label for="search" class="sr-only">Search</label>
+                                        <input type="text" class="form-control" id="search1" value=""
+                                            placeholder="Search">
+                                    </div>
                                 </div>
-                                <div class="form-group col-auto">
-                                    <label for="search" class="sr-only">Search</label>
-                                    <input type="text" class="form-control" id="search1" value=""
-                                        placeholder="Search">
-                                </div>
+                            </form>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-borderless table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Event Type</th>
+                                            <th>Category</th>
+                                            <th>Time</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="user-table-body">
+
+                                    </tbody>
+                                </table>
+                                <nav aria-label="Table Paging" class="mb-0 text-muted">
+                                    <ul class="pagination justify-content-center mb-0" id="user-pagination">
+                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                    </ul>
+                                </nav>
                             </div>
-                        </form>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                          <table class="table table-borderless table-hover">
-                              <thead>
-                                  <tr>
-                                      <th>Name</th>
-                                      <th>Event Type</th>
-                                      <th>Category</th>
-                                      <th>Time</th>
-                                      <th>Action</th>
-                                  </tr>
-                              </thead>
-                              <tbody id="user-table-body">
-                                  
-                              </tbody>
-                          </table>
-                          <nav aria-label="Table Paging" class="mb-0 text-muted">
-                              <ul class="pagination justify-content-center mb-0" id="user-pagination">
-                                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                  <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                              </ul>
-                          </nav>
                         </div>
                     </div>
-                  </div>
                 </div>
             </div>
             <div id='calendar' class=""></div>
@@ -133,16 +150,22 @@
                                 </div>
                                 <div id="dress_code_tags" class="mb-3">
                                     <label for="dress_code">Dress Code</label><br>
-                                    @foreach ($categories as $row)
+                                    {{-- @foreach ($categories as $row)
                                         <span class="badge badge-primary tag badge-lg" data-id="{{ $row->id }}"
                                             style="font-size: 1.25em;">
                                             {{ $row->title }}
                                         </span>
                                         <input type="hidden" name="dress_code[]" value="{{ $row->title }}">
-                                    @endforeach
+                                    @endforeach --}}
+                                    <div id="tag-container">
+                                    </div>
+                                    <input type="text" id="tag-input" class="form-control"
+                                        placeholder="Type and press Enter to add tag" required>
+                                    <input type="hidden" id="tag-values" name="dress_code[]" value="">
                                 </div>
-                                <p id="addNewTagText" style="color: blue; text-decoration: underline; cursor: pointer;">Add
-                                    New</p>
+                                {{-- <p id="addNewTagText" style="color: blue; text-decoration: underline; cursor: pointer;">
+                                    Add
+                                    New</p> --}}
                                 <div class="form-group mb-3">
                                     <div>
                                         <label for="ticket_id">Tickets Type</label>
@@ -300,16 +323,47 @@
 
     <!-- Your custom JavaScript code using FullCalendar and AJAX -->
     <script>
-        $("#view-btn").click(function(){
+        function createTag(text) {
+            var tag = document.createElement('div');
+            tag.classList.add('tag');
+            tag.textContent = text;
+            var hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'dress_code[]';
+            hiddenInput.value = text;
+            tag.addEventListener('click', function() {
+                tag.remove();
+                hiddenInput.remove();
+            });
+            var removeBtn = document.createElement('span');
+            removeBtn.classList.add('tag-remove');
+            removeBtn.textContent = '×';
+            removeBtn.addEventListener('click', function(event) {
+                event.stopPropagation();
+                tag.remove();
+                hiddenInput.remove();
+            });
+
+            tag.appendChild(removeBtn);
+            document.getElementById("dress_code_tags").appendChild(hiddenInput);
+            return tag;
+        }
+        document.getElementById('tag-input').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && this.value.trim() !== '') {
+                var tagText = this.value.trim();
+                var tagContainer = document.getElementById('tag-container');
+                var tag = createTag(tagText);
+                tagContainer.appendChild(tag);
+                this.value = '';
+            }
+        });
+        $("#view-btn").click(function() {
             text = $(this).html();
-            if(text == '<i class="fe fe-grid fe-16"></i> List View')
-            {
+            if (text == '<i class="fe fe-grid fe-16"></i> List View') {
                 $(this).html("<i class='fe fe-calendar fe-16'></i> Calender View");
                 $("#list-view").addClass("d-none");
                 $("#calendar").removeClass("d-none");
-            }
-            else
-            {
+            } else {
                 $(this).html("<i class='fe fe-grid fe-16'></i> List View");
                 $("#calendar").addClass("d-none");
                 $("#list-view").removeClass("d-none");
@@ -542,6 +596,7 @@
         $(document).ready(function() {
             fetchDataOnReady();
         });
+
         function fetchDataOnClick(page) {
             console.log(page);
             $.ajax({
@@ -553,7 +608,7 @@
                 },
                 success: function(response) {
                     console.log("Data fetched successfully on click:", response);
-                    generateTableRows(response.data); 
+                    generateTableRows(response.data);
                     generatePagination(response);
                 },
                 error: function(xhr, status, error) {
@@ -561,6 +616,7 @@
                 }
             });
         }
+
         function fetchDataOnReady() {
             $.ajax({
                 url: "{{ route('events.index') }}",
@@ -580,6 +636,7 @@
                 }
             });
         }
+
         function generateTableRows(users) {
             var html = '';
             const currentUrl = window.location.href;
@@ -588,13 +645,16 @@
                 html += '<td>' + user.name + '</td>';
                 html += '<td>' + user.eventType + '</td>';
                 html += '<td>' + user.category.title + '</td>';
-                html += '<td>' + user.start_date +' '+user.start_time+ '<br/> ' + user.end_date +' '+user.end_time+ '</td>';
-                html += '<td>'; 
-                html += '  <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                html += '<td>' + user.start_date + ' ' + user.start_time + '<br/> ' + user.end_date + ' ' + user
+                    .end_time + '</td>';
+                html += '<td>';
+                html +=
+                    '  <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
                 html += '<span class="text-muted sr-only">Action</span>';
                 html += '</button>';
                 html += '<div class="dropdown-menu dropdown-menu-right shadow">';
-                html += '<a class="dropdown-item" href="'+currentUrl+'/'+user.id+'/edit"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
+                html += '<a class="dropdown-item" href="' + currentUrl + '/' + user.id +
+                    '/edit"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
                 // html += '<a class="dropdown-item" href="#"><i class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove</a>';
                 // html += '<a class="dropdown-item" href="#"><i class="fe fe-flag fe-12 mr-3 text-muted"></i>Assign</a>';
                 html += '</div></td>';
@@ -604,11 +664,13 @@
         }
         pre = 0;
         nxt = 0;
+
         function generatePagination(response) {
             var html = '';
             if (response.prev_page_url) {
-                pre = response.current_page-1;
-                html += '<li class="page-item"><a onclick="fetchDataOnClick(\'' + pre + '\')" href="javascript:void(0);" class="page-link" >Previous</a></li>';
+                pre = response.current_page - 1;
+                html += '<li class="page-item"><a onclick="fetchDataOnClick(\'' + pre +
+                    '\')" href="javascript:void(0);" class="page-link" >Previous</a></li>';
             }
             for (var i = 1; i <= response.last_page; i++) {
                 html += '<li class="page-item ' + (i == response.current_page ? 'active' : '') +
@@ -616,8 +678,9 @@
                     '" href="javascript:void(0);">' + i + '</a></li>';
             }
             if (response.next_page_url) {
-                nxt = response.current_page+1;
-                html += '<li class="page-item"><a class="page-link" onclick="fetchDataOnClick(\'' + nxt + '\')" href="javascript:void(0);">Next</a></li>';
+                nxt = response.current_page + 1;
+                html += '<li class="page-item"><a class="page-link" onclick="fetchDataOnClick(\'' + nxt +
+                    '\')" href="javascript:void(0);">Next</a></li>';
             }
             $('#user-pagination').html(html);
         }
