@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Subcategory;
 use App\Models\Variant;
 use App\Models\ProductVariant;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $categories = Category::where('type','ecommerce')->get();
+        $categories = Category::where('type', 'ecommerce')->get();
         $variants = Variant::all();
         $products = Product::all();
         return view('dashboard.admin.products.index', compact('products', 'variants', 'categories'));
@@ -70,7 +71,7 @@ class ProductController extends Controller
         // }
 
         // $productData['slug'] = $uniqueSlug;
-        
+
         // $productData['tags'] = implode(',', $request->tags);
 
         // // Add the user_id to the product data
@@ -120,14 +121,13 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $product = Product::with('category', 'variants')->findOrFail($id);
+        $product = Product::with('category', 'variants', 'subcategory')->findOrFail($id);
         $categories = Category::all();
         return response()->json(['product' => $product]);
     }
 
     public function update(Request $request, $id)
     {
-        dd($request->toArray());
         $request->validate([
             'title' => 'required',
             'category_id' => 'required',
@@ -139,42 +139,21 @@ class ProductController extends Controller
             'variant_id.*' => 'exists:variants,id',
         ]);
 
-        // $product = Product::findOrFail($id);
-
-        // // Check if the title has changed
-        // if ($request->has('title') && $request->title !== $product->title) {
-        //     // Generate a unique slug based on the updated title
-        //     $slug = Str::slug($request->input('title'));
-        //     $uniqueSlug = $slug;
-        //     $counter = 1;
-        //     while (Product::where('slug', $uniqueSlug)->where('id', '!=', $product->id)->exists()) {
-        //         // If the slug already exists, append a counter to make it unique
-        //         $uniqueSlug = $slug . '-' . $counter++;
-        //     }
-        //     $product->slug = $uniqueSlug;
-        // }
-
-        // // Update other product data
-        // $product->title = $request->input('title');
-        // $product->category_id = $request->input('category_id');
-        // $product->description = $request->input('description');
-        // $product->old_price = $request->input('old_price');
-        // $product->new_price = $request->input('new_price');
-        // $product->condition = $request->input('condition');
-        // $product->stock_condition = $request->input('stock_condition');
-        // $product->discount = $request->input('discount');
-        // $product->status = $request->input('status');
-
-        // // Save the updated product
-        // $product->save();
-
-        // // Handle variants
-        // $product->variants()->sync($request->input('variant_id'));
-
         $product = Product::findOrFail($id);
+
+        // Update product attributes
         $this->productService->updateProduct($product, $request->all());
 
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+        if ($product) {
+            $products = Product::all();
+            $view = view('dashboard.admin.products.table', compact('products'))->render();
+
+            return response()->json(['message' => 'Product updated successfully', 'table_html' => $view], 200);
+        } else {
+            return response()->json(['error' => 'Failed to create Product'], 500);
+        }
+
+        // return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }
 
     public function destroy($id)
@@ -183,5 +162,14 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+    }
+
+    public function getsubCategories($categoryId)
+    {
+        // Fetch subcategories based on the provided package ID
+        $subcategories = Subcategory::where('category_id', $categoryId)->get();
+
+        // Return subcategories as JSON response
+        return response()->json($subcategories);
     }
 }

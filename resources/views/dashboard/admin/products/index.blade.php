@@ -53,11 +53,17 @@
                         </div>
                         <div class="form-group">
                             <label for="category">Category</label>
-                            <select class="form-control" id="category" name="category_id" required>
+                            <select class="form-control category" id="category" name="category_id" required>
                                 <option value="">Select Category</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                 @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group" style="display: none;">
+                            <label for="subcategory">Subcategory</label>
+                            <select class="form-control" id="subcategory" name="subcategory_id" required>
+                                <option value="">Select Subcategory</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -194,11 +200,17 @@
                         </div>
                         <div class="form-group">
                             <label for="edit_category">Category</label>
-                            <select class="form-control" id="edit_category" name="category_id" required>
+                            <select class="form-control category" id="edit_category" name="category_id" required>
                                 <option value="">Select Category</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                 @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group" style="display: none;">
+                            <label for="edit_subcategory">Subcategory</label>
+                            <select class="form-control" id="edit_subcategory" name="subcategory_id" required>
+                                <option value="">Select Subcategory</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -254,17 +266,25 @@
                         </div>
                         <div id="edit_hash_tags" class="mb-3">
                             <label for="edit_tags">Tags</label><br>
-                            @foreach ($categories as $row)
-                                <span class="badge badge-primary tag badge-lg" data-id="{{ $row->id }}"
-                                    style="font-size: 1.25em;">
-                                    #{{ $row->title }}
-                                </span>
-                                <input type="hidden" name="tags[]" value="{{ $row->title }}">
-                            @endforeach
+                            <!-- Existing tags will be dynamically added here -->
+                            @if (!empty($row->tags))
+                                @foreach ($row->tags as $tag)
+                                    @php
+                                        $explodedTags = explode(',', $tag->title);
+                                    @endphp
+                                    @foreach ($explodedTags as $explodedTag)
+                                        <span class="badge badge-primary tag badge-lg" data-id="{{ $tag->id }}"
+                                            style="font-size: 1.25em;">
+                                            {{ $explodedTag }}
+                                        </span>
+                                        <input type="hidden" name="tags[]" value="{{ $explodedTag }}">
+                                    @endforeach
+                                @endforeach
+                            @endif
                         </div>
-                        <p id="edit_addNewTagText"
-                            style="color: rgb(255, 255, 255); text-decoration: underline; cursor: pointer;">Add
-                            New</p>
+                        <input type="text" id="edit_tagInput" class="form-control" placeholder="Add a new tag...">
+
+
                         <!-- End of additional fields -->
                         <button type="submit" class="btn btn-primary" id="updateProductBtn">Update Product</button>
                     </form>
@@ -333,30 +353,59 @@
                         $('#edit_condition').val(response.product.condition);
                         $('#edit_stock_condition').val(response.product.stock_condition);
 
+                        // Show the edit modal
+                        $('#editproductModal').modal('show');
+
                         // Autopopulate variant select with the product's variants
                         var variantIds = response.product.variants.map(variant => variant.id);
-                        $('#edit_variant_id').val(variantIds);
+                        $('#edit_variant_id').val(variantIds).trigger('change');
+
+                        // Populate the subcategory dropdown if available
+                        var subcategoryDropdown = $('#edit_subcategory');
+                        subcategoryDropdown.empty(); // Clear existing options
+                        subcategoryDropdown.append($('<option>', {
+                            value: '',
+                            text: 'Select Subcategory'
+                        }));
+                        if (response.product.subcategory) {
+                            if (Array.isArray(response.product.subcategory)) {
+                                // If the subcategory data is an array
+                                response.product.subcategory.forEach(subcategory => {
+                                    subcategoryDropdown.append($('<option>', {
+                                        value: subcategory.id,
+                                        text: subcategory.title
+                                    }));
+                                });
+                            } else {
+                                // If the subcategory data is an object
+                                subcategoryDropdown.append($('<option>', {
+                                    value: response.product.subcategory.id,
+                                    text: response.product.subcategory.title
+                                }));
+                            }
+                            $('#edit_subcategory_input')
+                        .show(); // Show the subcategory dropdown
+                        }
 
                         // Autopopulate tags if available
                         if (response.product.tags) {
-                            var tags = response.product.tags;
+                            var tags = response.product.tags.split(
+                            ','); // Convert tags string to an array
                             $('#edit_hash_tags').empty();
                             tags.forEach(tag => {
                                 var tagElement = $(
                                     '<span class="badge badge-primary tag badge-lg" data-id="' +
-                                    tag.id +
-                                    '" style="font-size: 1.25em;">#' + tag.title +
+                                    tag.trim() +
+                                    '" style="font-size: 1.25em;">#' + tag.trim() +
                                     '</span>');
                                 var hiddenInput = $(
                                     '<input type="hidden" name="tags[]" value="' +
-                                    tag.title + '">');
+                                    tag.trim() + '">');
                                 $('#edit_hash_tags').append(tagElement).append(
                                     hiddenInput);
                             });
                         }
 
-                        // Show the edit modal
-                        $('#editproductModal').modal('show');
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
@@ -366,8 +415,6 @@
                     }
                 });
             });
-
-
 
             // Clear edit modal fields when the modal dismisses
             $('#editproductModal').on('hidden.bs.modal', function() {
@@ -417,27 +464,19 @@
             $('#editProductForm').submit(function(event) {
                 var productId = $(this).find('#edit_id').val();
                 event.preventDefault();
-                var formData = $(this).serialize();
-                var url = '{{ route('products.update', ['product' => ':id']) }}'.replace(':id', productId);
-                console.log('url', url, productId);
+                var formData = new FormData($(this)[0]); // Use FormData object to include media files
+                var url = '{{ route('products.update', ':id') }}'.replace(':id', productId);
 
                 $.ajax({
                     url: url,
-                    type: 'PUT',
+                    type: 'POST', // Change the type to POST for updating
                     data: formData,
+                    contentType: false, // Set contentType to false when sending FormData
+                    processData: false, // Set processData to false when sending FormData
                     success: function(response) {
                         $('#editproductModal').modal('hide');
-                        $('#tableData').html(response
-                            .table_html);
-
-                        // Reinitialize DataTables after updating table content
-                        $('#dataTable-1').DataTable({
-                            autoWidth: true,
-                            "lengthMenu": [
-                                [16, 32, 64, -1],
-                                [16, 32, 64, "All"]
-                            ]
-                        });
+                        $(this).trigger('reset');
+                        $('#tableData').html(response.table_html);
 
                         $('#productMessage').html(
                             '<div class="alert alert-success" role="alert">Product updated successfully</div>'
@@ -601,5 +640,68 @@
         //         $('#edit_hash_tags').append(newInput);
         //     }
         // });
+
+        $('.category').on('change', function() {
+            var category = $(this).val();
+            var subcategoryDropdown = $(this).closest('.form-group').next('.form-group').find('select');
+            $.ajax({
+                type: 'GET',
+                url: "/admin/get-subcategories/" + category, // Manually construct the URL
+                success: function(response) {
+                    subcategoryDropdown.empty(); // Clear existing options
+                    subcategoryDropdown.append($('<option>', {
+                        value: '',
+                        text: 'Select Subcategory'
+                    }));
+                    response.forEach(function(subcategory) {
+                        subcategoryDropdown.append($('<option>', {
+                            value: subcategory.id,
+                            text: subcategory.title
+                        }));
+                    });
+                    subcategoryDropdown.closest('.form-group').show(); // Show the subcategory dropdown
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+
+        // Allow selecting or deselecting options by clicking on tags in edit modal
+        $(document).on('click', '#editproductModal .tag', function() {
+            var tagId = $(this).data('id');
+            var tagInput = $(this).next('input[name="tags[]"]');
+            if (tagInput.length) {
+                // Remove the hidden input field for the tag
+                tagInput.remove();
+            }
+            $(this).remove(); // Remove the tag from the UI
+        });
+
+        // Functionality to add a new tag in edit modal when pressing Enter in the input field
+        $('#editproductModal #edit_tagInput').keypress(function(event) {
+            if (event.which === 13) { // Check if Enter key is pressed
+                var newTagName = $(this).val().trim();
+                if (newTagName) {
+                    // Generate a unique ID for the new tag
+                    var newTagId = 'random_' + Math.floor(Math.random() * 1000000);
+                    // Create the new tag
+                    var newTag = $('<span class="badge badge-primary tag badge-lg" data-id="' +
+                        newTagId +
+                        '" style="font-size: 1.25em;">#' + newTagName + '</span>');
+                    // Append the new tag after the input field
+                    $('#editproductModal #edit_tagInput').before(newTag);
+
+                    // Create a hidden input field for the new tag code name
+                    var newInput = $('<input type="hidden" name="tags[]" value="' + newTagName +
+                        '">'); // Do not include '#' symbol here
+                    // Append the new input field to the form
+                    $('#editproductModal #edit_hash_tags').append(newInput);
+
+                    // Clear the input field
+                    $(this).val('');
+                }
+            }
+        });
     </script>
 @endsection

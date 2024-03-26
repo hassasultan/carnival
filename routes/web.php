@@ -89,6 +89,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     // get categories
     Route::get('/get-categories/{packageId}', [EventController::class, 'getCategories'])->name('get.categories');
     
+    // get subcategories
+    Route::get('/get-subcategories/{categoryId}', [ProductController::class, 'getsubCategories'])->name('get.subcategories');
+    
     // user management
     Route::get('/users', [UserManagementController::class, 'indexUser'])->name('users.index');
     Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');

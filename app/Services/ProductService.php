@@ -48,6 +48,7 @@ class ProductService
         $productData = [
             'title' => $data['title'],
             'category_id' => $data['category_id'],
+            'subcategory_id' => $data['subcategory_id'],
             'description' => $data['description'],
             'old_price' => $data['old_price'],
             'new_price' => $data['new_price'],
