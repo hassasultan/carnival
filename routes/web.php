@@ -116,6 +116,9 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     Route::get('/events/edit/{event}', [VendorController::class, 'editEvent'])->name('vendor.events.edit');
     Route::post('/events/store', [VendorController::class, 'storeEvent'])->name('vendor.events.store');
     Route::put('/events/update/{event}', [VendorController::class, 'updateEvent'])->name('vendor.events.update');
+    
+    // get subcategories
+    Route::get('/get-subcategory/{categoryId}', [ProductController::class, 'getsubCategories'])->name('vendor.get.subcategories');
 });
 
 
