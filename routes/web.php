@@ -43,7 +43,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 // Admin Routes
-Route::middleware('admin')->prefix('admin')->group(function () {
+Route::middleware('admin')->prefix('/admin')->group(function () {
 
     Route::get('/', [AdminController::class, 'index'])->name('admin');
 
@@ -101,7 +101,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
 
 // Vendor Routes
-Route::middleware('vendor')->prefix('vendor')->group(function () {
+Route::middleware('vendor')->prefix('/vendor')->group(function () {
 
     Route::get('/', [VendorController::class, 'index'])->name('vendor');
 
