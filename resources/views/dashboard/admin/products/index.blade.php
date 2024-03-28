@@ -1,6 +1,11 @@
 @extends('dashboard.admin.layouts.app')
 
 @section('content')
+<style>
+    .select2-container {
+            width: 100% !important;
+        }
+</style>
     <div class="row justify-content-center">
         <div class="col-12">
             <h2 class="mb-2 page-title">Products</h2>
@@ -89,12 +94,12 @@
                                 <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->title }}" />
                             @endforeach
                             {{-- <div class="form-control"> --}}
-                            <select id="variant_id" name="variant_id[]" class="form-control select2" multiple>
-                                @foreach ($variants as $row)
+                            <select id="variant_id" name="variant_id[]" class="form-control select2 d-none" multiple>
+                                {{-- @foreach ($variants as $row)
                                     <option value="{{ $row->id }}" data-name-{{ $row->id }}="{{ $row->title }}">
                                         {{ $row->title }}
                                     </option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
                             {{-- </div> --}}
                         </div>
@@ -721,6 +726,7 @@
         // });
 
         $('.category').on('change', function() {
+            $('#variant_id').addClass('d-none');
             var category = $(this).val();
             var subcategoryDropdown = $(this).closest('.form-group').next('.form-group').find('select');
             var url = "{{ route('get.subcategories', ':category') }}";
@@ -729,18 +735,25 @@
                 type: 'GET',
                 url: url, // Manually construct the URL
                 success: function(response) {
+                    console.log(response);
                     subcategoryDropdown.empty(); // Clear existing options
                     subcategoryDropdown.append($('<option>', {
                         value: '',
                         text: 'Select Subcategory'
                     }));
-                    response.forEach(function(subcategory) {
+                    response.subcategories.forEach(function(subcategory) {
                         subcategoryDropdown.append($('<option>', {
                             value: subcategory.id,
                             text: subcategory.title
                         }));
                     });
                     subcategoryDropdown.closest('.form-group').show(); // Show the subcategory dropdown
+                    var html = '';
+                    $.each(response.varients, function(index, row) {
+                        html += '<option value="'+row.id+'" data-type="'+row.type+'">'+row.title+'</option>';
+                    });
+                    $('#variant_id').html(html);
+                    $('#variant_id').removeClass('d-none');
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText);
@@ -809,12 +822,14 @@
             allTickets = $(this).val();
             var html = '';
             $.each(allTickets, function(index, val) {
+                var selectedOption = $('option[value="' + val + '"]');
+                var dataType = selectedOption.attr('data-type');
                 html += '<div class="form-group mb-3">';
                 html += '<div class="form-row">';
                 html += '<div class="form-group col-md-6">';
                 html += '<label for="variant_name-' + val + '">Variant Name</label>';
-                html += '<input type="text" class="form-control" id="variant_name-' + val +
-                    '" name="variant_name[]" value="' + $('#div-' + val).val() + '" readonly>';
+                html += '<input type="'+dataType+'" class="form-control" id="variant_name-' + val +
+                    '" name="variant_name[]">';
                 html += '</div>';
                 html += '<div class="form-group col-md-6">';
                 html += '<label for="value-' + val + '">Value</label>';

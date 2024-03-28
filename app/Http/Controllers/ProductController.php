@@ -191,9 +191,9 @@ class ProductController extends Controller
     public function getsubCategories($categoryId)
     {
         // Fetch subcategories based on the provided package ID
-        $subcategories = Subcategory::where('category_id', $categoryId)->get();
-
+        $data['subcategories'] = Subcategory::where('category_id', $categoryId)->get();
+        $data['varients'] = Variant::where('category_id', $categoryId)->get();
         // Return subcategories as JSON response
-        return response()->json($subcategories);
+        return response()->json($data);
     }
 }

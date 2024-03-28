@@ -84,6 +84,10 @@
                                 class="ml-1 item-text">Subcategories</span></a>
                     </li>
                     <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('variants.index') }}"><span
+                                class="ml-1 item-text">Variants</span></a>
+                    </li>
+                    <li class="nav-item active">
                         <a class="nav-link" href="{{ route('packages.index') }}"><span
                                 class="ml-1 item-text">Packages</span></a>
                     </li>
