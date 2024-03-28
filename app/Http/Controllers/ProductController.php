@@ -110,6 +110,35 @@ class ProductController extends Controller
         return response()->json(['product' => $product]);
     }
 
+    // public function update(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'title' => 'required',
+    //         'category_id' => 'required',
+    //         'description' => 'required',
+    //         'old_price' => 'required',
+    //         'new_price' => 'required',
+    //         'status' => 'required',
+    //         'variant_id' => 'required|array',
+    //         'variant_id.*' => 'exists:variants,id',
+    //     ]);
+
+    //     $product = Product::findOrFail($id);
+
+    //     // Update product attributes
+    //     $this->productService->updateProduct($product, $request->all());
+
+    //     if ($product) {
+    //         $products = Product::all();
+    //         $view = view('dashboard.admin.products.table', compact('products'))->render();
+
+    //         return response()->json(['message' => 'Product updated successfully', 'table_html' => $view], 200);
+    //     } else {
+    //         return response()->json(['error' => 'Failed to create Product'], 500);
+    //     }
+
+    //     // return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+    // }
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -125,16 +154,27 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($id);
 
-        // Update product attributes
-        $this->productService->updateProduct($product, $request->all());
+        // Prepare data for update
+        $data = $request->all();
 
-        if ($product) {
+        // Check if variant_images are present in the request
+        if ($request->hasFile('variant_images')) {
+            $data['variant_images'] = $request->file('variant_images');
+        } else {
+            // If no variant images are uploaded, set an empty array
+            $data['variant_images'] = [];
+        }
+
+        // Update product attributes and handle variants
+        $updatedProduct = $this->productService->updateProduct($product, $data);
+
+        if ($updatedProduct) {
             $products = Product::all();
             $view = view('dashboard.admin.products.table', compact('products'))->render();
 
             return response()->json(['message' => 'Product updated successfully', 'table_html' => $view], 200);
         } else {
-            return response()->json(['error' => 'Failed to create Product'], 500);
+            return response()->json(['error' => 'Failed to update Product'], 500);
         }
 
         // return redirect()->route('products.index')->with('success', 'Product updated successfully.');

@@ -265,7 +265,7 @@
                                 <option value="Out of Stock">Out of Stock</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <div>
                                 <label for="edit_variant_id">Variants</label>
                             </div>
@@ -280,6 +280,8 @@
                                     </option>
                                 @endforeach
                             </select>
+                        </div> --}}
+                        <div id="edit_embed-div">
                         </div>
                         <div id="edit_hash_tags" class="mb-3">
                             <label for="edit_tags">Tags</label><br>
@@ -302,7 +304,52 @@
                         <input type="text" id="edit_tagInput" class="form-control" placeholder="Add a new tag...">
 
 
-                        <!-- End of additional fields -->
+                        <!-- Additional fields -->
+                        <div class="form-group">
+                            <label for="edit_facebook">Facebook</label>
+                            <input type="text" class="form-control" id="edit_facebook" name="facebook">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_instagram">Instagram</label>
+                            <input type="text" class="form-control" id="edit_instagram" name="instagram">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_youtube">Youtube</label>
+                            <input type="text" class="form-control" id="edit_youtube" name="youtube">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_twitter">Twitter(X)</label>
+                            <input type="text" class="form-control" id="edit_twitter" name="twitter">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_tiktok">Tiktok</label>
+                            <input type="text" class="form-control" id="edit_tiktok" name="tiktok">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_pinterest">Pinterest</label>
+                            <input type="text" class="form-control" id="edit_pinterest" name="pinterest">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_linkedin">LinkedIn</label>
+                            <input type="text" class="form-control" id="edit_linkedin" name="linkedin">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="edit_image">Image</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="edit_image" name="image">
+                                <label class="custom-file-label" for="edit_image" id="edit_image_label">Choose
+                                    file</label>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="edit_media">Media</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input select2" id="edit_media" name="media[]"
+                                    multiple>
+                                <label class="custom-file-label" for="edit_media" id="edit_media_label">Choose
+                                    file</label>
+                            </div>
+                        </div>
                         <button type="submit" class="btn btn-primary" id="updateProductBtn">Update Product</button>
                     </form>
                 </div>
@@ -369,6 +416,13 @@
                         $('#edit_discount').val(response.product.discount);
                         $('#edit_condition').val(response.product.condition);
                         $('#edit_stock_condition').val(response.product.stock_condition);
+                        $('#edit_facebook').val(response.product.facebook);
+                        $('#edit_instagram').val(response.product.instagram);
+                        $('#edit_youtube').val(response.product.youtube);
+                        $('#edit_twitter').val(response.product.twitter);
+                        $('#edit_tiktok').val(response.product.tiktok);
+                        $('#edit_pinterest').val(response.product.pinterest);
+                        $('#edit_linkedin').val(response.product.linkedin);
 
                         // Show the edit modal
                         $('#editproductModal').modal('show');
@@ -376,6 +430,9 @@
                         // Autopopulate variant select with the product's variants
                         var variantIds = response.product.variants.map(variant => variant.id);
                         $('#edit_variant_id').val(variantIds).trigger('change');
+
+                        // Display variant images preview
+                        displayVariantImages(response.product.variant_images);
 
                         // Populate the subcategory dropdown if available
                         var subcategoryDropdown = $('#edit_subcategory');
@@ -422,7 +479,6 @@
                                     hiddenInput);
                             });
                         }
-
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
@@ -770,5 +826,54 @@
             });
             $("#embed-div").html(html);
         });
+
+        // Update variant fields based on selected variants in edit modal
+        $("#edit_variant_id").change(function() {
+            $("#edit_embed-div").html(''); // Clear previous content
+            var selectedVariants = $(this).val();
+            var html = '';
+            $.each(selectedVariants, function(index, val) {
+                html += '<div class="form-group mb-3">';
+                html += '<h6>' + $('#div-' + val).val() + '</h6>';
+                html += '<div class="custom-file">';
+                html += '<input type="file" class="custom-file-input select2" id="edit_variant_images-' +
+                    val +
+                    '" name="edit_variant_images[]" multiple>';
+                html += '<label class="custom-file-label" for="edit_variant_images-' + val +
+                    '" id="edit_variant_images_label-' + val +
+                    '">Choose file</label>';
+                html += '</div>';
+                html += '</div>';
+            });
+            $("#edit_embed-div").html(html);
+        });
+
+        // Function to display variant images preview
+        function displayVariantImages(images) {
+            var previewContainer = $('#variant-images-preview');
+            previewContainer.empty(); // Clear previous previews
+            if (images && images.length > 0) {
+                images.forEach(function(imageUrl) {
+                    var imgElement = $('<img>').attr('src', imageUrl).addClass('img-thumbnail').css('max-width',
+                        '100px').css('margin-right', '10px');
+                    previewContainer.append(imgElement);
+                });
+            }
+        }
+
+        // Function to prevent form submission on Enter key press
+        function preventFormSubmissionOnEnter(formId) {
+            $(formId).on('keyup keypress', function(e) {
+                var keyCode = e.keyCode || e.which;
+                if (keyCode === 13) { // If Enter key is pressed
+                    e.preventDefault(); // Prevent default form submission
+                    return false;
+                }
+            });
+        }
+
+        // Call the function for both create and edit forms
+        preventFormSubmissionOnEnter('#createProductForm');
+        preventFormSubmissionOnEnter('#editProductForm');
     </script>
 @endsection
