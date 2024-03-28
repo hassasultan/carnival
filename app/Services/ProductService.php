@@ -3,10 +3,32 @@
 namespace App\Services;
 
 use App\Models\Product;
+use App\Models\ProductVariant;
+use App\Models\ProductVariantImage;
 use Illuminate\Support\Str;
+use App\Traits\MultipleImageTrait;
 
 class ProductService
 {
+    use MultipleImageTrait;
+    // public function createProduct(array $data)
+    // {
+    //     $productData = $this->prepareProductData($data);
+
+    //     // Create the product
+    //     $product = Product::create($productData);
+
+    //     // Handle variants
+    //     if (isset ($data['variant_id'])) {
+    //         foreach ($data['variant_id'] as $variantId) {
+    //             // Save each variant for the product with a specific value
+    //             $product->variants()->attach($variantId, ['value' => 'value', 'status' => 1]);
+    //         }
+    //     }
+
+    //     return $product;
+    // }
+
     public function createProduct(array $data)
     {
         $productData = $this->prepareProductData($data);
@@ -15,10 +37,31 @@ class ProductService
         $product = Product::create($productData);
 
         // Handle variants
-        if (isset ($data['variant_id'])) {
-            foreach ($data['variant_id'] as $variantId) {
-                // Save each variant for the product with a specific value
-                $product->variants()->attach($variantId, ['value' => 'value', 'status' => 1]);
+        if (isset($data['variant_id'])) {
+            // dd('okss', $data);
+
+            foreach ($data['variant_id'] as $index => $variantId) {
+                // Create product variant
+                $productVariant = ProductVariant::create([
+                    'product_id' => $product->id,
+                    'variant_id' => $variantId,
+                    'value' => 'value', // You might want to adjust this
+                    'status' => 1 // You might want to adjust this
+                ]);
+
+                // Upload variant images
+                if (isset($data['variant_images'][$index])) {
+                    // $imagePaths = $this->uploadVariantImages($data['variant_images'][$index]);
+                    $additionalImagePaths = $this->uploadMultipleImages($data['variant_images'], 'variant_images');
+
+                    foreach ($additionalImagePaths as $additionalImage) {
+                        ProductVariantImage::create([
+                            'product_id' => $product->id,
+                            'product_variant_id' => $productVariant->id,
+                            'image' => $additionalImage['original_name'],
+                        ]);
+                    }
+                }
             }
         }
 
@@ -33,7 +76,7 @@ class ProductService
         $product->update($productData);
 
         // Handle variants
-        if (isset ($data['variant_id'])) {
+        if (isset($data['variant_id'])) {
             foreach ($data['variant_id'] as $variantId) {
                 // Save each variant for the product with a specific value
                 $product->variants()->attach($variantId, ['value' => 'value', 'status' => 1]);
@@ -79,5 +122,17 @@ class ProductService
             $uniqueSlug = $slug . '-' . $counter++;
         }
         return $uniqueSlug;
+    }
+
+    protected function uploadVariantImages($images)
+    {
+        $imagePaths = [];
+
+        foreach ($images as $image) {
+            $path = $image->store('variant_images');
+            $imagePaths[] = $path;
+        }
+
+        return $imagePaths;
     }
 }

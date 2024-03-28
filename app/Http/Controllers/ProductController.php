@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Variant;
+use App\Models\ProductVariantImage;
 use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,9 +36,34 @@ class ProductController extends Controller
     //     return view('dashboard.admin.products.create', compact('categories'));
     // }
 
+    // public function store(Request $request)
+    // {
+    //     // dd($request->toArray());
+    //     $request->validate([
+    //         'title' => 'required',
+    //         'category_id' => 'required',
+    //         'description' => 'required',
+    //         'old_price' => 'required',
+    //         'new_price' => 'required',
+    //         'status' => 'required',
+    //         'variant_id' => 'required|array',
+    //         'variant_id.*' => 'exists:variants,id',
+    //     ]);
+
+    //     $product = $this->productService->createProduct($request->all());
+
+    //     if ($product) {
+    //         $products = Product::all();
+    //         $view = view('dashboard.admin.products.table', compact('products'))->render();
+
+    //         return response()->json(['message' => 'Product created successfully', 'table_html' => $view], 200);
+    //     } else {
+    //         return response()->json(['error' => 'Failed to create Product'], 500);
+    //     }
+    // }
     public function store(Request $request)
     {
-        // dd($request->toArray());
+        // dd($request->all());
         $request->validate([
             'title' => 'required',
             'category_id' => 'required',
@@ -49,59 +75,17 @@ class ProductController extends Controller
             'variant_id.*' => 'exists:variants,id',
         ]);
 
-        // // Extract the product data from the request
-        // $productData = $request->only([
-        //     'title',
-        //     'category_id',
-        //     'description',
-        //     'old_price',
-        //     'new_price',
-        //     'condition',
-        //     'stock_condition',
-        //     'discount',
-        // ]);
+        $data = $request->all();
 
-        // // Generate a unique slug from the product title
-        // $slug = Str::slug($request->input('title'));
-        // $uniqueSlug = $slug;
-        // $counter = 1;
-        // while (Product::where('slug', $uniqueSlug)->exists()) {
-        //     // If the slug already exists, append a counter to make it unique
-        //     $uniqueSlug = $slug . '-' . $counter++;
-        // }
+        // Check if variant_images are present in the request
+        if ($request->hasFile('variant_images')) {
+            $data['variant_images'] = $request->file('variant_images');
+        } else {
+            // If no variant images are uploaded, set an empty array
+            $data['variant_images'] = [];
+        }
 
-        // $productData['slug'] = $uniqueSlug;
-
-        // $productData['tags'] = implode(',', $request->tags);
-
-        // // Add the user_id to the product data
-        // $productData['user_id'] = Auth::id();
-
-        // // if ($request->status == 'inactive') {
-        // //     $productData['status'] = 0;
-        // // } else {
-        // //     $productData['status'] = 1;
-        // // }
-
-        // // dd(dd($productData));
-
-        // // Create the product
-        // $product = Product::create($productData);
-
-        // // Handle variants
-        // if ($request->has('variant_id')) {
-        //     foreach ($request->input('variant_id') as $variantId) {
-        //         // Save each variant for the product
-        //         ProductVariant::create([
-        //             'product_id' => $product->id,
-        //             'variant_id' => $variantId,
-        //             'value' => 'value',
-        //             'status' => 1,
-        //         ]);
-        //     }
-        // }
-
-        $product = $this->productService->createProduct($request->all());
+        $product = $this->productService->createProduct($data);
 
         if ($product) {
             $products = Product::all();
