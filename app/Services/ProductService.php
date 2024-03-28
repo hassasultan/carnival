@@ -6,11 +6,12 @@ use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Models\ProductVariantImage;
 use Illuminate\Support\Str;
+use App\Traits\ImageTrait;
 use App\Traits\MultipleImageTrait;
 
 class ProductService
 {
-    use MultipleImageTrait;
+    use ImageTrait, MultipleImageTrait;
     // public function createProduct(array $data)
     // {
     //     $productData = $this->prepareProductData($data);
@@ -43,7 +44,7 @@ class ProductService
                 $productVariant = ProductVariant::create([
                     'product_id' => $product->id,
                     'variant_id' => $variantId,
-                    'value' => 'value',
+                    'value' => isset($data['value'][$index]) ? $data['value'][$index] : 'default_value', // Adjust this default value as needed
                     'status' => 1
                 ]);
 

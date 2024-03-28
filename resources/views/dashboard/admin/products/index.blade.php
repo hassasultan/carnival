@@ -785,42 +785,57 @@
             }
         });
 
-        // dynamic variant boxes
         // $("#variant_id").change(function() {
-        //     $("embed-div").html();
+        //     $("#embed-div").html(''); // Clear previous content
         //     allTickets = $(this).val();
-        //     html = '';
+        //     var html = '';
         //     $.each(allTickets, function(index, val) {
-        //         id = val;
         //         html += '<div class="form-group mb-3">';
-        //         html += '<h6>' + $('#div-' + val).val() + '</h6>'
-        //         html += '<div class="form-row">';
-        //         html += '<div class="form-group col-md-6">';
-        //         html += '<label for="price-' + id + '">Price</label>';
-        //         html += '<input type="number" class="form-control" name="price[]" required>';
-        //         html += '</div>';
-        //         html += '<div class="form-group col-md-6">';
-        //         html += '<label for="quantity-' + id + '">Quantity</label>';
-        //         html += '<input type="number" class="form-control" name="quantity[]" required>';
-        //         html += '</div>';
+        //         html += '<h6>' + $('#div-' + val).val() + '</h6>';
+        //         html += '<div class="custom-file">';
+        //         html += '<input type="file" class="custom-file-input select2" id="variant_images-' + val +
+        //             '" name="variant_images[]" multiple>';
+        //         html += '<label class="custom-file-label" for="variant_images-' + val +
+        //             '" id="variant_images_label-' + val +
+        //             '">Choose file</label>';
         //         html += '</div>';
         //         html += '</div>';
         //     });
         //     $("#embed-div").html(html);
         // });
+
         $("#variant_id").change(function() {
             $("#embed-div").html(''); // Clear previous content
             allTickets = $(this).val();
             var html = '';
             $.each(allTickets, function(index, val) {
                 html += '<div class="form-group mb-3">';
-                html += '<h6>' + $('#div-' + val).val() + '</h6>';
-                html += '<div class="custom-file">';
+                html += '<div class="form-row">';
+                html += '<div class="form-group col-md-6">';
+                html += '<label for="variant_name-' + val + '">Variant Name</label>';
+                html += '<input type="text" class="form-control" id="variant_name-' + val +
+                    '" name="variant_name[]" value="' + $('#div-' + val).val() + '" readonly>';
+                html += '</div>';
+                html += '<div class="form-group col-md-6">';
+                html += '<label for="value-' + val + '">Value</label>';
+                if (1 + 1 == 2) {
+                    html += '<input type="text" class="form-control" name="value[]" required>';
+                } else {
+                    html += '<input type="color" class="form-control" name="value[]" required>';
+                }
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '<div class="form-group mb-3">';
+                html += '<div class="form-row">';
+                html += '<div class="form-group col-md-12">';
+                html += '<label for="variant_images-' + val + '">Variant Images</label>';
                 html += '<input type="file" class="custom-file-input select2" id="variant_images-' + val +
                     '" name="variant_images[]" multiple>';
                 html += '<label class="custom-file-label" for="variant_images-' + val +
                     '" id="variant_images_label-' + val +
-                    '">Choose file</label>';
+                    '">Choose files</label>';
+                html += '</div>';
                 html += '</div>';
                 html += '</div>';
             });
