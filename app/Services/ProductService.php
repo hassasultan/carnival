@@ -61,19 +61,8 @@ class ProductService
                             'image' => $additionalImage['original_name'],
                         ]);
                     }
-
-                    // Associate variant images with the product variant
-                    // foreach ($imagePaths as $imagePath) {
-                    //     // Save the product variant image
-                    //     ProductVariantImage::create([
-                    //         'product_id' => $product->id,
-                    //         'product_variant_id' => $productVariant->id,
-                    //         'image' => $imagePath,
-                    //     ]);
-                    // }
                 }
             }
-        // dd('ok', $data);
         }
 
         return $product;
