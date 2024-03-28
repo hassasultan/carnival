@@ -667,9 +667,11 @@
         $('.category').on('change', function() {
             var category = $(this).val();
             var subcategoryDropdown = $(this).closest('.form-group').next('.form-group').find('select');
+            var url = "{{ route('get.subcategories', ':category') }}";
+            url = url.replace(':category', category);
             $.ajax({
                 type: 'GET',
-                url: "/admin/get-subcategories/" + category, // Manually construct the URL
+                url: url, // Manually construct the URL
                 success: function(response) {
                     subcategoryDropdown.empty(); // Clear existing options
                     subcategoryDropdown.append($('<option>', {
