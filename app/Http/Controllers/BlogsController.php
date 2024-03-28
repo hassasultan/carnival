@@ -14,7 +14,6 @@ class BlogsController extends Controller
     public function index(Request $request)
     {
         $blogs = Blogs::with("category","user");
-        // dd($request->all());
         if ($request->has('search') && $request->search != null && $request->search != '') {
             $blogs = $blogs->where('title', 'LIKE', '%' . $request->search . '%');
         }
@@ -35,7 +34,6 @@ class BlogsController extends Controller
     public function store(Request $request)
     {
         try {
-            // dd($request->all());
             $request->validate([
                 'title' => 'required|unique:blogs',
                 'image' => 'required|image|max:2048',
@@ -64,24 +62,20 @@ class BlogsController extends Controller
             $blogs->description = $request->description;
             $blogs->status = $request->status;
             $blogs->save();
-            // toastr()->success('Model created successfully.');
             return redirect()->route('blogs.index')->with('success', 'Blog created successfully...');
         } catch (\Exception $e) {
-            // Handle exceptions, such as database errors
-            // Show error toast
-            // toastr()->error('Error occurred while creating model.');
-
             return back()->withErrors(['error' => $e->getMessage()])->withInput();
         }
     }
 
     public function edit(Blogs $blogs)
     {
-        return view('models.edit', compact('model'));
+        return view('dashboard.admin.blogs.edit', compact('model'));
     }
 
     public function update(Request $request, Blogs $blogs)
     {
+        try {
         $request->validate([
             'title' => 'required|unique:blogs,title,' . $blogs->id,
             'image' => 'image|max:2048',
@@ -112,12 +106,15 @@ class BlogsController extends Controller
         $blogs->status = $request->status;
         $blogs->save();
 
-        return redirect()->route('models.index')->with('success', 'Blog updated successfully.');
+        return redirect()->route('blogs.index')->with('success', 'Blog updated successfully.');
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => $e->getMessage()])->withInput();
+        }
     }
 
     public function destroy(Blogs $blogs)
     {
         $blogs->delete();
-        return redirect()->route('models.index')->with('success', 'Blog deleted successfully.');
+        return redirect()->route('blogs.index')->with('success', 'Blog deleted successfully.');
     }
 }
