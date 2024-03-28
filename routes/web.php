@@ -16,6 +16,7 @@ use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\VariantController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\BlogsController;
 
 
 /*
@@ -97,6 +98,10 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');
     Route::post('/users/register', [UserManagementController::class, 'register'])->name('users.register');
     Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.categories');
+
+
+    //blogs
+    Route::resource('blogs', BlogsController::class);
 });
 
 
