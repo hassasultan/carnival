@@ -66,7 +66,22 @@
                                 <option value="">Select Subcategory</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
+                            <div>
+                                <label for="variant_id">Variants</label>
+                            </div>
+                            @foreach ($variants as $row)
+                                <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->title }}" />
+                            @endforeach
+                            <select id="variant_id" name="variant_id[]" class="form-control select2" multiple>
+                                @foreach ($variants as $row)
+                                    <option value="{{ $row->id }}" data-name-{{ $row->id }}="{{ $row->title }}">
+                                        {{ $row->title }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div> --}}
+                        <div class="form-group mb-3">
                             <div>
                                 <label for="variant_id">Variants</label>
                             </div>
@@ -82,6 +97,8 @@
                                 @endforeach
                             </select>
                             {{-- </div> --}}
+                        </div>
+                        <div id="embed-div">
                         </div>
                         <div class="form-group">
                             <label for="old_price">Regular Price</label>
@@ -384,13 +401,13 @@
                                 }));
                             }
                             $('#edit_subcategory_input')
-                        .show(); // Show the subcategory dropdown
+                                .show(); // Show the subcategory dropdown
                         }
 
                         // Autopopulate tags if available
                         if (response.product.tags) {
                             var tags = response.product.tags.split(
-                            ','); // Convert tags string to an array
+                                ','); // Convert tags string to an array
                             $('#edit_hash_tags').empty();
                             tags.forEach(tag => {
                                 var tagElement = $(
@@ -425,6 +442,12 @@
             $('#createProductForm').submit(function(event) {
                 event.preventDefault();
                 var formData = new FormData($(this)[0]); // Use FormData object to include media files
+
+                console.log('formDataformData', formData);
+                // Assuming formData is your FormData object
+                var hasVariantImages = formData.has('variant_images[]');
+                console.log('Has variant_images[]:', hasVariantImages);
+
                 $.ajax({
                     url: '{{ route('products.store') }}',
                     type: 'POST',
@@ -702,6 +725,48 @@
                     $(this).val('');
                 }
             }
+        });
+
+        // dynamic variant boxes
+        // $("#variant_id").change(function() {
+        //     $("embed-div").html();
+        //     allTickets = $(this).val();
+        //     html = '';
+        //     $.each(allTickets, function(index, val) {
+        //         id = val;
+        //         html += '<div class="form-group mb-3">';
+        //         html += '<h6>' + $('#div-' + val).val() + '</h6>'
+        //         html += '<div class="form-row">';
+        //         html += '<div class="form-group col-md-6">';
+        //         html += '<label for="price-' + id + '">Price</label>';
+        //         html += '<input type="number" class="form-control" name="price[]" required>';
+        //         html += '</div>';
+        //         html += '<div class="form-group col-md-6">';
+        //         html += '<label for="quantity-' + id + '">Quantity</label>';
+        //         html += '<input type="number" class="form-control" name="quantity[]" required>';
+        //         html += '</div>';
+        //         html += '</div>';
+        //         html += '</div>';
+        //     });
+        //     $("#embed-div").html(html);
+        // });
+        $("#variant_id").change(function() {
+            $("#embed-div").html(''); // Clear previous content
+            allTickets = $(this).val();
+            var html = '';
+            $.each(allTickets, function(index, val) {
+                html += '<div class="form-group mb-3">';
+                html += '<h6>' + $('#div-' + val).val() + '</h6>';
+                html += '<div class="custom-file">';
+                html += '<input type="file" class="custom-file-input select2" id="variant_images-' + val +
+                    '" name="variant_images[]" multiple>';
+                html += '<label class="custom-file-label" for="variant_images-' + val +
+                    '" id="variant_images_label-' + val +
+                    '">Choose file</label>';
+                html += '</div>';
+                html += '</div>';
+            });
+            $("#embed-div").html(html);
         });
     </script>
 @endsection
