@@ -1,11 +1,11 @@
 @extends('dashboard.admin.layouts.app')
 
 @section('content')
-<style>
-    .select2-container {
+    <style>
+        .select2-container {
             width: 100% !important;
         }
-</style>
+    </style>
     <div class="row justify-content-center">
         <div class="col-12">
             <h2 class="mb-2 page-title">Products</h2>
@@ -549,6 +549,7 @@
                 var productId = $(this).find('#edit_id').val();
                 event.preventDefault();
                 var formData = new FormData($(this)[0]); // Use FormData object to include media files
+                console.log('formDataformData', formData);
                 var url = '{{ route('products.update', ':id') }}'.replace(':id', productId);
 
                 $.ajax({
@@ -750,7 +751,8 @@
                     subcategoryDropdown.closest('.form-group').show(); // Show the subcategory dropdown
                     var html = '';
                     $.each(response.varients, function(index, row) {
-                        html += '<option value="'+row.id+'" data-type="'+row.type+'">'+row.title+'</option>';
+                        html += '<option value="' + row.id + '" data-type="' + row.type + '">' +
+                            row.title + '</option>';
                     });
                     $('#variant_id').html(html);
                     $('#variant_id').removeClass('d-none');
@@ -803,14 +805,35 @@
         //     allTickets = $(this).val();
         //     var html = '';
         //     $.each(allTickets, function(index, val) {
+        //         var selectedOption = $('option[value="' + val + '"]');
+        //         var dataType = selectedOption.attr('data-type');
         //         html += '<div class="form-group mb-3">';
-        //         html += '<h6>' + $('#div-' + val).val() + '</h6>';
-        //         html += '<div class="custom-file">';
+        //         html += '<div class="form-row">';
+        //         html += '<div class="form-group col-md-6">';
+        //         html += '<label for="variant_name-' + val + '">Variant Name</label>';
+        //         html += '<input type="'+dataType+'" class="form-control" id="variant_name-' + val +
+        //             '" name="variant_name[]">';
+        //         html += '</div>';
+        //         html += '<div class="form-group col-md-6">';
+        //         html += '<label for="value-' + val + '">Value</label>';
+        //         if (1 + 1 == 2) {
+        //             html += '<input type="text" class="form-control" name="value[]" required>';
+        //         } else {
+        //             html += '<input type="color" class="form-control" name="value[]" required>';
+        //         }
+        //         html += '</div>';
+        //         html += '</div>';
+        //         html += '</div>';
+        //         html += '<div class="form-group mb-3">';
+        //         html += '<div class="form-row">';
+        //         html += '<div class="form-group col-md-12">';
+        //         html += '<label for="variant_images-' + val + '">Variant Images</label>';
         //         html += '<input type="file" class="custom-file-input select2" id="variant_images-' + val +
         //             '" name="variant_images[]" multiple>';
         //         html += '<label class="custom-file-label" for="variant_images-' + val +
         //             '" id="variant_images_label-' + val +
-        //             '">Choose file</label>';
+        //             '">Choose files</label>';
+        //         html += '</div>';
         //         html += '</div>';
         //         html += '</div>';
         //     });
@@ -828,7 +851,7 @@
                 html += '<div class="form-row">';
                 html += '<div class="form-group col-md-6">';
                 html += '<label for="variant_name-' + val + '">Variant Name</label>';
-                html += '<input type="'+dataType+'" class="form-control" id="variant_name-' + val +
+                html += '<input type="' + dataType + '" class="form-control" id="variant_name-' + val +
                     '" name="variant_name[]">';
                 html += '</div>';
                 html += '<div class="form-group col-md-6">';
@@ -850,11 +873,74 @@
                 html += '<label class="custom-file-label" for="variant_images-' + val +
                     '" id="variant_images_label-' + val +
                     '">Choose files</label>';
+                html += '<div class="image-preview" id="image-preview-' + val +
+                    '"></div>'; // Div to show image preview
                 html += '</div>';
                 html += '</div>';
                 html += '</div>';
             });
             $("#embed-div").html(html);
+        });
+
+        // Adjusted code for handling file inputs and image previews
+        $(document).on('change', '.custom-file-input', function() {
+            var input = this;
+            var id = $(this).attr('id').split('-').pop(); // Extract variant ID from input ID
+            var previewDiv = $('#image-preview-' + id);
+            var existingPreviews = previewDiv.find('.row'); // Find existing rows of previews
+            var newFileCount = input.files.length; // Get the number of newly selected files
+            var totalFileCount = existingPreviews.find('.col-md-3').length + newFileCount; // Calculate total count
+            var labelText = totalFileCount + ' file' + (totalFileCount !== 1 ? 's' : '') +
+                ' selected'; // Update label text based on total file count
+            $(this).next('.custom-file-label').text(labelText); // Update label text
+            if (input.files && input.files.length > 0) {
+                $.each(input.files, function(index, file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        var preview = $('<img>').attr('src', e.target.result).addClass('img-thumbnail')
+                            .css({
+                                'width': '100px',
+                                'height': '100px',
+                                'margin': '5px', // Add margin around images
+                                'object-fit': 'cover' // Make sure images fill the space
+                            });
+                        var deleteButton = $('<button>').addClass('btn btn-danger btn-sm delete-image')
+                            .html('&times;') // Use HTML entity for cross symbol
+                            .css({
+                                'font-size': '12px', // Make cross symbol smaller
+                                'padding': '2px 5px' // Add padding to make it look nicer
+                            });
+                        var previewWrapper = $('<div>').addClass('col-md-3').append(preview,
+                            deleteButton); // Each image will take 3 columns in a row
+                        if (existingPreviews.length === 0 || (index + 1) % 4 === 0) {
+                            var row = $(
+                                '<div class="row"></div>'
+                                ); // Create a row container if no existing previews or if it's the fourth image
+                            row.append(previewWrapper);
+                            previewDiv.append(row);
+                        } else {
+                            existingPreviews.last().append(
+                                previewWrapper); // Append to the last existing row
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+        });
+
+        // Adjusted code for deleting images
+        $(document).on('click', '.delete-image', function(event) {
+            event.preventDefault(); // Prevent default behavior
+            console.log('Delete image button clicked');
+            var inputId = $(this).closest('.form-group').find('.custom-file-input').attr('id');
+            var id = inputId ? inputId.split('-').pop() : null; // Extract variant ID from input ID
+            $(this).closest('.col-md-3').remove(); // Remove the image preview container
+            if (id) {
+                var totalFileCount = $('#image-preview-' + id + ' .col-md-3').length; // Get updated file count
+                var labelText = totalFileCount + ' file' + (totalFileCount !== 1 ? 's' : '') + ' selected';
+                $('#variant_images_label-' + id).text(labelText); // Update file count label
+            }
+            $('#' + inputId).val(''); // Clear the file input value
         });
 
         // Update variant fields based on selected variants in edit modal
