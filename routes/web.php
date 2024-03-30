@@ -80,6 +80,13 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('tickets.edit');
     Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
     Route::delete('/tickets/{ticket}', [TicketController::class, 'destroy'])->name('tickets.destroy');
+
+    // Variants Crud
+    Route::get('/variants', [VariantController::class, 'index'])->name('variants.index');
+    Route::post('/variants', [VariantController::class, 'store'])->name('variants.store');
+    Route::get('/variants/{variant}/edit', [VariantController::class, 'edit'])->name('variants.edit');
+    Route::put('/variants/{variant}', [VariantController::class, 'update'])->name('variants.update');
+    Route::delete('/variants/{variant}', [VariantController::class, 'destroy'])->name('variants.destroy');
     
     // get categories
     Route::get('/get-categories/{packageId}', [EventController::class, 'getCategories'])->name('get.categories');
@@ -92,6 +99,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');
     Route::post('/users/register', [UserManagementController::class, 'register'])->name('users.register');
     Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.categories');
+
 
     //blogs
     Route::resource('blogs', BlogsController::class);
@@ -144,11 +152,5 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
     Route::get('/my_events/edit/{event}', [SubVendorController::class, 'editEvents'])->name('subVendor.events.edit');
     Route::post('/my_events/store', [SubVendorController::class, 'storeEvents'])->name('subVendor.events.store');
     Route::put('/my_events/update/{event}', [SubVendorController::class, 'updateEvents'])->name('subVendor.events.update');
-
-    // blogs
-    // Route::get('/my_events', [SubVendorController::class, 'indexEvents'])->name('subVendor.events');
-    // Route::get('/my_events/edit/{event}', [SubVendorController::class, 'editEvents'])->name('subVendor.events.edit');
-    // Route::post('/my_events/store', [SubVendorController::class, 'storeEvents'])->name('subVendor.events.store');
-    // Route::put('/my_events/update/{event}', [SubVendorController::class, 'updateEvents'])->name('subVendor.events.update');
 
 });
