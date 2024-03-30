@@ -1,4 +1,4 @@
-@extends('dashboard.admin.layouts.app')
+@extends('dashboard.subvendor.layouts.app')
 
 @section('content')
 <style>
@@ -65,7 +65,7 @@
         <div class="row my-4">
             <!-- data table -->
             <div class="col-md-12">
-                <a href="{{ route('blogs.create') }}" class="btn btn-primary mb-2">Add New Blog</a>
+                <a href="{{ route('subVendor.blogs.create') }}" class="btn btn-primary mb-2">Add New Blog</a>
                 <div class="card shadow">
                     <div class="card-body skeleton-container">
                         <!-- table -->
@@ -129,7 +129,7 @@
     function fetchDataOnClick(page) {
         console.log(page);
         $.ajax({
-            url: "{{ route('blogs.index') }}",
+            url: "{{ route('subVendor.blogs.index') }}",
             type: "GET",
             data: {
                 type: 'ajax',
@@ -148,7 +148,7 @@
 
     function fetchDataOnReady() {
         $.ajax({
-            url: "{{ route('blogs.index') }}",
+            url: "{{ route('subVendor.blogs.index') }}",
             type: "GET",
             data: {
                 type: 'ajax',

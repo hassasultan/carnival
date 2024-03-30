@@ -12,10 +12,9 @@ use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
-    //
     public function index(Request $request)
     {
-        $blogs = Blogs::with("category","user")->where('user_id', Auth::id());
+        $blogs = Blogs::with("category", "user")->where('user_id', Auth::id());
         if ($request->has('search') && $request->search != null && $request->search != '') {
             $blogs = $blogs->where('title', 'LIKE', '%' . $request->search . '%');
         }
@@ -32,7 +31,6 @@ class BlogController extends Controller
         $categories = Category::where('type', 'blogging')->get();
         return view('dashboard.vendor.blogs.create', compact('categories', 'user'));
     }
-
     public function store(Request $request)
     {
         try {
@@ -42,25 +40,27 @@ class BlogController extends Controller
                 'description' => 'required',
                 'status' => 'required|in:0,1',
                 'category_id' => [
-                        'required',
-                        'exists:categories,id'
-                    ]
+                    'required',
+                    'exists:categories,id'
+                ]
             ]);
-            // if (auth()->user()->role_id == 1) {
-            //     $request->validate([
-            //         'user_id' => [
-            //             'required',
-            //             'exists:users,id'
-            //         ]
-            //     ]);
-            // }
+            if (auth()->user()->role_id == 1) {
+                $request->validate([
+                    'user_id' => [
+                        'required',
+                        'exists:users,id'
+                    ]
+                ]);
+            }
 
             $blogs = new Blogs();
-            $blogs->user_id = Auth::id();
+            $blogs->user_id = $request->user_id;
             $blogs->category_id = $request->category_id;
             $blogs->title = $request->title;
             $blogs->slug = Str::slug($request->title, '-');
-            $blogs->image = $request->file('image')->store('images/blogs');
+            if ($request->hasFile('image')) {
+                $blogs->image = $request->file('image')->store('images/blogs');
+            }
             $blogs->description = $request->description;
             $blogs->status = $request->status;
             $blogs->save();
@@ -70,53 +70,57 @@ class BlogController extends Controller
         }
     }
 
-    public function edit(Blogs $blogs)
+    public function edit(Blogs $blog)
     {
-        return view('dashboard.vendor.blogs.edit', compact('model'));
+        $user = User::where('role_id', '!=', 1)->get();
+        $categories = Category::where('type', 'blogging')->get();
+        return view('dashboard.vendor.blogs.edit', compact('blog', 'categories', 'user'));
     }
 
-    public function update(Request $request, Blogs $blogs)
+    public function update(Request $request, Blogs $blog)
     {
         try {
-        $request->validate([
-            'title' => 'required|unique:blogs,title,' . $blogs->id,
-            'image' => 'image|max:2048',
-            'description' => 'required',
-            'status' => 'required|in:0,1',
-            'category_id' => [
+            $request->validate([
+                'title' => 'required',
+                // 'image' => 'image|max:2048',
+                'description' => 'required',
+                'status' => 'required|in:0,1',
+                'category_id' => [
                     'required',
                     'exists:categories,id'
                 ]
-        ]);
-        if (auth()->user()->role_id == 1) {
-            $request->validate([
-                'user_id' => [
-                    'required',
-                    'exists:users,id'
-                ]
             ]);
-        }
 
-        $blogs->title = $request->title;
-        $blogs->slug = Str::slug($request->title, '-');
-        $blogs->user_id = $request->user_id;
-        $blogs->category_id = $request->category_id;
-        if ($request->hasFile('image')) {
-            $blogs->image = $request->file('image')->store('images/blogs');
-        }
-        $blogs->description = $request->description;
-        $blogs->status = $request->status;
-        $blogs->save();
+            if (auth()->user()->role_id == 1) {
+                $request->validate([
+                    'user_id' => [
+                        'required',
+                        'exists:users,id'
+                    ]
+                ]);
+            }
 
-        return redirect()->route('vendor.blogs.index')->with('success', 'Blog updated successfully.');
+            $blog->title = $request->title;
+            $blog->slug = Str::slug($request->title, '-');
+            $blog->user_id = $request->user_id;
+            $blog->category_id = $request->category_id;
+
+            if ($request->hasFile('image')) {
+                $blog->image = $request->file('image')->store('images/blogs');
+            }
+
+            $blog->description = $request->description;
+            $blog->status = $request->status;
+            $blog->save();
+
+            return redirect()->route('vendor.blogs.index')->with('success', 'Blog updated successfully.');
         } catch (\Exception $e) {
             return back()->withErrors(['error' => $e->getMessage()])->withInput();
         }
     }
-
-    public function destroy(Blogs $blogs)
+    public function destroy(Blogs $blog)
     {
-        $blogs->delete();
+        $blog->delete();
         return redirect()->route('vendor.blogs.index')->with('success', 'Blog deleted successfully.');
     }
 }

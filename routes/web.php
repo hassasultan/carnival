@@ -18,6 +18,7 @@ use App\Http\Controllers\VariantController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\Vendor\BlogController;
+use App\Http\Controllers\SubVendor\SubVendorBlogController;
 
 
 /*
@@ -99,10 +100,11 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');
     Route::post('/users/register', [UserManagementController::class, 'register'])->name('users.register');
     Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.categories');
-
-
+    
+    
     //blogs
-    Route::resource('blogs', BlogsController::class);
+    Route::resource('blogs', BlogsController::class)->except(['update']);
+    Route::put('/blogs/{blog}', [BlogsController::class, 'update'])->name('blogs.update');
 });
 
 
@@ -152,5 +154,13 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
     Route::get('/my_events/edit/{event}', [SubVendorController::class, 'editEvents'])->name('subVendor.events.edit');
     Route::post('/my_events/store', [SubVendorController::class, 'storeEvents'])->name('subVendor.events.store');
     Route::put('/my_events/update/{event}', [SubVendorController::class, 'updateEvents'])->name('subVendor.events.update');
+    
+    //blogs
+    Route::get('/blogs', [SubVendorBlogController::class, 'index'])->name('subVendor.blogs.index');
+    Route::get('/blogs/add', [SubVendorBlogController::class, 'create'])->name('subVendor.blogs.create');
+    Route::post('/blogs', [SubVendorBlogController::class, 'store'])->name('subVendor.blogs.store');
+    Route::get('/blogs/{blog}/edit', [SubVendorBlogController::class, 'edit'])->name('subVendor.blogs.edit');
+    Route::put('/blogs/{blog}', [SubVendorBlogController::class, 'update'])->name('subVendor.blogs.update');
+    Route::delete('/blogs/{blog}', [SubVendorBlogController::class, 'destroy'])->name('subVendor.blogs.destroy');
 
 });

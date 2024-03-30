@@ -1,4 +1,4 @@
-@extends('dashboard.vendor.layouts.app')
+@extends('dashboard.admin.layouts.app')
 
 @section('content')
 
@@ -34,17 +34,7 @@
                                 <label for="title">Title</label>
                                 <input type="text" id="title" name="title" class="form-control" placeholder="Enter Blog title" required>
                             </div>
-                            @if (auth()->user()->role_id == 1)
-                                <div class="form-group mb-3">
-                                    <label for="type">Vendors</label>
-                                    <select id="type" name="user_id" class="form-control" required>
-                                        <option value="" selected disabled>Select Vendor</option>
-                                        @foreach($user as $row)
-                                            <option value="{{ $row->id }}">{{ $row->first_name }} {{ $row->last_name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            @endif
+                            <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                             <div class="form-group mb-3">
                                 <label for="type">Category</label>
                                 <select id="type" name="category_id" class="form-control" required>
