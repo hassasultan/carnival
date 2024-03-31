@@ -8,20 +8,20 @@
     </style>
     <div class="row justify-content-center">
         <div class="col-12">
-            <h2 class="mb-2 page-title">Products</h2>
-            <p class="card-text">Products table.</p>
+            <h2 class="mb-2 page-title">Costumes</h2>
+            <p class="card-text">Costumes table.</p>
             <div class="row my-4">
                 <!-- data table -->
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-primary" id="openProductModal"><span
-                            class="fe fe-plus fe-16 mr-3"></span>New Product</button>
+                    <button type="button" class="btn btn-primary" id="openCostumeModal"><span
+                            class="fe fe-plus fe-16 mr-3"></span>New Costume</button>
                     <div class="card shadow">
                         <div class="card-body">
-                            <!-- Product Messages -->
-                            <div id="productMessage"></div>
+                            <!-- Costume Messages -->
+                            <div id="costumeMessage"></div>
                             <!-- Table Data -->
                             <div id="tableData">
-                                @include('dashboard.admin.products.table')
+                                @include('dashboard.admin.costumes.table')
                             </div>
                         </div>
                     </div>
@@ -30,19 +30,19 @@
         </div> <!-- .col-12 -->
     </div>
 
-    <!-- New Product modal -->
-    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel"
+    <!-- New Costume modal -->
+    <div class="modal fade" id="costumeModal" tabindex="-1" role="dialog" aria-labelledby="costumeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="productModalLabel">New Product</h5>
+                    <h5 class="modal-title" id="costumeModalLabel">New Costume</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="createProductForm">
+                    <form id="createCostumeForm">
                         @csrf
                         <div class="form-group">
                             <label for="title">Title</label>
@@ -55,6 +55,15 @@
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea class="form-control" id="description" name="description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="event">Event</label>
+                            <select class="form-control event" id="event" name="event_id" required>
+                                <option value="">Select Event</option>
+                                @foreach ($events as $event)
+                                    <option value="{{ $event->id }}">{{ $event->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="category">Category</label>
@@ -189,26 +198,26 @@
                                 <label class="custom-file-label" for="media" id="media_label">Choose file</label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="saveProductBtn">Save Product</button>
+                        <button type="submit" class="btn btn-primary" id="saveCostumeBtn">Save Costume</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Edit Product modal -->
-    <div class="modal fade" id="editproductModal" tabindex="-1" role="dialog" aria-labelledby="editproductModalLabel"
+    <!-- Edit Costume modal -->
+    <div class="modal fade" id="editcostumeModal" tabindex="-1" role="dialog" aria-labelledby="editcostumeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editproductModalLabel">Edit Product</h5>
+                    <h5 class="modal-title" id="editcostumeModalLabel">Edit Costume</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="editProductForm">
+                    <form id="editcostumeForm">
                         @csrf
                         @method('PUT')
                         <input type="hidden" id="edit_id" name="edit_id">
@@ -219,6 +228,15 @@
                         <div class="form-group">
                             <label for="edit_description">Description</label>
                             <textarea class="form-control" id="edit_description" name="description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_event">Event</label>
+                            <select class="form-control event" id="edit_event" name="event_id" required>
+                                <option value="">Select Event</option>
+                                @foreach ($events as $event)
+                                    <option value="{{ $event->id }}">{{ $event->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="edit_category">Category</label>
@@ -331,7 +349,7 @@
                         </div>
                         <div id="edit_embed-div">
                         </div> --}}
-                        <button type="submit" class="btn btn-primary" id="updateProductBtn">Update Product</button>
+                        <button type="submit" class="btn btn-primary" id="updateCostumeBtn">Update Costume</button>
                     </form>
                 </div>
             </div>
@@ -339,19 +357,19 @@
     </div>
 
 
-    <!-- Edit Product modal -->
-    {{-- <div class="modal fade" id="editproductModal" tabindex="-1" role="dialog" aria-labelledby="editproductModalLabel"
+    <!-- Edit Costume modal -->
+    {{-- <div class="modal fade" id="editcostumeModal" tabindex="-1" role="dialog" aria-labelledby="editcostumeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editproductModalLabel">Edit Product</h5>
+                    <h5 class="modal-title" id="editcostumeModalLabel">Edit Costume</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="editProductForm">
+                    <form id="editcostumeForm">
                         @csrf
                         @method('PUT') <!-- Use PUT method for update -->
                         <input type="hidden" id="edit_id" name="edit_id">
@@ -498,14 +516,14 @@
                                     file</label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="updateProductBtn">Update Product</button>
+                        <button type="submit" class="btn btn-primary" id="updateCostumeBtn">Update Costume</button>
                     </form>
                 </div>
             </div>
         </div>
     </div> --}}
 
-    <!-- Delete Product Confirmation Modal -->
+    <!-- Delete Costume Confirmation Modal -->
     <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog"
         aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -517,7 +535,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete this product?
+                    Are you sure you want to delete this costume?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -536,51 +554,53 @@
             $('#edit_type').val('');
             $('#edit_description').val('');
             $('#edit_category').val('');
+            $('#edit_event').val('');
             $('#edit_status').val('');
         }
 
         $(document).ready(function() {
-            // Open the product modal when clicking the "New Product" button
-            $('#openProductModal').click(function() {
-                $('#productModal').modal('show');
+            // Open the costume modal when clicking the "New Costume" button
+            $('#openCostumeModal').click(function() {
+                $('#costumeModal').modal('show');
             });
 
-            // Handle click event for editing a product using event delegation
-            $(document).on('click', '.editProductBtn', function() {
-                var productId = $(this).data('id');
+            // Handle click event for editing a costume using event delegation
+            $(document).on('click', '.editCostumeBtn', function() {
+                var costumeId = $(this).data('id');
                 $.ajax({
-                    url: '{{ route('products.edit', ':id') }}'.replace(':id', productId),
+                    url: '{{ route('costumes.edit', ':id') }}'.replace(':id', costumeId),
                     type: 'GET',
                     success: function(response) {
                         console.log('edit', response);
-                        // Populate the edit form fields with product details
-                        $('#edit_id').val(response.product.id);
-                        $('#edit_title').val(response.product.title);
-                        $('#edit_description').val(response.product.description);
-                        $('#edit_category').val(response.product.category_id);
-                        $('#edit_status').val(response.product.status);
-                        $('#edit_old_price').val(response.product.old_price);
-                        $('#edit_new_price').val(response.product.new_price);
-                        $('#edit_discount').val(response.product.discount);
-                        $('#edit_condition').val(response.product.condition);
-                        $('#edit_stock_condition').val(response.product.stock_condition);
-                        $('#edit_facebook').val(response.product.facebook);
-                        $('#edit_instagram').val(response.product.instagram);
-                        $('#edit_youtube').val(response.product.youtube);
-                        $('#edit_twitter').val(response.product.twitter);
-                        $('#edit_tiktok').val(response.product.tiktok);
-                        $('#edit_pinterest').val(response.product.pinterest);
-                        $('#edit_linkedin').val(response.product.linkedin);
+                        // Populate the edit form fields with costume details
+                        $('#edit_id').val(response.costume.id);
+                        $('#edit_title').val(response.costume.title);
+                        $('#edit_description').val(response.costume.description);
+                        $('#edit_category').val(response.costume.category_id);
+                        $('#edit_event').val(response.costume.event_id);
+                        $('#edit_status').val(response.costume.status);
+                        $('#edit_old_price').val(response.costume.old_price);
+                        $('#edit_new_price').val(response.costume.new_price);
+                        $('#edit_discount').val(response.costume.discount);
+                        $('#edit_condition').val(response.costume.condition);
+                        $('#edit_stock_condition').val(response.costume.stock_condition);
+                        $('#edit_facebook').val(response.costume.facebook);
+                        $('#edit_instagram').val(response.costume.instagram);
+                        $('#edit_youtube').val(response.costume.youtube);
+                        $('#edit_twitter').val(response.costume.twitter);
+                        $('#edit_tiktok').val(response.costume.tiktok);
+                        $('#edit_pinterest').val(response.costume.pinterest);
+                        $('#edit_linkedin').val(response.costume.linkedin);
 
                         // Show the edit modal
-                        $('#editproductModal').modal('show');
+                        $('#editcostumeModal').modal('show');
 
-                        // Autopopulate variant select with the product's variants
-                        var variantIds = response.product.variants.map(variant => variant.id);
+                        // Autopopulate variant select with the costume's variants
+                        var variantIds = response.costume.variants.map(variant => variant.id);
                         $('#edit_variant_id').val(variantIds).trigger('change');
 
                         // Display variant images preview
-                        displayVariantImages(response.product.variant_images);
+                        displayVariantImages(response.costume.variant_images);
 
                         // Populate the subcategory dropdown if available
                         var subcategoryDropdown = $('#edit_subcategory');
@@ -589,10 +609,10 @@
                             value: '',
                             text: 'Select Subcategory'
                         }));
-                        if (response.product.subcategory) {
-                            if (Array.isArray(response.product.subcategory)) {
+                        if (response.costume.subcategory) {
+                            if (Array.isArray(response.costume.subcategory)) {
                                 // If the subcategory data is an array
-                                response.product.subcategory.forEach(subcategory => {
+                                response.costume.subcategory.forEach(subcategory => {
                                     subcategoryDropdown.append($('<option>', {
                                         value: subcategory.id,
                                         text: subcategory.title
@@ -601,8 +621,8 @@
                             } else {
                                 // If the subcategory data is an object
                                 subcategoryDropdown.append($('<option>', {
-                                    value: response.product.subcategory.id,
-                                    text: response.product.subcategory.title
+                                    value: response.costume.subcategory.id,
+                                    text: response.costume.subcategory.title
                                 }));
                             }
                             $('#edit_subcategory_input')
@@ -610,8 +630,8 @@
                         }
 
                         // Autopopulate tags if available
-                        if (response.product.tags) {
-                            var tags = response.product.tags.split(
+                        if (response.costume.tags) {
+                            var tags = response.costume.tags.split(
                                 ','); // Convert tags string to an array
                             $('#edit_hash_tags').empty();
                             tags.forEach(tag => {
@@ -630,20 +650,20 @@
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        $('#productMessage').html(
-                            '<div class="alert alert-danger" role="alert">Failed to fetch product details for editing</div>'
+                        $('#costumeMessage').html(
+                            '<div class="alert alert-danger" role="alert">Failed to fetch costume details for editing</div>'
                         );
                     }
                 });
             });
 
             // Clear edit modal fields when the modal dismisses
-            $('#editproductModal').on('hidden.bs.modal', function() {
+            $('#editcostumeModal').on('hidden.bs.modal', function() {
                 clearEditModalFields();
             });
 
-            // Handle form submission via AJAX for creating a new product
-            $('#createProductForm').submit(function(event) {
+            // Handle form submission via AJAX for creating a new costume
+            $('#createCostumeForm').submit(function(event) {
                 event.preventDefault();
                 var formData = new FormData($(this)[0]); // Use FormData object to include media files
 
@@ -653,13 +673,13 @@
                 console.log('Has variant_images[]:', hasVariantImages);
 
                 $.ajax({
-                    url: '{{ route('products.store') }}',
+                    url: '{{ route('costumes.store') }}',
                     type: 'POST',
                     data: formData, // Send FormData object instead of serialized data
                     contentType: false, // Set contentType to false when sending FormData
                     processData: false, // Set processData to false when sending FormData
                     success: function(response) {
-                        $('#productModal').modal('hide');
+                        $('#costumeModal').modal('hide');
                         $('#tableData').html(response.table_html);
 
                         // Reinitialize DataTables after updating table content
@@ -671,29 +691,29 @@
                             ]
                         });
 
-                        $('#productMessage').html(
-                            '<div class="alert alert-success" role="alert">Product created successfully</div>'
+                        $('#costumeMessage').html(
+                            '<div class="alert alert-success" role="alert">Costume created successfully</div>'
                         );
                         setTimeout(function() {
-                            $('#productMessage').html('');
+                            $('#costumeMessage').html('');
                         }, 3000);
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        $('#productMessage').html(
-                            '<div class="alert alert-danger" role="alert">Failed to create product</div>'
+                        $('#costumeMessage').html(
+                            '<div class="alert alert-danger" role="alert">Failed to create costume</div>'
                         );
                     }
                 });
             });
 
-            // Handle form submission via AJAX for updating a product
-            $('#editProductForm').submit(function(event) {
-                var productId = $(this).find('#edit_id').val();
+            // Handle form submission via AJAX for updating a costume
+            $('#editcostumeForm').submit(function(event) {
+                var costumeId = $(this).find('#edit_id').val();
                 event.preventDefault();
                 var formData = new FormData($(this)[0]); // Use FormData object to include media files
                 console.log('formDataformData', formData);
-                var url = '{{ route('products.update', ':id') }}'.replace(':id', productId);
+                var url = '{{ route('costumes.update', ':id') }}'.replace(':id', costumeId);
 
                 $.ajax({
                     url: url,
@@ -702,27 +722,27 @@
                     contentType: false, // Set contentType to false when sending FormData
                     processData: false, // Set processData to false when sending FormData
                     success: function(response) {
-                        $('#editproductModal').modal('hide');
+                        $('#editcostumeModal').modal('hide');
                         $(this).trigger('reset');
                         $('#tableData').html(response.table_html);
 
-                        $('#productMessage').html(
-                            '<div class="alert alert-success" role="alert">Product updated successfully</div>'
+                        $('#costumeMessage').html(
+                            '<div class="alert alert-success" role="alert">Costume updated successfully</div>'
                         );
                         setTimeout(function() {
-                            $('#productMessage').html('');
+                            $('#costumeMessage').html('');
                         }, 3000);
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        $('#productMessage').html(
-                            '<div class="alert alert-danger" role="alert">Failed to update product</div>'
+                        $('#costumeMessage').html(
+                            '<div class="alert alert-danger" role="alert">Failed to update costume</div>'
                         );
                     }
                 });
             });
             // Delete recrod
-            $('.deleteProductBtn').click(function(event) {
+            $('.deleteCostumeBtn').click(function(event) {
                 event.preventDefault();
                 var deleteForm = $(this).closest('form');
                 var formData = deleteForm.serialize();
@@ -740,17 +760,17 @@
                         success: function(response) {
                             $('#deleteConfirmationModal').modal('hide');
                             // Show success message on the page
-                            $('#productMessage').html(
+                            $('#costumeMessage').html(
                                 '<div class="alert alert-success" role="alert">' +
                                 response.message + '</div>');
 
-                            // Optionally, you can remove the deleted product row from the table
+                            // Optionally, you can remove the deleted costume row from the table
                             deleteForm.closest('tr').remove();
                         },
                         error: function(xhr, status, error) {
                             console.error(xhr.responseText);
-                            $('#productMessage').html(
-                                '<div class="alert alert-danger" role="alert">Failed to delete product</div>'
+                            $('#costumeMessage').html(
+                                '<div class="alert alert-danger" role="alert">Failed to delete costume</div>'
                             );
                         }
                     });
@@ -845,7 +865,7 @@
         });
 
         // select2 initialization for edit modal
-        $('#editproductModal').on('shown.bs.modal', function() {
+        $('#editcostumeModal').on('shown.bs.modal', function() {
             $('#edit_variant_id').select2();
         });
 
@@ -907,7 +927,7 @@
         });
 
         // Allow selecting or deselecting options by clicking on tags in edit modal
-        $(document).on('click', '#editproductModal .tag', function() {
+        $(document).on('click', '#editcostumeModal .tag', function() {
             var tagId = $(this).data('id');
             var tagInput = $(this).next('input[name="tags[]"]');
             if (tagInput.length) {
@@ -918,7 +938,7 @@
         });
 
         // Functionality to add a new tag in edit modal when pressing Enter in the input field
-        $('#editproductModal #edit_tagInput').keypress(function(event) {
+        $('#editcostumeModal #edit_tagInput').keypress(function(event) {
             if (event.which === 13) { // Check if Enter key is pressed
                 var newTagName = $(this).val().trim();
                 if (newTagName) {
@@ -929,13 +949,13 @@
                         newTagId +
                         '" style="font-size: 1.25em;">#' + newTagName + '</span>');
                     // Append the new tag after the input field
-                    $('#editproductModal #edit_tagInput').before(newTag);
+                    $('#editcostumeModal #edit_tagInput').before(newTag);
 
                     // Create a hidden input field for the new tag code name
                     var newInput = $('<input type="hidden" name="tags[]" value="' + newTagName +
                         '">'); // Do not include '#' symbol here
                     // Append the new input field to the form
-                    $('#editproductModal #edit_hash_tags').append(newInput);
+                    $('#editcostumeModal #edit_hash_tags').append(newInput);
 
                     // Clear the input field
                     $(this).val('');
@@ -1148,7 +1168,7 @@
         }
 
         // Call the function for both create and edit forms
-        preventFormSubmissionOnEnter('#createProductForm');
-        preventFormSubmissionOnEnter('#editProductForm');
+        preventFormSubmissionOnEnter('#createCostumeForm');
+        preventFormSubmissionOnEnter('#editcostumeForm');
     </script>
 @endsection

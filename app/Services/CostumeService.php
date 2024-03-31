@@ -2,30 +2,30 @@
 
 namespace App\Services;
 
-use App\Models\Product;
-use App\Models\ProductVariant;
-use App\Models\ProductVariantImage;
+use App\Models\Costume;
+use App\Models\CostumeVariant;
+use App\Models\CostumeVariantImage;
 use Illuminate\Support\Str;
 use App\Traits\ImageTrait;
 use App\Traits\MultipleImageTrait;
 
-class ProductService
+class CostumeService
 {
     use ImageTrait, MultipleImageTrait;
 
-    public function createProduct(array $data)
+    public function createCostume(array $data)
     {
-        $productData = $this->prepareProductData($data);
+        $costumeData = $this->prepareCostumeData($data);
 
-        // Create the product
-        $product = Product::create($productData);
+        // Create the costume
+        $costume = Costume::create($costumeData);
 
         // Handle variants
         if (isset($data['variant_id'])) {
             foreach ($data['variant_id'] as $index => $variantId) {
-                // Create product variant
-                $productVariant = ProductVariant::create([
-                    'product_id' => $product->id,
+                // Create costume variant
+                $costumeVariant = CostumeVariant::create([
+                    'costume_id' => $costume->id,
                     'variant_id' => $variantId,
                     'value' => isset($data['value'][$index]) ? $data['value'][$index] : 'default_value', // Adjust this default value as needed
                     'status' => 1
@@ -37,9 +37,9 @@ class ProductService
                     $additionalImagePaths = $this->uploadMultipleImages($data['variant_images'], 'variant_images');
 
                     foreach ($additionalImagePaths as $additionalImage) {
-                        ProductVariantImage::create([
-                            'product_id' => $product->id,
-                            'product_variant_id' => $productVariant->id,
+                        CostumeVariantImage::create([
+                            'costume_id' => $costume->id,
+                            'costume_variant_id' => $costumeVariant->id,
                             'image' => $additionalImage['original_name'],
                         ]);
                     }
@@ -47,24 +47,24 @@ class ProductService
             }
         }
 
-        return $product;
+        return $costume;
     }
 
-    public function updateProduct(Product $product, array $data)
+    public function updateCostume(Costume $costume, array $data)
     {
-        $productData = $this->prepareProductData($data);
+        $costumeData = $this->prepareCostumeData($data);
 
-        // Update product attributes
-        $product->update($productData);
+        // Update costume attributes
+        $costume->update($costumeData);
 
         // Handle variants
         if (isset($data['variant_id'])) {
             // Detach all existing variants
-            $product->variants()->detach();
+            $costume->variants()->detach();
 
             foreach ($data['variant_id'] as $index => $variantId) {
-                // Save each variant for the product with a specific value
-                $product->variants()->attach($variantId, ['value' => 'value', 'status' => 1]);
+                // Save each variant for the costume with a specific value
+                $costume->variants()->attach($variantId, ['value' => 'value', 'status' => 1]);
 
                 // Upload variant images
                 if (isset($data['variant_images'][$index])) {
@@ -72,9 +72,9 @@ class ProductService
                     $additionalImagePaths = $this->uploadMultipleImages($data['variant_images'], 'variant_images');
 
                     foreach ($additionalImagePaths as $additionalImage) {
-                        ProductVariantImage::create([
-                            'product_id' => $product->id,
-                            'product_variant_id' => $variantId, // Use variant ID here
+                        CostumeVariantImage::create([
+                            'costume_id' => $costume->id,
+                            'costume_variant_id' => $variantId, // Use variant ID here
                             'image' => $additionalImage['original_name'],
                         ]);
                     }
@@ -82,14 +82,15 @@ class ProductService
             }
         }
 
-        return $product;
+        return $costume;
     }
 
 
-    protected function prepareProductData(array $data)
+    protected function prepareCostumeData(array $data)
     {
-        $productData = [
+        $costumeData = [
             'title' => $data['title'],
+            'event_id' => $data['event_id'],
             'category_id' => $data['category_id'],
             'subcategory_id' => $data['subcategory_id'],
             'description' => $data['description'],
@@ -110,7 +111,7 @@ class ProductService
             'linkedin' => $data['linkedin'] ?? null,
         ];
 
-        return $productData;
+        return $costumeData;
     }
 
     protected function generateUniqueSlug($title)
@@ -118,7 +119,7 @@ class ProductService
         $slug = Str::slug($title);
         $uniqueSlug = $slug;
         $counter = 1;
-        while (Product::where('slug', $uniqueSlug)->exists()) {
+        while (Costume::where('slug', $uniqueSlug)->exists()) {
             $uniqueSlug = $slug . '-' . $counter++;
         }
         return $uniqueSlug;

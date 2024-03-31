@@ -2,38 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Costume;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Variant;
-use App\Models\ProductVariantImage;
-use App\Models\ProductVariant;
+use App\Models\CostumeVariantImage;
+use App\Models\CostumeVariant;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use App\Services\ProductService;
+use App\Services\CostumeService;
 
-class ProductController extends Controller
+class CostumeController extends Controller
 {
-    protected $productService;
+    protected $costumeService;
 
-    public function __construct(ProductService $productService)
+    public function __construct(CostumeService $costumeService)
     {
-        $this->productService = $productService;
+        $this->costumeService = $costumeService;
     }
 
     public function index()
     {
+        $events = Event::get();
         $categories = Category::where('type', 'ecommerce')->get();
         $variants = Variant::all();
-        $products = Product::all();
-        return view('dashboard.admin.products.index', compact('products', 'variants', 'categories'));
+        $costumes = Costume::all();
+        return view('dashboard.admin.costumes.index', compact('events', 'costumes', 'variants', 'categories'));
     }
 
     // public function create()
     // {
     //     $categories = Category::all();
-    //     return view('dashboard.admin.products.create', compact('categories'));
+    //     return view('dashboard.admin.costumes.create', compact('categories'));
     // }
 
     // public function store(Request $request)
@@ -50,15 +52,15 @@ class ProductController extends Controller
     //         'variant_id.*' => 'exists:variants,id',
     //     ]);
 
-    //     $product = $this->productService->createProduct($request->all());
+    //     $costume = $this->costumeService->createCostume($request->all());
 
-    //     if ($product) {
-    //         $products = Product::all();
-    //         $view = view('dashboard.admin.products.table', compact('products'))->render();
+    //     if ($costume) {
+    //         $costumes = Costume::all();
+    //         $view = view('dashboard.admin.costumes.table', compact('costumes'))->render();
 
-    //         return response()->json(['message' => 'Product created successfully', 'table_html' => $view], 200);
+    //         return response()->json(['message' => 'Costume created successfully', 'table_html' => $view], 200);
     //     } else {
-    //         return response()->json(['error' => 'Failed to create Product'], 500);
+    //         return response()->json(['error' => 'Failed to create Costume'], 500);
     //     }
     // }
     public function store(Request $request)
@@ -66,6 +68,7 @@ class ProductController extends Controller
         // dd($request->all());
         $request->validate([
             'title' => 'required',
+            'event_id' => 'required',
             'category_id' => 'required',
             'description' => 'required',
             'old_price' => 'required',
@@ -85,29 +88,29 @@ class ProductController extends Controller
             $data['variant_images'] = [];
         }
 
-        $product = $this->productService->createProduct($data);
+        $costume = $this->costumeService->createCostume($data);
 
-        if ($product) {
-            $products = Product::all();
-            $view = view('dashboard.admin.products.table', compact('products'))->render();
+        if ($costume) {
+            $costumes = Costume::all();
+            $view = view('dashboard.admin.costumes.table', compact('costumes'))->render();
 
-            return response()->json(['message' => 'Product created successfully', 'table_html' => $view], 200);
+            return response()->json(['message' => 'Costume created successfully', 'table_html' => $view], 200);
         } else {
-            return response()->json(['error' => 'Failed to create Product'], 500);
+            return response()->json(['error' => 'Failed to create Costume'], 500);
         }
     }
 
     public function show($id)
     {
-        $product = Product::findOrFail($id);
-        return view('dashboard.admin.products.show', compact('product'));
+        $costume = Costume::findOrFail($id);
+        return view('dashboard.admin.costumes.show', compact('costume'));
     }
 
     public function edit($id)
     {
-        $product = Product::with('category', 'variants', 'subcategory')->findOrFail($id);
+        $costume = Costume::with('category', 'variants', 'subcategory')->findOrFail($id);
         $categories = Category::all();
-        return response()->json(['product' => $product]);
+        return response()->json(['costume' => $costume]);
     }
     
     public function update(Request $request, $id)
@@ -123,7 +126,7 @@ class ProductController extends Controller
             // 'variant_id.*' => 'exists:variants,id',
         ]);
 
-        $product = Product::findOrFail($id);
+        $costume = Costume::findOrFail($id);
 
         // Prepare data for update
         $data = $request->all();
@@ -136,27 +139,27 @@ class ProductController extends Controller
             $data['variant_images'] = [];
         }
 
-        // Update product attributes and handle variants
-        $updatedProduct = $this->productService->updateProduct($product, $data);
+        // Update costume attributes and handle variants
+        $updatedCostume = $this->costumeService->updateCostume($costume, $data);
 
-        if ($updatedProduct) {
-            $products = Product::all();
-            $view = view('dashboard.admin.products.table', compact('products'))->render();
+        if ($updatedCostume) {
+            $costumes = Costume::all();
+            $view = view('dashboard.admin.costumes.table', compact('costumes'))->render();
 
-            return response()->json(['message' => 'Product updated successfully', 'table_html' => $view], 200);
+            return response()->json(['message' => 'Costume updated successfully', 'table_html' => $view], 200);
         } else {
-            return response()->json(['error' => 'Failed to update Product'], 500);
+            return response()->json(['error' => 'Failed to update Costume'], 500);
         }
 
-        // return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+        // return redirect()->route('costumes.index')->with('success', 'Costume updated successfully.');
     }
 
     public function destroy($id)
     {
-        $product = Product::findOrFail($id);
-        $product->delete();
+        $costume = Costume::findOrFail($id);
+        $costume->delete();
 
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('costumes.index')->with('success', 'Costume deleted successfully.');
     }
 
     public function getsubCategories($categoryId)

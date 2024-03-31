@@ -17,6 +17,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\VariantController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\CostumeController;
 use App\Http\Controllers\Vendor\BlogController;
 use App\Http\Controllers\SubVendor\SubVendorBlogController;
 
@@ -69,6 +70,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     // Products Crud
     Route::resource('products', ProductController::class);
 
+    // Costumes Crud
+    Route::resource('costumes', CostumeController::class);
+
     // Events Crud
     Route::resource('events', EventController::class);
 
@@ -99,6 +103,11 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/users', [UserManagementController::class, 'indexUser'])->name('users.index');
     Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');
     Route::post('/users/register', [UserManagementController::class, 'register'])->name('users.register');
+    Route::get('/users/edit/{id}', [UserManagementController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [UserManagementController::class, 'destroyUser'])->name('users.destroy');
+
+
     Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.categories');
     
     

@@ -2,17 +2,19 @@
 
 @section('content')
     <div class="card">
-        <form method="POST" action="{{ route('users.register') }}" class="col-lg-8 col-md-10 col-12 mx-auto">
+        <form method="POST" action="{{ route('users.update', $user->id) }}" class="col-lg-8 col-md-10 col-12 mx-auto">
             @csrf
+            @method('PUT')
             <div class="mx-auto text-center my-4 card-header">
-                <h2 class="my-3">Register New User</h2>
+                <h2 class="my-3">Edit User</h2>
             </div>
             <div class="card-body">
                 <div class="form-row">
+                    <input type="hidden" name="role_id" value="{{ $user->role_id }}">
                     <div class="form-group col-md-6">
                         <label for="firstname">Firstname</label>
                         <input id="firstname" type="text" class="form-control @error('first_name') is-invalid @enderror"
-                            name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
+                            name="first_name" value="{{ $user->first_name }}" required autocomplete="first_name" autofocus>
                         @error('first_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -22,7 +24,7 @@
                     <div class="form-group col-md-6">
                         <label for="lastname">Lastname</label>
                         <input id="lastname" type="text" class="form-control @error('last_name') is-invalid @enderror"
-                            name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name">
+                            name="last_name" value="{{ $user->last_name }}" required autocomplete="last_name">
                         @error('last_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -33,34 +35,17 @@
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                        name="email" value="{{ old('email') }}" required autocomplete="email">
+                        name="email" value="{{ $user->email }}" required autocomplete="email">
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="password">Password</label>
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                            name="password" required autocomplete="new-password">
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="password-confirm">Confirm Password</label>
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                            required autocomplete="new-password">
-                    </div>
-                </div>
                 <div class="form-group">
                     <label for="phone">Phone</label>
                     <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
-                        name="phone" value="{{ old('phone') }}" required autocomplete="phone">
+                        name="phone" value="{{ $user->phone }}" required autocomplete="phone">
                     @error('phone')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -70,7 +55,7 @@
                 <div class="form-group">
                     <label for="address">Address</label>
                     <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
-                        name="address" value="{{ old('address') }}" autocomplete="address">
+                        name="address" value="{{ $user->address }}" autocomplete="address">
                     @error('address')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -80,102 +65,78 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="city">City</label>
-                        <input id="city" type="text" class="form-control @error('city') is-invalid @enderror"
-                            name="city" value="{{ old('city') }}" autocomplete="city">
-                        @error('city')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input id="city" type="text" class="form-control" name="city" value="{{ $user->city }}"
+                            autocomplete="city">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="state">State</label>
-                        <input id="state" type="text" class="form-control @error('state') is-invalid @enderror"
-                            name="state" value="{{ old('state') }}" autocomplete="state">
-                        @error('state')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input id="state" type="text" class="form-control" name="state" value="{{ $user->state }}"
+                            autocomplete="state">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="country">Country</label>
-                        <input id="country" type="text" class="form-control @error('country') is-invalid @enderror"
-                            name="country" value="{{ old('country') }}" autocomplete="country">
-                        @error('country')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input id="country" type="text" class="form-control" name="country" value="{{ $user->country }}"
+                            autocomplete="country">
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="zipcode">Zipcode</label>
-                        <input id="zipcode" type="text" class="form-control @error('zipcode') is-invalid @enderror"
-                            name="zipcode" value="{{ old('zipcode') }}" autocomplete="zipcode">
-                        @error('zipcode')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="role">Role</label>
-                        <select id="role" class="form-control @error('role_id') is-invalid @enderror"
-                            name="role_id" required>
-                            <option value="">Select Role</option>
-                            @foreach ($roles as $role)
-                                @if ($role->name !== 'Admin')
-                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                @endif
+                <div class="form-group">
+                    <label for="zipcode">Zipcode</label>
+                    <input id="zipcode" type="text" class="form-control" name="zipcode" value="{{ $user->zipcode }}"
+                        autocomplete="zipcode">
+                </div>
+
+                <!-- Role Specific Fields -->
+                @if ($user->isAdmin())
+                    <!-- Admin specific fields can be added here if any -->
+                @elseif ($user->isVendor())
+                    <div class="form-group">
+                        <label for="package">Package</label>
+                        <select id="package" class="form-control @error('package_id') is-invalid @enderror"
+                            name="package_id">
+                            <option value="">Select Package</option>
+                            @foreach ($packages as $package)
+                                <option value="{{ $package->id }}" {{ $user->vendor->package_id == $package->id ? 'selected' : '' }}>{{ $package->title }}</option>
                             @endforeach
                         </select>
-                        @error('role_id')
+                        @error('package_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
-                </div>
-                <div class="form-group" id="package_input" style="display: none;">
-                    <label for="package">Package</label>
-                    <select id="package" class="form-control @error('package_id') is-invalid @enderror"
-                        name="package_id">
-                        <option value="">Select Package</option>
-                        @foreach ($packages as $package)
-                            <option value="{{ $package->id }}">{{ $package->title }}</option>
-                        @endforeach
+                @elseif ($user->isSubVendor())
+                    <div class="form-group">
+                        <label for="vendor">Vendor</label>
+                        <select id="vendor" class="form-control @error('vendor_id') is-invalid @enderror"
+                            name="vendor_id">
+                            <option value="">Select Vendor</option>
+                            @foreach ($vendors as $vendor)
+                                <option value="{{ $vendor->id }}" {{ $user->subVendor->vendor_id == $vendor->id ? 'selected' : '' }}>{{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}</option>
+                            @endforeach
+                        </select>
+                        @error('vendor_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                @endif
+                <!-- End of Role Specific Fields -->
+
+                <!-- Status Field -->
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" class="form-control @error('status') is-invalid @enderror" name="status">
+                        <option value="1" {{ $user->status == 1 ? 'selected' : '' }}>Active</option>
+                        <option value="0" {{ $user->status == 0 ? 'selected' : '' }}>Inactive</option>
                     </select>
-                    @error('package_id')
+                    @error('status')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
-                <div class="form-group" id="vendors_input" style="display: none;">
-                    <label for="vendor">Vendors</label>
-                    <select id="vendor" class="form-control @error('vendor_id') is-invalid @enderror"
-                        name="vendor_id">
-                        <option value="">Select vendor</option>
-                        @foreach ($vendors as $vendor)
-                            <option value="{{ $vendor->id }}">
-                                {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('vendor_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="form-group" id="category_input" style="display: none;">
-                    <label for="category_id">Category</label>
-                    <select id="category_id" name="category_id" class="form-control" required>
-                        <option value="">Select Category</option>
-                    </select>
-                </div>
+
                 <div class="form-row">
                     <div class="col-md-6">
                         <div class="form-group list-group mb-3 mt-3 shadow">
@@ -186,7 +147,7 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="e_com" name="e_com">
+                                            <input type="checkbox" {{ $user->e_com == 1 ? 'checked' : '' }} class="custom-control-input" id="e_com" name="e_com">
                                             <label class="custom-control-label" for="e_com"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -201,7 +162,7 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="music" name="music">
+                                            <input type="checkbox" {{ $user->music == 1 ? 'checked' : '' }} class="custom-control-input" id="music" name="music">
                                             <label class="custom-control-label" for="music"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -216,7 +177,7 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="appointments" name="appointments">
+                                            <input type="checkbox" {{ $user->appointments == 1 ? 'checked' : '' }} class="custom-control-input" id="appointments" name="appointments">
                                             <label class="custom-control-label" for="appointments"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -233,7 +194,7 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="events" name="events">
+                                            <input type="checkbox" {{ $user->events == 1 ? 'checked' : '' }} class="custom-control-input" id="events" name="events">
                                             <label class="custom-control-label" for="events"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -248,7 +209,7 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="ads" name="ads">
+                                            <input type="checkbox" {{ $user->ads == 1 ? 'checked' : '' }} class="custom-control-input" id="ads" name="ads">
                                             <label class="custom-control-label" for="ads"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -263,7 +224,7 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="blogs" name="blogs">
+                                            <input type="checkbox" {{ $user->blogs == 1 ? 'checked' : '' }} class="custom-control-input" id="blogs" name="blogs">
                                             <label class="custom-control-label" for="blogs"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -273,17 +234,29 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Register') }}</button>
+                <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Update') }}</button>
         </form>
     </div>
 @endsection
 
+
 @section('bottom_script')
     <script>
         $(document).ready(function() {
+            var userRole = {{ $user->role_id }};
+            if (userRole == 2) {
+                $('#package_input').show();
+                $('#vendors_input').hide();
+            } else if (userRole == 3) {
+                $('#package_input').hide();
+                $('#vendors_input').show();
+            } else {
+                $('#package_input').hide();
+                $('#vendors_input').hide();
+            }
+
             $('#role').on('change', function() {
                 var role = $(this).val();
-                console.log(role);
                 if (role == 2) {
                     $('#package_input').show();
                     $('#vendors_input').hide();

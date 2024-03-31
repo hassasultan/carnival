@@ -59,8 +59,8 @@
                 </a>
                 <ul class="collapse list-unstyled w-100" id="ui-umanagement">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('roles.index') }}"><span
-                                class="ml-1 item-text">Add New User</span></a>
+                        <a class="nav-link" href="{{ route('users.index') }}"><span
+                                class="ml-1 item-text">All Users</span></a>
                     </li>
                 </ul>
             </li>
