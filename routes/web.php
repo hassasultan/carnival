@@ -20,6 +20,10 @@ use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\CostumeController;
 use App\Http\Controllers\Vendor\BlogController;
 use App\Http\Controllers\SubVendor\SubVendorBlogController;
+use App\Http\Controllers\vendor\VendorCostumeController;
+use App\Http\Controllers\SubVendor\SubVendorCostumeController;
+use App\Http\Controllers\vendor\VendorProductController;
+use App\Http\Controllers\SubVendor\SubVendorProductController;
 
 
 /*
@@ -44,6 +48,10 @@ Route::get('/unauthorized', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
+// get subcategories
+Route::get('/get-subcategories/{categoryId}', [ProductController::class, 'getsubCategories'])->name('get.subcategories');
 
 
 // Admin Routes
@@ -92,13 +100,10 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/variants/{variant}/edit', [VariantController::class, 'edit'])->name('variants.edit');
     Route::put('/variants/{variant}', [VariantController::class, 'update'])->name('variants.update');
     Route::delete('/variants/{variant}', [VariantController::class, 'destroy'])->name('variants.destroy');
-    
+
     // get categories
     Route::get('/get-categories/{packageId}', [EventController::class, 'getCategories'])->name('get.categories');
-    
-    // get subcategories
-    Route::get('/get-subcategories/{categoryId}', [ProductController::class, 'getsubCategories'])->name('get.subcategories');
-    
+
     // user management
     Route::get('/users', [UserManagementController::class, 'indexUser'])->name('users.index');
     Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');
@@ -109,8 +114,8 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
 
     Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.categories');
-    
-    
+
+
     //blogs
     Route::resource('blogs', BlogsController::class)->except(['update']);
     Route::put('/blogs/{blog}', [BlogsController::class, 'update'])->name('blogs.update');
@@ -123,20 +128,20 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     Route::get('/', [VendorController::class, 'index'])->name('vendor');
 
     // products
-    Route::get('/products', [VendorController::class, 'indexProduct'])->name('vendor.products');
-    Route::get('/products/edit/{id}', [VendorController::class, 'editProduct'])->name('vendor.products.edit');
-    Route::post('/products/store', [VendorController::class, 'storeProduct'])->name('vendor.products.store');
-    Route::put('/products/update/', [VendorController::class, 'updateProduct'])->name('vendor.products.update');
+    Route::get('/products', [VendorProductController::class, 'index'])->name('vendor.products');
+    Route::get('/products/edit/{id}', [VendorProductController::class, 'edit'])->name('vendor.products.edit');
+    Route::post('/products/store', [VendorProductController::class, 'store'])->name('vendor.products.store');
+    Route::put('/products/update/{id}', [VendorProductController::class, 'update'])->name('vendor.products.update');
 
     // events
     Route::get('/events', [VendorController::class, 'indexEvent'])->name('vendor.events');
     Route::get('/events/edit/{event}', [VendorController::class, 'editEvent'])->name('vendor.events.edit');
     Route::post('/events/store', [VendorController::class, 'storeEvent'])->name('vendor.events.store');
     Route::put('/events/update/{event}', [VendorController::class, 'updateEvent'])->name('vendor.events.update');
-    
+
     // get subcategories
     Route::get('/get-subcategory/{categoryId}', [ProductController::class, 'getsubCategories'])->name('vendor.get.subcategories');
-    
+
     //blogs
     Route::get('/blogs', [BlogController::class, 'index'])->name('vendor.blogs.index');
     Route::get('/blogs/add', [BlogController::class, 'create'])->name('vendor.blogs.create');
@@ -144,6 +149,13 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('vendor.blogs.edit');
     Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('vendor.blogs.update');
     Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('vendor.blogs.destroy');
+
+    // costumes
+    Route::get('/costumes', [VendorCostumeController::class, 'index'])->name('vendor.costumes.index');
+    Route::get('/costumes/edit/{id}', [VendorCostumeController::class, 'edit'])->name('vendor.costumes.edit');
+    Route::post('/costumes/store', [VendorCostumeController::class, 'store'])->name('vendor.costumes.store');
+    Route::put('/costumes/update/{id}', [VendorCostumeController::class, 'update'])->name('vendor.costumes.update');
+    Route::delete('/costumes/{costume}', [VendorCostumeController::class, 'destroy'])->name('vendor.costumes.destroy');
 });
 
 
@@ -153,17 +165,17 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
     Route::get('/', [SubVendorController::class, 'index'])->name('subVendor');
 
     // products
-    Route::get('/my_products', [SubVendorController::class, 'indexProducts'])->name('subVendor.products');
-    Route::get('/my_products/edit/{id}', [SubVendorController::class, 'editProducts'])->name('subVendor.products.edit');
-    Route::post('/my_products/store', [SubVendorController::class, 'storeProducts'])->name('subVendor.products.store');
-    Route::put('/my_products/update/', [SubVendorController::class, 'updateProducts'])->name('subVendor.products.update');
+    Route::get('/my_products', [SubVendorProductController::class, 'index'])->name('subVendor.products');
+    Route::get('/my_products/edit/{id}', [SubVendorProductController::class, 'edit'])->name('subVendor.products.edit');
+    Route::post('/my_products/store', [SubVendorProductController::class, 'store'])->name('subVendor.products.store');
+    Route::put('/my_products/update/{id}', [SubVendorProductController::class, 'update'])->name('subVendor.products.update');
 
     // events
     Route::get('/my_events', [SubVendorController::class, 'indexEvents'])->name('subVendor.events');
     Route::get('/my_events/edit/{event}', [SubVendorController::class, 'editEvents'])->name('subVendor.events.edit');
     Route::post('/my_events/store', [SubVendorController::class, 'storeEvents'])->name('subVendor.events.store');
     Route::put('/my_events/update/{event}', [SubVendorController::class, 'updateEvents'])->name('subVendor.events.update');
-    
+
     //blogs
     Route::get('/blogs', [SubVendorBlogController::class, 'index'])->name('subVendor.blogs.index');
     Route::get('/blogs/add', [SubVendorBlogController::class, 'create'])->name('subVendor.blogs.create');
@@ -171,5 +183,12 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
     Route::get('/blogs/{blog}/edit', [SubVendorBlogController::class, 'edit'])->name('subVendor.blogs.edit');
     Route::put('/blogs/{blog}', [SubVendorBlogController::class, 'update'])->name('subVendor.blogs.update');
     Route::delete('/blogs/{blog}', [SubVendorBlogController::class, 'destroy'])->name('subVendor.blogs.destroy');
+
+    // costumes
+    Route::get('/costumes', [SubVendorCostumeController::class, 'index'])->name('subVendor.costumes.index');
+    Route::get('/costumes/edit/{id}', [SubVendorCostumeController::class, 'edit'])->name('subVendor.costumes.edit');
+    Route::post('/costumes/store', [SubVendorCostumeController::class, 'store'])->name('subVendor.costumes.store');
+    Route::put('/costumes/update/{id}', [SubVendorCostumeController::class, 'update'])->name('subVendor.costumes.update');
+    Route::delete('/costumes/{costume}', [SubVendorCostumeController::class, 'destroy'])->name('subVendor.costumes.destroy');
 
 });

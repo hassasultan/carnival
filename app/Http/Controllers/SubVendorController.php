@@ -70,7 +70,7 @@ class SubVendorController extends Controller
 
     public function updateProducts(Request $request, $id)
     {
-        dd($request->toArray());
+        // dd($request->toArray());
         $request->validate([
             'title' => 'required',
             'category_id' => 'required',
@@ -78,8 +78,6 @@ class SubVendorController extends Controller
             'old_price' => 'required',
             'new_price' => 'required',
             'status' => 'required',
-            'variant_id' => 'required|array',
-            'variant_id.*' => 'exists:variants,id',
         ]);
 
         $product = Product::findOrFail($id);

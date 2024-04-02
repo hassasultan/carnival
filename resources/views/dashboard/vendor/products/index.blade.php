@@ -1,6 +1,11 @@
 @extends('dashboard.vendor.layouts.app')
 
 @section('content')
+    <style>
+        .select2-container {
+            width: 100% !important;
+        }
+    </style>
     <div class="row justify-content-center">
         <div class="col-12">
             <h2 class="mb-2 page-title">Products</h2>
@@ -66,14 +71,13 @@
                                 <option value="">Select Subcategory</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <div>
                                 <label for="variant_id">Variants</label>
                             </div>
                             @foreach ($variants as $row)
                                 <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->title }}" />
                             @endforeach
-                            {{-- <div class="form-control"> --}}
                             <select id="variant_id" name="variant_id[]" class="form-control select2" multiple>
                                 @foreach ($variants as $row)
                                     <option value="{{ $row->id }}" data-name-{{ $row->id }}="{{ $row->title }}">
@@ -81,7 +85,25 @@
                                     </option>
                                 @endforeach
                             </select>
+                        </div> --}}
+                        <div class="form-group mb-3">
+                            <div>
+                                <label for="variant_id">Variants</label>
+                            </div>
+                            @foreach ($variants as $row)
+                                <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->title }}" />
+                            @endforeach
+                            {{-- <div class="form-control"> --}}
+                            <select id="variant_id" name="variant_id[]" class="form-control select2 d-none" multiple>
+                                {{-- @foreach ($variants as $row)
+                                    <option value="{{ $row->id }}" data-name-{{ $row->id }}="{{ $row->title }}">
+                                        {{ $row->title }}
+                                    </option>
+                                @endforeach --}}
+                            </select>
                             {{-- </div> --}}
+                        </div>
+                        <div id="embed-div">
                         </div>
                         <div class="form-group">
                             <label for="old_price">Regular Price</label>
@@ -188,7 +210,7 @@
                 <div class="modal-body">
                     <form id="editProductForm">
                         @csrf
-                        @method('PUT') <!-- Use PUT method for update -->
+                        @method('PUT')
                         <input type="hidden" id="edit_id" name="edit_id">
                         <div class="form-group">
                             <label for="edit_title">Title</label>
@@ -228,9 +250,11 @@
                                 <option value="0">Inactive</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="edit_discount">Discount</label>
-                            <input type="number" class="form-control" id="edit_discount" name="discount">
+                        <div id="edit_hash_tags" class="mb-3">
+                            <label for="edit_tags">Tags</label><br>
+                            <input type="hidden" name="tags[]" value="{{ $row->title }}">
+                            <input type="text" id="edit_tagInput" class="form-control"
+                                placeholder="Add a new tag...">
                         </div>
                         <div class="form-group">
                             <label for="edit_condition">Condition</label>
@@ -249,43 +273,64 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <div>
-                                <label for="edit_variant_id">Variants</label>
+                            <label for="edit_discount">Discount</label>
+                            <input type="number" class="form-control" id="edit_discount" name="discount">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_facebook">Facebook</label>
+                            <input type="text" class="form-control" id="edit_facebook" name="facebook">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_instagram">Instagram</label>
+                            <input type="text" class="form-control" id="edit_instagram" name="instagram">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_youtube">Youtube</label>
+                            <input type="text" class="form-control" id="edit_youtube" name="youtube">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_twitter">Twitter(X)</label>
+                            <input type="text" class="form-control" id="edit_twitter" name="twitter">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_tiktok">Tiktok</label>
+                            <input type="text" class="form-control" id="edit_tiktok" name="tiktok">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_pinterest">Pinterest</label>
+                            <input type="text" class="form-control" id="edit_pinterest" name="pinterest">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_linkedin">Linkedin</label>
+                            <input type="text" class="form-control" id="edit_linkedin" name="linkedin">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="edit_image">Image</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="edit_image" name="image">
+                                <label class="custom-file-label" for="edit_image" id="edit_image_label">Choose
+                                    file</label>
                             </div>
-                            @foreach ($variants as $row)
-                                <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->title }}" />
-                            @endforeach
-                            <select id="edit_variant_id" name="variant_id[]" class="form-control select2" multiple>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="edit_media">Media</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input select2" id="edit_media" name="media[]"
+                                    multiple>
+                                <label class="custom-file-label" for="edit_media" id="edit_media_label">Choose
+                                    file</label>
+                            </div>
+                        </div>
+                        {{-- <div class="form-group mb-3">
+                            <label for="edit_variant_id">Variants</label>
+                            <select id="edit_variant_id" name="edit_variant_id[]" class="form-control select2" multiple>
                                 @foreach ($variants as $row)
-                                    <option value="{{ $row->id }}"
-                                        data-name-{{ $row->id }}="{{ $row->title }}">
-                                        {{ $row->title }}
-                                    </option>
+                                    <option value="{{ $row->id }}">{{ $row->title }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div id="edit_hash_tags" class="mb-3">
-                            <label for="edit_tags">Tags</label><br>
-                            <!-- Existing tags will be dynamically added here -->
-                            @if (!empty($row->tags))
-                                @foreach ($row->tags as $tag)
-                                    @php
-                                        $explodedTags = explode(',', $tag->title);
-                                    @endphp
-                                    @foreach ($explodedTags as $explodedTag)
-                                        <span class="badge badge-primary tag badge-lg" data-id="{{ $tag->id }}"
-                                            style="font-size: 1.25em;">
-                                            {{ $explodedTag }}
-                                        </span>
-                                        <input type="hidden" name="tags[]" value="{{ $explodedTag }}">
-                                    @endforeach
-                                @endforeach
-                            @endif
-                        </div>
-                        <input type="text" id="edit_tagInput" class="form-control" placeholder="Add a new tag...">
-
-
-                        <!-- End of additional fields -->
+                        <div id="edit_embed-div">
+                        </div> --}}
                         <button type="submit" class="btn btn-primary" id="updateProductBtn">Update Product</button>
                     </form>
                 </div>
@@ -352,6 +397,13 @@
                         $('#edit_discount').val(response.product.discount);
                         $('#edit_condition').val(response.product.condition);
                         $('#edit_stock_condition').val(response.product.stock_condition);
+                        $('#edit_facebook').val(response.product.facebook);
+                        $('#edit_instagram').val(response.product.instagram);
+                        $('#edit_youtube').val(response.product.youtube);
+                        $('#edit_twitter').val(response.product.twitter);
+                        $('#edit_tiktok').val(response.product.tiktok);
+                        $('#edit_pinterest').val(response.product.pinterest);
+                        $('#edit_linkedin').val(response.product.linkedin);
 
                         // Show the edit modal
                         $('#editproductModal').modal('show');
@@ -359,6 +411,9 @@
                         // Autopopulate variant select with the product's variants
                         var variantIds = response.product.variants.map(variant => variant.id);
                         $('#edit_variant_id').val(variantIds).trigger('change');
+
+                        // Display variant images preview
+                        displayVariantImages(response.product.variant_images);
 
                         // Populate the subcategory dropdown if available
                         var subcategoryDropdown = $('#edit_subcategory');
@@ -384,13 +439,13 @@
                                 }));
                             }
                             $('#edit_subcategory_input')
-                        .show(); // Show the subcategory dropdown
+                                .show(); // Show the subcategory dropdown
                         }
 
                         // Autopopulate tags if available
                         if (response.product.tags) {
                             var tags = response.product.tags.split(
-                            ','); // Convert tags string to an array
+                                ','); // Convert tags string to an array
                             $('#edit_hash_tags').empty();
                             tags.forEach(tag => {
                                 var tagElement = $(
@@ -405,7 +460,6 @@
                                     hiddenInput);
                             });
                         }
-
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
@@ -425,6 +479,12 @@
             $('#createProductForm').submit(function(event) {
                 event.preventDefault();
                 var formData = new FormData($(this)[0]); // Use FormData object to include media files
+
+                console.log('formDataformData', formData);
+                // Assuming formData is your FormData object
+                var hasVariantImages = formData.has('variant_images[]');
+                console.log('Has variant_images[]:', hasVariantImages);
+
                 $.ajax({
                     url: '{{ route('vendor.products.store') }}',
                     type: 'POST',
@@ -465,8 +525,8 @@
                 var productId = $(this).find('#edit_id').val();
                 event.preventDefault();
                 var formData = new FormData($(this)[0]); // Use FormData object to include media files
+                console.log('formDataformData', formData);
                 var url = '{{ route('vendor.products.update', ':id') }}'.replace(':id', productId);
-                console.log('urlurl', url);
 
                 $.ajax({
                     url: url,
@@ -643,24 +703,35 @@
         // });
 
         $('.category').on('change', function() {
+            $('#variant_id').addClass('d-none');
             var category = $(this).val();
             var subcategoryDropdown = $(this).closest('.form-group').next('.form-group').find('select');
+            var url = "{{ route('get.subcategories', ':category') }}";
+            url = url.replace(':category', category);
             $.ajax({
                 type: 'GET',
-                url: "/vendor/get-subcategory/" + category, // Manually construct the URL
+                url: url, // Manually construct the URL
                 success: function(response) {
+                    console.log(response);
                     subcategoryDropdown.empty(); // Clear existing options
                     subcategoryDropdown.append($('<option>', {
                         value: '',
                         text: 'Select Subcategory'
                     }));
-                    response.forEach(function(subcategory) {
+                    response.subcategories.forEach(function(subcategory) {
                         subcategoryDropdown.append($('<option>', {
                             value: subcategory.id,
                             text: subcategory.title
                         }));
                     });
                     subcategoryDropdown.closest('.form-group').show(); // Show the subcategory dropdown
+                    var html = '';
+                    $.each(response.varients, function(index, row) {
+                        html += '<option value="' + row.id + '" data-type="' + row.type + '">' +
+                            row.title + '</option>';
+                    });
+                    $('#variant_id').html(html);
+                    $('#variant_id').removeClass('d-none');
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText);
@@ -704,5 +775,213 @@
                 }
             }
         });
+
+        // Handle change event for variant selection
+        // $("#edit_variant_id").change(function() {
+        //     $("#edit_embed-div").html(''); // Clear previous content
+        //     var selectedVariants = $(this).val();
+        //     var html = '';
+        //     $.each(selectedVariants, function(index, val) {
+        //         var selectedOption = $('option[value="' + val + '"]');
+        //         var dataType = selectedOption.attr('data-type');
+        //         html += '<div class="form-group mb-3">';
+        //         html += '<div class="form-row">';
+        //         html += '<div class="form-group col-md-6">';
+        //         html += '<label for="edit_variant_name-' + val + '">Variant Name</label>';
+        //         html += '<input type="' + dataType + '" class="form-control" id="edit_variant_name-' + val +
+        //             '" name="edit_variant_name[]">';
+        //         html += '</div>';
+        //         html += '<div class="form-group col-md-6">';
+        //         html += '<label for="edit_value-' + val + '">Value</label>';
+        //         if (1 + 1 == 2) {
+        //             html += '<input type="text" class="form-control" name="edit_value[]" required>';
+        //         } else {
+        //             html += '<input type="color" class="form-control" name="edit_value[]" required>';
+        //         }
+        //         html += '</div>';
+        //         html += '</div>';
+        //         html += '</div>';
+        //         html += '<div class="form-group mb-3">';
+        //         html += '<div class="form-row">';
+        //         html += '<div class="form-group col-md-12">';
+        //         html += '<label for="edit_variant_images-' + val + '">Variant Images</label>';
+        //         html +=
+        //             '<input type="file" class="custom-file-input edit_variant_images" id="edit_variant_images-' +
+        //             val +
+        //             '" name="edit_variant_images[]" multiple data-preview="edit_image-preview-' + val +
+        //             '">';
+        //         html += '<label class="custom-file-label" for="edit_variant_images-' + val +
+        //             '" id="edit_variant_images_label-' + val +
+        //             '">Choose files</label>';
+        //         html += '<div class="image-preview" id="edit_image-preview-' + val +
+        //             '"></div>'; // Div to show image preview
+        //         html += '</div>';
+        //         html += '</div>';
+        //         html += '</div>';
+        //     });
+        //     $("#edit_embed-div").html(html);
+        // });
+
+        // // Initialize file input change event for image preview
+        // $(document).on('change', '.edit_variant_images', function() {
+        //     var previewId = $(this).data('preview');
+        //     var previewContainer = $('#' + previewId);
+        //     previewContainer.empty(); // Clear previous previews
+
+        //     // Get selected files and display their previews
+        //     var files = $(this)[0].files;
+        //     for (var i = 0; i < files.length; i++) {
+        //         var file = files[i];
+        //         var reader = new FileReader();
+        //         reader.onload = function(e) {
+        //             var imgElement = '<div class="position-relative"><img src="' + e.target.result +
+        //                 '" class="img-thumbnail" alt="Preview"><button type="button" class="btn btn-danger btn-sm delete-image-btn position-absolute top-0 end-0" data-preview="' +
+        //                 previewId + '">Delete</button></div>';
+        //             previewContainer.append(imgElement);
+        //         }
+        //         reader.readAsDataURL(file);
+        //     }
+        // });
+
+        // // Handle click event for deleting image previews
+        // $(document).on('click', '.delete-image-btn', function() {
+        //     var previewId = $(this).data('preview');
+        //     var previewContainer = $('#' + previewId);
+        //     previewContainer.empty(); // Clear the preview container
+        //     // Clear the file input to remove the deleted image from being submitted
+        //     $('#edit_variant_images-' + previewId).val('');
+        // });
+
+
+        $("#variant_id").change(function() {
+            $("#embed-div").html(''); // Clear previous content
+            allTickets = $(this).val();
+            var html = '';
+            $.each(allTickets, function(index, val) {
+                var selectedOption = $('option[value="' + val + '"]');
+                var dataType = selectedOption.attr('data-type');
+                html += '<div class="form-group mb-3">';
+                html += '<div class="form-row">';
+                html += '<div class="form-group col-md-6">';
+                html += '<label for="variant_name-' + val + '">Variant Name</label>';
+                html += '<input type="' + dataType + '" class="form-control" id="variant_name-' + val +
+                    '" name="variant_name[]">';
+                html += '</div>';
+                html += '<div class="form-group col-md-6">';
+                html += '<label for="value-' + val + '">Value</label>';
+                if (1 + 1 == 2) {
+                    html += '<input type="text" class="form-control" name="value[]" required>';
+                } else {
+                    html += '<input type="color" class="form-control" name="value[]" required>';
+                }
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '<div class="form-group mb-3">';
+                html += '<div class="form-row">';
+                html += '<div class="form-group col-md-12">';
+                html += '<label for="variant_images-' + val + '">Variant Images</label>';
+                html += '<input type="file" class="custom-file-input select2" id="variant_images-' + val +
+                    '" name="variant_images[]" multiple>';
+                html += '<label class="custom-file-label" for="variant_images-' + val +
+                    '" id="variant_images_label-' + val +
+                    '">Choose files</label>';
+                html += '<div class="image-preview" id="image-preview-' + val +
+                    '"></div>'; // Div to show image preview
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+            });
+            $("#embed-div").html(html);
+        });
+
+        // Adjusted code for handling file inputs and image previews
+        $(document).on('change', '.custom-file-input', function() {
+            var input = this;
+            var id = $(this).attr('id').split('-').pop(); // Extract variant ID from input ID
+            var previewDiv = $('#image-preview-' + id);
+            var existingPreviews = previewDiv.find('.row'); // Find existing rows of previews
+            var newFileCount = input.files.length; // Get the number of newly selected files
+            var totalFileCount = existingPreviews.find('.col-md-3').length + newFileCount; // Calculate total count
+            var labelText = totalFileCount + ' file' + (totalFileCount !== 1 ? 's' : '') +
+                ' selected'; // Update label text based on total file count
+            $(this).next('.custom-file-label').text(labelText); // Update label text
+            if (input.files && input.files.length > 0) {
+                $.each(input.files, function(index, file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        var preview = $('<img>').attr('src', e.target.result).addClass('img-thumbnail')
+                            .css({
+                                'width': '100px',
+                                'height': '100px',
+                                'margin': '5px', // Add margin around images
+                                'object-fit': 'cover' // Make sure images fill the space
+                            });
+                        var deleteButton = $('<button>').addClass('btn btn-danger btn-sm delete-image')
+                            .html('&times;') // Use HTML entity for cross symbol
+                            .css({
+                                'font-size': '12px', // Make cross symbol smaller
+                                'padding': '2px 5px' // Add padding to make it look nicer
+                            });
+                        var previewWrapper = $('<div>').addClass('col-md-3').append(preview,
+                            deleteButton); // Each image will take 3 columns in a row
+                        if (existingPreviews.length === 0 || (index + 1) % 4 === 0) {
+                            var row = $(
+                                '<div class="row"></div>'
+                            ); // Create a row container if no existing previews or if it's the fourth image
+                            row.append(previewWrapper);
+                            previewDiv.append(row);
+                        } else {
+                            existingPreviews.last().append(
+                                previewWrapper); // Append to the last existing row
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+        });
+
+        // Adjusted code for deleting images
+        $(document).on('click', '.delete-image', function(event) {
+            event.preventDefault(); // Prevent default behavior
+            console.log('Delete image button clicked');
+            var inputId = $(this).closest('.form-group').find('.custom-file-input').attr('id');
+            var id = inputId ? inputId.split('-').pop() : null; // Extract variant ID from input ID
+            $(this).closest('.col-md-3').remove(); // Remove the image preview container
+            if (id) {
+                var totalFileCount = $('#image-preview-' + id + ' .col-md-3').length; // Get updated file count
+                var labelText = totalFileCount + ' file' + (totalFileCount !== 1 ? 's' : '') + ' selected';
+                $('#variant_images_label-' + id).text(labelText); // Update file count label
+            }
+            $('#' + inputId).val(''); // Clear the file input value
+        });
+
+        // Function to display variant images preview
+        function displayVariantImages(images) {
+            var previewContainer = $('#variant-images-preview');
+            previewContainer.empty(); // Clear previous previews
+            if (images && images.length > 0) {
+                images.forEach(function(imageUrl) {
+                    var imgElement = $('<img>').attr('src', imageUrl).addClass('img-thumbnail').css('max-width',
+                        '100px').css('margin-right', '10px');
+                    previewContainer.append(imgElement);
+                });
+            }
+        }
+
+        // Function to prevent form submission on Enter key press
+        function preventFormSubmissionOnEnter(formId) {
+            $(formId).on('keyup keypress', function(e) {
+                var keyCode = e.keyCode || e.which;
+                if (keyCode === 13) { // If Enter key is pressed
+                    e.preventDefault(); // Prevent default form submission
+                    return false;
+                }
+            });
+        }
+
+        // Call the function for both create and edit forms
+        preventFormSubmissionOnEnter('#createProductForm');
+        preventFormSubmissionOnEnter('#editProductForm');
     </script>
 @endsection

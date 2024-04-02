@@ -70,7 +70,6 @@ class VendorController extends Controller
 
     public function updateProduct(Request $request, $id)
     {
-        dd($request->toArray());
         $request->validate([
             'title' => 'required',
             'category_id' => 'required',
