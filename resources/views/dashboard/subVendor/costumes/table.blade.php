@@ -11,8 +11,8 @@
         </tr>
     </thead>
     <tbody>
-        @php $counter = 1 @endphp <!-- Initialize counter -->
-        @foreach ($products as $product)
+        @php $counter = 1 @endphp
+        @foreach ($costumes as $costume)
         <tr>
             <td>
                 <div class="custom-control custom-checkbox">
@@ -20,26 +20,26 @@
                     <label class="custom-control-label"></label>
                 </div>
             </td>
-            <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
-            <td>{{ $product->title }}</td>
+            <td>{{ $counter++ }}</td>
+            <td>{{ $costume->title }}</td>
             <td>
-                @if($product->status == 1)
+                @if($costume->status == 1)
                     Active
                 @else
                     Inactive
                 @endif
             </td>
-            <td>{{ $product->created_at }}</td>
-            <td id="btn{{ $product->id }}">
-                <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted editProductBtn"
-                    type="button" data-id="{{ $product->id }}" data-toggle="modal"
-                    data-target="#editProductModal">
+            <td>{{ $costume->created_at }}</td>
+            <td id="btn{{ $costume->id }}">
+                <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted editCostumeBtn"
+                    type="button" data-id="{{ $costume->id }}" data-toggle="modal"
+                    data-target="#editcostumeModal">
                     <span class="text-muted sr-only">Edit</span>
                 </button>
-                <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                <form action="{{ route('costumes.destroy', $costume->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-sm rounded text-muted deleteProductBtn">
+                    <button type="submit" class="btn btn-sm rounded text-muted deleteCostumeBtn">
                         <span class="fe fe-trash fe-12 mr-3"></span>
                         <span class="text-muted sr-only">Remove</span>
                     </button>

@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SubVendor;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Costume;
 use App\Models\Category;
 use App\Models\Subcategory;
@@ -9,12 +11,11 @@ use App\Models\Variant;
 use App\Models\CostumeVariantImage;
 use App\Models\CostumeVariant;
 use App\Models\Event;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Services\CostumeService;
 
-class CostumeController extends Controller
+class SubVendorCostumeController extends Controller
 {
     protected $costumeService;
 
@@ -28,8 +29,8 @@ class CostumeController extends Controller
         $events = Event::get();
         $categories = Category::where('type', 'ecommerce')->get();
         $variants = Variant::all();
-        $costumes = Costume::all();
-        return view('dashboard.admin.costumes.index', compact('events', 'costumes', 'variants', 'categories'));
+        $costumes = Costume::where('user_id', Auth::id())->get();
+        return view('dashboard.subvendor.costumes.index', compact('events', 'costumes', 'variants', 'categories'));
     }
 
     public function store(Request $request)
@@ -59,8 +60,8 @@ class CostumeController extends Controller
         $costume = $this->costumeService->createCostume($data);
 
         if ($costume) {
-            $costumes = Costume::all();
-            $view = view('dashboard.admin.costumes.table', compact('costumes'))->render();
+            $costumes = Costume::where('user_id', Auth::id())->get();
+            $view = view('dashboard.subvendor.costumes.table', compact('costumes'))->render();
 
             return response()->json(['message' => 'Costume created successfully', 'table_html' => $view], 200);
         } else {
@@ -71,7 +72,7 @@ class CostumeController extends Controller
     public function show($id)
     {
         $costume = Costume::findOrFail($id);
-        return view('dashboard.admin.costumes.show', compact('costume'));
+        return view('dashboard.subvendor.costumes.show', compact('costume'));
     }
 
     public function edit($id)
@@ -109,8 +110,8 @@ class CostumeController extends Controller
         $updatedCostume = $this->costumeService->updateCostume($costume, $data);
 
         if ($updatedCostume) {
-            $costumes = Costume::all();
-            $view = view('dashboard.admin.costumes.table', compact('costumes'))->render();
+            $costumes = Costume::where('user_id', Auth::id())->get();
+            $view = view('dashboard.subvendor.costumes.table', compact('costumes'))->render();
 
             return response()->json(['message' => 'Costume updated successfully', 'table_html' => $view], 200);
         } else {
