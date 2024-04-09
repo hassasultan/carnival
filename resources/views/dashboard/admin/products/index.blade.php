@@ -104,6 +104,7 @@
                             {{-- </div> --}}
                         </div>
                         <div id="embed-div">
+                            
                         </div>
                         <div class="form-group">
                             <label for="old_price">Regular Price</label>
@@ -851,8 +852,65 @@
         //     // Clear the file input to remove the deleted image from being submitted
         //     $('#edit_variant_images-' + previewId).val('');
         // });
+        var counter = 0;
+        function cloneForm(id, type) {
+            counter++;
+            var newHtml = '';
+            newHtml += '<div class="parent">';
+            newHtml += '<div class="row">';
+            newHtml += '<div class="col-10"></div>';
+            newHtml += '<div class="col-2">';
+            newHtml += '<button type="button" class="btn btn-danger minus-btn">-</button>';
+            newHtml += '</div>';
+            newHtml += '</div>';
+            newHtml += '<div class="form-group mb-3">';
+            newHtml += '<div class="form-row">';
+            newHtml += '<div class="form-group col-md-6">';
+            newHtml += '<label for="variant_name-' + id +"-"+  counter + '">Variant Name</label>';
+            newHtml += '<input type="' + type + '" class="form-control" id="variant_name-' + id +"-"+  counter +
+                '" name="variant_name[]">';
+            newHtml += '</div>';
+            newHtml += '<div class="form-group col-md-6">';
+            newHtml += '<label for="value-' + id +"-"+  counter + '">Value</label>';
+            newHtml += '<input type="text" class="form-control" name="value[]" required>';
+            newHtml += '</div>';
+            newHtml += '</div>';
+            newHtml += '</div>';
+            newHtml += '<div class="form-group mb-3">';
+            newHtml += '<div class="form-row">';
+            newHtml += '<div class="form-group col-md-12">';
+            newHtml += '<label for="variant_images-' + id +"-"+  counter + '">Variant Images</label>';
+            newHtml += '<input type="file" class="custom-file-input select2" id="variant_images-' +  id +"-"+ counter +
+                '" name="variant_images[]" multiple>';
+            newHtml += '<label class="custom-file-label" for="variant_images-' +  id +"-"+ counter + '" id="variant_images_label-' +
+                counter + '">Choose files</label>';
+            newHtml += '<div class="image-preview" id="image-preview-' + id +"-"+  counter + '"></div>'; // Div to show image preview
+            newHtml += '</div>';
+            newHtml += '</div>';
+            newHtml += '</div>';
+            newHtml += '</div>';
 
+            // Append the cloned form elements to the container
+            document.getElementById('var-card').insertAdjacentHTML('beforeend', newHtml);
+        }
 
+        function removeForm(element) {
+            element.closest('.parent').remove(); // Remove the closest parent form group
+        }
+        function plusBTN() {
+            console.log("check");
+            var id = $("#plus-btn").attr('data-id');
+            var type = $("#plus-btn").attr('data-type');
+            cloneForm(id,type);
+        }
+        // document.getElementById('plus-btn').addEventListener('click', function() {
+        //     cloneForm(); // Call the function to clone the form elements
+        // });
+        document.addEventListener('click', function(event) {
+            if (event.target && event.target.classList.contains('minus-btn')) {
+                removeForm(event.target); // Call the function to remove the form elements
+            }
+        });
         $("#variant_id").change(function() {
             $("#embed-div").html(''); // Clear previous content
             allTickets = $(this).val();
@@ -860,6 +918,13 @@
             $.each(allTickets, function(index, val) {
                 var selectedOption = $('option[value="' + val + '"]');
                 var dataType = selectedOption.attr('data-type');
+                html += '<div class="card p-3" id="var-card">';
+                html += '<div class="row">';
+                html += '<div class="col-10"></div>';
+                html += '<div class="col-2">';
+                html += '<button type="button" class="btn btn-primary w-20" id="plus-btn" onclick="plusBTN()" data-id="'+val+'" data-type="'+dataType+'">+</button>';
+                html += '</div>';
+                html += '</div>';
                 html += '<div class="form-group mb-3">';
                 html += '<div class="form-row">';
                 html += '<div class="form-group col-md-6">';
@@ -888,6 +953,7 @@
                     '">Choose files</label>';
                 html += '<div class="image-preview" id="image-preview-' + val +
                     '"></div>'; // Div to show image preview
+                html += '</div>';
                 html += '</div>';
                 html += '</div>';
                 html += '</div>';
