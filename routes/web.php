@@ -24,6 +24,7 @@ use App\Http\Controllers\vendor\VendorCostumeController;
 use App\Http\Controllers\SubVendor\SubVendorCostumeController;
 use App\Http\Controllers\vendor\VendorProductController;
 use App\Http\Controllers\SubVendor\SubVendorProductController;
+use App\Http\Controllers\MusicController;
 
 
 /*
@@ -119,6 +120,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     //blogs
     Route::resource('blogs', BlogsController::class)->except(['update']);
     Route::put('/blogs/{blog}', [BlogsController::class, 'update'])->name('blogs.update');
+
+    //musics
+    Route::resource('musics', MusicController::class);
 });
 
 
