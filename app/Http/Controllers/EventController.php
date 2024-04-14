@@ -162,9 +162,11 @@ class EventController extends Controller
     // Show the form for editing the specified event.
     public function edit(Event $event)
     {
+        $event->load('user', 'category', 'package');
+
         $packages = Package::all();
         $categories = Category::all();
-        return view('dashboard.admin.events.edit', compact('event', 'packages', 'categories'));
+        return response()->json(['event' => $event, 'packages' => $packages, 'categories' => $categories]);
     }
 
     // Update the specified event in the database.

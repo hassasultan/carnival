@@ -296,57 +296,57 @@
                 }
             });
 
-            $('#package').on('change', function() {
-                var packageId = $(this).val();
-                $('#category_id').empty().append($('<option>', {
-                    value: '',
-                    text: 'Select Category'
-                }));
-                if (packageId) {
-                    $.ajax({
-                        type: 'GET',
-                        url: `{{ route('users.get.categories') }}`,
-                        data: {
-                            package: packageId,
-                            role: $('#role').val(),
-                        },
-                        success: function(response) {
-                            populateCategories(response);
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
-                        }
-                    });
-                }
-            });
+            // $('#package').on('change', function() {
+            //     var packageId = $(this).val();
+            //     $('#category_id').empty().append($('<option>', {
+            //         value: '',
+            //         text: 'Select Category'
+            //     }));
+            //     if (packageId) {
+            //         $.ajax({
+            //             type: 'GET',
+            //             url: `{{ route('users.get.categories') }}`,
+            //             data: {
+            //                 package: packageId,
+            //                 role: $('#role').val(),
+            //             },
+            //             success: function(response) {
+            //                 populateCategories(response);
+            //             },
+            //             error: function(xhr, status, error) {
+            //                 console.error(xhr.responseText);
+            //             }
+            //         });
+            //     }
+            // });
 
-            $('#vendor').on('change', function() {
-                var vendor = $(this).val();
-                $.ajax({
-                    type: 'GET',
-                    url: `{{ route('users.get.categories') }}`,
-                    data: {
-                        vendor: vendor,
-                    },
-                    success: function(response) {
-                        populateCategories(response);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                    }
-                });
-            });
+            // $('#vendor').on('change', function() {
+            //     var vendor = $(this).val();
+            //     $.ajax({
+            //         type: 'GET',
+            //         url: `{{ route('users.get.categories') }}`,
+            //         data: {
+            //             vendor: vendor,
+            //         },
+            //         success: function(response) {
+            //             populateCategories(response);
+            //         },
+            //         error: function(xhr, status, error) {
+            //             console.error(xhr.responseText);
+            //         }
+            //     });
+            // });
 
-            function populateCategories(categories) {
-                var categoryDropdown = $('#category_id');
-                categories.forEach(function(category) {
-                    categoryDropdown.append($('<option>', {
-                        value: category.id,
-                        text: category.title
-                    }));
-                });
-                $('#category_input').show();
-            }
+            // function populateCategories(categories) {
+            //     var categoryDropdown = $('#category_id');
+            //     categories.forEach(function(category) {
+            //         categoryDropdown.append($('<option>', {
+            //             value: category.id,
+            //             text: category.title
+            //         }));
+            //     });
+            //     $('#category_input').show();
+            // }
         });
     </script>
 @endsection

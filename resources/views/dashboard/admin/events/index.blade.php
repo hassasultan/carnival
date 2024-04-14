@@ -150,22 +150,12 @@
                                 </div>
                                 <div id="dress_code_tags" class="mb-3">
                                     <label for="dress_code">Dress Code</label><br>
-                                    {{-- @foreach ($categories as $row)
-                                        <span class="badge badge-primary tag badge-lg" data-id="{{ $row->id }}"
-                                            style="font-size: 1.25em;">
-                                            {{ $row->title }}
-                                        </span>
-                                        <input type="hidden" name="dress_code[]" value="{{ $row->title }}">
-                                    @endforeach --}}
                                     <div id="tag-container">
                                     </div>
                                     <input type="text" id="tag-input" class="form-control"
                                         placeholder="Type and press Enter to add tag" required>
                                     <input type="hidden" id="tag-values" name="dress_code[]" value="">
                                 </div>
-                                {{-- <p id="addNewTagText" style="color: blue; text-decoration: underline; cursor: pointer;">
-                                    Add
-                                    New</p> --}}
                                 <div class="form-group mb-3">
                                     <div>
                                         <label for="ticket_id">Tickets Type</label>
@@ -173,7 +163,6 @@
                                     @foreach ($ticktes as $row)
                                         <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->name }}" />
                                     @endforeach
-                                    {{-- <div class="form-control"> --}}
                                     <select id="ticket_id" name="ticket_id[]" class="form-control select2" multiple>
                                         @foreach ($ticktes as $row)
                                             <option value="{{ $row->id }}"
@@ -181,7 +170,6 @@
                                             </option>
                                         @endforeach
                                     </select>
-                                    {{-- </div> --}}
                                 </div>
                                 <div id="embed-div">
                                 </div>
@@ -315,6 +303,155 @@
             </div>
         </div>
     </div> <!-- new event modal -->
+
+    <!-- edit event modal -->
+    <div class="modal fade" id="editEventModal" tabindex="-1" role="dialog" aria-labelledby="editEventModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editEventModalLabel">Edit Event</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="editEventForm">
+                        @csrf
+                        @method('PUT')
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <label for="edit_name">Title</label>
+                                    <input type="text" id="edit_name" name="name" class="form-control"
+                                        placeholder="Enter event title" value="" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="edit_package_id">Package</label>
+                                    <select id="edit_package_id" name="package_id" class="form-control" required>
+                                        <option value="">Select Package</option>
+                                        @foreach ($packages as $package)
+                                            <option value="{{ $package->id }}">
+                                                {{-- {{ $package->id == $event->package_id ? 'selected' : '' }}> --}}
+                                                {{ $package->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="edit_category_id">Category</label>
+                                    <select id="edit_category_id" name="category_id" class="form-control" required>
+                                        <option value="">Select Category</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">
+                                                {{-- {{ $category->id == $event->category_id ? 'selected' : '' }}> --}}
+                                                {{ $category->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="edit_total_no_of_tickets">Total No. of Tickets</label>
+                                    <input type="number" id="edit_total_no_of_tickets" name="total_no_of_tickets"
+                                        class="form-control" placeholder="Enter Total No of Tickets" value=""
+                                        required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="edit_venue">Venue</label>
+                                    <input type="text" id="edit_venue" name="venue" class="form-control"
+                                        placeholder="Enter Venue Name" value="" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="edit_address">Address</label>
+                                    <input type="text" id="edit_address" name="address" class="form-control"
+                                        placeholder="Enter Venue Address" value="" required>
+                                </div>
+                                <div id="edit_dress_code_tags" class="mb-3">
+                                    <label for="edit_dress_code">Dress Code</label><br>
+                                    <div id="edit_tag-container">
+                                        <!-- Include dress code tags here -->
+                                    </div>
+                                    <input type="text" id="edit_tag-input" class="form-control"
+                                        placeholder="Type and press Enter to add tag" required>
+                                    <input type="hidden" id="edit_tag-values" name="dress_code[]" value="">
+                                </div>
+                                <!-- Include other fields similarly -->
+                                <div class="form-group mb-3">
+                                    <label for="edit_description">Note</label>
+                                    <textarea id="edit_description" name="description" class="form-control" placeholder="Enter event description"></textarea>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div>
+                                        <label for="edit_eventType">Event type</label>
+                                    </div>
+                                    <select id="edit_eventType" name="eventType" class="form-control select2">
+                                        {{-- <option value="private" {{ $event->eventType == 'private' ? 'selected' : '' }}> --}}
+                                        <option value="private">
+                                            Private</option>
+                                        {{-- <option value="public" {{ $event->eventType == 'public' ? 'selected' : '' }}> --}}
+                                        <option value="public">
+                                            Public</option>
+                                    </select>
+                                </div>
+                                <div class="form-row">
+                                    <!-- Include start date and time fields -->
+                                </div>
+                                <div class="form-row">
+                                    <!-- Include end date and time fields -->
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="edit_all_day"
+                                            name="all_day">
+                                        {{-- name="all_day" {{ $event->all_day ? 'checked' : '' }}> --}}
+                                        <label class="custom-control-label" for="edit_all_day">All day</label>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="edit_status">Status</label>
+                                    <select id="edit_status" name="status" class="form-control" required>
+                                        {{-- <option value="active" {{ $event->status == 'active' ? 'selected' : '' }}>Active --}}
+                                        <option value="active">Active
+                                        </option>
+                                        {{-- <option value="inactive" {{ $event->status == 'inactive' ? 'selected' : '' }}> --}}
+                                        <option value="inactive">
+                                            Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="edit_promotional_Video">Promotional Video</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="edit_promotional_Video"
+                                            name="promotional_Video">
+                                        <label class="custom-file-label" for="edit_promotional_Video"
+                                            id="edit_promotional_Video_label">Choose file</label>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="edit_customFile">Banner</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="edit_customFile"
+                                            name="banner">
+                                        <label class="custom-file-label" for="edit_customFile"
+                                            id="edit_customFile_label">Choose file</label>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="edit_additional_images">Additional Images</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input select2"
+                                            id="edit_additional_images" name="additional_images[]" multiple>
+                                        <label class="custom-file-label" for="edit_additional_images"
+                                            id="edit_additional_images_label">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn mb-2 btn-primary">Update Event</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- edit event modal -->
 @endsection
 
 @section('bottom_script')
@@ -653,8 +790,9 @@
                 html += '<span class="text-muted sr-only">Action</span>';
                 html += '</button>';
                 html += '<div class="dropdown-menu dropdown-menu-right shadow">';
-                html += '<a class="dropdown-item" href="' + currentUrl + '/' + user.id +
-                    '/edit"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
+                // html += '<a class="dropdown-item editEventBtn" href="' + currentUrl + '/' + user.id +
+                html += '<a class="dropdown-item editEventBtn" data-id=" ' + user.id +
+                    ' "><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
                 // html += '<a class="dropdown-item" href="#"><i class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove</a>';
                 // html += '<a class="dropdown-item" href="#"><i class="fe fe-flag fe-12 mr-3 text-muted"></i>Assign</a>';
                 html += '</div></td>';
@@ -684,5 +822,68 @@
             }
             $('#user-pagination').html(html);
         }
+
+        // Handle click event for editing a product using event delegation
+        $(document).on('click', '.editEventBtn', function() {
+            var eventId = $(this).data('id');
+            $.ajax({
+                url: '{{ route('events.edit', ':id') }}'.replace(':id', eventId),
+                type: 'GET',
+                success: function(response) {
+                    console.log('edit', response);
+
+                    // Populate the edit form fields with event details
+                    $('#edit_name').val(response.event.name);
+                    $('#edit_package_id').val(response.event.package_id);
+                    $('#edit_category_id').val(response.event.category_id);
+                    $('#edit_total_no_of_tickets').val(response.event.total_no_of_tickets);
+                    $('#edit_venue').val(response.event.venue);
+                    $('#edit_address').val(response.event.address);
+                    $('#edit_description').val(response.event.description);
+                    $('#edit_eventType').val(response.event.eventType);
+                    $('#edit_all_day').prop('checked', response.event.all_day);
+                    $('#edit_status').val(response.event.status);
+
+                    // Set dress code tags if available
+                    var dressCode = response.event.dress_code;
+                    if (dressCode) {
+                        $('#edit_tag-values').val(dressCode);
+                        var dressCodeTags = dressCode.split(',');
+                        var tagContainer = $('#edit_tag-container');
+                        tagContainer.empty();
+                        dressCodeTags.forEach(function(tag) {
+                            tagContainer.append('<span class="badge badge-primary mr-1">' + tag
+                                .trim() + '</span>');
+                        });
+                    }
+
+                    // Set start date and time
+                    $('#edit_start_date').val(response.event.start_date);
+                    $('#edit_start_time').val(response.event.start_time);
+
+                    // Set end date and time
+                    $('#edit_end_date').val(response.event.end_date);
+                    $('#edit_end_time').val(response.event.end_time);
+
+                    // Set additional images (if any)
+                    var additionalImages = response.event.additional_images;
+                    if (additionalImages && additionalImages.length > 0) {
+                        var imagesLabel = $('#edit_additional_images_label');
+                        imagesLabel.text(additionalImages.length + ' files selected');
+                    }
+
+                    // Show the edit modal
+                    $('#editEventModal').modal('show');
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    $('#productMessage').html(
+                        '<div class="alert alert-danger" role="alert">Failed to fetch event details for editing</div>'
+                    );
+                }
+            });
+        });
     </script>
 @endsection
+
+{{-- method="POST" action="{{ route('events.update', ['event' => $events->id]) }}" --}}
