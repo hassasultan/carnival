@@ -21,12 +21,11 @@ class Music extends Model
         'release_date',
         'video',
         'images',
-        'music_file',
+        'music',
         'country',
         'region',
-        'carnival',
+        'event_id',     // carnival
         'cover_image',
-        'show_size_requirement',
         'for_sale',
         'price',
     ];
@@ -52,6 +51,6 @@ class Music extends Model
 
     public function images()
     {
-        return $this->belongsToMany(MusicImage::class)->withTimestamps();
+        return $this->hasMany(MusicImage::class, 'music_id');
     }
 }

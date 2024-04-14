@@ -31,7 +31,7 @@
                     <form action="{{ route('musics.destroy', $music->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-sm rounded text-muted deleteMusicBtn">
+                        <button type="submit" class="btn btn-sm rounded text-muted deleteMusicBtn" data-music-id="{{ $music->id }}">
                             <span class="fe fe-trash fe-12 mr-3"></span>
                             <span class="text-muted sr-only">Remove</span>
                         </button>

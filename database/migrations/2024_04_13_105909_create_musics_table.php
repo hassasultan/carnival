@@ -20,19 +20,20 @@ class CreateMusicsTable extends Migration
             $table->string('producer');
             $table->string('writer');
             $table->string('song_title');
-            $table->date('release_date');
+            $table->string('release_date');
             $table->string('video')->nullable();
-            $table->json('images')->nullable();
-            $table->string('music_file');
+            $table->string('music');
             $table->string('country');
             $table->string('region');
-            $table->string('carnival');
+            $table->unsignedBigInteger('event_id')->nullable();
             $table->string('cover_image');
-            $table->boolean('show_size_requirement');
             $table->boolean('for_sale');
             $table->decimal('price', 8, 2)->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            // Added foreign key constraint
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('set null');
         });
     }
 

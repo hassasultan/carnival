@@ -482,7 +482,6 @@
                 var formData = new FormData($(this)[0]); // Use FormData object to include media files
 
                 console.log('formDataformData', formData);
-                // Assuming formData is your FormData object
                 var hasVariantImages = formData.has('variant_images[]');
                 console.log('Has variant_images[]:', hasVariantImages);
 
