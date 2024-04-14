@@ -49,7 +49,6 @@ class MusicController extends Controller
             return response()->json(['error' => 'Failed to create Music'], 500);
         }
     }
-
     public function update(Request $request, $id)
     {
         $data = $request->except(['cover_image', 'images', 'video']);

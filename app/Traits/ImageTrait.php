@@ -10,13 +10,23 @@ trait ImageTrait
     public function uploadImage(UploadedFile $image, $folder)
     {
         $imageName = time() . '_' . $image->getClientOriginalName();
-        $image->storeAs($folder, $imageName, 'public');
+        $image->move(public_path($folder), $imageName);
+        // $image->storeAs($folder, $imageName, 'public');
 
         return $imageName;
     }
 
+    // public function deleteImage($imagePath)
+    // {
+    //     Storage::disk('public')->delete($imagePath);
+    // }
+    
+
     public function deleteImage($imagePath)
     {
-        Storage::disk('public')->delete($imagePath);
+        $fullPath = public_path($imagePath);
+        if (file_exists($fullPath)) {
+            unlink($fullPath);
+        }
     }
 }
