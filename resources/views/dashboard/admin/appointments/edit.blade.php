@@ -19,14 +19,15 @@
     </style>
     <div class="row justify-content-center">
         <div class="col-12">
-            <h2 class="page-title">Create Appointment</h2>
+            <h2 class="page-title">Edit Appointment</h2>
             <div class="card shadow mb-4">
                 <div class="card-header">
                     <strong class="card-title">Appointment Information</strong>
                 </div>
                 <div class="card-body">
-                    <form id="appointmentForm" method="POST" action="{{ route('appointments.store') }}">
+                    <form id="appointmentForm" method="POST" action="{{ route('appointments.update', $appointment->id) }}">
                         @csrf
+                        @method('PUT')
 
                         <input type="hidden" name="user_id" value="{{ Auth::id() }}">
 
@@ -35,7 +36,9 @@
                             <select id="service_id" type="text" class="form-control" name="service_id" required>
                                 <option value="">Select</option>
                                 @foreach ($services as $service)
-                                    <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                    <option value="{{ $service->id }}"
+                                        {{ $appointment->service_id == $service->id ? 'selected' : '' }}>
+                                        {{ $service->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -43,15 +46,15 @@
                         <div class="form-group">
                             <label for="appointment_datetime">Date & Time</label>
                             <input id="appointment_datetime" type="datetime-local" class="form-control"
-                                name="appointment_datetime" required>
+                                name="appointment_datetime" value="{{ $appointment->appointment_datetime }}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="notes">Notes</label>
-                            <textarea id="notes" class="form-control" name="notes"></textarea>
+                            <textarea id="notes" class="form-control" name="notes">{{ $appointment->notes }}</textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Book Appointment</button>
+                        <button type="submit" class="btn btn-primary">Update Appointment</button>
                     </form>
                 </div>
             </div>
@@ -87,7 +90,7 @@
                         if (response.conflict) {
                             alert(
                                 'Appointment conflicts with existing appointment. Please choose another date & time.'
-                                );
+                            );
                         } else {
                             $('#appointmentForm')[0].submit();
                         }

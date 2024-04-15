@@ -187,7 +187,7 @@
                     search: search
                 },
                 success: function(response) {
-                    console.log("Data fetched successfully on document ready:", response);
+                    // console.log("Data fetched successfully on document ready:", response.data);
                     $('#user-table-body').empty();
                     generateTableRows(response.data);
                     generatePagination(response);
@@ -206,10 +206,11 @@
                 html += '<tr>';
                 html += '<td></td>';
                 html += '<td>' + i + '</td>';
-                html += '<td>' + row.service_id + '</td>';
-                html += '<td class="text-center">' + moment(row.appointment_datetime).format('DD/MM/YYYY hh:mm:ss') + '</td>';
-                html += '<td>' + row.user.first_name + ' ' + row.user.last_name + '</td>';
-                html += '<td>' + row.category.notes + '</td>';
+                html += '<td>' + row.service.name + '</td>';
+                html += '<td class="text-center">' + moment(row.appointment_datetime).format(
+                    'DD/MM/YYYY hh:mm:ss') + '</td>';
+                // html += '<td>' + row.user.first_name + ' ' + row.user.last_name + '</td>';
+                html += '<td>' + row.notes + '</td>';
                 html += '<td>';
                 html += row.status == 1 ? '<span class="badge bg-success">Acrive</span>' :
                     '<span class="badge bg-danger">InActive</span>';
@@ -223,9 +224,11 @@
                 html += '<div class="dropdown-menu dropdown-menu-right shadow">';
                 // html += '<a class="dropdown-item" href="' + currentUrl + '/' + row.id +
                 //     '/edit"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
-                html += '<a class="dropdown-item" href="' + currentUrl + '/' + row.id +
-                    '/edit"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
-                // html += '<a class="dropdown-item" href="#"><i class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove</a>';
+                href = `${currentUrl}/${row.id}/edit`;
+                html += '<a class="dropdown-item" href="' + href +
+                    '"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
+                html +=
+                    '<a class="dropdown-item" href="#"><i class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove</a>';
                 // html += '<a class="dropdown-item" href="#"><i class="fe fe-flag fe-12 mr-3 text-muted"></i>Assign</a>';
                 html += '</div></td>';
                 html += '</tr>';

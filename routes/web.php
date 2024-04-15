@@ -131,11 +131,12 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     //appointments
     Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
-    Route::get('/appointments/add', [AppointmentController::class, 'edit'])->name('appointments.create');
+    Route::get('/appointments/add', [AppointmentController::class, 'create'])->name('appointments.create');
+    Route::post('/appointments/check-conflict', [AppointmentController::class, 'checkConflict'])->name('appointments.check-conflict');
     Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
-    // Route::get('/appointments/{variant}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
-    // Route::put('/appointments/{variant}', [AppointmentController::class, 'update'])->name('appointments.update');
-    // Route::delete('/appointments/{variant}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
+    Route::get('/appointments/{variant}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
+    Route::put('/appointments/{variant}', [AppointmentController::class, 'update'])->name('appointments.update');
+    Route::delete('/appointments/{variant}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
 });
 
 

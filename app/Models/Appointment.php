@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Appointment extends Model
 {
     use HasFactory;
-    protected $fillable = ['service_id', 'appointment_datetime', 'notes','status'];
+    protected $fillable = ['user_id', 'service_id', 'appointment_datetime', 'notes', 'status'];
     public function service()
     {
         return $this->belongsTo(Service::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 }
