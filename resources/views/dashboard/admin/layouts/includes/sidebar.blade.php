@@ -140,11 +140,11 @@
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
-                <a href="#ui-events" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <a href="#ui-appointment" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="fe fe-layers fe-16"></i>
                     <span class="ml-3 item-text">Appointments</span>
                 </a>
-                <ul class="collapse list-unstyled w-100" id="ui-services">
+                <ul class="collapse list-unstyled w-100" id="ui-appointment">
                     <li class="nav-item @if(Route::is('services.index')) active @endif">
                         <a class="nav-link" href="{{ route('services.index') }}"><span
                                 class="ml-1 item-text">Service</span></a>
