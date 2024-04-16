@@ -149,11 +149,11 @@
                         <a class="nav-link" href="{{ route('services.index') }}"><span
                                 class="ml-1 item-text">Service</span></a>
                     </li>
-                    {{-- <li class="nav-item @if(Route::is('tickets.index')) active @endif">
-                        <a class="nav-link" href="{{ route('tickets.index') }}">
-                            Tickets Types
+                    <li class="nav-item @if(Route::is('appointments.index')) active @endif">
+                        <a class="nav-link" href="{{ route('appointments.index') }}">
+                            Appointments
                         </a>
-                    </li> --}}
+                    </li>
                 </ul>
             </li>
         </ul>
