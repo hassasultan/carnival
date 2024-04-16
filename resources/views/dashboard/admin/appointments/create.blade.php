@@ -51,7 +51,7 @@
                             <textarea id="notes" class="form-control" name="notes"></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Book Appointment</button>
+                        <button type="submit" class="btn btn-primary">Create Appointment</button>
                     </form>
                 </div>
             </div>
