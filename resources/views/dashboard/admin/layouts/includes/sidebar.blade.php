@@ -109,7 +109,18 @@
                 <a class="nav-link" href="{{ route('costumes.index') }}">
                     <i class="fe fe-layers fe-16"></i>
                     <span class="ml-3 item-text">Costumes</span>
-                    {{-- <span class="badge badge-pill badge-primary">New</span> --}}
+                </a>
+            </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('musics.index') }}">
+                    <i class="fe fe-layers fe-16"></i>
+                    <span class="ml-3 item-text">Musics</span>
+                </a>
+            </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('appointments.index') }}">
+                    <i class="fe fe-layers fe-16"></i>
+                    <span class="ml-3 item-text">Appointments</span>
                 </a>
             </li>
         </ul>

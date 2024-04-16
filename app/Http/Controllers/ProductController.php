@@ -30,11 +30,12 @@ class ProductController extends Controller
         return view('dashboard.admin.products.index', compact('products', 'variants', 'categories'));
     }
 
-    // public function create()
-    // {
-    //     $categories = Category::all();
-    //     return view('dashboard.admin.products.create', compact('categories'));
-    // }
+    public function create()
+    {
+        $variants = Variant::all();
+        $categories = Category::all();
+        return view('dashboard.admin.products.create', compact('categories', 'variants'));
+    }
 
     // public function store(Request $request)
     // {

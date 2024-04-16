@@ -18,10 +18,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        // 'name',
-        // 'email',
-        // 'password',
-
         'first_name',
         'last_name',
         'email',
@@ -58,7 +54,6 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        // dd($this->role_id === "1");
         return $this->role->name === "Admin";
     }
 
@@ -79,17 +74,14 @@ class User extends Authenticatable
 
     public function hasPermission($permission)
     {
-        // Check if the user has a role
         if (!$this->role) {
             return false;
         }
 
-        // Check if the role has permissions
         if (!$this->role->permissions) {
             return false;
         }
 
-        // Check if the role has the specified permission
         return $this->role->permissions->pluck('name')->contains($permission);
     }
 
