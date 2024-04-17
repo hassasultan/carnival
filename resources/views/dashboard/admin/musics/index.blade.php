@@ -64,7 +64,7 @@
                             <input type="date" class="form-control" id="release_date" name="release_date" required>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="video">Video</label>
+                            <label for="video">Document</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="video_input" name="video" multiple>
                                 <label class="custom-file-label" for="video_input" id="video_label">Choose file</label>
@@ -171,7 +171,7 @@
                             <input type="date" class="form-control" id="edit_release_date" name="release_date" required>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="video">Video</label>
+                            <label for="video">Document</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="edit_video_input" name="video" multiple>
                                 <label class="custom-file-label" for="video_input" id="edit_video_label">Choose file</label>

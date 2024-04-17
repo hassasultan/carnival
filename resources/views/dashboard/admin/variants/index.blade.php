@@ -45,7 +45,13 @@
                         </div>
                         <div class="form-group">
                             <label for="type">Type</label>
-                            <input type="text" class="form-control" id="type" name="type" required>
+                            {{-- <input type="text" class="form-control" id="type" name="type" required> --}}
+                            <select class="form-control" id="type" name="type" required>
+                                <option value="">Select</option>
+                                <option value="text">Text</option>
+                                <option value="color">Color</option>
+                                <option value="both">Both</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
@@ -89,7 +95,12 @@
                         </div>
                         <div class="form-group">
                             <label for="edit_type">Type</label>
-                            <input type="text" class="form-control" id="edit_type" name="type" required>
+                            <select class="form-control" id="edit_type" name="type" required>
+                                <option value="">Select</option>
+                                <option value="text">Text</option>
+                                <option value="color">Color</option>
+                                <option value="both">Both</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="edit_description">Description</label>
