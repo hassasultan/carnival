@@ -32,7 +32,7 @@
                 </td>
                 <td id="created{{ $service->id }}">{{ $service->created_at }}</td>
                 <td id="btn{{ $service->id }}">
-                    <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted editServiceBtn"
+                    {{-- <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted editServiceBtn"
                         type="button" data-id="{{ $service->id }}" data-toggle="modal"
                         data-target="#editServiceModal">
                         <span class="text-muted sr-only">Edit</span>
@@ -44,7 +44,7 @@
                             data-service-id="{{ $service->id }}">
                             <span class="fe fe-trash fe-12 mr-3"></span>
                             <span class="text-muted sr-only">Remove</span>
-                        </button>
+                        </button> --}}
                     </form>
                 </td>
             </tr>

@@ -8,8 +8,8 @@
             <div class="row my-4">
                 <!-- data table -->
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-primary" id="openServiceModal"><span
-                            class="fe fe-plus fe-16 mr-3"></span>New Service</button>
+                    {{-- <button type="button" class="btn btn-primary" id="openServiceModal"><span
+                            class="fe fe-plus fe-16 mr-3"></span>New Service</button> --}}
                     <div class="card shadow">
                         <div class="card-body">
                             <!-- Service Messages -->
