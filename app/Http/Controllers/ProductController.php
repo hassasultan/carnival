@@ -37,31 +37,6 @@ class ProductController extends Controller
         return view('dashboard.admin.products.create', compact('categories', 'variants'));
     }
 
-    // public function store(Request $request)
-    // {
-    //     // dd($request->toArray());
-    //     $request->validate([
-    //         'title' => 'required',
-    //         'category_id' => 'required',
-    //         'description' => 'required',
-    //         'old_price' => 'required',
-    //         'new_price' => 'required',
-    //         'status' => 'required',
-    //         'variant_id' => 'required|array',
-    //         'variant_id.*' => 'exists:variants,id',
-    //     ]);
-
-    //     $product = $this->productService->createProduct($request->all());
-
-    //     if ($product) {
-    //         $products = Product::all();
-    //         $view = view('dashboard.admin.products.table', compact('products'))->render();
-
-    //         return response()->json(['message' => 'Product created successfully', 'table_html' => $view], 200);
-    //     } else {
-    //         return response()->json(['error' => 'Failed to create Product'], 500);
-    //     }
-    // }
     public function store(Request $request)
     {
         // dd($request->all());

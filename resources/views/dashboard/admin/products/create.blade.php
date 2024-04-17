@@ -682,12 +682,12 @@
                 newHtml += '<div class="form-group mb-3">';
                 newHtml += '<div class="form-row">';
                 newHtml += '<div class="form-group col-md-6">';
-                newHtml += '<label for="variant_name-' + id + "-" + counter + '">Variant Name</label>';
-                newHtml += '<input type="text" class="form-control" id="variant_name-' + id + "-" + counter +
+                newHtml += '<label for="variant_name-1' + id + "-" + counter + '">Variant Name</label>';
+                newHtml += '<input type="text" class="form-control" id="variant_name-1' + id + "-" + counter +
                     '" name="variant_name[]">';
                 newHtml += '</div>';
                 newHtml += '<div class="form-group col-md-6">';
-                newHtml += '<label for="value-' + id + "-" + counter + '">Value</label>';
+                newHtml += '<label for="value-1' + id + "-" + counter + '">Value</label>';
                 newHtml += '<input type="text" class="form-control" name="value[]" required>';
                 newHtml += '</div>';
                 newHtml += '</div>';
@@ -695,13 +695,13 @@
                 newHtml += '<div class="form-group mb-3">';
                 newHtml += '<div class="form-row">';
                 newHtml += '<div class="form-group col-md-12">';
-                newHtml += '<label for="variant_images-' + id + "-" + counter + '">Variant Images</label>';
-                newHtml += '<input type="file" class="custom-file-input select2" id="variant_images-' + id + "-" + counter +
+                newHtml += '<label for="variant_images-1' + id + "-" + counter + '">Variant Images</label>';
+                newHtml += '<input type="file" class="custom-file-input select2" id="variant_images-1' + id + "-" + counter +
                     '" name="variant_images[]" multiple>';
-                newHtml += '<label class="custom-file-label" for="variant_images-' + id + "-" + counter +
+                newHtml += '<label class="custom-file-label" for="variant_images-1' + id + "-" + counter +
                     '" id="variant_images_label-' +
                     counter + '">Choose files</label>';
-                newHtml += '<div class="image-preview" id="image-preview-' + id + "-" + counter +
+                newHtml += '<div class="image-preview" id="image-preview-1' + id + "-" + counter +
                 '"></div>'; // Div to show image preview
                 newHtml += '</div>';
                 newHtml += '</div>';
@@ -709,12 +709,12 @@
                 newHtml += '<div class="form-group mb-3">';
                 newHtml += '<div class="form-row">';
                 newHtml += '<div class="form-group col-md-6">';
-                newHtml += '<label for="variant_name-' + id + "-" + counter + '">Variant Name</label>';
-                newHtml += '<input type="color" class="form-control" id="variant_name-' + id + "-" + counter +
+                newHtml += '<label for="variant_name-2' + id + "-" + counter + '">Variant Name</label>';
+                newHtml += '<input type="color" class="form-control" id="variant_name-2' + id + "-" + counter +
                     '" name="variant_name[]">';
                 newHtml += '</div>';
                 newHtml += '<div class="form-group col-md-6">';
-                newHtml += '<label for="value-' + id + "-" + counter + '">Value</label>';
+                newHtml += '<label for="value-2' + id + "-" + counter + '">Value</label>';
                 newHtml += '<input type="text" class="form-control" name="value[]" required>';
                 newHtml += '</div>';
                 newHtml += '</div>';
@@ -722,13 +722,13 @@
                 newHtml += '<div class="form-group mb-3">';
                 newHtml += '<div class="form-row">';
                 newHtml += '<div class="form-group col-md-12">';
-                newHtml += '<label for="variant_images-' + id + "-" + counter + '">Variant Images</label>';
-                newHtml += '<input type="file" class="custom-file-input select2" id="variant_images-' + id + "-" + counter +
+                newHtml += '<label for="variant_images-2' + id + "-" + counter + '">Variant Images</label>';
+                newHtml += '<input type="file" class="custom-file-input select2" id="variant_images-2' + id + "-" + counter +
                     '" name="variant_images[]" multiple>';
-                newHtml += '<label class="custom-file-label" for="variant_images-' + id + "-" + counter +
+                newHtml += '<label class="custom-file-label" for="variant_images-2' + id + "-" + counter +
                     '" id="variant_images_label-' +
                     counter + '">Choose files</label>';
-                newHtml += '<div class="image-preview" id="image-preview-' + id + "-" + counter +
+                newHtml += '<div class="image-preview" id="image-preview-2' + id + "-" + counter +
                 '"></div>'; // Div to show image preview
                 newHtml += '</div>';
                 newHtml += '</div>';
@@ -806,43 +806,12 @@
                     html += '<div class="form-group mb-3">';
                     html += '<div class="form-row">';
                     html += '<div class="form-group col-md-6">';
-                    html += '<label for="variant_name-' + val + '">Variant Name</label>';
-                    html += '<input type="text" class="form-control" id="variant_name-' + val +
+                    html += '<label for="variant_name-1' + val + '">Variant Name</label>';
+                    html += '<input type="text" class="form-control" id="variant_name-1' + val +
                         '" name="variant_name[]">';
                     html += '</div>';
                     html += '<div class="form-group col-md-6">';
-                    html += '<label for="value-' + val + '">Value</label>';
-                    if (1 + 1 == 2) {
-                        html += '<input type="text" class="form-control" name="value[]" required>';
-                    } else {
-                        html += '<input type="color" class="form-control" name="value[]" required>';
-                    }
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</div>';
-                    html += '<div class="form-group mb-3">';
-                    html += '<div class="form-row">';
-                    html += '<div class="form-group col-md-12">';
-                    html += '<label for="variant_images-' + val + '">Variant Images</label>';
-                    html += '<input type="file" class="custom-file-input select2" id="variant_images-' + val +
-                        '" name="variant_images[]" multiple>';
-                    html += '<label class="custom-file-label" for="variant_images-' + val +
-                        '" id="variant_images_label-' + val +
-                        '">Choose files</label>';
-                    html += '<div class="image-preview" id="image-preview-' + val +
-                        '"></div>'; // Div to show image preview
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</div>';
-                    html += '<div class="form-group mb-3">';
-                    html += '<div class="form-row">';
-                    html += '<div class="form-group col-md-6">';
-                    html += '<label for="variant_name-' + val + '">Variant Name</label>';
-                    html += '<input type="color" class="form-control" id="variant_name-' + val +
-                        '" name="variant_name[]">';
-                    html += '</div>';
-                    html += '<div class="form-group col-md-6">';
-                    html += '<label for="value-' + val + '">Value</label>';
+                    html += '<label for="value-1' + val + '">Value</label>';
                     html += '<input type="text" class="form-control" name="value[]" required>';
                     html += '</div>';
                     html += '</div>';
@@ -850,13 +819,40 @@
                     html += '<div class="form-group mb-3">';
                     html += '<div class="form-row">';
                     html += '<div class="form-group col-md-12">';
-                    html += '<label for="variant_images-' + val + '">Variant Images</label>';
-                    html += '<input type="file" class="custom-file-input select2" id="variant_images-' + val +
+                    html += '<label for="variant_images-1' + val + '">Variant Images</label>';
+                    html += '<input type="file" class="custom-file-input select2" id="variant_images-1' + val +
                         '" name="variant_images[]" multiple>';
-                    html += '<label class="custom-file-label" for="variant_images-' + val +
-                        '" id="variant_images_label-' + val +
+                    html += '<label class="custom-file-label" for="variant_images-1' + val +
+                        '" id="variant_images_label-1' + val +
                         '">Choose files</label>';
-                    html += '<div class="image-preview" id="image-preview-' + val +
+                    html += '<div class="image-preview" id="image-preview-1' + val +
+                        '"></div>'; // Div to show image preview
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '<div class="form-group mb-3">';
+                    html += '<div class="form-row">';
+                    html += '<div class="form-group col-md-6">';
+                    html += '<label for="variant_name-2' + val + '">Variant Name</label>';
+                    html += '<input type="color" class="form-control" id="variant_name-2' + val +
+                        '" name="variant_name[]">';
+                    html += '</div>';
+                    html += '<div class="form-group col-md-6">';
+                    html += '<label for="value-2' + val + '">Value</label>';
+                    html += '<input type="text" class="form-control" name="value[]" required>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '<div class="form-group mb-3">';
+                    html += '<div class="form-row">';
+                    html += '<div class="form-group col-md-12">';
+                    html += '<label for="variant_images-2' + val + '">Variant Images</label>';
+                    html += '<input type="file" class="custom-file-input select2" id="variant_images-2' + val +
+                        '" name="variant_images[]" multiple>';
+                    html += '<label class="custom-file-label" for="variant_images-2' + val +
+                        '" id="variant_images_label-2' + val +
+                        '">Choose files</label>';
+                    html += '<div class="image-preview" id="image-preview-2' + val +
                         '"></div>'; // Div to show image preview
                     html += '</div>';
                     html += '</div>';
