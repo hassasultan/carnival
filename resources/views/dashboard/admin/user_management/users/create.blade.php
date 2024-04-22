@@ -170,15 +170,15 @@
                         </span>
                     @enderror
                 </div>
-                <div class="form-group" id="category_input" style="display: none;">
+                {{-- <div class="form-group" id="category_input" style="display: none;">
                     <label for="category_id">Category</label>
                     <select id="category_id" name="category_id" class="form-control" required>
                         <option value="">Select Category</option>
                     </select>
-                </div>
+                </div> --}}
                 <div class="form-row">
-                    <div class="col-md-6">
-                        <div class="form-group list-group mb-3 mt-3 shadow">
+                    <div class="col-md-6 packages-div">
+                        <div class="form-group list-group mb-3 mt-3 shadow" style="display: none;" id="ecommerce-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
@@ -186,14 +186,15 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="e_com" name="e_com">
+                                            <input type="checkbox" class="custom-control-input" value="1" id="e_com"
+                                                name="ecommerce">
                                             <label class="custom-control-label" for="e_com"></label>
                                         </div>
                                     </div> <!-- .col -->
                                 </div> <!-- .row -->
                             </div> <!-- .list-group-item -->
                         </div>
-                        <div class="form-group list-group mb-3 mt-3 shadow">
+                        <div class="form-group list-group mb-3 mt-3 shadow" style="display: none;" id="music-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
@@ -201,14 +202,15 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="music" name="music">
+                                            <input type="checkbox" class="custom-control-input" value="1" id="music"
+                                                name="music">
                                             <label class="custom-control-label" for="music"></label>
                                         </div>
                                     </div> <!-- .col -->
                                 </div> <!-- .row -->
                             </div> <!-- .list-group-item -->
                         </div>
-                        <div class="form-group list-group mb-3 mt-3 shadow">
+                        <div class="form-group list-group mb-3 mt-3 shadow" style="display: none;" id="appointment-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
@@ -216,7 +218,8 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="appointments" name="appointments">
+                                            <input type="checkbox" class="custom-control-input" value="1" id="appointments"
+                                                name="appointment">
                                             <label class="custom-control-label" for="appointments"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -224,8 +227,8 @@
                             </div> <!-- .list-group-item -->
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group list-group mb-3 mt-3 shadow">
+                    <div class="col-md-6 packages-div">
+                        <div class="form-group list-group mb-3 mt-3 shadow" style="display: none;" id="events-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
@@ -233,14 +236,15 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="events" name="events">
+                                            <input type="checkbox" class="custom-control-input" value="1" id="events"
+                                                name="events">
                                             <label class="custom-control-label" for="events"></label>
                                         </div>
                                     </div> <!-- .col -->
                                 </div> <!-- .row -->
                             </div> <!-- .list-group-item -->
                         </div>
-                        <div class="form-group list-group mb-3 mt-3 shadow">
+                        <div class="form-group list-group mb-3 mt-3 shadow" style="display: none;" id="ad_space-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
@@ -248,14 +252,15 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="ads" name="ads">
+                                            <input type="checkbox" class="custom-control-input" value="1" id="ads"
+                                                name="ad_space">
                                             <label class="custom-control-label" for="ads"></label>
                                         </div>
                                     </div> <!-- .col -->
                                 </div> <!-- .row -->
                             </div> <!-- .list-group-item -->
                         </div>
-                        <div class="form-group list-group mb-3 mt-3 shadow">
+                        <div class="form-group list-group mb-3 mt-3 shadow" style="display: none;" id="blogging-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
@@ -263,7 +268,8 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="blogs" name="blogs">
+                                            <input type="checkbox" class="custom-control-input" value="1" id="blogs"
+                                                name="blogging">
                                             <label class="custom-control-label" for="blogs"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -281,18 +287,22 @@
 @section('bottom_script')
     <script>
         $(document).ready(function() {
+
             $('#role').on('change', function() {
                 var role = $(this).val();
                 console.log(role);
                 if (role == 2) {
                     $('#package_input').show();
                     $('#vendors_input').hide();
+                    $('.packages-div').hide();
                 } else if (role == 3) {
                     $('#package_input').hide();
                     $('#vendors_input').show();
+                    $('.packages-div').show();
                 } else {
                     $('#package_input').hide();
                     $('#vendors_input').hide();
+                    $('.packages-div').hide();
                 }
             });
 
@@ -324,18 +334,111 @@
             //     var vendor = $(this).val();
             //     $.ajax({
             //         type: 'GET',
-            //         url: `{{ route('users.get.categories') }}`,
+            //         url: '{{ route('get.single.user', ':id') }}'.replace(':id', vendor),
             //         data: {
             //             vendor: vendor,
             //         },
             //         success: function(response) {
-            //             populateCategories(response);
+            //             console.log('response', response.vendor);
+            //             console.log('package', response['vendor']['package']);
+            //             if (response['vendor']['package']['ecommerce'] == 'true') {
+            //                 console.log('ecommerce');
+            //                 $('#ecommerce-box').prop('checked', true).closest('.list-group').show();
+            //             } else {
+            //                 $('#ecommerce-box').prop('checked', false).closest('.list-group').hide();
+            //             }
+            //             if (response['vendor']['package']['events'] == 'true') {
+            //                 console.log('events');
+            //                 $('#events-box').prop('checked', true).closest('.list-group').show();
+            //             } else {
+            //                 $('#events-box').prop('checked', false).closest('.list-group').hide();
+            //             }
+            //             if (response['vendor']['package']['music'] == 'true') {
+            //                 console.log('music');
+            //                 $('#music-box').prop('checked', true).closest('.list-group').show();
+            //             } else {
+            //                 $('#music-box').prop('checked', false).closest('.list-group').hide();
+            //             }
+            //             if (response['vendor']['package']['appointment'] == 'true') {
+            //                 console.log('appointment');
+            //                 $('#appointment-box').prop('checked', true).closest('.list-group')
+            //                     .show();
+            //             } else {
+            //                 $('#appointment-box').prop('checked', false).closest('.list-group')
+            //                     .hide();
+            //             }
+            //             if (response['vendor']['package']['ad_space'] == 'true') {
+            //                 console.log('ad_space');
+            //                 $('#ad_space-box').prop('checked', true).closest('.list-group').show();
+            //             } else {
+            //                 $('#ad_space-box').prop('checked', false).closest('.list-group').hide();
+            //             }
+            //             if (response['vendor']['package']['blogging'] == 'true') {
+            //                 console.log('blogging');
+            //                 $('#blogging-box').prop('checked', true).closest('.list-group').show();
+            //             } else {
+            //                 $('#blogging-box').prop('checked', false).closest('.list-group').hide();
+            //             }
             //         },
             //         error: function(xhr, status, error) {
             //             console.error(xhr.responseText);
             //         }
             //     });
             // });
+
+            $('#vendor').on('change', function() {
+                var vendor = $(this).val();
+                $('#ecommerce-box').hide();
+                $('#music-box').hide();
+                $('#appointment-box').hide();
+                $('#events-box').hide();
+                $('#ad_space-box').hide();
+                $('#blogging-box').hide();
+
+                $.ajax({
+                    type: 'GET',
+                    url: '{{ route('get.single.user', ':id') }}'.replace(':id', vendor),
+                    data: {
+                        vendor: vendor,
+                    },
+                    success: function(response) {
+                        
+                        $.each(response['vendor']['package'], function(feature, value) {
+                            var checkbox = $('#' + feature +
+                                '-box input[type="checkbox"]');
+                            var listGroup = $('#' + feature + '-box');
+
+                            
+                            checkbox.prop('checked', value === 'true');
+                            listGroup.toggle(value === 'true');
+                        });
+
+                        
+                        repositionDivs();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+
+            
+            function repositionDivs() {
+                
+                var visibleDivs = $('.form-group.list-group:visible');
+                
+                var halfLength = Math.ceil(visibleDivs.length / 2);
+
+                $('.packages-div').empty();
+                
+                for (var i = 0; i < halfLength; i++) {
+                    var divA = visibleDivs.eq(i);
+                    var divB = visibleDivs.eq(i + halfLength);
+                    
+                    $('.packages-div').eq(0).append(divA);
+                    $('.packages-div').eq(1).append(divB);
+                }
+            }
 
             // function populateCategories(categories) {
             //     var categoryDropdown = $('#category_id');

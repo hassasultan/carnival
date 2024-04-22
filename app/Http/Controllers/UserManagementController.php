@@ -80,7 +80,7 @@ class UserManagementController extends Controller
                 'max:255',
                 Rule::unique('users')->ignore($userId),
             ],
-            'phone' => ['required', 'string', 'max:11'],
+            'phone' => ['required', 'string', 'max:18'],
             'address' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'state' => ['required', 'string', 'max:255'],
@@ -108,6 +108,7 @@ class UserManagementController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
         $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -134,6 +135,12 @@ class UserManagementController extends Controller
             SubVendor::create([
                 'user_id' => $user->id,
                 'vendor_id' => $data['vendor_id'],
+                'ecommerce' => isset($data['ecommerce']) ? $data['ecommerce'] : 0,
+                'events' => isset($data['events']) ? $data['events'] : 0,
+                'music' => isset($data['music']) ? $data['music'] : 0,
+                'appointment' => isset($data['appointment']) ? $data['appointment'] : 0,
+                'ad_space' => isset($data['ad_space']) ? $data['ad_space'] : 0,
+                'blogging' => isset($data['blogging']) ? $data['blogging'] : 0,
                 'status' => 1,
             ]);
         }
@@ -153,13 +160,13 @@ class UserManagementController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        
+
         $validator = $this->validator($request->all(), $id);
-        
+
         if ($validator->fails()) {
             return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $user->update([
@@ -190,6 +197,13 @@ class UserManagementController extends Controller
 
         return redirect()->route('users.index')
             ->with('success', 'User updated successfully.');
+    }
+
+    public function getSingleUser($id)
+    {
+        $user = User::with('vendor', 'subVendor', 'vendor.package')->find($id);
+
+        return response()->json($user);
     }
 
 }

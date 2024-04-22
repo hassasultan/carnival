@@ -207,8 +207,8 @@
                 html += '<td></td>';
                 html += '<td>' + i + '</td>';
                 html += '<td>' + row.service.name + '</td>';
-                html += '<td class="text-center">' + moment(row.appointment_datetime).format(
-                    'DD/MM/YYYY hh:mm:ss') + '</td>';
+                html += '<td class="text-center">' + moment(row.slots.datetime).format(
+                    'DD/MM/YYYY hh:mm:ss A') + '</td>';
                 // html += '<td>' + row.user.first_name + ' ' + row.user.last_name + '</td>';
                 html += '<td>' + row.notes + '</td>';
                 html += '<td>';

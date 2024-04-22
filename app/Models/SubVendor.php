@@ -8,12 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubVendor extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'user_id',
         'vendor_id',
+        'events',
+        'music',
+        'appointment',
+        'ad_space',
+        'blogging',
+        'ecommerce',
         'status',
     ];
 
