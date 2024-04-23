@@ -137,7 +137,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/appointments/{variant}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
     Route::put('/appointments/{variant}', [AppointmentController::class, 'update'])->name('appointments.update');
     Route::delete('/appointments/{variant}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
-    
+
     // get vendot
     Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
 });
@@ -213,3 +213,10 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
     Route::delete('/costumes/{costume}', [SubVendorCostumeController::class, 'destroy'])->name('subVendor.costumes.destroy');
 
 });
+
+
+//Frontend Routes
+
+Route::get('/mascamps', function(){
+    return view('ShopFrontend.mascamps');
+})->name('mascamps');
