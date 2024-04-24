@@ -218,5 +218,5 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
 //Frontend Routes
 
 Route::get('/mascamps', function(){
-    return view('ShopFrontend.mascamps');
+    return view('ShopFrontend.vendors');
 })->name('mascamps');
