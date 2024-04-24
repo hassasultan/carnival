@@ -9,7 +9,66 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" type="text/css" href="{{asset('shopAssets/css/style.css')}}">
+<style>
+ /* Skeleton loading animation */
+.skeleton-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
+.skeleton-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.skeleton-table th,
+.skeleton-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.skeleton-item {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skeleton-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.skeleton-content {
+    padding: 20px;
+}
+
+.skeleton-line {
+    height: 12px;
+    margin-bottom: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+</style>
     @yield('head')
 
 
