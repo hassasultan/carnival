@@ -747,10 +747,8 @@
                         page: page
                     },
                     success: function(response) {
-                        // Clear existing product listing
+                        console.log(response);
                         $('#product-listing').empty();
-
-                        // Append each product to the product listing
                         $('#product-listing').removeClass('blur-effect');
                         $.each(response.data, function(index, product) {
                             var percentageDiscount = Math.round(((product.old_price - product
@@ -796,7 +794,33 @@
                         });
 
                         // Display pagination links
-                        $('.pagination').html(response.links);
+                        $('.pagination').empty();
+                        pre = 0;
+                        nxt = 0;
+                        pre = response.current_page - 1;
+                        var previousPageHtml = `
+                            <li class="action">
+                                <a href="#" data-page="${pre}"><span><i aria-hidden="true" class="fa fa-angle-left"></i></span></a>
+                            </li>
+                        `;
+                        $('.pagination').append(previousPageHtml);
+                        for (let i = 1; i <= response.last_page; i++) {
+                            var activeClass = i === response.current_page ? 'active' : '';
+                                var paginationHtml = `
+                            <li class="${activeClass}">
+                                <a href="#" data-page="${i}">${i}</a>
+                            </li>
+                        `;
+                            $('.pagination').append(paginationHtml);
+                        }
+                        nxt = response.current_page + 1;
+                                var nextPageHtml = `
+                            <li class="action">
+                                <a href="#" data-page="${nxt}"><span><i aria-hidden="true" class="fa fa-angle-right"></i></span></a>
+                            </li>
+                        `;
+                        $('.pagination').append(nextPageHtml);
+
                     },
                     error: function(xhr, status, error) {
                         console.error(error);
@@ -810,7 +834,7 @@
             // Pagination click event handler
             $(document).on('click', '.pagination a', function(e) {
                 e.preventDefault();
-                var page = $(this).attr('href').split('page=')[1];
+                var page = $(this).data('page'); // Get the page number from the clicked link
                 fetchProducts(page);
             });
         });
