@@ -100,6 +100,13 @@
                             <input type="text" class="form-control" id="new_price" name="new_price">
                         </div>
                         <div class="form-group">
+                            <label for="sale">On Sale</label>
+                            <select class="form-control" id="sale" name="sale" required>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="status">Status</label>
                             <select class="form-control" id="status" name="status" required>
                                 <option value="1">Active</option>

@@ -31,4 +31,8 @@ class Vendor extends Model
     {
         return $this->belongsTo(Package::class);
     }
+    public function subvendor()
+    {
+        return $this->hasMany(SubVendor::class);
+    }
 }
