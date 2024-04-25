@@ -74,7 +74,7 @@
 
 
 </head>
-<body class="cms-index-index index-opt-1">
+<body class="cms-index-index index-opt-1 @yield('body_classes')">
 
     <div class="wrapper">
 
