@@ -9,66 +9,66 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" type="text/css" href="{{asset('shopAssets/css/style.css')}}">
-<style>
- /* Skeleton loading animation */
-.skeleton-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
+    <style>
+        /* Skeleton loading animation */
+        .skeleton-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-.skeleton-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+        .skeleton-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-.skeleton-table th,
-.skeleton-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
+        .skeleton-table th,
+        .skeleton-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
 
-.skeleton-item {
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    overflow: hidden;
-    position: relative;
-}
+        .skeleton-item {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
 
-.skeleton-item::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-    animation: loading 1.5s infinite;
-}
+        .skeleton-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            animation: loading 1.5s infinite;
+        }
 
-@keyframes loading {
-    0% {
-        left: -100%;
-    }
+        @keyframes loading {
+            0% {
+                left: -100%;
+            }
 
-    100% {
-        left: 100%;
-    }
-}
+            100% {
+                left: 100%;
+            }
+        }
 
-.skeleton-content {
-    padding: 20px;
-}
+        .skeleton-content {
+            padding: 20px;
+        }
 
-.skeleton-line {
-    height: 12px;
-    margin-bottom: 10px;
-    background-color: #ddd;
-    border-radius: 5px;
-}
+        .skeleton-line {
+            height: 12px;
+            margin-bottom: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+        }
 
-</style>
+    </style>
     @yield('head')
 
 
@@ -124,24 +124,14 @@
                         </li>
                         <li class="dropdown switcher  switcher-language">
                             <a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle switcher-trigger" aria-expanded="false">
-                                <img class="switcher-flag" alt="flag" src="images/flags/flag_english.png">
+                                <img class="switcher-flag" alt="flag" src="{{asset('shopAssets/images/flags/flag_english.png')}}">
                                 <span>English</span>
                                 <i aria-hidden="true" class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu switcher-options ">
                                 <li class="switcher-option">
                                     <a href="#">
-                                        <img class="switcher-flag" alt="flag" src="images/flags/flag_english.png">English
-                                    </a>
-                                </li>
-                                <li class="switcher-option">
-                                    <a href="#">
-                                        <img class="switcher-flag" alt="flag" src="images/flags/flag_french.png">French
-                                    </a>
-                                </li>
-                                <li class="switcher-option">
-                                    <a href="#">
-                                        <img class="switcher-flag" alt="flag" src="images/flags/flag_germany.png">Germany
+                                        <img class="switcher-flag" alt="flag" src="{{asset('shopAssets/images/flags/flag_english.png')}}">English
                                     </a>
                                 </li>
                             </ul>
@@ -179,7 +169,7 @@
 
                             <!-- logo -->
                             <strong class="logo">
-                                <a href=""><img src="images/media/index1/logo.png" alt="logo"></a>
+                                <a href=""><img src="{{asset('shopAssets/images/media/index1/logo.png')}}" alt="logo"></a>
                             </strong>
 
                         </div>
@@ -207,7 +197,7 @@
                                                 <ol class="minicart-items">
                                                     <li class="product-item">
                                                         <a class="product-item-photo" href="#" title="The Name Product">
-                                                            <img class="product-image-photo" src="images/media/index1/minicart.jpg" alt="The Name Product">
+                                                            <img class="product-image-photo" src="{{asset('shopAssets/images/media/index1/minicart.jpg')}}" alt="The Name Product">
                                                         </a>
                                                         <div class="product-item-details">
                                                             <strong class="product-item-name">
@@ -228,7 +218,7 @@
                                                     </li>
                                                     <li class="product-item">
                                                         <a class="product-item-photo" href="#" title="The Name Product">
-                                                            <img class="product-image-photo" src="images/media/index1/minicart2.jpg" alt="The Name Product">
+                                                            <img class="product-image-photo" src="{{asset('shopAssets/images/media/index1/minicart2.jpg')}}" alt="The Name Product">
                                                         </a>
                                                         <div class="product-item-details">
                                                             <strong class="product-item-name">
@@ -329,7 +319,7 @@
                                 <ul class="ui-categori">
                                     <li class="parent">
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat1.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat1.png')}}" alt="nav-cat"></span>
                                             Electronics
                                         </a>
                                         <span class="toggle-submenu"></span>
@@ -402,13 +392,13 @@
                                     </li>
                                     <li class="parent">
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat2.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat2.png')}}" alt="nav-cat"></span>
                                             Sports & Outdoors
                                         </a>
                                         <span class="toggle-submenu"></span>
                                         <div class="submenu">
                                             <div class="categori-img">
-                                                <a href=""><img src="images/media/index1/categori-img1.jpg" alt="categori-img"></a>
+                                                <a href=""><img src="{{asset('shopAssets/images/media/index1/categori-img1.jpg')}}" alt="categori-img"></a>
                                             </div>
                                             <ul class="categori-list">
                                                 <li class="col-sm-3">
@@ -456,7 +446,7 @@
                                     </li>
                                     <li class="parent">
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat3.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat3.png')}}" alt="nav-cat"></span>
                                             Smartphone & Tablets
                                         </a>
                                         <span class="toggle-submenu"></span>
@@ -480,7 +470,7 @@
                                                 <div class="product-item product-item-opt-1">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img alt="product name" src="images/media/index1/product-menu1.jpg"></a>
+                                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('shopAssets/images/media/index1/product-menu1.jpg')}}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a href="">Asus Ispiron 20</a></strong>
@@ -494,7 +484,7 @@
                                                 <div class="product-item product-item-opt-1">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img alt="product name" src="images/media/index1/product-menu2.jpg"></a>
+                                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('shopAssets/images/media/index1/product-menu2.jpg')}}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a href="">Electronics Ispiron 20 </a></strong>
@@ -508,7 +498,7 @@
                                                 <div class="product-item product-item-opt-1">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img alt="product name" src="images/media/index1/product-menu3.jpg"></a>
+                                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('shopAssets/images/media/index1/product-menu3.jpg')}}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a href="">Samsung Ispiron 20 </a></strong>
@@ -522,7 +512,7 @@
                                                 <div class="product-item product-item-opt-1">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img alt="product name" src="images/media/index1/product-menu4.jpg"></a>
+                                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('shopAssets/images/media/index1/product-menu4.jpg')}}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a href="">Electronics Ispiron 20 </a></strong>
@@ -535,7 +525,7 @@
                                                 <div class="product-item product-item-opt-1">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img alt="product name" src="images/media/index1/product-menu4.jpg"></a>
+                                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('shopAssets/images/media/index1/product-menu4.jpg')}}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a href="">Samsung Ispiron 20 </a></strong>
@@ -551,67 +541,67 @@
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat4.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat4.png')}}" alt="nav-cat"></span>
                                             Health & Beauty
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat5.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat5.png')}}" alt="nav-cat"></span>
                                             Bags, Shoes & Accessories
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat6.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat6.png')}}" alt="nav-cat"></span>
                                             Toys & Hobbies
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat7.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat7.png')}}" alt="nav-cat"></span>
                                             Computers & Networking
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat8.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat8.png')}}" alt="nav-cat"></span>
                                             Laptops & Accessories
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat9.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat9.png')}}" alt="nav-cat"></span>
                                             Jewelry & Watches
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat10.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat10.png')}}" alt="nav-cat"></span>
                                             Flashlights & Lamps
                                         </a>
                                     </li>
                                     <li class="cat-link-orther">
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat10.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat10.png')}}" alt="nav-cat"></span>
                                             Flashlights & Lamps
                                         </a>
                                     </li>
                                     <li class="cat-link-orther">
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat9.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat9.png')}}" alt="nav-cat"></span>
                                             Cameras & Photo
                                         </a>
                                     </li>
                                     <li class="cat-link-orther">
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat10.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat10.png')}}" alt="nav-cat"></span>
                                             Flashlights & Lamps
                                         </a>
                                     </li>
                                     <li class="cat-link-orther">
                                         <a href="">
-                                            <span class="icon"><img src="images/icon/index1/nav-cat9.png" alt="nav-cat"></span>
+                                            <span class="icon"><img src="{{asset('shopAssets/images/icon/index1/nav-cat9.png')}}" alt="nav-cat"></span>
                                             Cameras & Photo
                                         </a>
                                     </li>
@@ -629,207 +619,16 @@
                         <!-- menu -->
                         <div class="block-nav-menu">
                             <div class="clearfix"><span data-action="close-nav" class="close-nav"><span>close</span></span></div>
-
                             <ul class="ui-menu">
-                                <li class="parent parent-megamenu active">
+                                <li class="active">
                                     <a >Home</a>
-                                    <span class="toggle-submenu"></span>
-                                    <div class="megamenu drop-menu">
-                                        <ul>
-                                            <li class="col-md-3">
-                                                <strong class="title"><a ><span>Home </span></a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="home1.html">Home page 1</a></li>
-                                                    <li><a href="home2.html">Home page 2</a></li>
-                                                    <li><a href="home3.html">Home page 3</a></li>
-                                                    <li><a href="home4.html">Home page 4</a></li>
-                                                    <li><a href="home5.html">Home page 5</a></li>
-                                                    <li><a href="home6.html">Home page 6</a></li>
-                                                    <li><a href="home7.html">Home page 7</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-md-3">
-                                                <strong class="title"><a ><span>Home </span></a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="home8.html">Home page 8</a></li>
-                                                    <li><a href="home9.html">Home page 9</a></li>
-                                                    <li><a href="home10.html">Home page 10</a></li>
-                                                    <li><a href="home11.html">Home page 11</a></li>
-                                                    <li><a href="home12.html">Home page 12</a></li>
-                                                    <li><a href="home13.html">Home page 13</a></li>
-                                                    <li><a href="home14.html">Home page 14</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-md-3">
-                                                <strong class="title"><a ><span>Page </span></a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="Login.html">Login</a></li>
-                                                    <li><a href="About.html">About</a></li>
-                                                    <li><a href="Contact.html">Contact</a></li>
-                                                    <li><a href="Blog.html">Blog</a></li>
-                                                    <li><a href="Blog_Post.html">Blog Post</a></li>
-                                                    <li><a href="Checkout.html">Checkout</a></li>
-                                                    <li><a href="Order.html">Order</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-md-3">
-                                                <strong class="title"><a ><span>Page </span></a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="Category1.html">Category 1</a></li>
-                                                    <li><a href="Category2.html">Category 2</a></li>
-                                                    <li><a href="Product1.html">Product 1</a></li>
-                                                    <li><a href="Product2.html">Product 2</a></li>
-                                                    <li><a href="Product3.html">Product 3</a></li>
-                                                    <li><a href="WishList.html">WishList </a></li>
-                                                    <li><a href="Compare.html">Compare</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </li>
-                                <li><a href="#">Sports</a></li>
-                                <li class="parent parent-submenu">
-                                    <a > Fashion  </a>
-                                    <span class="toggle-submenu"></span>
-                                    <div class="submenu drop-menu">
-                                        <ul >
-                                            <li><a href="">Shoes</a></li>
-                                            <li><a href="">Clothing</a></li>
-                                            <li><a href="">Accessories</a></li>
-                                            <li><a href="">Sunglasses</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-
-                                <li class="parent parent-megamenu">
-                                    <a >Electronics  <span class="label-menu">New</span></a>
-                                    <span class="toggle-submenu"></span>
-                                    <div class="megamenu drop-menu">
-                                        <ul>
-                                            <li class="col-md-3">
-                                                <div class="img-categori">
-                                                    <a href=""><img alt="img" src="images/media/index1/img-categori1.jpg"></a>
-                                                </div>
-                                                <strong class="title"><a href=""><span>Women's </span></a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="">Shoes</a></li>
-                                                    <li><a href="">Clothing</a></li>
-                                                    <li><a href="">Accessories</a></li>
-                                                    <li><a href="">Sunglasses</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-md-3">
-
-                                                <div class="img-categori">
-                                                    <a href=""><img  alt="img"  src="images/media/index1/img-categori2.jpg"></a>
-                                                </div>
-                                                <strong class="title"><a href=""><span>Women's </span></a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="">Shoes</a></li>
-                                                    <li><a href="">Clothing</a></li>
-                                                    <li><a href="">Accessories</a></li>
-                                                    <li><a href="">Sunglasses</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-md-3">
-
-                                                <div class="img-categori">
-                                                    <a href=""><img alt="img"  src="images/media/index1/img-categori3.jpg"></a>
-                                                </div>
-                                                <strong class="title"><a href=""> <span>Kid's</span></a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="">Shoes</a></li>
-                                                    <li><a href="">Clothing</a></li>
-                                                    <li><a href="">Accessories</a></li>
-                                                    <li><a href="">Sunglasses</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-md-3">
-
-                                                <div class="img-categori">
-                                                    <a href=""><img alt="img"  src="images/media/index1/img-categori4.jpg"></a>
-                                                </div>
-                                                <strong class="title"><a href=""><span>Trending</span> </a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="">Shoes</a></li>
-                                                    <li><a href="">Clothing</a></li>
-                                                    <li><a href="">Accessories</a></li>
-                                                    <li><a href="">Sunglasses</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="parent parent-megamenu">
-                                    <a >Digital </a>
-                                    <span class="toggle-submenu"></span>
-                                    <div class="megamenu drop-menu">
-                                        <ul>
-                                            <li class="col-md-3">
-
-                                                <strong class="title"><a href=""><span>Women's </span></a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="">Shoes</a></li>
-                                                    <li><a href="">Clothing</a></li>
-                                                    <li><a href="">Accessories</a></li>
-                                                    <li><a href="">Sunglasses</a></li>
-                                                </ul>
-
-                                                <strong class="title"><a href=""><span>Women's </span></a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="">Shoes</a></li>
-                                                    <li><a href="">Clothing</a></li>
-                                                    <li><a href="">Accessories</a></li>
-                                                    <li><a href="">Sunglasses</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-md-3">
-                                                <strong class="title"><a href=""><span>Women's </span></a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="">Shoes</a></li>
-                                                    <li><a href="">Clothing</a></li>
-                                                    <li><a href="">Accessories</a></li>
-                                                    <li><a href="">Sunglasses</a></li>
-                                                </ul>
-
-                                                <strong class="title"><a href=""><span>Women's </span></a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="">Shoes</a></li>
-                                                    <li><a href="">Clothing</a></li>
-                                                    <li><a href="">Accessories</a></li>
-                                                    <li><a href="">Sunglasses</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-md-3">
-
-                                                <strong class="title"><a href=""> <span>Kid's</span></a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="">Shoes</a></li>
-                                                    <li><a href="">Clothing</a></li>
-                                                    <li><a href="">Accessories</a></li>
-                                                    <li><a href="">Sunglasses</a></li>
-                                                </ul>
-
-                                                <strong class="title"><a href=""><span>Women's </span></a></strong>
-                                                <ul class="list-submenu">
-                                                    <li><a href="">Shoes</a></li>
-                                                    <li><a href="">Clothing</a></li>
-                                                    <li><a href="">Accessories</a></li>
-                                                    <li><a href="">Sunglasses</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-md-3">
-                                                <div class="img-categori">
-                                                    <a href=""><img alt="img" src="images/media/index1/img-categori5.jpg"></a>
-                                                </div>
-
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="#"> Furniture </a></li>
-                                <li><a href="#"> Jewelry  </a></li>
-                                <li><a href="#">Blog</a></li>
+                                <li><a href="#"> MAS CAMPS </a></li>
+                                <li><a href="#"> CG GEAR  </a></li>
+                                <li><a href="#">MODELS</a></li>
+                                <li><a href="#">ARTISTES</a></li>
+                                <li><a href="#">EVENTS</a></li>
+                                <li><a href="#">CONTACT US</a></li>
                             </ul>
 
                         </div><!-- menu -->
@@ -851,7 +650,7 @@
                                             <ol class="minicart-items">
                                                 <li class="product-item">
                                                     <a class="product-item-photo" href="#" title="The Name Product">
-                                                        <img class="product-image-photo" src="images/media/index1/minicart.jpg" alt="The Name Product">
+                                                        <img class="product-image-photo" src="{{asset('shopAssets/images/media/index1/minicart.jpg')}}" alt="The Name Product">
                                                     </a>
                                                     <div class="product-item-details">
                                                         <strong class="product-item-name">
@@ -872,7 +671,7 @@
                                                 </li>
                                                 <li class="product-item">
                                                     <a class="product-item-photo" href="#" title="The Name Product">
-                                                        <img class="product-image-photo" src="images/media/index1/minicart2.jpg" alt="The Name Product">
+                                                        <img class="product-image-photo" src="{{asset('shopAssets/images/media/index1/minicart2.jpg')}}" alt="The Name Product">
                                                     </a>
                                                     <div class="product-item-details">
                                                         <strong class="product-item-name">
@@ -937,22 +736,22 @@
                                     <ul class="switcher-options ">
                                         <li class="switcher-option">
                                             <a href="#">
-                                                <img class="switcher-flag" alt="flag" src="images/flags/flag_french.png">
+                                                <img class="switcher-flag" alt="flag" src="{{asset('shopAssets/images/flags/flag_french.png')}}">
                                             </a>
                                         </li>
                                         <li class="switcher-option">
                                             <a href="#">
-                                                <img class="switcher-flag" alt="flag" src="images/flags/flag_germany.png">
+                                                <img class="switcher-flag" alt="flag" src="{{asset('shopAssets/images/flags/flag_germany.png')}}">
                                             </a>
                                         </li>
                                         <li class="switcher-option">
                                             <a href="#">
-                                                <img class="switcher-flag" alt="flag" src="images/flags/flag_english.png">
+                                                <img class="switcher-flag" alt="flag" src="{{asset('shopAssets/images/flags/flag_english.png')}}">
                                             </a>
                                         </li>
                                         <li class="switcher-option switcher-active">
                                             <a href="#">
-                                                <img class="switcher-flag" alt="flag" src="images/flags/flag_spain.png">
+                                                <img class="switcher-flag" alt="flag" src="{{asset('shopAssets/images/flags/flag_spain.png')}}">
                                             </a>
                                         </li>
                                     </ul>
