@@ -72,7 +72,9 @@
                                 <div class="product-item-opt-1">
                                     <div class="product-item-info">
                                         <div class="product-item-photo">
-                                            <a href="" class="product-item-img"><img src="{{asset('shopAssets/images/media/product9.jpg')}}" alt="product name"></a>
+                                            <a href="" class="product-item-img"><img
+                                                    src="{{ asset('shopAssets/images/media/product9.jpg') }}"
+                                                    alt="product name"></a>
                                         </div>
                                         <div class="product-item-detail">
                                             <strong class="product-item-name"><a href="">Vendor Name</a></strong>
@@ -80,7 +82,7 @@
                                                 <div class="product-item-price">
                                                     <span class="price">$45.00-$500</span>
                                                 </div>
-                                                <div class="product-reviews-summary">
+                                                {{-- <div class="product-reviews-summary">
                                                     <div class="rating-summary">
                                                         <div class="rating-result" title="80%">
                                                             <span style="width:80%">
@@ -88,7 +90,7 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -402,7 +404,7 @@
                     $('#product-listing').append(skeletonHtml);
                 }
                 $.ajax({
-                    url: "{{ route('get.products.home') }}",
+                    url: "{{ route('get.vendors.front') }}",
                     type: "GET",
                     data: {
                         page: page
@@ -411,47 +413,33 @@
                         console.log(response);
                         $('#product-listing').empty();
                         $('#product-listing').removeClass('blur-effect');
-                        $.each(response.data, function(index, product) {
-                            var percentageDiscount = Math.round(((product.old_price - product
-                                .new_price) / product.old_price) * 100);
-                            var productHtml = `
-                        <li class="col-sm-4 product-item">
-                            <div class="product-item-opt-1">
-                                <div class="product-item-info">
-                                    <div class="product-item-photo">
-                                        <a href="${product.slug}" class="product-item-img"><img src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg"
-                                                alt="${product.title}"></a>
-                                        <div class="product-item-actions">
-                                            <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
-                                            <a href="#" class="btn btn-compare"><span>compare</span></a>
-                                            <a href="#" class="btn btn-quickview"><span>quickview</span></a>
-                                        </div>
-                                        <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
-                                        <span class="product-item-label label-price">${percentageDiscount}% <span>off</span></span>
-                                    </div>
-                                    <div class="product-item-detail">
-                                        <strong class="product-item-name"><a href="${product.slug}">${product.title}</a></strong>
-                                        <div class="clearfix">
-                                            <div class="product-item-price">
-                                                <span class="price">$${product.new_price}</span>
-                                                <span class="old-price">$${product.old_price}</span>
+                        $.each(response.data, function(index, vendor) {
+                            var vendorHtml = `
+                                <li class="col-sm-4 product-item">
+                                    <div class="product-item-opt-1">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <div class="product-item-photo">
+                                                    <a href="" class="product-item-img"><img
+                                                    src="{{ asset('shopAssets/images/media/product9.jpg') }}"
+                                                    alt="product name"></a>
+                                                </div>
                                             </div>
-                                            <div class="product-reviews-summary">
-                                                <div class="rating-summary">
-                                                    <div class="rating-result" title="${percentageDiscount}%">
-                                                        <span style="width:${percentageDiscount}%">
-                                                            <span><span>${percentageDiscount}</span>% of <span>100</span></span>
-                                                        </span>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">${vendor.user.first_name} ${vendor.user.last_name}</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$${vendor.user.products[0].min_price}-$${vendor.user.products[0].max_price}</span>
                                                     </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </li>
-                    `;
-                            $('#product-listing').append(productHtml);
+                                </li>
+                            `;
+
+                            $('#product-listing').append(vendorHtml);
                         });
 
                         // Display pagination links

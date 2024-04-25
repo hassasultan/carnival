@@ -41,8 +41,10 @@ use App\Http\Controllers\FrontendConroller;
 |
 */
 
-Route::get('/', [FrontendConroller::class, 'home'])->name('front.home');
+Route::get('/', [FrontendConroller::class, 'product_listing'])->name('front.home');
+Route::get('/shops', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
 Route::get('/get-products', [FrontendConroller::class, 'get_product'])->name('get.products.home');
+Route::get('/get-vendors', [FrontendConroller::class, 'get_vendors'])->name('get.vendors.front');
 
 Route::get('/unauthorized', function () {
     return view('unauthorized');
