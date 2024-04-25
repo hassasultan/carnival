@@ -44,6 +44,13 @@
                                 <label for="new_price">New Price</label>
                                 <input type="text" id="new_price" name="new_price" class="form-control" value="{{ $product->new_price }}" placeholder="Enter new price" required>
                             </div>
+                            <div class="form-group">
+                                <label for="sale">On Sale</label>
+                                <select class="form-control" id="sale" name="sale" required>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </div>
                             <div class="form-group mb-3">
                                 <label for="status">Status</label>
                                 <select id="status" name="status" class="form-control" required>

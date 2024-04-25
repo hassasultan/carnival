@@ -43,6 +43,8 @@ use App\Http\Controllers\FrontendConroller;
 
 Route::get('/', [FrontendConroller::class, 'product_listing'])->name('front.home');
 Route::get('/shops', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
+Route::get('/shop/{slug}', [FrontendConroller::class, 'vendor_detail'])->name('front.vendor.detail');
+Route::get('/get/shop/products/{slug}', [FrontendConroller::class, 'get_vendor_products'])->name('front.vendor.products');
 Route::get('/get-products', [FrontendConroller::class, 'get_product'])->name('get.products.home');
 Route::get('/get-vendors', [FrontendConroller::class, 'get_vendors'])->name('get.vendors.front');
 

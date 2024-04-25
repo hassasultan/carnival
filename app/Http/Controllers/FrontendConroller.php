@@ -49,4 +49,29 @@ class FrontendConroller extends Controller
     {
         return view('ShopFrontend.vendors');
     }
+    public function vendor_detail($slug)
+    {
+        $vendor = Vendor::find($slug);
+        // dd($vendor->toArray());
+        return view('ShopFrontend.vendor-detail',compact('vendor'));
+    }
+    public function get_vendor_products($slug,Request $request)
+    {
+        $products = Product::where('user_id',$slug);
+        if($request->has('attribute') && $request->attribute == 'bestSale')
+        {
+            // $products = $products;
+        }
+        if($request->has('attribute') && $request->attribute == 'onsale')
+        {
+            $products = $products->where('sale',true);
+        }
+        if($request->has('attribute') && $request->attribute == 'new')
+        {
+            // $products = $products->where('sale',true);
+        }
+        $products = $products->orderBy('id', 'DESC')->take(5)->get();
+
+        return $products;
+    }
 }

@@ -422,7 +422,7 @@
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
                                                 <div class="product-item-photo">
-                                                    <a href="" class="product-item-img"><img
+                                                    <a href="{{ route('front.vendor.detail','') }}/${vendor.id}" class="product-item-img"><img
                                                     src="{{ asset('shopAssets/images/media/product9.jpg') }}"
                                                     alt="product name"></a>
                                                 </div>
