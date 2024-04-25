@@ -230,3 +230,6 @@ Route::get('/mascamp-detail', function(){
 Route::get('/product-detail', function(){
     return view('ShopFrontend.product_detail');
 })->name('product_detail');
+Route::get('/wishlist', function(){
+    return view('ShopFrontend.wishlist');
+})->name('wishlist');

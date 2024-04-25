@@ -1,5 +1,9 @@
 @extends('ShopFrontend.Layouts.layout')
 
+@section('title')
+    product deatil
+@endsection
+
 @section('body_classes')
     catalog-product-view catalog-view_op1
 @endsection
