@@ -3,11 +3,11 @@
 
     <div class="container">
         <div class="footer-column">
-        
+
             <div class="row">
                 <div class="col-md-3 col-lg-3 col-xs-6 col">
                     <strong class="logo-footer">
-                        <a href=""><img src="images/media/index1/logo-footer.png" alt="logo"></a>
+                        <a href=""><img src="{{asset('ShopAssets/images/media/index1/logo-footer.png')}}" alt="logo"></a>
                     </strong>
 
                     <table class="address">
@@ -94,22 +94,22 @@
                 Accepted Payment Methods
             </div>
             <div class="block-content">
-                <img alt="payment" src="images/media/index1/payment1.png">
-                <img alt="payment" src="images/media/index1/payment2.png">
-                <img alt="payment" src="images/media/index1/payment3.png">
-                <img alt="payment" src="images/media/index1/payment4.png">
-                <img alt="payment" src="images/media/index1/payment5.png">
-                <img alt="payment" src="images/media/index1/payment6.png">
-                <img alt="payment" src="images/media/index1/payment7.png">
-                <img alt="payment" src="images/media/index1/payment8.png">
-                <img alt="payment" src="images/media/index1/payment9.png">
-                <img alt="payment" src="images/media/index1/payment10.png">
+                <img alt="payment" src="{{asset('ShopAssets/images/media/index1/payment1.png')}}">
+                <img alt="payment" src="{{asset('ShopAssets/images/media/index1/payment2.png')}}">
+                <img alt="payment" src="{{asset('ShopAssets/images/media/index1/payment3.png')}}">
+                <img alt="payment" src="{{asset('ShopAssets/images/media/index1/payment4.png')}}">
+                <img alt="payment" src="{{asset('ShopAssets/images/media/index1/payment5.png')}}">
+                <img alt="payment" src="{{asset('ShopAssets/images/media/index1/payment6.png')}}">
+                <img alt="payment" src="{{asset('ShopAssets/images/media/index1/payment7.png')}}">
+                <img alt="payment" src="{{asset('ShopAssets/images/media/index1/payment8.png')}}">
+                <img alt="payment" src="{{asset('ShopAssets/images/media/index1/payment9.png')}}">
+                <img alt="payment" src="{{asset('ShopAssets/images/media/index1/payment10.png')}}">
             </div>
         </div>
 
         <div class="footer-links">
-            
-                
+
+
             <ul class="links">
                 <li><strong class="title">HOT SEARCHED KEYWORDS:</strong></li>
                 <li><a href="">Xiaomi Mi3 </a></li>
@@ -121,9 +121,9 @@
                 <li><a href="">Women's Clutches   </a></li>
                 <li><a href="">Backpacks Totes</a></li>
             </ul>
-            
-            
-                
+
+
+
             <ul class="links">
                 <li><strong class="title">tvs: </strong></li>
                 <li><a href="">Sony TV  </a></li>
@@ -140,9 +140,9 @@
                 <li><a href="">3D TV    </a></li>
                 <li><a href="">Smart TV </a></li>
             </ul>
-           
-           
-                
+
+
+
             <ul  class="links">
                 <li><strong class="title">MOBILES: </strong></li>
                 <li><a href="">Moto E </a></li>
@@ -155,8 +155,8 @@
                 <li><a href=""> LG Mobile  </a></li>
                 <li><a href="">Karbonn Mobile</a></li>
             </ul>
-           
-                
+
+
             <ul class="links">
                 <li><strong class="title">LAPTOPS:</strong></li>
                 <li><a href="">Apple Laptop  </a></li>
@@ -171,9 +171,9 @@
                 <li><a href="">HP Laptop</a></li>
                 <li><a href="">Notebook</a></li>
             </ul>
-           
-            
-                
+
+
+
             <ul class="links">
                 <li><strong class="title">WATCHES:</strong></li>
                 <li><a href="">FCUK Watches</a></li>
@@ -185,8 +185,8 @@
                 <li><a href="">Diesel Watches  </a></li>
                 <li><a href=""> Luxury Watches</a></li>
             </ul>
-           
-            
+
+
             <ul class="links">
                 <li><strong class="title">FOOTWEAR: </strong></li>
                 <li><a href="">Shoes  </a></li>
@@ -201,7 +201,7 @@
                 <li><a href="">Red tape Shoes</a></li>
                 <li><a href="">Nike Shoes</a></li>
             </ul>
-            
+
         </div>
 
         <div class="footer-bottom">
@@ -246,14 +246,14 @@
         </div>
 
         <div class="copyright">
-            
+
             Copyright © 2016 KoolShop. All Rights Reserved. Designed by KoolShop
-           
+
         </div>
 
     </div>
 
-</footer><!-- end FOOTER -->        
+</footer><!-- end FOOTER -->
 
 <!--back-to-top  -->
 <a href="#" class="back-to-top">
@@ -262,37 +262,37 @@
 
 </div>
 
-<!-- jQuery -->    
+<!-- jQuery -->
 <script type="text/javascript" src="{{asset('shopAssets/js/jquery.min.js')}}"></script>
 
 <!-- sticky -->
 <script type="text/javascript" src="{{asset('shopAssets/js/jquery.sticky.js')}}"></script>
 
-<!-- OWL CAROUSEL Slider -->    
+<!-- OWL CAROUSEL Slider -->
 <script type="text/javascript" src="{{asset('shopAssets/js/owl.carousel.min.js')}}"></script>
 
-<!-- Boostrap --> 
+<!-- Boostrap -->
 <script type="text/javascript" src="{{asset('shopAssets/js/bootstrap.min.js')}}"></script>
 
-<!-- Countdown --> 
+<!-- Countdown -->
 <script type="text/javascript" src="{{asset('shopAssets/js/jquery.countdown.min.js')}}"></script>
 
 <!--jquery Bxslider  -->
 <script type="text/javascript" src="{{asset('shopAssets/js/jquery.bxslider.min.js')}}"></script>
 
-<!-- actual --> 
+<!-- actual -->
 <script type="text/javascript" src="{{asset('shopAssets/js/jquery.actual.min.js')}}"></script>
 
 <!-- jQuery UI -->
 <script type="text/javascript" src="{{asset('shopAssets/js/jquery-ui.min.js')}}"></script>
 
-<!-- Chosen jquery-->    
+<!-- Chosen jquery-->
 <script type="text/javascript" src="{{asset('shopAssets/js/chosen.jquery.min.js')}}"></script>
 
-<!-- parallax jquery--> 
+<!-- parallax jquery-->
 <script type="text/javascript" src="{{asset('shopAssets/js/jquery.parallax-1.1.3.js')}}"></script>
 
-<!-- elevatezoom --> 
+<!-- elevatezoom -->
 <script type="text/javascript" src="{{asset('shopAssets/js/jquery.elevateZoom.min.js')}}"></script>
 
 <!-- fancybox -->
@@ -303,7 +303,7 @@
 <!-- arcticmodal -->
 <script src="{{asset('shopAssets/js/arcticmodal/jquery.arcticmodal.js')}}"></script>
 
-<!-- Main -->  
+<!-- Main -->
 <script type="text/javascript" src="{{asset('shopAssets/js/main.js')}}"></script>
 
 @yield('script')
