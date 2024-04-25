@@ -220,3 +220,6 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
 Route::get('/mascamps', function(){
     return view('ShopFrontend.vendors');
 })->name('mascamps');
+Route::get('/mascamp-detail', function(){
+    return view('ShopFrontend.MasbandDetail');
+})->name('MasbandDetail');

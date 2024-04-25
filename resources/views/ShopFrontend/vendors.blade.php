@@ -1,5 +1,7 @@
 @extends('ShopFrontend.Layouts.layout')
 
+@section('title') Mas Camps @endsection
+
 @section('main')
     <!-- MAIN -->
     <main class="site-main">
