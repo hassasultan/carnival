@@ -23,6 +23,6 @@ class FrontendConroller extends Controller
     }
     public function home()
     {
-        return view('ShopFrontend.mascamps');
+        return view('ShopFrontend.product-listing');
     }
 }
