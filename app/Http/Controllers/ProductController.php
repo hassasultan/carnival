@@ -12,11 +12,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Services\ProductService;
-use App\Traits\ImageTrait;
 
 class ProductController extends Controller
 {
-    use ImageTrait;
     protected $productService;
 
     public function __construct(ProductService $productService)
@@ -41,6 +39,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'title' => 'required',
             'category_id' => 'required',
@@ -50,25 +49,17 @@ class ProductController extends Controller
             'status' => 'required',
             'variant_id' => 'required|array',
             'variant_id.*' => 'exists:variants,id',
-            'image' => 'required|image|max:2048',
         ]);
 
         $data = $request->all();
 
-        if ($request->hasFile('image')) {
-
-            $image = $this->uploadImage($request->file('image'), 'images/product');
-        }
-
+        // Check if variant_images are present in the request
         if ($request->hasFile('variant_images')) {
             $data['variant_images'] = $request->file('variant_images');
         } else {
+            // If no variant images are uploaded, set an empty array
             $data['variant_images'] = [];
         }
-
-        $data['image'] = $image;
-
-        // dd($data);
 
         $product = $this->productService->createProduct($data);
 
@@ -94,7 +85,7 @@ class ProductController extends Controller
         $categories = Category::all();
         return response()->json(['product' => $product]);
     }
-
+    
     public function update(Request $request, $id)
     {
         $request->validate([

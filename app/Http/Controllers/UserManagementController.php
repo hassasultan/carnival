@@ -9,12 +9,16 @@ use App\Models\Vendor;
 use App\Models\SubVendor;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use App\Traits\ImageTrait;
 
 class UserManagementController extends Controller
 {
+    use ImageTrait;
+
     public function indexUser()
     {
         $users = User::with('role')->get();
@@ -33,11 +37,7 @@ class UserManagementController extends Controller
     {
         $categories = '';
         if ($request->has('role') && $request->role != null) {
-            // if ($request->role == 2) {
-            //     $categories = Category::all();
-            // } elseif ($request->role == 3) {
             $categories = Category::where('package_id', $request->package)->get();
-            // }
         }
         if ($request->has('vendor') && $request->vendor != null) {
             $user = Vendor::find($request->vendor);
@@ -58,16 +58,17 @@ class UserManagementController extends Controller
 
         $user = $this->create($request->all());
 
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $imageName = $this->uploadImage($request->file('image'), 'images');
+            $user->image = $imageName;
+            $user->save();
+        }
+
         return redirect()->route('users.index')
             ->with('success', 'User registered successfully.');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
     protected function validator(array $data, $userId = null)
     {
         $rules = [
@@ -86,12 +87,10 @@ class UserManagementController extends Controller
             'state' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
             'zipcode' => ['required', 'string', 'max:255'],
-            'role_id' => ['required', 'numeric', Rule::in([1, 2, 3])],
-            'package_id' => 'required_without_all:vendor_id|nullable|numeric',
             'vendor_id' => 'required_without_all:package_id|nullable|numeric',
+            'image' => 'required|image|max:2048',
         ];
 
-        // Include password rules only for creating new users
         if (!$userId) {
             $rules['password'] = ['required', 'string', 'min:8', 'confirmed'];
         }
@@ -99,16 +98,14 @@ class UserManagementController extends Controller
         return Validator::make($data, $rules);
     }
 
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
     protected function create(array $data)
     {
         // dd($data);
+        if ($data['package_id'] == 'section_leader') {
+            $data['package_id'] = '123';
+            $data['role_id'] = '123';
+        }
+        
         $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -145,6 +142,14 @@ class UserManagementController extends Controller
             ]);
         }
 
+        if ($data['role_id'] == 123) {
+            Customer::create([
+                'user_id' => $user->id,
+                'package_id' => $data['package_id'],
+                'status' => 1,
+            ]);
+        }
+
         return $user;
     }
 
@@ -169,30 +174,17 @@ class UserManagementController extends Controller
                 ->withInput();
         }
 
-        $user->update([
-            'first_name' => $request['first_name'],
-            'last_name' => $request['last_name'],
-            'email' => $request['email'],
-            'phone' => $request['phone'],
-            'address' => $request['address'],
-            'city' => $request['city'],
-            'state' => $request['state'],
-            'country' => $request['country'],
-            'zipcode' => $request['zipcode'],
-            'role_id' => $request['role_id'],
-            'status' => $request['status'],
-        ]);
+        $user->update($request->all());
 
-        if ($request['role_id'] == 2) {
-            $user->vendor()->updateOrCreate(
-                ['user_id' => $user->id],
-                ['package_id' => $request['package_id'], 'status' => 1]
-            );
-        } elseif ($request['role_id'] == 3) {
-            $user->subVendor()->updateOrCreate(
-                ['user_id' => $user->id],
-                ['vendor_id' => $request['vendor_id'], 'status' => 1]
-            );
+        // Handle image update
+        if ($request->hasFile('image')) {
+            // Delete previous image if exists
+            if ($user->image) {
+                $this->deleteImage('images/' . $user->image);
+            }
+            $imageName = $this->uploadImage($request->file('image'), 'images');
+            $user->image = $imageName;
+            $user->save();
         }
 
         return redirect()->route('users.index')
@@ -205,5 +197,4 @@ class UserManagementController extends Controller
 
         return response()->json($user);
     }
-
 }
