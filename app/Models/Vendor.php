@@ -35,4 +35,9 @@ class Vendor extends Model
     {
         return $this->hasMany(SubVendor::class);
     }
+    public function products()
+    {
+        return $this->hasMany(Product::class,'user_id','user_id');
+    }
+
 }
