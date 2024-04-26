@@ -32,6 +32,7 @@ class Product extends Model
         'tiktok',
         'pinterest',
         'linkedin',
+        'image',
     ];
 
     protected $dates = [

@@ -28,6 +28,7 @@
                                 <tbody>
                                     @php $counter = 1 @endphp <!-- Initialize counter -->
                                     @foreach ($users as $user)
+                                        {{-- {{ dd($users->toArray()) }} --}}
                                         @if ($user->role_id != 1)
                                             <tr>
                                                 <td>
@@ -39,7 +40,13 @@
                                                 <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
                                                 <td>{{ $user->first_name . ' ' . $user->last_name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>{{ $user->role->name }}</td>
+                                                <td>
+                                                    @if ($user->role && $user->role_id != '123')
+                                                        {{ $user->role->name }}
+                                                    @else
+                                                        Customer
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     @if ($user->status == 1)
                                                         <span class="badge badge-success">Active</span>

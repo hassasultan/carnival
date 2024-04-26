@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="card">
-        <form method="POST" action="{{ route('users.register') }}" class="col-lg-8 col-md-10 col-12 mx-auto">
+        <form method="POST" action="{{ route('users.register') }}" class="col-lg-8 col-md-10 col-12 mx-auto"
+            enctype="multipart/form-data">
             @csrf
             <div class="mx-auto text-center my-4 card-header">
                 <h2 class="my-3">Register New User</h2>
@@ -57,15 +58,24 @@
                             required autocomplete="new-password">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
-                        name="phone" value="{{ old('phone') }}" required autocomplete="phone">
-                    @error('phone')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="image">Image</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="image" name="image">
+                            <label class="custom-file-label" for="image" id="image_label">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="phone">Phone</label>
+                        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
+                            name="phone" value="{{ old('phone') }}" required autocomplete="phone">
+                        @error('phone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
@@ -121,7 +131,21 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="role">Role</label>
+                        <label for="package">Package</label>
+                        <select id="package" class="form-control @error('package_id') is-invalid @enderror"
+                            name="package_id">
+                            <option value="">Select Package</option>
+                            @foreach ($packages as $package)
+                                <option value="{{ $package->id }}">{{ $package->title }}</option>
+                            @endforeach
+                            <option value="section_leader">Section Leader</option>
+                        </select>
+                        @error('package_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        {{-- <label for="role">Role</label>
                         <select id="role" class="form-control @error('role_id') is-invalid @enderror"
                             name="role_id" required>
                             <option value="">Select Role</option>
@@ -135,23 +159,8 @@
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
+                        @enderror --}}
                     </div>
-                </div>
-                <div class="form-group" id="package_input" style="display: none;">
-                    <label for="package">Package</label>
-                    <select id="package" class="form-control @error('package_id') is-invalid @enderror"
-                        name="package_id">
-                        <option value="">Select Package</option>
-                        @foreach ($packages as $package)
-                            <option value="{{ $package->id }}">{{ $package->title }}</option>
-                        @endforeach
-                    </select>
-                    @error('package_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
                 </div>
                 <div class="form-group" id="vendors_input" style="display: none;">
                     <label for="vendor">Vendors</label>
@@ -186,8 +195,8 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" value="1" id="e_com"
-                                                name="ecommerce">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="e_com" name="ecommerce">
                                             <label class="custom-control-label" for="e_com"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -202,8 +211,8 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" value="1" id="music"
-                                                name="music">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="music" name="music">
                                             <label class="custom-control-label" for="music"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -218,8 +227,8 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" value="1" id="appointments"
-                                                name="appointment">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="appointments" name="appointment">
                                             <label class="custom-control-label" for="appointments"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -236,8 +245,8 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" value="1" id="events"
-                                                name="events">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="events" name="events">
                                             <label class="custom-control-label" for="events"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -252,8 +261,8 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" value="1" id="ads"
-                                                name="ad_space">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="ads" name="ad_space">
                                             <label class="custom-control-label" for="ads"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -268,8 +277,8 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" value="1" id="blogs"
-                                                name="blogging">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="blogs" name="blogging">
                                             <label class="custom-control-label" for="blogs"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -288,47 +297,96 @@
     <script>
         $(document).ready(function() {
 
-            $('#role').on('change', function() {
-                var role = $(this).val();
-                console.log(role);
-                if (role == 2) {
-                    $('#package_input').show();
-                    $('#vendors_input').hide();
-                    $('.packages-div').hide();
-                } else if (role == 3) {
-                    $('#package_input').hide();
-                    $('#vendors_input').show();
-                    $('.packages-div').show();
-                } else {
-                    $('#package_input').hide();
-                    $('#vendors_input').hide();
-                    $('.packages-div').hide();
-                }
-            });
-
-            // $('#package').on('change', function() {
-            //     var packageId = $(this).val();
-            //     $('#category_id').empty().append($('<option>', {
-            //         value: '',
-            //         text: 'Select Category'
-            //     }));
-            //     if (packageId) {
-            //         $.ajax({
-            //             type: 'GET',
-            //             url: `{{ route('users.get.categories') }}`,
-            //             data: {
-            //                 package: packageId,
-            //                 role: $('#role').val(),
-            //             },
-            //             success: function(response) {
-            //                 populateCategories(response);
-            //             },
-            //             error: function(xhr, status, error) {
-            //                 console.error(xhr.responseText);
-            //             }
-            //         });
+            // $('#role').on('change', function() {
+            //     var role = $(this).val();
+            //     console.log(role);
+            //     if (role == 2) {
+            //         $('#package_input').show();
+            //         $('#vendors_input').hide();
+            //         $('.packages-div').hide();
+            //     } else if (role == 3) {
+            //         $('#package_input').hide();
+            //         $('#vendors_input').show();
+            //         $('.packages-div').show();
+            //     } else {
+            //         $('#package_input').hide();
+            //         $('#vendors_input').hide();
+            //         $('.packages-div').hide();
             //     }
             // });
+
+            $('#package').on('change', function() {
+                var packageId = $(this).val();
+                if (packageId == 'section_leader') {
+                    $('#vendors_input').show();
+
+                    $('#ecommerce-box').hide();
+                    $('#music-box').hide();
+                    $('#appointment-box').hide();
+                    $('#events-box').hide();
+                    $('#ad_space-box').hide();
+                    $('#blogging-box').hide();
+                } else {
+                    // $('#vendors_input').hide();
+
+                    // $.each(response['vendor']['package'], function(feature, value) {
+                    //     var checkbox = $('#' + feature +
+                    //         '-box input[type="checkbox"]');
+                    //     var listGroup = $('#' + feature + '-box');
+
+
+                    //     checkbox.prop('checked', value === 'false');
+                    //     listGroup.toggle(value === 'true');
+                    // });
+
+
+                    // repositionDivs();
+
+                    $('#vendors_input').hide();
+
+                    // Show all checkboxes
+                    $('.form-group.list-group').show();
+
+                    // Optionally, you can hide the checkboxes specific to the section_leader package
+                    // $('#ecommerce-box, #music-box, #appointment-box, #events-box, #ad_space-box, #blogging-box').hide();
+
+                    repositionDivs();
+
+                    // $('#ecommerce-box').hide();
+                    // $('#music-box').hide();
+                    // $('#appointment-box').hide();
+                    // $('#events-box').hide();
+                    // $('#ad_space-box').hide();
+                    // $('#blogging-box').hide();
+                    // $('#ecommerce-box').show();
+                    // $('#music-box').show();
+                    // $('#appointment-box').show();
+                    // $('#events-box').show();
+                    // $('#ad_space-box').show();
+                    // $('#blogging-box').show();
+                }
+                // var packageId = $(this).val();
+                // $('#category_id').empty().append($('<option>', {
+                //     value: '',
+                //     text: 'Select Category'
+                // }));
+                // if (packageId) {
+                //     $.ajax({
+                //         type: 'GET',
+                //         url: `{{ route('users.get.categories') }}`,
+                //         data: {
+                //             package: packageId,
+                //             role: $('#role').val(),
+                //         },
+                //         success: function(response) {
+                //             populateCategories(response);
+                //         },
+                //         error: function(xhr, status, error) {
+                //             console.error(xhr.responseText);
+                //         }
+                //     });
+                // }
+            });
 
             // $('#vendor').on('change', function() {
             //     var vendor = $(this).val();
@@ -402,18 +460,18 @@
                         vendor: vendor,
                     },
                     success: function(response) {
-                        
+
                         $.each(response['vendor']['package'], function(feature, value) {
                             var checkbox = $('#' + feature +
                                 '-box input[type="checkbox"]');
                             var listGroup = $('#' + feature + '-box');
 
-                            
+
                             checkbox.prop('checked', value === 'true');
                             listGroup.toggle(value === 'true');
                         });
 
-                        
+
                         repositionDivs();
                     },
                     error: function(xhr, status, error) {
@@ -422,23 +480,38 @@
                 });
             });
 
-            
+
             function repositionDivs() {
-                
+
                 var visibleDivs = $('.form-group.list-group:visible');
-                
+
                 var halfLength = Math.ceil(visibleDivs.length / 2);
 
                 $('.packages-div').empty();
-                
+
                 for (var i = 0; i < halfLength; i++) {
                     var divA = visibleDivs.eq(i);
                     var divB = visibleDivs.eq(i + halfLength);
-                    
+
                     $('.packages-div').eq(0).append(divA);
                     $('.packages-div').eq(1).append(divB);
                 }
             }
+
+            // Update label text when files are selected for additional images
+            $('#image').on('change', function() {
+                // Get the file names
+                var files = $(this)[0].files;
+                var fileNames = '';
+                for (var i = 0; i < files.length; i++) {
+                    fileNames += files[i].name;
+                    if (i < files.length - 1) {
+                        fileNames += ', ';
+                    }
+                }
+                // Update the label text
+                $('#image_label').text(fileNames);
+            });
 
             // function populateCategories(categories) {
             //     var categoryDropdown = $('#category_id');

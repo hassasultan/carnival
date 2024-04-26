@@ -31,6 +31,7 @@ class User extends Authenticatable
         'zipcode',
         'password',
         'deleted_at',
+        'image',
     ];
 
     /**
@@ -60,6 +61,11 @@ class User extends Authenticatable
     public function isVendor()
     {
         return $this->role->name === "Vendor";
+    }
+
+    public function customer()
+    {
+        return $this->role === "123";
     }
 
     public function isSubVendor()

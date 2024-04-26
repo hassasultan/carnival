@@ -109,6 +109,7 @@ class ProductService
             'tiktok' => $data['tiktok'] ?? null,
             'pinterest' => $data['pinterest'] ?? null,
             'linkedin' => $data['linkedin'] ?? null,
+            'image' => $data['image'] ?? null,
         ];
 
         return $productData;

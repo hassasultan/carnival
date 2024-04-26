@@ -227,3 +227,9 @@ Route::get('/mascamps', function(){
 Route::get('/mascamp-detail', function(){
     return view('ShopFrontend.MasbandDetail');
 })->name('MasbandDetail');
+Route::get('/product-detail', function(){
+    return view('ShopFrontend.product_detail');
+})->name('product_detail');
+Route::get('/wishlist', function(){
+    return view('ShopFrontend.wishlist');
+})->name('wishlist');
