@@ -19,6 +19,7 @@ class Product extends Model
         'description',
         'old_price',
         'new_price',
+        'sale',
         'status',
         'tags',
         'condition',

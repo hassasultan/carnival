@@ -94,4 +94,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(SubVendor::class);
     }
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

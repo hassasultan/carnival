@@ -95,6 +95,7 @@ class ProductService
             'description' => $data['description'],
             'old_price' => $data['old_price'],
             'new_price' => $data['new_price'],
+            'sale' => $data['sale'],
             'condition' => $data['condition'] ?? null,
             'stock_condition' => $data['stock_condition'] ?? null,
             'discount' => $data['discount'] ?? null,

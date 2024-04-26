@@ -27,6 +27,7 @@ use App\Http\Controllers\SubVendor\SubVendorProductController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\FrontendConroller;
 
 
 /*
@@ -40,9 +41,12 @@ use App\Http\Controllers\AppointmentController;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+Route::get('/', [FrontendConroller::class, 'product_listing'])->name('front.home');
+Route::get('/shops', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
+Route::get('/shop/{slug}', [FrontendConroller::class, 'vendor_detail'])->name('front.vendor.detail');
+Route::get('/get/shop/products/{slug}', [FrontendConroller::class, 'get_vendor_products'])->name('front.vendor.products');
+Route::get('/get-products', [FrontendConroller::class, 'get_product'])->name('get.products.home');
+Route::get('/get-vendors', [FrontendConroller::class, 'get_vendors'])->name('get.vendors.front');
 
 Route::get('/unauthorized', function () {
     return view('unauthorized');
@@ -137,7 +141,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/appointments/{variant}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
     Route::put('/appointments/{variant}', [AppointmentController::class, 'update'])->name('appointments.update');
     Route::delete('/appointments/{variant}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
-    
+
     // get vendot
     Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
 });
@@ -213,3 +217,19 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
     Route::delete('/costumes/{costume}', [SubVendorCostumeController::class, 'destroy'])->name('subVendor.costumes.destroy');
 
 });
+
+
+//Frontend Routes
+
+Route::get('/mascamps', function(){
+    return view('ShopFrontend.vendors');
+})->name('mascamps');
+Route::get('/mascamp-detail', function(){
+    return view('ShopFrontend.MasbandDetail');
+})->name('MasbandDetail');
+Route::get('/product-detail', function(){
+    return view('ShopFrontend.product_detail');
+})->name('product_detail');
+Route::get('/wishlist', function(){
+    return view('ShopFrontend.wishlist');
+})->name('wishlist');
