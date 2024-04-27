@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Traits\ImageTrait;
+use Illuminate\Support\Str;
 
 class UserManagementController extends Controller
 {
@@ -101,11 +102,17 @@ class UserManagementController extends Controller
     protected function create(array $data)
     {
         // dd($data);
+        // Generate unique slug
+        $slug = $this->generateUniqueSlug($data['first_name'] . ' ' . $data['last_name']);
+
         if ($data['package_id'] == 'section_leader') {
             $data['package_id'] = '123';
-            $data['role_id'] = '123';
+            $data['role_id'] = '3';
         }
-        
+        else {
+            $data['role_id'] = '2';
+        }
+
         $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -118,6 +125,7 @@ class UserManagementController extends Controller
             'country' => $data['country'],
             'zipcode' => $data['zipcode'],
             'role_id' => $data['role_id'],
+            'slug' => $slug,
         ]);
 
         if ($data['role_id'] == 2) {
@@ -196,5 +204,16 @@ class UserManagementController extends Controller
         $user = User::with('vendor', 'subVendor', 'vendor.package')->find($id);
 
         return response()->json($user);
+    }
+
+    protected function generateUniqueSlug($title)
+    {
+        $slug = Str::slug($title);
+        $uniqueSlug = $slug;
+        $counter = 1;
+        while (User::where('slug', $uniqueSlug)->exists()) {
+            $uniqueSlug = $slug . '-' . $counter++;
+        }
+        return $uniqueSlug;
     }
 }
