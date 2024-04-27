@@ -27,6 +27,7 @@ class ProductService
                 $productVariant = ProductVariant::create([
                     'product_id' => $product->id,
                     'variant_id' => $variantId,
+                    'name' => $data['variant_name'][$index],
                     'value' => isset($data['value'][$index]) ? $data['value'][$index] : 'default_value', // Adjust this default value as needed
                     'status' => 1
                 ]);
