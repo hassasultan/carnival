@@ -25,6 +25,11 @@ class FrontendConroller extends Controller
         $products = Product::orderBy('id', 'DESC')->paginate(18);
         return $products;
     }
+    public function product_detail($slug)
+    {
+        $product = Product::where('slug',$slug)->firstOrFail();
+        return view('ShopFrontend.product-detail',compact('product'));
+    }
     public function get_vendors(Request $request)
     {
         $vendors = Vendor::with([

@@ -758,7 +758,7 @@
                             <div class="product-item-opt-1">
                                 <div class="product-item-info">
                                     <div class="product-item-photo">
-                                        <a href="${product.slug}" class="product-item-img"><img src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg"
+                                        <a href="{{ route('get.products.detail','') }}/${product.slug}" class="product-item-img"><img src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg"
                                                 alt="${product.title}"></a>
                                         <div class="product-item-actions">
                                             <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
