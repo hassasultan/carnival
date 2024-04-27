@@ -42,7 +42,7 @@ class ProductService
                         ProductVariantImage::create([
                             'product_id' => $product->id,
                             'product_variant_id' => $productVariant->id,
-                            'image' => $additionalImage['original_name'],
+                            'image' => $additionalImage['path'].'/'.$additionalImage['original_name'],
                         ]);
                     }
                 }

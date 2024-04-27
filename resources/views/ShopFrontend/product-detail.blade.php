@@ -48,18 +48,20 @@
                                     <div class="owl-carousel thumbnails_carousel" id="thumbnails" data-nav="true"
                                         data-dots="false" data-margin="10"
                                         data-responsive='{"0":{"items":3},"480":{"items":4},"600":{"items":5},"768":{"items":3}}'>
+                                        @foreach ($product->product_varient as $key => $row)
+                                            @foreach ($row->product_image as $key => $row)
+                                                <a href="#"
+                                                    data-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
+                                                    data-zoom-image="{{ asset('shopAssets/images/media/detail/thumb-lag1.jpg') }}">
 
-                                        <a href="#"
-                                            data-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
-                                            data-zoom-image="{{ asset('shopAssets/images/media/detail/thumb-lag1.jpg') }}">
+                                                    <img src="{{ asset('shopAssets/images/media/detail/thumb1.jpg') }}"
+                                                        data-large-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
+                                                        alt="">
 
-                                            <img src="{{ asset('shopAssets/images/media/detail/thumb1.jpg') }}"
-                                                data-large-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
-                                                alt="">
-
-                                        </a>
-
-                                        <a href="#"
+                                                </a>
+                                            @endforeach
+                                        @endforeach
+                                        {{-- <a href="#"
                                             data-image="{{ asset('shopAssets/images/media/detail/thumb-img2.jpg') }}"
                                             data-zoom-image="{{ asset('shopAssets/images/media/detail/thumb-lag2.jpg') }}">
 
@@ -85,7 +87,7 @@
                                                 data-large-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
                                                 alt="">
 
-                                        </a>
+                                        </a> --}}
 
                                     </div><!--/ .owl-carousel-->
 
@@ -151,55 +153,52 @@
                                         {{ $product->description }}
                                     </div>
                                 </div>
-                                {{ dd($product->variants->toArray()) }}
+                                {{-- {{ dd($product->product_varient->toArray()) }} --}}
                                 <div class="product-add-form">
                                     <p>Available Options:</p>
                                     <form>
 
-                                        <div class="product-options-wrapper">
-
-                                            <div class="swatch-opt">
-                                                <div class="swatch-attribute color">
-                                                    <span class="swatch-attribute-label">Color:</span>
-                                                    <div class="swatch-attribute-options clearfix">
-                                                        <div class="swatch-option color selected"
-                                                            style="background-color: #0c3b90 ;"></div>
-                                                        <div class="swatch-option color"
-                                                            style="background-color: #036c5d ;"></div>
-                                                        <div class="swatch-option color"
-                                                            style="background-color: #5f2363 ;"></div>
-                                                        <div class="swatch-option color "
-                                                            style="background-color: #ffc000 ;"></div>
-                                                        <div class="swatch-option color"
-                                                            style="background-color: #36a93c ;"></div>
-                                                        <div class="swatch-option color"
-                                                            style="background-color: #ff0000 ;"></div>
+                                        @foreach ($product->product_varient as $key => $row)
+                                            {{-- {{ dd($row->product_image->toArray()) }} --}}
+                                            <div class="product-options-wrapper">
+                                                @if ($row->type == 'color')
+                                                    <div class="swatch-opt">
+                                                        <div class="swatch-attribute color">
+                                                            <span class="swatch-attribute-label">Color:</span>
+                                                            <div class="swatch-attribute-options clearfix">
+                                                                <div class="swatch-option color @if($key == 0) selected @endif"
+                                                                    style="background-color: #0c3b90 ;">
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                @endif
+                                                    <div class="form-qty">
+                                                        <label class="label">Qty: </label>
+                                                        <div class="control">
+                                                            <input type="text" class="form-control input-qty"
+                                                                value='1' id="qty1" name="qty1"
+                                                                maxlength="{{ $row->value }}" minlength="1">
+                                                            <button class="btn-number  qtyminus" data-type="minus"
+                                                                data-field="qty1"><span>-</span></button>
+                                                            <button class="btn-number  qtyplus" data-type="plus"
+                                                                data-field="qty1"><span>+</span></button>
+                                                        </div>
+                                                    </div>
+                                                @if ($row->type == 'size')
+                                                    <div class="form-configurable">
+                                                        <label for="forSize" class="label">Size: </label>
+                                                        <div class="control">
+                                                            <select id="forSize"
+                                                                class="form-control attribute-select">
+                                                                    <option value="{{ $row['id'] }}">{{ $row['name'] }}</option>
+                                                            </select>
+                                                        </div>
+                                                        <a href="" class="size-chart">Size chart</a>
+                                                    </div>
+                                                @endif
                                             </div>
-                                            <div class="form-qty">
-                                                <label class="label">Qty: </label>
-                                                <div class="control">
-                                                    <input type="text" class="form-control input-qty" value='1'
-                                                        id="qty1" name="qty1" maxlength="12" minlength="1">
-                                                    <button class="btn-number  qtyminus" data-type="minus"
-                                                        data-field="qty1"><span>-</span></button>
-                                                    <button class="btn-number  qtyplus" data-type="plus"
-                                                        data-field="qty1"><span>+</span></button>
-                                                </div>
-                                            </div>
-                                            <div class="form-configurable">
-                                                <label for="forSize" class="label">Size: </label>
-                                                <div class="control">
-                                                    <select id="forSize" class="form-control attribute-select">
-                                                        <option value="1">XXXL</option>
-                                                        <option value="4">X</option>
-                                                        <option value="5">L</option>
-                                                    </select>
-                                                </div>
-                                                <a href="" class="size-chart">Size chart</a>
-                                            </div>
-                                        </div>
+                                        @endforeach
 
 
 
