@@ -25,6 +25,11 @@ class FrontendConroller extends Controller
         $products = Product::orderBy('id', 'DESC')->paginate(18);
         return $products;
     }
+    public function product_detail($slug)
+    {
+        $product = Product::where('slug',$slug)->firstOrFail();
+        return view('ShopFrontend.product-detail',compact('product'));
+    }
     public function get_vendors(Request $request)
     {
         $vendors = Vendor::with([
@@ -51,13 +56,22 @@ class FrontendConroller extends Controller
     }
     public function vendor_detail($slug)
     {
-        $vendor = Vendor::find($slug);
-        // dd($vendor->toArray());
-        return view('ShopFrontend.vendor-detail',compact('vendor'));
+        $vendor = Vendor::with('products','products.category')->find($slug);
+        $categories = $vendor->products->pluck('category')->unique('id');
+        // dd($categories->toArray());
+        return view('ShopFrontend.vendor-detail',compact('vendor','categories'));
     }
     public function get_vendor_products($slug,Request $request)
     {
         $products = Product::where('user_id',$slug);
+        if($request->has('cat') && $request->cat != 0)
+        {
+            $products = $products->where('category_id',$request->cat);
+        }
+        if($request->has('subcat') && $request->subcat != 0)
+        {
+            $products = $products->where('subcategory_id',$request->subcat);
+        }
         if($request->has('attribute') && $request->attribute == 'bestSale')
         {
             // $products = $products;
