@@ -696,6 +696,7 @@
                 newHtml += '<div class="form-group col-md-6">';
                 newHtml += '<label for="value-1' + id + "-" + counter + '">Value</label>';
                 newHtml += '<input type="text" class="form-control" name="value[]" required>';
+                newHtml += '<input type="hidden" value="'+id+'" name="variant_id[]" required>';
                 newHtml += '<input type="hidden" class="form-control" name="type[]" value="text">';
                 newHtml += '</div>';
                 newHtml += '</div>';
@@ -720,6 +721,7 @@
                 newHtml += '<label for="variant_name-2' + id + "-" + counter + '">Variant Name</label>';
                 newHtml += '<input type="color" class="form-control" id="variant_name-2' + id + "-" + counter +
                     '" name="variant_name[]">';
+                newHtml += '<input type="hidden" value="'+id+'" name="variant_id[]" required>';
                 newHtml += '<input type="hidden" class="form-control" name="type[]" value="color">';
                 newHtml += '</div>';
                 newHtml += '<div class="form-group col-md-6">';
@@ -749,6 +751,8 @@
                 newHtml += '<label for="variant_name-' + id + "-" + counter + '">Variant Name</label>';
                 newHtml += '<input type="' + type + '" class="form-control" id="variant_name-' + id + "-" + counter +
                     '" name="variant_name[]">';
+                newHtml += '<input type="hidden" value="'+id+'" name="variant_id[]" required>';
+                newHtml += '<input type="hidden" class="form-control" name="type[]" value="'+type+'">';
                 newHtml += '</div>';
                 newHtml += '<div class="form-group col-md-6">';
                 newHtml += '<label for="value-' + id + "-" + counter + '">Value</label>';
@@ -823,6 +827,7 @@
                     html += '<label for="value-1' + val + '">Value</label>';
                     html += '<input type="text" class="form-control" name="value[]" required>';
                     html += '<input type="hidden" value="'+val+'" name="variant_id[]" required>';
+                    html += '<input type="hidden" class="form-control" name="type[]" value="text">';
                     html += '</div>';
                     html += '</div>';
                     html += '</div>';
@@ -847,6 +852,7 @@
                     html += '<input type="color" class="form-control" id="variant_name-2' + val +
                         '" name="variant_name[]">';
                     html += '<input type="hidden" value="'+val+'" name="variant_id[]" required>';
+                    html += '<input type="hidden" class="form-control" name="type[]" value="text">';
                     html += '</div>';
                     html += '<div class="form-group col-md-6">';
                     html += '<label for="value-2' + val + '">Value</label>';
@@ -880,6 +886,8 @@
                     html += '<label for="value-' + val + '">Value</label>';
                     html += '<input type="text" class="form-control" name="value[]" required>';
                     html += '<input type="hidden" value="'+val+'" name="variant_id[]" required>';
+                    html += '<input type="hidden" class="form-control" name="type[]" value="'+dataType+'">';
+
                     html += '</div>';
                     html += '</div>';
                     html += '</div>';
