@@ -696,6 +696,7 @@
                 newHtml += '<div class="form-group col-md-6">';
                 newHtml += '<label for="value-1' + id + "-" + counter + '">Value</label>';
                 newHtml += '<input type="text" class="form-control" name="value[]" required>';
+                newHtml += '<input type="hidden" class="form-control" name="type[]" value="text">';
                 newHtml += '</div>';
                 newHtml += '</div>';
                 newHtml += '</div>';
@@ -719,6 +720,7 @@
                 newHtml += '<label for="variant_name-2' + id + "-" + counter + '">Variant Name</label>';
                 newHtml += '<input type="color" class="form-control" id="variant_name-2' + id + "-" + counter +
                     '" name="variant_name[]">';
+                newHtml += '<input type="hidden" class="form-control" name="type[]" value="color">';
                 newHtml += '</div>';
                 newHtml += '<div class="form-group col-md-6">';
                 newHtml += '<label for="value-2' + id + "-" + counter + '">Value</label>';

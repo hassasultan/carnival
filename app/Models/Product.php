@@ -58,6 +58,6 @@ class Product extends Model
     
     public function variants()
     {
-        return $this->belongsToMany(Variant::class)->withPivot('value', 'status');
+        return $this->belongsToMany(Variant::class)->withPivot('name','value', 'status');
     }
 }
