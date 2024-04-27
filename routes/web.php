@@ -28,6 +28,7 @@ use App\Http\Controllers\MusicController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\FrontendConroller;
+use App\Http\Controllers\OrderController;
 
 
 /*
@@ -132,6 +133,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     //services
     Route::resource('services', ServiceController::class);
+
+    //orders
+    Route::resource('orders', OrderController::class);
 
     //appointments
     Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
