@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
 
 trait MultipleImageTrait
@@ -14,19 +13,23 @@ trait MultipleImageTrait
         foreach ($images as $image) {
             $originalName = $image->getClientOriginalName();
             $imageName = time() . '_' . $originalName;
-            $imagePath = $image->storeAs($folder, $imageName, 'public');
+            $imagePath = $image->move(public_path($folder), $imageName);
             $uploadedImages[] = [
-                'path' => $imagePath,
+                'path' => $folder . '/' . $imageName,
                 'original_name' => $originalName,
             ];
         }
+
         return $uploadedImages;
     }
 
     public function deleteMultipleImages(array $imagePaths)
     {
         foreach ($imagePaths as $image) {
-            Storage::disk('public')->delete($image['path']);
+            $imagePath = public_path($image['path']);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
         }
     }
 }
