@@ -18,12 +18,16 @@ class ProductService
         $productData = $this->prepareProductData($data);
 
         // Create the product
+        // dd($data);
         $product = Product::create($productData);
 
         // Handle variants
         if (isset($data['variant_id'])) {
             foreach ($data['variant_id'] as $index => $variantId) {
                 // Create product variant
+                // var_dump($data['type'][0] . '-' . $index);
+                $type = $data['type'][$index] . '-' . $index;
+                // dd($type);
                 $productVariant = ProductVariant::create([
                     'product_id' => $product->id,
                     'variant_id' => $variantId,
@@ -34,17 +38,20 @@ class ProductService
                 ]);
 
                 // Upload variant images
-                if (isset($data['variant_images'][$index])) {
+                if (isset($data['variant_images'])) {
                     // $imagePaths = $this->uploadVariantImages($data['variant_images'][$index]);
-                    $additionalImagePaths = $this->uploadMultipleImages($data['variant_images'], 'variant_images');
-
-                    foreach ($additionalImagePaths as $additionalImage) {
+                    foreach($data['variant_images'][$type] as $images)
+                    {
+                        $additionalImagePaths = $this->uploadImage($images, 'variant_images');
                         ProductVariantImage::create([
                             'product_id' => $product->id,
                             'product_variant_id' => $productVariant->id,
-                            'image' => $additionalImage['path'],
+                            'image' => $additionalImagePaths,
                         ]);
                     }
+                    // dd($additionalImagePaths);
+                    // foreach ($additionalImagePaths as $additionalImage) {
+                    // }
                 }
             }
         }

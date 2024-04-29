@@ -52,14 +52,14 @@ class ProductController extends Controller
         ]);
 
         $data = $request->all();
-
+        // dd($data);
         // Check if variant_images are present in the request
-        if ($request->hasFile('variant_images')) {
-            $data['variant_images'] = $request->file('variant_images');
-        } else {
-            // If no variant images are uploaded, set an empty array
-            $data['variant_images'] = [];
-        }
+        // if ($request->hasFile('variant_images')) {
+        //     $data['variant_images'] = $request->file('variant_images');
+        // } else {
+        //     // If no variant images are uploaded, set an empty array
+        //     $data['variant_images'] = [];
+        // }
 
         $product = $this->productService->createProduct($data);
 

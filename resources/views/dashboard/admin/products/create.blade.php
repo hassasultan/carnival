@@ -673,9 +673,11 @@
         //     // Clear the file input to remove the deleted image from being submitted
         //     $('#edit_variant_images-' + previewId).val('');
         // });
-        var counter = 0;
+        var new_index = 0;
 
+        var counter = 0;
         function cloneForm(id, type) {
+            console.log(new_index);
             counter++;
             var newHtml = '';
             newHtml += '<div class="parent">';
@@ -706,7 +708,7 @@
                 newHtml += '<div class="form-group col-md-12">';
                 newHtml += '<label for="variant_images-1' + id + "-" + counter + '">Variant Images</label>';
                 newHtml += '<input type="file" class="custom-file-input select2" id="variant_images-1' + id + "-" + counter +
-                    '" name="variant_images[]" multiple>';
+                    '" name="variant_images[text-'+new_index+'][]" multiple>';
                 newHtml += '<label class="custom-file-label" for="variant_images-1' + id + "-" + counter +
                     '" id="variant_images_label-' +
                     counter + '">Choose files</label>';
@@ -733,9 +735,10 @@
                 newHtml += '<div class="form-group mb-3">';
                 newHtml += '<div class="form-row">';
                 newHtml += '<div class="form-group col-md-12">';
+                new_index = new_index + 1;
                 newHtml += '<label for="variant_images-2' + id + "-" + counter + '">Variant Images</label>';
                 newHtml += '<input type="file" class="custom-file-input select2" id="variant_images-2' + id + "-" + counter +
-                    '" name="variant_images[]" multiple>';
+                    '" name="variant_images[color-'+new_index+'][]" multiple>';
                 newHtml += '<label class="custom-file-label" for="variant_images-2' + id + "-" + counter +
                     '" id="variant_images_label-' +
                     counter + '">Choose files</label>';
@@ -765,7 +768,7 @@
                 newHtml += '<div class="form-group col-md-12">';
                 newHtml += '<label for="variant_images-' + id + "-" + counter + '">Variant Images</label>';
                 newHtml += '<input type="file" class="custom-file-input select2" id="variant_images-' + id + "-" + counter +
-                    '" name="variant_images[]" multiple>';
+                    '" name="variant_images[' + type + '-'+new_index+'][]" multiple>';
                 newHtml += '<label class="custom-file-label" for="variant_images-' + id + "-" + counter +
                     '" id="variant_images_label-' +
                     counter + '">Choose files</label>';
@@ -836,7 +839,7 @@
                     html += '<div class="form-group col-md-12">';
                     html += '<label for="variant_images-1' + val + '">Variant Images</label>';
                     html += '<input type="file" class="custom-file-input select2" id="variant_images-1' + val +
-                        '" name="variant_images[]" multiple>';
+                        '" name="variant_images[text-'+index+'][]" multiple>';
                     html += '<label class="custom-file-label" for="variant_images-1' + val +
                         '" id="variant_images_label-1' + val +
                         '">Choose files</label>';
@@ -852,7 +855,7 @@
                     html += '<input type="color" class="form-control" id="variant_name-2' + val +
                         '" name="variant_name[]">';
                     html += '<input type="hidden" value="'+val+'" name="variant_id[]" required>';
-                    html += '<input type="hidden" class="form-control" name="type[]" value="text">';
+                    html += '<input type="hidden" class="form-control" name="type[]" value="color">';
                     html += '</div>';
                     html += '<div class="form-group col-md-6">';
                     html += '<label for="value-2' + val + '">Value</label>';
@@ -864,8 +867,9 @@
                     html += '<div class="form-row">';
                     html += '<div class="form-group col-md-12">';
                     html += '<label for="variant_images-2' + val + '">Variant Images</label>';
+                    index = index + 1;
                     html += '<input type="file" class="custom-file-input select2" id="variant_images-2' + val +
-                        '" name="variant_images[]" multiple>';
+                        '" name="variant_images[color-'+index+'][]" multiple>';
                     html += '<label class="custom-file-label" for="variant_images-2' + val +
                         '" id="variant_images_label-2' + val +
                         '">Choose files</label>';
@@ -896,7 +900,7 @@
                     html += '<div class="form-group col-md-12">';
                     html += '<label for="variant_images-' + val + '">Variant Images</label>';
                     html += '<input type="file" class="custom-file-input select2" id="variant_images-' + val +
-                        '" name="variant_images[]" multiple>';
+                        '" name="variant_images[' + dataType + '-'+index+'][]" multiple>';
                     html += '<label class="custom-file-label" for="variant_images-' + val +
                         '" id="variant_images_label-' + val +
                         '">Choose files</label>';
@@ -907,6 +911,7 @@
                     html += '</div>';
                 }
                 html += '</div>';
+                new_index = index +1;
             });
             $("#embed-div").html(html);
         });
