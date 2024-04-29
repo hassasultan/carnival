@@ -53,11 +53,11 @@
                                         {{-- {{ dd($product->product_varient[1]->product_image->toArray(), $row->product_image) }} --}}
                                             @foreach ($row->product_image as $key => $row)
                                                 <a href="#"
-                                                    data-image="{{ asset($row->image) }}"
+                                                    data-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
                                                     data-zoom-image="{{ asset('shopAssets/images/media/detail/thumb-lag1.jpg') }}">
 
-                                                    <img src="{{ asset('shopAssets/images/media/detail/thumb1.jpg') }}"
-                                                        data-large-image="{{ asset($row->image) }}"
+                                                    <img src="{{ asset($row->image) }}"
+                                                        data-large-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
                                                         alt="">
 
                                                 </a>
