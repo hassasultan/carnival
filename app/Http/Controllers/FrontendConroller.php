@@ -27,7 +27,7 @@ class FrontendConroller extends Controller
     }
     public function product_detail($slug)
     {
-        $product = Product::where('slug',$slug)->firstOrFail();
+        $product = Product::with('variants', 'product_varient')->where('slug',$slug)->firstOrFail();
         return view('ShopFrontend.product-detail',compact('product'));
     }
     public function get_vendors(Request $request)

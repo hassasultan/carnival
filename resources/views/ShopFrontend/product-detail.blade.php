@@ -44,17 +44,19 @@
                                 </div>
 
                                 <div class="product_preview images-small">
+                                    <h1>asasasas</h1>
 
                                     <div class="owl-carousel thumbnails_carousel" id="thumbnails" data-nav="true"
                                         data-dots="false" data-margin="10"
                                         data-responsive='{"0":{"items":3},"480":{"items":4},"600":{"items":5},"768":{"items":3}}'>
                                         @foreach ($product->product_varient as $key => $row)
+                                        {{-- {{ dd($product->product_varient[1]->product_image->toArray(), $row->product_image) }} --}}
                                             @foreach ($row->product_image as $key => $row)
                                                 <a href="#"
                                                     data-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
                                                     data-zoom-image="{{ asset('shopAssets/images/media/detail/thumb-lag1.jpg') }}">
 
-                                                    <img src="{{ asset('shopAssets/images/media/detail/thumb1.jpg') }}"
+                                                    <img src="{{ asset($row->image) }}"
                                                         data-large-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
                                                         alt="">
 
@@ -166,32 +168,32 @@
                                                         <div class="swatch-attribute color">
                                                             <span class="swatch-attribute-label">Color:</span>
                                                             <div class="swatch-attribute-options clearfix">
-                                                                <div class="swatch-option color @if($key == 0) selected @endif"
+                                                                <div class="swatch-option color @if ($key == 0) selected @endif"
                                                                     style="background-color: #0c3b90 ;">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 @endif
-                                                    <div class="form-qty">
-                                                        <label class="label">Qty: </label>
-                                                        <div class="control">
-                                                            <input type="text" class="form-control input-qty"
-                                                                value='1' id="qty1" name="qty1"
-                                                                maxlength="{{ $row->value }}" minlength="1">
-                                                            <button class="btn-number  qtyminus" data-type="minus"
-                                                                data-field="qty1"><span>-</span></button>
-                                                            <button class="btn-number  qtyplus" data-type="plus"
-                                                                data-field="qty1"><span>+</span></button>
-                                                        </div>
+                                                <div class="form-qty">
+                                                    <label class="label">Qty: </label>
+                                                    <div class="control">
+                                                        <input type="text" class="form-control input-qty" value='1'
+                                                            id="qty1" name="qty1" maxlength="{{ $row->value }}"
+                                                            minlength="1">
+                                                        <button class="btn-number  qtyminus" data-type="minus"
+                                                            data-field="qty1"><span>-</span></button>
+                                                        <button class="btn-number  qtyplus" data-type="plus"
+                                                            data-field="qty1"><span>+</span></button>
                                                     </div>
+                                                </div>
                                                 @if ($row->type == 'size')
                                                     <div class="form-configurable">
                                                         <label for="forSize" class="label">Size: </label>
                                                         <div class="control">
-                                                            <select id="forSize"
-                                                                class="form-control attribute-select">
-                                                                    <option value="{{ $row['id'] }}">{{ $row['name'] }}</option>
+                                                            <select id="forSize" class="form-control attribute-select">
+                                                                <option value="{{ $row['id'] }}">{{ $row['name'] }}
+                                                                </option>
                                                             </select>
                                                         </div>
                                                         <a href="" class="size-chart">Size chart</a>
