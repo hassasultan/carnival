@@ -20,9 +20,9 @@ use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\CostumeController;
 use App\Http\Controllers\Vendor\BlogController;
 use App\Http\Controllers\SubVendor\SubVendorBlogController;
-use App\Http\Controllers\vendor\VendorCostumeController;
+use App\Http\Controllers\Vendor\VendorCostumeController;
 use App\Http\Controllers\SubVendor\SubVendorCostumeController;
-use App\Http\Controllers\vendor\VendorProductController;
+use App\Http\Controllers\Vendor\VendorProductController;
 use App\Http\Controllers\SubVendor\SubVendorProductController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\ServiceController;
@@ -161,6 +161,7 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
 
     // products
     Route::get('/products', [VendorProductController::class, 'index'])->name('vendor.products');
+    Route::get('/products/add', [VendorProductController::class, 'create'])->name('vendor.products.create');
     Route::get('/products/edit/{id}', [VendorProductController::class, 'edit'])->name('vendor.products.edit');
     Route::post('/products/store', [VendorProductController::class, 'store'])->name('vendor.products.store');
     Route::put('/products/update/{id}', [VendorProductController::class, 'update'])->name('vendor.products.update');
