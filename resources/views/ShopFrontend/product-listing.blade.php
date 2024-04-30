@@ -755,7 +755,7 @@
                                 .new_price) / product.old_price) * 100);
                                 var image = null;
                                 console.log(product.image);
-                                if(product.image != null || product.image != '')
+                                if(product.image != null && product.image != '')
                                 {
                                     image = "{{ asset('productImage/') }}/"+product.image;
                                 }
