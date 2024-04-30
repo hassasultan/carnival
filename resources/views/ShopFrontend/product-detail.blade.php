@@ -37,26 +37,26 @@
 
                                     <img id="img_zoom"
                                         data-zoom-image="{{ asset('shopAssets/images/media/detail/thumb-lag1.jpg') }}"
-                                        src="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}" alt="">
+                                        src="{{ asset('productImage/' . $product->image) }}" alt="">
 
                                     <button class="btn-zoom open_qv"><span>zoom</span></button>
 
                                 </div>
 
                                 <div class="product_preview images-small">
-                                    <h1>asasasas</h1>
-
                                     <div class="owl-carousel thumbnails_carousel" id="thumbnails" data-nav="true"
                                         data-dots="false" data-margin="10"
                                         data-responsive='{"0":{"items":3},"480":{"items":4},"600":{"items":5},"768":{"items":3}}'>
                                         @foreach ($product->product_varient as $key => $row)
-                                            {{-- {{ dd($product->product_varient[1]->product_image->toArray(), $row->product_image) }} --}}
+                                            {{-- {{ dd($product->product_varient[0]->product_image->toArray(), $row->product_image) }} --}}
                                             @foreach ($row->product_image as $key => $row)
+                                            {{-- {{ dd('variant_images/' . $row->image) }} --}}
                                                 <a href="#"
                                                     data-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
                                                     data-zoom-image="{{ asset('shopAssets/images/media/detail/thumb-lag1.jpg') }}">
 
-                                                    <img src="{{ asset($row->image) }}"
+                                                    {{-- <img src="{{ asset('shopAssets/images/media/detail/thumb-lag1.jpg') }}" --}}
+                                                    <img src="{{ asset('variant_images/' . $row->image) }}"
                                                         data-large-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
                                                         alt="">
 
