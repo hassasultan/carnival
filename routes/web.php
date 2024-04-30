@@ -29,6 +29,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\FrontendConroller;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AddToCartController;
 
 
 /*
@@ -239,3 +240,6 @@ Route::get('/product-detail', function(){
 Route::get('/wishlist', function(){
     return view('ShopFrontend.wishlist');
 })->name('wishlist');
+
+// Add to cart
+Route::get('/add_to_cart', [AddToCartController::class, 'addCart'])->name('add.to.cart');

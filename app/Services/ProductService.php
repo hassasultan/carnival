@@ -27,7 +27,7 @@ class ProductService
                 // Create product variant
                 // var_dump($data['type'][0] . '-' . $index);
                 $type = $data['type'][$index] . '-' . $index;
-                // dd($type);
+                // dd($type);image
                 $productVariant = ProductVariant::create([
                     'product_id' => $product->id,
                     'variant_id' => $variantId,

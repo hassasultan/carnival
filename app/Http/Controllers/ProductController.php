@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Variant;
+use App\Traits\ImageTrait;
 use App\Models\ProductVariantImage;
 use App\Models\ProductVariant;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ use App\Services\ProductService;
 
 class ProductController extends Controller
 {
+    use ImageTrait;
     protected $productService;
 
     public function __construct(ProductService $productService)
@@ -52,14 +54,10 @@ class ProductController extends Controller
         ]);
 
         $data = $request->all();
-        // dd($data);
-        // Check if variant_images are present in the request
-        // if ($request->hasFile('variant_images')) {
-        //     $data['variant_images'] = $request->file('variant_images');
-        // } else {
-        //     // If no variant images are uploaded, set an empty array
-        //     $data['variant_images'] = [];
-        // }
+
+        $image = $this->uploadImage($request->file('image'), 'productImage');
+
+        $data['image'] = $image;
 
         $product = $this->productService->createProduct($data);
 
