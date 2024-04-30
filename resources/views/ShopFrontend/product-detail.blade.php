@@ -160,9 +160,9 @@
                                     <p>Available Options:</p>
                                     <form>
 
-                                        @foreach ($product->product_varient as $key => $row)
-                                            {{-- {{ dd($row->product_image->toArray()) }} --}}
-                                            <div class="product-options-wrapper">
+                                        {{-- {{ dd($row->product_image->toArray()) }} --}}
+                                        <div class="product-options-wrapper">
+                                                @foreach ($product->product_varient as $key => $row)
                                                 @if ($row->type == 'color')
                                                     <div class="swatch-opt">
                                                         <div class="swatch-attribute color">
@@ -175,18 +175,6 @@
                                                         </div>
                                                     </div>
                                                 @endif
-                                                <div class="form-qty">
-                                                    <label class="label">Qty: </label>
-                                                    <div class="control">
-                                                        <input type="text" class="form-control input-qty" value='1'
-                                                            id="qty1" name="qty1" maxlength="{{ $row->value }}"
-                                                            minlength="1">
-                                                        <button class="btn-number  qtyminus" data-type="minus"
-                                                            data-field="qty1"><span>-</span></button>
-                                                        <button class="btn-number  qtyplus" data-type="plus"
-                                                            data-field="qty1"><span>+</span></button>
-                                                    </div>
-                                                </div>
                                                 @if ($row->type == 'size')
                                                     <div class="form-configurable">
                                                         <label for="forSize" class="label">Size: </label>
@@ -199,8 +187,21 @@
                                                         <a href="" class="size-chart">Size chart</a>
                                                     </div>
                                                 @endif
+                                                @endforeach
+                                                <div class="form-qty">
+                                                    <label class="label">Qty: </label>
+                                                    <div class="control">
+                                                        <input type="text" class="form-control input-qty" value='1'
+                                                            id="qty1" name="qty1" maxlength="{{ $row->value }}"
+                                                            minlength="1">
+                                                        <button class="btn-number  qtyminus" data-type="minus"
+                                                            data-field="qty1"><span>-</span></button>
+                                                        <button class="btn-number  qtyplus" data-type="plus"
+                                                            data-field="qty1"><span>+</span></button>
+                                                    </div>
+                                                </div>
+                                                
                                             </div>
-                                        @endforeach
 
 
 
