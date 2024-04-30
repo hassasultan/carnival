@@ -756,7 +756,7 @@
                                 var image = null;
                                 if(product.image != null)
                                 {
-                                    image = "{{ asset('productImage/') }}"+product.image;
+                                    image = "{{ asset('productImage/') }}/"+product.image;
                                 }
                                 else
                                 {
