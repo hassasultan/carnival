@@ -754,7 +754,7 @@
                             var percentageDiscount = Math.round(((product.old_price - product
                                 .new_price) / product.old_price) * 100);
                                 var image = null;
-                                if(product.image != null)
+                                if(product.image != null || product.image != '')
                                 {
                                     image = "{{ asset('productImage/') }}/"+product.image;
                                 }
