@@ -431,7 +431,7 @@
                                                 <strong class="product-item-name"><a href="">${vendor.user.first_name} ${vendor.user.last_name}</a></strong>`;
                                                 if(vendor.user.products.length > 0)
                                                 {
-                                                    var vendorHtml +=`
+                                                    vendorHtml += `
                                                     <div class="clearfix">
                                                         <div class="product-item-price">
                                                             <span class="price">$${vendor.user.products[0].min_price}-$${vendor.user.products[0].max_price}</span>
@@ -439,7 +439,7 @@
                                                         
                                                     </div>`;
                                                 }
-                                                var vendorHtml +=`
+                                                vendorHtml +=`
                                             </div>
                                         </div>
                                     </div>
