@@ -411,7 +411,7 @@
                                     <li class="product-item product-item-opt-2">
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
-                                                <a href="" class="product-item-img">
+                                                <a href="{{ route('get.products.detail',$row->slug) }}" class="product-item-img">
                                                     @if ($product->image != '')
                                                         <img src="{{ asset('productImage/' . $product->image) }}"
                                                             alt="product name">
@@ -478,165 +478,64 @@
                         <div class="block-content ">
                             <ol class="product-items owl-carousel " data-nav="true" data-dots="false" data-margin="30"
                                 data-responsive='{"0":{"items":1},"480":{"items":2},"600":{"items":3},"992":{"items":3}}'>
-
-
-                                <li class="product-item product-item-opt-2">
-                                    <div class="product-item-info">
-                                        <div class="product-item-photo">
-                                            <a href="" class="product-item-img"><img
-                                                    src="{{ asset('shopAssets/images/media/detail/Upsell2-1.jpg') }}"
-                                                    alt="product name"></a>
-                                            <div class="product-item-actions">
-                                                <a href="" class="btn btn-wishlist"><span>wishlist</span></a>
-                                                <a href="" class="btn btn-compare"><span>compare</span></a>
-                                                <a href="" class="btn btn-quickview"><span>quickview</span></a>
-                                            </div>
-                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
-                                            <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                data-product_id="{{ $product->id }}">
-                                                <span>Add to Cart</span>
-                                            </button>
-                                        </div>
-                                        <div class="product-item-detail">
-                                            <strong class="product-item-name"><a href="">Leather Swiss
-                                                    Watch</a></strong>
-                                            <div class="clearfix">
-                                                <div class="product-item-price">
-                                                    <span class="price">$45.00</span>
-                                                    <span class="old-price">$52.00</span>
+                                @foreach ($same_cat as $row)
+                                    <li class="product-item product-item-opt-2">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a href="{{ route('get.products.detail',$row->slug) }}" class="product-item-img">
+                                                    @if ($product->image != '')
+                                                        <img src="{{ asset('productImage/' . $product->image) }}"
+                                                            alt="product name">
+                                                    @else
+                                                    <img src="{{ asset('shopAssets/images/media/detail/related2-2.jpg') }}"
+                                                    alt="product name">
+                                                    @endif
+                                                </a>
+                                                <div class="product-item-actions">
+                                                    <a href="" class="btn btn-wishlist"><span>wishlist</span></a>
+                                                    <a href="" class="btn btn-compare"><span>compare</span></a>
+                                                    <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                                 </div>
-                                                <div class="product-reviews-summary">
-                                                    <div class="rating-summary">
-                                                        <div class="rating-result" title="70%">
-                                                            <span style="width:70%">
-                                                                <span><span>70</span>% of <span>100</span></span>
-                                                            </span>
+                                                {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
+                                                <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                    data-product_id="{{ $product->id }}">
+                                                    <span>Add to Cart</span>
+                                                </button>
+
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">{{$row->title}}</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+        
+                                                        @php
+                                                            $oldPrice = $row->old_price;
+                                                            $newPrice = $row->new_price;
+                                                            if ($oldPrice > 0) {
+                                                                $percentageDiscount = round(
+                                                                    (($oldPrice - $newPrice) / $oldPrice) * 100,
+                                                                );
+                                                            } else {
+                                                                $percentageDiscount = 0;
+                                                            }
+                                                        @endphp
+                                                        <span class="price">${{ $row->new_price }}</span>
+                                                        <span class="old-price">${{ $row->old_price }}</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div class="rating-result" title="{{ $percentageDiscount }}%">
+                                                                <span style="width:{{ $percentageDiscount }}%">
+                                                                    <span><span>{{ $percentageDiscount }}</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-
-                                <li class="product-item product-item-opt-2">
-                                    <div class="product-item-info">
-                                        <div class="product-item-photo">
-                                            <a href="" class="product-item-img"><img
-                                                    src="{{ asset('shopAssets/images/media/detail/Upsell2-2.jpg') }}"
-                                                    alt="product name"></a>
-                                            <div class="product-item-actions">
-                                                <a href="" class="btn btn-wishlist"><span>wishlist</span></a>
-                                                <a href="" class="btn btn-compare"><span>compare</span></a>
-                                                <a href="" class="btn btn-quickview"><span>quickview</span></a>
-                                            </div>
-                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
-                                            <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                data-product_id="{{ $product->id }}">
-                                                <span>Add to Cart</span>
-                                            </button>
-
-                                        </div>
-                                        <div class="product-item-detail">
-                                            <strong class="product-item-name"><a href="">Sport T-Shirt For
-                                                    Men</a></strong>
-                                            <div class="clearfix">
-                                                <div class="product-item-price">
-                                                    <span class="price">$45.00</span>
-                                                    <span class="old-price">$52.00</span>
-                                                </div>
-                                                <div class="product-reviews-summary">
-                                                    <div class="rating-summary">
-                                                        <div class="rating-result" title="70%">
-                                                            <span style="width:70%">
-                                                                <span><span>70</span>% of <span>100</span></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product-item product-item-opt-2">
-                                    <div class="product-item-info">
-                                        <div class="product-item-photo">
-                                            <a href="" class="product-item-img"><img
-                                                    src="{{ asset('shopAssets/images/media/detail/Upsell2-3.jpg') }}"
-                                                    alt="product name"></a>
-                                            <div class="product-item-actions">
-                                                <a href="" class="btn btn-wishlist"><span>wishlist</span></a>
-                                                <a href="" class="btn btn-compare"><span>compare</span></a>
-                                                <a href="" class="btn btn-quickview"><span>quickview</span></a>
-                                            </div>
-                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
-                                            <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                data-product_id="{{ $product->id }}">
-                                                <span>Add to Cart</span>
-                                            </button>
-
-                                        </div>
-                                        <div class="product-item-detail">
-                                            <strong class="product-item-name"><a href="">Fashion Leather
-                                                    Handbag</a></strong>
-                                            <div class="clearfix">
-                                                <div class="product-item-price">
-                                                    <span class="price">$45.00</span>
-                                                    <span class="old-price">$52.00</span>
-                                                </div>
-                                                <div class="product-reviews-summary">
-                                                    <div class="rating-summary">
-                                                        <div class="rating-result" title="70%">
-                                                            <span style="width:70%">
-                                                                <span><span>70</span>% of <span>100</span></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product-item product-item-opt-2">
-                                    <div class="product-item-info">
-                                        <div class="product-item-photo">
-                                            <a href="" class="product-item-img"><img
-                                                    src="{{ asset('shopAssets/images/media/detail/Upsell2-3.jpg') }}"
-                                                    alt="product name"></a>
-                                            <div class="product-item-actions">
-                                                <a href="" class="btn btn-wishlist"><span>wishlist</span></a>
-                                                <a href="" class="btn btn-compare"><span>compare</span></a>
-                                                <a href="" class="btn btn-quickview"><span>quickview</span></a>
-                                            </div>
-                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
-                                            <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                data-product_id="{{ $product->id }}">
-                                                <span>Add to Cart</span>
-                                            </button>
-
-                                        </div>
-                                        <div class="product-item-detail">
-                                            <strong class="product-item-name"><a href="">Fashion Leather
-                                                    Handbag</a></strong>
-                                            <div class="clearfix">
-                                                <div class="product-item-price">
-                                                    <span class="price">$45.00</span>
-                                                    <span class="old-price">$52.00</span>
-                                                </div>
-                                                <div class="product-reviews-summary">
-                                                    <div class="rating-summary">
-                                                        <div class="rating-result" title="70%">
-                                                            <span style="width:70%">
-                                                                <span><span>70</span>% of <span>100</span></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
+                                    </li>
+                                @endforeach
                             </ol>
                         </div>
                     </div><!-- block-Upsell Products -->
