@@ -54,6 +54,10 @@ class FrontendConroller extends Controller
     {
         return view('ShopFrontend.vendors');
     }
+    public function sub_vendor_listing($slug)
+    {
+        return view('ShopFrontend.subvendor-detail');
+    }
     public function vendor_detail($slug)
     {
         $vendor = Vendor::with('products','products.category')->find($slug);
