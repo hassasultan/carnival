@@ -13,9 +13,11 @@ use App\Models\ProductVariant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Services\ProductService;
+use App\Traits\ImageTrait;
 
 class VendorProductController extends Controller
 {
+    use ImageTrait;
     protected $productService;
 
     public function __construct(ProductService $productService)
