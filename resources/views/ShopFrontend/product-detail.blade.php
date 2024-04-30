@@ -36,7 +36,7 @@
                                 <div class="image_preview_container images-large">
 
                                     <img id="img_zoom"
-                                        data-zoom-image="{{ asset('shopAssets/images/media/detail/thumb-lag1.jpg') }}"
+                                        data-zoom-image="{{ asset('productImage/' . $product->image) }}"
                                         src="{{ asset('productImage/' . $product->image) }}" alt="">
 
                                     <button class="btn-zoom open_qv"><span>zoom</span></button>
@@ -52,12 +52,12 @@
                                             @foreach ($row->product_image as $key => $row)
                                             {{-- {{ dd('variant_images/' . $row->image) }} --}}
                                                 <a href="#"
-                                                    data-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
-                                                    data-zoom-image="{{ asset('shopAssets/images/media/detail/thumb-lag1.jpg') }}">
+                                                    data-image="{{ asset('variant_images/' . $row->image) }}"
+                                                    data-zoom-image="{{ asset('variant_images/' . $row->image) }}">
 
                                                     {{-- <img src="{{ asset('shopAssets/images/media/detail/thumb-lag1.jpg') }}" --}}
                                                     <img src="{{ asset('variant_images/' . $row->image) }}"
-                                                        data-large-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
+                                                        data-large-image="{{ asset('variant_images/' . $row->image) }}"
                                                         alt="">
 
                                                 </a>
