@@ -433,8 +433,7 @@
 
                                             </div>
                                             <div class="product-item-detail">
-                                                <strong class="product-item-name"><a href="">Brown Short 100%
-                                                        Cotton</a></strong>
+                                                <strong class="product-item-name"><a href="">{{$row->title}}</a></strong>
                                                 <div class="clearfix">
                                                     <div class="product-item-price">
           
