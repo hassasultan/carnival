@@ -31,6 +31,13 @@ class VendorProductController extends Controller
         return view('dashboard.vendor.products.index', compact('products', 'variants', 'categories'));
     }
 
+    public function create()
+    {
+        $variants = Variant::all();
+        $categories = Category::all();
+        return view('dashboard.vendor.products.create', compact('categories', 'variants'));
+    }
+
     public function store(Request $request)
     {
         // dd($request->all());

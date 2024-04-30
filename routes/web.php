@@ -160,6 +160,7 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
 
     // products
     Route::get('/products', [VendorProductController::class, 'index'])->name('vendor.products');
+    Route::get('/products/add', [VendorProductController::class, 'create'])->name('vendor.products.create');
     Route::get('/products/edit/{id}', [VendorProductController::class, 'edit'])->name('vendor.products.edit');
     Route::post('/products/store', [VendorProductController::class, 'store'])->name('vendor.products.store');
     Route::put('/products/update/{id}', [VendorProductController::class, 'update'])->name('vendor.products.update');
