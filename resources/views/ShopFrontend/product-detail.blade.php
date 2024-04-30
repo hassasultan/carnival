@@ -412,7 +412,7 @@
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
                                                 <a href="{{ route('get.products.detail',$row->slug) }}" class="product-item-img">
-                                                    @if ($product->image != '')
+                                                    @if ($row->image != '' && $row->image != NULL)
                                                         <img src="{{ asset('productImage/' . $row->image) }}"
                                                             alt="product name">
                                                     @else
@@ -483,7 +483,7 @@
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
                                                 <a href="{{ route('get.products.detail',$row->slug) }}" class="product-item-img">
-                                                    @if ($product->image != '')
+                                                    @if ($row->image != '' && $row->image != NULL)
                                                         <img src="{{ asset('productImage/' . $row->image) }}"
                                                             alt="product name">
                                                     @else
