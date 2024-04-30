@@ -50,7 +50,7 @@
                                         data-dots="false" data-margin="10"
                                         data-responsive='{"0":{"items":3},"480":{"items":4},"600":{"items":5},"768":{"items":3}}'>
                                         @foreach ($product->product_varient as $key => $row)
-                                        {{-- {{ dd($product->product_varient[1]->product_image->toArray(), $row->product_image) }} --}}
+                                            {{-- {{ dd($product->product_varient[1]->product_image->toArray(), $row->product_image) }} --}}
                                             @foreach ($row->product_image as $key => $row)
                                                 <a href="#"
                                                     data-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
@@ -208,7 +208,8 @@
 
                                             <div class="actions">
 
-                                                <button type="submit" title="Add to Cart" class="action btn-cart">
+                                                <button type="button" title="Add to Cart" class="action btn-cart"
+                                                    data-product_id="{{ $product->id }}">
                                                     <span>Add to Cart</span>
                                                 </button>
                                                 <div class="product-addto-links">
@@ -431,7 +432,11 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
+                                            <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                data-product_id="{{ $product->id }}">
+                                                <span>Add to Cart</span>
+                                            </button>
 
                                         </div>
                                         <div class="product-item-detail">
@@ -467,7 +472,11 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
+                                            <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                data-product_id="{{ $product->id }}">
+                                                <span>Add to Cart</span>
+                                            </button>
 
                                         </div>
                                         <div class="product-item-detail">
@@ -502,7 +511,11 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
+                                            <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                data-product_id="{{ $product->id }}">
+                                                <span>Add to Cart</span>
+                                            </button>
 
                                         </div>
                                         <div class="product-item-detail">
@@ -537,7 +550,11 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
+                                            <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                data-product_id="{{ $product->id }}">
+                                                <span>Add to Cart</span>
+                                            </button>
 
                                         </div>
                                         <div class="product-item-detail">
@@ -587,7 +604,11 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
+                                            <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                data-product_id="{{ $product->id }}">
+                                                <span>Add to Cart</span>
+                                            </button>
                                         </div>
                                         <div class="product-item-detail">
                                             <strong class="product-item-name"><a href="">Leather Swiss
@@ -622,7 +643,11 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
+                                            <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                data-product_id="{{ $product->id }}">
+                                                <span>Add to Cart</span>
+                                            </button>
 
                                         </div>
                                         <div class="product-item-detail">
@@ -657,7 +682,11 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
+                                            <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                data-product_id="{{ $product->id }}">
+                                                <span>Add to Cart</span>
+                                            </button>
 
                                         </div>
                                         <div class="product-item-detail">
@@ -692,7 +721,11 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
+                                            <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                data-product_id="{{ $product->id }}">
+                                                <span>Add to Cart</span>
+                                            </button>
 
                                         </div>
                                         <div class="product-item-detail">
@@ -1027,7 +1060,11 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
+                                            <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                data-product_id="{{ $product->id }}">
+                                                <span>Add to Cart</span>
+                                            </button>
                                             <span class="product-item-label label-price">30% <span>off</span></span>
                                         </div>
                                         <div class="product-item-detail">
@@ -1062,7 +1099,11 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
+                                            <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                data-product_id="{{ $product->id }}">
+                                                <span>Add to Cart</span>
+                                            </button>
 
                                         </div>
                                         <div class="product-item-detail">
@@ -1097,7 +1138,11 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
+                                            <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                data-product_id="{{ $product->id }}">
+                                                <span>Add to Cart</span>
+                                            </button>
                                             <span class="product-item-label label-price">30% <span>off</span></span>
                                         </div>
                                         <div class="product-item-detail">
@@ -1316,5 +1361,29 @@
             });
 
         })(jQuery);
+
+        // add to cart
+        $(document).ready(function() {
+            $('.btn-cart').click(function() {
+                var productId = $(this).data('product_id');
+                var quantity = $('.input-qty').val();
+
+                $.ajax({
+                    type: 'GET',
+                    url: '{{ route('add.to.cart') }}',
+                    data: {
+                        product_id: productId,
+                        quantity: quantity
+                    },
+                    success: function(response) {
+                        alert('Product added to cart successfully!');
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error adding product to cart:', error);
+                        console.error('Error adding product to cart:', error);
+                    }
+                });
+            });
+        });
     </script>
 @endsection

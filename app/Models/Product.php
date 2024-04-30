@@ -64,4 +64,8 @@ class Product extends Model
     {
         return $this->hasMany(ProductVariant::class,'product_id');
     }
+    public function isAvailable()
+    {
+        return $this->stock_condition === 'In Stock';
+    }
 }
