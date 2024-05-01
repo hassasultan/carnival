@@ -33,6 +33,10 @@ class Product extends Model
         'pinterest',
         'linkedin',
         'image',
+        'information',
+        'reviews',
+        'extra',
+        'guarantee',
     ];
 
     protected $dates = [
