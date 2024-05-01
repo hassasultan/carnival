@@ -428,13 +428,18 @@
                                                 </div>
                                             </div>
                                             <div class="product-item-detail">
-                                                <strong class="product-item-name"><a href="">${vendor.user.first_name} ${vendor.user.last_name}</a></strong>
-                                                <div class="clearfix">
-                                                    <div class="product-item-price">
-                                                        <span class="price">$${vendor.user.products[0].min_price}-$${vendor.user.products[0].max_price}</span>
-                                                    </div>
-                                                    
-                                                </div>
+                                                <strong class="product-item-name"><a href="">${vendor.user.first_name} ${vendor.user.last_name}</a></strong>`;
+                                                if(vendor.user.products.length > 0)
+                                                {
+                                                    vendorHtml += `
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$${vendor.user.products[0].min_price}-$${vendor.user.products[0].max_price}</span>
+                                                        </div>
+                                                        
+                                                    </div>`;
+                                                }
+                                                vendorHtml +=`
                                             </div>
                                         </div>
                                     </div>

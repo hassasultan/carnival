@@ -753,12 +753,22 @@
                         $.each(response.data, function(index, product) {
                             var percentageDiscount = Math.round(((product.old_price - product
                                 .new_price) / product.old_price) * 100);
+                                var image = null;
+                                console.log(product.image);
+                                if(product.image != null && product.image != '')
+                                {
+                                    image = "{{ asset('productImage/') }}/"+product.image;
+                                }
+                                else
+                                {
+                                    image = 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                }
                             var productHtml = `
                         <li class="col-sm-4 product-item">
                             <div class="product-item-opt-1">
                                 <div class="product-item-info">
                                     <div class="product-item-photo">
-                                        <a href="{{ route('get.products.detail','') }}/${product.slug}" class="product-item-img"><img src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg"
+                                        <a href="{{ route('get.products.detail','') }}/${product.slug}" class="product-item-img"><img src="${image}"
                                                 alt="${product.title}"></a>
                                         <div class="product-item-actions">
                                             <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
