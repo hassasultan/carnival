@@ -41,7 +41,7 @@
                                                 <td>{{ $user->first_name . ' ' . $user->last_name }}</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>
-                                                    @if ($user->role && $user->role_id != '123')
+                                                    @if ($user->role && $user->role_id != '4')
                                                         {{ $user->role->name }}
                                                     @else
                                                         Customer

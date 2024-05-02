@@ -118,6 +118,10 @@ class ProductService
             'tiktok' => $data['tiktok'] ?? null,
             'pinterest' => $data['pinterest'] ?? null,
             'linkedin' => $data['linkedin'] ?? null,
+            'information' => $data['information'] ?? null,
+            'reviews' => $data['reviews'] ?? null,
+            'extra' => $data['extra'] ?? null,
+            'guarantee' => $data['guarantee'] ?? null,
             'image' => $data['image'] ?? null,
         ];
 

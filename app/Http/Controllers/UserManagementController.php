@@ -150,7 +150,7 @@ class UserManagementController extends Controller
             ]);
         }
 
-        if ($data['role_id'] == 123) {
+        if ($data['role_id'] == 4) {
             Customer::create([
                 'user_id' => $user->id,
                 'package_id' => $data['package_id'],

@@ -471,10 +471,15 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     <script>
         $('#summernote').summernote({
-        placeholder: 'Add Your Description Here...',
-        tabsize: 2,
-        height: 100
-      });
+            placeholder: 'Add Your Description Here...',
+            tabsize: 2,
+            height: 100
+        });
+        $('.summernote').summernote({
+            placeholder: 'Add Your Description Here...',
+            tabsize: 2,
+            height: 100
+        });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>

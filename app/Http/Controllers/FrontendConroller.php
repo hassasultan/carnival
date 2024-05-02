@@ -10,6 +10,7 @@ use App\Models\ProductVariantImage;
 use App\Models\ProductVariant;
 use App\Models\Vendor;
 use App\Models\SubVendor;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -36,7 +37,7 @@ class FrontendConroller extends Controller
     {
         $vendors = Vendor::with([
             'user' => function ($query) {
-                $query->select('id', 'first_name', 'last_name');
+                $query->select('id', 'first_name', 'last_name', 'slug');
             },
             'user.products' => function ($query) {
                 $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
@@ -56,16 +57,27 @@ class FrontendConroller extends Controller
     {
         return view('ShopFrontend.vendors');
     }
-    public function sub_vendor_listing($slug)
+    public function sub_vendor_listing()
     {
-        return view('ShopFrontend.subvendor-detail');
+        return view('ShopFrontend.subvendor');
     }
     public function vendor_detail($slug)
     {
-        $vendor = Vendor::with('products','products.category')->find($slug);
+        $user = User::whereSlug($slug)->first();
+        $vendor = Vendor::with('products','products.category')->where('user_id', $user->id)->first();
         $categories = $vendor->products->pluck('category')->unique('id');
         // dd($categories->toArray());
         return view('ShopFrontend.vendor-detail',compact('vendor','categories'));
+    }
+    public function sub_vendor_detail($slug)
+    {
+        $user = User::whereSlug($slug)->first();
+        $vendor = SubVendor::with('products','products.category')->where('user_id', $user->id)->first();
+        $categories = $vendor->products->pluck('category')->unique('id');
+
+        dd($vendor->toArray());
+
+        return view('ShopFrontend.subVendor-detail',compact('vendor','categories'));
     }
     public function get_vendor_products($slug,Request $request)
     {

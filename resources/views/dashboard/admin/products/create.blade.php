@@ -61,7 +61,7 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea class="form-control" id="description" name="description" required></textarea>
+                            <textarea id="summernote" name="description" class="form-control description" placeholder="Enter description"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="category">Category</label>
@@ -165,6 +165,22 @@
                         <div class="form-group">
                             <label for="linkedin">LinkedIn</label>
                             <input type="text" class="form-control" id="linkedin" name="linkedin">
+                        </div>
+                        <div class="form-group">
+                            <label for="information">Information</label>
+                            <textarea id="information" name="information" class="form-control information summernote" placeholder=""></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviews">Reviews</label>
+                            <textarea id="reviews" name="reviews" class="form-control reviews summernote" placeholder=""></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="extra">Extra</label>
+                            <textarea id="extra" name="extra" class="form-control extra summernote" placeholder=""></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="guarantee">Guarantee</label>
+                            <textarea id="guarantee" name="guarantee" class="form-control guarantee summernote" placeholder=""></textarea>
                         </div>
                         <div class="form-group mb-3">
                             <label for="image">Image</label>

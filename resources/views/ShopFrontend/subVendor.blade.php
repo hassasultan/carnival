@@ -173,14 +173,10 @@
                 <!-- Sidebar -->
                 <div class="col-md-3 col-md-pull-9  col-sidebar">
 
-
                     <!-- block slide top -->
                     <div class="block-sidebar block-banner-sidebar">
                         <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
-
-
-
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
@@ -242,9 +238,6 @@
                     <div class="block-sidebar block-banner-sidebar">
                         <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
-
-
-
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
@@ -306,9 +299,6 @@
                     <div class="block-sidebar block-banner-sidebar">
                         <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
-
-
-
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
@@ -366,20 +356,10 @@
                             </div>
                         </div>
                     </div><!-- block slide top -->
-
-
-
-
-
                 </div>
                 <!-- Sidebar -->
-
-
-
             </div>
         </div>
-
-
     </main><!-- end MAIN -->
 @endsection
 
@@ -503,27 +483,17 @@
 
             $(document).ready(function() {
 
-                /*  [ Filter by price ]
-
-                - - - - - - - - - - - - - - - - - - - - */
-
                 $('#slider-range').slider({
 
                     range: true,
-
                     min: 0,
-
                     max: 500,
-
                     values: [0, 300],
 
                     slide: function(event, ui) {
-
                         $('#amount-left').text(ui.values[0]);
                         $('#amount-right').text(ui.values[1]);
-
                     }
-
                 });
 
                 $('#amount-left').text($('#slider-range').slider('values', 0));
