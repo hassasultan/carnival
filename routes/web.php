@@ -51,6 +51,8 @@ Route::get('/get/shop/products/{slug}', [FrontendConroller::class, 'get_vendor_p
 Route::get('/get-products', [FrontendConroller::class, 'get_product'])->name('get.products.home');
 Route::get('/shop/product/{slug}', [FrontendConroller::class, 'product_detail'])->name('get.products.detail');
 Route::get('/get-vendors', [FrontendConroller::class, 'get_vendors'])->name('get.vendors.front');
+Route::get('/get-subvendors', [FrontendConroller::class, 'get_subVendors'])->name('get.subVvendors.front');
+Route::get('/shop/section-leader/{slug}', [FrontendConroller::class, 'sub_vendor_detail'])->name('front.subVendor.detail');
 
 Route::get('/unauthorized', function () {
     return view('unauthorized');
