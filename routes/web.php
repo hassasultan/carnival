@@ -243,6 +243,9 @@ Route::get('/product-detail', function(){
 Route::get('/wishlist', function(){
     return view('ShopFrontend.wishlist');
 })->name('wishlist');
+Route::get('/checkout', function(){
+    return view('ShopFrontend.checkout');
+})->name('checkout');
 
 // Add to cart
 Route::get('/add_to_cart', [AddToCartController::class, 'addCart'])->name('add.to.cart');
