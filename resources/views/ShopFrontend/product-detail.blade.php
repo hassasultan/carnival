@@ -35,8 +35,7 @@
 
                                 <div class="image_preview_container images-large">
 
-                                    <img id="img_zoom"
-                                        data-zoom-image="{{ asset('productImage/' . $product->image) }}"
+                                    <img id="img_zoom" data-zoom-image="{{ asset('productImage/' . $product->image) }}"
                                         src="{{ asset('productImage/' . $product->image) }}" alt="">
 
                                     <button class="btn-zoom open_qv"><span>zoom</span></button>
@@ -50,9 +49,8 @@
                                         @foreach ($product->product_varient as $key => $row)
                                             {{-- {{ dd($product->product_varient[0]->product_image->toArray(), $row->product_image) }} --}}
                                             @foreach ($row->product_image as $key => $row)
-                                            {{-- {{ dd('variant_images/' . $row->image) }} --}}
-                                                <a href="#"
-                                                    data-image="{{ asset('variant_images/' . $row->image) }}"
+                                                {{-- {{ dd('variant_images/' . $row->image) }} --}}
+                                                <a href="#" data-image="{{ asset('variant_images/' . $row->image) }}"
                                                     data-zoom-image="{{ asset('variant_images/' . $row->image) }}">
 
                                                     {{-- <img src="{{ asset('shopAssets/images/media/detail/thumb-lag1.jpg') }}" --}}
@@ -162,7 +160,7 @@
 
                                         {{-- {{ dd($row->product_image->toArray()) }} --}}
                                         <div class="product-options-wrapper">
-                                                @foreach ($product->product_varient as $key => $row)
+                                            @foreach ($product->product_varient as $key => $row)
                                                 @if ($row->type == 'color')
                                                     <div class="swatch-opt">
                                                         <div class="swatch-attribute color">
@@ -187,21 +185,21 @@
                                                         <a href="" class="size-chart">Size chart</a>
                                                     </div>
                                                 @endif
-                                                @endforeach
-                                                <div class="form-qty">
-                                                    <label class="label">Qty: </label>
-                                                    <div class="control">
-                                                        <input type="text" class="form-control input-qty" value='1'
-                                                            id="qty1" name="qty1" maxlength="{{ $row->value }}"
-                                                            minlength="1">
-                                                        <button class="btn-number  qtyminus" data-type="minus"
-                                                            data-field="qty1"><span>-</span></button>
-                                                        <button class="btn-number  qtyplus" data-type="plus"
-                                                            data-field="qty1"><span>+</span></button>
-                                                    </div>
+                                            @endforeach
+                                            <div class="form-qty">
+                                                <label class="label">Qty: </label>
+                                                <div class="control">
+                                                    <input type="text" class="form-control input-qty" value='1'
+                                                        id="qty1" name="qty1" maxlength="{{ $row->value }}"
+                                                        minlength="1">
+                                                    <button class="btn-number  qtyminus" data-type="minus"
+                                                        data-field="qty1"><span>-</span></button>
+                                                    <button class="btn-number  qtyplus" data-type="plus"
+                                                        data-field="qty1"><span>+</span></button>
                                                 </div>
-                                                
                                             </div>
+
+                                        </div>
 
 
 
@@ -263,29 +261,34 @@
                             <div role="tabpanel" class="tab-pane active" id="description">
                                 <div class="block-title">Product Details</div>
                                 <div class="block-content">
-                                    {{$product->description}}
+                                    {{ $product->description }}
 
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="tags">
                                 <div class="block-title">information</div>
                                 <div class="block-content">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    @if ($product->information != null)
+                                        {!! $product->information !!}
+                                    @endif
+                                    {{-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                         Ipsum has been the industry's standard dummy text ever since the 1500s, when an
                                         unknown printer took a galley of type and scrambled it to make a type specimen book.
                                         It has survived not only five centuries, but also the leap into electronic
                                         typesetting, remaining essentially unchanged. It was popularised in the 1960s with
                                         the release of Letraset sheets containing Lorem Ipsum passages, and more recently
                                         with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p>
-
+                                        Ipsum</p> --}}
 
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="reviews">
                                 <div class="block-title">reviews</div>
                                 <div class="block-content">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    @if ($product->reviews != null)
+                                        {!! $product->reviews !!}
+                                    @endif
+                                    {{-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                         Ipsum has been the industry's standard dummy text ever since the 1500s, when an
                                         unknown printer took a galley of type and scrambled it to make a type specimen book.
                                         It has survived not only five centuries, but also the leap into electronic
@@ -309,12 +312,16 @@
                                         typesetting, remaining essentially unchanged. It was popularised in the 1960s with
                                         the release of Letraset sheets containing Lorem Ipsum passages, and more recently
                                         with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p>
+                                        Ipsum</p> --}}
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="additional">
                                 <div class="block-title">Extra Tabs</div>
                                 <div class="block-content">
+                                    @if ($product->extra != null)
+                                        {!! $product->extra !!}
+                                    @endif
+                                    {{--                                     
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                         Ipsum has been the industry's standard dummy text ever since the 1500s, when an
                                         unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -347,13 +354,16 @@
                                         typesetting, remaining essentially unchanged. It was popularised in the 1960s with
                                         the release of Letraset sheets containing Lorem Ipsum passages, and more recently
                                         with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p>
+                                        Ipsum</p> --}}
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="tab-cust">
                                 <div class="block-title">Guarantees</div>
                                 <div class="block-content">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    @if ($product->guarantee != null)
+                                        {!! $product->guarantee !!}
+                                    @endif
+                                    {{-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                         Ipsum has been the industry's standard dummy text ever since the 1500s, when an
                                         unknown printer took a galley of type and scrambled it to make a type specimen book.
                                         It has survived not only five centuries, but also the leap into electronic
@@ -390,8 +400,7 @@
                                         Ipsum has been the industry's standard dummy text ever since the 1500s, when an
                                         unknown printer took a galley of type and scrambled it to make a type specimen book.
                                         It has survived not only five centuries, but also Aldus PageMaker including versions
-                                        of Lorem Ipsum</p>
-
+                                        of Lorem Ipsum</p> --}}
                                 </div>
                             </div>
                         </div>
@@ -411,13 +420,14 @@
                                     <li class="product-item product-item-opt-2">
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
-                                                <a href="{{ route('get.products.detail',$row->slug) }}" class="product-item-img">
-                                                    @if ($row->image != '' && $row->image != NULL)
+                                                <a href="{{ route('get.products.detail', $row->slug) }}"
+                                                    class="product-item-img">
+                                                    @if ($row->image != '' && $row->image != null)
                                                         <img src="{{ asset('productImage/' . $row->image) }}"
                                                             alt="product name">
                                                     @else
-                                                    <img src="{{ asset('shopAssets/images/media/detail/related2-2.jpg') }}"
-                                                    alt="product name">
+                                                        <img src="{{ asset('shopAssets/images/media/detail/related2-2.jpg') }}"
+                                                            alt="product name">
                                                     @endif
                                                 </a>
                                                 <div class="product-item-actions">
@@ -433,10 +443,11 @@
 
                                             </div>
                                             <div class="product-item-detail">
-                                                <strong class="product-item-name"><a href="">{{$row->title}}</a></strong>
+                                                <strong class="product-item-name"><a
+                                                        href="">{{ $row->title }}</a></strong>
                                                 <div class="clearfix">
                                                     <div class="product-item-price">
-          
+
                                                         @php
                                                             $oldPrice = $row->old_price;
                                                             $newPrice = $row->new_price;
@@ -453,9 +464,11 @@
                                                     </div>
                                                     <div class="product-reviews-summary">
                                                         <div class="rating-summary">
-                                                            <div class="rating-result" title="{{ $percentageDiscount }}%">
+                                                            <div class="rating-result"
+                                                                title="{{ $percentageDiscount }}%">
                                                                 <span style="width:{{ $percentageDiscount }}%">
-                                                                    <span><span>{{ $percentageDiscount }}</span>% of <span>100</span></span>
+                                                                    <span><span>{{ $percentageDiscount }}</span>% of
+                                                                        <span>100</span></span>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -482,13 +495,14 @@
                                     <li class="product-item product-item-opt-2">
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
-                                                <a href="{{ route('get.products.detail',$row->slug) }}" class="product-item-img">
-                                                    @if ($row->image != '' && $row->image != NULL)
+                                                <a href="{{ route('get.products.detail', $row->slug) }}"
+                                                    class="product-item-img">
+                                                    @if ($row->image != '' && $row->image != null)
                                                         <img src="{{ asset('productImage/' . $row->image) }}"
                                                             alt="product name">
                                                     @else
-                                                    <img src="{{ asset('shopAssets/images/media/detail/related2-2.jpg') }}"
-                                                    alt="product name">
+                                                        <img src="{{ asset('shopAssets/images/media/detail/related2-2.jpg') }}"
+                                                            alt="product name">
                                                     @endif
                                                 </a>
                                                 <div class="product-item-actions">
@@ -504,10 +518,11 @@
 
                                             </div>
                                             <div class="product-item-detail">
-                                                <strong class="product-item-name"><a href="">{{$row->title}}</a></strong>
+                                                <strong class="product-item-name"><a
+                                                        href="">{{ $row->title }}</a></strong>
                                                 <div class="clearfix">
                                                     <div class="product-item-price">
-        
+
                                                         @php
                                                             $oldPrice = $row->old_price;
                                                             $newPrice = $row->new_price;
@@ -524,9 +539,11 @@
                                                     </div>
                                                     <div class="product-reviews-summary">
                                                         <div class="rating-summary">
-                                                            <div class="rating-result" title="{{ $percentageDiscount }}%">
+                                                            <div class="rating-result"
+                                                                title="{{ $percentageDiscount }}%">
                                                                 <span style="width:{{ $percentageDiscount }}%">
-                                                                    <span><span>{{ $percentageDiscount }}</span>% of <span>100</span></span>
+                                                                    <span><span>{{ $percentageDiscount }}</span>% of
+                                                                        <span>100</span></span>
                                                                 </span>
                                                             </div>
                                                         </div>
