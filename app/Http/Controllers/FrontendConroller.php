@@ -29,7 +29,7 @@ class FrontendConroller extends Controller
     public function product_detail($slug)
     {
         $product = Product::with('variants', 'product_varient')->where('slug', $slug)->firstOrFail();
-        $related = Product::where('category_id', $product->category_id)->where('user_id', $product->user_id)->orderBy('id', 'DESC')->get();
+        $related = Product::where('category_id', $product->category_id)->where('user_id', $product->user_id)->where('id','!=', $product->id)->orderBy('id', 'DESC')->get();
         $same_cat = Product::where('category_id', $product->category_id)->orderBy('id', 'DESC')->take(9)->get();
         return view('ShopFrontend.product-detail', compact('product', 'related', 'same_cat'));
     }
