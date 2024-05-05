@@ -779,7 +779,7 @@
                                         <span class="product-item-label label-price">${percentageDiscount}% <span>off</span></span>
                                     </div>
                                     <div class="product-item-detail">
-                                        <strong class="product-item-name"><a href="${product.slug}">${product.title}</a></strong>
+                                        <strong class="product-item-name"><a href="{{ route('get.products.detail','') }}/${product.slug}">${product.title}</a></strong>
                                         <div class="clearfix">
                                             <div class="product-item-price">
                                                 <span class="price">$${product.new_price}</span>

@@ -218,7 +218,7 @@
                                                     You have {{ $cartItems->count() }} item(s) in your cart
                                                 </div>
                                                 <div class="minicart-items-wrapper">
-                                                    <ol class="minicart-items">
+                                                    <ol class="minicart-items" id="minicart-items">
                                                         @foreach ($cartItems as $cartItem)
                                                             <li class="product-item">
                                                                 <a class="product-item-photo" href="#"
@@ -253,7 +253,7 @@
                                                 </div>
                                                 <div class="subtotal">
                                                     <span class="label">Total</span>
-                                                    <span class="price">${{ $total }}</span>
+                                                    <span class="price" id="cart-price">${{ $total }}</span>
                                                 </div>
                                                 <div class="actions">
                                                     <button class="btn btn-checkout" type="button"

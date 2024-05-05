@@ -27,20 +27,21 @@ class AddToCartController extends Controller
 
         $user_id = Auth::id(); // Get the authenticated user's ID
 
-        $cartItem = Cart::where('user_id', $user_id)
+        $cartItem = Cart::with('user','product')->where('user_id', $user_id)
             ->where('product_id', $request->product_id)
             ->first();
 
         if ($cartItem) {
             $cartItem->update(['quantity' => $cartItem->quantity + $request->quantity]);
         } else {
-            Cart::create([
+            $newCart = Cart::create([
                 'user_id' => $user_id,
                 'product_id' => $request->product_id,
                 'quantity' => $request->quantity,
             ]);
         }
+        $cartItem = Cart::with('user','product')->where('user_id', $user_id)->get();
 
-        return response()->json(['message' => 'Product added to cart successfully']);
+        return  $cartItem;
     }
 }
