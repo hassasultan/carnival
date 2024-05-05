@@ -44,4 +44,11 @@ class AddToCartController extends Controller
 
         return  $cartItem;
     }
+    public function checkout()
+    {
+        $user_id = Auth::id();
+        $cartItem = Cart::where('user_id', $user_id)->get();
+        return view('ShopFrontend.checkout',compact('cartItem'));
+
+    }
 }

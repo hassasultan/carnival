@@ -1205,10 +1205,20 @@
                         var productHtml = '';
                         $.each(cartItems, function(index, cartItem) {
                             // Construct HTML for each cart item
+                            var image = null;
+                                console.log(cartItem.product.image);
+                                if(cartItem.product.image != null && cartItem.product.image != '')
+                                {
+                                    image = "{{ asset('productImage/') }}/"+cartItem.product.image;
+                                }
+                                else
+                                {
+                                    image = 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                }
                             productHtml += `
                                 <li class="product-item">
                                     <a class="product-item-photo" href="#" title="${cartItem.product.title}">
-                                        <img class="product-image-photo" src="${cartItem.product.image}" alt="${cartItem.product.title}">
+                                        <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
                                     </a>
                                     <div class="product-item-details">
                                         <strong class="product-item-name">
