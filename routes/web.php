@@ -231,21 +231,21 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
 
 //Frontend Routes
 
-Route::get('/mascamps', function(){
-    return view('ShopFrontend.vendors');
-})->name('mascamps');
-Route::get('/mascamp-detail', function(){
-    return view('ShopFrontend.MasbandDetail');
-})->name('MasbandDetail');
-Route::get('/product-detail', function(){
-    return view('ShopFrontend.product_detail');
-})->name('product_detail');
-Route::get('/wishlist', function(){
-    return view('ShopFrontend.wishlist');
-})->name('wishlist');
-Route::get('/checkout', function(){
-    return view('ShopFrontend.checkout');
-})->name('checkout');
+// Route::get('/mascamps', function(){
+//     return view('ShopFrontend.vendors');
+// })->name('mascamps');
+// Route::get('/mascamp-detail', function(){
+//     return view('ShopFrontend.MasbandDetail');
+// })->name('MasbandDetail');
+// Route::get('/product-detail', function(){
+//     return view('ShopFrontend.product_detail');
+// })->name('product_detail');
+// Route::get('/wishlist', function(){
+//     return view('ShopFrontend.wishlist');
+// })->name('wishlist');
+// Route::get('/checkout', function(){
+//     return view('ShopFrontend.checkout');
+// })->name('checkout');
 
 // Add to cart
 Route::get('/add_to_cart', [AddToCartController::class, 'addCart'])->name('add.to.cart');

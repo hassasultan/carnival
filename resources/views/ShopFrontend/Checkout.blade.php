@@ -344,8 +344,8 @@
                                         <tr>
                                             <td class="cart_product">
                                                 <a href="#">
-                                                    @if ($row->product->image != NULL && $row->product->image != '')
-                                                        <img src="{{ asset('productImage/'.$row->product->image) }}"
+                                                    @if ($row->product->image != null && $row->product->image != '')
+                                                        <img src="{{ asset('productImage/' . $row->product->image) }}"
                                                             alt="Product">
                                                     @else
                                                         <img src='https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg'
@@ -354,13 +354,15 @@
                                                 </a>
                                             </td>
                                             <td class="cart_description">
-                                                <p class="product-name"><a href="{{ route('front.vendor.products',$row->product->slug) }}">{{ $row->product->title }} </a></p>
+                                                <p class="product-name"><a
+                                                        href="{{ route('front.vendor.products', $row->product->slug) }}">{{ $row->product->title }}
+                                                    </a></p>
                                                 <small class="cart_ref">SKU : #123654999</small><br>
                                                 <small><a href="#">Color : Beige</a></small><br>
                                                 <small><a href="#">Size : S</a></small>
                                             </td>
                                             <td class="cart_avail"><span class="label label-success">
-                                                {{ $row->product->stock_condition }}</span></td>
+                                                    {{ $row->product->stock_condition }}</span></td>
                                             <td class="price"><span>{{ $row->product->new_price }} $</span></td>
                                             <td class="qty">
 
@@ -425,7 +427,7 @@
                                 </tr>
                             </tfoot>
                         </table>
-                        <button class="button pull-right">Place Order</button>
+                        <button class="button pull-right place-order" type="button">Place Order</button>
                     </div>
                 </div>
             </div>
@@ -440,120 +442,38 @@
     <!-- Custom scripts -->
     <script>
         $(document).ready(function() {
-            // Function to fetch and display products
-            function fetchProducts(page = 1) {
+            $('.place-order').click(function() {
+                $(this).attr('disabled',true);
+                var productId = $(this).closest('.product-item').find('.product-item-photo').data(
+                    'product_id');
+                var quantity = $(this).closest('.product-item').find('.product-item-qty .number').text();
 
-                // Apply skeleton loading structure
-                for (let i = 0; i < 9; i++) { // Assuming 9 products per page
-                    var skeletonHtml = `
-                <li class="col-sm-4 product-item">
-                    <div class="skeleton-item">
-                        <div class="skeleton-content">
-                            <div class="skeleton-line" style="width: 80%;"></div>
-                            <div class="skeleton-line" style="width: 60%;"></div>
-                            <div class="skeleton-line" style="width: 70%;"></div>
-                        </div>
-                    </div>
-                </li>
-            `;
-                    $('#product-listing').append(skeletonHtml);
-                }
-                $.ajax({
-                    url: "{{ route('get.products.home') }}",
-                    type: "GET",
-                    data: {
-                        page: page
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        $('#product-listing').empty();
-                        $('#product-listing').removeClass('blur-effect');
-                        $.each(response.data, function(index, product) {
-                            var percentageDiscount = Math.round(((product.old_price - product
-                                .new_price) / product.old_price) * 100);
-                            var productHtml = `
-                        <li class="col-sm-4 product-item">
-                            <div class="product-item-opt-1">
-                                <div class="product-item-info">
-                                    <div class="product-item-photo">
-                                        <a href="${product.slug}" class="product-item-img"><img src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg')}}"
-                                                alt="${product.title}"></a>
-                                        <div class="product-item-actions">
-                                            <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
-                                            <a href="#" class="btn btn-compare"><span>compare</span></a>
-                                            <a href="#" class="btn btn-quickview"><span>quickview</span></a>
-                                        </div>
-                                        <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
-                                        <span class="product-item-label label-price">${percentageDiscount}% <span>off</span></span>
-                                    </div>
-                                    <div class="product-item-detail">
-                                        <strong class="product-item-name"><a href="${product.slug}">${product.title}</a></strong>
-                                        <div class="clearfix">
-                                            <div class="product-item-price">
-                                                <span class="price">$${product.new_price}</span>
-                                                <span class="old-price">$${product.old_price}</span>
-                                            </div>
-                                            <div class="product-reviews-summary">
-                                                <div class="rating-summary">
-                                                    <div class="rating-result" title="${percentageDiscount}%">
-                                                        <span style="width:${percentageDiscount}%">
-                                                            <span><span>${percentageDiscount}</span>% of <span>100</span></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    `;
-                            $('#product-listing').append(productHtml);
-                        });
+                console.log('productId:', productId);
+                console.log('quantity:', quantity);
 
-                        // Display pagination links
-                        $('.pagination').empty();
-                        pre = 0;
-                        nxt = 0;
-                        pre = response.current_page - 1;
-                        var previousPageHtml = `
-                            <li class="action">
-                                <a href="#" data-page="${pre}"><span><i aria-hidden="true" class="fa fa-angle-left"></i></span></a>
-                            </li>
-                        `;
-                        $('.pagination').append(previousPageHtml);
-                        for (let i = 1; i <= response.last_page; i++) {
-                            var activeClass = i === response.current_page ? 'active' : '';
-                            var paginationHtml = `
-                            <li class="${activeClass}">
-                                <a href="#" data-page="${i}">${i}</a>
-                            </li>
-                        `;
-                            $('.pagination').append(paginationHtml);
-                        }
-                        nxt = response.current_page + 1;
-                        var nextPageHtml = `
-                            <li class="action">
-                                <a href="#" data-page="${nxt}"><span><i aria-hidden="true" class="fa fa-angle-right"></i></span></a>
-                            </li>
-                        `;
-                        $('.pagination').append(nextPageHtml);
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
                     }
                 });
-            }
 
-            // Initial call to fetch products
-            fetchProducts();
-
-            // Pagination click event handler
-            $(document).on('click', '.pagination a', function(e) {
-                e.preventDefault();
-                var page = $(this).data('page'); // Get the page number from the clicked link
-                fetchProducts(page);
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('orders.store') }}',
+                    data: {
+                        product_id: productId,
+                        quantity: quantity
+                    },
+                    success: function(response) {
+                        location.reload();
+                        // alert('Order created successfully!');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error adding product to cart:', error);
+                    }
+                });
             });
         });
     </script>
