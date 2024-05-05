@@ -51,4 +51,9 @@ class AddToCartController extends Controller
         return view('ShopFrontend.Checkout',compact('cartItem'));
 
     }
+    public function delete_cart_item($id)
+    {
+        $cartItem = Cart::find($id)->delete();
+        return true;
+    }
 }

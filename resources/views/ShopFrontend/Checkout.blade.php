@@ -341,7 +341,7 @@
                             <tbody>
                                 @if (count($cartItem) > 0)
                                     @foreach ($cartItem as $row)
-                                        <tr>
+                                        <tr class="cart-row-{{ $row->id }}">
                                             <td class="cart_product">
                                                 <a href="#">
                                                     @if ($row->product->image != null && $row->product->image != '')
@@ -377,7 +377,7 @@
                                                 <span>61,19 €</span>
                                             </td>
                                             <td class="action">
-                                                <a href="#">Delete item</a>
+                                                <a href="javascript:void(0);" class="delete-cart" data-id="{{ $row->id }}">Delete item</a>
                                             </td>
                                         </tr>
                                     @endforeach

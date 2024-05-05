@@ -250,3 +250,4 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
 // Add to cart
 Route::get('/add_to_cart', [AddToCartController::class, 'addCart'])->name('add.to.cart');
 Route::get('/check-out', [AddToCartController::class, 'checkout'])->name('check.out');
+Route::get('/remove/to/cart/{id}', [AddToCartController::class, 'delete_cart_item'])->name('remove.to.cart');

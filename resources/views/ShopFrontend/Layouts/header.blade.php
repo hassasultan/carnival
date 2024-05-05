@@ -231,7 +231,7 @@
                                                                 $image = 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                                                             }
                                                         @endphp     
-                                                            <li class="product-item">
+                                                            <li class="product-item cart-row-{{ $cartItem->id }}">
                                                                 <a class="product-item-photo" href="#"
                                                                     title="{{ $cartItem->product->title }}">
                                                                     <img class="product-image-photo"
@@ -252,7 +252,7 @@
                                                                             class="number">{{ $cartItem->quantity }}</span>
                                                                     </div>
                                                                     <div class="product-item-actions">
-                                                                        <a class="action delete" href="#"
+                                                                        <a class="action delete delete-cart" data-id="{{ $cartItem->id }}" href="javascript:void(0);"
                                                                             title="Remove item">
                                                                             <span>Remove</span>
                                                                         </a>
