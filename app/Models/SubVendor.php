@@ -20,6 +20,18 @@ class SubVendor extends Model
         'blogging',
         'ecommerce',
         'status',
+        'name',
+        'email',
+        'phone',
+        'logo',
+        'adress',
+        'insta',
+        'facebook',
+        'youtube',
+        'twitter',
+        'tiktok',
+        'wa_business_page',
+        'linkedin',
     ];
 
     protected $dates = [
@@ -32,13 +44,13 @@ class SubVendor extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+
     public function vendor()
     {
         return $this->belongsTo(Vendor::class);
     }
     public function products()
     {
-        return $this->hasMany(Product::class,'user_id','user_id');
+        return $this->hasMany(Product::class, 'user_id', 'user_id');
     }
 }

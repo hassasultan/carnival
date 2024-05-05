@@ -128,9 +128,12 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-        $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+        if ($product->delete()) {
+            return response()->json(['message' => 'Product deleted successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Failed to delete Product'], 500);
+        }
     }
 
     public function getsubCategories($categoryId)

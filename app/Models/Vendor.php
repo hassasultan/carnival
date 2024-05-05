@@ -14,6 +14,18 @@ class Vendor extends Model
         'user_id',
         'package_id',
         'status',
+        'name',
+        'email',
+        'phone',
+        'logo',
+        'adress',
+        'insta',
+        'facebook',
+        'youtube',
+        'twitter',
+        'tiktok',
+        'wa_business_page',
+        'linkedin',
     ];
 
     protected $dates = [
@@ -37,7 +49,7 @@ class Vendor extends Model
     }
     public function products()
     {
-        return $this->hasMany(Product::class,'user_id','user_id');
+        return $this->hasMany(Product::class, 'user_id', 'user_id');
     }
 
 }

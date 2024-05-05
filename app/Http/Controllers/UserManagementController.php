@@ -132,6 +132,10 @@ class UserManagementController extends Controller
             Vendor::create([
                 'user_id' => $user->id,
                 'package_id' => $data['package_id'],
+                'name' => $data['first_name'] . '' . $data['last_name'],
+                'email' => $data['email'],
+                'address' => $data['address'],
+                'phone' => $data['phone'],
                 'status' => 1,
             ]);
         }
@@ -140,6 +144,10 @@ class UserManagementController extends Controller
             SubVendor::create([
                 'user_id' => $user->id,
                 'vendor_id' => $data['vendor_id'],
+                'name' => $data['first_name'] . '' . $data['last_name'],
+                'email' => $data['email'],
+                'address' => $data['address'],
+                'phone' => $data['phone'],
                 'ecommerce' => isset($data['ecommerce']) ? $data['ecommerce'] : 0,
                 'events' => isset($data['events']) ? $data['events'] : 0,
                 'music' => isset($data['music']) ? $data['music'] : 0,
