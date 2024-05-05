@@ -118,6 +118,6 @@ class FrontendConroller extends Controller
 
         // dd($vendor->toArray());
 
-        return view('ShopFrontend.subVendor-detail', compact('vendor', 'categories'));
+        return view('ShopFrontend.subvendor-detail', compact('vendor', 'categories'));
     }
 }
