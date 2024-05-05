@@ -12,7 +12,7 @@
                 <h2 class="mb-3">User Details</h2>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="firstname">Firstname</label>
+                        <label for="firstname">Firstname <span class="text-danger">*</span></label>
                         <input id="firstname" type="text" class="form-control @error('first_name') is-invalid @enderror"
                             name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
                         @error('first_name')
@@ -22,7 +22,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="lastname">Lastname</label>
+                        <label for="lastname">Lastname <span class="text-danger">*</span></label>
                         <input id="lastname" type="text" class="form-control @error('last_name') is-invalid @enderror"
                             name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name">
                         @error('last_name')
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email Address</label>
+                    <label for="email">Email Address <span class="text-danger">*</span></label>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                         name="email" value="{{ old('email') }}" required autocomplete="email">
                     @error('email')
@@ -44,7 +44,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="password">Password</label>
+                        <label for="password">Password <span class="text-danger">*</span></label>
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                             name="password" required autocomplete="new-password">
                         @error('password')
@@ -54,21 +54,21 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="password-confirm">Confirm Password</label>
+                        <label for="password-confirm">Confirm Password <span class="text-danger">*</span></label>
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
                             required autocomplete="new-password">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="image">Image</label>
+                        <label for="image">Image <span class="text-danger">*</span></label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="image" name="image">
+                            <input type="file" class="custom-file-input" id="image" name="image" required>
                             <label class="custom-file-label" for="image" id="image_label">Choose file</label>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="phone">Phone</label>
+                        <label for="phone">Phone <span class="text-danger">*</span></label>
                         <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
                             name="phone" value="{{ old('phone') }}" required autocomplete="phone">
                         @error('phone')
@@ -132,9 +132,9 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="package">Package</label>
+                        <label for="package">Package <span class="text-danger">*</span></label>
                         <select id="package" class="form-control @error('package_id') is-invalid @enderror"
-                            name="package_id">
+                            name="package_id" required>
                             <option value="">Select Package</option>
                             @foreach ($packages as $package)
                                 <option value="{{ $package->id }}">{{ $package->title }}</option>
@@ -146,21 +146,6 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        {{-- <label for="role">Role</label>
-                        <select id="role" class="form-control @error('role_id') is-invalid @enderror"
-                            name="role_id" required>
-                            <option value="">Select Role</option>
-                            @foreach ($roles as $role)
-                                @if ($role->name !== 'Admin')
-                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                @endif
-                            @endforeach
-                        </select>
-                        @error('role_id')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror --}}
                     </div>
                 </div>
                 <div class="form-group" id="vendors_input" style="display: none;">
@@ -180,12 +165,6 @@
                         </span>
                     @enderror
                 </div>
-                {{-- <div class="form-group" id="category_input" style="display: none;">
-                    <label for="category_id">Category</label>
-                    <select id="category_id" name="category_id" class="form-control" required>
-                        <option value="">Select Category</option>
-                    </select>
-                </div> --}}
                 <div class="form-row">
                     <div class="col-md-6 packages-div">
                         <div class="form-group list-group mb-3 mt-3 shadow" style="display: none;" id="ecommerce-box">
@@ -193,48 +172,48 @@
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <strong class="mb-2">E-Commerce</strong>
-                                    </div> <!-- .col -->
+                                    </div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" value="1"
                                                 id="e_com" name="ecommerce">
                                             <label class="custom-control-label" for="e_com"></label>
                                         </div>
-                                    </div> <!-- .col -->
-                                </div> <!-- .row -->
-                            </div> <!-- .list-group-item -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group list-group mb-3 mt-3 shadow" style="display: none;" id="music-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <strong class="mb-2">Music Upload</strong>
-                                    </div> <!-- .col -->
+                                    </div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" value="1"
                                                 id="music" name="music">
                                             <label class="custom-control-label" for="music"></label>
                                         </div>
-                                    </div> <!-- .col -->
-                                </div> <!-- .row -->
-                            </div> <!-- .list-group-item -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group list-group mb-3 mt-3 shadow" style="display: none;" id="appointment-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <strong class="mb-2">Appointments</strong>
-                                    </div> <!-- .col -->
+                                    </div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" value="1"
                                                 id="appointments" name="appointment">
                                             <label class="custom-control-label" for="appointments"></label>
                                         </div>
-                                    </div> <!-- .col -->
-                                </div> <!-- .row -->
-                            </div> <!-- .list-group-item -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6 packages-div">
@@ -243,48 +222,48 @@
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <strong class="mb-2">Events</strong>
-                                    </div> <!-- .col -->
+                                    </div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" value="1"
                                                 id="events" name="events">
                                             <label class="custom-control-label" for="events"></label>
                                         </div>
-                                    </div> <!-- .col -->
-                                </div> <!-- .row -->
-                            </div> <!-- .list-group-item -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group list-group mb-3 mt-3 shadow" style="display: none;" id="ad_space-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <strong class="mb-2">Ads</strong>
-                                    </div> <!-- .col -->
+                                    </div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" value="1"
                                                 id="ads" name="ad_space">
                                             <label class="custom-control-label" for="ads"></label>
                                         </div>
-                                    </div> <!-- .col -->
-                                </div> <!-- .row -->
-                            </div> <!-- .list-group-item -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group list-group mb-3 mt-3 shadow" style="display: none;" id="blogging-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <strong class="mb-2">Blogs</strong>
-                                    </div> <!-- .col -->
+                                    </div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" value="1"
                                                 id="blogs" name="blogging">
                                             <label class="custom-control-label" for="blogs"></label>
                                         </div>
-                                    </div> <!-- .col -->
-                                </div> <!-- .row -->
-                            </div> <!-- .list-group-item -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -292,7 +271,7 @@
                 <h2 class="mt-5 mb-3">Shop Details</h2>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="shop_name">Shop Name</label>
+                        <label for="shop_name">Name <span class="text-danger">*</span></label>
                         <input id="shop_name" type="text" class="form-control @error('shop_name') is-invalid @enderror"
                             name="shop_name" value="{{ old('shop_name') }}" required autocomplete="shop_name">
                         @error('shop_name')
@@ -302,7 +281,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="shop_email">shop_Email</label>
+                        <label for="shop_email">Email <span class="text-danger">*</span></label>
                         <input id="shop_email" type="shop_email" class="form-control @error('shop_email') is-invalid @enderror"
                             name="shop_email" value="{{ old('shop_email') }}" required autocomplete="shop_email">
                         @error('shop_email')
@@ -314,7 +293,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="shop_address">Address</label>
+                        <label for="shop_address">Address <span class="text-danger">*</span></label>
                         <input id="shop_address" type="text" class="form-control @error('shop_address') is-invalid @enderror"
                             name="shop_address" value="{{ old('shop_address') }}" required autocomplete="shop_address">
                         @error('shop_address')
@@ -324,7 +303,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="shop_phone">Phone</label>
+                        <label for="shop_phone">Phone <span class="text-danger">*</span></label>
                         <input id="shop_phone" type="text" class="form-control @error('shop_phone') is-invalid @enderror"
                             name="shop_phone" value="{{ old('shop_phone') }}" required autocomplete="shop_phone">
                         @error('shop_phone')
@@ -428,25 +407,6 @@
 @section('bottom_script')
     <script>
         $(document).ready(function() {
-
-            // $('#role').on('change', function() {
-            //     var role = $(this).val();
-            //     console.log(role);
-            //     if (role == 2) {
-            //         $('#package_input').show();
-            //         $('#vendors_input').hide();
-            //         $('.packages-div').hide();
-            //     } else if (role == 3) {
-            //         $('#package_input').hide();
-            //         $('#vendors_input').show();
-            //         $('.packages-div').show();
-            //     } else {
-            //         $('#package_input').hide();
-            //         $('#vendors_input').hide();
-            //         $('.packages-div').hide();
-            //     }
-            // });
-
             $('#package').on('change', function() {
                 var packageId = $(this).val();
                 if (packageId == 'section_leader') {
@@ -459,122 +419,16 @@
                     $('#ad_space-box').hide();
                     $('#blogging-box').hide();
                 } else {
-                    // $('#vendors_input').hide();
-
-                    // $.each(response['vendor']['package'], function(feature, value) {
-                    //     var checkbox = $('#' + feature +
-                    //         '-box input[type="checkbox"]');
-                    //     var listGroup = $('#' + feature + '-box');
-
-
-                    //     checkbox.prop('checked', value === 'false');
-                    //     listGroup.toggle(value === 'true');
-                    // });
-
-
-                    // repositionDivs();
-
+                    
                     $('#vendors_input').hide();
-
-                    // Show all checkboxes
-                    // $('.form-group.list-group').show();
-
-                    // Optionally, you can hide the checkboxes specific to the section_leader package
-                    // $('#ecommerce-box, #music-box, #appointment-box, #events-box, #ad_space-box, #blogging-box').hide();
-
-                    // repositionDivs();
-
-                    // $('#ecommerce-box').hide();
-                    // $('#music-box').hide();
-                    // $('#appointment-box').hide();
-                    // $('#events-box').hide();
-                    // $('#ad_space-box').hide();
-                    // $('#blogging-box').hide();
-                    // $('#ecommerce-box').show();
-                    // $('#music-box').show();
-                    // $('#appointment-box').show();
-                    // $('#events-box').show();
-                    // $('#ad_space-box').show();
-                    // $('#blogging-box').show();
+                    $('#ecommerce-box').hide();
+                    $('#music-box').hide();
+                    $('#appointment-box').hide();
+                    $('#events-box').hide();
+                    $('#ad_space-box').hide();
+                    $('#blogging-box').hide();
                 }
-                // var packageId = $(this).val();
-                // $('#category_id').empty().append($('<option>', {
-                //     value: '',
-                //     text: 'Select Category'
-                // }));
-                // if (packageId) {
-                //     $.ajax({
-                //         type: 'GET',
-                //         url: `{{ route('users.get.categories') }}`,
-                //         data: {
-                //             package: packageId,
-                //             role: $('#role').val(),
-                //         },
-                //         success: function(response) {
-                //             populateCategories(response);
-                //         },
-                //         error: function(xhr, status, error) {
-                //             console.error(xhr.responseText);
-                //         }
-                //     });
-                // }
             });
-
-            // $('#vendor').on('change', function() {
-            //     var vendor = $(this).val();
-            //     $.ajax({
-            //         type: 'GET',
-            //         url: '{{ route('get.single.user', ':id') }}'.replace(':id', vendor),
-            //         data: {
-            //             vendor: vendor,
-            //         },
-            //         success: function(response) {
-            //             console.log('response', response.vendor);
-            //             console.log('package', response['vendor']['package']);
-            //             if (response['vendor']['package']['ecommerce'] == 'true') {
-            //                 console.log('ecommerce');
-            //                 $('#ecommerce-box').prop('checked', true).closest('.list-group').show();
-            //             } else {
-            //                 $('#ecommerce-box').prop('checked', false).closest('.list-group').hide();
-            //             }
-            //             if (response['vendor']['package']['events'] == 'true') {
-            //                 console.log('events');
-            //                 $('#events-box').prop('checked', true).closest('.list-group').show();
-            //             } else {
-            //                 $('#events-box').prop('checked', false).closest('.list-group').hide();
-            //             }
-            //             if (response['vendor']['package']['music'] == 'true') {
-            //                 console.log('music');
-            //                 $('#music-box').prop('checked', true).closest('.list-group').show();
-            //             } else {
-            //                 $('#music-box').prop('checked', false).closest('.list-group').hide();
-            //             }
-            //             if (response['vendor']['package']['appointment'] == 'true') {
-            //                 console.log('appointment');
-            //                 $('#appointment-box').prop('checked', true).closest('.list-group')
-            //                     .show();
-            //             } else {
-            //                 $('#appointment-box').prop('checked', false).closest('.list-group')
-            //                     .hide();
-            //             }
-            //             if (response['vendor']['package']['ad_space'] == 'true') {
-            //                 console.log('ad_space');
-            //                 $('#ad_space-box').prop('checked', true).closest('.list-group').show();
-            //             } else {
-            //                 $('#ad_space-box').prop('checked', false).closest('.list-group').hide();
-            //             }
-            //             if (response['vendor']['package']['blogging'] == 'true') {
-            //                 console.log('blogging');
-            //                 $('#blogging-box').prop('checked', true).closest('.list-group').show();
-            //             } else {
-            //                 $('#blogging-box').prop('checked', false).closest('.list-group').hide();
-            //             }
-            //         },
-            //         error: function(xhr, status, error) {
-            //             console.error(xhr.responseText);
-            //         }
-            //     });
-            // });
 
             $('#vendor').on('change', function() {
                 var vendor = $(this).val();
@@ -602,9 +456,6 @@
                             checkbox.prop('checked', value === 'true');
                             listGroup.toggle(value === 'true');
                         });
-
-
-                        repositionDivs();
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
@@ -612,27 +463,8 @@
                 });
             });
 
-
-            function repositionDivs() {
-
-                var visibleDivs = $('.form-group.list-group:visible');
-
-                var halfLength = Math.ceil(visibleDivs.length / 2);
-
-                $('.packages-div').empty();
-
-                for (var i = 0; i < halfLength; i++) {
-                    var divA = visibleDivs.eq(i);
-                    var divB = visibleDivs.eq(i + halfLength);
-
-                    $('.packages-div').eq(0).append(divA);
-                    $('.packages-div').eq(1).append(divB);
-                }
-            }
-
             // Update label text when files are selected for additional images
             $('#image').on('change', function() {
-                // Get the file names
                 var files = $(this)[0].files;
                 var fileNames = '';
                 for (var i = 0; i < files.length; i++) {
@@ -641,7 +473,6 @@
                         fileNames += ', ';
                     }
                 }
-                // Update the label text
                 $('#image_label').text(fileNames);
             });
 
