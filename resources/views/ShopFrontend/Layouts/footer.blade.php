@@ -307,6 +307,23 @@
 <script type="text/javascript" src="{{asset('shopAssets/js/main.js')}}"></script>
 
 @yield('script')
-
+<script>
+    $(document).ready(function(){
+        $('.delete-cart').click(function(){
+            var id = $(this).attr('data-id');
+            $.ajax({
+                    type: 'GET',
+                    url: '{{ route('remove.to.cart','') }}/'+id,
+                    success: function(response) {
+                    $('.cart-row-'+id).remove();
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error adding product to cart:', error);
+                        console.error('Error adding product to cart:', error);
+                    }
+                });
+        });
+    });
+</script>
 </body>
 </html>

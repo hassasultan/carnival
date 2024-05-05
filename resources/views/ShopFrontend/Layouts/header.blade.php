@@ -218,13 +218,24 @@
                                                     You have {{ $cartItems->count() }} item(s) in your cart
                                                 </div>
                                                 <div class="minicart-items-wrapper">
-                                                    <ol class="minicart-items">
+                                                    <ol class="minicart-items" id="minicart-items">
                                                         @foreach ($cartItems as $cartItem)
-                                                            <li class="product-item">
+                                                        @php
+                                                            $image = null;
+                                                            if($cartItem->product->image != null && $cartItem->product->image != '')
+                                                            {
+                                                                $image = asset('productImage/')."/".$cartItem->product->image;
+                                                            }
+                                                            else
+                                                            {
+                                                                $image = 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                                            }
+                                                        @endphp     
+                                                            <li class="product-item cart-row-{{ $cartItem->id }}">
                                                                 <a class="product-item-photo" href="#"
                                                                     title="{{ $cartItem->product->title }}">
                                                                     <img class="product-image-photo"
-                                                                        src="{{ asset($cartItem->product->image) }}"
+                                                                        src="{{ $image }}"
                                                                         alt="{{ $cartItem->product->title }}">
                                                                 </a>
                                                                 <div class="product-item-details">
@@ -241,7 +252,7 @@
                                                                             class="number">{{ $cartItem->quantity }}</span>
                                                                     </div>
                                                                     <div class="product-item-actions">
-                                                                        <a class="action delete" href="#"
+                                                                        <a class="action delete delete-cart" data-id="{{ $cartItem->id }}" href="javascript:void(0);"
                                                                             title="Remove item">
                                                                             <span>Remove</span>
                                                                         </a>
@@ -253,10 +264,10 @@
                                                 </div>
                                                 <div class="subtotal">
                                                     <span class="label">Total</span>
-                                                    <span class="price">${{ $total }}</span>
+                                                    <span class="price" id="cart-price">${{ $total }}</span>
                                                 </div>
                                                 <div class="actions">
-                                                    <button class="btn btn-checkout" type="button"
+                                                    <a href="{{ route('check.out') }}" class="btn btn-checkout"
                                                         title="Check Out">
                                                         <span>Checkout</span>
                                                     </button>
@@ -266,7 +277,7 @@
                                     </div>
                                 </div>
 
-                                <script>
+                                {{-- <script>
                                     $(document).ready(function() {
                                         $('.btn-checkout').click(function() {
                                             var productId = $(this).closest('.product-item').find('.product-item-photo').data(
@@ -300,7 +311,7 @@
                                             });
                                         });
                                     });
-                                </script>
+                                </script> --}}
                             @endif
 
 
