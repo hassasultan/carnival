@@ -333,6 +333,7 @@
                         setTimeout(function() {
                             $('#productMessage').html('');
                         }, 3000);
+                        window.location.href = '{{ route('products.index') }}';
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
