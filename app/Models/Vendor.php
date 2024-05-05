@@ -18,7 +18,7 @@ class Vendor extends Model
         'email',
         'phone',
         'logo',
-        'adress',
+        'address',
         'insta',
         'facebook',
         'youtube',
