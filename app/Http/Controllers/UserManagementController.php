@@ -102,7 +102,6 @@ class UserManagementController extends Controller
     protected function create(array $data)
     {
         // dd($data);
-        // Generate unique slug
         $slug = $this->generateUniqueSlug($data['first_name'] . ' ' . $data['last_name']);
 
         if ($data['package_id'] == 'section_leader') {
@@ -132,10 +131,17 @@ class UserManagementController extends Controller
             Vendor::create([
                 'user_id' => $user->id,
                 'package_id' => $data['package_id'],
-                'name' => $data['first_name'] . '' . $data['last_name'],
-                'email' => $data['email'],
-                'address' => $data['address'],
-                'phone' => $data['phone'],
+                'name' => $data['shop_name'],
+                'email' => $data['shop_email'],
+                'address' => $data['shop_address'],
+                'phone' => $data['shop_phone'],
+                'insta' => isset($data['shop_insta']) ? $data['shop_insta'] : null,
+                'facebook' => isset($data['shop_facebook']) ? $data['shop_facebook'] : null,
+                'youtube' => isset($data['shop_youtube']) ? $data['shop_youtube'] : null,
+                'twitter' => isset($data['shop_twitter']) ? $data['shop_twitter'] : null,
+                'tiktok' => isset($data['shop_tiktok']) ? $data['shop_tiktok'] : null,
+                'wa_business_page' => isset($data['shop_wa_business_page']) ? $data['shop_wa_business_page'] : null,
+                'linkedin' => isset($data['shop_linkedin']) ? $data['shop_linkedin'] : null,
                 'status' => 1,
             ]);
         }
@@ -144,10 +150,17 @@ class UserManagementController extends Controller
             SubVendor::create([
                 'user_id' => $user->id,
                 'vendor_id' => $data['vendor_id'],
-                'name' => $data['first_name'] . '' . $data['last_name'],
-                'email' => $data['email'],
-                'address' => $data['address'],
-                'phone' => $data['phone'],
+                'name' => $data['shop_name'],
+                'email' => $data['shop_email'],
+                'address' => $data['shop_address'],
+                'phone' => $data['shop_phone'],
+                'insta' => isset($data['shop_insta']) ? $data['shop_insta'] : null,
+                'facebook' => isset($data['shop_facebook']) ? $data['shop_facebook'] : null,
+                'youtube' => isset($data['shop_youtube']) ? $data['shop_youtube'] : null,
+                'twitter' => isset($data['shop_twitter']) ? $data['shop_twitter'] : null,
+                'tiktok' => isset($data['shop_tiktok']) ? $data['shop_tiktok'] : null,
+                'wa_business_page' => isset($data['shop_wa_business_page']) ? $data['shop_wa_business_page'] : null,
+                'linkedin' => isset($data['shop_linkedin']) ? $data['shop_linkedin'] : null,
                 'ecommerce' => isset($data['ecommerce']) ? $data['ecommerce'] : 0,
                 'events' => isset($data['events']) ? $data['events'] : 0,
                 'music' => isset($data['music']) ? $data['music'] : 0,

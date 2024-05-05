@@ -79,9 +79,13 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $product = Product::with('category', 'variants', 'subcategory')->findOrFail($id);
-        $categories = Category::all();
-        return response()->json(['product' => $product]);
+        $product = Product::with('category', 'product_varient', 'subcategory')->findOrFail($id);
+        $categories = Category::where('type', 'ecommerce')->get();
+        $variants = Variant::all();
+        $subcat = Subcategory::where('category_id', $product->category_id)->get();
+        // dd($product->toArray());
+        // return response()->json(['product' => $product]);
+        return view('dashboard.admin.products.edit', compact('product', 'categories', 'variants', 'subcat'));
     }
     
     public function update(Request $request, $id)

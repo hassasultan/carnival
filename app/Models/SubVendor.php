@@ -24,7 +24,7 @@ class SubVendor extends Model
         'email',
         'phone',
         'logo',
-        'adress',
+        'address',
         'insta',
         'facebook',
         'youtube',
