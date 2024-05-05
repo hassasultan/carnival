@@ -348,9 +348,7 @@
                         setTimeout(function() {
                             $('#productMessage').html('');
                         }, 3000);
-                        if (response.success) {
-                            window.location.href = '{{ route('products.index') }}';
-                        }
+                        window.location.href = '{{ route('products.index') }}';
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
