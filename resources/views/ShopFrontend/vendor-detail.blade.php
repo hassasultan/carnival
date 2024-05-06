@@ -869,7 +869,7 @@
             <div class="block-floor-products block-floor-products-opt1 floor-products1" id="floor0-0">
                 <div class="container">
                     <div class="block-title ">
-                        <span class="title"><img alt="img"  src="{{asset('shopAssets/images/media/index1/floor1.png')}}">{{ $vendor->user->first_name }} {{ $vendor->user->last_name }}</span>
+                        <span class="title"><img alt="img"  src="{{asset('shopAssets/images/media/index1/floor1.png')}}">{{ $vendor->name }}</span>
                         <div class="links dropdown">
                             <button class="dropdown-toggle"  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bars" aria-hidden="true"></i>

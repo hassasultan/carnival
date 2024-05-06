@@ -125,9 +125,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [UserManagementController::class, 'destroyUser'])->name('users.destroy');
 
-
     Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.categories');
-
 
     //blogs
     Route::resource('blogs', BlogsController::class)->except(['update']);

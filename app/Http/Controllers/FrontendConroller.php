@@ -20,7 +20,6 @@ use DB;
 
 class FrontendConroller extends Controller
 {
-    //
     public function get_product(Request $request)
     {
         $products = Product::orderBy('id', 'DESC')->paginate(18);
@@ -113,11 +112,11 @@ class FrontendConroller extends Controller
     public function sub_vendor_detail($slug)
     {
         $user = User::whereSlug($slug)->first();
-        $vendor = SubVendor::with('products', 'products.category')->where('user_id', $user->id)->first();
-        $categories = $vendor->products->pluck('category')->unique('id');
+        $subvendor = SubVendor::with('products', 'products.category')->where('user_id', $user->id)->first();
+        $categories = $subvendor->products->pluck('category')->unique('id');
 
-        // dd($vendor->toArray());
+        // dd($subvendor->toArray());
 
-        return view('ShopFrontend.subvendor-detail', compact('vendor', 'categories'));
+        return view('ShopFrontend.subvendor-detail', compact('subvendor', 'categories'));
     }
 }
