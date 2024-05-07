@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name',
         'last_name',
+        'full_name',
         'email',
         'role_id',
         'phone',
@@ -66,7 +67,8 @@ class User extends Authenticatable
 
     public function customer()
     {
-        return $this->role === "4";
+        return $this->role->name === "Customer";
+        // return $this->role === "4";
     }
 
     public function isSubVendor()

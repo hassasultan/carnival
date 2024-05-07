@@ -24,22 +24,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->isAdmin()) 
-        {
+        // dd('oks');
+        if (Auth::user()->isAdmin()) {
             return redirect()->route('admin');
-        }
-        elseif (Auth::user()->isVendor()) 
-        { 
+        } elseif (Auth::user()->isVendor()) {
             return redirect()->route('vendor');
-        }
-        elseif (Auth::user()->isSubVendor()) 
-        { 
+        } elseif (Auth::user()->isSubVendor()) {
             return redirect()->route('subVendor');
-        }
-        else
-        {
+        } elseif (Auth::user()->customer()) {
+            // dd('ok');
+            return redirect()->route('users.profile');
+        } else {
             return redirect()->route('unauthorized');
         }
-        
+
     }
 }

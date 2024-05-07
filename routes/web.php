@@ -30,6 +30,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\FrontendConroller;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AddToCartController;
+use App\Http\Controllers\CustomerController;
 
 
 /*
@@ -65,6 +66,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // get subcategories
 Route::get('/get-subcategories/{categoryId}', [ProductController::class, 'getsubCategories'])->name('get.subcategories');
+
+// customer
+Route::get('/user-login', [CustomerController::class, 'login'])->name('customer.login');
+Route::get('/user-register', [CustomerController::class, 'register'])->name('customer.register');
+Route::post('/user-store', [CustomerController::class, 'storeCustomer'])->name('customer.users.register');
 
 
 // Admin Routes
@@ -223,6 +229,19 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
     Route::post('/costumes/store', [SubVendorCostumeController::class, 'store'])->name('subVendor.costumes.store');
     Route::put('/costumes/update/{id}', [SubVendorCostumeController::class, 'update'])->name('subVendor.costumes.update');
     Route::delete('/costumes/{costume}', [SubVendorCostumeController::class, 'destroy'])->name('subVendor.costumes.destroy');
+
+});
+
+
+// Customer Routes
+Route::middleware('auth')->prefix('user')->group(function () {
+
+    // Route::get('/', [CustomerController::class, 'index'])->name('users');
+    
+    Route::get('/', [CustomerController::class, 'profile'])->name('users.profile');
+    // Route::get('/profile', [CustomerController::class, 'profile'])->name('users.profile');
+    
+    Route::post('/profile/update', [CustomerController::class, 'profileUpdate'])->name('users.profile.update');
 
 });
 

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Models\Vendor;
 use App\Models\SubVendor;
+use App\Models\Customer;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -56,17 +58,15 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone' => ['required', 'required', 'max:11'],
-            'address' => ['required', 'string', 'max:255'],
-            'city' => ['required', 'string', 'max:255'],
-            'state' => ['required', 'string', 'max:255'],
-            'country' => ['required', 'string', 'max:255'],
-            'zipcode' => ['required', 'string', 'max:255'],
-            'role_id' => ['required', 'numeric', Rule::in([1, 2, 3])], // Example rule for role_id
+            'phone' => ['nullable', 'string', 'max:11'],
+            'address' => ['nullable', 'string', 'max:255'],
+            'city' => ['nullable', 'string', 'max:255'],
+            'state' => ['nullable', 'string', 'max:255'],
+            'country' => ['nullable', 'string', 'max:255'],
+            'zipcode' => ['nullable', 'string', 'max:255'],
+            'role_id' => ['required', 'numeric', Rule::in([1, 2, 3, 4])], // Example rule for role_id
             'package_id' => ['nullable', 'numeric'],
             'vendor_id' => ['nullable', 'numeric'],
-            'package_id' => 'required_without_all:vendor_id',
-            'vendor_id' => 'required_without_all:package_id',
         ]);
     }
 
@@ -78,20 +78,39 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
+        $userData = [
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
+            'full_name' => $data['first_name'] . ' ' . $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'phone' => $data['phone'],
-            'address' => $data['address'],
-            'city' => $data['city'],
-            'state' => $data['state'],
-            'country' => $data['country'],
-            'zipcode' => $data['zipcode'],
             'role_id' => $data['role_id'], // Include role_id here
-        ]);
+        ];
+    
+        $userData['slug'] = $this->generateUniqueSlug($data['first_name'] . ' ' . $data['last_name']);
 
+        if (isset($data['phone'])) {
+            $userData['phone'] = $data['phone'];
+        }
+        if (isset($data['address'])) {
+            $userData['address'] = $data['address'];
+        }
+        if (isset($data['city'])) {
+            $userData['city'] = $data['city'];
+        }
+        if (isset($data['state'])) {
+            $userData['state'] = $data['state'];
+        }
+        if (isset($data['country'])) {
+            $userData['country'] = $data['country'];
+        }
+        if (isset($data['zipcode'])) {
+            $userData['zipcode'] = $data['zipcode'];
+        }
+    
+        // dd($userData);
+
+        $user = User::create($userData);
         if ($data['role_id'] == 2) {
             Vendor::create([
                 'user_id' => $user->id,
@@ -107,7 +126,25 @@ class RegisterController extends Controller
                 'status' => 1,
             ]);
         }
+    
+        if ($data['role_id'] == 4) {
+            Customer::create([
+                'user_id' => $user->id,
+                'status' => 1,
+            ]);
+        }
 
         return $user;
+    }
+
+    protected function generateUniqueSlug($title)
+    {
+        $slug = Str::slug($title);
+        $uniqueSlug = $slug;
+        $counter = 1;
+        while (User::where('slug', $uniqueSlug)->exists()) {
+            $uniqueSlug = $slug . '-' . $counter++;
+        }
+        return $uniqueSlug;
     }
 }
