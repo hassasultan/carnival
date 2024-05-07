@@ -7,7 +7,8 @@
             <div class="row">
                 <div class="col-md-3 col-lg-3 col-xs-6 col">
                     <strong class="logo-footer">
-                        <a href=""><img src="{{asset('ShopAssets/images/media/index1/logo-footer.png')}}" alt="logo"></a>
+                        <a href="/"><img style="width: 120px;"src="{{ asset('shopAssets/images/logo.png') }}"
+                            alt="logo"></a>
                     </strong>
 
                     <table class="address">
