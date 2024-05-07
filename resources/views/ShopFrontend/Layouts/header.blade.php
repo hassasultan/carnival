@@ -127,16 +127,6 @@
                                         <i class="fa fa-usd" aria-hidden="true"></i> USD
                                     </a>
                                 </li>
-                                <li class="switcher-option">
-                                    <a href="#">
-                                        <i class="fa fa-eur" aria-hidden="true"></i> eur
-                                    </a>
-                                </li>
-                                <li class="switcher-option">
-                                    <a href="#">
-                                        <i class="fa fa-gbp" aria-hidden="true"></i> gbp
-                                    </a>
-                                </li>
                             </ul>
                         </li>
                         <li class="dropdown switcher  switcher-language">
@@ -190,7 +180,7 @@
 
                             <!-- logo -->
                             <strong class="logo">
-                                <a href=""><img src="{{ asset('shopAssets/images/media/index1/logo.png') }}"
+                                <a href="/"><img style="width: 120px;"src="{{ asset('shopAssets/images/logo.png') }}"
                                         alt="logo"></a>
                             </strong>
 
@@ -230,7 +220,7 @@
                                                             {
                                                                 $image = 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                                                             }
-                                                        @endphp     
+                                                        @endphp
                                                             <li class="product-item cart-row-{{ $cartItem->id }}">
                                                                 <a class="product-item-photo" href="#"
                                                                     title="{{ $cartItem->product->title }}">
@@ -727,14 +717,14 @@
                             <div class="clearfix"><span data-action="close-nav"
                                     class="close-nav"><span>close</span></span></div>
                             <ul class="ui-menu">
-                                <li class="active">
-                                    <a>Home</a>
+                                <li class="{{ request()->is('/') ? 'active' : '' }}">
+                                    <a href="/">Home</a>
                                 </li>
-                                <li><a href="#"> MAS CAMPS </a></li>
-                                <li><a href="#"> CG GEAR </a></li>
+                                <li class="{{ Request::routeIs('front.vendors') ? 'active' : '' }}"><a href="{{url('/mascamps')}}"> MAS CAMPS </a></li>
+                                {{-- <li><a href="#"> CG GEAR </a></li>
                                 <li><a href="#">MODELS</a></li>
                                 <li><a href="#">ARTISTES</a></li>
-                                <li><a href="#">EVENTS</a></li>
+                                <li><a href="#">EVENTS</a></li> --}}
                                 <li><a href="#">CONTACT US</a></li>
                             </ul>
 

@@ -43,8 +43,11 @@ use App\Http\Controllers\AddToCartController;
 |
 */
 
-Route::get('/', [FrontendConroller::class, 'product_listing'])->name('front.home');
-Route::get('/shops', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
+Route::get('/', function(){
+    return view('ShopFrontend.home');
+})->name('front.home');
+Route::get('/product-listing', [FrontendConroller::class, 'product_listing'])->name('front.product_listing');
+Route::get('/mascamps', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
 Route::get('/get-section-leaders', [FrontendConroller::class, 'sub_vendor_listing'])->name('get.subvendors.front');
 Route::get('/shop/{slug}', [FrontendConroller::class, 'vendor_detail'])->name('front.vendor.detail');
 Route::get('/get/shop/products/{slug}', [FrontendConroller::class, 'get_vendor_products'])->name('front.vendor.products');
