@@ -379,7 +379,8 @@
                                                         {{ $row->product->stock_condition }}</span></td>
                                                 <td class="price" id="new-price-{{ $row->product_id }}"
                                                     data-val="{{ $row->product->new_price }}">
-                                                    <span>{{ $row->product->new_price }} $</span></td>
+                                                    <span>{{ $row->product->new_price }} $</span>
+                                                </td>
                                                 <td class="qty">
 
                                                     <input minlength="1" maxlength="12" readonly name="qty1"
@@ -470,37 +471,37 @@
     <!-- Custom scripts -->
     <script>
         $(document).ready(function() {
-        $('#place-order').submit(function(event) {
-            event.preventDefault();
-            var formData = $(this).serialize();
-            var formDataObject = {};
-            $(this).serializeArray().forEach(function(item) {
-                formDataObject[item.name] = item.value;
-            });
-            var isValid = true;
-            Object.keys(formDataObject).forEach(function(fieldName) {
-                var fieldValue = formDataObject[fieldName];
-                if (!fieldValue.trim()) {
-                    alert('Please fill out all required fields.');
-                    isValid = false;
-                    return false;
-                }
-            });
-            if (isValid) {
-                $.ajax({
-                    url: '{{ route('orders.store') }}',
-                    type: 'POST',
-                    data: formData,
-                    dataType: 'json',
-                    success: function(response) {
-                        alert('Order placed successfully!');
-                    },
-                    error: function(xhr, status, error) {
-                        alert('Failed to place order. Please try again later.');
+            $('#place-order').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                var formDataObject = {};
+                $(this).serializeArray().forEach(function(item) {
+                    formDataObject[item.name] = item.value;
+                });
+                var isValid = true;
+                Object.keys(formDataObject).forEach(function(fieldName) {
+                    var fieldValue = formDataObject[fieldName];
+                    if (!fieldValue.trim()) {
+                        alert('Please fill out all required fields.');
+                        isValid = false;
+                        return false;
                     }
                 });
-            }
-        });
+                if (isValid) {
+                    $.ajax({
+                        url: '{{ route('orders.store') }}',
+                        type: 'POST',
+                        data: formData,
+                        dataType: 'json',
+                        success: function(response) {
+                            alert('Order placed successfully!');
+                        },
+                        error: function(xhr, status, error) {
+                            alert('Failed to place order. Please try again later.');
+                        }
+                    });
+                }
+            });
         });
         // $('.place-order').click(function() {
         //     $(this).attr('disabled', true);
@@ -536,7 +537,7 @@
         //     });
         // });
 
-        });
+        // });
 
         function cartQuantity(id, perform) {
             if (perform == 'plus') {
