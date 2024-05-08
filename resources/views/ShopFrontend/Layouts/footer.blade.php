@@ -319,7 +319,7 @@
                     $('.cart-row-'+id).remove();
                     },
                     error: function(xhr, status, error) {
-                        alert('Error adding product to cart:', error);
+                        alert('Error delete product from cart:', error);
                         console.error('Error adding product to cart:', error);
                     }
                 });
