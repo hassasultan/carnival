@@ -36,7 +36,7 @@ class FrontendConroller extends Controller
     {
         $vendors = Vendor::with([
             'user' => function ($query) {
-                $query->select('id', 'first_name', 'last_name', 'slug');
+                $query->select('id', 'first_name', 'last_name', 'slug','image');
             },
             'user.products' => function ($query) {
                 $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
