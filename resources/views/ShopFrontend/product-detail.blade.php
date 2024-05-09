@@ -1022,7 +1022,7 @@
                 $('#product-listing').html('');
 
                 // Apply skeleton loading structure
-                for (let i = 0; i < 9; i++) { // Assuming 9 products per page
+                for (let i = 0; i < 18; i++) { // Assuming 9 products per page
                     var skeletonHtml = `
                 <li class="col-sm-4 product-item">
                     <div class="skeleton-item">
