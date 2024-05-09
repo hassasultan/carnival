@@ -70,7 +70,7 @@
                     <!-- List Products -->
                     <div class="products  products-grid">
                         <ol class="product-items row product-listing" id="product-listing">
-                            <li class="col-sm-4 product-item ">
+                            {{-- <li class="col-sm-4 product-item ">
                                 <div class="product-item-opt-1">
                                     <div class="product-item-info">
                                         <div class="product-item-photo">
@@ -84,7 +84,7 @@
                                                 <div class="product-item-price">
                                                     <span class="price">$45.00-$500</span>
                                                 </div>
-                                                {{-- <div class="product-reviews-summary">
+                                                <div class="product-reviews-summary">
                                                     <div class="rating-summary">
                                                         <div class="rating-result" title="80%">
                                                             <span style="width:80%">
@@ -92,12 +92,12 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                </div> --}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li> --}}
                         </ol><!-- list product -->
                     </div> <!-- List Products -->
 
