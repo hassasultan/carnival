@@ -1019,6 +1019,7 @@
         $(document).ready(function() {
             // Function to fetch and display products
             function fetchProducts(page = 1) {
+                $('#product-listing').html('');
 
                 // Apply skeleton loading structure
                 for (let i = 0; i < 9; i++) { // Assuming 9 products per page
