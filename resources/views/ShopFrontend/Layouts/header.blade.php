@@ -712,11 +712,58 @@
                                     <form>
                                         <div class="minicart-content-wrapper">
                                             <div class="subtitle">
-                                                You have 6 item(s) in your cart
+                                                You have {{ $cartItems->count() }} item(s) in your cart
                                             </div>
                                             <div class="minicart-items-wrapper">
                                                 <ol class="minicart-items">
-                                                    <li class="product-item">
+                                                    @foreach ($cartItems as $cartItem)
+                                                        @php
+                                                            $image = null;
+                                                            if (
+                                                                $cartItem->product->image != null &&
+                                                                $cartItem->product->image != ''
+                                                            ) {
+                                                                $image =
+                                                                    asset('productImage/') .
+                                                                    '/' .
+                                                                    $cartItem->product->image;
+                                                            } else {
+                                                                $image =
+                                                                    'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                                            }
+                                                        @endphp
+                                                        <li class="product-item cart-row-{{ $cartItem->id }}">
+                                                            <a class="product-item-photo" href="#"
+                                                                title="{{ $cartItem->product->title }}">
+                                                                <img class="product-image-photo"
+                                                                    src="{{ $image }}"
+                                                                    alt="{{ $cartItem->product->title }}">
+                                                            </a>
+                                                            <div class="product-item-details">
+                                                                <strong class="product-item-name">
+                                                                    <a
+                                                                        href="#">{{ $cartItem->product->title }}</a>
+                                                                </strong>
+                                                                <div class="product-item-price">
+                                                                    <span
+                                                                        class="price">{{ $cartItem->product->new_price }}</span>
+                                                                </div>
+                                                                <div class="product-item-qty">
+                                                                    <span class="label">Qty: </span><span
+                                                                        class="number">{{ $cartItem->quantity }}</span>
+                                                                </div>
+                                                                <div class="product-item-actions">
+                                                                    <a class="action delete delete-cart"
+                                                                        data-id="{{ $cartItem->id }}"
+                                                                        href="javascript:void(0);"
+                                                                        title="Remove item">
+                                                                        <span>Remove</span>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    @endforeach
+                                                    {{-- <li class="product-item">
                                                         <a class="product-item-photo" href="#"
                                                             title="The Name Product">
                                                             <img class="product-image-photo"
@@ -767,7 +814,7 @@
                                                                 </a>
                                                             </div>
                                                         </div>
-                                                    </li>
+                                                    </li> --}}
                                                 </ol>
                                             </div>
                                             <div class="subtotal">
@@ -786,6 +833,12 @@
                                     </form>
                                 </div>
 
+                            </div>
+                        @else
+                            <div class="block-minicart dropdown">
+                                <a href="{{ route('customer.login') }}" class="dropdown-toggle">
+                                    <span class="cart-icon"></span>
+                                </a>
                             </div>
                         @endif
                         <!-- block mini cart -->
