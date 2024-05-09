@@ -416,6 +416,20 @@
                         $('#product-listing').empty();
                         $('#product-listing').removeClass('blur-effect');
                         $.each(response.data, function(index, vendor) {
+                            var logo = null;
+                            if(vendor.logo != null)
+                            {
+                                logo = "{{ asset('storage/image/'),"+vendor.logo+" }}";
+                            }
+                            else if(vendor.user.image != null)
+                            {
+                                logo = "{{ asset('storage/image/'),"+vendor.user.image+" }}";
+
+                            }
+                            else
+                            {
+                                logo = "{{ asset('shopAssets/images/media/product9.jpg') }}";
+                            }
                             var vendorHtml = `
                                 <li class="col-sm-4 product-item">
                                     <div class="product-item-opt-1">
@@ -423,12 +437,12 @@
                                             <div class="product-item-photo">
                                                 <div class="product-item-photo">
                                                     <a href="{{ route('front.vendor.detail','') }}/${vendor.user.slug}" class="product-item-img"><img
-                                                    src="{{ asset('shopAssets/images/media/product9.jpg') }}"
+                                                    src="${logo}"
                                                     alt="product name"></a>
                                                 </div>
                                             </div>
                                             <div class="product-item-detail">
-                                                <strong class="product-item-name"><a href="">${vendor.user.first_name} ${vendor.user.last_name}</a></strong>`;
+                                                <strong class="product-item-name"><a href="">${vendor.name}</a></strong>`;
                                                 if(vendor.user.products.length > 0)
                                                 {
                                                     vendorHtml += `
