@@ -1,4 +1,4 @@
-@extends('ShopFrontend.customer.Layouts.layout')
+@extends('ShopFrontend.Layouts.layout')
 
 @section('title')
     User Login

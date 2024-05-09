@@ -101,15 +101,19 @@ class UserManagementController extends Controller
 
     protected function create(array $data)
     {
-        // dd($data);
         $slug = $this->generateUniqueSlug($data['first_name'] . ' ' . $data['last_name']);
 
         if ($data['package_id'] == 'section_leader') {
             $data['package_id'] = '123';
             $data['role_id'] = '3';
-        }
-        else {
+        } else {
             $data['role_id'] = '2';
+        }
+
+        // Handle logo upload
+        if ($data['logo']) {
+            $imageName = $this->uploadImage($data['logo'], 'images');
+            $logo = $imageName;
         }
 
         $user = User::create([
@@ -145,6 +149,7 @@ class UserManagementController extends Controller
                 'wa_business_page' => isset($data['shop_wa_business_page']) ? $data['shop_wa_business_page'] : null,
                 'linkedin' => isset($data['shop_linkedin']) ? $data['shop_linkedin'] : null,
                 'status' => 1,
+                'logo' => $logo,
             ]);
         }
 
@@ -171,6 +176,7 @@ class UserManagementController extends Controller
                 'ad_space' => isset($data['ad_space']) ? $data['ad_space'] : 0,
                 'blogging' => isset($data['blogging']) ? $data['blogging'] : 0,
                 'status' => 1,
+                'logo' => $logo,
             ]);
         }
 

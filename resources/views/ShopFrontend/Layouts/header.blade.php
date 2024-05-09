@@ -763,72 +763,26 @@
                                                             </div>
                                                         </li>
                                                     @endforeach
-                                                    {{-- <li class="product-item">
-                                                        <a class="product-item-photo" href="#"
-                                                            title="The Name Product">
-                                                            <img class="product-image-photo"
-                                                                src="{{ asset('shopAssets/images/media/index1/minicart.jpg') }}"
-                                                                alt="The Name Product">
-                                                        </a>
-                                                        <div class="product-item-details">
-                                                            <strong class="product-item-name">
-                                                                <a href="#">Donec Ac Tempus</a>
-                                                            </strong>
-                                                            <div class="product-item-price">
-                                                                <span class="price">61,19 €</span>
-                                                            </div>
-                                                            <div class="product-item-qty">
-                                                                <span class="label">Qty: </span><span
-                                                                    class="number">1</span>
-                                                            </div>
-                                                            <div class="product-item-actions">
-                                                                <a class="action delete" href="#"
-                                                                    title="Remove item">
-                                                                    <span>Remove</span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="product-item">
-                                                        <a class="product-item-photo" href="#"
-                                                            title="The Name Product">
-                                                            <img class="product-image-photo"
-                                                                src="{{ asset('shopAssets/images/media/index1/minicart2.jpg') }}"
-                                                                alt="The Name Product">
-                                                        </a>
-                                                        <div class="product-item-details">
-                                                            <strong class="product-item-name">
-                                                                <a href="#">Donec Ac Tempus</a>
-                                                            </strong>
-                                                            <div class="product-item-price">
-                                                                <span class="price">61,19 €</span>
-                                                            </div>
-                                                            <div class="product-item-qty">
-                                                                <span class="label">Qty: </span><span
-                                                                    class="number">1</span>
-                                                            </div>
-                                                            <div class="product-item-actions">
-                                                                <a class="action delete" href="#"
-                                                                    title="Remove item">
-                                                                    <span>Remove</span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </li> --}}
                                                 </ol>
                                             </div>
                                             <div class="subtotal">
                                                 <span class="label">Total</span>
-                                                <span class="price">$630</span>
+                                                <span class="price">${{ $total }}</span>
                                             </div>
                                             <div class="actions">
+                                                <a href="{{ route('check.out') }}" class="btn btn-viewcart"
+                                                    title="Check Out">
+                                                    <span>Checkout</span>
+                                                </a>
+                                            </div>
+                                            {{-- <div class="actions">
                                                 <!-- <a class="btn btn-viewcart" href="">
                                                 <span>Shopping bag</span>
                                             </a> -->
                                                 <button class="btn btn-checkout" type="button" title="Check Out">
                                                     <span>Checkout</span>
                                                 </button>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </form>
                                 </div>
