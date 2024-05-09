@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="address">Address</label>
+                    <label for="address">Address <span class="text-danger">*</span></label>
                     <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
                         name="address" value="{{ old('address') }}" autocomplete="address">
                     @error('address')
@@ -90,7 +90,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <label for="city">City</label>
+                        <label for="city">City <span class="text-danger">*</span></label>
                         <input id="city" type="text" class="form-control @error('city') is-invalid @enderror"
                             name="city" value="{{ old('city') }}" autocomplete="city">
                         @error('city')
@@ -100,7 +100,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="state">State</label>
+                        <label for="state">State <span class="text-danger">*</span></label>
                         <input id="state" type="text" class="form-control @error('state') is-invalid @enderror"
                             name="state" value="{{ old('state') }}" autocomplete="state">
                         @error('state')
@@ -110,7 +110,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="country">Country</label>
+                        <label for="country">Country <span class="text-danger">*</span></label>
                         <input id="country" type="text" class="form-control @error('country') is-invalid @enderror"
                             name="country" value="{{ old('country') }}" autocomplete="country">
                         @error('country')
@@ -122,7 +122,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="zipcode">Zipcode</label>
+                        <label for="zipcode">Zipcode <span class="text-danger">*</span></label>
                         <input id="zipcode" type="text" class="form-control @error('zipcode') is-invalid @enderror"
                             name="zipcode" value="{{ old('zipcode') }}" autocomplete="zipcode">
                         @error('zipcode')
@@ -392,6 +392,25 @@
                         <input id="shop_linkedin" type="text" class="form-control @error('shop_linkedin') is-invalid @enderror"
                             name="shop_linkedin" value="{{ old('shop_linkedin') }}" autocomplete="shop_linkedin">
                         @error('shop_linkedin')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="continent">Continent <span class="text-danger">*</span></label>
+                        <select id="continent" class="form-control @error('continent') is-invalid @enderror"
+                            name="continent" required>
+                            <option value="" disabled selected>Select Continent</option>
+                            <option value="Caribbean">Caribbean</option>
+                            <option value="North America">North America</option>
+                            <option value="South America">South America</option>
+                            <option value="Europe">Europe</option>
+                            <option value="Africa">Africa</option>
+                            <option value="Asia">Asia</option>
+                            <option value="Australia">Australia</option>
+                        </select>
+                        @error('continent')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

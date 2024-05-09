@@ -26,6 +26,7 @@ class Vendor extends Model
         'tiktok',
         'wa_business_page',
         'linkedin',
+        'continent',
     ];
 
     protected $dates = [
