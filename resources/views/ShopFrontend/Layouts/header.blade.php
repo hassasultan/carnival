@@ -267,7 +267,7 @@
                                                     <a href="{{ route('check.out') }}" class="btn btn-checkout"
                                                         title="Check Out">
                                                         <span>Checkout</span>
-                                                        </button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </form>
@@ -775,14 +775,6 @@
                                                     <span>Checkout</span>
                                                 </a>
                                             </div>
-                                            {{-- <div class="actions">
-                                                <!-- <a class="btn btn-viewcart" href="">
-                                                <span>Shopping bag</span>
-                                            </a> -->
-                                                <button class="btn btn-checkout" type="button" title="Check Out">
-                                                    <span>Checkout</span>
-                                                </button>
-                                            </div> --}}
                                         </div>
                                     </form>
                                 </div>
