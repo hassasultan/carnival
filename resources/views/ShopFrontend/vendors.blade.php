@@ -419,11 +419,11 @@
                             var logo = null;
                             if(vendor.logo != null)
                             {
-                                logo = "{{ asset('image/')}}/"+vendor.logo;
+                                logo = "{{ asset('images/')}}/"+vendor.logo;
                             }
                             else if(vendor.user.image != null)
                             {
-                                logo = "{{ asset('image/')}}/"+vendor.user.image;
+                                logo = "{{ asset('images/')}}/"+vendor.user.image;
 
                             }
                             else
