@@ -1193,8 +1193,14 @@
             $('.btn-cart').click(function() {
                 var productId = $(this).data('product_id');
                 var quantity = $('.input-qty').val();
-
-                if (productId) {
+                auth = "{{ auth()->check() }}";
+                console.log(auth);
+                if(auth != true)
+                {
+                    window.location.href= '/login';
+                }
+                else
+                {
                     $.ajax({
                         type: 'GET',
                         url: '{{ route('add.to.cart') }}',
@@ -1203,7 +1209,7 @@
                             quantity: quantity
                         },
                         success: function(response) {
-
+    
                             console.log(response);
                             var cartItems = response;
                             var html = '';
@@ -1212,15 +1218,15 @@
                             $.each(cartItems, function(index, cartItem) {
                                 // Construct HTML for each cart item
                                 var image = null;
-                                console.log(cartItem.product.image);
-                                if (cartItem.product.image != null && cartItem.product
-                                    .image != '') {
-                                    image = "{{ asset('productImage/') }}/" + cartItem
-                                        .product.image;
-                                } else {
-                                    image =
-                                        'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                                }
+                                    console.log(cartItem.product.image);
+                                    if(cartItem.product.image != null && cartItem.product.image != '')
+                                    {
+                                        image = "{{ asset('productImage/') }}/"+cartItem.product.image;
+                                    }
+                                    else
+                                    {
+                                        image = 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                    }
                                 productHtml += `
                                     <li class="product-item cart-row-${cartItem.id}">
                                         <a class="product-item-photo" href="#" title="${cartItem.product.title}">
@@ -1247,12 +1253,13 @@
                                 total += cartItem.product.new_price * cartItem.quantity;
                             });
                             $('#minicart-items').html(productHtml);
-                            $('#cart-price').html('$' + total);
-                            $('.counter-price').html('$' + total);
+                            $('#cart-price').html('$'+total);
+                            $('.counter-price').html('$'+total);
                             $('.counter-number').html(cartItems.length);
                             $('.counter-label').html(cartItems.length + '<span>Items</span>');
-
-                            // alert('Product added to cart successfully!');
+    
+                            // Insert the generated HTML into the designated container
+                            alert('Product added to cart successfully!');
                         },
                         error: function(xhr, status, error) {
                             alert('Error adding product to cart:', error);
@@ -1260,7 +1267,6 @@
                         }
                     });
                 }
-
             });
         });
     </script>

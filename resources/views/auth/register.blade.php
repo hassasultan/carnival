@@ -120,7 +120,7 @@
         $packages = \App\Models\Package::where('status', 1)->get();
         $vendors = \App\Models\Vendor::with('user')->where('status', 1)->get();
     @endphp
-    <div class="form-group">
+    {{-- <div class="form-group">
         <label for="role">Role</label>
         <select id="role" class="form-control @error('role_id') is-invalid @enderror" name="role_id" required>
             <option value="">Select Role</option>
@@ -135,7 +135,8 @@
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
-    </div>
+    </div> --}}
+    <input type="hidden" name="role_id" value="11"/>
     <div class="form-group" id="package_input" style="display: none;">
         <label for="package">Package</label>
         <select id="package" class="form-control @error('package_id') is-invalid @enderror" name="package_id">
