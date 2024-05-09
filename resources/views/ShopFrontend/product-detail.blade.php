@@ -189,9 +189,9 @@
                                             <div class="form-qty">
                                                 <label class="label">Qty: </label>
                                                 <div class="control">
-                                                    <input type="text" readonly class="form-control input-qty" value='1'
-                                                        id="qty1" name="qty1" maxlength="{{ $row->value }}"
-                                                        minlength="1">
+                                                    <input type="text" readonly class="form-control input-qty"
+                                                        value='1' id="qty1" name="qty1"
+                                                        maxlength="{{ $row->value }}" minlength="1">
                                                     <button class="btn-number  qtyminus" data-type="minus"
                                                         data-field="qty1"><span>-</span></button>
                                                     <button class="btn-number  qtyplus" data-type="plus"
@@ -207,10 +207,17 @@
 
                                             <div class="actions">
 
-                                                <button type="button" title="Add to Cart" class="action btn-cart"
-                                                    data-product_id="{{ $product->id }}">
-                                                    <span>Add to Cart</span>
-                                                </button>
+                                                @if (Auth::check())
+                                                    <button type="button" title="Add to Cart" class="action btn-cart"
+                                                        data-product_id="{{ $product->id }}">
+                                                        <span>Add to Cart</span>
+                                                    </button>
+                                                @else
+                                                    <a href="{{ route('customer.login') }}" title="Add to Cart"
+                                                        class="action btn-cart btn">
+                                                        <span>Add to Cart</span>
+                                                    </a>
+                                                @endif
                                                 <div class="product-addto-links">
 
                                                     <a href="#" class="action btn-wishlist" title="Wish List">
@@ -1126,21 +1133,19 @@
                 fetchProducts(page);
             });
 
-            $('.qtyplus').click(function(){
-                stock =  parseInt($('#qty1').val());
-                if(stock < $('#qty1').attr('maxlength'))
-                {
+            $('.qtyplus').click(function() {
+                stock = parseInt($('#qty1').val());
+                if (stock < $('#qty1').attr('maxlength')) {
                     $('#qty1').val(stock + 1);
                 }
             });
-            $('.qtyminus').click(function(){
-                stock =  $('#qty1').val();
-                if(stock > 0)
-                {
+            $('.qtyminus').click(function() {
+                stock = $('#qty1').val();
+                if (stock > 0) {
                     $('#qty1').val(stock - 1);
                 }
             });
-            
+
 
 
         });
@@ -1189,71 +1194,73 @@
                 var productId = $(this).data('product_id');
                 var quantity = $('.input-qty').val();
 
-                $.ajax({
-                    type: 'GET',
-                    url: '{{ route('add.to.cart') }}',
-                    data: {
-                        product_id: productId,
-                        quantity: quantity
-                    },
-                    success: function(response) {
+                if (productId) {
+                    $.ajax({
+                        type: 'GET',
+                        url: '{{ route('add.to.cart') }}',
+                        data: {
+                            product_id: productId,
+                            quantity: quantity
+                        },
+                        success: function(response) {
 
-                        console.log(response);
-                        var cartItems = response;
-                        var html = '';
-                        var total = 0;
-                        var productHtml = '';
-                        $.each(cartItems, function(index, cartItem) {
-                            // Construct HTML for each cart item
-                            var image = null;
+                            console.log(response);
+                            var cartItems = response;
+                            var html = '';
+                            var total = 0;
+                            var productHtml = '';
+                            $.each(cartItems, function(index, cartItem) {
+                                // Construct HTML for each cart item
+                                var image = null;
                                 console.log(cartItem.product.image);
-                                if(cartItem.product.image != null && cartItem.product.image != '')
-                                {
-                                    image = "{{ asset('productImage/') }}/"+cartItem.product.image;
+                                if (cartItem.product.image != null && cartItem.product
+                                    .image != '') {
+                                    image = "{{ asset('productImage/') }}/" + cartItem
+                                        .product.image;
+                                } else {
+                                    image =
+                                        'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                                 }
-                                else
-                                {
-                                    image = 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                                }
-                            productHtml += `
-                                <li class="product-item cart-row-${cartItem.id}">
-                                    <a class="product-item-photo" href="#" title="${cartItem.product.title}">
-                                        <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
-                                    </a>
-                                    <div class="product-item-details">
-                                        <strong class="product-item-name">
-                                            <a href="#">${cartItem.product.title}</a>
-                                        </strong>
-                                        <div class="product-item-price">
-                                            <span class="price">$${cartItem.product.new_price.toFixed(2)}</span>
+                                productHtml += `
+                                    <li class="product-item cart-row-${cartItem.id}">
+                                        <a class="product-item-photo" href="#" title="${cartItem.product.title}">
+                                            <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
+                                        </a>
+                                        <div class="product-item-details">
+                                            <strong class="product-item-name">
+                                                <a href="#">${cartItem.product.title}</a>
+                                            </strong>
+                                            <div class="product-item-price">
+                                                <span class="price">$${cartItem.product.new_price.toFixed(2)}</span>
+                                            </div>
+                                            <div class="product-item-qty">
+                                                <span class="label">Qty: </span><span class="number">${cartItem.quantity}</span>
+                                            </div>
+                                            <div class="product-item-actions">
+                                                <a class="action delete delete-cart" data-id="${cartItem.id}" href="javascript:void(0);" title="Remove item">
+                                                    <span>Remove</span>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div class="product-item-qty">
-                                            <span class="label">Qty: </span><span class="number">${cartItem.quantity}</span>
-                                        </div>
-                                        <div class="product-item-actions">
-                                            <a class="action delete delete-cart" data-id="${cartItem.id}" href="javascript:void(0);" title="Remove item">
-                                                <span>Remove</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                            `;
-                            total += cartItem.product.new_price * cartItem.quantity;
-                        });
-                        $('#minicart-items').html(productHtml);
-                        $('#cart-price').html('$'+total);
-                        $('.counter-price').html('$'+total);
-                        $('.counter-number').html(cartItems.length);
-                        $('.counter-label').html(cartItems.length + '<span>Items</span>');
+                                    </li>
+                                `;
+                                total += cartItem.product.new_price * cartItem.quantity;
+                            });
+                            $('#minicart-items').html(productHtml);
+                            $('#cart-price').html('$' + total);
+                            $('.counter-price').html('$' + total);
+                            $('.counter-number').html(cartItems.length);
+                            $('.counter-label').html(cartItems.length + '<span>Items</span>');
 
-                        // Insert the generated HTML into the designated container
-                        alert('Product added to cart successfully!');
-                    },
-                    error: function(xhr, status, error) {
-                        alert('Error adding product to cart:', error);
-                        console.error('Error adding product to cart:', error);
-                    }
-                });
+                            // alert('Product added to cart successfully!');
+                        },
+                        error: function(xhr, status, error) {
+                            alert('Error adding product to cart:', error);
+                            console.error('Error adding product to cart:', error);
+                        }
+                    });
+                }
+
             });
         });
     </script>

@@ -180,7 +180,8 @@
 
                             <!-- logo -->
                             <strong class="logo">
-                                <a href="/"><img style="width: 120px;"src="{{ asset('shopAssets/images/logo.png') }}"
+                                <a href="/"><img
+                                        style="width: 120px;"src="{{ asset('shopAssets/images/logo.png') }}"
                                         alt="logo"></a>
                             </strong>
 
@@ -210,17 +211,21 @@
                                                 <div class="minicart-items-wrapper">
                                                     <ol class="minicart-items" id="minicart-items">
                                                         @foreach ($cartItems as $cartItem)
-                                                        @php
-                                                            $image = null;
-                                                            if($cartItem->product->image != null && $cartItem->product->image != '')
-                                                            {
-                                                                $image = asset('productImage/')."/".$cartItem->product->image;
-                                                            }
-                                                            else
-                                                            {
-                                                                $image = 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                                                            }
-                                                        @endphp
+                                                            @php
+                                                                $image = null;
+                                                                if (
+                                                                    $cartItem->product->image != null &&
+                                                                    $cartItem->product->image != ''
+                                                                ) {
+                                                                    $image =
+                                                                        asset('productImage/') .
+                                                                        '/' .
+                                                                        $cartItem->product->image;
+                                                                } else {
+                                                                    $image =
+                                                                        'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                                                }
+                                                            @endphp
                                                             <li class="product-item cart-row-{{ $cartItem->id }}">
                                                                 <a class="product-item-photo" href="#"
                                                                     title="{{ $cartItem->product->title }}">
@@ -242,7 +247,9 @@
                                                                             class="number">{{ $cartItem->quantity }}</span>
                                                                     </div>
                                                                     <div class="product-item-actions">
-                                                                        <a class="action delete delete-cart" data-id="{{ $cartItem->id }}" href="javascript:void(0);"
+                                                                        <a class="action delete delete-cart"
+                                                                            data-id="{{ $cartItem->id }}"
+                                                                            href="javascript:void(0);"
                                                                             title="Remove item">
                                                                             <span>Remove</span>
                                                                         </a>
@@ -260,51 +267,13 @@
                                                     <a href="{{ route('check.out') }}" class="btn btn-checkout"
                                                         title="Check Out">
                                                         <span>Checkout</span>
-                                                    </button>
+                                                        </button>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
-
-                                {{-- <script>
-                                    $(document).ready(function() {
-                                        $('.btn-checkout').click(function() {
-                                            var productId = $(this).closest('.product-item').find('.product-item-photo').data(
-                                                'product_id');
-                                            var quantity = $(this).closest('.product-item').find('.product-item-qty .number').text();
-
-                                            console.log('productId:', productId);
-                                            console.log('quantity:', quantity);
-
-                                            var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-                                            $.ajaxSetup({
-                                                headers: {
-                                                    'X-CSRF-TOKEN': csrfToken
-                                                }
-                                            });
-
-                                            $.ajax({
-                                                type: 'POST',
-                                                url: '{{ route('orders.store') }}',
-                                                data: {
-                                                    product_id: productId,
-                                                    quantity: quantity
-                                                },
-                                                success: function(response) {
-                                                    alert('Order created successfully!');
-                                                },
-                                                error: function(xhr, status, error) {
-                                                    console.error('Error adding product to cart:', error);
-                                                }
-                                            });
-                                        });
-                                    });
-                                </script> --}}
                             @endif
-
-
                         </div>
 
                         <div class="nav-mind">
@@ -720,7 +689,8 @@
                                 <li class="{{ request()->is('/') ? 'active' : '' }}">
                                     <a href="/">Home</a>
                                 </li>
-                                <li class="{{ Request::routeIs('front.vendors') ? 'active' : '' }}"><a href="{{url('/mascamps')}}"> MAS CAMPS </a></li>
+                                <li class="{{ Request::routeIs('front.vendors') ? 'active' : '' }}"><a
+                                        href="{{ url('/mascamps') }}"> MAS CAMPS </a></li>
                                 {{-- <li><a href="#"> CG GEAR </a></li>
                                 <li><a href="#">MODELS</a></li>
                                 <li><a href="#">ARTISTES</a></li>
@@ -731,91 +701,94 @@
                         </div><!-- menu -->
 
                         <!-- mini cart -->
-                        <div class="block-minicart dropdown ">
+                        @if (Auth::check())
+                            <div class="block-minicart dropdown">
 
-                            <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                <span class="cart-icon"></span>
-                            </a>
+                                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                    <span class="cart-icon"></span>
+                                </a>
 
-                            <div class="dropdown-menu">
-                                <form>
-                                    <div class="minicart-content-wrapper">
-                                        <div class="subtitle">
-                                            You have 6 item(s) in your cart
-                                        </div>
-                                        <div class="minicart-items-wrapper">
-                                            <ol class="minicart-items">
-                                                <li class="product-item">
-                                                    <a class="product-item-photo" href="#"
-                                                        title="The Name Product">
-                                                        <img class="product-image-photo"
-                                                            src="{{ asset('shopAssets/images/media/index1/minicart.jpg') }}"
-                                                            alt="The Name Product">
-                                                    </a>
-                                                    <div class="product-item-details">
-                                                        <strong class="product-item-name">
-                                                            <a href="#">Donec Ac Tempus</a>
-                                                        </strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">61,19 €</span>
+                                <div class="dropdown-menu">
+                                    <form>
+                                        <div class="minicart-content-wrapper">
+                                            <div class="subtitle">
+                                                You have 6 item(s) in your cart
+                                            </div>
+                                            <div class="minicart-items-wrapper">
+                                                <ol class="minicart-items">
+                                                    <li class="product-item">
+                                                        <a class="product-item-photo" href="#"
+                                                            title="The Name Product">
+                                                            <img class="product-image-photo"
+                                                                src="{{ asset('shopAssets/images/media/index1/minicart.jpg') }}"
+                                                                alt="The Name Product">
+                                                        </a>
+                                                        <div class="product-item-details">
+                                                            <strong class="product-item-name">
+                                                                <a href="#">Donec Ac Tempus</a>
+                                                            </strong>
+                                                            <div class="product-item-price">
+                                                                <span class="price">61,19 €</span>
+                                                            </div>
+                                                            <div class="product-item-qty">
+                                                                <span class="label">Qty: </span><span
+                                                                    class="number">1</span>
+                                                            </div>
+                                                            <div class="product-item-actions">
+                                                                <a class="action delete" href="#"
+                                                                    title="Remove item">
+                                                                    <span>Remove</span>
+                                                                </a>
+                                                            </div>
                                                         </div>
-                                                        <div class="product-item-qty">
-                                                            <span class="label">Qty: </span><span
-                                                                class="number">1</span>
+                                                    </li>
+                                                    <li class="product-item">
+                                                        <a class="product-item-photo" href="#"
+                                                            title="The Name Product">
+                                                            <img class="product-image-photo"
+                                                                src="{{ asset('shopAssets/images/media/index1/minicart2.jpg') }}"
+                                                                alt="The Name Product">
+                                                        </a>
+                                                        <div class="product-item-details">
+                                                            <strong class="product-item-name">
+                                                                <a href="#">Donec Ac Tempus</a>
+                                                            </strong>
+                                                            <div class="product-item-price">
+                                                                <span class="price">61,19 €</span>
+                                                            </div>
+                                                            <div class="product-item-qty">
+                                                                <span class="label">Qty: </span><span
+                                                                    class="number">1</span>
+                                                            </div>
+                                                            <div class="product-item-actions">
+                                                                <a class="action delete" href="#"
+                                                                    title="Remove item">
+                                                                    <span>Remove</span>
+                                                                </a>
+                                                            </div>
                                                         </div>
-                                                        <div class="product-item-actions">
-                                                            <a class="action delete" href="#"
-                                                                title="Remove item">
-                                                                <span>Remove</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="product-item">
-                                                    <a class="product-item-photo" href="#"
-                                                        title="The Name Product">
-                                                        <img class="product-image-photo"
-                                                            src="{{ asset('shopAssets/images/media/index1/minicart2.jpg') }}"
-                                                            alt="The Name Product">
-                                                    </a>
-                                                    <div class="product-item-details">
-                                                        <strong class="product-item-name">
-                                                            <a href="#">Donec Ac Tempus</a>
-                                                        </strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">61,19 €</span>
-                                                        </div>
-                                                        <div class="product-item-qty">
-                                                            <span class="label">Qty: </span><span
-                                                                class="number">1</span>
-                                                        </div>
-                                                        <div class="product-item-actions">
-                                                            <a class="action delete" href="#"
-                                                                title="Remove item">
-                                                                <span>Remove</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ol>
-                                        </div>
-                                        <div class="subtotal">
-                                            <span class="label">Total</span>
-                                            <span class="price">$630</span>
-                                        </div>
-                                        <div class="actions">
-                                            <!-- <a class="btn btn-viewcart" href="">
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                            <div class="subtotal">
+                                                <span class="label">Total</span>
+                                                <span class="price">$630</span>
+                                            </div>
+                                            <div class="actions">
+                                                <!-- <a class="btn btn-viewcart" href="">
                                                 <span>Shopping bag</span>
                                             </a> -->
-                                            <button class="btn btn-checkout" type="button" title="Check Out">
-                                                <span>Checkout</span>
-                                            </button>
+                                                <button class="btn btn-checkout" type="button" title="Check Out">
+                                                    <span>Checkout</span>
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
+                                    </form>
+                                </div>
 
-                        </div>
+                            </div>
+                        @endif
+                        <!-- block mini cart -->
 
                         <!-- search -->
                         <div class="block-search">
