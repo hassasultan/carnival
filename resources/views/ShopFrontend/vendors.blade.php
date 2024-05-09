@@ -70,7 +70,7 @@
                     <!-- List Products -->
                     <div class="products  products-grid">
                         <ol class="product-items row product-listing" id="product-listing">
-                            <li class="col-sm-4 product-item ">
+                            {{-- <li class="col-sm-4 product-item ">
                                 <div class="product-item-opt-1">
                                     <div class="product-item-info">
                                         <div class="product-item-photo">
@@ -84,7 +84,7 @@
                                                 <div class="product-item-price">
                                                     <span class="price">$45.00-$500</span>
                                                 </div>
-                                                {{-- <div class="product-reviews-summary">
+                                                <div class="product-reviews-summary">
                                                     <div class="rating-summary">
                                                         <div class="rating-result" title="80%">
                                                             <span style="width:80%">
@@ -92,12 +92,12 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                </div> --}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li> --}}
                         </ol><!-- list product -->
                     </div> <!-- List Products -->
 
@@ -389,7 +389,7 @@
         $(document).ready(function() {
             // Function to fetch and display products
             function fetchProducts(page = 1) {
-
+                $('#product-listing').html('');
                 // Apply skeleton loading structure
                 for (let i = 0; i < 9; i++) { // Assuming 9 products per page
                     var skeletonHtml = `
@@ -416,6 +416,20 @@
                         $('#product-listing').empty();
                         $('#product-listing').removeClass('blur-effect');
                         $.each(response.data, function(index, vendor) {
+                            var logo = null;
+                            if(vendor.logo != null)
+                            {
+                                logo = "{{ asset('images/')}}/"+vendor.logo;
+                            }
+                            else if(vendor.user.image != null)
+                            {
+                                logo = "{{ asset('images/')}}/"+vendor.user.image;
+
+                            }
+                            else
+                            {
+                                logo = "{{ asset('shopAssets/images/media/product9.jpg') }}";
+                            }
                             var vendorHtml = `
                                 <li class="col-sm-4 product-item">
                                     <div class="product-item-opt-1">
@@ -423,12 +437,12 @@
                                             <div class="product-item-photo">
                                                 <div class="product-item-photo">
                                                     <a href="{{ route('front.vendor.detail','') }}/${vendor.user.slug}" class="product-item-img"><img
-                                                    src="{{ asset('shopAssets/images/media/product9.jpg') }}"
+                                                    src="${logo}"
                                                     alt="product name"></a>
                                                 </div>
                                             </div>
                                             <div class="product-item-detail">
-                                                <strong class="product-item-name"><a href="">${vendor.user.first_name} ${vendor.user.last_name}</a></strong>`;
+                                                <strong class="product-item-name"><a href="">${vendor.name}</a></strong>`;
                                                 if(vendor.user.products.length > 0)
                                                 {
                                                     vendorHtml += `
