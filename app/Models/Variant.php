@@ -26,7 +26,7 @@ class Variant extends Model
             ->withPivot('value', 'status')
             ->withTimestamps();
     }
-    public function product_varient()
+    public function product_variant()
     {
         return $this->hasMany(ProductVariant::class,'variant_id');
     }

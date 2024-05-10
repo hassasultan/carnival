@@ -79,7 +79,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $product = Product::with('category', 'product_varient', 'subcategory')->findOrFail($id);
+        $product = Product::with('category', 'product_variant', 'subcategory')->findOrFail($id);
         $categories = Category::where('type', 'ecommerce')->get();
         $variants = Variant::all();
         $subcat = Subcategory::where('category_id', $product->category_id)->get();

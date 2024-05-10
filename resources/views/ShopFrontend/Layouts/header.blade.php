@@ -159,7 +159,25 @@
                                     <li><a href="">My Account</a></li>
                                     <li><a href="">Checkout</a></li>
                                     <li><a href="">Compare</a></li>
-                                    <li><a href="{{ route('customer.login') }}">Login/Register</a></li>
+                                    {{-- <li><a href="{{ route('customer.login') }}">Login/Register</a></li> --}}
+                                    @if (Auth::check())
+                                        <li>
+                                            <a class="" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                      document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a href="{{ route('customer.login') }}">Login/Register</a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </li>
@@ -206,7 +224,9 @@
                                         <form id="checkout_form">
                                             <div class="minicart-content-wrapper">
                                                 <div class="subtitle">
-                                                    You have {{ $cartItems->count() }} item(s) in your cart
+                                                    You have <span
+                                                        class="total-cart-items">{{ $cartItems->count() }}</span>
+                                                    item(s) in your cart
                                                 </div>
                                                 <div class="minicart-items-wrapper">
                                                     <ol class="minicart-items" id="minicart-items">
@@ -712,10 +732,12 @@
                                     <form>
                                         <div class="minicart-content-wrapper">
                                             <div class="subtitle">
-                                                You have {{ $cartItems->count() }} item(s) in your cart
+                                                You have <span
+                                                    class="total-cart-items">{{ $cartItems->count() }}</span> item(s)
+                                                in your cart
                                             </div>
                                             <div class="minicart-items-wrapper">
-                                                <ol class="minicart-items">
+                                                <ol class="minicart-items" id="minicart-items2">
                                                     @foreach ($cartItems as $cartItem)
                                                         @php
                                                             $image = null;
@@ -767,7 +789,7 @@
                                             </div>
                                             <div class="subtotal">
                                                 <span class="label">Total</span>
-                                                <span class="price">${{ $total }}</span>
+                                                <span class="price" id="cart-price2">${{ $total }}</span>
                                             </div>
                                             <div class="actions">
                                                 <a href="{{ route('check.out') }}" class="btn btn-viewcart"
@@ -868,7 +890,24 @@
                                     <li><a href="">My Account</a></li>
                                     <li><a href="">Checkout</a></li>
                                     <li><a href="">Compare</a></li>
-                                    <li><a href="{{ route('customer.login') }}">Login/Register</a></li>
+                                    @if (Auth::check())
+                                        <li>
+                                            <a class="" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                      document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a href="{{ route('customer.login') }}">Login/Register</a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div><!--setting  -->

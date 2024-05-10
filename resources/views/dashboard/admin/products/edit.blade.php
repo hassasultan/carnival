@@ -61,7 +61,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                @foreach ($product->product_varient as $row)
+                                @foreach ($product->product_variant as $row)
                                     <div class="form-group mb-3">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">

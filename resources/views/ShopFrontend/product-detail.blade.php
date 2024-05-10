@@ -46,8 +46,8 @@
                                     <div class="owl-carousel thumbnails_carousel" id="thumbnails" data-nav="true"
                                         data-dots="false" data-margin="10"
                                         data-responsive='{"0":{"items":3},"480":{"items":4},"600":{"items":5},"768":{"items":3}}'>
-                                        @foreach ($product->product_varient as $key => $row)
-                                            {{-- {{ dd($product->product_varient[0]->product_image->toArray(), $row->product_image) }} --}}
+                                        @foreach ($product->product_variant as $key => $row)
+                                            {{-- {{ dd($product->product_variant[0]->product_image->toArray(), $row->product_image) }} --}}
                                             @foreach ($row->product_image as $key => $row)
                                                 {{-- {{ dd('variant_images/' . $row->image) }} --}}
                                                 <a href="#" data-image="{{ asset('variant_images/' . $row->image) }}"
@@ -153,14 +153,14 @@
                                         {!! $product->description !!}
                                     </div>
                                 </div>
-                                {{-- {{ dd($product->product_varient->toArray()) }} --}}
+                                {{-- {{ dd($product->product_variant->toArray()) }} --}}
                                 <div class="product-add-form">
                                     <p>Available Options:</p>
                                     <form>
 
                                         {{-- {{ dd($row->product_image->toArray()) }} --}}
                                         <div class="product-options-wrapper">
-                                            @foreach ($product->product_varient as $key => $row)
+                                            @foreach ($product->product_variant as $key => $row)
                                                 @if ($row->type == 'color')
                                                     <div class="swatch-opt">
                                                         <div class="swatch-attribute color">
@@ -443,10 +443,17 @@
                                                     <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                                 </div>
                                                 {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
-                                                <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                    data-product_id="{{ $product->id }}">
-                                                    <span>Add to Cart</span>
-                                                </button>
+                                                @if (Auth::check())
+                                                    <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                        data-product_id="{{ $row->id }}">
+                                                        <span>Add to Cart</span>
+                                                    </button>
+                                                @else
+                                                    <a href="{{ route('customer.login') }}" title="Add to Cart"
+                                                        class="action btn-cart btn">
+                                                        <span>Add to Cart</span>
+                                                    </a>
+                                                @endif
 
                                             </div>
                                             <div class="product-item-detail">
@@ -1196,12 +1203,9 @@
                 var quantity = $('.input-qty').val();
                 auth = "{{ auth()->check() }}";
                 console.log(auth);
-                if(auth != true)
-                {
-                    window.location.href= '/login';
-                }
-                else
-                {
+                if (auth != true) {
+                    window.location.href = '/login';
+                } else {
                     $.ajax({
                         type: 'GET',
                         url: '{{ route('add.to.cart') }}',
@@ -1210,7 +1214,7 @@
                             quantity: quantity
                         },
                         success: function(response) {
-    
+
                             console.log(response);
                             var cartItems = response;
                             var html = '';
@@ -1219,15 +1223,15 @@
                             $.each(cartItems, function(index, cartItem) {
                                 // Construct HTML for each cart item
                                 var image = null;
-                                    console.log(cartItem.product.image);
-                                    if(cartItem.product.image != null && cartItem.product.image != '')
-                                    {
-                                        image = "{{ asset('productImage/') }}/"+cartItem.product.image;
-                                    }
-                                    else
-                                    {
-                                        image = 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                                    }
+                                console.log(cartItem.product.image);
+                                if (cartItem.product.image != null && cartItem.product
+                                    .image != '') {
+                                    image = "{{ asset('productImage/') }}/" + cartItem
+                                        .product.image;
+                                } else {
+                                    image =
+                                        'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                }
                                 productHtml += `
                                     <li class="product-item cart-row-${cartItem.id}">
                                         <a class="product-item-photo" href="#" title="${cartItem.product.title}">
@@ -1254,11 +1258,14 @@
                                 total += cartItem.product.new_price * cartItem.quantity;
                             });
                             $('#minicart-items').html(productHtml);
-                            $('#cart-price').html('$'+total);
-                            $('.counter-price').html('$'+total);
+                            $('#minicart-items2').html(productHtml);
+                            $('#cart-price').html('$' + total);
+                            $('#cart-price2').html('$' + total);
+                            $('.counter-price').html('$' + total);
                             $('.counter-number').html(cartItems.length);
+                            $('.total-cart-items').html(cartItems.length);
                             $('.counter-label').html(cartItems.length + '<span>Items</span>');
-    
+
                             // Insert the generated HTML into the designated container
                             alert('Product added to cart successfully!');
                         },
