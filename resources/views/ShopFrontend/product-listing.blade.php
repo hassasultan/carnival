@@ -769,7 +769,7 @@
                             <div class="product-item-opt-1">
                                 <div class="product-item-info">
                                     <div class="product-item-photo">
-                                        <a href="{{ route('get.products.detail','') }}/${product.slug}" class="product-item-img"><img src="${image}"
+                                        <a href="{{ route('get.products.detail','') }}/${product.slug}" class="product-item-img"><img style="width:200px;height:200px;" src="${image}"
                                                 alt="${product.title}"></a>
                                         <div class="product-item-actions">
                                             <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
