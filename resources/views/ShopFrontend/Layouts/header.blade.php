@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- Add this line to include the CSRF token -->
 
     <!-- Style CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('shopAssets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('shopAssets/css/style.css?v'.rand(1,50)) }}">
     <style>
         /* Skeleton loading animation */
         .skeleton-container {
