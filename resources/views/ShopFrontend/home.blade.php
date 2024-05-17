@@ -29,7 +29,7 @@
                                 data-loop="true">
 
                                 <div class="item">
-                                    <img src="{{asset('shopAssets/images/media/index8/slide1.jpg')}}" alt="slide1" class="img-slide" style="height: 600px;">
+                                    <img src="{{asset('shopAssets/images/media/index8/slide1.jpg')}}" alt="slide1" class="img-slide" style="height: 100%;min-height:200px;">
                                     <div class="description" style="top: 30%;">
                                         <span class="subtitle " >Paris fashion week</span>
                                         <span class="title">fashion talents from paris </span>
@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img src="{{asset('shopAssets/images/media/index8/slide2.jpg')}}" alt="slide1" class="img-slide" style="height: 600px;">
+                                    <img src="{{asset('shopAssets/images/media/index8/slide2.jpg')}}" alt="slide1" class="img-slide" style="height: 100%;min-height:200px;">
                                     <div class="description" style="top: 30%;">
                                         <span class="subtitle " >Paris fashion week</span>
                                         <span class="title">fashion talents from paris </span>
