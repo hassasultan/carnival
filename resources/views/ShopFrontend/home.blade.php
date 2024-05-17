@@ -71,31 +71,19 @@
                         "992":{"items":7}
                     }'>
                     <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/images/media/index6/brand1.png')}}" alt="brand"></a>
+                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_1.png')}}" alt="brand"></a>
                     </div>
                     <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/images/media/index6/brand2.png')}}" alt="brand"></a>
+                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_2.png')}}" alt="brand"></a>
                     </div>
                     <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/images/media/index6/brand3.png')}}" alt="brand"></a>
+                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_3.png')}}" alt="brand"></a>
                     </div>
                     <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/images/media/index6/brand4.png')}}" alt="brand"></a>
+                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_4.png')}}" alt="brand"></a>
                     </div>
                     <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/images/media/index6/brand5.png')}}" alt="brand"></a>
-                    </div>
-                    <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/images/media/index6/brand6.png')}}" alt="brand"></a>
-                    </div>
-                    <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/images/media/index6/brand7.png')}}" alt="brand"></a>
-                    </div>
-                    <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/images/media/index6/brand8.png')}}" alt="brand"></a>
-                    </div>
-                    <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/images/media/index6/brand8.png')}}" alt="brand"></a>
+                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_5.png')}}" alt="brand"></a>
                     </div>
                 </div>
             </div>

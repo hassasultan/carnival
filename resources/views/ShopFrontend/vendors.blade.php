@@ -378,6 +378,38 @@
 
             </div>
         </div>
+        <!-- block-brand -->
+        <div class="block-brand-op6">
+            <div class="container">
+                <div class="owl-carousel"
+                    data-nav="true"
+                    data-dots="false"
+                    data-margin="2"
+                    data-loop="true"
+                    data-responsive='{
+                        "0":{"items":3},
+                        "480":{"items":4},
+                        "600":{"items":5},
+                        "992":{"items":7}
+                    }'>
+                    <div class="item">
+                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_1.png')}}" alt="brand"></a>
+                    </div>
+                    <div class="item">
+                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_2.png')}}" alt="brand"></a>
+                    </div>
+                    <div class="item">
+                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_3.png')}}" alt="brand"></a>
+                    </div>
+                    <div class="item">
+                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_4.png')}}" alt="brand"></a>
+                    </div>
+                    <div class="item">
+                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_5.png')}}" alt="brand"></a>
+                    </div>
+                </div>
+            </div>
+        </div><!-- block-brand -->
 
 
     </main><!-- end MAIN -->

@@ -20276,7 +20276,7 @@ select.input-sm {
 }
 
 .category-links>li.current-cate>a {
-    background-color: #000;
+    background-color: var(--main-bg-color);
     color: #fff;
     font-weight: 400;
     font-size: 14px
@@ -20288,7 +20288,7 @@ select.input-sm {
     height: 0;
     border-style: solid;
     border-width: 3px 0 3px 5px;
-    border-color: transparent transparent transparent #000;
+    border-color: transparent transparent transparent var(--main-bg-color);
     position: absolute;
     top: 50%;
     margin-top: -3px;
@@ -30633,7 +30633,7 @@ img.alignright {
     width: 100%;
     text-align: center;
     border: 1px solid #eee;
-    background-color: #eee
+    /* background-color: #eee */
 }
 
 .block-brand-op6 .item:hover a {
