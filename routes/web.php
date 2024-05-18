@@ -31,6 +31,7 @@ use App\Http\Controllers\FrontendConroller;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AddToCartController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CarnivalController;
 
 
 /*
@@ -149,6 +150,11 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     //orders
     Route::resource('orders', OrderController::class);
 
+    //carnivals
+    Route::resource('carnivals', CarnivalController::class);
+
+    Route::get('/register/new/user/{id}', [AdminController::class, 'newRegister'])->name('register.new.user');
+
     //appointments
     Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
     Route::get('/appointments/add', [AppointmentController::class, 'create'])->name('appointments.create');
@@ -159,8 +165,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::delete('/appointments/{variant}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
 
     // get vendot
-    Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
 });
+
+Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
 
 
 // Vendor Routes

@@ -53,6 +53,12 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        if ($data['package_id'] == 'section_leader') {
+            $data['package_id'] = '123';
+            $data['role_id'] = '3';
+        } else {
+            $data['role_id'] = '2';
+        }
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -64,7 +70,6 @@ class RegisterController extends Controller
             'state' => ['nullable', 'string', 'max:255'],
             'country' => ['nullable', 'string', 'max:255'],
             'zipcode' => ['nullable', 'string', 'max:255'],
-            'role_id' => ['required', 'numeric', Rule::in([1, 2, 3, 4])], // Example rule for role_id
             'package_id' => ['nullable', 'numeric'],
             'vendor_id' => ['nullable', 'numeric'],
         ]);
@@ -78,6 +83,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
+        if ($data['package_id'] == 'section_leader') {
+            $data['package_id'] = '123';
+            $data['role_id'] = '3';
+        } else {
+            $data['role_id'] = '2';
+        }
+
+        if (isset($data['logo'])) {
+            $imageName = $this->uploadImage($data['logo'], 'images');
+            $logo = $imageName;
+        }
+        else {
+            $logo = "";
+        }
+
         $userData = [
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -111,11 +132,25 @@ class RegisterController extends Controller
         // dd($userData);
 
         $user = User::create($userData);
+
         if ($data['role_id'] == 2) {
             Vendor::create([
                 'user_id' => $user->id,
                 'package_id' => $data['package_id'],
+                'name' => $data['shop_name'],
+                'email' => $data['shop_email'],
+                'address' => $data['shop_address'],
+                'phone' => $data['shop_phone'],
+                'continent' => $data['continent'],
+                'insta' => isset($data['shop_insta']) ? $data['shop_insta'] : null,
+                'facebook' => isset($data['shop_facebook']) ? $data['shop_facebook'] : null,
+                'youtube' => isset($data['shop_youtube']) ? $data['shop_youtube'] : null,
+                'twitter' => isset($data['shop_twitter']) ? $data['shop_twitter'] : null,
+                'tiktok' => isset($data['shop_tiktok']) ? $data['shop_tiktok'] : null,
+                'wa_business_page' => isset($data['shop_wa_business_page']) ? $data['shop_wa_business_page'] : null,
+                'linkedin' => isset($data['shop_linkedin']) ? $data['shop_linkedin'] : null,
                 'status' => 1,
+                'logo' => $logo,
             ]);
         }
     
@@ -123,13 +158,33 @@ class RegisterController extends Controller
             SubVendor::create([
                 'user_id' => $user->id,
                 'vendor_id' => $data['vendor_id'],
+                'name' => $data['shop_name'],
+                'email' => $data['shop_email'],
+                'address' => $data['shop_address'],
+                'phone' => $data['shop_phone'],
+                'continent' => $data['continent'],
+                'insta' => isset($data['shop_insta']) ? $data['shop_insta'] : null,
+                'facebook' => isset($data['shop_facebook']) ? $data['shop_facebook'] : null,
+                'youtube' => isset($data['shop_youtube']) ? $data['shop_youtube'] : null,
+                'twitter' => isset($data['shop_twitter']) ? $data['shop_twitter'] : null,
+                'tiktok' => isset($data['shop_tiktok']) ? $data['shop_tiktok'] : null,
+                'wa_business_page' => isset($data['shop_wa_business_page']) ? $data['shop_wa_business_page'] : null,
+                'linkedin' => isset($data['shop_linkedin']) ? $data['shop_linkedin'] : null,
+                'ecommerce' => isset($data['ecommerce']) ? $data['ecommerce'] : 0,
+                'events' => isset($data['events']) ? $data['events'] : 0,
+                'music' => isset($data['music']) ? $data['music'] : 0,
+                'appointment' => isset($data['appointment']) ? $data['appointment'] : 0,
+                'ad_space' => isset($data['ad_space']) ? $data['ad_space'] : 0,
+                'blogging' => isset($data['blogging']) ? $data['blogging'] : 0,
                 'status' => 1,
+                'logo' => $logo,
             ]);
         }
     
         if ($data['role_id'] == 4) {
             Customer::create([
                 'user_id' => $user->id,
+                'package_id' => $data['package_id'],
                 'status' => 1,
             ]);
         }

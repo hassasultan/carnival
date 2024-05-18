@@ -42,6 +42,7 @@
     <script src="js/apps.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
