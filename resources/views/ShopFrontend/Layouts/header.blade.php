@@ -93,7 +93,7 @@
     <div class="wrapper">
 
         <!-- alert banner top -->
-        <div role="alert" class="qc-top-site qc-top-site1 alert  fade in"
+        <!-- <div role="alert" class="qc-top-site qc-top-site1 alert  fade in"
             style="background-image: url({{ asset('shopAssets/images/media/index1/bg-qc-top.jpg') }});">
             <div class="container">
                 <button class="close" type="button"><span aria-hidden="true">×</span></button>
@@ -104,7 +104,8 @@
 
                 </div>
             </div>
-        </div><!-- alert banner top -->
+        </div> -->
+        <!-- alert banner top -->
 
         <!-- HEADER -->
         <header class="site-header header-opt-1 cate-show">
@@ -114,7 +115,7 @@
                 <div class="container">
 
                     <!-- nav-left -->
-                    <ul class="nav-left">
+                    {{-- <ul class="nav-left">
                         <li><span><i class="fa fa-phone" aria-hidden="true"></i>00-62-658-658</span></li>
                         <li><span><i class="fa fa-envelope" aria-hidden="true"></i> Contact us today !</span></li>
                         <li class="dropdown switcher  switcher-currency">
@@ -146,20 +147,20 @@
                                 </li>
                             </ul>
                         </li>
-                    </ul><!-- nav-left -->
+                    </ul> --}}
+                    <!-- nav-left -->
 
                     <!-- nav-right -->
-                    <ul class=" nav-right">
+                    {{-- <ul class=" nav-right">
                         <li class="dropdown setting">
                             <a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle "><span>My
                                     Account</span> <i aria-hidden="true" class="fa fa-angle-down"></i></a>
                             <div class="dropdown-menu  ">
                                 <ul class="account">
-                                    <li><a href="">Wishlist</a></li>
                                     <li><a href="">My Account</a></li>
+                                    <li><a href="">Wishlist</a></li>
                                     <li><a href="">Checkout</a></li>
                                     <li><a href="">Compare</a></li>
-                                    {{-- <li><a href="{{ route('customer.login') }}">Login/Register</a></li> --}}
                                     @if (Auth::check())
                                         <li>
                                             <a class="" href="{{ route('logout') }}"
@@ -183,7 +184,8 @@
                         </li>
                         <li><a href="">Services</a></li>
                         <li><a href="">Support </a></li>
-                    </ul><!-- nav-right -->
+                    </ul> --}}
+                    <!-- nav-right -->
 
                 </div>
             </div><!-- header-top -->
@@ -191,22 +193,15 @@
             <!-- header-content -->
             <div class="header-content">
                 <div class="container">
-
                     <div class="row">
-
                         <div class="col-md-3 nav-left">
-
                             <!-- logo -->
                             <strong class="logo">
-                                <a href="/"><img
-                                        style="width: 120px;"src="{{ asset('shopAssets/images/logo.png') }}"
-                                        alt="logo"></a>
+                                <a href="/"><img style="width: 120px;" src="{{ asset('shopAssets/images/logo.png') }}" alt="logo"></a>
                             </strong>
-
                         </div>
 
                         <div class="nav-right">
-
                             @if (Auth::check())
                                 <!-- block mini cart -->
                                 <div class="block-minicart dropdown">
@@ -215,8 +210,7 @@
                                         <span class="counter qty">
                                             <span class="cart-text">Shopping Cart</span>
                                             <span class="counter-number">{{ $cartItems->count() }}</span>
-                                            <span class="counter-label">{{ $cartItems->count() }}
-                                                <span>Items</span></span>
+                                            <span class="counter-label">{{ $cartItems->count() }} <span>Items</span></span>
                                             <span class="counter-price">${{ $total }}</span>
                                         </span>
                                     </a>
@@ -224,53 +218,30 @@
                                         <form id="checkout_form">
                                             <div class="minicart-content-wrapper">
                                                 <div class="subtitle">
-                                                    You have <span
-                                                        class="total-cart-items">{{ $cartItems->count() }}</span>
-                                                    item(s) in your cart
+                                                    You have <span class="total-cart-items">{{ $cartItems->count() }}</span> item(s) in your cart
                                                 </div>
                                                 <div class="minicart-items-wrapper">
                                                     <ol class="minicart-items" id="minicart-items">
                                                         @foreach ($cartItems as $cartItem)
                                                             @php
-                                                                $image = null;
-                                                                if (
-                                                                    $cartItem->product->image != null &&
-                                                                    $cartItem->product->image != ''
-                                                                ) {
-                                                                    $image =
-                                                                        asset('productImage/') .
-                                                                        '/' .
-                                                                        $cartItem->product->image;
-                                                                } else {
-                                                                    $image =
-                                                                        'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                                                                }
+                                                                $image = $cartItem->product->image ? asset('productImage/' . $cartItem->product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                                                             @endphp
                                                             <li class="product-item cart-row-{{ $cartItem->id }}">
-                                                                <a class="product-item-photo" href="#"
-                                                                    title="{{ $cartItem->product->title }}">
-                                                                    <img class="product-image-photo"
-                                                                        src="{{ $image }}"
-                                                                        alt="{{ $cartItem->product->title }}">
+                                                                <a class="product-item-photo" href="#" title="{{ $cartItem->product->title }}">
+                                                                    <img class="product-image-photo" src="{{ $image }}" alt="{{ $cartItem->product->title }}">
                                                                 </a>
                                                                 <div class="product-item-details">
                                                                     <strong class="product-item-name">
-                                                                        <a
-                                                                            href="#">{{ $cartItem->product->title }}</a>
+                                                                        <a href="#">{{ $cartItem->product->title }}</a>
                                                                     </strong>
                                                                     <div class="product-item-price">
-                                                                        <span
-                                                                            class="price">{{ $cartItem->product->new_price }}</span>
+                                                                        <span class="price">{{ $cartItem->product->new_price }}</span>
                                                                     </div>
                                                                     <div class="product-item-qty">
-                                                                        <span class="label">Qty: </span><span
-                                                                            class="number">{{ $cartItem->quantity }}</span>
+                                                                        <span class="label">Qty: </span><span class="number">{{ $cartItem->quantity }}</span>
                                                                     </div>
                                                                     <div class="product-item-actions">
-                                                                        <a class="action delete delete-cart"
-                                                                            data-id="{{ $cartItem->id }}"
-                                                                            href="javascript:void(0);"
-                                                                            title="Remove item">
+                                                                        <a class="action delete delete-cart" data-id="{{ $cartItem->id }}" href="javascript:void(0);" title="Remove item">
                                                                             <span>Remove</span>
                                                                         </a>
                                                                     </div>
@@ -284,8 +255,7 @@
                                                     <span class="price" id="cart-price">${{ $total }}</span>
                                                 </div>
                                                 <div class="actions">
-                                                    <a href="{{ route('check.out') }}" class="btn btn-checkout"
-                                                        title="Check Out">
+                                                    <a href="{{ route('check.out') }}" class="btn btn-checkout" title="Check Out">
                                                         <span>Checkout</span>
                                                     </a>
                                                 </div>
@@ -297,14 +267,13 @@
                         </div>
 
                         <div class="nav-mind">
-
                             <!-- block search -->
                             <div class="block-search">
                                 <div class="block-title">
                                     <span>Search</span>
                                 </div>
                                 <div class="block-content">
-                                    <div class="categori-search  ">
+                                    <div class="categori-search">
                                         <select data-placeholder="All Categories" class="categori-search-option">
                                             <option>All Categories</option>
                                             <option>Fashion</option>
@@ -318,22 +287,18 @@
                                     <div class="form-search">
                                         <form>
                                             <div class="box-group">
-                                                <input type="text" class="form-control"
-                                                    placeholder="i'm Searching for...">
-                                                <button class="btn btn-search"
-                                                    type="button"><span>search</span></button>
+                                                <input type="text" class="form-control" placeholder="I'm Searching for...">
+                                                <button class="btn btn-search" type="button"><span>search</span></button>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
             </div><!-- header-content -->
+
 
             <!-- header-nav -->
             <div class="header-nav mid-header">
@@ -380,50 +345,10 @@
                                                         <li><a href="">T-Shirts</a></li>
                                                     </ul>
                                                 </li>
-                                                <li class="col-sm-3">
-                                                    <strong class="title"><a href="">TElevision</a></strong>
-                                                    <ul>
-                                                        <li><a href="">Skirts </a></li>
-                                                        <li><a href="">Jackets</a></li>
-                                                        <li><a href="">Jumpusuits</a></li>
-                                                        <li><a href="">Scarvest</a></li>
-                                                        <li><a href="">T-Shirts</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="col-sm-3">
-                                                    <strong class="title"><a href="">Camera</a></strong>
-                                                    <ul>
-                                                        <li><a href="">Skirts </a></li>
-                                                        <li><a href="">Jackets</a></li>
-                                                        <li><a href="">Jumpusuits</a></li>
-                                                        <li><a href="">Scarvest</a></li>
-                                                        <li><a href="">T-Shirts</a></li>
-                                                    </ul>
-                                                </li>
                                             </ul>
                                             <ul class="categori-list clearfix">
                                                 <li class="col-sm-3">
                                                     <strong class="title"><a href="">Smartphone</a></strong>
-                                                    <ul>
-                                                        <li><a href="">Skirts </a></li>
-                                                        <li><a href="">Jackets</a></li>
-                                                        <li><a href="">Jumpusuits</a></li>
-                                                        <li><a href="">Scarvest</a></li>
-                                                        <li><a href="">T-Shirts</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="col-sm-3">
-                                                    <strong class="title"><a href="">TElevision</a></strong>
-                                                    <ul>
-                                                        <li><a href="">Skirts </a></li>
-                                                        <li><a href="">Jackets</a></li>
-                                                        <li><a href="">Jumpusuits</a></li>
-                                                        <li><a href="">Scarvest</a></li>
-                                                        <li><a href="">T-Shirts</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="col-sm-3">
-                                                    <strong class="title"><a href="">Camera</a></strong>
                                                     <ul>
                                                         <li><a href="">Skirts </a></li>
                                                         <li><a href="">Jackets</a></li>
@@ -462,27 +387,6 @@
                                                 </li>
                                                 <li class="col-sm-3">
                                                     <strong class="title"><a href="">TElevision</a></strong>
-                                                    <ul>
-                                                        <li><a href="">Skirts </a></li>
-                                                        <li><a href="">Jackets</a></li>
-                                                        <li><a href="">Jumpusuits</a></li>
-                                                        <li><a href="">Scarvest</a></li>
-                                                        <li><a href="">T-Shirts</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="col-sm-3">
-                                                    <strong class="title"><a href="">Camera</a></strong>
-                                                    <ul>
-                                                        <li><a href="">Skirts </a></li>
-                                                        <li><a href="">Jackets</a></li>
-                                                        <li><a href="">Jumpusuits</a></li>
-                                                        <li><a href="">Scarvest</a></li>
-                                                        <li><a href="">T-Shirts</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="col-sm-3">
-                                                    <strong class="title"><a href="">washing
-                                                            machine</a></strong>
                                                     <ul>
                                                         <li><a href="">Skirts </a></li>
                                                         <li><a href="">Jackets</a></li>
@@ -549,55 +453,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="product-item product-item-opt-1">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/product-menu3.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a
-                                                                    href="">Samsung Ispiron 20 </a></strong>
-                                                            <div class="product-item-price">
-                                                                <span class="price">$45.00</span>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item product-item-opt-1">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/product-menu4.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a
-                                                                    href="">Electronics Ispiron 20 </a></strong>
-                                                            <div class="product-item-price">
-                                                                <span class="price">$45.00</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item product-item-opt-1">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/product-menu4.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a
-                                                                    href="">Samsung Ispiron 20 </a></strong>
-                                                            <div class="product-item-price">
-                                                                <span class="price">$45.00</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
 
                                             </div>
                                         </div>
@@ -616,78 +471,6 @@
                                                     src="{{ asset('shopAssets/images/icon/index1/nav-cat5.png') }}"
                                                     alt="nav-cat"></span>
                                             Bags, Shoes & Accessories
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <span class="icon"><img
-                                                    src="{{ asset('shopAssets/images/icon/index1/nav-cat6.png') }}"
-                                                    alt="nav-cat"></span>
-                                            Toys & Hobbies
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <span class="icon"><img
-                                                    src="{{ asset('shopAssets/images/icon/index1/nav-cat7.png') }}"
-                                                    alt="nav-cat"></span>
-                                            Computers & Networking
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <span class="icon"><img
-                                                    src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
-                                                    alt="nav-cat"></span>
-                                            Laptops & Accessories
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <span class="icon"><img
-                                                    src="{{ asset('shopAssets/images/icon/index1/nav-cat9.png') }}"
-                                                    alt="nav-cat"></span>
-                                            Jewelry & Watches
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <span class="icon"><img
-                                                    src="{{ asset('shopAssets/images/icon/index1/nav-cat10.png') }}"
-                                                    alt="nav-cat"></span>
-                                            Flashlights & Lamps
-                                        </a>
-                                    </li>
-                                    <li class="cat-link-orther">
-                                        <a href="">
-                                            <span class="icon"><img
-                                                    src="{{ asset('shopAssets/images/icon/index1/nav-cat10.png') }}"
-                                                    alt="nav-cat"></span>
-                                            Flashlights & Lamps
-                                        </a>
-                                    </li>
-                                    <li class="cat-link-orther">
-                                        <a href="">
-                                            <span class="icon"><img
-                                                    src="{{ asset('shopAssets/images/icon/index1/nav-cat9.png') }}"
-                                                    alt="nav-cat"></span>
-                                            Cameras & Photo
-                                        </a>
-                                    </li>
-                                    <li class="cat-link-orther">
-                                        <a href="">
-                                            <span class="icon"><img
-                                                    src="{{ asset('shopAssets/images/icon/index1/nav-cat10.png') }}"
-                                                    alt="nav-cat"></span>
-                                            Flashlights & Lamps
-                                        </a>
-                                    </li>
-                                    <li class="cat-link-orther">
-                                        <a href="">
-                                            <span class="icon"><img
-                                                    src="{{ asset('shopAssets/images/icon/index1/nav-cat9.png') }}"
-                                                    alt="nav-cat"></span>
-                                            Cameras & Photo
                                         </a>
                                     </li>
 
@@ -715,6 +498,36 @@
                                 <li><a href="#">MODELS</a></li>
                                 <li><a href="#">ARTISTES</a></li>
                                 <li><a href="#">EVENTS</a></li> --}}
+                                <li class="parent parent-submenu">
+                                    <a > My Account  </a>
+                                    <span class="toggle-submenu"></span>
+                                    <div class="submenu drop-menu">
+                                        <ul >
+                                            <li><a href="">My Account</a></li>
+                                            <li><a href="">Wishlist</a></li>
+                                            <li><a href="">Checkout</a></li>
+                                            <li><a href="">Compare</a></li>
+                                            @if (Auth::check())
+                                                <li>
+                                                    <a class="" href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                                    </a>
+
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                        class="d-none">
+                                                        @csrf
+                                                    </form>
+                                                </li>
+                                            @else
+                                                <li>
+                                                    <a href="{{ route('customer.login') }}">Login/Register</a>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                    </div>
+                                </li>
                                 <li><a href="#">CONTACT US</a></li>
                             </ul>
 
