@@ -11,9 +11,4 @@ class AdminController extends Controller
     {
         return view('dashboard.admin.pages.user_management.index');
     }
-    
-    public function newRegister($id)
-    {
-        // return view('dashboard.admin.pages.user_management.index');
-    }
 }

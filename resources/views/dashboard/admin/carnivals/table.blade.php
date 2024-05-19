@@ -9,9 +9,10 @@
         </tr>
     </thead>
     <tbody>
+        @php $counter = 1 @endphp
         @foreach($carnivals as $carnival)
         <tr>
-            <td>{{ $carnival->id }}</td>
+            <td>{{ $counter++ }}</td>
             <td>{{ $carnival->head }}</td>
             <td>{{ $carnival->name }}</td>
             <td>{{ $carnival->link }}</td>

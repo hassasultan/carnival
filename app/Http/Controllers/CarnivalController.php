@@ -32,7 +32,7 @@ class CarnivalController extends Controller
             'unique_id' => $uniqueId,
             'head' => $request->head ?? 0,
             'name' => $request->name,
-            'link' => 'register/new/user'.$uniqueId,
+            'link' => 'https://carnival.ms-hostingladz.com/register/new/user/'.$uniqueId,
         ]);
 
         if ($carnivals) {
@@ -61,10 +61,12 @@ class CarnivalController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
+        $uniqueId = $this->generateUniqueId();
+        
         $carnival = $carnival->update([
-            // 'head' => $request->head ?? $carnival->head,
+            'unique_id' => $uniqueId,
             'name' => $request->name,
-            // 'link' => $request->link,
+            'link' => 'https://carnival.ms-hostingladz.com/register/new/user/'.$uniqueId,
         ]);
 
         if ($carnival) {

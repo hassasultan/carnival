@@ -167,6 +167,9 @@
                 $.ajax({
                     url: '{{ route('carnivals.store') }}',
                     type: 'POST',
+                    headers: {
+                        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                    },
                     data: formData,
                     success: function(response) {
                         $('#carnivalModal').modal('hide');
@@ -207,6 +210,9 @@
                 $.ajax({
                     url: url,
                     type: 'PUT',
+                    headers: {
+                        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                    },
                     data: formData,
                     success: function(response) {
                         $('#editCarnivalModal').modal('hide');

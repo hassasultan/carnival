@@ -32,6 +32,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AddToCartController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CarnivalController;
+use App\Http\Controllers\CarnivalCommitteeController;
 
 
 /*
@@ -45,7 +46,7 @@ use App\Http\Controllers\CarnivalController;
 |
 */
 
-Route::get('/', function(){
+Route::get('/', function () {
     return view('ShopFrontend.home');
 })->name('front.home');
 Route::get('/product-listing', [FrontendConroller::class, 'product_listing'])->name('front.product_listing');
@@ -75,6 +76,9 @@ Route::get('/get-subcategories/{categoryId}', [ProductController::class, 'getsub
 Route::get('/user-login', [CustomerController::class, 'login'])->name('customer.login');
 Route::get('/user-register', [CustomerController::class, 'register'])->name('customer.register');
 Route::post('/user-store', [CustomerController::class, 'storeCustomer'])->name('customer.users.register');
+
+// carnival commitee user
+Route::get('/register/new/user/{id}', [CarnivalCommitteeController::class, 'create'])->name('register.new.user');
 
 
 // Admin Routes
@@ -153,7 +157,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     //carnivals
     Route::resource('carnivals', CarnivalController::class);
 
-    Route::get('/register/new/user/{id}', [AdminController::class, 'newRegister'])->name('register.new.user');
 
     //appointments
     Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
@@ -247,10 +250,10 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
 Route::middleware('auth')->prefix('user')->group(function () {
 
     // Route::get('/', [CustomerController::class, 'index'])->name('users');
-    
+
     Route::get('/', [CustomerController::class, 'profile'])->name('users.profile');
     // Route::get('/profile', [CustomerController::class, 'profile'])->name('users.profile');
-    
+
     Route::post('/profile/update', [CustomerController::class, 'profileUpdate'])->name('users.profile.update');
 
 });
