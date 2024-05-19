@@ -141,7 +141,7 @@ class RegisterController extends Controller
                 'email' => isset($data['shop_email']) ? $data['shop_email'] : null,
                 'address' => isset($data['shop_address']) ? $data['shop_address'] : null,
                 'phone' => isset($data['shop_phone']) ? $data['shop_phone'] : null,
-                'continent' => $data['continent'],
+                'continent' => isset($data['continent']) ? $data['continent'] : null,
                 'insta' => isset($data['shop_insta']) ? $data['shop_insta'] : null,
                 'facebook' => isset($data['shop_facebook']) ? $data['shop_facebook'] : null,
                 'youtube' => isset($data['shop_youtube']) ? $data['shop_youtube'] : null,
