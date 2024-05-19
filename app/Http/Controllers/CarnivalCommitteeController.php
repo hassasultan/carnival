@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\Package;
 use App\Models\Vendor;
+use App\Models\Carnival;
 
 class CarnivalCommitteeController extends Controller
 {
     public function create($id)
     {
-        $carnival = CarnivalController::where('unique_id', $id)->first();
+        $carnival = Carnival::where('unique_id', $id)->first();
 
         if ($carnival->head != 0) {
             abort(419, 'Page Expired');
