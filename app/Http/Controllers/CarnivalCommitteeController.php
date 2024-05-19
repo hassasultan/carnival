@@ -11,6 +11,12 @@ class CarnivalCommitteeController extends Controller
 {
     public function create($id)
     {
+        $carnival = CarnivalController::where('unique_id', $id)->first();
+
+        if ($carnival->head != 0) {
+            abort(419, 'Page Expired');
+        }
+
         $roles = Role::where('status', 1)->get();
         $packages = Package::where('status', 1)->get();
         $vendors = Vendor::with('user')->where('status', 1)->get();
