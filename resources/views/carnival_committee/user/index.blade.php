@@ -150,7 +150,7 @@
                     @enderror
                 </div> --}}
             </div>
-            <div class="form-group" id="vendors_input">
+            {{-- <div class="form-group" id="vendors_input">
                 <label for="vendor">Vendors</label>
                 <select id="vendor" class="form-control @error('vendor_id') is-invalid @enderror" name="vendor_id">
                     <option value="">Select vendor</option>
@@ -267,7 +267,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Register') }}</button>
         </div>
     </form>
