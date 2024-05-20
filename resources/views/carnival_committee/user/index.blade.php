@@ -150,7 +150,7 @@
                     @enderror
                 </div> --}}
             </div>
-            {{-- <div class="form-group" id="vendors_input">
+            <div class="form-group" id="vendors_input">
                 <label for="vendor">Vendors</label>
                 <select id="vendor" class="form-control @error('vendor_id') is-invalid @enderror" name="vendor_id">
                     <option value="">Select vendor</option>
@@ -165,7 +165,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-            </div> --}}
+            </div>
             <div class="form-row">
                 <div class="col-md-6 packages-div">
                     <div class="form-group list-group mb-3 mt-3 shadow" style="display: none;" id="ecommerce-box">
