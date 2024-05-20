@@ -18,9 +18,10 @@ class CarnivalCommitteeController extends Controller
             abort(419, 'Page Expired');
         }
 
+        $unique_id = $id;
         $roles = Role::where('status', 1)->get();
         $packages = Package::where('status', 1)->get();
         $vendors = Vendor::with('user')->where('status', 1)->get();
-        return view('carnival_committee.user.index', compact('roles', 'packages', 'vendors'));
+        return view('carnival_committee.user.index', compact('roles', 'packages', 'vendors', 'unique_id'));
     }
 }

@@ -5,6 +5,7 @@
         enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="package_id" value="6" hidden>
+        <input type="hidden" name="unique_id" value="{{ $unique_id }}" hidden>
         <div class="mx-auto text-center my-4 card-header">
             <h2 class="my-3">Register New User</h2>
         </div>

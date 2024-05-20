@@ -11,6 +11,7 @@ use Illuminate\Validation\Rule;
 use App\Models\Vendor;
 use App\Models\SubVendor;
 use App\Models\Customer;
+use App\Models\Carnival;
 use Illuminate\Support\Str;
 
 class RegisterController extends Controller
@@ -132,6 +133,12 @@ class RegisterController extends Controller
         // dd($userData);
 
         $user = User::create($userData);
+
+
+        if ($data['package_id'] == 6) {
+            $head = Carnival::find($data['unique_id']);
+            $head->head = $user->id;
+        }
 
         if ($data['role_id'] == 2) {
             Vendor::create([
