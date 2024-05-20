@@ -134,12 +134,6 @@ class RegisterController extends Controller
 
         $user = User::create($userData);
 
-        
-        // if ($data['package_id'] == 6) {
-        //     $head = Carnival::find($data['unique_id']);
-        //     $head->head = $user->id;
-        // }
-
         if ($data['role_id'] == 2) {
             Vendor::create([
                 'user_id' => $user->id,
@@ -194,6 +188,12 @@ class RegisterController extends Controller
                 'package_id' => $data['package_id'],
                 'status' => 1,
             ]);
+        }
+
+        
+        if ($data['package_id'] == 6) {
+            $head = Carnival::find($data['unique_id']);
+            $head->head = $user->id;
         }
 
         return $user;
