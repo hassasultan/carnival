@@ -32,6 +32,10 @@ class CarnivalController extends Controller
             'unique_id' => $uniqueId,
             'head' => $request->head ?? 0,
             'name' => $request->name,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'region' => $request->region,
+            'description' => $request->description,
             'link' => 'https://carnival.ms-hostingladz.com/register/new/user/'.$uniqueId,
         ]);
 
@@ -66,6 +70,10 @@ class CarnivalController extends Controller
         $carnival = $carnival->update([
             'unique_id' => $uniqueId,
             'name' => $request->name,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'region' => $request->region,
+            'description' => $request->description,
             'link' => 'https://carnival.ms-hostingladz.com/register/new/user/'.$uniqueId,
         ]);
 

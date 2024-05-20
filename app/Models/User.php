@@ -23,6 +23,7 @@ class User extends Authenticatable
         'full_name',
         'email',
         'role_id',
+        'carnival_id',
         'phone',
         'status',
         'address',

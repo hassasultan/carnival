@@ -47,10 +47,22 @@
                             <label for="name">Name</label>
                             <input type="text" class="form-control" id="name" name="name" required>
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="link">Link</label>
-                            <input type="url" class="form-control" id="link" name="link" required>
-                        </div> --}}
+                        <div class="form-group">
+                            <label for="start_date">Start Date</label>
+                            <input type="date" class="form-control" id="start_date" name="start_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="end_date">End Date</label>
+                            <input type="date" class="form-control" id="end_date" name="end_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="region">region</label>
+                            <input type="text" class="form-control" id="region" name="region" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">description</label>
+                            <textarea name="description" class="form-control" id="description" cols="30" rows="10">Add description here</textarea>
+                        </div>
                         <button type="submit" class="btn btn-primary" id="saveCarnivalBtn">Save Carnival</button>
                     </form>
                 </div>
@@ -82,10 +94,22 @@
                             <label for="edit_name">Name</label>
                             <input type="text" class="form-control" id="edit_name" name="name" required>
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="edit_link">Link</label>
-                            <input type="url" class="form-control" id="edit_link" name="link" required>
-                        </div> --}}
+                        <div class="form-group">
+                            <label for="start_date">Start Date</label>
+                            <input type="date" class="form-control" id="edit_start_date" name="start_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="end_date">End Date</label>
+                            <input type="date" class="form-control" id="edit_end_date" name="end_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="region">region</label>
+                            <input type="text" class="form-control" id="edit_region" name="region" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">description</label>
+                            <textarea name="description" class="form-control" id="edit_description" cols="30" rows="10">Add description here</textarea>
+                        </div>
                         <button type="submit" class="btn btn-primary" id="updateCarnivalBtn">Update Carnival</button>
                     </form>
                 </div>
@@ -126,6 +150,17 @@
         }
 
         $(document).ready(function() {
+            // Set the minimum start date to today
+            var today = new Date().toISOString().split('T')[0];
+            $('#start_date, #edit_start_date').attr('min', today);
+
+            // Validate end date should not be less than start date
+            $('#start_date, #edit_start_date').on('change', function() {
+                var startDate = $(this).val();
+                var endDateField = $(this).attr('id') === 'start_date' ? '#end_date' : '#edit_end_date';
+                $(endDateField).attr('min', startDate);
+            });
+            
             // Open the carnival modal when clicking the "New Carnival" button
             $('#openCarnivalModal').click(function() {
                 $('#carnivalModal').modal('show');
@@ -143,6 +178,10 @@
                         $('#edit_head').val(response.carnival.head);
                         $('#edit_name').val(response.carnival.name);
                         $('#edit_link').val(response.carnival.link);
+                        $('#edit_start_date').val(response.carnival.start_date);
+                        $('#edit_end_date').val(response.carnival.end_date);
+                        $('#edit_region').val(response.carnival.region);
+                        $('#edit_description').val(response.carnival.description);
                         // Show the edit modal
                         $('#editCarnivalModal').modal('show');
                     },

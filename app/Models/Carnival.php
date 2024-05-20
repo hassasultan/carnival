@@ -14,6 +14,10 @@ class Carnival extends Model
         'head',     // user id
         'name',
         'link',
+        'start_date',
+        'end_date',
+        'region',
+        'description',
     ];
 
     public function user()

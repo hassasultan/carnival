@@ -170,6 +170,7 @@
         $roles = App\Models\Role::where('status', 1)->get();
         $packages = App\Models\Package::where('status', 1)->get();
         $vendors = App\Models\Vendor::with('user')->where('status', 1)->get();
+        $carnivals = App\Models\Carnival::all();
     @endphp
     <form method="POST" action="{{ route('register') }}" class="col-lg-8 col-md-10 col-12 mx-auto"
         enctype="multipart/form-data">
@@ -330,6 +331,23 @@
                     @endforeach
                 </select>
                 @error('vendor_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="form-group" id="carnival_id">
+                <label for="carnival_id">Vendors</label>
+                <select id="carnival_id" class="form-control @error('carnival_id') is-invalid @enderror"
+                    name="carnival_id" required>
+                    <option value="">Select carnival</option>
+                    @foreach ($carnivals as $carnival)
+                        <option value="{{ $carnival->id }}">
+                            {{ $carnival->name }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('carnival_id')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

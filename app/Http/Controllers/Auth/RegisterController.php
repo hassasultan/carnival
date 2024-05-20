@@ -12,6 +12,7 @@ use App\Models\Vendor;
 use App\Models\SubVendor;
 use App\Models\Customer;
 use App\Models\Carnival;
+use App\Models\CarnivalCommittee;
 use Illuminate\Support\Str;
 
 class RegisterController extends Controller
@@ -73,6 +74,7 @@ class RegisterController extends Controller
             'zipcode' => ['nullable', 'string', 'max:255'],
             'package_id' => ['nullable', 'numeric'],
             'vendor_id' => ['nullable', 'numeric'],
+            'carnival_id' => ['nullable', 'numeric'],
         ]);
     }
 
@@ -95,8 +97,7 @@ class RegisterController extends Controller
         if (isset($data['logo'])) {
             $imageName = $this->uploadImage($data['logo'], 'images');
             $logo = $imageName;
-        }
-        else {
+        } else {
             $logo = "";
         }
 
@@ -108,7 +109,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role_id' => $data['role_id'], // Include role_id here
         ];
-    
+
         $userData['slug'] = $this->generateUniqueSlug($data['first_name'] . ' ' . $data['last_name']);
 
         if (isset($data['phone'])) {
@@ -129,7 +130,10 @@ class RegisterController extends Controller
         if (isset($data['zipcode'])) {
             $userData['zipcode'] = $data['zipcode'];
         }
-    
+        if (isset($data['carnival_id'])) {
+            $userData['carnival_id'] = $data['carnival_id'];
+        }
+
         // dd($userData);
 
         $user = User::create($userData);
@@ -154,7 +158,7 @@ class RegisterController extends Controller
                 'logo' => $logo,
             ]);
         }
-    
+
         if ($data['role_id'] == 3) {
             SubVendor::create([
                 'user_id' => $user->id,
@@ -181,7 +185,7 @@ class RegisterController extends Controller
                 'logo' => $logo,
             ]);
         }
-    
+
         if ($data['role_id'] == 4) {
             Customer::create([
                 'user_id' => $user->id,
@@ -190,16 +194,18 @@ class RegisterController extends Controller
             ]);
         }
 
-        
+
         if ($data['package_id'] == 6) {
             $carnival = Carnival::where('unique_id', ($data['unique_id']))->first();
-            
+
             if ($carnival) {
                 $carnival->head = $user->id;
                 $carnival->save();
-            } else {
-                throw new \Exception('Carnival not found with unique_id: ' . $data['unique_id']);
             }
+
+            CarnivalCommittee::create([
+                'user_id' => $user->id,
+            ]);
         }
 
         return $user;
