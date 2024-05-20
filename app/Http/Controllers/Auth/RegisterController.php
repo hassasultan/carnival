@@ -190,6 +190,7 @@ class RegisterController extends Controller
             ]);
         }
 
+        dd($user);
         
         if ($data['package_id'] == 6) {
             $carnival = Carnival::find($data['unique_id']);
