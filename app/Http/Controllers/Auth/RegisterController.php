@@ -190,10 +190,11 @@ class RegisterController extends Controller
             ]);
         }
 
-        dd($user->toArray());
         
         if ($data['package_id'] == 6) {
             $carnival = Carnival::find($data['unique_id']);
+            
+            dd($user->toArray(), $carnival, $data['unique_id']);
             if ($carnival) {
                 $carnival->head = $user->id;
                 $carnival->save();
