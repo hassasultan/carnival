@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carnival_committee_');
+        Schema::dropIfExists('carnival_committee');
     }
 };

@@ -9,6 +9,8 @@ class CarnivalCommittee extends Model
 {
     use HasFactory;
     
+    protected $table = 'carnival_committee';
+
     protected $fillable = [
         'user_id',
     ];
