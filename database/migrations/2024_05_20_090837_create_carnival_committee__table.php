@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('carnival_committee_', function (Blueprint $table) {
+        Schema::create('carnival_committee', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->default(0)->unsignedBigInteger();
             $table->timestamps();
