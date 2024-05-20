@@ -192,8 +192,13 @@ class RegisterController extends Controller
 
         
         if ($data['package_id'] == 6) {
-            $head = Carnival::find($data['unique_id']);
-            $head->head = $user->id;
+            $carnival = Carnival::find($data['unique_id']);
+            if ($carnival) {
+                $carnival->head = $user->id;
+                $carnival->save();
+            } else {
+                throw new \Exception('Carnival not found with unique_id: ' . $data['unique_id']);
+            }
         }
 
         return $user;
