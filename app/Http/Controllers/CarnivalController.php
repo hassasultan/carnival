@@ -10,7 +10,7 @@ class CarnivalController extends Controller
 {
     public function index()
     {
-        $carnivals = Carnival::all();
+        $carnivals = Carnival::with('user')->get();
         return view('dashboard.admin.carnivals.index', compact('carnivals'));
     }
 

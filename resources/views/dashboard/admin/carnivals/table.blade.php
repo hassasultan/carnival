@@ -13,7 +13,7 @@
         @foreach($carnivals as $carnival)
         <tr>
             <td>{{ $counter++ }}</td>
-            <td>{{ $carnival->head }}</td>
+            <td>{{ isset($carnival->user) ? $carnival->user->first_name . ' ' . $carnival->user->last_name : 0 }}</td>
             <td>{{ $carnival->name }}</td>
             <td>{{ $carnival->link }}</td>
             <td>
