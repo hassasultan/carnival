@@ -116,7 +116,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Delete Carnival Confirmation Modal -->
     <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog"
         aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
@@ -160,7 +160,7 @@
                 var endDateField = $(this).attr('id') === 'start_date' ? '#end_date' : '#edit_end_date';
                 $(endDateField).attr('min', startDate);
             });
-            
+
             // Open the carnival modal when clicking the "New Carnival" button
             $('#openCarnivalModal').click(function() {
                 $('#carnivalModal').modal('show');
@@ -244,7 +244,8 @@
                 var carnivalId = $(this).find('#edit_id').val();
                 event.preventDefault();
                 var formData = $(this).serialize();
-                var url = '{{ route('carnivals.update', ['carnival' => ':id']) }}'.replace(':id', carnivalId);
+                var url = '{{ route('carnivals.update', ['carnival' => ':id']) }}'.replace(':id',
+                    carnivalId);
 
                 $.ajax({
                     url: url,
@@ -302,7 +303,8 @@
                             $('#deleteConfirmationModal').modal('hide');
                             // Show success message on the page
                             $('#carnivalMessage').html(
-                                '<div class="alert alert-success" role="alert">' + response.message + '</div>'
+                                '<div class="alert alert-success" role="alert">' +
+                                response.message + '</div>'
                             );
 
                             // Optionally, you can remove the deleted carnival row from the table
@@ -324,26 +326,27 @@
                 var url = '{{ route('get.head.team', ['id' => ':id']) }}'.replace(':id', carnivalId);
 
                 $.ajax({
-                        url: url,
-                        type: 'GET',
-                        data: [
-                            'id' : carnivalId,
-                        ],
-                        success: function(response) {
-                            console.log('response', response);
-                            // $('#deleteConfirmationModal').modal('hide');
-                            // // Show success message on the page
-                            // $('#carnivalMessage').html(
-                            //     '<div class="alert alert-success" role="alert">' + response.message + '</div>'
-                            // );
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
-                            // $('#carnivalMessage').html(
-                            //     '<div class="alert alert-danger" role="alert">Failed to delete carnival</div>'
-                            // );
-                        }
-                    });
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        id: carnivalId,
+                    },
+                    success: function(response) {
+                        console.log('response', response);
+                        // Uncomment and modify the following lines as needed
+                        // $('#deleteConfirmationModal').modal('hide');
+                        // $('#carnivalMessage').html(
+                        //     '<div class="alert alert-success" role="alert">' + response.message + '</div>'
+                        // );
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        // Uncomment and modify the following lines as needed
+                        // $('#carnivalMessage').html(
+                        //     '<div class="alert alert-danger" role="alert">Failed to delete carnival</div>'
+                        // );
+                    }
+                });
             });
         });
     </script>
