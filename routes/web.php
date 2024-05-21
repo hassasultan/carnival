@@ -166,8 +166,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/appointments/{variant}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
     Route::put('/appointments/{variant}', [AppointmentController::class, 'update'])->name('appointments.update');
     Route::delete('/appointments/{variant}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
-
-    // get vendot
+    
+    // get head_team
+    Route::get('/get/head_team/{id}', [CarnivalController::class, 'head_team'])->name('get.head.team');
 });
 
 Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');

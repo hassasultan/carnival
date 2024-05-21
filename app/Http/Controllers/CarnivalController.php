@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carnival;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Str;
 
@@ -97,5 +98,12 @@ class CarnivalController extends Controller
     private function generateUniqueId()
     {
         return Str::random(16);
+    }
+
+    private function head_team($id)
+    {
+        $head_team = User::where('carnival_id', $id)->get();
+        dd($head_team->toArray());
+        return response()->json(['head_team' => $head_team]);
     }
 }

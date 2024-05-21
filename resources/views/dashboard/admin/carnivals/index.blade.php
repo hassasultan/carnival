@@ -321,6 +321,27 @@
             $(document).on('click', '.change_head', function() {
                 var carnivalId = $(this).data('carnival_id');
                 console.log('carnivalId', carnivalId);
+                var url = '{{ route('get.head.team', ['id' => ':id']) }}'.replace(':id', carnivalId);
+
+                $.ajax({
+                        url: `{{ route('get.head.team') }}`,
+                        type: 'GET',
+                        data: formData,
+                        success: function(response) {
+                            console.log('response', response);
+                            // $('#deleteConfirmationModal').modal('hide');
+                            // // Show success message on the page
+                            // $('#carnivalMessage').html(
+                            //     '<div class="alert alert-success" role="alert">' + response.message + '</div>'
+                            // );
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                            // $('#carnivalMessage').html(
+                            //     '<div class="alert alert-danger" role="alert">Failed to delete carnival</div>'
+                            // );
+                        }
+                    });
             });
         });
     </script>
