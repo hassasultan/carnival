@@ -326,7 +326,9 @@
                 $.ajax({
                         url: url,
                         type: 'GET',
-                        data: formData,
+                        data: [
+                            'id' : carnivalId,
+                        ],
                         success: function(response) {
                             console.log('response', response);
                             // $('#deleteConfirmationModal').modal('hide');
