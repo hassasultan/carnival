@@ -86,16 +86,10 @@
                         @csrf
                         @method('GET')
                         <input type="hidden" id="edit_id" name="edit_id">
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="edit_head">Head</label>
                             <input type="number" class="form-control" id="edit_head" name="head" required>
-                            <select name="head" id="head" class="form-control"required>
-                                <option value="" selected disabled>Select</option>
-                                @foreach ($head_team as $row)
-                                    <option value="{{ $row->id }}">{{ $row->first_name . ' ' . $row->last_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="edit_name">Name</label>
                             <input type="text" class="form-control" id="edit_name" name="name" required>
@@ -122,7 +116,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Delete Carnival Confirmation Modal -->
     <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog"
         aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
@@ -166,7 +160,7 @@
                 var endDateField = $(this).attr('id') === 'start_date' ? '#end_date' : '#edit_end_date';
                 $(endDateField).attr('min', startDate);
             });
-
+            
             // Open the carnival modal when clicking the "New Carnival" button
             $('#openCarnivalModal').click(function() {
                 $('#carnivalModal').modal('show');
@@ -181,7 +175,7 @@
                     success: function(response) {
                         // Populate the edit form fields with carnival details
                         $('#edit_id').val(response.carnival.id);
-                        $('#edit_head').val(response.head_team.carnival_id);
+                        $('#edit_head').val(response.carnival.head);
                         $('#edit_name').val(response.carnival.name);
                         $('#edit_link').val(response.carnival.link);
                         $('#edit_start_date').val(response.carnival.start_date);
@@ -250,8 +244,7 @@
                 var carnivalId = $(this).find('#edit_id').val();
                 event.preventDefault();
                 var formData = $(this).serialize();
-                var url = '{{ route('carnivals.update', ['carnival' => ':id']) }}'.replace(':id',
-                    carnivalId);
+                var url = '{{ route('carnivals.update', ['carnival' => ':id']) }}'.replace(':id', carnivalId);
 
                 $.ajax({
                     url: url,
@@ -309,8 +302,7 @@
                             $('#deleteConfirmationModal').modal('hide');
                             // Show success message on the page
                             $('#carnivalMessage').html(
-                                '<div class="alert alert-success" role="alert">' +
-                                response.message + '</div>'
+                                '<div class="alert alert-success" role="alert">' + response.message + '</div>'
                             );
 
                             // Optionally, you can remove the deleted carnival row from the table
@@ -324,6 +316,11 @@
                         }
                     });
                 });
+            });
+
+            $(document).on('click', '.change_head', function() {
+                var carnivalId = $(this).data('carnival_id');
+                console.log('carnivalId', carnivalId);
             });
         });
     </script>

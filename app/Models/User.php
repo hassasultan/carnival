@@ -112,4 +112,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cart::class);
     }
+    public function carnivals()
+    {
+        return $this->hasMany(Carnival::class, 'head');
+    }
 }

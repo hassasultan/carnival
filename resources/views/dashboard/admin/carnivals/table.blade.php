@@ -13,7 +13,12 @@
         @foreach($carnivals as $carnival)
         <tr>
             <td>{{ $counter++ }}</td>
-            <td>{{ isset($carnival->user) ? $carnival->user->first_name . ' ' . $carnival->user->last_name : 0 }}</td>
+            <td>
+                {{ isset($carnival->user) ? $carnival->user->first_name . ' ' . $carnival->user->last_name : 0 }}
+                @if (isset($carnival->user))
+                    <a class="change_head" data-carnival_id="{{ $carnival->id }}">Change</a>
+                @endif
+            </td>
             <td>{{ $carnival->name }}</td>
             <td>{{ $carnival->link }}</td>
             <td>
