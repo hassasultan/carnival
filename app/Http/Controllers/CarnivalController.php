@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carnival;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Str;
 
@@ -56,7 +57,8 @@ class CarnivalController extends Controller
 
     public function edit(Carnival $carnival)
     {
-        return response()->json(['carnival' => $carnival]);
+        $head_team = User::where('carnival_id', $carnival->id)->get();
+        return response()->json(['carnival' => $carnival, 'head_team' => $head_team]);
     }
 
     public function update(Request $request, Carnival $carnival)

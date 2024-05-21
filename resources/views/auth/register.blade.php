@@ -337,7 +337,7 @@
                 @enderror
             </div>
             <div class="form-group" id="carnival_id">
-                <label for="carnival_id">Vendors</label>
+                <label for="carnival_id">Carnival <span class="text-danger">*</span></label>
                 <select id="carnival_id" class="form-control @error('carnival_id') is-invalid @enderror"
                     name="carnival_id" required>
                     <option value="">Select carnival</option>
