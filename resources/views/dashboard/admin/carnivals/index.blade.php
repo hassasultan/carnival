@@ -324,7 +324,7 @@
                 var url = '{{ route('get.head.team', ['id' => ':id']) }}'.replace(':id', carnivalId);
 
                 $.ajax({
-                        url: `{{ route('get.head.team') }}`,
+                        url: url,
                         type: 'GET',
                         data: formData,
                         success: function(response) {
