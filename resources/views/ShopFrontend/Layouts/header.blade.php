@@ -69,6 +69,14 @@
             background-color: #ddd;
             border-radius: 5px;
         }
+
+        @media (min-width: 991px) {
+            .header-opt-1 .header-content .nav-right {
+                display: flex;flex-wrap: wrap;align-content: center;justify-content: center;min-height: 10ex;
+            }
+        }
+
+
     </style>
     @yield('head')
 
@@ -196,7 +204,7 @@
                     <div class="row">
                         <div class="col-md-3 nav-left">
                             <!-- logo -->
-                            <strong class="logo">
+                            <strong class="logo" style="float: left">
                                 <a href="/"><img style="width: 120px;" src="{{ asset('shopAssets/images/logo.png') }}" alt="logo"></a>
                             </strong>
                         </div>
@@ -208,7 +216,7 @@
                                     <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                         <span class="cart-icon"></span>
                                         <span class="counter qty">
-                                            <span class="cart-text">Shopping Cart</span>
+                                            <span class="cart-text">My Cart</span>
                                             <span class="counter-number">{{ $cartItems->count() }}</span>
                                             <span class="counter-label">{{ $cartItems->count() }} <span>Items</span></span>
                                             <span class="counter-price">${{ $total }}</span>
@@ -264,6 +272,7 @@
                                     </div>
                                 </div>
                             @endif
+
                         </div>
 
                         <div class="nav-mind">
