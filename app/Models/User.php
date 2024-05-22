@@ -23,6 +23,7 @@ class User extends Authenticatable
         'full_name',
         'email',
         'role_id',
+        'carnival_id',
         'phone',
         'status',
         'address',
@@ -110,5 +111,9 @@ class User extends Authenticatable
     public function cart()
     {
         return $this->hasMany(Cart::class);
+    }
+    public function carnivals()
+    {
+        return $this->hasMany(Carnival::class, 'head');
     }
 }

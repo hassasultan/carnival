@@ -31,6 +31,8 @@ use App\Http\Controllers\FrontendConroller;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AddToCartController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CarnivalController;
+use App\Http\Controllers\CarnivalCommitteeController;
 
 
 /*
@@ -44,7 +46,7 @@ use App\Http\Controllers\CustomerController;
 |
 */
 
-Route::get('/', function(){
+Route::get('/', function () {
     return view('ShopFrontend.home');
 })->name('front.home');
 Route::get('/product-listing', [FrontendConroller::class, 'product_listing'])->name('front.product_listing');
@@ -74,6 +76,9 @@ Route::get('/get-subcategories/{categoryId}', [ProductController::class, 'getsub
 Route::get('/user-login', [CustomerController::class, 'login'])->name('customer.login');
 Route::get('/user-register', [CustomerController::class, 'register'])->name('customer.register');
 Route::post('/user-store', [CustomerController::class, 'storeCustomer'])->name('customer.users.register');
+
+// carnival commitee user
+Route::get('/register/new/user/{id}', [CarnivalCommitteeController::class, 'create'])->name('register.new.user');
 
 
 // Admin Routes
@@ -149,6 +154,10 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     //orders
     Route::resource('orders', OrderController::class);
 
+    //carnivals
+    Route::resource('carnivals', CarnivalController::class);
+
+
     //appointments
     Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
     Route::get('/appointments/add', [AppointmentController::class, 'create'])->name('appointments.create');
@@ -157,10 +166,12 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/appointments/{variant}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
     Route::put('/appointments/{variant}', [AppointmentController::class, 'update'])->name('appointments.update');
     Route::delete('/appointments/{variant}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
-
-    // get vendot
-    Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
+    
+    // get head_team
+    Route::get('/get/head_team/{id}', [CarnivalController::class, 'head_team'])->name('get.head.team');
 });
+
+Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
 
 
 // Vendor Routes
@@ -240,10 +251,10 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
 Route::middleware('auth')->prefix('user')->group(function () {
 
     // Route::get('/', [CustomerController::class, 'index'])->name('users');
-    
+
     Route::get('/', [CustomerController::class, 'profile'])->name('users.profile');
     // Route::get('/profile', [CustomerController::class, 'profile'])->name('users.profile');
-    
+
     Route::post('/profile/update', [CustomerController::class, 'profileUpdate'])->name('users.profile.update');
 
 });
