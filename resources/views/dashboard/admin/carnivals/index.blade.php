@@ -328,10 +328,35 @@
                             var selectElement = $('#head_team' + carnivalId);
                             selectElement.append(html);
                             selectElement.show();
+                            $(this).hide();
                         }
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
+                    }
+                });
+            });
+
+            $('.head_team').on('change', function() {
+                var carnivalId = $(this).attr('id').replace('head_team', '');
+                var selectedOption = $(this).find('option:selected');
+                var selectedValue = selectedOption.val();
+                var selectedType = selectedOption.data('type');
+
+                $.ajax({
+                    url: '/update-carnival-head',
+                    type: 'POST',
+                    data: {
+                        carnival_id: carnivalId,
+                        head_team_id: selectedValue,
+                        type: selectedType,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        console.log('Update successful', response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Update failed', xhr.responseText);
                     }
                 });
             });

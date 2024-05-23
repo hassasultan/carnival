@@ -21,6 +21,7 @@
                             data-carnival_id="{{ $carnival->id }}">Change</a>
 
                         <select name="head_team" class="head_team" id="head_team{{ $carnival->id }}" style="display: none">
+                            <option value="" selected>Select</option>
                         </select>
                     @endif
                 </td>
