@@ -341,7 +341,6 @@
                 var carnivalId = $(this).attr('id').replace('head_team', '');
                 var selectedOption = $(this).find('option:selected');
                 var selectedValue = selectedOption.val();
-                var selectedType = selectedOption.data('type');
                 var url = '{{ route('update.carnival.head') }}';
 
                 $.ajax({
@@ -350,11 +349,13 @@
                     data: {
                         carnival_id: carnivalId,
                         head_team_id: selectedValue,
-                        type: selectedType,
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(response) {
                         console.log('Update successful', response);
+                        $('#head_team' + carnivalId).hide();;
+                        $('#change_head' + carnivalId).hide();;
+                        $('#narnival_head' + carnivalId).html(response.full_name);;
                     },
                     error: function(xhr, status, error) {
                         console.error('Update failed', xhr.responseText);

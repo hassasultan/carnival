@@ -108,8 +108,12 @@ class CarnivalController extends Controller
 
     public function carnivalHead(Request $request)
     {
-        dd($request->toArray());
-        $head_team = User::where('carnival_id', $id)->get();
-        return response()->json(['head_team' => $head_team]);
+        $head = Carnival::find($request->carnival_id);
+        $head->head = $request->head_team_id;
+        $head->save();
+
+        $full_name = $head->user->first_name . ' ' . $head->user->last_name;
+
+        return response()->json(['full_name' => $full_name]);
     }
 }
