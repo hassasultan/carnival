@@ -317,8 +317,6 @@
                         id: carnivalId,
                     },
                     success: function(response) {
-                        console.log('response', response);
-                        console.log('response', response.head_team);
                         if (response.head_team.length > 0) {
                             var html = '';
                             $.each(response.head_team, function(index, row) {
@@ -327,8 +325,9 @@
                                     row.full_name + '</option>';
                             });
 
-                            $(this).closest('.head_team').append(html);
-                            $(this).closest('.head_team').show();
+                            var selectElement = $('#head_team' + carnivalId);
+                            selectElement.append(html);
+                            selectElement.show();
                         }
                     },
                     error: function(xhr, status, error) {
