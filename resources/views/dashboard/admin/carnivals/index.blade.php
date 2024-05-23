@@ -86,10 +86,12 @@
                         @csrf
                         @method('GET')
                         <input type="hidden" id="edit_id" name="edit_id">
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label for="edit_head">Head</label>
-                            <input type="number" class="form-control" id="edit_head" name="head" required>
-                        </div> --}}
+                            <select class="form-control" id="edit_head" name="head">
+                                <option value="" selected disabled>Select</option>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="edit_name">Name</label>
                             <input type="text" class="form-control" id="edit_name" name="name" required>
@@ -142,7 +144,6 @@
 
 @section('bottom_script')
     <script>
-        // Function to clear edit modal fields
         function clearEditModalFields() {
             $('#edit_head').val('');
             $('#edit_name').val('');
@@ -150,39 +151,33 @@
         }
 
         $(document).ready(function() {
-            // Set the minimum start date to today
             var today = new Date().toISOString().split('T')[0];
             $('#start_date, #edit_start_date').attr('min', today);
 
-            // Validate end date should not be less than start date
             $('#start_date, #edit_start_date').on('change', function() {
                 var startDate = $(this).val();
                 var endDateField = $(this).attr('id') === 'start_date' ? '#end_date' : '#edit_end_date';
                 $(endDateField).attr('min', startDate);
             });
 
-            // Open the carnival modal when clicking the "New Carnival" button
             $('#openCarnivalModal').click(function() {
                 $('#carnivalModal').modal('show');
             });
 
-            // Handle click event for editing a carnival using event delegation
             $(document).on('click', '.editCarnivalBtn', function() {
                 var carnivalId = $(this).data('id');
                 $.ajax({
                     url: '{{ route('carnivals.edit', ':id') }}'.replace(':id', carnivalId),
                     type: 'GET',
                     success: function(response) {
-                        // Populate the edit form fields with carnival details
                         $('#edit_id').val(response.carnival.id);
-                        $('#edit_head').val(response.carnival.head);
+                        // $('#edit_head').val(response.carnival.head);
                         $('#edit_name').val(response.carnival.name);
                         $('#edit_link').val(response.carnival.link);
                         $('#edit_start_date').val(response.carnival.start_date);
                         $('#edit_end_date').val(response.carnival.end_date);
                         $('#edit_region').val(response.carnival.region);
                         $('#edit_description').val(response.carnival.description);
-                        // Show the edit modal
                         $('#editCarnivalModal').modal('show');
                     },
                     error: function(xhr, status, error) {
@@ -194,12 +189,10 @@
                 });
             });
 
-            // Clear edit modal fields when the modal dismisses
             $('#editCarnivalModal').on('hidden.bs.modal', function() {
                 clearEditModalFields();
             });
 
-            // Handle form submission via AJAX for creating a new carnival
             $('#createCarnivalForm').submit(function(event) {
                 event.preventDefault();
                 var formData = $(this).serialize();
@@ -214,7 +207,6 @@
                         $('#carnivalModal').modal('hide');
                         $('#tableData').html(response.table_html);
 
-                        // Reinitialize DataTables after updating table content
                         $('#dataTable-1').DataTable({
                             autoWidth: true,
                             "lengthMenu": [
@@ -239,7 +231,6 @@
                 });
             });
 
-            // Handle form submission via AJAX for updating a carnival
             $('#editCarnivalForm').submit(function(event) {
                 var carnivalId = $(this).find('#edit_id').val();
                 event.preventDefault();
@@ -258,7 +249,6 @@
                         $('#editCarnivalModal').modal('hide');
                         $('#tableData').html(response.table_html);
 
-                        // Reinitialize DataTables after updating table content
                         $('#dataTable-1').DataTable({
                             autoWidth: true,
                             "lengthMenu": [
@@ -283,17 +273,14 @@
                 });
             });
 
-            // Handle deletion confirmation and AJAX request for deleting a carnival
             $(document).on('click', '.deleteCarnivalBtn', function(event) {
                 event.preventDefault();
                 var deleteForm = $(this).closest('form');
                 var formData = deleteForm.serialize();
                 var url = deleteForm.attr('action');
 
-                // Show confirmation modal before deleting
                 $('#deleteConfirmationModal').modal('show');
 
-                // Handle deletion confirmation
                 $('#confirmDeleteBtn').click(function() {
                     $.ajax({
                         url: url,
@@ -301,13 +288,11 @@
                         data: formData,
                         success: function(response) {
                             $('#deleteConfirmationModal').modal('hide');
-                            // Show success message on the page
                             $('#carnivalMessage').html(
                                 '<div class="alert alert-success" role="alert">' +
                                 response.message + '</div>'
                             );
 
-                            // Optionally, you can remove the deleted carnival row from the table
                             deleteForm.closest('tr').remove();
                         },
                         error: function(xhr, status, error) {
@@ -335,25 +320,19 @@
                         console.log('response', response);
                         console.log('response', response.head_team);
                         if (response.head_team.length > 0) {
-                            console.log('sae haa');
-                        }
-                        else {
-                            console.log('nai haa');
-                        }
-                        $(this).closest('.head_team').show();
+                            var html = '';
+                            $.each(response.head_team, function(index, row) {
+                                html += '<option value="' + row.id + '" data-type="' +
+                                    row.type + '">' +
+                                    row.full_name + '</option>';
+                            });
 
-                        // Uncomment and modify the following lines as needed
-                        // $('#deleteConfirmationModal').modal('hide');
-                        // $('#carnivalMessage').html(
-                        //     '<div class="alert alert-success" role="alert">' + response.message + '</div>'
-                        // );
+                        }
+                        $(this).closest('.edit_head').append(html);
+                        $(this).closest('.edit_head').show();
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        // Uncomment and modify the following lines as needed
-                        // $('#carnivalMessage').html(
-                        //     '<div class="alert alert-danger" role="alert">Failed to delete carnival</div>'
-                        // );
                     }
                 });
             });
