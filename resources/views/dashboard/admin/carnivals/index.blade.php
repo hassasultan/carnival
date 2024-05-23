@@ -342,9 +342,10 @@
                 var selectedOption = $(this).find('option:selected');
                 var selectedValue = selectedOption.val();
                 var selectedType = selectedOption.data('type');
+                var url = '{{ route('update.carnival.head' }}';
 
                 $.ajax({
-                    url: '/update-carnival-head',
+                    url: url,
                     type: 'POST',
                     data: {
                         carnival_id: carnivalId,

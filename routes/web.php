@@ -169,6 +169,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     
     // get head_team
     Route::get('/get/head_team/{id}', [CarnivalController::class, 'head_team'])->name('get.head.team');
+    
+    // get head_team
+    Route::post('/update/head_team', [CarnivalController::class, 'carnivalHead'])->name('update.carnival.head');
 });
 
 Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
