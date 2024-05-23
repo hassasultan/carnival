@@ -333,7 +333,15 @@
                     },
                     success: function(response) {
                         console.log('response', response);
+                        console.log('response', response.head_team);
+                        if (response.head_team.length > 0) {
+                            console.log('sae haa');
+                        }
+                        else {
+                            console.log('nai haa');
+                        }
                         $(this).closest('.head_team').show();
+
                         // Uncomment and modify the following lines as needed
                         // $('#deleteConfirmationModal').modal('hide');
                         // $('#carnivalMessage').html(
