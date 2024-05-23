@@ -333,6 +333,7 @@
                     },
                     success: function(response) {
                         console.log('response', response);
+                        $(this).closest('.head_team').show();
                         // Uncomment and modify the following lines as needed
                         // $('#deleteConfirmationModal').modal('hide');
                         // $('#carnivalMessage').html(

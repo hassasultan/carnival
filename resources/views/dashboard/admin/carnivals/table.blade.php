@@ -10,26 +10,32 @@
     </thead>
     <tbody>
         @php $counter = 1 @endphp
-        @foreach($carnivals as $carnival)
-        <tr>
-            <td>{{ $counter++ }}</td>
-            <td>
-                {{ isset($carnival->user) ? $carnival->user->first_name . ' ' . $carnival->user->last_name : 0 }} <br>
-                @if (isset($carnival->user))
-                <a class="change_head text-decoration-underline text-primary" data-carnival_id="{{ $carnival->id }}">Change</a>
-                @endif
-            </td>
-            <td>{{ $carnival->name }}</td>
-            <td>{{ $carnival->link }}</td>
-            <td>
-                <button class="btn btn-sm btn-warning editCarnivalBtn" data-id="{{ $carnival->id }}">Edit</button>
-                <form action="{{ route('carnivals.destroy', $carnival->id) }}" method="POST" style="display:inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="button" class="btn btn-sm btn-danger deleteCarnivalBtn">Delete</button>
-                </form>
-            </td>
-        </tr>
+        @foreach ($carnivals as $carnival)
+            <tr>
+                <td>{{ $counter++ }}</td>
+                <td>
+                    {{ isset($carnival->user) ? $carnival->user->first_name . ' ' . $carnival->user->last_name : 0 }}
+                    <br>
+                    @if (isset($carnival->user))
+                        <a class="change_head text-decoration-underline text-primary"
+                            data-carnival_id="{{ $carnival->id }}">Change</a>
+
+                        <select name="head_team" class="head_team" style="display: none">
+                        </select>
+                    @endif
+                </td>
+                <td>{{ $carnival->name }}</td>
+                <td>{{ $carnival->link }}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning editCarnivalBtn" data-id="{{ $carnival->id }}">Edit</button>
+                    <form action="{{ route('carnivals.destroy', $carnival->id) }}" method="POST"
+                        style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" class="btn btn-sm btn-danger deleteCarnivalBtn">Delete</button>
+                    </form>
+                </td>
+            </tr>
         @endforeach
     </tbody>
 </table>

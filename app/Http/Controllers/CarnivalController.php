@@ -103,7 +103,6 @@ class CarnivalController extends Controller
     public function head_team($id)
     {
         $head_team = User::where('carnival_id', $id)->get();
-        dd($head_team->toArray());
         return response()->json(['head_team' => $head_team]);
     }
 }
