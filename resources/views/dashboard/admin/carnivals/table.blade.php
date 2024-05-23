@@ -16,7 +16,7 @@
                 <td>
                     {{ isset($carnival->user) ? $carnival->user->first_name . ' ' . $carnival->user->last_name : 0 }}
                     <br>
-                    @if (isset($carnival->user))
+                    @if ($carnival->user->carnivals != null)
                         <a class="change_head text-decoration-underline text-primary"
                             data-carnival_id="{{ $carnival->id }}">Change</a>
 
