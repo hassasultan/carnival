@@ -86,12 +86,12 @@
                         @csrf
                         @method('GET')
                         <input type="hidden" id="edit_id" name="edit_id">
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="edit_head">Head</label>
                             <select class="form-control" id="edit_head" name="head">
                                 <option value="" selected disabled>Select</option>
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="edit_name">Name</label>
                             <input type="text" class="form-control" id="edit_name" name="name" required>
@@ -327,9 +327,9 @@
                                     row.full_name + '</option>';
                             });
 
+                            $(this).closest('.head_team').append(html);
+                            $(this).closest('.head_team').show();
                         }
-                        $(this).closest('.edit_head').append(html);
-                        $(this).closest('.edit_head').show();
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
