@@ -342,7 +342,7 @@
                 var selectedOption = $(this).find('option:selected');
                 var selectedValue = selectedOption.val();
                 var selectedType = selectedOption.data('type');
-                var url = '{{ route('update.carnival.head' }}';
+                var url = '{{ route('update.carnival.head') }}';
 
                 $.ajax({
                     url: url,
