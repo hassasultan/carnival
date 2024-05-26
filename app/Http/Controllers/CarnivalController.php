@@ -25,7 +25,7 @@ class CarnivalController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
-        
+
         $uniqueId = $this->generateUniqueId();
         // dd($request->toArray(), $uniqueId);
 
@@ -37,7 +37,7 @@ class CarnivalController extends Controller
             'end_date' => $request->end_date,
             'region' => $request->region,
             'description' => $request->description,
-            'link' => 'https://carnival.ms-hostingladz.com/register/new/user/'.$uniqueId,
+            'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
         ]);
 
         if ($carnivals) {
@@ -67,7 +67,7 @@ class CarnivalController extends Controller
         ]);
 
         $uniqueId = $this->generateUniqueId();
-        
+
         $carnival = $carnival->update([
             'unique_id' => $uniqueId,
             'name' => $request->name,
@@ -75,7 +75,7 @@ class CarnivalController extends Controller
             'end_date' => $request->end_date,
             'region' => $request->region,
             'description' => $request->description,
-            'link' => 'https://carnival.ms-hostingladz.com/register/new/user/'.$uniqueId,
+            'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
         ]);
 
         if ($carnival) {
@@ -103,6 +103,13 @@ class CarnivalController extends Controller
     public function head_team($id)
     {
         $head_team = User::where('carnival_id', $id)->get();
+
+        if ($head_team != null) {
+            $head_team = User::whereHas('vendor', function ($query) {
+                $query->where('package_id', 6);
+            })->get();
+        }
+
         return response()->json(['head_team' => $head_team]);
     }
 
