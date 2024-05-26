@@ -109,7 +109,7 @@ class CarnivalController extends Controller
         //         $query->where('package_id', 6);
         //     })->get();
         // }
-        
+
         $head_team = User::where('carnival_id', 0)->doesntHave('isCustomer')->get();
 
         return response()->json(['head_team' => $head_team]);

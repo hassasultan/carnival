@@ -46,14 +46,19 @@
                                     <div class="owl-carousel thumbnails_carousel" id="thumbnails" data-nav="true"
                                         data-dots="false" data-margin="10"
                                         data-responsive='{"0":{"items":3},"480":{"items":4},"600":{"items":5},"768":{"items":3}}'>
+                                        <a href="#" data-image="{{ asset('product/' . $product->image) }}"
+                                            data-zoom-image="{{ asset('product/' . $product->image) }}">
+
+                                            <img src="{{ asset('product/' . $product->image) }}"
+                                                data-large-image="{{ asset('product/' . $product->image) }}"
+                                                alt="">
+
+                                        </a>
                                         @foreach ($product->product_variant as $key => $row)
-                                            {{-- {{ dd($product->product_variant[0]->product_image->toArray(), $row->product_image) }} --}}
                                             @foreach ($row->product_image as $key => $row)
-                                                {{-- {{ dd('variant_images/' . $row->image) }} --}}
                                                 <a href="#" data-image="{{ asset('variant_images/' . $row->image) }}"
                                                     data-zoom-image="{{ asset('variant_images/' . $row->image) }}">
 
-                                                    {{-- <img src="{{ asset('shopAssets/images/media/detail/thumb-lag1.jpg') }}" --}}
                                                     <img src="{{ asset('variant_images/' . $row->image) }}"
                                                         data-large-image="{{ asset('variant_images/' . $row->image) }}"
                                                         alt="">
@@ -61,33 +66,6 @@
                                                 </a>
                                             @endforeach
                                         @endforeach
-                                        {{-- <a href="#"
-                                            data-image="{{ asset('shopAssets/images/media/detail/thumb-img2.jpg') }}"
-                                            data-zoom-image="{{ asset('shopAssets/images/media/detail/thumb-lag2.jpg') }}">
-
-                                            <img src="{{ asset('shopAssets/images/media/detail/thumb2.jpg') }}"
-                                                data-large-image="{{ asset('shopAssets/images/media/detail/thumb-img2.jpg') }}"
-                                                alt="">
-
-                                        </a>
-                                        <a href="#"
-                                            data-image="{{ asset('shopAssets/images/media/detail/thumb-img3.jpg') }}"
-                                            data-zoom-image="{{ asset('shopAssets/images/media/detail/thumb-lag3.jpg') }}">
-
-                                            <img src="{{ asset('shopAssets/images/media/detail/thumb3.jpg') }}"
-                                                data-large-image="{{ asset('shopAssets/images/media/detail/thumb-img3.jpg') }}"
-                                                alt="">
-
-                                        </a>
-                                        <a href="#"
-                                            data-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
-                                            data-zoom-image="{{ asset('shopAssets/images/media/detail/thumb-lag1.jpg') }}">
-
-                                            <img src="{{ asset('shopAssets/images/media/detail/thumb1.jpg') }}"
-                                                data-large-image="{{ asset('shopAssets/images/media/detail/thumb-img1.jpg') }}"
-                                                alt="">
-
-                                        </a> --}}
 
                                     </div><!--/ .owl-carousel-->
 
@@ -254,12 +232,11 @@
                         <ul class="nav nav-pills" role="tablist">
                             <li role="presentation" class="active"><a href="#description" role="tab"
                                     data-toggle="tab">Product Details </a></li>
-                            <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">information </a>
+                            <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">Section Details </a>
                             </li>
                             <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">reviews</a></li>
-                            <li role="presentation"><a href="#additional" role="tab" data-toggle="tab">Extra
-                                    Tabs</a></li>
-                            <li role="presentation"><a href="#tab-cust" role="tab" data-toggle="tab">Guarantees</a>
+                            <li role="presentation"><a href="#additional" role="tab" data-toggle="tab">Payment Plan</a></li>
+                            <li role="presentation"><a href="#tab-cust" role="tab" data-toggle="tab">Additional Info</a>
                             </li>
                         </ul>
 

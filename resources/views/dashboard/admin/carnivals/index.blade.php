@@ -322,7 +322,7 @@
                             $.each(response.head_team, function(index, row) {
                                 html += '<option value="' + row.id + '" data-type="' +
                                     row.type + '">' +
-                                    row.full_name + '</option>';
+                                    row.first_name + ' ' + row.last_name + '</option>';
                             });
 
                             var selectElement = $('#head_team' + carnivalId);

@@ -167,7 +167,7 @@
                             <input type="text" class="form-control" id="linkedin" name="linkedin">
                         </div>
                         <div class="form-group">
-                            <label for="information">Information</label>
+                            <label for="information">Section Details</label>
                             <textarea id="information" name="information" class="form-control information summernote" placeholder=""></textarea>
                         </div>
                         <div class="form-group">
@@ -175,11 +175,11 @@
                             <textarea id="reviews" name="reviews" class="form-control reviews summernote" placeholder=""></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="extra">Extra</label>
+                            <label for="extra">Payment/Payment Plan</label>
                             <textarea id="extra" name="extra" class="form-control extra summernote" placeholder=""></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="guarantee">Guarantee</label>
+                            <label for="guarantee">Additional Info</label>
                             <textarea id="guarantee" name="guarantee" class="form-control guarantee summernote" placeholder=""></textarea>
                         </div>
                         <div class="form-group mb-3">
