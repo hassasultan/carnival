@@ -8,6 +8,8 @@
     catalog-product-view catalog-view_op1
 @endsection
 @section('main')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+
     <!-- MAIN -->
     <main class="site-main">
 
@@ -29,7 +31,7 @@
 
                     <div class="row">
 
-                        <div class="col-sm-6 col-md-6 col-lg-6">
+                        {{-- <div class="col-sm-6 col-md-6 col-lg-6">
 
                             <div class="product-media media-horizontal">
 
@@ -50,8 +52,7 @@
                                             data-zoom-image="{{ asset('product/' . $product->image) }}">
 
                                             <img src="{{ asset('product/' . $product->image) }}"
-                                                data-large-image="{{ asset('product/' . $product->image) }}"
-                                                alt="">
+                                                data-large-image="{{ asset('product/' . $product->image) }}" alt="">
 
                                         </a>
                                         @foreach ($product->product_variant as $key => $row)
@@ -71,6 +72,37 @@
 
                                 </div><!--/ .product_preview-->
 
+                            </div><!-- image product -->
+                        </div> --}}
+
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="product-media media-horizontal">
+                                <div class="image_preview_container images-large">
+                                    <img id="img_zoom" data-zoom-image="{{ asset('productImage/' . $product->image) }}"
+                                        src="{{ asset('productImage/' . $product->image) }}" alt="">
+                                    <button class="btn-zoom open_qv"><span>zoom</span></button>
+                                </div>
+                                <div class="product_preview images-small">
+                                    <div class="owl-carousel thumbnails_carousel" id="thumbnails" data-nav="true"
+                                        data-dots="false" data-margin="10"
+                                        data-responsive='{"0":{"items":3},"480":{"items":4},"600":{"items":5},"768":{"items":3}}'>
+                                        <a href="#" data-image="{{ asset('product/' . $product->image) }}"
+                                            data-zoom-image="{{ asset('product/' . $product->image) }}">
+                                            <img src="{{ asset('product/' . $product->image) }}"
+                                                data-large-image="{{ asset('product/' . $product->image) }}" alt="">
+                                        </a>
+                                        @foreach ($product->product_variant as $key => $row)
+                                            @foreach ($row->product_image as $key => $row)
+                                                <a href="#" data-image="{{ asset('variant_images/' . $row->image) }}"
+                                                    data-zoom-image="{{ asset('variant_images/' . $row->image) }}">
+                                                    <img src="{{ asset('variant_images/' . $row->image) }}"
+                                                        data-large-image="{{ asset('variant_images/' . $row->image) }}"
+                                                        alt="">
+                                                </a>
+                                            @endforeach
+                                        @endforeach
+                                    </div><!--/ .owl-carousel-->
+                                </div><!--/ .product_preview-->
                             </div><!-- image product -->
                         </div>
 
@@ -232,11 +264,14 @@
                         <ul class="nav nav-pills" role="tablist">
                             <li role="presentation" class="active"><a href="#description" role="tab"
                                     data-toggle="tab">Product Details </a></li>
-                            <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">Section Details </a>
+                            <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">Section Details
+                                </a>
                             </li>
                             <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">reviews</a></li>
-                            <li role="presentation"><a href="#additional" role="tab" data-toggle="tab">Payment Plan</a></li>
-                            <li role="presentation"><a href="#tab-cust" role="tab" data-toggle="tab">Additional Info</a>
+                            <li role="presentation"><a href="#additional" role="tab" data-toggle="tab">Payment
+                                    Plan</a></li>
+                            <li role="presentation"><a href="#tab-cust" role="tab" data-toggle="tab">Additional
+                                    Info</a>
                             </li>
                         </ul>
 
@@ -998,6 +1033,8 @@
 @endsection
 
 @section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
     <!-- Custom scripts -->
     <script>
         $(document).ready(function() {
@@ -1253,6 +1290,50 @@
                     });
                 }
             });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize ElevateZoom on the main image
+            $('#img_zoom').elevateZoom({
+                zoomType: "lens",
+                lensShape: "round",
+                lensSize: 200,
+                cursor: "crosshair"
+            });
+
+            // Handle thumbnail click
+            $('#thumbnails a').on('click', function(e) {
+                e.preventDefault();
+                var zoomImageURL = $(this).data('zoom-image');
+                var imageURL = $(this).data('image');
+
+                // Update the main image and reinitialize ElevateZoom
+                $('#img_zoom').attr('src', imageURL).data('zoom-image', zoomImageURL).elevateZoom({
+                    zoomType: "lens",
+                    lensShape: "round",
+                    lensSize: 200,
+                    cursor: "crosshair"
+                });
+
+                // Remove old instance of ElevateZoom
+                $('.zoomContainer').remove();
+            });
+
+            // Handle zoom button click
+            $('.open_qv').on('click', function(e) {
+                e.preventDefault();
+                var ez = $('#img_zoom').data('elevateZoom');
+                $.fancybox(ez.getGalleryList());
+            });
+        });
+
+        $('#img_zoom').elevateZoom({
+            zoomType: "lens",
+            lensShape: "round",
+            lensSize: 200,
+            cursor: "crosshair"
         });
     </script>
 @endsection
