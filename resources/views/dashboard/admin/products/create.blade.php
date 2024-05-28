@@ -632,11 +632,16 @@
             newHtml += '</div>';
             if (type == 'both') {
                 newHtml += '<div class="form-group mb-3">';
-                newHtml += '<div class="form-row">';
-                newHtml += '<div class="form-group col-md-6">';
                 newHtml += '<label for="variant_name-1' + id + "-" + counter + '">Variant Name</label>';
                 newHtml += '<input type="text" class="form-control" id="variant_name-1' + id + "-" + counter +
                     '" name="variant_name[]">';
+                newHtml += '</div>';
+                newHtml += '<div class="form-group mb-3">';
+                newHtml += '<div class="form-row">';
+                newHtml += '<div class="form-group col-md-6">';
+                newHtml += '<label for="variant_price-1' + id + "-" + counter + '">Variant Price</label>';
+                newHtml += '<input type="number" class="form-control" id="variant_price-1' + id + "-" + counter +
+                    '" name="variant_price[]">';
                 newHtml += '</div>';
                 newHtml += '<div class="form-group col-md-6">';
                 newHtml += '<label for="value-1' + id + "-" + counter + '">Value</label>';
@@ -662,11 +667,16 @@
                 newHtml += '</div>';
                 newHtml += '</div>';
                 newHtml += '<div class="form-group mb-3">';
-                newHtml += '<div class="form-row">';
-                newHtml += '<div class="form-group col-md-6">';
                 newHtml += '<label for="variant_name-2' + id + "-" + counter + '">Variant Name</label>';
                 newHtml += '<input type="color" class="form-control" id="variant_name-2' + id + "-" + counter +
                     '" name="variant_name[]">';
+                newHtml += '</div>';
+                newHtml += '<div class="form-group mb-3">';
+                newHtml += '<div class="form-row">';
+                newHtml += '<div class="form-group col-md-6">';
+                newHtml += '<label for="variant_price-2' + id + "-" + counter + '">Variant Price</label>';
+                newHtml += '<input type="number" class="form-control" id="variant_price-2' + id + "-" + counter +
+                    '" name="variant_price[]">';
                 newHtml += '<input type="hidden" value="' + id + '" name="variant_id[]" required>';
                 newHtml += '<input type="hidden" class="form-control" name="type[]" value="color">';
                 newHtml += '</div>';
@@ -694,11 +704,16 @@
                 newHtml += '</div>';
             } else {
                 newHtml += '<div class="form-group mb-3">';
-                newHtml += '<div class="form-row">';
-                newHtml += '<div class="form-group col-md-6">';
                 newHtml += '<label for="variant_name-' + id + "-" + counter + '">Variant Name</label>';
                 newHtml += '<input type="' + type + '" class="form-control" id="variant_name-' + id + "-" + counter +
                     '" name="variant_name[]">';
+                newHtml += '</div>';
+                newHtml += '<div class="form-group mb-3">';
+                newHtml += '<div class="form-row">';
+                newHtml += '<div class="form-group col-md-6">';
+                newHtml += '<label for="variant_price-' + id + "-" + counter + '">Variant Price</label>';
+                newHtml += '<input type="number" class="form-control" id="variant_price-' + id + "-" + counter +
+                    '" name="variant_price[]">';
                 newHtml += '<input type="hidden" value="' + id + '" name="variant_id[]" required>';
                 newHtml += '<input type="hidden" class="form-control" name="type[]" value="' + type + '">';
                 newHtml += '</div>';
@@ -765,11 +780,16 @@
                 html += '</div>';
                 if (dataType == 'both') {
                     html += '<div class="form-group mb-3">';
-                    html += '<div class="form-row">';
-                    html += '<div class="form-group col-md-6">';
                     html += '<label for="variant_name-1' + val + '">Variant Name</label>';
                     html += '<input type="text" class="form-control" id="variant_name-1' + val +
                         '" name="variant_name[]">';
+                    html += '</div>';
+                    html += '<div class="form-group mb-3">';
+                    html += '<div class="form-row">';
+                    html += '<div class="form-group col-md-6">';
+                    html += '<label for="variant_price-1' + val + '">Variant Price</label>';
+                    html += '<input type="number" class="form-control" id="variant_price-1' + val +
+                        '" name="variant_price[]">';
                     html += '</div>';
                     html += '<div class="form-group col-md-6">';
                     html += '<label for="value-1' + val + '">Value</label>';
@@ -795,11 +815,16 @@
                     html += '</div>';
                     html += '</div>';
                     html += '<div class="form-group mb-3">';
-                    html += '<div class="form-row">';
-                    html += '<div class="form-group col-md-6">';
                     html += '<label for="variant_name-2' + val + '">Variant Name</label>';
                     html += '<input type="color" class="form-control" id="variant_name-2' + val +
                         '" name="variant_name[]">';
+                    html += '</div>';
+                    html += '<div class="form-group mb-3">';
+                    html += '<div class="form-row">';
+                    html += '<div class="form-group col-md-6">';
+                    html += '<label for="variant_price-2' + val + '">Variant Price</label>';
+                    html += '<input type="number" class="form-control" id="variant_price-2' + val +
+                        '" name="variant_price[]">';
                     html += '<input type="hidden" value="' + val + '" name="variant_id[]" required>';
                     html += '<input type="hidden" class="form-control" name="type[]" value="color">';
                     html += '</div>';
@@ -827,11 +852,16 @@
                     html += '</div>';
                 } else {
                     html += '<div class="form-group mb-3">';
-                    html += '<div class="form-row">';
-                    html += '<div class="form-group col-md-6">';
                     html += '<label for="variant_name-' + val + '">Variant Name</label>';
                     html += '<input type="' + dataType + '" class="form-control" id="variant_name-' + val +
                         '" name="variant_name[]">';
+                    html += '</div>';
+                    html += '<div class="form-group mb-3">';
+                    html += '<div class="form-row">';
+                    html += '<div class="form-group col-md-6">';
+                    html += '<label for="variant_price-' + val + '">Variant Price</label>';
+                    html += '<input type="number" class="form-control" id="variant_price-' + val +
+                        '" name="variant_price[]">';
                     html += '</div>';
                     html += '<div class="form-group col-md-6">';
                     html += '<label for="value-' + val + '">Value</label>';
