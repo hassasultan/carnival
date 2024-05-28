@@ -8,6 +8,26 @@
     catalog-product-view catalog-view_op1
 @endsection
 @section('main')
+    <style>
+        .zoomable {
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .zoomable__img {
+            transform-origin: var(--zoom-pos-x, 0%) var(--zoom-pos-y, 0%);
+            transition: transform 0.15s linear;
+        }
+
+        .zoomable--zoomed .zoomable__img {
+            cursor: zoom-in;
+            transform: scale(var(--zoom, 2));
+        }
+    </style>
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
     <!-- MAIN -->
@@ -77,8 +97,9 @@
 
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="product-media media-horizontal">
-                                <div class="image_preview_container images-large">
-                                    <img id="img_zoom" data-zoom-image="{{ asset('productImage/' . $product->image) }}"
+                                <div class="image_preview_container images-large zoomable">
+                                    <img id="img_zoom" class="zoomable__img"
+                                        data-zoom-image="{{ asset('productImage/' . $product->image) }}"
                                         src="{{ asset('productImage/' . $product->image) }}" alt="">
                                     <button class="btn-zoom open_qv"><span>zoom</span></button>
                                 </div>
@@ -88,7 +109,7 @@
                                         data-responsive='{"0":{"items":3},"480":{"items":4},"600":{"items":5},"768":{"items":3}}'>
                                         <a href="#" data-image="{{ asset('product/' . $product->image) }}"
                                             data-zoom-image="{{ asset('product/' . $product->image) }}">
-                                            <img src="{{ asset('product/' . $product->image) }}"
+                                            <img src="{{ asset('product/' . $product->image) }}" width="100%"
                                                 data-large-image="{{ asset('product/' . $product->image) }}" alt="">
                                         </a>
                                         @foreach ($product->product_variant as $key => $row)
@@ -1295,45 +1316,124 @@
 
     <script>
         $(document).ready(function() {
-            // Initialize ElevateZoom on the main image
-            $('#img_zoom').elevateZoom({
-                zoomType: "lens",
-                lensShape: "round",
-                lensSize: 200,
-                cursor: "crosshair"
+            const defaultZoomConfig = {
+                initialZoom: 2,
+                minZoom: 1,
+                maxZoom: 4,
+                zoomSpeed: 0.1
+            };
+
+            class Zoomable {
+                constructor(element, config) {
+                    this.element = $(element);
+                    this.config = $.extend({}, defaultZoomConfig, config);
+
+                    const {
+                        initialZoom,
+                        minZoom,
+                        maxZoom
+                    } = this.config;
+
+                    this.zoomed = false;
+                    this.initialZoom = Math.max(Math.min(initialZoom, maxZoom), minZoom);
+                    this.zoom = this.initialZoom;
+
+                    this.img = this.element.find(".zoomable__img");
+                    this.img.attr("draggable", false);
+                    this.element.css("--zoom", this.initialZoom);
+
+                    this._addEventListeners();
+                }
+
+                _addEventListeners() {
+                    this.element.on("mouseover", () => this._handleMouseover());
+                    this.element.on("mousemove", (evt) => this._handleMousemove(evt));
+                    this.element.on("mouseout", () => this._handleMouseout());
+                    this.element.on("wheel", (evt) => this._handleWheel(evt));
+
+                    this.element.on("touchstart", (evt) => this._handleTouchstart(evt));
+                    this.element.on("touchmove", (evt) => this._handleTouchmove(evt));
+                    this.element.on("touchend", () => this._handleTouchend());
+                }
+
+                _handleMouseover() {
+                    if (this.zoomed) {
+                        return;
+                    }
+                    this.element.addClass("zoomable--zoomed");
+                    this.zoomed = true;
+                }
+
+                _handleMousemove(evt) {
+                    if (!this.zoomed) {
+                        return;
+                    }
+
+                    const elPos = this.element[0].getBoundingClientRect();
+                    const percentageX = `${((evt.clientX - elPos.left) * 100) / elPos.width}%`;
+                    const percentageY = `${((evt.clientY - elPos.top) * 100) / elPos.height}%`;
+
+                    this.element.css("--zoom-pos-x", percentageX);
+                    this.element.css("--zoom-pos-y", percentageY);
+                }
+
+                _handleMouseout() {
+                    if (!this.zoomed) {
+                        return;
+                    }
+
+                    this.element.css("--zoom", this.initialZoom);
+                    this.element.removeClass("zoomable--zoomed");
+                    this.zoomed = false;
+                }
+
+                _handleWheel(evt) {
+                    if (!this.zoomed) {
+                        return;
+                    }
+
+                    evt.preventDefault();
+
+                    const newZoom = this.zoom + evt.originalEvent.deltaY * (this.config.zoomSpeed * -1);
+                    const {
+                        minZoom,
+                        maxZoom
+                    } = this.config;
+
+                    this.zoom = Math.max(Math.min(newZoom, maxZoom), minZoom);
+                    this.element.css("--zoom", this.zoom);
+                }
+
+                _handleTouchstart(evt) {
+                    evt.preventDefault();
+                    this._handleMouseover();
+                }
+
+                _handleTouchmove(evt) {
+                    if (!this.zoomed) {
+                        return;
+                    }
+
+                    const elPos = this.element[0].getBoundingClientRect();
+
+                    let percentageX = ((evt.touches[0].clientX - elPos.left) * 100) / elPos.width;
+                    let percentageY = ((evt.touches[0].clientY - elPos.top) * 100) / elPos.height;
+
+                    percentageX = Math.max(Math.min(percentageX, 100), 0);
+                    percentageY = Math.max(Math.min(percentageY, 100), 0);
+
+                    this.element.css("--zoom-pos-x", `${percentageX}%`);
+                    this.element.css("--zoom-pos-y", `${percentageY}%`);
+                }
+
+                _handleTouchend(evt) {
+                    this._handleMouseout();
+                }
+            }
+
+            $(".zoomable").each(function() {
+                new Zoomable(this);
             });
-
-            // Handle thumbnail click
-            $('#thumbnails a').on('click', function(e) {
-                e.preventDefault();
-                var zoomImageURL = $(this).data('zoom-image');
-                var imageURL = $(this).data('image');
-
-                // Update the main image and reinitialize ElevateZoom
-                $('#img_zoom').attr('src', imageURL).data('zoom-image', zoomImageURL).elevateZoom({
-                    zoomType: "lens",
-                    lensShape: "round",
-                    lensSize: 200,
-                    cursor: "crosshair"
-                });
-
-                // Remove old instance of ElevateZoom
-                $('.zoomContainer').remove();
-            });
-
-            // Handle zoom button click
-            $('.open_qv').on('click', function(e) {
-                e.preventDefault();
-                var ez = $('#img_zoom').data('elevateZoom');
-                $.fancybox(ez.getGalleryList());
-            });
-        });
-
-        $('#img_zoom').elevateZoom({
-            zoomType: "lens",
-            lensShape: "round",
-            lensSize: 200,
-            cursor: "crosshair"
         });
     </script>
 @endsection
