@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\Package;
 use App\Models\Vendor;
 use App\Models\Carnival;
+use Illuminate\Support\Facades\Auth;
 
 class CarnivalCommitteeController extends Controller
 {
@@ -14,6 +15,9 @@ class CarnivalCommitteeController extends Controller
     {
         $carnival = Carnival::where('unique_id', $id)->first();
 
+        if (Auth::check()) {
+            return redirect()->route('home');
+        }
         if ($carnival->head != 0) {
             abort(419, 'Page Expired');
         }

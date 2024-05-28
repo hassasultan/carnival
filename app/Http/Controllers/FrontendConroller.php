@@ -28,15 +28,15 @@ class FrontendConroller extends Controller
     public function product_detail($slug)
     {
         $product = Product::with('variants', 'product_variant')->where('slug', $slug)->firstOrFail();
-        $related = Product::where('category_id', $product->category_id)->where('user_id', $product->user_id)->where('id','!=', $product->id)->orderBy('id', 'DESC')->get();
-        $same_cat = Product::where('category_id', $product->category_id)->where('id','!=', $product->id)->orderBy('id', 'DESC')->take(9)->get();
+        $related = Product::where('category_id', $product->category_id)->where('user_id', $product->user_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->get();
+        $same_cat = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->take(9)->get();
         return view('ShopFrontend.product-detail', compact('product', 'related', 'same_cat'));
     }
     public function get_vendors(Request $request)
     {
         $vendors = Vendor::with([
             'user' => function ($query) {
-                $query->select('id', 'first_name', 'last_name', 'slug','image');
+                $query->select('id', 'first_name', 'last_name', 'slug', 'image');
             },
             'user.products' => function ($query) {
                 $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
@@ -65,7 +65,6 @@ class FrontendConroller extends Controller
         $user = User::whereSlug($slug)->first();
         $vendor = Vendor::with('products', 'products.category')->where('user_id', $user->id)->first();
         $categories = $vendor->products->pluck('category')->unique('id');
-        // dd($categories->toArray());
         return view('ShopFrontend.vendor-detail', compact('vendor', 'categories'));
     }
     public function get_vendor_products($slug, Request $request)
@@ -78,13 +77,11 @@ class FrontendConroller extends Controller
             $products = $products->where('subcategory_id', $request->subcat);
         }
         if ($request->has('attribute') && $request->attribute == 'bestSale') {
-            // $products = $products;
         }
         if ($request->has('attribute') && $request->attribute == 'onsale') {
             $products = $products->where('sale', true);
         }
         if ($request->has('attribute') && $request->attribute == 'new') {
-            // $products = $products->where('sale',true);
         }
         $products = $products->orderBy('id', 'DESC')->take(5)->get();
 
@@ -114,8 +111,6 @@ class FrontendConroller extends Controller
         $user = User::whereSlug($slug)->first();
         $subvendor = SubVendor::with('products', 'products.category')->where('user_id', $user->id)->first();
         $categories = $subvendor->products->pluck('category')->unique('id');
-
-        // dd($subvendor->toArray());
 
         return view('ShopFrontend.subvendor-detail', compact('subvendor', 'categories'));
     }
