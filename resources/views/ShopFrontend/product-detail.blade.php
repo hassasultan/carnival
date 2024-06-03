@@ -191,15 +191,33 @@
 
                                         {{-- {{ dd($row->product_image->toArray()) }} --}}
                                         <div class="product-options-wrapper">
+                                            @php
+                                                $displayedColors = [];
+                                            @endphp
+
                                             @foreach ($product->product_variant as $key => $row)
-                                                @if ($row->type == 'color')
+                                                {{-- @if ($row->type == 'color')
                                                     <div class="swatch-opt">
                                                         <div class="swatch-attribute color">
                                                             <span class="swatch-attribute-label">Color:</span>
                                                             <div class="swatch-attribute-options clearfix">
                                                                 <div class="swatch-option color @if ($key == 0) selected @endif"
-                                                                    {{-- style="background-color: #0c3b90 ;"> --}}
                                                                     style="background-color: {{ $row['name'] }} ;">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif --}}
+                                                @if ($row->type == 'color' && !in_array($row->name, $displayedColors))
+                                                    @php
+                                                        $displayedColors[] = $row->name;
+                                                    @endphp
+                                                    <div class="swatch-opt">
+                                                        <div class="swatch-attribute color">
+                                                            <span class="swatch-attribute-label">Color:</span>
+                                                            <div class="swatch-attribute-options clearfix">
+                                                                <div class="swatch-option color @if ($key == 0) selected @endif"
+                                                                    style="background-color: {{ $row['name'] }};">
                                                                 </div>
                                                             </div>
                                                         </div>
