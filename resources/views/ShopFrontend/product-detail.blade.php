@@ -198,7 +198,8 @@
                                                             <span class="swatch-attribute-label">Color:</span>
                                                             <div class="swatch-attribute-options clearfix">
                                                                 <div class="swatch-option color @if ($key == 0) selected @endif"
-                                                                    style="background-color: #0c3b90 ;">
+                                                                    {{-- style="background-color: #0c3b90 ;"> --}}
+                                                                    style="background-color: {{ $row['name'] }} ;">
                                                                 </div>
                                                             </div>
                                                         </div>
