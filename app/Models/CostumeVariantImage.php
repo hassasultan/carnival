@@ -13,7 +13,6 @@ class CostumeVariantImage extends Model
 
     protected $fillable = ['costume_id', 'costume_variant_id', 'image'];
 
-    // Define relationships if applicable
     public function costume()
     {
         return $this->belongsTo(Costume::class);

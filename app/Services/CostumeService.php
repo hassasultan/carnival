@@ -17,23 +17,18 @@ class CostumeService
     {
         $costumeData = $this->prepareCostumeData($data);
 
-        // Create the costume
         $costume = Costume::create($costumeData);
 
-        // Handle variants
         if (isset($data['variant_id'])) {
             foreach ($data['variant_id'] as $index => $variantId) {
-                // Create costume variant
                 $costumeVariant = CostumeVariant::create([
                     'costume_id' => $costume->id,
                     'variant_id' => $variantId,
-                    'value' => isset($data['value'][$index]) ? $data['value'][$index] : 'default_value', // Adjust this default value as needed
+                    'value' => isset($data['value'][$index]) ? $data['value'][$index] : 'default_value',
                     'status' => 1
                 ]);
 
-                // Upload variant images
                 if (isset($data['variant_images'][$index])) {
-                    // $imagePaths = $this->uploadVariantImages($data['variant_images'][$index]);
                     $additionalImagePaths = $this->uploadMultipleImages($data['variant_images'], 'variant_images');
 
                     foreach ($additionalImagePaths as $additionalImage) {
@@ -54,27 +49,21 @@ class CostumeService
     {
         $costumeData = $this->prepareCostumeData($data);
 
-        // Update costume attributes
         $costume->update($costumeData);
 
-        // Handle variants
         if (isset($data['variant_id'])) {
-            // Detach all existing variants
             $costume->variants()->detach();
 
             foreach ($data['variant_id'] as $index => $variantId) {
-                // Save each variant for the costume with a specific value
                 $costume->variants()->attach($variantId, ['value' => 'value', 'status' => 1]);
 
-                // Upload variant images
                 if (isset($data['variant_images'][$index])) {
-                    // $imagePaths = $this->uploadVariantImages($data['variant_images'][$index]);
                     $additionalImagePaths = $this->uploadMultipleImages($data['variant_images'], 'variant_images');
 
                     foreach ($additionalImagePaths as $additionalImage) {
                         CostumeVariantImage::create([
                             'costume_id' => $costume->id,
-                            'costume_variant_id' => $variantId, // Use variant ID here
+                            'costume_variant_id' => $variantId,
                             'image' => $additionalImage['original_name'],
                         ]);
                     }

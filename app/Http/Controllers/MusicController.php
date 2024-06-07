@@ -31,7 +31,6 @@ class MusicController extends Controller
 
         $music = Music::create($data);
 
-        // Upload multiple images and associate with the music
         foreach ($request->file('images') as $image) {
             $imagePath = $this->uploadImage($image, 'images');
             $musicImage = MusicImage::create([
@@ -65,9 +64,8 @@ class MusicController extends Controller
             $data['video'] = $this->uploadImage($request->file('video'), 'videos');
         }
 
-        // Upload and update multiple images
         if ($request->hasFile('images')) {
-            $music->images()->delete(); // Delete existing images
+            $music->images()->delete();
             foreach ($request->file('images') as $image) {
                 $imagePath = $this->uploadImage($image, 'images');
                 $musicImage = MusicImage::create([
@@ -84,7 +82,6 @@ class MusicController extends Controller
     }
     public function destroy($id)
     {
-        // Delete music record
         $music = Music::findOrFail($id);
         $music->delete();
 

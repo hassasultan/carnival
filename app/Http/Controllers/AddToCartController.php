@@ -25,7 +25,7 @@ class AddToCartController extends Controller
             return response()->json(['error' => 'Product is not available'], 400);
         }
 
-        $user_id = Auth::id(); // Get the authenticated user's ID
+        $user_id = Auth::id();
 
         $cartItem = Cart::with('user','product')->where('user_id', $user_id)
             ->where('product_id', $request->product_id)

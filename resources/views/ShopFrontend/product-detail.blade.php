@@ -50,51 +50,6 @@
                 <div class="col-md-9 col-md-push-3  col-main">
 
                     <div class="row">
-
-                        {{-- <div class="col-sm-6 col-md-6 col-lg-6">
-
-                            <div class="product-media media-horizontal">
-
-                                <div class="image_preview_container images-large">
-
-                                    <img id="img_zoom" data-zoom-image="{{ asset('productImage/' . $product->image) }}"
-                                        src="{{ asset('productImage/' . $product->image) }}" alt="">
-
-                                    <button class="btn-zoom open_qv"><span>zoom</span></button>
-
-                                </div>
-
-                                <div class="product_preview images-small">
-                                    <div class="owl-carousel thumbnails_carousel" id="thumbnails" data-nav="true"
-                                        data-dots="false" data-margin="10"
-                                        data-responsive='{"0":{"items":3},"480":{"items":4},"600":{"items":5},"768":{"items":3}}'>
-                                        <a href="#" data-image="{{ asset('product/' . $product->image) }}"
-                                            data-zoom-image="{{ asset('product/' . $product->image) }}">
-
-                                            <img src="{{ asset('product/' . $product->image) }}"
-                                                data-large-image="{{ asset('product/' . $product->image) }}" alt="">
-
-                                        </a>
-                                        @foreach ($product->product_variant as $key => $row)
-                                            @foreach ($row->product_image as $key => $row)
-                                                <a href="#" data-image="{{ asset('variant_images/' . $row->image) }}"
-                                                    data-zoom-image="{{ asset('variant_images/' . $row->image) }}">
-
-                                                    <img src="{{ asset('variant_images/' . $row->image) }}"
-                                                        data-large-image="{{ asset('variant_images/' . $row->image) }}"
-                                                        alt="">
-
-                                                </a>
-                                            @endforeach
-                                        @endforeach
-
-                                    </div><!--/ .owl-carousel-->
-
-                                </div><!--/ .product_preview-->
-
-                            </div><!-- image product -->
-                        </div> --}}
-
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="product-media media-horizontal">
                                 <div class="image_preview_container images-large zoomable">
@@ -184,30 +139,16 @@
                                         {!! $product->description !!}
                                     </div>
                                 </div>
-                                {{-- {{ dd($product->product_variant->toArray()) }} --}}
                                 <div class="product-add-form">
                                     <p>Available Options:</p>
                                     <form>
 
-                                        {{-- {{ dd($row->product_image->toArray()) }} --}}
                                         <div class="product-options-wrapper">
                                             @php
                                                 $displayedColors = [];
                                             @endphp
 
                                             @foreach ($product->product_variant as $key => $row)
-                                                {{-- @if ($row->type == 'color')
-                                                    <div class="swatch-opt">
-                                                        <div class="swatch-attribute color">
-                                                            <span class="swatch-attribute-label">Color:</span>
-                                                            <div class="swatch-attribute-options clearfix">
-                                                                <div class="swatch-option color @if ($key == 0) selected @endif"
-                                                                    style="background-color: {{ $row['name'] }} ;">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif --}}
                                                 @if ($row->type == 'color' && !in_array($row->name, $displayedColors))
                                                     @php
                                                         $displayedColors[] = $row->name;
@@ -330,15 +271,6 @@
                                     @if ($product->information != null)
                                         {!! $product->information !!}
                                     @endif
-                                    {{-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p> --}}
-
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="reviews">
@@ -347,31 +279,6 @@
                                     @if ($product->reviews != null)
                                         {!! $product->reviews !!}
                                     @endif
-                                    {{-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p>
-
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p> --}}
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="additional">
@@ -380,40 +287,6 @@
                                     @if ($product->extra != null)
                                         {!! $product->extra !!}
                                     @endif
-                                    {{--                                     
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p>
-
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p> --}}
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="tab-cust">
@@ -422,44 +295,6 @@
                                     @if ($product->guarantee != null)
                                         {!! $product->guarantee !!}
                                     @endif
-                                    {{-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p>
-
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also Aldus PageMaker including versions
-                                        of Lorem Ipsum</p> --}}
                                 </div>
                             </div>
                         </div>
@@ -494,7 +329,6 @@
                                                     <a href="" class="btn btn-compare"><span>compare</span></a>
                                                     <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                                 </div>
-                                                {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
                                                 @if (Auth::check())
                                                     <button type="submit" title="Add to Cart" class="action btn-cart"
                                                         data-product_id="{{ $row->id }}">
@@ -576,7 +410,6 @@
                                                     <a href="" class="btn btn-compare"><span>compare</span></a>
                                                     <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                                 </div>
-                                                {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
                                                 <button type="submit" title="Add to Cart" class="action btn-cart"
                                                     data-product_id="{{ $product->id }}">
                                                     <span>Add to Cart</span>
@@ -929,7 +762,6 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
                                             <button type="submit" title="Add to Cart" class="action btn-cart"
                                                 data-product_id="{{ $product->id }}">
                                                 <span>Add to Cart</span>
@@ -968,7 +800,6 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
                                             <button type="submit" title="Add to Cart" class="action btn-cart"
                                                 data-product_id="{{ $product->id }}">
                                                 <span>Add to Cart</span>
@@ -1007,7 +838,6 @@
                                                 <a href="" class="btn btn-compare"><span>compare</span></a>
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
-                                            {{-- <button class="btn btn-cart" type="button"><span>Add to Cart</span></button> --}}
                                             <button type="submit" title="Add to Cart" class="action btn-cart"
                                                 data-product_id="{{ $product->id }}">
                                                 <span>Add to Cart</span>
@@ -1191,7 +1021,7 @@
             // Pagination click event handler
             $(document).on('click', '.pagination a', function(e) {
                 e.preventDefault();
-                var page = $(this).data('page'); // Get the page number from the clicked link
+                var page = $(this).data('page');
                 fetchProducts(page);
             });
 

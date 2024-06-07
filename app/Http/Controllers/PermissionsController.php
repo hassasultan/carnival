@@ -44,7 +44,7 @@ class PermissionsController extends Controller
         ]);
 
         $data = $request->all();
-        $data['user_id'] = Auth::id(); // Get the currently authenticated user's ID
+        $data['user_id'] = Auth::id();
 
         Permission::create($data);
 

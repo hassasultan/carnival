@@ -32,25 +32,16 @@ class Event extends Model
         'address',
     ];
 
-    /**
-     * Get the user that owns the event.
-     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Get the category that owns the event.
-     */
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    /**
-     * Get the package associated with the event.
-     */
     public function package()
     {
         return $this->belongsTo(Package::class);

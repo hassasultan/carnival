@@ -59,7 +59,6 @@ class UserManagementController extends Controller
 
         $user = $this->create($request->all());
 
-        // Handle image upload
         if ($request->hasFile('image')) {
             $imageName = $this->uploadImage($request->file('image'), 'images');
             $user->image = $imageName;
@@ -111,7 +110,6 @@ class UserManagementController extends Controller
             $data['role_id'] = '2';
         }
 
-        // Handle logo upload
         if ($data['logo']) {
             $imageName = $this->uploadImage($data['logo'], 'images');
             $logo = $imageName;
@@ -215,9 +213,7 @@ class UserManagementController extends Controller
 
         $user->update($request->all());
 
-        // Handle image update
         if ($request->hasFile('image')) {
-            // Delete previous image if exists
             if ($user->image) {
                 $this->deleteImage('images/' . $user->image);
             }

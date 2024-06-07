@@ -69,7 +69,6 @@ class User extends Authenticatable
     public function customer()
     {
         return $this->role->name === "Customer";
-        // return $this->role === "4";
     }
 
     public function isSubVendor()

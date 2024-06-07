@@ -38,7 +38,6 @@ class TicketController extends Controller
 
     public function update(Request $request, Ticket $ticket)
     {
-        // Validate the request data
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -46,17 +45,14 @@ class TicketController extends Controller
         ]);
 
         try {
-            // Update the ticket with the request data
             $ticket->update($request->all());
 
-            // Check if the ticket was updated successfully
             if ($ticket->wasChanged()) {
                 return response()->json(['ticket' => $ticket, 'message' => 'Ticket updated successfully'], 200);
             } else {
                 return response()->json(['error' => 'No changes detected for the ticket'], 400);
             }
         } catch (\Exception $e) {
-            // Handle any exceptions that occur during the update process
             return response()->json(['error' => 'Failed to update ticket: ' . $e->getMessage()], 500);
         }
     }

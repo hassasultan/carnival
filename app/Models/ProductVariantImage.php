@@ -13,7 +13,6 @@ class ProductVariantImage extends Model
 
     protected $fillable = ['product_id', 'product_variant_id', 'image'];
 
-    // Define relationships if applicable
     public function product()
     {
         return $this->belongsTo(Product::class);

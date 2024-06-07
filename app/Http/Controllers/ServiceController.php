@@ -26,8 +26,6 @@ class ServiceController extends Controller
 
         $data['user_id'] = Auth::id();
 
-        // dd($data);
-
         $service = Service::create($data);
 
         if ($service) {
@@ -55,7 +53,6 @@ class ServiceController extends Controller
 
             $service->update($data);
 
-            // Handle poster update if present
             if ($request->hasFile('poster')) {
                 $this->deleteImage($service->poster);
                 $poster = $this->uploadImage($request->file('poster'), 'poster');
@@ -71,17 +68,14 @@ class ServiceController extends Controller
                 return response()->json(['error' => 'No changes detected for the Service'], 400);
             }
         } catch (ModelNotFoundException $e) {
-            // Handle the case where the service with the given ID is not found
             return response()->json(['error' => 'Service not found'], 404);
         } catch (\Exception $e) {
-            // Handle other exceptions
             return response()->json(['error' => 'Failed to update Service: ' . $e->getMessage()], 500);
         }
     }
 
     public function destroy($id)
     {
-        // Delete service record
         $service = Service::findOrFail($id);
         $service->delete();
 

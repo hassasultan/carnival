@@ -39,7 +39,6 @@ class AppointmentController extends Controller
                 'required',
                 'date',
                 function ($attribute, $value, $fail) use ($request) {
-                    // Check if any datetime value already exists for the service
                     $serviceId = $request->input('service_id');
                     $existingDates = AppointmentSlot::whereHas('appointment', function ($query) use ($serviceId) {
                         $query->where('service_id', $serviceId);
@@ -54,14 +53,12 @@ class AppointmentController extends Controller
             ],
         ]);
 
-        // Create the appointment
         $appointment = Appointment::create([
             'user_id' => $request->input('user_id'),
             'service_id' => $request->input('service_id'),
             'notes' => $request->input('notes'),
         ]);
 
-        // Store appointment slots
         foreach ($request->input('appointment_datetime') as $datetime) {
             $appointment->slots()->create([
                 'datetime' => $datetime,
@@ -77,7 +74,6 @@ class AppointmentController extends Controller
         $serviceId = $request->input('service_id');
         $appointmentDatetime = $request->input('appointment_datetime');
 
-        // Check for conflicts in the AppointmentSlot model
         $conflict = AppointmentSlot::whereHas('appointment', function ($query) use ($serviceId, $appointmentDatetime) {
             $query->where('service_id', $serviceId)
                 ->where('datetime', $appointmentDatetime);
@@ -114,7 +110,6 @@ class AppointmentController extends Controller
             'status' => $request->status ?? 1,
         ]);
 
-        // Delete existing slots and recreate them with the updated datetimes
         $appointment->slots()->delete();
         foreach ($request->input('appointment_datetime') as $datetime) {
             $appointment->slots()->create([

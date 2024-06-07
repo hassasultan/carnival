@@ -17,15 +17,12 @@ class EventService
     {
         $eventData = $this->prepareEventData($data);
 
-        // Create the event
         $event = Event::create($eventData);
 
-        // Handle additional images
         if (isset($data['additional_images'])) {
             $this->handleAdditionalImages($event, $data['additional_images']);
         }
 
-        // Save the event ticket details
         if (isset($data['ticket_id'])) {
             $this->saveEventTickets($event, $data['ticket_id'], $data['price'], $data['quantity']);
         }
@@ -37,15 +34,12 @@ class EventService
     {
         $eventData = $this->prepareEventData($data);
 
-        // Update event attributes
         $event->update($eventData);
 
-        // Handle additional images
         if (isset($data['additional_images'])) {
             $this->handleAdditionalImages($event, $data['additional_images']);
         }
 
-        // Update event ticket details
         if (isset($data['ticket_id'])) {
             $this->updateEventTickets($event, $data['ticket_id'], $data['price'], $data['quantity']);
         }
@@ -71,10 +65,8 @@ class EventService
             'end_time' => $data['end_time'] ?? null,
             'all_day' => $data['all_day'] ?? null,
             'status' => $data['status'],
-            // Add other fields as needed
         ];
 
-        // Handle dress code
         if (isset($data['dress_code'])) {
             $eventData['dress_code'] = implode(',', $data['dress_code']);
         }

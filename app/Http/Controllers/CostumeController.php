@@ -48,11 +48,9 @@ class CostumeController extends Controller
 
         $data = $request->all();
 
-        // Check if variant_images are present in the request
         if ($request->hasFile('variant_images')) {
             $data['variant_images'] = $request->file('variant_images');
         } else {
-            // If no variant images are uploaded, set an empty array
             $data['variant_images'] = [];
         }
 
@@ -94,18 +92,14 @@ class CostumeController extends Controller
 
         $costume = Costume::findOrFail($id);
 
-        // Prepare data for update
         $data = $request->all();
 
-        // Check if variant_images are present in the request
         if ($request->hasFile('variant_images')) {
             $data['variant_images'] = $request->file('variant_images');
         } else {
-            // If no variant images are uploaded, set an empty array
             $data['variant_images'] = [];
         }
 
-        // Update costume attributes and handle variants
         $updatedCostume = $this->costumeService->updateCostume($costume, $data);
 
         if ($updatedCostume) {

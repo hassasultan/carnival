@@ -38,7 +38,6 @@ class SubVendorController extends Controller
     }
     public function storeProducts(Request $request)
     {
-        // dd($request->toArray());
         $request->validate([
             'title' => 'required',
             'category_id' => 'required',
@@ -70,7 +69,6 @@ class SubVendorController extends Controller
 
     public function updateProducts(Request $request, $id)
     {
-        // dd($request->toArray());
         $request->validate([
             'title' => 'required',
             'category_id' => 'required',
@@ -98,7 +96,6 @@ class SubVendorController extends Controller
 
     public function storeEvents(Request $request)
     {
-        // dd($request->package_id);
         $request->validate([
             'name' => 'required|string|max:255',
             'package_id' => 'required|exists:packages,id',
@@ -118,9 +115,6 @@ class SubVendorController extends Controller
             'end_time' => 'nullable|after:start_time',
             'all_day' => 'nullable',
             'status' => 'required|in:active,inactive',
-            // 'promotional_Video' => 'nullable|file|mimes:mp4,mov,avi',
-            // 'banner' => 'nullable|image|max:2048',
-            // 'additional_images.*' => 'nullable|image|max:2048',
         ]);
 
         $request['user_id'] = Auth::id();
@@ -141,7 +135,6 @@ class SubVendorController extends Controller
         return view('dashboard.admin.events.edit', compact('event', 'packages', 'categories'));
     }
 
-    // Update the specified event in the database.
     public function updateEvents(Request $request, Event $event)
     {
         $request->validate([
@@ -149,11 +142,9 @@ class SubVendorController extends Controller
             'package_id' => 'required|exists:packages,id',
             'category_id' => 'required|exists:categories,id',
             'description' => 'nullable|string',
-            'status' => 'required|in:active,inactive', // Adjust options as needed
-            // Add validation rules for other fields here
+            'status' => 'required|in:active,inactive',
         ]);
 
-        // $event->update($request->all());
         $event = $this->eventService->updateEvent($event, $request->all());
 
         return redirect()->route('events.index')

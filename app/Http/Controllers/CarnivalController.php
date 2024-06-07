@@ -27,7 +27,6 @@ class CarnivalController extends Controller
         ]);
 
         $uniqueId = $this->generateUniqueId();
-        // dd($request->toArray(), $uniqueId);
 
         $carnivals = Carnival::create([
             'unique_id' => $uniqueId,
@@ -79,7 +78,6 @@ class CarnivalController extends Controller
         ]);
 
         if ($carnival) {
-            // Fetch all carnivals after update
             $carnivals = Carnival::all();
             $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
 
@@ -102,14 +100,6 @@ class CarnivalController extends Controller
 
     public function head_team($id)
     {
-        // $head_team = User::where('carnival_id', $id)->get();
-
-        // if ($head_team != null) {
-        //     $head_team = User::whereHas('vendor', function ($query) {
-        //         $query->where('package_id', 6);
-        //     })->get();
-        // }
-
         $head_team = User::where('carnival_id', 0)->doesntHave('isCustomer')->get();
 
         return response()->json(['head_team' => $head_team]);

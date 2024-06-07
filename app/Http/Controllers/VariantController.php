@@ -44,7 +44,6 @@ class VariantController extends Controller
 
     public function update(Request $request, Variant $variant)
     {
-        // Validate the request data
         $request->validate([
             'title' => 'required',
             'description' => 'nullable',
@@ -53,12 +52,9 @@ class VariantController extends Controller
         ]);
 
         try {
-            // Update the variant with the request data
             $variant->update($request->all());
 
-            // Check if the variant was updated successfully
             if ($variant->wasChanged()) {
-                // Fetch all variants after update
                 $variants = Variant::all();
                 $view = view('dashboard.admin.variants.table', compact('variants'))->render();
 
@@ -67,7 +63,6 @@ class VariantController extends Controller
                 return response()->json(['error' => 'No changes detected for the variant'], 400);
             }
         } catch (\Exception $e) {
-            // Handle any exceptions that occur during the update process
             return response()->json(['error' => 'Failed to update variant: ' . $e->getMessage()], 500);
         }
     }

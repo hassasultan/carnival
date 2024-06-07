@@ -41,7 +41,6 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'title' => 'required',
             'category_id' => 'required',
@@ -83,8 +82,6 @@ class ProductController extends Controller
         $categories = Category::where('type', 'ecommerce')->get();
         $variants = Variant::all();
         $subcat = Subcategory::where('category_id', $product->category_id)->get();
-        // dd($product->toArray());
-        // return response()->json(['product' => $product]);
         return view('dashboard.admin.products.edit', compact('product', 'categories', 'variants', 'subcat'));
     }
     
@@ -97,24 +94,18 @@ class ProductController extends Controller
             'old_price' => 'required',
             'new_price' => 'required',
             'status' => 'required',
-            // 'variant_id' => 'required|array',
-            // 'variant_id.*' => 'exists:variants,id',
         ]);
 
         $product = Product::findOrFail($id);
 
-        // Prepare data for update
         $data = $request->all();
 
-        // Check if variant_images are present in the request
         if ($request->hasFile('variant_images')) {
             $data['variant_images'] = $request->file('variant_images');
         } else {
-            // If no variant images are uploaded, set an empty array
             $data['variant_images'] = [];
         }
 
-        // Update product attributes and handle variants
         $updatedProduct = $this->productService->updateProduct($product, $data);
 
         if ($updatedProduct) {
@@ -125,8 +116,6 @@ class ProductController extends Controller
         } else {
             return response()->json(['error' => 'Failed to update Product'], 500);
         }
-
-        // return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }
 
     public function destroy($id)
@@ -142,10 +131,8 @@ class ProductController extends Controller
 
     public function getsubCategories($categoryId)
     {
-        // Fetch subcategories based on the provided package ID
         $data['subcategories'] = Subcategory::where('category_id', $categoryId)->get();
         $data['varients'] = Variant::where('category_id', $categoryId)->get();
-        // Return subcategories as JSON response
         return response()->json($data);
     }
 }
