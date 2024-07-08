@@ -58,7 +58,7 @@ class FrontendConroller extends Controller
     }
     public function sub_vendor_listing()
     {
-        return view('ShopFrontend.subvendor');
+        return view('ShopFrontend.subVendor');
     }
     public function vendor_detail($slug)
     {
