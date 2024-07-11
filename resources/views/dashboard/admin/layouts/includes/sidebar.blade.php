@@ -65,6 +65,46 @@
                 </ul>
             </li>
         </ul>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+                <a href="{{ route('regions.index') }}" class="dropdown-toggle nav-link">
+                    <i class="fe fe-box fe-16"></i>
+                    <span class="ml-3 item-text">Region Management</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+                <a href="{{ route('our_services.index') }}" class="dropdown-toggle nav-link">
+                    <i class="fe fe-box fe-16"></i>
+                    <span class="ml-3 item-text">Our Services Management</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+                <a href="{{ route('site_gallery.index') }}" class="dropdown-toggle nav-link">
+                    <i class="fe fe-box fe-16"></i>
+                    <span class="ml-3 item-text">Gallery</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+                <a href="{{ route('investors.index') }}" class="dropdown-toggle nav-link">
+                    <i class="fe fe-box fe-16"></i>
+                    <span class="ml-3 item-text">Investors</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+                <a href="{{ route('brands.index') }}" class="dropdown-toggle nav-link">
+                    <i class="fe fe-box fe-16"></i>
+                    <span class="ml-3 item-text">Brands</span>
+                </a>
+            </li>
+        </ul>
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Category/Package</span>
         </p>

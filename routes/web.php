@@ -33,7 +33,11 @@ use App\Http\Controllers\AddToCartController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CarnivalController;
 use App\Http\Controllers\CarnivalCommitteeController;
-
+use App\Http\Controllers\RegionController;
+use App\Http\Controllers\OurServiceController;
+use App\Http\Controllers\SiteGalleryController;
+use App\Http\Controllers\InvestorController;
+use App\Http\Controllers\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -172,6 +176,22 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     
     // get head_team
     Route::post('/update/head_team', [CarnivalController::class, 'carnivalHead'])->name('update.carnival.head');
+
+
+    // Regions CRUD
+    Route::resource('regions', RegionController::class);
+
+    //Our Service CRUD
+    Route::resource('our_services', OurServiceController::class);
+
+    //Gallery CRUD
+    Route::resource('site_gallery', SiteGalleryController::class);
+
+    //Investor CRUD
+    Route::resource('investors', InvestorController::class);
+
+    //Brands CRUD
+    Route::resource('brands', BrandController::class);
 });
 
 Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
