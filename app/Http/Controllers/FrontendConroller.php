@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subcategory;
-use App\Models\Variant;
-use App\Models\ProductVariantImage;
-use App\Models\ProductVariant;
+use App\Models\SiteGallery;
+use App\Models\Service;
+use App\Models\Region;
 use App\Models\Vendor;
 use App\Models\SubVendor;
 use App\Models\User;
@@ -24,8 +24,12 @@ class FrontendConroller extends Controller
     public function home()
     {
         $events = Event::with('images','tickets')->orderBy('id','desc')->get()->take('5');
+        $regions = Region::with('countries')->get();
+        $services = Service::get();
+        $siteGallery = SiteGallery::get();
+        $products = Product::with('brand')->get();
         // dd($events->toArray());
-        return view('front.home',compact('events'));
+        return view('front.home',compact('events', 'regions', 'services', 'siteGallery', 'products'));
     }
     public function get_product(Request $request)
     {
