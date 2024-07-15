@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\SiteGallery;
 use App\Models\Service;
+use App\Models\OurService;
 use App\Models\Region;
 use App\Models\Vendor;
 use App\Models\SubVendor;
@@ -25,7 +26,7 @@ class FrontendConroller extends Controller
     {
         $events = Event::with('images','tickets')->orderBy('id','desc')->get()->take('5');
         $regions = Region::with('countries')->get();
-        $services = Service::get();
+        $services = OurService::get()->take('4');
         $siteGallery = SiteGallery::get();
         $products = Product::with('brand')->get();
         // dd($events->toArray());

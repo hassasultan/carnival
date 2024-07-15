@@ -43,7 +43,8 @@
                                                                 </h4>
                                                                 <div class="sb-price color-dark-2">
                                                                     <span>${{ $row->tickets[0]->price }}</span> / per
-                                                                    person</div>
+                                                                    person
+                                                                </div>
                                                                 <div class="sb-text">Spicemas is the premier cultural event
                                                                     in Grenada. It's the party everyone waits all year to
                                                                     participate in, watch, and enjoy.
@@ -62,7 +63,7 @@
                                                                                 src="{{ asset($item->image_url) }}"
                                                                                 alt=""></a>
                                                                     @endforeach
-                                                                    <a
+                                                                    {{-- <a
                                                                         href="https://carnivalguide.co/travel/img/home/slide_2.jpg"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_2.jpg"
@@ -71,7 +72,7 @@
                                                                         href="https://carnivalguide.co/travel/img/home/slide_3.jpg"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_3.jpg"
-                                                                            alt=""></a>
+                                                                            alt=""></a> --}}
                                                                 </div>
                                                                 <div class="slide-preview">
                                                                     <a
@@ -1785,8 +1786,8 @@
                             <div class="swiper-slide">
                                 <div class="icon-block style-2 bg-white">
                                     <img class="icon-img bg-dr-blue-2 border-grey-2"
-                                        src="{{ asset('poster/' . $service->poster) }}" alt="">
-                                    <h5 class="icon-title color-dark-2">{{ $service->name }}</h5>
+                                        src="{{ asset('images/' . $service->icon) }}" alt="">
+                                    <h5 class="icon-title color-dark-2">{{ $service->title }}</h5>
                                     <div class="icon-text color-dark-2-light">{{ $service->description }}</div>
                                     <a href="#" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view
                                             more</span></a>
@@ -2354,7 +2355,7 @@
                                             "992":{"items":2}
                                         }'>
                                         @foreach ($products as $product)
-                                        {{ dd($products->toArray()) }}
+                                            {{-- {{ dd($products->toArray()) }} --}}
                                             @if ($product->brand_id == 1)
                                                 <div class="item">
                                                     <div class="product-item  product-item-opt-1 ">
@@ -2550,7 +2551,7 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                        
+
                                         @foreach ($products as $product)
                                             @if ($product->brand_id == 2)
                                                 <div class="item">
@@ -2562,16 +2563,19 @@
                                                                         src="{{ asset('productImage/' . $product->image) }}"></a>
                                                             </div>
                                                             <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a href="">{{ $product->title }}</a></strong>
+                                                                <strong class="product-item-name"><a
+                                                                        href="">{{ $product->title }}</a></strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <span class="price">${{ $product->new_price }}</span>
+                                                                        <span
+                                                                            class="price">${{ $product->new_price }}</span>
                                                                     </div>
                                                                     <div class="product-reviews-summary">
                                                                         <div class="rating-summary">
                                                                             <div title="80%" class="rating-result">
                                                                                 <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>% of
+                                                                                    <span><span>{{ $product->discount }}</span>%
+                                                                                        of
                                                                                         <span>100</span></span>
                                                                                 </span>
                                                                             </div>
@@ -2742,7 +2746,7 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                        
+
                                         @foreach ($products as $product)
                                             @if ($product->brand_id == 3)
                                                 <div class="item">
@@ -2754,16 +2758,19 @@
                                                                         src="{{ asset('productImage/' . $product->image) }}"></a>
                                                             </div>
                                                             <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a href="">{{ $product->title }}</a></strong>
+                                                                <strong class="product-item-name"><a
+                                                                        href="">{{ $product->title }}</a></strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <span class="price">${{ $product->new_price }}</span>
+                                                                        <span
+                                                                            class="price">${{ $product->new_price }}</span>
                                                                     </div>
                                                                     <div class="product-reviews-summary">
                                                                         <div class="rating-summary">
                                                                             <div title="80%" class="rating-result">
                                                                                 <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>% of
+                                                                                    <span><span>{{ $product->discount }}</span>%
+                                                                                        of
                                                                                         <span>100</span></span>
                                                                                 </span>
                                                                             </div>
@@ -2934,7 +2941,7 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                        
+
                                         @foreach ($products as $product)
                                             @if ($product->brand_id == 1)
                                                 <div class="item">
@@ -2946,16 +2953,19 @@
                                                                         src="{{ asset('productImage/' . $product->image) }}"></a>
                                                             </div>
                                                             <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a href="">{{ $product->title }}</a></strong>
+                                                                <strong class="product-item-name"><a
+                                                                        href="">{{ $product->title }}</a></strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <span class="price">${{ $product->new_price }}</span>
+                                                                        <span
+                                                                            class="price">${{ $product->new_price }}</span>
                                                                     </div>
                                                                     <div class="product-reviews-summary">
                                                                         <div class="rating-summary">
                                                                             <div title="80%" class="rating-result">
                                                                                 <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>% of
+                                                                                    <span><span>{{ $product->discount }}</span>%
+                                                                                        of
                                                                                         <span>100</span></span>
                                                                                 </span>
                                                                             </div>
@@ -3126,7 +3136,7 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                        
+
                                         @foreach ($products as $product)
                                             @if ($product->brand_id == 5)
                                                 <div class="item">
@@ -3138,16 +3148,19 @@
                                                                         src="{{ asset('productImage/' . $product->image) }}"></a>
                                                             </div>
                                                             <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a href="">{{ $product->title }}</a></strong>
+                                                                <strong class="product-item-name"><a
+                                                                        href="">{{ $product->title }}</a></strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <span class="price">${{ $product->new_price }}</span>
+                                                                        <span
+                                                                            class="price">${{ $product->new_price }}</span>
                                                                     </div>
                                                                     <div class="product-reviews-summary">
                                                                         <div class="rating-summary">
                                                                             <div title="80%" class="rating-result">
                                                                                 <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>% of
+                                                                                    <span><span>{{ $product->discount }}</span>%
+                                                                                        of
                                                                                         <span>100</span></span>
                                                                                 </span>
                                                                             </div>
@@ -3329,16 +3342,19 @@
                                                                         src="{{ asset('productImage/' . $product->image) }}"></a>
                                                             </div>
                                                             <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a href="">{{ $product->title }}</a></strong>
+                                                                <strong class="product-item-name"><a
+                                                                        href="">{{ $product->title }}</a></strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <span class="price">${{ $product->new_price }}</span>
+                                                                        <span
+                                                                            class="price">${{ $product->new_price }}</span>
                                                                     </div>
                                                                     <div class="product-reviews-summary">
                                                                         <div class="rating-summary">
                                                                             <div title="80%" class="rating-result">
                                                                                 <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>% of
+                                                                                    <span><span>{{ $product->discount }}</span>%
+                                                                                        of
                                                                                         <span>100</span></span>
                                                                                 </span>
                                                                             </div>
@@ -3520,16 +3536,19 @@
                                                                         src="{{ asset('productImage/' . $product->image) }}"></a>
                                                             </div>
                                                             <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a href="">{{ $product->title }}</a></strong>
+                                                                <strong class="product-item-name"><a
+                                                                        href="">{{ $product->title }}</a></strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <span class="price">${{ $product->new_price }}</span>
+                                                                        <span
+                                                                            class="price">${{ $product->new_price }}</span>
                                                                     </div>
                                                                     <div class="product-reviews-summary">
                                                                         <div class="rating-summary">
                                                                             <div title="80%" class="rating-result">
                                                                                 <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>% of
+                                                                                    <span><span>{{ $product->discount }}</span>%
+                                                                                        of
                                                                                         <span>100</span></span>
                                                                                 </span>
                                                                             </div>
@@ -3711,16 +3730,19 @@
                                                                         src="{{ asset('productImage/' . $product->image) }}"></a>
                                                             </div>
                                                             <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a href="">{{ $product->title }}</a></strong>
+                                                                <strong class="product-item-name"><a
+                                                                        href="">{{ $product->title }}</a></strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <span class="price">${{ $product->new_price }}</span>
+                                                                        <span
+                                                                            class="price">${{ $product->new_price }}</span>
                                                                     </div>
                                                                     <div class="product-reviews-summary">
                                                                         <div class="rating-summary">
                                                                             <div title="80%" class="rating-result">
                                                                                 <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>% of
+                                                                                    <span><span>{{ $product->discount }}</span>%
+                                                                                        of
                                                                                         <span>100</span></span>
                                                                                 </span>
                                                                             </div>
@@ -3904,16 +3926,19 @@
                                                                         src="{{ asset('productImage/' . $product->image) }}"></a>
                                                             </div>
                                                             <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a href="">{{ $product->title }}</a></strong>
+                                                                <strong class="product-item-name"><a
+                                                                        href="">{{ $product->title }}</a></strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <span class="price">${{ $product->new_price }}</span>
+                                                                        <span
+                                                                            class="price">${{ $product->new_price }}</span>
                                                                     </div>
                                                                     <div class="product-reviews-summary">
                                                                         <div class="rating-summary">
                                                                             <div title="80%" class="rating-result">
                                                                                 <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>% of
+                                                                                    <span><span>{{ $product->discount }}</span>%
+                                                                                        of
                                                                                         <span>100</span></span>
                                                                                 </span>
                                                                             </div>
