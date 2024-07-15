@@ -58,7 +58,7 @@
                                                                         <a class="active"
                                                                             href="{{ asset($item->image_url) }}"><img
                                                                                 class="img-responsive"
-                                                                                src="https://carnivalguide.co/travel/img/home/slide_preview_1.jpg"
+                                                                                src="{{ asset($item->image_url) }}"
                                                                                 alt=""></a>
                                                                     @endforeach
                                                                     <a
