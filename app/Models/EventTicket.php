@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class EventTicket extends Model
 {
     use HasFactory, SoftDeletes;
+    protected $table = "event_tickets";
+
 
     protected $fillable = ['ticket_id', 'event_id', 'price', 'quantity', 'status'];
 

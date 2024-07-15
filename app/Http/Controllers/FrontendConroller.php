@@ -11,6 +11,7 @@ use App\Models\ProductVariant;
 use App\Models\Vendor;
 use App\Models\SubVendor;
 use App\Models\User;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -20,6 +21,12 @@ use DB;
 
 class FrontendConroller extends Controller
 {
+    public function home()
+    {
+        $events = Event::with('images','tickets')->orderBy('id','desc')->get()->take('5');
+        // dd($events->toArray());
+        return view('front.home',compact('events'));
+    }
     public function get_product(Request $request)
     {
         $products = Product::orderBy('id', 'DESC')->paginate(18);

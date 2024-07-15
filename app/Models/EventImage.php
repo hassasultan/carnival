@@ -14,6 +14,7 @@ class EventImage extends Model
      *
      * @var array
      */
+    protected $table = "event_images";
     protected $fillable = [
         'event_id', 'image_url', 'image_name', 'status',
     ];

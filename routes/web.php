@@ -38,6 +38,9 @@ use App\Http\Controllers\OurServiceController;
 use App\Http\Controllers\SiteGalleryController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\EventsCountryTabController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,9 +53,7 @@ use App\Http\Controllers\BrandController;
 |
 */
 
-Route::get('/', function () {
-    return view('ShopFrontend.home');
-})->name('front.home');
+Route::get('/', [FrontendConroller::class, 'home'])->name('front.home');
 Route::get('/product-listing', [FrontendConroller::class, 'product_listing'])->name('front.product_listing');
 Route::get('/mascamps', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
 Route::get('/get-section-leaders', [FrontendConroller::class, 'sub_vendor_listing'])->name('get.subvendors.front');
@@ -170,10 +171,10 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/appointments/{variant}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
     Route::put('/appointments/{variant}', [AppointmentController::class, 'update'])->name('appointments.update');
     Route::delete('/appointments/{variant}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
-    
+
     // get head_team
     Route::get('/get/head_team/{id}', [CarnivalController::class, 'head_team'])->name('get.head.team');
-    
+
     // get head_team
     Route::post('/update/head_team', [CarnivalController::class, 'carnivalHead'])->name('update.carnival.head');
 
@@ -192,6 +193,19 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     //Brands CRUD
     Route::resource('brands', BrandController::class);
+
+    //Countries CRUD
+
+    Route::resource('countries', CountryController::class);
+
+    //Cities CRUD
+    Route::resource('cities', CityController::class);
+
+    // Events tabs
+    Route::resource('events_country_tabs', EventsCountryTabController::class);
+
+    // API Route for getting cities by country
+    Route::get('api/cities/{country_id}', [EventsCountryTabController::class, 'getCitiesByCountry'])->name('get.cities.by.country');
 });
 
 Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
