@@ -6,7 +6,8 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide active" data-val="0">
                     <div class="clip">
-                        <div class="bg bg-bg-chrome act" style="background-image:url(img/home_9/slide_1a.jpg)">
+                        <div class="bg bg-bg-chrome act"
+                            style="background-image:url(https://carnivalguide.co/travel/img/home_9/slide_1a.jpg)">
                         </div>
                     </div>
                     <div class="vertical-align">
@@ -15,7 +16,8 @@
                                 <div class="col-md-12">
                                     <div class="main-title style-1 vert-title">
                                         <div class="top-weather-info delay-1">
-                                            <img src="img/theme-1/logo.fw.png" alt="">
+                                            <img src="https://carnivalguide.co/travel/img/theme-1/logo.fw.png"
+                                                alt="">
                                         </div>
                                         <h1 class="color-white delay-1">amazing events</h1>
                                         <h3 class="person_price color-white delay-1">more then <strong>10 000</strong>
@@ -27,7 +29,8 @@
                                             <div class="col-xs-12 col-sm-6">
                                                 <a href="#"
                                                     class="c-button b-60 bg-blue-3 hv-transparent delay-2 fr"><img
-                                                        src="img/loc_icon.png" alt=""><span>view our
+                                                        src="https://carnivalguide.co/travel/img/loc_icon.png"
+                                                        alt=""><span>view our
                                                         tours</span></a>
                                             </div>
                                             <div class="col-xs-12 col-sm-6">
@@ -46,7 +49,8 @@
                 </div>
                 <div class="swiper-slide" data-val="1">
                     <div class="clip">
-                        <div class="bg bg-bg-chrome act" style="background-image:url(img/home_9/slide_1a.jpg)">
+                        <div class="bg bg-bg-chrome act"
+                            style="background-image:url(https://carnivalguide.co/travel/img/home_9/slide_1a.jpg)">
                         </div>
                     </div>
                     <div class="vertical-align">
@@ -55,7 +59,8 @@
                                 <div class="col-md-12">
                                     <div class="main-title style-1 vert-title">
                                         <div class="top-weather-info delay-1">
-                                            <img src="img/theme-1/logo.fw.png" alt="">
+                                            <img src="https://carnivalguide.co/travel/img/theme-1/logo.fw.png"
+                                                alt="">
                                         </div>
                                         <h1 class="color-white delay-1">amazing Events</h1>
                                         <h3 class="person_price color-white delay-1">more then <strong>10 000</strong>
@@ -67,7 +72,8 @@
                                             <div class="col-xs-12 col-sm-6">
                                                 <a href="#"
                                                     class="c-button b-60 bg-blue-3 hv-transparent delay-2 fr"><img
-                                                        src="img/loc_icon.png" alt=""><span>view our
+                                                        src="https://carnivalguide.co/travel/img/loc_icon.png"
+                                                        alt=""><span>view our
                                                         tours</span></a>
                                             </div>
                                             <div class="col-xs-12 col-sm-6">
@@ -95,13 +101,13 @@
         </div>
     </div>
 
-    <div class="inner-banner style-6">
-        <img class="center-image" src="img/firstbanner.png" alt="">
+    {{-- <div class="inner-banner style-6">
+        <img class="center-image" src="https://carnivalguide.co/travel/img/firstbanner.png" alt="">
         <div class="vertical-align">
             <div class="container">
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- DETAIL WRAPPER -->
     <div class="detail-wrapper">
@@ -113,10 +119,12 @@
                         <div class="simple-tab type-2 tab-wrapper">
                             <div class="tab-nav-wrapper">
                                 <div class="nav-tab  clearfix">
-                                    <div class="nav-tab-item active">
-                                        General Information
-                                    </div>
-                                    <div class="nav-tab-item">
+                                    @foreach ($event->country_tabs as $key => $row)
+                                        <div class="nav-tab-item @if ($key == 0) active @endif">
+                                            {{ $row->tab }}
+                                        </div>
+                                    @endforeach
+                                    {{-- <div class="nav-tab-item">
                                         Sports
                                     </div>
                                     <div class="nav-tab-item">
@@ -156,43 +164,66 @@
                                     </div>
                                     <div class="nav-tab-item">
                                         Blog
-                                    </div>
+                                    </div> --}}
 
                                 </div>
                             </div>
                             <div class="tabs-content clearfix">
+                                @foreach ($event->country_tabs as $key => $row)
+                                    <div class="tab-info @if ($key == 0) active @endif">
+                                        @if ($row->file_type == 'image')
+                                            <img src="{{ asset('files/' . $row->file) }}" class="img-responsive"
+                                                alt="file">
+                                        @elseif($row->file_type == 'video')
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <video loop muted controls class="" id="">
+                                                <source type="video/mp4" src="{{ asset('files/' . $row->file) }}" />
+    
+                                            </video>
+                                        </div>
+                                            {{-- <video class="img-responsive" controls>
+                                                <source src="{{ asset('files/' . $row->file) }}"
+                                                    type="{{ $row->file_type }}">
+                                                Your browser does not support the video tag.
+                                            </video> --}}
+                                        @endif
+                                        <div class="col-md-12">
+                                            {!! $row->content !!}
+                                        </div>
+                                    </div>
+                                @endforeach
 
-                                <div class="tab-info active">
+                                {{-- <div class="tab-info ">
                                     <div class="arrows">
                                         <div class="swiper-container" data-autoplay="0" data-loop="1" data-speed="500"
                                             data-center="0" data-slides-per-view="1">
                                             <div class="swiper-wrapper">
                                                 <div class="swiper-slide active" data-val="0">
-                                                    <img class="img-responsive img-full" src="img/home/s_slide_1.jpg"
+                                                    <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/home/s_slide_1.jpg"
                                                         alt="">
                                                 </div>
                                                 <div class="swiper-slide" data-val="1">
-                                                    <img class="img-responsive img-full" src="img//home/s_slide_2.jpg"
+                                                    <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img//home/s_slide_2.jpg"
                                                         alt="">
                                                 </div>
 
 
                                                 <div class="swiper-slide" data-val="4">
-                                                    <img class="img-responsive img-full" src="img//home/s_slide_5.jpg"
+                                                    <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img//home/s_slide_5.jpg"
                                                         alt="">
                                                 </div>
 
                                                 <div class="swiper-slide" data-val="1">
-                                                    <img class="img-responsive img-full" src="img//home/s_slide_7.jpg"
+                                                    <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img//home/s_slide_7.jpg"
                                                         alt="">
                                                 </div>
 
                                                 <div class="swiper-slide" data-val="3">
-                                                    <img class="img-responsive img-full" src="img//home/s_slide_9.jpg"
+                                                    <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img//home/s_slide_9.jpg"
                                                         alt="">
                                                 </div>
                                                 <div class="swiper-slide" data-val="4">
-                                                    <img class="img-responsive img-full" src="img//home/s_slide_10.jpg"
+                                                    <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img//home/s_slide_10.jpg"
                                                         alt="">
                                                 </div>
                                             </div>
@@ -248,7 +279,7 @@
                                         <div class="grid-sizer col-mob-12 col-xs-6 col-sm-4"></div>
                                         <div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-4">
                                             <a class="black-hover" href="#">
-                                                <img class="img-full img-responsive" src="img/detail/blog_gal_1a.jpg"
+                                                <img class="img-full img-responsive" src="https://carnivalguide.co/travel/img/detail/blog_gal_1a.jpg"
                                                     alt="">
                                                 <div class="tour-layer delay-1"></div>
                                                 <div class="vertical-align">
@@ -261,7 +292,7 @@
                                         </div>
                                         <div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-4">
                                             <a class="black-hover" href="#">
-                                                <img class="img-full img-responsive" src="img/detail/blog_gal_2a.jpg"
+                                                <img class="img-full img-responsive" src="https://carnivalguide.co/travel/img/detail/blog_gal_2a.jpg"
                                                     alt="">
                                                 <div class="tour-layer delay-1"></div>
                                                 <div class="vertical-align">
@@ -274,7 +305,7 @@
                                         </div>
                                         <div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-4">
                                             <a class="black-hover" href="#">
-                                                <img class="img-full img-responsive" src="img/detail/blog_gal_3a.jpg"
+                                                <img class="img-full img-responsive" src="https://carnivalguide.co/travel/img/detail/blog_gal_3a.jpg"
                                                     alt="">
                                                 <div class="tour-layer delay-1"></div>
                                                 <div class="vertical-align">
@@ -287,7 +318,7 @@
                                         </div>
                                         <div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-4">
                                             <a class="black-hover" href="#">
-                                                <img class="img-full img-responsive" src="img/detail/blog_gal_4a.jpg"
+                                                <img class="img-full img-responsive" src="https://carnivalguide.co/travel/img/detail/blog_gal_4a.jpg"
                                                     alt="">
                                                 <div class="tour-layer delay-1"></div>
                                                 <div class="vertical-align">
@@ -300,7 +331,7 @@
                                         </div>
                                         <div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-4">
                                             <a class="black-hover" href="#">
-                                                <img class="img-full img-responsive" src="img/detail/blog_gal_5a.jpg"
+                                                <img class="img-full img-responsive" src="https://carnivalguide.co/travel/img/detail/blog_gal_5a.jpg"
                                                     alt="">
                                                 <div class="tour-layer delay-1"></div>
                                                 <div class="vertical-align">
@@ -313,7 +344,7 @@
                                         </div>
                                         <div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-4">
                                             <a class="black-hover" href="#">
-                                                <img class="img-full img-responsive" src="img/detail/blog_gal_6a.jpg"
+                                                <img class="img-full img-responsive" src="https://carnivalguide.co/travel/img/detail/blog_gal_6a.jpg"
                                                     alt="">
                                                 <div class="tour-layer delay-1"></div>
                                                 <div class="vertical-align">
@@ -334,99 +365,9 @@
                                 </div>
 
                                 <div class="tab-info">
-                                    <img class="img-responsive" src="img/home/guide_1.jpg" alt="">
-                                    <h3>sports in Grenada</h3>
-                                    <p>Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent aliquam,
-                                        nisl feugiat vehicula condimentum, justo tellus scelerisque metus. Pellentesque ac
-                                        turpis egestas, varius justo et, condimentum augue.</p>
-                                    <div class="table-responsive">
-                                        <table class="table style-3 type-3">
-                                            <tbody>
-                                                <tr>
-                                                    <td>FOOTBALL</td>
-                                                    <td>Acrobatics</td>
-                                                    <td>Figure skating</td>
-                                                    <td>Biathlon</td>
-                                                    <td>Cycling</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Badminton</td>
-                                                    <td>Xtreme sports</td>
-                                                    <td>Table tennis</td>
-                                                    <td>Race walk</td>
-                                                    <td>Diving</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Shark divingn</td>
-                                                    <td>Running</td>
-                                                    <td>Power lifting</td>
-                                                    <td>Motocross</td>
-                                                    <td>Kayaking</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Lawn bowling</td>
-                                                    <td>Field hockey</td>
-                                                    <td>Table tennis</td>
-                                                    <td>Horseback riding</td>
-                                                    <td>Auto racing</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="sport-block clearfix">
-                                        <h3>xtreme sport</h3>
-                                        <p>Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent
-                                            aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus.
-                                            Pellentesque ac turpis egestas, varius justo et, condimentum augue. Lorem ipsum
-                                            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                        <h4>interesting for you</h4>
-                                        <p>Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent
-                                            aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus.
-                                            Pellentesque varius justo et, condimentum augue.</p>
-                                        <!-- <img class="left-img" src="img/detail/sport.jpg" alt="">  -->
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-
-                                                <iframe width="100%" height="100%"
-                                                    src="https://www.youtube.com/embed/AosXhW9-wL0" frameborder="0"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowfullscreen></iframe>
-
-
-                                            </div>
-                                            <div class="col-md-6">
-                                                <ul>
-                                                    <li>Table tennis, Tae Kwon Do, Tennis</li>
-                                                    <li>Race walk, Road race, Roller sports, Rugby</li>
-                                                    <li>Poker, Pole vault, Power lifting</li>
-                                                    <li>Go-carting, Golf</li>
-                                                    <li>Mah-Jong, Marathon, Motocross</li>
-                                                    <li>Ice dancing, Ice hockey</li>
-                                                    <li>Jacks, Jai alai, Javelin throw, Judo</li>
-                                                    <li>Ice dancing, Ice hockey</li>
-                                                </ul>
-                                            </div>
-
-                                        </div>
-
-
-
-
-                                        <p>Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent
-                                            aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus.
-                                            Pellentesque ac turpis egestas, varius justo et, condimentum augue. Lorem ipsum
-                                            dolor sit amet, consectetur adipiscing elit, sed do eiusre et dolore magna
-                                            aliqua.</p>
-                                    </div>
-                                </div>
-
-                                <div class="tab-info">
                                     <div class="embed-responsive embed-responsive-16by9">
                                         <video loop muted controls class="" id="">
-                                            <source type="video/mp4" src="video/puregreneda.mp4" />
+                                            <source type="video/mp4" src="https://carnivalguide.co/travel/video/puregreneda.mp4" />
 
                                         </video>
                                     </div>
@@ -447,23 +388,23 @@
                                             <div class="video-click style-2">
                                                 <a href="https://player.vimeo.com/video/127669609?color=cd6018&amp;title=0&amp;byline=0&amp;portrait=0"
                                                     class="video-change"></a>
-                                                <img src="img/detail/guide_2.jpg" class="img-href res-img"
+                                                <img src="https://carnivalguide.co/travel/img/detail/guide_2.jpg" class="img-href res-img"
                                                     alt="video image">
                                                 <div class="video">
                                                     <iframe></iframe>
-                                                    <img src="img/home_2/close.png" alt="close" class="close-v">
+                                                    <img src="https://carnivalguide.co/travel/img/home_2/close.png" alt="close" class="close-v">
                                                 </div>
                                                 <div class="video-title">
                                                     <div class="item-block style-2">
                                                         <div class="play">
-                                                            <img src="img/home_2/play.png" alt="palay">
+                                                            <img src="https://carnivalguide.co/travel/img/home_2/play.png" alt="palay">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
-                                            <img class="img-responsive" src="img/detail/guide_3.jpg" alt="">
+                                            <img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/guide_3.jpg" alt="">
                                         </div>
                                     </div>
                                     <h4>history of Grenada</h4>
@@ -477,10 +418,10 @@
                                         consectetur adipiscing elit, sed do eiusre et dolore magna aliqua.</p>
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-6">
-                                            <img class="img-responsive" src="img/detail/guide_4.jpg" alt="">
+                                            <img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/guide_4.jpg" alt="">
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
-                                            <img class="img-responsive" src="img/detail/guide_5.jpg" alt="">
+                                            <img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/guide_5.jpg" alt="">
                                         </div>
                                     </div>
                                     <h4>history of Grenada</h4>
@@ -492,7 +433,7 @@
 
                                 <div class="tab-info">
                                     <div>
-                                        <img class="img-responsive img-full" src="img/detail/m_slide_1a.jpg"
+                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/m_slide_1a.jpg"
                                             alt="">
                                     </div>
                                     <h3>Grenada Nightlife</h3>
@@ -511,7 +452,7 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="bar">
-                                                <img class="bar-img" src="img/detail/bar_1a.jpg" alt="">
+                                                <img class="bar-img" src="https://carnivalguide.co/travel/img/detail/bar_1a.jpg" alt="">
                                                 <div class="bar-title color-dark">Bar-Restaurant de l’Hôtel Costes</div>
                                                 <div class="bar-desc color-grey">
                                                     239, Rue Saint-Honoré - 75001 Grenada<br>
@@ -522,7 +463,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="bar">
-                                                <img class="bar-img" src="img/detail/bar_2a.jpg" alt="">
+                                                <img class="bar-img" src="https://carnivalguide.co/travel/img/detail/bar_2a.jpg" alt="">
                                                 <div class="bar-title color-dark">Buddha bar</div>
                                                 <div class="bar-desc color-grey">
                                                     8, Rue Boissy d’Anglas - 75008 Grenada<br>
@@ -533,7 +474,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="bar">
-                                                <img class="bar-img" src="img/detail/bar_3a.jpg" alt="">
+                                                <img class="bar-img" src="https://carnivalguide.co/travel/img/detail/bar_3a.jpg" alt="">
                                                 <div class="bar-title color-dark">Le Cithéa</div>
                                                 <div class="bar-desc color-grey">
                                                     114, Rue Oberkampf - 75011 Grenada<br>
@@ -544,7 +485,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="bar">
-                                                <img class="bar-img" src="img/detail/bar_4a.jpg" alt="">
+                                                <img class="bar-img" src="https://carnivalguide.co/travel/img/detail/bar_4a.jpg" alt="">
                                                 <div class="bar-title color-dark">Le SanZ SanS</div>
                                                 <div class="bar-desc color-grey">
                                                     49, Rue Faubourg Saint-Antoine - 75011 Grenada<br>
@@ -565,14 +506,14 @@
                                 </div>
 
                                 <div class="tab-info">
-                                    <img class="img-responsive" src="img/detail/guide_6a.jpg" alt="">
+                                    <img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/guide_6a.jpg" alt="">
 
                                     <div class="list-content clearfix">
                                         <div class="list-item-entry">
                                             <div class="hotel-item style-8 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img class="center-image" src="img/tour_list/hotel_grid_15.jpg"
+                                                        <img class="center-image" src="https://carnivalguide.co/travel/img/tour_list/hotel_grid_15.jpg"
                                                             alt="">
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
@@ -592,15 +533,15 @@
                                                         <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_1.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_2.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_2.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_3.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_3.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_4.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_4.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_5.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_5.png"
                                                                 alt="">
                                                         </div>
                                                     </div>
@@ -616,7 +557,7 @@
                                             <div class="hotel-item style-8 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img class="center-image" src="img/tour_list/hotel_grid_13.jpg"
+                                                        <img class="center-image" src="https://carnivalguide.co/travel/img/tour_list/hotel_grid_13.jpg"
                                                             alt="">
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
@@ -636,15 +577,15 @@
                                                         <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_1.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_2.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_2.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_3.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_3.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_4.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_4.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_5.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_5.png"
                                                                 alt="">
                                                         </div>
                                                     </div>
@@ -660,7 +601,7 @@
                                             <div class="hotel-item style-8 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img class="center-image" src="img/tour_list/hotel_grid_1.jpg"
+                                                        <img class="center-image" src="https://carnivalguide.co/travel/img/tour_list/hotel_grid_1.jpg"
                                                             alt="">
                                                         <div class="price price-s-2 green tt">best offer</div>
                                                     </div>
@@ -681,15 +622,15 @@
                                                         <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_1.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_2.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_2.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_3.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_3.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_4.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_4.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_5.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_5.png"
                                                                 alt="">
                                                         </div>
                                                     </div>
@@ -705,7 +646,7 @@
                                             <div class="hotel-item style-8 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img class="center-image" src="img/tour_list/hotel_grid_2.jpg"
+                                                        <img class="center-image" src="https://carnivalguide.co/travel/img/tour_list/hotel_grid_2.jpg"
                                                             alt="">
                                                         <div class="price price-s-2 red tt">hot price</div>
                                                     </div>
@@ -726,15 +667,15 @@
                                                         <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_1.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_2.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_2.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_3.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_3.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_4.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_4.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_5.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_5.png"
                                                                 alt="">
                                                         </div>
                                                     </div>
@@ -750,7 +691,7 @@
                                             <div class="hotel-item style-8 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img class="center-image" src="img/tour_list/hotel_grid_3.jpg"
+                                                        <img class="center-image" src="https://carnivalguide.co/travel/img/tour_list/hotel_grid_3.jpg"
                                                             alt="">
                                                         <div class="price price-s-2 red tt">hot price</div>
                                                     </div>
@@ -771,15 +712,15 @@
                                                         <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_1.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_2.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_2.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_3.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_3.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_4.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_4.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_5.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_5.png"
                                                                 alt="">
                                                         </div>
                                                     </div>
@@ -795,7 +736,7 @@
                                             <div class="hotel-item style-8 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img class="center-image" src="img/tour_list/hotel_grid_4.jpg"
+                                                        <img class="center-image" src="https://carnivalguide.co/travel/img/tour_list/hotel_grid_4.jpg"
                                                             alt="">
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
@@ -815,15 +756,15 @@
                                                         <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_1.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_2.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_2.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_3.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_3.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_4.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_4.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_5.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_5.png"
                                                                 alt="">
                                                         </div>
                                                     </div>
@@ -843,14 +784,14 @@
                                 </div>
 
                                 <div class="tab-info">
-                                    <img class="img-responsive" src="img/detail/guide_6b.jpg" alt="">
+                                    <img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/guide_6b.jpg" alt="">
 
                                     <div class="list-content clearfix">
                                         <div class="list-item-entry">
                                             <div class="hotel-item style-8 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img class="center-image" src="img/tour_list/hotel_grid_15.jpg"
+                                                        <img class="center-image" src="https://carnivalguide.co/travel/img/tour_list/hotel_grid_15.jpg"
                                                             alt="">
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
@@ -870,15 +811,15 @@
                                                         <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_1.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_2.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_2.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_3.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_3.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_4.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_4.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_5.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_5.png"
                                                                 alt="">
                                                         </div>
                                                     </div>
@@ -894,7 +835,7 @@
                                             <div class="hotel-item style-8 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img class="center-image" src="img/tour_list/hotel_grid_13.jpg"
+                                                        <img class="center-image" src="https://carnivalguide.co/travel/img/tour_list/hotel_grid_13.jpg"
                                                             alt="">
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
@@ -914,15 +855,15 @@
                                                         <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_1.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_2.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_2.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_3.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_3.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_4.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_4.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_5.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_5.png"
                                                                 alt="">
                                                         </div>
                                                     </div>
@@ -938,7 +879,7 @@
                                             <div class="hotel-item style-8 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img class="center-image" src="img/tour_list/hotel_grid_1.jpg"
+                                                        <img class="center-image" src="https://carnivalguide.co/travel/img/tour_list/hotel_grid_1.jpg"
                                                             alt="">
                                                         <div class="price price-s-2 green tt">best offer</div>
                                                     </div>
@@ -959,15 +900,15 @@
                                                         <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_1.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_2.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_2.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_3.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_3.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_4.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_4.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_5.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_5.png"
                                                                 alt="">
                                                         </div>
                                                     </div>
@@ -983,7 +924,7 @@
                                             <div class="hotel-item style-8 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img class="center-image" src="img/tour_list/hotel_grid_2.jpg"
+                                                        <img class="center-image" src="https://carnivalguide.co/travel/img/tour_list/hotel_grid_2.jpg"
                                                             alt="">
                                                         <div class="price price-s-2 red tt">hot price</div>
                                                     </div>
@@ -1005,15 +946,15 @@
                                                             ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_1.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_2.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_2.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_3.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_3.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_4.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_4.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_5.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_5.png"
                                                                 alt="">
                                                         </div>
                                                     </div>
@@ -1029,7 +970,7 @@
                                             <div class="hotel-item style-8 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img class="center-image" src="img/tour_list/hotel_grid_3.jpg"
+                                                        <img class="center-image" src="https://carnivalguide.co/travel/img/tour_list/hotel_grid_3.jpg"
                                                             alt="">
                                                         <div class="price price-s-2 red tt">hot price</div>
                                                     </div>
@@ -1051,15 +992,15 @@
                                                             ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_1.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_2.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_2.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_3.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_3.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_4.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_4.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_5.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_5.png"
                                                                 alt="">
                                                         </div>
                                                     </div>
@@ -1075,7 +1016,7 @@
                                             <div class="hotel-item style-8 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img class="center-image" src="img/tour_list/hotel_grid_4.jpg"
+                                                        <img class="center-image" src="https://carnivalguide.co/travel/img/tour_list/hotel_grid_4.jpg"
                                                             alt="">
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
@@ -1096,15 +1037,15 @@
                                                             ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_1.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_2.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_2.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_3.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_3.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_4.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_4.png"
                                                                 alt="">
-                                                            <img class="hotel-icon" src="img/tour_list/hotel_icon_5.png"
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/travel/img/tour_list/hotel_icon_5.png"
                                                                 alt="">
                                                         </div>
                                                     </div>
@@ -1124,13 +1065,13 @@
                                 </div>
 
                                 <div class="tab-info">
-                                    <img class="img-responsive" src="img/detail/guide_7a.jpg" alt="">
+                                    <img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/guide_7a.jpg" alt="">
                                     <div class="list-content clearfix">
                                         <div class="list-item-entry">
                                             <div class="hotel-item style-12 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/flight_grid_1.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_1.jpg" alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="hotel-right-text color-grey fr">one way flights, 1
@@ -1141,7 +1082,7 @@
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
                                                                 <img class="fi_icon"
-                                                                    src="img/tour_list/flight_icon_2.png"
+                                                                    src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
@@ -1151,7 +1092,7 @@
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
                                                                 <img class="fi_icon"
-                                                                    src="img/tour_list/flight_icon_1.png"
+                                                                    src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
@@ -1163,7 +1104,7 @@
                                                         <a href="#"
                                                             class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
                                                         <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
-                                                                src="img/flag_icon_grey.png" alt="">view
+                                                                src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view
                                                             more</a>
                                                     </div>
                                                 </div>
@@ -1173,7 +1114,7 @@
                                             <div class="hotel-item style-12 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/flight_grid_2.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_2.jpg" alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="hotel-right-text color-grey fr">one way flights, 1
@@ -1184,7 +1125,7 @@
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
                                                                 <img class="fi_icon"
-                                                                    src="img/tour_list/flight_icon_2.png"
+                                                                    src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
@@ -1194,7 +1135,7 @@
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
                                                                 <img class="fi_icon"
-                                                                    src="img/tour_list/flight_icon_1.png"
+                                                                    src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
@@ -1206,7 +1147,7 @@
                                                         <a href="#"
                                                             class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
                                                         <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
-                                                                src="img/flag_icon_grey.png" alt="">view
+                                                                src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view
                                                             more</a>
                                                     </div>
                                                 </div>
@@ -1216,7 +1157,7 @@
                                             <div class="hotel-item style-12 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/flight_grid_3.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_3.jpg" alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="hotel-right-text color-grey fr">one way flights, 1
@@ -1227,7 +1168,7 @@
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
                                                                 <img class="fi_icon"
-                                                                    src="img/tour_list/flight_icon_2.png"
+                                                                    src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
@@ -1237,7 +1178,7 @@
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
                                                                 <img class="fi_icon"
-                                                                    src="img/tour_list/flight_icon_1.png"
+                                                                    src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
@@ -1249,7 +1190,7 @@
                                                         <a href="#"
                                                             class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
                                                         <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
-                                                                src="img/flag_icon_grey.png" alt="">view
+                                                                src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view
                                                             more</a>
                                                     </div>
                                                 </div>
@@ -1259,7 +1200,7 @@
                                             <div class="hotel-item style-12 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/flight_grid_1.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_1.jpg" alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="hotel-right-text color-grey fr">one way flights, 1
@@ -1270,7 +1211,7 @@
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
                                                                 <img class="fi_icon"
-                                                                    src="img/tour_list/flight_icon_2.png"
+                                                                    src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
@@ -1280,7 +1221,7 @@
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
                                                                 <img class="fi_icon"
-                                                                    src="img/tour_list/flight_icon_1.png"
+                                                                    src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
@@ -1292,7 +1233,7 @@
                                                         <a href="#"
                                                             class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
                                                         <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
-                                                                src="img/flag_icon_grey.png" alt="">view
+                                                                src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view
                                                             more</a>
                                                     </div>
                                                 </div>
@@ -1302,7 +1243,7 @@
                                             <div class="hotel-item style-12 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/flight_grid_3.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_3.jpg" alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="hotel-right-text color-grey fr">one way flights, 1
@@ -1313,7 +1254,7 @@
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
                                                                 <img class="fi_icon"
-                                                                    src="img/tour_list/flight_icon_2.png"
+                                                                    src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
@@ -1323,7 +1264,7 @@
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
                                                                 <img class="fi_icon"
-                                                                    src="img/tour_list/flight_icon_1.png"
+                                                                    src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
@@ -1335,7 +1276,7 @@
                                                         <a href="#"
                                                             class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
                                                         <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
-                                                                src="img/flag_icon_grey.png" alt="">view
+                                                                src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view
                                                             more</a>
                                                     </div>
                                                 </div>
@@ -1345,7 +1286,7 @@
                                             <div class="hotel-item style-12 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/flight_grid_2.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_2.jpg" alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="hotel-right-text color-grey fr">one way flights, 1
@@ -1356,7 +1297,7 @@
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
                                                                 <img class="fi_icon"
-                                                                    src="img/tour_list/flight_icon_2.png"
+                                                                    src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
@@ -1366,7 +1307,7 @@
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
                                                                 <img class="fi_icon"
-                                                                    src="img/tour_list/flight_icon_1.png"
+                                                                    src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
@@ -1378,7 +1319,7 @@
                                                         <a href="#"
                                                             class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
                                                         <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
-                                                                src="img/flag_icon_grey.png" alt="">view
+                                                                src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view
                                                             more</a>
                                                     </div>
                                                 </div>
@@ -1388,24 +1329,24 @@
                                 </div>
 
                                 <div class="tab-info">
-                                    <img class="img-responsive" src="img/detail/guide_8b.jpg" alt="">
+                                    <img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/guide_8b.jpg" alt="">
                                     <div class="grid-content clearfix">
                                         <div class="list-item-entry">
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_1.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_1.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -1438,18 +1379,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_2.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_2.jpg" alt="">
                                                         <div class="price price-s-4">$500</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -1482,18 +1423,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_3.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_3.jpg" alt="">
                                                         <div class="price price-s-4">$450</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -1526,18 +1467,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_4.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_4.jpg" alt="">
                                                         <div class="price price-s-4">$650</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -1570,18 +1511,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_5.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_5.jpg" alt="">
                                                         <div class="price price-s-4">$670</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -1614,18 +1555,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_6.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_6.jpg" alt="">
                                                         <div class="price price-s-4">$200</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -1658,18 +1599,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_7.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_7.jpg" alt="">
                                                         <div class="price price-s-4">$400</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -1702,18 +1643,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_8.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_8.jpg" alt="">
                                                         <div class="price price-s-4">$550</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -1746,18 +1687,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_9.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_9.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -1790,18 +1731,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_10.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_10.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -1834,18 +1775,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_11.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_11.jpg" alt="">
                                                         <div class="price price-s-4">$700</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -1878,18 +1819,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_12.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_12.jpg" alt="">
                                                         <div class="price price-s-4">$450</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -1921,24 +1862,24 @@
                                     </div>
                                 </div>
                                 <div class="tab-info">
-                                    <img class="img-responsive" src="img/detail/guide_events.jpg" alt="">
+                                    <img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/guide_events.jpg" alt="">
                                     <div class="grid-content clearfix">
                                         <div class="list-item-entry">
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_4a.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_4a.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -1971,18 +1912,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_5a.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_5a.jpg" alt="">
                                                         <div class="price price-s-4">$500</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2015,18 +1956,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_6a.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_6a.jpg" alt="">
                                                         <div class="price price-s-4">$450</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2059,18 +2000,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_4.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_4.jpg" alt="">
                                                         <div class="price price-s-4">$650</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2103,18 +2044,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_5.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_5.jpg" alt="">
                                                         <div class="price price-s-4">$670</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2147,18 +2088,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_6.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_6.jpg" alt="">
                                                         <div class="price price-s-4">$200</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2191,18 +2132,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_7.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_7.jpg" alt="">
                                                         <div class="price price-s-4">$400</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2235,18 +2176,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_8.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_8.jpg" alt="">
                                                         <div class="price price-s-4">$550</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2279,18 +2220,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_9.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_9.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2323,18 +2264,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_10.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_10.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2367,18 +2308,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_11.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_11.jpg" alt="">
                                                         <div class="price price-s-4">$700</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2411,18 +2352,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_12.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_12.jpg" alt="">
                                                         <div class="price price-s-4">$450</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2454,24 +2395,24 @@
                                     </div>
                                 </div>
                                 <div class="tab-info">
-                                    <img class="img-responsive" src="img/detail/guide_mas.jpg" alt="">
+                                    <img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/guide_mas.jpg" alt="">
                                     <div class="grid-content clearfix">
                                         <div class="list-item-entry">
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_1a.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_1a.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2504,18 +2445,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_2a.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_2a.jpg" alt="">
                                                         <div class="price price-s-4">$500</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2548,18 +2489,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_3a.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_3a.jpg" alt="">
                                                         <div class="price price-s-4">$450</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2592,18 +2533,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_4.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_4.jpg" alt="">
                                                         <div class="price price-s-4">$650</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2636,18 +2577,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_5.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_5.jpg" alt="">
                                                         <div class="price price-s-4">$670</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2680,18 +2621,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_6.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_6.jpg" alt="">
                                                         <div class="price price-s-4">$200</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2724,18 +2665,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_7.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_7.jpg" alt="">
                                                         <div class="price price-s-4">$400</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2768,18 +2709,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_8.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_8.jpg" alt="">
                                                         <div class="price price-s-4">$550</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2812,18 +2753,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_9.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_9.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2856,18 +2797,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_10.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_10.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2900,18 +2841,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_11.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_11.jpg" alt="">
                                                         <div class="price price-s-4">$700</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2944,18 +2885,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_12.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_12.jpg" alt="">
                                                         <div class="price price-s-4">$450</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -2987,24 +2928,24 @@
                                     </div>
                                 </div>
                                 <div class="tab-info">
-                                    <img class="img-responsive" src="img/detail/guide_tours.jpg" alt="">
+                                    <img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/guide_tours.jpg" alt="">
                                     <div class="grid-content clearfix">
                                         <div class="list-item-entry">
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_10a.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_10a.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3037,18 +2978,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_11a.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_11a.jpg" alt="">
                                                         <div class="price price-s-4">$500</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3081,18 +3022,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_12a.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_12a.jpg" alt="">
                                                         <div class="price price-s-4">$450</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3125,18 +3066,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_4.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_4.jpg" alt="">
                                                         <div class="price price-s-4">$650</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3169,18 +3110,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_5.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_5.jpg" alt="">
                                                         <div class="price price-s-4">$670</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3213,18 +3154,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_6.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_6.jpg" alt="">
                                                         <div class="price price-s-4">$200</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3257,18 +3198,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_7.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_7.jpg" alt="">
                                                         <div class="price price-s-4">$400</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3301,18 +3242,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_8.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_8.jpg" alt="">
                                                         <div class="price price-s-4">$550</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3345,18 +3286,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_9.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_9.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3389,18 +3330,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_10.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_10.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3433,18 +3374,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_11.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_11.jpg" alt="">
                                                         <div class="price price-s-4">$700</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3477,18 +3418,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_12.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_12.jpg" alt="">
                                                         <div class="price price-s-4">$450</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3520,24 +3461,24 @@
                                     </div>
                                 </div>
                                 <div class="tab-info">
-                                    <img class="img-responsive" src="img/detail/guide_12a.jpg" alt="">
+                                    <img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/guide_12a.jpg" alt="">
                                     <div class="grid-content clearfix">
                                         <div class="list-item-entry">
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_7a.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_7a.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3570,18 +3511,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_8a.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_8a.jpg" alt="">
                                                         <div class="price price-s-4">$500</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3614,18 +3555,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_9a.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_9a.jpg" alt="">
                                                         <div class="price price-s-4">$450</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3658,18 +3599,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_4.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_4.jpg" alt="">
                                                         <div class="price price-s-4">$650</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3702,18 +3643,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_5.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_5.jpg" alt="">
                                                         <div class="price price-s-4">$670</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3746,18 +3687,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_6.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_6.jpg" alt="">
                                                         <div class="price price-s-4">$200</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3790,18 +3731,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_7.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_7.jpg" alt="">
                                                         <div class="price price-s-4">$400</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3834,18 +3775,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_8.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_8.jpg" alt="">
                                                         <div class="price price-s-4">$550</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3878,18 +3819,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_9.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_9.jpg" alt="">
                                                         <div class="price price-s-4">$600</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3922,18 +3863,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_10.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_10.jpg" alt="">
                                                         <div class="price price-s-4">rest</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -3966,18 +3907,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_11.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_11.jpg" alt="">
                                                         <div class="price price-s-4">$700</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -4010,18 +3951,18 @@
                                             <div class="hotel-item style-9 bg-grey-2">
                                                 <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                        <img src="img/tour_list/cruise_grid_12.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/travel/img/tour_list/cruise_grid_12.jpg" alt="">
                                                         <div class="price price-s-4">$450</div>
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
                                                         <div class="tour-info-line clearfix">
                                                             <div class="tour-info fl">
-                                                                <img src="img/calendar_icon_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">July <strong>19th
                                                                         2015</strong></span>
                                                             </div>
                                                             <div class="tour-info fl">
-                                                                <img src="img/loc_icon_small_grey.png" alt="">
+                                                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
                                                                 <span class="font-style-2 color-grey-3">alaska</span>
                                                             </div>
                                                         </div>
@@ -4054,7 +3995,7 @@
                                 </div>
                                 <div class="tab-info">
                                     <div>
-                                        <img class="img-responsive img-full" src="img/detail/m_slide_1b.jpg"
+                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/m_slide_1b.jpg"
                                             alt="">
                                     </div>
                                     <h3>Grenada Nightlife</h3>
@@ -4073,7 +4014,7 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="bar">
-                                                <img class="bar-img" src="img/detail/bar_1a.jpg" alt="">
+                                                <img class="bar-img" src="https://carnivalguide.co/travel/img/detail/bar_1a.jpg" alt="">
                                                 <div class="bar-title color-dark">Bar-Restaurant de l’Hôtel Costes</div>
                                                 <div class="bar-desc color-grey">
                                                     239, Rue Saint-Honoré - 75001 Grenada<br>
@@ -4084,7 +4025,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="bar">
-                                                <img class="bar-img" src="img/detail/bar_2a.jpg" alt="">
+                                                <img class="bar-img" src="https://carnivalguide.co/travel/img/detail/bar_2a.jpg" alt="">
                                                 <div class="bar-title color-dark">Buddha bar</div>
                                                 <div class="bar-desc color-grey">
                                                     8, Rue Boissy d’Anglas - 75008 Grenada<br>
@@ -4095,7 +4036,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="bar">
-                                                <img class="bar-img" src="img/detail/bar_3a.jpg" alt="">
+                                                <img class="bar-img" src="https://carnivalguide.co/travel/img/detail/bar_3a.jpg" alt="">
                                                 <div class="bar-title color-dark">Le Cithéa</div>
                                                 <div class="bar-desc color-grey">
                                                     114, Rue Oberkampf - 75011 Grenada<br>
@@ -4106,7 +4047,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="bar">
-                                                <img class="bar-img" src="img/detail/bar_4a.jpg" alt="">
+                                                <img class="bar-img" src="https://carnivalguide.co/travel/img/detail/bar_4a.jpg" alt="">
                                                 <div class="bar-title color-dark">Le SanZ SanS</div>
                                                 <div class="bar-desc color-grey">
                                                     49, Rue Faubourg Saint-Antoine - 75011 Grenada<br>
@@ -4127,7 +4068,7 @@
                                 </div>
                                 <div class="tab-info">
                                     <div>
-                                        <img class="img-responsive img-full" src="img/detail/guide_13a.jpg"
+                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/guide_13a.jpg"
                                             alt="">
                                     </div>
                                     <h3>Grenada Nightlife</h3>
@@ -4146,7 +4087,7 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="bar">
-                                                <img class="bar-img" src="img/detail/bar_1a.jpg" alt="">
+                                                <img class="bar-img" src="https://carnivalguide.co/travel/img/detail/bar_1a.jpg" alt="">
                                                 <div class="bar-title color-dark">Bar-Restaurant de l’Hôtel Costes</div>
                                                 <div class="bar-desc color-grey">
                                                     239, Rue Saint-Honoré - 75001 Grenada<br>
@@ -4157,7 +4098,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="bar">
-                                                <img class="bar-img" src="img/detail/bar_2a.jpg" alt="">
+                                                <img class="bar-img" src="https://carnivalguide.co/travel/img/detail/bar_2a.jpg" alt="">
                                                 <div class="bar-title color-dark">Buddha bar</div>
                                                 <div class="bar-desc color-grey">
                                                     8, Rue Boissy d’Anglas - 75008 Grenada<br>
@@ -4168,7 +4109,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="bar">
-                                                <img class="bar-img" src="img/detail/bar_3a.jpg" alt="">
+                                                <img class="bar-img" src="https://carnivalguide.co/travel/img/detail/bar_3a.jpg" alt="">
                                                 <div class="bar-title color-dark">Le Cithéa</div>
                                                 <div class="bar-desc color-grey">
                                                     114, Rue Oberkampf - 75011 Grenada<br>
@@ -4179,7 +4120,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="bar">
-                                                <img class="bar-img" src="img/detail/bar_4a.jpg" alt="">
+                                                <img class="bar-img" src="https://carnivalguide.co/travel/img/detail/bar_4a.jpg" alt="">
                                                 <div class="bar-title color-dark">Le SanZ SanS</div>
                                                 <div class="bar-desc color-grey">
                                                     49, Rue Faubourg Saint-Antoine - 75011 Grenada<br>
@@ -4197,7 +4138,7 @@
                                         nisl feugiat vehicula condimentum, justo tellus scelerisque metus. Pellentesque ac
                                         turpis egestas, varius justo et, condimentum augue. Lorem ipsum dolor sit amet,
                                         consectetur adipiscing elit, sed do eiusre et dolore magna aliqua.</p>
-                                </div>
+                                </div> --}}
 
 
                             </div>
@@ -4254,9 +4195,11 @@
                             <p class="color-grey-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             <a class="help-phone color-dark-2 link-dr-blue-2" href="tel:0200059600"><img
-                                    src="img/detail/phone24-dark-2.png" alt="">020 00 59 600</a>
+                                    src="https://carnivalguide.co/travel/img/detail/phone24-dark-2.png" alt="">020
+                                00 59 600</a>
                             <a class="help-mail color-dark-2 link-dr-blue-2" href="mailto:let’s_travel@world.com"><img
-                                    src="img/detail/letter-dark-2.png" alt="">let’s_travel@world.com</a>
+                                    src="https://carnivalguide.co/travel/img/detail/letter-dark-2.png"
+                                    alt="">let’s_travel@world.com</a>
                         </div>
                     </div>
                 </div>
@@ -4268,7 +4211,8 @@
                         <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3">
                             <div class="hotel-item style-11 bg-white">
                                 <div class="radius-top">
-                                    <img src="img/tour_list/tour_grid_1a.jpg" alt="">
+                                    <img src="https://carnivalguide.co/travel/img/tour_list/tour_grid_1a.jpg"
+                                        alt="">
                                 </div>
                                 <div class="title bg-grey-2">
                                     <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong>
@@ -4291,7 +4235,8 @@
                         <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3">
                             <div class="hotel-item style-11 bg-white">
                                 <div class="radius-top">
-                                    <img src="img/tour_list/tour_grid_2a.jpg" alt="">
+                                    <img src="https://carnivalguide.co/travel/img/tour_list/tour_grid_2a.jpg"
+                                        alt="">
                                 </div>
                                 <div class="title bg-grey-2">
                                     <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong>
@@ -4314,7 +4259,8 @@
                         <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3">
                             <div class="hotel-item style-11 bg-white">
                                 <div class="radius-top">
-                                    <img src="img/tour_list/tour_grid_3a.jpg" alt="">
+                                    <img src="https://carnivalguide.co/travel/img/tour_list/tour_grid_3a.jpg"
+                                        alt="">
                                 </div>
                                 <div class="title bg-grey-2">
                                     <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong>
@@ -4337,7 +4283,8 @@
                         <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3">
                             <div class="hotel-item style-11 bg-white">
                                 <div class="radius-top">
-                                    <img src="img/tour_list/tour_grid_4a.jpg" alt="">
+                                    <img src="https://carnivalguide.co/travel/img/tour_list/tour_grid_4a.jpg"
+                                        alt="">
                                 </div>
                                 <div class="title bg-grey-2">
                                     <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong>

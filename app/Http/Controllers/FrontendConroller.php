@@ -24,7 +24,8 @@ class FrontendConroller extends Controller
 {
     public function home()
     {
-        $events = Event::with('images','tickets')->orderBy('id','desc')->get()->take('5');
+        $events = Event::with('images','tickets','country_tabs')->whereHas('country_tabs')->orderBy('id','desc')->get()->take('5');
+        // $events = Event::with('images','tickets')->orderBy('id','desc')->get()->take('5');
         $regions = Region::with('countries')->get();
         $services = OurService::get()->take('4');
         $siteGallery = SiteGallery::get();
@@ -133,6 +134,7 @@ class FrontendConroller extends Controller
     public function eventViewMore($slug)
     {
         $event = Event::with('country_tabs')->find($slug);
+        // dd($event->toArray());
         return view('front.view_more', compact('event'));
     }
 }
