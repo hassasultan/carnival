@@ -1,5 +1,100 @@
 @extends('front.layouts.app')
 @section('front-content')
+    <div class="top-baner swiper-animate arrows">
+        <div class="swiper-container main-slider" data-autoplay="5000" data-loop="1" data-speed="900" data-center="0"
+            data-slides-per-view="1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide active" data-val="0">
+                    <div class="clip">
+                        <div class="bg bg-bg-chrome act" style="background-image:url(img/home_9/slide_1a.jpg)">
+                        </div>
+                    </div>
+                    <div class="vertical-align">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="main-title style-1 vert-title">
+                                        <div class="top-weather-info delay-1">
+                                            <img src="img/theme-1/logo.fw.png" alt="">
+                                        </div>
+                                        <h1 class="color-white delay-1">amazing events</h1>
+                                        <h3 class="person_price color-white delay-1">more then <strong>10 000</strong>
+                                            cruises worldwide</h3>
+                                        <p class="color-white-op delay-2">Curabitur nunc erat, consequat in erat ut, congue
+                                            bibendum nulla. Suspendisse id pharetra lacus, et hendrerit mi quis leo
+                                            elementum. Lorem ipsum dolor sit.</p>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6">
+                                                <a href="#"
+                                                    class="c-button b-60 bg-blue-3 hv-transparent delay-2 fr"><img
+                                                        src="img/loc_icon.png" alt=""><span>view our
+                                                        tours</span></a>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6">
+                                                <a href="#"
+                                                    class="c-button b-60 bg-tr-1 hv-blue-3-f delay-2 fl"><span>view hot
+                                                        propose</span></a>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-val="1">
+                    <div class="clip">
+                        <div class="bg bg-bg-chrome act" style="background-image:url(img/home_9/slide_1a.jpg)">
+                        </div>
+                    </div>
+                    <div class="vertical-align">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="main-title style-1 vert-title">
+                                        <div class="top-weather-info delay-1">
+                                            <img src="img/theme-1/logo.fw.png" alt="">
+                                        </div>
+                                        <h1 class="color-white delay-1">amazing Events</h1>
+                                        <h3 class="person_price color-white delay-1">more then <strong>10 000</strong>
+                                            cruises worldwide</h3>
+                                        <p class="color-white-op delay-2">Curabitur nunc erat, consequat in erat ut, congue
+                                            bibendum nulla. Suspendisse id pharetra lacus, et hendrerit mi quis leo
+                                            elementum. Lorem ipsum dolor sit.</p>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6">
+                                                <a href="#"
+                                                    class="c-button b-60 bg-blue-3 hv-transparent delay-2 fr"><img
+                                                        src="img/loc_icon.png" alt=""><span>view our
+                                                        tours</span></a>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6">
+                                                <a href="#"
+                                                    class="c-button b-60 bg-tr-1 hv-blue-3-f delay-2 fl"><span>view hot
+                                                        propose</span></a>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination pagination-hidden poin-style-1"></div>
+        </div>
+        <div class="arrow-wrapp m-200 arr-s-7">
+            <div class="cont-1170">
+                <div class="swiper-arrow-left sw-arrow"><span class="fa fa-angle-left"></span></div>
+                <div class="swiper-arrow-right sw-arrow"><span class="fa fa-angle-right"></span></div>
+            </div>
+        </div>
+    </div>
+
     <div class="inner-banner style-6">
         <img class="center-image" src="img/firstbanner.png" alt="">
         <div class="vertical-align">
@@ -158,7 +253,8 @@
                                                 <div class="tour-layer delay-1"></div>
                                                 <div class="vertical-align">
                                                     <div class="date color-white">July <strong>19th</strong> to July
-                                                        <strong>26th</strong></div>
+                                                        <strong>26th</strong>
+                                                    </div>
                                                     <h4 class="color-white"><b>tours in Greneda</b></h4>
                                                 </div>
                                             </a>
@@ -170,7 +266,8 @@
                                                 <div class="tour-layer delay-1"></div>
                                                 <div class="vertical-align">
                                                     <div class="date color-white">July <strong>19th</strong> to July
-                                                        <strong>26th</strong></div>
+                                                        <strong>26th</strong>
+                                                    </div>
                                                     <h4 class="color-white"><b>tours in Grenada</b></h4>
                                                 </div>
                                             </a>
@@ -182,7 +279,8 @@
                                                 <div class="tour-layer delay-1"></div>
                                                 <div class="vertical-align">
                                                     <div class="date color-white">July <strong>19th</strong> to July
-                                                        <strong>26th</strong></div>
+                                                        <strong>26th</strong>
+                                                    </div>
                                                     <h4 class="color-white"><b>tours in Grenada</b></h4>
                                                 </div>
                                             </a>
@@ -194,7 +292,8 @@
                                                 <div class="tour-layer delay-1"></div>
                                                 <div class="vertical-align">
                                                     <div class="date color-white">July <strong>19th</strong> to July
-                                                        <strong>26th</strong></div>
+                                                        <strong>26th</strong>
+                                                    </div>
                                                     <h4 class="color-white"><b>tours in Grenada</b></h4>
                                                 </div>
                                             </a>
@@ -206,7 +305,8 @@
                                                 <div class="tour-layer delay-1"></div>
                                                 <div class="vertical-align">
                                                     <div class="date color-white">July <strong>19th</strong> to July
-                                                        <strong>26th</strong></div>
+                                                        <strong>26th</strong>
+                                                    </div>
                                                     <h4 class="color-white"><b>tours in Grenada</b></h4>
                                                 </div>
                                             </a>
@@ -218,7 +318,8 @@
                                                 <div class="tour-layer delay-1"></div>
                                                 <div class="vertical-align">
                                                     <div class="date color-white">July <strong>19th</strong> to July
-                                                        <strong>26th</strong></div>
+                                                        <strong>26th</strong>
+                                                    </div>
                                                     <h4 class="color-white"><b>tours in Grenada</b></h4>
                                                 </div>
                                             </a>
@@ -900,7 +1001,8 @@
                                                         <h4><b>Luxury madrid Hotel</b></h4>
                                                         <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
                                                             Défense, Puteaux</span>
-                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
                                                             <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
@@ -945,7 +1047,8 @@
                                                         <h4><b>Luxury madrid Hotel</b></h4>
                                                         <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
                                                             Défense, Puteaux</span>
-                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
                                                             <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
@@ -989,7 +1092,8 @@
                                                         <h4><b>Luxury madrid Hotel</b></h4>
                                                         <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
                                                             Défense, Puteaux</span>
-                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut
                                                             sed vitae pulvinar massa idporta nequetiam.</p>
                                                         <div class="hotel-icons-block grid-hidden">
                                                             <img class="hotel-icon" src="img/tour_list/hotel_icon_1.png"
@@ -1029,13 +1133,15 @@
                                                         <img src="img/tour_list/flight_grid_1.jpg" alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
-                                                        <div class="hotel-right-text color-grey fr">one way flights, 1 stop
+                                                        <div class="hotel-right-text color-grey fr">one way flights, 1
+                                                            stop
                                                         </div>
                                                         <h5>from <strong class="color-red-3">$860</strong> / person</h5>
                                                         <h4><b>Cheap Flights to Grenada</b></h4>
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="img/tour_list/flight_icon_2.png"
+                                                                <img class="fi_icon"
+                                                                    src="img/tour_list/flight_icon_2.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
@@ -1044,7 +1150,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="img/tour_list/flight_icon_1.png"
+                                                                <img class="fi_icon"
+                                                                    src="img/tour_list/flight_icon_1.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
@@ -1056,7 +1163,8 @@
                                                         <a href="#"
                                                             class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
                                                         <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
-                                                                src="img/flag_icon_grey.png" alt="">view more</a>
+                                                                src="img/flag_icon_grey.png" alt="">view
+                                                            more</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1068,13 +1176,15 @@
                                                         <img src="img/tour_list/flight_grid_2.jpg" alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
-                                                        <div class="hotel-right-text color-grey fr">one way flights, 1 stop
+                                                        <div class="hotel-right-text color-grey fr">one way flights, 1
+                                                            stop
                                                         </div>
                                                         <h5>from <strong class="color-red-3">$860</strong> / person</h5>
                                                         <h4><b>Cheap Flights to Grenada</b></h4>
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="img/tour_list/flight_icon_2.png"
+                                                                <img class="fi_icon"
+                                                                    src="img/tour_list/flight_icon_2.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
@@ -1083,7 +1193,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="img/tour_list/flight_icon_1.png"
+                                                                <img class="fi_icon"
+                                                                    src="img/tour_list/flight_icon_1.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
@@ -1095,7 +1206,8 @@
                                                         <a href="#"
                                                             class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
                                                         <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
-                                                                src="img/flag_icon_grey.png" alt="">view more</a>
+                                                                src="img/flag_icon_grey.png" alt="">view
+                                                            more</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1107,13 +1219,15 @@
                                                         <img src="img/tour_list/flight_grid_3.jpg" alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
-                                                        <div class="hotel-right-text color-grey fr">one way flights, 1 stop
+                                                        <div class="hotel-right-text color-grey fr">one way flights, 1
+                                                            stop
                                                         </div>
                                                         <h5>from <strong class="color-red-3">$860</strong> / person</h5>
                                                         <h4><b>Cheap Flights to Grenada</b></h4>
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="img/tour_list/flight_icon_2.png"
+                                                                <img class="fi_icon"
+                                                                    src="img/tour_list/flight_icon_2.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
@@ -1122,7 +1236,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="img/tour_list/flight_icon_1.png"
+                                                                <img class="fi_icon"
+                                                                    src="img/tour_list/flight_icon_1.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
@@ -1134,7 +1249,8 @@
                                                         <a href="#"
                                                             class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
                                                         <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
-                                                                src="img/flag_icon_grey.png" alt="">view more</a>
+                                                                src="img/flag_icon_grey.png" alt="">view
+                                                            more</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1146,13 +1262,15 @@
                                                         <img src="img/tour_list/flight_grid_1.jpg" alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
-                                                        <div class="hotel-right-text color-grey fr">one way flights, 1 stop
+                                                        <div class="hotel-right-text color-grey fr">one way flights, 1
+                                                            stop
                                                         </div>
                                                         <h5>from <strong class="color-red-3">$860</strong> / person</h5>
                                                         <h4><b>Cheap Flights to Grenada</b></h4>
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="img/tour_list/flight_icon_2.png"
+                                                                <img class="fi_icon"
+                                                                    src="img/tour_list/flight_icon_2.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
@@ -1161,7 +1279,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="img/tour_list/flight_icon_1.png"
+                                                                <img class="fi_icon"
+                                                                    src="img/tour_list/flight_icon_1.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
@@ -1173,7 +1292,8 @@
                                                         <a href="#"
                                                             class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
                                                         <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
-                                                                src="img/flag_icon_grey.png" alt="">view more</a>
+                                                                src="img/flag_icon_grey.png" alt="">view
+                                                            more</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1185,13 +1305,15 @@
                                                         <img src="img/tour_list/flight_grid_3.jpg" alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
-                                                        <div class="hotel-right-text color-grey fr">one way flights, 1 stop
+                                                        <div class="hotel-right-text color-grey fr">one way flights, 1
+                                                            stop
                                                         </div>
                                                         <h5>from <strong class="color-red-3">$860</strong> / person</h5>
                                                         <h4><b>Cheap Flights to Grenada</b></h4>
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="img/tour_list/flight_icon_2.png"
+                                                                <img class="fi_icon"
+                                                                    src="img/tour_list/flight_icon_2.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
@@ -1200,7 +1322,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="img/tour_list/flight_icon_1.png"
+                                                                <img class="fi_icon"
+                                                                    src="img/tour_list/flight_icon_1.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
@@ -1212,7 +1335,8 @@
                                                         <a href="#"
                                                             class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
                                                         <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
-                                                                src="img/flag_icon_grey.png" alt="">view more</a>
+                                                                src="img/flag_icon_grey.png" alt="">view
+                                                            more</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1224,13 +1348,15 @@
                                                         <img src="img/tour_list/flight_grid_2.jpg" alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
-                                                        <div class="hotel-right-text color-grey fr">one way flights, 1 stop
+                                                        <div class="hotel-right-text color-grey fr">one way flights, 1
+                                                            stop
                                                         </div>
                                                         <h5>from <strong class="color-red-3">$860</strong> / person</h5>
                                                         <h4><b>Cheap Flights to Grenada</b></h4>
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="img/tour_list/flight_icon_2.png"
+                                                                <img class="fi_icon"
+                                                                    src="img/tour_list/flight_icon_2.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
@@ -1239,7 +1365,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="img/tour_list/flight_icon_1.png"
+                                                                <img class="fi_icon"
+                                                                    src="img/tour_list/flight_icon_1.png"
                                                                     alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
@@ -1251,7 +1378,8 @@
                                                         <a href="#"
                                                             class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
                                                         <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
-                                                                src="img/flag_icon_grey.png" alt="">view more</a>
+                                                                src="img/flag_icon_grey.png" alt="">view
+                                                            more</a>
                                                     </div>
                                                 </div>
                                             </div>

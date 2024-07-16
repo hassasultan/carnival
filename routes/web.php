@@ -87,7 +87,7 @@ Route::post('/user-store', [CustomerController::class, 'storeCustomer'])->name('
 Route::get('/register/new/user/{id}', [CarnivalCommitteeController::class, 'create'])->name('register.new.user');
 
 // carnival commitee user
-Route::get('/events/view-mode', [FrontendConroller::class, 'eventViewMore'])->name('events.view.more');
+Route::get('/events/view-more/{slug}', [FrontendConroller::class, 'eventViewMore'])->name('events.view.more');
 
 
 // Admin Routes

@@ -130,8 +130,9 @@ class FrontendConroller extends Controller
         return view('ShopFrontend.subvendor-detail', compact('subvendor', 'categories'));
     }
 
-    public function eventViewMore()
+    public function eventViewMore($slug)
     {
-        return view('front.view_more');
+        $event = Event::find($slug);
+        return view('front.view_more', compact('event'));
     }
 }
