@@ -132,7 +132,8 @@ class FrontendConroller extends Controller
 
     public function eventViewMore($slug)
     {
-        $event = Event::find($slug);
+        $event = Event::with('country_tabs')->find($slug);
+        dd($event->toArray());
         return view('front.view_more', compact('event'));
     }
 }
