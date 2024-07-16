@@ -1794,83 +1794,6 @@
                                 </div>
                             </div>
                         @endforeach
-                        {{-- <div class="swiper-slide">
-                            <div class="icon-block style-2 bg-white">
-                                <img class="icon-img bg-dr-blue-2 border-grey-2"
-                                    src="https://carnivalguide.co/travel/img/home_8/icon_2.png" alt="">
-                                <h5 class="icon-title color-dark-2">amazing tour</h5>
-                                <div class="icon-text color-dark-2-light">Sed sit amet leo orci. Fusce tincidunt
-                                    accumsan pretium. Donec fermentum, ex non placerat.</div>
-                                <a href="#" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view
-                                        more</span></a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="icon-block style-2 bg-white">
-                                <img class="icon-img bg-dr-blue-2 border-grey-2"
-                                    src="https://carnivalguide.co/travel/img/home_8/icon_3.png" alt="">
-                                <h5 class="icon-title color-dark-2">support cases</h5>
-                                <div class="icon-text color-dark-2-light">Sed sit amet leo orci. Fusce tincidunt
-                                    accumsan pretium. Donec fermentum, ex non placerat.</div>
-                                <a href="#" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view
-                                        more</span></a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="icon-block style-2 bg-white">
-                                <img class="icon-img bg-dr-blue-2 border-grey-2"
-                                    src="https://carnivalguide.co/travel/img/home_8/icon_4.png" alt="">
-                                <h5 class="icon-title color-dark-2">support cases</h5>
-                                <div class="icon-text color-dark-2-light">Sed sit amet leo orci. Fusce tincidunt
-                                    accumsan pretium. Donec fermentum, ex non placerat.</div>
-                                <a href="#" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view
-                                        more</span></a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="icon-block style-2 bg-white">
-                                <img class="icon-img bg-dr-blue-2 border-grey-2"
-                                    src="https://carnivalguide.co/travel/img/home_8/icon_1.png" alt="">
-                                <h5 class="icon-title color-dark-2">happy clients</h5>
-                                <div class="icon-text color-dark-2-light">Sed sit amet leo orci. Fusce tincidunt
-                                    accumsan pretium. Donec fermentum, ex non placerat.</div>
-                                <a href="#" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view
-                                        more</span></a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="icon-block style-2 bg-white">
-                                <img class="icon-img bg-dr-blue-2 border-grey-2"
-                                    src="https://carnivalguide.co/travel/img/home_8/icon_2.png" alt="">
-                                <h5 class="icon-title color-dark-2">amazing tour</h5>
-                                <div class="icon-text color-dark-2-light">Sed sit amet leo orci. Fusce tincidunt
-                                    accumsan pretium. Donec fermentum, ex non placerat.</div>
-                                <a href="#" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view
-                                        more</span></a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="icon-block style-2 bg-white">
-                                <img class="icon-img bg-dr-blue-2 border-grey-2"
-                                    src="https://carnivalguide.co/travel/img/home_8/icon_3.png" alt="">
-                                <h5 class="icon-title color-dark-2">support cases</h5>
-                                <div class="icon-text color-dark-2-light">Sed sit amet leo orci. Fusce tincidunt
-                                    accumsan pretium. Donec fermentum, ex non placerat.</div>
-                                <a href="#" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view
-                                        more</span></a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="icon-block style-2 bg-white">
-                                <img class="icon-img bg-dr-blue-2 border-grey-2"
-                                    src="https://carnivalguide.co/travel/img/home_8/icon_4.png" alt="">
-                                <h5 class="icon-title color-dark-2">support cases</h5>
-                                <div class="icon-text color-dark-2-light">Sed sit amet leo orci. Fusce tincidunt
-                                    accumsan pretium. Donec fermentum, ex non placerat.</div>
-                                <a href="#" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view
-                                        more</span></a>
-                            </div>
-                        </div> --}}
                     </div>
                     <div class="pagination poin-style-2"></div>
                 </div>
@@ -1894,106 +1817,29 @@
                         data-slides-per-view="responsive" data-mob-slides="1" data-xs-slides="2" data-sm-slides="2"
                         data-md-slides="3" data-lg-slides="4" data-add-slides="4">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" data-val="0">
-                                <div class="tour-item style-3">
-                                    <div class="radius-top">
-                                        <img src="https://carnivalguide.co/travel/img/home/testimonal_1.jpg"
-                                            alt="">
-                                        <div class="tour-weather">sea tour</div>
-                                    </div>
-                                    <div class="tour-desc bg-white">
-                                        <div class="rate">
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
+                            @foreach ($testimonials as $testimonial)
+                                <div class="swiper-slide" data-val="{{ $testimonial->key }}">
+                                    <div class="tour-item style-3">
+                                        <div class="radius-top">
+                                            <img src="{{ asset('testimonial/cover/' . $testimonial->cover_image) }}"
+                                                alt="">
+                                            <div class="tour-weather">{{ $testimonial->location }}</div>
                                         </div>
-                                        <img class="tm-people"
-                                            src="https://carnivalguide.co/travel/images/testimonialimg1.jpg"
-                                            alt="">
-                                        <h4><a class="tour-title color-dark-2 link-green" href="#">inna
-                                                lunoe</a></h4>
-                                        <div class="tour-text color-grey-3">“Nunc cursus libero purus ac congue arcu
-                                            cursus ut sed vitae pulvinar massa rta nequetiam.”</div>
+                                        <div class="tour-desc bg-white">
+                                            <div class="rate">
+                                                @foreach (range(1, $testimonial->rating) as $rating)
+                                                    <span class="fa fa-heart color-green"></span>
+                                                @endforeach
+                                            </div>
+                                            <img class="tm-people"
+                                                src="{{ asset('testimonial/image/' . $testimonial->image) }}"
+                                                alt="">
+                                            <h4><a class="tour-title color-dark-2 link-green" href="#">{{ $testimonial->name }}</a></h4>
+                                            <div class="tour-text color-grey-3">{{ $testimonial->description }}</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide" data-val="1">
-                                <div class="tour-item style-3">
-                                    <div class="radius-top">
-                                        <img src="https://carnivalguide.co/travel/img/home/testimonal_2.jpg"
-                                            alt="">
-                                        <div class="tour-weather">mountains</div>
-                                    </div>
-                                    <div class="tour-desc bg-white">
-                                        <div class="rate">
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                        </div>
-                                        <img class="tm-people"
-                                            src="https://carnivalguide.co/travel/images/testimonialimg5.jpg"
-                                            alt="">
-                                        <h4><a class="tour-title color-dark-2 link-green" href="#">alina,
-                                                mark</a></h4>
-                                        <div class="tour-text color-grey-3">“Nunc cursus libero purus ac congue arcu
-                                            cursus ut sed vitae pulvinar massa rta nequetiam.”</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" data-val="2">
-                                <div class="tour-item style-3">
-                                    <div class="radius-top">
-                                        <img src="https://carnivalguide.co/travel/img/home/testimonal_3.jpg"
-                                            alt="">
-                                        <div class="tour-weather">sea tour</div>
-                                    </div>
-                                    <div class="tour-desc bg-white">
-                                        <div class="rate">
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                        </div>
-                                        <img class="tm-people"
-                                            src="https://carnivalguide.co/travel/images/testimonialimg3.jpg"
-                                            alt="">
-                                        <h4><a class="tour-title color-dark-2 link-green" href="#">george
-                                                ross</a></h4>
-                                        <div class="tour-text color-grey-3">“Nunc cursus libero purus ac congue arcu
-                                            cursus ut sed vitae pulvinar massa rta nequetiam.”</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" data-val="4">
-                                <div class="tour-item style-3">
-                                    <div class="radius-top">
-                                        <img src="https://carnivalguide.co/travel/img/home/testimonal_4.jpg"
-                                            alt="">
-                                        <div class="tour-weather">mountains</div>
-                                    </div>
-                                    <div class="tour-desc bg-white">
-                                        <div class="rate">
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                            <span class="fa fa-heart color-green"></span>
-                                        </div>
-                                        <img class="tm-people"
-                                            src="https://carnivalguide.co/travel/images/testimonialimg4.jpg"
-                                            alt="">
-                                        <h4><a class="tour-title color-dark-2 link-green" href="#">mikel,
-                                                kim</a></h4>
-                                        <div class="tour-text color-grey-3">“Nunc cursus libero purus ac congue arcu
-                                            cursus ut sed vitae pulvinar massa rta nequetiam.”</div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <div class="pagination  poin-style-1 pagination-hidden"></div>
                     </div>
@@ -2122,66 +1968,14 @@
             data-slides-per-view="responsive" data-mob-slides="1" data-xs-slides="2" data-sm-slides="3"
             data-md-slides="4" data-lg-slides="5" data-add-slides="6">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="partner-entry">
-                        <a href="#"><img class="img-responsive"
-                                src="https://carnivalguide.co/travel/img/home/partner_1.png" alt=""></a>
+                @foreach ($investors as $investor)
+                    <div class="swiper-slide text-center">
+                        <div class="partner-entry">
+                            <a href="#"><img class="img-responsive"
+                                    src="{{ asset('images/' . $investor->icon) }}" alt=""></a>
+                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide text-center">
-                    <div class="partner-entry">
-                        <a href="#"><img class="img-responsive"
-                                src="https://carnivalguide.co/travel/img/home/partner_2.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="swiper-slide text-center">
-                    <div class="partner-entry">
-                        <a href="#"><img class="img-responsive"
-                                src="https://carnivalguide.co/travel/img/home/partner_3.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="swiper-slide text-center">
-                    <div class="partner-entry">
-                        <a href="#"><img class="img-responsive"
-                                src="https://carnivalguide.co/travel/img/home/partner_4.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="swiper-slide text-center">
-                    <div class="partner-entry">
-                        <a href="#"><img class="img-responsive"
-                                src="https://carnivalguide.co/travel/img/home/partner_5.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="swiper-slide text-center">
-                    <div class="partner-entry">
-                        <a href="#"><img class="img-responsive"
-                                src="https://carnivalguide.co/travel/img/home/partner_6.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="swiper-slide text-center">
-                    <div class="partner-entry">
-                        <a href="#"><img class="img-responsive"
-                                src="https://carnivalguide.co/travel/img/home/partner_7.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="swiper-slide text-center">
-                    <div class="partner-entry">
-                        <a href="#"><img class="img-responsive"
-                                src="https://carnivalguide.co/travel/img/home/partner_8.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="swiper-slide text-center">
-                    <div class="partner-entry">
-                        <a href="#"><img class="img-responsive"
-                                src="https://carnivalguide.co/travel/img/home/partner_9.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="swiper-slide text-center">
-                    <div class="partner-entry">
-                        <a href="#"><img class="img-responsive"
-                                src="https://carnivalguide.co/travel/img/home/partner_10.png" alt=""></a>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="pagination pagination-hidden"></div>
         </div>
@@ -2198,78 +1992,30 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-4">
-                    <div class="s_news-entry">
-                        <img class="s_news-img img-full img-responsive"
-                            src="https://carnivalguide.co/travel/images/blog1.jpg" alt="">
-                        <h4 class="s_news-title"><a href="#">Lorem ipsum dolor</a></h4>
-                        <div class="tour-info-line clearfix">
-                            <div class="tour-info fl">
-                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                <span class="font-style-2 color-dark-2">03/07/2015</span>
+                @foreach ($blogs as $blog)
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="s_news-entry">
+                            <img class="s_news-img img-full img-responsive"
+                                src="https://carnivalguide.co/travel/images/blog1.jpg" alt="">
+                            <h4 class="s_news-title"><a href="#">{{ $blog->title }}</a></h4>
+                            <div class="tour-info-line clearfix">
+                                <div class="tour-info fl">
+                                    <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                    <span class="font-style-2 color-dark-2">{{ $blog->created_at->format('d/m/Y') }}</span>
+                                </div>
+                                <div class="tour-info fl">
+                                    <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                    <span class="font-style-2 color-dark-2">By {{ $blog->user->first_name . ' ' . $blog->user->last_name }}</span>
+                                </div>
+                                <div class="tour-info fl">
+                                    <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
+                                    <span class="font-style-2 color-dark-2">10 comments</span>
+                                </div>
                             </div>
-                            <div class="tour-info fl">
-                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                            </div>
-                            <div class="tour-info fl">
-                                <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
-                                <span class="font-style-2 color-dark-2">10 comments</span>
-                            </div>
+                            <div class="s_news-text color-grey-3">{!! $blog->description !!}</div>
                         </div>
-                        <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            commodo consequat.</div>
                     </div>
-                </div>
-                <div class="col-xs-12 col-sm-4">
-                    <div class="s_news-entry">
-                        <img class="s_news-img img-full img-responsive"
-                            src="https://carnivalguide.co/travel/images/blog2.jpg" alt="">
-                        <h4 class="s_news-title"><a href="#">Lorem ipsum dolor</a></h4>
-                        <div class="tour-info-line clearfix">
-                            <div class="tour-info fl">
-                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                <span class="font-style-2 color-dark-2">03/07/2015</span>
-                            </div>
-                            <div class="tour-info fl">
-                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                            </div>
-                            <div class="tour-info fl">
-                                <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
-                                <span class="font-style-2 color-dark-2">10 comments</span>
-                            </div>
-                        </div>
-                        <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            commodo consequat.</div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-4">
-                    <div class="s_news-entry">
-                        <img class="s_news-img img-full img-responsive"
-                            src="https://carnivalguide.co/travel/images/blog3.jpg" alt="">
-                        <h4 class="s_news-title"><a href="#">Lorem ipsum dolor</a></h4>
-                        <div class="tour-info-line clearfix">
-                            <div class="tour-info fl">
-                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                <span class="font-style-2 color-dark-2">03/07/2015</span>
-                            </div>
-                            <div class="tour-info fl">
-                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                            </div>
-                            <div class="tour-info fl">
-                                <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
-                                <span class="font-style-2 color-dark-2">10 comments</span>
-                            </div>
-                        </div>
-                        <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            commodo consequat.</div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -2278,22 +2024,19 @@
     <!-- block  showcase-->
     <div class="block-showcase block-showcase-opt1 block-brand-tabs">
         <div class="container">
-
             <div class="block-title">
                 <span class="title">brand showcase</span>
             </div>
-
             <div class="block-content">
-
                 <ul class="nav-brand owl-carousel" data-nav="true" data-loop="true" data-dots="false"
                     data-margin="1"
                     data-responsive='{
-            "0":{"items":3},
-            "380":{"items":4},
-            "480":{"items":5},
-            "640":{"items":7},
-            "992":{"items":8}
-        }'>
+                            "0":{"items":3},
+                            "380":{"items":4},
+                            "480":{"items":5},
+                            "640":{"items":7},
+                            "992":{"items":8}
+                        }'>
                     <li class="active" data-tab="brand1-1">
                         <img src="https://carnivalguide.co/travel/images/digicelt.jpg" alt="img">
                     </li>
@@ -2323,11 +2066,9 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-
                     <div class="tab-pane active  " role="tabpanel" id="brand1-1">
                         <div class="row">
                             <div class="col-md-4">
-
                                 <div class="col-title">
                                     <img src="https://carnivalguide.co/travel/images/digicel.jpg" alt="logo"
                                         class="logo-showcase">
@@ -2340,11 +2081,8 @@
                                                 aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="col-md-8">
-
                                 <div class="col-product">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
                                         data-responsive='{
@@ -2354,42 +2092,44 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                        @foreach ($products as $product)
-                                            {{-- {{ dd($products->toArray()) }} --}}
-                                            @if ($product->brand_id == 1)
-                                                <div class="item">
-                                                    <div class="product-item  product-item-opt-1 ">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" href=""><img
-                                                                        alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}"></a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a
-                                                                        href="">{{ $product->title }}</a></strong>
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span
-                                                                            class="price">${{ $product->new_price }}</span>
-                                                                    </div>
-                                                                    <div class="product-reviews-summary">
-                                                                        <div class="rating-summary">
-                                                                            <div title="80%" class="rating-result">
-                                                                                <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>%
-                                                                                        of
-                                                                                        <span>100</span></span>
-                                                                                </span>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 1)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product image" src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span class="price">${{ $product->price }}</span>
+                                                                            @if($product->old_price)
+                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%" class="rating-result">
+                                                                                    <span style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                    </span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            @endif
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         @endforeach
                                         {{-- <div class="item">
                                             <div class="product-item  product-item-opt-1 ">
@@ -2513,14 +2253,11 @@
                                                 </div>
                                             </div>
                                         </div> --}}
-
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                     <div class="tab-pane " role="tabpanel" id="brand1-2">
                         <div class="row">
                             <div class="col-md-4">
@@ -2537,11 +2274,8 @@
                                                 aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="col-md-8">
-
                                 <div class="col-product">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
                                         data-responsive='{
@@ -2551,42 +2285,44 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-
-                                        @foreach ($products as $product)
-                                            @if ($product->brand_id == 2)
-                                                <div class="item">
-                                                    <div class="product-item  product-item-opt-1 ">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" href=""><img
-                                                                        alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}"></a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a
-                                                                        href="">{{ $product->title }}</a></strong>
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span
-                                                                            class="price">${{ $product->new_price }}</span>
-                                                                    </div>
-                                                                    <div class="product-reviews-summary">
-                                                                        <div class="rating-summary">
-                                                                            <div title="80%" class="rating-result">
-                                                                                <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>%
-                                                                                        of
-                                                                                        <span>100</span></span>
-                                                                                </span>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 2)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span class="price">${{ $product->price }}</span>
+                                                                            @if($product->old_price)
+                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%" class="rating-result">
+                                                                                    <span style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                    </span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            @endif
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         @endforeach
                                         {{-- <div class="item">
                                             <div class="product-item  product-item-opt-1 ">
@@ -2711,15 +2447,12 @@
                                         </div> --}}
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                     <div class="tab-pane  " role="tabpanel" id="brand1-3">
                         <div class="row">
                             <div class="col-md-4">
-
                                 <div class="col-title">
                                     <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
                                         alt="logo" class="logo-showcase">
@@ -2732,11 +2465,8 @@
                                                 aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="col-md-8">
-
                                 <div class="col-product">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
                                         data-responsive='{
@@ -2746,42 +2476,44 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-
-                                        @foreach ($products as $product)
-                                            @if ($product->brand_id == 3)
-                                                <div class="item">
-                                                    <div class="product-item  product-item-opt-1 ">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" href=""><img
-                                                                        alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}"></a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a
-                                                                        href="">{{ $product->title }}</a></strong>
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span
-                                                                            class="price">${{ $product->new_price }}</span>
-                                                                    </div>
-                                                                    <div class="product-reviews-summary">
-                                                                        <div class="rating-summary">
-                                                                            <div title="80%" class="rating-result">
-                                                                                <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>%
-                                                                                        of
-                                                                                        <span>100</span></span>
-                                                                                </span>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 3)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span class="price">${{ $product->price }}</span>
+                                                                            @if($product->old_price)
+                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%" class="rating-result">
+                                                                                    <span style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                    </span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            @endif
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         @endforeach
                                         {{-- <div class="item">
                                             <div class="product-item  product-item-opt-1 ">
@@ -2906,15 +2638,12 @@
                                         </div> --}}
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                     <div class="tab-pane  " role="tabpanel" id="brand1-4">
                         <div class="row">
                             <div class="col-md-4">
-
                                 <div class="col-title">
                                     <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
                                         alt="logo" class="logo-showcase">
@@ -2927,11 +2656,8 @@
                                                 aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="col-md-8">
-
                                 <div class="col-product">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
                                         data-responsive='{
@@ -2941,42 +2667,44 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-
-                                        @foreach ($products as $product)
-                                            @if ($product->brand_id == 1)
-                                                <div class="item">
-                                                    <div class="product-item  product-item-opt-1 ">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" href=""><img
-                                                                        alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}"></a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a
-                                                                        href="">{{ $product->title }}</a></strong>
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span
-                                                                            class="price">${{ $product->new_price }}</span>
-                                                                    </div>
-                                                                    <div class="product-reviews-summary">
-                                                                        <div class="rating-summary">
-                                                                            <div title="80%" class="rating-result">
-                                                                                <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>%
-                                                                                        of
-                                                                                        <span>100</span></span>
-                                                                                </span>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 4)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span class="price">${{ $product->price }}</span>
+                                                                            @if($product->old_price)
+                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%" class="rating-result">
+                                                                                    <span style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                    </span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            @endif
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         @endforeach
                                         {{-- <div class="item">
                                             <div class="product-item  product-item-opt-1 ">
@@ -3101,15 +2829,12 @@
                                         </div> --}}
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                     <div class="tab-pane  " role="tabpanel" id="brand1-5">
                         <div class="row">
                             <div class="col-md-4">
-
                                 <div class="col-title">
                                     <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
                                         alt="logo" class="logo-showcase">
@@ -3122,11 +2847,8 @@
                                                 aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="col-md-8">
-
                                 <div class="col-product">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
                                         data-responsive='{
@@ -3136,42 +2858,44 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-
-                                        @foreach ($products as $product)
-                                            @if ($product->brand_id == 5)
-                                                <div class="item">
-                                                    <div class="product-item  product-item-opt-1 ">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" href=""><img
-                                                                        alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}"></a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a
-                                                                        href="">{{ $product->title }}</a></strong>
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span
-                                                                            class="price">${{ $product->new_price }}</span>
-                                                                    </div>
-                                                                    <div class="product-reviews-summary">
-                                                                        <div class="rating-summary">
-                                                                            <div title="80%" class="rating-result">
-                                                                                <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>%
-                                                                                        of
-                                                                                        <span>100</span></span>
-                                                                                </span>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 5)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span class="price">${{ $product->price }}</span>
+                                                                            @if($product->old_price)
+                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%" class="rating-result">
+                                                                                    <span style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                    </span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            @endif
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         @endforeach
                                         {{-- <div class="item">
                                             <div class="product-item  product-item-opt-1 ">
@@ -3300,11 +3024,9 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="tab-pane  " role="tabpanel" id="brand1-6">
+                    <div class="tab-pane" role="tabpanel" id="brand1-6">
                         <div class="row">
                             <div class="col-md-4">
-
                                 <div class="col-title">
                                     <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
                                         alt="logo" class="logo-showcase">
@@ -3317,11 +3039,8 @@
                                                 aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="col-md-8">
-
                                 <div class="col-product">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
                                         data-responsive='{
@@ -3331,41 +3050,44 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                        @foreach ($products as $product)
-                                            @if ($product->brand_id == 6)
-                                                <div class="item">
-                                                    <div class="product-item  product-item-opt-1 ">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" href=""><img
-                                                                        alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}"></a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a
-                                                                        href="">{{ $product->title }}</a></strong>
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span
-                                                                            class="price">${{ $product->new_price }}</span>
-                                                                    </div>
-                                                                    <div class="product-reviews-summary">
-                                                                        <div class="rating-summary">
-                                                                            <div title="80%" class="rating-result">
-                                                                                <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>%
-                                                                                        of
-                                                                                        <span>100</span></span>
-                                                                                </span>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 6)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span class="price">${{ $product->price }}</span>
+                                                                            @if($product->old_price)
+                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%" class="rating-result">
+                                                                                    <span style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                    </span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            @endif
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         @endforeach
                                         {{-- <div class="item">
                                             <div class="product-item  product-item-opt-1 ">
@@ -3490,15 +3212,12 @@
                                         </div> --}}
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                     <div class="tab-pane  " role="tabpanel" id="brand1-7">
                         <div class="row">
                             <div class="col-md-4">
-
                                 <div class="col-title">
                                     <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
                                         alt="logo" class="logo-showcase">
@@ -3511,11 +3230,8 @@
                                                 aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="col-md-8">
-
                                 <div class="col-product">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
                                         data-responsive='{
@@ -3525,41 +3241,44 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                        @foreach ($products as $product)
-                                            @if ($product->brand_id == 7)
-                                                <div class="item">
-                                                    <div class="product-item  product-item-opt-1 ">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" href=""><img
-                                                                        alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}"></a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a
-                                                                        href="">{{ $product->title }}</a></strong>
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span
-                                                                            class="price">${{ $product->new_price }}</span>
-                                                                    </div>
-                                                                    <div class="product-reviews-summary">
-                                                                        <div class="rating-summary">
-                                                                            <div title="80%" class="rating-result">
-                                                                                <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>%
-                                                                                        of
-                                                                                        <span>100</span></span>
-                                                                                </span>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 7)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span class="price">${{ $product->price }}</span>
+                                                                            @if($product->old_price)
+                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%" class="rating-result">
+                                                                                    <span style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                    </span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            @endif
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         @endforeach
                                         {{-- <div class="item">
                                             <div class="product-item  product-item-opt-1 ">
@@ -3684,15 +3403,12 @@
                                         </div> --}}
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                     <div class="tab-pane  " role="tabpanel" id="brand1-8">
                         <div class="row">
                             <div class="col-md-4">
-
                                 <div class="col-title">
                                     <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
                                         alt="logo" class="logo-showcase">
@@ -3705,11 +3421,8 @@
                                                 aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="col-md-8">
-
                                 <div class="col-product">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
                                         data-responsive='{
@@ -3719,41 +3432,44 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                        @foreach ($products as $product)
-                                            @if ($product->brand_id == 8)
-                                                <div class="item">
-                                                    <div class="product-item  product-item-opt-1 ">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" href=""><img
-                                                                        alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}"></a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a
-                                                                        href="">{{ $product->title }}</a></strong>
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span
-                                                                            class="price">${{ $product->new_price }}</span>
-                                                                    </div>
-                                                                    <div class="product-reviews-summary">
-                                                                        <div class="rating-summary">
-                                                                            <div title="80%" class="rating-result">
-                                                                                <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>%
-                                                                                        of
-                                                                                        <span>100</span></span>
-                                                                                </span>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 8)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span class="price">${{ $product->price }}</span>
+                                                                            @if($product->old_price)
+                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%" class="rating-result">
+                                                                                    <span style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                    </span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            @endif
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         @endforeach
                                         {{-- <div class="item">
                                             <div class="product-item  product-item-opt-1 ">
@@ -3876,19 +3592,14 @@
                                                 </div>
                                             </div>
                                         </div> --}}
-
-
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                     <div class="tab-pane  " role="tabpanel" id="brand1-9">
                         <div class="row">
                             <div class="col-md-4">
-
                                 <div class="col-title">
                                     <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
                                         alt="logo" class="logo-showcase">
@@ -3901,11 +3612,8 @@
                                                 aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="col-md-8">
-
                                 <div class="col-product">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
                                         data-responsive='{
@@ -3915,41 +3623,44 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                        @foreach ($products as $product)
-                                            @if ($product->brand_id == 9)
-                                                <div class="item">
-                                                    <div class="product-item  product-item-opt-1 ">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" href=""><img
-                                                                        alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}"></a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a
-                                                                        href="">{{ $product->title }}</a></strong>
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span
-                                                                            class="price">${{ $product->new_price }}</span>
-                                                                    </div>
-                                                                    <div class="product-reviews-summary">
-                                                                        <div class="rating-summary">
-                                                                            <div title="80%" class="rating-result">
-                                                                                <span style="width:80%">
-                                                                                    <span><span>{{ $product->discount }}</span>%
-                                                                                        of
-                                                                                        <span>100</span></span>
-                                                                                </span>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 9)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span class="price">${{ $product->price }}</span>
+                                                                            @if($product->old_price)
+                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%" class="rating-result">
+                                                                                    <span style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                    </span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            @endif
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         @endforeach
                                         {{-- <div class="item">
                                             <div class="product-item  product-item-opt-1 ">
@@ -4072,18 +3783,14 @@
                                                 </div>
                                             </div>
                                         </div> --}}
-
-
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </div><!-- block  showcase-->
 @endsection

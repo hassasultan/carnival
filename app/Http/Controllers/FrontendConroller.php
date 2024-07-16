@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Category;
-use App\Models\Subcategory;
+use App\Models\Testimonials;
+use App\Models\Blogs;
 use App\Models\SiteGallery;
-use App\Models\Service;
+use App\Models\Investor;
 use App\Models\OurService;
 use App\Models\Region;
 use App\Models\Vendor;
@@ -29,8 +29,11 @@ class FrontendConroller extends Controller
         $services = OurService::get()->take('4');
         $siteGallery = SiteGallery::get();
         $products = Product::with('brand')->get();
+        $investors = Investor::all();
+        $testimonials = Testimonials::all();
+        $blogs = Blogs::with('user')->get()->take('3');
         // dd($events->toArray());
-        return view('front.home',compact('events', 'regions', 'services', 'siteGallery', 'products'));
+        return view('front.home',compact('events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials'));
     }
     public function get_product(Request $request)
     {

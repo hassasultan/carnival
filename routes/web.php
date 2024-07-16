@@ -41,6 +41,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\EventsCountryTabController;
+use App\Http\Controllers\TestimonialsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -203,6 +204,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // Events tabs
     Route::resource('events_country_tabs', EventsCountryTabController::class);
+    
+    // testimonials
+    Route::resource('testimonials', TestimonialsController::class);
 
     // API Route for getting cities by country
     Route::get('api/cities/{country_id}', [EventsCountryTabController::class, 'getCitiesByCountry'])->name('get.cities.by.country');
