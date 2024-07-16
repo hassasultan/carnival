@@ -129,4 +129,9 @@ class FrontendConroller extends Controller
 
         return view('ShopFrontend.subvendor-detail', compact('subvendor', 'categories'));
     }
+
+    public function eventViewMore()
+    {
+        return view('front.view_more');
+    }
 }

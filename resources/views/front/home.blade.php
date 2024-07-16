@@ -52,7 +52,7 @@
                                                                     energetic, linking back to Grenada's African, French,
                                                                     British, and Caribbean heritage.
                                                                 </div>
-                                                                <a href="guide.html"
+                                                                <a href="{{ route('events.view.more') }}"
                                                                     class="c-button b-50 bg-green hv-green-o ">view
                                                                     more</a>
                                                                 <div class="slide-preview">
