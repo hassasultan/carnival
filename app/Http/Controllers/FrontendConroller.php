@@ -48,6 +48,22 @@ class FrontendConroller extends Controller
     {
         return view('front.tours');
     }
+    public function flight()
+    {
+        return view('front.flight');
+    }
+    public function flight_listing()
+    {
+        return view('front.flight-isting');
+    }
+    public function gallery()
+    {
+        return view('front.gallery');
+    }
+    public function car_rental()
+    {
+        return view('front.car-rental');
+    }
     public function get_product(Request $request)
     {
         $products = Product::orderBy('id', 'DESC')->paginate(18);

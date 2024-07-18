@@ -365,7 +365,7 @@
 			</div>
 		</div>
 		<div class="isotope-container row">
-			{{-- <div class="grid-sizer col-mob-12 col-xs-6 col-sm-3"></div> --}}
+			<div class="grid-sizer col-mob-12 col-xs-6 col-sm-3"></div>
 			<div class="item gal-item col-mob-12 col-xs-6 col-sm-3">
 				<a class="black-hover" href="detail_2.html">
 					<img class="img-full img-responsive" src="https://carnivalguide.co/travel/img/home_8/gal_1.jpg" alt="">

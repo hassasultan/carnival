@@ -5,12 +5,13 @@
     <script src="{{ asset('shopAssets/js/idangerous.swiper.min.js') }}"></script>
     <script src="{{ asset('shopAssets/js/jquery.viewportchecker.min.js') }}"></script>
     <script src="{{ asset('shopAssets/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('shopAssets/js/DateTimePicker.min.js') }}"></script>
     <script src="{{ asset('shopAssets/js/jquery.mousewheel.min.js') }}"></script>
     <script src="{{ asset('shopAssets/js/all.js') }}"></script>
     
 
     <!-- jQuery -->
-    <script type="text/javascript" src="{{ asset('shopAssets/js/carnival-jquery.min.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ asset('shopAssets/js/carnival-jquery.min.js') }}"></script> --}}
 
     <!-- sticky -->
     <script type="text/javascript" src="{{ asset('shopAssets/js/jquery.sticky.js') }}"></script>

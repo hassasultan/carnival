@@ -76,7 +76,7 @@ $(function() {
 	/*============================*/
 	/* 04 - FUNCTION ON PAGE LOAD */
 	/*============================*/
-	$(window).load(function(){
+	$(document).ready(function() {
 		initFullPage();		
 		initSwiper();
 		videoRezise();
