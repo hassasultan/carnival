@@ -42,6 +42,10 @@ class FrontendConroller extends Controller
     }
     public function category_tour_listing()
     {
+        return view('front.category-tours');
+    }
+    public function tour_listing()
+    {
         return view('front.tours');
     }
     public function get_product(Request $request)

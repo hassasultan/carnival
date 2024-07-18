@@ -5,7 +5,8 @@
     <meta charset="utf-8">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    {{-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"> --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="favicon.ico" />
     <link href="{{ asset('shopAssets/css/carnival-bootstrap.min.css?ver=1') }}" rel="stylesheet" type="text/css" />

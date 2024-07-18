@@ -1,12 +1,13 @@
 <script src="{{ asset('shopAssets/js/jquery-2.1.4.min.js') }}"></script>
     <script src="{{ asset('shopAssets/js/carnival-bootstrap.min.js') }}"></script>
     <script src="{{ asset('shopAssets/js/carnival-jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('shopAssets/js/idangerous.swiper.min.js') }}"></script>
-    <script src="{{ asset('shopAssets/js/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('shopAssets/js/jquery.viewportchecker.min.js') }}"></script>
     <script src="{{ asset('shopAssets/js/jquery.countTo.js') }}"></script>
+    <script src="{{ asset('shopAssets/js/idangerous.swiper.min.js') }}"></script>
+    <script src="{{ asset('shopAssets/js/jquery.viewportchecker.min.js') }}"></script>
+    <script src="{{ asset('shopAssets/js/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('shopAssets/js/jquery.mousewheel.min.js') }}"></script>
     <script src="{{ asset('shopAssets/js/all.js') }}"></script>
+    
 
     <!-- jQuery -->
     <script type="text/javascript" src="{{ asset('shopAssets/js/carnival-jquery.min.js') }}"></script>
