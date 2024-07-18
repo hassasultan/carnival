@@ -40,7 +40,7 @@ class FrontendConroller extends Controller
     {
         return view('front.events');
     }
-    public function tour_listing()
+    public function category_tour_listing()
     {
         return view('front.tours');
     }
