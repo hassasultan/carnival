@@ -36,6 +36,14 @@ class FrontendConroller extends Controller
         // dd($events->toArray());
         return view('front.home',compact('events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials'));
     }
+    public function event_listing()
+    {
+        return view('front.events');
+    }
+    public function tour_listing()
+    {
+        return view('front.tours');
+    }
     public function get_product(Request $request)
     {
         $products = Product::orderBy('id', 'DESC')->paginate(18);

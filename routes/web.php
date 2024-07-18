@@ -55,6 +55,8 @@ use App\Http\Controllers\TestimonialsController;
 */
 
 Route::get('/', [FrontendConroller::class, 'home'])->name('front.home');
+Route::get('/event-listing', [FrontendConroller::class, 'event_listing'])->name('front.event.listing');
+Route::get('/tour-listing', [FrontendConroller::class, 'tour_listing'])->name('front.tour.listing');
 Route::get('/product-listing', [FrontendConroller::class, 'product_listing'])->name('front.product_listing');
 Route::get('/mascamps', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
 Route::get('/get-section-leaders', [FrontendConroller::class, 'sub_vendor_listing'])->name('get.subvendors.front');
