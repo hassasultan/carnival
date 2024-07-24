@@ -183,805 +183,808 @@
                                         </div>
                                         @endif --}}
                                         <div class="slider-wth-thumbs style-1 arrows">
-                                            <div class="swiper-container thumbnails-preview swiper-swiper-unique-id-0 initialized" data-autoplay="0" data-loop="1" data-speed="500" data-center="0" data-slides-per-view="1" id="swiper-unique-id-0">
-                                                <div class="swiper-wrapper" style="width: 5390px; transform: translate3d(-770px, 0px, 0px); transition-duration: 0s; height: 455px;"><div class="swiper-slide swiper-slide-duplicate" data-val="4" style="width: 770px; height: 455px;">
-                                                         <img class="img-responsive img-full" src="{{ asset('files/' . $row->file) }}" alt="">           		 
+                                            <div class="swiper-container thumbnails-preview swiper-swiper-unique-id-0 initialized"
+                                                data-autoplay="0" data-loop="1" data-speed="500" data-center="0"
+                                                data-slides-per-view="1" id="swiper-unique-id-0">
+                                                <div class="swiper-wrapper"
+                                                    style="width: 5390px; transform: translate3d(-770px, 0px, 0px); transition-duration: 0s; height: 455px;">
+                                                    <div class="swiper-slide swiper-slide-duplicate" data-val="0"
+                                                        style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full"
+                                                            src="{{ asset('files/' . $row->file) }}" alt="">
                                                     </div>
-                                                    <div class="swiper-slide active swiper-slide-visible swiper-slide-active" data-val="0" style="width: 770px; height: 455px;">
-                                                         <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="">
+                                                    <div class="swiper-slide active swiper-slide-visible swiper-slide-active"
+                                                        data-val="0" style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full"
+                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                            alt="">
                                                     </div>
-                                                    <div class="swiper-slide" data-val="1" style="width: 770px; height: 455px;">
-                                                         <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="">
+                                                    <div class="swiper-slide" data-val="1"
+                                                        style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full"
+                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                            alt="">
                                                     </div>
-                                                    <div class="swiper-slide" data-val="2" style="width: 770px; height: 455px;">
-                                                         <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg" alt="">
+                                                    <div class="swiper-slide" data-val="2"
+                                                        style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full"
+                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                            alt="">
                                                     </div>
-                                                    <div class="swiper-slide" data-val="3" style="width: 770px; height: 455px;">
-                                                         <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg" alt="">		 
+                                                    <div class="swiper-slide" data-val="3"
+                                                        style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full"
+                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                            alt="">
                                                     </div>
-                                                    <div class="swiper-slide" data-val="4" style="width: 770px; height: 455px;">
-                                                         <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg" alt="">           		 
+                                                    <div class="swiper-slide" data-val="4"
+                                                        style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full"
+                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                            alt="">
                                                     </div>
-                                                <div class="swiper-slide active swiper-slide-duplicate" data-val="0" style="width: 770px; height: 455px;">
-                                                         <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="">
-                                                    </div></div>
-                                                <div class="pagination pagination-hidden pagination-swiper-unique-id-0"><span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span></div>
+                                                    <div class="swiper-slide active swiper-slide-duplicate" data-val="0"
+                                                        style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full"
+                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                            alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="pagination pagination-hidden pagination-swiper-unique-id-0">
+                                                    <span
+                                                        class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span><span
+                                                        class="swiper-pagination-switch"></span><span
+                                                        class="swiper-pagination-switch"></span><span
+                                                        class="swiper-pagination-switch"></span><span
+                                                        class="swiper-pagination-switch"></span></div>
                                                 <div class="arrow-wrapp arr-s-3">
-                                                    <div class="swiper-arrow-left sw-arrow"><span class="fa fa-angle-left"></span></div>
-                                                    <div class="swiper-arrow-right sw-arrow"><span class="fa fa-angle-right"></span></div>
+                                                    <div class="swiper-arrow-left sw-arrow"><span
+                                                            class="fa fa-angle-left"></span></div>
+                                                    <div class="swiper-arrow-right sw-arrow"><span
+                                                            class="fa fa-angle-right"></span></div>
                                                 </div>
                                             </div>
-                                            <div class="swiper-container thumbnails swiper-swiper-unique-id-1 initialized pagination-hidden" data-autoplay="0" data-loop="0" data-speed="500" data-center="0" data-slides-per-view="responsive" data-mob-slides="2" data-xs-slides="3" data-sm-slides="4" data-md-slides="5" data-lg-slides="5" data-add-slides="5" id="swiper-unique-id-1">
+                                            <div class="swiper-container thumbnails swiper-swiper-unique-id-1 initialized pagination-hidden"
+                                                data-autoplay="0" data-loop="0" data-speed="500" data-center="0"
+                                                data-slides-per-view="responsive" data-mob-slides="2" data-xs-slides="3"
+                                                data-sm-slides="4" data-md-slides="5" data-lg-slides="5"
+                                                data-add-slides="5" id="swiper-unique-id-1">
                                                 <div class="swiper-wrapper" style="width: 770px; height: 101px;">
-                                                    <div class="swiper-slide current active swiper-slide-visible swiper-slide-active" data-val="0" style="width: 154px; height: 101px;">
-                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_1s.jpg" alt="">
+                                                    <div class="swiper-slide current active swiper-slide-visible swiper-slide-active"
+                                                        data-val="0" style="width: 154px; height: 101px;">
+                                                        <img class="img-responsive img-full"
+                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_1s.jpg"
+                                                            alt="">
                                                     </div>
-                                                    <div class="swiper-slide swiper-slide-visible" data-val="1" style="width: 154px; height: 101px;">
-                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_2s.jpg" alt="">
+                                                    <div class="swiper-slide swiper-slide-visible" data-val="1"
+                                                        style="width: 154px; height: 101px;">
+                                                        <img class="img-responsive img-full"
+                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_2s.jpg"
+                                                            alt="">
                                                     </div>
-                                                    <div class="swiper-slide swiper-slide-visible" data-val="2" style="width: 154px; height: 101px;">
-                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_3s.jpg" alt="">
+                                                    <div class="swiper-slide swiper-slide-visible" data-val="2"
+                                                        style="width: 154px; height: 101px;">
+                                                        <img class="img-responsive img-full"
+                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_3s.jpg"
+                                                            alt="">
                                                     </div>
-                                                    <div class="swiper-slide swiper-slide-visible" data-val="3" style="width: 154px; height: 101px;">
-                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_4s.jpg" alt="">
+                                                    <div class="swiper-slide swiper-slide-visible" data-val="3"
+                                                        style="width: 154px; height: 101px;">
+                                                        <img class="img-responsive img-full"
+                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_4s.jpg"
+                                                            alt="">
                                                     </div>
-                                                    <div class="swiper-slide swiper-slide-visible" data-val="4" style="width: 154px; height: 101px;">
-                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_5s.jpg" alt="">
+                                                    <div class="swiper-slide swiper-slide-visible" data-val="4"
+                                                        style="width: 154px; height: 101px;">
+                                                        <img class="img-responsive img-full"
+                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_5s.jpg"
+                                                            alt="">
                                                     </div>
                                                 </div>
-                                                <div class="pagination hidden pagination-swiper-unique-id-1"><span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch" style="display: inline;"></span><span class="swiper-pagination-switch swiper-visible-switch" style="display: none;"></span><span class="swiper-pagination-switch swiper-visible-switch" style="display: none;"></span><span class="swiper-pagination-switch swiper-visible-switch" style="display: none;"></span><span class="swiper-pagination-switch swiper-visible-switch" style="display: none;"></span></div>
+                                                <div class="pagination hidden pagination-swiper-unique-id-1"><span
+                                                        class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"
+                                                        style="display: inline;"></span><span
+                                                        class="swiper-pagination-switch swiper-visible-switch"
+                                                        style="display: none;"></span><span
+                                                        class="swiper-pagination-switch swiper-visible-switch"
+                                                        style="display: none;"></span><span
+                                                        class="swiper-pagination-switch swiper-visible-switch"
+                                                        style="display: none;"></span><span
+                                                        class="swiper-pagination-switch swiper-visible-switch"
+                                                        style="display: none;"></span></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             {!! $row->content !!}
 
-                                            {{-- <div class="list-wrapper bg-grey-2">
-                                                <div class="container">
+                                        </div>
+                                        {{-- <div class="col-md-12">
+                                            <div class="list-wrapper bg-grey-2">
+                                                <div class="" style="padding: 1.2rem;">
+                                                    
                                                     <div class="row">
-                                                        <div class="col-xs-12 col-sm-4 col-md-3">
-                                                            <div class="sidebar bg-white clearfix">
-                                                              <div class="sidebar-block">
-                                                                  <h4 class="sidebar-title color-dark-2">search</h4>
-                                                                  <div class="search-inputs">
-                                                                      <div class="form-block clearfix">
-                                                                          <div class="input-style-1 b-50 color-3">
-                                                                              <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
-                                                                              <input type="text" placeholder="Where do you want to go?">
-                                                                          </div>
-                                                                      </div>							
-                                                                      <div class="form-block clearfix">
-                                                                          <div class="input-style-1 b-50 color-3">
-                                                                              <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                                              <input type="text" placeholder="Check In" class="datepicker hasDatepicker" id="dp1721321640005">
-                                                                          </div>					
-                                                                      </div>
-                                                                      <div class="form-block clearfix">
-                                                                          <div class="input-style-1 b-50 color-3">
-                                                                              <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                                              <input type="text" placeholder="Check Out" class="datepicker hasDatepicker" id="dp1721321640006">
-                                                                          </div>					
-                                                                      </div>
-                                                                  </div>
-                                                                  <input type="submit" class="c-button b-40 bg-blue-2 hv-blue-2-o" value="search">				
-                                                              </div>
-                                                              <div class="sidebar-block">
-                                                                  <h4 class="sidebar-title color-dark-2">categories</h4>
-                                                                  <ul class="sidebar-category color-1">
-                                                                      <li class="active">
-                                                                          <a class="cat-drop" href="#">tours <span class="fr">(68)</span></a>
-                                                                          <ul>
-                                                                              <li><a href="#">sea tours (785)</a></li>
-                                                                              <li><a href="#">food tours (85)</a></li>
-                                                                              <li><a href="#">romantic tours (125)</a></li>
-                                                                              <li><a href="#">honeymoon tours (70)</a></li>
-                                                                              <li><a href="#">mountain tours (159)</a></li>
-                                                                          </ul>
-                                                                      </li>
-                                                                      <li>
-                                                                          <a class="cat-drop" href="#">hotels <span class="fr">(125)</span></a>
-                                                                          <ul>
-                                                                              <li><a href="#">sea tours (785)</a></li>
-                                                                              <li><a href="#">food tours (85)</a></li>
-                                                                              <li><a href="#">romantic tours (125)</a></li>
-                                                                              <li><a href="#">honeymoon tours (70)</a></li>
-                                                                              <li><a href="#">mountain tours (159)</a></li>
-                                                                          </ul>									
-                                                                      </li>
-                                                                      <li>
-                                                                          <a class="cat-drop" href="#">cruises <span class="fr">(75)</span></a>
-                                                                          <ul>
-                                                                              <li><a href="#">sea tours (785)</a></li>
-                                                                              <li><a href="#">food tours (85)</a></li>
-                                                                              <li><a href="#">romantic tours (125)</a></li>
-                                                                              <li><a href="#">honeymoon tours (70)</a></li>
-                                                                              <li><a href="#">mountain tours (159)</a></li>
-                                                                          </ul>									
-                                                                      </li>
-                                                                      <li>
-                                                                          <a class="cat-drop" href="#">flights  <span class="fr">(93)</span></a>
-                                                                          <ul>
-                                                                              <li><a href="#">sea tours (785)</a></li>
-                                                                              <li><a href="#">food tours (85)</a></li>
-                                                                              <li><a href="#">romantic tours (125)</a></li>
-                                                                              <li><a href="#">honeymoon tours (70)</a></li>
-                                                                              <li><a href="#">mountain tours (159)</a></li>
-                                                                          </ul>									
-                                                                      </li>								
-                                                                  </ul>
-                                                              </div>
-                                                              <div class="sidebar-block">
-                                                                  <h4 class="sidebar-title color-dark-2">price range</h4>
-                                                                  <div class="slider-range color-1 clearfix" data-counter="$" data-position="start" data-from="0" data-to="1500" data-min="0" data-max="2000">
-                                                                      <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="slider-range-0" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 0%; width: 75%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 75%;"></a></div>
-                                                                      <input type="text" class="amount-start" readonly="" value="$0" id="amount-start-0">
-                                                                      <input type="text" class="amount-end" readonly="" value="$1500" id="amount-end-0">						
-                                                                  </div>
-                                                                  <input type="submit" class="c-button b-40 bg-blue-2 hv-blue-2-o" value="search">				
-                                                              </div>
-                                                              <div class="sidebar-block">
-                                                                  <h4 class="sidebar-title color-dark-2">star rating</h4>
-                                                                  <div class="sidebar-rating">
-                                                                      <div class="input-entry color-1">
-                                                                          <input class="checkbox-form" id="star-5" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="star-5">
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                              <span class="rate">
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                              </span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry color-1">
-                                                                          <input class="checkbox-form" id="star-4" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="star-4">
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                              <span class="rate">
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                              </span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry color-1">
-                                                                          <input class="checkbox-form" id="star-3" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="star-3">
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                              <span class="rate">
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                              </span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry color-1">
-                                                                          <input class="checkbox-form" id="star-2" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="star-2">
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                              <span class="rate">
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                              </span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry color-1">
-                                                                          <input class="checkbox-form" id="star-1" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="star-1">
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                              <span class="rate">
-                                                                                  <span class="fa fa-star color-yellow"></span>
-                                                                              </span>
-                                                                          </label>
-                                                                      </div>
-                                                                  </div>											
-                                                              </div>
-                                                              <div class="sidebar-block">
-                                                                  <h4 class="sidebar-title color-dark-2">Facility</h4>
-                                                                  <div class="sidebar-rating">
-                                                                      <div class="input-entry color-1">
-                                                                          <input class="checkbox-form" id="text-1" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="text-1">
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                              <span class="checkbox-text">Pet allowed</span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry color-1">
-                                                                          <input class="checkbox-form" id="text-2" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="text-2">
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                              <span class="checkbox-text">Groups allowed</span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry color-1">
-                                                                          <input class="checkbox-form" id="text-3" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="text-3">
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                              <span class="checkbox-text">Tour guides</span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry color-1">
-                                                                          <input class="checkbox-form" id="text-4" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="text-4">
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                              <span class="checkbox-text">Access for disabled</span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry color-1">
-                                                                          <input class="checkbox-form" id="text-5" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="text-5">
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                              <span class="checkbox-text">Pet allowed</span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry color-1">
-                                                                          <input class="checkbox-form" id="text-6" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="text-6">
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                              <span class="checkbox-text">Groups allowed</span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry color-1">
-                                                                          <input class="checkbox-form" id="text-7" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="text-7">
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                              <span class="checkbox-text">Access for disabled</span>
-                                                                          </label>
-                                                                      </div>																
-                                                                  </div>											
-                                                              </div>
-                                                              <div class="sidebar-block">
-                                                                  <h4 class="sidebar-title color-dark-2">Review Score</h4>
-                                                                  <div class="sidebar-score">
-                                                                      <div class="input-entry type-2 color-2">
-                                                                          <input class="checkbox-form" id="score-5" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="score-5">
-                                                                              <span class="checkbox-text">
-                                                                                  5
-                                                                                  <span class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                  </span>
-                                                                              </span>									
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry type-2 color-2">
-                                                                          <input class="checkbox-form" id="score-4" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="score-4">
-                                                                              <span class="checkbox-text">
-                                                                                  4
-                                                                                  <span class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                  </span>
-                                                                              </span>									
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry type-2 color-2">
-                                                                          <input class="checkbox-form" id="score-3" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="score-3">
-                                                                              <span class="checkbox-text">
-                                                                                  3
-                                                                                  <span class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                  </span>
-                                                                              </span>									
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry type-2 color-2">
-                                                                          <input class="checkbox-form" id="score-2" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="score-2">
-                                                                              <span class="checkbox-text">
-                                                                                  2
-                                                                                  <span class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                  </span>
-                                                                              </span>									
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                          </label>
-                                                                      </div>
-                                                                      <div class="input-entry type-2 color-2">
-                                                                          <input class="checkbox-form" id="score-1" type="checkbox" name="checkbox" value="climat control">
-                                                                          <label class="clearfix" for="score-1">
-                                                                              <span class="checkbox-text">
-                                                                                  1
-                                                                                  <span class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                  </span>
-                                                                              </span>									
-                                                                              <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                                          </label>
-                                                                      </div>
-                                                                  </div>							
-                                                              </div>					
+                                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                                            <div class="sidebar bg-white clearfix" style="margin-bottom: 1.2rem;">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="sidebar-block">
+                                                                            <h4 class="sidebar-title color-dark-2">search</h4>
+                                                                            <div class="search-inputs">
+                                                                                <div class="form-block clearfix">
+                                                                                    <div class="input-style-1 b-50 color-3">
+                                                                                        <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
+                                                                                            alt="">
+                                                                                        <input type="text"
+                                                                                            placeholder="Where do you want to go?">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-block clearfix">
+                                                                                    <div class="input-style-1 b-50 color-3">
+                                                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                                                            alt="">
+                                                                                        <input type="text" placeholder="Check In"
+                                                                                            class="datepicker hasDatepicker"
+                                                                                            id="dp1721321640005">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-block clearfix">
+                                                                                    <div class="input-style-1 b-50 color-3">
+                                                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                                                            alt="">
+                                                                                        <input type="text" placeholder="Check Out"
+                                                                                            class="datepicker hasDatepicker"
+                                                                                            id="dp1721321640006">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <input type="submit"
+                                                                                class="c-button b-40 bg-blue-2 hv-blue-2-o"
+                                                                                value="search">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="sidebar-block">
+                                                                            <h4 class="sidebar-title color-dark-2">price range</h4>
+                                                                            <div class="slider-range color-1 clearfix"
+                                                                                data-counter="$" data-position="start" data-from="0"
+                                                                                data-to="1500" data-min="0" data-max="2000">
+                                                                                <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                                                                                    id="slider-range-0" aria-disabled="false">
+                                                                                    <div class="ui-slider-range ui-widget-header ui-corner-all"
+                                                                                        style="left: 0%; width: 75%;"></div><a
+                                                                                        class="ui-slider-handle ui-state-default ui-corner-all"
+                                                                                        href="#" style="left: 0%;"></a><a
+                                                                                        class="ui-slider-handle ui-state-default ui-corner-all"
+                                                                                        href="#" style="left: 75%;"></a>
+                                                                                </div>
+                                                                                <input type="text" class="amount-start"
+                                                                                    readonly="" value="$0"
+                                                                                    id="amount-start-0">
+                                                                                <input type="text" class="amount-end"
+                                                                                    readonly="" value="$1500" id="amount-end-0">
+                                                                            </div>
+                                                                            <input type="submit"
+                                                                                class="c-button b-40 bg-blue-2 hv-blue-2-o"
+                                                                                value="search">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="sidebar-block">
+                                                                            <h4 class="sidebar-title color-dark-2">star rating</h4>
+                                                                            <div class="sidebar-rating">
+                                                                                <div class="input-entry color-1">
+                                                                                    <input class="checkbox-form" id="star-5"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="star-5">
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                        <span class="rate">
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                        </span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry color-1">
+                                                                                    <input class="checkbox-form" id="star-4"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="star-4">
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                        <span class="rate">
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                        </span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry color-1">
+                                                                                    <input class="checkbox-form" id="star-3"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="star-3">
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                        <span class="rate">
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                        </span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry color-1">
+                                                                                    <input class="checkbox-form" id="star-2"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="star-2">
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                        <span class="rate">
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                        </span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry color-1">
+                                                                                    <input class="checkbox-form" id="star-1"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="star-1">
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                        <span class="rate">
+                                                                                            <span
+                                                                                                class="fa fa-star color-yellow"></span>
+                                                                                        </span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="sidebar-block">
+                                                                            <h4 class="sidebar-title color-dark-2">Facility</h4>
+                                                                            <div class="sidebar-rating">
+                                                                                <div class="input-entry color-1">
+                                                                                    <input class="checkbox-form" id="text-1"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="text-1">
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                        <span class="checkbox-text">Pet allowed</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry color-1">
+                                                                                    <input class="checkbox-form" id="text-2"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="text-2">
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                        <span class="checkbox-text">Groups
+                                                                                            allowed</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry color-1">
+                                                                                    <input class="checkbox-form" id="text-3"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="text-3">
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                        <span class="checkbox-text">Tour guides</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry color-1">
+                                                                                    <input class="checkbox-form" id="text-4"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="text-4">
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                        <span class="checkbox-text">Access for
+                                                                                            disabled</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry color-1">
+                                                                                    <input class="checkbox-form" id="text-5"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="text-5">
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                        <span class="checkbox-text">Pet allowed</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry color-1">
+                                                                                    <input class="checkbox-form" id="text-6"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="text-6">
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                        <span class="checkbox-text">Groups
+                                                                                            allowed</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry color-1">
+                                                                                    <input class="checkbox-form" id="text-7"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="text-7">
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                        <span class="checkbox-text">Access for
+                                                                                            disabled</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="sidebar-block">
+                                                                            <h4 class="sidebar-title color-dark-2">Review Score</h4>
+                                                                            <div class="sidebar-score">
+                                                                                <div class="input-entry type-2 color-2">
+                                                                                    <input class="checkbox-form" id="score-5"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="score-5">
+                                                                                        <span class="checkbox-text">
+                                                                                            5
+                                                                                            <span class="rate">
+                                                                                                <span
+                                                                                                    class="fa fa-star color-yellow"></span>
+                                                                                            </span>
+                                                                                        </span>
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry type-2 color-2">
+                                                                                    <input class="checkbox-form" id="score-4"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="score-4">
+                                                                                        <span class="checkbox-text">
+                                                                                            4
+                                                                                            <span class="rate">
+                                                                                                <span
+                                                                                                    class="fa fa-star color-yellow"></span>
+                                                                                            </span>
+                                                                                        </span>
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry type-2 color-2">
+                                                                                    <input class="checkbox-form" id="score-3"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="score-3">
+                                                                                        <span class="checkbox-text">
+                                                                                            3
+                                                                                            <span class="rate">
+                                                                                                <span
+                                                                                                    class="fa fa-star color-yellow"></span>
+                                                                                            </span>
+                                                                                        </span>
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry type-2 color-2">
+                                                                                    <input class="checkbox-form" id="score-2"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="score-2">
+                                                                                        <span class="checkbox-text">
+                                                                                            2
+                                                                                            <span class="rate">
+                                                                                                <span
+                                                                                                    class="fa fa-star color-yellow"></span>
+                                                                                            </span>
+                                                                                        </span>
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="input-entry type-2 color-2">
+                                                                                    <input class="checkbox-form" id="score-1"
+                                                                                        type="checkbox" name="checkbox"
+                                                                                        value="climat control">
+                                                                                    <label class="clearfix" for="score-1">
+                                                                                        <span class="checkbox-text">
+                                                                                            1
+                                                                                            <span class="rate">
+                                                                                                <span
+                                                                                                    class="fa fa-star color-yellow"></span>
+                                                                                            </span>
+                                                                                        </span>
+                                                                                        <span class="sp-check"><i
+                                                                                                class="fa fa-check"></i></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="sidebar-block">
+                                                                            <h4 class="sidebar-title color-dark-2">categories</h4>
+                                                                            <ul class="sidebar-category color-1">
+                                                                                <li class="active">
+                                                                                    <a class="cat-drop" href="#">tours <span
+                                                                                            class="fr">(68)</span></a>
+                                                                                    <ul>
+                                                                                        <li><a href="#">sea tours (785)</a></li>
+                                                                                        <li><a href="#">food tours (85)</a></li>
+                                                                                        <li><a href="#">romantic tours (125)</a>
+                                                                                        </li>
+                                                                                        <li><a href="#">honeymoon tours (70)</a>
+                                                                                        </li>
+                                                                                        <li><a href="#">mountain tours (159)</a>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a class="cat-drop" href="#">hotels <span
+                                                                                            class="fr">(125)</span></a>
+                                                                                    <ul>
+                                                                                        <li><a href="#">sea tours (785)</a></li>
+                                                                                        <li><a href="#">food tours (85)</a></li>
+                                                                                        <li><a href="#">romantic tours (125)</a>
+                                                                                        </li>
+                                                                                        <li><a href="#">honeymoon tours (70)</a>
+                                                                                        </li>
+                                                                                        <li><a href="#">mountain tours (159)</a>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a class="cat-drop" href="#">cruises <span
+                                                                                            class="fr">(75)</span></a>
+                                                                                    <ul>
+                                                                                        <li><a href="#">sea tours (785)</a></li>
+                                                                                        <li><a href="#">food tours (85)</a></li>
+                                                                                        <li><a href="#">romantic tours (125)</a>
+                                                                                        </li>
+                                                                                        <li><a href="#">honeymoon tours (70)</a>
+                                                                                        </li>
+                                                                                        <li><a href="#">mountain tours (159)</a>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a class="cat-drop" href="#">flights <span
+                                                                                            class="fr">(93)</span></a>
+                                                                                    <ul>
+                                                                                        <li><a href="#">sea tours (785)</a></li>
+                                                                                        <li><a href="#">food tours (85)</a></li>
+                                                                                        <li><a href="#">romantic tours (125)</a>
+                                                                                        </li>
+                                                                                        <li><a href="#">honeymoon tours (70)</a>
+                                                                                        </li>
+                                                                                        <li><a href="#">mountain tours (159)</a>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-8 col-md-9">
-                                                          <div class="list-header clearfix">
-                                                              <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
-                                                                <div class="drop">
-                                                                   <b>Sort by price</b>
-                                                                      <a href="#" class="drop-list"><i class="fa fa-angle-down"></i></a>
-                                                                      <span>
-                                                                          <a href="#">ASC</a>
-                                                                          <a href="#">DESC</a>
-                                                                      </span>
-                                                                 </div>
-                                                              </div>
-                                                              <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
-                                                                <div class="drop">
-                                                                   <b>Sort by ranking</b>
-                                                                      <a href="#" class="drop-list"><i class="fa fa-angle-down"></i></a>
-                                                                      <span>
-                                                                          <a href="#">ASC</a>
-                                                                          <a href="#">DESC</a>
-                                                                      </span>
-                                                                 </div>
-                                                              </div>
-                                                              <div class="list-view-change">
-                                                                  <div class="change-grid color-1 fr"><i class="fa fa-th"></i></div>
-                                                                  <div class="change-list color-1 fr active"><i class="fa fa-bars"></i></div>
-                                                                  <div class="change-to-label fr color-grey-8">View:</div>
-                                                              </div>
-                                                          </div>
-                                                            <div class="list-content clearfix">
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_1.png" alt="">          	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in greece</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$273</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
+
+                                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                                            <div class="list-header clearfix">
+                                                                <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
+                                                                    <div class="drop">
+                                                                        <b>Sort by price</b>
+                                                                        <a href="#" class="drop-list"><i
+                                                                                class="fa fa-angle-down"></i></a>
+                                                                        <span>
+                                                                            <a href="#">ASC</a>
+                                                                            <a href="#">DESC</a>
+                                                                        </span>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_2.png" alt="">            	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in monaco</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$703</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
+                                                                <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
+                                                                    <div class="drop">
+                                                                        <b>Sort by ranking</b>
+                                                                        <a href="#" class="drop-list"><i
+                                                                                class="fa fa-angle-down"></i></a>
+                                                                        <span>
+                                                                            <a href="#">ASC</a>
+                                                                            <a href="#">DESC</a>
+                                                                        </span>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_3.png" alt="">           	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in italy</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$300</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
-                                                                </div>
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_4.png" alt="">           	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in miami</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$400</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
-                                                                </div> 
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_5.png" alt="">          	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in USA</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$273</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
-                                                                </div>
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_6.png" alt="">           	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in santorini</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$500</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
-                                                                </div>
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_7.png" alt="">         	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in monaco</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$273</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
-                                                                </div>
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_8.png" alt="">           	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in paris</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$300</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
-                                                                </div>
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_1.png" alt="">           	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in brasil</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$300</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
-                                                                </div>
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_2.png" alt="">            	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in monte carlo</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$200</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
-                                                                </div>
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_3.png" alt="">           	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in bora bora</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$333</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
-                                                                </div>
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_4.png" alt="">           	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in france</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$250</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
-                                                                </div>
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_5.png" alt="">          	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in spaine</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$750</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
-                                                                </div>
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_6.png" alt="">           	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in marmaris</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$273</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
-                                                                </div>
-                                                                <div class="list-item-entry">
-                                                                  <div class="hotel-item style-3 bg-white">
-                                                                      <div class="table-view">
-                                                                            <div class="radius-top cell-view">
-                                                                                 <img src="https://carnivalguide.co/travel/img/car_7.png" alt="">           	 	 
-                                                                            </div>
-                                                                            <div class="title hotel-middle clearfix cell-view">
-                                                                                 <div class="date list-hidden">July <strong>19th</strong> to July <strong>26th</strong></div>
-                                                                                 <div class="date grid-hidden"><strong>19.07 - 26.07 / 7</strong> night</div>
-                                                                                <h4><b>tours in monaco</b></h4>
-                                                                                   <div class="rate-wrap">
-                                                                                      <div class="rate">
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                      <span class="fa fa-star color-yellow"></span>
-                                                                                    </div>
-                                                                                    <i>485 rewies</i> 
-                                                                                 </div> 
-                                                                              <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus ac congue arcu.</p>
-                                                                          </div>
-                                                                          <div class="title hotel-right clearfix cell-view"> 
-                                                                              <div class="hotel-person color-dark-2">from <span class="color-blue">$503</span> person</div>
-                                                                              <a class="c-button b-40 bg-blue hv-blue-o grid-hidden" href="#">view more</a>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>  						
+                                                                <div class="list-view-change">
+                                                                    <div class="change-grid color-1 fr"><i
+                                                                            class="fa fa-th"></i></div>
+                                                                    <div class="change-list color-1 fr active"><i
+                                                                            class="fa fa-bars"></i></div>
+                                                                    <div class="change-to-label fr color-grey-8">View:
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                      
+                                                            <div class="list-content clearfix">
+                                                                <div class="list-item-entry">
+                                                                    <div class="hotel-item style-3 bg-white">
+                                                                        <div class="table-view">
+                                                                            <div class="radius-top cell-view">
+                                                                                <img src="https://carnivalguide.co/travel/img/car_1.png"
+                                                                                    alt="">
+                                                                            </div>
+                                                                            <div
+                                                                                class="title hotel-middle clearfix cell-view">
+                                                                                <div class="date list-hidden">July
+                                                                                    <strong>19th</strong> to July
+                                                                                    <strong>26th</strong></div>
+                                                                                <div class="date grid-hidden"><strong>19.07
+                                                                                        - 26.07 / 7</strong> night</div>
+                                                                                <h4><b>tours in greece</b></h4>
+                                                                                <div class="rate-wrap">
+                                                                                    <div class="rate">
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                    </div>
+                                                                                    <i>485 rewies</i>
+                                                                                </div>
+                                                                                <p class="f-14 grid-hidden">Nunc cursus
+                                                                                    libero purus ac congue arcu cur sus ut
+                                                                                    sed vitae pulvinar. Nunc cursus libero
+                                                                                    purus ac congue arcu.</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="title hotel-right clearfix cell-view">
+                                                                                <div class="hotel-person color-dark-2">from
+                                                                                    <span class="color-blue">$273</span>
+                                                                                    person</div>
+                                                                                <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
+                                                                                    href="#">view more</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="list-item-entry">
+                                                                    <div class="hotel-item style-3 bg-white">
+                                                                        <div class="table-view">
+                                                                            <div class="radius-top cell-view">
+                                                                                <img src="https://carnivalguide.co/travel/img/car_2.png"
+                                                                                    alt="">
+                                                                            </div>
+                                                                            <div
+                                                                                class="title hotel-middle clearfix cell-view">
+                                                                                <div class="date list-hidden">July
+                                                                                    <strong>19th</strong> to July
+                                                                                    <strong>26th</strong></div>
+                                                                                <div class="date grid-hidden"><strong>19.07
+                                                                                        - 26.07 / 7</strong> night</div>
+                                                                                <h4><b>tours in monaco</b></h4>
+                                                                                <div class="rate-wrap">
+                                                                                    <div class="rate">
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                    </div>
+                                                                                    <i>485 rewies</i>
+                                                                                </div>
+                                                                                <p class="f-14 grid-hidden">Nunc cursus
+                                                                                    libero purus ac congue arcu cur sus ut
+                                                                                    sed vitae pulvinar. Nunc cursus libero
+                                                                                    purus ac congue arcu.</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="title hotel-right clearfix cell-view">
+                                                                                <div class="hotel-person color-dark-2">from
+                                                                                    <span class="color-blue">$703</span>
+                                                                                    person</div>
+                                                                                <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
+                                                                                    href="#">view more</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="list-item-entry">
+                                                                    <div class="hotel-item style-3 bg-white">
+                                                                        <div class="table-view">
+                                                                            <div class="radius-top cell-view">
+                                                                                <img src="https://carnivalguide.co/travel/img/car_3.png"
+                                                                                    alt="">
+                                                                            </div>
+                                                                            <div
+                                                                                class="title hotel-middle clearfix cell-view">
+                                                                                <div class="date list-hidden">July
+                                                                                    <strong>19th</strong> to July
+                                                                                    <strong>26th</strong></div>
+                                                                                <div class="date grid-hidden"><strong>19.07
+                                                                                        - 26.07 / 7</strong> night</div>
+                                                                                <h4><b>tours in italy</b></h4>
+                                                                                <div class="rate-wrap">
+                                                                                    <div class="rate">
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                    </div>
+                                                                                    <i>485 rewies</i>
+                                                                                </div>
+                                                                                <p class="f-14 grid-hidden">Nunc cursus
+                                                                                    libero purus ac congue arcu cur sus ut
+                                                                                    sed vitae pulvinar. Nunc cursus libero
+                                                                                    purus ac congue arcu.</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="title hotel-right clearfix cell-view">
+                                                                                <div class="hotel-person color-dark-2">from
+                                                                                    <span class="color-blue">$300</span>
+                                                                                    person</div>
+                                                                                <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
+                                                                                    href="#">view more</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="list-item-entry">
+                                                                    <div class="hotel-item style-3 bg-white">
+                                                                        <div class="table-view">
+                                                                            <div class="radius-top cell-view">
+                                                                                <img src="https://carnivalguide.co/travel/img/car_4.png"
+                                                                                    alt="">
+                                                                            </div>
+                                                                            <div
+                                                                                class="title hotel-middle clearfix cell-view">
+                                                                                <div class="date list-hidden">July
+                                                                                    <strong>19th</strong> to July
+                                                                                    <strong>26th</strong></div>
+                                                                                <div class="date grid-hidden"><strong>19.07
+                                                                                        - 26.07 / 7</strong> night</div>
+                                                                                <h4><b>tours in miami</b></h4>
+                                                                                <div class="rate-wrap">
+                                                                                    <div class="rate">
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                    </div>
+                                                                                    <i>485 rewies</i>
+                                                                                </div>
+                                                                                <p class="f-14 grid-hidden">Nunc cursus
+                                                                                    libero purus ac congue arcu cur sus ut
+                                                                                    sed vitae pulvinar. Nunc cursus libero
+                                                                                    purus ac congue arcu.</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="title hotel-right clearfix cell-view">
+                                                                                <div class="hotel-person color-dark-2">from
+                                                                                    <span class="color-blue">$400</span>
+                                                                                    person</div>
+                                                                                <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
+                                                                                    href="#">view more</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="list-item-entry">
+                                                                    <div class="hotel-item style-3 bg-white">
+                                                                        <div class="table-view">
+                                                                            <div class="radius-top cell-view">
+                                                                                <img src="https://carnivalguide.co/travel/img/car_5.png"
+                                                                                    alt="">
+                                                                            </div>
+                                                                            <div
+                                                                                class="title hotel-middle clearfix cell-view">
+                                                                                <div class="date list-hidden">July
+                                                                                    <strong>19th</strong> to July
+                                                                                    <strong>26th</strong></div>
+                                                                                <div class="date grid-hidden"><strong>19.07
+                                                                                        - 26.07 / 7</strong> night</div>
+                                                                                <h4><b>tours in USA</b></h4>
+                                                                                <div class="rate-wrap">
+                                                                                    <div class="rate">
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                        <span
+                                                                                            class="fa fa-star color-yellow"></span>
+                                                                                    </div>
+                                                                                    <i>485 rewies</i>
+                                                                                </div>
+                                                                                <p class="f-14 grid-hidden">Nunc cursus
+                                                                                    libero purus ac congue arcu cur sus ut
+                                                                                    sed vitae pulvinar. Nunc cursus libero
+                                                                                    purus ac congue arcu.</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="title hotel-right clearfix cell-view">
+                                                                                <div class="hotel-person color-dark-2">from
+                                                                                    <span class="color-blue">$273</span>
+                                                                                    person</div>
+                                                                                <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
+                                                                                    href="#">view more</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
                                                             <div class="c_pagination clearfix padd-120">
-                                                              <a href="#" class="c-button b-40 bg-blue-2 hv-blue-2-o fl">prev page</a>
-                                                              <a href="#" class="c-button b-40 bg-blue-2 hv-blue-2-o fr">next page</a>
-                                                              <ul class="cp_content color-1">
-                                                                  <li class="active"><a href="#">1</a></li>
-                                                                  <li><a href="#">2</a></li>
-                                                                  <li><a href="#">3</a></li>
-                                                                  <li><a href="#">4</a></li>
-                                                                  <li><a href="#">...</a></li>
-                                                                  <li><a href="#">10</a></li>
-                                                              </ul>
+                                                                <a href="#"
+                                                                    class="c-button b-40 bg-blue-2 hv-blue-2-o fl">prev
+                                                                    page</a>
+                                                                <a href="#"
+                                                                    class="c-button b-40 bg-blue-2 hv-blue-2-o fr">next
+                                                                    page</a>
+                                                                <ul class="cp_content color-1">
+                                                                    <li class="active"><a href="#">1</a></li>
+                                                                    <li><a href="#">2</a></li>
+                                                                    <li><a href="#">3</a></li>
+                                                                    <li><a href="#">4</a></li>
+                                                                    <li><a href="#">...</a></li>
+                                                                    <li><a href="#">10</a></li>
+                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> --}}
-                                        </div>
+                                            </div>
+                                        </div> --}}
                                     </div>
                                 @endforeach
 
@@ -4998,79 +5001,94 @@
                             <div class="widget-popular">
                                 <div class="hotel-small style-2 clearfix">
                                     <a class="hotel-img black-hover" href="#">
-                                        <img class="img-responsive radius-0" src="https://carnivalguide.co/travel/img/home_7/small_hotel_5.jpg" alt="">
-                                        <div class="tour-layer delay-1"></div>        						
+                                        <img class="img-responsive radius-0"
+                                            src="https://carnivalguide.co/travel/img/home_7/small_hotel_5.jpg"
+                                            alt="">
+                                        <div class="tour-layer delay-1"></div>
                                     </a>
                                     <div class="hotel-desc">
                                         <div class="tour-info-line">
                                             <div class="tour-info">
-                                                   <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                   <span class="font-style-2 color-dark-2">03/07/2015</span>
-                                               </div>
+                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                    alt="">
+                                                <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                            </div>
                                             <div class="tour-info">
-                                                   <img src="https://carnivalguide.co/travel/img/people_icon_grey.png" alt="">
-                                                   <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                                               </div>					
+                                                <img src="https://carnivalguide.co/travel/img/people_icon_grey.png"
+                                                    alt="">
+                                                <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                            </div>
                                         </div>
                                         <h4>history of mauritius</h4>
                                         <div class="tour-info-line clearfix">
                                             <div class="tour-info">
-                                                   <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
-                                                   <span class="font-style-2 color-dark-2">10 comments</span>
-                                               </div>						
-                                        </div>			    					
+                                                <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png"
+                                                    alt="">
+                                                <span class="font-style-2 color-dark-2">10 comments</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="hotel-small style-2 clearfix">
                                     <a class="hotel-img black-hover" href="#">
-                                        <img class="img-responsive radius-0" src="https://carnivalguide.co/travel/img/home_7/small_hotel_6.jpg" alt="">
-                                        <div class="tour-layer delay-1"></div>        						
+                                        <img class="img-responsive radius-0"
+                                            src="https://carnivalguide.co/travel/img/home_7/small_hotel_6.jpg"
+                                            alt="">
+                                        <div class="tour-layer delay-1"></div>
                                     </a>
                                     <div class="hotel-desc">
                                         <div class="tour-info-line">
                                             <div class="tour-info">
-                                                   <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                   <span class="font-style-2 color-dark-2">03/07/2015</span>
-                                               </div>
+                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                    alt="">
+                                                <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                            </div>
                                             <div class="tour-info">
-                                                   <img src="https://carnivalguide.co/travel/img/people_icon_grey.png" alt="">
-                                                   <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                                               </div>					
+                                                <img src="https://carnivalguide.co/travel/img/people_icon_grey.png"
+                                                    alt="">
+                                                <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                            </div>
                                         </div>
                                         <h4>mauritius from 5 days</h4>
                                         <div class="tour-info-line clearfix">
                                             <div class="tour-info">
-                                                   <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
-                                                   <span class="font-style-2 color-dark-2">10 comments</span>
-                                               </div>						
-                                        </div>			    					
+                                                <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png"
+                                                    alt="">
+                                                <span class="font-style-2 color-dark-2">10 comments</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="hotel-small style-2 clearfix">
                                     <a class="hotel-img black-hover" href="#">
-                                        <img class="img-responsive radius-0" src="https://carnivalguide.co/travel/img/home_7/small_hotel_7.jpg" alt="">
-                                        <div class="tour-layer delay-1"></div>        						
+                                        <img class="img-responsive radius-0"
+                                            src="https://carnivalguide.co/travel/img/home_7/small_hotel_7.jpg"
+                                            alt="">
+                                        <div class="tour-layer delay-1"></div>
                                     </a>
                                     <div class="hotel-desc">
                                         <div class="tour-info-line">
                                             <div class="tour-info">
-                                                   <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                   <span class="font-style-2 color-dark-2">03/07/2015</span>
-                                               </div>
+                                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                    alt="">
+                                                <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                            </div>
                                             <div class="tour-info">
-                                                   <img src="https://carnivalguide.co/travel/img/people_icon_grey.png" alt="">
-                                                   <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                                               </div>					
+                                                <img src="https://carnivalguide.co/travel/img/people_icon_grey.png"
+                                                    alt="">
+                                                <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                            </div>
                                         </div>
                                         <h4>mauritius from 5 days</h4>
                                         <div class="tour-info-line clearfix">
                                             <div class="tour-info">
-                                                   <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
-                                                   <span class="font-style-2 color-dark-2">10 comments</span>
-                                               </div>						
-                                        </div>			    					
+                                                <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png"
+                                                    alt="">
+                                                <span class="font-style-2 color-dark-2">10 comments</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>															
+                                </div>
                             </div>
                         </div>
                         <div class="sidebar-block type-2">
@@ -5085,280 +5103,349 @@
                                         </div>
                                         <div class="nav-tab-item">
                                             new
-                                        </div>                          
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="tabs-content clearfix">
                                     <div class="tab-info active">
                                         <div class="hotel-small style-2 clearfix">
                                             <a class="hotel-img black-hover" href="#">
-                                                <img class="img-responsive radius-0" src="https://carnivalguide.co/travel/img/home_9/cruise_1.jpg" alt="">
-                                                <div class="tour-layer delay-1"></div>        						
+                                                <img class="img-responsive radius-0"
+                                                    src="https://carnivalguide.co/travel/img/home_9/cruise_1.jpg"
+                                                    alt="">
+                                                <div class="tour-layer delay-1"></div>
                                             </a>
                                             <div class="hotel-desc">
                                                 <div class="tour-info-line">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
-                                                       </div>				
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                    </div>
                                                 </div>
                                                 <h4>cruises reviews</h4>
                                                 <div class="tour-info-line clearfix">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/people_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                                                       </div>					
-                                                </div>			    					
+                                                        <img src="https://carnivalguide.co/travel/img/people_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="hotel-small style-2 clearfix">
                                             <a class="hotel-img black-hover" href="#">
-                                                <img class="img-responsive radius-0" src="https://carnivalguide.co/travel/img/detail/popular_1.jpg" alt="">
-                                                <div class="tour-layer delay-1"></div>        						
+                                                <img class="img-responsive radius-0"
+                                                    src="https://carnivalguide.co/travel/img/detail/popular_1.jpg"
+                                                    alt="">
+                                                <div class="tour-layer delay-1"></div>
                                             </a>
                                             <div class="hotel-desc">
                                                 <div class="tour-info-line">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
-                                                       </div>				
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                    </div>
                                                 </div>
                                                 <h4>cruises reviews</h4>
                                                 <div class="tour-info-line clearfix">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/people_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                                                       </div>					
-                                                </div>			    					
+                                                        <img src="https://carnivalguide.co/travel/img/people_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="hotel-small style-2 clearfix">
                                             <a class="hotel-img black-hover" href="#">
-                                                <img class="img-responsive radius-0" src="https://carnivalguide.co/travel/img/detail/popular_2.jpg" alt="">
-                                                <div class="tour-layer delay-1"></div>        						
+                                                <img class="img-responsive radius-0"
+                                                    src="https://carnivalguide.co/travel/img/detail/popular_2.jpg"
+                                                    alt="">
+                                                <div class="tour-layer delay-1"></div>
                                             </a>
                                             <div class="hotel-desc">
                                                 <div class="tour-info-line">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
-                                                       </div>				
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                    </div>
                                                 </div>
                                                 <h4>cruises reviews</h4>
                                                 <div class="tour-info-line clearfix">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/people_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                                                       </div>					
-                                                </div>			    					
+                                                        <img src="https://carnivalguide.co/travel/img/people_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>	
+                                        </div>
                                     </div>
                                     <div class="tab-info">
                                         <div class="hotel-small style-2 clearfix">
                                             <a class="hotel-img black-hover" href="#">
-                                                <img class="img-responsive radius-0" src="https://carnivalguide.co/travel/img/detail/popular_2.jpg" alt="">
-                                                <div class="tour-layer delay-1"></div>        						
+                                                <img class="img-responsive radius-0"
+                                                    src="https://carnivalguide.co/travel/img/detail/popular_2.jpg"
+                                                    alt="">
+                                                <div class="tour-layer delay-1"></div>
                                             </a>
                                             <div class="hotel-desc">
                                                 <div class="tour-info-line">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
-                                                       </div>				
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                    </div>
                                                 </div>
                                                 <h4>cruises reviews</h4>
                                                 <div class="tour-info-line clearfix">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/people_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                                                       </div>					
-                                                </div>			    					
-                                            </div>
-                                        </div>                                 
-                                        <div class="hotel-small style-2 clearfix">
-                                            <a class="hotel-img black-hover" href="#">
-                                                <img class="img-responsive radius-0" src="https://carnivalguide.co/travel/img/home_9/cruise_1.jpg" alt="">
-                                                <div class="tour-layer delay-1"></div>        						
-                                            </a>
-                                            <div class="hotel-desc">
-                                                <div class="tour-info-line">
-                                                    <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
-                                                       </div>				
+                                                        <img src="https://carnivalguide.co/travel/img/people_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                    </div>
                                                 </div>
-                                                <h4>cruises reviews</h4>
-                                                <div class="tour-info-line clearfix">
-                                                    <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/people_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                                                       </div>					
-                                                </div>			    					
                                             </div>
                                         </div>
                                         <div class="hotel-small style-2 clearfix">
                                             <a class="hotel-img black-hover" href="#">
-                                                <img class="img-responsive radius-0" src="https://carnivalguide.co/travel/img/detail/popular_1.jpg" alt="">
-                                                <div class="tour-layer delay-1"></div>        						
+                                                <img class="img-responsive radius-0"
+                                                    src="https://carnivalguide.co/travel/img/home_9/cruise_1.jpg"
+                                                    alt="">
+                                                <div class="tour-layer delay-1"></div>
                                             </a>
                                             <div class="hotel-desc">
                                                 <div class="tour-info-line">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
-                                                       </div>				
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                    </div>
                                                 </div>
                                                 <h4>cruises reviews</h4>
                                                 <div class="tour-info-line clearfix">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/people_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                                                       </div>					
-                                                </div>			    					
+                                                        <img src="https://carnivalguide.co/travel/img/people_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>		
+                                        </div>
+                                        <div class="hotel-small style-2 clearfix">
+                                            <a class="hotel-img black-hover" href="#">
+                                                <img class="img-responsive radius-0"
+                                                    src="https://carnivalguide.co/travel/img/detail/popular_1.jpg"
+                                                    alt="">
+                                                <div class="tour-layer delay-1"></div>
+                                            </a>
+                                            <div class="hotel-desc">
+                                                <div class="tour-info-line">
+                                                    <div class="tour-info">
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                    </div>
+                                                </div>
+                                                <h4>cruises reviews</h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info">
+                                                        <img src="https://carnivalguide.co/travel/img/people_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="tab-info">
                                         <div class="hotel-small style-2 clearfix">
                                             <a class="hotel-img black-hover" href="#">
-                                                <img class="img-responsive radius-0" src="https://carnivalguide.co/travel/img/detail/popular_1.jpg" alt="">
-                                                <div class="tour-layer delay-1"></div>        						
+                                                <img class="img-responsive radius-0"
+                                                    src="https://carnivalguide.co/travel/img/detail/popular_1.jpg"
+                                                    alt="">
+                                                <div class="tour-layer delay-1"></div>
                                             </a>
                                             <div class="hotel-desc">
                                                 <div class="tour-info-line">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
-                                                       </div>				
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                    </div>
                                                 </div>
                                                 <h4>cruises reviews</h4>
                                                 <div class="tour-info-line clearfix">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/people_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                                                       </div>					
-                                                </div>			    					
-                                            </div>
-                                        </div>                                
-                                        <div class="hotel-small style-2 clearfix">
-                                            <a class="hotel-img black-hover" href="#">
-                                                <img class="img-responsive radius-0" src="https://carnivalguide.co/travel/img/home_9/cruise_1.jpg" alt="">
-                                                <div class="tour-layer delay-1"></div>        						
-                                            </a>
-                                            <div class="hotel-desc">
-                                                <div class="tour-info-line">
-                                                    <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
-                                                       </div>				
+                                                        <img src="https://carnivalguide.co/travel/img/people_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                    </div>
                                                 </div>
-                                                <h4>cruises reviews</h4>
-                                                <div class="tour-info-line clearfix">
-                                                    <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/people_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                                                       </div>					
-                                                </div>			    					
                                             </div>
                                         </div>
                                         <div class="hotel-small style-2 clearfix">
                                             <a class="hotel-img black-hover" href="#">
-                                                <img class="img-responsive radius-0" src="https://carnivalguide.co/travel/img/detail/popular_2.jpg" alt="">
-                                                <div class="tour-layer delay-1"></div>        						
+                                                <img class="img-responsive radius-0"
+                                                    src="https://carnivalguide.co/travel/img/home_9/cruise_1.jpg"
+                                                    alt="">
+                                                <div class="tour-layer delay-1"></div>
                                             </a>
                                             <div class="hotel-desc">
                                                 <div class="tour-info-line">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
-                                                       </div>				
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                    </div>
                                                 </div>
                                                 <h4>cruises reviews</h4>
                                                 <div class="tour-info-line clearfix">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/people_icon_grey.png" alt="">
-                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                                                       </div>					
-                                                </div>			    					
+                                                        <img src="https://carnivalguide.co/travel/img/people_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>										
-                                    </div>     
+                                        </div>
+                                        <div class="hotel-small style-2 clearfix">
+                                            <a class="hotel-img black-hover" href="#">
+                                                <img class="img-responsive radius-0"
+                                                    src="https://carnivalguide.co/travel/img/detail/popular_2.jpg"
+                                                    alt="">
+                                                <div class="tour-layer delay-1"></div>
+                                            </a>
+                                            <div class="hotel-desc">
+                                                <div class="tour-info-line">
+                                                    <div class="tour-info">
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                    </div>
+                                                </div>
+                                                <h4>cruises reviews</h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info">
+                                                        <img src="https://carnivalguide.co/travel/img/people_icon_grey.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>	
+                            </div>
                         </div>
                         <div class="sidebar-block type-2">
                             <div class="widget-slider arrows">
-                                <div class="swiper-container swiper-swiper-unique-id-2 initialized" data-autoplay="0" data-loop="1" data-speed="900" data-center="0" data-slides-per-view="1" id="swiper-unique-id-2">
-                                    <div class="swiper-wrapper" style="width: 1480px; transform: translate3d(-370px, 0px, 0px); transition-duration: 0s; height: 215px;"><div class="swiper-slide radius-4 background-block swiper-slide-duplicate" data-val="1" style="background-image: url(&quot;img/home_9/f_slide.jpg&quot;); width: 370px; height: 215px;">
-                                            <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/f_slide.jpg" alt="" style="display: none;">
+                                <div class="swiper-container swiper-swiper-unique-id-2 initialized" data-autoplay="0"
+                                    data-loop="1" data-speed="900" data-center="0" data-slides-per-view="1"
+                                    id="swiper-unique-id-2">
+                                    <div class="swiper-wrapper"
+                                        style="width: 1480px; transform: translate3d(-370px, 0px, 0px); transition-duration: 0s; height: 215px;">
+                                        <div class="swiper-slide radius-4 background-block swiper-slide-duplicate"
+                                            data-val="1"
+                                            style="background-image: url(&quot;img/home_9/f_slide.jpg&quot;); width: 370px; height: 215px;">
+                                            <img class="center-image"
+                                                src="https://carnivalguide.co/travel/img/home_9/f_slide.jpg"
+                                                alt="" style="display: none;">
                                             <div class="vertical-bottom">
                                                 <h4 class="color-white">royal Hotel</h4>
                                                 <div class="tour-info-line clearfix">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/calendar_icon.png" alt="">
-                                                           <span class="font-style-2 color-white">03/07/2015</span>
-                                                       </div>
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-white">03/07/2015</span>
+                                                    </div>
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/people_icon.png" alt="">
-                                                           <span class="font-style-2 color-white">By Emma Stone</span>
-                                                       </div>					
-                                                </div>												
-                                            </div>										
+                                                        <img src="https://carnivalguide.co/travel/img/people_icon.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-white">By Emma Stone</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="swiper-slide radius-4 active background-block swiper-slide-visible swiper-slide-active" data-val="0" style="background-image: url(&quot;img/detail/widget_s.jpg&quot;); width: 370px; height: 215px;">
-                                            <img class="center-image" src="https://carnivalguide.co/travel/img/detail/widget_s.jpg" alt="" style="display: none;">
+                                        <div class="swiper-slide radius-4 active background-block swiper-slide-visible swiper-slide-active"
+                                            data-val="0"
+                                            style="background-image: url(&quot;img/detail/widget_s.jpg&quot;); width: 370px; height: 215px;">
+                                            <img class="center-image"
+                                                src="https://carnivalguide.co/travel/img/detail/widget_s.jpg"
+                                                alt="" style="display: none;">
                                             <div class="vertical-bottom">
                                                 <h4 class="color-white">best hotels reviews</h4>
                                                 <div class="tour-info-line clearfix">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/calendar_icon.png" alt="">
-                                                           <span class="font-style-2 color-white">03/07/2015</span>
-                                                       </div>
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-white">03/07/2015</span>
+                                                    </div>
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/people_icon.png" alt="">
-                                                           <span class="font-style-2 color-white">By Emma Stone</span>
-                                                       </div>					
-                                                </div>											
+                                                        <img src="https://carnivalguide.co/travel/img/people_icon.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-white">By Emma Stone</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide radius-4 background-block" data-val="1" style="background-image: url(&quot;img/home_9/f_slide.jpg&quot;); width: 370px; height: 215px;">
-                                            <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/f_slide.jpg" alt="" style="display: none;">
+                                        <div class="swiper-slide radius-4 background-block" data-val="1"
+                                            style="background-image: url(&quot;img/home_9/f_slide.jpg&quot;); width: 370px; height: 215px;">
+                                            <img class="center-image"
+                                                src="https://carnivalguide.co/travel/img/home_9/f_slide.jpg"
+                                                alt="" style="display: none;">
                                             <div class="vertical-bottom">
                                                 <h4 class="color-white">royal Hotel</h4>
                                                 <div class="tour-info-line clearfix">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/calendar_icon.png" alt="">
-                                                           <span class="font-style-2 color-white">03/07/2015</span>
-                                                       </div>
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-white">03/07/2015</span>
+                                                    </div>
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/people_icon.png" alt="">
-                                                           <span class="font-style-2 color-white">By Emma Stone</span>
-                                                       </div>					
-                                                </div>												
-                                            </div>										
-                                        </div>	
-                                    <div class="swiper-slide radius-4 active background-block swiper-slide-duplicate" data-val="0" style="background-image: url(&quot;img/detail/widget_s.jpg&quot;); width: 370px; height: 215px;">
-                                            <img class="center-image" src="https://carnivalguide.co/travel/img/detail/widget_s.jpg" alt="" style="display: none;">
+                                                        <img src="https://carnivalguide.co/travel/img/people_icon.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-white">By Emma Stone</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide radius-4 active background-block swiper-slide-duplicate"
+                                            data-val="0"
+                                            style="background-image: url(&quot;img/detail/widget_s.jpg&quot;); width: 370px; height: 215px;">
+                                            <img class="center-image"
+                                                src="https://carnivalguide.co/travel/img/detail/widget_s.jpg"
+                                                alt="" style="display: none;">
                                             <div class="vertical-bottom">
                                                 <h4 class="color-white">best hotels reviews</h4>
                                                 <div class="tour-info-line clearfix">
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/calendar_icon.png" alt="">
-                                                           <span class="font-style-2 color-white">03/07/2015</span>
-                                                       </div>
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-white">03/07/2015</span>
+                                                    </div>
                                                     <div class="tour-info">
-                                                           <img src="https://carnivalguide.co/travel/img/people_icon.png" alt="">
-                                                           <span class="font-style-2 color-white">By Emma Stone</span>
-                                                       </div>					
-                                                </div>											
+                                                        <img src="https://carnivalguide.co/travel/img/people_icon.png"
+                                                            alt="">
+                                                        <span class="font-style-2 color-white">By Emma Stone</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div></div>    
-                                    <div class="pagination pagination-hidden poin-style-1 pagination-swiper-unique-id-2"><span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span><span class="swiper-pagination-switch"></span></div>
+                                        </div>
+                                    </div>
+                                    <div class="pagination pagination-hidden poin-style-1 pagination-swiper-unique-id-2">
+                                        <span
+                                            class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span><span
+                                            class="swiper-pagination-switch"></span></div>
                                     <div class="arr-t-3">
-                                        <div class="swiper-arrow-left sw-arrow"><span class="fa fa-angle-left"></span></div>
-                                        <div class="swiper-arrow-right sw-arrow"><span class="fa fa-angle-right"></span></div>
-                                    </div>			
+                                        <div class="swiper-arrow-left sw-arrow"><span class="fa fa-angle-left"></span>
+                                        </div>
+                                        <div class="swiper-arrow-right sw-arrow"><span class="fa fa-angle-right"></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -5366,53 +5453,86 @@
                             <h4 class="sidebar-title color-dark-2">latest comments</h4>
                             <div class="widget-comment">
                                 <div class="w-comment-entry">
-                                    <div class="w-comment-date"><img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt=""> july <strong>19th 2015</strong></div>
-                                    <div class="w-comment-title color-grey-3"><a class="color-dark-2" href="#">BEST HOTELS REVIEWS</a> by <span class="color-dark-2">Emma Stone</span></div>
-                                    <div class="w-comment-text color-grey-3">Lorem ipsum dolor sit amet, eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                    <div class="w-comment-date"><img
+                                            src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                            alt=""> july <strong>19th 2015</strong></div>
+                                    <div class="w-comment-title color-grey-3"><a class="color-dark-2"
+                                            href="#">BEST HOTELS REVIEWS</a> by <span class="color-dark-2">Emma
+                                            Stone</span></div>
+                                    <div class="w-comment-text color-grey-3">Lorem ipsum dolor sit amet, eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.</div>
                                 </div>
                                 <div class="w-comment-entry">
-                                    <div class="w-comment-date"><img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt=""> july <strong>21th 2015</strong></div>
-                                    <div class="w-comment-title color-grey-3"><a class="color-dark-2" href="#">TOP BEST HOTELS AND TOURS</a> by <span class="color-dark-2">Emma Stone</span></div>
-                                    <div class="w-comment-text color-grey-3">Lorem ipsum dolor sit amet, eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                    <div class="w-comment-date"><img
+                                            src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                            alt=""> july <strong>21th 2015</strong></div>
+                                    <div class="w-comment-title color-grey-3"><a class="color-dark-2"
+                                            href="#">TOP BEST HOTELS AND TOURS</a> by <span
+                                            class="color-dark-2">Emma Stone</span></div>
+                                    <div class="w-comment-text color-grey-3">Lorem ipsum dolor sit amet, eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.</div>
                                 </div>
                                 <div class="w-comment-entry">
-                                    <div class="w-comment-date"><img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt=""> july <strong>29th 2015</strong></div>
-                                    <div class="w-comment-title color-grey-3"><a class="color-dark-2" href="#">TOP BEST HOTELS AND TOURS</a> by <span class="color-dark-2">Emma Stone</span></div>
-                                    <div class="w-comment-text color-grey-3">Lorem ipsum dolor sit amet, eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                </div>														
+                                    <div class="w-comment-date"><img
+                                            src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                            alt=""> july <strong>29th 2015</strong></div>
+                                    <div class="w-comment-title color-grey-3"><a class="color-dark-2"
+                                            href="#">TOP BEST HOTELS AND TOURS</a> by <span
+                                            class="color-dark-2">Emma Stone</span></div>
+                                    <div class="w-comment-text color-grey-3">Lorem ipsum dolor sit amet, eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.</div>
+                                </div>
                             </div>
                         </div>
                         <div class="sidebar-block type-2">
                             <h4 class="sidebar-title color-dark-2">popular tags</h4>
                             <ul class="widget-tags clearfix">
-                                 <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">flights</a></li>
-                                 <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">travelling</a></li>
-                                 <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">Sale</a></li>
-                                 <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">cruises</a></li>
-                                 <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">Sale</a></li>
-                                 <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">travelling</a></li>
-                                 <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">travelling</a></li>
-                                 <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">Illegal</a></li>
-                                 <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">flights</a></li> 							
-                             </ul>
+                                <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">flights</a></li>
+                                <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">travelling</a>
+                                </li>
+                                <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">Sale</a></li>
+                                <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">cruises</a></li>
+                                <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">Sale</a></li>
+                                <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">travelling</a>
+                                </li>
+                                <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">travelling</a>
+                                </li>
+                                <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">Illegal</a></li>
+                                <li><a class="c-button b-30 b-1 bg-grey-2 hv-dr-blue-2" href="#">flights</a></li>
+                            </ul>
                         </div>
-                        <div class="sidebar-block type-2">
+                        {{-- <div class="sidebar-block type-2">
                             <h4 class="sidebar-title color-dark-2">popular tags</h4>
                             <div class="widget-gallery clearfix">
-                                <a href="#"><img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/w_gal_1.jpg" alt=""></a>
-                                <a href="#"><img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/w_gal_2.jpg" alt=""></a>
-                                <a href="#"><img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/w_gal_3.jpg" alt=""></a>
-                                <a href="#"><img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/w_gal_4.jpg" alt=""></a>
-                                <a href="#"><img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/w_gal_5.jpg" alt=""></a>
-                                <a href="#"><img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/w_gal_6.jpg" alt=""></a>
-                                <a href="#"><img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/w_gal_7.jpg" alt=""></a>
-                                <a href="#"><img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/w_gal_8.jpg" alt=""></a>
-                                <a href="#"><img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/w_gal_9.jpg" alt=""></a>
-                                <a href="#"><img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/w_gal_10.jpg" alt=""></a>
-                                <a href="#"><img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/w_gal_11.jpg" alt=""></a>
-                                <a href="#"><img class="img-responsive" src="https://carnivalguide.co/travel/img/detail/w_gal_12.jpg" alt=""></a>
+                                <a href="#"><img class="img-responsive"
+                                        src="https://carnivalguide.co/travel/img/detail/w_gal_1.jpg" alt=""></a>
+                                <a href="#"><img class="img-responsive"
+                                        src="https://carnivalguide.co/travel/img/detail/w_gal_2.jpg" alt=""></a>
+                                <a href="#"><img class="img-responsive"
+                                        src="https://carnivalguide.co/travel/img/detail/w_gal_3.jpg" alt=""></a>
+                                <a href="#"><img class="img-responsive"
+                                        src="https://carnivalguide.co/travel/img/detail/w_gal_4.jpg" alt=""></a>
+                                <a href="#"><img class="img-responsive"
+                                        src="https://carnivalguide.co/travel/img/detail/w_gal_5.jpg" alt=""></a>
+                                <a href="#"><img class="img-responsive"
+                                        src="https://carnivalguide.co/travel/img/detail/w_gal_6.jpg" alt=""></a>
+                                <a href="#"><img class="img-responsive"
+                                        src="https://carnivalguide.co/travel/img/detail/w_gal_7.jpg" alt=""></a>
+                                <a href="#"><img class="img-responsive"
+                                        src="https://carnivalguide.co/travel/img/detail/w_gal_8.jpg" alt=""></a>
+                                <a href="#"><img class="img-responsive"
+                                        src="https://carnivalguide.co/travel/img/detail/w_gal_9.jpg" alt=""></a>
+                                <a href="#"><img class="img-responsive"
+                                        src="https://carnivalguide.co/travel/img/detail/w_gal_10.jpg"
+                                        alt=""></a>
+                                <a href="#"><img class="img-responsive"
+                                        src="https://carnivalguide.co/travel/img/detail/w_gal_11.jpg"
+                                        alt=""></a>
+                                <a href="#"><img class="img-responsive"
+                                        src="https://carnivalguide.co/travel/img/detail/w_gal_12.jpg"
+                                        alt=""></a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -5521,8 +5641,10 @@
             </div>
         </div>
     </div>
-    <div class="main-wraper padd-90 background-block" style="background-image: url(https://carnivalguide.co/travel/img/home_8/bg_block_1.jpg);">
-        <img class="center-image" src="https://carnivalguide.co/travel/img/home_8/bg_block_1.jpg" alt="" style="display: none;">
+    <div class="main-wraper padd-90 background-block"
+        style="background-image: url(https://carnivalguide.co/travel/img/home_8/bg_block_1.jpg);">
+        <img class="center-image" src="https://carnivalguide.co/travel/img/home_8/bg_block_1.jpg" alt=""
+            style="display: none;">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -5538,164 +5660,175 @@
                         <div class="subscribe-input input-style-1 input-style-2 fl">
                             <input type="text" required="" placeholder="Enter your email">
                         </div>
-                        <button type="submit" class="c-button b-60 bg-blue-2 hv-blue-2-o fr"><span>subscribe</span></button>
+                        <button type="submit"
+                            class="c-button b-60 bg-blue-2 hv-blue-2-o fr"><span>subscribe</span></button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-        <!-- S_NEWS-ENTRY -->
-        <div class="main-wraper padd-90">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                        <div class="second-title">
-                            <h4 class="subtitle color-blue-2 underline">news</h4>
-                            <h2>latest news</h2>
-                        </div>
+    <!-- S_NEWS-ENTRY -->
+    <div class="main-wraper padd-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <div class="second-title">
+                        <h4 class="subtitle color-blue-2 underline">news</h4>
+                        <h2>latest news</h2>
                     </div>
                 </div>
-                <div class="row">
-                    @foreach ($blogs as $blog)
-                        <div class="col-xs-12 col-sm-4">
-                            <div class="s_news-entry">
-                                <img class="s_news-img img-full img-responsive"
-                                    src="https://carnivalguide.co/travel/images/blog1.jpg" alt="">
-                                <h4 class="s_news-title"><a href="#">{{ $blog->title }}</a></h4>
-                                <div class="tour-info-line clearfix">
-                                    <div class="tour-info fl">
-                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                        <span class="font-style-2 color-dark-2">{{ $blog->created_at->format('d/m/Y') }}</span>
-                                    </div>
-                                    <div class="tour-info fl">
-                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                        <span class="font-style-2 color-dark-2">By {{ $blog->user->first_name . ' ' . $blog->user->last_name }}</span>
-                                    </div>
-                                    <div class="tour-info fl">
-                                        <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
-                                        <span class="font-style-2 color-dark-2">10 comments</span>
-                                    </div>
+            </div>
+            <div class="row">
+                @foreach ($blogs as $blog)
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="s_news-entry">
+                            <img class="s_news-img img-full img-responsive"
+                                src="https://carnivalguide.co/travel/images/blog1.jpg" alt="">
+                            <h4 class="s_news-title"><a href="#">{{ $blog->title }}</a></h4>
+                            <div class="tour-info-line clearfix">
+                                <div class="tour-info fl">
+                                    <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                        alt="">
+                                    <span
+                                        class="font-style-2 color-dark-2">{{ $blog->created_at->format('d/m/Y') }}</span>
                                 </div>
-                                <div class="s_news-text color-grey-3">{!! $blog->description !!}</div>
+                                <div class="tour-info fl">
+                                    <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                        alt="">
+                                    <span class="font-style-2 color-dark-2">By
+                                        {{ $blog->user->first_name . ' ' . $blog->user->last_name }}</span>
+                                </div>
+                                <div class="tour-info fl">
+                                    <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
+                                    <span class="font-style-2 color-dark-2">10 comments</span>
+                                </div>
                             </div>
+                            <div class="s_news-text color-grey-3">{!! $blog->description !!}</div>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
             </div>
         </div>
-    
-    
-        <!-- block  showcase-->
-        <div class="block-showcase block-showcase-opt1 block-brand-tabs">
-            <div class="container">
-                <div class="block-title">
-                    <span class="title">brand showcase</span>
-                </div>
-                <div class="block-content">
-                    <ul class="nav-brand owl-carousel" data-nav="true" data-loop="true" data-dots="false"
-                        data-margin="1"
-                        data-responsive='{
+    </div>
+
+
+    <!-- block  showcase-->
+    <div class="block-showcase block-showcase-opt1 block-brand-tabs">
+        <div class="container">
+            <div class="block-title">
+                <span class="title">brand showcase</span>
+            </div>
+            <div class="block-content">
+                <ul class="nav-brand owl-carousel" data-nav="true" data-loop="true" data-dots="false"
+                    data-margin="1"
+                    data-responsive='{
                                 "0":{"items":3},
                                 "380":{"items":4},
                                 "480":{"items":5},
                                 "640":{"items":7},
                                 "992":{"items":8}
                             }'>
-                        <li class="active" data-tab="brand1-1">
-                            <img src="https://carnivalguide.co/travel/images/digicelt.jpg" alt="img">
-                        </li>
-                        <li data-tab="brand1-2">
-                            <img src="https://carnivalguide.co/travel/images/flowt.jpg" alt="img">
-                        </li>
-                        <li data-tab="brand1-3">
-                            <img src="https://carnivalguide.co/travel/images/clarksct.jpg" alt="img">
-                        </li>
-                        <li data-tab="brand1-4">
-                            <img src="https://carnivalguide.co/travel/images/caribt.jpg" alt="img">
-                        </li>
-                        <li data-tab="brand1-5">
-                            <img src="https://carnivalguide.co/travel/images/hugginst.jpg" alt="img">
-                        </li>
-                        <li data-tab="brand1-6">
-                            <img src="https://carnivalguide.co/travel/images/glenlgt.jpg" alt="img">
-                        </li>
-                        <li data-tab="brand1-7">
-                            <img src="https://carnivalguide.co/travel/images/intert.jpg" alt="img">
-                        </li>
-                        <li data-tab="brand1-8">
-                            <img src="https://carnivalguide.co/travel/images/cococolat.jpg" alt="img">
-                        </li>
-                        <li data-tab="brand1-9">
-                            <img src="https://carnivalguide.co/travel/images/clarksct.jpg" alt="img">
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active  " role="tabpanel" id="brand1-1">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="col-title">
-                                        <img src="https://carnivalguide.co/travel/images/digicel.jpg" alt="logo"
-                                            class="logo-showcase">
-                                        <div class="des">
-                                            Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
-                                            women's bags. Discover our spring collection.
-                                        </div>
-                                        <div class="actions">
-                                            <a href="" class="btn btn-default">shop this brand <i
-                                                    aria-hidden="true" class="fa fa-caret-right"></i></a>
-                                        </div>
+                    <li class="active" data-tab="brand1-1">
+                        <img src="https://carnivalguide.co/travel/images/digicelt.jpg" alt="img">
+                    </li>
+                    <li data-tab="brand1-2">
+                        <img src="https://carnivalguide.co/travel/images/flowt.jpg" alt="img">
+                    </li>
+                    <li data-tab="brand1-3">
+                        <img src="https://carnivalguide.co/travel/images/clarksct.jpg" alt="img">
+                    </li>
+                    <li data-tab="brand1-4">
+                        <img src="https://carnivalguide.co/travel/images/caribt.jpg" alt="img">
+                    </li>
+                    <li data-tab="brand1-5">
+                        <img src="https://carnivalguide.co/travel/images/hugginst.jpg" alt="img">
+                    </li>
+                    <li data-tab="brand1-6">
+                        <img src="https://carnivalguide.co/travel/images/glenlgt.jpg" alt="img">
+                    </li>
+                    <li data-tab="brand1-7">
+                        <img src="https://carnivalguide.co/travel/images/intert.jpg" alt="img">
+                    </li>
+                    <li data-tab="brand1-8">
+                        <img src="https://carnivalguide.co/travel/images/cococolat.jpg" alt="img">
+                    </li>
+                    <li data-tab="brand1-9">
+                        <img src="https://carnivalguide.co/travel/images/clarksct.jpg" alt="img">
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active  " role="tabpanel" id="brand1-1">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="col-title">
+                                    <img src="https://carnivalguide.co/travel/images/digicel.jpg" alt="logo"
+                                        class="logo-showcase">
+                                    <div class="des">
+                                        Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
+                                        women's bags. Discover our spring collection.
+                                    </div>
+                                    <div class="actions">
+                                        <a href="" class="btn btn-default">shop this brand <i
+                                                aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="col-product">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
-                                            data-responsive='{
+                            </div>
+                            <div class="col-md-8">
+                                <div class="col-product">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
                                                 "0":{"items":1},
                                                 "380":{"items":1},
                                                 "480":{"items":1},
                                                 "640":{"items":2},
                                                 "992":{"items":2}
                                             }'>
-                                            @foreach ($products->chunk(2) as $chunk)
-                                                <div class="item">
-                                                    @foreach ($chunk as $product)
-                                                        @if ($product->brand_id == 1)
-                                                            <div class="product-item  product-item-opt-1 ">
-                                                                <div class="product-item-info">
-                                                                    <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
-                                                                            <img alt="product image" src="{{ $product->image_url }}">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="product-item-detail">
-                                                                        <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
-                                                                        </strong>
-                                                                        <div class="clearfix">
-                                                                            <div class="product-item-price">
-                                                                                <span class="price">${{ $product->price }}</span>
-                                                                                @if($product->old_price)
-                                                                                    <span class="old-price">${{ $product->old_price }}</span>
-                                                                                @endif
-                                                                            </div>
-                                                                            <div class="product-reviews-summary">
-                                                                                <div class="rating-summary">
-                                                                                    <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                        <span style="width:{{ $product->rating }}%">
-                                                                                            <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
-                                                                                        </span>
-                                                                                    </div>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 1)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product image"
+                                                                            src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
+                                                                                    </span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                            {{-- <div class="item">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endforeach
+                                        {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -5756,7 +5889,7 @@
                                                     </div>
                                                 </div>
                                             </div> --}}
-                                            {{-- <div class="item">
+                                        {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -5817,78 +5950,84 @@
                                                     </div>
                                                 </div>
                                             </div> --}}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane " role="tabpanel" id="brand1-2">
-                            <div class="row">
-                                <div class="col-md-4">
-    
-                                    <div class="col-title">
-                                        <img src="https://carnivalguide.co/travel/images/flowt2.jpg" alt="logo"
-                                            class="logo-showcase">
-                                        <div class="des">
-                                            Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
-                                            women's bags. Discover our spring collection.
-                                        </div>
-                                        <div class="actions">
-                                            <a href="" class="btn btn-default">shop this brand <i
-                                                    aria-hidden="true" class="fa fa-caret-right"></i></a>
-                                        </div>
+                    </div>
+                    <div class="tab-pane " role="tabpanel" id="brand1-2">
+                        <div class="row">
+                            <div class="col-md-4">
+
+                                <div class="col-title">
+                                    <img src="https://carnivalguide.co/travel/images/flowt2.jpg" alt="logo"
+                                        class="logo-showcase">
+                                    <div class="des">
+                                        Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
+                                        women's bags. Discover our spring collection.
+                                    </div>
+                                    <div class="actions">
+                                        <a href="" class="btn btn-default">shop this brand <i
+                                                aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="col-product">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
-                                            data-responsive='{
+                            </div>
+                            <div class="col-md-8">
+                                <div class="col-product">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
                                                 "0":{"items":1},
                                                 "380":{"items":1},
                                                 "480":{"items":1},
                                                 "640":{"items":2},
                                                 "992":{"items":2}
                                             }'>
-                                            @foreach ($products->chunk(2) as $chunk)
-                                                <div class="item">
-                                                    @foreach ($chunk as $product)
-                                                        @if ($product->brand_id == 2)
-                                                            <div class="product-item  product-item-opt-1 ">
-                                                                <div class="product-item-info">
-                                                                    <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
-                                                                            <img alt="product name" src="{{ $product->image_url }}">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="product-item-detail">
-                                                                        <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
-                                                                        </strong>
-                                                                        <div class="clearfix">
-                                                                            <div class="product-item-price">
-                                                                                <span class="price">${{ $product->price }}</span>
-                                                                                @if($product->old_price)
-                                                                                    <span class="old-price">${{ $product->old_price }}</span>
-                                                                                @endif
-                                                                            </div>
-                                                                            <div class="product-reviews-summary">
-                                                                                <div class="rating-summary">
-                                                                                    <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                        <span style="width:{{ $product->rating }}%">
-                                                                                            <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
-                                                                                        </span>
-                                                                                    </div>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 2)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
+                                                                                    </span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                            {{-- <div class="item">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endforeach
+                                        {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -6009,77 +6148,83 @@
                                                     </div>
                                                 </div>
                                             </div> --}}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane  " role="tabpanel" id="brand1-3">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="col-title">
-                                        <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
-                                            alt="logo" class="logo-showcase">
-                                        <div class="des">
-                                            Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
-                                            women's bags. Discover our spring collection.
-                                        </div>
-                                        <div class="actions">
-                                            <a href="" class="btn btn-default">shop this brand <i
-                                                    aria-hidden="true" class="fa fa-caret-right"></i></a>
-                                        </div>
+                    </div>
+                    <div class="tab-pane  " role="tabpanel" id="brand1-3">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="col-title">
+                                    <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
+                                        alt="logo" class="logo-showcase">
+                                    <div class="des">
+                                        Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
+                                        women's bags. Discover our spring collection.
+                                    </div>
+                                    <div class="actions">
+                                        <a href="" class="btn btn-default">shop this brand <i
+                                                aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="col-product">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
-                                            data-responsive='{
+                            </div>
+                            <div class="col-md-8">
+                                <div class="col-product">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
                                                 "0":{"items":1},
                                                 "380":{"items":1},
                                                 "480":{"items":1},
                                                 "640":{"items":2},
                                                 "992":{"items":2}
                                             }'>
-                                            @foreach ($products->chunk(2) as $chunk)
-                                                <div class="item">
-                                                    @foreach ($chunk as $product)
-                                                        @if ($product->brand_id == 3)
-                                                            <div class="product-item  product-item-opt-1 ">
-                                                                <div class="product-item-info">
-                                                                    <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
-                                                                            <img alt="product name" src="{{ $product->image_url }}">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="product-item-detail">
-                                                                        <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
-                                                                        </strong>
-                                                                        <div class="clearfix">
-                                                                            <div class="product-item-price">
-                                                                                <span class="price">${{ $product->price }}</span>
-                                                                                @if($product->old_price)
-                                                                                    <span class="old-price">${{ $product->old_price }}</span>
-                                                                                @endif
-                                                                            </div>
-                                                                            <div class="product-reviews-summary">
-                                                                                <div class="rating-summary">
-                                                                                    <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                        <span style="width:{{ $product->rating }}%">
-                                                                                            <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
-                                                                                        </span>
-                                                                                    </div>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 3)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
+                                                                                    </span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                            {{-- <div class="item">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endforeach
+                                        {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -6200,77 +6345,83 @@
                                                     </div>
                                                 </div>
                                             </div> --}}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane  " role="tabpanel" id="brand1-4">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="col-title">
-                                        <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
-                                            alt="logo" class="logo-showcase">
-                                        <div class="des">
-                                            Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
-                                            women's bags. Discover our spring collection.
-                                        </div>
-                                        <div class="actions">
-                                            <a href="" class="btn btn-default">shop this brand <i
-                                                    aria-hidden="true" class="fa fa-caret-right"></i></a>
-                                        </div>
+                    </div>
+                    <div class="tab-pane  " role="tabpanel" id="brand1-4">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="col-title">
+                                    <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
+                                        alt="logo" class="logo-showcase">
+                                    <div class="des">
+                                        Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
+                                        women's bags. Discover our spring collection.
+                                    </div>
+                                    <div class="actions">
+                                        <a href="" class="btn btn-default">shop this brand <i
+                                                aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="col-product">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
-                                            data-responsive='{
+                            </div>
+                            <div class="col-md-8">
+                                <div class="col-product">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
                                                 "0":{"items":1},
                                                 "380":{"items":1},
                                                 "480":{"items":1},
                                                 "640":{"items":2},
                                                 "992":{"items":2}
                                             }'>
-                                            @foreach ($products->chunk(2) as $chunk)
-                                                <div class="item">
-                                                    @foreach ($chunk as $product)
-                                                        @if ($product->brand_id == 4)
-                                                            <div class="product-item  product-item-opt-1 ">
-                                                                <div class="product-item-info">
-                                                                    <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
-                                                                            <img alt="product name" src="{{ $product->image_url }}">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="product-item-detail">
-                                                                        <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
-                                                                        </strong>
-                                                                        <div class="clearfix">
-                                                                            <div class="product-item-price">
-                                                                                <span class="price">${{ $product->price }}</span>
-                                                                                @if($product->old_price)
-                                                                                    <span class="old-price">${{ $product->old_price }}</span>
-                                                                                @endif
-                                                                            </div>
-                                                                            <div class="product-reviews-summary">
-                                                                                <div class="rating-summary">
-                                                                                    <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                        <span style="width:{{ $product->rating }}%">
-                                                                                            <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
-                                                                                        </span>
-                                                                                    </div>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 4)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
+                                                                                    </span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                            {{-- <div class="item">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endforeach
+                                        {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -6391,77 +6542,83 @@
                                                     </div>
                                                 </div>
                                             </div> --}}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane  " role="tabpanel" id="brand1-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="col-title">
-                                        <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
-                                            alt="logo" class="logo-showcase">
-                                        <div class="des">
-                                            Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
-                                            women's bags. Discover our spring collection.
-                                        </div>
-                                        <div class="actions">
-                                            <a href="" class="btn btn-default">shop this brand <i
-                                                    aria-hidden="true" class="fa fa-caret-right"></i></a>
-                                        </div>
+                    </div>
+                    <div class="tab-pane  " role="tabpanel" id="brand1-5">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="col-title">
+                                    <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
+                                        alt="logo" class="logo-showcase">
+                                    <div class="des">
+                                        Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
+                                        women's bags. Discover our spring collection.
+                                    </div>
+                                    <div class="actions">
+                                        <a href="" class="btn btn-default">shop this brand <i
+                                                aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="col-product">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
-                                            data-responsive='{
+                            </div>
+                            <div class="col-md-8">
+                                <div class="col-product">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
                                                 "0":{"items":1},
                                                 "380":{"items":1},
                                                 "480":{"items":1},
                                                 "640":{"items":2},
                                                 "992":{"items":2}
                                             }'>
-                                            @foreach ($products->chunk(2) as $chunk)
-                                                <div class="item">
-                                                    @foreach ($chunk as $product)
-                                                        @if ($product->brand_id == 5)
-                                                            <div class="product-item  product-item-opt-1 ">
-                                                                <div class="product-item-info">
-                                                                    <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
-                                                                            <img alt="product name" src="{{ $product->image_url }}">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="product-item-detail">
-                                                                        <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
-                                                                        </strong>
-                                                                        <div class="clearfix">
-                                                                            <div class="product-item-price">
-                                                                                <span class="price">${{ $product->price }}</span>
-                                                                                @if($product->old_price)
-                                                                                    <span class="old-price">${{ $product->old_price }}</span>
-                                                                                @endif
-                                                                            </div>
-                                                                            <div class="product-reviews-summary">
-                                                                                <div class="rating-summary">
-                                                                                    <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                        <span style="width:{{ $product->rating }}%">
-                                                                                            <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
-                                                                                        </span>
-                                                                                    </div>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 5)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
+                                                                                    </span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                            {{-- <div class="item">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endforeach
+                                        {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -6582,78 +6739,84 @@
                                                     </div>
                                                 </div>
                                             </div> --}}
-                                        </div>
                                     </div>
-    
                                 </div>
+
                             </div>
                         </div>
-                        <div class="tab-pane" role="tabpanel" id="brand1-6">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="col-title">
-                                        <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
-                                            alt="logo" class="logo-showcase">
-                                        <div class="des">
-                                            Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
-                                            women's bags. Discover our spring collection.
-                                        </div>
-                                        <div class="actions">
-                                            <a href="" class="btn btn-default">shop this brand <i
-                                                    aria-hidden="true" class="fa fa-caret-right"></i></a>
-                                        </div>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="brand1-6">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="col-title">
+                                    <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
+                                        alt="logo" class="logo-showcase">
+                                    <div class="des">
+                                        Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
+                                        women's bags. Discover our spring collection.
+                                    </div>
+                                    <div class="actions">
+                                        <a href="" class="btn btn-default">shop this brand <i
+                                                aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="col-product">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
-                                            data-responsive='{
+                            </div>
+                            <div class="col-md-8">
+                                <div class="col-product">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
                                                 "0":{"items":1},
                                                 "380":{"items":1},
                                                 "480":{"items":1},
                                                 "640":{"items":2},
                                                 "992":{"items":2}
                                             }'>
-                                            @foreach ($products->chunk(2) as $chunk)
-                                                <div class="item">
-                                                    @foreach ($chunk as $product)
-                                                        @if ($product->brand_id == 6)
-                                                            <div class="product-item  product-item-opt-1 ">
-                                                                <div class="product-item-info">
-                                                                    <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
-                                                                            <img alt="product name" src="{{ $product->image_url }}">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="product-item-detail">
-                                                                        <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
-                                                                        </strong>
-                                                                        <div class="clearfix">
-                                                                            <div class="product-item-price">
-                                                                                <span class="price">${{ $product->price }}</span>
-                                                                                @if($product->old_price)
-                                                                                    <span class="old-price">${{ $product->old_price }}</span>
-                                                                                @endif
-                                                                            </div>
-                                                                            <div class="product-reviews-summary">
-                                                                                <div class="rating-summary">
-                                                                                    <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                        <span style="width:{{ $product->rating }}%">
-                                                                                            <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
-                                                                                        </span>
-                                                                                    </div>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 6)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
+                                                                                    </span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                            {{-- <div class="item">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endforeach
+                                        {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -6774,77 +6937,83 @@
                                                     </div>
                                                 </div>
                                             </div> --}}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane  " role="tabpanel" id="brand1-7">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="col-title">
-                                        <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
-                                            alt="logo" class="logo-showcase">
-                                        <div class="des">
-                                            Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
-                                            women's bags. Discover our spring collection.
-                                        </div>
-                                        <div class="actions">
-                                            <a href="" class="btn btn-default">shop this brand <i
-                                                    aria-hidden="true" class="fa fa-caret-right"></i></a>
-                                        </div>
+                    </div>
+                    <div class="tab-pane  " role="tabpanel" id="brand1-7">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="col-title">
+                                    <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
+                                        alt="logo" class="logo-showcase">
+                                    <div class="des">
+                                        Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
+                                        women's bags. Discover our spring collection.
+                                    </div>
+                                    <div class="actions">
+                                        <a href="" class="btn btn-default">shop this brand <i
+                                                aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="col-product">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
-                                            data-responsive='{
+                            </div>
+                            <div class="col-md-8">
+                                <div class="col-product">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
                                                 "0":{"items":1},
                                                 "380":{"items":1},
                                                 "480":{"items":1},
                                                 "640":{"items":2},
                                                 "992":{"items":2}
                                             }'>
-                                            @foreach ($products->chunk(2) as $chunk)
-                                                <div class="item">
-                                                    @foreach ($chunk as $product)
-                                                        @if ($product->brand_id == 7)
-                                                            <div class="product-item  product-item-opt-1 ">
-                                                                <div class="product-item-info">
-                                                                    <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
-                                                                            <img alt="product name" src="{{ $product->image_url }}">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="product-item-detail">
-                                                                        <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
-                                                                        </strong>
-                                                                        <div class="clearfix">
-                                                                            <div class="product-item-price">
-                                                                                <span class="price">${{ $product->price }}</span>
-                                                                                @if($product->old_price)
-                                                                                    <span class="old-price">${{ $product->old_price }}</span>
-                                                                                @endif
-                                                                            </div>
-                                                                            <div class="product-reviews-summary">
-                                                                                <div class="rating-summary">
-                                                                                    <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                        <span style="width:{{ $product->rating }}%">
-                                                                                            <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
-                                                                                        </span>
-                                                                                    </div>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 7)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
+                                                                                    </span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                            {{-- <div class="item">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endforeach
+                                        {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -6965,77 +7134,83 @@
                                                     </div>
                                                 </div>
                                             </div> --}}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane  " role="tabpanel" id="brand1-8">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="col-title">
-                                        <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
-                                            alt="logo" class="logo-showcase">
-                                        <div class="des">
-                                            Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
-                                            women's bags. Discover our spring collection.
-                                        </div>
-                                        <div class="actions">
-                                            <a href="" class="btn btn-default">shop this brand <i
-                                                    aria-hidden="true" class="fa fa-caret-right"></i></a>
-                                        </div>
+                    </div>
+                    <div class="tab-pane  " role="tabpanel" id="brand1-8">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="col-title">
+                                    <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
+                                        alt="logo" class="logo-showcase">
+                                    <div class="des">
+                                        Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
+                                        women's bags. Discover our spring collection.
+                                    </div>
+                                    <div class="actions">
+                                        <a href="" class="btn btn-default">shop this brand <i
+                                                aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="col-product">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
-                                            data-responsive='{
+                            </div>
+                            <div class="col-md-8">
+                                <div class="col-product">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
                                                 "0":{"items":1},
                                                 "380":{"items":1},
                                                 "480":{"items":1},
                                                 "640":{"items":2},
                                                 "992":{"items":2}
                                             }'>
-                                            @foreach ($products->chunk(2) as $chunk)
-                                                <div class="item">
-                                                    @foreach ($chunk as $product)
-                                                        @if ($product->brand_id == 8)
-                                                            <div class="product-item  product-item-opt-1 ">
-                                                                <div class="product-item-info">
-                                                                    <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
-                                                                            <img alt="product name" src="{{ $product->image_url }}">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="product-item-detail">
-                                                                        <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
-                                                                        </strong>
-                                                                        <div class="clearfix">
-                                                                            <div class="product-item-price">
-                                                                                <span class="price">${{ $product->price }}</span>
-                                                                                @if($product->old_price)
-                                                                                    <span class="old-price">${{ $product->old_price }}</span>
-                                                                                @endif
-                                                                            </div>
-                                                                            <div class="product-reviews-summary">
-                                                                                <div class="rating-summary">
-                                                                                    <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                        <span style="width:{{ $product->rating }}%">
-                                                                                            <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
-                                                                                        </span>
-                                                                                    </div>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 8)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
+                                                                                    </span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                            {{-- <div class="item">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endforeach
+                                        {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -7156,77 +7331,83 @@
                                                     </div>
                                                 </div>
                                             </div> --}}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane  " role="tabpanel" id="brand1-9">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="col-title">
-                                        <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
-                                            alt="logo" class="logo-showcase">
-                                        <div class="des">
-                                            Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
-                                            women's bags. Discover our spring collection.
-                                        </div>
-                                        <div class="actions">
-                                            <a href="" class="btn btn-default">shop this brand <i
-                                                    aria-hidden="true" class="fa fa-caret-right"></i></a>
-                                        </div>
+                    </div>
+                    <div class="tab-pane  " role="tabpanel" id="brand1-9">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="col-title">
+                                    <img src="https://carnivalguide.co/travel/images/media/index1/logo-showcase.jpg"
+                                        alt="logo" class="logo-showcase">
+                                    <div class="des">
+                                        Whatever the occasion, complete your outfit with one of Hermes Fashion's stylish
+                                        women's bags. Discover our spring collection.
+                                    </div>
+                                    <div class="actions">
+                                        <a href="" class="btn btn-default">shop this brand <i
+                                                aria-hidden="true" class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="col-product">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
-                                            data-responsive='{
+                            </div>
+                            <div class="col-md-8">
+                                <div class="col-product">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
                                                 "0":{"items":1},
                                                 "380":{"items":1},
                                                 "480":{"items":1},
                                                 "640":{"items":2},
                                                 "992":{"items":2}
                                             }'>
-                                            @foreach ($products->chunk(2) as $chunk)
-                                                <div class="item">
-                                                    @foreach ($chunk as $product)
-                                                        @if ($product->brand_id == 9)
-                                                            <div class="product-item  product-item-opt-1 ">
-                                                                <div class="product-item-info">
-                                                                    <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
-                                                                            <img alt="product name" src="{{ $product->image_url }}">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="product-item-detail">
-                                                                        <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
-                                                                        </strong>
-                                                                        <div class="clearfix">
-                                                                            <div class="product-item-price">
-                                                                                <span class="price">${{ $product->price }}</span>
-                                                                                @if($product->old_price)
-                                                                                    <span class="old-price">${{ $product->old_price }}</span>
-                                                                                @endif
-                                                                            </div>
-                                                                            <div class="product-reviews-summary">
-                                                                                <div class="rating-summary">
-                                                                                    <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                        <span style="width:{{ $product->rating }}%">
-                                                                                            <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
-                                                                                        </span>
-                                                                                    </div>
+                                        @foreach ($products->chunk(2) as $chunk)
+                                            <div class="item">
+                                                @foreach ($chunk as $product)
+                                                    @if ($product->brand_id == 9)
+                                                        <div class="product-item  product-item-opt-1 ">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="">{{ $product->name }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
+                                                                                    </span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                            {{-- <div class="item">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endforeach
+                                        {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -7347,14 +7528,14 @@
                                                     </div>
                                                 </div>
                                             </div> --}}
-                                        </div>
                                     </div>
-    
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div><!-- block  showcase-->
+        </div>
+    </div><!-- block  showcase-->
 @endsection
