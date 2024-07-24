@@ -223,7 +223,7 @@
                                                             src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
                                                             alt="">
                                                     </div>
-                                                    <div class="swiper-slide swiper-slide-duplicate" data-val="0"
+                                                    <div class="swiper-slide swiper-slide-duplicate" data-val="5"
                                                         style="width: 770px; height: 455px;">
                                                         <img class="img-responsive img-full"
                                                             src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
