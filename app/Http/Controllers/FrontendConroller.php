@@ -163,6 +163,9 @@ class FrontendConroller extends Controller
     {
         $event = Event::with('country_tabs')->find($slug);
         // dd($event->toArray());
-        return view('front.view_more', compact('event'));
+        $products = Product::with('brand')->get();
+        $blogs = Blogs::with('user')->get()->take('3');
+
+        return view('front.view_more', compact('event','products','blogs'));
     }
 }
