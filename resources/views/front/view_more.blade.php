@@ -183,7 +183,7 @@
                                         </div>
                                         @endif --}}
                                         <div class="slider-wth-thumbs style-1 arrows">
-                                            <div class="swiper-container thumbnails-preview swiper-swiper-unique-id-0 initialized"
+                                            <div class="swiper-container thumbnails-preview swiper-swiper-unique-id-{{ $key }} initialized"
                                                 data-autoplay="0" data-loop="1" data-speed="500" data-center="0"
                                                 data-slides-per-view="1" id="swiper-unique-id-0">
                                                 <div class="swiper-wrapper"
