@@ -188,7 +188,7 @@
                                                 data-slides-per-view="1" id="swiper-unique-id-0">
                                                 <div class="swiper-wrapper"
                                                     style="width: 5390px; transform: translate3d(-770px, 0px, 0px); transition-duration: 0s; height: 455px;">
-                                                    <div class="swiper-slide swiper-slide-duplicate" data-val="0"
+                                                    <div class="swiper-slide swiper-slide-duplicate active" data-val="0"
                                                         style="width: 770px; height: 455px;">
                                                         <img class="img-responsive img-full"
                                                             src="{{ asset('files/' . $row->file) }}" alt="">
