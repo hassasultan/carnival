@@ -193,7 +193,7 @@
                                                         <img class="img-responsive img-full"
                                                             src="{{ asset('files/' . $row->file) }}" alt="">
                                                     </div>
-                                                    {{-- <div class="swiper-slide active swiper-slide-visible swiper-slide-active"
+                                                    <div class="swiper-slide active swiper-slide-visible swiper-slide-active"
                                                         data-val="0" style="width: 770px; height: 455px;">
                                                         <img class="img-responsive img-full"
                                                             src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
@@ -228,7 +228,7 @@
                                                         <img class="img-responsive img-full"
                                                             src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
                                                             alt="">
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
                                                 <div class="pagination pagination-hidden pagination-swiper-unique-id-0">
                                                     <span
@@ -244,11 +244,11 @@
                                                             class="fa fa-angle-right"></span></div>
                                                 </div>
                                             </div>
-                                            <div class="swiper-container thumbnails swiper-swiper-unique-id-1 initialized pagination-hidden"
+                                            <div class="swiper-container thumbnails swiper-swiper-unique-id-{{ $key }} initialized pagination-hidden"
                                                 data-autoplay="0" data-loop="0" data-speed="500" data-center="0"
                                                 data-slides-per-view="responsive" data-mob-slides="2" data-xs-slides="3"
                                                 data-sm-slides="4" data-md-slides="5" data-lg-slides="5"
-                                                data-add-slides="5" id="swiper-unique-id-1">
+                                                data-add-slides="5" id="swiper-unique-id-{{ $key }}">
                                                 <div class="swiper-wrapper" style="width: 770px; height: 101px;">
                                                     <div class="swiper-slide current active swiper-slide-visible swiper-slide-active"
                                                         data-val="0" style="width: 154px; height: 101px;">
@@ -281,7 +281,7 @@
                                                             alt="">
                                                     </div>
                                                 </div>
-                                                <div class="pagination hidden pagination-swiper-unique-id-1"><span
+                                                <div class="pagination hidden pagination-swiper-unique-id-{{ $key }}"><span
                                                         class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"
                                                         style="display: inline;"></span><span
                                                         class="swiper-pagination-switch swiper-visible-switch"
