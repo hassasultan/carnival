@@ -223,12 +223,12 @@
                                                             src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
                                                             alt="">
                                                     </div>
-                                                    <div class="swiper-slide swiper-slide-duplicate" data-val="5"
+                                                    {{-- <div class="swiper-slide swiper-slide-duplicate" data-val="5"
                                                         style="width: 770px; height: 455px;">
                                                         <img class="img-responsive img-full"
                                                             src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
                                                             alt="">
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                                 <div class="pagination pagination-hidden pagination-swiper-unique-id-0">
                                                     <span
@@ -253,7 +253,7 @@
                                                     <div class="swiper-slide current active swiper-slide-visible swiper-slide-active"
                                                         data-val="0" style="width: 154px; height: 101px;">
                                                         <img class="img-responsive img-full"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_1s.jpg"
+                                                            src="{{ asset('files/' . $row->file) }}"
                                                             alt="">
                                                     </div>
                                                     <div class="swiper-slide swiper-slide-visible" data-val="1"
