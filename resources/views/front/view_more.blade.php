@@ -230,7 +230,7 @@
                                                             alt="">
                                                     </div> --}}
                                                 </div>
-                                                <div class="pagination pagination-hidden pagination-swiper-unique-id-0">
+                                                <div class="pagination pagination-hidden pagination-swiper-unique-id-{{ $key }}">
                                                     <span
                                                         class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span><span
                                                         class="swiper-pagination-switch"></span><span
