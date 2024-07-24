@@ -193,7 +193,7 @@
                                                         <img class="img-responsive img-full"
                                                             src="{{ asset('files/' . $row->file) }}" alt="">
                                                     </div>
-                                                    <div class="swiper-slide active swiper-slide-visible swiper-slide-active"
+                                                    {{-- <div class="swiper-slide active swiper-slide-visible swiper-slide-active"
                                                         data-val="0" style="width: 770px; height: 455px;">
                                                         <img class="img-responsive img-full"
                                                             src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
@@ -228,7 +228,7 @@
                                                         <img class="img-responsive img-full"
                                                             src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
                                                             alt="">
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                                 <div class="pagination pagination-hidden pagination-swiper-unique-id-0">
                                                     <span
