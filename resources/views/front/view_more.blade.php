@@ -185,7 +185,7 @@
                                         <div class="slider-wth-thumbs style-1 arrows">
                                             <div class="swiper-container thumbnails-preview swiper-swiper-unique-id-{{ $key }} initialized"
                                                 data-autoplay="0" data-loop="1" data-speed="500" data-center="0"
-                                                data-slides-per-view="1" id="swiper-unique-id-0">
+                                                data-slides-per-view="1" id="swiper-unique-id-{{ $key }}">
                                                 <div class="swiper-wrapper"
                                                     style="width: 5390px; transform: translate3d(-770px, 0px, 0px); transition-duration: 0s; height: 455px;">
                                                     <div class="swiper-slide swiper-slide-duplicate active" data-val="0"
