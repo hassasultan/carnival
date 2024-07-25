@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css?ver=1">
     <link href="{{ asset('shopAssets/css/carnival-style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('shopAssets/css/shopstyle.css?ver=7') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
     <!-- Style CSS -->
 

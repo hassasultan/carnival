@@ -3127,7 +3127,7 @@ nav li.type-4 .dropmenu .fa-chevron-right {
   transition-timing-function: ease;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  cursor: url(../img/drag.png) 16 9, ew-resize !important;
+  cursor: url(https://carnivalguide.co/travel/img/drag.png) 16 9, ew-resize !important;
   margin: 0 auto;
   height: inherit !important;
   float: left;
@@ -4318,7 +4318,7 @@ nav li.type-4 .dropmenu .fa-chevron-right {
 }
 
 .baner-tabs.style-2 .tpl-tabs-cont {
-  background: url(../img/home_9/bg-tab.jpg) repeat;
+  background: url(https://carnivalguide.co/travel/img/home_9/bg-tab.jpg) repeat;
 }
 
 .baner-tabs.style-2 .tab-pane .c-button {
@@ -8924,7 +8924,7 @@ nav li.type-4 .dropmenu .fa-chevron-right {
   margin-top: -10px;
   width: 20px;
   height: 20px;
-  background: url(../img/search_icon.png) no-repeat;
+  background: url(https://carnivalguide.co/travel/img/search_icon.png) no-repeat;
 }
 
 .search-popup .s_close {
@@ -11785,7 +11785,7 @@ ul.dot-blue-2 li:before {
   width: 16px;
   height: 16px;
   margin-top: -8px;
-  background: url(../img/search_icon_small_grey.png) no-repeat;
+  background: url(https://carnivalguide.co/travel/img/search_icon_small_grey.png) no-repeat;
 }
 
 .widget-slider .swiper-slide {

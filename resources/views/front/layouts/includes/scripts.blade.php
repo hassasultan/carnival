@@ -2,7 +2,8 @@
     <script src="{{ asset('shopAssets/js/carnival-bootstrap.min.js') }}"></script>
     <script src="{{ asset('shopAssets/js/carnival-jquery-ui.min.js') }}"></script>
     <script src="{{ asset('shopAssets/js/jquery.countTo.js') }}"></script>
-    <script src="{{ asset('shopAssets/js/idangerous.swiper.min.js') }}"></script>
+    {{-- <script src="{{ asset('shopAssets/js/idangerous.swiper.min.js') }}"></script> --}}
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="{{ asset('shopAssets/js/jquery.viewportchecker.min.js') }}"></script>
     <script src="{{ asset('shopAssets/js/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('shopAssets/js/DateTimePicker.min.js') }}"></script>
