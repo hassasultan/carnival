@@ -102,7 +102,8 @@ class FrontendConroller extends Controller
     }
     public function product_listing()
     {
-        return view('ShopFrontend.product-listing');
+        $products = Product::with('brand')->get();
+        return view('ShopFrontend.product-listing',compact('products'));
     }
     public function vendor_listing()
     {

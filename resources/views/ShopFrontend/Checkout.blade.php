@@ -347,10 +347,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (count($cartItem) > 0)
                                         @php
                                             $total = 0;
                                         @endphp
+                                    @if (count($cartItem) > 0)
                                         @foreach ($cartItem as $row)
                                             @php
                                                 $total += $row->product->new_price * $row->quantity;
@@ -455,7 +455,9 @@
                                     </tr>
                                 </tfoot>
                             </table>
+                            @if (count($cartItem) > 0)
                             <button class="button pull-right place-order" type="submit">Place Order</button>
+                            @endif
                         </div>
                     </div>
                 </form>
