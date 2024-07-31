@@ -11,6 +11,12 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('shopAssets/css/style.css?v' . rand(1, 50)) }}">
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/> --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
     <style>
         /* Skeleton loading animation */
         .skeleton-container {
@@ -75,7 +81,78 @@
 
     {{-- jquery --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        @media (min-width: 1200px) {
 
+            .slick-slider:not(:hover) .slick-arrow,
+            .woocommerce-product-gallery:not(:hover) .flex-direction-nav a {
+                transform: scale(0);
+            }
+        }
+
+        @media (min-width: 1200px) {
+
+            .flex-direction-nav a,
+            .slick-slider .slick-arrow {
+                --arrow-width: 30px;
+                --arrow-fz: 30px;
+            }
+        }
+
+        .flex-direction-nav a,
+        .slick-slider .slick-arrow {
+            --arrow-width: 20px;
+            --arrow-height: 30px;
+            --arrow-posi: calc(50% - var(--arrow-height)/2);
+            --arrow-posi-h: 0;
+            --arrow-fz: 20px;
+            align-items: center;
+            color: #999;
+            cursor: pointer;
+            display: flex;
+            font-size: 0;
+            font-weight: 400;
+            height: var(--arrow-height);
+            justify-content: center;
+            letter-spacing: 0;
+            line-height: 0;
+            padding: 0;
+            position: absolute;
+            transition: .2s;
+            width: var(--arrow-width);
+            z-index: 5;
+        }
+        .slick-next, .slick-next:focus, .slick-next:hover, .slick-prev, .slick-prev:focus, .slick-prev:hover {
+    background: #0000;
+    color: #0000;
+    outline: none;
+}
+.slick-next, .slick-prev {
+    border: none;
+    cursor: pointer;
+    display: block;
+    font-size: 0;
+    height: 20px;
+    line-height: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+}
+.slick-next, .slick-prev {
+    margin-top: -1% !important;
+}
+.slick-prev {
+    left: 0 !important;
+    z-index: 9999;
+}
+.slick-arrow {
+    background-color: #a9a9a9 !important;
+    height: 50px !important;
+    width: 30px !important;
+}
+    </style>
 </head>
 
 <body class="cms-index-index index-opt-1 @yield('body_classes')">
@@ -94,7 +171,7 @@
 
         <!-- alert banner top -->
         <div role="alert" class="qc-top-site qc-top-site1 alert  fade in"
-            style="background-image: url({{ asset('shopAssets/images/media/index1/bg-qc-top.jpg')}}) }});">
+            style="background-image: url({{ asset('shopAssets/images/media/index1/bg-qc-top.jpg') }}) }});">
             <div class="container">
                 <button class="close" type="button"><span aria-hidden="true">×</span></button>
                 <div class="description">
@@ -115,7 +192,8 @@
                     <ul class="nav-left">
                         <li><span>Welcome to CarnivalGuide</span></li>
                         <li><span>Call Us: +09 957774334</span></li>
-                        <li><a href=""><img src="{{asset('shopAssets/images/media/index3/log-face.png')}}" alt="log-face"></a></li>
+                        <li><a href=""><img src="{{ asset('shopAssets/images/media/index3/log-face.png') }}"
+                                    alt="log-face"></a></li>
                     </ul>
 
                     <ul class="nav-right">
@@ -129,25 +207,25 @@
                                         <li class="switcher-option">
                                             <a href="#">
                                                 <img class="switcher-flag" alt="flag"
-                                                    src="{{asset('shopAssets/images/flags/flag_french.png')}}">
+                                                    src="{{ asset('shopAssets/images/flags/flag_french.png') }}">
                                             </a>
                                         </li>
                                         <li class="switcher-option">
                                             <a href="#">
                                                 <img class="switcher-flag" alt="flag"
-                                                    src="{{asset('shopAssets/images/flags/flag_germany.png')}}">
+                                                    src="{{ asset('shopAssets/images/flags/flag_germany.png') }}">
                                             </a>
                                         </li>
                                         <li class="switcher-option">
                                             <a href="#">
                                                 <img class="switcher-flag" alt="flag"
-                                                    src="{{asset('shopAssets/images/flags/flag_english.png')}}">
+                                                    src="{{ asset('shopAssets/images/flags/flag_english.png') }}">
                                             </a>
                                         </li>
                                         <li class="switcher-option switcher-active">
                                             <a href="#">
                                                 <img class="switcher-flag" alt="flag"
-                                                    src="{{asset('shopAssets/images/flags/flag_spain.png')}}">
+                                                    src="{{ asset('shopAssets/images/flags/flag_spain.png') }}">
                                             </a>
                                         </li>
                                     </ul>
@@ -303,10 +381,10 @@
                                     <li><a href="#">ARTISTES</a></li>
                                     <li><a href="#">EVENTS</a></li> --}}
                                     <li class="parent parent-submenu">
-                                        <a > My Account  </a>
+                                        <a> My Account </a>
                                         <span class="toggle-submenu"></span>
                                         <div class="submenu drop-menu">
-                                            <ul >
+                                            <ul>
                                                 <li><a href="">My Account</a></li>
                                                 <li><a href="">Wishlist</a></li>
                                                 <li><a href="">Checkout</a></li>
@@ -318,9 +396,9 @@
                                                                     document.getElementById('logout-form').submit();">
                                                             {{ __('Logout') }}
                                                         </a>
-    
-                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                            class="d-none">
+
+                                                        <form id="logout-form" action="{{ route('logout') }}"
+                                                            method="POST" class="d-none">
                                                             @csrf
                                                         </form>
                                                     </li>
@@ -346,339 +424,347 @@
             </div><!-- header-content -->
 
             <div id="sticky-wrapper" class="sticky-wrapper" style="height: 42px;">
-                <div class=" header-nav mid-header" style="width: 1093px;">
-                    <div class="container">
-                        <div class="box-header-nav">
-
-                            <span data-action="toggle-nav-cat"
-                                class="nav-toggle-menu nav-toggle-cat"><span>Categories</span><i aria-hidden="true"
-                                    class="fa fa-bars"></i></span>
-
-                            <span data-action="toggle-nav" class="nav-toggle-menu"><span>Menu</span><i
-                                    aria-hidden="true" class="fa fa-bars"></i></span>
-
-                            <!-- categori -->
-                            <div class="block-nav-categori">
-
-                                <div class="block-title">
-                                    <span>Categories</span>
-                                </div>
-
-                                <div class="block-content">
-                                    <div class="clearfix"><span data-action="close-cat"
-                                            class="close-cate"><span>Categories</span></span></div>
-                                    <ul class="ui-categori">
-                                        <li class="parent">
-                                            <a href="">
-                                                <span class="icon"><img src="{{asset('shopAssets/images/icon/index3/nav-cat1.png')}}"
-                                                        alt="nav-cat"></span>
-                                                Electronics
-                                            </a>
-                                            <span class="toggle-submenu"></span>
-                                            <div class="submenu"
-                                                style="background-image: url({{asset('shopAssets/images/media/index1/bgmenu.jpg')}}); left: 270px; width: 670px;">
-                                                <ul class="categori-list clearfix">
-                                                    <li class="col-sm-3">
-                                                        <strong class="title"><a
-                                                                href="">Smartphone</a></strong>
-                                                        <ul>
-                                                            <li><a href="">Skirts </a></li>
-                                                            <li><a href="">Jackets</a></li>
-                                                            <li><a href="">Jumpusuits</a></li>
-                                                            <li><a href="">Scarvest</a></li>
-                                                            <li><a href="">T-Shirts</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="col-sm-3">
-                                                        <strong class="title"><a
-                                                                href="">TElevision</a></strong>
-                                                        <ul>
-                                                            <li><a href="">Skirts </a></li>
-                                                            <li><a href="">Jackets</a></li>
-                                                            <li><a href="">Jumpusuits</a></li>
-                                                            <li><a href="">Scarvest</a></li>
-                                                            <li><a href="">T-Shirts</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="col-sm-3">
-                                                        <strong class="title"><a href="">Camera</a></strong>
-                                                        <ul>
-                                                            <li><a href="">Skirts </a></li>
-                                                            <li><a href="">Jackets</a></li>
-                                                            <li><a href="">Jumpusuits</a></li>
-                                                            <li><a href="">Scarvest</a></li>
-                                                            <li><a href="">T-Shirts</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                                <ul class="categori-list clearfix">
-                                                    <li class="col-sm-3">
-                                                        <strong class="title"><a
-                                                                href="">Smartphone</a></strong>
-                                                        <ul>
-                                                            <li><a href="">Skirts </a></li>
-                                                            <li><a href="">Jackets</a></li>
-                                                            <li><a href="">Jumpusuits</a></li>
-                                                            <li><a href="">Scarvest</a></li>
-                                                            <li><a href="">T-Shirts</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="col-sm-3">
-                                                        <strong class="title"><a
-                                                                href="">TElevision</a></strong>
-                                                        <ul>
-                                                            <li><a href="">Skirts </a></li>
-                                                            <li><a href="">Jackets</a></li>
-                                                            <li><a href="">Jumpusuits</a></li>
-                                                            <li><a href="">Scarvest</a></li>
-                                                            <li><a href="">T-Shirts</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="col-sm-3">
-                                                        <strong class="title"><a href="">Camera</a></strong>
-                                                        <ul>
-                                                            <li><a href="">Skirts </a></li>
-                                                            <li><a href="">Jackets</a></li>
-                                                            <li><a href="">Jumpusuits</a></li>
-                                                            <li><a href="">Scarvest</a></li>
-                                                            <li><a href="">T-Shirts</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="parent">
-                                            <a href="">
-                                                <span class="icon"><img src="{{asset('shopAssets/images/icon/index3/nav-cat2.png')}}"
-                                                        alt="nav-cat"></span>
-                                                Sports &amp; Outdoors
-                                            </a>
-                                            <span class="toggle-submenu"></span>
-                                            <div class="submenu" style="left: 270px; width: 670px;">
-                                                <div class="categori-img">
-                                                    <a href=""><img src="{{asset('shopAssets/images/media/index1/categori-img1.jpg')}})}}"
-                                                            alt="categori-img"></a>
-                                                </div>
-                                                <ul class="categori-list">
-                                                    <li class="col-sm-3">
-                                                        <strong class="title"><a
-                                                                href="">Smartphone</a></strong>
-                                                        <ul>
-                                                            <li><a href="">Skirts </a></li>
-                                                            <li><a href="">Jackets</a></li>
-                                                            <li><a href="">Jumpusuits</a></li>
-                                                            <li><a href="">Scarvest</a></li>
-                                                            <li><a href="">T-Shirts</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="col-sm-3">
-                                                        <strong class="title"><a
-                                                                href="">TElevision</a></strong>
-                                                        <ul>
-                                                            <li><a href="">Skirts </a></li>
-                                                            <li><a href="">Jackets</a></li>
-                                                            <li><a href="">Jumpusuits</a></li>
-                                                            <li><a href="">Scarvest</a></li>
-                                                            <li><a href="">T-Shirts</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="col-sm-3">
-                                                        <strong class="title"><a href="">Camera</a></strong>
-                                                        <ul>
-                                                            <li><a href="">Skirts </a></li>
-                                                            <li><a href="">Jackets</a></li>
-                                                            <li><a href="">Jumpusuits</a></li>
-                                                            <li><a href="">Scarvest</a></li>
-                                                            <li><a href="">T-Shirts</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="col-sm-3">
-                                                        <strong class="title"><a href="">washing
-                                                                machine</a></strong>
-                                                        <ul>
-                                                            <li><a href="">Skirts </a></li>
-                                                            <li><a href="">Jackets</a></li>
-                                                            <li><a href="">Jumpusuits</a></li>
-                                                            <li><a href="">Scarvest</a></li>
-                                                            <li><a href="">T-Shirts</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="icon"><img src="{{asset('shopAssets/images/icon/index3/nav-cat4.png')}}"
-                                                        alt="nav-cat"></span>
-                                                Health &amp; Beauty
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="icon"><img src="{{asset('shopAssets/images/icon/index3/nav-cat4.png')}}"
-                                                        alt="nav-cat"></span>
-                                                Health &amp; Beauty
-                                            </a>
-                                        </li>
-
-
-                                    </ul>
-
-                                    <div class="view-all-categori">
-                                        <a class="open-cate btn-view-all">All Categories</a>
-                                    </div>
-                                </div>
-
-                            </div><!-- categori -->
-
-                            <!-- search -->
-                            <div class="block-search">
-                                <div class="block-title">
-                                    <span>Search</span>
-                                </div>
-                                <div class="block-content">
-                                    <div class="categori-search  ">
-                                        <select data-placeholder="All Categories" class="categori-search-option"
-                                            style="display: none;">
-                                            <option>All Categories</option>
-                                            <option>Fashion</option>
-                                            <option>Tops Blouses</option>
-                                            <option>Clothing</option>
-                                            <option>Furniture</option>
-                                            <option>Bathtime Goods</option>
-                                            <option>Shower Curtains</option>
-                                        </select>
-                                        {{-- <div class="chosen-container chosen-container-single" style="width: 128px;"
-                                            title="">
-                                            <a class="chosen-single chosen-default"><span>All Categories</span>
-                                                <div><b></b></div>
-                                            </a>
-                                            <div class="chosen-drop">
-                                                <div class="chosen-search"><input type="text" autocomplete="off">
-                                                </div>
-                                                <ul class="chosen-results"></ul>
-                                            </div>
-                                        </div> --}}
-                                    </div>
-                                    <div class="form-search">
-                                        <form>
-                                            <div class="box-group">
-                                                <input type="text" class="form-control"
-                                                    placeholder="Type Your Keyword...">
-                                                <button class="btn btn-search"
-                                                    type="button"><span>search</span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- menu -->
-                            <div class="block-nav-menu">
-                                <div class="actions-close-nav"><span data-action="close-nav"
-                                        class="close-nav"><span>close</span></span></div>
-                                <ul class="ui-menu">
-                                    <li class="{{ request()->is('/') ? 'active' : '' }}">
-                                        <a href="/">Home</a>
-                                    </li>
-                                    <li class="{{ Request::routeIs('front.vendors') ? 'active' : '' }}"><a
-                                            href="{{ url('/mascamps') }}"> MAS CAMPS </a></li>
-                                    {{-- <li><a href="#"> CG GEAR </a></li>
-                                    <li><a href="#">MODELS</a></li>
-                                    <li><a href="#">ARTISTES</a></li>
-                                    <li><a href="#">EVENTS</a></li> --}}
-                                    <li class="parent parent-submenu">
-                                        <a > My Account  </a>
-                                        <span class="toggle-submenu"></span>
-                                        <div class="submenu drop-menu">
-                                            <ul >
-                                                <li><a href="">My Account</a></li>
-                                                <li><a href="">Wishlist</a></li>
-                                                <li><a href="">Checkout</a></li>
-                                                <li><a href="">Compare</a></li>
-                                                @if (Auth::check())
-                                                    <li>
-                                                        <a class="" href="{{ route('logout') }}"
-                                                            onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();">
-                                                            {{ __('Logout') }}
-                                                        </a>
+                {{-- <div class="container"> --}}
+                    <div class=" header-nav mid-header">
+                        <div class="container">
+                            <div class="box-header-nav">
     
-                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                            class="d-none">
-                                                            @csrf
-                                                        </form>
-                                                    </li>
-                                                @else
-                                                    <li>
-                                                        <a href="{{ route('customer.login') }}">Login/Register</a>
-                                                    </li>
-                                                @endif
-                                            </ul>
+                                <span data-action="toggle-nav-cat"
+                                    class="nav-toggle-menu nav-toggle-cat"><span>Categories</span><i aria-hidden="true"
+                                        class="fa fa-bars"></i></span>
+    
+                                <span data-action="toggle-nav" class="nav-toggle-menu"><span>Menu</span><i
+                                        aria-hidden="true" class="fa fa-bars"></i></span>
+    
+                                <!-- categori -->
+                                <div class="block-nav-categori">
+    
+                                    <div class="block-title">
+                                        <span>Categories</span>
+                                    </div>
+    
+                                    <div class="block-content">
+                                        <div class="clearfix"><span data-action="close-cat"
+                                                class="close-cate"><span>Categories</span></span></div>
+                                        <ul class="ui-categori">
+                                            <li class="parent">
+                                                <a href="">
+                                                    <span class="icon"><img
+                                                            src="{{ asset('shopAssets/images/icon/index3/nav-cat1.png') }}"
+                                                            alt="nav-cat"></span>
+                                                    Electronics
+                                                </a>
+                                                <span class="toggle-submenu"></span>
+                                                <div class="submenu"
+                                                    style="background-image: url({{ asset('shopAssets/images/media/index1/bgmenu.jpg') }}); left: 270px; width: 670px;">
+                                                    <ul class="categori-list clearfix">
+                                                        <li class="col-sm-3">
+                                                            <strong class="title"><a
+                                                                    href="">Smartphone</a></strong>
+                                                            <ul>
+                                                                <li><a href="">Skirts </a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Jumpusuits</a></li>
+                                                                <li><a href="">Scarvest</a></li>
+                                                                <li><a href="">T-Shirts</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="col-sm-3">
+                                                            <strong class="title"><a
+                                                                    href="">TElevision</a></strong>
+                                                            <ul>
+                                                                <li><a href="">Skirts </a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Jumpusuits</a></li>
+                                                                <li><a href="">Scarvest</a></li>
+                                                                <li><a href="">T-Shirts</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="col-sm-3">
+                                                            <strong class="title"><a href="">Camera</a></strong>
+                                                            <ul>
+                                                                <li><a href="">Skirts </a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Jumpusuits</a></li>
+                                                                <li><a href="">Scarvest</a></li>
+                                                                <li><a href="">T-Shirts</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="categori-list clearfix">
+                                                        <li class="col-sm-3">
+                                                            <strong class="title"><a
+                                                                    href="">Smartphone</a></strong>
+                                                            <ul>
+                                                                <li><a href="">Skirts </a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Jumpusuits</a></li>
+                                                                <li><a href="">Scarvest</a></li>
+                                                                <li><a href="">T-Shirts</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="col-sm-3">
+                                                            <strong class="title"><a
+                                                                    href="">TElevision</a></strong>
+                                                            <ul>
+                                                                <li><a href="">Skirts </a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Jumpusuits</a></li>
+                                                                <li><a href="">Scarvest</a></li>
+                                                                <li><a href="">T-Shirts</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="col-sm-3">
+                                                            <strong class="title"><a href="">Camera</a></strong>
+                                                            <ul>
+                                                                <li><a href="">Skirts </a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Jumpusuits</a></li>
+                                                                <li><a href="">Scarvest</a></li>
+                                                                <li><a href="">T-Shirts</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="">
+                                                    <span class="icon"><img
+                                                            src="{{ asset('shopAssets/images/icon/index3/nav-cat2.png') }}"
+                                                            alt="nav-cat"></span>
+                                                    Sports &amp; Outdoors
+                                                </a>
+                                                <span class="toggle-submenu"></span>
+                                                <div class="submenu" style="left: 270px; width: 670px;">
+                                                    <div class="categori-img">
+                                                        <a href=""><img
+                                                                src="{{ asset('shopAssets/images/media/index1/categori-img1.jpg') }})}}"
+                                                                alt="categori-img"></a>
+                                                    </div>
+                                                    <ul class="categori-list">
+                                                        <li class="col-sm-3">
+                                                            <strong class="title"><a
+                                                                    href="">Smartphone</a></strong>
+                                                            <ul>
+                                                                <li><a href="">Skirts </a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Jumpusuits</a></li>
+                                                                <li><a href="">Scarvest</a></li>
+                                                                <li><a href="">T-Shirts</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="col-sm-3">
+                                                            <strong class="title"><a
+                                                                    href="">TElevision</a></strong>
+                                                            <ul>
+                                                                <li><a href="">Skirts </a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Jumpusuits</a></li>
+                                                                <li><a href="">Scarvest</a></li>
+                                                                <li><a href="">T-Shirts</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="col-sm-3">
+                                                            <strong class="title"><a href="">Camera</a></strong>
+                                                            <ul>
+                                                                <li><a href="">Skirts </a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Jumpusuits</a></li>
+                                                                <li><a href="">Scarvest</a></li>
+                                                                <li><a href="">T-Shirts</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="col-sm-3">
+                                                            <strong class="title"><a href="">washing
+                                                                    machine</a></strong>
+                                                            <ul>
+                                                                <li><a href="">Skirts </a></li>
+                                                                <li><a href="">Jackets</a></li>
+                                                                <li><a href="">Jumpusuits</a></li>
+                                                                <li><a href="">Scarvest</a></li>
+                                                                <li><a href="">T-Shirts</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span class="icon"><img
+                                                            src="{{ asset('shopAssets/images/icon/index3/nav-cat4.png') }}"
+                                                            alt="nav-cat"></span>
+                                                    Health &amp; Beauty
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span class="icon"><img
+                                                            src="{{ asset('shopAssets/images/icon/index3/nav-cat4.png') }}"
+                                                            alt="nav-cat"></span>
+                                                    Health &amp; Beauty
+                                                </a>
+                                            </li>
+    
+    
+                                        </ul>
+    
+                                        <div class="view-all-categori">
+                                            <a class="open-cate btn-view-all">All Categories</a>
                                         </div>
-                                    </li>
-                                    <li><a href="#">CONTACT US</a></li>
-                                </ul>
-
-                            </div><!-- menu -->
-
-                            <!--language  -->
-                            <div class="dropdown switcher  switcher-language">
-                                <a data-toggle="dropdown" role="button" href="#"
-                                    class="dropdown-toggle switcher-trigger" aria-expanded="false">
-                                    <img class="switcher-flag" alt="flag" src="{{asset('shopAssets/images/flags/flag_english.png')}}">
-                                    <span>English</span>
-                                    <i aria-hidden="true" class="fa fa-angle-down"></i>
-                                </a>
-                                <ul class="dropdown-menu switcher-options " style="right: 0px; left: auto;">
-                                    <li class="switcher-option">
-                                        <a href="#">
-                                            <img class="switcher-flag" alt="flag"
-                                                src="{{asset('shopAssets/images/flags/flag_english.png')}}">English
-                                        </a>
-                                    </li>
-                                    <li class="switcher-option">
-                                        <a href="#">
-                                            <img class="switcher-flag" alt="flag"
-                                                src="{{asset('shopAssets/images/flags/flag_french.png')}}">French
-                                        </a>
-                                    </li>
-                                    <li class="switcher-option">
-                                        <a href="#">
-                                            <img class="switcher-flag" alt="flag"
-                                                src="{{asset('shopAssets/images/flags/flag_germany.png')}}">Germany
-                                        </a>
-                                    </li>
-                                </ul>
+                                    </div>
+    
+                                </div><!-- categori -->
+    
+                                <!-- search -->
+                                <div class="block-search">
+                                    <div class="block-title">
+                                        <span>Search</span>
+                                    </div>
+                                    <div class="block-content">
+                                        <div class="categori-search  ">
+                                            <select data-placeholder="All Categories" class="categori-search-option"
+                                                style="display: none;">
+                                                <option>All Categories</option>
+                                                <option>Fashion</option>
+                                                <option>Tops Blouses</option>
+                                                <option>Clothing</option>
+                                                <option>Furniture</option>
+                                                <option>Bathtime Goods</option>
+                                                <option>Shower Curtains</option>
+                                            </select>
+                                            {{-- <div class="chosen-container chosen-container-single" style="width: 128px;"
+                                                title="">
+                                                <a class="chosen-single chosen-default"><span>All Categories</span>
+                                                    <div><b></b></div>
+                                                </a>
+                                                <div class="chosen-drop">
+                                                    <div class="chosen-search"><input type="text" autocomplete="off">
+                                                    </div>
+                                                    <ul class="chosen-results"></ul>
+                                                </div>
+                                            </div> --}}
+                                        </div>
+                                        <div class="form-search">
+                                            <form>
+                                                <div class="box-group">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Type Your Keyword...">
+                                                    <button class="btn btn-search"
+                                                        type="button"><span>search</span></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- menu -->
+                                <div class="block-nav-menu">
+                                    <div class="actions-close-nav"><span data-action="close-nav"
+                                            class="close-nav"><span>close</span></span></div>
+                                    <ul class="ui-menu">
+                                        <li class="{{ request()->is('/') ? 'active' : '' }}">
+                                            <a href="/">Home</a>
+                                        </li>
+                                        <li class="{{ Request::routeIs('front.vendors') ? 'active' : '' }}"><a
+                                                href="{{ url('/mascamps') }}"> MAS CAMPS </a></li>
+                                        {{-- <li><a href="#"> CG GEAR </a></li>
+                                        <li><a href="#">MODELS</a></li>
+                                        <li><a href="#">ARTISTES</a></li>
+                                        <li><a href="#">EVENTS</a></li> --}}
+                                        <li class="parent parent-submenu">
+                                            <a> My Account </a>
+                                            <span class="toggle-submenu"></span>
+                                            <div class="submenu drop-menu">
+                                                <ul>
+                                                    <li><a href="">My Account</a></li>
+                                                    <li><a href="">Wishlist</a></li>
+                                                    <li><a href="">Checkout</a></li>
+                                                    <li><a href="">Compare</a></li>
+                                                    @if (Auth::check())
+                                                        <li>
+                                                            <a class="" href="{{ route('logout') }}"
+                                                                onclick="event.preventDefault();
+                                                                        document.getElementById('logout-form').submit();">
+                                                                {{ __('Logout') }}
+                                                            </a>
+    
+                                                            <form id="logout-form" action="{{ route('logout') }}"
+                                                                method="POST" class="d-none">
+                                                                @csrf
+                                                            </form>
+                                                        </li>
+                                                    @else
+                                                        <li>
+                                                            <a href="{{ route('customer.login') }}">Login/Register</a>
+                                                        </li>
+                                                    @endif
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a href="#">CONTACT US</a></li>
+                                    </ul>
+    
+                                </div><!-- menu -->
+    
+                                <!--language  -->
+                                <div class="dropdown switcher  switcher-language">
+                                    <a data-toggle="dropdown" role="button" href="#"
+                                        class="dropdown-toggle switcher-trigger" aria-expanded="false">
+                                        <img class="switcher-flag" alt="flag"
+                                            src="{{ asset('shopAssets/images/flags/flag_english.png') }}">
+                                        <span>English</span>
+                                        <i aria-hidden="true" class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu switcher-options " style="right: 0px; left: auto;">
+                                        <li class="switcher-option">
+                                            <a href="#">
+                                                <img class="switcher-flag" alt="flag"
+                                                    src="{{ asset('shopAssets/images/flags/flag_english.png') }}">English
+                                            </a>
+                                        </li>
+                                        <li class="switcher-option">
+                                            <a href="#">
+                                                <img class="switcher-flag" alt="flag"
+                                                    src="{{ asset('shopAssets/images/flags/flag_french.png') }}">French
+                                            </a>
+                                        </li>
+                                        <li class="switcher-option">
+                                            <a href="#">
+                                                <img class="switcher-flag" alt="flag"
+                                                    src="{{ asset('shopAssets/images/flags/flag_germany.png') }}">Germany
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+    
+                                <!--currency  -->
+                                <div class="dropdown switcher  switcher-currency">
+                                    <a data-toggle="dropdown" role="button" href="#"
+                                        class="dropdown-toggle switcher-trigger"><span>USD</span> <i aria-hidden="true"
+                                            class="fa fa-angle-down"></i></a>
+                                    <ul class="dropdown-menu switcher-options " style="right: 0px; left: auto;">
+                                        <li class="switcher-option">
+                                            <a href="#">
+                                                <i class="fa fa-usd" aria-hidden="true"></i>USD
+                                            </a>
+                                        </li>
+                                        <li class="switcher-option">
+                                            <a href="#">
+                                                <i class="fa fa-eur" aria-hidden="true"></i>eur
+                                            </a>
+                                        </li>
+                                        <li class="switcher-option">
+                                            <a href="#">
+                                                <i class="fa fa-gbp" aria-hidden="true"></i>gbp
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+    
                             </div>
-
-                            <!--currency  -->
-                            <div class="dropdown switcher  switcher-currency">
-                                <a data-toggle="dropdown" role="button" href="#"
-                                    class="dropdown-toggle switcher-trigger"><span>USD</span> <i aria-hidden="true"
-                                        class="fa fa-angle-down"></i></a>
-                                <ul class="dropdown-menu switcher-options " style="right: 0px; left: auto;">
-                                    <li class="switcher-option">
-                                        <a href="#">
-                                            <i class="fa fa-usd" aria-hidden="true"></i>USD
-                                        </a>
-                                    </li>
-                                    <li class="switcher-option">
-                                        <a href="#">
-                                            <i class="fa fa-eur" aria-hidden="true"></i>eur
-                                        </a>
-                                    </li>
-                                    <li class="switcher-option">
-                                        <a href="#">
-                                            <i class="fa fa-gbp" aria-hidden="true"></i>gbp
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
                         </div>
                     </div>
-                </div>
+                {{-- </div> --}}
             </div>
 
         </header>

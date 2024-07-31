@@ -16,6 +16,32 @@
     <link href="{{ asset('shopAssets/css/carnival-style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('shopAssets/css/shopstyle.css?ver=7') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/isotope-layout@3/dist/isotope.min.css">
+
+    <style>
+        .owl-prev, .owl-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: #ccc; /* Adjust the background color */
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.owl-prev {
+    left: -40px; /* Adjust position */
+}
+
+.owl-next {
+    right: -40px; /* Adjust position */
+}
+    </style>
 
     <!-- Style CSS -->
 

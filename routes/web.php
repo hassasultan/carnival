@@ -63,7 +63,10 @@ Route::get('/gallery', [FrontendConroller::class, 'gallery'])->name('front.galle
 Route::get('/car-rental/listing', [FrontendConroller::class, 'car_rental'])->name('front.car.rental');
 Route::get('/category-tour-listing', [FrontendConroller::class, 'category_tour_listing'])->name('front.category.tour.listing');
 Route::get('/product-listing', [FrontendConroller::class, 'product_listing'])->name('front.product_listing');
+Route::get('/shop', [FrontendConroller::class, 'shop_home'])->name('front.shop');
 Route::get('/mascamps', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
+Route::get('/contact-us', [FrontendConroller::class, 'contact_us'])->name('front.contact');
+Route::get('/marketplace', [FrontendConroller::class, 'marketplace'])->name('front.marketplace');
 Route::get('/get-section-leaders', [FrontendConroller::class, 'sub_vendor_listing'])->name('get.subvendors.front');
 Route::get('/shop/{slug}', [FrontendConroller::class, 'vendor_detail'])->name('front.vendor.detail');
 Route::get('/get/shop/products/{slug}', [FrontendConroller::class, 'get_vendor_products'])->name('front.vendor.products');

@@ -306,6 +306,41 @@
 
 <!-- Main -->
 <script type="text/javascript" src="{{asset('shopAssets/js/main.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+            $('.deals-slider').each(function(index, element){
+                $(element).slick({
+                    infinite: true,
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    prevArrow: $(element).siblings('.slick-prev'),
+                    nextArrow: $(element).siblings('.slick-next')
+                });
+            });
+            // $('.slick-slider').slick({
+            //     infinite: true,
+            //     slidesToShow: 4,
+            //     slidesToScroll: 1,
+            //     prevArrow: $('.slick-prev'),
+            //     nextArrow: $('.slick-next')
+            // });
+        });
+    </script>
+    {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.slick-slider').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+                nextArrow: '<button type="button" class="slick-next">Next</button>'
+            });
+        });
+    </script> --}}
 
 @yield('script')
 <script>

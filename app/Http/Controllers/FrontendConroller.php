@@ -92,6 +92,14 @@ class FrontendConroller extends Controller
             ->paginate(18);
         return $vendors;
     }
+    public function shop_home()
+    {
+        $products = Product::with('brand')->get();
+        $investors = Investor::all();
+        $blogs = Blogs::with('user')->get()->take('6');
+        // dd($blogs->toArray());
+        return view('ShopFrontend.home',compact('products','investors','blogs'));
+    }
     public function product_listing()
     {
         return view('ShopFrontend.product-listing');
@@ -99,6 +107,15 @@ class FrontendConroller extends Controller
     public function vendor_listing()
     {
         return view('ShopFrontend.vendors');
+    }
+    public function contact_us()
+    {
+        return view('ShopFrontend.contact');
+    }
+    public function marketplace()
+    {
+        $products = Product::with('brand')->get();
+        return view('ShopFrontend.marketplace',compact('products'));
     }
     public function sub_vendor_listing()
     {

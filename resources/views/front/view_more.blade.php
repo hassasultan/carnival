@@ -171,74 +171,72 @@
                             <div class="tabs-content clearfix">
                                 @foreach ($event->country_tabs as $key => $row)
                                     <div class="tab-info @if ($key == 0) active @endif">
+                                        
                                         <div class="slider-wth-thumbs style-1 arrows">
-                                            <div class="swiper-container thumbnails-preview swiper-unique-id-{{ $key }}"
-                                                data-autoplay="0" data-loop="1" data-speed="500" data-center="0"
-                                                data-slides-per-view="1">
-                                                <div class="swiper-wrapper">
-                                                    @if ($row->file_type == 'video')
-                                                        <div class="swiper-slide" data-val="0">
-                                                            {{-- <div class="embed-responsive embed-responsive-16by9"> --}}
-                                                                <video loop muted controls class="" id="" style="width: 770px; height:455px;">
-                                                                    <source type="video/mp4" src="{{ asset('files/' . $row->file) }}" />
-                        
-                                                                </video>
-                                                            {{-- </div> --}}
-                                                            {{-- <img class="img-responsive img-full"
-                                                                src="{{ asset('files/' . $row->file) }}" alt=""> --}}
-                                                        </div>
-                                                    @else
-                                                        <div class="swiper-slide" data-val="0">
-                                                            <img class="img-responsive img-full" style="width: 770px; height:455px;"
-                                                                src="{{ asset('files/' . $row->file) }}" alt="">
-                                                        </div>
-                                                    @endif
-                                                    <div class="swiper-slide" data-val="1">
-                                                        <img class="img-responsive img-full"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
-                                                            alt="">
+                                            <!-- Main Slider -->
+                                            <div class="swiper-container thumbnails-preview swiper-swiper-unique-id-{{ $key }}"
+                                                data-autoplay="0" data-loop="1" data-speed="500" data-center="0" data-slides-per-view="1" id="swiper-unique-id-{{ $key }}">
+                                                <div class="swiper-wrapper" style="width: 5390px; transform: translate3d(-770px, 0px, 0px); transition-duration: 0s; height: 455px;">
+                                                    <div class="swiper-slide swiper-slide-duplicate" style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg" alt="">
+                                                    </div>
+                                                    <div class="swiper-slide active swiper-slide-visible swiper-slide-active" style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="">
+                                                    </div>
+                                                    <div class="swiper-slide" style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="">
+                                                    </div>
+                                                    <div class="swiper-slide" style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg" alt="">
+                                                    </div>
+                                                    <div class="swiper-slide" style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg" alt="">
+                                                    </div>
+                                                    <div class="swiper-slide" style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg" alt="">
+                                                    </div>
+                                                    <div class="swiper-slide active swiper-slide-duplicate" style="width: 770px; height: 455px;">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="">
                                                     </div>
                                                 </div>
-                                                <div class="swiper-pagination pagination-unique-id-{{ $key }}">
+                                                <div class="pagination pagination-hidden pagination-swiper-unique-id-{{ $key }}">
+                                                    <span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span>
+                                                    <span class="swiper-pagination-switch"></span>
+                                                    <span class="swiper-pagination-switch"></span>
+                                                    <span class="swiper-pagination-switch"></span>
+                                                    <span class="swiper-pagination-switch"></span>
                                                 </div>
                                                 <div class="arrow-wrapp arr-s-3">
-                                                    <div class="swiper-arrow-left sw-arrow"><span
-                                                            class="fa fa-angle-left"></span></div>
-                                                    <div class="swiper-arrow-right sw-arrow"><span
-                                                            class="fa fa-angle-right"></span></div>
+                                                    <div class="swiper-arrow-left sw-arrow"><span class="fa fa-angle-left"></span></div>
+                                                    <div class="swiper-arrow-right sw-arrow"><span class="fa fa-angle-right"></span></div>
                                                 </div>
                                             </div>
-                                            <div class="swiper-container thumbnails swiper-unique-id-{{ $key }}-thumbs"
-                                                data-autoplay="0" data-loop="0" data-speed="500" data-center="0"
-                                                data-slides-per-view="4" data-mob-slides="2" data-xs-slides="3"
-                                                data-sm-slides="4" data-md-slides="5" data-lg-slides="5"
-                                                data-add-slides="5">
-                                                <div class="swiper-wrapper">
-                                                    @if ($row->file_type == 'video')
-                                                    <div class="swiper-slide" data-val="0">
-                                                        {{-- <div class="embed-responsive embed-responsive-16by9"> --}}
-                                                            <video loop muted controls class="" id="" style="width: 100%; height:100%;">
-                                                                <source type="video/mp4" src="{{ asset('files/' . $row->file) }}" />
-                    
-                                                            </video>
-                                                        {{-- </div> --}}
-                                                        {{-- <img class="img-responsive img-full"
-                                                            src="{{ asset('files/' . $row->file) }}" alt=""> --}}
+                                            <!-- Thumbnail Slider -->
+                                            <div class="swiper-container thumbnails swiper-swiper-unique-id-{{ $key }}-thumbs"
+                                                data-autoplay="0" data-loop="0" data-speed="500" data-center="0" data-slides-per-view="responsive" id="swiper-unique-id-{{ $key }}-thumbs">
+                                                <div class="swiper-wrapper" style="width: 770px; height: 101px;">
+                                                    <div class="swiper-slide current active swiper-slide-visible swiper-slide-active" style="width: 154px; height: 101px;">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_1s.jpg" alt="">
                                                     </div>
-                                                    @else
-                                                    <div class="swiper-slide" data-val="0">
-                                                        <img class="img-responsive img-full"
-                                                            src="{{ asset('files/' . $row->file) }}" alt="">
+                                                    <div class="swiper-slide swiper-slide-visible" style="width: 154px; height: 101px;">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_2s.jpg" alt="">
                                                     </div>
-                                                    @endif
-                                                    <div class="swiper-slide" data-val="1">
-                                                        <img class="img-responsive img-full"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_2s.jpg"
-                                                            alt="">
+                                                    <div class="swiper-slide swiper-slide-visible" style="width: 154px; height: 101px;">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_3s.jpg" alt="">
+                                                    </div>
+                                                    <div class="swiper-slide swiper-slide-visible" style="width: 154px; height: 101px;">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_4s.jpg" alt="">
+                                                    </div>
+                                                    <div class="swiper-slide swiper-slide-visible" style="width: 154px; height: 101px;">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_5s.jpg" alt="">
                                                     </div>
                                                 </div>
-                                                <div
-                                                    class="swiper-pagination pagination-unique-id-{{ $key }}-thumbs">
+                                                <div class="pagination hidden pagination-swiper-unique-id-{{ $key }}-thumbs">
+                                                    <span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch" style="display: inline;"></span>
+                                                    <span class="swiper-pagination-switch swiper-visible-switch" style="display: none;"></span>
+                                                    <span class="swiper-pagination-switch swiper-visible-switch" style="display: none;"></span>
+                                                    <span class="swiper-pagination-switch swiper-visible-switch" style="display: none;"></span>
+                                                    <span class="swiper-pagination-switch swiper-visible-switch" style="display: none;"></span>
                                                 </div>
                                             </div>
                                         </div>
