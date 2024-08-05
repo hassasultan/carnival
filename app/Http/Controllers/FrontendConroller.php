@@ -118,6 +118,26 @@ class FrontendConroller extends Controller
         $products = Product::with('brand')->get();
         return view('ShopFrontend.marketplace',compact('products'));
     }
+    public function compare_produts()
+    {
+        $products = Product::with('brand')->get();
+        return view('ShopFrontend.compare-produts',compact('products'));
+    }
+    public function track_order()
+    {
+        $products = Product::with('brand')->get();
+        return view('ShopFrontend.track-order',compact('products'));
+    }
+    public function blog_list()
+    {
+        $products = Product::with('brand')->get();
+        return view('ShopFrontend.blog-list',compact('products'));
+    }
+    public function blog_detail()
+    {
+        $products = Product::with('brand')->get();
+        return view('ShopFrontend.blog-detail',compact('products'));
+    }
     public function sub_vendor_listing()
     {
         return view('ShopFrontend.subVendor');

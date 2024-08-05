@@ -17,6 +17,10 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
+    @if (Route::is('front.track.order') || Route::is('front.blog.list') || Route::is('front.blog.detail'))
+    <link rel="stylesheet" type="text/css" href="{{ asset('shopAssets/css/wocommerce.css') }}"/>
+    @endif
+
     <style>
         /* Skeleton loading animation */
         .skeleton-container {
