@@ -24,7 +24,7 @@
 
                             <div class="item">
                                 <img src="{{ asset('shopAssets/images/media/index8/slide1.jpg') }}" alt="slide1"
-                                    class="img-slide" style="height: 100%;min-height:200px;">
+                                    class="img-slide" style="height: 100%;min-height:600px;">
                                 <div class="description" style="top: 30%;">
                                     <span class="subtitle ">Paris fashion week</span>
                                     <span class="title">fashion talents from paris </span>
@@ -35,7 +35,7 @@
                             </div>
                             <div class="item">
                                 <img src="{{ asset('shopAssets/images/media/index8/slide2.jpg') }}" alt="slide1"
-                                    class="img-slide" style="height: 100%;min-height:200px;">
+                                    class="img-slide" style="height: 100%;min-height:600px;">
                                 <div class="description" style="top: 30%;">
                                     <span class="subtitle ">Paris fashion week</span>
                                     <span class="title">fashion talents from paris </span>
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div style="margin-top: -30px;z-index: 9999999;position: relative;">
             <div>
                 <div class="block-banner-main-opt8 Links_data">
                     <div class="container">

@@ -168,11 +168,138 @@
 
                                 </div>
                             </div>
+                            <style>
+                                .carousel {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease;
+    align-items: center; /* Center the slides vertically */
+    justify-content: center; /* Center the slides horizontally */
+}
+
+.slide {
+    min-width: 100%;
+    height: 455px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Ensure the slide has a background */
+}
+
+.img-responsive {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    width: 5% !important;
+    height: 45px;
+}
+
+.prev {
+    left: 10px;
+    /* Additional styling for the previous button, if needed */
+}
+
+.next {
+    right: 10px;  /* Correctly position the next button on the right side */
+    left: auto;   /* Ensure the left position is not overriding the right */
+}
+
+.carousel-thumbnails {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.thumbnail {
+    width: 150px;
+    height: 80px;
+    margin: 0 5px;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
+}
+
+.thumbnail:hover,
+.thumbnail.active {
+    border-color: #555;
+}
+
+.img-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+                            </style>
                             <div class="tabs-content clearfix">
                                 @foreach ($event->country_tabs as $key => $row)
                                     <div class="tab-info @if ($key == 0) active @endif">
+                                        <div class="carousel">
+                                            <div class="carousel-wrapper">
+                                                <button class="carousel-control prev">&#10094;</button>
+                                                <div class="carousel-slides">
+                                                    <div class="slide active">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="Slide 1">
+                                                    </div>
+                                                    <div class="slide">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="Slide 2">
+                                                    </div>
+                                                    <div class="slide">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg" alt="Slide 3">
+                                                    </div>
+                                                    <div class="slide">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg" alt="Slide 4">
+                                                    </div>
+                                                    <div class="slide">
+                                                        <img class="img-responsive img-full" src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg" alt="Slide 5">
+                                                    </div>
+                                                </div>
+                                                <button class="carousel-control next">&#10095;</button>
+                                            </div>
+                                            <div class="carousel-thumbnails">
+                                                <div class="thumbnail">
+                                                    <img class="img-responsive img-thumb" src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="Thumbnail 1">
+                                                </div>
+                                                <div class="thumbnail">
+                                                    <img class="img-responsive img-thumb" src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="Thumbnail 2">
+                                                </div>
+                                                <div class="thumbnail">
+                                                    <img class="img-responsive img-thumb" src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg" alt="Thumbnail 3">
+                                                </div>
+                                                <div class="thumbnail">
+                                                    <img class="img-responsive img-thumb" src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg" alt="Thumbnail 4">
+                                                </div>
+                                                <div class="thumbnail">
+                                                    <img class="img-responsive img-thumb" src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg" alt="Thumbnail 5">
+                                                </div>
+                                            </div>
+                                        </div>
                                         
-                                        <div class="slider-wth-thumbs style-1 arrows">
+                                        {{-- <div class="slider-wth-thumbs style-1 arrows">
                                             <!-- Main Slider -->
                                             <div class="swiper-container thumbnails-preview swiper-swiper-unique-id-{{ $key }}"
                                                 data-autoplay="0" data-loop="1" data-speed="500" data-center="0" data-slides-per-view="1" id="swiper-unique-id-{{ $key }}">
@@ -239,14 +366,40 @@
                                                     <span class="swiper-pagination-switch swiper-visible-switch" style="display: none;"></span>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-12">
                                             {!! $row->content !!}
                                         </div>
                                     </div>
                                 @endforeach
 
+<script>
+document.querySelectorAll('.carousel').forEach(carousel => {
+    const slides = carousel.querySelector('.carousel-slides');
+    const prevButton = carousel.querySelector('.prev');
+    const nextButton = carousel.querySelector('.next');
+    let currentSlide = 0;
 
+    prevButton.addEventListener('click', () => {
+        currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.children.length - 1;
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentSlide = (currentSlide < slides.children.length - 1) ? currentSlide + 1 : 0;
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    });
+
+    carousel.querySelectorAll('.thumbnail').forEach((thumbnail, index) => {
+        thumbnail.addEventListener('click', () => {
+            currentSlide = index;
+            slides.style.transform = `translateX(-${index * 100}%)`;
+        });
+    });
+});
+
+
+</script>
 
 
 

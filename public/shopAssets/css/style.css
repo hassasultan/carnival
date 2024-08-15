@@ -30633,11 +30633,13 @@ img.alignright {
     width: 100%;
     text-align: center;
     border: 1px solid #eee;
-    background-color: #eee
+    background-color: #fff
 }
 
 .block-brand-op6 .item:hover a {
-    background-color: #fff
+    background-color: #fff;
+    transition: transform .3s;
+    height: 100px;
 }
 
 .index-opt-6 .back-to-top {
