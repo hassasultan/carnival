@@ -1,4 +1,5 @@
 <script src="{{ asset('shopAssets/js/jquery-2.1.4.min.js') }}"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script src="{{ asset('shopAssets/js/carnival-bootstrap.min.js') }}"></script>
 <script src="{{ asset('shopAssets/js/carnival-jquery-ui.min.js') }}"></script>
 <script src="{{ asset('shopAssets/js/jquery.countTo.js') }}"></script>
@@ -8,7 +9,6 @@
 <script src="{{ asset('shopAssets/js/DateTimePicker.min.js') }}"></script>
 <script src="{{ asset('shopAssets/js/jquery.mousewheel.min.js') }}"></script>
 {{-- <script src="{{ asset('shopAssets/js/isotope.pkgd.min.js') }}"></script> --}}
-{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 <script src="{{ asset('shopAssets/js/all.js') }}"></script>
 
