@@ -57,13 +57,16 @@
                                                                     more</a>
                                                                 <div class="slide-preview">
                                                                     @foreach ($row->images as $item)
-                                                                        <a class="active"
+                                                                        <a 
                                                                             href="{{ asset($item->image_url) }}"><img
                                                                                 class="img-responsive"
                                                                                 src="{{ asset($item->image_url) }}"
                                                                                 alt=""></a>
                                                                     @endforeach
-                                                                    {{-- <a
+                                                                    <a  href="https://carnivalguide.co/new/img/home/vincymas-2024.jpg">
+                                                                        <img class="img-responsive" src="https://carnivalguide.co/new/img/home/slide_preview_1.jpg" alt="">
+                                                                    </a>
+                                                                    <a
                                                                         href="https://carnivalguide.co/travel/img/home/slide_2.jpg"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_2.jpg"
@@ -72,7 +75,7 @@
                                                                         href="https://carnivalguide.co/travel/img/home/slide_3.jpg"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_3.jpg"
-                                                                            alt=""></a> --}}
+                                                                            alt=""></a>
                                                                 </div>
                                                                 <div class="slide-preview">
                                                                     <a
