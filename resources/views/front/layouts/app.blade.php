@@ -15,9 +15,15 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css?ver=1">
     <link href="{{ asset('shopAssets/css/carnival-style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('shopAssets/css/shopstyle.css?ver=7') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    {{-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/isotope-layout@3/dist/isotope.min.css">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> --}}
+    {{-- <link rel="shortcut icon" href="https://carnivalguide.co/travel/favicon.ico"/> 
+    <link href="https://carnivalguide.co/travel/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="https://carnivalguide.co/travel/css/jquery-ui.structure.min.css" rel="stylesheet" type="text/css"/>
+	<link href="https://carnivalguide.co/travel/css/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">        
+	<link href="https://carnivalguide.co/travel/css/style.css" rel="stylesheet" type="text/css"/>   --}}
 
 
     <style>

@@ -330,2331 +330,1163 @@
                                 <div class="tab-info" style="position: relative;">
                                     <img class="img-responsive" src="https://carnivalguide.co/new/img/detail/guide_6a.jpg"
                                         alt="">
-                                    <div class="tabs-slider"
-                                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; background: rgba(255, 255, 255, 0.7); padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);">
-                                        <div class="baner-tabs">
-                                            <div class="text-left">
-
-                                                <div class="tab-content tpl-tabs-cont section-text t-con-style-1" style="background: transparent !important;">
-                                                    <div class="tab-pane active" id="two">
-                                                        {{-- <div class="timePiker"></div> --}}
-                                                        <div class="baner-bar cars-bar">
-                                                            <div class="row">
-                                                                <div class="col-md-6 border-right">
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <div class="hotels-block">
-                                                                                <h4>From</h4>
-                                                                                <div class="input-style-1">
-                                                                                    <img src="img/loc_icon_small_grey.png"
-                                                                                        alt="">
-                                                                                    <input type="text"
-                                                                                        placeholder="Destination; Zip Code"
-                                                                                        required="">
-                                                                                </div>
-                                                                                {{-- <div class="input-entry color-5">
-                                                                                    <input class="checkbox-form" id="text-1"
-                                                                                        type="checkbox" name="checkbox"
-                                                                                        value="climat control">
-                                                                                    <label class="clearfix" for="text-1">
-                                                                                        <span class="sp-check"><i
-                                                                                                class="fa fa-check"></i></span>
-                                                                                        <span class="checkbox-text">Same location</span>
-                                                                                    </label>
-                                                                                </div> --}}
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-12">
-                                                                            <div class="hotels-block">
-                                                                                <h4>To</h4>
-                                                                                <div class="input-style-1">
-                                                                                    <img src="img/loc_icon_small_grey.png"
-                                                                                        alt="">
-                                                                                    <input type="text"
-                                                                                        placeholder="Destination; Zip Code"
-                                                                                        required="">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <div class="hotels-block">
-                                                                                <h4>Check in</h4>
-                                                                                <div class="input-style-1">
-                                                                                    <img src="https://carnivalguide.co/new/img/calendar_icon_grey.png"
-                                                                                        alt="">
-                                                                                    <input type="text" placeholder=""
-                                                                                        class="datepicker" required="">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="hotels-block">
-                                                                                <h4>Time</h4>
-                                                                                <div class="time-input">
-                                                                                    <img src="https://carnivalguide.co/new/img/clock.png"
-                                                                                        alt="">
-                                                                                    <input type="text"
-                                                                                        data-field="time" readonly="">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <div class="hotels-block">
-                                                                                <h4>Check out</h4>
-                                                                                <div class="input-style-1">
-                                                                                    <img src="https://carnivalguide.co/new/img/calendar_icon_grey.png"
-                                                                                        alt="">
-                                                                                    <input type="text" placeholder=""
-                                                                                        class="datepicker" required="">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="hotels-block">
-                                                                                <h4>Time</h4>
-                                                                                <div class="time-input">
-                                                                                    <img src="https://carnivalguide.co/new/img/clock.png"
-                                                                                        alt="">
-                                                                                    <input type="text"
-                                                                                        data-field="time" readonly="">
-                                                                                </div>
-                                                                            </div>
-
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-9 p-3">
-                                                                    {{-- <div class="range-wrapp">
-                                                                        <h4>Price range</h4>
-                                                                        <div class="slider-range" data-counter="$"
-                                                                            data-position="start" data-from="0" data-to="5000"
-                                                                            data-min="0" data-max="5000">
-                                                                            <div class="range"></div>
-                                                                            <input type="text" class="amount-start"
-                                                                                readonly="" value="$0">
-                                                                            <input type="text" class="amount-end"
-                                                                                readonly="" value="$1500">
-                                                                        </div>
-                                                                    </div> --}}
-                                                                    <div class="slider-range color-1 clearfix"
-                                                                        data-counter="$" data-position="start"
-                                                                        data-from="0" data-to="1500" data-min="0"
-                                                                        data-max="2000">
-                                                                        <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-                                                                            id="slider-range-0" aria-disabled="false">
-                                                                            <div class="ui-slider-range ui-widget-header ui-corner-all"
-                                                                                style="left: 0%; width: 75%;"></div><a
-                                                                                class="ui-slider-handle ui-state-default ui-corner-all"
-                                                                                href="#" style="left: 0%;"></a><a
-                                                                                class="ui-slider-handle ui-state-default ui-corner-all"
-                                                                                href="#" style="left: 75%;"></a>
-                                                                        </div>
-                                                                        <input type="text" class="amount-start"
-                                                                            readonly="" value="$0"
-                                                                            id="amount-start-0">
-                                                                        <input type="text" class="amount-end"
-                                                                            readonly="" value="$1500"
-                                                                            id="amount-end-0">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3 text-right">
-                                                                    <div class="submit">
-                                                                        <input class="c-button b-60 bg-white hv-orange"
-                                                                            type="submit" value="search now">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            {{-- <hr/> --}}
-                                                            {{-- <div class="row">
-                                                            </div> --}}
-
-
-                                                            {{-- <div class="row">
-                                                                
-                                                            </div> --}}
+                                    <form action="#" class="hotel-filter">
+                                        <div class="baner-bar" style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="hotels-block">
+                                                        <h4>where</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
+                                                            <input type="text" placeholder="Destination; Zip Code"
+                                                                required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="hotels-block">
+                                                        <h4>Check in</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                                            <input type="text" placeholder=""
+                                                                class="datepicker " required=""
+                                                                >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="hotels-block">
+                                                        <h4>Check in</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                                            <input type="text" placeholder=""
+                                                                class="datepicker " required=""
+                                                                >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="hotels-block">
+                                                        <h4>rooms</h4>
+                                                        <div class="count">
+                                                            <a href="#" class="active">1</a>
+                                                            <a href="#">2</a>
+                                                            <a href="#">3</a>
+                                                            <a href="#">3+</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="hotels-block">
+                                                        <h4>Adult</h4>
+                                                        <div class="count">
+                                                            <a href="#" class="active">1</a>
+                                                            <a href="#">2</a>
+                                                            <a href="#">3</a>
+                                                            <a href="#">3+</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
-                                            <!-- Rest of the content -->
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 ">
-                                        <div class="list-header clearfix">
-                                            <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
-                                                <div class="drop">
-                                                    <b>Sort by price</b>
-                                                    <a href="#" class="drop-list"><i
-                                                            class="fa fa-angle-down"></i></a>
-                                                    <span style="display: none;">
-                                                        <a href="#">ASC</a>
-                                                        <a href="#">DESC</a>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
-                                                <div class="drop">
-                                                    <b>Sort by ranking</b>
-                                                    <a href="#" class="drop-list"><i
-                                                            class="fa fa-angle-down"></i></a>
-                                                    <span style="display: none;">
-                                                        <a href="#">ASC</a>
-                                                        <a href="#">DESC</a>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="list-view-change">
-                                                <div class="change-grid color-1 fr active"><i class="fa fa-th"></i></div>
-                                                <div class="change-list color-1 fr"><i class="fa fa-bars"></i></div>
-                                                <div class="change-to-label fr color-grey-8">View:</div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix grid-content">
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_1.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in greece</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="range-wrapp">
+                                                        <h4>Price range</h4>
+                                                        <div class="slider-range" data-counter="$" data-position="start"
+                                                            data-from="0" data-to="5000" data-min="0"
+                                                            data-max="5000">
+                                                            <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                                                                id="slider-range-0" aria-disabled="false">
+                                                                <div class="ui-slider-range ui-widget-header ui-corner-all"
+                                                                    style="left: 0%; width: 81.5%;"></div><a
+                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
+                                                                    href="#" style="left: 0%;"></a><a
+                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
+                                                                    href="#" style="left: 81.5%;"></a>
                                                             </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$273</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
+                                                            <input type="text" class="amount-start" readonly=""
+                                                                value="$0" id="amount-start-0">
+                                                            <input type="text" class="amount-end" readonly=""
+                                                                value="$1500" id="amount-end-0">
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_2.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in monaco</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$703</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_3.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in italy</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$300</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_4.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in miami</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$400</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_5.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in USA</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$273</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_6.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in santorini</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$500</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_7.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in monaco</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$273</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_8.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in paris</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$300</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_9.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in brasil</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$300</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_10.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in monte carlo</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$200</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_11.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in bora bora</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$333</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_12.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in france</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$250</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_13.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in spaine</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$750</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_14.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in marmaris</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$273</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_15.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in monaco</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$503</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
+                                                <div class="col-md-4">
+                                                    <div class="submit">
+                                                        <input class="c-button b-60 bg-white hv-orange" type="submit"
+                                                            value="search now">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="c_pagination clearfix padd-120">
-                                            <a href="#" class="c-button b-40 bg-blue-2 hv-blue-2-o fl">prev page</a>
-                                            <a href="#" class="c-button b-40 bg-blue-2 hv-blue-2-o fr">next page</a>
-                                            <ul class="cp_content color-1">
-                                                <li class="active"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">...</a></li>
-                                                <li><a href="#">10</a></li>
-                                            </ul>
+                                    </form>
+                                    <div class="list-content clearfix">
+                                        <div class="list-item-entry">
+                                          <div class="hotel-item style-12 bg-grey-2">
+                                              <div class="table-view">
+                                                    <div class="radius-top cell-view">
+                                                         <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_1.jpg" alt="">
+                                                    </div>
+                                                    <div class="title hotel-middle cell-view">
+                                                      <div class="hotel-right-text color-grey fr">one way flights, 1 stop</div>
+                                                      <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                                        <h4><b>Cheap Flights to Grenada</b></h4>
+                                                        <div class="fi_block grid-hidden row row10">
+                                                            <div class="flight-icon col-xs-6 col10">
+                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png" alt="">
+                                                                <div class="fi_content">
+                                                                    <div class="fi_title color-dark-2">take off</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flight-icon col-xs-6 col10">
+                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png" alt="">
+                                                                <div class="fi_content">
+                                                                    <div class="fi_title color-dark-2">LANDING</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                      <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                                      <a href="#" class="c-button b-40 color-grey-3 hv-o"><img src="https://carnivalguide.co/new/img//flag_icon_grey.png" alt="">view more</a>
+                                                  </div>						            
+                                              </div>
+                                          </div>					
                                         </div>
+                                        <div class="list-item-entry">
+                                          <div class="hotel-item style-12 bg-grey-2">
+                                              <div class="table-view">
+                                                    <div class="radius-top cell-view">
+                                                         <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_2.jpg" alt="">
+                                                    </div>
+                                                    <div class="title hotel-middle cell-view">
+                                                      <div class="hotel-right-text color-grey fr">one way flights, 1 stop</div>
+                                                      <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                                        <h4><b>Cheap Flights to Grenada</b></h4>
+                                                        <div class="fi_block grid-hidden row row10">
+                                                            <div class="flight-icon col-xs-6 col10">
+                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png" alt="">
+                                                                <div class="fi_content">
+                                                                    <div class="fi_title color-dark-2">take off</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flight-icon col-xs-6 col10">
+                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png" alt="">
+                                                                <div class="fi_content">
+                                                                    <div class="fi_title color-dark-2">LANDING</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                      <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                                      <a href="#" class="c-button b-40 color-grey-3 hv-o"><img src="https://carnivalguide.co/new/img//flag_icon_grey.png" alt="">view more</a>
+                                                  </div>						            
+                                              </div>
+                                          </div>					
+                                        </div>
+                                        <div class="list-item-entry">
+                                          <div class="hotel-item style-12 bg-grey-2">
+                                              <div class="table-view">
+                                                    <div class="radius-top cell-view">
+                                                         <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_3.jpg" alt="">
+                                                    </div>
+                                                    <div class="title hotel-middle cell-view">
+                                                      <div class="hotel-right-text color-grey fr">one way flights, 1 stop</div>
+                                                      <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                                        <h4><b>Cheap Flights to Grenada</b></h4>
+                                                        <div class="fi_block grid-hidden row row10">
+                                                            <div class="flight-icon col-xs-6 col10">
+                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png" alt="">
+                                                                <div class="fi_content">
+                                                                    <div class="fi_title color-dark-2">take off</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flight-icon col-xs-6 col10">
+                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png" alt="">
+                                                                <div class="fi_content">
+                                                                    <div class="fi_title color-dark-2">LANDING</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                      <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                                      <a href="#" class="c-button b-40 color-grey-3 hv-o"><img src="https://carnivalguide.co/new/img//flag_icon_grey.png" alt="">view more</a>
+                                                  </div>						            
+                                              </div>
+                                          </div>					
+                                        </div>
+                                        <div class="list-item-entry">
+                                          <div class="hotel-item style-12 bg-grey-2">
+                                              <div class="table-view">
+                                                    <div class="radius-top cell-view">
+                                                         <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_1.jpg" alt="">
+                                                    </div>
+                                                    <div class="title hotel-middle cell-view">
+                                                      <div class="hotel-right-text color-grey fr">one way flights, 1 stop</div>
+                                                      <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                                        <h4><b>Cheap Flights to Grenada</b></h4>
+                                                        <div class="fi_block grid-hidden row row10">
+                                                            <div class="flight-icon col-xs-6 col10">
+                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png" alt="">
+                                                                <div class="fi_content">
+                                                                    <div class="fi_title color-dark-2">take off</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flight-icon col-xs-6 col10">
+                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png" alt="">
+                                                                <div class="fi_content">
+                                                                    <div class="fi_title color-dark-2">LANDING</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                      <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                                      <a href="#" class="c-button b-40 color-grey-3 hv-o"><img src="https://carnivalguide.co/new/img//flag_icon_grey.png" alt="">view more</a>
+                                                  </div>						            
+                                              </div>
+                                          </div>					
+                                        </div>
+                                        <div class="list-item-entry">
+                                          <div class="hotel-item style-12 bg-grey-2">
+                                              <div class="table-view">
+                                                    <div class="radius-top cell-view">
+                                                         <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_3.jpg" alt="">
+                                                    </div>
+                                                    <div class="title hotel-middle cell-view">
+                                                      <div class="hotel-right-text color-grey fr">one way flights, 1 stop</div>
+                                                      <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                                        <h4><b>Cheap Flights to Grenada</b></h4>
+                                                        <div class="fi_block grid-hidden row row10">
+                                                            <div class="flight-icon col-xs-6 col10">
+                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png" alt="">
+                                                                <div class="fi_content">
+                                                                    <div class="fi_title color-dark-2">take off</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flight-icon col-xs-6 col10">
+                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png" alt="">
+                                                                <div class="fi_content">
+                                                                    <div class="fi_title color-dark-2">LANDING</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                      <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                                      <a href="#" class="c-button b-40 color-grey-3 hv-o"><img src="https://carnivalguide.co/new/img//flag_icon_grey.png" alt="">view more</a>
+                                                  </div>						            
+                                              </div>
+                                          </div>					
+                                        </div>
+                                        <div class="list-item-entry">
+                                          <div class="hotel-item style-12 bg-grey-2">
+                                              <div class="table-view">
+                                                    <div class="radius-top cell-view">
+                                                         <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_2.jpg" alt="">
+                                                    </div>
+                                                    <div class="title hotel-middle cell-view">
+                                                      <div class="hotel-right-text color-grey fr">one way flights, 1 stop</div>
+                                                      <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                                        <h4><b>Cheap Flights to Grenada</b></h4>
+                                                        <div class="fi_block grid-hidden row row10">
+                                                            <div class="flight-icon col-xs-6 col10">
+                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png" alt="">
+                                                                <div class="fi_content">
+                                                                    <div class="fi_title color-dark-2">take off</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flight-icon col-xs-6 col10">
+                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png" alt="">
+                                                                <div class="fi_content">
+                                                                    <div class="fi_title color-dark-2">LANDING</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                      <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                                      <a href="#" class="c-button b-40 color-grey-3 hv-o"><img src="https://carnivalguide.co/new/img//flag_icon_grey.png" alt="">view more</a>
+                                                  </div>						            
+                                              </div>
+                                          </div>					
+                                        </div> 						  						
                                     </div>
                                 </div>
                                 <div class="tab-info" style="position: relative;">
                                     <img class="img-responsive" src="https://carnivalguide.co/new/img/detail/guide_6b.jpg"
                                         alt="">
-                                        <div class="tabs-slider"
-                                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; background: rgba(255, 255, 255, 0.7); padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);">
-                                            <div class="baner-tabs">
-                                                <div class="text-left">
-                                                    
-                                                    <div class="tab-content tpl-tabs-cont section-text t-con-style-1" style="background: transparent !important;">
-                                                        <div class="tab-pane active" id="two">
-                                                            {{-- <div class="timePiker"></div> --}}
-                                                            <div class="baner-bar cars-bar">
-                                                                <div class="row">
-                                                                    <div class="col-md-6 border-right">
-                                                                        <div class="row">
-                                                                            <div class="col-md-12">
-                                                                                <div class="hotels-block">
-                                                                                    <h4>From</h4>
-                                                                                    <div class="input-style-1">
-                                                                                        <img src="img/loc_icon_small_grey.png"
-                                                                                            alt="">
-                                                                                        <input type="text"
-                                                                                            placeholder="Destination; Zip Code"
-                                                                                            required="">
-                                                                                    </div>
-                                                                                    {{-- <div class="input-entry color-5">
-                                                                                        <input class="checkbox-form" id="text-1"
-                                                                                            type="checkbox" name="checkbox"
-                                                                                            value="climat control">
-                                                                                        <label class="clearfix" for="text-1">
-                                                                                            <span class="sp-check"><i
-                                                                                                    class="fa fa-check"></i></span>
-                                                                                            <span class="checkbox-text">Same location</span>
-                                                                                        </label>
-                                                                                    </div> --}}
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-12">
-                                                                                <div class="hotels-block">
-                                                                                    <h4>To</h4>
-                                                                                    <div class="input-style-1">
-                                                                                        <img src="img/loc_icon_small_grey.png"
-                                                                                            alt="">
-                                                                                        <input type="text"
-                                                                                            placeholder="Destination; Zip Code"
-                                                                                            required="">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="hotels-block">
-                                                                                    <h4>Check in</h4>
-                                                                                    <div class="input-style-1">
-                                                                                        <img src="https://carnivalguide.co/new/img/calendar_icon_grey.png"
-                                                                                            alt="">
-                                                                                        <input type="text" placeholder=""
-                                                                                            class="datepicker" required="">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="hotels-block">
-                                                                                    <h4>Time</h4>
-                                                                                    <div class="time-input">
-                                                                                        <img src="https://carnivalguide.co/new/img/clock.png"
-                                                                                            alt="">
-                                                                                        <input type="text"
-                                                                                            data-field="time" readonly="">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="hotels-block">
-                                                                                    <h4>Check out</h4>
-                                                                                    <div class="input-style-1">
-                                                                                        <img src="https://carnivalguide.co/new/img/calendar_icon_grey.png"
-                                                                                            alt="">
-                                                                                        <input type="text" placeholder=""
-                                                                                            class="datepicker" required="">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="hotels-block">
-                                                                                    <h4>Time</h4>
-                                                                                    <div class="time-input">
-                                                                                        <img src="https://carnivalguide.co/new/img/clock.png"
-                                                                                            alt="">
-                                                                                        <input type="text"
-                                                                                            data-field="time" readonly="">
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-9 p-3">
-                                                                        {{-- <div class="range-wrapp">
-                                                                            <h4>Price range</h4>
-                                                                            <div class="slider-range" data-counter="$"
-                                                                                data-position="start" data-from="0" data-to="5000"
-                                                                                data-min="0" data-max="5000">
-                                                                                <div class="range"></div>
-                                                                                <input type="text" class="amount-start"
-                                                                                    readonly="" value="$0">
-                                                                                <input type="text" class="amount-end"
-                                                                                    readonly="" value="$1500">
-                                                                            </div>
-                                                                        </div> --}}
-                                                                        <div class="slider-range color-1 clearfix"
-                                                                            data-counter="$" data-position="start"
-                                                                            data-from="0" data-to="1500" data-min="0"
-                                                                            data-max="2000">
-                                                                            <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-                                                                                id="slider-range-0" aria-disabled="false">
-                                                                                <div class="ui-slider-range ui-widget-header ui-corner-all"
-                                                                                    style="left: 0%; width: 75%;"></div><a
-                                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
-                                                                                    href="#" style="left: 0%;"></a><a
-                                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
-                                                                                    href="#" style="left: 75%;"></a>
-                                                                            </div>
-                                                                            <input type="text" class="amount-start"
-                                                                                readonly="" value="$0"
-                                                                                id="amount-start-0">
-                                                                            <input type="text" class="amount-end"
-                                                                                readonly="" value="$1500"
-                                                                                id="amount-end-0">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-3 text-right">
-                                                                        <div class="submit">
-                                                                            <input class="c-button b-60 bg-white hv-orange"
-                                                                                type="submit" value="search now">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                {{-- <hr/> --}}
-                                                                {{-- <div class="row">
-                                                                </div> --}}
-
-
-                                                                {{-- <div class="row">
-                                                                    
-                                                                </div> --}}
-                                                            </div>
+                                    <form action="#" class="hotel-filter">
+                                        <div class="baner-bar" style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                <div class="hotels-block">
+                                                <h4>From</h4>
+                                                    <div class="input-style-1">
+                                                        <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
+                                                        <input type="text" placeholder="Destination; Zip Code" required="">
+                                                    </div>
+                                                    <div class="input-entry color-5">
+                                                        <input class="checkbox-form" id="text-1" type="checkbox" name="checkbox" value="climat control">
+                                                        <label class="clearfix" for="text-1">
+                                                            <span class="sp-check"><i class="fa fa-check"></i></span>
+                                                            <span class="checkbox-text">Same location</span>
+                                                        </label>
+                                                    </div>
+                                                </div>	
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                <div class="hotels-block">
+                                                <h4>To</h4>
+                                                    <div class="input-style-1">
+                                                        <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
+                                                        <input type="text" placeholder="Destination; Zip Code" required="">
+                                                    </div>
+                                                </div>	
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                            <div class="timePiker dtpicker-overlay dtpicker-mobile" style="display: none;">
+                                                <div class="dtpicker-bg">
+                                                    <div class="dtpicker-cont">
+                                                        <div class="dtpicker-content">
+                                                            <div class="dtpicker-subcontent"></div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                                <div class="col-md-8">
+                                                <div class="hotels-block">
+                                                <h4>Check in</h4>
+                                                    <div class="input-style-1">
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                                        <input type="text" placeholder="" class="datepicker" required="" >
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                <div class="hotels-block">
+                                                <h4>Time</h4>
+                                                    <div class="time-input">
+                                                    <img src="https://carnivalguide.co/travel/img/clock.png" alt="">
+                                                        <input type="text" data-field="time" readonly="">
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                <div class="hotels-block">
+                                                <h4>Check Out</h4>
+                                                    <div class="input-style-1">
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                                        <input type="text" placeholder="" class="datepicker " required="" >
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                <div class="hotels-block">
+                                                <h4>Time</h4>
+                                                    <div class="time-input">
+                                                    <img src="https://carnivalguide.co/travel/img/clock.png" alt="">
+                                                        <input type="text" data-field="time" readonly="">
+                                                    </div>
+                                                </div>
+                                                
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="submit" style="margin-top:38px ">
+                                                    <input class="c-button b-60 bg-white hv-orange" type="submit" value="search now">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-12">	
+                                                    <div class="range-wrapp">
+                                                    <h4>Price range</h4>
+                                                        <div class="slider-range" data-counter="$" data-position="start" data-from="0" data-to="5000" data-min="0" data-max="5000">
+                                                            <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="slider-range-0" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 0%; width: 88.64%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 88.64%;"></a></div>
+                                                            <input type="text" class="amount-start" readonly="" value="$0" id="amount-start-0">
+                                                            <input type="text" class="amount-end" readonly="" value="$1500" id="amount-end-0">						
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                                
                                             </div>
                                         </div>
-                                    <div class="col-xs-12 ">
-                                        <div class="list-header clearfix">
-                                            <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
-                                                <div class="drop">
-                                                    <b>Sort by price</b>
-                                                    <a href="#" class="drop-list"><i
-                                                            class="fa fa-angle-down"></i></a>
-                                                    <span style="display: none;">
-                                                        <a href="#">ASC</a>
-                                                        <a href="#">DESC</a>
-                                                    </span>
+                                    </form>
+                                    <div class="list-content clearfix">
+                                        <div class="list-item-entry">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_15.jpg&quot;);">
+                                                            <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_15.jpg" alt="" style="display: none;">
+                                                    </div>
+                                                    <div class="title hotel-middle clearfix cell-view">
+                                                        
+                                                        <h4><b></b></h4>                      
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
+                                                    </div>						            
                                                 </div>
-                                            </div>
-                                            <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
-                                                <div class="drop">
-                                                    <b>Sort by ranking</b>
-                                                    <a href="#" class="drop-list"><i
-                                                            class="fa fa-angle-down"></i></a>
-                                                    <span style="display: none;">
-                                                        <a href="#">ASC</a>
-                                                        <a href="#">DESC</a>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="list-view-change">
-                                                <div class="change-grid color-1 fr active"><i class="fa fa-th"></i></div>
-                                                <div class="change-list color-1 fr"><i class="fa fa-bars"></i></div>
-                                                <div class="change-to-label fr color-grey-8">View:</div>
-                                            </div>
+                                            </div>						
                                         </div>
-                                        <div class="clearfix grid-content">
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_1.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in greece</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$273</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
+                                        <div class="list-item-entry">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_13.jpg&quot;);">
+                                                            <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_13.jpg" alt="" style="display: none;">
+                                                    </div>
+                                                    <div class="title hotel-middle clearfix cell-view">
+                                                        
+                                                        <h4><b></b></h4>                      
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
                                                         </div>
                                                     </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
+                                                    </div>						            
                                                 </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_2.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in monaco</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$703</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
+                                            </div>						
+                                        </div>  						  					
+                                        <div class="list-item-entry">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_1.jpg&quot;);">
+                                                            <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_1.jpg" alt="" style="display: none;">
+                                                            <div class="price price-s-2 green tt">best offer</div>
+                                                    </div>
+                                                    <div class="title hotel-middle clearfix cell-view">
+                                                        
+                                                        <h4><b></b></h4>                      
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
                                                         </div>
                                                     </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
+                                                    </div>						            
                                                 </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_3.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in italy</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$300</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_4.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in miami</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$400</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_5.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in USA</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$273</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_6.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in santorini</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$500</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_7.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in monaco</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$273</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_8.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in paris</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$300</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_9.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in brasil</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$300</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_10.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in monte carlo</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$200</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_11.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in bora bora</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$333</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_12.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in france</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$250</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_13.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in spaine</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$750</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_14.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in marmaris</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$273</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_15.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in monaco</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$503</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            </div>						
                                         </div>
-
-                                        <div class="c_pagination clearfix padd-120">
-                                            <a href="#" class="c-button b-40 bg-blue-2 hv-blue-2-o fl">prev page</a>
-                                            <a href="#" class="c-button b-40 bg-blue-2 hv-blue-2-o fr">next page</a>
-                                            <ul class="cp_content color-1">
-                                                <li class="active"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">...</a></li>
-                                                <li><a href="#">10</a></li>
-                                            </ul>
+                                        <div class="list-item-entry">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_2.jpg&quot;);">
+                                                            <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_2.jpg" alt="" style="display: none;">
+                                                            <div class="price price-s-2 red tt">hot price</div>
+                                                    </div>
+                                                    <div class="title hotel-middle clearfix cell-view">
+                                                        
+                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
+                                                    </div>						            
+                                                </div>
+                                            </div>						
                                         </div>
+                                        <div class="list-item-entry">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_3.jpg&quot;);">
+                                                            <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_3.jpg" alt="" style="display: none;">
+                                                            <div class="price price-s-2 red tt">hot price</div>
+                                                    </div>
+                                                    <div class="title hotel-middle clearfix cell-view">
+                                                        
+                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
+                                                    </div>						            
+                                                </div>
+                                            </div>						
+                                        </div>
+                                        <div class="list-item-entry">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_4.jpg&quot;);">
+                                                            <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_4.jpg" alt="" style="display: none;">
+                                                    </div>
+                                                    <div class="title hotel-middle clearfix cell-view">
+                                                        
+                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
+                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
+                                                    </div>						            
+                                                </div>
+                                            </div>						
+                                        </div>  						
                                     </div>
                                 </div>
-                                <div class="tab-info"  style="position: relative;">
-                                    <img class="img-responsive" src="https://carnivalguide.co/new/img/detail/guide_7a.jpg"
-                                        alt="">
-                                    <div class="tabs-slider"
-                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; background: rgba(255, 255, 255, 0.7); padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);">
-                                        <div class="baner-tabs">
-                                            <div class="text-left">
-                                                <div class="tab-content tpl-tabs-cont section-text t-con-style-1" style="background: transparent !important;">
-                                                    <div class="tab-pane active" id="one">
-                                                        <form action="#" class="hotel-filter">
-                                                                <div class="baner-bar">
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                        <div class="hotels-block">
-                                                                        <h4>where</h4>
-                                                                            <div class="input-style-1">
-                                                                                <img src="img/loc_icon_small_grey.png" alt="">
-                                                                                <input type="text" placeholder="Enter a destination or hotel name" required="">
-                                                                            </div>
-                                                                        </div>	
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                        <div class="hotels-block">
-                                                                        <h4>Check in</h4>
-                                                                            <div class="input-style-1">
-                                                                                <img src="img/calendar_icon_grey.png" alt="">
-                                                                                <input type="text" placeholder="" class="datepicker" required="">
-                                                                            </div>
-                                                                        </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                        <div class="hotels-block">
-                                                                        <h4>Check in</h4>
-                                                                            <div class="input-style-1">
-                                                                                <img src="img/calendar_icon_grey.png" alt="">
-                                                                                <input type="text" placeholder="" class="datepicker" required="">
-                                                                            </div>
-                                                                        </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                        <div class="hotels-block">
-                                                                        <h4>rooms</h4>
-                                                                        <div class="count">
-                                                                            <a href="#" class="active">1</a>
-                                                                            <a href="#">2</a>
-                                                                            <a href="#">3</a>
-                                                                            <a href="#">3+</a>
-                                                                        </div>
-                                                                        </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                        <div class="hotels-block">
-                                                                        <h4>Adult</h4>
-                                                                        <div class="count">
-                                                                            <a href="#" class="active">1</a>
-                                                                            <a href="#">2</a>
-                                                                            <a href="#">3</a>
-                                                                            <a href="#">3+</a>
-                                                                        </div>
-                                                                        </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-8">	
-                                                                            <div class="range-wrapp">
-                                                                            <h4>Price range</h4>
-                                                                                <div class="slider-range" data-counter="$" data-position="start" data-from="0" data-to="5000" data-min="0" data-max="5000">
-                                                                                    <div class="range"></div>
-                                                                                    <input type="text" class="amount-start" readonly="" value="$0">
-                                                                                    <input type="text" class="amount-end" readonly="" value="$1500">						
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>	
-                                                                        <div class="col-md-4">
-                                                                            <div class="submit">
-                                                                            <input class="c-button b-60 bg-white hv-orange" type="submit" value="search now">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                        </form>
+                                <div class="tab-info" style="position: relative;">
+                                    <img class="img-responsive"
+                                        src="https://carnivalguide.co/new/img/detail/guide_7a.jpg" alt="">
+                                    <form action="#" class="hotel-filter">
+                                        <div class="baner-bar" style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="hotels-block">
+                                                        <h4>where</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
+                                                            <input type="text" placeholder="Destination; Zip Code"
+                                                                required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="hotels-block">
+                                                        <h4>Check in</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                                            <input type="text" placeholder=""
+                                                                class="datepicker " required=""
+                                                                >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="hotels-block">
+                                                        <h4>Check in</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                                            <input type="text" placeholder=""
+                                                                class="datepicker " required=""
+                                                                >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="hotels-block">
+                                                        <h4>rooms</h4>
+                                                        <div class="count">
+                                                            <a href="#" class="active">1</a>
+                                                            <a href="#">2</a>
+                                                            <a href="#">3</a>
+                                                            <a href="#">3+</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="hotels-block">
+                                                        <h4>Adult</h4>
+                                                        <div class="count">
+                                                            <a href="#" class="active">1</a>
+                                                            <a href="#">2</a>
+                                                            <a href="#">3</a>
+                                                            <a href="#">3+</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="range-wrapp">
+                                                        <h4>Price range</h4>
+                                                        <div class="slider-range" data-counter="$" data-position="start"
+                                                            data-from="0" data-to="5000" data-min="0"
+                                                            data-max="5000">
+                                                            <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                                                                id="slider-range-0" aria-disabled="false">
+                                                                <div class="ui-slider-range ui-widget-header ui-corner-all"
+                                                                    style="left: 0%; width: 81.5%;"></div><a
+                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
+                                                                    href="#" style="left: 0%;"></a><a
+                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
+                                                                    href="#" style="left: 81.5%;"></a>
+                                                            </div>
+                                                            <input type="text" class="amount-start" readonly=""
+                                                                value="$0" id="amount-start-0">
+                                                            <input type="text" class="amount-end" readonly=""
+                                                                value="$1500" id="amount-end-0">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="submit">
+                                                        <input class="c-button b-60 bg-white hv-orange" type="submit"
+                                                            value="search now">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xs-12 ">
-                                        <div class="list-header clearfix">
-                                            <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
-                                                <div class="drop">
-                                                    <b>Sort by price</b>
-                                                    <a href="#" class="drop-list"><i
-                                                            class="fa fa-angle-down"></i></a>
-                                                    <span style="display: none;">
-                                                        <a href="#">ASC</a>
-                                                        <a href="#">DESC</a>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
-                                                <div class="drop">
-                                                    <b>Sort by ranking</b>
-                                                    <a href="#" class="drop-list"><i
-                                                            class="fa fa-angle-down"></i></a>
-                                                    <span style="display: none;">
-                                                        <a href="#">ASC</a>
-                                                        <a href="#">DESC</a>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="list-view-change">
-                                                <div class="change-grid color-1 fr active"><i class="fa fa-th"></i></div>
-                                                <div class="change-list color-1 fr"><i class="fa fa-bars"></i></div>
-                                                <div class="change-to-label fr color-grey-8">View:</div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix grid-content">
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_1.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in greece</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
+                                    </form>
+                                    <div class="main-wraper hotel-items">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item tours-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/tour_list/tour_1.jpg" alt="">
+                                                        <div class="price price-s-1">$125 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title clearfix">
+                                                        <h4><a href="#">SPAIN - Barselona</a></h4>
+                                                        <span class="f-14 color-dark-2"><img src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">2 Place de la Sans Défense, Puteaux</span>
+                                                        <div class="rate-wrap">
+                                                            <div class="rate">
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
                                                             </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
                                                         </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$273</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-calendar-o"></i>
+                                                                <span><b>Date:</b> 5 days</span>
                                                         </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-money"></i>
+                                                                <span><b>Adult:</b> 2500$</span>
+                                                                <span><b>Children:</b> 1200$</span>
+                                                        </div>  
+                            
+                                                    <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
+                                                    
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_2.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in monaco</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item tours-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/tour_list/tour_2.jpg" alt="">
+                                                        <div class="price price-s-1">$250 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title clearfix">
+                                                        <h4><a href="#">FRANCE - Paris</a></h4>
+                                                        <span class="f-14 color-dark-2"><img src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">4 Place de la Sans Défense, Puteaux</span>
+                                                        <div class="rate-wrap">
+                                                            <div class="rate">
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
                                                             </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
                                                         </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$703</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-calendar-o"></i>
+                                                                <span><b>Date:</b> 5 days</span>
                                                         </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-money"></i>
+                                                                <span><b>Adult:</b> 2500$</span>
+                                                                <span><b>Children:</b> 1200$</span>
+                                                        </div>  
+                            
+                                                    <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
+                                                    
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_3.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in italy</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$300</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item tours-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/tour_list/tour_3.jpg" alt="">
+                                                        <div class="price price-s-1">$305 <span>/day</span></div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_4.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in miami</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
+                                                    <div class="title clearfix">
+                                                        <h4><a href="#">Philippines</a></h4>
+                                                        <span class="f-14 color-dark-2"><img src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">2 Place de la Sans Défense, Puteaux</span>
+                                                        <div class="rate-wrap">
+                                                            <div class="rate">
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
                                                             </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
                                                         </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$400</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-calendar-o"></i>
+                                                                <span><b>Date:</b> 6 days</span>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_5.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in USA</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$273</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_6.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in santorini</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$500</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_7.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in monaco</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$273</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_8.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in paris</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$300</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_9.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in brasil</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$300</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_10.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in monte carlo</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$200</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_11.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in bora bora</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$333</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_12.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in france</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$250</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_13.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in spaine</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$750</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_14.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in marmaris</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$273</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-item-entry">
-                                                <div class="hotel-item style-3 bg-white">
-                                                    <div class="table-view">
-                                                        <div class="radius-top cell-view">
-                                                            <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_15.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="title hotel-middle clearfix cell-view">
-                                                            <div class="date list-hidden">July <strong>19th</strong> to
-                                                                July <strong>26th</strong></div>
-                                                            <div class="date grid-hidden"><strong>19.07 - 26.07 /
-                                                                    7</strong> night</div>
-                                                            <h4><b>tours in monaco</b></h4>
-                                                            <div class="rate-wrap">
-                                                                <div class="rate">
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                    <span class="fa fa-star color-yellow"></span>
-                                                                </div>
-                                                                <i>485 rewies</i>
-                                                            </div>
-                                                            <p class="f-14 grid-hidden">Nunc cursus libero purus ac congue
-                                                                arcu cur sus ut sed vitae pulvinar. Nunc cursus libero purus
-                                                                ac congue arcu.</p>
-                                                        </div>
-                                                        <div class="title hotel-right clearfix cell-view">
-                                                            <div class="hotel-person color-dark-2">from <span
-                                                                    class="color-blue">$503</span> person</div>
-                                                            <a class="c-button b-40 bg-blue hv-blue-o grid-hidden"
-                                                                href="#">view more</a>
-                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-money"></i>
+                                                                <span><b>Adult:</b> 2500$</span>
+                                                                <span><b>Children:</b> 1200$</span>
+                                                        </div>  
+                            
+                                                    <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
+                                                    
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="c_pagination clearfix padd-120">
-                                            <a href="#" class="c-button b-40 bg-blue-2 hv-blue-2-o fl">prev
-                                                page</a>
-                                            <a href="#" class="c-button b-40 bg-blue-2 hv-blue-2-o fr">next
-                                                page</a>
-                                            <ul class="cp_content color-1">
-                                                <li class="active"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">...</a></li>
-                                                <li><a href="#">10</a></li>
-                                            </ul>
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item tours-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/tour_list/tour_4.jpg" alt="">
+                                                        <div class="price price-s-1">$125 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title clearfix">
+                                                        <h4><a href="#">SPAIN - Barselona</a></h4>
+                                                        <span class="f-14 color-dark-2"><img src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">2 Place de la Sans Défense, Puteaux</span>
+                                                        <div class="rate-wrap">
+                                                            <div class="rate">
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-calendar-o"></i>
+                                                                <span><b>Date:</b> 5 days</span>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-money"></i>
+                                                                <span><b>Adult:</b> 2500$</span>
+                                                                <span><b>Children:</b> 1200$</span>
+                                                        </div>  
+                            
+                                                    <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item tours-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/tour_list/tour_5.jpg" alt="">
+                                                        <div class="price price-s-1">$250 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title clearfix">
+                                                        <h4><a href="#">FRANCE - Paris</a></h4>
+                                                        <span class="f-14 color-dark-2"><img src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">4 Place de la Sans Défense, Puteaux</span>
+                                                        <div class="rate-wrap">
+                                                            <div class="rate">
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-calendar-o"></i>
+                                                                <span><b>Date:</b> 5 days</span>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-money"></i>
+                                                                <span><b>Adult:</b> 2500$</span>
+                                                                <span><b>Children:</b> 1200$</span>
+                                                        </div>  
+                            
+                                                    <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item tours-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/tour_list/tour_6.jpg" alt="">
+                                                        <div class="price price-s-1">$305 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title clearfix">
+                                                        <h4><a href="#">Philippines</a></h4>
+                                                        <span class="f-14 color-dark-2"><img src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">2 Place de la Sans Défense, Puteaux</span>
+                                                        <div class="rate-wrap">
+                                                            <div class="rate">
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-calendar-o"></i>
+                                                                <span><b>Date:</b> 6 days</span>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-money"></i>
+                                                                <span><b>Adult:</b> 2500$</span>
+                                                                <span><b>Children:</b> 1200$</span>
+                                                        </div>  
+                            
+                                                    <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item tours-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_8.jpg" alt="">
+                                                        <div class="price price-s-1">$125 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title clearfix">
+                                                        <h4><a href="#">SPAIN - Barselona</a></h4>
+                                                        <span class="f-14 color-dark-2"><img src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">2 Place de la Sans Défense, Puteaux</span>
+                                                        <div class="rate-wrap">
+                                                            <div class="rate">
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-calendar-o"></i>
+                                                                <span><b>Date:</b> 5 days</span>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-money"></i>
+                                                                <span><b>Adult:</b> 2500$</span>
+                                                                <span><b>Children:</b> 1200$</span>
+                                                        </div>  
+                            
+                                                    <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item tours-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_1.jpg" alt="">
+                                                        <div class="price price-s-1">$250 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title clearfix">
+                                                        <h4><a href="#">FRANCE - Paris</a></h4>
+                                                        <span class="f-14 color-dark-2"><img src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">4 Place de la Sans Défense, Puteaux</span>
+                                                        <div class="rate-wrap">
+                                                            <div class="rate">
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-calendar-o"></i>
+                                                                <span><b>Date:</b> 5 days</span>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-money"></i>
+                                                                <span><b>Adult:</b> 2500$</span>
+                                                                <span><b>Children:</b> 1200$</span>
+                                                        </div>  
+                            
+                                                    <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item tours-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_2.jpg" alt="">
+                                                        <div class="price price-s-1">$305 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title clearfix">
+                                                        <h4><a href="#">Philippines</a></h4>
+                                                        <span class="f-14 color-dark-2"><img src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">2 Place de la Sans Défense, Puteaux</span>
+                                                        <div class="rate-wrap">
+                                                            <div class="rate">
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-calendar-o"></i>
+                                                                <span><b>Date:</b> 6 days</span>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-money"></i>
+                                                                <span><b>Adult:</b> 2500$</span>
+                                                                <span><b>Children:</b> 1200$</span>
+                                                        </div>  
+                            
+                                                    <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item tours-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_4.jpg" alt="">
+                                                        <div class="price price-s-1">$125 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title clearfix">
+                                                        <h4><a href="#">SPAIN - Barselona</a></h4>
+                                                        <span class="f-14 color-dark-2"><img src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">2 Place de la Sans Défense, Puteaux</span>
+                                                        <div class="rate-wrap">
+                                                            <div class="rate">
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-calendar-o"></i>
+                                                                <span><b>Date:</b> 5 days</span>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-money"></i>
+                                                                <span><b>Adult:</b> 2500$</span>
+                                                                <span><b>Children:</b> 1200$</span>
+                                                        </div>  
+                            
+                                                    <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item tours-item">
+                                                    <div class="radius-top">
+                                                    <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_5.jpg" alt="">
+                                                        <div class="price price-s-1">$250 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title clearfix">
+                                                        <h4><a href="#">FRANCE - Paris</a></h4>
+                                                        <span class="f-14 color-dark-2"><img src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">4 Place de la Sans Défense, Puteaux</span>
+                                                        <div class="rate-wrap">
+                                                            <div class="rate">
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-calendar-o"></i>
+                                                                <span><b>Date:</b> 5 days</span>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-money"></i>
+                                                                <span><b>Adult:</b> 2500$</span>
+                                                                <span><b>Children:</b> 1200$</span>
+                                                        </div>  
+                            
+                                                    <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item tours-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/tour_list/tour_grid_6.jpg" alt="">
+                                                        <div class="price price-s-1">$305 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title clearfix">
+                                                        <h4><a href="#">Philippines</a></h4>
+                                                        <span class="f-14 color-dark-2"><img src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">2 Place de la Sans Défense, Puteaux</span>
+                                                        <div class="rate-wrap">
+                                                            <div class="rate">
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            <span class="fa fa-star color-yellow"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-calendar-o"></i>
+                                                                <span><b>Date:</b> 6 days</span>
+                                                        </div>
+                                                        <div class="info-tour">
+                                                            <i class="fa fa-money"></i>
+                                                                <span><b>Adult:</b> 2500$</span>
+                                                                <span><b>Children:</b> 1200$</span>
+                                                        </div>  
+                            
+                                                    <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-info" style="position: relative;">
                                     <img class="img-responsive"
                                         src="https://carnivalguide.co/new/img/detail/guide_events.jpg" alt="">
-                                        <div class="tabs-slider"
-                                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; background: rgba(255, 255, 255, 0.7); padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);">
-                                            <div class="baner-tabs">
-                                                <div class="text-left">
-                                                    
-                                                    <div class="tab-content tpl-tabs-cont section-text t-con-style-1" style="background: transparent !important;">
-                                                        <div class="tab-pane active" id="two">
-                                                            {{-- <div class="timePiker"></div> --}}
-                                                            <div class="baner-bar cars-bar">
-                                                                <div class="row">
-                                                                    <div class="col-md-6 border-right">
-                                                                        <div class="row">
-                                                                            <div class="col-md-12">
-                                                                                <div class="hotels-block">
-                                                                                    <h4>From</h4>
-                                                                                    <div class="input-style-1">
-                                                                                        <img src="img/loc_icon_small_grey.png"
-                                                                                            alt="">
-                                                                                        <input type="text"
-                                                                                            placeholder="Destination; Zip Code"
-                                                                                            required="">
-                                                                                    </div>
-                                                                                    {{-- <div class="input-entry color-5">
-                                                                                        <input class="checkbox-form" id="text-1"
-                                                                                            type="checkbox" name="checkbox"
-                                                                                            value="climat control">
-                                                                                        <label class="clearfix" for="text-1">
-                                                                                            <span class="sp-check"><i
-                                                                                                    class="fa fa-check"></i></span>
-                                                                                            <span class="checkbox-text">Same location</span>
-                                                                                        </label>
-                                                                                    </div> --}}
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-12">
-                                                                                <div class="hotels-block">
-                                                                                    <h4>To</h4>
-                                                                                    <div class="input-style-1">
-                                                                                        <img src="img/loc_icon_small_grey.png"
-                                                                                            alt="">
-                                                                                        <input type="text"
-                                                                                            placeholder="Destination; Zip Code"
-                                                                                            required="">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="hotels-block">
-                                                                                    <h4>Check in</h4>
-                                                                                    <div class="input-style-1">
-                                                                                        <img src="https://carnivalguide.co/new/img/calendar_icon_grey.png"
-                                                                                            alt="">
-                                                                                        <input type="text" placeholder=""
-                                                                                            class="datepicker" required="">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="hotels-block">
-                                                                                    <h4>Time</h4>
-                                                                                    <div class="time-input">
-                                                                                        <img src="https://carnivalguide.co/new/img/clock.png"
-                                                                                            alt="">
-                                                                                        <input type="text"
-                                                                                            data-field="time" readonly="">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="hotels-block">
-                                                                                    <h4>Check out</h4>
-                                                                                    <div class="input-style-1">
-                                                                                        <img src="https://carnivalguide.co/new/img/calendar_icon_grey.png"
-                                                                                            alt="">
-                                                                                        <input type="text" placeholder=""
-                                                                                            class="datepicker" required="">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="hotels-block">
-                                                                                    <h4>Time</h4>
-                                                                                    <div class="time-input">
-                                                                                        <img src="https://carnivalguide.co/new/img/clock.png"
-                                                                                            alt="">
-                                                                                        <input type="text"
-                                                                                            data-field="time" readonly="">
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-9 p-3">
-                                                                        {{-- <div class="range-wrapp">
-                                                                            <h4>Price range</h4>
-                                                                            <div class="slider-range" data-counter="$"
-                                                                                data-position="start" data-from="0" data-to="5000"
-                                                                                data-min="0" data-max="5000">
-                                                                                <div class="range"></div>
-                                                                                <input type="text" class="amount-start"
-                                                                                    readonly="" value="$0">
-                                                                                <input type="text" class="amount-end"
-                                                                                    readonly="" value="$1500">
-                                                                            </div>
-                                                                        </div> --}}
-                                                                        <div class="slider-range color-1 clearfix"
-                                                                            data-counter="$" data-position="start"
-                                                                            data-from="0" data-to="1500" data-min="0"
-                                                                            data-max="2000">
-                                                                            <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-                                                                                id="slider-range-0" aria-disabled="false">
-                                                                                <div class="ui-slider-range ui-widget-header ui-corner-all"
-                                                                                    style="left: 0%; width: 75%;"></div><a
-                                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
-                                                                                    href="#" style="left: 0%;"></a><a
-                                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
-                                                                                    href="#" style="left: 75%;"></a>
-                                                                            </div>
-                                                                            <input type="text" class="amount-start"
-                                                                                readonly="" value="$0"
-                                                                                id="amount-start-0">
-                                                                            <input type="text" class="amount-end"
-                                                                                readonly="" value="$1500"
-                                                                                id="amount-end-0">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-3 text-right">
-                                                                        <div class="submit">
-                                                                            <input class="c-button b-60 bg-white hv-orange"
-                                                                                type="submit" value="search now">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                {{-- <hr/> --}}
-                                                                {{-- <div class="row">
-                                                                </div> --}}
-
-
-                                                                {{-- <div class="row">
-                                                                    
-                                                                </div> --}}
-                                                            </div>
+                                    <form action="#" class="hotel-filter">
+                                        <div class="baner-bar" style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                <div class="hotels-block">
+                                                <h4>From</h4>
+                                                    <div class="input-style-1">
+                                                        <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
+                                                        <input type="text" placeholder="Destination; Zip Code" required="">
+                                                    </div>
+                                                    <div class="input-entry color-5">
+                                                        <input class="checkbox-form" id="text-1" type="checkbox" name="checkbox" value="climat control">
+                                                        <label class="clearfix" for="text-1">
+                                                            <span class="sp-check"><i class="fa fa-check"></i></span>
+                                                            <span class="checkbox-text">Same location</span>
+                                                        </label>
+                                                    </div>
+                                                </div>	
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                <div class="hotels-block">
+                                                <h4>To</h4>
+                                                    <div class="input-style-1">
+                                                        <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
+                                                        <input type="text" placeholder="Destination; Zip Code" required="">
+                                                    </div>
+                                                </div>	
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                            <div class="timePiker dtpicker-overlay dtpicker-mobile" style="display: none;">
+                                                <div class="dtpicker-bg">
+                                                    <div class="dtpicker-cont">
+                                                        <div class="dtpicker-content">
+                                                            <div class="dtpicker-subcontent"></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                                <div class="col-md-8">
+                                                <div class="hotels-block">
+                                                <h4>Check in</h4>
+                                                    <div class="input-style-1">
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                                        <input type="text" placeholder="" class="datepicker" required="" >
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                <div class="hotels-block">
+                                                <h4>Time</h4>
+                                                    <div class="time-input">
+                                                    <img src="https://carnivalguide.co/travel/img/clock.png" alt="">
+                                                        <input type="text" data-field="time" readonly="">
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                <div class="hotels-block">
+                                                <h4>Check Out</h4>
+                                                    <div class="input-style-1">
+                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                                        <input type="text" placeholder="" class="datepicker " required="" >
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                <div class="hotels-block">
+                                                <h4>Time</h4>
+                                                    <div class="time-input">
+                                                    <img src="https://carnivalguide.co/travel/img/clock.png" alt="">
+                                                        <input type="text" data-field="time" readonly="">
+                                                    </div>
+                                                </div>
+                                                
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="submit" style="margin-top:38px ">
+                                                    <input class="c-button b-60 bg-white hv-orange" type="submit" value="search now">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-12">	
+                                                    <div class="range-wrapp">
+                                                    <h4>Price range</h4>
+                                                        <div class="slider-range" data-counter="$" data-position="start" data-from="0" data-to="5000" data-min="0" data-max="5000">
+                                                            <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="slider-range-0" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 0%; width: 88.64%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 88.64%;"></a></div>
+                                                            <input type="text" class="amount-start" readonly="" value="$0" id="amount-start-0">
+                                                            <input type="text" class="amount-end" readonly="" value="$1500" id="amount-end-0">						
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                                
+                                            </div>
                                         </div>
+                                    </form>
                                     <div class="col-xs-12 ">
                                         <div class="list-header clearfix">
                                             <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
@@ -2680,13 +1512,13 @@
                                                 </div>
                                             </div>
                                             <div class="list-view-change">
-                                                <div class="change-grid color-1 fr active"><i class="fa fa-th"></i>
-                                                </div>
-                                                <div class="change-list color-1 fr"><i class="fa fa-bars"></i></div>
+                                                {{-- <div class="change-grid color-1 fr "><i class="fa fa-th"></i>
+                                                </div> --}}
+                                                <div class="change-list color-1 fr active"><i class="fa fa-bars"></i></div>
                                                 <div class="change-to-label fr color-grey-8">View:</div>
                                             </div>
                                         </div>
-                                        <div class="clearfix grid-content">
+                                        <div class="clearfix list-content">
                                             <div class="list-item-entry">
                                                 <div class="hotel-item style-3 bg-white">
                                                     <div class="table-view">
@@ -3248,89 +2080,96 @@
                                 <div class="tab-info" style="position: relative;">
                                     <img class="img-responsive"
                                         src="https://carnivalguide.co/new/img/detail/guide_tours.jpg" alt="">
-                                        <div class="tabs-slider"
-                                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; background: rgba(255, 255, 255, 0.7); padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);">
-                                            <div class="baner-tabs">
-                                                <div class="text-left">
-                                                    <div class="tab-content tpl-tabs-cont section-text t-con-style-1" style="background: transparent !important;">
-                                                        <div class="tab-pane active" id="one">
-                                                            <form action="#" class="hotel-filter">
-                                                                    <div class="baner-bar">
-                                                                        <div class="row">
-                                                                            <div class="col-md-12">
-                                                                            <div class="hotels-block">
-                                                                            <h4>where</h4>
-                                                                                <div class="input-style-1">
-                                                                                    <img src="img/loc_icon_small_grey.png" alt="">
-                                                                                    <input type="text" placeholder="Enter a destination or hotel name" required="">
-                                                                                </div>
-                                                                            </div>	
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                            <div class="hotels-block">
-                                                                            <h4>Check in</h4>
-                                                                                <div class="input-style-1">
-                                                                                    <img src="img/calendar_icon_grey.png" alt="">
-                                                                                    <input type="text" placeholder="" class="datepicker" required="">
-                                                                                </div>
-                                                                            </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                            <div class="hotels-block">
-                                                                            <h4>Check in</h4>
-                                                                                <div class="input-style-1">
-                                                                                    <img src="img/calendar_icon_grey.png" alt="">
-                                                                                    <input type="text" placeholder="" class="datepicker" required="">
-                                                                                </div>
-                                                                            </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                            <div class="hotels-block">
-                                                                            <h4>rooms</h4>
-                                                                            <div class="count">
-                                                                                <a href="#" class="active">1</a>
-                                                                                <a href="#">2</a>
-                                                                                <a href="#">3</a>
-                                                                                <a href="#">3+</a>
-                                                                            </div>
-                                                                            </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                            <div class="hotels-block">
-                                                                            <h4>Adult</h4>
-                                                                            <div class="count">
-                                                                                <a href="#" class="active">1</a>
-                                                                                <a href="#">2</a>
-                                                                                <a href="#">3</a>
-                                                                                <a href="#">3+</a>
-                                                                            </div>
-                                                                            </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-8">	
-                                                                                <div class="range-wrapp">
-                                                                                <h4>Price range</h4>
-                                                                                    <div class="slider-range" data-counter="$" data-position="start" data-from="0" data-to="5000" data-min="0" data-max="5000">
-                                                                                        <div class="range"></div>
-                                                                                        <input type="text" class="amount-start" readonly="" value="$0">
-                                                                                        <input type="text" class="amount-end" readonly="" value="$1500">						
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>	
-                                                                            <div class="col-md-4">
-                                                                                <div class="submit">
-                                                                                <input class="c-button b-60 bg-white hv-orange" type="submit" value="search now">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                            </form>
+                                    <form action="#" class="hotel-filter">
+                                        <div class="baner-bar" style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="hotels-block">
+                                                        <h4>where</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
+                                                            <input type="text" placeholder="Destination; Zip Code"
+                                                                required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="hotels-block">
+                                                        <h4>Check in</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                                            <input type="text" placeholder=""
+                                                                class="datepicker " required=""
+                                                                >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="hotels-block">
+                                                        <h4>Check in</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                                            <input type="text" placeholder=""
+                                                                class="datepicker " required=""
+                                                                >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="hotels-block">
+                                                        <h4>rooms</h4>
+                                                        <div class="count">
+                                                            <a href="#" class="active">1</a>
+                                                            <a href="#">2</a>
+                                                            <a href="#">3</a>
+                                                            <a href="#">3+</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="hotels-block">
+                                                        <h4>Adult</h4>
+                                                        <div class="count">
+                                                            <a href="#" class="active">1</a>
+                                                            <a href="#">2</a>
+                                                            <a href="#">3</a>
+                                                            <a href="#">3+</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="range-wrapp">
+                                                        <h4>Price range</h4>
+                                                        <div class="slider-range" data-counter="$" data-position="start"
+                                                            data-from="0" data-to="5000" data-min="0"
+                                                            data-max="5000">
+                                                            <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                                                                id="slider-range-0" aria-disabled="false">
+                                                                <div class="ui-slider-range ui-widget-header ui-corner-all"
+                                                                    style="left: 0%; width: 81.5%;"></div><a
+                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
+                                                                    href="#" style="left: 0%;"></a><a
+                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
+                                                                    href="#" style="left: 81.5%;"></a>
+                                                            </div>
+                                                            <input type="text" class="amount-start" readonly=""
+                                                                value="$0" id="amount-start-0">
+                                                            <input type="text" class="amount-end" readonly=""
+                                                                value="$1500" id="amount-end-0">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="submit">
+                                                        <input class="c-button b-60 bg-white hv-orange" type="submit"
+                                                            value="search now">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+                                    </form>
                                     <div class="col-xs-12 ">
                                         <div class="list-header clearfix">
                                             <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
@@ -3356,13 +2195,13 @@
                                                 </div>
                                             </div>
                                             <div class="list-view-change">
-                                                <div class="change-grid color-1 fr active"><i class="fa fa-th"></i>
-                                                </div>
-                                                <div class="change-list color-1 fr"><i class="fa fa-bars"></i></div>
+                                                {{-- <div class="change-grid color-1 fr active"><i class="fa fa-th"></i>
+                                                </div> --}}
+                                                <div class="change-list color-1 fr active"><i class="fa fa-bars"></i></div>
                                                 <div class="change-to-label fr color-grey-8">View:</div>
                                             </div>
                                         </div>
-                                        <div class="clearfix grid-content">
+                                        <div class="clearfix list-content">
                                             <div class="list-item-entry">
                                                 <div class="hotel-item style-3 bg-white">
                                                     <div class="table-view">

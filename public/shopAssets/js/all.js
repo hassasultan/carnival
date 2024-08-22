@@ -76,7 +76,7 @@ $(function() {
 	/*============================*/
 	/* 04 - FUNCTION ON PAGE LOAD */
 	/*============================*/
-	$(document).ready(function() {
+	$(window).load(function(){
 		initFullPage();		
 		initSwiper();
 		videoRezise();
@@ -229,6 +229,7 @@ $(function() {
 	$('.swiper-arrow-right').on('click',function(){
 		swipers['swiper-'+$(this).closest('.arrows').find('.swiper-container').attr('id')].swipeNext();
 	});
+
 
 	
 	/*==============================*/

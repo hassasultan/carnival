@@ -1,27 +1,36 @@
 <script src="{{ asset('shopAssets/js/jquery-2.1.4.min.js') }}"></script>
-{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script src="{{ asset('shopAssets/js/carnival-bootstrap.min.js') }}"></script>
 <script src="{{ asset('shopAssets/js/carnival-jquery-ui.min.js') }}"></script>
 <script src="{{ asset('shopAssets/js/jquery.countTo.js') }}"></script>
 <script src="{{ asset('shopAssets/js/idangerous.swiper.min.js') }}"></script>
-{{-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> --}}
 <script src="{{ asset('shopAssets/js/jquery.viewportchecker.min.js') }}"></script>
+<script src="{{ asset('shopAssets/js/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('shopAssets/js/DateTimePicker.min.js') }}"></script>
 <script src="{{ asset('shopAssets/js/jquery.mousewheel.min.js') }}"></script>
-{{-- <script src="{{ asset('shopAssets/js/isotope.pkgd.min.js') }}"></script> --}}
-<script src="https://cdn.jsdelivr.net/npm/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 <script src="{{ asset('shopAssets/js/all.js') }}"></script>
 
 
+{{-- <script src="https://carnivalguide.co/travel/js/jquery-2.1.4.min.js"></script>
+<script src="https://carnivalguide.co/travel/js/bootstrap.min.js"></script>
+<script src="https://carnivalguide.co/travel/js/jquery-ui.min.js"></script>
+<script src="https://carnivalguide.co/travel/js/idangerous.swiper.min.js"></script>
+<script src="https://carnivalguide.co/travel/js/jquery.viewportchecker.min.js"></script>
+<script src="https://carnivalguide.co/travel/js/isotope.pkgd.min.js"></script>
+<script src="https://carnivalguide.co/travel/js/jquery.mousewheel.min.js"></script>
+<script src="https://carnivalguide.co/travel/http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=en"></script>	
+<script src="https://carnivalguide.co/travel/js/map.js"></script>
+<script src="https://carnivalguide.co/travel/js/all.js"></script> --}}
+
+
 <!-- jQuery -->
-<script type="text/javascript" src="{{ asset('shopAssets/js/carnival-jquery.min.js') }}"></script>
+{{-- <script type="text/javascript" src="{{ asset('shopAssets/js/carnival-jquery.min.js') }}"></script> --}}
 
 <!-- sticky -->
 <script type="text/javascript" src="{{ asset('shopAssets/js/jquery.sticky.js') }}"></script>
 
 <!-- OWL CAROUSEL Slider -->
 <script type="text/javascript" src="{{ asset('shopAssets/js/owl.carousel.min.js') }}"></script>
-{{-- <script>
+<script>
   $(document).ready(function(){
     $("#blog-carousel").owlCarousel({
         items: 3,
@@ -44,7 +53,7 @@
     $('.owl-nav').addClass('enabled');
 });
 
-</script> --}}
+</script>
 
 <!-- Boostrap -->
 <script type="text/javascript" src="{{ asset('shopAssets/js/carnival-bootstrap.min.js') }}"></script>
