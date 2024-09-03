@@ -14,17 +14,524 @@
                         <div class="swiper-container main-slider-5" data-autoplay="0" data-loop="1" data-speed="900"
                             data-center="0" data-slides-per-view="1">
                             <div class="swiper-wrapper">
+                                {{-- <style>
+                                    .slider-extra {
+                                        margin: 0;
+                                        padding: 0;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        height: 100vh;
+                                        background-color: #f0f0f0;
+                                    }
+
+                                    .slider-container {
+                                        position: relative;
+                                        width: 80%;
+                                        max-width: 800px;
+                                        overflow: hidden;
+                                        border-radius: 10px;
+                                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                                    }
+
+                                    .slider {
+                                        display: flex;
+                                        transition: transform 0.5s ease-in-out;
+                                    }
+
+                                    .slide {
+                                        min-width: 100%;
+                                        box-sizing: border-box;
+                                    }
+
+                                    .slide img,
+                                    .slide video {
+                                        width: 100%;
+                                        border-radius: 10px;
+                                    }
+
+                                    button.prev,
+                                    button.next {
+                                        position: absolute;
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                        background-color: rgba(0, 0, 0, 0.5);
+                                        color: white;
+                                        border: none;
+                                        padding: 10px;
+                                        cursor: pointer;
+                                        border-radius: 50%;
+                                        z-index: 10;
+                                        /* Ensure buttons are on top */
+                                    }
+
+                                    button.prev {
+                                        left: 10px;
+                                    }
+
+                                    button.next {
+                                        right: 10px;
+                                    }
+                                </style> --}}
+                                <style>
+                                    .slider-extra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f3f3f3;
+}
+
+.slider {
+    position: relative;
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.slide-new {
+    min-width: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide-new img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.slide-new video {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+                                </style>
                                 @foreach ($events as $key => $row)
-                                    <div class="swiper-slide @if ($key == 0) active @endif"
+                                    <div class="swiper-slide @if($key == 0) active @endif {{ $key }}"
                                         data-val="{{ $key }}">
                                         <div class="vertical-align">
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
                                                         <div class="slider-block clearfix">
-                                                            <div class="slider-block-left">
-                                                                <img class="center-image" src="{{ asset($row->banner) }}"
-                                                                    alt="">
+                                                            <div class="slider-block-left slider-extra">
+                                                                {{-- <img class="center-image" src="{{ asset($row->banner) }}"
+                                                                    alt=""> --}}
+                                                                <div class="city-entry bg-grey-2 city-entry-new"
+                                                                    id="city-entry-{{ $key }}">
+                                                                    <div
+                                                                        class="tour-block tour-block-s-9 hover-green radius-5 underline-block">
+                                                                        <div class="tour-layer delay-1"></div>
+                                                                        <img src="https://carnivalguide.co/travel/img/home/city_1.jpg"
+                                                                            class="res-img" alt="">
+                                                                        <div class="tour-caption">
+                                                                            <div class="vertical-align">
+                                                                                <h3 class="underline hover-it">St.Vincent
+                                                                                </h3>
+                                                                                <div class="weth-icon">
+                                                                                    <img src="https://carnivalguide.co/travel/img/weather_icon_small.png"
+                                                                                        alt="">
+                                                                                    <b>+32<sup>o</sup>C</b>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="city-desc">
+                                                                        <div class="tab-wrapper">
+                                                                            <div class="tab-nav-wrapper">
+                                                                                <div class="nav-tab  clearfix">
+                                                                                    <div class="nav-tab-item ">
+                                                                                        Flights
+                                                                                    </div>
+                                                                                    <div class="nav-tab-item ">
+                                                                                        Hotels
+                                                                                    </div>
+                                                                                    <div class="nav-tab-item active">
+                                                                                        Events
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="tabs-content clearfix">
+                                                                                <div class="tab-info ">
+                                                                                    <div class="hotel-line clearfix">
+                                                                                        <a class="hotel-img black-hover"
+                                                                                            href="#">
+                                                                                            <img class="img-responsive"
+                                                                                                src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
+                                                                                                alt="">
+                                                                                            <div class="tour-layer delay-1">
+                                                                                            </div>
+                                                                                        </a>
+                                                                                        <div class="hotel-line-content">
+                                                                                            <a class="hotel-line-title"
+                                                                                                href="#">1. bristol
+                                                                                                Hotel</a>
+                                                                                            <div class="rate-wrap">
+                                                                                                <div class="rate">
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                </div>
+                                                                                                <i>485 Rewies</i>
+                                                                                            </div>
+                                                                                            <div class="hotel-line-price">
+                                                                                                from $273</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="hotel-line clearfix">
+                                                                                        <a class="hotel-img black-hover"
+                                                                                            href="#">
+                                                                                            <img class="img-responsive"
+                                                                                                src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
+                                                                                                alt="">
+                                                                                            <div class="tour-layer delay-1">
+                                                                                            </div>
+                                                                                        </a>
+                                                                                        <div class="hotel-line-content">
+                                                                                            <a class="hotel-line-title"
+                                                                                                href="#">2. Mykonos
+                                                                                                Hotel</a>
+                                                                                            <div class="rate-wrap">
+                                                                                                <div class="rate">
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                </div>
+                                                                                                <i>485 Rewies</i>
+                                                                                            </div>
+                                                                                            <div class="hotel-line-price">
+                                                                                                from $273</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="hotel-line clearfix">
+                                                                                        <a class="hotel-img black-hover"
+                                                                                            href="#">
+                                                                                            <img class="img-responsive"
+                                                                                                src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
+                                                                                                alt="">
+                                                                                            <div class="tour-layer delay-1">
+                                                                                            </div>
+                                                                                        </a>
+                                                                                        <div class="hotel-line-content">
+                                                                                            <a class="hotel-line-title"
+                                                                                                href="#">3. bristol
+                                                                                                Hotel</a>
+                                                                                            <div class="rate-wrap">
+                                                                                                <div class="rate">
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                </div>
+                                                                                                <i>485 Rewies</i>
+                                                                                            </div>
+                                                                                            <div class="hotel-line-price">
+                                                                                                from $273</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="tab-info ">
+                                                                                    <div class="hotel-line clearfix">
+                                                                                        <a class="hotel-img black-hover"
+                                                                                            href="#">
+                                                                                            <img class="img-responsive"
+                                                                                                src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
+                                                                                                alt="">
+                                                                                            <div
+                                                                                                class="tour-layer delay-1">
+                                                                                            </div>
+                                                                                        </a>
+                                                                                        <div class="hotel-line-content">
+                                                                                            <a class="hotel-line-title"
+                                                                                                href="#">1. luxury
+                                                                                                Hotel</a>
+                                                                                            <div class="rate-wrap">
+                                                                                                <div class="rate">
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                </div>
+                                                                                                <i>485 Rewies</i>
+                                                                                            </div>
+                                                                                            <div class="hotel-line-price">
+                                                                                                from $273</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="hotel-line clearfix">
+                                                                                        <a class="hotel-img black-hover"
+                                                                                            href="#">
+                                                                                            <img class="img-responsive"
+                                                                                                src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
+                                                                                                alt="">
+                                                                                            <div
+                                                                                                class="tour-layer delay-1">
+                                                                                            </div>
+                                                                                        </a>
+                                                                                        <div class="hotel-line-content">
+                                                                                            <a class="hotel-line-title"
+                                                                                                href="#">2. bristol
+                                                                                                Hotel</a>
+                                                                                            <div class="rate-wrap">
+                                                                                                <div class="rate">
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                </div>
+                                                                                                <i>485 Rewies</i>
+                                                                                            </div>
+                                                                                            <div class="hotel-line-price">
+                                                                                                from $273</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="hotel-line clearfix">
+                                                                                        <a class="hotel-img black-hover"
+                                                                                            href="#">
+                                                                                            <img class="img-responsive"
+                                                                                                src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
+                                                                                                alt="">
+                                                                                            <div
+                                                                                                class="tour-layer delay-1">
+                                                                                            </div>
+                                                                                        </a>
+                                                                                        <div class="hotel-line-content">
+                                                                                            <a class="hotel-line-title"
+                                                                                                href="#">3. bristol
+                                                                                                Hotel</a>
+                                                                                            <div class="rate-wrap">
+                                                                                                <div class="rate">
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                </div>
+                                                                                                <i>485 Rewies</i>
+                                                                                            </div>
+                                                                                            <div class="hotel-line-price">
+                                                                                                from $273</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="tab-info active">
+                                                                                    <div class="hotel-line clearfix">
+                                                                                        <a class="hotel-img black-hover"
+                                                                                            href="#">
+                                                                                            <img class="img-responsive"
+                                                                                                src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
+                                                                                                alt="">
+                                                                                            <div
+                                                                                                class="tour-layer delay-1">
+                                                                                            </div>
+                                                                                        </a>
+                                                                                        <div class="hotel-line-content">
+                                                                                            <a class="hotel-line-title"
+                                                                                                href="#">1. bristol
+                                                                                                Hotel</a>
+                                                                                            <div class="rate-wrap">
+                                                                                                <div class="rate">
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                </div>
+                                                                                                <i>485 Rewies</i>
+                                                                                            </div>
+                                                                                            <div class="hotel-line-price">
+                                                                                                from $273</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="hotel-line clearfix">
+                                                                                        <a class="hotel-img black-hover"
+                                                                                            href="#">
+                                                                                            <img class="img-responsive"
+                                                                                                src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
+                                                                                                alt="">
+                                                                                            <div
+                                                                                                class="tour-layer delay-1">
+                                                                                            </div>
+                                                                                        </a>
+                                                                                        <div class="hotel-line-content">
+                                                                                            <a class="hotel-line-title"
+                                                                                                href="#">2. Mykonos
+                                                                                                Hotel</a>
+                                                                                            <div class="rate-wrap">
+                                                                                                <div class="rate">
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                </div>
+                                                                                                <i>485 Rewies</i>
+                                                                                            </div>
+                                                                                            <div class="hotel-line-price">
+                                                                                                from $273</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="hotel-line clearfix">
+                                                                                        <a class="hotel-img black-hover"
+                                                                                            href="#">
+                                                                                            <img class="img-responsive"
+                                                                                                src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
+                                                                                                alt="">
+                                                                                            <div
+                                                                                                class="tour-layer delay-1">
+                                                                                            </div>
+                                                                                        </a>
+                                                                                        <div class="hotel-line-content">
+                                                                                            <a class="hotel-line-title"
+                                                                                                href="#">3. luxury
+                                                                                                Hotel</a>
+                                                                                            <div class="rate-wrap">
+                                                                                                <div class="rate">
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                    <span
+                                                                                                        class="fa fa-star color-yellow"></span>
+                                                                                                </div>
+                                                                                                <i>485 Rewies</i>
+                                                                                            </div>
+                                                                                            <div class="hotel-line-price">
+                                                                                                from $273</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                {{-- <div class="slider-container new-slider"
+                                                                    id="new-slider-{{ $key }}">
+                                                                    <div class="slider">
+                                                                        <div class="slide">
+                                                                            <img src="https://carnivalguide.co/new/img/home/vincymas-2024.jpg"
+                                                                                alt="Image 1">
+                                                                        </div>
+                                                                        <div class="slide">
+                                                                            <video
+                                                                                src="https://carnivalguide.co/travel/video/soca.mp4"
+                                                                                controls loop autoplay muted></video>
+                                                                        </div>
+                                                                        <div class="slide">
+                                                                            <img src="http://127.0.0.1:8000/testimonial/cover/1721141270_testimonal_1.jpg"
+                                                                                alt="Image 2">
+                                                                        </div>
+                                                                        <div class="slide">
+                                                                            <video
+                                                                                src="https://carnivalguide.co/travel/video/soca.mp4"
+                                                                                controls loop autoplay muted></video>
+                                                                        </div>
+                                                                    </div>
+                                                                    <button class="prev">❮</button>
+                                                                    <button class="next">❯</button>
+                                                                </div> --}}
+                                                                
+                                                                <div class="slider new-slider">
+                                                                    <div class="slides">
+                                                                        <div class="slide-new active">
+                                                                            <img src="https://carnivalguide.co/new/img/home/vincymas-2024.jpg" alt="Image 1">
+                                                                        </div>
+                                                                        <div class="slide-new">
+                                                                            <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg" alt="Image 2">
+                                                                        </div>
+                                                                        <div class="slide-new">
+                                                                            <video src="https://carnivalguide.co/travel/video/soca.mp4" controls loop autoplay muted></video>
+                                                                        </div>
+                                                                        <div class="slide-new">
+                                                                            <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg" alt="Image 4">
+                                                                        </div>
+                                                                    </div>
+                                                            
+                                                                    <!-- Navigation buttons -->
+                                                                    <button class="prev" onclick="prevSlide()">&#10094;</button>
+                                                                    <button class="next" onclick="nextSlide()">&#10095;</button>
+                                                                </div>
                                                             </div>
                                                             <div class="slider-block-right">
                                                                 <div class="rate-wrap">
@@ -57,39 +564,50 @@
                                                                     more</a>
                                                                 <div class="slide-preview">
                                                                     @foreach ($row->images as $item)
-                                                                        <a 
-                                                                            href="{{ asset($item->image_url) }}"><img
-                                                                                class="img-responsive"
+                                                                        <a href="javacript:void(0);"
+                                                                            class="show-action-box"
+                                                                            data-id="{{ $key }}"
+                                                                            onclick="showActionBox({{ $key }})"><img
+                                                                                class="img-responsive "
                                                                                 src="{{ asset($item->image_url) }}"
                                                                                 alt=""></a>
                                                                     @endforeach
-                                                                    <a  href="https://carnivalguide.co/new/img/home/vincymas-2024.jpg">
-                                                                        <img class="img-responsive" src="https://carnivalguide.co/new/img/home/slide_preview_1.jpg" alt="">
+                                                                    <a href="javacript:void(0);"
+                                                                        onclick="showActionBox({{ $key }})"
+                                                                        class="show-action-box"
+                                                                        data-id="{{ $key }}">
+                                                                        <img class="img-responsive"
+                                                                            src="https://carnivalguide.co/new/img/home/slide_preview_1.jpg"
+                                                                            alt="">
                                                                     </a>
-                                                                    <a
-                                                                        href="https://carnivalguide.co/travel/img/home/slide_2.jpg"><img
+                                                                    <a href="javacript:void(0);"
+                                                                        onclick="showActionBox({{ $key }})"
+                                                                        class="show-action-box"
+                                                                        data-id="{{ $key }}"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_2.jpg"
                                                                             alt=""></a>
-                                                                    <a
-                                                                        href="https://carnivalguide.co/travel/img/home/slide_3.jpg"><img
+                                                                    <a href="javacript:void(0);"
+                                                                        onclick="showActionBox({{ $key }})"
+                                                                        class="show-action-box"
+                                                                        data-id="{{ $key }}"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_3.jpg"
                                                                             alt=""></a>
                                                                 </div>
                                                                 <div class="slide-preview">
-                                                                    <a
-                                                                        href="https://carnivalguide.co/travel/img/home_5/slide_1.jpg"><img
+                                                                    <a href="javacript:void(0);" class="show-action-box"
+                                                                        data-id="{{ $key }}"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_4.jpg"
                                                                             alt=""></a>
-                                                                    <a
-                                                                        href="https://carnivalguide.co/travel/img/home_5/slide_2.jpg"><img
+                                                                    <a href="javacript:void(0);" class="show-action-box"
+                                                                        data-id="{{ $key }}"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_5.jpg"
                                                                             alt=""></a>
-                                                                    <a
-                                                                        href="https://carnivalguide.co/travel/img/home_5/slide_3.jpg"><img
+                                                                    <a href="javacript:void(0);" class="show-action-box"
+                                                                        data-id="{{ $key }}"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_6.jpg"
                                                                             alt=""></a>
@@ -102,6 +620,68 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                <script>
+                                    let currentIndex = 0;
+
+function getActiveSlides() {
+    // Select all elements with the class 'slide-new'
+    const slides = document.querySelectorAll('.slide-new');
+
+    // Filter slides to only include those with an ancestor that has both '.swiper-slide' and '.active'
+    return Array.from(slides).filter(slide => {
+        return slide.closest('.swiper-slide-visible') !== null;
+    });
+}
+
+function showSlide(index) {
+    const slides = getActiveSlides(); // Get only the active slides
+    console.log(slides);
+    const totalSlides = slides.length;
+
+    if (totalSlides === 0) return; // If there are no active slides, do nothing
+
+    // Hide all slides
+    slides.forEach((slide) => {
+        slide.style.display = 'none';
+    });
+
+    // Ensure index is within bounds
+    if (index >= totalSlides) index = 0;
+    if (index < 0) index = totalSlides - 1;
+
+    // Show the current slide
+    slides[index].style.display = 'block';
+}
+
+function prevSlide() {
+    currentIndex--;
+
+    // Ensure index wraps around
+    const slides = getActiveSlides();
+    if (currentIndex < 0) {
+        currentIndex = slides.length - 1;
+    }
+
+    showSlide(currentIndex);
+}
+
+function nextSlide() {
+    currentIndex++;
+
+    // Ensure index wraps around
+    const slides = getActiveSlides();
+    if (currentIndex >= slides.length) {
+        currentIndex = 0;
+    }
+
+    showSlide(currentIndex);
+}
+
+// Show the first slide initially
+showSlide(currentIndex);
+
+                                </script>
+
                                 {{-- <div class="swiper-slide" data-val="1">
                                 <div class="vertical-align">
                                     <div class="container">
@@ -198,7 +778,8 @@
                         @foreach ($regions as $region)
                             <div class="col-mob-12 col-xs-6 col-sm-4 col-md-2">
                                 <a class="contry-item">
-                                    <img class="img-responsive" src="{{ asset('images/' . $region->icon) }}" alt="">
+                                    <img class="img-responsive" src="{{ asset('images/' . $region->icon) }}"
+                                        alt="">
                                     <h5>{{ $region->name }}</h5>
                                 </a>
                             </div>
@@ -1837,7 +2418,8 @@
                                             <img class="tm-people"
                                                 src="{{ asset('testimonial/image/' . $testimonial->image) }}"
                                                 alt="">
-                                            <h4><a class="tour-title color-dark-2 link-green" href="#">{{ $testimonial->name }}</a></h4>
+                                            <h4><a class="tour-title color-dark-2 link-green"
+                                                    href="#">{{ $testimonial->name }}</a></h4>
                                             <div class="tour-text color-grey-3">{{ $testimonial->description }}</div>
                                         </div>
                                     </div>
@@ -2003,12 +2585,16 @@
                             <h4 class="s_news-title"><a href="#">{{ $blog->title }}</a></h4>
                             <div class="tour-info-line clearfix">
                                 <div class="tour-info fl">
-                                    <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                    <span class="font-style-2 color-dark-2">{{ $blog->created_at->format('d/m/Y') }}</span>
+                                    <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                        alt="">
+                                    <span
+                                        class="font-style-2 color-dark-2">{{ $blog->created_at->format('d/m/Y') }}</span>
                                 </div>
                                 <div class="tour-info fl">
-                                    <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                    <span class="font-style-2 color-dark-2">By {{ $blog->user->first_name . ' ' . $blog->user->last_name }}</span>
+                                    <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                        alt="">
+                                    <span class="font-style-2 color-dark-2">By
+                                        {{ $blog->user->first_name . ' ' . $blog->user->last_name }}</span>
                                 </div>
                                 <div class="tour-info fl">
                                     <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
@@ -2103,7 +2689,8 @@
                                                             <div class="product-item-info">
                                                                 <div class="product-item-photo">
                                                                     <a class="product-item-img" href="">
-                                                                        <img alt="product image" src="{{ $product->image_url }}">
+                                                                        <img alt="product image"
+                                                                            src="{{ $product->image_url }}">
                                                                     </a>
                                                                 </div>
                                                                 <div class="product-item-detail">
@@ -2112,16 +2699,21 @@
                                                                     </strong>
                                                                     <div class="clearfix">
                                                                         <div class="product-item-price">
-                                                                            <span class="price">${{ $product->price }}</span>
-                                                                            @if($product->old_price)
-                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
                                                                             @endif
                                                                         </div>
                                                                         <div class="product-reviews-summary">
                                                                             <div class="rating-summary">
-                                                                                <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                    <span style="width:{{ $product->rating }}%">
-                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
@@ -2296,7 +2888,8 @@
                                                             <div class="product-item-info">
                                                                 <div class="product-item-photo">
                                                                     <a class="product-item-img" href="">
-                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
                                                                     </a>
                                                                 </div>
                                                                 <div class="product-item-detail">
@@ -2305,16 +2898,21 @@
                                                                     </strong>
                                                                     <div class="clearfix">
                                                                         <div class="product-item-price">
-                                                                            <span class="price">${{ $product->price }}</span>
-                                                                            @if($product->old_price)
-                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
                                                                             @endif
                                                                         </div>
                                                                         <div class="product-reviews-summary">
                                                                             <div class="rating-summary">
-                                                                                <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                    <span style="width:{{ $product->rating }}%">
-                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
@@ -2487,7 +3085,8 @@
                                                             <div class="product-item-info">
                                                                 <div class="product-item-photo">
                                                                     <a class="product-item-img" href="">
-                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
                                                                     </a>
                                                                 </div>
                                                                 <div class="product-item-detail">
@@ -2496,16 +3095,21 @@
                                                                     </strong>
                                                                     <div class="clearfix">
                                                                         <div class="product-item-price">
-                                                                            <span class="price">${{ $product->price }}</span>
-                                                                            @if($product->old_price)
-                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
                                                                             @endif
                                                                         </div>
                                                                         <div class="product-reviews-summary">
                                                                             <div class="rating-summary">
-                                                                                <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                    <span style="width:{{ $product->rating }}%">
-                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
@@ -2678,7 +3282,8 @@
                                                             <div class="product-item-info">
                                                                 <div class="product-item-photo">
                                                                     <a class="product-item-img" href="">
-                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
                                                                     </a>
                                                                 </div>
                                                                 <div class="product-item-detail">
@@ -2687,16 +3292,21 @@
                                                                     </strong>
                                                                     <div class="clearfix">
                                                                         <div class="product-item-price">
-                                                                            <span class="price">${{ $product->price }}</span>
-                                                                            @if($product->old_price)
-                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
                                                                             @endif
                                                                         </div>
                                                                         <div class="product-reviews-summary">
                                                                             <div class="rating-summary">
-                                                                                <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                    <span style="width:{{ $product->rating }}%">
-                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
@@ -2869,7 +3479,8 @@
                                                             <div class="product-item-info">
                                                                 <div class="product-item-photo">
                                                                     <a class="product-item-img" href="">
-                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
                                                                     </a>
                                                                 </div>
                                                                 <div class="product-item-detail">
@@ -2878,16 +3489,21 @@
                                                                     </strong>
                                                                     <div class="clearfix">
                                                                         <div class="product-item-price">
-                                                                            <span class="price">${{ $product->price }}</span>
-                                                                            @if($product->old_price)
-                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
                                                                             @endif
                                                                         </div>
                                                                         <div class="product-reviews-summary">
                                                                             <div class="rating-summary">
-                                                                                <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                    <span style="width:{{ $product->rating }}%">
-                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
@@ -3061,7 +3677,8 @@
                                                             <div class="product-item-info">
                                                                 <div class="product-item-photo">
                                                                     <a class="product-item-img" href="">
-                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
                                                                     </a>
                                                                 </div>
                                                                 <div class="product-item-detail">
@@ -3070,16 +3687,21 @@
                                                                     </strong>
                                                                     <div class="clearfix">
                                                                         <div class="product-item-price">
-                                                                            <span class="price">${{ $product->price }}</span>
-                                                                            @if($product->old_price)
-                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
                                                                             @endif
                                                                         </div>
                                                                         <div class="product-reviews-summary">
                                                                             <div class="rating-summary">
-                                                                                <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                    <span style="width:{{ $product->rating }}%">
-                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
@@ -3252,7 +3874,8 @@
                                                             <div class="product-item-info">
                                                                 <div class="product-item-photo">
                                                                     <a class="product-item-img" href="">
-                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
                                                                     </a>
                                                                 </div>
                                                                 <div class="product-item-detail">
@@ -3261,16 +3884,21 @@
                                                                     </strong>
                                                                     <div class="clearfix">
                                                                         <div class="product-item-price">
-                                                                            <span class="price">${{ $product->price }}</span>
-                                                                            @if($product->old_price)
-                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
                                                                             @endif
                                                                         </div>
                                                                         <div class="product-reviews-summary">
                                                                             <div class="rating-summary">
-                                                                                <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                    <span style="width:{{ $product->rating }}%">
-                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
@@ -3443,7 +4071,8 @@
                                                             <div class="product-item-info">
                                                                 <div class="product-item-photo">
                                                                     <a class="product-item-img" href="">
-                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
                                                                     </a>
                                                                 </div>
                                                                 <div class="product-item-detail">
@@ -3452,16 +4081,21 @@
                                                                     </strong>
                                                                     <div class="clearfix">
                                                                         <div class="product-item-price">
-                                                                            <span class="price">${{ $product->price }}</span>
-                                                                            @if($product->old_price)
-                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
                                                                             @endif
                                                                         </div>
                                                                         <div class="product-reviews-summary">
                                                                             <div class="rating-summary">
-                                                                                <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                    <span style="width:{{ $product->rating }}%">
-                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
@@ -3634,7 +4268,8 @@
                                                             <div class="product-item-info">
                                                                 <div class="product-item-photo">
                                                                     <a class="product-item-img" href="">
-                                                                        <img alt="product name" src="{{ $product->image_url }}">
+                                                                        <img alt="product name"
+                                                                            src="{{ $product->image_url }}">
                                                                     </a>
                                                                 </div>
                                                                 <div class="product-item-detail">
@@ -3643,16 +4278,21 @@
                                                                     </strong>
                                                                     <div class="clearfix">
                                                                         <div class="product-item-price">
-                                                                            <span class="price">${{ $product->price }}</span>
-                                                                            @if($product->old_price)
-                                                                                <span class="old-price">${{ $product->old_price }}</span>
+                                                                            <span
+                                                                                class="price">${{ $product->price }}</span>
+                                                                            @if ($product->old_price)
+                                                                                <span
+                                                                                    class="old-price">${{ $product->old_price }}</span>
                                                                             @endif
                                                                         </div>
                                                                         <div class="product-reviews-summary">
                                                                             <div class="rating-summary">
-                                                                                <div title="{{ $product->rating }}%" class="rating-result">
-                                                                                    <span style="width:{{ $product->rating }}%">
-                                                                                        <span><span>{{ $product->rating }}</span>% of <span>100</span></span>
+                                                                                <div title="{{ $product->rating }}%"
+                                                                                    class="rating-result">
+                                                                                    <span
+                                                                                        style="width:{{ $product->rating }}%">
+                                                                                        <span><span>{{ $product->rating }}</span>%
+                                                                                            of <span>100</span></span>
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
@@ -3796,4 +4436,18 @@
             </div>
         </div>
     </div><!-- block  showcase-->
+@endsection
+@section('front-script')
+    <script>
+        $(document).ready(function() {
+            $('.city-entry-new').css('display', 'none');
+            // $('.new-slider').css('display','none');
+
+        });
+
+        function showActionBox(id) {
+            $('.city-entry-new').css('display','block');
+            $('.new-slider').css('display','none');
+        }
+    </script>
 @endsection

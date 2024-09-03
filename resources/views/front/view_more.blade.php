@@ -327,6 +327,7 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                {{-- Flights --}}
                                 <div class="tab-info" style="position: relative;">
                                     <img class="img-responsive" src="https://carnivalguide.co/new/img/detail/guide_6a.jpg"
                                         alt="">
@@ -615,6 +616,7 @@
                                         </div> 						  						
                                     </div>
                                 </div>
+                                {{-- Cars/Rentals --}}
                                 <div class="tab-info" style="position: relative;">
                                     <img class="img-responsive" src="https://carnivalguide.co/new/img/detail/guide_6b.jpg"
                                         alt="">
@@ -720,168 +722,420 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <div class="list-content clearfix">
-                                        <div class="list-item-entry">
-                                            <div class="hotel-item style-8 bg-grey-2">
-                                                <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(https://carnivalguide.co/new/img/tour_list/hotel_grid_15.jpg);">
-                                                            <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_15.jpg" alt="" style="display: none;">
+                                    <div class="col-12" style="margin-top:20px;">
+                                        {{-- <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="second-title">
+                                                    <h2>Advanced Search (16)</h2>
+                                                    <p class="color-grey">Curabitur nunc erat, consequat in erat ut, congue bibendum nulla. Suspendisse id
+                                                        tor.</p>
+                                                </div>
+                                            </div>
+                                        </div> --}}
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="low-price">-10%</div>
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_1a.fw.png" alt="">
+                                                        <div class="price price-s-1">$500<span>/day</span></div>
                                                     </div>
-                                                    <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b></b></h4>                      
-                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                        <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
+                                                    <div class="title">
+                                                        <h4><a href="#">porsche cayenne</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
-                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                        <div class="hotel-person color-white">from <span>$703</span></div>
-                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                    </div>						            
                                                 </div>
-                                            </div>						
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_2.png" alt="">
+                                                        <div class="price price-s-1">$350 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">Totota</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                    
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_3.png" alt="">
+                                                        <div class="price price-s-1">$200<span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">Nissan</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                    
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_4.png" alt="">
+                                                        <div class="price price-s-1">$400<span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">hyundai</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                    
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_5.png" alt="">
+                                                        <div class="price price-s-1">$500<span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">mustang</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                        
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_6.png" alt="">
+                                                        <div class="price price-s-1">$250 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">Opel</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                        
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="low-price">-20%</div>
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_7.png" alt="">
+                                                        <div class="price price-s-1">$350<span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">Jeep</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                        
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_8.png" alt="">
+                                                        <div class="price price-s-1">$400<span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">volkswagen</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                        
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_1.png" alt="">
+                                                        <div class="price price-s-1">$500<span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">porsche cayenne</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                        
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="low-price">-50%</div>
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_2.png" alt="">
+                                                        <div class="price price-s-1">$350 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">Totota</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                        
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_3.png" alt="">
+                                                        <div class="price price-s-1">$200<span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">Nissan</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                        
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_4.png" alt="">
+                                                        <div class="price price-s-1">$400<span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">hyundai</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                        
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_5.png" alt="">
+                                                        <div class="price price-s-1">$500<span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">mustang</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                        
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_6.png" alt="">
+                                                        <div class="price price-s-1">$250 <span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">Opel</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_7.png" alt="">
+                                                        <div class="price price-s-1">$350<span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">Jeep</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <div class="hotel-item cars-item">
+                                                    <div class="radius-top">
+                                                        <img src="https://carnivalguide.co/new/img/car_8.png" alt="">
+                                                        <div class="price price-s-1">$400<span>/day</span></div>
+                                                    </div>
+                                                    <div class="title">
+                                                        <h4><a href="#">volkswagen</a></h4>
+                                                        <h6 class="clas">standart</h6>
+                                                        <div class="rate-wrap">
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                                    alt=""><i>X2</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                                    alt=""><i>X4</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                                    alt=""><i>+</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                                    alt=""><i>auto</i></span>
+                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                                    alt=""><i>gaz</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="list-item-entry">
-                                            <div class="hotel-item style-8 bg-grey-2">
-                                                <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_13.jpg&quot;);">
-                                                            <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_13.jpg" alt="" style="display: none;">
-                                                    </div>
-                                                    <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b></b></h4>                      
-                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                        <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                        <div class="hotel-person color-white">from <span>$703</span></div>
-                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                    </div>						            
-                                                </div>
-                                            </div>						
-                                        </div>  						  					
-                                        <div class="list-item-entry">
-                                            <div class="hotel-item style-8 bg-grey-2">
-                                                <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_1.jpg&quot;);">
-                                                            <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_1.jpg" alt="" style="display: none;">
-                                                            <div class="price price-s-2 green tt">best offer</div>
-                                                    </div>
-                                                    <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b></b></h4>                      
-                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                        <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                        <div class="hotel-person color-white">from <span>$703</span></div>
-                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                    </div>						            
-                                                </div>
-                                            </div>						
-                                        </div>
-                                        <div class="list-item-entry">
-                                            <div class="hotel-item style-8 bg-grey-2">
-                                                <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_2.jpg&quot;);">
-                                                            <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_2.jpg" alt="" style="display: none;">
-                                                            <div class="price price-s-2 red tt">hot price</div>
-                                                    </div>
-                                                    <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                        <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                        <div class="hotel-person color-white">from <span>$703</span></div>
-                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                    </div>						            
-                                                </div>
-                                            </div>						
-                                        </div>
-                                        <div class="list-item-entry">
-                                            <div class="hotel-item style-8 bg-grey-2">
-                                                <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_3.jpg&quot;);">
-                                                            <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_3.jpg" alt="" style="display: none;">
-                                                            <div class="price price-s-2 red tt">hot price</div>
-                                                    </div>
-                                                    <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                        <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                        <div class="hotel-person color-white">from <span>$703</span></div>
-                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                    </div>						            
-                                                </div>
-                                            </div>						
-                                        </div>
-                                        <div class="list-item-entry">
-                                            <div class="hotel-item style-8 bg-grey-2">
-                                                <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_4.jpg&quot;);">
-                                                            <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_4.jpg" alt="" style="display: none;">
-                                                    </div>
-                                                    <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                        <div class="hotel-icons-block grid-hidden">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                            <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                        <div class="hotel-person color-white">from <span>$703</span></div>
-                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                    </div>						            
-                                                </div>
-                                            </div>						
-                                        </div>  						
                                     </div>
                                 </div>
+                                {{-- Hotels --}}
                                 <div class="tab-info" style="position: relative;">
                                     <img class="img-responsive"
                                         src="https://carnivalguide.co/new/img/detail/guide_7a.jpg" alt="">
@@ -1543,6 +1797,7 @@
                                         </div>
                                     </div> --}}
                                 </div>
+                                {{-- Air BNB --}}
                                 <div class="tab-info" style="position: relative;">
                                     <img class="img-responsive"
                                         src="https://carnivalguide.co/new/img/detail/guide_8b.jpg" alt="">
@@ -2115,6 +2370,7 @@
                                         </div>
                                     </div> --}}
                                 </div>
+                                {{-- Events & Tickets --}}
                                 <div class="tab-info" style="position: relative;">
                                     <img class="img-responsive"
                                         src="https://carnivalguide.co/new/img/detail/guide_events.jpg" alt="">
@@ -2810,6 +3066,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- Mas Camps/Costumes --}}
                                 <div class="tab-info" style="position: relative;">
                                     <img class="img-responsive"
                                         src="https://carnivalguide.co/new/img/detail/guide_mas.jpg" alt="">
@@ -3404,6 +3661,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- Tours and Activities --}}
                                 <div class="tab-info" style="position: relative;">
                                     <img class="img-responsive"
                                         src="https://carnivalguide.co/new/img/detail/guide_tours.jpg" alt="">
@@ -4087,6 +4345,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- Gallery --}}
                                 <div class="tab-info" style="position: relative;">
                                     {{-- <img class="img-responsive"
                                         src="https://carnivalguide.co/new/img/detail/guide_12a.jpg" alt=""> --}}

@@ -65,7 +65,7 @@
     </div>
     @include('front.layouts.includes.footer')
     @include('front.layouts.includes.scripts')
-
+    @yield('front-script')
 </body>
 
 </html>
