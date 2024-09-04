@@ -78,7 +78,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 99vh;
     background-color: #f3f3f3;
 }
 
