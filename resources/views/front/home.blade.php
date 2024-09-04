@@ -14,44 +14,49 @@
                         <div class="swiper-container main-slider-5" data-autoplay="0" data-loop="1" data-speed="900"
                             data-center="0" data-slides-per-view="1">
                             <div class="swiper-wrapper">
-                                {{-- <style>
+                                <style>
                                     .slider-extra {
-                                        margin: 0;
-                                        padding: 0;
                                         display: flex;
                                         justify-content: center;
                                         align-items: center;
-                                        height: 100vh;
-                                        background-color: #f0f0f0;
-                                    }
-
-                                    .slider-container {
-                                        position: relative;
-                                        width: 80%;
-                                        max-width: 800px;
-                                        overflow: hidden;
-                                        border-radius: 10px;
-                                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                                        min-height: 99vh;
+                                        background-color: #f3f3f3;
                                     }
 
                                     .slider {
+                                        position: relative;
+                                        width: 500px;
+                                        height: 100%;
+                                        overflow: hidden;
+                                        border-radius: 0px;
+                                    }
+
+                                    .slides {
                                         display: flex;
                                         transition: transform 0.5s ease-in-out;
-                                    }
-
-                                    .slide {
-                                        min-width: 100%;
-                                        box-sizing: border-box;
-                                    }
-
-                                    .slide img,
-                                    .slide video {
                                         width: 100%;
-                                        border-radius: 10px;
+                                        height: 100%;
+
                                     }
 
-                                    button.prev,
-                                    button.next {
+                                    .slide-new {
+                                        min-width: 100%;
+                                        transition: opacity 0.5s ease-in-out;
+                                    }
+
+                                    .slide-new img {
+                                        width: 100%;
+                                        height: 100%;
+                                        border-radius: 0px;
+                                    }
+                                    .slide-new video {
+                                        width: 100%;
+                                        height: 100%;
+                                        border-radius: 0px;
+                                        object-fit: cover;
+                                    }
+
+                                    button.prev, button.next {
                                         position: absolute;
                                         top: 50%;
                                         transform: translateY(-50%);
@@ -61,8 +66,6 @@
                                         padding: 10px;
                                         cursor: pointer;
                                         border-radius: 50%;
-                                        z-index: 10;
-                                        /* Ensure buttons are on top */
                                     }
 
                                     button.prev {
@@ -72,71 +75,14 @@
                                     button.next {
                                         right: 10px;
                                     }
-                                </style> --}}
-                                <style>
-                                    .slider-extra {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 99vh;
-    background-color: #f3f3f3;
-}
 
-.slider {
-    position: relative;
-    width: 500px;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-.slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-    height: 100%;
-
-}
-
-.slide-new {
-    min-width: 100%;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.slide-new img {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-}
-.slide-new video {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-}
-
-button.prev, button.next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-}
-
-button.prev {
-    left: 10px;
-}
-
-button.next {
-    right: 10px;
-}
-
-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
+                                    button:hover {
+                                        background-color: rgba(0, 0, 0, 0.8);
+                                    }
+                                    .d-none
+                                    {
+                                        display: none !important;
+                                    }
                                 </style>
                                 @foreach ($events as $key => $row)
                                     <div class="swiper-slide @if($key == 0) active @endif {{ $key }}"
@@ -172,19 +118,19 @@ button:hover {
                                                                         <div class="tab-wrapper">
                                                                             <div class="tab-nav-wrapper">
                                                                                 <div class="nav-tab  clearfix">
-                                                                                    <div class="nav-tab-item ">
+                                                                                    <div class="nav-tab-item d-none flight">
                                                                                         Flights
                                                                                     </div>
-                                                                                    <div class="nav-tab-item ">
+                                                                                    <div class="nav-tab-item d-none hotel">
                                                                                         Hotels
                                                                                     </div>
-                                                                                    <div class="nav-tab-item active">
+                                                                                    <div class="nav-tab-item d-none events">
                                                                                         Events
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="tabs-content clearfix">
-                                                                                <div class="tab-info ">
+                                                                                <div class="tab-info active d-none flight-tab">
                                                                                     <div class="hotel-line clearfix">
                                                                                         <a class="hotel-img black-hover"
                                                                                             href="#">
@@ -282,7 +228,7 @@ button:hover {
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="tab-info ">
+                                                                                <div class="tab-info active d-none hotel-tab">
                                                                                     <div class="hotel-line clearfix">
                                                                                         <a class="hotel-img black-hover"
                                                                                             href="#">
@@ -383,7 +329,7 @@ button:hover {
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="tab-info active">
+                                                                                <div class="tab-info active d-none events-tab">
                                                                                     <div class="hotel-line clearfix">
                                                                                         <a class="hotel-img black-hover"
                                                                                             href="#">
@@ -523,6 +469,9 @@ button:hover {
                                                                             <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg" alt="Image 2">
                                                                         </div>
                                                                         <div class="slide-new">
+                                                                            {{-- <video  controls loop autoplay muted>
+                                                                                <source src="https://www.shutterstock.com/shutterstock/videos/3433223239/preview/stock-footage-cozumel-mexico-behold-the-majesty-a-carnival-cruise-ship-sails-gracefully-across.webm" type="video/webm"><source src="https://www.shutterstock.com/shutterstock/videos/3433223239/preview/stock-footage-cozumel-mexico-behold-the-majesty-a-carnival-cruise-ship-sails-gracefully-across.mp4" type="video/mp4">
+                                                                            </video> --}}
                                                                             <video src="https://carnivalguide.co/travel/video/soca.mp4" controls loop autoplay muted></video>
                                                                         </div>
                                                                         <div class="slide-new">
@@ -565,7 +514,7 @@ button:hover {
                                                                     class="c-button b-50 bg-green hv-green-o ">view
                                                                     more</a>
                                                                 <div class="slide-preview">
-                                                                    @foreach ($row->images as $item)
+                                                                    {{-- @foreach ($row->images as $item)
                                                                         <a href="javacript:void(0);"
                                                                             class="show-action-box"
                                                                             data-id="{{ $key }}"
@@ -573,43 +522,46 @@ button:hover {
                                                                                 class="img-responsive "
                                                                                 src="{{ asset($item->image_url) }}"
                                                                                 alt=""></a>
-                                                                    @endforeach
+                                                                    @endforeach --}}
                                                                     <a href="javacript:void(0);"
-                                                                        onclick="showActionBox({{ $key }})"
+                                                                        onclick="showActionBox('flight')"
                                                                         class="show-action-box"
-                                                                        data-id="{{ $key }}">
+                                                                        data-id="flight">
                                                                         <img class="img-responsive"
                                                                             src="https://carnivalguide.co/new/img/home/slide_preview_1.jpg"
                                                                             alt="">
                                                                     </a>
                                                                     <a href="javacript:void(0);"
-                                                                        onclick="showActionBox({{ $key }})"
+                                                                        onclick="showActionBox('hotel')"
                                                                         class="show-action-box"
-                                                                        data-id="{{ $key }}"><img
+                                                                        data-id="hotel"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_2.jpg"
                                                                             alt=""></a>
                                                                     <a href="javacript:void(0);"
-                                                                        onclick="showActionBox({{ $key }})"
+                                                                        onclick="showActionBox('events')"
                                                                         class="show-action-box"
-                                                                        data-id="{{ $key }}"><img
+                                                                        data-id="events"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_3.jpg"
                                                                             alt=""></a>
                                                                 </div>
                                                                 <div class="slide-preview">
                                                                     <a href="javacript:void(0);" class="show-action-box"
-                                                                        data-id="{{ $key }}"><img
+                                                                        data-id="flight"
+                                                                        onclick="showActionBox('flight')"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_4.jpg"
                                                                             alt=""></a>
                                                                     <a href="javacript:void(0);" class="show-action-box"
-                                                                        data-id="{{ $key }}"><img
+                                                                        data-id="hotel"
+                                                                        onclick="showActionBox('hotel')"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_5.jpg"
                                                                             alt=""></a>
                                                                     <a href="javacript:void(0);" class="show-action-box"
-                                                                        data-id="{{ $key }}"><img
+                                                                        data-id="events"
+                                                                        onclick="showActionBox('events')"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_6.jpg"
                                                                             alt=""></a>
@@ -625,128 +577,128 @@ button:hover {
                                 <script>
                                     let currentIndex = 0;
 
-function getActiveSlides() {
-    // Select all elements with the class 'slide-new'
-    const slides = document.querySelectorAll('.slide-new');
+                                    function getActiveSlides() {
+                                        // Select all elements with the class 'slide-new'
+                                        const slides = document.querySelectorAll('.slide-new');
 
-    // Filter slides to only include those with an ancestor that has both '.swiper-slide' and '.active'
-    return Array.from(slides).filter(slide => {
-        return slide.closest('.swiper-slide-visible') !== null;
-    });
-}
+                                        // Filter slides to only include those with an ancestor that has both '.swiper-slide' and '.active'
+                                        return Array.from(slides).filter(slide => {
+                                            return slide.closest('.swiper-slide-visible') !== null;
+                                        });
+                                    }
 
-function showSlide(index) {
-    const slides = getActiveSlides(); // Get only the active slides
-    console.log(slides);
-    const totalSlides = slides.length;
+                                    function showSlide(index) {
+                                        const slides = getActiveSlides(); // Get only the active slides
+                                        console.log(slides);
+                                        const totalSlides = slides.length;
 
-    if (totalSlides === 0) return; // If there are no active slides, do nothing
+                                        if (totalSlides === 0) return; // If there are no active slides, do nothing
 
-    // Hide all slides
-    slides.forEach((slide) => {
-        slide.style.display = 'none';
-    });
+                                        // Hide all slides
+                                        slides.forEach((slide) => {
+                                            slide.style.display = 'none';
+                                        });
 
-    // Ensure index is within bounds
-    if (index >= totalSlides) index = 0;
-    if (index < 0) index = totalSlides - 1;
+                                        // Ensure index is within bounds
+                                        if (index >= totalSlides) index = 0;
+                                        if (index < 0) index = totalSlides - 1;
 
-    // Show the current slide
-    slides[index].style.display = 'block';
-}
+                                        // Show the current slide
+                                        slides[index].style.display = 'block';
+                                    }
 
-function prevSlide() {
-    currentIndex--;
+                                    function prevSlide() {
+                                        currentIndex--;
 
-    // Ensure index wraps around
-    const slides = getActiveSlides();
-    if (currentIndex < 0) {
-        currentIndex = slides.length - 1;
-    }
+                                        // Ensure index wraps around
+                                        const slides = getActiveSlides();
+                                        if (currentIndex < 0) {
+                                            currentIndex = slides.length - 1;
+                                        }
 
-    showSlide(currentIndex);
-}
+                                        showSlide(currentIndex);
+                                    }
 
-function nextSlide() {
-    currentIndex++;
+                                    function nextSlide() {
+                                        currentIndex++;
 
-    // Ensure index wraps around
-    const slides = getActiveSlides();
-    if (currentIndex >= slides.length) {
-        currentIndex = 0;
-    }
+                                        // Ensure index wraps around
+                                        const slides = getActiveSlides();
+                                        if (currentIndex >= slides.length) {
+                                            currentIndex = 0;
+                                        }
 
-    showSlide(currentIndex);
-}
+                                        showSlide(currentIndex);
+                                    }
 
-// Show the first slide initially
-showSlide(currentIndex);
+                                    // Show the first slide initially
+                                    showSlide(currentIndex);
 
                                 </script>
 
                                 {{-- <div class="swiper-slide" data-val="1">
-                                <div class="vertical-align">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-                                                <div class="slider-block clearfix">
-                                                    <div class="slider-block-left">
-                                                        <img class="center-image" src="https://carnivalguide.co/travel/img/home_5/slide_1.jpg"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="slider-block-right">
-                                                        <div class="rate-wrap">
-                                                            <div class="rate">
-                                                                <span class="fa fa-star color-yellow"></span>
-                                                                <span class="fa fa-star color-yellow"></span>
-                                                                <span class="fa fa-star color-yellow"></span>
-                                                                <span class="fa fa-star color-yellow"></span>
-                                                                <span class="fa fa-star color-yellow"></span>
+                                    <div class="vertical-align">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                                                    <div class="slider-block clearfix">
+                                                        <div class="slider-block-left">
+                                                            <img class="center-image" src="https://carnivalguide.co/travel/img/home_5/slide_1.jpg"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="slider-block-right">
+                                                            <div class="rate-wrap">
+                                                                <div class="rate">
+                                                                    <span class="fa fa-star color-yellow"></span>
+                                                                    <span class="fa fa-star color-yellow"></span>
+                                                                    <span class="fa fa-star color-yellow"></span>
+                                                                    <span class="fa fa-star color-yellow"></span>
+                                                                    <span class="fa fa-star color-yellow"></span>
+                                                                </div>
+                                                                <i>485 Reviews</i>
                                                             </div>
-                                                            <i>485 Reviews</i>
-                                                        </div>
-                                                        <h4 class="sb-title">Trinidad Carnival</h4>
-                                                        <div class="sb-price color-dark-2"><span>$500</span> / per
-                                                            person</div>
-                                                        <div class="sb-text">Lorem ipsum dolor sit amet,
-                                                            consectetur
-                                                            adipiscing elit, sed do eiusmod tempor incididunt ut
-                                                            labore et dolore magna aliqua. Ut enim ad minim veniam.
-                                                        </div>
-                                                        <a href="guide.html"
-                                                            class="c-button b-50 bg-green hv-green-o ">view
-                                                            more</a>
-                                                        <div class="slide-preview">
-                                                            <a class="active" href="#"><img
-                                                                    class="img-responsive"
-                                                                    src="https://carnivalguide.co/travel/img/home_5/slide_preview_1.jpg"
-                                                                    alt=""></a>
-                                                            <a href="#"><img class="img-responsive"
-                                                                    src="https://carnivalguide.co/travel/img/home_5/slide_preview_2.jpg"
-                                                                    alt=""></a>
-                                                            <a href="#"><img class="img-responsive"
-                                                                    src="https://carnivalguide.co/travel/img/home_5/slide_preview_3.jpg"
-                                                                    alt=""></a>
-                                                        </div>
-                                                        <div class="slide-preview">
-                                                            <a class="active" href="#"><img
-                                                                    class="img-responsive"
-                                                                    src="https://carnivalguide.co/travel/img/home_5/slide_preview_1.jpg"
-                                                                    alt=""></a>
-                                                            <a href="#"><img class="img-responsive"
-                                                                    src="https://carnivalguide.co/travel/img/home_5/slide_preview_2.jpg"
-                                                                    alt=""></a>
-                                                            <a href="#"><img class="img-responsive"
-                                                                    src="https://carnivalguide.co/travel/img/home_5/slide_preview_3.jpg"
-                                                                    alt=""></a>
+                                                            <h4 class="sb-title">Trinidad Carnival</h4>
+                                                            <div class="sb-price color-dark-2"><span>$500</span> / per
+                                                                person</div>
+                                                            <div class="sb-text">Lorem ipsum dolor sit amet,
+                                                                consectetur
+                                                                adipiscing elit, sed do eiusmod tempor incididunt ut
+                                                                labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                                            </div>
+                                                            <a href="guide.html"
+                                                                class="c-button b-50 bg-green hv-green-o ">view
+                                                                more</a>
+                                                            <div class="slide-preview">
+                                                                <a class="active" href="#"><img
+                                                                        class="img-responsive"
+                                                                        src="https://carnivalguide.co/travel/img/home_5/slide_preview_1.jpg"
+                                                                        alt=""></a>
+                                                                <a href="#"><img class="img-responsive"
+                                                                        src="https://carnivalguide.co/travel/img/home_5/slide_preview_2.jpg"
+                                                                        alt=""></a>
+                                                                <a href="#"><img class="img-responsive"
+                                                                        src="https://carnivalguide.co/travel/img/home_5/slide_preview_3.jpg"
+                                                                        alt=""></a>
+                                                            </div>
+                                                            <div class="slide-preview">
+                                                                <a class="active" href="#"><img
+                                                                        class="img-responsive"
+                                                                        src="https://carnivalguide.co/travel/img/home_5/slide_preview_1.jpg"
+                                                                        alt=""></a>
+                                                                <a href="#"><img class="img-responsive"
+                                                                        src="https://carnivalguide.co/travel/img/home_5/slide_preview_2.jpg"
+                                                                        alt=""></a>
+                                                                <a href="#"><img class="img-responsive"
+                                                                        src="https://carnivalguide.co/travel/img/home_5/slide_preview_3.jpg"
+                                                                        alt=""></a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div> --}}
+                                </div> --}}
                             </div>
                             <div class="pagination pagination-hidden poin-style-1"></div>
                             <div class="arrow-wrapp arr-s-2">
@@ -4450,6 +4402,35 @@ showSlide(currentIndex);
         function showActionBox(id) {
             $('.city-entry-new').css('display','block');
             $('.new-slider').css('display','none');
+            if(id == "flight")
+            {
+                $('.flight').removeClass('d-none');
+                $('.flight-tab').removeClass('d-none');
+                $('.hotel').addClass('d-none');
+                $('.hotel-tab').addClass('d-none');
+                $('.events').addClass('d-none');
+                $('.events-tab').addClass('d-none');
+            }
+            else if(id == "hotel")
+            {
+                $('.hotel').removeClass('d-none');
+                $('.hotel-tab').removeClass('d-none');
+                $('.flight').addClass('d-none');
+                $('.flight-tab').addClass('d-none');
+                $('.events').addClass('d-none');
+                $('.events-tab').addClass('d-none');
+            }
+            else
+            {
+                $('.events').removeClass('d-none');
+                $('.events-tab').removeClass('d-none');
+                $('.hotel').addClass('d-none');
+                $('.hotel-tab').addClass('d-none');
+                $('.flight').addClass('d-none');
+                $('.flight-tab').addClass('d-none');
+                
+            }
+            
         }
     </script>
 @endsection
