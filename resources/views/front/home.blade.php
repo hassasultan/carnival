@@ -85,7 +85,7 @@
 .slider {
     position: relative;
     width: 500px;
-    height: 300px;
+    height: 100%;
     overflow: hidden;
     border-radius: 10px;
 }
@@ -94,6 +94,8 @@
     display: flex;
     transition: transform 0.5s ease-in-out;
     width: 100%;
+    height: 100%;
+
 }
 
 .slide-new {
