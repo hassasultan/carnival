@@ -85,7 +85,7 @@
     </div>
 </div>
 
-<header class="bg-white color-4 header-style-2">
+<header class="bg-white color-4 header-style-2" style="z-index: 9999;">
     <div class="top-header-bar">
         <div class="container">
             <div class="row">

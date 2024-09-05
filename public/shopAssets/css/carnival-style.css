@@ -507,10 +507,11 @@ body.background-block {
 }
 
 .full-height {
-  height: 100vh;
+  height: 110vh;
   position: relative;
   float: left;
   width: 100%;
+  z-index: 999;
 }
 
 .vertical-center {
