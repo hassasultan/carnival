@@ -46,7 +46,9 @@ class FrontendConroller extends Controller
     }
     public function tour_listing()
     {
-        return view('front.tours');
+        $blogs = Blogs::with('user')->get()->take('3');
+        $products = Product::with('brand')->get();
+        return view('front.tours',compact('blogs','products'));
     }
     public function flight()
     {
@@ -54,7 +56,14 @@ class FrontendConroller extends Controller
     }
     public function flight_listing()
     {
-        return view('front.flight-isting');
+        $blogs = Blogs::with('user')->get()->take('3');
+        return view('front.flight-isting',compact('blogs'));
+    }
+    public function hotel_listing()
+    {
+        $blogs = Blogs::with('user')->get()->take('3');
+        $products = Product::with('brand')->get();
+        return view('front.hotel-isting',compact('blogs','products'));
     }
     public function gallery()
     {

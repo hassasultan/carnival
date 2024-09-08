@@ -1,722 +1,622 @@
 @extends('front.layouts.app')
 @section('front-content')
-<div class="inner-banner style-4">
-	<img class="center-image" src="https://carnivalguide.co/travel/img/tour_list/inner_banner_3.jpg" alt="">
-	<div class="vertical-align">
-		<div class="container">
-			<ul class="banner-breadcrumb color-white clearfix">
-				<li><a class="link-blue-2" href="#">home</a> /</li>
-				<li><a class="link-blue-2" href="#">tours</a> /</li>
-				<li><span class="color-red-3">list tours</span></li>
-			</ul>
-			<h2 class="color-white">all flights for you</h2>
-			<h4 class="color-white">We found: <span class="color-red-3">640</span> flights</h4>
-		</div>
-	</div>
-</div>
+    <div class="full-height">
+        <div class="clip">
+            <div class="bg bg-bg-chrome" style="background-image:url(https://carnivalguide.co/new/img/flightbg5.jpg)">
+            </div>
+        </div>
+        <div class="vertical-align">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="main-title style-6">
+                            <div class="top-weather-info delay-1">
+                                <img src="https://carnivalguide.co/new/img/home_10/slide_icon.png" alt="">
+                            </div>
+                            <h4>Over 90 000 flights for you choice</h4>
+                            <h1>Choose flight</h1>
+                            <div class="row no-padd">
+                                <div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-md-offset-0">
+                                    <div class="input-style-1 min-324">
+                                        <img src="https://carnivalguide.co/new/img/loc_icon_small.png" alt="">
+                                        <input type="text" placeholder="Enter a destination or hotel name">
+                                    </div>
+                                    <div class="input-style-1 min-204">
+                                        <img src="https://carnivalguide.co/new/img/calendar_icon.png" alt="">
+                                        <input type="text" placeholder="Check in" class="datepicker hasDatepicker"
+                                            id="dp1725800062448">
+                                    </div>
+                                    <div class="input-style-1 min-204">
+                                        <img src="https://carnivalguide.co/new/img/calendar_icon.png" alt="">
+                                        <input type="text" placeholder="Check out" class="datepicker hasDatepicker"
+                                            id="dp1725800062449">
+                                    </div>
+                                    <div class="submit">
+                                        <input class="c-button bg-red-3 hv-transparent" type="submit" value="search now">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-wraper padd-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <div class="second-title">
+                        <h4 class="subtitle color-red-3 underline">popular</h4>
+                        <h2>Most popular Flights</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="top-baner arrows">
+                    <div class="swiper-container fly-slider swiper-swiper-unique-id-0 initialized pagination-hidden"
+                        data-autoplay="0" data-loop="0" data-speed="1000" data-slides-per-view="responsive"
+                        data-mob-slides="1" data-xs-slides="2" data-sm-slides="2" data-md-slides="3" data-lg-slides="4"
+                        data-add-slides="4" id="swiper-unique-id-0">
+                        <div class="swiper-wrapper" style="width: 1200px; height: 444px;">
+                            <div class="swiper-slide swiper-slide-visible swiper-slide-active"
+                                style="width: 300px; height: 444px;">
+                                <div class="hotel-item style-7">
+                                    <div class="radius-top">
+                                        <img src="https://carnivalguide.co/new/img/home_10/flight_1.jpg" alt="">
+                                    </div>
+                                    <div class="title">
+                                        <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                        <h6 class="color-grey-3">one way flights</h6>
+                                        <h4><b>Cheap Flights to Paris</b></h4>
+                                        <p>Book now and <span class="color-red-3">save 30%</span></p>
+                                        <div class="clearfix">
+                                            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img
+                                                    src="https://carnivalguide.co/new/img/flag_icon_grey.png" alt="">view more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-visible" style="width: 300px; height: 444px;">
+                                <div class="hotel-item style-7">
+                                    <div class="radius-top">
+                                        <img src="https://carnivalguide.co/new/img/home_10/flight_2.jpg" alt="">
+                                    </div>
+                                    <div class="title">
+                                        <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                        <h6 class="color-grey-3">one way flights</h6>
+                                        <h4><b>Cheap Flights to london</b></h4>
+                                        <p>Book now and <span class="color-red-3">save 30%</span></p>
+                                        <div class="clearfix">
+                                            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img
+                                                    src="https://carnivalguide.co/new/img/flag_icon_grey.png" alt="">view more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-visible" style="width: 300px; height: 444px;">
+                                <div class="hotel-item style-7">
+                                    <div class="radius-top">
+                                        <img src="https://carnivalguide.co/new/img/home_10/flight_3.jpg" alt="">
+                                    </div>
+                                    <div class="title">
+                                        <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                        <h6 class="color-grey-3">one way flights</h6>
+                                        <h4><b>Flights to monaco</b></h4>
+                                        <p>Book now and <span class="color-red-3">save 30%</span></p>
+                                        <div class="clearfix">
+                                            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img
+                                                    src="https://carnivalguide.co/new/img/flag_icon_grey.png" alt="">view more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-visible" style="width: 300px; height: 444px;">
+                                <div class="hotel-item style-7">
+                                    <div class="radius-top">
+                                        <img src="https://carnivalguide.co/new/img/home_10/flight_4.jpg" alt="">
+                                    </div>
+                                    <div class="title">
+                                        <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                        <h6 class="color-grey-3">one way flights</h6>
+                                        <h4><b>flights to new zealand</b></h4>
+                                        <p>Book now and <span class="color-red-3">save 30%</span></p>
+                                        <div class="clearfix">
+                                            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o">book now</a>
+                                            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img
+                                                    src="https://carnivalguide.co/new/img/flag_icon_grey.png" alt="">view more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination poin-style-2 pagination-swiper-unique-id-0"><span
+                                class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"
+                                style="display: inline-block;"></span><span
+                                class="swiper-pagination-switch swiper-visible-switch" style="display: none;"></span><span
+                                class="swiper-pagination-switch swiper-visible-switch" style="display: none;"></span><span
+                                class="swiper-pagination-switch swiper-visible-switch" style="display: none;"></span>
+                        </div>
+                    </div>
+                    <div class="swiper-arrow-left offers-arrow color-4"><span class="fa fa-angle-left"></span></div>
+                    <div class="swiper-arrow-right offers-arrow color-4"><span class="fa fa-angle-right"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-wraper bg-grey-2 padd-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <div class="second-title">
+                        <h4 class="subtitle color-red-3 underline">best flights</h4>
+                        <h2>best flights this month</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-lg-4">
+                    <div class="city-entry style-2 bg-grey-2">
+                        <div class="tour-block tour-block-s-5 hover-red-3 underline-block">
+                            <div class="tour-layer delay-1"></div>
+                            <img src="https://carnivalguide.co/new/img/home_10/city_1.jpg" class="res-img" alt="">
+                            <div class="tour-caption">
+                                <div class="vertical-align">
+                                    <h5>best flights</h5>
+                                    <h3 class="underline hover-it">to france</h3>
+                                    <h4><b>save 30%</b> this month</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flight-desc bg-white">
+                            <div class="flight-line clearfix">
+                                <a class="fl_image" href="#"><img src="https://carnivalguide.co/new/img/home_10/company_1.jpg"
+                                        alt=""></a>
+                                <div class="fl_content">
+                                    <h4 class="fl_title color-dark-2">fly London to Paris</h4>
+                                    <div class="fl_direct color-grey-3">one way flights</div>
+                                    <div class="fl_price color-red-3"><span class="color-dark-2-light">$470</span> $300
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flight-line clearfix">
+                                <a class="fl_image" href="#"><img src="https://carnivalguide.co/new/img/home_10/company_2.jpg"
+                                        alt=""></a>
+                                <div class="fl_content">
+                                    <h4 class="fl_title color-dark-2">fly madrid to Paris</h4>
+                                    <div class="fl_direct color-grey-3">one way flights</div>
+                                    <div class="fl_price color-red-3"><span class="color-dark-2-light">$470</span> $300
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flight-line clearfix">
+                                <a class="fl_image" href="#"><img src="https://carnivalguide.co/new/img/home_10/company_3.jpg"
+                                        alt=""></a>
+                                <div class="fl_content">
+                                    <h4 class="fl_title color-dark-2">fly dubai to Paris</h4>
+                                    <div class="fl_direct color-grey-3">one way flights</div>
+                                    <div class="fl_price color-red-3"><span class="color-dark-2-light">$470</span> $300
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-  	<div class="list-wrapper bg-grey-2">
-  		<div class="container">		
-  			<div class="row">
-  				<div class="col-xs-12 col-sm-4 col-md-3">
-  					<div class="sidebar bg-white clearfix">
-						<div class="sidebar-block">
-							<h4 class="sidebar-title color-dark-2">search</h4>
-							<div class="search-inputs">
-								<div class="form-block clearfix">
-									<div class="input-style-1 b-50 color-3">
-										<img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
-										<input type="text" placeholder="Where do you want to go?">
-									</div>
-								</div>							
-								<div class="form-block clearfix">
-									<div class="input-style-1 b-50 color-3">
-										<img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-										<input type="text" placeholder="Check In" class="datepicker">
-									</div>					
-								</div>
-								<div class="form-block clearfix">
-									<div class="input-style-1 b-50 color-3">
-										<img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-										<input type="text" placeholder="Check Out" class="datepicker">
-									</div>					
-								</div>
-							</div>
-							<input type="submit" class="c-button b-40 bg-red-3 hv-red-3-o" value="search">				
-						</div>
-						<div class="sidebar-block">
-							<h4 class="sidebar-title color-dark-2">categories</h4>
-							<ul class="sidebar-category color-4">
-								<li class="active">
-									<a class="cat-drop" href="#">tours <span class="fr">(68)</span></a>
-									<ul>
-										<li><a href="#">sea tours (785)</a></li>
-										<li><a href="#">food tours (85)</a></li>
-										<li><a href="#">romantic tours (125)</a></li>
-										<li><a href="#">honeymoon tours (70)</a></li>
-										<li><a href="#">mountain tours (159)</a></li>
-									</ul>
-								</li>
-								<li>
-									<a class="cat-drop" href="#">hotels <span class="fr">(125)</span></a>
-									<ul>
-										<li><a href="#">sea tours (785)</a></li>
-										<li><a href="#">food tours (85)</a></li>
-										<li><a href="#">romantic tours (125)</a></li>
-										<li><a href="#">honeymoon tours (70)</a></li>
-										<li><a href="#">mountain tours (159)</a></li>
-									</ul>									
-								</li>
-								<li>
-									<a class="cat-drop" href="#">cruises <span class="fr">(75)</span></a>
-									<ul>
-										<li><a href="#">sea tours (785)</a></li>
-										<li><a href="#">food tours (85)</a></li>
-										<li><a href="#">romantic tours (125)</a></li>
-										<li><a href="#">honeymoon tours (70)</a></li>
-										<li><a href="#">mountain tours (159)</a></li>
-									</ul>									
-								</li>
-								<li>
-									<a class="cat-drop" href="#">flights  <span class="fr">(93)</span></a>
-									<ul>
-										<li><a href="#">sea tours (785)</a></li>
-										<li><a href="#">food tours (85)</a></li>
-										<li><a href="#">romantic tours (125)</a></li>
-										<li><a href="#">honeymoon tours (70)</a></li>
-										<li><a href="#">mountain tours (159)</a></li>
-									</ul>									
-								</li>								
-							</ul>
-						</div>
-						<div class="sidebar-block">
-							<h4 class="sidebar-title color-dark-2">price range</h4>
-							<div class="slider-range color-4 clearfix" data-counter="$" data-position="start" data-from="0" data-to="1500" data-min="0" data-max="2000">
-								<div class="range"></div>
-								<input type="text" class="amount-start" readonly value="$0">
-								<input type="text" class="amount-end" readonly value="$1500">						
-							</div>
-							<input type="submit" class="c-button b-40 bg-red-3 hv-red-3-o" value="search">				
-						</div>
-						<div class="sidebar-block">
-							<h4 class="sidebar-title color-dark-2">flight times</h4>
-							<div class="slider-range color-4 clearfix" data-counter=":00" data-position="end" data-from="0" data-to="1500" data-min="0" data-max="24">
-								<div class="range"></div>
-								<input type="text" class="amount-start" readonly value="$0">
-								<input type="text" class="amount-end" readonly value="$1500">						
-							</div>
-							<input type="submit" class="c-button b-40 bg-red-3 hv-red-3-o" value="search">				
-						</div>						
-						<div class="sidebar-block">
-							<h4 class="sidebar-title color-dark-2">airlines</h4>
-							<div class="sidebar-rating">
-								<div class="input-entry color-7">
-									<input class="checkbox-form" id="text-1" type="checkbox" name="checkbox" value="climat control">
-									<label class="clearfix" for="text-1" >
-										<span class="sp-check"><i class="fa fa-check"></i></span>
-										<span class="checkbox-text">Air tahiti nui</span>
-									</label>
-								</div>
-								<div class="input-entry color-7">
-									<input class="checkbox-form" id="text-2" type="checkbox" name="checkbox" value="climat control">
-									<label class="clearfix" for="text-2" >
-										<span class="sp-check"><i class="fa fa-check"></i></span>
-										<span class="checkbox-text">Air France</span>
-									</label>
-								</div>
-								<div class="input-entry color-7">
-									<input class="checkbox-form" id="text-3" type="checkbox" name="checkbox" value="climat control">
-									<label class="clearfix" for="text-3" >
-										<span class="sp-check"><i class="fa fa-check"></i></span>
-										<span class="checkbox-text">US Airways</span>
-									</label>
-								</div>
-								<div class="input-entry color-7">
-									<input class="checkbox-form" id="text-4" type="checkbox" name="checkbox" value="climat control">
-									<label class="clearfix" for="text-4" >
-										<span class="sp-check"><i class="fa fa-check"></i></span>
-										<span class="checkbox-text">Alitalia</span>
-									</label>
-								</div>
-								<div class="input-entry color-7">
-									<input class="checkbox-form" id="text-5" type="checkbox" name="checkbox" value="climat control">
-									<label class="clearfix" for="text-5" >
-										<span class="sp-check"><i class="fa fa-check"></i></span>
-										<span class="checkbox-text">Delta Airlines</span>
-									</label>
-								</div>
-								<div class="input-entry color-7">
-									<input class="checkbox-form" id="text-6" type="checkbox" name="checkbox" value="climat control">
-									<label class="clearfix" for="text-6" >
-										<span class="sp-check"><i class="fa fa-check"></i></span>
-										<span class="checkbox-text">United Airlines</span>
-									</label>
-								</div>
-								<div class="input-entry color-7">
-									<input class="checkbox-form" id="text-7" type="checkbox" name="checkbox" value="climat control">
-									<label class="clearfix" for="text-7" >
-										<span class="sp-check"><i class="fa fa-check"></i></span>
-										<span class="checkbox-text">Major Airline</span>
-									</label>
-								</div>																
-							</div>											
-						</div>											
-						<div class="sidebar-block">
-							<h4 class="sidebar-title color-dark-2">Review Score</h4>
-							<div class="sidebar-score">
-								<div class="input-entry type-2 color-8">
-									<input class="checkbox-form" id="score-5" type="checkbox" name="checkbox" value="climat control">
-									<label class="clearfix" for="score-5" >
-										<span class="checkbox-text">
-											5
-											<span class="rate">
-												<span class="fa fa-star color-yellow"></span>
-											</span>
-										</span>									
-										<span class="sp-check"><i class="fa fa-check"></i></span>
-									</label>
-								</div>
-								<div class="input-entry type-2 color-8">
-									<input class="checkbox-form" id="score-4" type="checkbox" name="checkbox" value="climat control">
-									<label class="clearfix" for="score-4" >
-										<span class="checkbox-text">
-											4
-											<span class="rate">
-												<span class="fa fa-star color-yellow"></span>
-											</span>
-										</span>									
-										<span class="sp-check"><i class="fa fa-check"></i></span>
-									</label>
-								</div>
-								<div class="input-entry type-2 color-8">
-									<input class="checkbox-form" id="score-3" type="checkbox" name="checkbox" value="climat control">
-									<label class="clearfix" for="score-3" >
-										<span class="checkbox-text">
-											3
-											<span class="rate">
-												<span class="fa fa-star color-yellow"></span>
-											</span>
-										</span>									
-										<span class="sp-check"><i class="fa fa-check"></i></span>
-									</label>
-								</div>
-								<div class="input-entry type-2 color-8">
-									<input class="checkbox-form" id="score-2" type="checkbox" name="checkbox" value="climat control">
-									<label class="clearfix" for="score-2" >
-										<span class="checkbox-text">
-											2
-											<span class="rate">
-												<span class="fa fa-star color-yellow"></span>
-											</span>
-										</span>									
-										<span class="sp-check"><i class="fa fa-check"></i></span>
-									</label>
-								</div>
-								<div class="input-entry type-2 color-8">
-									<input class="checkbox-form" id="score-1" type="checkbox" name="checkbox" value="climat control">
-									<label class="clearfix" for="score-1" >
-										<span class="checkbox-text">
-											1
-											<span class="rate">
-												<span class="fa fa-star color-yellow"></span>
-											</span>
-										</span>									
-										<span class="sp-check"><i class="fa fa-check"></i></span>
-									</label>
-								</div>
-							</div>							
-						</div>					
-  					</div>
-  				</div>
-  				<div class="col-xs-12 col-sm-8 col-md-9">
-					<div class="list-header clearfix">
-						<div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
-						  <div class="drop">
-							 <b>Sort by price</b>
-								<a href="#" class="drop-list"><i class="fa fa-angle-down"></i></a>
-								<span>
-								    <a href="#">ASC</a>
-									<a href="#">DESC</a>
-								</span>
-						   </div>
-						</div>
-						<div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
-						  <div class="drop">
-							 <b>Sort by ranking</b>
-								<a href="#" class="drop-list"><i class="fa fa-angle-down"></i></a>
-								<span>
-								    <a href="#">ASC</a>
-									<a href="#">DESC</a>
-								</span>
-						   </div>
-						</div>
-						<div class="list-view-change">
-							<div class="change-grid color-4 fr"><i class="fa fa-th"></i></div>
-							<div class="change-list color-4 fr active"><i class="fa fa-bars"></i></div>
-							<div class="change-to-label fr color-grey-8">View:</div>
-						</div>
-					</div>
-  					<div class="list-content clearfix">
-  						<div class="list-item-entry">
-					        <div class="hotel-item style-10 bg-white">
-					        	<div class="table-view">
-						          	<div class="radius-top cell-view">
-						          	 	<img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_1.jpg" alt="">	          	 	 
-						          	</div>
-						          	<div class="title hotel-middle cell-view">
-							            <h5>from <strong class="color-red-3">$860</strong> / person</h5>
-							            <h6 class="color-grey-3 list-hidden">one way flights</h6>
-						          	    <h4><b>Cheap Flights to Paris</b></h4>
-						          	    <p class="list-hidden">Book now and <span class="color-red-3">save 30%</span></p>
-						          	    <div class="fi_block grid-hidden row row10">
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    </div>
-							            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o">book now</a>
-							            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view more</a>
-						            </div>
-						            <div class="title hotel-right clearfix cell-view grid-hidden">
-					          	        <div class="hotel-right-text color-dark-2">one way flights</div>
-					          	        <div class="hotel-right-text color-dark-2">1 stop</div>
-						            </div>						            
-					            </div>
-					        </div>					
-  						</div>
-  						<div class="list-item-entry">
-					        <div class="hotel-item style-10 bg-white">
-					        	<div class="table-view">
-						          	<div class="radius-top cell-view">
-						          	 	<img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_2.jpg" alt="">	          	 	 
-						          	</div>
-						          	<div class="title hotel-middle cell-view">
-							            <h5>from <strong class="color-red-3">$860</strong> / person</h5>
-							            <h6 class="color-grey-3 list-hidden">one way flights</h6>
-						          	    <h4><b>Cheap Flights to london</b></h4>
-						          	    <p class="list-hidden">Book now and <span class="color-red-3">save 30%</span></p>
-						          	    <div class="fi_block grid-hidden row row10">
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    </div>
-							            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o">book now</a>
-							            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view more</a>
-						            </div>
-						            <div class="title hotel-right clearfix cell-view grid-hidden">
-					          	        <div class="hotel-right-text color-dark-2">one way flights</div>
-					          	        <div class="hotel-right-text color-dark-2">1 stop</div>
-						            </div>						            
-					            </div>
-					        </div>					
-  						</div>
-  						<div class="list-item-entry">
-					        <div class="hotel-item style-10 bg-white">
-					        	<div class="table-view">
-						          	<div class="radius-top cell-view">
-						          	 	<img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_1.jpg" alt="">	          	 	 
-						          	</div>
-						          	<div class="title hotel-middle cell-view">
-							            <h5>from <strong class="color-red-3">$860</strong> / person</h5>
-							            <h6 class="color-grey-3 list-hidden">one way flights</h6>
-						          	    <h4><b>Flights to monaco</b></h4>
-						          	    <p class="list-hidden">Book now and <span class="color-red-3">save 30%</span></p>
-						          	    <div class="fi_block grid-hidden row row10">
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    </div>
-							            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o">book now</a>
-							            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view more</a>
-						            </div>
-						            <div class="title hotel-right clearfix cell-view grid-hidden">
-					          	        <div class="hotel-right-text color-dark-2">one way flights</div>
-					          	        <div class="hotel-right-text color-dark-2">1 stop</div>
-						            </div>						            
-					            </div>
-					        </div>					
-  						</div>
-  						<div class="list-item-entry">
-					        <div class="hotel-item style-10 bg-white">
-					        	<div class="table-view">
-						          	<div class="radius-top cell-view">
-						          	 	<img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_3.jpg" alt="">	          	 	 
-						          	</div>
-						          	<div class="title hotel-middle cell-view">
-							            <h5>from <strong class="color-red-3">$860</strong> / person</h5>
-							            <h6 class="color-grey-3 list-hidden">one way flights</h6>
-						          	    <h4><b>Cheap Flights to Paris</b></h4>
-						          	    <p class="list-hidden">Book now and <span class="color-red-3">save 30%</span></p>
-						          	    <div class="fi_block grid-hidden row row10">
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    </div>
-							            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o">book now</a>
-							            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view more</a>
-						            </div>
-						            <div class="title hotel-right clearfix cell-view grid-hidden">
-					          	        <div class="hotel-right-text color-dark-2">one way flights</div>
-					          	        <div class="hotel-right-text color-dark-2">1 stop</div>
-						            </div>						            
-					            </div>
-					        </div>					
-  						</div>
-  						<div class="list-item-entry">
-					        <div class="hotel-item style-10 bg-white">
-					        	<div class="table-view">
-						          	<div class="radius-top cell-view">
-						          	 	<img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_3.jpg" alt="">	          	 	 
-						          	</div>
-						          	<div class="title hotel-middle cell-view">
-							            <h5>from <strong class="color-red-3">$860</strong> / person</h5>
-							            <h6 class="color-grey-3 list-hidden">one way flights</h6>
-						          	    <h4><b>Cheap Flights to london</b></h4>
-						          	    <p class="list-hidden">Book now and <span class="color-red-3">save 30%</span></p>
-						          	    <div class="fi_block grid-hidden row row10">
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    </div>
-							            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o">book now</a>
-							            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view more</a>
-						            </div>
-						            <div class="title hotel-right clearfix cell-view grid-hidden">
-					          	        <div class="hotel-right-text color-dark-2">one way flights</div>
-					          	        <div class="hotel-right-text color-dark-2">1 stop</div>
-						            </div>						            
-					            </div>
-					        </div>					
-  						</div>
-  						<div class="list-item-entry">
-					        <div class="hotel-item style-10 bg-white">
-					        	<div class="table-view">
-						          	<div class="radius-top cell-view">
-						          	 	<img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_4.jpg" alt="">	          	 	 
-						          	</div>
-						          	<div class="title hotel-middle cell-view">
-							            <h5>from <strong class="color-red-3">$860</strong> / person</h5>
-							            <h6 class="color-grey-3 list-hidden">one way flights</h6>
-						          	    <h4><b>Flights to monaco</b></h4>
-						          	    <p class="list-hidden">Book now and <span class="color-red-3">save 30%</span></p>
-						          	    <div class="fi_block grid-hidden row row10">
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    </div>
-							            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o">book now</a>
-							            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view more</a>
-						            </div>
-						            <div class="title hotel-right clearfix cell-view grid-hidden">
-					          	        <div class="hotel-right-text color-dark-2">one way flights</div>
-					          	        <div class="hotel-right-text color-dark-2">1 stop</div>
-						            </div>						            
-					            </div>
-					        </div>					
-  						</div>
-  						<div class="list-item-entry">
-					        <div class="hotel-item style-10 bg-white">
-					        	<div class="table-view">
-						          	<div class="radius-top cell-view">
-						          	 	<img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_2.jpg" alt="">	          	 	 
-						          	</div>
-						          	<div class="title hotel-middle cell-view">
-							            <h5>from <strong class="color-red-3">$860</strong> / person</h5>
-							            <h6 class="color-grey-3 list-hidden">one way flights</h6>
-						          	    <h4><b>Cheap Flights to Paris</b></h4>
-						          	    <p class="list-hidden">Book now and <span class="color-red-3">save 30%</span></p>
-						          	    <div class="fi_block grid-hidden row row10">
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    </div>
-							            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o">book now</a>
-							            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view more</a>
-						            </div>
-						            <div class="title hotel-right clearfix cell-view grid-hidden">
-					          	        <div class="hotel-right-text color-dark-2">one way flights</div>
-					          	        <div class="hotel-right-text color-dark-2">1 stop</div>
-						            </div>						            
-					            </div>
-					        </div>					
-  						</div>
-  						<div class="list-item-entry">
-					        <div class="hotel-item style-10 bg-white">
-					        	<div class="table-view">
-						          	<div class="radius-top cell-view">
-						          	 	<img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_4.jpg" alt="">	          	 	 
-						          	</div>
-						          	<div class="title hotel-middle cell-view">
-							            <h5>from <strong class="color-red-3">$860</strong> / person</h5>
-							            <h6 class="color-grey-3 list-hidden">one way flights</h6>
-						          	    <h4><b>Cheap Flights to london</b></h4>
-						          	    <p class="list-hidden">Book now and <span class="color-red-3">save 30%</span></p>
-						          	    <div class="fi_block grid-hidden row row10">
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    </div>
-							            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o">book now</a>
-							            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view more</a>
-						            </div>
-						            <div class="title hotel-right clearfix cell-view grid-hidden">
-					          	        <div class="hotel-right-text color-dark-2">one way flights</div>
-					          	        <div class="hotel-right-text color-dark-2">1 stop</div>
-						            </div>						            
-					            </div>
-					        </div>					
-  						</div>
-  						<div class="list-item-entry">
-					        <div class="hotel-item style-10 bg-white">
-					        	<div class="table-view">
-						          	<div class="radius-top cell-view">
-						          	 	<img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_1.jpg" alt="">	          	 	 
-						          	</div>
-						          	<div class="title hotel-middle cell-view">
-							            <h5>from <strong class="color-red-3">$860</strong> / person</h5>
-							            <h6 class="color-grey-3 list-hidden">one way flights</h6>
-						          	    <h4><b>Flights to monaco</b></h4>
-						          	    <p class="list-hidden">Book now and <span class="color-red-3">save 30%</span></p>
-						          	    <div class="fi_block grid-hidden row row10">
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    </div>
-							            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o">book now</a>
-							            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view more</a>
-						            </div>
-						            <div class="title hotel-right clearfix cell-view grid-hidden">
-					          	        <div class="hotel-right-text color-dark-2">one way flights</div>
-					          	        <div class="hotel-right-text color-dark-2">1 stop</div>
-						            </div>						            
-					            </div>
-					        </div>					
-  						</div>
-  						<div class="list-item-entry">
-					        <div class="hotel-item style-10 bg-white">
-					        	<div class="table-view">
-						          	<div class="radius-top cell-view">
-						          	 	<img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_3.jpg" alt="">	          	 	 
-						          	</div>
-						          	<div class="title hotel-middle cell-view">
-							            <h5>from <strong class="color-red-3">$860</strong> / person</h5>
-							            <h6 class="color-grey-3 list-hidden">one way flights</h6>
-						          	    <h4><b>Cheap Flights to Paris</b></h4>
-						          	    <p class="list-hidden">Book now and <span class="color-red-3">save 30%</span></p>
-						          	    <div class="fi_block grid-hidden row row10">
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    </div>
-							            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o">book now</a>
-							            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view more</a>
-						            </div>
-						            <div class="title hotel-right clearfix cell-view grid-hidden">
-					          	        <div class="hotel-right-text color-dark-2">one way flights</div>
-					          	        <div class="hotel-right-text color-dark-2">1 stop</div>
-						            </div>						            
-					            </div>
-					        </div>					
-  						</div>
-  						<div class="list-item-entry">
-					        <div class="hotel-item style-10 bg-white">
-					        	<div class="table-view">
-						          	<div class="radius-top cell-view">
-						          	 	<img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_2.jpg" alt="">	          	 	 
-						          	</div>
-						          	<div class="title hotel-middle cell-view">
-							            <h5>from <strong class="color-red-3">$860</strong> / person</h5>
-							            <h6 class="color-grey-3 list-hidden">one way flights</h6>
-						          	    <h4><b>Cheap Flights to london</b></h4>
-						          	    <p class="list-hidden">Book now and <span class="color-red-3">save 30%</span></p>
-						          	    <div class="fi_block grid-hidden row row10">
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    </div>
-							            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o">book now</a>
-							            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view more</a>
-						            </div>
-						            <div class="title hotel-right clearfix cell-view grid-hidden">
-					          	        <div class="hotel-right-text color-dark-2">one way flights</div>
-					          	        <div class="hotel-right-text color-dark-2">1 stop</div>
-						            </div>						            
-					            </div>
-					        </div>					
-  						</div>
-  						<div class="list-item-entry">
-					        <div class="hotel-item style-10 bg-white">
-					        	<div class="table-view">
-						          	<div class="radius-top cell-view">
-						          	 	<img src="https://carnivalguide.co/travel/img/tour_list/flight_grid_1.jpg" alt="">	          	 	 
-						          	</div>
-						          	<div class="title hotel-middle cell-view">
-							            <h5>from <strong class="color-red-3">$860</strong> / person</h5>
-							            <h6 class="color-grey-3 list-hidden">one way flights</h6>
-						          	    <h4><b>Flights to monaco</b></h4>
-						          	    <p class="list-hidden">Book now and <span class="color-red-3">save 30%</span></p>
-						          	    <div class="fi_block grid-hidden row row10">
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_2.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    	<div class="flight-icon col-xs-6 col10">
-						          	    		<img class="fi_icon" src="https://carnivalguide.co/travel/img/tour_list/flight_icon_1.png" alt="">
-						          	    		<div class="fi_content">
-						          	    			<div class="fi_title color-dark-2">take off</div>
-						          	    			<div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
-						          	    		</div>
-						          	    	</div>
-						          	    </div>
-							            <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o">book now</a>
-							            <a href="#" class="c-button b-40 color-grey-3 hv-o fr"><img src="https://carnivalguide.co/travel/img/flag_icon_grey.png" alt="">view more</a>
-						            </div>
-						            <div class="title hotel-right clearfix cell-view grid-hidden">
-					          	        <div class="hotel-right-text color-dark-2">one way flights</div>
-					          	        <div class="hotel-right-text color-dark-2">1 stop</div>
-						            </div>						            
-					            </div>
-					        </div>					
-  						</div>  						   						 						  						  						  						  						  						   						  						  						  						  						 						   						 						   						 						  						   						 						  						
-  					</div>
+                <div class="col-xs-12 col-lg-4">
+                    <div class="city-entry style-2 bg-grey-2">
+                        <div class="tour-block tour-block-s-5 hover-red-3 underline-block">
+                            <div class="tour-layer delay-1"></div>
+                            <img src="https://carnivalguide.co/new/img/home_10/city_2.jpg" class="res-img" alt="">
+                            <div class="tour-caption">
+                                <div class="vertical-align">
+                                    <h5>best flights</h5>
+                                    <h3 class="underline hover-it">to france</h3>
+                                    <h4><b>save 30%</b> this month</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flight-desc bg-white">
+                            <div class="flight-line clearfix">
+                                <a class="fl_image" href="#"><img src="https://carnivalguide.co/new/img/home_10/company_4.jpg"
+                                        alt=""></a>
+                                <div class="fl_content">
+                                    <h4 class="fl_title color-dark-2">fly London to Paris</h4>
+                                    <div class="fl_direct color-grey-3">one way flights</div>
+                                    <div class="fl_price color-red-3"><span class="color-dark-2-light">$470</span> $300
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flight-line clearfix">
+                                <a class="fl_image" href="#"><img src="https://carnivalguide.co/new/img/home_10/company_5.jpg"
+                                        alt=""></a>
+                                <div class="fl_content">
+                                    <h4 class="fl_title color-dark-2">fly madrid to Paris</h4>
+                                    <div class="fl_direct color-grey-3">one way flights</div>
+                                    <div class="fl_price color-red-3"><span class="color-dark-2-light">$470</span> $300
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flight-line clearfix">
+                                <a class="fl_image" href="#"><img src="https://carnivalguide.co/new/img/home_10/company_6.jpg"
+                                        alt=""></a>
+                                <div class="fl_content">
+                                    <h4 class="fl_title color-dark-2">fly dubai to Paris</h4>
+                                    <div class="fl_direct color-grey-3">one way flights</div>
+                                    <div class="fl_price color-red-3"><span class="color-dark-2-light">$470</span> $300
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-  					<div class="c_pagination clearfix padd-120">
-						<a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">prev page</a>
-						<a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fr">next page</a>
-						<ul class="cp_content color-4">
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">...</a></li>
-							<li><a href="#">10</a></li>
-						</ul>
-  					</div>
-  				</div>
-  			</div>
-  		</div>
-  	</div>
+                <div class="col-xs-12 col-lg-4">
+                    <div class="city-entry style-2 bg-grey-2">
+                        <div class="tour-block tour-block-s-5 hover-red-3 underline-block">
+                            <div class="tour-layer delay-1"></div>
+                            <img src="https://carnivalguide.co/new/img/home_10/city_3.jpg" class="res-img" alt="">
+                            <div class="tour-caption">
+                                <div class="vertical-align">
+                                    <h5>best flights</h5>
+                                    <h3 class="underline hover-it">to france</h3>
+                                    <h4><b>save 30%</b> this month</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flight-desc bg-white">
+                            <div class="flight-line clearfix">
+                                <a class="fl_image" href="#"><img src="https://carnivalguide.co/new/img/home_10/company_1.jpg"
+                                        alt=""></a>
+                                <div class="fl_content">
+                                    <h4 class="fl_title color-dark-2">fly London to Paris</h4>
+                                    <div class="fl_direct color-grey-3">one way flights</div>
+                                    <div class="fl_price color-red-3"><span class="color-dark-2-light">$470</span> $300
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flight-line clearfix">
+                                <a class="fl_image" href="#"><img src="https://carnivalguide.co/new/img/home_10/company_2.jpg"
+                                        alt=""></a>
+                                <div class="fl_content">
+                                    <h4 class="fl_title color-dark-2">fly madrid to Paris</h4>
+                                    <div class="fl_direct color-grey-3">one way flights</div>
+                                    <div class="fl_price color-red-3"><span class="color-dark-2-light">$470</span> $300
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flight-line clearfix">
+                                <a class="fl_image" href="#"><img src="https://carnivalguide.co/new/img/home_10/company_3.jpg"
+                                        alt=""></a>
+                                <div class="fl_content">
+                                    <h4 class="fl_title color-dark-2">fly dubai to Paris</h4>
+                                    <div class="fl_direct color-grey-3">one way flights</div>
+                                    <div class="fl_price color-red-3"><span class="color-dark-2-light">$470</span> $300
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="main-wraper padd-90 background-block" style="background-image: url(https://carnivalguide.co/new/img/home_10/bg_1.jpg);">
+        <img class="center-image" src="https://carnivalguide.co/new/img/home_10/bg_1.jpg" alt="" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <div class="second-title">
+                        <h4 class="subtitle color-white underline">subscribe</h4>
+                        <h2 class="color-white">let’s subscribe</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <form class="subscribe-form" action="#">
+                        <div class="subscribe-input input-style-1 fl low-pad">
+                            <input type="text" required="" placeholder="Enter your email">
+                        </div>
+                        <button type="submit"
+                            class="c-button b-60 bg-red-3 hv-red-3-o fr"><span>subscribe</span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-wraper padd-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <div class="second-title">
+                        <h4 class="subtitle color-red-3 underline">best flights</h4>
+                        <h2>best flights this month</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="tour-item-grid row">
+                <div class="col-xs-12 col-sm-4 clear-sm-3">
+                    <div class="tour-item style-4">
+                        <div class="radius-top">
+                            <img src="https://carnivalguide.co/new/img/home_10/tour_1.jpg" alt="">
+                            <div class="tour-weather red">hot price</div>
+                        </div>
+                        <div class="tour-desc bg-white">
+                            <a href="#" class="c-button bg-red-3 hv-red-3-o delay-2 b-40"><span>view more</span></a>
+                            <h4><a class="tour-title color-dark-2 link-red-3" href="#">Flights to france</a></h4>
+                            <div class="tour-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt="">35 Airlines</div>
+                            <div class="tour-price">from <span class="color-red-3">$860</span> / person</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 clear-sm-3">
+                    <div class="tour-item style-4">
+                        <div class="radius-top">
+                            <img src="https://carnivalguide.co/new/img/home_10/tour_2.jpg" alt="">
+                        </div>
+                        <div class="tour-desc bg-white">
+                            <a href="#" class="c-button bg-red-3 hv-red-3-o delay-2 b-40"><span>view more</span></a>
+                            <h4><a class="tour-title color-dark-2 link-red-3" href="#">Flights to spaine</a></h4>
+                            <div class="tour-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt="">35 Airlines</div>
+                            <div class="tour-price">from <span class="color-red-3">$600</span> / person</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 clear-sm-3">
+                    <div class="tour-item style-4">
+                        <div class="radius-top">
+                            <img src="https://carnivalguide.co/new/img/home_10/tour_3.jpg" alt="">
+                            <div class="tour-weather green">hot price</div>
+                        </div>
+                        <div class="tour-desc bg-white">
+                            <a href="#" class="c-button bg-red-3 hv-red-3-o delay-2 b-40"><span>view more</span></a>
+                            <h4><a class="tour-title color-dark-2 link-red-3" href="#">Flights to usa</a></h4>
+                            <div class="tour-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt="">35 Airlines</div>
+                            <div class="tour-price">from <span class="color-red-3">$700</span> / person</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 clear-sm-3">
+                    <div class="tour-item style-4">
+                        <div class="radius-top">
+                            <img src="https://carnivalguide.co/new/img/home_10/tour_4.jpg" alt="">
+                        </div>
+                        <div class="tour-desc bg-white">
+                            <a href="#" class="c-button bg-red-3 hv-red-3-o delay-2 b-40"><span>view more</span></a>
+                            <h4><a class="tour-title color-dark-2 link-red-3" href="#">Flights to Cyprus</a></h4>
+                            <div class="tour-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt="">35 Airlines</div>
+                            <div class="tour-price">from <span class="color-red-3">$550</span> / person</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 clear-sm-3">
+                    <div class="tour-item style-4">
+                        <div class="radius-top">
+                            <img src="https://carnivalguide.co/new/img/home_10/tour_5.jpg" alt="">
+                            <div class="tour-weather green">hot price</div>
+                        </div>
+                        <div class="tour-desc bg-white">
+                            <a href="#" class="c-button bg-red-3 hv-red-3-o delay-2 b-40"><span>view more</span></a>
+                            <h4><a class="tour-title color-dark-2 link-red-3" href="#">Flights to Sweden</a></h4>
+                            <div class="tour-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt="">35 Airlines</div>
+                            <div class="tour-price">from <span class="color-red-3">$990</span> / person</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 clear-sm-3">
+                    <div class="tour-item style-4">
+                        <div class="radius-top">
+                            <img src="https://carnivalguide.co/new/img/home_10/tour_1.jpg" alt="">
+                            <div class="tour-weather red">hot price</div>
+                        </div>
+                        <div class="tour-desc bg-white">
+                            <a href="#" class="c-button bg-red-3 hv-red-3-o delay-2 b-40"><span>view more</span></a>
+                            <h4><a class="tour-title color-dark-2 link-red-3" href="#">Flights to monaco</a></h4>
+                            <div class="tour-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt="">35 Airlines</div>
+                            <div class="tour-price">from <span class="color-red-3">$300</span> / person</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-wraper bg-grey-2 padd-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <div class="second-title">
+                        <h4 class="subtitle color-red-3 underline">prices</h4>
+                        <h2>Top destinations around the world</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="price-block">
+                <div class="pb_entry">
+                    <div class="table-view">
+                        <div class="pb_header bg-white cell-view">
+                            <img src="https://carnivalguide.co/new/img/home_10/airlines_1.png" alt="">
+                        </div>
+                        <div class="pb_content bg-grey-6 cell-view">
+                            <div class="pb-title color-dark-2">spain</div>
+                            <div class="pb-price color-dark-2">from <span class="color-red-3">$860</span></div>
+                            <div class="pb-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt=""> 35 Airlines</div>
+                            <div class="pb-text color-grey-3"><img class="location-icon"
+                                    src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">90 destination</div>
+                        </div>
+                        <div class="pb_content bg-grey-6 cell-view">
+                            <div class="pb-title color-dark-2">italy</div>
+                            <div class="pb-price color-dark-2">from <span class="color-red-3">$860</span></div>
+                            <div class="pb-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt=""> 35 Airlines</div>
+                            <div class="pb-text color-grey-3"><img class="location-icon"
+                                    src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">90 destination</div>
+                        </div>
+                        <div class="pb_content bg-grey-6 cell-view">
+                            <div class="pb-title color-dark-2">Germany</div>
+                            <div class="pb-price color-dark-2">from <span class="color-red-3">$860</span></div>
+                            <div class="pb-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt=""> 35 Airlines</div>
+                            <div class="pb-text color-grey-3"><img class="location-icon"
+                                    src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">90 destination</div>
+                        </div>
+                        <div class="pb_content bg-grey-6 cell-view">
+                            <div class="pb-title color-dark-2">Lithuania</div>
+                            <div class="pb-price color-dark-2">from <span class="color-red-3">$860</span></div>
+                            <div class="pb-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt=""> 35 Airlines</div>
+                            <div class="pb-text color-grey-3"><img class="location-icon"
+                                    src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">90 destination</div>
+                        </div>
+                        <div class="pb_check bg-white cell-view">
+                            <div class="pb_check_title color-dark-2">emarates flights</div>
+                            <div class="pb_check_text color-grey-3">Nunc cursus libero purus ac congue arcu cursus ut .
+                            </div>
+                            <a href="#" class="c-button bg-red-3 hv-red-3-o delay-2 b-40"><span>check all</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pb_entry">
+                    <div class="table-view">
+                        <div class="pb_header bg-white cell-view">
+                            <img src="https://carnivalguide.co/new/img/home_10/airlines_2.png" alt="">
+                        </div>
+                        <div class="pb_content bg-grey-6 cell-view">
+                            <div class="pb-title color-dark-2">spain</div>
+                            <div class="pb-price color-dark-2">from <span class="color-red-3">$860</span></div>
+                            <div class="pb-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt=""> 35 Airlines</div>
+                            <div class="pb-text color-grey-3"><img class="location-icon"
+                                    src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">90 destination</div>
+                        </div>
+                        <div class="pb_content bg-grey-6 cell-view">
+                            <div class="pb-title color-dark-2">monaco</div>
+                            <div class="pb-price color-dark-2">from <span class="color-red-3">$860</span></div>
+                            <div class="pb-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt=""> 35 Airlines</div>
+                            <div class="pb-text color-grey-3"><img class="location-icon"
+                                    src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">90 destination</div>
+                        </div>
+                        <div class="pb_content bg-grey-6 cell-view">
+                            <div class="pb-title color-dark-2">Sweden</div>
+                            <div class="pb-price color-dark-2">from <span class="color-red-3">$860</span></div>
+                            <div class="pb-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt=""> 35 Airlines</div>
+                            <div class="pb-text color-grey-3"><img class="location-icon"
+                                    src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">90 destination</div>
+                        </div>
+                        <div class="pb_content bg-grey-6 cell-view">
+                            <div class="pb-title color-dark-2">Cyprus</div>
+                            <div class="pb-price color-dark-2">from <span class="color-red-3">$860</span></div>
+                            <div class="pb-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt=""> 35 Airlines</div>
+                            <div class="pb-text color-grey-3"><img class="location-icon"
+                                    src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">90 destination</div>
+                        </div>
+                        <div class="pb_check bg-white cell-view">
+                            <div class="pb_check_title color-dark-2">singapore flights</div>
+                            <div class="pb_check_text color-grey-3">Nunc cursus libero purus ac congue arcu cursus ut .
+                            </div>
+                            <a href="#" class="c-button bg-red-3 hv-red-3-o delay-2 b-40"><span>check all</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pb_entry">
+                    <div class="table-view">
+                        <div class="pb_header bg-white cell-view">
+                            <img src="https://carnivalguide.co/new/img/home_10/airlines_1.png" alt="">
+                        </div>
+                        <div class="pb_content bg-grey-6 cell-view">
+                            <div class="pb-title color-dark-2">Sweden</div>
+                            <div class="pb-price color-dark-2">from <span class="color-red-3">$860</span></div>
+                            <div class="pb-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt=""> 35 Airlines</div>
+                            <div class="pb-text color-grey-3"><img class="location-icon"
+                                    src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">90 destination</div>
+                        </div>
+                        <div class="pb_content bg-grey-6 cell-view">
+                            <div class="pb-title color-dark-2">italy</div>
+                            <div class="pb-price color-dark-2">from <span class="color-red-3">$860</span></div>
+                            <div class="pb-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt=""> 35 Airlines</div>
+                            <div class="pb-text color-grey-3"><img class="location-icon"
+                                    src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">90 destination</div>
+                        </div>
+                        <div class="pb_content bg-grey-6 cell-view">
+                            <div class="pb-title color-dark-2">Lithuania</div>
+                            <div class="pb-price color-dark-2">from <span class="color-red-3">$860</span></div>
+                            <div class="pb-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt=""> 35 Airlines</div>
+                            <div class="pb-text color-grey-3"><img class="location-icon"
+                                    src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">90 destination</div>
+                        </div>
+                        <div class="pb_content bg-grey-6 cell-view">
+                            <div class="pb-title color-dark-2">Cyprus</div>
+                            <div class="pb-price color-dark-2">from <span class="color-red-3">$860</span></div>
+                            <div class="pb-text color-grey-3"><img class="plane-icon" src="https://carnivalguide.co/new/img/plane.png"
+                                    alt=""> 35 Airlines</div>
+                            <div class="pb-text color-grey-3"><img class="location-icon"
+                                    src="https://carnivalguide.co/new/img/loc_icon_small_grey.png" alt="">90 destination</div>
+                        </div>
+                        <div class="pb_check bg-white cell-view">
+                            <div class="pb_check_title color-dark-2">polish flights</div>
+                            <div class="pb_check_text color-grey-3">Nunc cursus libero purus ac congue arcu cursus ut .
+                            </div>
+                            <a href="#" class="c-button bg-red-3 hv-red-3-o delay-2 b-40"><span>check all</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-wraper padd-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <div class="second-title">
+                        <h4 class="subtitle color-blue-2 underline">news</h4>
+                        <h2>latest news</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach ($blogs as $blog)
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="s_news-entry">
+                            <img class="s_news-img img-full img-responsive"
+                                src="https://carnivalguide.co/travel/images/blog1.jpg" alt="">
+                            <h4 class="s_news-title"><a href="#">{{ $blog->title }}</a></h4>
+                            <div class="tour-info-line clearfix">
+                                <div class="tour-info fl">
+                                    <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                    <span class="font-style-2 color-dark-2">{{ $blog->created_at->format('d/m/Y') }}</span>
+                                </div>
+                                <div class="tour-info fl">
+                                    <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                    <span class="font-style-2 color-dark-2">By
+                                        {{ $blog->user->first_name . ' ' . $blog->user->last_name }}</span>
+                                </div>
+                                <div class="tour-info fl">
+                                    <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
+                                    <span class="font-style-2 color-dark-2">10 comments</span>
+                                </div>
+                            </div>
+                            {{-- <div class="s_news-text color-grey-3">{!! $blog->description !!}</div> --}}
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
 @endsection

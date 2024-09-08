@@ -58,6 +58,7 @@ Route::get('/', [FrontendConroller::class, 'home'])->name('front.home');
 Route::get('/event-listing', [FrontendConroller::class, 'event_listing'])->name('front.event.listing');
 Route::get('/tour-listing', [FrontendConroller::class, 'tour_listing'])->name('front.tour.listing');
 Route::get('/flight-listing', [FrontendConroller::class, 'flight_listing'])->name('front.flight.listing');
+Route::get('/hotel-listing', [FrontendConroller::class, 'hotel_listing'])->name('front.hotel.listing');
 Route::get('/flights', [FrontendConroller::class, 'flight'])->name('front.flights');
 Route::get('/gallery', [FrontendConroller::class, 'gallery'])->name('front.gallery');
 Route::get('/car-rental/listing', [FrontendConroller::class, 'car_rental'])->name('front.car.rental');
