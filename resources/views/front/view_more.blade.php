@@ -161,10 +161,10 @@
 
                                     {{-- <div class="nav-tab-item ">
                                         Restaurants
-                                    </div>
+                                    </div> --}}
                                     <div class="nav-tab-item">
                                         Blog
-                                    </div> --}}
+                                    </div>
 
                                 </div>
                             </div>
@@ -329,16 +329,78 @@
                                 @endforeach
                                 {{-- Flights --}}
                                 <div class="tab-info" style="position: relative;">
-                                    <img class="img-responsive" src="https://carnivalguide.co/new/img/detail/guide_6a.jpg"
-                                        alt="">
+                                    {{-- <img class="img-responsive" src="https://carnivalguide.co/new/img/detail/guide_6a.jpg"
+                                        alt=""> --}}
+                                    <div class="carousel">
+                                        <div class="carousel-wrapper">
+                                            <button class="carousel-control prev">&#10094;</button>
+                                            <div class="carousel-slides">
+                                                <div class="slide active">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                        alt="Slide 1">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                        alt="Slide 2">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                        alt="Slide 3">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                        alt="Slide 4">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                        alt="Slide 5">
+                                                </div>
+                                            </div>
+                                            <button class="carousel-control next">&#10095;</button>
+                                        </div>
+                                        <div class="carousel-thumbnails">
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                    alt="Thumbnail 1">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                    alt="Thumbnail 2">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                    alt="Thumbnail 3">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                    alt="Thumbnail 4">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                    alt="Thumbnail 5">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <form action="#" class="hotel-filter">
-                                        <div class="baner-bar" style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
+                                        <div class="baner-bar"
+                                            style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="hotels-block">
                                                         <h4>where</h4>
                                                         <div class="input-style-1">
-                                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
+                                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
+                                                                alt="">
                                                             <input type="text" placeholder="Destination; Zip Code"
                                                                 required="">
                                                         </div>
@@ -348,10 +410,10 @@
                                                     <div class="hotels-block">
                                                         <h4>Check in</h4>
                                                         <div class="input-style-1">
-                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                            <input type="text" placeholder=""
-                                                                class="datepicker " required=""
-                                                                >
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="" class="datepicker "
+                                                                required="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -359,10 +421,10 @@
                                                     <div class="hotels-block">
                                                         <h4>Check in</h4>
                                                         <div class="input-style-1">
-                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                            <input type="text" placeholder=""
-                                                                class="datepicker " required=""
-                                                                >
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="" class="datepicker "
+                                                                required="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -423,302 +485,454 @@
                                     </form>
                                     <div class="list-content clearfix">
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-12 bg-grey-2">
-                                              <div class="table-view">
+                                            <div class="hotel-item style-12 bg-grey-2">
+                                                <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                         <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_1.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_1.jpg"
+                                                            alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
-                                                      <div class="hotel-right-text color-grey fr">one way flights, 1 stop</div>
-                                                      <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                                        <div class="hotel-right-text color-grey fr">one way flights, 1 stop
+                                                        </div>
+                                                        <h5>from <strong class="color-red-3">$860</strong> / person</h5>
                                                         <h4><b>Cheap Flights to Grenada</b></h4>
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png" alt="">
+                                                                <img class="fi_icon"
+                                                                    src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png"
+                                                                    alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
-                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50
+                                                                        am</div>
                                                                 </div>
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png" alt="">
+                                                                <img class="fi_icon"
+                                                                    src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png"
+                                                                    alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
-                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50
+                                                                        am</div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                      <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
-                                                      <a href="#" class="c-button b-40 color-grey-3 hv-o"><img src="https://carnivalguide.co/new/img//flag_icon_grey.png" alt="">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>					
+                                                        <a href="#"
+                                                            class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                                        <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
+                                                                src="https://carnivalguide.co/new/img//flag_icon_grey.png"
+                                                                alt="">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-12 bg-grey-2">
-                                              <div class="table-view">
+                                            <div class="hotel-item style-12 bg-grey-2">
+                                                <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                         <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_2.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_2.jpg"
+                                                            alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
-                                                      <div class="hotel-right-text color-grey fr">one way flights, 1 stop</div>
-                                                      <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                                        <div class="hotel-right-text color-grey fr">one way flights, 1 stop
+                                                        </div>
+                                                        <h5>from <strong class="color-red-3">$860</strong> / person</h5>
                                                         <h4><b>Cheap Flights to Grenada</b></h4>
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png" alt="">
+                                                                <img class="fi_icon"
+                                                                    src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png"
+                                                                    alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
-                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50
+                                                                        am</div>
                                                                 </div>
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png" alt="">
+                                                                <img class="fi_icon"
+                                                                    src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png"
+                                                                    alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
-                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50
+                                                                        am</div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                      <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
-                                                      <a href="#" class="c-button b-40 color-grey-3 hv-o"><img src="https://carnivalguide.co/new/img//flag_icon_grey.png" alt="">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>					
+                                                        <a href="#"
+                                                            class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                                        <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
+                                                                src="https://carnivalguide.co/new/img//flag_icon_grey.png"
+                                                                alt="">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-12 bg-grey-2">
-                                              <div class="table-view">
+                                            <div class="hotel-item style-12 bg-grey-2">
+                                                <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                         <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_3.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_3.jpg"
+                                                            alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
-                                                      <div class="hotel-right-text color-grey fr">one way flights, 1 stop</div>
-                                                      <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                                        <div class="hotel-right-text color-grey fr">one way flights, 1 stop
+                                                        </div>
+                                                        <h5>from <strong class="color-red-3">$860</strong> / person</h5>
                                                         <h4><b>Cheap Flights to Grenada</b></h4>
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png" alt="">
+                                                                <img class="fi_icon"
+                                                                    src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png"
+                                                                    alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
-                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50
+                                                                        am</div>
                                                                 </div>
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png" alt="">
+                                                                <img class="fi_icon"
+                                                                    src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png"
+                                                                    alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
-                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50
+                                                                        am</div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                      <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
-                                                      <a href="#" class="c-button b-40 color-grey-3 hv-o"><img src="https://carnivalguide.co/new/img//flag_icon_grey.png" alt="">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>					
+                                                        <a href="#"
+                                                            class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                                        <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
+                                                                src="https://carnivalguide.co/new/img//flag_icon_grey.png"
+                                                                alt="">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-12 bg-grey-2">
-                                              <div class="table-view">
+                                            <div class="hotel-item style-12 bg-grey-2">
+                                                <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                         <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_1.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_1.jpg"
+                                                            alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
-                                                      <div class="hotel-right-text color-grey fr">one way flights, 1 stop</div>
-                                                      <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                                        <div class="hotel-right-text color-grey fr">one way flights, 1 stop
+                                                        </div>
+                                                        <h5>from <strong class="color-red-3">$860</strong> / person</h5>
                                                         <h4><b>Cheap Flights to Grenada</b></h4>
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png" alt="">
+                                                                <img class="fi_icon"
+                                                                    src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png"
+                                                                    alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
-                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50
+                                                                        am</div>
                                                                 </div>
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png" alt="">
+                                                                <img class="fi_icon"
+                                                                    src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png"
+                                                                    alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
-                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50
+                                                                        am</div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                      <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
-                                                      <a href="#" class="c-button b-40 color-grey-3 hv-o"><img src="https://carnivalguide.co/new/img//flag_icon_grey.png" alt="">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>					
+                                                        <a href="#"
+                                                            class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                                        <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
+                                                                src="https://carnivalguide.co/new/img//flag_icon_grey.png"
+                                                                alt="">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-12 bg-grey-2">
-                                              <div class="table-view">
+                                            <div class="hotel-item style-12 bg-grey-2">
+                                                <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                         <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_3.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_3.jpg"
+                                                            alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
-                                                      <div class="hotel-right-text color-grey fr">one way flights, 1 stop</div>
-                                                      <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                                        <div class="hotel-right-text color-grey fr">one way flights, 1 stop
+                                                        </div>
+                                                        <h5>from <strong class="color-red-3">$860</strong> / person</h5>
                                                         <h4><b>Cheap Flights to Grenada</b></h4>
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png" alt="">
+                                                                <img class="fi_icon"
+                                                                    src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png"
+                                                                    alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
-                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50
+                                                                        am</div>
                                                                 </div>
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png" alt="">
+                                                                <img class="fi_icon"
+                                                                    src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png"
+                                                                    alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
-                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50
+                                                                        am</div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                      <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
-                                                      <a href="#" class="c-button b-40 color-grey-3 hv-o"><img src="https://carnivalguide.co/new/img//flag_icon_grey.png" alt="">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>					
+                                                        <a href="#"
+                                                            class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                                        <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
+                                                                src="https://carnivalguide.co/new/img//flag_icon_grey.png"
+                                                                alt="">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-12 bg-grey-2">
-                                              <div class="table-view">
+                                            <div class="hotel-item style-12 bg-grey-2">
+                                                <div class="table-view">
                                                     <div class="radius-top cell-view">
-                                                         <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_2.jpg" alt="">
+                                                        <img src="https://carnivalguide.co/new/img//tour_list/flight_grid_2.jpg"
+                                                            alt="">
                                                     </div>
                                                     <div class="title hotel-middle cell-view">
-                                                      <div class="hotel-right-text color-grey fr">one way flights, 1 stop</div>
-                                                      <h5>from <strong class="color-red-3">$860</strong> / person</h5>
+                                                        <div class="hotel-right-text color-grey fr">one way flights, 1 stop
+                                                        </div>
+                                                        <h5>from <strong class="color-red-3">$860</strong> / person</h5>
                                                         <h4><b>Cheap Flights to Grenada</b></h4>
                                                         <div class="fi_block grid-hidden row row10">
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png" alt="">
+                                                                <img class="fi_icon"
+                                                                    src="https://carnivalguide.co/new/img//tour_list/flight_icon_2.png"
+                                                                    alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">take off</div>
-                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50
+                                                                        am</div>
                                                                 </div>
                                                             </div>
                                                             <div class="flight-icon col-xs-6 col10">
-                                                                <img class="fi_icon" src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png" alt="">
+                                                                <img class="fi_icon"
+                                                                    src="https://carnivalguide.co/new/img//tour_list/flight_icon_1.png"
+                                                                    alt="">
                                                                 <div class="fi_content">
                                                                     <div class="fi_title color-dark-2">LANDING</div>
-                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50 am</div>
+                                                                    <div class="fi_text color-grey">wed nov 13, 2013 7:50
+                                                                        am</div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                      <a href="#" class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
-                                                      <a href="#" class="c-button b-40 color-grey-3 hv-o"><img src="https://carnivalguide.co/new/img//flag_icon_grey.png" alt="">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>					
-                                        </div> 						  						
+                                                        <a href="#"
+                                                            class="c-button b-40 bg-red-3 hv-red-3-o fl">book now</a>
+                                                        <a href="#" class="c-button b-40 color-grey-3 hv-o"><img
+                                                                src="https://carnivalguide.co/new/img//flag_icon_grey.png"
+                                                                alt="">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 {{-- Cars/Rentals --}}
                                 <div class="tab-info" style="position: relative;">
-                                    <img class="img-responsive" src="https://carnivalguide.co/new/img/detail/guide_6b.jpg"
-                                        alt="">
+                                    {{-- <img class="img-responsive" src="https://carnivalguide.co/new/img/detail/guide_6b.jpg"
+                                        alt=""> --}}
+                                    <div class="carousel">
+                                        <div class="carousel-wrapper">
+                                            <button class="carousel-control prev">&#10094;</button>
+                                            <div class="carousel-slides">
+                                                <div class="slide active">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                        alt="Slide 1">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                        alt="Slide 2">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                        alt="Slide 3">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                        alt="Slide 4">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                        alt="Slide 5">
+                                                </div>
+                                            </div>
+                                            <button class="carousel-control next">&#10095;</button>
+                                        </div>
+                                        <div class="carousel-thumbnails">
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                    alt="Thumbnail 1">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                    alt="Thumbnail 2">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                    alt="Thumbnail 3">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                    alt="Thumbnail 4">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                    alt="Thumbnail 5">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <form action="#" class="hotel-filter">
-                                        <div class="baner-bar" style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
+                                        <div class="baner-bar"
+                                            style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                <div class="hotels-block">
-                                                <h4>From</h4>
-                                                    <div class="input-style-1">
-                                                        <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
-                                                        <input type="text" placeholder="Destination; Zip Code" required="">
-                                                    </div>
-                                                    <div class="input-entry color-5">
-                                                        <input class="checkbox-form" id="text-1" type="checkbox" name="checkbox" value="climat control">
-                                                        <label class="clearfix" for="text-1">
-                                                            <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                            <span class="checkbox-text">Same location</span>
-                                                        </label>
-                                                    </div>
-                                                </div>	
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                <div class="hotels-block">
-                                                <h4>To</h4>
-                                                    <div class="input-style-1">
-                                                        <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
-                                                        <input type="text" placeholder="Destination; Zip Code" required="">
-                                                    </div>
-                                                </div>	
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                            <div class="timePiker dtpicker-overlay dtpicker-mobile" style="display: none;">
-                                                <div class="dtpicker-bg">
-                                                    <div class="dtpicker-cont">
-                                                        <div class="dtpicker-content">
-                                                            <div class="dtpicker-subcontent"></div>
+                                                    <div class="hotels-block">
+                                                        <h4>From</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="Destination; Zip Code"
+                                                                required="">
+                                                        </div>
+                                                        <div class="input-entry color-5">
+                                                            <input class="checkbox-form" id="text-1" type="checkbox"
+                                                                name="checkbox" value="climat control">
+                                                            <label class="clearfix" for="text-1">
+                                                                <span class="sp-check"><i class="fa fa-check"></i></span>
+                                                                <span class="checkbox-text">Same location</span>
+                                                            </label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                                <div class="col-md-8">
-                                                <div class="hotels-block">
-                                                <h4>Check in</h4>
-                                                    <div class="input-style-1">
-                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                        <input type="text" placeholder="" class="datepicker" required="" >
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="hotels-block">
+                                                        <h4>To</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="Destination; Zip Code"
+                                                                required="">
+                                                        </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="timePiker dtpicker-overlay dtpicker-mobile"
+                                                    style="display: none;">
+                                                    <div class="dtpicker-bg">
+                                                        <div class="dtpicker-cont">
+                                                            <div class="dtpicker-content">
+                                                                <div class="dtpicker-subcontent"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="hotels-block">
+                                                        <h4>Check in</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="" class="datepicker"
+                                                                required="">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-4">
-                                                <div class="hotels-block">
-                                                <h4>Time</h4>
-                                                    <div class="time-input">
-                                                    <img src="https://carnivalguide.co/travel/img/clock.png" alt="">
-                                                        <input type="text" data-field="time" readonly="">
+                                                    <div class="hotels-block">
+                                                        <h4>Time</h4>
+                                                        <div class="time-input">
+                                                            <img src="https://carnivalguide.co/travel/img/clock.png"
+                                                                alt="">
+                                                            <input type="text" data-field="time" readonly="">
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                <div class="hotels-block">
-                                                <h4>Check Out</h4>
-                                                    <div class="input-style-1">
-                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                        <input type="text" placeholder="" class="datepicker " required="" >
+                                                    <div class="hotels-block">
+                                                        <h4>Check Out</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="" class="datepicker "
+                                                                required="">
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 </div>
                                                 <div class="col-md-3">
-                                                <div class="hotels-block">
-                                                <h4>Time</h4>
-                                                    <div class="time-input">
-                                                    <img src="https://carnivalguide.co/travel/img/clock.png" alt="">
-                                                        <input type="text" data-field="time" readonly="">
+                                                    <div class="hotels-block">
+                                                        <h4>Time</h4>
+                                                        <div class="time-input">
+                                                            <img src="https://carnivalguide.co/travel/img/clock.png"
+                                                                alt="">
+                                                            <input type="text" data-field="time" readonly="">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                
+
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="submit" style="margin-top:38px ">
-                                                    <input class="c-button b-60 bg-white hv-orange" type="submit" value="search now">
+                                                        <input class="c-button b-60 bg-white hv-orange" type="submit"
+                                                            value="search now">
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="row">
-                                                <div class="col-md-12">	
+                                                <div class="col-md-12">
                                                     <div class="range-wrapp">
-                                                    <h4>Price range</h4>
-                                                        <div class="slider-range" data-counter="$" data-position="start" data-from="0" data-to="5000" data-min="0" data-max="5000">
-                                                            <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="slider-range-0" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 0%; width: 88.64%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 88.64%;"></a></div>
-                                                            <input type="text" class="amount-start" readonly="" value="$0" id="amount-start-0">
-                                                            <input type="text" class="amount-end" readonly="" value="$1500" id="amount-end-0">						
+                                                        <h4>Price range</h4>
+                                                        <div class="slider-range" data-counter="$" data-position="start"
+                                                            data-from="0" data-to="5000" data-min="0"
+                                                            data-max="5000">
+                                                            <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                                                                id="slider-range-0" aria-disabled="false">
+                                                                <div class="ui-slider-range ui-widget-header ui-corner-all"
+                                                                    style="left: 0%; width: 88.64%;"></div><a
+                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
+                                                                    href="#" style="left: 0%;"></a><a
+                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
+                                                                    href="#" style="left: 88.64%;"></a>
+                                                            </div>
+                                                            <input type="text" class="amount-start" readonly=""
+                                                                value="$0" id="amount-start-0">
+                                                            <input type="text" class="amount-end" readonly=""
+                                                                value="$1500" id="amount-end-0">
                                                         </div>
                                                     </div>
-                                                </div>	
-                                                
+                                                </div>
+
                                             </div>
                                         </div>
                                     </form>
@@ -737,22 +951,28 @@
                                                 <div class="hotel-item cars-item">
                                                     <div class="low-price">-10%</div>
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_1a.fw.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_1a.fw.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$500<span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">porsche cayenne</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -761,23 +981,29 @@
                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                 <div class="hotel-item cars-item">
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_2.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_2.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$350 <span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">Totota</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                    
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -786,23 +1012,29 @@
                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                 <div class="hotel-item cars-item">
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_3.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_3.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$200<span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">Nissan</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                    
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -811,23 +1043,29 @@
                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                 <div class="hotel-item cars-item">
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_4.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_4.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$400<span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">hyundai</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                    
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -836,23 +1074,29 @@
                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                 <div class="hotel-item cars-item">
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_5.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_5.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$500<span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">mustang</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                        
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -861,23 +1105,29 @@
                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                 <div class="hotel-item cars-item">
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_6.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_6.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$250 <span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">Opel</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                        
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -887,23 +1137,29 @@
                                                 <div class="hotel-item cars-item">
                                                     <div class="low-price">-20%</div>
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_7.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_7.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$350<span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">Jeep</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                        
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -912,23 +1168,29 @@
                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                 <div class="hotel-item cars-item">
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_8.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_8.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$400<span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">volkswagen</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                        
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -937,23 +1199,29 @@
                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                 <div class="hotel-item cars-item">
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_1.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_1.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$500<span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">porsche cayenne</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                        
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -963,23 +1231,29 @@
                                                 <div class="hotel-item cars-item">
                                                     <div class="low-price">-50%</div>
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_2.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_2.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$350 <span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">Totota</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                        
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -988,23 +1262,29 @@
                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                 <div class="hotel-item cars-item">
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_3.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_3.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$200<span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">Nissan</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                        
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -1013,23 +1293,29 @@
                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                 <div class="hotel-item cars-item">
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_4.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_4.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$400<span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">hyundai</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                        
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -1038,23 +1324,29 @@
                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                 <div class="hotel-item cars-item">
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_5.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_5.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$500<span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">mustang</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                        
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -1063,22 +1355,28 @@
                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                 <div class="hotel-item cars-item">
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_6.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_6.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$250 <span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">Opel</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -1087,22 +1385,28 @@
                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                 <div class="hotel-item cars-item">
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_7.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_7.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$350<span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">Jeep</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -1111,22 +1415,28 @@
                                             <div class="col-md-4 col-sm-6 col-xs-12">
                                                 <div class="hotel-item cars-item">
                                                     <div class="radius-top">
-                                                        <img src="https://carnivalguide.co/new/img/car_8.png" alt="">
+                                                        <img src="https://carnivalguide.co/new/img/car_8.png"
+                                                            alt="">
                                                         <div class="price price-s-1">$400<span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">volkswagen</a></h4>
                                                         <h6 class="clas">standart</h6>
                                                         <div class="rate-wrap">
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_2.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_2.png"
                                                                     alt=""><i>X2</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_3.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_3.png"
                                                                     alt=""><i>X4</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_5.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_5.png"
                                                                     alt=""><i>+</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_1.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_1.png"
                                                                     alt=""><i>auto</i></span>
-                                                            <span class="car-i"><img src="https://carnivalguide.co/new/img/car_icon_4.png"
+                                                            <span class="car-i"><img
+                                                                    src="https://carnivalguide.co/new/img/car_icon_4.png"
                                                                     alt=""><i>gaz</i></span>
                                                         </div>
                                                     </div>
@@ -1137,16 +1447,78 @@
                                 </div>
                                 {{-- Hotels --}}
                                 <div class="tab-info" style="position: relative;">
-                                    <img class="img-responsive"
-                                        src="https://carnivalguide.co/new/img/detail/guide_7a.jpg" alt="">
+                                    {{-- <img class="img-responsive"
+                                        src="https://carnivalguide.co/new/img/detail/guide_7a.jpg" alt=""> --}}
+                                    <div class="carousel">
+                                        <div class="carousel-wrapper">
+                                            <button class="carousel-control prev">&#10094;</button>
+                                            <div class="carousel-slides">
+                                                <div class="slide active">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                        alt="Slide 1">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                        alt="Slide 2">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                        alt="Slide 3">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                        alt="Slide 4">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                        alt="Slide 5">
+                                                </div>
+                                            </div>
+                                            <button class="carousel-control next">&#10095;</button>
+                                        </div>
+                                        <div class="carousel-thumbnails">
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                    alt="Thumbnail 1">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                    alt="Thumbnail 2">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                    alt="Thumbnail 3">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                    alt="Thumbnail 4">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                    alt="Thumbnail 5">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <form action="#" class="hotel-filter">
-                                        <div class="baner-bar" style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
+                                        <div class="baner-bar"
+                                            style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="hotels-block">
                                                         <h4>where</h4>
                                                         <div class="input-style-1">
-                                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
+                                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
+                                                                alt="">
                                                             <input type="text" placeholder="Destination; Zip Code"
                                                                 required="">
                                                         </div>
@@ -1156,10 +1528,10 @@
                                                     <div class="hotels-block">
                                                         <h4>Check in</h4>
                                                         <div class="input-style-1">
-                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                            <input type="text" placeholder=""
-                                                                class="datepicker " required=""
-                                                                >
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="" class="datepicker "
+                                                                required="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1167,10 +1539,10 @@
                                                     <div class="hotels-block">
                                                         <h4>Check in</h4>
                                                         <div class="input-style-1">
-                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                            <input type="text" placeholder=""
-                                                                class="datepicker " required=""
-                                                                >
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="" class="datepicker "
+                                                                required="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1201,9 +1573,9 @@
                                                 <div class="col-md-8">
                                                     <div class="range-wrapp">
                                                         <h4>Price range</h4>
-                                                        <div class="slider-range" data-counter="$" data-position="start"
-                                                            data-from="0" data-to="5000" data-min="0"
-                                                            data-max="5000">
+                                                        <div class="slider-range" data-counter="$"
+                                                            data-position="start" data-from="0" data-to="5000"
+                                                            data-min="0" data-max="5000">
                                                             <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
                                                                 id="slider-range-0" aria-disabled="false">
                                                                 <div class="ui-slider-range ui-widget-header ui-corner-all"
@@ -1231,164 +1603,260 @@
                                     </form>
                                     <div class="list-content clearfix">
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-8 bg-grey-2">
-                                              <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(https://carnivalguide.co/new/img/tour_list/hotel_grid_15.jpg);">
-                                                         <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_15.jpg" alt="" style="display: none;">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block"
+                                                        style="background-image: url(https://carnivalguide.co/new/img/tour_list/hotel_grid_15.jpg);">
+                                                        <img class="center-image"
+                                                            src="https://carnivalguide.co/new/img/tour_list/hotel_grid_15.jpg"
+                                                            alt="" style="display: none;">
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                      <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                      <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                      <div class="hotel-icons-block grid-hidden">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                      </div>
-                                                  </div>
-                                                  <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                      <div class="hotel-person color-white">from <span>$703</span></div>
-                                                      <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>						
+
+                                                        <h4><b>Luxury madrid Hotel</b></h4>
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
+                                                            Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden"
+                                                            href="#">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-8 bg-grey-2">
-                                              <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_13.jpg&quot;);">
-                                                         <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_13.jpg" alt="" style="display: none;">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block"
+                                                        style="background-image: url(&quot;img/tour_list/hotel_grid_13.jpg&quot;);">
+                                                        <img class="center-image"
+                                                            src="https://carnivalguide.co/new/img/tour_list/hotel_grid_13.jpg"
+                                                            alt="" style="display: none;">
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                      <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                      <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                      <div class="hotel-icons-block grid-hidden">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                      </div>
-                                                  </div>
-                                                  <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                      <div class="hotel-person color-white">from <span>$703</span></div>
-                                                      <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>						
-                                        </div>  						  					
-                                        <div class="list-item-entry">
-                                          <div class="hotel-item style-8 bg-grey-2">
-                                              <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_1.jpg&quot;);">
-                                                         <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_1.jpg" alt="" style="display: none;">
-                                                         <div class="price price-s-2 green tt">best offer</div>
+
+                                                        <h4><b>Luxury madrid Hotel</b></h4>
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
+                                                            Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png"
+                                                                alt="">
+                                                        </div>
                                                     </div>
-                                                    <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                      <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                      <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                      <div class="hotel-icons-block grid-hidden">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                      </div>
-                                                  </div>
-                                                  <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                      <div class="hotel-person color-white">from <span>$703</span></div>
-                                                      <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>						
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden"
+                                                            href="#">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-8 bg-grey-2">
-                                              <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_2.jpg&quot;);">
-                                                         <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_2.jpg" alt="" style="display: none;">
-                                                         <div class="price price-s-2 red tt">hot price</div>
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block"
+                                                        style="background-image: url(&quot;img/tour_list/hotel_grid_1.jpg&quot;);">
+                                                        <img class="center-image"
+                                                            src="https://carnivalguide.co/new/img/tour_list/hotel_grid_1.jpg"
+                                                            alt="" style="display: none;">
+                                                        <div class="price price-s-2 green tt">best offer</div>
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                      <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                      <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                      <div class="hotel-icons-block grid-hidden">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                      </div>
-                                                  </div>
-                                                  <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                      <div class="hotel-person color-white">from <span>$703</span></div>
-                                                      <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>						
+
+                                                        <h4><b>Luxury madrid Hotel</b></h4>
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
+                                                            Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden"
+                                                            href="#">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-8 bg-grey-2">
-                                              <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_3.jpg&quot;);">
-                                                         <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_3.jpg" alt="" style="display: none;">
-                                                         <div class="price price-s-2 red tt">hot price</div>
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block"
+                                                        style="background-image: url(&quot;img/tour_list/hotel_grid_2.jpg&quot;);">
+                                                        <img class="center-image"
+                                                            src="https://carnivalguide.co/new/img/tour_list/hotel_grid_2.jpg"
+                                                            alt="" style="display: none;">
+                                                        <div class="price price-s-2 red tt">hot price</div>
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                      <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                      <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                      <div class="hotel-icons-block grid-hidden">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                      </div>
-                                                  </div>
-                                                  <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                      <div class="hotel-person color-white">from <span>$703</span></div>
-                                                      <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>						
+
+                                                        <h4><b>Luxury madrid Hotel</b></h4>
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
+                                                            Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden"
+                                                            href="#">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-8 bg-grey-2">
-                                              <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_4.jpg&quot;);">
-                                                         <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_4.jpg" alt="" style="display: none;">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block"
+                                                        style="background-image: url(&quot;img/tour_list/hotel_grid_3.jpg&quot;);">
+                                                        <img class="center-image"
+                                                            src="https://carnivalguide.co/new/img/tour_list/hotel_grid_3.jpg"
+                                                            alt="" style="display: none;">
+                                                        <div class="price price-s-2 red tt">hot price</div>
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                      <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                      <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                      <div class="hotel-icons-block grid-hidden">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                      </div>
-                                                  </div>
-                                                  <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                      <div class="hotel-person color-white">from <span>$703</span></div>
-                                                      <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>						
-                                        </div>  						
+
+                                                        <h4><b>Luxury madrid Hotel</b></h4>
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
+                                                            Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden"
+                                                            href="#">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-item-entry">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block"
+                                                        style="background-image: url(&quot;img/tour_list/hotel_grid_4.jpg&quot;);">
+                                                        <img class="center-image"
+                                                            src="https://carnivalguide.co/new/img/tour_list/hotel_grid_4.jpg"
+                                                            alt="" style="display: none;">
+                                                    </div>
+                                                    <div class="title hotel-middle clearfix cell-view">
+
+                                                        <h4><b>Luxury madrid Hotel</b></h4>
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
+                                                            Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden"
+                                                            href="#">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     {{-- <div class="main-wraper hotel-items">
                                         <div class="row">
@@ -1799,169 +2267,325 @@
                                 </div>
                                 {{-- Air BNB --}}
                                 <div class="tab-info" style="position: relative;">
-                                    <img class="img-responsive"
-                                        src="https://carnivalguide.co/new/img/detail/guide_8b.jpg" alt="">
-                                    
+                                    {{-- <img class="img-responsive"
+                                        src="https://carnivalguide.co/new/img/detail/guide_8b.jpg" alt=""> --}}
+                                    <div class="carousel">
+                                        <div class="carousel-wrapper">
+                                            <button class="carousel-control prev">&#10094;</button>
+                                            <div class="carousel-slides">
+                                                <div class="slide active">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                        alt="Slide 1">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                        alt="Slide 2">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                        alt="Slide 3">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                        alt="Slide 4">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                        alt="Slide 5">
+                                                </div>
+                                            </div>
+                                            <button class="carousel-control next">&#10095;</button>
+                                        </div>
+                                        <div class="carousel-thumbnails">
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                    alt="Thumbnail 1">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                    alt="Thumbnail 2">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                    alt="Thumbnail 3">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                    alt="Thumbnail 4">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                    alt="Thumbnail 5">
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="list-content clearfix">
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-8 bg-grey-2">
-                                              <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(https://carnivalguide.co/new/img/tour_list/hotel_grid_15.jpg);">
-                                                         <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_15.jpg" alt="" style="display: none;">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block"
+                                                        style="background-image: url(https://carnivalguide.co/new/img/tour_list/hotel_grid_15.jpg);">
+                                                        <img class="center-image"
+                                                            src="https://carnivalguide.co/new/img/tour_list/hotel_grid_15.jpg"
+                                                            alt="" style="display: none;">
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                      <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                      <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                      <div class="hotel-icons-block grid-hidden">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                      </div>
-                                                  </div>
-                                                  <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                      <div class="hotel-person color-white">from <span>$703</span></div>
-                                                      <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>						
+
+                                                        <h4><b>Luxury madrid Hotel</b></h4>
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
+                                                            Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden"
+                                                            href="#">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-8 bg-grey-2">
-                                              <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_13.jpg&quot;);">
-                                                         <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_13.jpg" alt="" style="display: none;">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block"
+                                                        style="background-image: url(&quot;img/tour_list/hotel_grid_13.jpg&quot;);">
+                                                        <img class="center-image"
+                                                            src="https://carnivalguide.co/new/img/tour_list/hotel_grid_13.jpg"
+                                                            alt="" style="display: none;">
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                      <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                      <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                      <div class="hotel-icons-block grid-hidden">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                      </div>
-                                                  </div>
-                                                  <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                      <div class="hotel-person color-white">from <span>$703</span></div>
-                                                      <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>						
-                                        </div>  						  					
-                                        <div class="list-item-entry">
-                                          <div class="hotel-item style-8 bg-grey-2">
-                                              <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_1.jpg&quot;);">
-                                                         <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_1.jpg" alt="" style="display: none;">
-                                                         <div class="price price-s-2 green tt">best offer</div>
+
+                                                        <h4><b>Luxury madrid Hotel</b></h4>
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
+                                                            Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png"
+                                                                alt="">
+                                                        </div>
                                                     </div>
-                                                    <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                      <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                      <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                      <div class="hotel-icons-block grid-hidden">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                      </div>
-                                                  </div>
-                                                  <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                      <div class="hotel-person color-white">from <span>$703</span></div>
-                                                      <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>						
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden"
+                                                            href="#">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-8 bg-grey-2">
-                                              <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_2.jpg&quot;);">
-                                                         <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_2.jpg" alt="" style="display: none;">
-                                                         <div class="price price-s-2 red tt">hot price</div>
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block"
+                                                        style="background-image: url(&quot;img/tour_list/hotel_grid_1.jpg&quot;);">
+                                                        <img class="center-image"
+                                                            src="https://carnivalguide.co/new/img/tour_list/hotel_grid_1.jpg"
+                                                            alt="" style="display: none;">
+                                                        <div class="price price-s-2 green tt">best offer</div>
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                      <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                      <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                      <div class="hotel-icons-block grid-hidden">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                      </div>
-                                                  </div>
-                                                  <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                      <div class="hotel-person color-white">from <span>$703</span></div>
-                                                      <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>						
+
+                                                        <h4><b>Luxury madrid Hotel</b></h4>
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
+                                                            Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden"
+                                                            href="#">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-8 bg-grey-2">
-                                              <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_3.jpg&quot;);">
-                                                         <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_3.jpg" alt="" style="display: none;">
-                                                         <div class="price price-s-2 red tt">hot price</div>
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block"
+                                                        style="background-image: url(&quot;img/tour_list/hotel_grid_2.jpg&quot;);">
+                                                        <img class="center-image"
+                                                            src="https://carnivalguide.co/new/img/tour_list/hotel_grid_2.jpg"
+                                                            alt="" style="display: none;">
+                                                        <div class="price price-s-2 red tt">hot price</div>
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                      <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                      <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                      <div class="hotel-icons-block grid-hidden">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                      </div>
-                                                  </div>
-                                                  <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                      <div class="hotel-person color-white">from <span>$703</span></div>
-                                                      <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>						
+
+                                                        <h4><b>Luxury madrid Hotel</b></h4>
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
+                                                            Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden"
+                                                            href="#">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="list-item-entry">
-                                          <div class="hotel-item style-8 bg-grey-2">
-                                              <div class="table-view">
-                                                    <div class="radius-top cell-view background-block" style="background-image: url(&quot;img/tour_list/hotel_grid_4.jpg&quot;);">
-                                                         <img class="center-image" src="https://carnivalguide.co/new/img/tour_list/hotel_grid_4.jpg" alt="" style="display: none;">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block"
+                                                        style="background-image: url(&quot;img/tour_list/hotel_grid_3.jpg&quot;);">
+                                                        <img class="center-image"
+                                                            src="https://carnivalguide.co/new/img/tour_list/hotel_grid_3.jpg"
+                                                            alt="" style="display: none;">
+                                                        <div class="price price-s-2 red tt">hot price</div>
                                                     </div>
                                                     <div class="title hotel-middle clearfix cell-view">
-                                                        
-                                                        <h4><b>Luxury madrid Hotel</b></h4>                      
-                                                      <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans Défense, Puteaux</span>
-                                                      <p class="f-14">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                      <div class="hotel-icons-block grid-hidden">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png" alt="">
-                                                          <img class="hotel-icon" src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png" alt="">
-                                                      </div>
-                                                  </div>
-                                                  <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
-                                                      <div class="hotel-person color-white">from <span>$703</span></div>
-                                                      <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden" href="#">view more</a>
-                                                  </div>						            
-                                              </div>
-                                          </div>						
-                                        </div>  						
+
+                                                        <h4><b>Luxury madrid Hotel</b></h4>
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
+                                                            Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden"
+                                                            href="#">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-item-entry">
+                                            <div class="hotel-item style-8 bg-grey-2">
+                                                <div class="table-view">
+                                                    <div class="radius-top cell-view background-block"
+                                                        style="background-image: url(&quot;img/tour_list/hotel_grid_4.jpg&quot;);">
+                                                        <img class="center-image"
+                                                            src="https://carnivalguide.co/new/img/tour_list/hotel_grid_4.jpg"
+                                                            alt="" style="display: none;">
+                                                    </div>
+                                                    <div class="title hotel-middle clearfix cell-view">
+
+                                                        <h4><b>Luxury madrid Hotel</b></h4>
+                                                        <span class="f-14 color-dark-2 grid-hidden">2 Place de la Sans
+                                                            Défense, Puteaux</span>
+                                                        <p class="f-14">Nunc cursus libero purus ac congue arcu cursus
+                                                            ut sed vitae pulvinar massa idporta nequetiam.</p>
+                                                        <div class="hotel-icons-block grid-hidden">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_1.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_2.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_3.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_4.png"
+                                                                alt="">
+                                                            <img class="hotel-icon"
+                                                                src="https://carnivalguide.co/new/img/tour_list/hotel_icon_5.png"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="title hotel-right bg-dr-blue-2 clearfix cell-view">
+                                                        <div class="hotel-person color-white">from <span>$703</span></div>
+                                                        <a class="c-button b-40 bg-white color-dark-2 hv-dark-2-o grid-hidden"
+                                                            href="#">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     {{-- <div class="main-wraper hotel-items">
                                         <div class="row">
@@ -2372,107 +2996,195 @@
                                 </div>
                                 {{-- Events & Tickets --}}
                                 <div class="tab-info" style="position: relative;">
-                                    <img class="img-responsive"
-                                        src="https://carnivalguide.co/new/img/detail/guide_events.jpg" alt="">
+                                    {{-- <img class="img-responsive"
+                                        src="https://carnivalguide.co/new/img/detail/guide_events.jpg" alt=""> --}}
+                                    <div class="carousel">
+                                        <div class="carousel-wrapper">
+                                            <button class="carousel-control prev">&#10094;</button>
+                                            <div class="carousel-slides">
+                                                <div class="slide active">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                        alt="Slide 1">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                        alt="Slide 2">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                        alt="Slide 3">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                        alt="Slide 4">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                        alt="Slide 5">
+                                                </div>
+                                            </div>
+                                            <button class="carousel-control next">&#10095;</button>
+                                        </div>
+                                        <div class="carousel-thumbnails">
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                    alt="Thumbnail 1">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                    alt="Thumbnail 2">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                    alt="Thumbnail 3">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                    alt="Thumbnail 4">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                    alt="Thumbnail 5">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <form action="#" class="hotel-filter">
-                                        <div class="baner-bar" style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
+                                        <div class="baner-bar"
+                                            style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                <div class="hotels-block">
-                                                <h4>From</h4>
-                                                    <div class="input-style-1">
-                                                        <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
-                                                        <input type="text" placeholder="Destination; Zip Code" required="">
-                                                    </div>
-                                                    <div class="input-entry color-5">
-                                                        <input class="checkbox-form" id="text-1" type="checkbox" name="checkbox" value="climat control">
-                                                        <label class="clearfix" for="text-1">
-                                                            <span class="sp-check"><i class="fa fa-check"></i></span>
-                                                            <span class="checkbox-text">Same location</span>
-                                                        </label>
-                                                    </div>
-                                                </div>	
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                <div class="hotels-block">
-                                                <h4>To</h4>
-                                                    <div class="input-style-1">
-                                                        <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
-                                                        <input type="text" placeholder="Destination; Zip Code" required="">
-                                                    </div>
-                                                </div>	
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                            <div class="timePiker dtpicker-overlay dtpicker-mobile" style="display: none;">
-                                                <div class="dtpicker-bg">
-                                                    <div class="dtpicker-cont">
-                                                        <div class="dtpicker-content">
-                                                            <div class="dtpicker-subcontent"></div>
+                                                    <div class="hotels-block">
+                                                        <h4>From</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="Destination; Zip Code"
+                                                                required="">
+                                                        </div>
+                                                        <div class="input-entry color-5">
+                                                            <input class="checkbox-form" id="text-1"
+                                                                type="checkbox" name="checkbox"
+                                                                value="climat control">
+                                                            <label class="clearfix" for="text-1">
+                                                                <span class="sp-check"><i
+                                                                        class="fa fa-check"></i></span>
+                                                                <span class="checkbox-text">Same location</span>
+                                                            </label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                                <div class="col-md-8">
-                                                <div class="hotels-block">
-                                                <h4>Check in</h4>
-                                                    <div class="input-style-1">
-                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                        <input type="text" placeholder="" class="datepicker" required="" >
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="hotels-block">
+                                                        <h4>To</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="Destination; Zip Code"
+                                                                required="">
+                                                        </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="timePiker dtpicker-overlay dtpicker-mobile"
+                                                    style="display: none;">
+                                                    <div class="dtpicker-bg">
+                                                        <div class="dtpicker-cont">
+                                                            <div class="dtpicker-content">
+                                                                <div class="dtpicker-subcontent"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="hotels-block">
+                                                        <h4>Check in</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="" class="datepicker"
+                                                                required="">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-4">
-                                                <div class="hotels-block">
-                                                <h4>Time</h4>
-                                                    <div class="time-input">
-                                                    <img src="https://carnivalguide.co/travel/img/clock.png" alt="">
-                                                        <input type="text" data-field="time" readonly="">
+                                                    <div class="hotels-block">
+                                                        <h4>Time</h4>
+                                                        <div class="time-input">
+                                                            <img src="https://carnivalguide.co/travel/img/clock.png"
+                                                                alt="">
+                                                            <input type="text" data-field="time" readonly="">
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                <div class="hotels-block">
-                                                <h4>Check Out</h4>
-                                                    <div class="input-style-1">
-                                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                        <input type="text" placeholder="" class="datepicker " required="" >
+                                                    <div class="hotels-block">
+                                                        <h4>Check Out</h4>
+                                                        <div class="input-style-1">
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="" class="datepicker "
+                                                                required="">
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 </div>
                                                 <div class="col-md-3">
-                                                <div class="hotels-block">
-                                                <h4>Time</h4>
-                                                    <div class="time-input">
-                                                    <img src="https://carnivalguide.co/travel/img/clock.png" alt="">
-                                                        <input type="text" data-field="time" readonly="">
+                                                    <div class="hotels-block">
+                                                        <h4>Time</h4>
+                                                        <div class="time-input">
+                                                            <img src="https://carnivalguide.co/travel/img/clock.png"
+                                                                alt="">
+                                                            <input type="text" data-field="time" readonly="">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                
+
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="submit" style="margin-top:38px ">
-                                                    <input class="c-button b-60 bg-white hv-orange" type="submit" value="search now">
+                                                        <input class="c-button b-60 bg-white hv-orange" type="submit"
+                                                            value="search now">
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="row">
-                                                <div class="col-md-12">	
+                                                <div class="col-md-12">
                                                     <div class="range-wrapp">
-                                                    <h4>Price range</h4>
-                                                        <div class="slider-range" data-counter="$" data-position="start" data-from="0" data-to="5000" data-min="0" data-max="5000">
-                                                            <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="slider-range-0" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 0%; width: 88.64%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 88.64%;"></a></div>
-                                                            <input type="text" class="amount-start" readonly="" value="$0" id="amount-start-0">
-                                                            <input type="text" class="amount-end" readonly="" value="$1500" id="amount-end-0">						
+                                                        <h4>Price range</h4>
+                                                        <div class="slider-range" data-counter="$"
+                                                            data-position="start" data-from="0" data-to="5000"
+                                                            data-min="0" data-max="5000">
+                                                            <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                                                                id="slider-range-0" aria-disabled="false">
+                                                                <div class="ui-slider-range ui-widget-header ui-corner-all"
+                                                                    style="left: 0%; width: 88.64%;"></div><a
+                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
+                                                                    href="#" style="left: 0%;"></a><a
+                                                                    class="ui-slider-handle ui-state-default ui-corner-all"
+                                                                    href="#" style="left: 88.64%;"></a>
+                                                            </div>
+                                                            <input type="text" class="amount-start" readonly=""
+                                                                value="$0" id="amount-start-0">
+                                                            <input type="text" class="amount-end" readonly=""
+                                                                value="$1500" id="amount-end-0">
                                                         </div>
                                                     </div>
-                                                </div>	
-                                                
+                                                </div>
+
                                             </div>
                                         </div>
                                     </form>
@@ -3068,9 +3780,69 @@
                                 </div>
                                 {{-- Mas Camps/Costumes --}}
                                 <div class="tab-info" style="position: relative;">
-                                    <img class="img-responsive"
-                                        src="https://carnivalguide.co/new/img/detail/guide_mas.jpg" alt="">
-                                    
+                                    {{-- <img class="img-responsive"
+                                        src="https://carnivalguide.co/new/img/detail/guide_mas.jpg" alt=""> --}}
+                                    <div class="carousel">
+                                        <div class="carousel-wrapper">
+                                            <button class="carousel-control prev">&#10094;</button>
+                                            <div class="carousel-slides">
+                                                <div class="slide active">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                        alt="Slide 1">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                        alt="Slide 2">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                        alt="Slide 3">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                        alt="Slide 4">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                        alt="Slide 5">
+                                                </div>
+                                            </div>
+                                            <button class="carousel-control next">&#10095;</button>
+                                        </div>
+                                        <div class="carousel-thumbnails">
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                    alt="Thumbnail 1">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                    alt="Thumbnail 2">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                    alt="Thumbnail 3">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                    alt="Thumbnail 4">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                    alt="Thumbnail 5">
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="col-xs-12 ">
                                         <div class="list-header clearfix">
                                             <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
@@ -3663,16 +4435,78 @@
                                 </div>
                                 {{-- Tours and Activities --}}
                                 <div class="tab-info" style="position: relative;">
-                                    <img class="img-responsive"
-                                        src="https://carnivalguide.co/new/img/detail/guide_tours.jpg" alt="">
+                                    {{-- <img class="img-responsive"
+                                        src="https://carnivalguide.co/new/img/detail/guide_tours.jpg" alt=""> --}}
+                                    <div class="carousel">
+                                        <div class="carousel-wrapper">
+                                            <button class="carousel-control prev">&#10094;</button>
+                                            <div class="carousel-slides">
+                                                <div class="slide active">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                        alt="Slide 1">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                        alt="Slide 2">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                        alt="Slide 3">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                        alt="Slide 4">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                        alt="Slide 5">
+                                                </div>
+                                            </div>
+                                            <button class="carousel-control next">&#10095;</button>
+                                        </div>
+                                        <div class="carousel-thumbnails">
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                    alt="Thumbnail 1">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                    alt="Thumbnail 2">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                    alt="Thumbnail 3">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                    alt="Thumbnail 4">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                    alt="Thumbnail 5">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <form action="#" class="hotel-filter">
-                                        <div class="baner-bar" style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
+                                        <div class="baner-bar"
+                                            style="box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0); position: relative; bottom:0px;">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="hotels-block">
                                                         <h4>where</h4>
                                                         <div class="input-style-1">
-                                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
+                                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
+                                                                alt="">
                                                             <input type="text" placeholder="Destination; Zip Code"
                                                                 required="">
                                                         </div>
@@ -3682,10 +4516,10 @@
                                                     <div class="hotels-block">
                                                         <h4>Check in</h4>
                                                         <div class="input-style-1">
-                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                            <input type="text" placeholder=""
-                                                                class="datepicker " required=""
-                                                                >
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="" class="datepicker "
+                                                                required="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3693,10 +4527,10 @@
                                                     <div class="hotels-block">
                                                         <h4>Check in</h4>
                                                         <div class="input-style-1">
-                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                                                            <input type="text" placeholder=""
-                                                                class="datepicker " required=""
-                                                                >
+                                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                                                alt="">
+                                                            <input type="text" placeholder="" class="datepicker "
+                                                                required="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3727,9 +4561,9 @@
                                                 <div class="col-md-8">
                                                     <div class="range-wrapp">
                                                         <h4>Price range</h4>
-                                                        <div class="slider-range" data-counter="$" data-position="start"
-                                                            data-from="0" data-to="5000" data-min="0"
-                                                            data-max="5000">
+                                                        <div class="slider-range" data-counter="$"
+                                                            data-position="start" data-from="0" data-to="5000"
+                                                            data-min="0" data-max="5000">
                                                             <div class="range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
                                                                 id="slider-range-0" aria-disabled="false">
                                                                 <div class="ui-slider-range ui-widget-header ui-corner-all"
@@ -3782,7 +4616,8 @@
                                             <div class="list-view-change">
                                                 {{-- <div class="change-grid color-1 fr active"><i class="fa fa-th"></i>
                                                 </div> --}}
-                                                <div class="change-list color-1 fr active"><i class="fa fa-bars"></i></div>
+                                                <div class="change-list color-1 fr active"><i class="fa fa-bars"></i>
+                                                </div>
                                                 <div class="change-to-label fr color-grey-8">View:</div>
                                             </div>
                                         </div>
@@ -4349,67 +5184,67 @@
                                 <div class="tab-info" style="position: relative;">
                                     {{-- <img class="img-responsive"
                                         src="https://carnivalguide.co/new/img/detail/guide_12a.jpg" alt=""> --}}
-                                        <div class="carousel">
-                                            <div class="carousel-wrapper">
-                                                <button class="carousel-control prev">&#10094;</button>
-                                                <div class="carousel-slides">
-                                                    <div class="slide active">
-                                                        <img class="img-responsive img-full"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
-                                                            alt="Slide 1">
-                                                    </div>
-                                                    <div class="slide">
-                                                        <img class="img-responsive img-full"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
-                                                            alt="Slide 2">
-                                                    </div>
-                                                    <div class="slide">
-                                                        <img class="img-responsive img-full"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
-                                                            alt="Slide 3">
-                                                    </div>
-                                                    <div class="slide">
-                                                        <img class="img-responsive img-full"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
-                                                            alt="Slide 4">
-                                                    </div>
-                                                    <div class="slide">
-                                                        <img class="img-responsive img-full"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
-                                                            alt="Slide 5">
-                                                    </div>
-                                                </div>
-                                                <button class="carousel-control next">&#10095;</button>
-                                            </div>
-                                            <div class="carousel-thumbnails">
-                                                <div class="thumbnail">
-                                                    <img class="img-responsive img-thumb"
+                                    <div class="carousel">
+                                        <div class="carousel-wrapper">
+                                            <button class="carousel-control prev">&#10094;</button>
+                                            <div class="carousel-slides">
+                                                <div class="slide active">
+                                                    <img class="img-responsive img-full"
                                                         src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
-                                                        alt="Thumbnail 1">
+                                                        alt="Slide 1">
                                                 </div>
-                                                <div class="thumbnail">
-                                                    <img class="img-responsive img-thumb"
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
                                                         src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
-                                                        alt="Thumbnail 2">
+                                                        alt="Slide 2">
                                                 </div>
-                                                <div class="thumbnail">
-                                                    <img class="img-responsive img-thumb"
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
                                                         src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
-                                                        alt="Thumbnail 3">
+                                                        alt="Slide 3">
                                                 </div>
-                                                <div class="thumbnail">
-                                                    <img class="img-responsive img-thumb"
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
                                                         src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
-                                                        alt="Thumbnail 4">
+                                                        alt="Slide 4">
                                                 </div>
-                                                <div class="thumbnail">
-                                                    <img class="img-responsive img-thumb"
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
                                                         src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
-                                                        alt="Thumbnail 5">
+                                                        alt="Slide 5">
                                                 </div>
+                                            </div>
+                                            <button class="carousel-control next">&#10095;</button>
+                                        </div>
+                                        <div class="carousel-thumbnails">
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                    alt="Thumbnail 1">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                    alt="Thumbnail 2">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                    alt="Thumbnail 3">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                    alt="Thumbnail 4">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                    alt="Thumbnail 5">
                                             </div>
                                         </div>
-                                    
+                                    </div>
+
                                     <div class="col-xs-12 ">
                                         <div class="list-header clearfix">
                                             <div class="drop-wrap drop-wrap-s-4 color-4 list-sort">
@@ -4998,6 +5833,411 @@
                                                 <li><a href="#">10</a></li>
                                             </ul>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="tab-info" style="position: relative;">
+                                    {{-- <img class="img-responsive"
+                                        src="https://carnivalguide.co/new/img/detail/guide_12a.jpg" alt=""> --}}
+                                    <div class="carousel">
+                                        <div class="carousel-wrapper">
+                                            <button class="carousel-control prev">&#10094;</button>
+                                            <div class="carousel-slides">
+                                                <div class="slide active">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                        alt="Slide 1">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                        alt="Slide 2">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                        alt="Slide 3">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                        alt="Slide 4">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                        alt="Slide 5">
+                                                </div>
+                                            </div>
+                                            <button class="carousel-control next">&#10095;</button>
+                                        </div>
+                                        <div class="carousel-thumbnails">
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                    alt="Thumbnail 1">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                    alt="Thumbnail 2">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                    alt="Thumbnail 3">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                    alt="Thumbnail 4">
+                                            </div>
+                                            <div class="thumbnail">
+                                                <img class="img-responsive img-thumb"
+                                                    src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                    alt="Thumbnail 5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="blog-grid row">
+                                        @foreach ($all_blogs as $item)
+                                            {{-- <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                                <div class="s_news-entry style-2">
+                                                    <a href="{{ route('front.blog.detail', $item->slug) }}">
+                                                        <img class="s_news-img img-responsive"
+                                                            src="https://carnivalguide.co/new/img/inner/blog_grid_1.jpg"
+                                                            alt="">
+                                                    </a>
+                                                    <h4 class="s_news-title"><a
+                                                            href="blog_detail.html">{{ $item->title }}</a></h4>
+                                                    <div class="tour-info-line clearfix">
+                                                        <div class="tour-info fl">
+                                                            <img src="img/calendar_icon_grey.png" alt="">
+                                                            <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                        </div>
+                                                        <div class="tour-info fl">
+                                                            <img src="img/people_icon_grey.png" alt="">
+                                                            <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                        </div>
+                                                        <div class="tour-info fl">
+                                                            <img src="img/comment_icon_grey.png" alt="">
+                                                            <span class="font-style-2 color-dark-2">10 comments</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="s_news-text color-grey-3">
+                                                        {!! \Illuminate\Support\Str::limit($item->description, 100, '...') !!}
+                                                    </div>
+                                                    <a href="{{ route('front.blog.detail', $item->slug) }}"
+                                                        class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view
+                                                            more</span></a>
+                                                </div>
+                                            </div> --}}
+                                            <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                                <div class="s_news-entry style-2">
+                                                    <a href="{{ route('front.blog.detail', $item->slug) }}">
+                                                        <img class="s_news-img img-responsive" src="https://carnivalguide.co/new/img/inner/blog_grid_1.jpg" alt="">
+                                                    </a>
+                                                    <h4 class="s_news-title"><a href="{{ route('front.blog.detail', $item->slug) }}">{{ $item->title }}</a></h4>
+                                                    <div class="tour-info-line clearfix">
+                                                        <div class="tour-info fl">
+                                                               <img src="img/calendar_icon_grey.png" alt="">
+                                                               <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                           </div>
+                                                        <div class="tour-info fl">
+                                                               <img src="img/people_icon_grey.png" alt="">
+                                                               <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                           </div>
+                                                        <div class="tour-info fl">
+                                                               <img src="img/comment_icon_grey.png" alt="">
+                                                               <span class="font-style-2 color-dark-2">10 comments</span>
+                                                           </div>						
+                                                    </div>
+                                                    <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                    <a href="{{ route('front.blog.detail', $item->slug) }}" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
+                                                </div>				
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    {{-- <div class="blog-grid row">
+                                        <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                            <div class="s_news-entry style-2">
+                                                <a href="blog_detail.html">
+                                                    <img class="s_news-img img-responsive" src="img/inner/blog_grid_1.jpg" alt="">
+                                                </a>
+                                                <h4 class="s_news-title"><a href="blog_detail.html">Lorem ipsum dolor</a></h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info fl">
+                                                           <img src="img/calendar_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/people_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/comment_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">10 comments</span>
+                                                       </div>						
+                                                </div>
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
+                                            </div>				
+                                        </div>
+                                        <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                            <div class="s_news-entry style-2">
+                                                <a href="blog_detail.html"><img class="s_news-img img-responsive" src="img/inner/blog_grid_2.jpg" alt=""></a>
+                                                <h4 class="s_news-title"><a href="blog_detail.html">Lorem ipsum dolor</a></h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info fl">
+                                                           <img src="img/calendar_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/people_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/comment_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">10 comments</span>
+                                                       </div>						
+                                                </div>
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>	
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>					  	 	
+                                            </div>				
+                                        </div>
+                                        <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                            <div class="s_news-entry style-2">
+                                                <a href="blog_detail.html"><img class="s_news-img img-responsive" src="img/inner/blog_grid_3.jpg" alt=""></a>
+                                                <h4 class="s_news-title"><a href="blog_detail.html">Lorem ipsum dolor</a></h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info fl">
+                                                           <img src="img/calendar_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/people_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/comment_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">10 comments</span>
+                                                       </div>						
+                                                </div>
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>						  	 	
+                                            </div>				
+                                        </div>
+                                        <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                            <div class="s_news-entry style-2">
+                                                <a href="blog_detail.html"><img class="s_news-img img-responsive" src="img/inner/blog_grid_4.jpg" alt=""></a>
+                                                <h4 class="s_news-title"><a href="blog_detail.html">Lorem ipsum dolor</a></h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info fl">
+                                                           <img src="img/calendar_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/people_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/comment_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">10 comments</span>
+                                                       </div>						
+                                                </div>
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
+                                            </div>				
+                                        </div>
+                                        <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                            <div class="s_news-entry style-2">
+                                                <a href="blog_detail.html"><img class="s_news-img img-responsive" src="img/inner/blog_grid_5.jpg" alt=""></a>
+                                                <h4 class="s_news-title"><a href="blog_detail.html">Lorem ipsum dolor</a></h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info fl">
+                                                           <img src="img/calendar_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/people_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/comment_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">10 comments</span>
+                                                       </div>						
+                                                </div>
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>	
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>					  	 	
+                                            </div>				
+                                        </div>
+                                        <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                            <div class="s_news-entry style-2">
+                                                <a href="blog_detail.html"><img class="s_news-img img-responsive" src="img/inner/blog_grid_6.jpg" alt=""></a>
+                                                <h4 class="s_news-title"><a href="blog_detail.html">Lorem ipsum dolor</a></h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info fl">
+                                                           <img src="img/calendar_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/people_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/comment_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">10 comments</span>
+                                                       </div>						
+                                                </div>
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>						  	 	
+                                            </div>				
+                                        </div>
+                                        <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                            <div class="s_news-entry style-2">
+                                                <a href="blog_detail.html"><img class="s_news-img img-responsive" src="img/inner/blog_grid_7.jpg" alt=""></a>
+                                                <h4 class="s_news-title"><a href="blog_detail.html">Lorem ipsum dolor</a></h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info fl">
+                                                           <img src="img/calendar_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/people_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/comment_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">10 comments</span>
+                                                       </div>						
+                                                </div>
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
+                                            </div>				
+                                        </div>
+                                        <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                            <div class="s_news-entry style-2">
+                                                <a href="blog_detail.html"><img class="s_news-img img-responsive" src="img/inner/blog_grid_8.jpg" alt=""></a>
+                                                <h4 class="s_news-title"><a href="blog_detail.html">Lorem ipsum dolor</a></h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info fl">
+                                                           <img src="img/calendar_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/people_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/comment_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">10 comments</span>
+                                                       </div>						
+                                                </div>
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>	
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>					  	 	
+                                            </div>				
+                                        </div>
+                                        <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                            <div class="s_news-entry style-2">
+                                                <a href="blog_detail.html"><img class="s_news-img img-responsive" src="img/inner/blog_grid_9.jpg" alt=""></a>
+                                                <h4 class="s_news-title"><a href="blog_detail.html">Lorem ipsum dolor</a></h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info fl">
+                                                           <img src="img/calendar_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/people_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/comment_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">10 comments</span>
+                                                       </div>						
+                                                </div>
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>						  	 	
+                                            </div>				
+                                        </div>
+                                        <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                            <div class="s_news-entry style-2">
+                                                <a href="blog_detail.html"><img class="s_news-img img-responsive" src="img/inner/blog_grid_10.jpg" alt=""></a>
+                                                <h4 class="s_news-title"><a href="blog_detail.html">Lorem ipsum dolor</a></h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info fl">
+                                                           <img src="img/calendar_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/people_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/comment_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">10 comments</span>
+                                                       </div>						
+                                                </div>
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
+                                            </div>				
+                                        </div>
+                                        <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                            <div class="s_news-entry style-2">
+                                                <a href="blog_detail.html"><img class="s_news-img img-responsive" src="img/inner/blog_grid_11.jpg" alt=""></a>
+                                                <h4 class="s_news-title"><a href="blog_detail.html">Lorem ipsum dolor</a></h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info fl">
+                                                           <img src="img/calendar_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/people_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/comment_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">10 comments</span>
+                                                       </div>						
+                                                </div>
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>	
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>					  	 	
+                                            </div>				
+                                        </div>
+                                        <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
+                                            <div class="s_news-entry style-2">
+                                                <a href="blog_detail.html"><img class="s_news-img img-responsive" src="img/inner/blog_grid_12.jpg" alt=""></a>
+                                                <h4 class="s_news-title"><a href="blog_detail.html">Lorem ipsum dolor</a></h4>
+                                                <div class="tour-info-line clearfix">
+                                                    <div class="tour-info fl">
+                                                           <img src="img/calendar_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/people_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                       </div>
+                                                    <div class="tour-info fl">
+                                                           <img src="img/comment_icon_grey.png" alt="">
+                                                           <span class="font-style-2 color-dark-2">10 comments</span>
+                                                       </div>						
+                                                </div>
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>						  	 	
+                                            </div>				
+                                        </div>															
+                                    </div> --}}
+                                    <div class="c_pagination clearfix">
+                                        <a href="#" class="c-button b-40 bg-dr-blue-2 hv-dr-blue-2-o fl">prev
+                                            page</a>
+                                        <a href="#" class="c-button b-40 bg-dr-blue-2 hv-dr-blue-2-o fr">next
+                                            page</a>
+                                        <ul class="cp_content color-3">
+                                            <li class="active"><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">...</a></li>
+                                            <li><a href="#">10</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <script>

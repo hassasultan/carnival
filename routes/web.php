@@ -71,7 +71,7 @@ Route::get('/marketplace', [FrontendConroller::class, 'marketplace'])->name('fro
 Route::get('/compare-produts', [FrontendConroller::class, 'compare_produts'])->name('front.compare.produts');
 Route::get('/track-order', [FrontendConroller::class, 'track_order'])->name('front.track.order');
 Route::get('/blog-list', [FrontendConroller::class, 'blog_list'])->name('front.blog.list');
-Route::get('/blog-detail', [FrontendConroller::class, 'blog_detail'])->name('front.blog.detail');
+Route::get('/blog-detail/{id}', [FrontendConroller::class, 'blog_detail'])->name('front.blog.detail');
 Route::get('/get-section-leaders', [FrontendConroller::class, 'sub_vendor_listing'])->name('get.subvendors.front');
 Route::get('/shop/{slug}', [FrontendConroller::class, 'vendor_detail'])->name('front.vendor.detail');
 Route::get('/get/shop/products/{slug}', [FrontendConroller::class, 'get_vendor_products'])->name('front.vendor.products');

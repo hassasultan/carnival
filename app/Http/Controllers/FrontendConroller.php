@@ -142,10 +142,11 @@ class FrontendConroller extends Controller
         $products = Product::with('brand')->get();
         return view('ShopFrontend.blog-list',compact('products'));
     }
-    public function blog_detail()
+    public function blog_detail($id)
     {
         $products = Product::with('brand')->get();
-        return view('ShopFrontend.blog-detail',compact('products'));
+        $blog = Blogs::with('user')->where('slug',$id)->first();
+        return view('ShopFrontend.blog-detail',compact('products','blog'));
     }
     public function sub_vendor_listing()
     {
@@ -212,7 +213,8 @@ class FrontendConroller extends Controller
         // dd($event->toArray());
         $products = Product::with('brand')->get();
         $blogs = Blogs::with('user')->get()->take('3');
+        $all_blogs = Blogs::with('user')->paginate(12);
 
-        return view('front.view_more', compact('event','products','blogs'));
+        return view('front.view_more', compact('event','products','blogs','all_blogs'));
     }
 }

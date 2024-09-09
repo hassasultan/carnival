@@ -14318,7 +14318,9 @@ footer.type-2 .copyright {
   .s_news-entry {
     margin-bottom: 30px;
   }
-
+  .blogs-hover:hover {
+    border: 2px solid #ff6600 !important;
+  }
   .icon-block {
     margin-bottom: 50px;
   }

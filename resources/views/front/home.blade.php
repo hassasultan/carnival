@@ -2533,29 +2533,31 @@
             <div class="row">
                 @foreach ($blogs as $blog)
                     <div class="col-xs-12 col-sm-4">
-                        <div class="s_news-entry">
-                            <img class="s_news-img img-full img-responsive"
-                                src="https://carnivalguide.co/travel/images/blog1.jpg" alt="">
-                            <h4 class="s_news-title"><a href="#">{{ $blog->title }}</a></h4>
-                            <div class="tour-info-line clearfix">
-                                <div class="tour-info fl">
-                                    <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
-                                        alt="">
-                                    <span
-                                        class="font-style-2 color-dark-2">{{ $blog->created_at->format('d/m/Y') }}</span>
+                        <div class="s_news-entry ">
+                            <a href="{{ route('front.blog.detail',$blog->slug) }}" class="blogs-hover">
+                                <img class="s_news-img img-full img-responsive"
+                                    src="https://carnivalguide.co/travel/images/blog1.jpg" alt="">
+                                <h4 class="s_news-title">{{ $blog->title }}</h4>
+                                <div class="tour-info-line clearfix">
+                                    <div class="tour-info fl">
+                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                            alt="">
+                                        <span
+                                            class="font-style-2 color-dark-2">{{ $blog->created_at->format('d/m/Y') }}</span>
+                                    </div>
+                                    <div class="tour-info fl">
+                                        <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
+                                            alt="">
+                                        <span class="font-style-2 color-dark-2">By
+                                            {{ $blog->user->first_name . ' ' . $blog->user->last_name }}</span>
+                                    </div>
+                                    <div class="tour-info fl">
+                                        <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
+                                        <span class="font-style-2 color-dark-2">10 comments</span>
+                                    </div>
                                 </div>
-                                <div class="tour-info fl">
-                                    <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
-                                        alt="">
-                                    <span class="font-style-2 color-dark-2">By
-                                        {{ $blog->user->first_name . ' ' . $blog->user->last_name }}</span>
-                                </div>
-                                <div class="tour-info fl">
-                                    <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
-                                    <span class="font-style-2 color-dark-2">10 comments</span>
-                                </div>
-                            </div>
-                            <div class="s_news-text color-grey-3">{!! $blog->description !!}</div>
+                            </a>
+                            {{-- <div class="s_news-text color-grey-3">{!! $blog->description !!}</div> --}}
                         </div>
                     </div>
                 @endforeach
@@ -4404,6 +4406,7 @@
             $('.new-slider').css('display','none');
             if(id == "flight")
             {
+                $('.city-entry-new > .tour-block > img').attr('src','https://carnivalguide.co/travel/img/home/city_1.jpg');
                 $('.flight').removeClass('d-none');
                 $('.flight-tab').removeClass('d-none');
                 $('.hotel').addClass('d-none');
@@ -4413,6 +4416,7 @@
             }
             else if(id == "hotel")
             {
+                $('.city-entry-new > .tour-block > img').attr('src','https://carnivalguide.co/travel/img/home/city_2.jpg');
                 $('.hotel').removeClass('d-none');
                 $('.hotel-tab').removeClass('d-none');
                 $('.flight').addClass('d-none');
@@ -4422,6 +4426,7 @@
             }
             else
             {
+                $('.city-entry-new > .tour-block > img').attr('src', 'https://carnivalguide.co/travel/img/home/city_3.jpg');
                 $('.events').removeClass('d-none');
                 $('.events-tab').removeClass('d-none');
                 $('.hotel').addClass('d-none');
