@@ -520,11 +520,30 @@
                                         The jacket is fully adjustable with cords on the hood and a bungee on the neck and
                                         middle of the back to help customise your coverage. A bungee cord in the hem lets
                                         you find the right fit and feel.</p>
-                                    <p><img loading="lazy" decoding="async" class="alignnone wp-image-59 size-full"
+                                    <p>
+                                        <img loading="lazy" decoding="async" class="alignnone wp-image-59 size-full"
                                             src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1.jpg"
                                             alt="" width="1410" height="309"
                                             srcset="https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1.jpg 1410w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-300x66.jpg 300w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-1024x224.jpg 1024w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-768x168.jpg 768w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-220x48.jpg 220w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-800x175.jpg 800w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-86x19.jpg 86w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-64x14.jpg 64w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-84x18.jpg 84w"
-                                            sizes="(max-width: 1410px) 100vw, 1410px"></p>
+                                            sizes="(max-width: 1410px) 100vw, 1410px">
+                                    </p>
+                                    <style>
+                                        .custom-desc-1 th {
+                                            width: 100px;
+                                            border: none;
+                                            padding: 0;
+                                            padding-inline-end: 10px;
+                                        }
+
+                                        .custom-desc-1 td:not(:last-child) {
+                                            color: #222;
+                                            padding-inline-end: 10px;
+                                        }
+
+                                        .custom-desc-1 td:last-child {
+                                            width: calc(100% - 190px);
+                                        }
+                                    </style>
                                     <table class="custom-desc-1">
                                         <tbody>
                                             <tr>
