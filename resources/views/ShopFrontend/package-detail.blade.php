@@ -13,7 +13,7 @@
             position: relative;
             overflow: hidden;
             border-radius: 30px;
-            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .zoomable__img {
