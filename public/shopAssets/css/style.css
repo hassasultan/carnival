@@ -41294,4 +41294,8 @@ img.alignright {
 		background-color: #fff;
 	}
 }
+.card-border
+{
+    border: 1px solid #eaeaea;
+}
 

@@ -111,10 +111,41 @@
                                     </div>
                                 </div>
                                 <hr />
+                                <style>
+                                    .countdown-container {
+                                        display: flex;
+                                        /* background: #333; */
+                                        padding: 10px 0px;
+                                        border-radius: 5px;
+                                    }
 
+                                    .time-segment {
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: center;
+                                        margin: 0 5px;
+                                    }
+
+                                    .time {
+                                        color: #fff;
+                                        font-size: 20px;
+                                        background: #ccc;
+                                        padding: 5px 10px;
+                                        border-radius: 3px;
+                                        width: 50px;
+                                        text-align: center;
+                                    }
+
+                                    .label {
+                                        color: #000;
+                                        font-size: 12px;
+                                        margin-top: 4px;
+                                    }
+                                </style>
                                 <div class="product-info-stock">
                                     <div class="stock available">
                                         <span class="label">Availability: </span>In Stock
+
                                     </div>
                                 </div>
                                 <div class="product-info-price">
@@ -136,62 +167,87 @@
                                     </div>
                                 </div>
                                 <div class="product-add-form">
-                                    <p>Available Options:</p>
-                                    <form>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <p>Available Options:</p>
+                                            <form>
 
-                                        <div class="product-options-wrapper">
+                                                <div class="product-options-wrapper">
 
 
-                                            <div class="form-qty">
-                                                <label class="label">Qty: </label>
-                                                <div class="control">
-                                                    <input type="text" readonly class="form-control input-qty"
-                                                        value='1' id="qty1" name="qty1" maxlength="10"
-                                                        minlength="1">
-                                                    <button class="btn-number  qtyminus" data-type="minus"
-                                                        data-field="qty1"><span>-</span></button>
-                                                    <button class="btn-number  qtyplus" data-type="plus"
-                                                        data-field="qty1"><span>+</span></button>
+                                                    <div class="form-qty">
+                                                        <label class="label">Qty: </label>
+                                                        <div class="control">
+                                                            <input type="text" readonly class="form-control input-qty"
+                                                                value='1' id="qty1" name="qty1" maxlength="10"
+                                                                minlength="1">
+                                                            <button class="btn-number  qtyminus" data-type="minus"
+                                                                data-field="qty1"><span>-</span></button>
+                                                            <button class="btn-number  qtyplus" data-type="plus"
+                                                                data-field="qty1"><span>+</span></button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <div class="product-options-bottom clearfix">
+
+                                                    <div class="actions">
+
+                                                        @if (Auth::check())
+                                                            <button type="button" title="Add to Cart"
+                                                                class="action btn-cart" data-product_id="1">
+                                                                <span>Add to Cart</span>
+                                                            </button>
+                                                            {{-- <button type="button" title="Add to Cart" class="action btn-cart"
+                                                                data-product_id="{{ $product->id }}">
+                                                                <span>Add to Cart</span>
+                                                            </button> --}}
+                                                        @else
+                                                            <a href="{{ route('customer.login') }}" title="Add to Cart"
+                                                                class="action btn-cart btn">
+                                                                <span>Add to Cart</span>
+                                                            </a>
+                                                        @endif
+                                                        <div class="product-addto-links">
+
+                                                            <a href="#" class="action btn-wishlist" title="Wish List">
+                                                                <span>Wishlist</span>
+                                                            </a>
+                                                            <a href="#" class="action btn-compare" title="Compare">
+                                                                <span>Compare</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <span class="label">Available Till </span>
+                                            <div class="countdown-container">
+                                                <div class="time-segment">
+                                                    <span class="time" id="days">00</span>
+                                                    <span class="label">DAYS</span>
+                                                </div>
+                                                <div class="time-segment">
+                                                    <span class="time" id="hours">00</span>
+                                                    <span class="label">HOURS</span>
+                                                </div>
+                                                <div class="time-segment">
+                                                    <span class="time" id="minutes">00</span>
+                                                    <span class="label">MIN</span>
+                                                </div>
+                                                <div class="time-segment">
+                                                    <span class="time" id="seconds">00</span>
+                                                    <span class="label">SEC</span>
                                                 </div>
                                             </div>
-
                                         </div>
-
-
-
-                                        <div class="product-options-bottom clearfix">
-
-                                            <div class="actions">
-
-                                                @if (Auth::check())
-                                                    <button type="button" title="Add to Cart" class="action btn-cart"
-                                                        data-product_id="1">
-                                                        <span>Add to Cart</span>
-                                                    </button>
-                                                    {{-- <button type="button" title="Add to Cart" class="action btn-cart"
-                                                        data-product_id="{{ $product->id }}">
-                                                        <span>Add to Cart</span>
-                                                    </button> --}}
-                                                @else
-                                                    <a href="{{ route('customer.login') }}" title="Add to Cart"
-                                                        class="action btn-cart btn">
-                                                        <span>Add to Cart</span>
-                                                    </a>
-                                                @endif
-                                                <div class="product-addto-links">
-
-                                                    <a href="#" class="action btn-wishlist" title="Wish List">
-                                                        <span>Wishlist</span>
-                                                    </a>
-                                                    <a href="#" class="action btn-compare" title="Compare">
-                                                        <span>Compare</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </form>
+                                    </div>
                                 </div>
 
                                 <div class="product_meta">
@@ -474,137 +530,249 @@
                         </div>
 
                     </div>
+                    <div class="row box-border" style="margin-top:15px; margin-bottom:15px;">
+                        <div class="col-md-8">
+                            <div class="card ">
+                                <h2>Purchase Info</h2>
+                                <div class="card-head" style="background: #e2e2e2; padding:5px;">
+                                    <div class="row">
+                                        <div class="col-md-8"><span>Ticket Name</span></div>
+                                        <div class="col-md-2"><span>Price</span></div>
+                                        <div class="col-md-2"><span>quantity</span></div>
+                                    </div>
+                                </div>
+                                <div class="card-body card-border">
+                                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 eventview-no-padding">
+                                        <p>No tickets available for purchase now.</p>
+                                        <!--<div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="notify-ticks-avail" name="notify-ticks-avail" >
+                                                    Notify Me When Tickets Become Available
+                                                </label>
+                                            </div> -->
+                                        <div class="checkbox-round">
+                                            <div>
+                                                <label class="switchaction">
+                                                    <input type="checkbox" id="notify-ticks-avail" checked="checked"
+                                                        name="notify-ticks-avail">
+                                                    <span class="slidercheckbox round"></span>
+                                                </label>
+                                            </div>
+                                            <label class="lable-sett">Notify Me When Tickets Become Available</label>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="col-lg-12 col-sm-12 col-md-12 col-xs-12 eventview-no-padding show-register-box">
+                                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 eventview-no-padding">
+                                            <h3 class="event-common-heading event-sub-heading">Subscribe Notification</h3>
+                                            <div class="line-sep-event">
+                                                <span class="line-event"></span>
+                                            </div>
+                                        </div>
+                                        <!--  <form action="#"> -->
 
-                    <!-- product tab info -->
-
-                    <div class="product-info-detailed ">
-
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-pills" role="tablist">
-                            <li role="presentation" class="active"><a href="#description" role="tab"
-                                    data-toggle="tab">Product Details </a></li>
-                            {{-- <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">Section Details
-                                </a>
-                            </li> --}}
-                            <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">reviews</a></li>
-                            <li role="presentation"><a href="#additional" role="tab" data-toggle="tab">Brands</a>
-                            </li>
-                            {{-- <li role="presentation"><a href="#tab-cust" role="tab" data-toggle="tab">Additional
-                                    Info</a>
-                            </li> --}}
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="description">
-                                <div class="block-title">Product Details</div>
-                                <div class="block-content">
-                                    <p>The C de Cartier satchel from Cartier defines feminine elegance and classic allure.
-                                        Crafted from leather, it is impressive with its functional elements and durable
-                                        construction. It can be carried in a chic way with dual handles at the top and the
-                                        brand signature on the front offers it a recognisable sign-off. . Lined with fabric,
-                                        it makes for a luxurious abode for your essentials.</p>
-                                    <p>100% of items sold are checked by our experts. Before sending you your new purchase,
-                                        our dedicated team verifies. authenticity and quality standards. Conformity with the
-                                        seller’s description. the condition mentioned by the seller. A real reliable
-                                        guarantee for all our customers! Except for Brand Approved items Vestiaire
-                                        Collective has no association and/or affiliation with the brands whose items are
-                                        offered for sale on its website/app. Except for Brand Approved items the
-                                        authentication is performed independently by Vestiaire Collective.</p>
-                                    <p>Nike Storm-FIT ADV technology combines together windproof and waterproof fabric with
-                                        advanced engineering and features to help keep you comfortable in harsh weather
-                                        conditions. It is combined with lightweight fabric for a smooth feel. Sealed seams
-                                        help keep water out.</p>
-
-                                    <p>Find Your Fit<br>
-                                        The jacket is fully adjustable with cords on the hood and a bungee on the neck and
-                                        middle of the back to help customise your coverage. A bungee cord in the hem lets
-                                        you find the right fit and feel.</p>
-                                    <p>
-                                        <img loading="lazy" decoding="async" class="alignnone wp-image-59 size-full"
-                                            src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1.jpg"
-                                            alt="" width="1410" height="309"
-                                            srcset="https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1.jpg 1410w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-300x66.jpg 300w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-1024x224.jpg 1024w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-768x168.jpg 768w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-220x48.jpg 220w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-800x175.jpg 800w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-86x19.jpg 86w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-64x14.jpg 64w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-84x18.jpg 84w"
-                                            sizes="(max-width: 1410px) 100vw, 1410px">
-                                    </p>
-                                    <style>
-                                        .custom-desc-1 th {
-                                            width: 100px;
-                                            border: none;
-                                            padding: 0;
-                                            padding-inline-end: 10px;
-                                        }
-
-                                        .custom-desc-1 td:not(:last-child) {
-                                            color: #222;
-                                            padding-inline-end: 10px;
-                                        }
-
-                                        .custom-desc-1 td:last-child {
-                                            width: calc(100% - 190px);
-                                        }
-                                    </style>
-                                    <table class="custom-desc-1">
-                                        <tbody>
-                                            <tr>
-                                                <th rowspan="4">DETAILS</th>
-                                                <td>Brand:</td>
-                                                <td>Cartier</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Item Name:</td>
-                                                <td>C de Cartier bag MM 2way shoulder bag</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Model No.</td>
-                                                <td>L1002063</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Size:</td>
-                                                <td>W40.5 × H28 × D15.5cm（W15.9′ × H11.0′ × D6.1’/Shoulder strap:72cm（28.3’）
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <table class="custom-desc-1">
-                                        <tbody>
-                                            <tr>
-                                                <th rowspan="2">
-                                                    <p class="title">CONDITION</p>
-                                                </th>
-                                                <td>Card slot</td>
-                                                <td>Pre-owned used bag</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Internal</td>
-                                                <td>in&nbsp;<span class="desc_bold">excellent condition</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <table class="custom-desc-1">
-                                        <tbody>
-                                            <tr>
-                                                <th rowspan="3">
-                                                    <p class="desc_subtitle">INSIDE</p>
-                                                </th>
-                                                <td>Scratches</td>
-                                                <td>Unnoticeable scratches</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Stains</td>
-                                                <td>Unnoticeable stains</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Accessories</td>
-                                                <td>Dustbag/Strap</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                        <div
+                                            class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-l">
+                                            <label>Name<span>*</span></label>
+                                            <input type="text" id="noti_first_name" class="form-control"
+                                                placeholder="Enter name" name="noti_first_name">
+                                            <span class="text-danger noti_first_name subscribe_notification_error"></span>
+                                        </div>
+                                        <!--
+                                            <div class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-r">
+                                                <label>Last name<span>*</span></label>
+                                                <input type='text' id="noti_last_name" class="form-control" placeholder="Enter last name" name='noti_last_name'  />
+                                            </div>
+                                            -->
+                                        <div
+                                            class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-l">
+                                            <label>Email<span>*</span></label>
+                                            <input type="text" id="noti_email_address" class="form-control"
+                                                placeholder="Enter email" name="noti_email_address">
+                                            <span
+                                                class="text-danger noti_email_address subscribe_notification_error"></span>
+                                        </div>
+                                        <!--
+                                            <div class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-r">
+                                                <label>Contact no.</label>
+                                                <input type='text' class="form-control" placeholder="Enter Contact no" id="noti_contact_no" class='form-control' name='noti_contact_no'  />
+                                            </div>
+                                            -->
 
 
+                                        <div
+                                            class="form-group col-sm-12 col-lg-12 col-sm-12 col-xs-12 eventview-no-padding">
+                                            <label for="description" class="control-label">
+                                                Notes
+
+                                            </label>
+                                            <textarea name="noti_note" id="noti_note" class="form-control textarea-desc-height" cols="3" rows="2"></textarea>
+                                        </div>
+                                        <div
+                                            class="form-group col-lg-12 col-sm-12 col-md-12 col-xs-12 eventview-no-padding">
+                                            <div class="col-lg-10 col-sm-10 col-md-10 col-xs-12 eventview-no-padding-l">
+                                                <p class="guidline-notes"><span>*</span>
+
+                                                    Tickets amount and categories may not be always available when tickets
+                                                    go on sell, this is solely for the purpose to notify you when tickets
+                                                    become available. </p>
+                                            </div>
+                                            <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 eventview-no-padding-r"
+                                                style="margin-top:10px;">
+                                                <button type="button" id="buy_btn_notification"
+                                                    onclick="submit_notification();" ondblclick="this.preventDefault();"
+                                                    class="btn btn-common-eventview btn-float-right">Subscribe</button>
+                                            </div>
+                                        </div>
+                                        <!--   </form>  -->
+                                    </div>
                                 </div>
                             </div>
-                            {{-- <div role="tabpanel" class="tab-pane" id="tags">
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Location</h2>
+                            <div class="map-div col-lg-12 col-sm-12 col-md-12 col-xs-12 eventview-no-padding map-setting">
+                                <a href="https://www.ticketgateway.com/venues/mystic-lounge" target="_blank" class="hidden-xs">
+                                    Mystic Lounge,<br> 50 Kennedy Road S, Canada</a>
+                                <iframe id="gmap_canvas"
+                                    src="https://maps.google.com/maps?q=50%2BKennedy%2BRoad%2BS%2C%2BCanada&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0" height="400px" width="100%"></iframe>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- product tab info -->
+
+                <div class="product-info-detailed ">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills" role="tablist">
+                        <li role="presentation" class="active"><a href="#description" role="tab"
+                                data-toggle="tab">Product Details </a></li>
+                        {{-- <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">Section Details
+                                </a>
+                            </li> --}}
+                        <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">reviews</a></li>
+                        <li role="presentation"><a href="#additional" role="tab" data-toggle="tab">Brands</a>
+                        </li>
+                        {{-- <li role="presentation"><a href="#tab-cust" role="tab" data-toggle="tab">Additional
+                                    Info</a>
+                            </li> --}}
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="description">
+                            <div class="block-title">Product Details</div>
+                            <div class="block-content">
+                                <p>The C de Cartier satchel from Cartier defines feminine elegance and classic allure.
+                                    Crafted from leather, it is impressive with its functional elements and durable
+                                    construction. It can be carried in a chic way with dual handles at the top and the
+                                    brand signature on the front offers it a recognisable sign-off. . Lined with fabric,
+                                    it makes for a luxurious abode for your essentials.</p>
+                                <p>100% of items sold are checked by our experts. Before sending you your new purchase,
+                                    our dedicated team verifies. authenticity and quality standards. Conformity with the
+                                    seller’s description. the condition mentioned by the seller. A real reliable
+                                    guarantee for all our customers! Except for Brand Approved items Vestiaire
+                                    Collective has no association and/or affiliation with the brands whose items are
+                                    offered for sale on its website/app. Except for Brand Approved items the
+                                    authentication is performed independently by Vestiaire Collective.</p>
+                                <p>Nike Storm-FIT ADV technology combines together windproof and waterproof fabric with
+                                    advanced engineering and features to help keep you comfortable in harsh weather
+                                    conditions. It is combined with lightweight fabric for a smooth feel. Sealed seams
+                                    help keep water out.</p>
+
+                                <p>Find Your Fit<br>
+                                    The jacket is fully adjustable with cords on the hood and a bungee on the neck and
+                                    middle of the back to help customise your coverage. A bungee cord in the hem lets
+                                    you find the right fit and feel.</p>
+                                <p>
+                                    <img loading="lazy" decoding="async" class="alignnone wp-image-59 size-full"
+                                        src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1.jpg"
+                                        alt="" width="1410" height="309"
+                                        srcset="https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1.jpg 1410w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-300x66.jpg 300w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-1024x224.jpg 1024w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-768x168.jpg 768w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-220x48.jpg 220w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-800x175.jpg 800w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-86x19.jpg 86w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-64x14.jpg 64w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/07/product-content-1-84x18.jpg 84w"
+                                        sizes="(max-width: 1410px) 100vw, 1410px">
+                                </p>
+                                <style>
+                                    .custom-desc-1 th {
+                                        width: 100px;
+                                        border: none;
+                                        padding: 0;
+                                        padding-inline-end: 10px;
+                                    }
+
+                                    .custom-desc-1 td:not(:last-child) {
+                                        color: #222;
+                                        padding-inline-end: 10px;
+                                    }
+
+                                    .custom-desc-1 td:last-child {
+                                        width: calc(100% - 190px);
+                                    }
+                                </style>
+                                <table class="custom-desc-1">
+                                    <tbody>
+                                        <tr>
+                                            <th rowspan="4">DETAILS</th>
+                                            <td>Brand:</td>
+                                            <td>Cartier</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Item Name:</td>
+                                            <td>C de Cartier bag MM 2way shoulder bag</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Model No.</td>
+                                            <td>L1002063</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Size:</td>
+                                            <td>W40.5 × H28 × D15.5cm（W15.9′ × H11.0′ × D6.1’/Shoulder strap:72cm（28.3’）
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="custom-desc-1">
+                                    <tbody>
+                                        <tr>
+                                            <th rowspan="2">
+                                                <p class="title">CONDITION</p>
+                                            </th>
+                                            <td>Card slot</td>
+                                            <td>Pre-owned used bag</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Internal</td>
+                                            <td>in&nbsp;<span class="desc_bold">excellent condition</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="custom-desc-1">
+                                    <tbody>
+                                        <tr>
+                                            <th rowspan="3">
+                                                <p class="desc_subtitle">INSIDE</p>
+                                            </th>
+                                            <td>Scratches</td>
+                                            <td>Unnoticeable scratches</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Stains</td>
+                                            <td>Unnoticeable stains</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Accessories</td>
+                                            <td>Dustbag/Strap</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                        {{-- <div role="tabpanel" class="tab-pane" id="tags">
                                 <div class="block-title">information</div>
                                 <div class="block-content">
                                     @if ($product->information != null)
@@ -612,128 +780,128 @@
                                     @endif
                                 </div>
                             </div> --}}
-                            <style>
-                                .review-container {
-                                    /* max-width: 600px; */
-                                    margin: 20px auto;
-                                    padding: 20px;
-                                    border: 1px solid #ccc;
-                                    border-radius: 5px;
-                                }
+                        <style>
+                            .review-container {
+                                /* max-width: 600px; */
+                                margin: 20px auto;
+                                padding: 20px;
+                                border: 1px solid #ccc;
+                                border-radius: 5px;
+                            }
 
-                                .rating-summary,
-                                .reviews,
-                                .add-review {
-                                    margin-bottom: 20px;
-                                }
+                            .rating-summary,
+                            .reviews,
+                            .add-review {
+                                margin-bottom: 20px;
+                            }
 
-                                .rating-bars li {
-                                    list-style: none;
-                                    margin-bottom: 5px;
-                                }
+                            .rating-bars li {
+                                list-style: none;
+                                margin-bottom: 5px;
+                            }
 
-                                progress {
-                                    width: 150px;
-                                    margin-left: 10px;
-                                    vertical-align: middle;
-                                }
+                            progress {
+                                width: 150px;
+                                margin-left: 10px;
+                                vertical-align: middle;
+                            }
 
-                                .review {
-                                    border-top: 1px solid #ccc;
-                                    padding-top: 10px;
-                                    margin-top: 10px;
-                                }
+                            .review {
+                                border-top: 1px solid #ccc;
+                                padding-top: 10px;
+                                margin-top: 10px;
+                            }
 
-                                .product-tab-brands .brand-item img {
-                                    max-height: 60px;
-                                    width: auto;
-                                }
+                            .product-tab-brands .brand-item img {
+                                max-height: 60px;
+                                width: auto;
+                            }
 
-                                .brand-item {
-                                    margin: 10px 0px;
-                                }
-                            </style>
-                            <div role="tabpanel" class="tab-pane" id="reviews">
-                                <div class="block-title">reviews</div>
-                                <div class="block-content">
-                                    <div class="review-container row">
-                                        <div class="rating-summary col-md-4">
-                                            <h2>5.00★ Rating</h2>
-                                            <ul class="rating-bars">
-                                                <li>5★ <progress value="1" max="1"></progress> 1</li>
-                                                <li>4★ <progress value="0" max="1"></progress> 0</li>
-                                                <li>3★ <progress value="0" max="1"></progress> 0</li>
-                                                <li>2★ <progress value="0" max="1"></progress> 0</li>
-                                                <li>1★ <progress value="0" max="1"></progress> 0</li>
-                                            </ul>
+                            .brand-item {
+                                margin: 10px 0px;
+                            }
+                        </style>
+                        <div role="tabpanel" class="tab-pane" id="reviews">
+                            <div class="block-title">reviews</div>
+                            <div class="block-content">
+                                <div class="review-container row">
+                                    <div class="rating-summary col-md-4">
+                                        <h2>5.00★ Rating</h2>
+                                        <ul class="rating-bars">
+                                            <li>5★ <progress value="1" max="1"></progress> 1</li>
+                                            <li>4★ <progress value="0" max="1"></progress> 0</li>
+                                            <li>3★ <progress value="0" max="1"></progress> 0</li>
+                                            <li>2★ <progress value="0" max="1"></progress> 0</li>
+                                            <li>1★ <progress value="0" max="1"></progress> 0</li>
+                                        </ul>
+                                    </div>
+                                    <div class="reviews col-md-8">
+                                        <h2>1 review for "Dresses-Summer Floral"</h2>
+                                        <div class="review">
+                                            <p><strong>Admin – August 29, 2021</strong></p>
+                                            <p>It is beautiful and high quality. I will continue to buy to give to
+                                                friends and relatives</p>
                                         </div>
-                                        <div class="reviews col-md-8">
-                                            <h2>1 review for "Dresses-Summer Floral"</h2>
-                                            <div class="review">
-                                                <p><strong>Admin – August 29, 2021</strong></p>
-                                                <p>It is beautiful and high quality. I will continue to buy to give to
-                                                    friends and relatives</p>
-                                            </div>
+                                    </div>
+                                    <div class="add-review">
+                                        <h2>Add a review</h2>
+                                        <p>You must be logged in to post a review.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="additional">
+                            <div class="block-title">Extra Tabs</div>
+                            <div class="block-content">
+                                <div class="product-tab-brands">
+                                    <div class="brand-item row ">
+                                        <div class="term-thumbnail col-md-4">
+                                            <a href="https://kuteshop.kutethemes.net/product-brand/market/fashion/chanel/?demo=21"
+                                                class="brand-link">
+                                                <figure><img width="180" height="100"
+                                                        src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-chanel.png"
+                                                        class="attachment-full size-full wp-post-image" alt=""
+                                                        decoding="async"
+                                                        srcset="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-chanel.png 180w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-chanel-86x48.png 86w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-chanel-64x36.png 64w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-chanel-88x49.png 88w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-chanel-84x47.png 84w"
+                                                        sizes="(max-width: 180px) 100vw, 180px"></figure>
+                                            </a>
                                         </div>
-                                        <div class="add-review">
-                                            <h2>Add a review</h2>
-                                            <p>You must be logged in to post a review.</p>
+                                        <h3 class="term-name col-md-2">
+                                            <a href="https://kuteshop.kutethemes.net/product-brand/market/fashion/chanel/?demo=21"
+                                                class="brand-link">
+                                                Chanel </a>
+                                        </h3>
+                                        <div class="term-description col-md-6">
+                                            <p>Whatever the occasion, complete your outfit with one of Hermes Fashion’s
+                                                stylish women’s bags. Discover our spring collection</p>
+                                        </div>
+                                    </div>
+                                    <div class="brand-item row ">
+                                        <div class="term-thumbnail col-md-4">
+                                            <a href="https://kuteshop.kutethemes.net/product-brand/market/fashion/gucci/?demo=21"
+                                                class="brand-link">
+                                                <figure><img width="180" height="100"
+                                                        src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-gucci.png"
+                                                        class="attachment-full size-full wp-post-image" alt=""
+                                                        decoding="async"
+                                                        srcset="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-gucci.png 180w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-gucci-86x48.png 86w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-gucci-64x36.png 64w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-gucci-88x49.png 88w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-gucci-84x47.png 84w"
+                                                        sizes="(max-width: 180px) 100vw, 180px"></figure>
+                                            </a>
+                                        </div>
+                                        <h3 class="term-name col-md-2">
+                                            <a href="https://kuteshop.kutethemes.net/product-brand/market/fashion/gucci/?demo=21"
+                                                class="brand-link">
+                                                Gucci </a>
+                                        </h3>
+                                        <div class="term-description col-md-6">
+                                            <p>Whatever the occasion, complete your outfit with one of Hermes Fashion’s
+                                                stylish women’s bags. Discover our spring collection.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="additional">
-                                <div class="block-title">Extra Tabs</div>
-                                <div class="block-content">
-                                    <div class="product-tab-brands">
-                                        <div class="brand-item row ">
-                                            <div class="term-thumbnail col-md-4">
-                                                <a href="https://kuteshop.kutethemes.net/product-brand/market/fashion/chanel/?demo=21"
-                                                    class="brand-link">
-                                                    <figure><img width="180" height="100"
-                                                            src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-chanel.png"
-                                                            class="attachment-full size-full wp-post-image" alt=""
-                                                            decoding="async"
-                                                            srcset="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-chanel.png 180w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-chanel-86x48.png 86w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-chanel-64x36.png 64w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-chanel-88x49.png 88w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-chanel-84x47.png 84w"
-                                                            sizes="(max-width: 180px) 100vw, 180px"></figure>
-                                                </a>
-                                            </div>
-                                            <h3 class="term-name col-md-2">
-                                                <a href="https://kuteshop.kutethemes.net/product-brand/market/fashion/chanel/?demo=21"
-                                                    class="brand-link">
-                                                    Chanel </a>
-                                            </h3>
-                                            <div class="term-description col-md-6">
-                                                <p>Whatever the occasion, complete your outfit with one of Hermes Fashion’s
-                                                    stylish women’s bags. Discover our spring collection</p>
-                                            </div>
-                                        </div>
-                                        <div class="brand-item row ">
-                                            <div class="term-thumbnail col-md-4">
-                                                <a href="https://kuteshop.kutethemes.net/product-brand/market/fashion/gucci/?demo=21"
-                                                    class="brand-link">
-                                                    <figure><img width="180" height="100"
-                                                            src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-gucci.png"
-                                                            class="attachment-full size-full wp-post-image" alt=""
-                                                            decoding="async"
-                                                            srcset="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-gucci.png 180w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-gucci-86x48.png 86w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-gucci-64x36.png 64w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-gucci-88x49.png 88w, https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/brand-gucci-84x47.png 84w"
-                                                            sizes="(max-width: 180px) 100vw, 180px"></figure>
-                                                </a>
-                                            </div>
-                                            <h3 class="term-name col-md-2">
-                                                <a href="https://kuteshop.kutethemes.net/product-brand/market/fashion/gucci/?demo=21"
-                                                    class="brand-link">
-                                                    Gucci </a>
-                                            </h3>
-                                            <div class="term-description col-md-6">
-                                                <p>Whatever the occasion, complete your outfit with one of Hermes Fashion’s
-                                                    stylish women’s bags. Discover our spring collection.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- <div role="tabpanel" class="tab-pane" id="tab-cust">
+                        </div>
+                        {{-- <div role="tabpanel" class="tab-pane" id="tab-cust">
                                 <div class="block-title">Guarantees</div>
                                 <div class="block-content">
                                     @if ($product->guarantee != null)
@@ -741,20 +909,20 @@
                                     @endif
                                 </div>
                             </div> --}}
-                        </div>
                     </div>
-                    <!-- product tab info -->
+                </div>
+                <!-- product tab info -->
 
-                    <!-- block-related product -->
-                    <div class="block-related ">
-                        <div class="block-title">
-                            <strong class="title">RELATED products</strong>
-                        </div>
-                        <div class="block-content ">
-                            <ol class="product-items owl-carousel " data-nav="true" data-dots="false" data-margin="30"
-                                data-responsive='{"0":{"items":1},"480":{"items":2},"600":{"items":3},"992":{"items":3}}'>
+                <!-- block-related product -->
+                <div class="block-related ">
+                    <div class="block-title">
+                        <strong class="title">RELATED products</strong>
+                    </div>
+                    <div class="block-content ">
+                        <ol class="product-items owl-carousel " data-nav="true" data-dots="false" data-margin="30"
+                            data-responsive='{"0":{"items":1},"480":{"items":2},"600":{"items":3},"992":{"items":3}}'>
 
-                                {{-- @foreach ($related as $row)
+                            {{-- @foreach ($related as $row)
                                     <li class="product-item product-item-opt-2">
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
@@ -823,13 +991,13 @@
                                     </li>
                                 @endforeach --}}
 
-                            </ol>
-                        </div>
-                    </div><!-- block-related product -->
+                        </ol>
+                    </div>
+                </div><!-- block-related product -->
 
-                </div><!-- Main Content -->
+            </div><!-- Main Content -->
 
-            </div>
+        </div>
         </div>
 
 
@@ -977,6 +1145,27 @@
     </script>
 
     <script>
+        $(document).ready(function() {
+            const targetDate = new Date("2024-12-31T23:59:59").getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const timeleft = targetDate - now;
+
+                const days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+
+                $('#days').text(days < 10 ? '0' + days : days);
+                $('#hours').text(hours < 10 ? '0' + hours : hours);
+                $('#minutes').text(minutes < 10 ? '0' + minutes : minutes);
+                $('#seconds').text(seconds < 10 ? '0' + seconds : seconds);
+            }
+
+            setInterval(updateCountdown, 1000);
+        });
+
         (function($) {
 
             "use strict";
