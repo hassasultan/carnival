@@ -534,16 +534,44 @@
                         <div class="col-md-8">
                             <div class="card ">
                                 <h2>Purchase Info</h2>
-                                <div class="card-head" style="background: #e2e2e2; padding:5px;">
-                                    <div class="row">
+                                <div class="card-head">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered  cart_summary">
+                                            <thead>
+                                                <tr>
+                                                    <th class="cart_product">Ticket Name</th>
+                                                    <th>Price</th>
+                                                    <th>quantity</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="ovic_bundle-product">
+                                                    <td class="ovic_bundle-check check-column">
+                                                        <p>LAST WAVE
+                                                            Sales end on Sep 21, 2024 03:00 PM</p>
+                                                            <span>Last Batch - Available Now Until September 21st At 3:00pm Or Until Quantities Last</span>
+                                                    </td>
+                                                    <td class="ovic_bundle-thumb column-thumb">
+                                                        <p>CAD $50.00</p>
+                                                    </td>
+                                                    <td class="ovic_bundle-title column-name">
+                                                        <div class="quantity">
+                                                            <input type="number" value="1" min="1">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    {{-- <div class="row">
                                         <div class="col-md-8"><span>Ticket Name</span></div>
                                         <div class="col-md-2"><span>Price</span></div>
                                         <div class="col-md-2"><span>quantity</span></div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="card-body card-border">
                                     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 eventview-no-padding">
-                                        <p>No tickets available for purchase now.</p>
+                                        {{-- <p>No tickets available for purchase now.</p> --}}
                                         <!--<div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" id="notify-ticks-avail" name="notify-ticks-avail" >
