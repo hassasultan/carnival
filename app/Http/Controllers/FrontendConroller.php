@@ -87,6 +87,7 @@ class FrontendConroller extends Controller
     }
     public function get_vendors(Request $request)
     {
+        // dd($request->toArray());
         $vendors = Vendor::with([
             'user' => function ($query) {
                 $query->select('id', 'first_name', 'last_name', 'slug', 'image');
@@ -121,7 +122,8 @@ class FrontendConroller extends Controller
     }
     public function vendor_listing()
     {
-        return view('ShopFrontend.vendors');
+        $regions = Region::all();
+        return view('ShopFrontend.vendors', compact('regions'));
     }
     public function contact_us()
     {

@@ -10,6 +10,7 @@ use App\Models\SubVendor;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Customer;
+use App\Models\Region;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -28,10 +29,11 @@ class UserManagementController extends Controller
 
     public function createUser()
     {
+        $continents = Region::all();
         $roles = Role::where('status', 1)->get();
         $packages = Package::where('status', 1)->get();
         $vendors = Vendor::with('user')->where('status', 1)->get();
-        return view('dashboard.admin.user_management.users.create', compact('roles', 'packages', 'vendors'));
+        return view('dashboard.admin.user_management.users.create', compact('roles', 'packages', 'vendors', 'continents'));
     }
 
     public function getCategories(Request $request)

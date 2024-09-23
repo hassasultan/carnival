@@ -44,13 +44,19 @@ class Vendor extends Model
     {
         return $this->belongsTo(Package::class);
     }
+
     public function subvendor()
     {
         return $this->hasMany(SubVendor::class);
     }
+
     public function products()
     {
         return $this->hasMany(Product::class, 'user_id', 'user_id');
     }
 
+    public function continent()
+    {
+        return $this->belongsTo(Region::class, 'continent');
+    }
 }

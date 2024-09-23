@@ -1,6 +1,8 @@
 @extends('ShopFrontend.Layouts.layout')
 
-@section('title') Mas Camps @endsection
+@section('title')
+    Mas Camps
+@endsection
 
 @section('main')
     <!-- MAIN -->
@@ -36,13 +38,16 @@
 
                     <!-- link categori -->
                     <ul class="category-links">
-                        <li class="current-cate"><a href="">Caribbean</a></li>
+                        {{-- <li class="current-cate"><a href="">Caribbean</a></li>
                         <li><a href="">North America</a></li>
                         <li><a href="">South America</a></li>
                         <li><a href="">Europe</a></li>
                         <li><a href="">Africa</a></li>
                         <li><a href="">Asia</a></li>
-                        <li><a href="">Australia</a></li>
+                        <li><a href="">Australia</a></li> --}}
+                        @foreach ($regions as $region)
+                            <li><a onclick="fetchProducts()" href="">{{ $region->name }}</a></li>
+                        @endforeach
                     </ul>
                     <!-- link categori -->
 
@@ -381,11 +386,7 @@
         <!-- block-brand -->
         <div class="block-brand-op6">
             <div class="container">
-                <div class="owl-carousel"
-                    data-nav="true"
-                    data-dots="false"
-                    data-margin="2"
-                    data-loop="true"
+                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="2" data-loop="true"
                     data-responsive='{
                         "0":{"items":3},
                         "480":{"items":4},
@@ -393,19 +394,24 @@
                         "992":{"items":7}
                     }'>
                     <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_1.png')}}" alt="brand"></a>
+                        <a href=""><img src="{{ asset('shopAssets/CarnivalCommitees/partner_1.png') }}"
+                                alt="brand"></a>
                     </div>
                     <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_2.png')}}" alt="brand"></a>
+                        <a href=""><img src="{{ asset('shopAssets/CarnivalCommitees/partner_2.png') }}"
+                                alt="brand"></a>
                     </div>
                     <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_3.png')}}" alt="brand"></a>
+                        <a href=""><img src="{{ asset('shopAssets/CarnivalCommitees/partner_3.png') }}"
+                                alt="brand"></a>
                     </div>
                     <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_4.png')}}" alt="brand"></a>
+                        <a href=""><img src="{{ asset('shopAssets/CarnivalCommitees/partner_4.png') }}"
+                                alt="brand"></a>
                     </div>
                     <div class="item">
-                        <a href=""><img src="{{asset('shopAssets/CarnivalCommitees/partner_5.png')}}" alt="brand"></a>
+                        <a href=""><img src="{{ asset('shopAssets/CarnivalCommitees/partner_5.png') }}"
+                                alt="brand"></a>
                     </div>
                 </div>
             </div>
@@ -449,43 +455,38 @@
                         $('#product-listing').removeClass('blur-effect');
                         $.each(response.data, function(index, vendor) {
                             var logo = null;
-                            if(vendor.logo != null)
-                            {
-                                logo = "{{ asset('images/')}}/"+vendor.logo;
-                            }
-                            else if(vendor.user.image != null)
-                            {
-                                logo = "{{ asset('images/')}}/"+vendor.user.image;
+                            if (vendor.logo != null) {
+                                logo = "{{ asset('images/') }}/" + vendor.logo;
+                            } else if (vendor.user.image != null) {
+                                logo = "{{ asset('images/') }}/" + vendor.user.image;
 
-                            }
-                            else
-                            {
+                            } else {
                                 logo = "{{ asset('shopAssets/images/media/product9.jpg') }}";
                             }
-                            var vendorHtml = `
+                            var vendorHtml =
+                                `
                                 <li class="col-sm-4 product-item">
                                     <div class="product-item-opt-1">
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
                                                 <div class="product-item-photo">
-                                                    <a href="{{ route('front.vendor.detail','') }}/${vendor.user.slug}" class="product-item-img">
+                                                    <a href="{{ route('front.vendor.detail', '') }}/${vendor.user.slug}" class="product-item-img">
                                                         <img style="width:200px;height:200px" src="${logo}"
                                                     alt="product name"></a>
                                                 </div>
                                             </div>
                                             <div class="product-item-detail">
                                                 <strong class="product-item-name"><a href="">${vendor.name}</a></strong>`;
-                                                if(vendor.user.products.length > 0)
-                                                {
-                                                    vendorHtml += `
+                            if (vendor.user.products.length > 0) {
+                                vendorHtml += `
                                                     <div class="clearfix">
                                                         <div class="product-item-price">
                                                             <span class="price">$${vendor.user.products[0].min_price}-$${vendor.user.products[0].max_price}</span>
                                                         </div>
 
                                                     </div>`;
-                                                }
-                                                vendorHtml +=`
+                            }
+                            vendorHtml += `
                                             </div>
                                         </div>
                                     </div>

@@ -54,4 +54,9 @@ class SubVendor extends Model
     {
         return $this->hasMany(Product::class, 'user_id', 'user_id');
     }
+
+    public function continent()
+    {
+        return $this->belongsTo(Role::class, 'continent');
+    }
 }

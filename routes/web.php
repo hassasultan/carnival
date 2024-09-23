@@ -42,6 +42,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\EventsCountryTabController;
 use App\Http\Controllers\TestimonialsController;
+use App\Http\Controllers\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -223,12 +224,15 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // Events tabs
     Route::resource('events_country_tabs', EventsCountryTabController::class);
-    
+
     // testimonials
     Route::resource('testimonials', TestimonialsController::class);
 
     // API Route for getting cities by country
     Route::get('api/cities/{country_id}', [EventsCountryTabController::class, 'getCitiesByCountry'])->name('get.cities.by.country');
+
+    // banner
+    Route::resource('banners', BannerController::class);
 });
 
 Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
