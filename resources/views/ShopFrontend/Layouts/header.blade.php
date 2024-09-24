@@ -213,69 +213,87 @@
                     </ul>
 
                     <ul class="nav-right">
-                        <li class="dropdown setting">
-                            <a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle "><span>My
-                                    Account</span> <i aria-hidden="true" class="fa fa-angle-down"></i></a>
-                            <div class="dropdown-menu  " style="right: 0px; left: auto;">
-                                <div class="switcher  switcher-language">
-                                    <strong class="title">Select language</strong>
-                                    <ul class="switcher-options ">
-                                        <li class="switcher-option">
-                                            <a href="#">
-                                                <img class="switcher-flag" alt="flag"
-                                                    src="{{ asset('shopAssets/images/flags/flag_french.png') }}">
-                                            </a>
-                                        </li>
-                                        <li class="switcher-option">
-                                            <a href="#">
-                                                <img class="switcher-flag" alt="flag"
-                                                    src="{{ asset('shopAssets/images/flags/flag_germany.png') }}">
-                                            </a>
-                                        </li>
-                                        <li class="switcher-option">
-                                            <a href="#">
-                                                <img class="switcher-flag" alt="flag"
-                                                    src="{{ asset('shopAssets/images/flags/flag_english.png') }}">
-                                            </a>
-                                        </li>
-                                        <li class="switcher-option switcher-active">
-                                            <a href="#">
-                                                <img class="switcher-flag" alt="flag"
-                                                    src="{{ asset('shopAssets/images/flags/flag_spain.png') }}">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="switcher  switcher-currency">
-                                    <strong class="title">SELECT CURRENCIES</strong>
-                                    <ul class="switcher-options ">
-                                        <li class="switcher-option">
-                                            <a href="#">
-                                                <i class="fa fa-usd" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="switcher-option switcher-active">
-                                            <a href="#">
-                                                <i class="fa fa-eur" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="switcher-option">
-                                            <a href="#">
-                                                <i class="fa fa-gbp" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
+                        @if (Auth::check())
+                            <li class="dropdown setting">
+                                <a data-toggle="dropdown" role="button" href="#"
+                                    class="dropdown-toggle "><span>My
+                                        Account</span> <i aria-hidden="true" class="fa fa-angle-down"></i></a>
+                                <div class="dropdown-menu  " style="right: 0px; left: auto;">
+                                    <div class="switcher  switcher-language">
+                                        <strong class="title">Select language</strong>
+                                        <ul class="switcher-options ">
+                                            <li class="switcher-option">
+                                                <a href="#">
+                                                    <img class="switcher-flag" alt="flag"
+                                                        src="{{ asset('shopAssets/images/flags/flag_french.png') }}">
+                                                </a>
+                                            </li>
+                                            <li class="switcher-option">
+                                                <a href="#">
+                                                    <img class="switcher-flag" alt="flag"
+                                                        src="{{ asset('shopAssets/images/flags/flag_germany.png') }}">
+                                                </a>
+                                            </li>
+                                            <li class="switcher-option">
+                                                <a href="#">
+                                                    <img class="switcher-flag" alt="flag"
+                                                        src="{{ asset('shopAssets/images/flags/flag_english.png') }}">
+                                                </a>
+                                            </li>
+                                            <li class="switcher-option switcher-active">
+                                                <a href="#">
+                                                    <img class="switcher-flag" alt="flag"
+                                                        src="{{ asset('shopAssets/images/flags/flag_spain.png') }}">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="switcher  switcher-currency">
+                                        <strong class="title">SELECT CURRENCIES</strong>
+                                        <ul class="switcher-options ">
+                                            <li class="switcher-option">
+                                                <a href="#">
+                                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="switcher-option switcher-active">
+                                                <a href="#">
+                                                    <i class="fa fa-eur" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li class="switcher-option">
+                                                <a href="#">
+                                                    <i class="fa fa-gbp" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
 
+                                        </ul>
+                                    </div>
+                                    <ul class="account">
+                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                        <li><a href="">My Account</a></li>
+                                        <li><a href="">Checkout</a></li>
+                                        <li><a href="compare.html">Compare</a></li>
+                                        <li>
+                                            <a class="" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}"
+                                                method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
                                     </ul>
                                 </div>
-                                <ul class="account">
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="">My Account</a></li>
-                                    <li><a href="">Checkout</a></li>
-                                    <li><a href="compare.html">Compare</a></li>
-                                    <li><a href="login.html">Login/Register</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ route('customer.login') }}">Login/Register</a>
+                            </li>
+                        @endif
                         <li><a href="">Buyer Protection</a></li>
                         <li><a href="">Services </a></li>
                         <li><a href="">Support</a></li>
@@ -293,8 +311,8 @@
                         <div class="nav-left">
                             <!-- logo -->
                             <strong class="logo">
-                                <a href="/"><img width="120" src="{{ asset('shopAssets/images/logo.png') }}"
-                                        alt="logo"></a>
+                                <a href="/"><img width="120"
+                                        src="{{ asset('shopAssets/images/logo.png') }}" alt="logo"></a>
                             </strong><!-- logo -->
                         </div>
 
@@ -402,40 +420,38 @@
                                             href=""> ARTISTES </a></li>
                                     <li class="{{ Request::routeIs('front.event.listing') ? 'active' : '' }}"><a
                                             href="{{ route('front.event.listing') }}"> EVENTS </a></li>
-                                    {{-- <li><a href="#"> CG GEAR </a></li>
-                                    <li><a href="#">MODELS</a></li>
-                                    <li><a href="#">ARTISTES</a></li>
-                                    <li><a href="#">EVENTS</a></li> --}}
-                                    <li class="parent parent-submenu">
-                                        <a> My Account </a>
-                                        <span class="toggle-submenu"></span>
-                                        <div class="submenu drop-menu">
-                                            <ul>
-                                                <li><a href="">My Account</a></li>
-                                                <li><a href="">Wishlist</a></li>
-                                                <li><a href="">Checkout</a></li>
-                                                <li><a href="">Compare</a></li>
-                                                @if (Auth::check())
-                                                    <li>
-                                                        <a class="" href="{{ route('logout') }}"
-                                                            onclick="event.preventDefault();
+                                    @if (Auth::check())
+                                        <li class="parent parent-submenu">
+                                            <a> My Account </a>
+                                            <span class="toggle-submenu"></span>
+                                            <div class="submenu drop-menu">
+                                                <ul>
+                                                    <li><a href="">My Account</a></li>
+                                                    <li><a href="">Wishlist</a></li>
+                                                    <li><a href="">Checkout</a></li>
+                                                    <li><a href="">Compare</a></li>
+                                                    @if (Auth::check())
+                                                        <li>
+                                                            <a class="" href="{{ route('logout') }}"
+                                                                onclick="event.preventDefault();
                                                                     document.getElementById('logout-form').submit();">
-                                                            {{ __('Logout') }}
-                                                        </a>
+                                                                {{ __('Logout') }}
+                                                            </a>
 
-                                                        <form id="logout-form" action="{{ route('logout') }}"
-                                                            method="POST" class="d-none">
-                                                            @csrf
-                                                        </form>
-                                                    </li>
-                                                @else
-                                                    <li>
-                                                        <a href="{{ route('customer.login') }}">Login/Register</a>
-                                                    </li>
-                                                @endif
-                                            </ul>
-                                        </div>
-                                    </li>
+                                                            <form id="logout-form" action="{{ route('logout') }}"
+                                                                method="POST" class="d-none">
+                                                                @csrf
+                                                            </form>
+                                                        </li>
+                                                    @else
+                                                        <li>
+                                                            <a href="{{ route('customer.login') }}">Login/Register</a>
+                                                        </li>
+                                                    @endif
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    @endif
                                     <li><a href="#">CONTACT US</a></li>
                                 </ul>
 
@@ -697,16 +713,16 @@
                                         <li><a href="#">MODELS</a></li>
                                         <li><a href="#">ARTISTES</a></li>
                                         <li><a href="#">EVENTS</a></li> --}}
-                                    <li class="parent parent-submenu">
-                                        <a> My Account </a>
-                                        <span class="toggle-submenu"></span>
-                                        <div class="submenu drop-menu">
-                                            <ul>
-                                                <li><a href="">My Account</a></li>
-                                                <li><a href="">Wishlist</a></li>
-                                                <li><a href="">Checkout</a></li>
-                                                <li><a href="">Compare</a></li>
-                                                @if (Auth::check())
+                                    @if (Auth::check())
+                                        <li class="parent parent-submenu">
+                                            <a> My Account </a>
+                                            <span class="toggle-submenu"></span>
+                                            <div class="submenu drop-menu">
+                                                <ul>
+                                                    <li><a href="">My Account</a></li>
+                                                    <li><a href="">Wishlist</a></li>
+                                                    <li><a href="">Checkout</a></li>
+                                                    <li><a href="">Compare</a></li>
                                                     <li>
                                                         <a class="" href="{{ route('logout') }}"
                                                             onclick="event.preventDefault();
@@ -719,14 +735,14 @@
                                                             @csrf
                                                         </form>
                                                     </li>
-                                                @else
-                                                    <li>
-                                                        <a href="{{ route('customer.login') }}">Login/Register</a>
-                                                    </li>
-                                                @endif
-                                            </ul>
-                                        </div>
-                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    @endif
+                                    {{-- @else
+                                            <li>
+                                                <a href="{{ route('customer.login') }}">Login/Register</a>
+                                            </li> --}}
                                     <li><a href="#">CONTACT US</a></li>
                                 </ul>
 

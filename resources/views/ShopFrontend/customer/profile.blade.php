@@ -78,16 +78,18 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="email">Email Address <span class="text-danger">*</span></label>
-                                        <input id="email" type="email" readonly
-                                            class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ $user->email }}" required autocomplete="email">
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="email">Email Address <span class="text-danger">*</span></label>
+                                            <input id="email" type="email" readonly
+                                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                                value="{{ $user->email }}" required autocomplete="email">
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">

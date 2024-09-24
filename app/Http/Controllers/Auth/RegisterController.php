@@ -55,9 +55,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        if ($data['package_id'] == 'section_leader') {
+        if (isset($data['package_id']) && $data['package_id'] == 'section_leader') {
             $data['package_id'] = '123';
             $data['role_id'] = '3';
+        } elseif ($data['role_id'] == '4') {
+            $data['package_id'] = '';
         } else {
             $data['role_id'] = '2';
         }
@@ -87,9 +89,11 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // dd($data);
-        if ($data['package_id'] == 'section_leader') {
+        if (isset($data['package_id']) && $data['package_id'] == 'section_leader') {
             $data['package_id'] = '123';
             $data['role_id'] = '3';
+        } elseif ($data['role_id'] == '4') {
+            $data['package_id'] = '';
         } else {
             $data['role_id'] = '2';
         }
@@ -189,7 +193,7 @@ class RegisterController extends Controller
         if ($data['role_id'] == 4) {
             Customer::create([
                 'user_id' => $user->id,
-                'package_id' => $data['package_id'],
+                // 'package_id' => $data['package_id'],
                 'status' => 1,
             ]);
         }

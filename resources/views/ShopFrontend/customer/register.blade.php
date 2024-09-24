@@ -67,7 +67,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group col-md-12">
                                         <label for="email">Email Address <span class="text-danger">*</span></label>
                                         <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
