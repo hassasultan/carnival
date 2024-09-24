@@ -46,7 +46,12 @@
                         <li><a href="">Asia</a></li>
                         <li><a href="">Australia</a></li> --}}
                         @foreach ($regions as $region)
-                            <li><a onclick="fetchProducts()" href="">{{ $region->name }}</a></li>
+                            <li>
+                                <a class="getWithRegion" href="javascript:void(0)">
+                                    {{ $region->name }}
+                                    <input type="hidden" class="region_name" value="{{ $region->id }}">
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                     <!-- link categori -->
@@ -422,14 +427,25 @@
 @endsection
 
 @section('script')
-    <!-- Custom scripts -->
     <script>
         $(document).ready(function() {
-            // Function to fetch and display products
+            
+            var getRegion = '';
+            
+            $(document).on('click', '.getWithRegion', function(e) {
+                var region = $(this).find($('.region_name')).val();
+                
+                getRegion = region
+                console.log('regionregion', getRegion);
+                
+                fetchProducts();
+            });
+            
+            console.log('regionregion22', getRegion);
+
             function fetchProducts(page = 1) {
                 $('#product-listing').html('');
-                // Apply skeleton loading structure
-                for (let i = 0; i < 9; i++) { // Assuming 9 products per page
+                for (let i = 0; i < 9; i++) {
                     var skeletonHtml = `
                 <li class="col-sm-4 product-item">
                     <div class="skeleton-item">
@@ -447,7 +463,8 @@
                     url: "{{ route('get.vendors.front') }}",
                     type: "GET",
                     data: {
-                        page: page
+                        page: page,
+                        getRegion: getRegion
                     },
                     success: function(response) {
                         console.log(response);
@@ -496,7 +513,6 @@
                             $('#product-listing').append(vendorHtml);
                         });
 
-                        // Display pagination links
                         $('.pagination').empty();
                         pre = 0;
                         nxt = 0;
@@ -531,13 +547,11 @@
                 });
             }
 
-            // Initial call to fetch products
             fetchProducts();
 
-            // Pagination click event handler
             $(document).on('click', '.pagination a', function(e) {
                 e.preventDefault();
-                var page = $(this).data('page'); // Get the page number from the clicked link
+                var page = $(this).data('page');
                 fetchProducts(page);
             });
         });
@@ -579,5 +593,10 @@
             });
 
         })(jQuery);
+    </script>
+
+    <script>
+        $(document).ready(function() {
+        });
     </script>
 @endsection

@@ -24,7 +24,7 @@ class FrontendConroller extends Controller
 {
     public function home()
     {
-        $events = Event::with('images','tickets','country_tabs')->whereHas('country_tabs')->orderBy('id','desc')->get()->take('5');
+        $events = Event::with('images', 'tickets', 'country_tabs')->whereHas('country_tabs')->orderBy('id', 'desc')->get()->take('5');
         // $events = Event::with('images','tickets')->orderBy('id','desc')->get()->take('5');
         $regions = Region::with('countries')->get();
         $services = OurService::get()->take('4');
@@ -34,7 +34,7 @@ class FrontendConroller extends Controller
         $testimonials = Testimonials::all();
         $blogs = Blogs::with('user')->get()->take('3');
         // dd($events->toArray());
-        return view('front.home',compact('events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials'));
+        return view('front.home', compact('events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials'));
     }
     public function event_listing()
     {
@@ -48,7 +48,7 @@ class FrontendConroller extends Controller
     {
         $blogs = Blogs::with('user')->get()->take('3');
         $products = Product::with('brand')->get();
-        return view('front.tours',compact('blogs','products'));
+        return view('front.tours', compact('blogs', 'products'));
     }
     public function flight()
     {
@@ -57,13 +57,13 @@ class FrontendConroller extends Controller
     public function flight_listing()
     {
         $blogs = Blogs::with('user')->get()->take('3');
-        return view('front.flight-isting',compact('blogs'));
+        return view('front.flight-isting', compact('blogs'));
     }
     public function hotel_listing()
     {
         $blogs = Blogs::with('user')->get()->take('3');
         $products = Product::with('brand')->get();
-        return view('front.hotel-isting',compact('blogs','products'));
+        return view('front.hotel-isting', compact('blogs', 'products'));
     }
     public function gallery()
     {
@@ -87,7 +87,8 @@ class FrontendConroller extends Controller
     }
     public function get_vendors(Request $request)
     {
-        // dd($request->toArray());
+        $regionId = $request->get('getRegion');
+
         $vendors = Vendor::with([
             'user' => function ($query) {
                 $query->select('id', 'first_name', 'last_name', 'slug', 'image');
@@ -97,6 +98,9 @@ class FrontendConroller extends Controller
                     ->groupBy('user_id');
             }
         ])
+            ->when($regionId, function ($query) use ($regionId) {
+                return $query->where('continent', $regionId);
+            })
             ->where('package_id', 8)
             ->orderBy('id', 'DESC')
             ->paginate(18);
@@ -108,17 +112,17 @@ class FrontendConroller extends Controller
         $investors = Investor::all();
         $blogs = Blogs::with('user')->get()->take('6');
         // dd($blogs->toArray());
-        return view('ShopFrontend.home',compact('products','investors','blogs'));
+        return view('ShopFrontend.home', compact('products', 'investors', 'blogs'));
     }
     public function product_listing()
     {
         $products = Product::with('brand')->get();
-        return view('ShopFrontend.product-listing',compact('products'));
+        return view('ShopFrontend.product-listing', compact('products'));
     }
     public function package_detail()
     {
         $products = Product::with('brand')->get();
-        return view('ShopFrontend.package-detail',compact('products'));
+        return view('ShopFrontend.package-detail', compact('products'));
     }
     public function vendor_listing()
     {
@@ -132,28 +136,28 @@ class FrontendConroller extends Controller
     public function marketplace()
     {
         $products = Product::with('brand')->get();
-        return view('ShopFrontend.marketplace',compact('products'));
+        return view('ShopFrontend.marketplace', compact('products'));
     }
     public function compare_produts()
     {
         $products = Product::with('brand')->get();
-        return view('ShopFrontend.compare-produts',compact('products'));
+        return view('ShopFrontend.compare-produts', compact('products'));
     }
     public function track_order()
     {
         $products = Product::with('brand')->get();
-        return view('ShopFrontend.track-order',compact('products'));
+        return view('ShopFrontend.track-order', compact('products'));
     }
     public function blog_list()
     {
         $products = Product::with('brand')->get();
-        return view('ShopFrontend.blog-list',compact('products'));
+        return view('ShopFrontend.blog-list', compact('products'));
     }
     public function blog_detail($id)
     {
         $products = Product::with('brand')->get();
-        $blog = Blogs::with('user')->where('slug',$id)->first();
-        return view('ShopFrontend.blog-detail',compact('products','blog'));
+        $blog = Blogs::with('user')->where('slug', $id)->first();
+        return view('ShopFrontend.blog-detail', compact('products', 'blog'));
     }
     public function sub_vendor_listing()
     {
@@ -222,6 +226,6 @@ class FrontendConroller extends Controller
         $blogs = Blogs::with('user')->get()->take('3');
         $all_blogs = Blogs::with('user')->paginate(12);
 
-        return view('front.view_more', compact('event','products','blogs','all_blogs'));
+        return view('front.view_more', compact('event', 'products', 'blogs', 'all_blogs'));
     }
 }
