@@ -27,13 +27,14 @@ class BannerController extends Controller
             'status' => 'boolean',
         ]);
 
-        $imagePath = $request->file('banner_image')->store('banners', 'public');
+        $banner_image = 'banner_image/' . time() . '.' . $request->banner_image->extension();
+        $request->banner_image->move(public_path('banner_image'), $banner_image);
 
         Banner::create([
-            'banner_image' => $imagePath,
+            'banner_image' => $banner_image,
             'type' => 'mascamps',
             'description' => $request->description,
-            'status' => $request->status ?? 1, // default to 1 if not provided
+            'status' => $request->status ?? 1,
         ]);
 
         return redirect()->route('banners.index')->with('success', 'Banner created successfully.');
@@ -56,8 +57,11 @@ class BannerController extends Controller
         $banner = Banner::findOrFail($id);
 
         if ($request->hasFile('banner_image')) {
-            $imagePath = $request->file('banner_image')->store('banners', 'public');
-            $banner->banner_image = $imagePath;
+            $imageName = time() . '.' . $request->banner_image->getClientOriginalExtension();
+
+            $request->banner_image->move(public_path('banner_image'), $imageName);
+
+            $banner->banner_image = 'banner_image/' . $imageName;
         }
 
         $banner->description = $request->description;
