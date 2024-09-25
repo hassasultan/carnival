@@ -108,10 +108,10 @@ class FrontendConroller extends Controller
     }
     public function shop_home()
     {
-        $products = Product::with('brand')->get();
+        $products = Product::with('brand')->take(6)->get();
         $investors = Investor::all();
         $blogs = Blogs::with('user')->get()->take('6');
-        // dd($blogs->toArray());
+        // dd($products->toArray());
         return view('ShopFrontend.home', compact('products', 'investors', 'blogs'));
     }
     public function product_listing()
