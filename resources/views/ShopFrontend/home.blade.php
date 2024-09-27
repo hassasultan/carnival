@@ -57,7 +57,7 @@
                 <div class="block-banner-main-opt8 Links_data">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-4 col-sm-12 Linkimages">
+                            {{-- <div class="col-md-4 col-sm-12 Linkimages">
                                 <div class="item item1"><img
                                         src="data:image/png;base64,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"
                                         alt="img">
@@ -72,14 +72,15 @@
                                     <div class="description"><a href="" class="btn btn-shop-now">Discover Now</a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                                <div class="item item1"><img
-                                        src="data:image/png;base64,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"
-                                        alt="img">
-                                    <div class="description"><a href="" class="btn btn-shop-now">Shop Now</a></div>
+                            </div> --}}
+                            @foreach ($categories as $category)
+                                <div class="col-md-4 col-sm-12">
+                                    <div class="item item1"><img src="{{ $category->icon }}" alt="img">
+                                        <div class="description"><a href="" class="btn btn-shop-now">Shop Now</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -88,16 +89,16 @@
                 <div class="block-banner-main-opt8">
                     <div class="container">
                         <div class="row">
-                            @foreach ($products as $product)
+                            @foreach ($oackages as $oackage)
                                 <div class="col-md-4 col-sm-12">
                                     <div class="item item1">
-                                        @if ($product->image != null)
-                                            <img src="{{ $product->image }}" alt="img">
+                                        @if ($oackage->icon != null)
+                                            <img src="{{ $oackage->icon }}" alt="img">
                                         @else
                                             <img src="data:image/jpeg;base64,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"
                                                 alt="img">
                                         @endif
-                                        <div class="description"><span class="title">{{ $product->title }}</span><a
+                                        <div class="description"><span class="title">{{ $oackage->title }}</span><a
                                                 href="" class="btn btn-shop-now">Discover Now</a></div>
                                     </div>
                                 </div>
@@ -164,15 +165,15 @@
                             <div class="dropdown-menu">
                                 <ul>
                                     <li role="presentation" class="active"><a href="#hot-1" role="tab"
-                                            data-toggle="tab">up to 40% off</a></li>
+                                            data-toggle="tab" class="get_discounted">up to 40% off</a></li>
                                     <li role="presentation" class=""><a href="#hot-2" role="tab"
-                                            data-toggle="tab">up to 40% off</a></li>
+                                            data-toggle="tab" class="get_discounted">up to 40% off</a></li>
                                     <li role="presentation" class=""><a href="#hot-3" role="tab"
-                                            data-toggle="tab">up to 50% off</a></li>
+                                            data-toggle="tab" class="get_discounted">up to 50% off</a></li>
                                     <li role="presentation" class=""><a href="#hot-4" role="tab"
-                                            data-toggle="tab">up to 60% off</a></li>
+                                            data-toggle="tab" class="get_discounted">up to 60% off</a></li>
                                     <li role="presentation" class=""><a href="#hot-5" role="tab"
-                                            data-toggle="tab">up to 70% off</a></li>
+                                            data-toggle="tab" class="get_discounted">up to 70% off</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -184,183 +185,8 @@
                         <div class="tab-content">
                             <div class="tab-pane active in fade" id="hot-1" role="tabpanel">
                                 <button type="button" class="slick-arrow slick-prev">Previous</button>
-                                <div class="deals-slider">
-                                    <div>
-                                        <div class="product-item product-item-opt-1">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img" href=""><img alt="product name"
-                                                            src="https://carnivalguide.co/shop/images/hotdeals3.jpg"></a>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
-                                                </div>
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a href="">Maecenas consequat
-                                                            1</a></strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">$45.00</span>
-                                                            <span class="old-price">$52.00</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="product-item product-item-opt-2">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img" href=""><img alt="product name"
-                                                            src="https://carnivalguide.co/shop/images/hotdeals4.jpg"></a>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
-                                                </div>
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a href="">Maecenas consequat
-                                                            1</a></strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">$45.00</span>
-                                                            <span class="old-price">$52.00</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="product-item product-item-opt-1">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img" href=""><img alt="product name"
-                                                            src="https://carnivalguide.co/shop/images/hotdeals3.jpg"></a>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
-                                                </div>
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a href="">Maecenas consequat
-                                                            1</a></strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">$45.00</span>
-                                                            <span class="old-price">$52.00</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="product-item product-item-opt-2">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img" href=""><img alt="product name"
-                                                            src="https://carnivalguide.co/shop/images/hotdeals4.jpg"></a>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
-                                                </div>
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a href="">Maecenas consequat
-                                                            1</a></strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">$45.00</span>
-                                                            <span class="old-price">$52.00</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="product-item product-item-opt-1">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img" href=""><img alt="product name"
-                                                            src="https://carnivalguide.co/shop/images/hotdeals3.jpg"></a>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
-                                                </div>
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a href="">Maecenas consequat
-                                                            1</a></strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">$45.00</span>
-                                                            <span class="old-price">$52.00</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="product-item product-item-opt-2">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img" href=""><img alt="product name"
-                                                            src="https://carnivalguide.co/shop/images/hotdeals4.jpg"></a>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
-                                                </div>
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a href="">Maecenas consequat
-                                                            1</a></strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">$45.00</span>
-                                                            <span class="old-price">$52.00</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="product-item product-item-opt-1">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img" href=""><img alt="product name"
-                                                            src="https://carnivalguide.co/shop/images/hotdeals3.jpg"></a>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
-                                                </div>
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a href="">Maecenas consequat
-                                                            1</a></strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">$45.00</span>
-                                                            <span class="old-price">$52.00</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="product-item product-item-opt-2">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img" href=""><img alt="product name"
-                                                            src="https://carnivalguide.co/shop/images/hotdeals4.jpg"></a>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
-                                                </div>
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a href="">Maecenas consequat
-                                                            1</a></strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">$45.00</span>
-                                                            <span class="old-price">$52.00</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="deals-slider" id="shopDiscount">
+                                    @include('partials.shop_discount')
                                 </div>
                                 <button type="button" class="slick-arrow slick-next">Next</button>
                             </div>
@@ -404,7 +230,51 @@
                         <div class="col-products tab-content new_arrival2" style="width: 80%;">
                             <button type="button" class="slick-arrow slick-prev">Previous</button>
                             <div class="deals-slider">
-                                <div>
+                                @foreach ($new_arrivals as $new)
+                                    <div>
+                                        <div class="product-item product-item-opt-1">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href="">
+                                                        <img alt="{{ $new->title }}"
+                                                            src="{{ asset('productImage/' . $new->image ?? 'default_image_path.jpg') }}">
+                                                    </a>
+                                                    <button type="button" class="btn btn-cart">
+                                                        <span>Add to Cart</span>
+                                                    </button>
+                                                </div>
+                                                @if ($new->discount > 0)
+                                                    <span class="product-item-label label-sale-off">{{ $new->discount }}%
+                                                        <span>off</span></span>
+                                                @endif
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name">
+                                                        <a href="">{{ $new->title }}</a>
+                                                    </strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span
+                                                                class="price">${{ number_format($new->new_price, 2) }}</span>
+                                                            @if ($new->old_price)
+                                                                <span
+                                                                    class="old-price">${{ number_format($new->old_price, 2) }}</span>
+                                                            @endif
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="{{ $new->reviews }}%" class="rating-result">
+                                                                    <span><span><span>{{ $new->reviews }}</span>% of
+                                                                            <span>100</span></span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                {{-- <div>
                                     <div class="product-item product-item-opt-1">
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
@@ -578,42 +448,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <div class="product-item product-item-opt-1">
-                                        <div class="product-item-info">
-                                            <div class="product-item-photo">
-                                                <a class="product-item-img" href="#">
-                                                    <img alt="product name"
-                                                        src="https://carnivalguide.co/shop/images/makeup2.jpg">
-                                                </a>
-                                                <button type="button" class="btn btn-cart">
-                                                    <span>Add to Cart</span>
-                                                </button>
-                                            </div>
-                                            <span class="product-item-label label-sale-off">30% <span>off</span></span>
-                                            <div class="product-item-detail">
-                                                <strong class="product-item-name">
-                                                    <a href="#">Maecenas consequat mauris</a>
-                                                </strong>
-                                                <div class="clearfix">
-                                                    <div class="product-item-price">
-                                                        <span class="price">$45.00</span>
-                                                        <span class="old-price">$52.00</span>
-                                                    </div>
-                                                    <div class="product-reviews-summary">
-                                                        <div class="rating-summary">
-                                                            <div title="80%" class="rating-result">
-                                                                <span><span><span>80</span>% of
-                                                                        <span>100</span></span></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> --}}
                                 <!-- More slides here -->
                             </div>
                             <button type="button" class="slick-arrow slick-next">Next</button>
@@ -660,7 +495,53 @@
                         <div class="col-products tab-content new_arrival2" style="width: 80%;">
                             <button type="button" class="slick-arrow slick-prev">Previous</button>
                             <div class="deals-slider">
-                                <div>
+                                @foreach ($top_sellers as $product)
+                                    <div>
+                                        <div class="product-item product-item-opt-1">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href="#">
+                                                        <img alt="{{ $product->title }}"
+                                                            src="{{ asset('productImage/' . ($product->image ?? 'default_image_path.jpg')) }}">
+                                                    </a>
+                                                    <button type="button" class="btn btn-cart">
+                                                        <span>Add to Cart</span>
+                                                    </button>
+                                                </div>
+                                                @if ($product->discount > 0)
+                                                    <span
+                                                        class="product-item-label label-sale-off">{{ $product->discount }}%
+                                                        <span>off</span></span>
+                                                @endif
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name">
+                                                        <a href="#">{{ $product->title }}</a>
+                                                    </strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span
+                                                                class="price">${{ number_format($product->new_price, 2) }}</span>
+                                                            @if ($product->old_price)
+                                                                <span
+                                                                    class="old-price">${{ number_format($product->old_price, 2) }}</span>
+                                                            @endif
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="{{ $product->reviews }}%"
+                                                                    class="rating-result">
+                                                                    <span><span><span>{{ $product->reviews }}</span>% of
+                                                                            <span>100</span></span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                {{-- <div>
                                     <div class="product-item product-item-opt-1">
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
@@ -834,42 +715,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <div class="product-item product-item-opt-1">
-                                        <div class="product-item-info">
-                                            <div class="product-item-photo">
-                                                <a class="product-item-img" href="#">
-                                                    <img alt="product name"
-                                                        src="https://carnivalguide.co/shop/images/topsellersbnr3.jpg">
-                                                </a>
-                                                <button type="button" class="btn btn-cart">
-                                                    <span>Add to Cart</span>
-                                                </button>
-                                            </div>
-                                            <span class="product-item-label label-sale-off">30% <span>off</span></span>
-                                            <div class="product-item-detail">
-                                                <strong class="product-item-name">
-                                                    <a href="#">Maecenas consequat mauris</a>
-                                                </strong>
-                                                <div class="clearfix">
-                                                    <div class="product-item-price">
-                                                        <span class="price">$45.00</span>
-                                                        <span class="old-price">$52.00</span>
-                                                    </div>
-                                                    <div class="product-reviews-summary">
-                                                        <div class="rating-summary">
-                                                            <div title="80%" class="rating-result">
-                                                                <span><span><span>80</span>% of
-                                                                        <span>100</span></span></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> --}}
                                 <!-- More slides here -->
                             </div>
                             <button type="button" class="slick-arrow slick-next">Next</button>
@@ -886,14 +732,14 @@
         <div class="block-banner-lag-opt3  effect-banner1">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-6">
-                        <a class="box-img" href=""><img alt="banner"
-                                src="https://carnivalguide.co/shop/images/adspc3.jpg"></a>
-                    </div>
-                    <div class="col-sm-6">
-                        <a class="box-img" href=""><img alt="banner"
-                                src="https://carnivalguide.co/shop/images/adspc4.jpg"></a>
-                    </div>
+                    @foreach ($brands as $brand)
+                        <div class="col-sm-6">
+                            <a class="box-img" href="#">
+                                <img alt="{{ $brand->title }}" src="{{ asset('images/' . $brand->logo) }}">
+                            </a>
+                        </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>
@@ -934,33 +780,44 @@
                         <div class="col-products tab-content new_arrival2" style="width: 80%;">
                             <button type="button" class="slick-arrow slick-prev">Previous</button>
                             <div class="deals-slider">
-                                <div>
-                                    <div class="product-item product-item-opt-1">
-                                        <div class="product-item-info">
-                                            <div class="product-item-photo">
-                                                <a class="product-item-img" href="#">
-                                                    <img alt="product name"
-                                                        src="https://carnivalguide.co/shop/images/bigsale3.jpg">
-                                                </a>
-                                                <button type="button" class="btn btn-cart">
-                                                    <span>Add to Cart</span>
-                                                </button>
-                                            </div>
-                                            <span class="product-item-label label-sale-off">30% <span>off</span></span>
-                                            <div class="product-item-detail">
-                                                <strong class="product-item-name">
-                                                    <a href="#">Maecenas consequat mauris</a>
-                                                </strong>
-                                                <div class="clearfix">
-                                                    <div class="product-item-price">
-                                                        <span class="price">$45.00</span>
-                                                        <span class="old-price">$52.00</span>
-                                                    </div>
-                                                    <div class="product-reviews-summary">
-                                                        <div class="rating-summary">
-                                                            <div title="80%" class="rating-result">
-                                                                <span><span><span>80</span>% of
-                                                                        <span>100</span></span></span>
+                                @foreach ($products as $product)
+                                    <div>
+                                        <div class="product-item product-item-opt-1">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href="#">
+                                                        <img alt="{{ $product->title }}"
+                                                            src="{{ asset('productImage/' . ($product->image ?? 'default_image_path.jpg')) }}">
+                                                    </a>
+                                                    <button type="button" class="btn btn-cart">
+                                                        <span>Add to Cart</span>
+                                                    </button>
+                                                </div>
+                                                @if ($product->discount > 0)
+                                                    <span
+                                                        class="product-item-label label-sale-off">{{ $product->discount }}%
+                                                        <span>off</span></span>
+                                                @endif
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name">
+                                                        <a href="#">{{ $product->title }}</a>
+                                                    </strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span
+                                                                class="price">${{ number_format($product->new_price, 2) }}</span>
+                                                            @if ($product->old_price)
+                                                                <span
+                                                                    class="old-price">${{ number_format($product->old_price, 2) }}</span>
+                                                            @endif
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="{{ $product->reviews }}%"
+                                                                    class="rating-result">
+                                                                    <span><span><span>{{ $product->reviews }}</span>% of
+                                                                            <span>100</span></span></span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -968,8 +825,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div>
+                                @endforeach
+
+                                {{-- <div>
                                     <div class="product-item product-item-opt-1">
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
@@ -1143,7 +1001,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- More slides here -->
                             </div>
                             <button type="button" class="slick-arrow slick-next">Next</button>
@@ -2988,4 +2846,35 @@
         </div><!-- block-brand -->
 
     </main><!-- end MAIN -->
+@endsection
+
+@section('script')
+    <script>
+        $(document).on('click', '.get_discounted', function(event) {
+            event.preventDefault();
+            var text = $(this).text();
+            var match = text.match(/up to (\d+)% off/);
+
+            if (match && match[1]) {
+                var discountPercentage = match[1];
+
+                console.log(discountPercentage);
+
+                $.ajax({
+                    url: '{{ route('front.get_discounted') }}',
+                    type: 'GET',
+                    data: {
+                        discount: discountPercentage
+                    },
+                    success: function(response) {
+                        // $('#shopDiscount').html('');
+                        // $('#shopDiscount').html(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching discounted products:', error);
+                    }
+                });
+            }
+        });
+    </script>
 @endsection

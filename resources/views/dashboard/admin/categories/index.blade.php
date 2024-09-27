@@ -20,6 +20,7 @@
                                     <th>Sr#</th>
                                     <th>Title</th>
                                     <th>Type</th>
+                                    <th>Icon</th>
                                     <th>Status</th>
                                     <th>Date</th>
                                     <th>Action</th>
@@ -38,6 +39,9 @@
                                     <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
                                     <td>{{ $category->title }}</td>
                                     <td>{{ $category->type }}</td>
+                                    <td>
+                                        <img src="{{ asset($category->icon) }}" alt="icon" width="50">
+                                    </td>
                                     <td>
                                         @if($category->status == 1)
                                             Active

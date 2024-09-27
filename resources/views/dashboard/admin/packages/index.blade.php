@@ -19,6 +19,7 @@
                                     <th></th>
                                     <th>Sr#</th>
                                     <th>Title</th>
+                                    <th>Icon</th>
                                     <th>Status</th>
                                     <th>Date</th>
                                     <th>Action</th>
@@ -36,6 +37,9 @@
                                     </td>
                                     <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
                                     <td>{{ $package->title }}</td>
+                                    <td>
+                                        <img src="{{ asset($package->icon) }}" alt="icon" width="50">
+                                    </td>
                                     <td>
                                         @if($package->status == 1)
                                             Active

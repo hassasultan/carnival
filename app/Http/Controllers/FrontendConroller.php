@@ -13,6 +13,10 @@ use App\Models\Vendor;
 use App\Models\SubVendor;
 use App\Models\User;
 use App\Models\Event;
+use App\Models\Banner;
+use App\Models\Category;
+use App\Models\Package;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -108,11 +112,30 @@ class FrontendConroller extends Controller
     }
     public function shop_home()
     {
-        $products = Product::with('brand')->take(6)->get();
+        $categories = Category::where('status', 1)->take(3)->get();
+        $oackages = Package::where('status', 1)->get();
+        $brands = Brand::where('status', 1)->take(2)->get();
+        $products = Product::with('brand')->take(10)->get();
+        $new_arrivals = Product::orderBy('id', 'DESC')->take(10)->get();
+        $discounted_products = Product::orderBy('id', 'DESC')->take(10)->get();
+        $topVendors = Vendor::with('products')
+            ->orderBy('id', 'DESC')
+            ->take(10)
+            ->get();
+
+        $top_sellers = collect();
+
+        foreach ($topVendors as $vendor) {
+            $product = $vendor->products()->first();
+            if ($product) {
+                $top_sellers->push($product);
+            }
+        }
+        // dd($top_sellers->toArray());
         $investors = Investor::all();
         $blogs = Blogs::with('user')->get()->take('6');
         // dd($products->toArray());
-        return view('ShopFrontend.home', compact('products', 'investors', 'blogs'));
+        return view('ShopFrontend.home', compact('products', 'investors', 'blogs', 'categories', 'oackages', 'new_arrivals', 'top_sellers', 'brands', 'discounted_products'));
     }
     public function product_listing()
     {
@@ -126,8 +149,26 @@ class FrontendConroller extends Controller
     }
     public function vendor_listing()
     {
+        $mascamp_banners = Banner::where('type', 'mascamps')->get();
         $regions = Region::all();
-        return view('ShopFrontend.vendors', compact('regions'));
+        $category1 = Category::where('status', 1)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $category2 = Category::where('status', 1)
+            ->whereNotIn('id', $category1->pluck('id'))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $category3 = Category::where('status', 1)
+            ->whereNotIn('id', $category1->pluck('id')->merge($category2->pluck('id')))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        return view('ShopFrontend.vendors', compact('regions', 'mascamp_banners', 'category1', 'category2', 'category3'));
     }
     public function contact_us()
     {
@@ -227,5 +268,12 @@ class FrontendConroller extends Controller
         $all_blogs = Blogs::with('user')->paginate(12);
 
         return view('front.view_more', compact('event', 'products', 'blogs', 'all_blogs'));
+    }
+
+    public function getDiscounted(Request $request)
+    {
+        $discounted_products = Product::where('discount', '<=', $request->discount)->take(10)->get();
+
+        return view('partials.shop_discount', compact('discounted_products'));
     }
 }

@@ -10,7 +10,7 @@
                 <strong class="card-title">Category Information</strong>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('categories.store') }}">
+                <form method="POST" action="{{ route('categories.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -21,6 +21,10 @@
                             <div class="form-group mb-3">
                                 <label for="slug">Slug</label>
                                 <input type="text" id="slug" name="slug" class="form-control" placeholder="Enter category slug" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="icon">Icon:</label>
+                                <input type="file" class="form-control" id="icon" name="icon">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="description">Description</label>

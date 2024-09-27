@@ -10,7 +10,7 @@
                 <strong class="card-title">Package Information</strong>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('packages.update', $package->id) }}">
+                <form method="POST" action="{{ route('packages.update', $package->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -22,6 +22,10 @@
                             <div class="form-group mb-3">
                                 <label for="slug">Slug</label>
                                 <input type="text" id="slug" name="slug" class="form-control" value="{{ $package->slug }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="icon">Icon:</label>
+                                <input type="file" class="form-control" id="icon" name="icon">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="description">Description</label>

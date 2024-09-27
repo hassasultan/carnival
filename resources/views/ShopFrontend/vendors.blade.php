@@ -22,7 +22,7 @@
                 <div class="col-md-9 col-md-push-3  col-main">
 
                     <!-- images categori -->
-                    <div class="category-view">
+                    {{-- <div class="category-view">
                         <div class="owl-carousel " data-nav="true" data-dots="false" data-margin="0" data-items='1'
                             data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
                             <div class="item ">
@@ -34,7 +34,20 @@
                                         alt="category-images"></a>
                             </div>
                         </div>
-                    </div><!-- images categori -->
+                    </div><!-- images categori --> --}}
+
+                    <div class="category-view">
+                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0" data-items='1'
+                            data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
+                            @foreach ($mascamp_banners as $banner)
+                                <div class="item">
+                                    <a href="#">
+                                        <img src="{{ asset($banner->banner_image) }}" alt="{{ $banner->description }}">
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div><!-- images category -->
 
                     <!-- link categori -->
                     <ul class="category-links">
@@ -194,12 +207,14 @@
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
-                                    <div class="owl-item cloned" style="width: 211px;">
-                                        <div class="item item2">
-                                            <img src="images/adspc5d.jpg" alt="images">
+                                    @foreach ($category1 as $row)
+                                        <div class="owl-item cloned" style="width: 211px;">
+                                            <div class="item item2">
+                                                <img src="{{ $row->icon }}" alt="images">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="owl-item cloned" style="width: 211px;">
+                                    @endforeach
+                                    {{-- <div class="owl-item cloned" style="width: 211px;">
                                         <div class="item item3">
                                             <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
                                                 alt="images">
@@ -234,7 +249,7 @@
                                             <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
                                                 alt="images">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="owl-nav disabled">
@@ -258,12 +273,14 @@
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
+                                    @foreach ($category2 as $row)
                                     <div class="owl-item cloned" style="width: 211px;">
                                         <div class="item item2">
-                                            <img src="images/adspc5d.jpg" alt="images">
+                                            <img src="{{ $row->icon }}" alt="images">
                                         </div>
                                     </div>
-                                    <div class="owl-item cloned" style="width: 211px;">
+                                    @endforeach
+                                    {{-- <div class="owl-item cloned" style="width: 211px;">
                                         <div class="item item3">
                                             <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
                                                 alt="images">
@@ -298,7 +315,7 @@
                                             <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
                                                 alt="images">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="owl-nav disabled">
@@ -322,12 +339,14 @@
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
+                                    @foreach ($category3 as $row)
                                     <div class="owl-item cloned" style="width: 211px;">
                                         <div class="item item2">
-                                            <img src="images/adspc5d.jpg" alt="images">
+                                            <img src="{{ $row->icon }}" alt="images">
                                         </div>
                                     </div>
-                                    <div class="owl-item cloned" style="width: 211px;">
+                                    @endforeach
+                                    {{-- <div class="owl-item cloned" style="width: 211px;">
                                         <div class="item item3">
                                             <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
                                                 alt="images">
@@ -362,7 +381,7 @@
                                             <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
                                                 alt="images">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="owl-nav disabled">

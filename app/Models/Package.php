@@ -22,6 +22,7 @@ class Package extends Model
         'ad_space',
         'blogging',
         'status',
+        'icon',
     ];
 
     protected $dates = [

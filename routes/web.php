@@ -67,6 +67,7 @@ Route::get('/category-tour-listing', [FrontendConroller::class, 'category_tour_l
 Route::get('/product-listing', [FrontendConroller::class, 'product_listing'])->name('front.product_listing');
 Route::get('/package/detail', [FrontendConroller::class, 'package_detail'])->name('front.package.detail');
 Route::get('/shop', [FrontendConroller::class, 'shop_home'])->name('front.shop');
+Route::get('/get-discounted', [FrontendConroller::class, 'getDiscounted'])->name('front.get_discounted');
 Route::get('/mascamps', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
 Route::get('/contact-us', [FrontendConroller::class, 'contact_us'])->name('front.contact');
 Route::get('/marketplace', [FrontendConroller::class, 'marketplace'])->name('front.marketplace');

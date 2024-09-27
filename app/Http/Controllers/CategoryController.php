@@ -34,6 +34,13 @@ class CategoryController extends Controller
         ]);
 
         $data = $request->all();
+
+        if ($request->hasFile('icon')) {
+            $iconPath = 'category_icon/' . time() . '.' . $request->icon->extension();
+            $request->icon->move(public_path('category_icon'), $iconPath);
+            $data['icon'] = $iconPath;
+        }
+
         $data['user_id'] = Auth::id();
 
         Category::create($data);
@@ -56,23 +63,30 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
-        try
-        {
-            $request->validate([
+        try {
+            $validatedData = $request->validate([
                 'package_id' => 'required',
-                'title' => 'required',
+                'title' => 'required|string|max:255',
                 'type' => 'required|in:ecommerce,events,music,appointment,ad_space,blogging',
-                'slug' => 'required',
-                'description' => 'required',
-                'status' => 'required',
+                'slug' => 'required|string|max:255|unique:categories,slug,' . $id,
+                'description' => 'required|string',
+                'status' => 'required|boolean',
+                'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
+
             $category = Category::findOrFail($id);
-            $category->update($request->all());
+
+            if ($request->hasFile('icon')) {
+                $iconPath = 'category_icon/' . time() . '.' . $request->icon->extension();
+                $request->icon->move(public_path('category_icon'), $iconPath);
+                $validatedData['icon'] = $iconPath;
+            }
+
+            $category->update($validatedData);
+
             return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
-        }
-        catch(Exception $ex)
-        {
-            return redirect()->back()->with('error',$ex->getMessage());
+        } catch (Exception $ex) {
+            return redirect()->back()->with('error', $ex->getMessage());
         }
     }
 
