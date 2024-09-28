@@ -52,12 +52,16 @@ class EventController extends Controller
     public function create()
     {
         $packages = Package::all();
-        $categories = Category::all();
-        return view('dashboard.admin.events.create', compact('packages', 'categories'));
+        $ticktes = Ticket::all();
+        $categories = Category::where('type','events')->get();
+        $show_events = Event::with("category","package");
+        $events = Event::all(['id', 'name', 'start_date', 'end_date']);
+        return view('dashboard.admin.events.create', compact('packages', 'categories', 'ticktes', 'show_events', 'events'));
     }
 
     public function store(Request $request)
     {
+        // dd($request->toArray());
         $request->validate([
             'name' => 'required|string|max:255',
             'package_id' => 'required|exists:packages,id',
@@ -74,7 +78,7 @@ class EventController extends Controller
             'start_date' => 'nullable|date',
             'start_time' => 'nullable',
             'end_date' => 'nullable|date|after_or_equal:start_date',
-            'end_time' => 'nullable|after:start_time',
+            // 'end_time' => 'nullable|after:start_time',
             'all_day' => 'nullable',
             'status' => 'required|in:active,inactive',
         ]);

@@ -33,8 +33,10 @@
                 <div class="col-auto">
                     <button type="button" class="btn" data-toggle="modal" data-target=".modal-calendar"><span
                             class="fe fe-filter fe-16 text-muted"></span></button>
-                    <button type="button" class="btn btn-primary" id="openEventModal"><span
-                            class="fe fe-plus fe-16 mr-3"></span>New Event</button>
+                    <a href="{{ route('events.create') }}" class="btn btn-primary"><span
+                            class="fe fe-plus fe-16 mr-3"></span>New Event</a>
+                    {{-- <button type="button" class="btn btn-primary" id="openEventModal"><span
+                            class="fe fe-plus fe-16 mr-3"></span>New Event</button> --}}
                 </div>
             </div>
             <div class="col-md-12 my-4 d-none" id="list-view">
