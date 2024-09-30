@@ -1,6 +1,19 @@
 @extends('dashboard.admin.layouts.app')
 
 @section('content')
+    <style>
+        .nav-tab-active {
+            /* color: #f00; */
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
     <div class="row justify-content-center">
         <div class="col-12">
             <h2 class="page-title">Create Event</h2>
@@ -9,185 +22,10 @@
                     <strong class="card-title">Event Information</strong>
                 </div>
                 <div class="card-body">
-                    <form id="createEventForm" method="POST" action="{{ route('events.store') }}">
+                    <form id="createEventForm" method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group mb-3">
-                                    <label for="name">Title</label>
-                                    <input type="text" id="name" name="name" value="{{ old('name') }}"
-                                        class="form-control" placeholder="Enter event title" required>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="package_id">Package</label>
-                                    <select id="package_id" value="{{ old('package_id') }}" name="package_id"
-                                        class="form-control" required>
-                                        <option value="">Select Package</option>
-                                        @foreach ($packages as $package)
-                                            <option value="{{ $package->id }}">{{ $package->title }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="category_id">Category</label>
-                                    <select id="category_id" value="{{ old('category_id') }}" name="category_id"
-                                        class="form-control" required>
-                                        <option value="">Select Category</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="total_no_of_tickets">Total No. of Tickets</label>
-                                    <input type="number" id="total_no_of_tickets" value="{{ old('total_no_of_tickets') }}"
-                                        name="total_no_of_tickets" class="form-control"
-                                        placeholder="Enter Total No of Tickets" required>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="venue">Venue</label>
-                                    <input type="text" id="venue" value="{{ old('venue') }}" name="venue"
-                                        class="form-control" placeholder="Enter Venue Name" required>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="address">Address</label>
-                                    <input type="text" id="address" value="{{ old('address') }}" name="address"
-                                        class="form-control" placeholder="Enter Venue Address" required>
-                                </div>
-                                <div id="dress_code_tags" class="mb-3">
-                                    <label for="dress_code">Dress Code</label><br>
-                                    <div id="tag-container">
-                                    </div>
-                                    <input type="text" id="tag-input" class="form-control"
-                                        placeholder="Type and press Enter to add tag" required>
-                                    <input type="hidden" id="tag-values"
-                                        name="dress_code[]" value="">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <div>
-                                        <label for="ticket_id">Tickets Type</label>
-                                    </div>
-                                    @foreach ($ticktes as $row)
-                                        <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->name }}" />
-                                    @endforeach
-                                    <select id="ticket_id" name="ticket_id[]"
-                                        class="form-control select2" multiple>
-                                        @foreach ($ticktes as $row)
-                                            <option value="{{ $row->id }}"
-                                                data-name-{{ $row->id }}="{{ $row->name }}">{{ $row->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div id="embed-div">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="description">Note</label>
-                                    <textarea id="description" value="{{ old('description') }}" name="description" class="form-control"
-                                        placeholder="Enter event description"></textarea>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <div class="form-group">
-                                        <label for="eventType">Event type</label>
-                                        <select id="eventType" value="{{ old('eventType') }}" name="eventType"
-                                            class="form-control select2">
-                                            <option value="private">Private</option>
-                                            <option value="public">Public</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="date-input1">Start Date</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text" id="button-addon-date"><span
-                                                        class="fe fe-calendar fe-16"></span></div>
-                                            </div>
-                                            <input type="date" class="form-control drgpicker" id="start_date"
-                                                value="{{ old('start_date') }}" name="start_date" value="04/24/2020">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6 timeFields">
-                                        <label for="startDate">Start Time</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text" id="button-addon-time"><span
-                                                        class="fe fe-clock fe-16"></span></div>
-                                            </div>
-                                            <input type="time" class="form-control time-input" id="start_time"
-                                                value="{{ old('start_time') }}" name="start_time"
-                                                placeholder="10:00 AM">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="date-input1">End Date</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text" id="button-addon-date"><span
-                                                        class="fe fe-calendar fe-16"></span></div>
-                                            </div>
-                                            <input type="date" class="form-control drgpicker" id="end_date"
-                                                value="{{ old('end_date') }}" name="end_date" value="04/24/2020">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6 timeFields">
-                                        <label for="endDate">End Time</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text" id="button-addon-time"><span
-                                                        class="fe fe-clock fe-16"></span></div>
-                                            </div>
-                                            <input type="time" class="form-control time-input" id="end_time"
-                                                value="{{ old('end_time') }}" name="end_time" placeholder="11:00 AM">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="all_day"
-                                            value="{{ old('all_day') }}" name="all_day">
-                                        <label class="custom-control-label" for="all_day">All day</label>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="status">Status</label>
-                                    <select id="status" value="{{ old('status') }}" name="status"
-                                        class="form-control" required>
-                                        <option value="active">Active</option>
-                                        <option value="inactive">Inactive</option>
-                                    </select>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="promotional_Video">Promotional Video</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="promotional_Video"
-                                            value="{{ old('promotional_Video') }}" name="promotional_Video">
-                                        <label class="custom-file-label" for="promotional_Video"
-                                            id="promotional_Video_label">Choose file</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="customFile">Banner</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile"
-                                            value="{{ old('banner') }}" name="banner">
-                                        <label class="custom-file-label" for="customFile" id="customFile_label">Choose
-                                            file</label>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="additional_images">Additional Images</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input select2" id="additional_images" name="additional_images[]" multiple>
-                                        <label class="custom-file-label" for="additional_images"
-                                            id="additional_images_label">Choose file</label>
-                                    </div>
-                                </div>
                                 {{-- <div class="form-group mb-3">
                                 <label for="additional_images">Additional Images</label>
                                 <div class="row justify-content-center">
@@ -207,7 +45,530 @@
                                     </div>
                                 </div> <!-- .row -->
                             </div> --}}
-                                <button type="submit" class="btn mb-2 btn-primary" id="saveEventBtn">Save Event</button>
+                                <h2 class="nav-tab-wrapper">
+                                    {{-- <a href="#details" class="nav-tab nav-tab-active">First</a> --}}
+                                </h2>
+                                <hr />
+                                <section id="tickets" class="tab-content">
+                                    <div class="form-group mb-3">
+                                        <label for="total_no_of_tickets">Total No. of Tickets</label>
+                                        <input type="number" id="total_no_of_tickets"
+                                            value="{{ old('total_no_of_tickets') }}" name="total_no_of_tickets"
+                                            class="form-control" placeholder="Enter Total No of Tickets" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <div>
+                                            <label for="ticket_id">Tickets Type</label>
+                                        </div>
+                                        @foreach ($ticktes as $row)
+                                            <input type="hidden" id="div-{{ $row->id }}"
+                                                value="{{ $row->name }}" />
+                                        @endforeach
+                                        <select id="ticket_id" name="ticket_id[]" class="form-control select2" multiple>
+                                            @foreach ($ticktes as $row)
+                                                <option value="{{ $row->id }}"
+                                                    data-name-{{ $row->id }}="{{ $row->name }}">
+                                                    {{ $row->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div id="embed-div">
+                                    </div>
+                                    <div class="text-center">
+                                        <a href="#details" class="nav-tab btn mb-2 btn-primary">Previous</a>
+                                        <a href="#settings" class="nav-tab btn mb-2 btn-primary">Next</a>
+                                    </div>
+                                </section>
+                                <section id="details" class="tab-content active">
+                                    <div class="form-group mb-3">
+                                        <label for="name">Title</label>
+                                        <input type="text" id="name" name="name" value="{{ old('name') }}"
+                                            class="form-control" placeholder="Enter event title" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="package_id">Package</label>
+                                        <select id="package_id" value="{{ old('package_id') }}" name="package_id"
+                                            class="form-control" required>
+                                            <option value="">Select Package</option>
+                                            @foreach ($packages as $package)
+                                                <option value="{{ $package->id }}">{{ $package->title }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="category_id">Category</label>
+                                        <select id="category_id" value="{{ old('category_id') }}" name="category_id"
+                                            class="form-control" required>
+                                            <option value="">Select Category</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="venue">Venue</label>
+                                        <input type="text" id="venue" value="{{ old('venue') }}" name="venue"
+                                            class="form-control" placeholder="Enter Venue Name" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="address">Address</label>
+                                        <input type="text" id="address" value="{{ old('address') }}" name="address"
+                                            class="form-control" placeholder="Enter Venue Address" required>
+                                    </div>
+                                    {{-- <div id="dress_code_tags" class="mb-3">
+                                        <label for="dress_code">Dress Code</label><br>
+                                        <div id="tag-container"></div>
+                                        <input type="text" id="tag-input" class="form-control" placeholder="Type and press Enter to add tag" required>
+                                        <input type="hidden" id="tag-values" name="dress_code[]" value="">
+                                    </div> --}}
+                                    <div id="hash_dress_code" class="mb-3">
+                                        <label for="dress_code">Dress Code</label><br>
+                                        <input type="hidden" name="dress_code[]" value="{{ $row->title }}">
+                                        <input type="text" id="dress_codeInput" class="form-control"
+                                            placeholder="Add a new tag...">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="description">Note</label>
+                                        <textarea id="description" value="{{ old('description') }}" name="description" class="form-control"
+                                            placeholder="Enter event description"></textarea>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <div class="form-group">
+                                            <label for="eventType">Event type</label>
+                                            <select id="eventType" value="{{ old('eventType') }}" name="eventType"
+                                                class="form-control select2">
+                                                <option value="private">Private</option>
+                                                <option value="public">Public</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="date-input1">Start Date</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text" id="button-addon-date"><span
+                                                            class="fe fe-calendar fe-16"></span></div>
+                                                </div>
+                                                <input type="date" class="form-control drgpicker" id="start_date"
+                                                    value="{{ old('start_date') }}" name="start_date"
+                                                    value="04/24/2020">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6 timeFields">
+                                            <label for="startDate">Start Time</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text" id="button-addon-time"><span
+                                                            class="fe fe-clock fe-16"></span></div>
+                                                </div>
+                                                <input type="time" class="form-control time-input" id="start_time"
+                                                    value="{{ old('start_time') }}" name="start_time"
+                                                    placeholder="10:00 AM">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="date-input1">End Date</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text" id="button-addon-date"><span
+                                                            class="fe fe-calendar fe-16"></span></div>
+                                                </div>
+                                                <input type="date" class="form-control drgpicker" id="end_date"
+                                                    value="{{ old('end_date') }}" name="end_date" value="04/24/2020">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6 timeFields">
+                                            <label for="endDate">End Time</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text" id="button-addon-time"><span
+                                                            class="fe fe-clock fe-16"></span></div>
+                                                </div>
+                                                <input type="time" class="form-control time-input" id="end_time"
+                                                    value="{{ old('end_time') }}" name="end_time"
+                                                    placeholder="11:00 AM">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="all_day"
+                                                value="{{ old('all_day') }}" name="all_day">
+                                            <label class="custom-control-label" for="all_day">All day</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="status">Status</label>
+                                        <select id="status" value="{{ old('status') }}" name="status"
+                                            class="form-control" required>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="promotional_Video">Promotional Video</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="promotional_Video"
+                                                value="{{ old('promotional_Video') }}" name="promotional_Video">
+                                            <label class="custom-file-label" for="promotional_Video"
+                                                id="promotional_Video_label">Choose file</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="customFile">Banner</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="customFile"
+                                                value="{{ old('banner') }}" name="banner">
+                                            <label class="custom-file-label" for="customFile"
+                                                id="customFile_label">Choose
+                                                file</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="additional_images">Additional Images</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input select2"
+                                                id="additional_images" name="additional_images[]" multiple>
+                                            <label class="custom-file-label" for="additional_images"
+                                                id="additional_images_label">Choose file</label>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <a href="#tickets" class="nav-tab btn mb-2 btn-primary">Next</a>
+                                    </div>
+                                </section>
+                                <section id="settings" class="tab-content">
+                                    <div class="p_30 bp-form main-form">
+                                        <div class="form-group">
+                                            <div class="ticket-section">
+                                                <label class="form-label fs-16">Let's configure a few additional options
+                                                    for your event!</label>
+                                                <p class="mt-2 fs-14 d-block mb-3 pe_right">Change the following settings
+                                                    based on your preferences to customise your event accordingly.</p>
+                                                <div class="content-holder">
+                                                    <div class="setting-item border_bottom pb_30 pt-4">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input"
+                                                                    value="1" checked id="booking-start-time-btn"
+                                                                    name="booking-start-time-btn">
+                                                                <label class="custom-control-label"
+                                                                    for="booking-start-time-btn"></label>
+                                                            </div>
+                                                            <div class="d-flex flex-column">
+                                                                <label class="color-black fw-bold mb-1">I want the bookings
+                                                                    to start immediately.</label>
+                                                                <p class="mt-2 fs-14 d-block mb-0">Disable this option if
+                                                                    you want to start your booking from a specific date and
+                                                                    time.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="booking-start-time-holder" style="display: none;">
+                                                            <div class="form-group pt_30">
+                                                                <label class="form-label fs-16">Booking starts on</label>
+                                                                <p class="mt-2 fs-14 d-block mb-0">Specify the date and
+                                                                    time when you want the booking to start.</p>
+                                                                <div class="row g-3">
+                                                                    <div class="col-md-6">
+                                                                        <label class="form-label mt-3 fs-6">Event
+                                                                            Date.*</label>
+                                                                        <div class="loc-group position-relative">
+                                                                            <input
+                                                                                class="form-control h_50 datepicker-here"
+                                                                                data-language="en" type="date"
+                                                                                placeholder="MM/DD/YYYY" value="">
+                                                                            <span class="absolute-icon"><i
+                                                                                    class="fa-solid fa-calendar-days"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="clock-icon">
+                                                                            <label
+                                                                                class="form-label mt-3 fs-6">Time</label>
+                                                                            <input
+                                                                                class="form-control h_50 datepicker-here"
+                                                                                data-language="en" type="time"
+                                                                                placeholder="10:30 AM">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="setting-item border_bottom pb_30 pt_30">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input"
+                                                                    value="1" checked id="booking-end-time-btn"
+                                                                    name="booking-end-time-btn">
+                                                                <label class="custom-control-label"
+                                                                    for="booking-end-time-btn"></label>
+                                                            </div>
+                                                            <div class="d-flex flex-column">
+                                                                <label class="color-black fw-bold mb-1">I want the bookings
+                                                                    to continue until my event ends.</label>
+                                                                <p class="mt-2 fs-14 d-block mb-0">Disable this option if
+                                                                    you want to end your booking from a specific date and
+                                                                    time.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="booking-end-time-holder" style="display: none;">
+                                                            <div class="form-group pt_30">
+                                                                <label class="form-label fs-16">Booking ends on</label>
+                                                                <p class="mt-2 fs-14 d-block mb-0">Specify the date and
+                                                                    time when you want the booking to start.</p>
+                                                                <div class="row g-3">
+                                                                    <div class="col-md-6">
+                                                                        <label class="form-label mt-3 fs-6">Event
+                                                                            Date.*</label>
+                                                                        <div class="loc-group position-relative">
+                                                                            <input
+                                                                                class="form-control h_50 datepicker-here"
+                                                                                data-language="en" type="date"
+                                                                                placeholder="MM/DD/YYYY" value="">
+                                                                            <span class="absolute-icon"><i
+                                                                                    class="fa-solid fa-calendar-days"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="clock-icon">
+                                                                            <label
+                                                                                class="form-label mt-3 fs-6">Time</label>
+                                                                            <input
+                                                                                class="form-control h_50 datepicker-here"
+                                                                                data-language="en" type="time"
+                                                                                placeholder="10:30 AM">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="setting-item border_bottom pb_30 pt_30">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input"
+                                                                    value="1" checked id="passing-service-charge-btn"
+                                                                    name="passing-service-charge-btn">
+                                                                <label class="custom-control-label"
+                                                                    for="passing-service-charge-btn"></label>
+                                                            </div>
+                                                            <div class="d-flex flex-column">
+                                                                <label class="color-black fw-bold mb-1">I want my customers
+                                                                    to pay the applicable service fees at the time when they
+                                                                    make the bookings.</label>
+                                                                <p class="mt-2 fs-14 d-block mb-0 pe_right">Passing your
+                                                                    service charge means your attendees will pay your
+                                                                    service charge in addition to the ticket price.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="setting-item border_bottom pb_30 pt_30">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input"
+                                                                    value="1" checked id="refund-policies-btn"
+                                                                    name="refund-policies-btn">
+                                                                <label class="custom-control-label"
+                                                                    for="refund-policies-btn"></label>
+                                                            </div>
+                                                            <div class="d-flex flex-column">
+                                                                <label class="color-black fw-bold mb-1">I do not wish to
+                                                                    offer my customers with option to cancel their orders
+                                                                    and receive refund.</label>
+                                                                <p class="mt-2 fs-14 d-block mb-0">Disable this slider if
+                                                                    you want to let your customers cancel their order and
+                                                                    select a refund policy.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="refund-policies-holder" style="display:none;">
+                                                            <div class="refund-policies-content border_top mt-4">
+                                                                <div class="row grid-padding-8">
+                                                                    <div class="col-md-12 mb-6">
+                                                                        <div class="refund-method">
+                                                                            <div class="form-group mb-0">
+                                                                                <label
+                                                                                    class="brn-checkbox-radio mb-0 mt-4">
+                                                                                    <input type="radio"
+                                                                                        name="refund_policy_id"
+                                                                                        value="refund-id-1"
+                                                                                        class="form-check-input br-checkbox refund-policy1 refund_policy_disable">
+                                                                                    <span class="fs-14 fw-bold ms-xl-2">I
+                                                                                        wish to offer my customers with
+                                                                                        option to cancel their orders.
+                                                                                        However, I will handle refund
+                                                                                        manually.</span>
+                                                                                    <span
+                                                                                        class="ms-xl-4 d-block sub-label mt-2 mb-4">Select
+                                                                                        this option if you want to refund
+                                                                                        your customer manually.</span>
+                                                                                </label>
+                                                                                <div class="refund-input-content"
+                                                                                    data-method="refund-id-1">
+                                                                                    <div class="input-content mb-3">
+                                                                                        <label
+                                                                                            class="color-black mb-2 fs-14 fw-bold">Cancellation
+                                                                                            must be made<span
+                                                                                                class="red">*</span></label>
+                                                                                        <div
+                                                                                            class="d-block d-md-flex align-items-center flex-wrap flex-lg-wrap-reverse">
+                                                                                            <div class="col-md-4 pl-0">
+                                                                                                <div
+                                                                                                    class="input-group mr-3 mx-width-135 input-number">
+                                                                                                    <input type="number"
+                                                                                                        min="0"
+                                                                                                        max="30"
+                                                                                                        class="form-control"
+                                                                                                        placeholder="">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div
+                                                                                                class="input-sign ms-md-3 mt-3 mb-3">
+                                                                                                days before the event</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="refund-method">
+                                                                            <label class="brn-checkbox-radio mb-0 mt-4">
+                                                                                <input type="radio"
+                                                                                    name="refund_policy_id"
+                                                                                    value="refund-id-2"
+                                                                                    class="form-check-input br-checkbox refund-polic-2 refund_policy_disable">
+                                                                                <span class="fs-14 fw-bold ms-xl-2">I wish
+                                                                                    to offer my customers with option to
+                                                                                    cancel their orders and receive refund
+                                                                                    automatically.</span>
+                                                                                <span
+                                                                                    class="ms-xl-4 d-block sub-label mt-2 mb-4">Select
+                                                                                    this option if you want to refund your
+                                                                                    customer automatically.</span>
+                                                                            </label>
+                                                                            <div class="refund-input-content"
+                                                                                data-method="refund-id-2">
+                                                                                <div class="input-content mb-3">
+                                                                                    <label
+                                                                                        class="color-black mb-2 fs-14 fw-bold">Cancellation
+                                                                                        must be made <span
+                                                                                            class="red">*</span></label>
+                                                                                    <div
+                                                                                        class="d-block d-md-flex align-items-center flex-wrap flex-lg-wrap-reverse">
+                                                                                        <div class="col-md-4">
+                                                                                            <div
+                                                                                                class="input-group input-number">
+                                                                                                <input type="number"
+                                                                                                    min="0"
+                                                                                                    max="30"
+                                                                                                    class="form-control"
+                                                                                                    placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="input-sign ms-md-3 mt-3 mb-3">
+                                                                                            days before the event</div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="input-content mb-3">
+                                                                                    <label
+                                                                                        class="color-black mb-2 fs-14 fw-bold">Refund
+                                                                                        amount <span
+                                                                                            class="red">*</span></label>
+                                                                                    <div
+                                                                                        class="d-block d-md-flex align-items-center flex-wrap flex-lg-wrap-reverse">
+                                                                                        <div class="col-md-4">
+                                                                                            <div
+                                                                                                class="input-group loc-group position-relative">
+                                                                                                <input type="text"
+                                                                                                    value=""
+                                                                                                    class="form-control"
+                                                                                                    placeholder="">
+                                                                                                <span
+                                                                                                    class="percentage-icon"><i
+                                                                                                        class="fa-solid fa-percent"></i></span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="input-sign ms-md-3 mt-3 mb-3">
+                                                                                            days before the event</div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="setting-item border_bottom pb_30 pt_30">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input"
+                                                                    value="1" checked id="ticket-instructions-btn"
+                                                                    name="ticket-instructions-btn">
+                                                                <label class="custom-control-label"
+                                                                    for="ticket-instructions-btn"></label>
+                                                            </div>
+                                                            <div class="d-flex flex-column">
+                                                                <label class="color-black fw-bold mb-1">I do not require
+                                                                    adding any special instructions on the tickets.</label>
+                                                                <p class="mt-2 fs-14 d-block mb-0">Use this space to
+                                                                    provide any last minute checklists your attendees must
+                                                                    know in order to attend your event. Anything you provide
+                                                                    here will be printed on your ticket.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ticket-instructions-holder" style="display:none;">
+                                                            <div class="ticket-instructions-content mt-4">
+                                                                <textarea class="form-textarea" placeholder="About"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="setting-item pb-0 pt_30">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input"
+                                                                    value="1" checked id="tags-btn"
+                                                                    name="tags-btn">
+                                                                <label class="custom-control-label"
+                                                                    for="tags-btn"></label>
+                                                            </div>
+                                                            <div class="d-flex flex-column">
+                                                                <label class="color-black fw-bold mb-1">I do not want to
+                                                                    add tags in my event</label>
+                                                                <p class="mt-2 fs-14 d-block mb-0">Use relevant words as
+                                                                    your tags to improve the discoverability of your event.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tags-holder" style="display:none;">
+                                                            <div class="ticket-instructions-content tags-container mt-4">
+                                                                <input class="form-control tags-input" type="text"
+                                                                    placeholder="Type your tags and press enter">
+                                                                <div class="tags-list" style="height: auto;">
+                                                                    <!-- keywords go here -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <a href="#tickets" class="nav-tab btn mb-2 btn-primary">Previous</a>
+                                        {{-- <button type="submit" class="btn mb-2 btn-primary" id="">Save
+                                            Event</button> --}}
+                                        <button type="submit" class="btn mb-2 btn-primary" id="saveEventBtn">Save
+                                            Event</button>
+                                    </div>
+                                </section>
                             </div>
                         </div>
                     </form>
@@ -224,40 +585,49 @@
 
     <!-- Your custom JavaScript code using FullCalendar and AJAX -->
     <script>
-        function createTag(text) {
-            var tag = document.createElement('div');
-            tag.classList.add('tag');
-            tag.textContent = text;
-            var hiddenInput = document.createElement('input');
-            hiddenInput.type = 'hidden';
-            hiddenInput.name = 'dress_code[]';
-            hiddenInput.value = text;
-            tag.addEventListener('click', function() {
-                tag.remove();
-                hiddenInput.remove();
-            });
-            var removeBtn = document.createElement('span');
-            removeBtn.classList.add('tag-remove');
-            removeBtn.textContent = '×';
-            removeBtn.addEventListener('click', function(event) {
-                event.stopPropagation();
-                tag.remove();
-                hiddenInput.remove();
-            });
-
-            tag.appendChild(removeBtn);
-            document.getElementById("dress_code_tags").appendChild(hiddenInput);
-            return tag;
-        }
-        document.getElementById('tag-input').addEventListener('keydown', function(event) {
-            if (event.key === 'Enter' && this.value.trim() !== '') {
-                var tagText = this.value.trim();
-                var tagContainer = document.getElementById('tag-container');
-                var tag = createTag(tagText);
-                tagContainer.appendChild(tag);
-                this.value = '';
+        $(document).on('click', '.dress_code', function() {
+            var dress_codeId = $(this).data('id');
+            var isSelected = $(this).hasClass('badge-primary');
+            if (isSelected) {
+                $(this).next('input[name="dress_code[]"]').remove();
+                $(this).removeClass('badge-primary').addClass('badge-secondary');
+            } else {
+                var dress_codeName = $(this).text().trim().replace('#', '');
+                var newInput = $('<input type="hidden" name="dress_code[]" value="#' + dress_codeName +
+                    '">');
+                $('#hash_dress_code').append(newInput);
+                $(this).removeClass('badge-secondary').addClass('badge-primary');
             }
         });
+
+        $(document).on('click', '.dress_code', function() {
+            var dress_codeId = $(this).data('id');
+            var dress_codeInput = $(this).next('input[name="dress_code[]"]');
+            if (dress_codeInput.length) {
+                dress_codeInput.remove();
+            }
+            $(this).remove();
+        });
+
+        $('#dress_codeInput').keypress(function(event) {
+            if (event.which === 13) {
+                var newdress_codeName = $(this).val().trim();
+                if (newdress_codeName) {
+                    var newdress_codeId = 'random_' + Math.floor(Math.random() * 1000000);
+                    var newdress_code = $('<span class="badge badge-primary dress_code badge-lg" data-id="' +
+                        newdress_codeId +
+                        '" style="font-size: 1.25em;">#' + newdress_codeName + '</span>');
+                    $('#dress_codeInput').before(newdress_code);
+
+                    var newInput = $('<input type="hidden" name="dress_code[]" value="#' + newdress_codeName +
+                        '">');
+                    $('#hash_dress_code').append(newInput);
+
+                    $(this).val('');
+                }
+            }
+        });
+
         $("#view-btn").click(function() {
             text = $(this).html();
             if (text == '<i class="fe fe-grid fe-16"></i> List View') {
@@ -646,6 +1016,64 @@
                     $('#productMessage').html(
                         '<div class="alert alert-danger" role="alert">Failed to fetch event details for editing</div>'
                     );
+                }
+            });
+        });
+
+        $('.nav-tab').click(function(e) {
+            $(this).addClass('nav-tab-active').siblings().removeClass('nav-tab-active');
+
+            $($(this).attr('href')).addClass('active').siblings().removeClass('active');
+        });
+
+        $(document).ready(function() {
+            $('#createEventForm').on('keypress', function(e) {
+                if (e.which === 13) {
+                    e.preventDefault();
+                }
+            });
+
+            $('#booking-start-time-btn').change(function() {
+                if ($(this).is(':checked')) {
+                    $('.booking-start-time-holder').hide();
+                } else {
+                    $('.booking-start-time-holder').show();
+                }
+            });
+
+            $('#booking-end-time-btn').change(function() {
+                if ($(this).is(':checked')) {
+                    $('.booking-end-time-holder').hide();
+                } else {
+                    $('.booking-end-time-holder').show();
+                }
+            });
+
+            $('#refund-policies-btn').change(function() {
+                if ($(this).is(':checked')) {
+                    $('.refund-policies-holder').hide();
+                    $('.refund_policy_disable').prop('disabled', true).removeAttr(
+                        'required');
+                } else {
+                    $('.refund-policies-holder').show();
+                    $('.refund_policy_disable').prop('disabled', false).attr('required',
+                        'required');
+                }
+            });
+
+            $('#ticket-instructions-btn').change(function() {
+                if ($(this).is(':checked')) {
+                    $('.ticket-instructions-holder').hide();
+                } else {
+                    $('.ticket-instructions-holder').show();
+                }
+            });
+
+            $('#tags-btn').change(function() {
+                if ($(this).is(':checked')) {
+                    $('.tags-holder').hide();
+                } else {
+                    $('.tags-holder').show();
                 }
             });
         });

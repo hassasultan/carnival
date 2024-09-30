@@ -61,7 +61,6 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->toArray());
         $request->validate([
             'name' => 'required|string|max:255',
             'package_id' => 'required|exists:packages,id',
@@ -89,7 +88,8 @@ class EventController extends Controller
         }
         $event = $this->eventService->createEvent($request->all());
 
-        return response()->json(['success' => 'Event created successfully.', 'event' => $event]);
+        // return response()->json(['success' => 'Event created successfully.', 'event' => $event]);
+        return redirect()->route('events.index');
     }
 
     public function edit(Event $event)
