@@ -210,7 +210,7 @@
                                     @foreach ($adv1 as $row)
                                         <div class="owl-item cloned" style="width: 211px;">
                                             <div class="item item2">
-                                                <img src="{{ $row->image }}" alt="images">
+                                                <img src="/images/{{ $row->image }}" alt="images">
                                             </div>
                                         </div>
                                     @endforeach
@@ -276,7 +276,7 @@
                                     @foreach ($adv2 as $row)
                                     <div class="owl-item cloned" style="width: 211px;">
                                         <div class="item item2">
-                                            <img src="{{ $row->image }}" alt="images">
+                                            <img src="/images/{{ $row->image }}" alt="images">
                                         </div>
                                     </div>
                                     @endforeach
@@ -342,7 +342,7 @@
                                     @foreach ($adv3 as $row)
                                     <div class="owl-item cloned" style="width: 211px;">
                                         <div class="item item2">
-                                            <img src="{{ $row->image }}" alt="images">
+                                            <img src="/images/{{ $row->image }}" alt="images">
                                         </div>
                                     </div>
                                     @endforeach
