@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Models\Event;
 use App\Models\Banner;
 use App\Models\Category;
+use App\Models\Advertisement;
 use App\Models\Package;
 use App\Models\Brand;
 use Illuminate\Http\Request;
@@ -151,24 +152,24 @@ class FrontendConroller extends Controller
     {
         $mascamp_banners = Banner::where('type', 'mascamps')->get();
         $regions = Region::all();
-        $category1 = Category::where('status', 1)
+        $adv1 = Advertisement::where('status', 1)
             ->inRandomOrder()
             ->take(3)
             ->get();
 
-        $category2 = Category::where('status', 1)
-            ->whereNotIn('id', $category1->pluck('id'))
+        $adv2 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id'))
             ->inRandomOrder()
             ->take(3)
             ->get();
 
-        $category3 = Category::where('status', 1)
-            ->whereNotIn('id', $category1->pluck('id')->merge($category2->pluck('id')))
+        $adv3 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id')->merge($adv2->pluck('id')))
             ->inRandomOrder()
             ->take(3)
             ->get();
 
-        return view('ShopFrontend.vendors', compact('regions', 'mascamp_banners', 'category1', 'category2', 'category3'));
+        return view('ShopFrontend.vendors', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3'));
     }
     public function contact_us()
     {

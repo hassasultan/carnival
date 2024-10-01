@@ -121,6 +121,21 @@
                         @enderror
                     </div>
                 @endif
+                <div class="form-group">
+                    <label for="continent">Region <span class="text-danger">*</span></label>
+                    <select id="continent" class="form-control @error('continent') is-invalid @enderror"
+                        name="continent" required>
+                        <option value="" disabled selected>Select Region</option>
+                        @foreach ($continents as $continent)
+                            <option value="{{ $continent->id }}" @if ($user->vendor->region_id == $continent->id) selected @endif>{{ $continent->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('continent')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
                 <!-- End of Role Specific Fields -->
 
                 <!-- Status Field -->

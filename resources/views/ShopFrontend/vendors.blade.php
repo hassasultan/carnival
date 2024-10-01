@@ -207,10 +207,10 @@
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
-                                    @foreach ($category1 as $row)
+                                    @foreach ($adv1 as $row)
                                         <div class="owl-item cloned" style="width: 211px;">
                                             <div class="item item2">
-                                                <img src="{{ $row->icon }}" alt="images">
+                                                <img src="{{ $row->image }}" alt="images">
                                             </div>
                                         </div>
                                     @endforeach
@@ -273,10 +273,10 @@
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
-                                    @foreach ($category2 as $row)
+                                    @foreach ($adv2 as $row)
                                     <div class="owl-item cloned" style="width: 211px;">
                                         <div class="item item2">
-                                            <img src="{{ $row->icon }}" alt="images">
+                                            <img src="{{ $row->image }}" alt="images">
                                         </div>
                                     </div>
                                     @endforeach
@@ -339,10 +339,10 @@
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
-                                    @foreach ($category3 as $row)
+                                    @foreach ($adv3 as $row)
                                     <div class="owl-item cloned" style="width: 211px;">
                                         <div class="item item2">
-                                            <img src="{{ $row->icon }}" alt="images">
+                                            <img src="{{ $row->image }}" alt="images">
                                         </div>
                                     </div>
                                     @endforeach

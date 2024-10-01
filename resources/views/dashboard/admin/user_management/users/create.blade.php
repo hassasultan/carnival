@@ -412,10 +412,10 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="continent">Continent <span class="text-danger">*</span></label>
+                        <label for="continent">Region <span class="text-danger">*</span></label>
                         <select id="continent" class="form-control @error('continent') is-invalid @enderror"
                             name="continent" required>
-                            <option value="" disabled selected>Select Continent</option>
+                            <option value="" disabled selected>Select Region</option>
                             {{-- <option value="Caribbean">Caribbean</option>
                             <option value="North America">North America</option>
                             <option value="South America">South America</option>
@@ -424,7 +424,7 @@
                             <option value="Asia">Asia</option>
                             <option value="Australia">Australia</option> --}}
                             @foreach ($continents as $continent)
-                                <option value="{{ $continent->name }}">{{ $continent->name }}</option>
+                                <option value="{{ $continent->id }}">{{ $continent->name }}</option>
                             @endforeach
                         </select>
                         @error('continent')
