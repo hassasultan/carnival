@@ -339,14 +339,14 @@
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
-                                    @foreach ($adv3 as $key => $row)
+                                    {{-- @foreach ($adv3 as $key => $row)
                                     <div class="owl-item cloned" style="width: 211px;">
                                         <div class="item item{{$key}}">
                                             <img src="/images/{{ $row->image }}" alt="images">
                                         </div>
                                     </div>
-                                    @endforeach
-                                    {{-- <div class="owl-item cloned" style="width: 211px;">
+                                    @endforeach --}}
+                                    <div class="owl-item cloned" style="width: 211px;">
                                         <div class="item item3">
                                             <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
                                                 alt="images">
@@ -381,7 +381,7 @@
                                             <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
                                                 alt="images">
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </div>
                             <div class="owl-nav disabled">
