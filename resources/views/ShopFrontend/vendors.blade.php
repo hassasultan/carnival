@@ -207,9 +207,9 @@
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
-                                    @foreach ($adv1 as $row)
+                                    @foreach ($adv1 as $key => $row)
                                         <div class="owl-item cloned" style="width: 211px;">
-                                            <div class="item item2">
+                                            <div class="item item{{$key}}">
                                                 <img src="/images/{{ $row->image }}" alt="images">
                                             </div>
                                         </div>
@@ -273,9 +273,9 @@
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
-                                    @foreach ($adv2 as $row)
+                                    @foreach ($adv2 as $key => $row)
                                     <div class="owl-item cloned" style="width: 211px;">
-                                        <div class="item item2">
+                                        <div class="item item{{$key}}">
                                             <img src="/images/{{ $row->image }}" alt="images">
                                         </div>
                                     </div>
@@ -339,9 +339,9 @@
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
-                                    @foreach ($adv3 as $row)
+                                    @foreach ($adv3 as $key => $row)
                                     <div class="owl-item cloned" style="width: 211px;">
-                                        <div class="item item2">
+                                        <div class="item item{{$key}}">
                                             <img src="/images/{{ $row->image }}" alt="images">
                                         </div>
                                     </div>
