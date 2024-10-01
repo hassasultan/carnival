@@ -43,6 +43,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\EventsCountryTabController;
 use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\AdvertisementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -234,6 +235,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // banner
     Route::resource('banners', BannerController::class);
+
+    // advertisements
+    Route::resource('advertisements', AdvertisementController::class);
 });
 
 Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');

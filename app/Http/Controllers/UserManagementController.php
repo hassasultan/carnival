@@ -194,11 +194,12 @@ class UserManagementController extends Controller
 
     public function edit($id)
     {
+        $continents = Region::all();
         $user = User::findOrFail($id);
         $roles = Role::where('status', 1)->get();
         $packages = Package::where('status', 1)->get();
         $vendors = Vendor::with('user')->where('status', 1)->get();
-        return view('dashboard.admin.user_management.users.edit', compact('user', 'roles', 'packages', 'vendors'));
+        return view('dashboard.admin.user_management.users.edit', compact('user', 'roles', 'packages', 'vendors', 'continents'));
     }
 
     public function update(Request $request, $id)
