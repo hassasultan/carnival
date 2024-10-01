@@ -197,72 +197,37 @@
                 <div class="col-md-3 col-md-pull-9  col-sidebar">
 
 
-                    <!-- block slide top -->
                     <div class="block-sidebar block-banner-sidebar">
                         <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
-
-
-
+                    
                             <div class="owl-stage-outer">
-                                <div class="owl-stage"
-                                    style="transform: translate3d(-844px, 0px, 0px); transition: all 0.8s ease 0s; width: 1477px;">
-                                    @foreach ($adv1 as $key => $row)
-                                        <div class="owl-item cloned" style="width: 211px;">
-                                            <div class="item item{{$key}}">
-                                                <img src="/images/{{ $row->image }}" alt="images">
+                                <div class="owl-stage">
+                                    @foreach($adv1 as $key => $row)
+                                        <div class="owl-item">
+                                            <div class="item item{{ $key }}">
+                                                <img src="{{ asset('images/' . $row->image) }}" alt="{{ $banner->alt_text }}">
                                             </div>
                                         </div>
                                     @endforeach
-                                    {{-- <div class="owl-item cloned" style="width: 211px;">
-                                        <div class="item item3">
-                                            <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
-                                                alt="images">
-                                        </div>
-                                    </div>
-                                    <div class="owl-item" style="width: 211px;">
-                                        <div class="item item1">
-                                            <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
-                                                alt="images">
-                                        </div>
-                                    </div>
-                                    <div class="owl-item" style="width: 211px;">
-                                        <div class="item item2">
-                                            <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
-                                                alt="images">
-                                        </div>
-                                    </div>
-                                    <div class="owl-item active" style="width: 211px;">
-                                        <div class="item item3">
-                                            <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
-                                                alt="images">
-                                        </div>
-                                    </div>
-                                    <div class="owl-item cloned" style="width: 211px;">
-                                        <div class="item item1">
-                                            <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
-                                                alt="images">
-                                        </div>
-                                    </div>
-                                    <div class="owl-item cloned" style="width: 211px;">
-                                        <div class="item item2">
-                                            <img src="{{ asset('shopAssets/images/media/banner-sidebar1.jpg') }}"
-                                                alt="images">
-                                        </div>
-                                    </div> --}}
                                 </div>
                             </div>
+                    
                             <div class="owl-nav disabled">
                                 <div class="owl-prev"></div>
                                 <div class="owl-next"></div>
                             </div>
+                    
                             <div class="owl-dots">
-                                <div class="owl-dot"><span></span></div>
-                                <div class="owl-dot"><span></span></div>
-                                <div class="owl-dot active"><span></span></div>
+                                @foreach($adv1 as $key => $row)
+                                    <div class="owl-dot @if($key == 0) active @endif"><span></span></div>
+                                @endforeach
                             </div>
                         </div>
-                    </div><!-- block slide top -->
+                    </div>
+                    
+
+                    
                     <!-- block slide top -->
                     <div class="block-sidebar block-banner-sidebar">
                         <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
