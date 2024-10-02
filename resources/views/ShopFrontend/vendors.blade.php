@@ -201,17 +201,17 @@
                         <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
                     
-                            <div class="owl-stage-outer">
-                                <div class="owl-stage">
+                            {{-- <div class="owl-stage-outer">
+                                <div class="owl-stage"> --}}
                                     @foreach ($adv1 as $key => $row)
-                                        <div class="owl-item @if($key == 0) active @endif" style="width: 268px;">
+                                        {{-- <div class="owl-item @if($key == 0) active @endif" style="width: 268px;"> --}}
                                             <div class="item">
                                                 <img src="{{ asset('images/' . $row->image) }}" alt="{{ $row->alt_text }}">
                                             </div>
-                                        </div>
+                                        {{-- </div> --}}
                                     @endforeach
-                                </div>
-                            </div>
+                                {{-- </div>
+                            </div> --}}
                     
                             <div class="owl-nav disabled">
                                 <div class="owl-prev"></div>
