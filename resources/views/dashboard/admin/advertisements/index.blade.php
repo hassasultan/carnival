@@ -24,6 +24,7 @@
                                     <th>Title</th>
                                     <th>Image</th>
                                     <th>Description</th>
+                                    <th>index</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
@@ -33,6 +34,7 @@
                                         <td>{{ $advertisement->title }}</td>
                                         <td><img src="{{ asset('images/' . $advertisement->image) }}" alt="{{ $advertisement->title }}" width="50"></td>
                                         <td>{{ $advertisement->description }}</td>
+                                        <td>{{ $advertisement->index }}</td>
                                         <td>{{ $advertisement->status == 1 ? 'Enabled' : 'Disabled' }}</td>
                                         <td>
                                             <a href="{{ route('advertisements.show', $advertisement->id) }}" class="btn btn-info">Show</a>
