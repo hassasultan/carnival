@@ -273,6 +273,7 @@ class FrontendConroller extends Controller
 
     public function getDiscounted(Request $request)
     {
+        // dd($request->discount);
         $discounted_products = Product::where('discount', '<=', $request->discount)->take(10)->get();
 
         return $discounted_products;

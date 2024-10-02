@@ -190,6 +190,34 @@
                                 </div>
                                 <button type="button" class="slick-arrow slick-next">Next</button>
                             </div>
+                            <div class="tab-pane fade" id="hot-2" role="tabpanel">
+                                <button type="button" class="slick-arrow slick-prev">Previous</button>
+                                <div class="deals-slider" id="shopDiscount">
+                                    @include('partials.shop_discount')
+                                </div>
+                                <button type="button" class="slick-arrow slick-next">Next</button>
+                            </div>
+                            <div class="tab-pane fade" id="hot-3" role="tabpanel">
+                                <button type="button" class="slick-arrow slick-prev">Previous</button>
+                                <div class="deals-slider" id="shopDiscount">
+                                    @include('partials.shop_discount')
+                                </div>
+                                <button type="button" class="slick-arrow slick-next">Next</button>
+                            </div>
+                            <div class="tab-pane fade" id="hot-4" role="tabpanel">
+                                <button type="button" class="slick-arrow slick-prev">Previous</button>
+                                <div class="deals-slider" id="shopDiscount">
+                                    @include('partials.shop_discount')
+                                </div>
+                                <button type="button" class="slick-arrow slick-next">Next</button>
+                            </div>
+                            <div class="tab-pane fade" id="hot-5" role="tabpanel">
+                                <button type="button" class="slick-arrow slick-prev">Previous</button>
+                                <div class="deals-slider" id="shopDiscount">
+                                    @include('partials.shop_discount')
+                                </div>
+                                <button type="button" class="slick-arrow slick-next">Next</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2854,7 +2882,7 @@
             event.preventDefault();
             var text = $(this).text();
             var match = text.match(/up to (\d+)% off/);
-
+            let target = $(this).attr('href');
             if (match && match[1]) {
                 var discountPercentage = match[1];
 
@@ -2868,10 +2896,11 @@
                     },
                     success: function(response) {
                         console.log('response', response);
-                        $('#shopDiscount').html('');
+                        $(target + ' > .deals-slider').html('');
+
                         response.forEach(function(product) {
                             var productHtml = `
-                        <div>
+                        <div class="item">
                             <div class="product-item product-item-opt-1">
                                 <div class="product-item-info">
                                     <div class="product-item-photo">
@@ -2898,13 +2927,25 @@
                             </div>
                         </div>
                     `;
-                            $('#shopDiscount').append(productHtml);
+                            console.log($(target + ' > .deals-slider'));
+                            $(target).addClass('active in');
+                            $(target + ' > .deals-slider').append(productHtml);
                         });
+
                         // $('#shopDiscount').html(response);
                     },
                     error: function(xhr, status, error) {
                         console.error('Error fetching discounted products:', error);
                     }
+                    $('.deals-slider').each(function(index, element) {
+                        $(element).slick({
+                            infinite: true,
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            prevArrow: $(element).siblings('.slick-prev'),
+                            nextArrow: $(element).siblings('.slick-next')
+                        });
+                    });
                 });
             }
         });
