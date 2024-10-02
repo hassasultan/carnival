@@ -303,19 +303,7 @@
 
 <!-- arcticmodal -->
 <script src="{{asset('shopAssets/js/arcticmodal/jquery.arcticmodal.js')}}"></script>
-<script>
-    $(document).ready(function() {
-        $('.owl-carousel1').owlCarousel({
-            items: 1,
-            loop: true,
-            margin: 0,
-            nav: false,
-            dots: true,
-            autoplay: true,
-            autoplayTimeout: 700
-        });
-    });
-</script>
+
 <!-- Main -->
 <script type="text/javascript" src="{{asset('shopAssets/js/main.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

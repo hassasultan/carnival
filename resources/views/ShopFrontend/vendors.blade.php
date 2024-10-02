@@ -198,7 +198,7 @@
 
 
                     <div class="block-sidebar block-banner-sidebar">
-                        <div class="owl-carousel1 owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
+                        <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
                     
                             <div class="owl-stage-outer">
