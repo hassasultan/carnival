@@ -204,11 +204,8 @@
                             <div class="owl-stage-outer">
                                 <div class="owl-stage">
                                     @foreach ($adv1 as $key => $row)
-                                        @php
-                                            $index = ++$key;
-                                        @endphp
                                         <div class="owl-item @if($key == 0) active @endif" style="width: 268px;">
-                                            <div class="item item{{ $index }}">
+                                            <div class="item item{{ $key + 1 }}">
                                                 <img src="{{ asset('images/' . $row->image) }}" alt="{{ $row->alt_text }}">
                                             </div>
                                         </div>
