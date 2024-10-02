@@ -24,7 +24,7 @@
                 <option value="mascamps">Mascamps</option>
                 <option value="section_leader">Section Leader</option>
                 <option value="event">Event</option>
-                <option value="mascamps">Mascamps</option>
+                <option value="flight">Flight</option>
             </select>
         </div>
 
