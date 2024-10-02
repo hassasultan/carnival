@@ -200,28 +200,27 @@
                     <div class="block-sidebar block-banner-sidebar">
                         <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
-
+                    
                             <div class="owl-stage-outer">
                                 <div class="owl-stage">
                                     @foreach ($adv1 as $key => $row)
                                         @php
                                             $index = ++$key;
                                         @endphp
-                                        <div class="owl-item">
+                                        <div class="owl-item @if($key == 0) active @endif" style="width: 268px;">
                                             <div class="item item{{ $index }}">
-                                                <img src="{{ asset('images/' . $row->image) }}"
-                                                    alt="{{ $banner->alt_text }}">
+                                                <img src="{{ asset('images/' . $row->image) }}" alt="{{ $row->alt_text }}">
                                             </div>
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
-
+                    
                             <div class="owl-nav disabled">
                                 <div class="owl-prev"></div>
                                 <div class="owl-next"></div>
                             </div>
-
+                    
                             <div class="owl-dots">
                                 @foreach ($adv1 as $key => $row)
                                     <div class="owl-dot @if ($key == 0) active @endif"><span></span></div>
@@ -229,6 +228,7 @@
                             </div>
                         </div>
                     </div>
+                    
 
 
 
