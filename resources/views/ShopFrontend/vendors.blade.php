@@ -213,16 +213,16 @@
                                 </div>
                             </div>
                     
-                            <div class="owl-nav disabled">
-                                <div class="owl-prev"></div>
-                                <div class="owl-next"></div>
-                            </div>
-                    
-                            <div class="owl-dots">
-                                @foreach ($adv1 as $key => $row)
-                                    <div class="owl-dot @if ($key == 0) active @endif"><span></span></div>
-                                @endforeach
-                            </div>
+                        </div>
+                        <div class="owl-nav disabled">
+                            <div class="owl-prev"></div>
+                            <div class="owl-next"></div>
+                        </div>
+                
+                        <div class="owl-dots">
+                            @foreach ($adv1 as $key => $row)
+                                <div class="owl-dot @if ($key == 0) active @endif"><span></span></div>
+                            @endforeach
                         </div>
                     </div>
                     
