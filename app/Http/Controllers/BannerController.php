@@ -22,7 +22,7 @@ class BannerController extends Controller
     {
         $request->validate([
             'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048|dimensions:width=870,height=328',
-            // 'type' => 'required',
+            'type' => 'required',
             'description' => 'nullable|string',
             'status' => 'boolean',
         ]);
@@ -32,7 +32,7 @@ class BannerController extends Controller
 
         Banner::create([
             'banner_image' => $banner_image,
-            'type' => 'mascamps',
+            'type' => $request->type,
             'description' => $request->description,
             'status' => $request->status ?? 1,
         ]);
@@ -66,6 +66,7 @@ class BannerController extends Controller
 
         $banner->description = $request->description;
         $banner->status = $request->status ?? 1;
+        $banner->type = $request->type;
         $banner->save();
 
         return redirect()->route('banners.index')->with('success', 'Banner updated successfully.');

@@ -8,6 +8,7 @@
         <thead>
             <tr>
                 <th>Image</th>
+                <th>Type</th>
                 <th>Description</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -17,6 +18,7 @@
             @foreach ($banners as $banner)
                 <tr>
                     <td><img src="{{ asset($banner->banner_image) }}" alt="Banner" width="100"></td>
+                    <td>{{ $banner->type }}</td>
                     <td>{{ $banner->description }}</td>
                     <td>{{ $banner->status ? 'Active' : 'Inactive' }}</td>
                     <td>

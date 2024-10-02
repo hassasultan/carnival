@@ -2867,7 +2867,39 @@
                         discount: discountPercentage
                     },
                     success: function(response) {
-                        // $('#shopDiscount').html('');
+                        console.log('response', response);
+                        $('#shopDiscount').html('');
+                        response.forEach(function(product) {
+                            var productHtml = `
+                        <div>
+                            <div class="product-item product-item-opt-1">
+                                <div class="product-item-info">
+                                    <div class="product-item-photo">
+                                        <a class="product-item-img" href="#">
+                                            <img alt="${product.title}"
+                                                 src="{{ asset('productImage/') }}/${product.image ?? 'default_image_path.jpg'}">
+                                        </a>
+                                        <button type="button" class="btn btn-cart">
+                                            <span>Add to Cart</span>
+                                        </button>
+                                    </div>
+                                    <div class="product-item-detail">
+                                        <strong class="product-item-name">
+                                            <a href="#">${product.title}</a>
+                                        </strong>
+                                        <div class="clearfix">
+                                            <div class="product-item-price">
+                                                <span class="price">$${parseFloat(product.new_price).toFixed(2)}</span>
+                                                ${product.old_price ? `<span class="old-price">$${parseFloat(product.old_price).toFixed(2)}</span>` : ''}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                            $('#shopDiscount').append(productHtml);
+                        });
                         // $('#shopDiscount').html(response);
                     },
                     error: function(xhr, status, error) {

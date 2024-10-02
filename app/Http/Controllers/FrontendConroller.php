@@ -275,6 +275,7 @@ class FrontendConroller extends Controller
     {
         $discounted_products = Product::where('discount', '<=', $request->discount)->take(10)->get();
 
-        return view('partials.shop_discount', compact('discounted_products'));
+        return $discounted_products;
+        // return view('partials.shop_discount', compact('discounted_products'));
     }
 }

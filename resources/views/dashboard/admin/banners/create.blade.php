@@ -17,6 +17,18 @@
         </div>
 
         <div class="form-group">
+            <label for="type">Type</label>
+            <select name="type" class="form-control">
+                <option value="home">Home</option>
+                <option value="shop">Shop</option>
+                <option value="mascamps">Mascamps</option>
+                <option value="section_leader">Section Leader</option>
+                <option value="event">Event</option>
+                <option value="mascamps">Mascamps</option>
+            </select>
+        </div>
+
+        <div class="form-group">
             <label for="status">Status</label>
             <select name="status" class="form-control">
                 <option value="1">Active</option>

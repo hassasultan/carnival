@@ -19,6 +19,18 @@
         </div>
 
         <div class="form-group">
+            <label for="type">Type</label>
+            <select name="type" class="form-control">
+                <option value="home" @if ($banner->type == 'home') selected @endif>Home</option>
+                <option value="shop" @if ($banner->type == 'shop') selected @endif>Shop</option>
+                <option value="mascamps" @if ($banner->type == 'mascamps') selected @endif>Mascamps</option>
+                <option value="section_leader" @if ($banner->type == 'section_leader') selected @endif>Section Leader</option>
+                <option value="event" @if ($banner->type == 'event') selected @endif>Event</option>
+                <option value="mascamps" @if ($banner->type == 'mascamps') selected @endif>Mascamps</option>
+            </select>
+        </div>
+
+        <div class="form-group">
             <label for="status">Status</label>
             <select name="status" class="form-control">
                 <option value="1" {{ $banner->status ? 'selected' : '' }}>Active</option>
