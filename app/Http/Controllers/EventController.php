@@ -83,6 +83,14 @@ class EventController extends Controller
         ]);
 
         $request['user_id'] = Auth::id();
+
+        $request['booking_start_time_btn'] = $request->has('booking-start-time-btn') ? 1 : 0;
+        $request['booking_end_time_btn'] = $request->has('booking-end-time-btn') ? 1 : 0;
+        $request['passing_service_charge_btn'] = $request->has('passing-service-charge-btn') ? 1 : 0;
+        $request['refund_policies_btn'] = $request->has('refund-policies-btn') ? 1 : 0;
+        $request['ticket_instructions_btn'] = $request->has('ticket-instructions-btn') ? 1 : 0;
+        $request['tags_btn'] = $request->has('tags-btn') ? 1 : 0;
+
         if ($request->has('all_day')) {
             $request['all_day'] = $request->all_day ? 1 : 0;
         }

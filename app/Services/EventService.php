@@ -16,7 +16,6 @@ class EventService
     public function createEvent(array $data)
     {
         $eventData = $this->prepareEventData($data);
-
         $event = Event::create($eventData);
 
         if (isset($data['additional_images'])) {
@@ -65,6 +64,27 @@ class EventService
             'end_time' => $data['end_time'] ?? null,
             'all_day' => $data['all_day'] ?? null,
             'status' => $data['status'],
+
+            'booking_start_time_btn' => $data['booking_start_time_btn'] ?? 0,
+            'booking_starts_on_date' => $data['booking_starts_on_date'] ?? null,
+            'booking_starts_on_time' => $data['booking_starts_on_time'] ?? null,
+
+            'booking_end_time_btn' => $data['booking_end_time_btn'] ?? 0,
+            'booking_ends_on_date' => $data['booking_ends_on_date'] ?? null,
+            'booking_ends_on_time' => $data['booking_ends_on_time'] ?? null,
+
+            'passing_service_charge_btn' => $data['passing_service_charge_btn'] ?? 0,
+
+            'refund_policies_btn' => $data['refund_policies_btn'] ?? 0,
+            'refund_policy_id' => $data['refund_policy_id'] ?? null,
+            'cancel_before' => $data['cancel_before'] ?? null,
+            'refund_amount' => $data['refund_amount'] ?? null,
+
+            'ticket_instructions_btn' => $data['ticket_instructions_btn'] ?? 0,
+            'special_instructions' => $data['special_instructions'] ?? null,
+
+            'tags_btn' => $data['tags_btn'] ?? 0,
+            // 'dress_code' => isset($data['dress_code']) ? implode(',', $data['dress_code']) : null,
         ];
 
         if (isset($data['dress_code'])) {

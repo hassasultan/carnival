@@ -22,7 +22,8 @@
                     <strong class="card-title">Event Information</strong>
                 </div>
                 <div class="card-body">
-                    <form id="createEventForm" method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data">
+                    <form id="createEventForm" method="POST" action="{{ route('events.store') }}"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
@@ -282,6 +283,7 @@
                                                                             <input
                                                                                 class="form-control h_50 datepicker-here"
                                                                                 data-language="en" type="date"
+                                                                                name="booking_starts_on_date"
                                                                                 placeholder="MM/DD/YYYY" value="">
                                                                             <span class="absolute-icon"><i
                                                                                     class="fa-solid fa-calendar-days"></i></span>
@@ -294,6 +296,7 @@
                                                                             <input
                                                                                 class="form-control h_50 datepicker-here"
                                                                                 data-language="en" type="time"
+                                                                                name="booking_starts_on_time"
                                                                                 placeholder="10:30 AM">
                                                                         </div>
                                                                     </div>
@@ -331,7 +334,8 @@
                                                                             <input
                                                                                 class="form-control h_50 datepicker-here"
                                                                                 data-language="en" type="date"
-                                                                                placeholder="MM/DD/YYYY" value="">
+                                                                                placeholder="MM/DD/YYYY" value=""
+                                                                                name="booking_ends_on_date">
                                                                             <span class="absolute-icon"><i
                                                                                     class="fa-solid fa-calendar-days"></i></span>
                                                                         </div>
@@ -342,6 +346,7 @@
                                                                                 class="form-label mt-3 fs-6">Time</label>
                                                                             <input
                                                                                 class="form-control h_50 datepicker-here"
+                                                                                name="booking_ends_on_time"
                                                                                 data-language="en" type="time"
                                                                                 placeholder="10:30 AM">
                                                                         </div>
@@ -425,7 +430,8 @@
                                                                                                         min="0"
                                                                                                         max="30"
                                                                                                         class="form-control"
-                                                                                                        placeholder="">
+                                                                                                        placeholder=""
+                                                                                                        name="cancel_before">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div
@@ -487,6 +493,7 @@
                                                                                                 class="input-group loc-group position-relative">
                                                                                                 <input type="text"
                                                                                                     value=""
+                                                                                                    name="refund_amount"
                                                                                                     class="form-control"
                                                                                                     placeholder="">
                                                                                                 <span
@@ -526,7 +533,7 @@
                                                         </div>
                                                         <div class="ticket-instructions-holder" style="display:none;">
                                                             <div class="ticket-instructions-content mt-4">
-                                                                <textarea class="form-textarea" placeholder="About"></textarea>
+                                                                <textarea class="form-control" placeholder="About" name="special_instructions"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -548,13 +555,19 @@
                                                             </div>
                                                         </div>
                                                         <div class="tags-holder" style="display:none;">
-                                                            <div class="ticket-instructions-content tags-container mt-4">
+                                                            {{-- <div class="ticket-instructions-content tags-container mt-4">
                                                                 <input class="form-control tags-input" type="text"
                                                                     placeholder="Type your tags and press enter">
                                                                 <div class="tags-list" style="height: auto;">
                                                                     <!-- keywords go here -->
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
+                                                            {{-- <div id="hash_dress_code" class="mb-3">
+                                                                <input type="hidden" name="dress_code[]"
+                                                                    value="{{ $row->title }}">
+                                                                <input type="text" id="dress_codeInput"
+                                                                    class="form-control" placeholder="Add a new tag...">
+                                                            </div> --}}
                                                         </div>
                                                     </div>
                                                 </div>

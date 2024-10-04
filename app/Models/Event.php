@@ -30,6 +30,20 @@ class Event extends Model
         'additional_images',
         'venue',
         'address',
+        'booking_start_time_btn',
+        'booking_starts_on_date',
+        'booking_starts_on_time',
+        'booking_end_time_btn',
+        'booking_ends_on_date',
+        'booking_ends_on_time',
+        'passing_service_charge_btn',
+        'refund_policies_btn',
+        'refund_policy_id',
+        'cancel_before',
+        'refund_amount',
+        'ticket_instructions_btn',
+        'special_instructions',
+        'tags_btn',
     ];
 
     public function user()
@@ -57,5 +71,15 @@ class Event extends Model
     public function country_tabs()
     {
         return $this->hasMany(EventsCountryTab::class);
+    }
+
+    public function getStartDateAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('m/d/Y');
+    }
+
+    public function getEndDateAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('m/d/Y');
     }
 }
