@@ -416,13 +416,6 @@
                         <select id="continent" class="form-control @error('continent') is-invalid @enderror"
                             name="continent" required>
                             <option value="" disabled selected>Select Region</option>
-                            {{-- <option value="Caribbean">Caribbean</option>
-                            <option value="North America">North America</option>
-                            <option value="South America">South America</option>
-                            <option value="Europe">Europe</option>
-                            <option value="Africa">Africa</option>
-                            <option value="Asia">Asia</option>
-                            <option value="Australia">Australia</option> --}}
                             @foreach ($continents as $continent)
                                 <option value="{{ $continent->id }}">{{ $continent->name }}</option>
                             @endforeach

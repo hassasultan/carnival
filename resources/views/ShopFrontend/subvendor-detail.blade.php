@@ -1501,8 +1501,10 @@
                                         <div class=" product-item  product-item-opt-1 ">
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
-                                                    <a class="product-item-img" href="{{ route('get.products.detail', $row->slug) }}"><img alt="product name"
-                                                        src="{{ asset('productImage/', $row->image) }}"></a>
+                                                    <a class="product-item-img"
+                                                        href="{{ route('get.products.detail', $row->slug) }}"><img
+                                                            alt="product name"
+                                                            src="{{ asset('productImage/', $row->image) }}"></a>
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
                                                             href=""><span>wishlist</span></a>
@@ -1527,7 +1529,8 @@
                                                             <div class="rating-summary">
                                                                 <div title="80%" class="rating-result">
                                                                     <span style="width:80%">
-                                                                        <span><span>{{ $row->discount }}</span>% of <span>100</span></span>
+                                                                        <span><span>{{ $row->discount }}</span>% of
+                                                                            <span>100</span></span>
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -1688,8 +1691,10 @@
                                         <div class=" product-item  product-item-opt-1 ">
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
-                                                    <a class="product-item-img" href="{{ route('get.products.detail', $row->slug) }}"><img alt="product name"
-                                                        src="{{ asset('productImage/', $row->image) }}"></a>
+                                                    <a class="product-item-img"
+                                                        href="{{ route('get.products.detail', $row->slug) }}"><img
+                                                            alt="product name"
+                                                            src="{{ asset('productImage/', $row->image) }}"></a>
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
                                                             href=""><span>wishlist</span></a>
@@ -1714,7 +1719,8 @@
                                                             <div class="rating-summary">
                                                                 <div title="80%" class="rating-result">
                                                                     <span style="width:80%">
-                                                                        <span><span>{{ $row->discount }}</span>% of <span>100</span></span>
+                                                                        <span><span>{{ $row->discount }}</span>% of
+                                                                            <span>100</span></span>
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -1875,8 +1881,10 @@
                                         <div class=" product-item  product-item-opt-1 ">
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
-                                                    <a class="product-item-img" href="{{ route('get.products.detail', $row->slug) }}"><img alt="product name"
-                                                        src="{{ asset('productImage/', $row->image) }}"></a>
+                                                    <a class="product-item-img"
+                                                        href="{{ route('get.products.detail', $row->slug) }}"><img
+                                                            alt="product name"
+                                                            src="{{ asset('productImage/', $row->image) }}"></a>
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
                                                             href=""><span>wishlist</span></a>
@@ -1901,7 +1909,8 @@
                                                             <div class="rating-summary">
                                                                 <div title="80%" class="rating-result">
                                                                     <span style="width:80%">
-                                                                        <span><span>{{ $row->discount }}</span>% of <span>100</span></span>
+                                                                        <span><span>{{ $row->discount }}</span>% of
+                                                                            <span>100</span></span>
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -2066,8 +2075,10 @@
                                         <div class=" product-item  product-item-opt-1 ">
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
-                                                    <a class="product-item-img" href="{{ route('get.products.detail', $row->slug) }}"><img alt="product name"
-                                                        src="{{ asset('productImage/', $row->image) }}"></a>
+                                                    <a class="product-item-img"
+                                                        href="{{ route('get.products.detail', $row->slug) }}"><img
+                                                            alt="product name"
+                                                            src="{{ asset('productImage/', $row->image) }}"></a>
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
                                                             href=""><span>wishlist</span></a>
@@ -2092,7 +2103,8 @@
                                                             <div class="rating-summary">
                                                                 <div title="80%" class="rating-result">
                                                                     <span style="width:80%">
-                                                                        <span><span>{{ $row->discount }}</span>% of <span>100</span></span>
+                                                                        <span><span>{{ $row->discount }}</span>% of
+                                                                            <span>100</span></span>
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -2257,8 +2269,10 @@
                                         <div class=" product-item  product-item-opt-1 ">
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
-                                                    <a class="product-item-img" href="{{ route('get.products.detail', $row->slug) }}"><img alt="product name"
-                                                        src="{{ asset('productImage/', $row->image) }}"></a>
+                                                    <a class="product-item-img"
+                                                        href="{{ route('get.products.detail', $row->slug) }}"><img
+                                                            alt="product name"
+                                                            src="{{ asset('productImage/', $row->image) }}"></a>
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
                                                             href=""><span>wishlist</span></a>
@@ -2283,7 +2297,8 @@
                                                             <div class="rating-summary">
                                                                 <div title="80%" class="rating-result">
                                                                     <span style="width:80%">
-                                                                        <span><span>{{ $row->discount }}</span>% of <span>100</span></span>
+                                                                        <span><span>{{ $row->discount }}</span>% of
+                                                                            <span>100</span></span>
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -2448,7 +2463,9 @@
                                         <div class=" product-item  product-item-opt-1 ">
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
-                                                    <a class="product-item-img" href="{{ route('get.products.detail', $row->slug) }}"><img alt="product name"
+                                                    <a class="product-item-img"
+                                                        href="{{ route('get.products.detail', $row->slug) }}"><img
+                                                            alt="product name"
                                                             src="{{ asset('productImage/', $row->image) }}"></a>
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
@@ -2463,7 +2480,8 @@
                                                         <span>off</span></span>
                                                 </div>
                                                 <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a href="{{ route('get.products.detail', $row->slug) }}">{{ $row->title }}</a></strong>
+                                                    <strong class="product-item-name"><a
+                                                            href="{{ route('get.products.detail', $row->slug) }}">{{ $row->title }}</a></strong>
                                                     <div class="clearfix">
                                                         <div class="product-item-price">
                                                             <span class="price">{{ $row->new_price }}</span>
@@ -2473,7 +2491,8 @@
                                                             <div class="rating-summary">
                                                                 <div title="80%" class="rating-result">
                                                                     <span style="width:80%">
-                                                                        <span><span>{{ $row->discount }}</span>% of <span>100</span></span>
+                                                                        <span><span>{{ $row->discount }}</span>% of
+                                                                            <span>100</span></span>
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -2636,11 +2655,13 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <a href="" class="box-img"><img
-                                    src="{{ asset('shopAssets/images/media/index1/banner7-1.jpg') }}" alt="banner"></a>
+                                    src="{{ asset('shopAssets/images/media/index1/banner7-1.jpg') }}"
+                                    alt="banner"></a>
                         </div>
                         <div class="col-sm-6">
                             <a href="" class="box-img"><img
-                                    src="{{ asset('shopAssets/images/media/index1/banner7-2.jpg') }}" alt="banner"></a>
+                                    src="{{ asset('shopAssets/images/media/index1/banner7-2.jpg') }}"
+                                    alt="banner"></a>
                         </div>
                     </div>
                 </div>
@@ -2668,31 +2689,31 @@
                         "992":{"items":8}
                     }'>
                         <li class="active" data-tab="brand1-1">
-                            <img src="{{ asset('shopAssets/images/media/index1/brand-nav1.png') }}" alt="img">
+                            <img src="https://carnivalguide.co/travel/images/digicelt.jpg" alt="img">
                         </li>
                         <li data-tab="brand1-2">
-                            <img src="{{ asset('shopAssets/images/media/index1/brand-nav2.png') }}" alt="img">
+                            <img src="https://carnivalguide.co/travel/images/flowt.jpg" alt="img">
                         </li>
                         <li data-tab="brand1-3">
-                            <img src="{{ asset('shopAssets/images/media/index1/brand-nav3.png') }}" alt="img">
+                            <img src="https://carnivalguide.co/travel/images/clarksct.jpg" alt="img">
                         </li>
                         <li data-tab="brand1-4">
-                            <img src="{{ asset('shopAssets/images/media/index1/brand-nav4.png') }}" alt="img">
+                            <img src="https://carnivalguide.co/travel/images/caribt.jpg" alt="img">
                         </li>
                         <li data-tab="brand1-5">
-                            <img src="{{ asset('shopAssets/images/media/index1/brand-nav5.png') }}" alt="img">
+                            <img src="https://carnivalguide.co/travel/images/hugginst.jpg" alt="img">
                         </li>
                         <li data-tab="brand1-6">
-                            <img src="{{ asset('shopAssets/images/media/index1/brand-nav6.png') }}" alt="img">
+                            <img src="https://carnivalguide.co/travel/images/glenlgt.jpg" alt="img">
                         </li>
                         <li data-tab="brand1-7">
-                            <img src="{{ asset('shopAssets/images/media/index1/brand-nav7.png') }}" alt="img">
+                            <img src="https://carnivalguide.co/travel/images/intert.jpg" alt="img">
                         </li>
                         <li data-tab="brand1-8">
-                            <img src="{{ asset('shopAssets/images/media/index1/brand-nav8.png') }}" alt="img">
+                            <img src="https://carnivalguide.co/travel/images/cococolat.jpg" alt="img">
                         </li>
                         <li data-tab="brand1-9">
-                            <img src="{{ asset('shopAssets/images/media/index1/brand-nav1.png') }}" alt="img">
+                            <img src="https://carnivalguide.co/travel/images/clarksct.jpg" alt="img">
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -2727,17 +2748,55 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
+                                            @foreach ($products->chunk(2) as $chunk)
+                                                <div class="item">
+                                                    @foreach ($chunk as $product)
+                                                        @if ($product->brand_id == 1)
+                                                            <div class="product-item  product-item-opt-1 ">
+                                                                <div class="product-item-info">
+                                                                    <div class="product-item-photo">
+                                                                        <a class="product-item-img" href=""><img
+                                                                                alt="product name"
+                                                                                src="{{ $product->image_url }}"></a>
+                                                                    </div>
+                                                                    <div class="product-item-detail">
+                                                                        <strong class="product-item-name"><a
+                                                                                href="">{{ $product->name }}</a></strong>
+                                                                        <div class="clearfix">
+                                                                            <div class="product-item-price">
+                                                                                <span
+                                                                                    class="price">${{ $product->price }}</span>
+                                                                                @if ($product->old_price)
+                                                                                    <span
+                                                                                        class="old-price">${{ $product->old_price }}</span>
+                                                                                @endif
+                                                                            </div>
+                                                                            <div class="product-reviews-summary">
+                                                                                <div class="rating-summary">
+                                                                                    <div title="{{ $product->rating }}%"
+                                                                                        class="rating-result">
+                                                                                        <span
+                                                                                            style="width:{{ $product->rating }}%">
+                                                                                            <span><span>{{ $product->rating }}</span>%
+                                                                                                of
+                                                                                                <span>100</span></span>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                    {{-- <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase1.jpg') }}"></a>
+                                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('shopAssets/images/media/index1/showcase2.jpg')}}" ></a>
                                                         </div>
                                                         <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
+                                                            <strong class="product-item-name"><a href="">Maecenas consequat mauris</a></strong>
                                                             <div class="clearfix">
                                                                 <div class="product-item-price">
                                                                     <span class="price">$45.00</span>
@@ -2746,8 +2805,7 @@
                                                                     <div class="rating-summary">
                                                                         <div title="80%" class="rating-result">
                                                                             <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
+                                                                                <span><span>80</span>% of <span>100</span></span>
                                                                             </span>
                                                                         </div>
                                                                     </div>
@@ -2755,106 +2813,17 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div> --}}
                                                 </div>
+                                            @endforeach
+                                            {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase2.jpg') }}"></a>
+                                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('shopAssets/images/media/index1/showcase3.jpg')}}" ></a>
                                                         </div>
                                                         <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase3.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase4.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase3.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
+                                                            <strong class="product-item-name"><a href="">Maecenas consequat mauris</a></strong>
                                                             <div class="clearfix">
                                                                 <div class="product-item-price">
                                                                     <span class="price">$45.00</span>
@@ -2864,8 +2833,7 @@
                                                                     <div class="rating-summary">
                                                                         <div title="80%" class="rating-result">
                                                                             <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
+                                                                                <span><span>80</span>% of <span>100</span></span>
                                                                             </span>
                                                                         </div>
                                                                     </div>
@@ -2877,13 +2845,10 @@
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase4.jpg') }}"></a>
+                                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('shopAssets/images/media/index1/showcase4.jpg')}}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
+                                                            <strong class="product-item-name"><a href="">Maecenas consequat mauris</a></strong>
                                                             <div class="clearfix">
                                                                 <div class="product-item-price">
                                                                     <span class="price">$45.00</span>
@@ -2892,8 +2857,7 @@
                                                                     <div class="rating-summary">
                                                                         <div title="80%" class="rating-result">
                                                                             <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
+                                                                                <span><span>80</span>% of <span>100</span></span>
                                                                             </span>
                                                                         </div>
                                                                     </div>
@@ -2903,7 +2867,57 @@
                                                     </div>
                                                 </div>
                                             </div>
-
+                                            <div class="item">
+                                                <div class="product-item  product-item-opt-1 ">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('shopAssets/images/media/index1/showcase3.jpg')}}" ></a>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name"><a href="">Maecenas consequat mauris</a></strong>
+                                                            <div class="clearfix">
+                                                                <div class="product-item-price">
+                                                                    <span class="price">$45.00</span>
+                                                                    <span class="old-price">$52.00</span>
+                                                                </div>
+                                                                <div class="product-reviews-summary">
+                                                                    <div class="rating-summary">
+                                                                        <div title="80%" class="rating-result">
+                                                                            <span style="width:80%">
+                                                                                <span><span>80</span>% of <span>100</span></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-item  product-item-opt-1 ">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('shopAssets/images/media/index1/showcase4.jpg')}}"></a>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name"><a href="">Maecenas consequat mauris</a></strong>
+                                                            <div class="clearfix">
+                                                                <div class="product-item-price">
+                                                                    <span class="price">$45.00</span>
+                                                                </div>
+                                                                <div class="product-reviews-summary">
+                                                                    <div class="rating-summary">
+                                                                        <div title="80%" class="rating-result">
+                                                                            <span style="width:80%">
+                                                                                <span><span>80</span>% of <span>100</span></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> --}}
                                         </div>
                                     </div>
 
@@ -2941,125 +2955,137 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase1.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
+                                            @foreach ($products->chunk(2) as $chunk)
+                                                <div class="item">
+                                                    @foreach ($chunk as $product)
+                                                        @if ($product->brand_id == 2)
+                                                            <div class="product-item  product-item-opt-1 ">
+                                                                <div class="product-item-info">
+                                                                    <div class="product-item-photo">
+                                                                        <a class="product-item-img" href=""><img
+                                                                                alt="product name"
+                                                                                src="{{ $product->image_url }}"></a>
+                                                                    </div>
+                                                                    <div class="product-item-detail">
+                                                                        <strong class="product-item-name"><a
+                                                                                href="">{{ $product->name }}</a></strong>
+                                                                        <div class="clearfix">
+                                                                            <div class="product-item-price">
+                                                                                <span
+                                                                                    class="price">${{ $product->price }}</span>
+                                                                                @if ($product->old_price)
+                                                                                    <span
+                                                                                        class="old-price">${{ $product->old_price }}</span>
+                                                                                @endif
+                                                                            </div>
+                                                                            <div class="product-reviews-summary">
+                                                                                <div class="rating-summary">
+                                                                                    <div title="{{ $product->rating }}%"
+                                                                                        class="rating-result">
+                                                                                        <span
+                                                                                            style="width:{{ $product->rating }}%">
+                                                                                            <span><span>{{ $product->rating }}</span>%
+                                                                                                of
+                                                                                                <span>100</span></span>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                    {{-- <div class="product-item  product-item-opt-1 ">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href=""><img
+                                                                        alt="product name"
+                                                                        src="{{ asset('shopAssets/images/media/index1/showcase2.jpg') }}"></a>
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                <strong class="product-item-name"><a href="">Maecenas
+                                                                        consequat mauris</a></strong>
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">$45.00</span>
+                                                                    </div>
+                                                                    <div class="product-reviews-summary">
+                                                                        <div class="rating-summary">
+                                                                            <div title="80%" class="rating-result">
+                                                                                <span style="width:80%">
+                                                                                    <span><span>80</span>% of
+                                                                                        <span>100</span></span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> --}}
+                                                </div>
+                                                {{-- <div class="item">
+                                                    <div class="product-item  product-item-opt-1 ">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href=""><img
+                                                                        alt="product name"
+                                                                        src="{{ asset('shopAssets/images/media/index1/showcase3.jpg') }}"></a>
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                <strong class="product-item-name"><a href="">Maecenas
+                                                                        consequat mauris</a></strong>
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">$45.00</span>
+                                                                        <span class="old-price">$52.00</span>
+                                                                    </div>
+                                                                    <div class="product-reviews-summary">
+                                                                        <div class="rating-summary">
+                                                                            <div title="80%" class="rating-result">
+                                                                                <span style="width:80%">
+                                                                                    <span><span>80</span>% of
+                                                                                        <span>100</span></span>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase2.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
+                                                    <div class="product-item  product-item-opt-1 ">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href=""><img
+                                                                        alt="product name"
+                                                                        src="{{ asset('shopAssets/images/media/index1/showcase4.jpg') }}"></a>
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                <strong class="product-item-name"><a href="">Maecenas
+                                                                        consequat mauris</a></strong>
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">$45.00</span>
+                                                                    </div>
+                                                                    <div class="product-reviews-summary">
+                                                                        <div class="rating-summary">
+                                                                            <div title="80%" class="rating-result">
+                                                                                <span style="width:80%">
+                                                                                    <span><span>80</span>% of
+                                                                                        <span>100</span></span>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase3.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase4.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
+                                                </div> --}}
+                                            @endforeach
                                         </div>
                                     </div>
 
@@ -3097,65 +3123,78 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase1.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
+                                            @foreach ($products->chunk(2) as $chunk)
+                                                <div class="item">
+                                                    @foreach ($chunk as $product)
+                                                        @if ($product->brand_id == 3)
+                                                            <div class="product-item  product-item-opt-1 ">
+                                                                <div class="product-item-info">
+                                                                    <div class="product-item-photo">
+                                                                        <a class="product-item-img" href=""><img
+                                                                                alt="product name"
+                                                                                src="{{ $product->image_url }}"></a>
+                                                                    </div>
+                                                                    <div class="product-item-detail">
+                                                                        <strong class="product-item-name"><a
+                                                                                href="">{{ $product->name }}</a></strong>
+                                                                        <div class="clearfix">
+                                                                            <div class="product-item-price">
+                                                                                <span
+                                                                                    class="price">${{ $product->price }}</span>
+                                                                                @if ($product->old_price)
+                                                                                    <span
+                                                                                        class="old-price">${{ $product->old_price }}</span>
+                                                                                @endif
+                                                                            </div>
+                                                                            <div class="product-reviews-summary">
+                                                                                <div class="rating-summary">
+                                                                                    <div title="{{ $product->rating }}%"
+                                                                                        class="rating-result">
+                                                                                        <span
+                                                                                            style="width:{{ $product->rating }}%">
+                                                                                            <span><span>{{ $product->rating }}</span>%
+                                                                                                of
+                                                                                                <span>100</span></span>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                    {{-- <div class="product-item  product-item-opt-1 ">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href=""><img
+                                                                        alt="product name"
+                                                                        src="{{ asset('shopAssets/images/media/index1/showcase2.jpg') }}"></a>
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                <strong class="product-item-name"><a href="">Maecenas
+                                                                        consequat mauris</a></strong>
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">$45.00</span>
+                                                                    </div>
+                                                                    <div class="product-reviews-summary">
+                                                                        <div class="rating-summary">
+                                                                            <div title="80%" class="rating-result">
+                                                                                <span style="width:80%">
+                                                                                    <span><span>80</span>% of
+                                                                                        <span>100</span></span>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase2.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
+                                                {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -3213,9 +3252,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
-
+                                            </div> --}}
+                                            @endforeach
                                         </div>
                                     </div>
 
@@ -3253,65 +3291,79 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase1.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
+                                            @foreach ($products->chunk(2) as $chunk)
+                                                <div class="item">
+                                                    @foreach ($chunk as $product)
+                                                        @if ($product->brand_id == 4)
+                                                            <div class="product-item  product-item-opt-1 ">
+                                                                <div class="product-item-info">
+                                                                    <div class="product-item-photo">
+                                                                        <a class="product-item-img" href=""><img
+                                                                                alt="product name"
+                                                                                src="{{ $product->image_url }}"></a>
+                                                                    </div>
+                                                                    <div class="product-item-detail">
+                                                                        <strong class="product-item-name"><a
+                                                                                href="">{{ $product->name }}</a></strong>
+                                                                        <div class="clearfix">
+                                                                            <div class="product-item-price">
+                                                                                <span
+                                                                                    class="price">${{ $product->price }}</span>
+                                                                                @if ($product->old_price)
+                                                                                    <span
+                                                                                        class="old-price">${{ $product->old_price }}</span>
+                                                                                @endif
+                                                                            </div>
+                                                                            <div class="product-reviews-summary">
+                                                                                <div class="rating-summary">
+                                                                                    <div title="{{ $product->rating }}%"
+                                                                                        class="rating-result">
+                                                                                        <span
+                                                                                            style="width:{{ $product->rating }}%">
+                                                                                            <span><span>{{ $product->rating }}</span>%
+                                                                                                of
+                                                                                                <span>100</span></span>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                    {{-- <div class="product-item  product-item-opt-1 ">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href=""><img
+                                                                        alt="product name"
+                                                                        src="{{ asset('shopAssets/images/media/index1/showcase2.jpg') }}"></a>
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                <strong class="product-item-name"><a href="">Maecenas
+                                                                        consequat mauris</a></strong>
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">$45.00</span>
+                                                                    </div>
+                                                                    <div class="product-reviews-summary">
+                                                                        <div class="rating-summary">
+                                                                            <div title="80%" class="rating-result">
+                                                                                <span style="width:80%">
+                                                                                    <span><span>80</span>% of
+                                                                                        <span>100</span></span>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase2.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
+                                            @endforeach
+                                            {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -3369,9 +3421,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
-
+                                            </div> --}}
                                         </div>
                                     </div>
 
@@ -3409,65 +3459,51 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase1.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
+                                            @foreach ($products->chunk(2) as $chunk)
+                                                <div class="item">
+                                                    @foreach ($chunk as $product)
+                                                        @if ($product->brand_id == 5)
+                                                            <div class="product-item  product-item-opt-1 ">
+                                                                <div class="product-item-info">
+                                                                    <div class="product-item-photo">
+                                                                        <a class="product-item-img" href=""><img
+                                                                                alt="product name"
+                                                                                src="{{ $product->image_url }}"></a>
+                                                                    </div>
+                                                                    <div class="product-item-detail">
+                                                                        <strong class="product-item-name"><a
+                                                                                href="">{{ $product->name }}</a></strong>
+                                                                        <div class="clearfix">
+                                                                            <div class="product-item-price">
+                                                                                <span
+                                                                                    class="price">${{ $product->price }}</span>
+                                                                                @if ($product->old_price)
+                                                                                    <span
+                                                                                        class="old-price">${{ $product->old_price }}</span>
+                                                                                @endif
+                                                                            </div>
+                                                                            <div class="product-reviews-summary">
+                                                                                <div class="rating-summary">
+                                                                                    <div title="{{ $product->rating }}%"
+                                                                                        class="rating-result">
+                                                                                        <span
+                                                                                            style="width:{{ $product->rating }}%">
+                                                                                            <span><span>{{ $product->rating }}</span>%
+                                                                                                of
+                                                                                                <span>100</span></span>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                        @endif
+                                                    @endforeach
                                                 </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase2.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
+                                            @endforeach
+                                            {{-- <div class="item">
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -3525,9 +3561,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
-
+                                            </div> --}}
                                         </div>
                                     </div>
 
@@ -3565,125 +3599,50 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase1.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
+                                            @foreach ($products->chunk(2) as $chunk)
+                                                <div class="item">
+                                                    @foreach ($chunk as $product)
+                                                        @if ($product->brand_id == 6)
+                                                            <div class="product-item  product-item-opt-1 ">
+                                                                <div class="product-item-info">
+                                                                    <div class="product-item-photo">
+                                                                        <a class="product-item-img" href=""><img
+                                                                                alt="product name"
+                                                                                src="{{ $product->image_url }}">
+                                                                    </div>
+                                                                    <div class="product-item-detail">
+                                                                        <strong class="product-item-name"><a
+                                                                                href="">{{ $product->name }}</a></strong>
+                                                                        <div class="clearfix">
+                                                                            <div class="product-item-price">
+                                                                                <span
+                                                                                    class="price">${{ $product->price }}</span>
+                                                                                @if ($product->old_price)
+                                                                                    <span
+                                                                                        class="old-price">${{ $product->old_price }}</span>
+                                                                                @endif
+                                                                            </div>
+                                                                            <div class="product-reviews-summary">
+                                                                                <div class="rating-summary">
+                                                                                    <div title="{{ $product->rating }}%"
+                                                                                        class="rating-result">
+                                                                                        <span
+                                                                                            style="width:{{ $product->rating }}%">
+                                                                                            <span><span>{{ $product->rating }}</span>%
+                                                                                                of
+                                                                                                <span>100</span></span>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                        @endif
+                                                    @endforeach
                                                 </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase2.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase3.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase4.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
+                                            @endforeach
                                         </div>
                                     </div>
 
@@ -3721,125 +3680,50 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase1.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
+                                            @foreach ($products->chunk(2) as $chunk)
+                                                <div class="item">
+                                                    @foreach ($chunk as $product)
+                                                        @if ($product->brand_id == 7)
+                                                            <div class="product-item  product-item-opt-1 ">
+                                                                <div class="product-item-info">
+                                                                    <div class="product-item-photo">
+                                                                        <a class="product-item-img" href=""><img
+                                                                                alt="product name"
+                                                                                src="{{ $product->image_url }}">
+                                                                    </div>
+                                                                    <div class="product-item-detail">
+                                                                        <strong class="product-item-name"><a
+                                                                                href="">{{ $product->name }}</a></strong>
+                                                                        <div class="clearfix">
+                                                                            <div class="product-item-price">
+                                                                                <span
+                                                                                    class="price">${{ $product->price }}</span>
+                                                                                @if ($product->old_price)
+                                                                                    <span
+                                                                                        class="old-price">${{ $product->old_price }}</span>
+                                                                                @endif
+                                                                            </div>
+                                                                            <div class="product-reviews-summary">
+                                                                                <div class="rating-summary">
+                                                                                    <div title="{{ $product->rating }}%"
+                                                                                        class="rating-result">
+                                                                                        <span
+                                                                                            style="width:{{ $product->rating }}%">
+                                                                                            <span><span>{{ $product->rating }}</span>%
+                                                                                                of
+                                                                                                <span>100</span></span>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                        @endif
+                                                    @endforeach
                                                 </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase2.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase3.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase4.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
+                                            @endforeach
                                         </div>
                                     </div>
 
@@ -3877,125 +3761,50 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase1.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
+                                            @foreach ($products->chunk(2) as $chunk)
+                                                <div class="item">
+                                                    @foreach ($chunk as $product)
+                                                        @if ($product->brand_id == 8)
+                                                            <div class="product-item  product-item-opt-1 ">
+                                                                <div class="product-item-info">
+                                                                    <div class="product-item-photo">
+                                                                        <a class="product-item-img" href=""><img
+                                                                                alt="product name"
+                                                                                src="{{ $product->image_url }}">
+                                                                    </div>
+                                                                    <div class="product-item-detail">
+                                                                        <strong class="product-item-name"><a
+                                                                                href="">{{ $product->name }}</a></strong>
+                                                                        <div class="clearfix">
+                                                                            <div class="product-item-price">
+                                                                                <span
+                                                                                    class="price">${{ $product->price }}</span>
+                                                                                @if ($product->old_price)
+                                                                                    <span
+                                                                                        class="old-price">${{ $product->old_price }}</span>
+                                                                                @endif
+                                                                            </div>
+                                                                            <div class="product-reviews-summary">
+                                                                                <div class="rating-summary">
+                                                                                    <div title="{{ $product->rating }}%"
+                                                                                        class="rating-result">
+                                                                                        <span
+                                                                                            style="width:{{ $product->rating }}%">
+                                                                                            <span><span>{{ $product->rating }}</span>%
+                                                                                                of
+                                                                                                <span>100</span></span>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                        @endif
+                                                    @endforeach
                                                 </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase2.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase3.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase4.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
+                                            @endforeach
                                         </div>
                                     </div>
 
@@ -4033,125 +3842,50 @@
                                             "640":{"items":2},
                                             "992":{"items":2}
                                         }'>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase1.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
+                                            @foreach ($products->chunk(2) as $chunk)
+                                                <div class="item">
+                                                    @foreach ($chunk as $product)
+                                                        @if ($product->brand_id == 9)
+                                                            <div class="product-item  product-item-opt-1 ">
+                                                                <div class="product-item-info">
+                                                                    <div class="product-item-photo">
+                                                                        <a class="product-item-img" href=""><img
+                                                                                alt="product name"
+                                                                                src="{{ $product->image_url }}">
+                                                                    </div>
+                                                                    <div class="product-item-detail">
+                                                                        <strong class="product-item-name"><a
+                                                                                href="">{{ $product->name }}</a></strong>
+                                                                        <div class="clearfix">
+                                                                            <div class="product-item-price">
+                                                                                <span
+                                                                                    class="price">${{ $product->price }}</span>
+                                                                                @if ($product->old_price)
+                                                                                    <span
+                                                                                        class="old-price">${{ $product->old_price }}</span>
+                                                                                @endif
+                                                                            </div>
+                                                                            <div class="product-reviews-summary">
+                                                                                <div class="rating-summary">
+                                                                                    <div title="{{ $product->rating }}%"
+                                                                                        class="rating-result">
+                                                                                        <span
+                                                                                            style="width:{{ $product->rating }}%">
+                                                                                            <span><span>{{ $product->rating }}</span>%
+                                                                                                of
+                                                                                                <span>100</span></span>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                        @endif
+                                                    @endforeach
                                                 </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase2.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase3.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/showcase4.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
+                                            @endforeach
                                         </div>
                                     </div>
 

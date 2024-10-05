@@ -210,7 +210,9 @@ class FrontendConroller extends Controller
         $user = User::whereSlug($slug)->first();
         $vendor = Vendor::with('products', 'products.category')->where('user_id', $user->id)->first();
         $categories = $vendor->products->pluck('category')->unique('id');
-        return view('ShopFrontend.vendor-detail', compact('vendor', 'categories'));
+        $products = Product::where('user_id', $user->id)->with('brand')->get();
+
+        return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products'));
     }
     public function get_vendor_products($slug, Request $request)
     {
@@ -256,8 +258,10 @@ class FrontendConroller extends Controller
         $user = User::whereSlug($slug)->first();
         $subvendor = SubVendor::with('products', 'products.category')->where('user_id', $user->id)->first();
         $categories = $subvendor->products->pluck('category')->unique('id');
+        $products = Product::where('user_id', $user->id)->with('brand')->get();
+        $brands = Brand::where('status', 1)->take(2)->get();
 
-        return view('ShopFrontend.subvendor-detail', compact('subvendor', 'categories'));
+        return view('ShopFrontend.subvendor-detail', compact('subvendor', 'categories', 'products', 'brands'));
     }
 
     public function eventViewMore($slug)

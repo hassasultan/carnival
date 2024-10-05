@@ -65,18 +65,18 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="city">City</label>
-                        <input id="city" type="text" class="form-control" name="city" value="{{ $user->city }}"
-                            autocomplete="city">
+                        <input id="city" type="text" class="form-control" name="city"
+                            value="{{ $user->city }}" autocomplete="city">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="state">State</label>
-                        <input id="state" type="text" class="form-control" name="state" value="{{ $user->state }}"
-                            autocomplete="state">
+                        <input id="state" type="text" class="form-control" name="state"
+                            value="{{ $user->state }}" autocomplete="state">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="country">Country</label>
-                        <input id="country" type="text" class="form-control" name="country" value="{{ $user->country }}"
-                            autocomplete="country">
+                        <input id="country" type="text" class="form-control" name="country"
+                            value="{{ $user->country }}" autocomplete="country">
                     </div>
                 </div>
                 <div class="form-group">
@@ -95,7 +95,9 @@
                             name="package_id">
                             <option value="">Select Package</option>
                             @foreach ($packages as $package)
-                                <option value="{{ $package->id }}" {{ $user->vendor->package_id == $package->id ? 'selected' : '' }}>{{ $package->title }}</option>
+                                <option value="{{ $package->id }}"
+                                    {{ $user->vendor->package_id == $package->id ? 'selected' : '' }}>
+                                    {{ $package->title }}</option>
                             @endforeach
                         </select>
                         @error('package_id')
@@ -111,7 +113,9 @@
                             name="vendor_id">
                             <option value="">Select Vendor</option>
                             @foreach ($vendors as $vendor)
-                                <option value="{{ $vendor->id }}" {{ $user->subVendor->vendor_id == $vendor->id ? 'selected' : '' }}>{{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}</option>
+                                <option value="{{ $vendor->id }}"
+                                    {{ $user->subVendor->vendor_id == $vendor->id ? 'selected' : '' }}>
+                                    {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}</option>
                             @endforeach
                         </select>
                         @error('vendor_id')
@@ -123,11 +127,15 @@
                 @endif
                 <div class="form-group">
                     <label for="continent">Region <span class="text-danger">*</span></label>
-                    <select id="continent" class="form-control @error('continent') is-invalid @enderror"
-                        name="continent" required>
+                    <select id="continent" class="form-control @error('continent') is-invalid @enderror" name="continent"
+                        required>
                         <option value="" disabled selected>Select Region</option>
                         @foreach ($continents as $continent)
-                            <option value="{{ $continent->id }}" @if ($user->vendor->region_id == $continent->id) selected @endif>{{ $continent->name }}</option>
+                            <option value="{{ $continent->id }}" @if (
+                                ($user->vendor && $user->vendor->continent == $continent->id) ||
+                                    ($user->subvendor && $user->subvendor->continent == $continent->id)) selected @endif>
+                                {{ $continent->name }}
+                            </option>
                         @endforeach
                     </select>
                     @error('continent')
@@ -162,8 +170,10 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" {{ $user->e_com == 1 ? 'checked' : '' }} class="custom-control-input" id="e_com" name="e_com">
-                                            <label class="custom-control-label" for="e_com"></label>
+                                            <input type="checkbox"
+                                                {{ ($user->vendor && $user->vendor->ecommerce == 1) || ($user->subvendor && $user->subvendor->ecommerce == 1) ? 'checked' : '' }}
+                                                class="custom-control-input" id="ecommerce" name="ecommerce">
+                                            <label class="custom-control-label" for="ecommerce"></label>
                                         </div>
                                     </div> <!-- .col -->
                                 </div> <!-- .row -->
@@ -177,7 +187,9 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" {{ $user->music == 1 ? 'checked' : '' }} class="custom-control-input" id="music" name="music">
+                                            <input type="checkbox"
+                                                {{ ($user->vendor && $user->vendor->music == 1) || ($user->subvendor && $user->subvendor->music == 1) ? 'checked' : '' }}
+                                                class="custom-control-input" id="music" name="music">
                                             <label class="custom-control-label" for="music"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -192,7 +204,9 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" {{ $user->appointments == 1 ? 'checked' : '' }} class="custom-control-input" id="appointments" name="appointments">
+                                            <input type="checkbox"
+                                                {{ ($user->vendor && $user->vendor->appointments == 1) || ($user->subvendor && $user->subvendor->appointments == 1) ? 'checked' : '' }}
+                                                class="custom-control-input" id="appointments" name="appointments">
                                             <label class="custom-control-label" for="appointments"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -209,7 +223,9 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" {{ $user->events == 1 ? 'checked' : '' }} class="custom-control-input" id="events" name="events">
+                                            <input type="checkbox"
+                                                {{ ($user->vendor && $user->vendor->events == 1) || ($user->subvendor && $user->subvendor->events == 1) ? 'checked' : '' }}
+                                                class="custom-control-input" id="events" name="events">
                                             <label class="custom-control-label" for="events"></label>
                                         </div>
                                     </div> <!-- .col -->
@@ -224,8 +240,10 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" {{ $user->ads == 1 ? 'checked' : '' }} class="custom-control-input" id="ads" name="ads">
-                                            <label class="custom-control-label" for="ads"></label>
+                                            <input type="checkbox"
+                                                {{ ($user->vendor && $user->vendor->ad_space == 1) || ($user->subvendor && $user->subvendor->ad_space == 1) ? 'checked' : '' }}
+                                                class="custom-control-input" id="ad_space" name="ad_space">
+                                            <label class="custom-control-label" for="ad_space"></label>
                                         </div>
                                     </div> <!-- .col -->
                                 </div> <!-- .row -->
@@ -239,8 +257,10 @@
                                     </div> <!-- .col -->
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" {{ $user->blogs == 1 ? 'checked' : '' }} class="custom-control-input" id="blogs" name="blogs">
-                                            <label class="custom-control-label" for="blogs"></label>
+                                            <input type="checkbox"
+                                                {{ ($user->vendor && $user->vendor->blogging == 1) || ($user->subvendor && $user->subvendor->blogging == 1) ? 'checked' : '' }}
+                                                class="custom-control-input" id="blogging" name="blogging">
+                                            <label class="custom-control-label" for="blogging"></label>
                                         </div>
                                     </div> <!-- .col -->
                                 </div> <!-- .row -->

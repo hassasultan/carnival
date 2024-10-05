@@ -90,8 +90,8 @@ class UserManagementController extends Controller
             'country' => ['required', 'string', 'max:255'],
             'zipcode' => ['required', 'string', 'max:255'],
             'vendor_id' => 'required_without_all:package_id|nullable|numeric',
-            'package_id' => ['nullable', 'numeric'],
-            'image' => 'required|image|max:2048',
+            'package_id' => ['nullable'],
+            // 'image' => 'required|image|max:2048',
         ];
 
         if (!$userId) {
