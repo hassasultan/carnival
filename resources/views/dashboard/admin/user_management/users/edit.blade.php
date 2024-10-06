@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="card">
-        <form method="POST" action="{{ route('users.update', $user->id) }}" class="col-lg-8 col-md-10 col-12 mx-auto">
+        <form method="POST" action="{{ route('users.update', $user->id) }}" class="col-lg-8 col-md-10 col-12 mx-auto"
+            enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mx-auto text-center my-4 card-header">
@@ -81,8 +82,8 @@
                 </div>
                 <div class="form-group">
                     <label for="zipcode">Zipcode</label>
-                    <input id="zipcode" type="text" class="form-control" name="zipcode" value="{{ $user->zipcode }}"
-                        autocomplete="zipcode">
+                    <input id="zipcode" type="text" class="form-control" name="zipcode"
+                        value="{{ $user->zipcode }}" autocomplete="zipcode">
                 </div>
 
                 <!-- Role Specific Fields -->
@@ -268,6 +269,38 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Banner Section -->
+                <div class="form-group">
+                    <label for="banners">Upload New Banners</label>
+                    <input type="file" class="form-control @error('banners') is-invalid @enderror" name="banners[]" id="banners" multiple>
+                    @error('banners')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <!-- Show Previously Uploaded Banners -->
+                <div class="form-group">
+                    <label for="existingBanners">Existing Banners</label>
+                    <div class="row">
+                        @foreach($user->banners as $banner)
+                            <div class="col-md-3 text-center">
+                                <img src="{{ asset('storage/' . $banner->path) }}" alt="Banner Image" class="img-fluid mb-2">
+                                <button type="button" class="btn btn-danger btn-sm remove-banner" data-id="{{ $banner->id }}">Remove</button>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Add More Banners Dynamically -->
+                <div class="form-group">
+                    <button type="button" id="addMoreBanners" class="btn btn-secondary">Add More Banners</button>
+                </div>
+
+                <!-- Dynamic Banner Input Fields -->
+                <div id="extraBanners"></div>
 
                 <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Update') }}</button>
         </form>

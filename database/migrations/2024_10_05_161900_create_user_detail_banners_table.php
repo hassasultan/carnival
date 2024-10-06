@@ -17,7 +17,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('banner');
+            $table->string('title')->nullable();      
+            $table->string('subtitle')->nullable();   
+            $table->text('description')->nullable();  
+            $table->string('button_text')->nullable(); 
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

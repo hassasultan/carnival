@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Customer;
 use App\Models\Region;
+use App\Models\UserDetailBanner;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -103,6 +104,7 @@ class UserManagementController extends Controller
 
     protected function create(array $data)
     {
+        // dd($data);
         $slug = $this->generateUniqueSlug($data['first_name'] . ' ' . $data['last_name']);
 
         if ($data['package_id'] == 'section_leader') {
@@ -132,6 +134,21 @@ class UserManagementController extends Controller
             'role_id' => $data['role_id'],
             'slug' => $slug,
         ]);
+
+        if (isset($data['banner']) && is_array($data['banner'])) {
+            foreach ($data['banner'] as $index => $banner) {
+                $imageName = $this->uploadImage($banner, 'userBanners');
+    
+                UserDetailBanner::create([
+                    'user_id' => $user->id,
+                    'banner' => $imageName,
+                    'title' => $data['banner_title'][$index] ?? null,
+                    'subtitle' => $data['banner_subtitle'][$index] ?? null,
+                    'description' => $data['banner_description'][$index] ?? null,
+                    'button_text' => $data['banner_button'][$index] ?? null,
+                ]);
+            }
+        }
 
         if ($data['role_id'] == 2) {
             Vendor::create([
@@ -195,7 +212,7 @@ class UserManagementController extends Controller
     public function edit($id)
     {
         $continents = Region::all();
-        $user = User::findOrFail($id);
+        $user = User::with('banners')->findOrFail($id);
         $roles = Role::where('status', 1)->get();
         $packages = Package::where('status', 1)->get();
         $vendors = Vendor::with('user')->where('status', 1)->get();
@@ -223,6 +240,23 @@ class UserManagementController extends Controller
             $imageName = $this->uploadImage($request->file('image'), 'images');
             $user->image = $imageName;
             $user->save();
+        }
+
+        if ($request->hasFile('banner')) {
+            UserDetailBanner::where('user_id', $user->id)->delete();
+    
+            foreach ($request->file('banner') as $index => $banner) {
+                $imageName = $this->uploadImage($banner, 'userBanners');
+    
+                UserDetailBanner::create([
+                    'user_id' => $user->id,
+                    'banner' => 'userBanners/' . $imageName,
+                    'title' => $request->input('banner_title')[$index] ?? null,
+                    'subtitle' => $request->input('banner_subtitle')[$index] ?? null,
+                    'description' => $request->input('banner_description')[$index] ?? null,
+                    'button_text' => $request->input('banner_button')[$index] ?? null,
+                ]);
+            }
         }
 
         return redirect()->route('users.index')

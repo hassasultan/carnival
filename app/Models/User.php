@@ -116,7 +116,11 @@ class User extends Authenticatable
         return $this->hasMany(Carnival::class, 'head');
     }
     public function isCustomer()
-{
-    return $this->hasOne(Customer::class);
-}
+    {
+        return $this->hasOne(Customer::class);
+    }
+    public function banners()
+    {
+        return $this->hasMany(UserDetailBanner::class);
+    }
 }

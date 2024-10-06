@@ -207,7 +207,7 @@ class FrontendConroller extends Controller
     }
     public function vendor_detail($slug)
     {
-        $user = User::whereSlug($slug)->first();
+        $user = User::with('banners')->whereSlug($slug)->first();
         $vendor = Vendor::with('products', 'products.category')->where('user_id', $user->id)->first();
         $categories = $vendor->products->pluck('category')->unique('id');
         $products = Product::where('user_id', $user->id)->with('brand')->get();

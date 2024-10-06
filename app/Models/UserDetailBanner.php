@@ -12,5 +12,9 @@ class UserDetailBanner extends Model
     protected $fillable = [
         'user_id',
         'banner',
+        'title',
+        'subtitle',
+        'description',
+        'button_text',
     ];
 }
