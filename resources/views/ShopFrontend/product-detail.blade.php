@@ -62,10 +62,10 @@
                                     <div class="owl-carousel thumbnails_carousel" id="thumbnails" data-nav="true"
                                         data-dots="false" data-margin="10"
                                         data-responsive='{"0":{"items":3},"480":{"items":4},"600":{"items":5},"768":{"items":3}}'>
-                                        <a href="#" data-image="{{ asset('product/' . $product->image) }}"
-                                            data-zoom-image="{{ asset('product/' . $product->image) }}">
-                                            <img src="{{ asset('product/' . $product->image) }}" width="100%"
-                                                data-large-image="{{ asset('product/' . $product->image) }}" alt="">
+                                        <a href="#" data-image="{{ asset('productImage/' . $product->image) }}"
+                                            data-zoom-image="{{ asset('productImage/' . $product->image) }}">
+                                            <img src="{{ asset('productImage/' . $product->image) }}" width="100%"
+                                                data-large-image="{{ asset('productImage/' . $product->image) }}" alt="">
                                         </a>
                                         @foreach ($product->product_variant as $key => $row)
                                             @foreach ($row->product_image as $key => $row)

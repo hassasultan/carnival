@@ -85,7 +85,7 @@
                             @foreach ($variants as $row)
                                 <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->title }}" />
                             @endforeach
-                            <select id="variant_id" class="form-control select2 d-none" multiple>
+                            <select id="variant_id" class="form-control select2 d-none" multiple name="variant_id">
                             </select>
                         </div>
                         <div id="embed-div">
