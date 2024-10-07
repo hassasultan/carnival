@@ -444,37 +444,38 @@
                                 src="{{ asset('shopAssets/images/media/index1/banner-slide2.jpg') }}"
                                 alt="banner-slide"></a>
                     </div><!-- banner --> --}}
-
+                    
                     <div class="block-slide-main slide-opt-1">
 
                         <!-- slide -->
                         <div class="owl-carousel dotsData" data-nav="true" data-dots="true" data-margin="0"
-                             data-items='1' data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
-                            @foreach($vendor->user->banners as $banner)
-                            <div class="item"
-                                 style="background-image: url({{ asset($banner->banner) }});"
-                                 data-dot="{{ $loop->iteration }}">
+                            data-items='1' data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
                     
-                                <div class="description">
-                                    <span class="title">{{ $banner->title }}</span>
-                                    <span class="subtitle">{{ $banner->subtitle }}</span>
-                                    <span class="des">{{ $banner->description }}</span>
-                                    <a href="{{ $banner->link }}" class="btn">{{ $banner->button_text }}</a>
+                            @foreach ($user->subvendor->banners as $banner)
+                                <div class="item" style="background-image: url('{{ asset($banner->banner) }}');" data-dot="{{ $loop->iteration }}">
+                    
+                                    <div class="description">
+                                        <span class="title">{{ $banner->title }}</span>
+                                        <span class="subtitle">{{ $banner->subtitle }}</span>
+                                        <span class="des">{{ $banner->description }}</span>
+                                        <a href="{{ $banner->button_link ?? '#' }}" class="btn">{{ $banner->button_text ?? 'Shop Now' }}</a>
+                                    </div>
+                    
                                 </div>
-                    
-                            </div>
                             @endforeach
+                    
                         </div> <!-- slide -->
                     
                     </div><!-- block slide top -->
-                    
+
                     <!-- banner -->
                     <div class="banner-slide">
-                        @foreach($vendor->user->banners as $banner)
-                            <a href="{{ $banner->link }}" class="box-img">
-                                <img src="{{ asset($banner->image_path) }}" alt="banner-slide">
-                            </a>
-                        @endforeach
+                        <a href="" class="box-img"><img
+                                src="{{ asset('shopAssets/images/media/index1/banner-slide1.jpg') }}"
+                                alt="banner-slide"></a>
+                        <a href="" class="box-img"><img
+                                src="{{ asset('shopAssets/images/media/index1/banner-slide2.jpg') }}"
+                                alt="banner-slide"></a>
                     </div><!-- banner -->
 
                 </div>
