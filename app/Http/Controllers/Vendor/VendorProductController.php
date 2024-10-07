@@ -118,9 +118,10 @@ class VendorProductController extends Controller
     {
         $product = Product::with('category', 'variants', 'subcategory')->findOrFail($id);
         $categories = Category::all();
-        return response()->json(['product' => $product]);
+        return view('dashboard.vendor.products.edit', compact('product','categories'));
+
     }
-    
+
     public function update(Request $request, $id)
     {
         $request->validate([
