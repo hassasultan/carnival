@@ -92,6 +92,7 @@ class FrontendConroller extends Controller
     }
     public function get_vendors(Request $request)
     {
+        dd($request->all());
         $regionId = $request->get('getRegion');
 
         $vendors = Vendor::with([

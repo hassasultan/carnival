@@ -350,7 +350,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-item-detail">
-                                                <strong class="product-item-name"><a href="">${vendor.name}</a></strong>`;
+                                                <strong class="product-item-name"><a href="">${vendor.user.first_name} ${vendor.user.last_name}</a></strong>`;
                             if (vendor.user.products.length > 0) {
                                 vendorHtml += `
                                                     <div class="clearfix">
