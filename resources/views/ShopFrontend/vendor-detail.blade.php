@@ -181,7 +181,7 @@
                              data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
                             @foreach($vendor->user->banners as $banner)
                             <div class="item"
-                                 style="background-image: url({{ asset($banner->image_path) }});" 
+                                 style="background-image: url({{ asset($banner->banner) }});" 
                                  data-dot="{{ $loop->iteration }}">
                     
                                 <div class="description">

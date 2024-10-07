@@ -166,6 +166,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/users/edit/{id}', [UserManagementController::class, 'edit'])->name('users.edit');
     Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [UserManagementController::class, 'destroyUser'])->name('users.destroy');
+    Route::delete('banners/delete', [UserManagementController::class, 'delete'])->name('banners.delete');
 
     Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.categories');
 

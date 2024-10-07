@@ -163,114 +163,108 @@
 
                 <div class="form-row">
                     <div class="col-md-6">
-                        <div class="form-group list-group mb-3 mt-3 shadow">
+                        <div class="form-group list-group mb-3 mt-3 shadow" id="ecommerce-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <strong class="mb-2">E-Commerce</strong>
-                                    </div> <!-- .col -->
+                                    </div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox"
-                                                {{ ($user->vendor && $user->vendor->ecommerce == 1) || ($user->subvendor && $user->subvendor->ecommerce == 1) ? 'checked' : '' }}
-                                                class="custom-control-input" id="ecommerce" name="ecommerce">
-                                            <label class="custom-control-label" for="ecommerce"></label>
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="e_com" name="ecommerce" @if(($user->vendor && $user->vendor->ecommerce == 1) || ($user->subVendor && $user->subVendor->ecommerce == 1)) checked @endif>
+                                            <label class="custom-control-label" for="e_com"></label>
                                         </div>
-                                    </div> <!-- .col -->
-                                </div> <!-- .row -->
-                            </div> <!-- .list-group-item -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group list-group mb-3 mt-3 shadow">
+                        <div class="form-group list-group mb-3 mt-3 shadow" id="music-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <strong class="mb-2">Music Upload</strong>
-                                    </div> <!-- .col -->
+                                    </div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox"
-                                                {{ ($user->vendor && $user->vendor->music == 1) || ($user->subvendor && $user->subvendor->music == 1) ? 'checked' : '' }}
-                                                class="custom-control-input" id="music" name="music">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="music" name="music" @if(($user->vendor && $user->vendor->music == 1) || ($user->subVendor && $user->subVendor->music == 1)) checked @endif>
                                             <label class="custom-control-label" for="music"></label>
                                         </div>
-                                    </div> <!-- .col -->
-                                </div> <!-- .row -->
-                            </div> <!-- .list-group-item -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group list-group mb-3 mt-3 shadow">
+                        <div class="form-group list-group mb-3 mt-3 shadow" id="appointment-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <strong class="mb-2">Appointments</strong>
-                                    </div> <!-- .col -->
+                                    </div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox"
-                                                {{ ($user->vendor && $user->vendor->appointments == 1) || ($user->subvendor && $user->subvendor->appointments == 1) ? 'checked' : '' }}
-                                                class="custom-control-input" id="appointments" name="appointments">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="appointments" name="appointment" @if(($user->vendor && $user->vendor->appointment == 1) || ($user->subVendor && $user->subVendor->appointment == 1)) checked @endif>
                                             <label class="custom-control-label" for="appointments"></label>
                                         </div>
-                                    </div> <!-- .col -->
-                                </div> <!-- .row -->
-                            </div> <!-- .list-group-item -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group list-group mb-3 mt-3 shadow">
+                    <div class="col-md-6 packages-div">
+                        <div class="form-group list-group mb-3 mt-3 shadow" id="events-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <strong class="mb-2">Events</strong>
-                                    </div> <!-- .col -->
+                                    </div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox"
-                                                {{ ($user->vendor && $user->vendor->events == 1) || ($user->subvendor && $user->subvendor->events == 1) ? 'checked' : '' }}
-                                                class="custom-control-input" id="events" name="events">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="events" name="events" @if(($user->vendor && $user->vendor->events == 1) || ($user->subVendor && $user->subVendor->events == 1)) checked @endif>
                                             <label class="custom-control-label" for="events"></label>
                                         </div>
-                                    </div> <!-- .col -->
-                                </div> <!-- .row -->
-                            </div> <!-- .list-group-item -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group list-group mb-3 mt-3 shadow">
+                        <div class="form-group list-group mb-3 mt-3 shadow" id="ad_space-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <strong class="mb-2">Ads</strong>
-                                    </div> <!-- .col -->
+                                    </div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox"
-                                                {{ ($user->vendor && $user->vendor->ad_space == 1) || ($user->subvendor && $user->subvendor->ad_space == 1) ? 'checked' : '' }}
-                                                class="custom-control-input" id="ad_space" name="ad_space">
-                                            <label class="custom-control-label" for="ad_space"></label>
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="ads" name="ad_space" @if(($user->vendor && $user->vendor->ad_space == 1) || ($user->subVendor && $user->subVendor->ad_space == 1)) checked @endif>
+                                            <label class="custom-control-label" for="ads"></label>
                                         </div>
-                                    </div> <!-- .col -->
-                                </div> <!-- .row -->
-                            </div> <!-- .list-group-item -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group list-group mb-3 mt-3 shadow">
+                        <div class="form-group list-group mb-3 mt-3 shadow" id="blogging-box">
                             <div class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <strong class="mb-2">Blogs</strong>
-                                    </div> <!-- .col -->
+                                    </div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox"
-                                                {{ ($user->vendor && $user->vendor->blogging == 1) || ($user->subvendor && $user->subvendor->blogging == 1) ? 'checked' : '' }}
-                                                class="custom-control-input" id="blogging" name="blogging">
-                                            <label class="custom-control-label" for="blogging"></label>
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="blogs" name="blogging" @if(($user->vendor && $user->vendor->blogging == 1) || ($user->subVendor && $user->subVendor->blogging == 1)) checked @endif>
+                                            <label class="custom-control-label" for="blogs"></label>
                                         </div>
-                                    </div> <!-- .col -->
-                                </div> <!-- .row -->
-                            </div> <!-- .list-group-item -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div id="bannerSection">
+                {{-- <div id="bannerSection">
                     <div class="form-group col-md-12 banner-item">
                         <div class="card mb-3">
                             <div class="card-header">
@@ -312,7 +306,29 @@
                             </div>
                         </div>
                     </div>
+                </div> --}}
+
+                <div id="bannerSection">
+                    <!-- Show previously uploaded banners -->
+                    <div class="form-group col-md-12">
+                        <h5>Uploaded Banners</h5>
+                        <div class="row">
+                            @foreach ($user->banners as $banner)
+                                <div class="col-md-3 mb-3 banner-item existing-banner-item">
+                                    <div class="card">
+                                        <img src="{{ asset($banner->banner) }}" class="card-img-top" alt="Banner"
+                                            style="height: 150px; object-fit: cover;">
+                                        <div class="card-body text-center">
+                                            <button type="button" class="btn btn-danger delete-banner"
+                                                data-id="{{ $banner->id }}">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
+
 
                 <!-- Button to add more banners -->
                 <div class="form-group col-md-12">
@@ -469,6 +485,27 @@
             // Remove a banner row
             $(document).on('click', '.remove-banner-btn', function() {
                 $(this).closest('.banner-item').remove();
+            });
+
+            $('.delete-banner').click(function() {
+                var bannerId = $(this).data('id');
+                var button = $(this);
+
+                $.ajax({
+                    url: '{{ route('banners.delete') }}',
+                    method: 'DELETE',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: bannerId
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            button.closest('.existing-banner-item').remove();
+                        } else {
+                            alert('Could not delete the banner. Please try again.');
+                        }
+                    }
+                });
             });
         });
     </script>

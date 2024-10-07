@@ -138,7 +138,7 @@ class UserManagementController extends Controller
         if (isset($data['banner']) && is_array($data['banner'])) {
             foreach ($data['banner'] as $index => $banner) {
                 $imageName = $this->uploadImage($banner, 'userBanners');
-    
+
                 UserDetailBanner::create([
                     'user_id' => $user->id,
                     'banner' => $imageName,
@@ -222,6 +222,30 @@ class UserManagementController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
+        
+        if ($user->vendor) {
+            $user->vendor->update([
+                'ecommerce' => $request->input('ecommerce'),
+                'events' => $request->input('events'),
+                'music' => $request->input('music'),
+                'appointment' => $request->input('appointment'),
+                'ad_space' => $request->input('ad_space'),
+                'blogging' => $request->input('blogging'),
+                'continent' => $request->input('continent'),
+            ]);
+        }
+
+        if ($user->subVendor) {
+            $user->subVendor->update([
+                'ecommerce' => $request->input('ecommerce'),
+                'events' => $request->input('events'),
+                'music' => $request->input('music'),
+                'appointment' => $request->input('appointment'),
+                'ad_space' => $request->input('ad_space'),
+                'blogging' => $request->input('blogging'),
+                'continent' => $request->input('continent'),
+            ]);
+        }
 
         $validator = $this->validator($request->all(), $id);
 
@@ -243,11 +267,10 @@ class UserManagementController extends Controller
         }
 
         if ($request->hasFile('banner')) {
-            UserDetailBanner::where('user_id', $user->id)->delete();
-    
+
             foreach ($request->file('banner') as $index => $banner) {
                 $imageName = $this->uploadImage($banner, 'userBanners');
-    
+
                 UserDetailBanner::create([
                     'user_id' => $user->id,
                     'banner' => 'userBanners/' . $imageName,
@@ -279,5 +302,22 @@ class UserManagementController extends Controller
             $uniqueSlug = $slug . '-' . $counter++;
         }
         return $uniqueSlug;
+    }
+
+    public function delete(Request $request)
+    {
+        $banner = UserDetailBanner::find($request->id);
+
+        if ($banner) {
+            if (file_exists(public_path($banner->banner))) {
+                unlink(public_path($banner->banner));
+            }
+
+            $banner->delete();
+
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Banner not found']);
     }
 }
