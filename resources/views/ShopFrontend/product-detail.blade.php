@@ -65,7 +65,8 @@
                                         <a href="#" data-image="{{ asset('productImage/' . $product->image) }}"
                                             data-zoom-image="{{ asset('productImage/' . $product->image) }}">
                                             <img src="{{ asset('productImage/' . $product->image) }}" width="100%"
-                                                data-large-image="{{ asset('productImage/' . $product->image) }}" alt="">
+                                                data-large-image="{{ asset('productImage/' . $product->image) }}"
+                                                alt="">
                                         </a>
                                         @foreach ($product->product_variant as $key => $row)
                                             @foreach ($row->product_image as $key => $row)
@@ -176,6 +177,8 @@
                                                         <a href="" class="size-chart">Size chart</a>
                                                     </div>
                                                 @endif
+                                            @endforeach
+                                            @if (count($product->product_variant) > 0)
                                                 <div class="form-qty">
                                                     <label class="label">Qty: </label>
                                                     <div class="control">
@@ -188,7 +191,7 @@
                                                             data-field="qty1"><span>+</span></button>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            @endif
 
                                         </div>
 
