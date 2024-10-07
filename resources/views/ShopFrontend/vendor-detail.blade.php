@@ -5778,12 +5778,12 @@
                                     if(product.image != null && product.image != '')
                                     {
                                         productHtml += `
-                                        <a href="${product.slug}" class="product-item-img"><img style="height:266px;" src="{{ asset('productImage/${product.image}') }}" alt="${product.title}"></a>`;
+                                        <a href="{{ route('get.products.detail','') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="{{ asset('productImage/${product.image}') }}" alt="${product.title}"></a>`;
                                     }
                                     else
                                     {
                                         productHtml += `
-                                        <a href="${product.slug}" class="product-item-img"><img style="height:266px;" src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg" alt="${product.title}"></a>`;
+                                        <a href="{{ route('get.products.detail','') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg" alt="${product.title}"></a>`;
                                     }
                                     productHtml += `
                                     <div class="product-item-actions">
