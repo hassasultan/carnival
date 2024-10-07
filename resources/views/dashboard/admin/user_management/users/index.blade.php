@@ -50,7 +50,7 @@
                                                 </td>
                                                 <td>
                                                     @if ($user->role_id == 2)
-                                                        {{ $user->vendor->package->title }}
+                                                        {{ $user->vendor?->package?->title }}
                                                     @else
                                                         Not A Vendor
                                                     @endif
