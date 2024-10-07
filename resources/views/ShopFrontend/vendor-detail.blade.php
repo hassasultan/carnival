@@ -173,15 +173,15 @@
                                 src="{{ asset('shopAssets/images/media/index1/banner-slide2.jpg') }}"
                                 alt="banner-slide"></a>
                     </div><!-- banner --> --}}
-                    
+
                     <div class="block-slide-main slide-opt-1">
 
                         <!-- slide -->
                         <div class="owl-carousel dotsData" data-nav="true" data-dots="true" data-margin="0" data-items='1'
                             data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
-                            
-                            @foreach ($vendor->user->banners as $banner)
-                                <div class="item" style="background-image: url('{{ asset($banner->banner) }}');" data-dot="{{ $loop->iteration }}">
+
+                            @foreach ($vendor->user->banners as $key => $banner)
+                                <div class="item item{{ ++$key }}" style="background-image: url('{{ asset($banner->banner) }}');" data-dot="{{ $loop->iteration }}">
                                     <div class="description">
                                         <span class="title">{{ $banner->title }}</span>
                                         <span class="subtitle">{{ $banner->subtitle }}</span>
@@ -190,9 +190,9 @@
                                     </div>
                                 </div>
                             @endforeach
-                    
+
                         </div> <!-- slide -->
-                    
+
                     </div><!-- block slide top -->
 
                     <!-- banner -->
