@@ -82,8 +82,8 @@
                 </div>
                 <div class="form-group">
                     <label for="zipcode">Zipcode</label>
-                    <input id="zipcode" type="text" class="form-control" name="zipcode"
-                        value="{{ $user->zipcode }}" autocomplete="zipcode">
+                    <input id="zipcode" type="text" class="form-control" name="zipcode" value="{{ $user->zipcode }}"
+                        autocomplete="zipcode">
                 </div>
 
                 <!-- Role Specific Fields -->
@@ -273,7 +273,8 @@
                 <!-- Banner Section -->
                 <div class="form-group">
                     <label for="banners">Upload New Banners</label>
-                    <input type="file" class="form-control @error('banners') is-invalid @enderror" name="banners[]" id="banners" multiple>
+                    <input type="file" class="form-control @error('banners') is-invalid @enderror" name="banners[]"
+                        id="banners" multiple>
                     @error('banners')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -281,26 +282,54 @@
                     @enderror
                 </div>
 
-                <!-- Show Previously Uploaded Banners -->
-                <div class="form-group">
-                    <label for="existingBanners">Existing Banners</label>
-                    <div class="row">
-                        @foreach($user->banners as $banner)
-                            <div class="col-md-3 text-center">
-                                <img src="{{ asset('storage/' . $banner->path) }}" alt="Banner Image" class="img-fluid mb-2">
-                                <button type="button" class="btn btn-danger btn-sm remove-banner" data-id="{{ $banner->id }}">Remove</button>
+                <div id="bannerSection">
+                    <div class="form-group col-md-12 banner-item">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5>Banner</h5>
                             </div>
-                        @endforeach
+                            <div class="card-body" style="padding: 15px; background-color: #646363;">
+                                <label for="banner">Banner <span class="text-danger">*</span></label>
+                                <div class="custom-file mb-3">
+                                    <input type="file" class="custom-file-input" id="banner" name="banner[]"
+                                        required>
+                                    <label class="custom-file-label" for="banner">Choose file</label>
+                                </div>
+
+                                <!-- Details for the banner -->
+                                <div class="banner-details">
+                                    <div class="form-group">
+                                        <label for="banner_title">Title</label>
+                                        <input type="text" class="form-control" name="banner_title[]"
+                                            placeholder="Banner Title" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="banner_subtitle">Subtitle</label>
+                                        <input type="text" class="form-control" name="banner_subtitle[]"
+                                            placeholder="Banner Subtitle" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="banner_description">Description</label>
+                                        <textarea class="form-control" name="banner_description[]" rows="3" placeholder="Banner Description" required></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="banner_button">Button Text</label>
+                                        <input type="text" class="form-control" name="banner_button[]"
+                                            placeholder="Button Text" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Add More Banners Dynamically -->
-                <div class="form-group">
-                    <button type="button" id="addMoreBanners" class="btn btn-secondary">Add More Banners</button>
+                <!-- Button to add more banners -->
+                <div class="form-group col-md-12">
+                    <button type="button" id="addBannerBtn" class="btn btn-success">+ Add Another Banner</button>
                 </div>
-
-                <!-- Dynamic Banner Input Fields -->
-                <div id="extraBanners"></div>
 
                 <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Update') }}</button>
         </form>
@@ -388,6 +417,71 @@
                 });
                 $('#category_input').show();
             }
+        });
+
+        $(document).on('change', '.custom-file-input', function() {
+            var files = $(this)[0].files;
+            var fileNames = '';
+            for (var i = 0; i < files.length; i++) {
+                fileNames += files[i].name;
+                if (i < files.length - 1) {
+                    fileNames += ', ';
+                }
+            }
+            // Update the label text
+            $(this).siblings('.custom-file-label').text(fileNames);
+        });
+
+        $(document).ready(function() {
+            // Add new banner row
+            $('#addBannerBtn').click(function() {
+                let newBanner = `
+            <div class="form-group col-md-12 banner-item">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h5>Banner</h5>
+                    </div>
+                    <div class="card-body" style="padding: 15px; background-color: #646363;">
+                        <label for="banner">Banner <span class="text-danger">*</span></label>
+                        <div class="custom-file mb-3">
+                            <input type="file" class="custom-file-input" name="banner[]" required>
+                            <label class="custom-file-label">Choose file</label>
+                        </div>
+
+                        <div class="banner-details">
+                            <div class="form-group">
+                                <label for="banner_title">Title</label>
+                                <input type="text" class="form-control" name="banner_title[]" placeholder="Banner Title" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="banner_subtitle">Subtitle</label>
+                                <input type="text" class="form-control" name="banner_subtitle[]" placeholder="Banner Subtitle" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="banner_description">Description</label>
+                                <textarea class="form-control" name="banner_description[]" rows="3" placeholder="Banner Description" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="banner_button">Button Text</label>
+                                <input type="text" class="form-control" name="banner_button[]" placeholder="Button Text" required>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-danger remove-banner-btn">Remove Banner</button>
+                    </div>
+                </div>
+            </div>`;
+
+                $('#bannerSection').append(newBanner);
+            });
+
+            // Remove a banner row
+            $(document).on('click', '.remove-banner-btn', function() {
+                $(this).closest('.banner-item').remove();
+            });
         });
     </script>
 @endsection
