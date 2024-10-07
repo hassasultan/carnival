@@ -20,6 +20,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Role</th>
+                                        <th>Vendor Package</th>
                                         <th>Status</th>
                                         <th>Date</th>
                                         <th>Action</th>
@@ -45,6 +46,13 @@
                                                         {{ $user->role->name }}
                                                     @else
                                                         Customer
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($user->role && $user->role_id == '2')
+                                                        {{ $user->vendor->package->title }}
+                                                    @else
+                                                        Not A Vendor
                                                     @endif
                                                 </td>
                                                 <td>
