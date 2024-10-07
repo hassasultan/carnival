@@ -270,18 +270,6 @@
                     </div>
                 </div>
 
-                <!-- Banner Section -->
-                <div class="form-group">
-                    <label for="banners">Upload New Banners</label>
-                    <input type="file" class="form-control @error('banners') is-invalid @enderror" name="banners[]"
-                        id="banners" multiple>
-                    @error('banners')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
                 <div id="bannerSection">
                     <div class="form-group col-md-12 banner-item">
                         <div class="card mb-3">
