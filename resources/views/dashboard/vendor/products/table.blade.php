@@ -31,10 +31,9 @@
                 </td>
                 <td>{{ $product->created_at }}</td>
                 <td id="btn{{ $product->id }}">
-                    <a href="{{ route('vendor.products.edit', $product->id) }}"
-                        class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted" type="button"
-                        data-id="{{ $product->id }}">
-                        <span class="text-muted sr-only">Edit</span>
+                    <a href="{{ route('vendor.products.edit', $product->id) }}">
+                        <i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>
+                        Edit
                     </a>
                     {{-- <form action="{{ route('vendor.products.destroy', $product->id) }}" method="POST">
                         @csrf
