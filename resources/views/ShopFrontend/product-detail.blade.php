@@ -176,19 +176,19 @@
                                                         <a href="" class="size-chart">Size chart</a>
                                                     </div>
                                                 @endif
-                                            @endforeach
-                                            <div class="form-qty">
-                                                <label class="label">Qty: </label>
-                                                <div class="control">
-                                                    <input type="text" readonly class="form-control input-qty"
-                                                        value='1' id="qty1" name="qty1"
-                                                        maxlength="{{ $row->value }}" minlength="1">
-                                                    <button class="btn-number  qtyminus" data-type="minus"
-                                                        data-field="qty1"><span>-</span></button>
-                                                    <button class="btn-number  qtyplus" data-type="plus"
-                                                        data-field="qty1"><span>+</span></button>
+                                                <div class="form-qty">
+                                                    <label class="label">Qty: </label>
+                                                    <div class="control">
+                                                        <input type="text" readonly class="form-control input-qty"
+                                                            value='1' id="qty1" name="qty1"
+                                                            maxlength="{{ $row->value }}" minlength="1">
+                                                        <button class="btn-number  qtyminus" data-type="minus"
+                                                            data-field="qty1"><span>-</span></button>
+                                                        <button class="btn-number  qtyplus" data-type="plus"
+                                                            data-field="qty1"><span>+</span></button>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endforeach
 
                                         </div>
 
