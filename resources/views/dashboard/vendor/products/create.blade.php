@@ -348,7 +348,7 @@
                         setTimeout(function() {
                             $('#productMessage').html('');
                         }, 3000);
-                        window.location.href = '{{ route('vendor.products.index') }}';
+                        window.location.href = '{{ route('vendor.products') }}';
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
