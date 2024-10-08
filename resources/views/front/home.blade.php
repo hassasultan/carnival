@@ -49,6 +49,7 @@
                                         height: 100%;
                                         border-radius: 0px;
                                     }
+
                                     .slide-new video {
                                         width: 100%;
                                         height: 100%;
@@ -56,7 +57,8 @@
                                         object-fit: cover;
                                     }
 
-                                    button.prev, button.next {
+                                    button.prev,
+                                    button.next {
                                         position: absolute;
                                         top: 50%;
                                         transform: translateY(-50%);
@@ -79,13 +81,13 @@
                                     button:hover {
                                         background-color: rgba(0, 0, 0, 0.8);
                                     }
-                                    .d-none
-                                    {
+
+                                    .d-none {
                                         display: none !important;
                                     }
                                 </style>
                                 @foreach ($events as $key => $row)
-                                    <div class="swiper-slide @if($key == 0) active @endif {{ $key }}"
+                                    <div class="swiper-slide @if ($key == 0) active @endif {{ $key }}"
                                         data-val="{{ $key }}">
                                         <div class="vertical-align">
                                             <div class="container">
@@ -130,7 +132,8 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="tabs-content clearfix">
-                                                                                <div class="tab-info active d-none flight-tab">
+                                                                                <div
+                                                                                    class="tab-info active d-none flight-tab">
                                                                                     <div class="hotel-line clearfix">
                                                                                         <a class="hotel-img black-hover"
                                                                                             href="#">
@@ -228,7 +231,8 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="tab-info active d-none hotel-tab">
+                                                                                <div
+                                                                                    class="tab-info active d-none hotel-tab">
                                                                                     <div class="hotel-line clearfix">
                                                                                         <a class="hotel-img black-hover"
                                                                                             href="#">
@@ -329,7 +333,8 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="tab-info active d-none events-tab">
+                                                                                <div
+                                                                                    class="tab-info active d-none events-tab">
                                                                                     <div class="hotel-line clearfix">
                                                                                         <a class="hotel-img black-hover"
                                                                                             href="#">
@@ -463,25 +468,32 @@
                                                                 <div class="slider new-slider">
                                                                     <div class="slides">
                                                                         <div class="slide-new active">
-                                                                            <img src="https://carnivalguide.co/new/img/home/vincymas-2024.jpg" alt="Image 1">
+                                                                            <img src="https://carnivalguide.co/new/img/home/vincymas-2024.jpg"
+                                                                                alt="Image 1">
                                                                         </div>
                                                                         <div class="slide-new">
-                                                                            <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg" alt="Image 2">
+                                                                            <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg"
+                                                                                alt="Image 2">
                                                                         </div>
                                                                         <div class="slide-new">
                                                                             {{-- <video  controls loop autoplay muted>
                                                                                 <source src="https://www.shutterstock.com/shutterstock/videos/3433223239/preview/stock-footage-cozumel-mexico-behold-the-majesty-a-carnival-cruise-ship-sails-gracefully-across.webm" type="video/webm"><source src="https://www.shutterstock.com/shutterstock/videos/3433223239/preview/stock-footage-cozumel-mexico-behold-the-majesty-a-carnival-cruise-ship-sails-gracefully-across.mp4" type="video/mp4">
                                                                             </video> --}}
-                                                                            <video src="https://carnivalguide.co/travel/video/soca.mp4" controls loop autoplay muted></video>
+                                                                            <video
+                                                                                src="https://carnivalguide.co/travel/video/soca.mp4"
+                                                                                controls loop autoplay muted></video>
                                                                         </div>
                                                                         <div class="slide-new">
-                                                                            <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg" alt="Image 4">
+                                                                            <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg"
+                                                                                alt="Image 4">
                                                                         </div>
                                                                     </div>
 
                                                                     <!-- Navigation buttons -->
-                                                                    <button class="prev" onclick="prevSlide()">&#10094;</button>
-                                                                    <button class="next" onclick="nextSlide()">&#10095;</button>
+                                                                    <button class="prev"
+                                                                        onclick="prevSlide()">&#10094;</button>
+                                                                    <button class="next"
+                                                                        onclick="nextSlide()">&#10095;</button>
                                                                 </div>
                                                             </div>
                                                             <div class="slider-block-right">
@@ -525,23 +537,20 @@
                                                                     @endforeach --}}
                                                                     <a href="javacript:void(0);"
                                                                         onclick="showActionBox('flight')"
-                                                                        class="show-action-box"
-                                                                        data-id="flight">
+                                                                        class="show-action-box" data-id="flight">
                                                                         <img class="img-responsive"
                                                                             src="https://carnivalguide.co/new/img/home/slide_preview_1.jpg"
                                                                             alt="">
                                                                     </a>
                                                                     <a href="javacript:void(0);"
                                                                         onclick="showActionBox('hotel')"
-                                                                        class="show-action-box"
-                                                                        data-id="hotel"><img
+                                                                        class="show-action-box" data-id="hotel"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_2.jpg"
                                                                             alt=""></a>
                                                                     <a href="javacript:void(0);"
                                                                         onclick="showActionBox('events')"
-                                                                        class="show-action-box"
-                                                                        data-id="events"><img
+                                                                        class="show-action-box" data-id="events"><img
                                                                             class="img-responsive"
                                                                             src="https://carnivalguide.co/travel/img/home/slide_preview_3.jpg"
                                                                             alt=""></a>
@@ -633,7 +642,6 @@
 
                                     // Show the first slide initially
                                     showSlide(currentIndex);
-
                                 </script>
 
                                 {{-- <div class="swiper-slide" data-val="1">
@@ -2343,7 +2351,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                    <div class="second-title" >
+                    <div class="second-title">
                         <h4 class="color-dark-2-light">testimonials</h4>
                         <h2>what our clients say</h2>
                     </div>
@@ -2355,7 +2363,7 @@
                         data-slides-per-view="responsive" data-mob-slides="1" data-xs-slides="2" data-sm-slides="2"
                         data-md-slides="3" data-lg-slides="4" data-add-slides="4">
                         <div class="swiper-wrapper">
-                            @foreach ($testimonials as $key => $testimonial)
+                            @foreach ($testimonials as $testimonial)
                                 @php
                                     $string = $testimonial->description;
                                     $limit = 50;
@@ -2385,35 +2393,14 @@
                                                 src="{{ asset('testimonial/image/' . $testimonial->image) }}"
                                                 alt="">
                                             <h4>
-                                                {{-- <button type="button" class="tour-title color-dark-2 link-green" data-toggle="modal" data-target="#modal-{{ $key }}">
+                                                <a class="tour-title color-dark-2 link-green" href="#"
+                                                    title="See More..."
+                                                    onclick="showTestimonialModal('{{ $testimonial->name }}', '{{ $testimonial->location }}', '{{ $testimonial->rating }}', '{{ $testimonial->description }}', '{{ asset('testimonial/image/' . $testimonial->image) }}')">
                                                     {{ $testimonial->name }}
-                                                  </button> --}}
-                                                <a class="tour-title color-dark-2 link-green"
-                                                    href="javascript:void(0);" data-toggle="modal" data-target="#modal-{{ $key }}" title="See More...">{{ $testimonial->name }}</a>
-                                                </h4>
+                                                </a>
+                                            </h4>
                                             <div class="tour-text color-grey-3">{{ $limited_string }}</div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="modal-{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="modal-{{ $key }}Title" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        </div>
-                                        <div class="modal-body">
-                                        ...
-                                        </div>
-                                        <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
                                     </div>
                                 </div>
                             @endforeach
@@ -2427,6 +2414,23 @@
             </div>
         </div>
     </div>
+<!-- Modal Structure for Bootstrap 3 -->
+<div class="modal fade" id="testimonialModal" tabindex="-1" role="dialog" aria-labelledby="testimonialModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="testimonialModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <div id="testimonialLocation"></div>
+                <div id="testimonialRating"></div>
+                <div id="testimonialDescription"></div>
+                <img id="testimonialImage" src="" alt="" class="img-responsive">
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="main-wraper bg-grey-2 padd-90">
         <div class="container">
@@ -2562,7 +2566,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                    <div class="second-title"  style="padding-top: 0px;">
+                    <div class="second-title" style="padding-top: 0px;">
                         <h4 class="subtitle color-blue-2 underline">news</h4>
                         <h2>latest news</h2>
                     </div>
@@ -2572,7 +2576,7 @@
                 @foreach ($blogs as $blog)
                     <div class="col-xs-12 col-sm-4">
                         <div class="s_news-entry ">
-                            <a href="{{ route('front.blog.detail',$blog->slug) }}" class="blogs-hover">
+                            <a href="{{ route('front.blog.detail', $blog->slug) }}" class="blogs-hover">
                                 <img class="s_news-img img-full img-responsive"
                                     src="https://carnivalguide.co/travel/images/blog1.jpg" alt="">
                                 <h4 class="s_news-title">{{ $blog->title }}</h4>
@@ -2590,7 +2594,8 @@
                                             {{ $blog->user->first_name . ' ' . $blog->user->last_name }}</span>
                                     </div>
                                     <div class="tour-info fl">
-                                        <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png" alt="">
+                                        <img src="https://carnivalguide.co/travel/img/comment_icon_grey.png"
+                                            alt="">
                                         <span class="font-style-2 color-dark-2">10 comments</span>
                                     </div>
                                 </div>
@@ -4433,6 +4438,25 @@
 @endsection
 @section('front-script')
     <script>
+        function showTestimonialModal(name, location, rating, description, image) {
+            // Set the modal title and body with the passed testimonial data
+            document.getElementById('testimonialModalLabel').textContent = name;
+            document.getElementById('testimonialLocation').innerHTML = `<strong>Location:</strong> ${location}`;
+
+            // Dynamically generate the rating
+            let ratingHtml = '<strong>Rating:</strong> ';
+            for (let i = 1; i <= rating; i++) {
+                ratingHtml += '<span class="fa fa-heart color-green"></span>';
+            }
+            document.getElementById('testimonialRating').innerHTML = ratingHtml;
+
+            document.getElementById('testimonialDescription').textContent = description;
+            document.getElementById('testimonialImage').src = image;
+
+            // Show the modal (Bootstrap v3 syntax)
+            $('#testimonialModal').modal('show');
+        }
+
         $(document).ready(function() {
             $('.city-entry-new').css('display', 'none');
             // $('.new-slider').css('display','none');
@@ -4440,30 +4464,25 @@
         });
 
         function showActionBox(id) {
-            $('.city-entry-new').css('display','block');
-            $('.new-slider').css('display','none');
-            if(id == "flight")
-            {
-                $('.city-entry-new > .tour-block > img').attr('src','https://carnivalguide.co/travel/img/home/city_1.jpg');
+            $('.city-entry-new').css('display', 'block');
+            $('.new-slider').css('display', 'none');
+            if (id == "flight") {
+                $('.city-entry-new > .tour-block > img').attr('src', 'https://carnivalguide.co/travel/img/home/city_1.jpg');
                 $('.flight').removeClass('d-none');
                 $('.flight-tab').removeClass('d-none');
                 $('.hotel').addClass('d-none');
                 $('.hotel-tab').addClass('d-none');
                 $('.events').addClass('d-none');
                 $('.events-tab').addClass('d-none');
-            }
-            else if(id == "hotel")
-            {
-                $('.city-entry-new > .tour-block > img').attr('src','https://carnivalguide.co/travel/img/home/city_2.jpg');
+            } else if (id == "hotel") {
+                $('.city-entry-new > .tour-block > img').attr('src', 'https://carnivalguide.co/travel/img/home/city_2.jpg');
                 $('.hotel').removeClass('d-none');
                 $('.hotel-tab').removeClass('d-none');
                 $('.flight').addClass('d-none');
                 $('.flight-tab').addClass('d-none');
                 $('.events').addClass('d-none');
                 $('.events-tab').addClass('d-none');
-            }
-            else
-            {
+            } else {
                 $('.city-entry-new > .tour-block > img').attr('src', 'https://carnivalguide.co/travel/img/home/city_3.jpg');
                 $('.events').removeClass('d-none');
                 $('.events-tab').removeClass('d-none');
