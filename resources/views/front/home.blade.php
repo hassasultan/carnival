@@ -2389,7 +2389,7 @@
                                                     {{ $testimonial->name }}
                                                   </button> --}}
                                                 <a class="tour-title color-dark-2 link-green"
-                                                    href="javascript:void(0);" data-toggle="modal" data-target="#modal-{{ $key }}" title="See More..."></a>
+                                                    href="javascript:void(0);" data-toggle="modal" data-target="#modal-{{ $key }}" title="See More...">{{ $testimonial->name }}</a>
                                                 </h4>
                                             <div class="tour-text color-grey-3">{{ $limited_string }}</div>
                                         </div>
