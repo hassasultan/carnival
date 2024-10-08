@@ -2385,11 +2385,11 @@
                                                 src="{{ asset('testimonial/image/' . $testimonial->image) }}"
                                                 alt="">
                                             <h4>
-                                                <button type="button" class="tour-title color-dark-2 link-green" data-toggle="modal" data-target="#modal-{{ $key }}">
+                                                {{-- <button type="button" class="tour-title color-dark-2 link-green" data-toggle="modal" data-target="#modal-{{ $key }}">
                                                     {{ $testimonial->name }}
-                                                  </button>
-                                                {{-- <a class="tour-title color-dark-2 link-green"
-                                                    href="javascript:void(0);" data-toggle="modal" data-target="#modal-{{ $key }}" title="See More..."></a> --}}
+                                                  </button> --}}
+                                                <a class="tour-title color-dark-2 link-green"
+                                                    href="javascript:void(0);" data-toggle="modal" data-target="#modal-{{ $key }}" title="See More..."></a>
                                                 </h4>
                                             <div class="tour-text color-grey-3">{{ $limited_string }}</div>
                                         </div>
@@ -2397,7 +2397,7 @@
                                 </div>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="modal-{{ $key }}" aria-hidden="true">
+                                <div class="modal fade" id="modal-{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="modal-{{ $key }}Title" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
