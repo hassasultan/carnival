@@ -7060,6 +7060,7 @@ nav li.type-4 .dropmenu .fa-chevron-right {
   border: 5px solid #fff;
   -moz-border-radius: 100%;
   border-radius: 100%;
+  max-width:90px;
 }
 
 .tour-item.style-3 .rate {
@@ -26695,7 +26696,7 @@ body[data-color="theme-8"] .accordeon-entry h5:after {
   border-radius: 0px;
 }
 
-/* Custom Css 
+/* Custom Css
 .main-slider-5 .slider-block-left {
   border: 1px solid #FF6600;
 }
