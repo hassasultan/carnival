@@ -2343,7 +2343,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                    <div class="second-title">
+                    <div class="second-title" style="padding-top: 0px;">
                         <h4 class="color-dark-2-light">testimonials</h4>
                         <h2>what our clients say</h2>
                     </div>
