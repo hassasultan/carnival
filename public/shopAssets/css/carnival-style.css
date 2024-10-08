@@ -3079,7 +3079,7 @@ nav li.type-4 .dropmenu .fa-chevron-right {
 /* 08 - SWIPER SLIDER */
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 .swiper-container {
-  margin: 100px auto;
+  margin: 0px auto;
   position: relative;
   overflow: hidden;
   direction: ltr;

@@ -459,7 +459,7 @@
                                                                     <button class="prev">❮</button>
                                                                     <button class="next">❯</button>
                                                                 </div> --}}
-                                                                
+
                                                                 <div class="slider new-slider">
                                                                     <div class="slides">
                                                                         <div class="slide-new active">
@@ -478,7 +478,7 @@
                                                                             <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg" alt="Image 4">
                                                                         </div>
                                                                     </div>
-                                                            
+
                                                                     <!-- Navigation buttons -->
                                                                     <button class="prev" onclick="prevSlide()">&#10094;</button>
                                                                     <button class="next" onclick="nextSlide()">&#10095;</button>
@@ -2339,7 +2339,7 @@
         </div>
     </div>
 
-    <div class="main-wraper bg-grey-2 padd-90">
+    <div class="main-wraper bg-grey-2">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -4433,9 +4433,9 @@
                 $('.hotel-tab').addClass('d-none');
                 $('.flight').addClass('d-none');
                 $('.flight-tab').addClass('d-none');
-                
+
             }
-            
+
         }
     </script>
 @endsection
