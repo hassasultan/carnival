@@ -2356,6 +2356,18 @@
                         data-md-slides="3" data-lg-slides="4" data-add-slides="4">
                         <div class="swiper-wrapper">
                             @foreach ($testimonials as $testimonial)
+                                @php
+                                    $string = $testimonial->description;
+                                    $limit = 20;
+
+                                    // Limit the string to 20 characters
+                                    $limited_string = substr($string, 0, $limit);
+
+                                    // Optionally, append '...' to indicate truncation
+                                    if (strlen($string) > $limit) {
+                                        $limited_string .= '...';
+                                    }
+                                @endphp
                                 <div class="swiper-slide" data-val="{{ $testimonial->key }}">
                                     <div class="tour-item style-3">
                                         <div class="radius-top">
@@ -2374,7 +2386,7 @@
                                                 alt="">
                                             <h4><a class="tour-title color-dark-2 link-green"
                                                     href="#">{{ $testimonial->name }}</a></h4>
-                                            <div class="tour-text color-grey-3">{{ $testimonial->description }}</div>
+                                            <div class="tour-text color-grey-3">{{ $limited_string }}</div>
                                         </div>
                                     </div>
                                 </div>
