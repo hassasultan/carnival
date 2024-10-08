@@ -2494,7 +2494,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                    <div class="second-title">
+                    <div class="second-title" style="padding-top: 0px;">
                         <h4 class="subtitle color-dark-2-light">our partners</h4>
                         <h2>Our Investor Relations</h2>
                         <p class="color-grey">We have teamed up with the carnival committees to give you the best
