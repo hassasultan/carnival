@@ -11,7 +11,7 @@
                 <div class="container" style="margin-top:30px">
 
                     <div class="arrows">
-                        <div class="swiper-container main-slider-5" data-autoplay="0" data-loop="1" data-speed="900"
+                        <div class="swiper-container main-slider-5" style="margin: 88px auto;" data-autoplay="0" data-loop="1" data-speed="900"
                             data-center="0" data-slides-per-view="1">
                             <div class="swiper-wrapper">
                                 <style>
