@@ -2393,7 +2393,7 @@
                                                 src="{{ asset('testimonial/image/' . $testimonial->image) }}"
                                                 alt="">
                                             <h4>
-                                                <a class="tour-title color-dark-2 link-green" href="#"
+                                                <a class="tour-title color-dark-2 link-green" href="javascript:void(0);"
                                                     title="See More..."
                                                     onclick="showTestimonialModal('{{ $testimonial->name }}', '{{ $testimonial->location }}', '{{ $testimonial->rating }}', '{{ $testimonial->description }}', '{{ asset('testimonial/image/' . $testimonial->image) }}')">
                                                     {{ $testimonial->name }}
