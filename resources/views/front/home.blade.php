@@ -2415,7 +2415,7 @@
         </div>
     </div>
 <!-- Modal Structure for Bootstrap 3 -->
-<div class="modal fade" id="testimonialModal" tabindex="-1" role="dialog" aria-labelledby="testimonialModalLabel">
+<div class="modal fade" id="testimonialModal" tabindex="-1" role="dialog" aria-labelledby="testimonialModalLabel" style="z-index: 105050;">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -2423,10 +2423,10 @@
                 <h4 class="modal-title" id="testimonialModalLabel"></h4>
             </div>
             <div class="modal-body">
-                <div id="testimonialLocation"></div>
-                <div id="testimonialRating"></div>
-                <div id="testimonialDescription"></div>
-                <img id="testimonialImage" src="" alt="" class="img-responsive">
+                <img id="testimonialImage" src="" alt="" class="img-responsive" width="100" style="border-radius:50%;">
+                <div class="location" style="margin: 10px; 0px" id="testimonialLocation"></div>
+                <div id="testimonialRating" class="rate" style="margin: 10px; 0px"></div>
+                <div id="testimonialDescription" style="margin: 10px; 0px"></div>
             </div>
         </div>
     </div>
@@ -4449,8 +4449,8 @@
                 ratingHtml += '<span class="fa fa-heart color-green"></span>';
             }
             document.getElementById('testimonialRating').innerHTML = ratingHtml;
-
-            document.getElementById('testimonialDescription').textContent = description;
+            let more_description = '<Strong>Detail: </strong>'+description;
+            document.getElementById('testimonialDescription').innerHTML = more_description;
             document.getElementById('testimonialImage').src = image;
 
             // Show the modal (Bootstrap v3 syntax)
