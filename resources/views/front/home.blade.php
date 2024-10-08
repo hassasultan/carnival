@@ -2355,10 +2355,10 @@
                         data-slides-per-view="responsive" data-mob-slides="1" data-xs-slides="2" data-sm-slides="2"
                         data-md-slides="3" data-lg-slides="4" data-add-slides="4">
                         <div class="swiper-wrapper">
-                            @foreach ($testimonials as $testimonial)
+                            @foreach ($testimonials as $key => $testimonial)
                                 @php
                                     $string = $testimonial->description;
-                                    $limit = 20;
+                                    $limit = 50;
 
                                     // Limit the string to 20 characters
                                     $limited_string = substr($string, 0, $limit);
@@ -2385,9 +2385,30 @@
                                                 src="{{ asset('testimonial/image/' . $testimonial->image) }}"
                                                 alt="">
                                             <h4><a class="tour-title color-dark-2 link-green"
-                                                    href="#">{{ $testimonial->name }}</a></h4>
+                                                    href="javascript:void(0);" data-toggle="modal" data-target="#modal-{{ $key }}" title="See More...">{{ $testimonial->name }}</a></h4>
                                             <div class="tour-text color-grey-3">{{ $limited_string }}</div>
                                         </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="modal-{{ $key }}" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        ...
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                             @endforeach
