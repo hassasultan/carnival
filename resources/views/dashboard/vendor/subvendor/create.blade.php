@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card">
-        <form method="POST" action="{{ route('users.register') }}" class="col-lg-8 col-md-10 col-12 mx-auto"
+        <form method="POST" action="{{ route('vendor.subvendor.register') }}" class="col-lg-8 col-md-10 col-12 mx-auto"
             enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="vendor_id" value="{{ Auth::id() }}">

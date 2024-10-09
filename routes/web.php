@@ -281,7 +281,7 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     Route::delete('/costumes/{costume}', [VendorCostumeController::class, 'destroy'])->name('vendor.costumes.destroy');
 
     // Create Vendor
-    Route::post('/users/register', [UserManagementController::class, 'register'])->name('users.register');
+    Route::post('/users/register', [UserManagementController::class, 'register'])->name('vendor.subvendor.register');
     Route::get('/subvendor/create', [VendorController::class, 'createSubvendor'])->name('vendor.subvendor.create');
 });
 
