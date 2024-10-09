@@ -36,6 +36,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
@@ -213,6 +214,21 @@
     <script src="{{ asset('assets/js/apexcharts.custom.js') }}"></script>
     <script src='{{ asset('assets/js/jquery.dataTables.min.js') }}'></script>
     <script src='{{ asset('assets/js/dataTables.bootstrap4.min.js') }}'></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Add Your Description Here...',
+            tabsize: 2,
+            height: 100
+        });
+        $('.summernote').summernote({
+            placeholder: 'Add Your Description Here...',
+            tabsize: 2,
+            height: 100
+        });
+    </script>
+
     <script>
         $('#dataTable-1').DataTable({
             autoWidth: true,

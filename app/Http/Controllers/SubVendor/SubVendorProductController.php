@@ -31,6 +31,13 @@ class SubVendorProductController extends Controller
         return view('dashboard.subvendor.products.index', compact('products', 'variants', 'categories'));
     }
 
+    public function create()
+    {
+        $variants = Variant::all();
+        $categories = Category::all();
+        return view('dashboard.subvendor.products.create', compact('categories', 'variants'));
+    }
+
     public function store(Request $request)
     {
         // dd($request->all());
