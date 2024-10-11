@@ -33,8 +33,7 @@ class ProductService
                 ]);
 
                 if (isset($data['variant_images'])) {
-                    foreach($data['variant_images'][$type] as $images)
-                    {
+                    foreach ($data['variant_images'][$type] as $images) {
                         $additionalImagePaths = $this->uploadImage($images, 'variant_images');
                         ProductVariantImage::create([
                             'product_id' => $product->id,
@@ -59,7 +58,12 @@ class ProductService
             $product->variants()->detach();
 
             foreach ($data['variant_id'] as $index => $variantId) {
-                $product->variants()->attach($variantId, ['value' => 'value', 'status' => 1]);
+                $product->variants()->attach($variantId, [
+                    'value' => $data['value'][$index] ?? null,
+                    'status' => 1,
+                    'name' => $data['variant_name'][$index] ?? null,
+                    'type' => $data['type'][$index] ?? null,
+                ]);
 
                 if (isset($data['variant_images'][$index])) {
                     $additionalImagePaths = $this->uploadMultipleImages($data['variant_images'], 'variant_images');
@@ -77,7 +81,6 @@ class ProductService
 
         return $product;
     }
-
 
     protected function prepareProductData(array $data)
     {
