@@ -262,7 +262,7 @@ class FrontendConroller extends Controller
         $products = Product::where('user_id', $user->id)->with('brand')->get();
         $brands = Brand::where('status', 1)->take(2)->get();
 
-        return view('ShopFrontend.subvendor-detail', compact('subvendor', 'categories', 'products', 'brands'));
+        return view('ShopFrontend.subvendor-detail', compact('user','subvendor', 'categories', 'products', 'brands'));
     }
 
     public function eventViewMore($slug)
