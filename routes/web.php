@@ -131,7 +131,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::resource('categories', CategoryController::class);
 
     // Products Crud
-    Route::resource('products', ProductController::class);
+    Route::resource('products', ProductController::class)->except(['update']);
+    Route::post('/product/{product}', [ProductController::class, 'update'])->name('products.update');
+    
 
     // Costumes Crud
     Route::resource('costumes', CostumeController::class);
@@ -253,8 +255,9 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     Route::get('/products', [VendorProductController::class, 'index'])->name('vendor.products');
     Route::get('/products/add', [VendorProductController::class, 'create'])->name('vendor.products.create');
     Route::get('/products/edit/{id}', [VendorProductController::class, 'edit'])->name('vendor.products.edit');
-    Route::post('/products/store', [VendorProductController::class, 'store'])->name('vendor.products.store');
-    Route::put('/products/update/{id}', [VendorProductController::class, 'update'])->name('vendor.products.update');
+    Route::post('/products/store', [ProductController::class, 'store'])->name('vendor.products.store');
+    // Route::put('/products/update/{id}', [VendorProductController::class, 'update'])->name('vendor.products.update');
+    Route::post('/product/{product}', [ProductController::class, 'update'])->name('vendor.products.update');
 
     // events
     Route::get('/events', [VendorController::class, 'indexEvent'])->name('vendor.events');
@@ -279,6 +282,10 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     Route::post('/costumes/store', [VendorCostumeController::class, 'store'])->name('vendor.costumes.store');
     Route::put('/costumes/update/{id}', [VendorCostumeController::class, 'update'])->name('vendor.costumes.update');
     Route::delete('/costumes/{costume}', [VendorCostumeController::class, 'destroy'])->name('vendor.costumes.destroy');
+
+    // Create Vendor
+    Route::post('/users/register', [UserManagementController::class, 'register'])->name('vendor.subvendor.register');
+    Route::get('/subvendor/create', [VendorController::class, 'createSubvendor'])->name('vendor.subvendor.create');
 });
 
 
@@ -289,9 +296,12 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
 
     // products
     Route::get('/my_products', [SubVendorProductController::class, 'index'])->name('subVendor.products');
+    Route::get('/products/add', [SubVendorProductController::class, 'create'])->name('subVendor.products.create');
     Route::get('/my_products/edit/{id}', [SubVendorProductController::class, 'edit'])->name('subVendor.products.edit');
-    Route::post('/my_products/store', [SubVendorProductController::class, 'store'])->name('subVendor.products.store');
-    Route::put('/my_products/update/{id}', [SubVendorProductController::class, 'update'])->name('subVendor.products.update');
+    Route::post('/products/store', [ProductController::class, 'store'])->name('subVendor.products.store');
+    // Route::post('/my_products/store', [SubVendorProductController::class, 'store'])->name('subVendor.products.store');
+    // Route::put('/my_products/update/{id}', [SubVendorProductController::class, 'update'])->name('subVendor.products.update');
+    Route::post('/product/{product}', [ProductController::class, 'update'])->name('subVendor.products.update');
 
     // events
     Route::get('/my_events', [SubVendorController::class, 'indexEvents'])->name('subVendor.events');

@@ -10,6 +10,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <link rel="icon" type="image/png" href="{{ asset('shopAssets/images/logo.png') }}">
+
     <!-- Perfect Scrollbar CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/simplebar.css') }}">
     <!-- Fonts CSS -->
@@ -36,6 +38,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
@@ -257,6 +260,20 @@
   <script src='{{ asset('assets/js/jQuery.tagify.min.js') }}'></script>
   
   <script src='{{ asset('assets/js/quill.min.js') }}'></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+  <script>
+      $('#summernote').summernote({
+          placeholder: 'Add Your Description Here...',
+          tabsize: 2,
+          height: 100
+      });
+      $('.summernote').summernote({
+          placeholder: 'Add Your Description Here...',
+          tabsize: 2,
+          height: 100
+      });
+  </script>
   <script>
     $('.select2').select2({
       theme: 'bootstrap4',

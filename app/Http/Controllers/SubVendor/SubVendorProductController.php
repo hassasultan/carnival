@@ -27,8 +27,15 @@ class SubVendorProductController extends Controller
     {
         $categories = Category::where('type', 'ecommerce')->get();
         $variants = Variant::all();
-        $products = Product::where('user_id', Auth::id())->get();
+        $products = Product::orderBy('id', 'DESC')->where('user_id', Auth::id())->get();
         return view('dashboard.subvendor.products.index', compact('products', 'variants', 'categories'));
+    }
+
+    public function create()
+    {
+        $variants = Variant::all();
+        $categories = Category::all();
+        return view('dashboard.subvendor.products.create', compact('categories', 'variants'));
     }
 
     public function store(Request $request)
@@ -75,9 +82,13 @@ class SubVendorProductController extends Controller
 
     public function edit($id)
     {
-        $product = Product::with('category', 'variants', 'subcategory')->findOrFail($id);
-        $categories = Category::all();
-        return response()->json(['product' => $product]);
+        $product = Product::with('category', 'product_variant', 'subcategory')->findOrFail($id);
+        $categories = Category::where('type', 'ecommerce')->get();
+        // $variants = Variant::all();
+        $variants = Variant::where('category_id', $product->category_id)->get();
+        $selectedVariants = $product->variants->pluck('id')->toArray();
+        $subcat = Subcategory::where('category_id', $product->category_id)->get();
+        return view('dashboard.subvendor.products.edit', compact('product', 'categories', 'variants', 'subcat', 'selectedVariants'));
     }
     
     public function update(Request $request, $id)

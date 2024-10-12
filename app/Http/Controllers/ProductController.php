@@ -28,7 +28,7 @@ class ProductController extends Controller
     {
         $categories = Category::where('type', 'ecommerce')->get();
         $variants = Variant::all();
-        $products = Product::all();
+        $products = Product::orderBy('id', 'DESC')->get();
         return view('dashboard.admin.products.index', compact('products', 'variants', 'categories'));
     }
 
@@ -80,9 +80,11 @@ class ProductController extends Controller
     {
         $product = Product::with('category', 'product_variant', 'subcategory')->findOrFail($id);
         $categories = Category::where('type', 'ecommerce')->get();
-        $variants = Variant::all();
+        // $variants = Variant::all();
+        $variants = Variant::where('category_id', $product->category_id)->get();
+        $selectedVariants = $product->variants->pluck('id')->toArray();
         $subcat = Subcategory::where('category_id', $product->category_id)->get();
-        return view('dashboard.admin.products.edit', compact('product', 'categories', 'variants', 'subcat'));
+        return view('dashboard.admin.products.edit', compact('product', 'categories', 'variants', 'subcat', 'selectedVariants'));
     }
     
     public function update(Request $request, $id)

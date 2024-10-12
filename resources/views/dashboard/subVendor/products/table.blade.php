@@ -36,14 +36,14 @@
                         data-id="{{ $product->id }}">
                         <span class="text-muted sr-only">Edit</span>
                     </a>
-                    <form action="{{ route('subVendor.products.destroy', $product->id) }}" method="POST">
+                    {{-- <form action="{{ route('subVendor.products.destroy', $product->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm rounded text-muted deleteProductBtn">
                             <span class="fe fe-trash fe-12 mr-3"></span>
                             <span class="text-muted sr-only">Remove</span>
                         </button>
-                    </form>
+                    </form> --}}
                 </td>
             </tr>
         @endforeach

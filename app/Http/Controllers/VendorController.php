@@ -9,6 +9,7 @@ use App\Models\Variant;
 use App\Models\Event;
 use App\Models\Ticket;
 use App\Models\Package;
+use App\Models\Region;
 use Illuminate\Support\Facades\Auth;
 use App\Services\ProductService;
 use App\Services\EventService;
@@ -151,5 +152,13 @@ class VendorController extends Controller
 
         return redirect()->route('events.index')
             ->with('success', 'Event updated successfully.');
+    }
+
+    public function createSubvendor(Request $request, Event $event)
+    {
+        $continents = Region::all();
+        $packages = Package::where('status', 1)->get();
+
+        return view('dashboard.vendor.subvendor.create', compact( 'packages', 'continents'));
     }
 }

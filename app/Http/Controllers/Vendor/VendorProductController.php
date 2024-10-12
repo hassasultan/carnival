@@ -29,7 +29,7 @@ class VendorProductController extends Controller
     {
         $categories = Category::where('type', 'ecommerce')->get();
         $variants = Variant::all();
-        $products = Product::where('user_id', Auth::id())->get();
+        $products = Product::orderBy('id', 'DESC')->where('user_id', Auth::id())->get();
         return view('dashboard.vendor.products.index', compact('products', 'variants', 'categories'));
     }
 
@@ -116,10 +116,13 @@ class VendorProductController extends Controller
 
     public function edit($id)
     {
-        $product = Product::with('category', 'variants', 'subcategory')->findOrFail($id);
-        $categories = Category::all();
-        return view('dashboard.vendor.products.edit', compact('product','categories'));
-
+        $product = Product::with('category', 'product_variant', 'subcategory')->findOrFail($id);
+        $categories = Category::where('type', 'ecommerce')->get();
+        // $variants = Variant::all();
+        $variants = Variant::where('category_id', $product->category_id)->get();
+        $selectedVariants = $product->variants->pluck('id')->toArray();
+        $subcat = Subcategory::where('category_id', $product->category_id)->get();
+        return view('dashboard.vendor.products.edit', compact('product', 'categories', 'variants', 'subcat', 'selectedVariants'));
     }
 
     public function update(Request $request, $id)

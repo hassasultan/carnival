@@ -9,8 +9,11 @@
                     <strong class="card-title">Product Information</strong>
                 </div>
                 <div class="card-body col-sm-6">
-                    <form id="createProductForm">
+                    <form id="editProductForm">
+                    {{-- <form id="editProductForm" method="POST" action="{{ route('products.update', $product->id) }}"
+                        enctype="multipart/form-data"> --}}
                         @csrf
+                        <input type="hidden" id="edit_id" value="{{ $product->id }}">
                         <div class="form-group">
                             <label for="title">Title</label>
                             <input type="text" class="form-control" id="title" name="title"
@@ -40,7 +43,8 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group mb-3">
+                        {{-- {{ dd($product->toArray()) }} --}}
+                        {{-- <div class="form-group mb-3">
                             <div>
                                 <label for="variant_id">Variants</label>
                             </div>
@@ -49,75 +53,118 @@
                             @endforeach
                             <select id="variant_id" class="form-control select2 d-none" multiple>
                             </select>
+                        </div> --}}
+                        <div class="form-group mb-3">
+                            <div>
+                                <label for="variant_id">Variants</label>
+                            </div>
+                            @foreach ($variants as $row)
+                                <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->title }}" />
+                            @endforeach
+                            <select id="variant_id" class="form-control select2" multiple>
+                                @foreach ($variants as $row)
+                                    <option value="{{ $row->id }}" 
+                                        @if (in_array($row->id, $selectedVariants)) selected @endif>
+                                        {{ $row->title }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
+
                         <div id="embed-div">
                             <div class="card p-3" id="var-card">
                                 <div class="row">
                                     <div class="col-10"></div>
-                                    <div class="col-2">
+                                    {{-- <div class="col-2">
                                         <button type="button" class="btn btn-primary w-20" id="plus-btn"
-                                            onclick="plusBTN()" data-id="18" data-type="both">
-                                            +
-                                        </button>
-                                    </div>
+                                            onclick="plusBTN()" data-id="18" data-type="both">+</button>
+                                    </div> --}}
                                 </div>
-                                @foreach ($product->product_variant as $row)
-                                    <div class="form-group mb-3">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="variant_name-118">Variant Name</label><input type="text"
-                                                    class="form-control" id="variant_name-118" name="variant_name[]" />
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="value-118">Value</label><input type="text"
-                                                    class="form-control" name="value[]" required="" /><input
-                                                    type="hidden" value="18" name="variant_id[]"
-                                                    required="" /><input type="hidden" class="form-control"
-                                                    name="type[]" value="text" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="variant_images-118">Variant Images</label><input type="file"
-                                                    class="custom-file-input select2" id="variant_images-118"
-                                                    name="variant_images[text-0][]" multiple="" /><label
-                                                    class="custom-file-label" for="variant_images-118"
-                                                    id="variant_images_label-118">Choose files</label>
-                                                <div class="image-preview" id="image-preview-118"></div>
+
+                                <!-- Loop through product variants -->
+                                @foreach ($product->product_variant as $variant)
+                                    @if ($variant->type == 'text')
+                                        <div class="form-group mb-3">
+                                            <div class="form-row">
+                                                <!-- Variant Name -->
+                                                <div class="form-group col-md-6">
+                                                    <label for="variant_name-{{ $variant['id'] }}">Variant Name</label>
+                                                    <input type="text" class="form-control"
+                                                        id="variant_name-{{ $variant['id'] }}" name="variant_name[]"
+                                                        value="{{ $variant['name'] }}" />
+                                                </div>
+                                                <!-- Value -->
+                                                <div class="form-group col-md-6">
+                                                    <label for="value-{{ $variant['id'] }}">Value</label>
+                                                    <input type="text" class="form-control" name="value[]"
+                                                        value="{{ $variant['value'] }}" required="" />
+                                                    <input type="hidden" value="{{ $variant['variant_id'] }}"
+                                                        name="variant_id[]" required="" />
+                                                    <input type="hidden" class="form-control" name="type[]"
+                                                        value="{{ $variant['type'] }}" />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        <!-- Variant Images -->
+                                        <div class="form-group mb-3">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="variant_images-{{ $variant['id'] }}">Variant Images</label>
+                                                    <input type="file" class="custom-file-input select2"
+                                                        id="variant_images-{{ $variant['id'] }}"
+                                                        name="variant_images[{{ $variant['type'] }}-{{ $loop->index }}][]"
+                                                        multiple="" />
+                                                    <label class="custom-file-label"
+                                                        for="variant_images-{{ $variant['id'] }}">Choose files</label>
+                                                    <div class="image-preview" id="image-preview-{{ $variant['id'] }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="form-group mb-3">
+                                            <div class="form-row">
+                                                <!-- Variant Name -->
+                                                <div class="form-group col-md-6">
+                                                    <label for="variant_name-{{ $variant['id'] }}">Variant Name</label>
+                                                    <input type="color" class="form-control"
+                                                        id="variant_name-{{ $variant['id'] }}" name="variant_name[]"
+                                                        value="{{ $variant['name'] }}" />
+                                                </div>
+                                                <!-- Value -->
+                                                <div class="form-group col-md-6">
+                                                    <label for="value-{{ $variant['id'] }}">Value</label>
+                                                    <input type="text" class="form-control" name="value[]"
+                                                        value="{{ $variant['value'] }}" required="" />
+                                                    <input type="hidden" value="{{ $variant['variant_id'] }}"
+                                                        name="variant_id[]" required="" />
+                                                    <input type="hidden" class="form-control" name="type[]"
+                                                        value="{{ $variant['type'] }}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Variant Images -->
+                                        <div class="form-group mb-3">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="variant_images-{{ $variant['id'] }}">Variant
+                                                        Images</label>
+                                                    <input type="file" class="custom-file-input select2"
+                                                        id="variant_images-{{ $variant['id'] }}"
+                                                        name="variant_images[{{ $variant['type'] }}-{{ $loop->index }}][]"
+                                                        multiple="" />
+                                                    <label class="custom-file-label"
+                                                        for="variant_images-{{ $variant['id'] }}">Choose files</label>
+                                                    <div class="image-preview" id="image-preview-{{ $variant['id'] }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
                                 @endforeach
-                                {{-- <div class="form-group mb-3">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="variant_name-218">Variant Name</label><input type="color"
-                                                class="form-control" id="variant_name-218" name="variant_name[]" /><input
-                                                type="hidden" value="18" name="variant_id[]" required="" /><input
-                                                type="hidden" class="form-control" name="type[]" value="color" />
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="value-218">Value</label><input type="text"
-                                                class="form-control" name="value[]" required="" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-12">
-                                            <label for="variant_images-218">Variant Images</label><input type="file"
-                                                class="custom-file-input select2" id="variant_images-218"
-                                                name="variant_images[color-1][]" multiple="" /><label
-                                                class="custom-file-label" for="variant_images-218"
-                                                id="variant_images_label-218">Choose files</label>
-                                            <div class="image-preview" id="image-preview-218"></div>
-                                        </div>
-                                    </div>
-                                </div> --}}
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="old_price">Regular Price</label>
                             <input type="text" class="form-control" id="old_price" name="old_price"
@@ -207,23 +254,19 @@
                         </div>
                         <div class="form-group">
                             <label for="information">Information</label>
-                            <textarea id="information" value="{{ $product->information }}" name="information"
-                                class="form-control information summernote" placeholder=""></textarea>
+                            <textarea id="information" name="information" class="form-control information summernote" placeholder="">{!! $product->information !!}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="reviews">Reviews</label>
-                            <textarea id="reviews" value="{{ $product->reviews }}" name="reviews" class="form-control reviews summernote"
-                                placeholder=""></textarea>
+                            <textarea id="reviews" name="reviews" class="form-control reviews summernote" placeholder="">{!! $product->reviews !!}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="extra">Extra</label>
-                            <textarea id="extra" value="{{ $product->extra }}" name="extra" class="form-control extra summernote"
-                                placeholder=""></textarea>
+                            <textarea id="extra" name="extra" class="form-control extra summernote" placeholder="">{!! $product->extra !!}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="guarantee">Guarantee</label>
-                            <textarea id="guarantee" value="{{ $product->guarantee }}" name="guarantee"
-                                class="form-control guarantee summernote" placeholder=""></textarea>
+                            <textarea id="guarantee" name="guarantee" class="form-control guarantee summernote" placeholder="">{!! $product->guarantee !!}</textarea>
                         </div>
                         <div class="form-group mb-3">
                             <label for="image">Image</label>
@@ -253,30 +296,60 @@
         $(document).ready(function() {
 
             // Handle form submission via AJAX for updating a product
+            // $('#editProductForm').submit(function(event) {
+            //     var productId = $(this).find('#edit_id').val();
+            //     event.preventDefault();
+            //     var formData = new FormData($(this)[0]);
+            //     console.log('formDataformData', formData);
+            //     var url = '{{ route('products.update', ':id') }}'.replace(':id', productId);
+
+            //     $.ajax({
+            //         url: url,
+            //         type: 'PUT',
+            //         data: formData,
+            //         headers: {
+            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //         },
+            //         contentType: false,
+            //         processData: false,
+            //         success: function(response) {
+            //             $('#editproductModal').modal('hide');
+            //             $(this).trigger('reset');
+            //             $('#tableData').html(response.table_html);
+
+            //             $('#productMessage').html(
+            //                 '<div class="alert alert-success" role="alert">Product updated successfully</div>'
+            //             );
+            //             setTimeout(function() {
+            //                 $('#productMessage').html('');
+            //             }, 3000);
+            //         },
+            //         error: function(xhr, status, error) {
+            //             console.error(xhr.responseText);
+            //             $('#productMessage').html(
+            //                 '<div class="alert alert-danger" role="alert">Failed to update product</div>'
+            //             );
+            //         }
+            //     });
+            // });
+
             $('#editProductForm').submit(function(event) {
                 var productId = $(this).find('#edit_id').val();
                 event.preventDefault();
                 var formData = new FormData($(this)[0]);
-                console.log('formDataformData', formData);
                 var url = '{{ route('products.update', ':id') }}'.replace(':id', productId);
 
                 $.ajax({
                     url: url,
                     type: 'POST',
                     data: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     contentType: false,
                     processData: false,
                     success: function(response) {
-                        $('#editproductModal').modal('hide');
-                        $(this).trigger('reset');
-                        $('#tableData').html(response.table_html);
-
-                        $('#productMessage').html(
-                            '<div class="alert alert-success" role="alert">Product updated successfully</div>'
-                        );
-                        setTimeout(function() {
-                            $('#productMessage').html('');
-                        }, 3000);
+                        window.location.href = '{{ route('products.index') }}';
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
@@ -286,6 +359,7 @@
                     }
                 });
             });
+
             // Delete recrod
             $('.deleteProductBtn').click(function(event) {
                 event.preventDefault();
