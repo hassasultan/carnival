@@ -450,8 +450,9 @@
                         <!-- slide -->
                         <div class="owl-carousel dotsData" data-nav="true" data-dots="true" data-margin="0"
                             data-items='1' data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
-
-                            @foreach ($user?->subvendor?->banners as $banner)
+                            @if ($user->subvendor != null)
+                            @if ($user->subvendor->banners != null)
+                            @foreach ($user->subvendor->banners as $banner)
                                 <div class="item" style="background-image: url('{{ asset($banner->banner) }}');" data-dot="{{ $loop->iteration }}">
 
                                     <div class="description">
@@ -463,6 +464,9 @@
 
                                 </div>
                             @endforeach
+
+                            @endif
+                            @endif
 
                         </div> <!-- slide -->
 
