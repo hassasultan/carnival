@@ -195,8 +195,6 @@
 
                 <!-- Sidebar -->
                 <div class="col-md-3 col-md-pull-9  col-sidebar">
-
-
                     <div class="block-sidebar block-banner-sidebar">
                         <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
@@ -207,10 +205,6 @@
                             @endforeach
                         </div>
                     </div>
-
-
-
-
                     <!-- block slide top -->
                     <div class="block-sidebar block-banner-sidebar">
                         <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
@@ -233,16 +227,8 @@
                             @endforeach
                         </div>
                     </div><!-- block slide top -->
-
-
-
-
-
                 </div>
                 <!-- Sidebar -->
-
-
-
             </div>
         </div>
         <!-- block-brand -->

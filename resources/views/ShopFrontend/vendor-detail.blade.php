@@ -114,7 +114,7 @@
                             <div class="view-all-categori">
                                 <a class="open-cate btn-view-all">All Categories</a>
                                 @foreach ($subvendors as $row)
-                                    <a class="open-cate btn-view-all">{{ $row->name }}</a>
+                                    <a href="{{ route('front.subVendor.detail') }}" class="open-cate btn-view-all">{{ $row->name }}</a>
                                 @endforeach
                             </div>
                         </div>

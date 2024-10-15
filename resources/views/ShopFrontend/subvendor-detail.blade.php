@@ -389,84 +389,25 @@
 
                     </div><!-- categori -->
 
-                    <!-- block slide top -->
-                    {{-- <div class="block-slide-main slide-opt-1">
-
-                        <!-- slide -->
-                        <div class="owl-carousel dotsData" data-nav="true" data-dots="true" data-margin="0"
-                            data-items='1' data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
-                            <div class="item item2"
-                                style="background-image: url({{ asset('shopAssets/images/media/index1/slide2.jpg') }});"
-                                data-dot="1">
-
-                                <div class="description">
-                                    <span class="title">NEW COLLECTION </span>
-                                    <span class="subtitle">BIG SALE</span>
-                                    <span class="des"> ENJOY UP TO 35% OFF</span>
-                                    <a href="" class="btn">SHOP NOW</a>
-                                </div>
-
-                            </div>
-
-                            <div class="item item1"
-                                style="background-image: url({{ asset('shopAssets/images/media/index1/slide1.jpg') }});"
-                                data-dot="2">
-
-                                <div class="description">
-                                    <span class="title">We’ve Take A Further </span>
-                                    <span class="subtitle">20% Off <br> Accessories</span>
-                                    <a href="" class="btn">shop now</a>
-                                </div>
-
-                            </div>
-
-                            <div class="item item3"
-                                style="background-image: url({{ asset('shopAssets/images/media/index1/slide3.jpg') }});"
-                                data-dot="3">
-
-                                <div class="description">
-                                    <span class="title">Spring Fashion </span>
-                                    <span class="subtitle">Fashion Colection Style 2016 </span>
-                                    <a href="" class="btn">Now In Stock</a>
-                                </div>
-
-                            </div>
-                        </div> <!-- slide -->
-
-                    </div><!-- block slide top -->
-
-                    <!-- banner -->
-                    <div class="banner-slide">
-                        <a href="" class="box-img"><img
-                                src="{{ asset('shopAssets/images/media/index1/banner-slide1.jpg') }}"
-                                alt="banner-slide"></a>
-                        <a href="" class="box-img"><img
-                                src="{{ asset('shopAssets/images/media/index1/banner-slide2.jpg') }}"
-                                alt="banner-slide"></a>
-                    </div><!-- banner --> --}}
-
                     <div class="block-slide-main slide-opt-1">
 
                         <!-- slide -->
                         <div class="owl-carousel dotsData" data-nav="true" data-dots="true" data-margin="0"
                             data-items='1' data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
-                            @if ($user->subvendor != null)
-                            @if ($user->subvendor->banners != null)
-                            @foreach ($user->subvendor->banners as $banner)
-                                <div class="item" style="background-image: url('{{ asset($banner->banner) }}');" data-dot="{{ $loop->iteration }}">
 
+                            @foreach ($subvendor->user->banners as $key => $banner)
+                                <div class="item item{{ ++$key }}"
+                                    style="background-image: url('{{ asset($banner->banner) }}');"
+                                    data-dot="{{ $loop->iteration }}">
                                     <div class="description">
                                         <span class="title">{{ $banner->title }}</span>
                                         <span class="subtitle">{{ $banner->subtitle }}</span>
                                         <span class="des">{{ $banner->description }}</span>
-                                        <a href="{{ $banner->button_link ?? '#' }}" class="btn">{{ $banner->button_text ?? 'Shop Now' }}</a>
+                                        <a href="{{ $banner->button_link ?? '#' }}"
+                                            class="btn">{{ $banner->button_text ?? 'Shop Now' }}</a>
                                     </div>
-
                                 </div>
                             @endforeach
-
-                            @endif
-                            @endif
 
                         </div> <!-- slide -->
 
@@ -474,12 +415,10 @@
 
                     <!-- banner -->
                     <div class="banner-slide">
-                        <a href="" class="box-img"><img
-                                src="{{ asset('shopAssets/images/media/index1/banner-slide1.jpg') }}"
-                                alt="banner-slide"></a>
-                        <a href="" class="box-img"><img
-                                src="{{ asset('shopAssets/images/media/index1/banner-slide2.jpg') }}"
-                                alt="banner-slide"></a>
+                        @foreach ($ads as $row)
+                            <a href="" class="box-img"><img src="{{ asset('images/' . $row->image) }}"
+                                    alt="banner-slide"></a>
+                        @endforeach
                     </div><!-- banner -->
 
                 </div>

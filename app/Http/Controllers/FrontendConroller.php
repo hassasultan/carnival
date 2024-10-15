@@ -204,7 +204,26 @@ class FrontendConroller extends Controller
     }
     public function sub_vendor_listing()
     {
-        return view('ShopFrontend.subVendor');
+        $banners = Banner::where('type', 'section_leader')->get();
+        $regions = Region::all();
+        $adv1 = Advertisement::where('status', 1)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $adv2 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id'))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $adv3 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id')->merge($adv2->pluck('id')))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        return view('ShopFrontend.subVendor', compact('banners', 'regions', 'adv1', 'adv2', 'adv3'));
     }
     public function vendor_detail($slug)
     {
@@ -263,8 +282,9 @@ class FrontendConroller extends Controller
         $categories = $subvendor->products->pluck('category')->unique('id');
         $products = Product::where('user_id', $user->id)->with('brand')->get();
         $brands = Brand::where('status', 1)->take(2)->get();
+        $ads = Advertisement::where('status', 1)->take(2)->get();
 
-        return view('ShopFrontend.subvendor-detail', compact('user','subvendor', 'categories', 'products', 'brands'));
+        return view('ShopFrontend.subvendor-detail', compact('user','subvendor', 'categories', 'products', 'brands', 'ads'));
     }
 
     public function eventViewMore($slug)
