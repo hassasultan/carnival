@@ -113,6 +113,9 @@
 
                             <div class="view-all-categori">
                                 <a class="open-cate btn-view-all">All Categories</a>
+                                @foreach ($subvendors as $row)
+                                    <a class="open-cate btn-view-all">{{ $row->name }}</a>
+                                @endforeach
                             </div>
                         </div>
 
@@ -197,12 +200,17 @@
 
                     <!-- banner -->
                     <div class="banner-slide">
-                        <a href="" class="box-img"><img
+                        @foreach ($ads as $row)
+                            <a href="" class="box-img"><img
+                                    src="{{ asset('images/' . $row->image) }}"
+                                    alt="banner-slide"></a>
+                        @endforeach
+                        {{-- <a href="" class="box-img"><img
                                 src="{{ asset('shopAssets/images/media/index1/banner-slide1.jpg') }}"
                                 alt="banner-slide"></a>
                         <a href="" class="box-img"><img
                                 src="{{ asset('shopAssets/images/media/index1/banner-slide2.jpg') }}"
-                                alt="banner-slide"></a>
+                                alt="banner-slide"></a> --}}
                     </div><!-- banner -->
 
                 </div>

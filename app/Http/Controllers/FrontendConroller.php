@@ -210,10 +210,12 @@ class FrontendConroller extends Controller
     {
         $user = User::with('banners')->whereSlug($slug)->first();
         $vendor = Vendor::with('products', 'products.category')->where('user_id', $user->id)->first();
+        $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
         $categories = $vendor->products->pluck('category')->unique('id');
         $products = Product::where('user_id', $user->id)->with('brand')->get();
+        $ads = Advertisement::where('status', 1)->take(2)->get();
 
-        return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products'));
+        return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors'));
     }
     public function get_vendor_products($slug, Request $request)
     {
