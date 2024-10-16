@@ -50,7 +50,7 @@
 
                         <div class="block-content">
                             <ul class="ui-categori">
-                                <li class="parent">
+                                {{-- <li class="parent">
                                     <a href="">
                                         <span class="icon"><img
                                                 src="{{ asset('shopAssets/images/icon/index1/nav-cat1.png') }}"
@@ -108,15 +108,25 @@
                                                 alt="nav-cat"></span>
                                         Flashlights & Lamps
                                     </a>
-                                </li>
+                                </li> --}}
+                                @foreach ($subvendors as $row)
+                                    <li class="cat-link-orther">
+                                        <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
+                                            <span class="icon"><img
+                                                    src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
+                                                    alt="nav-cat"></span>
+                                            {{ $row->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
 
-                            <div class="view-all-categori">
-                                {{-- <a class="open-cate btn-view-all">All Categories</a> --}}
+                            {{-- <div class="view-all-categori">
+                                <a class="open-cate btn-view-all">All Categories</a>
                                 @foreach ($subvendors as $row)
                                     <a href="{{ route('front.subVendor.detail', $row->user->slug) }}" class="open-cate btn-view-all">{{ $row->name }}</a>
                                 @endforeach
-                            </div>
+                            </div> --}}
                         </div>
 
                     </div><!-- categori -->
@@ -184,12 +194,15 @@
                             data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
 
                             @foreach ($vendor->user->banners as $key => $banner)
-                                <div class="item item{{ ++$key }}" style="background-image: url('{{ asset($banner->banner) }}');" data-dot="{{ $loop->iteration }}">
+                                <div class="item item{{ ++$key }}"
+                                    style="background-image: url('{{ asset($banner->banner) }}');"
+                                    data-dot="{{ $loop->iteration }}">
                                     <div class="description">
                                         <span class="title">{{ $banner->title }}</span>
                                         <span class="subtitle">{{ $banner->subtitle }}</span>
                                         <span class="des">{{ $banner->description }}</span>
-                                        <a href="{{ $banner->button_link ?? '#' }}" class="btn">{{ $banner->button_text ?? 'Shop Now' }}</a>
+                                        <a href="{{ $banner->button_link ?? '#' }}"
+                                            class="btn">{{ $banner->button_text ?? 'Shop Now' }}</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -201,8 +214,7 @@
                     <!-- banner -->
                     <div class="banner-slide">
                         @foreach ($ads as $row)
-                            <a href="" class="box-img"><img
-                                    src="{{ asset('images/' . $row->image) }}"
+                            <a href="" class="box-img"><img src="{{ asset('images/' . $row->image) }}"
                                     alt="banner-slide"></a>
                         @endforeach
                         {{-- <a href="" class="box-img"><img
@@ -1332,8 +1344,7 @@
                                                 <div class="product-item-actions">
                                                     <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
                                                     <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview"
-                                                        href=""><span>quickview</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
                                                 </div>
                                                 <button type="button" class="btn btn-cart"><span>Add to
                                                         Cart</span></button>
@@ -1366,8 +1377,7 @@
                                                 <div class="product-item-actions">
                                                     <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
                                                     <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview"
-                                                        href=""><span>quickview</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
                                                 </div>
                                                 <button type="button" class="btn btn-cart"><span>Add to
                                                         Cart</span></button>
@@ -5783,17 +5793,16 @@
                         <div class="product-item product-item-opt-1">
                             <div class="product-item-info">
                                 <div class="product-item-photo">`;
-                                    if(product.image != null && product.image != '')
-                                    {
-                                        productHtml += `
-                                        <a href="{{ route('get.products.detail','') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="{{ asset('productImage/${product.image}') }}" alt="${product.title}"></a>`;
-                                    }
-                                    else
-                                    {
-                                        productHtml += `
-                                        <a href="{{ route('get.products.detail','') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg" alt="${product.title}"></a>`;
-                                    }
-                                    productHtml += `
+                if (product.image != null && product.image != '') {
+                    productHtml +=
+                        `
+                                        <a href="{{ route('get.products.detail', '') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="{{ asset('productImage/${product.image}') }}" alt="${product.title}"></a>`;
+                } else {
+                    productHtml +=
+                        `
+                                        <a href="{{ route('get.products.detail', '') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg" alt="${product.title}"></a>`;
+                }
+                productHtml += `
                                     <div class="product-item-actions">
                                         <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
                                         <a href="#" class="btn btn-compare"><span>compare</span></a>
