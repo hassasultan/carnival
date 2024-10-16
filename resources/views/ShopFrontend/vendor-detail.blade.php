@@ -110,7 +110,7 @@
                                     </a>
                                 </li> --}}
                                 @foreach ($subvendors as $row)
-                                    <li class="cat-link-orther">
+                                    <li class="">
                                         <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
                                             <span class="icon"><img
                                                     src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
