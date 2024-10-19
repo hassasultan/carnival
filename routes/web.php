@@ -44,6 +44,7 @@ use App\Http\Controllers\EventsCountryTabController;
 use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\VendorGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +71,9 @@ Route::get('/package/detail', [FrontendConroller::class, 'package_detail'])->nam
 Route::get('/shop', [FrontendConroller::class, 'shop_home'])->name('front.shop');
 Route::get('/get-discounted', [FrontendConroller::class, 'getDiscounted'])->name('front.get_discounted');
 Route::get('/mascamps', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
+Route::get('/about-us/{slug}', [FrontendConroller::class, 'about_us'])->name('details.aboutUs');
+Route::get('/{slug}/event-listing', [FrontendConroller::class, 'vendorEvents'])->name('event.listing.vendor');
+Route::get('/{slug}/gallery', [FrontendConroller::class, 'vendorGallery'])->name('front.gallery.vendor');
 Route::get('/contact-us', [FrontendConroller::class, 'contact_us'])->name('front.contact');
 Route::get('/marketplace', [FrontendConroller::class, 'marketplace'])->name('front.marketplace');
 Route::get('/compare-produts', [FrontendConroller::class, 'compare_produts'])->name('front.compare.produts');
@@ -286,6 +290,9 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     // Create Vendor
     Route::post('/users/register', [UserManagementController::class, 'register'])->name('vendor.subvendor.register');
     Route::get('/subvendor/create', [VendorController::class, 'createSubvendor'])->name('vendor.subvendor.create');
+
+    //Gallery CRUD
+    Route::resource('vendor_site_gallery', VendorGalleryController::class);
 });
 
 

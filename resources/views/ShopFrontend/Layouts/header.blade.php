@@ -281,8 +281,8 @@
                                                 {{ __('Logout') }}
                                             </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}"
-                                                method="POST" class="d-none">
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
                                                 @csrf
                                             </form>
                                         </li>
@@ -658,46 +658,45 @@
                             </div><!-- categori -->
 
                             <!-- search -->
-                            <div class="block-search">
-                                <div class="block-title">
-                                    <span>Search</span>
-                                </div>
-                                <div class="block-content">
-                                    <div class="categori-search  ">
-                                        <select data-placeholder="All Categories" class="categori-search-option"
-                                            style="display: none;">
-                                            <option>All Categories</option>
-                                            <option>Fashion</option>
-                                            <option>Tops Blouses</option>
-                                            <option>Clothing</option>
-                                            <option>Furniture</option>
-                                            <option>Bathtime Goods</option>
-                                            <option>Shower Curtains</option>
-                                        </select>
-                                        {{-- <div class="chosen-container chosen-container-single" style="width: 128px;"
-                                                title="">
-                                                <a class="chosen-single chosen-default"><span>All Categories</span>
-                                                    <div><b></b></div>
-                                                </a>
-                                                <div class="chosen-drop">
-                                                    <div class="chosen-search"><input type="text" autocomplete="off">
-                                                    </div>
-                                                    <ul class="chosen-results"></ul>
+
+                            @if (Route::is('front.vendor.detail'))
+                                <ul class="category-links">
+                                    <li><a href="{{ route('details.aboutUs', $vendor->user->slug) }}">About us</a></li>
+                                    <li><a href="mailto:{{ $vendor->email }}?subject=Inquiry&body=Hello {{ $vendor->name }},">Send a message</a></li>
+                                    <li><a href="{{ route('event.listing.vendor', $vendor->user->slug) }}">Events</a></li>
+                                    <li><a href="{{ route('front.gallery.vendor', $vendor->user->slug) }}">Gallery</a></li>
+                                </ul>
+                            @else
+                                <div class="block-search">
+                                    <div class="block-title">
+                                        <span>Search</span>
+                                    </div>
+                                    <div class="block-content">
+                                        <div class="categori-search  ">
+                                            <select data-placeholder="All Categories" class="categori-search-option"
+                                                style="display: none;">
+                                                <option>All Categories</option>
+                                                <option>Fashion</option>
+                                                <option>Tops Blouses</option>
+                                                <option>Clothing</option>
+                                                <option>Furniture</option>
+                                                <option>Bathtime Goods</option>
+                                                <option>Shower Curtains</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-search">
+                                            <form>
+                                                <div class="box-group">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Type Your Keyword...">
+                                                    <button class="btn btn-search"
+                                                        type="button"><span>search</span></button>
                                                 </div>
-                                            </div> --}}
-                                    </div>
-                                    <div class="form-search">
-                                        <form>
-                                            <div class="box-group">
-                                                <input type="text" class="form-control"
-                                                    placeholder="Type Your Keyword...">
-                                                <button class="btn btn-search"
-                                                    type="button"><span>search</span></button>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
 
                             <!-- menu -->
                             <div class="block-nav-menu">

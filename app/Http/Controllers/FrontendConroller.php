@@ -228,7 +228,7 @@ class FrontendConroller extends Controller
     public function vendor_detail($slug)
     {
         $user = User::with('banners')->whereSlug($slug)->first();
-        $vendor = Vendor::with('products', 'products.category')->where('user_id', $user->id)->first();
+        $vendor = Vendor::with('user', 'products', 'products.category')->where('user_id', $user->id)->first();
         $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
         $categories = $vendor->products->pluck('category')->unique('id');
         $products = Product::where('user_id', $user->id)->with('brand')->get();
@@ -305,5 +305,30 @@ class FrontendConroller extends Controller
 
         return $discounted_products;
         // return view('partials.shop_discount', compact('discounted_products'));
+    }
+
+    public function about_us($slug)
+    {
+        $user = User::whereSlug($slug)->first();
+        $vendor = Vendor::with('user')->where('user_id', $user->id)->first();
+        
+        return view('ShopFrontend.vendorAboutUs', compact('vendor'));
+    }
+
+    public function vendorEvents($slug)
+    {
+        $user = User::whereSlug($slug)->first();
+        $vendor = Vendor::with('user')->where('user_id', $user->id)->first();
+        
+        return view('ShopFrontend.vendorEvents', compact('vendor'));
+    }
+
+    public function vendorGallery($slug)
+    {
+        $user = User::whereSlug($slug)->first();
+        $vendor = Vendor::with('user')->where('user_id', $user->id)->first();
+        $siteGallery = SiteGallery::get();
+        
+        return view('front.gallery', compact('vendor'));
     }
 }

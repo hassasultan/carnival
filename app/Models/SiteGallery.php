@@ -10,5 +10,9 @@ class SiteGallery extends Model
     use HasFactory;
     protected $table = 'site_gallery';
 
-    protected $fillable = ['image', 'status'];
+    protected $fillable = [
+        'user_id',
+        'image',
+        'status',
+    ];
 }
