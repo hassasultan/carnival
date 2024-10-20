@@ -45,6 +45,7 @@ use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\VendorGalleryController;
+use App\Http\Controllers\SubvendorGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,8 +73,8 @@ Route::get('/shop', [FrontendConroller::class, 'shop_home'])->name('front.shop')
 Route::get('/get-discounted', [FrontendConroller::class, 'getDiscounted'])->name('front.get_discounted');
 Route::get('/mascamps', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
 Route::get('/about-us/{slug}', [FrontendConroller::class, 'about_us'])->name('details.aboutUs');
-Route::get('/{slug}/event-listing', [FrontendConroller::class, 'vendorEvents'])->name('event.listing.vendor');
-Route::get('/{slug}/gallery', [FrontendConroller::class, 'vendorGallery'])->name('front.gallery.vendor');
+Route::get('/{slug}/event-listing', [FrontendConroller::class, 'myEvents'])->name('myEevent.listing');
+Route::get('/{slug}/gallery', [FrontendConroller::class, 'myGallery'])->name('front.myGallery');
 Route::get('/contact-us', [FrontendConroller::class, 'contact_us'])->name('front.contact');
 Route::get('/marketplace', [FrontendConroller::class, 'marketplace'])->name('front.marketplace');
 Route::get('/compare-produts', [FrontendConroller::class, 'compare_produts'])->name('front.compare.produts');
@@ -137,7 +138,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     // Products Crud
     Route::resource('products', ProductController::class)->except(['update']);
     Route::post('/product/{product}', [ProductController::class, 'update'])->name('products.update');
-    
+
 
     // Costumes Crud
     Route::resource('costumes', CostumeController::class);
@@ -292,7 +293,14 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     Route::get('/subvendor/create', [VendorController::class, 'createSubvendor'])->name('vendor.subvendor.create');
 
     //Gallery CRUD
-    Route::resource('vendor_site_gallery', VendorGalleryController::class);
+    // Route::resource('vendor_site_gallery', VendorGalleryController::class);
+    Route::get('/vendor_site_gallery', [VendorGalleryController::class, 'index'])->name('vendor_site_gallery.index');
+    Route::get('/vendor_site_gallery/create', [VendorGalleryController::class, 'create'])->name('vendor_site_gallery.create');
+    Route::post('/vendor_site_gallery', [VendorGalleryController::class, 'store'])->name('vendor_site_gallery.store');
+    Route::get('/vendor_site_gallery/{id}', [VendorGalleryController::class, 'show'])->name('vendor_site_gallery.show');
+    Route::get('/vendor_site_gallery/{id}/edit', [VendorGalleryController::class, 'edit'])->name('vendor_site_gallery.edit');
+    Route::put('/vendor_site_gallery/{id}', [VendorGalleryController::class, 'update'])->name('vendor_site_gallery.update');
+    Route::delete('/vendor_site_gallery/{id}', [VendorGalleryController::class, 'destroy'])->name('vendor_site_gallery.destroy');
 });
 
 
@@ -331,6 +339,14 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
     Route::put('/costumes/update/{id}', [SubVendorCostumeController::class, 'update'])->name('subVendor.costumes.update');
     Route::delete('/costumes/{costume}', [SubVendorCostumeController::class, 'destroy'])->name('subVendor.costumes.destroy');
 
+    //Gallery CRUD
+    Route::get('/subvendor_site_gallery', [SubvendorGalleryController::class, 'index'])->name('subvendor_site_gallery.index');
+    Route::get('/subvendor_site_gallery/create', [SubvendorGalleryController::class, 'create'])->name('subvendor_site_gallery.create');
+    Route::post('/subvendor_site_gallery', [SubvendorGalleryController::class, 'store'])->name('subvendor_site_gallery.store');
+    Route::get('/subvendor_site_gallery/{id}', [SubvendorGalleryController::class, 'show'])->name('subvendor_site_gallery.show');
+    Route::get('/subvendor_site_gallery/{id}/edit', [SubvendorGalleryController::class, 'edit'])->name('subvendor_site_gallery.edit');
+    Route::put('/subvendor_site_gallery/{id}', [SubvendorGalleryController::class, 'update'])->name('subvendor_site_gallery.update');
+    Route::delete('/subvendor_site_gallery/{id}', [SubvendorGalleryController::class, 'destroy'])->name('subvendor_site_gallery.destroy');
 });
 
 

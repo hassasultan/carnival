@@ -1,4 +1,4 @@
-@extends('dashboard.vendor.layouts.app')
+@extends('dashboard.subVendor.layouts.app')
 
 @section('content')
     <div class="row justify-content-center">
@@ -7,7 +7,7 @@
             <div class="row my-4">
                 <div class="col-md-12">
                     <div class="text-right">
-                        <a href="{{ route('vendor_site_gallery.create') }}" class="btn btn-primary">
+                        <a href="{{ route('subvendor_site_gallery.create') }}" class="btn btn-primary">
                             <span class="fe fe-plus fe-16 mr-3"></span>New Image
                         </a>
                     </div>
@@ -32,11 +32,11 @@
                                                 width="50"></td>
                                         <td>{{ $siteGallery->status == 1 ? 'Enabled' : 'Disabled' }}</td>
                                         <td>
-                                            <a href="{{ route('vendor_site_gallery.show', $siteGallery->id) }}"
+                                            <a href="{{ route('subvendor_site_gallery.show', $siteGallery->id) }}"
                                                 class="btn btn-info">Show</a>
-                                            <a href="{{ route('vendor_site_gallery.edit', $siteGallery->id) }}"
+                                            <a href="{{ route('subvendor_site_gallery.edit', $siteGallery->id) }}"
                                                 class="btn btn-primary">Edit</a>
-                                            <form action="{{ route('vendor_site_gallery.destroy', $siteGallery->id) }}"
+                                            <form action="{{ route('subvendor_site_gallery.destroy', $siteGallery->id) }}"
                                                 method="POST" style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')

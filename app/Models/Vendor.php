@@ -59,4 +59,9 @@ class Vendor extends Model
     {
         return $this->belongsTo(Region::class, 'continent');
     }
+
+    public function gallery()
+    {
+        return $this->hasMany(SiteGallery::class, 'user_id', 'user_id');
+    }
 }

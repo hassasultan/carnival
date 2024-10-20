@@ -1564,11 +1564,11 @@
                         <div class="tour-layer delay-1"></div>
                         <div class="vertical-align">
                             <!-- <h4 class="ib-subtitle hover-it"><span>-20%</span> off</h4>
-                               <h3 class="hover-it">honeymoon cruise</h3>
-                                <p>Cursus libero purus ac cursus ut sed.Nunc cursus libero purus ac congue arcu.</p>
-                                <div class="ib-undertitle">from only</div>
-                                <div class="ib-price">$860</div>
-                                <a href="#" class="c-button b-40 bg-blue-3 hv-transparent"><span>view more</span></a> -->
+                                       <h3 class="hover-it">honeymoon cruise</h3>
+                                        <p>Cursus libero purus ac cursus ut sed.Nunc cursus libero purus ac congue arcu.</p>
+                                        <div class="ib-undertitle">from only</div>
+                                        <div class="ib-price">$860</div>
+                                        <a href="#" class="c-button b-40 bg-blue-3 hv-transparent"><span>view more</span></a> -->
                         </div>
                     </div>
                 </div>

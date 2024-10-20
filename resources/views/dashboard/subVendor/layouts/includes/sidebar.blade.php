@@ -91,6 +91,12 @@
                         {{-- <span class="badge badge-pill badge-primary">New</span> --}}
                     </a>
                 </li>
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="{{ route('subvendor_site_gallery.index') }}">
+                        <i class="fe fe-layers fe-16"></i>
+                        <span class="ml-3 item-text">Gallery</span>
+                    </a>
+                </li>
             </ul>
         @endif
         {{-- @if (auth()->user()->hasPermission('blogs')) --}}

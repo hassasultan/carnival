@@ -1,4 +1,4 @@
-@extends('dashboard.vendor.layouts.app')
+@extends('dashboard.subVendor.layouts.app')
 
 @section('content')
     <div class="row justify-content-center">
@@ -7,7 +7,7 @@
             <div class="card shadow">
                 <div class="card-body">
                     {{-- {{ dd($siteGallery->toArray()) }} --}}
-                    <form action="{{ route('vendor_site_gallery.update', $siteGallery->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('subvendor_site_gallery.update', $siteGallery->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">

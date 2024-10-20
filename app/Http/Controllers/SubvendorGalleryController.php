@@ -6,17 +6,17 @@ use App\Models\SiteGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class VendorGalleryController extends Controller
+class SubvendorGalleryController extends Controller
 {
     public function index()
     {
         $siteGalleries = SiteGallery::where('user_id', Auth::id())->get();
-        return view('dashboard.vendor.site_gallery.index', compact('siteGalleries'));
+        return view('dashboard.subVendor.site_gallery.index', compact('siteGalleries'));
     }
 
     public function create()
     {
-        return view('dashboard.vendor.site_gallery.create');
+        return view('dashboard.subVendor.site_gallery.create');
     }
 
     public function store(Request $request)
@@ -40,20 +40,20 @@ class VendorGalleryController extends Controller
             }
         }
 
-        return redirect()->route('vendor_site_gallery.index')
+        return redirect()->route('subvendor_site_gallery.index')
             ->with('success', 'Images added successfully.');
     }
 
     public function show($id)
     {
         $siteGallery = SiteGallery::find($id);
-        return view('dashboard.vendor.site_gallery.show', compact('siteGallery'));
+        return view('dashboard.subVendor.site_gallery.show', compact('siteGallery'));
     }
 
     public function edit($id)
     {
         $siteGallery = SiteGallery::find($id);
-        return view('dashboard.vendor.site_gallery.edit', compact('siteGallery'));
+        return view('dashboard.subVendor.site_gallery.edit', compact('siteGallery'));
     }
 
     public function update(Request $request, $id)
@@ -76,7 +76,7 @@ class VendorGalleryController extends Controller
             $siteGallery->update($request->only(['status']));
         }
 
-        return redirect()->route('vendor_site_gallery.index')
+        return redirect()->route('subvendor_site_gallery.index')
             ->with('success', 'Image updated successfully.');
     }
 
@@ -89,7 +89,7 @@ class VendorGalleryController extends Controller
 
         $siteGallery->delete();
 
-        return redirect()->route('vendor_site_gallery.index')
+        return redirect()->route('subvendor_site_gallery.index')
             ->with('success', 'Image deleted successfully.');
     }
 }

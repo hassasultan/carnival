@@ -661,10 +661,25 @@
 
                             @if (Route::is('front.vendor.detail'))
                                 <ul class="category-links">
-                                    <li><a href="{{ route('details.aboutUs', $vendor->user->slug) }}">About us</a></li>
-                                    <li><a href="mailto:{{ $vendor->email }}?subject=Inquiry&body=Hello {{ $vendor->name }},">Send a message</a></li>
-                                    <li><a href="{{ route('event.listing.vendor', $vendor->user->slug) }}">Events</a></li>
-                                    <li><a href="{{ route('front.gallery.vendor', $vendor->user->slug) }}">Gallery</a></li>
+                                    <li><a href="{{ route('details.aboutUs', $vendor->user->slug) }}">About us</a>
+                                    </li>
+                                    <li><a
+                                            href="mailto:{{ $vendor->email }}?subject=Inquiry&body=Hello {{ $vendor->name }},">Send
+                                            a message</a></li>
+                                    <li><a href="{{ route('myEevent.listing', $vendor->user->slug) }}">Events</a></li>
+                                    <li><a href="{{ route('front.myGallery', $vendor->user->slug) }}">Gallery</a></li>
+                                </ul>
+                            @elseif(Route::is('front.subVendor.detail'))
+                                <ul class="category-links">
+                                    <li><a href="{{ route('details.aboutUs', $subvendor->user->slug) }}">About us</a>
+                                    </li>
+                                    <li><a
+                                            href="mailto:{{ $subvendor->email }}?subject=Inquiry&body=Hello {{ $subvendor->name }},">Send
+                                            a message</a></li>
+                                    <li><a href="{{ route('myEevent.listing', $subvendor->user->slug) }}">Events</a>
+                                    </li>
+                                    <li><a href="{{ route('front.myGallery', $subvendor->user->slug) }}">Gallery</a>
+                                    </li>
                                 </ul>
                             @else
                                 <div class="block-search">
