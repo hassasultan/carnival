@@ -83,6 +83,16 @@
                                 </section>
                                 <section id="details" class="tab-content active">
                                     <div class="form-group mb-3">
+                                        <label for="user_id">Vendor</label>
+                                        <select id="user_id" value="{{ old('user_id') }}" name="user_id"
+                                            class="form-control" required>
+                                            <option value="">Select Vendor</option>
+                                            @foreach ($vendors as $vendor)
+                                                <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-3">
                                         <label for="name">Title</label>
                                         <input type="text" id="name" name="name" value="{{ old('name') }}"
                                             class="form-control" placeholder="Enter event title" required>

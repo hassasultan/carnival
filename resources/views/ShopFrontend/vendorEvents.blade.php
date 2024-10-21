@@ -576,10 +576,11 @@
                     data-slides-per-view="responsive" data-mob-slides="1" data-xs-slides="2" data-sm-slides="2"
                     data-md-slides="3" data-lg-slides="4" data-add-slides="4">
                     <div class="swiper-wrapper">
+                        @foreach ($events as $event)
                         <div class="swiper-slide">
                             <div class="hotel-item style-6">
                                 <div class="radius-top">
-                                    <img src="https://carnivalguide.co/travel/images/kidscarn.jpg" alt="">
+                                    <img src="{{ asset('') }}" alt="">
                                 </div>
                                 <div class="title">
                                     <div class="tour-info-line clearfix">
@@ -594,7 +595,7 @@
                                             <span class="font-style-2 color-grey-3">alaska</span>
                                         </div>
                                     </div>
-                                    <h4><b>Kiddies Carnival</b></h4>
+                                    <h4><b>{{ $event->title }}</b></h4>
                                     <div class="rate-wrap">
                                         <div class="rate">
                                             <span class="fa fa-star color-yellow"></span>
@@ -613,7 +614,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide">
+                        @endforeach
+                        {{-- <div class="swiper-slide">
                             <div class="hotel-item style-6">
                                 <div class="radius-top">
                                     <img src="https://carnivalguide.co/travel/images/dimanchegras.jpg" alt="">
@@ -871,7 +873,7 @@
                                     <a href="#" class="c-button bg-dr-blue-2 hv-dr-blue-2-o fr">book now</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="pagination poin-style-2"></div>
                 </div>

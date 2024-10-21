@@ -316,7 +316,9 @@ class FrontendConroller extends Controller
     public function myEvents($slug)
     {
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
-        return view('ShopFrontend.vendorEvents', compact('user'));
+        $events = Event::where('user_id', $user->id)->get();
+
+        return view('ShopFrontend.vendorEvents', compact('user', 'events'));
     }
 
     public function myGallery($slug)

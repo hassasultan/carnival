@@ -8,6 +8,7 @@ use App\Models\Package;
 use App\Models\Category;
 use App\Models\EventTicket;
 use App\Models\EventImage;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Services\EventService;
@@ -27,22 +28,20 @@ class EventController extends Controller
     {
         $packages = Package::all();
         $ticktes = Ticket::all();
-        $categories = Category::where('type','events')->get();
-        $show_events = Event::with("category","package");
-        if($request->has('search') && $request->search != null && $request->search != '')
-        {
-            $show_events = $show_events->where('name','LIKE','%'.$request->search.'%')->orWhere('eventType','LIKE','%'.$request->search.'%')
-            ->orWhere('start_date','LIKE','%'.$request->search.'%')
-            ->orWhere('start_time','LIKE','%'.$request->search.'%')
-            ->orWhere('end_date','LIKE','%'.$request->search.'%')
-            ->orWhere('end_time','LIKE','%'.$request->search.'%')
-            ->orWhereHas('category',function($query) use ($request) {
-                $query->where('title','LIKE','%'.$request->search.'%');
-            });
+        $categories = Category::where('type', 'events')->get();
+        $show_events = Event::with("category", "package");
+        if ($request->has('search') && $request->search != null && $request->search != '') {
+            $show_events = $show_events->where('name', 'LIKE', '%' . $request->search . '%')->orWhere('eventType', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('start_date', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('start_time', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('end_date', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('end_time', 'LIKE', '%' . $request->search . '%')
+                ->orWhereHas('category', function ($query) use ($request) {
+                    $query->where('title', 'LIKE', '%' . $request->search . '%');
+                });
         }
         $show_events = $show_events->paginate(10);
-        if($request->has("type"))
-        {
+        if ($request->has("type")) {
             return $show_events;
         }
         $events = Event::all(['id', 'name', 'start_date', 'end_date']);
@@ -53,10 +52,14 @@ class EventController extends Controller
     {
         $packages = Package::all();
         $ticktes = Ticket::all();
-        $categories = Category::where('type','events')->get();
-        $show_events = Event::with("category","package");
+        $categories = Category::where('type', 'events')->get();
+        $show_events = Event::with("category", "package");
         $events = Event::all(['id', 'name', 'start_date', 'end_date']);
-        return view('dashboard.admin.events.create', compact('packages', 'categories', 'ticktes', 'show_events', 'events'));
+        $vendors = Vendor::WhereHas('user', function ($query) {
+            $query->where('status', 1);
+        })->get();
+
+        return view('dashboard.admin.events.create', compact('packages', 'categories', 'ticktes', 'show_events', 'events', 'vendors'));
     }
 
     public function store(Request $request)
@@ -82,7 +85,8 @@ class EventController extends Controller
             'status' => 'required|in:active,inactive',
         ]);
 
-        $request['user_id'] = Auth::id();
+        $request['user_id'] = request()->has('user_id') ? request('user_id') : Auth::id();
+        // $request['user_id'] = Auth::id();
 
         $request['booking_start_time_btn'] = $request->has('booking-start-time-btn') ? 1 : 0;
         $request['booking_end_time_btn'] = $request->has('booking-end-time-btn') ? 1 : 0;
