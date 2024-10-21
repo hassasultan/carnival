@@ -658,12 +658,12 @@
                             </div><!-- categori -->
 
                             <!-- search -->
-                            @if (isset($subvendor))
-                                @php
-                                    $vendor = $subvendor;
-                                @endphp
-                            @endif
                             @if (Route::is('front.vendor.detail') || Route::is('details.aboutUs') || Route::is('front.subVendor.detail'))
+                                @if (isset($subvendor))
+                                    @php
+                                        $vendor = $subvendor;
+                                    @endphp
+                                @endif
                                 <ul class="category-links">
                                     <li><a href="{{ route('details.aboutUs', $vendor->user->slug) }}">About us</a>
                                     </li>
