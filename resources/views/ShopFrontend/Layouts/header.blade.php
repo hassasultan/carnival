@@ -672,10 +672,9 @@
                                 <ul class="category-links">
                                     <li><a href="{{ route('details.aboutUs', $user->slug) }}">About us</a>
                                     </li>
-                                    <li><a href="{{ route('details.aboutUs', $user->slug) }}">About us</a>
-                                    </li>
+
                                     <li><a
-                                            href="mailto:{{ $email }}?subject=Inquiry&body=Hello {{ $name }},">Send
+                                            href="mailto:{{ $user->email }}?subject=Inquiry&body=Hello {{ $user->name }},">Send
                                             a message</a></li>
                                     <li><a href="{{ route('myEevent.listing', $user->slug) }}">Events</a></li>
                                     <li><a href="{{ route('front.myGallery', $user->slug) }}">Gallery</a></li>
