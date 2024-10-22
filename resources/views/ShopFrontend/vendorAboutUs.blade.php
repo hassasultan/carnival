@@ -32,17 +32,16 @@
 
                     <!-- Nav tabs -->
                     <ul class="nav nav-pills" role="tablist">
-                        <li role="presentation" class="active"><a href="#about" role="tab" data-toggle="tab">Product
-                                Details </a></li>
-                        <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">Section Details
+                        <li role="presentation" class="active"><a href="#about" role="tab" data-toggle="tab">About </a></li>
+                        <li role="presentation"><a href="#socialinks" role="tab" data-toggle="tab">SocialLinks
                             </a>
                         </li>
-                        <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">reviews</a></li>
+                        {{-- <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">S</a></li>
                         <li role="presentation"><a href="#additional" role="tab" data-toggle="tab">Payment
                                 Plan</a></li>
                         <li role="presentation"><a href="#tab-cust" role="tab" data-toggle="tab">Additional
                                 Info</a>
-                        </li>
+                        </li> --}}
                     </ul>
 
                     <!-- Tab panes -->
@@ -126,23 +125,70 @@
                                         </ul>
 
                                         {{-- <h3>User Information</h3>
-                                    <p><strong>Full Name:</strong> {{ $vendor->user->full_name }}</p>
-                                    <p><strong>Email:</strong> {{ $vendor->user->email }}</p>
-                                    <p><strong>Phone:</strong> {{ $vendor->user->phone }}</p>
-                                    <p><strong>Address:</strong> {{ $vendor->user->address }}, {{ $vendor->user->city }}, {{ $vendor->user->state }}, {{ $vendor->user->country }} - {{ $vendor->user->zipcode }}</p> --}}
+                                            <p><strong>Full Name:</strong> {{ $vendor->user->full_name }}</p>
+                                            <p><strong>Email:</strong> {{ $vendor->user->email }}</p>
+                                            <p><strong>Phone:</strong> {{ $vendor->user->phone }}</p>
+                                            <p><strong>Address:</strong> {{ $vendor->user->address }}, {{ $vendor->user->city }}, {{ $vendor->user->state }}, {{ $vendor->user->country }} - {{ $vendor->user->zipcode }}</p> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="tags">
-                            <div class="block-title">information</div>
-                            <div class="block-content">
-                                @if ($product->information != null)
-                                    {!! $product->information !!}
-                                @endif
+                        <div role="tabpanel" class="tab-pane" id="socialinks">
+                            <div class="page-content" id="contact">
+                                <div class="row">
+                                    <div id="contact_form_map" class="col-xs-12 col-sm-6">
+                                        <p><strong>Social Media Links:</strong></p>
+                                        <ul>
+                                            @php
+                                                $socialLinks =
+                                                    optional($user->vendor)->insta ?? optional($user->subvendor)->insta;
+                                                if ($socialLinks) {
+                                                    echo '<li><a href="' . $socialLinks . '">Instagram</a></li>';
+                                                }
+                                            @endphp
+                                            @if (optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook)
+                                                <li><a
+                                                        href="{{ optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook }}">Facebook</a>
+                                                </li>
+                                            @endif
+                                            @if (optional($user->vendor)->twitter ?? optional($user->subvendor)->twitter)
+                                                <li><a
+                                                        href="{{ optional($user->vendor)->twitter ?? optional($user->subvendor)->twitter }}">Twitter</a>
+                                                </li>
+                                            @endif
+                                            @if (optional($user->vendor)->linkedin ?? optional($user->subvendor)->linkedin)
+                                                <li><a
+                                                        href="{{ optional($user->vendor)->linkedin ?? optional($user->subvendor)->linkedin }}">LinkedIn</a>
+                                                </li>
+                                            @endif
+                                            @if (optional($user->vendor)->youtube ?? optional($user->subvendor)->youtube)
+                                                <li><a
+                                                        href="{{ optional($user->vendor)->youtube ?? optional($user->subvendor)->youtube }}">Youtube</a>
+                                                </li>
+                                            @endif
+                                            @if (optional($user->vendor)->tiktok ?? optional($user->subvendor)->tiktok)
+                                                <li><a
+                                                        href="{{ optional($user->vendor)->tiktok ?? optional($user->subvendor)->tiktok }}">Tiktok</a>
+                                                </li>
+                                            @endif
+                                            @if (optional($user->vendor)->wa_business_page ?? optional($user->subvendor)->wa_business_page)
+                                                <li><a
+                                                        href="{{ optional($user->vendor)->wa_business_page ?? optional($user->subvendor)->wa_business_page }}">WA
+                                                        Business Page</a>
+                                                </li>
+                                            @endif
+                                        </ul>
+
+                                        {{-- <h3>User Information</h3>
+                                            <p><strong>Full Name:</strong> {{ $vendor->user->full_name }}</p>
+                                            <p><strong>Email:</strong> {{ $vendor->user->email }}</p>
+                                            <p><strong>Phone:</strong> {{ $vendor->user->phone }}</p>
+                                            <p><strong>Address:</strong> {{ $vendor->user->address }}, {{ $vendor->user->city }}, {{ $vendor->user->state }}, {{ $vendor->user->country }} - {{ $vendor->user->zipcode }}</p> --}}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="reviews">
+                        {{-- <div role="tabpanel" class="tab-pane" id="reviews">
                             <div class="block-title">reviews</div>
                             <div class="block-content">
                                 @if ($product->reviews != null)
@@ -165,7 +211,7 @@
                                     {!! $product->guarantee !!}
                                 @endif
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <!-- product tab info -->
