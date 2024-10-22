@@ -310,7 +310,11 @@ class FrontendConroller extends Controller
     public function about_us($slug)
     {
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
-        return view('ShopFrontend.vendorAboutUs', compact('user'));
+        $product = Product::with('variants', 'product_variant')->first();
+        $related = Product::where('category_id', $product->category_id)->where('user_id', $product->user_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->get();
+        $same_cat = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->take(9)->get();
+
+        return view('ShopFrontend.vendorAboutUs', compact('user', 'product', 'related', 'same_cat'));
     }
 
     public function myEvents($slug)
@@ -323,11 +327,11 @@ class FrontendConroller extends Controller
 
     public function myGallery($slug)
     {
-        $user = User::whereSlug($slug)->first();
+        $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
         $siteGallery = SiteGallery::where('user_id', $user->id)
             ->where('status', 1)
             ->get();
 
-        return view('front.gallery', compact('siteGallery'));
+        return view('ShopFrontend.vendorGallery', compact('user', 'siteGallery'));
     }
 }

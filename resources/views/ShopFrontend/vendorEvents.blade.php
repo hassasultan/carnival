@@ -580,7 +580,8 @@
                         <div class="swiper-slide">
                             <div class="hotel-item style-6">
                                 <div class="radius-top">
-                                    <img src="{{ asset('') }}" alt="">
+                                    {{-- <img src="{{ asset('') }}" alt=""> --}}
+                                    <img src="https://carnivalguide.co/travel/img/home_9/tour_1.jpg" alt="">
                                 </div>
                                 <div class="title">
                                     <div class="tour-info-line clearfix">
