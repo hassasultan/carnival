@@ -23,10 +23,12 @@
                         <div class="owl-carousel " data-nav="true" data-dots="false" data-margin="0" data-items='1'
                             data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
                             <div class="item ">
-                                <a href=""><img src="https://carnivalguide.co/travel/images/caribt.jpg" alt="category-images"></a>
+                                <a href=""><img src="{{ asset('shopAssets/images/media/category-images1.jpg') }}"
+                                        alt="category-images"></a>
                             </div>
                             <div class="item ">
-                                <a href=""><img src="https://carnivalguide.co/travel/images/cococolat.jpg" alt="category-images"></a>
+                                <a href=""><img src="{{ asset('shopAssets/images/media/category-images2.jpg') }}"
+                                        alt="category-images"></a>
                             </div>
                         </div>
                     </div><!-- images categori -->
@@ -723,16 +725,16 @@
                 // Apply skeleton loading structure
                 for (let i = 0; i < 18; i++) { // Assuming 9 events per page
                     var skeletonHtml = `
-                <li class="col-sm-4 event-item">
-                    <div class="skeleton-item">
-                        <div class="skeleton-content">
-                            <div class="skeleton-line" style="width: 80%;"></div>
-                            <div class="skeleton-line" style="width: 60%;"></div>
-                            <div class="skeleton-line" style="width: 70%;"></div>
-                        </div>
-                    </div>
-                </li>
-            `;
+                        <li class="col-sm-4 event-item">
+                            <div class="skeleton-item">
+                                <div class="skeleton-content">
+                                    <div class="skeleton-line" style="width: 80%;"></div>
+                                    <div class="skeleton-line" style="width: 60%;"></div>
+                                    <div class="skeleton-line" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                        </li>
+                    `;
                     $('#event-listing').append(skeletonHtml);
                 }
                 $.ajax({
@@ -751,38 +753,33 @@
                             if (event.banner != null && event.banner != '') {
                                 image = "{{ asset('eventBanner/') }}/" + event.banner;
                             } else {
-                                image =
-                                    'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                image = 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                             }
                             var eventHtml = `
-                <li class="col-sm-4 event-item">
-                    <div class="event-item-opt-1">
-                        <div class="event-item-info">
-                            <div class="event-item-photo">
-                                <a href="" class="event-item-img">
-                                    <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
-                                </a>
-                                {{-- <div class="event-item-actions">
-                                    <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
-                                    <a href="#" class="btn btn-compare"><span>compare</span></a>
-                                    <a href="#" class="btn btn-quickview"><span>quickview</span></a>
-                                </div> --}}
-                                <span class="event-item-label label-date">${event.start_date}</span>
-                            </div>
-                            <div class="event-item-detail">
-                                <strong class="event-item-name"><a href="">${event.name}</a></strong>
-                                <div class="clearfix">
-                                    <div class="event-item-description">
-                                        <p>${event.description.substring(0, 100)}...</p>
+                                <li class="col-sm-4 event-item">
+                                    <div class="event-item-opt-1">
+                                        <div class="event-item-info">
+                                            <div class="event-item-photo">
+                                                <a href="" class="event-item-img">
+                                                    <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
+                                                </a>
+                                                <span class="event-item-label label-date">${event.start_date}</span>
+                                            </div>
+                                            <div class="event-item-detail">
+                                                <strong class="event-item-name"><a href="">${event.name}</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="event-item-description">
+                                                        <p>${event.description.substring(0, 100)}...</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            `;
-                            $('#event-listing').html(eventHtml);
+                                </li>
+                            `;
+                            $('#event-listing').append(eventHtml);  // Append instead of replacing
                         });
+
 
 
                         // Display pagination links
@@ -791,26 +788,26 @@
                         nxt = 0;
                         pre = response.current_page - 1;
                         var previousPageHtml = `
-            <li class="action">
-                <a href="#" data-page="${pre}"><span><i aria-hidden="true" class="fa fa-angle-left"></i></span></a>
-            </li>
-        `;
+                            <li class="action">
+                                <a href="#" data-page="${pre}"><span><i aria-hidden="true" class="fa fa-angle-left"></i></span></a>
+                            </li>
+                        `;
                         $('.pagination').append(previousPageHtml);
                         for (let i = 1; i <= response.last_page; i++) {
                             var activeClass = i === response.current_page ? 'active' : '';
                             var paginationHtml = `
-                <li class="${activeClass}">
-                    <a href="#" data-page="${i}">${i}</a>
-                </li>
-            `;
+                                <li class="${activeClass}">
+                                    <a href="#" data-page="${i}">${i}</a>
+                                </li>
+                            `;
                             $('.pagination').append(paginationHtml);
                         }
                         nxt = response.current_page + 1;
                         var nextPageHtml = `
-            <li class="action">
-                <a href="#" data-page="${nxt}"><span><i aria-hidden="true" class="fa fa-angle-right"></i></span></a>
-            </li>
-        `;
+                            <li class="action">
+                                <a href="#" data-page="${nxt}"><span><i aria-hidden="true" class="fa fa-angle-right"></i></span></a>
+                            </li>
+                        `;
                         $('.pagination').append(nextPageHtml);
 
                     },
