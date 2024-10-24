@@ -23,10 +23,10 @@
                         <div class="owl-carousel " data-nav="true" data-dots="false" data-margin="0" data-items='1'
                             data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
                             <div class="item ">
-                                <a href=""><img src="images/media/category-images1.jpg" alt="category-images"></a>
+                                <a href=""><img src="https://carnivalguide.co/travel/images/caribt.jpg" alt="category-images"></a>
                             </div>
                             <div class="item ">
-                                <a href=""><img src="images/media/category-images2.jpg" alt="category-images"></a>
+                                <a href=""><img src="https://carnivalguide.co/travel/images/cococolat.jpg" alt="category-images"></a>
                             </div>
                         </div>
                     </div><!-- images categori -->
