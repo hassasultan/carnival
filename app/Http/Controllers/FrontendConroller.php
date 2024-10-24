@@ -310,7 +310,6 @@ class FrontendConroller extends Controller
     public function about_us($slug)
     {
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
-        $product = Product::with('variants', 'product_variant')->whereSlug('voluptatum-et-quod-t-1')->first();
         $related = Product::where('category_id', $product->category_id)->where('user_id', $product->user_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->get();
         $same_cat = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->take(9)->get();
 
