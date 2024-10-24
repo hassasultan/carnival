@@ -310,10 +310,7 @@ class FrontendConroller extends Controller
     public function about_us($slug)
     {
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
-        $related = Product::where('category_id', $product->category_id)->where('user_id', $product->user_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->get();
-        $same_cat = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->take(9)->get();
-
-        return view('ShopFrontend.vendorAboutUs', compact('user', 'product', 'related', 'same_cat'));
+        return view('ShopFrontend.vendorAboutUs', compact('user', 'related', 'same_cat'));
     }
 
     public function myEvents($slug)
