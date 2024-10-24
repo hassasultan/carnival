@@ -15,7 +15,14 @@ class EventService
 
     public function createEvent(array $data)
     {
+
         $eventData = $this->prepareEventData($data);
+
+        if (isset($data['banner'])) {
+            $banner = $this->uploadImage($data['banner'], 'eventBanner');
+            $eventData['banner'] = $banner;
+        }
+
         $event = Event::create($eventData);
 
         if (isset($data['additional_images'])) {
@@ -32,6 +39,11 @@ class EventService
     public function updateEvent(Event $event, array $data)
     {
         $eventData = $this->prepareEventData($data);
+
+        if (isset($data['banner'])) {
+            $banner = $this->uploadImage($data['banner'], 'eventBanner');
+            $eventData['banner'] = $banner;
+        }
 
         $event->update($eventData);
 
