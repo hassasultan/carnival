@@ -91,11 +91,6 @@
                                     Address:
                                     {{ optional($user->vendor)->address ?? (optional($user->subvendor)->address ?? 'N/A') }}
                                 </div>
-                                <div class="product-overview">
-                                    <div class="overview-content">
-                                        {!! $product->description !!}
-                                    </div>
-                                </div>
                             </div><!-- detail- product -->
 
                         </div><!-- Main detail -->
@@ -126,7 +121,7 @@
                             <div role="tabpanel" class="tab-pane active" id="description">
                                 <div class="block-title">Description</div>
                                 <div class="block-content">
-                                    {!! $product->description !!}
+                                    Description
 
                                 </div>
                             </div>
@@ -193,30 +188,6 @@
                                     </ul>
                                 </div>
                             </div>
-                            {{-- <div role="tabpanel" class="tab-pane" id="reviews">
-                                <div class="block-title">reviews</div>
-                                <div class="block-content">
-                                    @if ($product->reviews != null)
-                                        {!! $product->reviews !!}
-                                    @endif
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="additional">
-                                <div class="block-title">Extra Tabs</div>
-                                <div class="block-content">
-                                    @if ($product->extra != null)
-                                        {!! $product->extra !!}
-                                    @endif
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="tab-cust">
-                                <div class="block-title">Guarantees</div>
-                                <div class="block-content">
-                                    @if ($product->guarantee != null)
-                                        {!! $product->guarantee !!}
-                                    @endif
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                     <!-- product tab info -->
