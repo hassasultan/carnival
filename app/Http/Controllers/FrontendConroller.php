@@ -326,7 +326,7 @@ class FrontendConroller extends Controller
             ];
         });
 
-        // dd($events->toArray());
+        dd($events->toArray());
 
         return view('ShopFrontend.vendorEvents', compact('user', 'events', 'banners', 'categories'));
     }
