@@ -291,52 +291,14 @@
                                 <div class="filter-options-title">Categories</div>
                                 <div class="filter-options-content">
                                     <ol class="items">
-                                        <li class="item ">
-                                            <label>
-                                                <input type="checkbox"><span>Tops <span class="count">(20)</span></span>
-                                            </label>
-                                        </li>
-                                        <li class="item ">
-                                            <label>
-                                                <input type="checkbox"><span>Network & Computer <span
-                                                        class="count">(20)</span></span>
-                                            </label>
-                                        </li>
-                                        <li class="item ">
-                                            <label>
-                                                <input type="checkbox"><span>Batteries & Chargers <span
-                                                        class="count">(20)</span></span>
-                                            </label>
-                                        </li>
-                                        <li class="item ">
-                                            <label>
-                                                <input type="checkbox"><span>Dresses <span
-                                                        class="count">(20)</span></span>
-                                            </label>
-                                        </li>
-                                        <li class="item ">
-                                            <label>
-                                                <input type="checkbox"><span>Knitted <span
-                                                        class="count">(20)</span></span>
-                                            </label>
-                                        </li>
-                                        <li class="item ">
-                                            <label>
-                                                <input type="checkbox"><span>Pants <span class="count">(20)</span></span>
-                                            </label>
-                                        </li>
-                                        <li class="item ">
-                                            <label>
-                                                <input type="checkbox"><span>Best selling <span
-                                                        class="count">(20)</span></span>
-                                            </label>
-                                        </li>
-                                        <li class="item ">
-                                            <label>
-                                                <input type="checkbox"><span>Headphone & Headset <span
-                                                        class="count">(20)</span></span>
-                                            </label>
-                                        </li>
+                                        @foreach ($categories as $category)
+                                            <li class="item">
+                                                <label>
+                                                    <input type="checkbox">
+                                                    <span>{{ $category['category'] }} <span class="count">({{ $category['count'] }})</span></span>
+                                                </label>
+                                            </li>
+                                        @endforeach
                                     </ol>
                                 </div>
                             </div><!-- Filter Item  categori-->
