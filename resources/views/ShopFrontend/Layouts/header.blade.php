@@ -660,7 +660,7 @@
 
                             <!-- search -->
                             @if (Route::is('details.aboutUs' || Route::is('front.vendor.detail') || Route::is('front.subVendor.detail')))
-                                {{ dd(Route::current()), 'oks' }}
+                                {{ dd('oks', Route::current()) }}
                                 <ul class="category-links">
                                     <li><a href="{{ route('details.aboutUs', $user->slug) }}">About us</a>
                                     </li>
@@ -672,7 +672,7 @@
                                     <li><a href="{{ route('front.myGallery', $user->slug) }}">Gallery</a></li>
                                 </ul>
                             @else
-                                {{ dd(Route::current()), 'ok' }}
+                                {{ dd('fff', Route::current()) }}
                                 <div class="block-search">
                                     <div class="block-title">
                                         <span>Search</span>
