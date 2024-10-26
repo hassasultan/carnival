@@ -296,8 +296,9 @@
                                                 <label>
                                                     <input type="checkbox" class="category-checkbox"
                                                         value="{{ $category['id'] }}">
-                                                    <span>{{ $category['category'] }} <span
-                                                            class="count">({{ $category['count'] }})</span></span>
+                                                    <span>{{ $category['category'] }} 
+                                                        {{-- <span class="count">({{ $category['count'] }})</span> --}}
+                                                    </span>
                                                 </label>
                                             </li>
                                         @endforeach
