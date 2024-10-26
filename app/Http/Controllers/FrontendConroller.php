@@ -348,9 +348,7 @@ class FrontendConroller extends Controller
         if ($request->has('categories') && !empty($request->categories)) {
             $query->whereIn('category_id', $request->categories);
         }
-        // $events = $query->paginate(18);
-        $events = $query->get();
-        dd($request->toArray(), $events->toArray());
+        $events = $query->paginate(18);
         return $events;
     }
 }
