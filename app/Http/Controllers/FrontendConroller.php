@@ -235,7 +235,7 @@ class FrontendConroller extends Controller
         $products = Product::where('user_id', $user->id)->with('brand')->get();
         $ads = Advertisement::where('status', 1)->take(2)->get();
 
-        return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors'));
+        return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors', 'user'));
     }
     public function get_vendor_products($slug, Request $request)
     {

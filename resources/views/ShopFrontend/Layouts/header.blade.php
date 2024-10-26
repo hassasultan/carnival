@@ -659,17 +659,7 @@
                             </div><!-- categori -->
 
                             <!-- search -->
-                            @if (Route::is('front.vendor.detail') || Route::is('front.subVendor.detail'))
-                                <ul class="category-links">
-                                    <li><a href="{{ route('details.aboutUs', $vendor->user->slug) }}">About us</a>
-                                    </li>
-                                    <li><a
-                                            href="mailto:{{ $vendor->email }}?subject=Inquiry&body=Hello {{ $vendor->name }},">Send
-                                            a message</a></li>
-                                    <li><a href="{{ route('myEevent.listing', $vendor->user->slug) }}">Events</a></li>
-                                    <li><a href="{{ route('front.myGallery', $vendor->user->slug) }}">Gallery</a></li>
-                                </ul>
-                            @elseif(Route::is('details.aboutUs'))
+                            @if(Route::is('details.aboutUs' || Route::is('front.vendor.detail') || Route::is('front.subVendor.detail')))
                                 <ul class="category-links">
                                     <li><a href="{{ route('details.aboutUs', $user->slug) }}">About us</a>
                                     </li>
