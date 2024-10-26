@@ -659,8 +659,8 @@
                             </div><!-- categori -->
 
                             <!-- search -->
-                            {{ dd(Route::current()) }}
-                            @if(Route::is('details.aboutUs' || Route::is('front.vendor.detail') || Route::is('front.subVendor.detail')))
+                            @if (Route::is('details.aboutUs' || Route::is('front.vendor.detail') || Route::is('front.subVendor.detail')))
+                                {{ dd(Route::current()), 'oks' }}
                                 <ul class="category-links">
                                     <li><a href="{{ route('details.aboutUs', $user->slug) }}">About us</a>
                                     </li>
@@ -672,6 +672,7 @@
                                     <li><a href="{{ route('front.myGallery', $user->slug) }}">Gallery</a></li>
                                 </ul>
                             @else
+                                {{ dd(Route::current()), 'ok' }}
                                 <div class="block-search">
                                     <div class="block-title">
                                         <span>Search</span>
