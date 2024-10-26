@@ -318,13 +318,15 @@ class FrontendConroller extends Controller
     {
         $banners = Banner::where('type', 'mascamps')->get();
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
-        $events = Event::where('user_id', 'category', $user->id)->get();
+        $events = Event::with('category')->where('user_id', $user->id)->get();
         $categories = $events->groupBy('category_id')->map(function ($events, $categoryId) {
             return [
                 'category' => $events->first()->category->title,
                 'count' => $events->count()
             ];
         });
+
+        // dd($events->toArray());
 
         return view('ShopFrontend.vendorEvents', compact('user', 'events', 'banners', 'categories'));
     }
