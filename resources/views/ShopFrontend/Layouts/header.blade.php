@@ -659,6 +659,7 @@
                             </div><!-- categori -->
 
                             <!-- search -->
+                            {{ dd(Route::current()) }}
                             @if(Route::is('details.aboutUs' || Route::is('front.vendor.detail') || Route::is('front.subVendor.detail')))
                                 <ul class="category-links">
                                     <li><a href="{{ route('details.aboutUs', $user->slug) }}">About us</a>
