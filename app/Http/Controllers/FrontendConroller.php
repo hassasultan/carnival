@@ -327,8 +327,6 @@ class FrontendConroller extends Controller
             ];
         });
 
-        // dd($events->toArray(), $user->id);
-
         return view('ShopFrontend.vendorEvents', compact('user', 'events', 'banners', 'categories'));
     }
 
@@ -350,5 +348,16 @@ class FrontendConroller extends Controller
         }
         $events = $query->paginate(18);
         return $events;
+    }
+
+    public function myEventDetail($user_slug, $event_slug)
+    {
+        $user = User::with('vendor', 'subVendor')->whereSlug($user_slug)->first();
+        $events = Event::with('category')->find($event_slug);
+        $product = Product::with('variants', 'product_variant')->first();
+        $related = Product::where('category_id', $product->category_id)->where('user_id', $product->user_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->get();
+        $same_cat = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->take(9)->get();
+
+        return view('ShopFrontend.vendorEventDetails', compact('product', 'related', 'same_cat'));
     }
 }

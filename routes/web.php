@@ -90,6 +90,7 @@ Route::get('/get-vendors', [FrontendConroller::class, 'get_vendors'])->name('get
 Route::get('/get-subvendors', [FrontendConroller::class, 'get_subVendors'])->name('get.subVvendors.front');
 Route::get('/shop/section-leader/{slug}', [FrontendConroller::class, 'sub_vendor_detail'])->name('front.subVendor.detail');
 Route::get('/get-events', [FrontendConroller::class, 'get_events'])->name('get.events');
+Route::get('/{user_slug}/{event_slug}/event-detail', action: [FrontendConroller::class, 'myEventDetail'])->name('get.myEvent.detail');
 
 Route::get('/unauthorized', function () {
     return view('unauthorized');
