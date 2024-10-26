@@ -316,10 +316,11 @@ class FrontendConroller extends Controller
 
     public function myEvents($slug)
     {
+        $banners = Banner::where('type', 'mascamps')->get();
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
         $events = Event::where('user_id', $user->id)->get();
 
-        return view('ShopFrontend.vendorEvents', compact('user', 'events'));
+        return view('ShopFrontend.vendorEvents', compact('user', 'events', 'banners'));
     }
 
     public function myGallery($slug)
@@ -335,7 +336,6 @@ class FrontendConroller extends Controller
     public function get_events()
     {
         $events = Event::with('images', 'tickets', 'country_tabs')->paginate(18);
-        $products = Product::orderBy('id', 'DESC')->paginate(18);
         return $events;
     }
 }
