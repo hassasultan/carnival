@@ -321,6 +321,7 @@ class FrontendConroller extends Controller
         $events = Event::with('category')->where('user_id', $user->id)->get();
         $categories = $events->groupBy('category_id')->map(function ($events, $categoryId) {
             return [
+                'id' => $categoryId,
                 'category' => $events->first()->category->title,
                 'count' => $events->count()
             ];
