@@ -722,29 +722,31 @@
                                 .banner :
                                 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                             var href =
-                                `{{ route('get.myEvent.detail', ['user_slug' => '']) }}/${event.user.slug}/${event.id}`;
+                                "{{ route('get.myEvent.detail', ['user_slug' => 'user_slug_placeholder', 'event_slug' => 'event_slug_placeholder']) }}";
+                            href = href.replace('user_slug_placeholder', event.user.slug)
+                                .replace('event_slug_placeholder', event.id);
                             var eventHtml = `
-                        <li class="col-sm-4 event-item">
-                            <div class="event-item-opt-1">
-                                <div class="event-item-info">
-                                    <div class="event-item-photo">
-                                        <a href="${href}" class="event-item-img">
-                                            <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
-                                        </a>
-                                        <span class="event-item-label label-date">${event.start_date}</span>
-                                    </div>
-                                    <div class="event-item-detail">
-                                        <strong class="event-item-name"><a href="${href}">${event.name}</a></strong>
-                                        <div class="clearfix">
-                                            <div class="event-item-description">
-                                                <p>${event.description.substring(0, 100)}...</p>
+                                <li class="col-sm-4 event-item">
+                                    <div class="event-item-opt-1">
+                                        <div class="event-item-info">
+                                            <div class="event-item-photo">
+                                                <a href="${href}" class="event-item-img">
+                                                    <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
+                                                </a>
+                                                <span class="event-item-label label-date">${event.start_date}</span>
+                                            </div>
+                                            <div class="event-item-detail">
+                                                <strong class="event-item-name"><a href="${href}">${event.name}</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="event-item-description">
+                                                        <p>${event.description.substring(0, 100)}...</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </li>
-                    `;
+                                </li>
+                            `;
                             $('#event-listing').append(eventHtml);
                         });
 
