@@ -341,9 +341,16 @@ class FrontendConroller extends Controller
         return view('ShopFrontend.vendorGallery', compact('user', 'siteGallery'));
     }
 
-    public function get_events()
+    public function get_events(Request $request)
     {
-        $events = Event::with('images', 'tickets', 'country_tabs')->paginate(18);
+        $query = Event::with('images', 'tickets', 'country_tabs');
+
+        if ($request->has('category') && $request->category) {
+            $query->where('category_id', $request->category);
+        }
+
+        $events = $query->paginate(18);
+
         return $events;
     }
 }

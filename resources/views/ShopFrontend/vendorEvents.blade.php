@@ -294,8 +294,10 @@
                                         @foreach ($categories as $category)
                                             <li class="item">
                                                 <label>
-                                                    <input type="checkbox">
-                                                    <span>{{ $category['category'] }} <span class="count">({{ $category['count'] }})</span></span>
+                                                    <input type="checkbox" class="category-checkbox"
+                                                        value="{{ $category['id'] }}">
+                                                    <span>{{ $category['category'] }} <span
+                                                            class="count">({{ $category['count'] }})</span></span>
                                                 </label>
                                             </li>
                                         @endforeach
@@ -687,115 +689,105 @@
     <!-- Custom scripts -->
     <script>
         $(document).ready(function() {
-            // Function to fetch and display events
-            function fetchEvents(page = 1) {
+            function fetchEvents(page = 1, selectedCategories = []) {
                 $('#event-listing').html('');
 
-                // Apply skeleton loading structure
-                for (let i = 0; i < 18; i++) { // Assuming 9 events per page
+                for (let i = 0; i < 18; i++) {
                     var skeletonHtml = `
-                        <li class="col-sm-4 event-item">
-                            <div class="skeleton-item">
-                                <div class="skeleton-content">
-                                    <div class="skeleton-line" style="width: 80%;"></div>
-                                    <div class="skeleton-line" style="width: 60%;"></div>
-                                    <div class="skeleton-line" style="width: 70%;"></div>
-                                </div>
-                            </div>
-                        </li>
-                    `;
+                <li class="col-sm-4 event-item">
+                    <div class="skeleton-item">
+                        <div class="skeleton-content">
+                            <div class="skeleton-line" style="width: 80%;"></div>
+                            <div class="skeleton-line" style="width: 60%;"></div>
+                            <div class="skeleton-line" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </li>
+            `;
                     $('#event-listing').append(skeletonHtml);
                 }
+
                 $.ajax({
                     url: "{{ route('get.events') }}",
                     type: "GET",
                     data: {
-                        page: page
+                        page: page,
+                        categories: selectedCategories
                     },
                     success: function(response) {
-                        console.log(response.data);
                         $('#event-listing').empty();
-                        $('#event-listing').removeClass('blur-effect');
                         $.each(response.data, function(index, event) {
-                            var image = null;
-                            console.log(event.banner);
-                            if (event.banner != null && event.banner != '') {
-                                image = "{{ asset('eventBanner/') }}/" + event.banner;
-                            } else {
-                                image = 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                            }
+                            var image = event.banner ? "{{ asset('eventBanner/') }}/" + event
+                                .banner :
+                                'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                             var eventHtml = `
-                                <li class="col-sm-4 event-item">
-                                    <div class="event-item-opt-1">
-                                        <div class="event-item-info">
-                                            <div class="event-item-photo">
-                                                <a href="" class="event-item-img">
-                                                    <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
-                                                </a>
-                                                <span class="event-item-label label-date">${event.start_date}</span>
-                                            </div>
-                                            <div class="event-item-detail">
-                                                <strong class="event-item-name"><a href="">${event.name}</a></strong>
-                                                <div class="clearfix">
-                                                    <div class="event-item-description">
-                                                        <p>${event.description.substring(0, 100)}...</p>
-                                                    </div>
-                                                </div>
+                        <li class="col-sm-4 event-item">
+                            <div class="event-item-opt-1">
+                                <div class="event-item-info">
+                                    <div class="event-item-photo">
+                                        <a href="" class="event-item-img">
+                                            <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
+                                        </a>
+                                        <span class="event-item-label label-date">${event.start_date}</span>
+                                    </div>
+                                    <div class="event-item-detail">
+                                        <strong class="event-item-name"><a href="">${event.name}</a></strong>
+                                        <div class="clearfix">
+                                            <div class="event-item-description">
+                                                <p>${event.description.substring(0, 100)}...</p>
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                            `;
-                            $('#event-listing').append(eventHtml);  // Append instead of replacing
+                                </div>
+                            </div>
+                        </li>
+                    `;
+                            $('#event-listing').append(eventHtml);
                         });
 
-
-
-                        // Display pagination links
                         $('.pagination').empty();
-                        pre = 0;
-                        nxt = 0;
-                        pre = response.current_page - 1;
-                        var previousPageHtml = `
-                            <li class="action">
-                                <a href="#" data-page="${pre}"><span><i aria-hidden="true" class="fa fa-angle-left"></i></span></a>
-                            </li>
-                        `;
-                        $('.pagination').append(previousPageHtml);
-                        for (let i = 1; i <= response.last_page; i++) {
-                            var activeClass = i === response.current_page ? 'active' : '';
-                            var paginationHtml = `
-                                <li class="${activeClass}">
-                                    <a href="#" data-page="${i}">${i}</a>
-                                </li>
-                            `;
-                            $('.pagination').append(paginationHtml);
+                        if (response.current_page > 1) {
+                            $('.pagination').append(
+                                `<li class="action"><a href="#" data-page="${response.current_page - 1}"><i class="fa fa-angle-left"></i></a></li>`
+                            );
                         }
-                        nxt = response.current_page + 1;
-                        var nextPageHtml = `
-                            <li class="action">
-                                <a href="#" data-page="${nxt}"><span><i aria-hidden="true" class="fa fa-angle-right"></i></span></a>
-                            </li>
-                        `;
-                        $('.pagination').append(nextPageHtml);
-
+                        for (let i = 1; i <= response.last_page; i++) {
+                            let activeClass = i === response.current_page ? 'active' : '';
+                            $('.pagination').append(
+                                `<li class="${activeClass}"><a href="#" data-page="${i}">${i}</a></li>`
+                            );
+                        }
+                        if (response.current_page < response.last_page) {
+                            $('.pagination').append(
+                                `<li class="action"><a href="#" data-page="${response.current_page + 1}"><i class="fa fa-angle-right"></i></a></li>`
+                            );
+                        }
                     },
                     error: function(xhr, status, error) {
                         console.error(error);
                     }
                 });
-
             }
 
-            // Initial call to fetch events
-            fetchEvents();
+            $(document).on('change', '.category-checkbox', function() {
+                let selectedCategories = [];
+                $('.category-checkbox:checked').each(function() {
+                    selectedCategories.push($(this).val());
+                });
+                fetchEvents(1, selectedCategories);
+            });
 
-            // Pagination click event handler
             $(document).on('click', '.pagination a', function(e) {
                 e.preventDefault();
-                var page = $(this).data('page'); // Get the page number from the clicked link
-                fetchEvents(page);
+                let page = $(this).data('page');
+                let selectedCategories = [];
+                $('.category-checkbox:checked').each(function() {
+                    selectedCategories.push($(this).val());
+                });
+                fetchEvents(page, selectedCategories);
             });
+
+            fetchEvents();
         });
     </script>
 @endsection
