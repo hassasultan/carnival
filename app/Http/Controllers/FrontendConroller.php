@@ -345,13 +345,10 @@ class FrontendConroller extends Controller
     public function get_events(Request $request)
     {
         $query = Event::with('images', 'tickets', 'country_tabs');
-
-        if ($request->has('category') && $request->category) {
-            $query->where('category_id', $request->category);
+        if ($request->has('categories') && !empty($request->categories)) {
+            $query->whereIn('category_id', $request->categories);
         }
-
         $events = $query->paginate(18);
-
         return $events;
     }
 }
