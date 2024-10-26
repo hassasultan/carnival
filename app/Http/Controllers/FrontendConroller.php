@@ -230,7 +230,7 @@ class FrontendConroller extends Controller
         $user = User::with('banners')->whereSlug($slug)->first();
         $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user->id)->first();
         $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
-        dd($subvendors->toArray());
+        // dd($subvendors->toArray());
         $categories = $vendor->products->pluck('category')->unique('id');
         $products = Product::where('user_id', $user->id)->with('brand')->get();
         $ads = Advertisement::where('status', 1)->take(2)->get();
