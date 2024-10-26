@@ -296,7 +296,7 @@
                                                 <label>
                                                     <input type="checkbox" class="category-checkbox"
                                                         value="{{ $category['id'] }}">
-                                                    <span>{{ $category['category'] }} 
+                                                    <span>{{ $category['category'] }}
                                                         {{-- <span class="count">({{ $category['count'] }})</span> --}}
                                                     </span>
                                                 </label>
@@ -721,18 +721,20 @@
                             var image = event.banner ? "{{ asset('eventBanner/') }}/" + event
                                 .banner :
                                 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                            var href =
+                                `{{ route('get.myEvent.detail', ['user_slug' => '']) }}/${event.user.slug}/${event.id}`;
                             var eventHtml = `
                         <li class="col-sm-4 event-item">
                             <div class="event-item-opt-1">
                                 <div class="event-item-info">
                                     <div class="event-item-photo">
-                                        <a href="" class="event-item-img">
+                                        <a href="${href}" class="event-item-img">
                                             <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
                                         </a>
                                         <span class="event-item-label label-date">${event.start_date}</span>
                                     </div>
                                     <div class="event-item-detail">
-                                        <strong class="event-item-name"><a href="">${event.name}</a></strong>
+                                        <strong class="event-item-name"><a href="${href}">${event.name}</a></strong>
                                         <div class="clearfix">
                                             <div class="event-item-description">
                                                 <p>${event.description.substring(0, 100)}...</p>
