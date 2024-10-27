@@ -722,9 +722,8 @@
                                 .banner :
                                 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                             var href =
-                                "{{ route('get.myEvent.detail', ['user_slug' => 'user_slug_placeholder', 'event_slug' => 'event_slug_placeholder']) }}";
-                            href = href.replace('user_slug_placeholder', event.user.slug)
-                                .replace('event_slug_placeholder', event.slug);
+                                "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}";
+                            href = href.replace('event_slug_placeholder', event.slug);
                                 console.log('hrefhref', href);
                             var eventHtml = `
                                 <li class="col-sm-4 event-item">
