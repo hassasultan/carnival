@@ -6,12 +6,7 @@
 
 @section('main')
     <style>
-        /* Gallery Layout */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+
 
         /* Gallery Layout */
         .gallery {
@@ -22,7 +17,7 @@
 
         .gallery img {
             width: 100%;
-            height: auto;
+            height: 200px;
             display: block;
         }
 
