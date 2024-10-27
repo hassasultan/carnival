@@ -724,7 +724,6 @@
                             var href =
                                 "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}";
                             href = href.replace('event_slug_placeholder', event.slug);
-                                console.log('hrefhref', href);
                             var eventHtml = `
                                 <li class="col-sm-4 event-item">
                                     <div class="event-item-opt-1">
