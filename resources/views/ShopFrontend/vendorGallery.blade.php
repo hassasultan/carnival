@@ -7,15 +7,23 @@
 @section('main')
     <style>
         /* Gallery Layout */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Gallery Layout */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 10px;
         }
 
         .gallery img {
             width: 100%;
-            cursor: pointer;
+            height: auto;
+            display: block;
         }
 
         /* Modal Styles */
