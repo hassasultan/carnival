@@ -316,7 +316,7 @@
                                     <li class="product-item product-item-opt-2">
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
-                                                <a href="{{ route('get.products.detail', $row->slug) }}"
+                                                <a href="{{ route('get.myEvent.detail', $row->slug) }}"
                                                     class="product-item-img">
                                                     @if ($row->banner != '' && $row->banner != null)
                                                         <img src="{{ asset('eventBanner/' . $row->banner) }}"
@@ -397,7 +397,7 @@
                                     <li class="product-item product-item-opt-2">
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
-                                                <a href="{{ route('get.products.detail', $row->slug) }}"
+                                                <a href="{{ route('get.myEvent.detail', $row->slug) }}"
                                                     class="product-item-img">
                                                     @if ($row->banner != '' && $row->banner != null)
                                                         <img src="{{ asset('eventBanner/' . $row->banner) }}"
