@@ -8,6 +8,7 @@ use App\Models\EventImage;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\ImageTrait;
 use App\Traits\MultipleImageTrait;
+use Illuminate\Support\Str;
 
 class EventService
 {
@@ -72,6 +73,7 @@ class EventService
             'eventType' => $data['eventType'],
             'start_date' => $data['start_date'] ?? null,
             'start_time' => $data['start_time'] ?? null,
+            'slug' => $this->generateUniqueSlug($data['name']),
             'end_date' => $data['end_date'] ?? null,
             'end_time' => $data['end_time'] ?? null,
             'all_day' => $data['all_day'] ?? null,
@@ -143,5 +145,16 @@ class EventService
                 ]);
             }
         }
+    }
+
+    protected function generateUniqueSlug($name)
+    {
+        $slug = Str::slug($name);
+        $uniqueSlug = $slug;
+        $counter = 1;
+        while (Event::where('slug', $uniqueSlug)->exists()) {
+            $uniqueSlug = $slug . '-' . $counter++;
+        }
+        return $uniqueSlug;
     }
 }

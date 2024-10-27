@@ -53,21 +53,21 @@
                             <div class="product-media media-horizontal">
                                 <div class="image_preview_container images-large zoomable">
                                     <img id="img_zoom" class="zoomable__img"
-                                        data-zoom-image="{{ asset('productImage/' . $product->image) }}"
-                                        src="{{ asset('productImage/' . $product->image) }}" alt="">
+                                        data-zoom-image="{{ asset('eventBanner/' . $event->banner) }}"
+                                        src="{{ asset('eventBanner/' . $event->banner) }}" alt="">
                                     <button class="btn-zoom open_qv"><span>zoom</span></button>
                                 </div>
                                 <div class="product_preview images-small">
                                     <div class="owl-carousel thumbnails_carousel" id="thumbnails" data-nav="true"
                                         data-dots="false" data-margin="10"
                                         data-responsive='{"0":{"items":3},"480":{"items":4},"600":{"items":5},"768":{"items":3}}'>
-                                        <a href="#" data-image="{{ asset('productImage/' . $product->image) }}"
-                                            data-zoom-image="{{ asset('productImage/' . $product->image) }}">
-                                            <img src="{{ asset('productImage/' . $product->image) }}" width="100%"
-                                                data-large-image="{{ asset('productImage/' . $product->image) }}"
+                                        <a href="#" data-image="{{ asset('eventBanner/' . $event->banner) }}"
+                                            data-zoom-image="{{ asset('eventBanner/' . $event->banner) }}">
+                                            <img src="{{ asset('eventBanner/' . $event->banner) }}" width="100%"
+                                                data-large-image="{{ asset('eventBanner/' . $event->banner) }}"
                                                 alt="">
                                         </a>
-                                        @foreach ($product->product_variant as $key => $row)
+                                        {{-- @foreach ($event->product_variant as $key => $row)
                                             @foreach ($row->product_image as $key => $row)
                                                 <a href="#" data-image="{{ asset('variant_images/' . $row->image) }}"
                                                     data-zoom-image="{{ asset('variant_images/' . $row->image) }}">
@@ -76,7 +76,7 @@
                                                         alt="">
                                                 </a>
                                             @endforeach
-                                        @endforeach
+                                        @endforeach --}}
                                     </div><!--/ .owl-carousel-->
                                 </div><!--/ .product_preview-->
                             </div><!-- image product -->
@@ -87,9 +87,9 @@
                             <div class="product-info-main">
 
                                 <h1 class="page-title">
-                                    {{ $product->title }}
+                                    {{ $event->name }}
                                 </h1>
-                                <div class="product-reviews-summary">
+                                {{-- <div class="product-reviews-summary">
                                     <div class="rating-summary">
                                         <div class="rating-result" title="70%">
                                             <span style="width:70%">
@@ -107,11 +107,11 @@
 
                                 <div class="product-info-price">
                                     <div class="price-box">
-                                        <span class="price">${{ $product->new_price }} </span>
-                                        <span class="old-price">${{ $product->old_price }}</span>
+                                        <span class="price">${{ $event->new_price }} </span>
+                                        <span class="old-price">${{ $event->old_price }}</span>
                                         @php
-                                            $oldPrice = $product->old_price;
-                                            $newPrice = $product->new_price;
+                                            $oldPrice = $event->old_price;
+                                            $newPrice = $event->new_price;
                                             if ($oldPrice > 0) {
                                                 $percentageDiscount = round(
                                                     (($oldPrice - $newPrice) / $oldPrice) * 100,
@@ -122,24 +122,24 @@
                                         @endphp
                                         <span class="label-sale">{{ $percentageDiscount }}%</span>
                                     </div>
-                                </div>
-                                <div class="product-code">
+                                </div> --}}
+                                {{-- <div class="product-code">
                                     Item Code: #453217907 :
                                 </div>
                                 <div class="product-info-stock">
                                     <div class="stock available">
-                                        <span class="label">Availability: </span>{{ $product->stock_condition }}
+                                        <span class="label">Availability: </span>{{ $event->stock_condition }}
                                     </div>
                                 </div>
                                 <div class="product-condition">
-                                    Condition: {{ $product->condition }}
-                                </div>
+                                    Condition: {{ $event->condition }}
+                                </div> --}}
                                 <div class="product-overview">
                                     <div class="overview-content">
-                                        {!! $product->description !!}
+                                        {!! $event->description !!}
                                     </div>
                                 </div>
-                                <div class="product-add-form">
+                                {{-- <div class="product-add-form">
                                     <p>Available Options:</p>
                                     <form>
 
@@ -148,7 +148,7 @@
                                                 $displayedColors = [];
                                             @endphp
 
-                                            @foreach ($product->product_variant as $key => $row)
+                                            @foreach ($event->product_variant as $key => $row)
                                                 @if ($row->type == 'color' && !in_array($row->name, $displayedColors))
                                                     @php
                                                         $displayedColors[] = $row->name;
@@ -177,7 +177,7 @@
                                                     </div>
                                                 @endif
                                             @endforeach
-                                            @if (count($product->product_variant) > 0)
+                                            @if (count($event->product_variant) > 0)
                                                 <div class="form-qty">
                                                     <label class="label">Qty: </label>
                                                     <div class="control">
@@ -202,7 +202,7 @@
 
                                                 @if (Auth::check())
                                                     <button type="button" title="Add to Cart" class="action btn-cart"
-                                                        data-product_id="{{ $product->id }}">
+                                                        data-product_id="{{ $event->id }}">
                                                         <span>Add to Cart</span>
                                                     </button>
                                                 @else
@@ -225,7 +225,7 @@
                                         </div>
 
                                     </form>
-                                </div>
+                                </div> --}}
                                 <div class="product-addto-links-second">
                                     <a href="" class="action action-print">Print</a>
                                     <a href="" class="action action-friend">Send to a friend</a>
@@ -263,42 +263,42 @@
                             <div role="tabpanel" class="tab-pane active" id="description">
                                 <div class="block-title">Product Details</div>
                                 <div class="block-content">
-                                    {!! $product->description !!}
+                                    {!! $event->description !!}
 
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="tags">
+                            {{-- <div role="tabpanel" class="tab-pane" id="tags">
                                 <div class="block-title">information</div>
                                 <div class="block-content">
-                                    @if ($product->information != null)
-                                        {!! $product->information !!}
+                                    @if ($event->information != null)
+                                        {!! $event->information !!}
                                     @endif
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="reviews">
                                 <div class="block-title">reviews</div>
                                 <div class="block-content">
-                                    @if ($product->reviews != null)
-                                        {!! $product->reviews !!}
+                                    @if ($event->reviews != null)
+                                        {!! $event->reviews !!}
                                     @endif
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="additional">
                                 <div class="block-title">Extra Tabs</div>
                                 <div class="block-content">
-                                    @if ($product->extra != null)
-                                        {!! $product->extra !!}
+                                    @if ($event->extra != null)
+                                        {!! $event->extra !!}
                                     @endif
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="tab-cust">
                                 <div class="block-title">Guarantees</div>
                                 <div class="block-content">
-                                    @if ($product->guarantee != null)
-                                        {!! $product->guarantee !!}
+                                    @if ($event->guarantee != null)
+                                        {!! $event->guarantee !!}
                                     @endif
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <!-- product tab info -->
@@ -306,7 +306,7 @@
                     <!-- block-related product -->
                     <div class="block-related ">
                         <div class="block-title">
-                            <strong class="title">RELATED products</strong>
+                            <strong class="title">RELATED Events</strong>
                         </div>
                         <div class="block-content ">
                             <ol class="product-items owl-carousel " data-nav="true" data-dots="false" data-margin="30"
@@ -318,8 +318,8 @@
                                             <div class="product-item-photo">
                                                 <a href="{{ route('get.products.detail', $row->slug) }}"
                                                     class="product-item-img">
-                                                    @if ($row->image != '' && $row->image != null)
-                                                        <img src="{{ asset('productImage/' . $row->image) }}"
+                                                    @if ($row->banner != '' && $row->banner != null)
+                                                        <img src="{{ asset('eventBanner/' . $row->banner) }}"
                                                             alt="product name">
                                                     @else
                                                         <img src="{{ asset('shopAssets/images/media/detail/related2-2.jpg') }}"
@@ -346,8 +346,8 @@
                                             </div>
                                             <div class="product-item-detail">
                                                 <strong class="product-item-name"><a
-                                                        href="">{{ $row->title }}</a></strong>
-                                                <div class="clearfix">
+                                                        href="">{{ $row->name }}</a></strong>
+                                                {{-- <div class="clearfix">
                                                     <div class="product-item-price">
 
                                                         @php
@@ -375,7 +375,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </li>
@@ -399,8 +399,8 @@
                                             <div class="product-item-photo">
                                                 <a href="{{ route('get.products.detail', $row->slug) }}"
                                                     class="product-item-img">
-                                                    @if ($row->image != '' && $row->image != null)
-                                                        <img src="{{ asset('productImage/' . $row->image) }}"
+                                                    @if ($row->banner != '' && $row->banner != null)
+                                                        <img src="{{ asset('eventBanner/' . $row->banner) }}"
                                                             alt="product name">
                                                     @else
                                                         <img src="{{ asset('shopAssets/images/media/detail/related2-2.jpg') }}"
@@ -413,15 +413,15 @@
                                                     <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                                 </div>
                                                 <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                    data-product_id="{{ $product->id }}">
+                                                    data-product_id="{{ $row->id }}">
                                                     <span>Add to Cart</span>
                                                 </button>
 
                                             </div>
                                             <div class="product-item-detail">
                                                 <strong class="product-item-name"><a
-                                                        href="">{{ $row->title }}</a></strong>
-                                                <div class="clearfix">
+                                                        href="">{{ $row->name }}</a></strong>
+                                                {{-- <div class="clearfix">
                                                     <div class="product-item-price">
 
                                                         @php
@@ -449,7 +449,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </li>
@@ -765,7 +765,7 @@
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
                                             <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                data-product_id="{{ $product->id }}">
+                                                data-product_id="{{ $event->id }}">
                                                 <span>Add to Cart</span>
                                             </button>
                                             <span class="product-item-label label-price">30% <span>off</span></span>
@@ -803,7 +803,7 @@
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
                                             <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                data-product_id="{{ $product->id }}">
+                                                data-product_id="{{ $event->id }}">
                                                 <span>Add to Cart</span>
                                             </button>
 
@@ -841,7 +841,7 @@
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
                                             <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                data-product_id="{{ $product->id }}">
+                                                data-product_id="{{ $event->id }}">
                                                 <span>Add to Cart</span>
                                             </button>
                                             <span class="product-item-label label-price">30% <span>off</span></span>
@@ -1112,7 +1112,7 @@
                                 console.log(cartItem.product.image);
                                 if (cartItem.product.image != null && cartItem.product
                                     .image != '') {
-                                    image = "{{ asset('productImage/') }}/" + cartItem
+                                    image = "{{ asset('eventBanner/') }}/" + cartItem
                                         .product.image;
                                 } else {
                                     image =
