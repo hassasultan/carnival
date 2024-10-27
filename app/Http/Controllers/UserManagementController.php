@@ -141,7 +141,7 @@ class UserManagementController extends Controller
 
                 UserDetailBanner::create([
                     'user_id' => $user->id,
-                    'banner' => $imageName,
+                    'banner' => 'userBanners/'.$imageName,
                     'title' => $data['banner_title'][$index] ?? null,
                     'subtitle' => $data['banner_subtitle'][$index] ?? null,
                     'description' => $data['banner_description'][$index] ?? null,
@@ -222,7 +222,7 @@ class UserManagementController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        
+
         if ($user->vendor) {
             $user->vendor->update([
                 'ecommerce' => $request->input('ecommerce'),
