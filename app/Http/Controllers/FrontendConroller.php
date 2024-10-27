@@ -358,12 +358,12 @@ class FrontendConroller extends Controller
         $event = Event::with('category')
             ->whereSlug($event_slug)
             ->first();
-        $related = Event::where('category_id', $event->category_id)
+        $related = Event::with('user')->where('category_id', $event->category_id)
             ->where('user_id', $event->user_id)
             ->where('id', '!=', $event->id)
             ->orderBy('id', 'DESC')
             ->get();
-        $same_cat = Event::where('category_id', $event->category_id)
+        $same_cat = Event::with('user')->where('category_id', $event->category_id)
             ->where('id', '!=', $event->id)
             ->orderBy('id', 'DESC')
             ->take(9)
