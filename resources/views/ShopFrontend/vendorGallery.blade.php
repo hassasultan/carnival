@@ -5,7 +5,85 @@
 @endsection
 
 @section('main')
-    <!-- MAIN -->
+    <style>
+        /* Gallery Layout */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .close,
+        .prev,
+        .next {
+            position: absolute;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        .close {
+            top: 20px;
+            right: 30px;
+        }
+
+        .prev {
+            top: 50%;
+            left: 30px;
+            transform: translateY(-50%);
+        }
+
+        .next {
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+        }
+    </style>
+    <div class="gallery">
+        @foreach ($siteGallery as $key => $row)
+            <img src="{{ asset('images/' . $row->image) }}" alt="Image 1" onclick="openModal({{ $key }})">
+        @endforeach
+
+        <img src="image2.jpg" alt="Image 2" onclick="openModal(1)">
+        <img src="image3.jpg" alt="Image 3" onclick="openModal(2)">
+        <img src="image4.jpg" alt="Image 4" onclick="openModal(3)">
+        <img src="image5.jpg" alt="Image 5" onclick="openModal(4)">
+        <img src="image6.jpg" alt="Image 6" onclick="openModal(5)">
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="imageModal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+        <span class="next" onclick="changeImage(1)">&#10095;</span>
+        <img id="modalImage" src="" alt="Large Image">
+    </div>
+
+
+    {{-- <!-- MAIN -->
     <main class="site-main">
         <div class="columns container">
             <!-- Block  Breadcrumb-->
@@ -88,43 +166,42 @@
                 </div><!-- Main Content -->
             </div>
         </div>
-    </main><!-- end MAIN -->
+    </main><!-- end MAIN --> --}}
 @endsection
 
 @section('script')
     <script>
-        $(document).ready(function() {
-            var currentIndex = 0;
-            var images = [];
+        // JavaScript to handle modal and image navigation
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.gallery img');
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
 
-            // Collect all images
-            $('.gallery-image').each(function() {
-                images.push($(this).find('img').attr('src'));
-            });
+        function openModal(index) {
+            currentImageIndex = index;
+            modalImage.src = images[currentImageIndex].src;
+            modal.style.display = 'flex';
+        }
 
-            // Open modal on image click
-            $('.gallery-image').on('click', function() {
-                currentIndex = $(this).data('index');
-                showImage(currentIndex);
-                $('#galleryModal').modal('show');
-            });
+        function closeModal() {
+            modal.style.display = 'none';
+        }
 
-            // Show the image in the modal
-            function showImage(index) {
-                $('#modalImage').attr('src', images[index]);
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1;
+            } else if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
             }
+            modalImage.src = images[currentImageIndex].src;
+        }
 
-            // Next image
-            $('.next-image').on('click', function() {
-                currentIndex = (currentIndex + 1) % images.length;
-                showImage(currentIndex);
-            });
-
-            // Previous image
-            $('.prev-image').on('click', function() {
-                currentIndex = (currentIndex - 1 + images.length) % images.length;
-                showImage(currentIndex);
-            });
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
         });
     </script>
 @endsection
