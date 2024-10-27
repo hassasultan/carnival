@@ -66,12 +66,6 @@
         @foreach ($siteGallery as $key => $row)
             <img src="{{ asset('images/' . $row->image) }}" alt="Image 1" onclick="openModal({{ $key }})">
         @endforeach
-
-        <img src="image2.jpg" alt="Image 2" onclick="openModal(1)">
-        <img src="image3.jpg" alt="Image 3" onclick="openModal(2)">
-        <img src="image4.jpg" alt="Image 4" onclick="openModal(3)">
-        <img src="image5.jpg" alt="Image 5" onclick="openModal(4)">
-        <img src="image6.jpg" alt="Image 6" onclick="openModal(5)">
     </div>
 
     <!-- Modal -->
