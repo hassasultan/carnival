@@ -65,11 +65,35 @@
             transform: translateY(-50%);
         }
     </style>
-    <div class="gallery">
-        @foreach ($siteGallery as $key => $row)
-            <img src="{{ asset('images/' . $row->image) }}" alt="Image 1" onclick="openModal({{ $key }})">
-        @endforeach
-    </div>
+    <main class="site-main">
+        <div class="columns container">
+            <!-- Block  Breadcrumb-->
+            <ol class="breadcrumb no-hide">
+                @if ($user->vendor)
+                    <a href="{{ route('front.vendor.detail', $user->vendor->id) }}">Mascamps</a>
+                    {{ $user->vendor->name }} Gallery
+                @elseif ($user->subvendor)
+                    <a href="{{ route('front.subVendor.detail', $user->subvendor->id) }}">Section Leaders</a>
+                    {{ $user->subvendor->name }} Gallery
+                @endif
+            </ol><!-- Block  Breadcrumb-->
+
+            <div class="row">
+                <!-- Main Content -->
+                <div class="col-main">
+                    <!-- Toolbar -->
+                    <div class="toolbar-gallery toolbar-top">
+                        <h1 class="cate-title">Gallery</h1>
+                    </div><!-- Toolbar -->
+                </div>
+            </div>
+            <div class="gallery">
+                @foreach ($siteGallery as $key => $row)
+                    <img src="{{ asset('images/' . $row->image) }}" alt="Image 1" onclick="openModal({{ $key }})">
+                @endforeach
+            </div>
+        </div>
+    </main>
 
     <!-- Modal -->
     <div class="modal" id="imageModal">
