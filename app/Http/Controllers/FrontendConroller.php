@@ -352,9 +352,12 @@ class FrontendConroller extends Controller
 
     public function myEventDetail($user_slug, $event_slug)
     {
-        $user = User::with('vendor', 'subVendor')->whereSlug($user_slug)->first();
-        $event = Event::with('category')->whereSlug($event_slug)->first();
-        // $product = Product::with('variants', 'product_variant')->first();
+        $user = User::with('vendor', 'subVendor')
+            ->whereSlug($user_slug)
+            ->first();
+        $event = Event::with('category')
+            ->whereSlug($event_slug)
+            ->first();
         $related = Event::where('category_id', $event->category_id)
             ->where('user_id', $event->user_id)
             ->where('id', '!=', $event->id)
