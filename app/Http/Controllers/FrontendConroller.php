@@ -352,6 +352,7 @@ class FrontendConroller extends Controller
 
     public function myEventDetail($user_slug, $event_slug)
     {
+        dd($user_slug, $event_slug);
         $user = User::with('vendor', 'subVendor')->whereSlug($user_slug)->first();
         $events = Event::with('category')->find($event_slug);
         $product = Product::with('variants', 'product_variant')->first();
