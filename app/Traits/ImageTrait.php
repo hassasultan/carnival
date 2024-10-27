@@ -9,7 +9,7 @@ trait ImageTrait
 {
     public function uploadImage(UploadedFile $image, $folder)
     {
-        $imageName = $folder.'/'.time() . '_' . $image->getClientOriginalName();
+        $imageName = time() . '_' . $image->getClientOriginalName();
         $image->move(public_path($folder), $imageName);
         // $image->storeAs($folder, $imageName, 'public');
 
