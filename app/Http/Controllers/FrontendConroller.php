@@ -353,11 +353,19 @@ class FrontendConroller extends Controller
     public function myEventDetail($user_slug, $event_slug)
     {
         $user = User::with('vendor', 'subVendor')->whereSlug($user_slug)->first();
-        $events = Event::with('category')->find($event_slug);
-        $product = Product::with('variants', 'product_variant')->first();
-        $related = Product::where('category_id', $product->category_id)->where('user_id', $product->user_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->get();
-        $same_cat = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->take(9)->get();
+        $event = Event::with('category')->whereSlug($event_slug)->first();
+        // $product = Product::with('variants', 'product_variant')->first();
+        $related = Event::where('category_id', $event->category_id)
+            ->where('user_id', $event->user_id)
+            ->where('id', '!=', $event->id)
+            ->orderBy('id', 'DESC')
+            ->get();
+        $same_cat = Event::where('category_id', $event->category_id)
+            ->where('id', '!=', $event->id)
+            ->orderBy('id', 'DESC')
+            ->take(9)
+            ->get();
 
-        return view('ShopFrontend.vendorEventDetails', compact('product', 'related', 'same_cat'));
+        return view('ShopFrontend.vendorEventDetails', compact('event', 'related', 'same_cat'));
     }
 }

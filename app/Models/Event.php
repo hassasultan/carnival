@@ -15,6 +15,7 @@ class Event extends Model
         'category_id',
         'package_id',
         'name',
+        'slug',
         'description',
         'status',
         'total_no_of_tickets',
