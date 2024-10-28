@@ -75,7 +75,7 @@
         {
             background: brown;
         }
-        .album-cnt span
+        .album-title
         {
             background: #ff4601;
             width: 100%;
@@ -115,19 +115,27 @@
             <div class="row album-section">
                 <div class="col-md-3 album-cnt">
                     <div class="album bg-brown"></div>
-                    <span>Title</span>
+                    <div class="album-title">
+                        <span>Title</span>
+                    </div>
                 </div>
                 <div class="col-md-3 album-cnt">
                     <div class="album bg-primary"></div>
-                    <span>Title</span>
+                    <div class="album-title">
+                        <span>Title</span>
+                    </div>
                 </div>
                 <div class="col-md-3 album-cnt">
                     <div class="album bg-danger"></div>
-                    <span>Title</span>
+                    <div class="album-title">
+                        <span>Title</span>
+                    </div>
                 </div>
                 <div class="col-md-3 album-cnt">
                     <div class="album bg-brown"></div>
-                    <span>Title</span>
+                    <div class="album-title">
+                        <span>Title</span>
+                    </div>
                 </div>
             </div>
         </div>
