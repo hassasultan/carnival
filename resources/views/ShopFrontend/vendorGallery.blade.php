@@ -71,6 +71,19 @@
         {
             height: 200px;
         }
+        .bg-brown
+        {
+            background: brown;
+        }
+        .album-cnt span
+        {
+            background: #ff4601;
+            width: 100%;
+        }
+        .album-section
+        {
+            margin-bottom: 15px;
+        }
     </style>
     <main class="site-main">
         <div class="columns container">
@@ -99,15 +112,22 @@
                     <img src="{{ asset('images/' . $row->image) }}" alt="Image 1" onclick="openModal({{ $key }})">
                 @endforeach
             </div>
-            <div class="row">
-                <div class="col-md-4 album-cnt">
-                    <div class="album bg-dark"></div>
+            <div class="row album-section">
+                <div class="col-md-3 album-cnt">
+                    <div class="album bg-brown"></div>
+                    <span>Title</span>
                 </div>
-                <div class="col-md-4 album-cnt">
+                <div class="col-md-3 album-cnt">
                     <div class="album bg-primary"></div>
+                    <span>Title</span>
                 </div>
-                <div class="col-md-4 album-cnt">
+                <div class="col-md-3 album-cnt">
                     <div class="album bg-danger"></div>
+                    <span>Title</span>
+                </div>
+                <div class="col-md-3 album-cnt">
+                    <div class="album bg-brown"></div>
+                    <span>Title</span>
                 </div>
             </div>
         </div>
