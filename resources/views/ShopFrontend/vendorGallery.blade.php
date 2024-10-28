@@ -6,13 +6,12 @@
 
 @section('main')
     <style>
-
-
         /* Gallery Layout */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 10px;
+            margin-bottom: 15px;
         }
 
         .gallery img {
@@ -64,6 +63,14 @@
             right: 30px;
             transform: translateY(-50%);
         }
+        .album-cnt
+        {
+            padding: 10px;
+        }
+        .album
+        {
+            height: 200px;
+        }
     </style>
     <main class="site-main">
         <div class="columns container">
@@ -91,6 +98,17 @@
                 @foreach ($siteGallery as $key => $row)
                     <img src="{{ asset('images/' . $row->image) }}" alt="Image 1" onclick="openModal({{ $key }})">
                 @endforeach
+            </div>
+            <div class="row">
+                <div class="col-md-4 album-cnt">
+                    <div class="album bg-dark"></div>
+                </div>
+                <div class="col-md-4 album-cnt">
+                    <div class="album bg-primary"></div>
+                </div>
+                <div class="col-md-4 album-cnt">
+                    <div class="album bg-danger"></div>
+                </div>
             </div>
         </div>
     </main>
