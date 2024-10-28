@@ -1805,9 +1805,12 @@
                     id="floor0-{{ ++$key }}">
                     <div class="container">
                         <div class="block-title">
-                            <span class="title"><img alt="img"
-                                    src="{{ asset('shopAssets/images/media/index1/floor2.png') }}">{{ $row->user->first_name }}
-                                {{ $row->user->last_name }}</span>
+                            <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
+                                <span class="title"><img alt="img"
+                                        src="{{ asset('shopAssets/images/media/index1/floor2.png') }}">{{ $row->user->first_name }}
+                                    {{ $row->user->last_name }}</span>
+
+                            </a>
                             <div class="links dropdown">
                                 <button class="dropdown-toggle" type="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
