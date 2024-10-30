@@ -1,5 +1,6 @@
 @extends('ShopFrontend.Layouts.layout')
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
 @section('title')
     product deatil
 @endsection
@@ -9,24 +10,117 @@
 @endsection
 @section('main')
     <style>
-        .zoomable {
+        .product-preview {
             position: relative;
+        }
+
+        .zoom-container {
             overflow: hidden;
-            border-radius: 30px;
-            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
         }
 
-        .zoomable__img {
-            transform-origin: var(--zoom-pos-x, 0%) var(--zoom-pos-y, 0%);
-            transition: transform 0.15s linear;
+        .main-image {
+            transition: transform 0.3s ease;
         }
 
-        .zoomable--zoomed .zoomable__img {
-            cursor: zoom-in;
-            transform: scale(var(--zoom, 2));
+        .main-image:hover {
+            transform: scale(1.5);
+            cursor: crosshair;
+        }
+
+        .zoomed {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            display: none;
+        }
+
+        .zoomed img {
+            position: absolute;
+            transition: none;
+        }
+
+        .view-larger-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #fff;
+            border: 1px solid #333;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .product-thumbnails img {
+            width: 80px;
+            height: auto;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 80%;
+            max-height: 90%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 5px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            user-select: none;
+        }
+
+        .prev {
+            left: -50px;
+        }
+
+        .next {
+            right: -50px;
         }
     </style>
-
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -43,14 +137,10 @@
             </ol><!-- Block  Breadcrumb-->
 
             <div class="row">
-
-
-
                 <!-- Main Content -->
-                <div class="col-md-9 col-md-push-3  col-main">
-
+                <div class="col-md-12 col-main">
                     <div class="row">
-                        <div class="col-sm-6 col-md-6 col-lg-6">
+                        {{-- <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="product-media media-horizontal">
                                 <div class="image_preview_container images-large zoomable">
                                     <img id="img_zoom" class="zoomable__img"
@@ -81,6 +171,46 @@
                                     </div><!--/ .owl-carousel-->
                                 </div><!--/ .product_preview-->
                             </div><!-- image product -->
+                        </div> --}}
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="product-gallery">
+                                <div class="col-sm-4">
+                                    <div class="product-thumbnails">
+                                        <img class="thumbnail"
+                                            src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-06-850x1021.jpg"
+                                            data-full="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-06.jpg"
+                                            alt="Thumbnail 1" onclick="changeMainImage(0)" />
+                                        <img class="thumbnail"
+                                            src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-02-199x239.jpg"
+                                            data-full="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-02.jpg"
+                                            alt="Thumbnail 2" onclick="changeMainImage(1)" />
+                                        <img class="thumbnail"
+                                            src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-01-850x1021.jpg"
+                                            data-full="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-01.jpg"
+                                            alt="Thumbnail 3" onclick="changeMainImage(2)" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="product-preview position-relative">
+                                        <div class="zoom-container">
+                                            <img id="mainImage"
+                                                src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-06.jpg"
+                                                alt="Main Image" class="main-image" />
+                                        </div>
+                                        <button class="view-larger-btn" onclick="openModal(0)">View Larger</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="imageModal" class="modal">
+                            <span class="close" onclick="closeModal()">&times;</span>
+                            <div class="modal-content">
+                                <img id="modalImage" alt="Modal Image" class="modal-image">
+                                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                            </div>
                         </div>
 
                         <div class="col-sm-6 col-md-6 col-lg-6">
@@ -462,7 +592,7 @@
                 </div><!-- Main Content -->
 
                 <!-- Sidebar -->
-                <div class=" col-md-3 col-md-pull-9   col-sidebar">
+                {{-- <div class=" col-md-3 col-md-pull-9   col-sidebar">
 
                     <!-- Block  bestseller products-->
                     <div class="block-sidebar block-sidebar-categorie">
@@ -896,7 +1026,7 @@
                     </div><!-- block slide top -->
 
 
-                </div><!-- Sidebar -->
+                </div><!-- Sidebar --> --}}
 
             </div>
         </div>
@@ -906,7 +1036,9 @@
 @endsection
 
 @section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-zoom/1.7.21/jquery.zoom.min.js"></script>
 
     <!-- Custom scripts -->
     <script>
@@ -1286,6 +1418,79 @@
             $(".zoomable").each(function() {
                 new Zoomable(this);
             });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#mainImage').zoom();
+
+            $('.thumbnail').on('click', function() {
+                const fullSizeSrc = $(this).data('full');
+                $('#mainImage').attr('src', fullSizeSrc);
+
+                $('#mainImage').trigger('zoom.destroy').zoom();
+
+                $('.thumbnail').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+    <script>
+        // $(document).ready(function() {
+        //     $('.product-thumbnails').slick({
+        //         slidesToShow: 4,
+        //         slidesToScroll: 1,
+        //         vertical: true,
+        //         verticalSwiping: true,
+        //         focusOnSelect: true
+        //     });
+
+        // });
+
+        let images = [{
+                full: "https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-06.jpg",
+                thumbnail: "https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-06-850x1021.jpg"
+            },
+            {
+                full: "https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-02.jpg",
+                thumbnail: "https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-02-199x239.jpg"
+            },
+            {
+                full: "https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-01.jpg",
+                thumbnail: "https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-01-850x1021.jpg"
+            }
+        ];
+        let currentIndex = 0;
+
+        function changeMainImage(index) {
+            $("#mainImage").attr("src", images[index].full);
+            currentIndex = index;
+        }
+
+        function openModal(index) {
+            $("#imageModal").css("display", "flex");
+            showSlide(index);
+        }
+
+        function closeModal() {
+            $("#imageModal").css("display", "none");
+        }
+
+        function showSlide(index) {
+            currentIndex = (index + images.length) % images.length;
+            $("#modalImage").attr("src", images[currentIndex].full);
+        }
+
+        function changeSlide(step) {
+            showSlide(currentIndex + step);
+        }
+
+        $(document).keydown(function(event) {
+            if ($("#imageModal").css("display") === "flex") {
+                if (event.key === "ArrowRight") changeSlide(1);
+                if (event.key === "ArrowLeft") changeSlide(-1);
+                if (event.key === "Escape") closeModal();
+            }
         });
     </script>
 @endsection
