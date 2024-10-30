@@ -9,6 +9,14 @@
                     <form action="{{ route('vendor_site_gallery.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
+                            <label for="title">Album Title:</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Album Description:</label>
+                            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="images">Images:</label>
                             <input type="file" class="form-control" id="images" name="images[]" multiple required>
                         </div>

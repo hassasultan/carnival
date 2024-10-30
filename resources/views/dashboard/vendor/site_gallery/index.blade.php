@@ -25,7 +25,7 @@
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
-                                @foreach ($siteGalleries as $key => $siteGallery)
+                                {{-- @foreach ($siteGalleries as $key => $siteGallery)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td><img src="{{ asset('images/' . $siteGallery->image) }}" alt="Image"
@@ -34,6 +34,26 @@
                                         <td>
                                             <a href="{{ route('vendor_site_gallery.show', $siteGallery->id) }}"
                                                 class="btn btn-info">Show</a>
+                                            <a href="{{ route('vendor_site_gallery.edit', $siteGallery->id) }}"
+                                                class="btn btn-primary">Edit</a>
+                                            <form action="{{ route('vendor_site_gallery.destroy', $siteGallery->id) }}"
+                                                method="POST" style="display:inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach --}}
+                                @foreach ($siteGalleries as $siteGallery)
+                                    <tr>
+                                        <td>{{ $siteGallery->id }}</td>
+                                        {{-- <td><img src="{{ asset('images/' . $siteGallery->image) }}" alt="Image" width="50"></td> --}}
+                                        {{-- <td>{{ $siteGallery->status == 1 ? 'Enabled' : 'Disabled' }}</td> --}}
+                                        <td>{{ $siteGallery->title }}</td>
+                                        <td>
+                                            {{-- <a href="{{ route('site_gallery.show', $siteGallery->id) }}"
+                                                class="btn btn-info">Show</a> --}}
                                             <a href="{{ route('vendor_site_gallery.edit', $siteGallery->id) }}"
                                                 class="btn btn-primary">Edit</a>
                                             <form action="{{ route('vendor_site_gallery.destroy', $siteGallery->id) }}"

@@ -13,6 +13,12 @@ class SiteGallery extends Model
     protected $fillable = [
         'user_id',
         'image',
+        'album',
         'status',
     ];
+
+    public function album()
+    {
+        return $this->belongsTo(GalleryAlbum::class, 'album', 'id');
+    }
 }

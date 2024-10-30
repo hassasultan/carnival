@@ -3,11 +3,19 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-12">
-            <h2 class="mb-2 page-title">Add New Images</h2>
+            <h2 class="mb-2 page-title">Create New Album</h2>
             <div class="card shadow">
                 <div class="card-body">
                     <form action="{{ route('site_gallery.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <div class="form-group">
+                            <label for="title">Album Title:</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Album Description:</label>
+                            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                        </div>
                         <div class="form-group">
                             <label for="images">Images:</label>
                             <input type="file" class="form-control" id="images" name="images[]" multiple required>
@@ -19,7 +27,7 @@
                                 <option value="0">Disabled</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3">Save</button>
+                        <button type="submit" class="btn btn-primary mt-3">Create Album</button>
                     </form>
                 </div>
             </div>
