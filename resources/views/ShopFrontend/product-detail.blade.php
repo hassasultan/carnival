@@ -123,6 +123,7 @@
 
         .bg-transparent {
             background: transparent;
+            font-weight: bold;
         }
 
         .space {
@@ -213,13 +214,14 @@
 
                         <div id="imageModal" class="modal">
                             <span class="close" onclick="closeModal()">&times;</span>
+                            <button onclick="zoomIn()" class="bg-transparent">+</button>
+                            <button onclick="zoomOut()" class="bg-transparent">-</button>
+                            <button onclick="viewFullScreen()" class="bg-transparent">View Full Screen</button>
                             <div class="modal-content">
                                 <img id="modalImage" alt="Modal Image" class="modal-image">
                                 <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
                                 <button class="next" onclick="changeSlide(1)">&#10095;</button>
-                                <button onclick="zoomIn()">Zoom In</button>
-                                <button onclick="zoomOut()">Zoom Out</button>
-                                <button onclick="viewFullScreen()">View Full Screen</button>
+
                             </div>
                         </div>
 
