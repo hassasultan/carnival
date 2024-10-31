@@ -102,27 +102,33 @@
             position: absolute;
             top: 10px;
             right: 45px;
-            font-size: 35px;
-            color: white;
             cursor: pointer;
         }
         .zoomOut {
             position: absolute;
             top: 10px;
             right: 55px;
-            font-size: 35px;
-            color: white;
             cursor: pointer;
         }
         .full-screen {
             position: absolute;
             top: 10px;
             right: 65px;
-            font-size: 35px;
-            color: white;
             cursor: pointer;
         }
-
+        .fun-btn
+        {
+            font-size: 5px;
+            color: white;
+        }
+        .fun-btn:focus, .fun-btn:hover
+        {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            filter: alpha(opacity = 50);
+            opacity: .5;
+        }
         .prev,
         .next {
             cursor: pointer;
@@ -237,9 +243,9 @@
 
                         <div id="imageModal" class="modal">
                             <span class="close" onclick="closeModal()">&times;</span>
-                            <button onclick="zoomIn()" class=" zoomIn">+</button>
-                            <button onclick="zoomOut()" class="zoomOut">-</button>
-                            <button onclick="viewFullScreen()" class="full-screen"><i class="fas fa-expand"></i></button>
+                            <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
+                            <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
+                            <button onclick="viewFullScreen()" class="fun-btn full-screen"><i class="fas fa-expand"></i></button>
                             <div class="modal-content">
                                 <img id="modalImage" alt="Modal Image" class="modal-image">
                                 <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
