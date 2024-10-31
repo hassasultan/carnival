@@ -119,6 +119,7 @@
             font-size: 20px;
             color: white;
             background: transparent;
+            border: none;
 
         }
         .fun-btn:focus, .fun-btn:hover
