@@ -176,32 +176,25 @@
                             <div class="product-gallery">
                                 <div class="col-sm-4">
                                     <div class="product-thumbnails">
-                                        <img class="thumbnail"
-                                            src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-06-850x1021.jpg"
-                                            data-full="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-06.jpg"
-                                            alt="Thumbnail 1" onclick="changeMainImage(0)" />
-                                        <img class="thumbnail"
-                                            src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-02-199x239.jpg"
-                                            data-full="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-02.jpg"
-                                            alt="Thumbnail 2" onclick="changeMainImage(1)" />
-                                        <img class="thumbnail"
-                                            src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-01-850x1021.jpg"
-                                            data-full="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-01.jpg"
-                                            alt="Thumbnail 3" onclick="changeMainImage(2)" />
+                                        @foreach ($product->product_images as $key => $row)
+                                            <img class="thumbnail" src="{{ asset('variant_images/' . $row->image) }}"
+                                                data-full="{{ asset('variant_images/' . $row->image) }}"
+                                                alt="Thumbnail {{ $key + 1 }}"
+                                                onclick="changeMainImage({{ $key }})" />
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="product-preview position-relative">
                                         <div class="zoom-container">
                                             <img id="mainImage"
-                                                src="https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-06.jpg"
+                                                src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                 alt="Main Image" class="main-image" />
                                         </div>
                                         <button class="view-larger-btn" onclick="openModal(0)">View Larger</button>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
                         <div id="imageModal" class="modal">
@@ -1436,29 +1429,13 @@
         });
     </script>
     <script>
-        // $(document).ready(function() {
-        //     $('.product-thumbnails').slick({
-        //         slidesToShow: 4,
-        //         slidesToScroll: 1,
-        //         vertical: true,
-        //         verticalSwiping: true,
-        //         focusOnSelect: true
-        //     });
-
-        // });
-
-        let images = [{
-                full: "https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-06.jpg",
-                thumbnail: "https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-06-850x1021.jpg"
-            },
-            {
-                full: "https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-02.jpg",
-                thumbnail: "https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-02-199x239.jpg"
-            },
-            {
-                full: "https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-01.jpg",
-                thumbnail: "https://kuteshop.b-cdn.net/wp-content/uploads/2021/08/fa-h1-01-850x1021.jpg"
-            }
+        let images = [
+            @foreach ($product->product_images as $row)
+                {
+                    full: "{{ asset('variant_images/' . $row->image) }}",
+                    thumbnail: "{{ asset('variant_images/' . $row->image) }}"
+                },
+            @endforeach
         ];
         let currentIndex = 0;
 

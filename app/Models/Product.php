@@ -73,6 +73,10 @@ class Product extends Model
     {
         return $this->hasMany(ProductVariant::class,'product_id');
     }
+    public function product_images()
+    {
+        return $this->hasMany(ProductVariantImage::class,'product_id');
+    }
     public function isAvailable()
     {
         return $this->stock_condition === 'In Stock';

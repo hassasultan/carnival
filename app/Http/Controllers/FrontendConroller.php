@@ -18,6 +18,7 @@ use App\Models\Category;
 use App\Models\Advertisement;
 use App\Models\Package;
 use App\Models\Brand;
+use App\Models\GalleryAlbum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -85,7 +86,7 @@ class FrontendConroller extends Controller
     }
     public function product_detail($slug)
     {
-        $product = Product::with('variants', 'product_variant')->where('slug', $slug)->firstOrFail();
+        $product = Product::with('variants', 'product_variant', 'product_images')->where('slug', $slug)->firstOrFail();
         $related = Product::where('category_id', $product->category_id)->where('user_id', $product->user_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->get();
         $same_cat = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->take(9)->get();
         return view('ShopFrontend.product-detail', compact('product', 'related', 'same_cat'));
@@ -333,8 +334,8 @@ class FrontendConroller extends Controller
     public function myGallery($slug)
     {
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
-        $siteGallery = SiteGallery::where('user_id', $user->id)
-            ->where('status', 1)
+        // $siteGallery = SiteGallery::where('user_id', $user->id)
+        $siteGallery = GalleryAlbum::with('images')->where('user_id', $user->id)
             ->get();
 
         return view('ShopFrontend.vendorGallery', compact('user', 'siteGallery'));
@@ -352,7 +353,7 @@ class FrontendConroller extends Controller
 
     public function myEventDetail($event_slug)
     {
-        $event = Event::with('category')
+        $event = Event::with('category', 'images')
             ->whereSlug($event_slug)
             ->first();
         $related = Event::with('user')->where('category_id', $event->category_id)

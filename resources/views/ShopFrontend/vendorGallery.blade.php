@@ -6,88 +6,111 @@
 
 @section('main')
     <style>
-        /* Gallery Layout */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 10px;
-            margin-bottom: 15px;
+        .album-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .gallery img {
+        .album-cnt {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .album {
             width: 100%;
-            height: 200px;
-            display: block;
+            padding-top: 100%;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
         }
 
-        /* Modal Styles */
+        .album:hover {
+            transform: scale(1.05);
+        }
+
+        .album-title {
+            text-align: center;
+            margin-top: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
         .modal {
             display: none;
             position: fixed;
+            z-index: 1000;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
         }
 
-        .modal img {
+        .modal-content {
+            position: relative;
             max-width: 90%;
             max-height: 90%;
+            text-align: center;
         }
 
-        .close,
-        .prev,
-        .next {
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+        }
+
+        .modal .prev,
+        .modal .next {
             position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
             color: white;
-            font-size: 2em;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 0.5rem 1rem;
             cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .modal .prev {
+            left: 10px;
+        }
+
+        .modal .next {
+            right: 10px;
         }
 
         .close {
-            top: 20px;
-            right: 30px;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
         }
 
-        .prev {
-            top: 50%;
-            left: 30px;
-            transform: translateY(-50%);
+        .close:hover {
+            color: #ccc;
         }
 
-        .next {
-            top: 50%;
-            right: 30px;
-            transform: translateY(-50%);
-        }
-        .album-cnt
-        {
-            padding: 10px;
-        }
-        .album
-        {
-            height: 200px;
-        }
-        .bg-brown
-        {
-            background: brown;
-        }
-        .album-title
-        {
-            background: #ff4601;
-            width: 100%;
-        }
-        .album-section
-        {
-            margin-bottom: 15px;
+        @media (max-width: 768px) {
+            .album {
+                padding-top: 100%;
+            }
+
+            .modal .prev,
+            .modal .next {
+                font-size: 1.5rem;
+            }
         }
     </style>
     <main class="site-main">
         <div class="columns container">
-            <!-- Block  Breadcrumb-->
             <ol class="breadcrumb no-hide">
                 @if ($user->vendor)
                     <a href="{{ route('front.vendor.detail', $user->vendor->id) }}">Mascamps</a>
@@ -96,179 +119,72 @@
                     <a href="{{ route('front.subVendor.detail', $user->subvendor->id) }}">Section Leaders</a>
                     {{ $user->subvendor->name }} Gallery
                 @endif
-            </ol><!-- Block  Breadcrumb-->
-
+            </ol>
             <div class="row">
-                <!-- Main Content -->
                 <div class="col-main">
-                    <!-- Toolbar -->
                     <div class="toolbar-gallery toolbar-top">
                         <h1 class="cate-title">Gallery</h1>
-                    </div><!-- Toolbar -->
+                    </div>
                 </div>
-            </div>
-            <div class="gallery">
-                @foreach ($siteGallery as $key => $row)
-                    <img src="{{ asset('images/' . $row->image) }}" alt="Image 1" onclick="openModal({{ $key }})">
-                @endforeach
             </div>
             <div class="row album-section">
-                <div class="col-md-3 album-cnt">
-                    <div class="album bg-brown"></div>
-                    <div class="album-title">
-                        <span>Title</span>
+                @foreach ($siteGallery as $key => $row)
+                    <div class="col-md-3 album-cnt">
+                        <div class="album bg-brown"
+                            style="background-image: url('{{ asset('images/' . $row->images[0]->image) }}');"
+                            data-images="{{ json_encode($row->images) }}">
+                        </div>
+                        <div class="album-title">
+                            <span>{{ $row->title }}</span>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3 album-cnt">
-                    <div class="album bg-primary"></div>
-                    <div class="album-title">
-                        <span>Title</span>
-                    </div>
-                </div>
-                <div class="col-md-3 album-cnt">
-                    <div class="album bg-danger"></div>
-                    <div class="album-title">
-                        <span>Title</span>
-                    </div>
-                </div>
-                <div class="col-md-3 album-cnt">
-                    <div class="album bg-brown"></div>
-                    <div class="album-title">
-                        <span>Title</span>
-                    </div>
+                @endforeach
+            </div>
+            <div id="imageModal" class="modal">
+                <span class="close">&times;</span>
+                <div class="modal-content">
+                    <img id="modalImage" alt="Modal Image" class="modal-image">
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Modal -->
-    <div class="modal" id="imageModal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <span class="prev" onclick="changeImage(-1)">&#10094;</span>
-        <span class="next" onclick="changeImage(1)">&#10095;</span>
-        <img id="modalImage" src="" alt="Large Image">
-    </div>
-
-
-    {{-- <!-- MAIN -->
-    <main class="site-main">
-        <div class="columns container">
-            <!-- Block  Breadcrumb-->
-            <ol class="breadcrumb no-hide">
-                @if ($user->vendor)
-                    <a href="{{ route('front.vendor.detail', $user->vendor->id) }}">Mascamps</a>
-                    {{ $user->vendor->name }} Gallery
-                @elseif ($user->subvendor)
-                    <a href="{{ route('front.subVendor.detail', $user->subvendor->id) }}">Section Leaders</a>
-                    {{ $user->subvendor->name }} Gallery
-                @endif
-            </ol><!-- Block  Breadcrumb-->
-
-            <div class="row">
-                <!-- Main Content -->
-                <div class="col-main">
-                    <!-- Toolbar -->
-                    <div class="toolbar-gallery toolbar-top">
-                        <h1 class="cate-title">Gallery</h1>
-                    </div><!-- Toolbar -->
-
-                    <!-- List Products -->
-                    <div class="gallery gallery-grid">
-                        <ol class="product-items row gallery-listing" id="gallery-listing">
-                            @foreach ($siteGallery as $row)
-                                <li class="col-sm-4 product-item gallery-image" data-index="{{ $loop->index }}">
-                                    <div class="product-item-opt-1">
-                                        <div class="product-item-info">
-                                            <div class="product-item-photo">
-                                                <a href="javascript:void(0)" class="product-item-img">
-                                                    <img src="{{ asset('images/' . $row->image) }}"
-                                                        alt="{{ $row->image }}" class="img-responsive">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ol><!-- List Products -->
-                    </div> <!-- List Products -->
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="galleryModal" tabindex="-1" role="dialog"
-                        aria-labelledby="galleryModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="galleryModalLabel">Gallery</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="modal-slider">
-                                        <img id="modalImage" class="img-fluid" src="" alt="Image">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary prev-image">Previous</button>
-                                    <button type="button" class="btn btn-secondary next-image">Next</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- Modal -->
-
-                    <!-- Toolbar -->
-                    <div class="toolbar-gallery toolbar-bottom">
-                        <ul class="pagination">
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li class="action action-next">
-                                <a href="#">Next <span><i aria-hidden="true"
-                                            class="fa fa-angle-double-right"></i></span></a>
-                            </li>
-                        </ul>
-                    </div><!-- Toolbar -->
-                </div><!-- Main Content -->
-            </div>
-        </div>
-    </main><!-- end MAIN --> --}}
-@endsection
-
 @section('script')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // JavaScript to handle modal and image navigation
-        let currentImageIndex = 0;
-        const images = document.querySelectorAll('.gallery img');
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
+        let albumImages = [];
+        let currentIndex = 0;
 
-        function openModal(index) {
-            currentImageIndex = index;
-            modalImage.src = images[currentImageIndex].src;
-            modal.style.display = 'flex';
+        $('.album').on('click', function() {
+            albumImages = $(this).data('images');
+            currentIndex = 0;
+            showSlide(currentIndex);
+            $('#imageModal').fadeIn();
+        });
+
+        $('.close').on('click', function() {
+            $('#imageModal').fadeOut();
+        });
+
+        $('.prev').on('click', function() {
+            currentIndex = (currentIndex - 1 + albumImages.length) % albumImages.length;
+            showSlide(currentIndex);
+        });
+
+        $('.next').on('click', function() {
+            currentIndex = (currentIndex + 1) % albumImages.length;
+            showSlide(currentIndex);
+        });
+
+        function showSlide(index) {
+            $('#modalImage').attr('src', '{{ asset('images/') }}/' + albumImages[index].image);
         }
 
-        function closeModal() {
-            modal.style.display = 'none';
-        }
-
-        function changeImage(direction) {
-            currentImageIndex += direction;
-            if (currentImageIndex < 0) {
-                currentImageIndex = images.length - 1;
-            } else if (currentImageIndex >= images.length) {
-                currentImageIndex = 0;
-            }
-            modalImage.src = images[currentImageIndex].src;
-        }
-
-        // Close modal when clicking outside the image
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
+        $(document).on('keydown', function(event) {
+            if (event.key === "Escape") $('#imageModal').fadeOut();
         });
     </script>
+@endsection
 @endsection

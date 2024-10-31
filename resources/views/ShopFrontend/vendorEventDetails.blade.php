@@ -9,21 +9,115 @@
 @endsection
 @section('main')
     <style>
-        .zoomable {
+        .product-preview {
             position: relative;
+        }
+
+        .zoom-container {
             overflow: hidden;
-            border-radius: 30px;
-            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
         }
 
-        .zoomable__img {
-            transform-origin: var(--zoom-pos-x, 0%) var(--zoom-pos-y, 0%);
-            transition: transform 0.15s linear;
+        .main-image {
+            transition: transform 0.3s ease;
         }
 
-        .zoomable--zoomed .zoomable__img {
-            cursor: zoom-in;
-            transform: scale(var(--zoom, 2));
+        .main-image:hover {
+            transform: scale(1.5);
+            cursor: crosshair;
+        }
+
+        .zoomed {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            display: none;
+        }
+
+        .zoomed img {
+            position: absolute;
+            transition: none;
+        }
+
+        .view-larger-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #fff;
+            border: 1px solid #333;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .product-thumbnails img {
+            width: 80px;
+            height: auto;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 80%;
+            max-height: 90%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 5px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            user-select: none;
+        }
+
+        .prev {
+            left: -50px;
+        }
+
+        .next {
+            right: -50px;
         }
     </style>
 
@@ -43,43 +137,42 @@
 
             <div class="row">
 
-
-
                 <!-- Main Content -->
-                <div class="col-md-9 col-md-push-3  col-main">
+                {{-- <div class="col-md-9 col-md-push-3  col-main"> --}}
+                <div class="col-md-12 col-main">
 
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-6">
-                            <div class="product-media media-horizontal">
-                                <div class="image_preview_container images-large zoomable">
-                                    <img id="img_zoom" class="zoomable__img"
-                                        data-zoom-image="{{ asset('eventBanner/' . $event->banner) }}"
-                                        src="{{ asset('eventBanner/' . $event->banner) }}" alt="">
-                                    <button class="btn-zoom open_qv"><span>zoom</span></button>
+                            <div class="product-gallery">
+                                <div class="col-sm-4">
+                                    <div class="product-thumbnails">
+                                        @foreach ($event->images as $key => $row)
+                                            <img class="thumbnail" src="{{ asset($row->image_url) }}"
+                                                data-full="{{ asset($row->image_url) }}" alt="Thumbnail {{ $key + 1 }}"
+                                                onclick="changeMainImage({{ $key }})" />
+                                        @endforeach
+                                    </div>
                                 </div>
-                                <div class="product_preview images-small">
-                                    <div class="owl-carousel thumbnails_carousel" id="thumbnails" data-nav="true"
-                                        data-dots="false" data-margin="10"
-                                        data-responsive='{"0":{"items":3},"480":{"items":4},"600":{"items":5},"768":{"items":3}}'>
-                                        <a href="#" data-image="{{ asset('eventBanner/' . $event->banner) }}"
-                                            data-zoom-image="{{ asset('eventBanner/' . $event->banner) }}">
-                                            <img src="{{ asset('eventBanner/' . $event->banner) }}" width="100%"
-                                                data-large-image="{{ asset('eventBanner/' . $event->banner) }}"
-                                                alt="">
-                                        </a>
-                                        {{-- @foreach ($event->product_variant as $key => $row)
-                                            @foreach ($row->product_image as $key => $row)
-                                                <a href="#" data-image="{{ asset('variant_images/' . $row->image) }}"
-                                                    data-zoom-image="{{ asset('variant_images/' . $row->image) }}">
-                                                    <img src="{{ asset('variant_images/' . $row->image) }}"
-                                                        data-large-image="{{ asset('variant_images/' . $row->image) }}"
-                                                        alt="">
-                                                </a>
-                                            @endforeach
-                                        @endforeach --}}
-                                    </div><!--/ .owl-carousel-->
-                                </div><!--/ .product_preview-->
-                            </div><!-- image product -->
+                                <div class="col-sm-8">
+                                    <div class="product-preview position-relative">
+                                        <div class="zoom-container">
+                                            <img id="mainImage"
+                                                src="{{ $event->banner ? asset('eventBanner/' . $event->banner) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
+                                                alt="Main Image" class="main-image" />
+                                        </div>
+                                        <button class="view-larger-btn" onclick="openModal(0)">View Larger</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="imageModal" class="modal">
+                            <span class="close" onclick="closeModal()">&times;</span>
+                            <div class="modal-content">
+                                <img id="modalImage" alt="Modal Image" class="modal-image">
+                                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                            </div>
                         </div>
 
                         <div class="col-sm-6 col-md-6 col-lg-6">
@@ -316,7 +409,8 @@
                                     <li class="product-item product-item-opt-2">
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
-                                                <a href="{{ route('get.myEvent.detail', $row->slug) }}" class="event-item-img">
+                                                <a href="{{ route('get.myEvent.detail', $row->slug) }}"
+                                                    class="event-item-img">
                                                     @if ($row->banner != '' && $row->banner != null)
                                                         <img src="{{ asset('eventBanner/' . $row->banner) }}"
                                                             alt="product name">
@@ -396,7 +490,8 @@
                                     <li class="product-item product-item-opt-2">
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
-                                                <a href="{{ route('get.myEvent.detail', $row->slug) }}" class="event-item-img">
+                                                <a href="{{ route('get.myEvent.detail', $row->slug) }}"
+                                                    class="event-item-img">
                                                     @if ($row->banner != '' && $row->banner != null)
                                                         <img src="{{ asset('eventBanner/' . $row->banner) }}"
                                                             alt="product name">
@@ -459,7 +554,7 @@
                 </div><!-- Main Content -->
 
                 <!-- Sidebar -->
-                <div class=" col-md-3 col-md-pull-9   col-sidebar">
+                {{-- <div class=" col-md-3 col-md-pull-9   col-sidebar">
 
                     <!-- Block  bestseller products-->
                     <div class="block-sidebar block-sidebar-categorie">
@@ -893,7 +988,7 @@
                     </div><!-- block slide top -->
 
 
-                </div><!-- Sidebar -->
+                </div><!-- Sidebar --> --}}
 
             </div>
         </div>
@@ -1283,6 +1378,63 @@
             $(".zoomable").each(function() {
                 new Zoomable(this);
             });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#mainImage').zoom();
+
+            $('.thumbnail').on('click', function() {
+                const fullSizeSrc = $(this).data('full');
+                $('#mainImage').attr('src', fullSizeSrc);
+
+                $('#mainImage').trigger('zoom.destroy').zoom();
+
+                $('.thumbnail').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+    <script>
+        let images = [
+            @foreach ($event->images as $row)
+                {
+                    full: "{{ asset($row->image_url) }}",
+                    thumbnail: "{{ asset($row->image_url) }}"
+                },
+            @endforeach
+        ];
+        let currentIndex = 0;
+
+        function changeMainImage(index) {
+            $("#mainImage").attr("src", images[index].full);
+            currentIndex = index;
+        }
+
+        function openModal(index) {
+            $("#imageModal").css("display", "flex");
+            showSlide(index);
+        }
+
+        function closeModal() {
+            $("#imageModal").css("display", "none");
+        }
+
+        function showSlide(index) {
+            currentIndex = (index + images.length) % images.length;
+            $("#modalImage").attr("src", images[currentIndex].full);
+        }
+
+        function changeSlide(step) {
+            showSlide(currentIndex + step);
+        }
+
+        $(document).keydown(function(event) {
+            if ($("#imageModal").css("display") === "flex") {
+                if (event.key === "ArrowRight") changeSlide(1);
+                if (event.key === "ArrowLeft") changeSlide(-1);
+                if (event.key === "Escape") closeModal();
+            }
         });
     </script>
 @endsection
