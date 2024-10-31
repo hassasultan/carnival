@@ -260,10 +260,10 @@
                                     class="fas fa-expand"></i></button>
                             <div class="modal-content">
                                 <img id="modalImage" alt="Modal Image" class="modal-image">
-                                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-                                <button class="next" onclick="changeSlide(1)">&#10095;</button>
 
                             </div>
+                            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                            <button class="next" onclick="changeSlide(1)">&#10095;</button>
                         </div>
 
                         <div class="col-sm-6 col-md-6 col-lg-6">
