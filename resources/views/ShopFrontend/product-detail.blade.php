@@ -82,13 +82,14 @@
             max-height: 90%;
             margin: auto;
             text-align: center;
+            overflow-y: scroll;
+
         }
 
         .modal-image {
             max-width: 100%;
             max-height: 100%;
             border-radius: 5px;
-            overflow-y: scroll;
         }
 
         .close {
