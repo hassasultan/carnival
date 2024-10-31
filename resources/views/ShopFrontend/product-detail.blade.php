@@ -154,11 +154,11 @@
         }
 
         .prev {
-            left: -50px;
+            left: 10px;
         }
 
         .next {
-            right: -50px;
+            right: 10px;
         }
 
         .bg-transparent {
