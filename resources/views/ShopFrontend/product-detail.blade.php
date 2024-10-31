@@ -105,12 +105,12 @@
         }
         .zoomOut {
             position: absolute;
-            right: 70px;
+            right: 90px;
             cursor: pointer;
         }
         .full-screen {
             position: absolute;
-            right: 90px;
+            right: 128px;
             cursor: pointer;
         }
         .fun-btn
@@ -118,6 +118,8 @@
             top: 15px;
             font-size: 20px;
             color: white;
+            background: transparent;
+
         }
         .fun-btn:focus, .fun-btn:hover
         {
