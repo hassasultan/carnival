@@ -98,23 +98,26 @@
             color: white;
             cursor: pointer;
         }
+
         .zoomIn {
             position: absolute;
             right: 50px;
             cursor: pointer;
         }
+
         .zoomOut {
             position: absolute;
             right: 90px;
             cursor: pointer;
         }
+
         .full-screen {
             position: absolute;
             right: 128px;
             cursor: pointer;
         }
-        .fun-btn
-        {
+
+        .fun-btn {
             top: 15px;
             font-size: 20px;
             color: white;
@@ -122,14 +125,18 @@
             border: none;
 
         }
-        .fun-btn:focus, .fun-btn:hover
-        {
+
+        .fun-btn:focus,
+        .fun-btn:hover {
             color: #000;
             text-decoration: none;
             cursor: pointer;
-            filter: alpha(opacity = 50);
+            filter: alpha(opacity=50);
             opacity: .5;
+            background: white;
+            padding: 5px;
         }
+
         .prev,
         .next {
             cursor: pointer;
@@ -236,7 +243,8 @@
                                                 src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                 alt="Main Image" class="main-image" />
                                         </div>
-                                        <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i class="fas fa-expand"></i></button>
+                                        <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i
+                                                class="fas fa-expand"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -246,7 +254,8 @@
                             <span class="close" onclick="closeModal()">&times;</span>
                             <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
                             <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
-                            <button onclick="viewFullScreen()" class="fun-btn full-screen"><i class="fas fa-expand"></i></button>
+                            <button onclick="viewFullScreen()" class="fun-btn full-screen"><i
+                                    class="fas fa-expand"></i></button>
                             <div class="modal-content">
                                 <img id="modalImage" alt="Modal Image" class="modal-image">
                                 <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
