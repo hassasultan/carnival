@@ -98,6 +98,30 @@
             color: white;
             cursor: pointer;
         }
+        .zoomIn {
+            position: absolute;
+            top: 10px;
+            right: 45px;
+            font-size: 35px;
+            color: white;
+            cursor: pointer;
+        }
+        .zoomOut {
+            position: absolute;
+            top: 10px;
+            right: 55px;
+            font-size: 35px;
+            color: white;
+            cursor: pointer;
+        }
+        .full-screen {
+            position: absolute;
+            top: 10px;
+            right: 65px;
+            font-size: 35px;
+            color: white;
+            cursor: pointer;
+        }
 
         .prev,
         .next {
@@ -205,8 +229,7 @@
                                                 src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                 alt="Main Image" class="main-image" />
                                         </div>
-                                        <button class="view-larger-btn bg-transparent" onclick="openModal(0)">[<span
-                                                class="space"></span>]</button>
+                                        <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i class="fas fa-expand"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -214,9 +237,9 @@
 
                         <div id="imageModal" class="modal">
                             <span class="close" onclick="closeModal()">&times;</span>
-                            <button onclick="zoomIn()" class="bg-transparent">+</button>
-                            <button onclick="zoomOut()" class="bg-transparent">-</button>
-                            <button onclick="viewFullScreen()" class="bg-transparent">View Full Screen</button>
+                            <button onclick="zoomIn()" class=" zoomIn">+</button>
+                            <button onclick="zoomOut()" class="zoomOut">-</button>
+                            <button onclick="viewFullScreen()" class="full-screen"><i class="fas fa-expand"></i></button>
                             <div class="modal-content">
                                 <img id="modalImage" alt="Modal Image" class="modal-image">
                                 <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
