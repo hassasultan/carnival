@@ -82,7 +82,7 @@
             max-height: 90%;
             margin: auto;
             text-align: center;
-            overflow-y: scroll;
+            /* overflow-y: scroll; */
 
         }
 
