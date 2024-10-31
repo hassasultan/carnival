@@ -50,7 +50,7 @@
             right: 10px;
             background: #fff;
             border: 1px solid #333;
-            padding: 5px 10px;
+            padding: 5px;
             cursor: pointer;
             font-size: 12px;
         }
@@ -119,6 +119,19 @@
 
         .next {
             right: -50px;
+        }
+
+        .bg-transparent {
+            background: transparent;
+        }
+
+        .space {
+            padding: 5px;
+        }
+
+        .modal-image {
+            transition: transform 0.2s;
+            /* Smooth zoom transition */
         }
     </style>
 
@@ -191,7 +204,8 @@
                                                 src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                 alt="Main Image" class="main-image" />
                                         </div>
-                                        <button class="view-larger-btn" onclick="openModal(0)">View Larger</button>
+                                        <button class="view-larger-btn bg-transparent" onclick="openModal(0)">[<span
+                                                class="space"></span>]</button>
                                     </div>
                                 </div>
                             </div>
@@ -203,6 +217,9 @@
                                 <img id="modalImage" alt="Modal Image" class="modal-image">
                                 <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
                                 <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                                <button onclick="zoomIn()">Zoom In</button>
+                                <button onclick="zoomOut()">Zoom Out</button>
+                                <button onclick="viewFullScreen()">View Full Screen</button>
                             </div>
                         </div>
 
@@ -1034,6 +1051,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-zoom/1.7.21/jquery.zoom.min.js"></script>
 
     <!-- Custom scripts -->
+    <script>
+        let zoomLevel = 1; // Default zoom level
+
+        function zoomIn() {
+            zoomLevel += 0.1; // Increase zoom level
+            document.getElementById("modalImage").style.transform = `scale(${zoomLevel})`;
+        }
+
+        function zoomOut() {
+            if (zoomLevel > 0.1) {
+                zoomLevel -= 0.1; // Decrease zoom level
+                document.getElementById("modalImage").style.transform = `scale(${zoomLevel})`;
+            }
+        }
+
+        function viewFullScreen() {
+            const modalImage = document.getElementById("modalImage");
+            if (modalImage.requestFullscreen) {
+                modalImage.requestFullscreen();
+            } else if (modalImage.mozRequestFullScreen) { // For Firefox
+                modalImage.mozRequestFullScreen();
+            } else if (modalImage.webkitRequestFullscreen) { // For Chrome, Safari, Opera
+                modalImage.webkitRequestFullscreen();
+            } else if (modalImage.msRequestFullscreen) { // For IE/Edge
+                modalImage.msRequestFullscreen();
+            }
+        }
+    </script>
     <script>
         $(document).ready(function() {
             // Function to fetch and display products
