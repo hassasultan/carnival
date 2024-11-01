@@ -49,7 +49,7 @@
             right: 10px;
             background: #fff;
             border: 1px solid #333;
-            padding: 5px 10px;
+            padding: 5px;
             cursor: pointer;
             font-size: 12px;
         }
@@ -81,6 +81,8 @@
             max-height: 90%;
             margin: auto;
             text-align: center;
+            /* overflow-y: scroll; */
+
         }
 
         .modal-image {
@@ -98,6 +100,44 @@
             cursor: pointer;
         }
 
+        .zoomIn {
+            position: absolute;
+            right: 50px;
+            cursor: pointer;
+        }
+
+        .zoomOut {
+            position: absolute;
+            right: 90px;
+            cursor: pointer;
+        }
+
+        .full-screen {
+            position: absolute;
+            right: 128px;
+            cursor: pointer;
+        }
+
+        .fun-btn {
+            top: 15px;
+            font-size: 20px;
+            color: white;
+            background: transparent;
+            border: none;
+
+        }
+
+        .fun-btn:focus,
+        .fun-btn:hover {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            filter: alpha(opacity=50);
+            opacity: .5;
+            background: white;
+            padding: 5px;
+        }
+
         .prev,
         .next {
             cursor: pointer;
@@ -113,14 +153,27 @@
         }
 
         .prev {
-            left: -50px;
+            left: 10px;
         }
 
         .next {
-            right: -50px;
+            right: 10px;
+        }
+
+        .bg-transparent {
+            background: transparent;
+            font-weight: bold;
+        }
+
+        .space {
+            padding: 5px;
+        }
+
+        .modal-image {
+            transition: transform 0.2s;
+            /* Smooth zoom transition */
         }
     </style>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
     <!-- MAIN -->
@@ -160,19 +213,25 @@
                                                 src="{{ $event->banner ? asset('eventBanner/' . $event->banner) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                 alt="Main Image" class="main-image" />
                                         </div>
-                                        <button class="view-larger-btn" onclick="openModal(0)">View Larger</button>
+                                        <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i
+                                            class="fas fa-expand"></i></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div id="imageModal" class="modal">
                             <span class="close" onclick="closeModal()">&times;</span>
+                            <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
+                            <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
+                            <button onclick="viewFullScreen()" class="fun-btn full-screen"><i
+                                    class="fas fa-expand"></i></button>
                             <div class="modal-content">
                                 <img id="modalImage" alt="Modal Image" class="modal-image">
-                                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-                                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+
                             </div>
+                            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                            <button class="next" onclick="changeSlide(1)">&#10095;</button>
                         </div>
 
                         <div class="col-sm-6 col-md-6 col-lg-6">
@@ -1436,5 +1495,33 @@
                 if (event.key === "Escape") closeModal();
             }
         });
+    </script>
+    <script>
+        let zoomLevel = 1; // Default zoom level
+
+        function zoomIn() {
+            zoomLevel += 0.1; // Increase zoom level
+            document.getElementById("modalImage").style.transform = `scale(${zoomLevel})`;
+        }
+
+        function zoomOut() {
+            if (zoomLevel > 0.1) {
+                zoomLevel -= 0.1; // Decrease zoom level
+                document.getElementById("modalImage").style.transform = `scale(${zoomLevel})`;
+            }
+        }
+
+        function viewFullScreen() {
+            const modalImage = document.getElementById("modalImage");
+            if (modalImage.requestFullscreen) {
+                modalImage.requestFullscreen();
+            } else if (modalImage.mozRequestFullScreen) { // For Firefox
+                modalImage.mozRequestFullScreen();
+            } else if (modalImage.webkitRequestFullscreen) { // For Chrome, Safari, Opera
+                modalImage.webkitRequestFullscreen();
+            } else if (modalImage.msRequestFullscreen) { // For IE/Edge
+                modalImage.msRequestFullscreen();
+            }
+        }
     </script>
 @endsection
