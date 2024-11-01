@@ -109,6 +109,170 @@
             }
         }
     </style>
+    <style>
+        .product-preview {
+            position: relative;
+        }
+
+        .zoom-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .main-image {
+            transition: transform 0.3s ease;
+        }
+
+        .main-image:hover {
+            transform: scale(1.5);
+            cursor: crosshair;
+        }
+
+        .zoomed {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            display: none;
+        }
+
+        .zoomed img {
+            position: absolute;
+            transition: none;
+        }
+
+        .view-larger-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border: 1px solid #333;
+            padding: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .product-thumbnails img {
+            width: 80px;
+            height: auto;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 80%;
+            max-height: 90%;
+            margin: auto;
+            text-align: center;
+            /* overflow-y: scroll; */
+
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 5px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .zoomIn {
+            position: absolute;
+            right: 50px;
+            cursor: pointer;
+        }
+
+        .zoomOut {
+            position: absolute;
+            right: 90px;
+            cursor: pointer;
+        }
+
+        .full-screen {
+            position: absolute;
+            right: 128px;
+            cursor: pointer;
+        }
+
+        .fun-btn {
+            top: 15px;
+            font-size: 20px;
+            color: white;
+            background: transparent;
+            border: none;
+
+        }
+
+        .fun-btn:focus,
+        .fun-btn:hover {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            filter: alpha(opacity=50);
+            opacity: .5;
+            padding: 5px;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            user-select: none;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .bg-transparent {
+            background: transparent;
+            font-weight: bold;
+        }
+
+        .space {
+            padding: 5px;
+        }
+
+        .modal-image {
+            transition: transform 0.2s;
+            /* Smooth zoom transition */
+        }
+    </style>
     <main class="site-main">
         <div class="columns container">
             <ol class="breadcrumb no-hide">
@@ -128,6 +292,15 @@
                 </div>
             </div>
             <div class="row album-section">
+                @foreach ($siteGallery[0]->images as $key => $row)
+                    <div class="col-md-3 album-cnt">
+                        <div class="album bg-brown"
+                            style="background-image: url('{{ asset('images/' . $row->image) }}');">
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="row album-section">
                 @foreach ($siteGallery as $key => $row)
                     <div class="col-md-3 album-cnt">
                         <div class="album bg-brown"
@@ -140,13 +313,25 @@
                     </div>
                 @endforeach
             </div>
-            <div id="imageModal" class="modal">
+            {{-- <div id="imageModal" class="modal">
                 <span class="close">&times;</span>
                 <div class="modal-content">
                     <img id="modalImage" alt="Modal Image" class="modal-image">
                     <button class="prev">&#10094;</button>
                     <button class="next">&#10095;</button>
                 </div>
+            </div> --}}
+            <div id="imageModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
+                <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
+                <button onclick="viewFullScreen()" class="fun-btn full-screen"><i class="fas fa-expand"></i></button>
+                <div class="modal-content">
+                    <img id="modalImage" alt="Modal Image" class="modal-image">
+
+                </div>
+                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="next" onclick="changeSlide(1)">&#10095;</button>
             </div>
         </div>
     </main>
@@ -185,6 +370,34 @@
         $(document).on('keydown', function(event) {
             if (event.key === "Escape") $('#imageModal').fadeOut();
         });
+    </script>
+    <script>
+        let zoomLevel = 1; // Default zoom level
+
+        function zoomIn() {
+            zoomLevel += 0.1; // Increase zoom level
+            document.getElementById("modalImage").style.transform = `scale(${zoomLevel})`;
+        }
+
+        function zoomOut() {
+            if (zoomLevel > 0.1) {
+                zoomLevel -= 0.1; // Decrease zoom level
+                document.getElementById("modalImage").style.transform = `scale(${zoomLevel})`;
+            }
+        }
+
+        function viewFullScreen() {
+            const modalImage = document.getElementById("modalImage");
+            if (modalImage.requestFullscreen) {
+                modalImage.requestFullscreen();
+            } else if (modalImage.mozRequestFullScreen) { // For Firefox
+                modalImage.mozRequestFullScreen();
+            } else if (modalImage.webkitRequestFullscreen) { // For Chrome, Safari, Opera
+                modalImage.webkitRequestFullscreen();
+            } else if (modalImage.msRequestFullscreen) { // For IE/Edge
+                modalImage.msRequestFullscreen();
+            }
+        }
     </script>
 @endsection
 @endsection
