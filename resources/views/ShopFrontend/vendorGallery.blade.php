@@ -378,7 +378,7 @@
                     id: id
                 },
                 success: function(data) {
-                    $.each(data, function(index, row) {
+                    $.each(data.images, function(index, row) {
                         console.log(row);
                     });
 
