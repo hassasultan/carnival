@@ -378,10 +378,11 @@
                     id: id
                 },
                 success: function(data) {
+                    var html = '';
                     $.each(data.images, function(index, row) {
-                        console.log(row);
+                        html += setImgs(row.image,index)
                     });
-
+                    $('.gallery').html(html);
                 },
                 error: function(xhr, status, error) {
                     console.error(error);
@@ -390,7 +391,7 @@
         });
         function setImgs(img,index)
         {
-            response = `<img src="{{ asset('images') }}/`+img+`" alt="Image `+index+`"
+            return response = `<img src="{{ asset('images') }}/`+img+`" alt="Image `+index+`"
                         onclick="openModal(`+index+`)">`;
         }
     </script>
