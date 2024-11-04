@@ -291,7 +291,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row album-section">
+            <div class="gallery">
+                @foreach ($siteGallery[0]->images as $key => $row)
+                <img src="{{ asset('images/' . $row->image) }}" alt="Image 1" onclick="openModal({{ $key }})">
+                @endforeach
+            </div>
+            {{-- <div class="row album-section">
                 @foreach ($siteGallery[0]->images as $key => $row)
                     <div class="col-md-3 album-cnt">
                         <div class="album bg-brown"
@@ -299,7 +304,7 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
+            </div> --}}
             <div class="row">
                 @foreach ($siteGallery as $key => $row)
                     <div class="col-md-3 album-cnt">
@@ -313,15 +318,18 @@
                     </div>
                 @endforeach
             </div>
-            {{-- <div id="imageModal" class="modal">
+            <div id="imageModal" class="modal">
                 <span class="close">&times;</span>
+                <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
+                <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
+                <button onclick="viewFullScreen()" class="fun-btn full-screen"><i class="fas fa-expand"></i></button>
                 <div class="modal-content">
                     <img id="modalImage" alt="Modal Image" class="modal-image">
                     <button class="prev">&#10094;</button>
                     <button class="next">&#10095;</button>
                 </div>
-            </div> --}}
-            <div id="imageModal" class="modal">
+            </div>
+            {{-- <div id="imageModal" class="modal">
                 <span class="close" onclick="closeModal()">&times;</span>
                 <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
                 <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
@@ -332,43 +340,44 @@
                 </div>
                 <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
                 <button class="next" onclick="changeSlide(1)">&#10095;</button>
-            </div>
+            </div> --}}
         </div>
     </main>
 
 @section('script')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        let albumImages = [];
-        let currentIndex = 0;
+        // JavaScript to handle modal and image navigation
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.gallery img');
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
 
-        $('.album').on('click', function() {
-            albumImages = $(this).data('images');
-            currentIndex = 0;
-            showSlide(currentIndex);
-            $('#imageModal').fadeIn();
-        });
-
-        $('.close').on('click', function() {
-            $('#imageModal').fadeOut();
-        });
-
-        $('.prev').on('click', function() {
-            currentIndex = (currentIndex - 1 + albumImages.length) % albumImages.length;
-            showSlide(currentIndex);
-        });
-
-        $('.next').on('click', function() {
-            currentIndex = (currentIndex + 1) % albumImages.length;
-            showSlide(currentIndex);
-        });
-
-        function showSlide(index) {
-            $('#modalImage').attr('src', '{{ asset('images/') }}/' + albumImages[index].image);
+        function openModal(index) {
+            currentImageIndex = index;
+            modalImage.src = images[currentImageIndex].src;
+            modal.style.display = 'flex';
         }
 
-        $(document).on('keydown', function(event) {
-            if (event.key === "Escape") $('#imageModal').fadeOut();
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1;
+            } else if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
+            }
+            modalImage.src = images[currentImageIndex].src;
+        }
+
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
         });
     </script>
     <script>
