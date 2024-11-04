@@ -294,6 +294,10 @@
             margin-top: 15px;
             margin-bottom: 15px;
         }
+        .album-wrp h2
+        {
+            padding: 10px 0px;
+        }
     </style>
     <main class="site-main">
         <div class="columns container">
@@ -329,6 +333,7 @@
                 @endforeach
             </div> --}}
             <div class="row album-wrp">
+                <h2 class="cate-title">Albums</h2>
                 @foreach ($siteGallery as $key => $row)
                     <div class="col-md-3 album-cnt" data-id="{{ $row->id }}">
                         <div class="album bg-brown"
