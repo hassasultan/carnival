@@ -379,6 +379,7 @@
                 },
                 success: function(data) {
                     var html = '';
+                    $('.gallery').html('');
                     $.each(data.images, function(index, row) {
                         html += setImgs(row.image,index)
                     });
