@@ -19,6 +19,7 @@
 
         .album {
             width: 100%;
+            height: 200px;
             padding-top: 100%;
             background-size: cover;
             background-position: center;
