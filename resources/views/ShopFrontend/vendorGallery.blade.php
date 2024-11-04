@@ -305,7 +305,7 @@
                     <div class="col-md-3 album-cnt">
                         <div class="album bg-brown"
                             style="background-image: url('{{ asset('images/' . $row->images[0]->image) }}');"
-                            data-images="{{ json_encode($row->images) }}">
+                            >
                         </div>
                         <div class="album-title">
                             <span>{{ $row->title }}</span>
