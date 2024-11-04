@@ -339,8 +339,8 @@
                 <button onclick="viewFullScreen()" class="fun-btn full-screen"><i class="fas fa-expand"></i></button>
                 <div class="modal-content">
                     <img id="modalImage" alt="Modal Image" class="modal-image">
-                    <button class="prev">&#10094;</button>
-                    <button class="next">&#10095;</button>
+                    <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+                    <span class="next" onclick="changeImage(1)">&#10095;</span>
                 </div>
             </div>
             {{-- <div id="imageModal" class="modal">
