@@ -340,6 +340,14 @@ class FrontendConroller extends Controller
 
         return view('ShopFrontend.vendorGallery', compact('user', 'siteGallery'));
     }
+    public function getAlbumImgs(Request $request)
+    {
+        // $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
+        // // $siteGallery = SiteGallery::where('user_id', $user->id)
+        $siteGallery = GalleryAlbum::with('images')->where('id', $request->id)
+            ->first();
+        return $siteGallery;
+    }
 
     public function get_events(Request $request)
     {
