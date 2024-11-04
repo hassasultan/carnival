@@ -117,7 +117,7 @@
 
         .gallery img {
             width: 100%;
-            height: auto;
+            height: 216px;
             display: block;
         }
 
