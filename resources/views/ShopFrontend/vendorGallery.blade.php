@@ -380,10 +380,10 @@
                 success: function(data) {
                     var html = '';
                     $('.gallery').html('');
-                    // $.each(data.images, function(index, row) {
-                    //     html += setImgs(row.image,index)
-                    // });
-                    // $('.gallery').html(html);
+                    $.each(data.images, function(index, row) {
+                        html += setImgs(row.image,index)
+                    });
+                    $('.gallery').html(html);
                 },
                 error: function(xhr, status, error) {
                     console.error(error);
