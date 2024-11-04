@@ -75,7 +75,7 @@ Route::get('/mascamps', [FrontendConroller::class, 'vendor_listing'])->name('fro
 Route::get('/about-us/{slug}', [FrontendConroller::class, 'about_us'])->name('details.aboutUs');
 Route::get('/{slug}/event-listing', [FrontendConroller::class, 'myEvents'])->name('myEevent.listing');
 Route::get('/{slug}/gallery', [FrontendConroller::class, 'myGallery'])->name('front.myGallery');
-Route::get('/get/album/imgs', [FrontendConroller::class, 'getAlbumImgs'])->name('get.album.imgs');
+Route::get('/get/album/imgs', [FrontendConroller::class, 'getAlbumImgs'])->name('front.album.imgs');
 Route::get('/contact-us', [FrontendConroller::class, 'contact_us'])->name('front.contact');
 Route::get('/marketplace', [FrontendConroller::class, 'marketplace'])->name('front.marketplace');
 Route::get('/compare-produts', [FrontendConroller::class, 'compare_produts'])->name('front.compare.produts');

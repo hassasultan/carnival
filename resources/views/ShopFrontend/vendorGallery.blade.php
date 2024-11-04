@@ -372,7 +372,7 @@
         $('.album-cnt').click(function() {
             let id = $(this).data('id');
             $.ajax({
-                url: "{{ route('get.album.imgs') }}",
+                url: "{{ route('front.album.imgs') }}",
                 type: "GET",
                 data: {
                     id: id
