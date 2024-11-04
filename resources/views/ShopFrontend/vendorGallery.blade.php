@@ -108,6 +108,21 @@
                 font-size: 1.5rem;
             }
         }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .columns
+        {
+            box-sizing: border-box;
+        }
     </style>
     <style>
         .product-preview {
