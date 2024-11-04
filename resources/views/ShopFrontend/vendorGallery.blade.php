@@ -22,19 +22,20 @@
             padding-top: 100%;
             background-size: cover;
             background-position: center;
-            border-radius: 8px;
+            border-radius: 8px 8px 0px 0px;
             transition: transform 0.3s ease;
         }
 
-        .album:hover {
+        .album-cnt:hover {
             transform: scale(1.05);
         }
 
         .album-title {
             text-align: center;
-            margin-top: 0.5rem;
             font-weight: bold;
-            color: #333;
+            color: #fff;
+            background: #333;
+            border-radius: 0px 0px 8px 8px;
         }
 
         .modal {
@@ -287,8 +288,8 @@
             transition: transform 0.2s;
             /* Smooth zoom transition */
         }
-        .album-wrp
-        {
+
+        .album-wrp {
             margin-top: 15px;
         }
     </style>
