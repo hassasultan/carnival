@@ -315,7 +315,7 @@
             </div>
             <div class="gallery">
                 @foreach ($siteGallery[0]->images as $key => $row)
-                    <img src="{{ asset('images/' . $row->image) }}" alt="Image 1" onclick="openModal({{ $key }})">
+                    <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}" onclick="openModal({{ $key }})">
                 @endforeach
             </div>
             {{-- <div class="row album-section">
@@ -368,6 +368,11 @@
 @section('script')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        $('.album-cnt').click(function(){
+            console.log("check");
+        });
+    </script>
+    <script>
         // JavaScript to handle modal and image navigation
         let currentImageIndex = 0;
         const images = document.querySelectorAll('.gallery img');
@@ -400,6 +405,8 @@
                 closeModal();
             }
         });
+
+
     </script>
     <script>
         let zoomLevel = 1; // Default zoom level
