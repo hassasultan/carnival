@@ -108,6 +108,7 @@
                 font-size: 1.5rem;
             }
         }
+
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -119,8 +120,8 @@
             height: auto;
             display: block;
         }
-        .columns
-        {
+
+        .columns {
             box-sizing: border-box;
         }
     </style>
@@ -196,8 +197,7 @@
             max-height: 90%;
             margin: auto;
             text-align: center;
-            /* overflow-y: scroll; */
-
+            z-index: -9;
         }
 
         .modal-image {
@@ -308,7 +308,7 @@
             </div>
             <div class="gallery">
                 @foreach ($siteGallery[0]->images as $key => $row)
-                <img src="{{ asset('images/' . $row->image) }}" alt="Image 1" onclick="openModal({{ $key }})">
+                    <img src="{{ asset('images/' . $row->image) }}" alt="Image 1" onclick="openModal({{ $key }})">
                 @endforeach
             </div>
             {{-- <div class="row album-section">
@@ -324,8 +324,7 @@
                 @foreach ($siteGallery as $key => $row)
                     <div class="col-md-3 album-cnt">
                         <div class="album bg-brown"
-                            style="background-image: url('{{ asset('images/' . $row->images[0]->image) }}');"
-                            >
+                            style="background-image: url('{{ asset('images/' . $row->images[0]->image) }}');">
                         </div>
                         <div class="album-title">
                             <span>{{ $row->title }}</span>
@@ -334,7 +333,7 @@
                 @endforeach
             </div>
             <div id="imageModal" class="modal">
-                <span class="close">&times;</span>
+                <span class="close" onclick="closeModal();">&times;</span>
                 <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
                 <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
                 <button onclick="viewFullScreen()" class="fun-btn full-screen"><i class="fas fa-expand"></i></button>
