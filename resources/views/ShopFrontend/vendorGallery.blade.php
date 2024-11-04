@@ -295,12 +295,12 @@
                 @foreach ($siteGallery[0]->images as $key => $row)
                     <div class="col-md-3 album-cnt">
                         <div class="album bg-brown"
-                            style="background-image: url('{{ asset('images/' . $row->image) }}');">
+                            style="background-image: url('{{ asset('images/' . $row->image) }}');" data-images="{{ asset('images/' . $row->image) }}">
                         </div>
                     </div>
                 @endforeach
             </div>
-            <div class="row album-section">
+            <div class="row">
                 @foreach ($siteGallery as $key => $row)
                     <div class="col-md-3 album-cnt">
                         <div class="album bg-brown"
