@@ -388,6 +388,9 @@
                         html += setImgs(row.image,index)
                     });
                     $('.gallery').html(html);
+                    images = document.querySelectorAll('.gallery img');
+                    modal = document.getElementById('imageModal');
+                    modalImage = document.getElementById('modalImage');
                 },
                 error: function(xhr, status, error) {
                     console.error(error);
@@ -401,9 +404,7 @@
         }
 
         // JavaScript to handle modal and image navigation
-        images = document.querySelectorAll('.gallery img');
-        modal = document.getElementById('imageModal');
-        modalImage = document.getElementById('modalImage');
+
 
         function openModal(index) {
             currentImageIndex = index;
