@@ -186,7 +186,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
+            z-index: 10000;
             align-items: center;
             justify-content: center;
         }
@@ -287,6 +287,10 @@
             transition: transform 0.2s;
             /* Smooth zoom transition */
         }
+        .album-wrp
+        {
+            margin-top: 15px;
+        }
     </style>
     <main class="site-main">
         <div class="columns container">
@@ -320,7 +324,7 @@
                     </div>
                 @endforeach
             </div> --}}
-            <div class="row">
+            <div class="row album-wrp">
                 @foreach ($siteGallery as $key => $row)
                     <div class="col-md-3 album-cnt">
                         <div class="album bg-brown"
