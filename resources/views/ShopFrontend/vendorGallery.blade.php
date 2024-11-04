@@ -369,6 +369,10 @@
 @section('script')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        let currentImageIndex = 0;
+        let images = document.querySelectorAll('.gallery img');
+        let modal = document.getElementById('imageModal');
+        let modalImage = document.getElementById('modalImage');
         $('.album-cnt').click(function() {
             let id = $(this).data('id');
             $.ajax({
@@ -395,13 +399,11 @@
             return response = `<img src="{{ asset('images') }}/`+img+`" alt="Image `+index+`"
                         onclick="openModal(`+index+`)">`;
         }
-    </script>
-    <script>
+
         // JavaScript to handle modal and image navigation
-        let currentImageIndex = 0;
-        const images = document.querySelectorAll('.gallery img');
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
+        images = document.querySelectorAll('.gallery img');
+        modal = document.getElementById('imageModal');
+        modalImage = document.getElementById('modalImage');
 
         function openModal(index) {
             currentImageIndex = index;
