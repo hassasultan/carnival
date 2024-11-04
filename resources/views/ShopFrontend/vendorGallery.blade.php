@@ -329,7 +329,7 @@
             </div> --}}
             <div class="row album-wrp">
                 @foreach ($siteGallery as $key => $row)
-                    <div class="col-md-3 album-cnt">
+                    <div class="col-md-3 album-cnt" data-id="{{ $row->id }}">
                         <div class="album bg-brown"
                             style="background-image: url('{{ asset('images/' . $row->images[0]->image) }}');">
                         </div>
@@ -369,7 +369,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $('.album-cnt').click(function(){
-            console.log("check");
+            let id = $(this).data('id');
+            console.log(id);
         });
     </script>
     <script>
