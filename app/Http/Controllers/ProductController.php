@@ -50,6 +50,7 @@ class ProductController extends Controller
             'status' => 'required',
             'variant_id' => 'required|array',
             'variant_id.*' => 'exists:variants,id',
+            'media.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $data = $request->all();
@@ -57,6 +58,10 @@ class ProductController extends Controller
         $image = $this->uploadImage($request->file('image'), 'productImage');
 
         $data['image'] = $image;
+
+        if ($request->hasFile('media')) {
+            $data['media'] = $request->file('media');
+        }
 
         $product = $this->productService->createProduct($data);
 

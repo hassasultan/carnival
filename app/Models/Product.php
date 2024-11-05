@@ -64,21 +64,26 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class);
     }
-    
+
     public function variants()
     {
-        return $this->belongsToMany(Variant::class)->withPivot('id','name','type','value', 'status');
+        return $this->belongsToMany(Variant::class)->withPivot('id', 'name', 'type', 'value', 'status');
     }
     public function product_variant()
     {
-        return $this->hasMany(ProductVariant::class,'product_id');
+        return $this->hasMany(ProductVariant::class, 'product_id');
     }
     public function product_images()
     {
-        return $this->hasMany(ProductVariantImage::class,'product_id');
+        return $this->hasMany(ProductVariantImage::class, 'product_id');
     }
     public function isAvailable()
     {
         return $this->stock_condition === 'In Stock';
+    }
+
+    public function media()
+    {
+        return $this->hasMany(ProductMedia::class);
     }
 }

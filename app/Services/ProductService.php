@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Models\ProductVariantImage;
+use App\Models\ProductMedia;
 use Illuminate\Support\Str;
 use App\Traits\ImageTrait;
 use App\Traits\MultipleImageTrait;
@@ -18,6 +19,17 @@ class ProductService
         $productData = $this->prepareProductData($data);
 
         $product = Product::create($productData);
+
+        if (isset($data['media'])) {
+            foreach ($data['media'] as $mediaImage) {
+                $mediaImagePath = $this->uploadImage($mediaImage, 'product_media');
+
+                ProductMedia::create([
+                    'product_id' => $product->id,
+                    'image' => $mediaImagePath,
+                ]);
+            }
+        }
 
         if (isset($data['variant_id'])) {
             foreach ($data['variant_id'] as $index => $variantId) {
@@ -53,6 +65,24 @@ class ProductService
         $productData = $this->prepareProductData($data);
 
         $product->update($productData);
+
+
+        if (isset($data['media'])) {
+            $existingMedia = ProductMedia::where('product_id', $product->id)->get();
+            foreach ($existingMedia as $media) {
+                $this->deleteImage('product_media/' . $media->image);
+                $media->delete();
+            }
+
+            foreach ($data['media'] as $mediaImage) {
+                $mediaImagePath = $this->uploadImage($mediaImage, 'product_media');
+
+                ProductMedia::create([
+                    'product_id' => $product->id,
+                    'image' => $mediaImagePath,
+                ]);
+            }
+        }
 
         if (isset($data['variant_id'])) {
             $product->variants()->detach();
