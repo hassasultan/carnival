@@ -764,16 +764,39 @@
                 return parts[2] + '-' + parts[0].padStart(2, '0') + '-' + parts[1].padStart(2, '0');
             }
         });
+        // $("#ticket_id").change(function() {
+        //     $("#embed-div").html();
+        //     allTickets = $(this).val();
+        //     html = '';
+        //     $.each(allTickets, function(index, val) {
+        //         id = val;
+        //         html += '<div class="form-group mb-3">';
+        //         html += '<h6>' + $('#div-' + val).val() + '</h6>'
+        //         html += '<div class="form-row">';
+        //         html += '<div class="form-group col-md-6">';
+        //         html += '<label for="price-' + id + '">Price</label>';
+        //         html += '<input type="number" class="form-control" name="price[]" required>';
+        //         html += '</div>';
+        //         html += '<div class="form-group col-md-6">';
+        //         html += '<label for="quantity-' + id + '">Quantity</label>';
+        //         html += '<input type="number" class="form-control" name="quantity[]" required>';
+        //         html += '</div>';
+        //         html += '</div>';
+        //         html += '</div>';
+        //     });
+        //     $("#embed-div").html(html);
+        // });
         $("#ticket_id").change(function() {
-            $("#embed-div").html();
-            allTickets = $(this).val();
-            html = '';
+            $("#embed-div").html('');
+            const allTickets = $(this).val();
+            let html = '';
             $.each(allTickets, function(index, val) {
-                id = val;
+                const id = val;
+                const ticketName = $('#div-' + val).val(); // Get the ticket name for display
                 html += '<div class="form-group mb-3">';
-                html += '<h6>' + $('#div-' + val).val() + '</h6>'
+                html += '<h6>' + ticketName + '</h6>';
                 html += '<div class="form-row">';
-                html += '<div class="form-group col-md-6">';
+                html += '<div class="form-group col-md-6" id="price-group-' + id + '">';
                 html += '<label for="price-' + id + '">Price</label>';
                 html += '<input type="number" class="form-control" name="price[]" required>';
                 html += '</div>';
@@ -782,9 +805,43 @@
                 html += '<input type="number" class="form-control" name="quantity[]" required>';
                 html += '</div>';
                 html += '</div>';
+                html += '<div class="setting-item border_bottom pb_30 pt_30">';
+                html += '<div class="d-flex align-items-start">';
+                html += '<div class="custom-control custom-switch">';
+                html +=
+                    '<input type="checkbox" class="custom-control-input" value="1" checked id="ticket-price-btn-' +
+                    id + '" name="ticket-price-btn-' + id + '">';
+                html += '<label class="custom-control-label" for="ticket-price-btn-' + id + '"></label>';
+                html += '</div>';
+                html += '<div class="d-flex flex-column">';
+                html += '<label class="color-black fw-bold mb-1">This ticket is free.</label>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
                 html += '</div>';
             });
             $("#embed-div").html(html);
+
+            $("input[type='checkbox'][id^='ticket-price-btn-']").change(function() {
+                const toggleId = $(this).attr('id');
+                const ticketId = toggleId.split('-').pop();
+                const priceGroup = $("#price-group-" + ticketId);
+                const priceInput = priceGroup.find("input[type='number']");
+
+                if ($(this).is(':checked')) {
+                    priceGroup.hide();
+                    priceInput.prop('required', false);
+                    priceInput.val(0);
+                } else {
+                    priceGroup.show();
+                    priceInput.prop('required', true);
+                    priceInput.val('');
+                }
+            });
+
+            $("input[type='checkbox'][id^='ticket-price-btn-']").each(function() {
+                $(this).change();
+            });
         });
     </script>
     <script>

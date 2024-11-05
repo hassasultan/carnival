@@ -174,6 +174,37 @@
             /* Smooth zoom transition */
         }
     </style>
+    <style>
+        .countdown-container {
+            display: flex;
+            /* background: #333; */
+            padding: 10px 0px;
+            border-radius: 5px;
+        }
+
+        .time-segment {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 5px;
+        }
+
+        .time {
+            color: #fff;
+            font-size: 20px;
+            background: #ccc;
+            padding: 5px 10px;
+            border-radius: 3px;
+            width: 50px;
+            text-align: center;
+        }
+
+        .label {
+            color: #000;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
     <!-- MAIN -->
@@ -189,7 +220,8 @@
             </ol><!-- Block  Breadcrumb-->
 
             <div class="row">
-
+                {{-- {{ dd($event->start_date .'T'. $event->start_time) }} --}}
+                {{-- {{ dd(\Carbon\Carbon::createFromFormat('d/m/Y H:i', $event->start_date . ' ' . $event->start_time)->format('Y-m-d\TH:i:s')) }} --}}
                 <!-- Main Content -->
                 {{-- <div class="col-md-9 col-md-push-3  col-main"> --}}
                 <div class="col-md-12 col-main">
@@ -214,12 +246,12 @@
                                                 alt="Main Image" class="main-image" />
                                         </div>
                                         <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i
-                                            class="fas fa-expand"></i></button>
+                                                class="fas fa-expand"></i></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div id="imageModal" class="modal">
                             <span class="close" onclick="closeModal()">&times;</span>
                             <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
@@ -241,7 +273,7 @@
                                 <h1 class="page-title">
                                     {{ $event->name }}
                                 </h1>
-                                {{-- <div class="product-reviews-summary">
+                                <div class="product-reviews-summary">
                                     <div class="rating-summary">
                                         <div class="rating-result" title="70%">
                                             <span style="width:70%">
@@ -257,127 +289,173 @@
                                     </div>
                                 </div>
 
-                                <div class="product-info-price">
-                                    <div class="price-box">
-                                        <span class="price">${{ $event->new_price }} </span>
-                                        <span class="old-price">${{ $event->old_price }}</span>
-                                        @php
-                                            $oldPrice = $event->old_price;
-                                            $newPrice = $event->new_price;
-                                            if ($oldPrice > 0) {
-                                                $percentageDiscount = round(
-                                                    (($oldPrice - $newPrice) / $oldPrice) * 100,
-                                                );
-                                            } else {
-                                                $percentageDiscount = 0;
-                                            }
-                                        @endphp
-                                        <span class="label-sale">{{ $percentageDiscount }}%</span>
+
+                                <div class="product-overview">
+                                    <div class="overview-content">
+                                        <ul>
+                                            <li>Brand name: Cartier</li>
+                                            <li>Item Name: C de Cartier bag MM 2way shoulder bag</li>
+                                            <li>Model No: L1002063</li>
+                                            <li>Size: W40.5 × H28 × D15.5cm（W15.9′ × H11.0′ × D6.1’/Shoulder
+                                            </li>
+                                            <li>Condition: Pre-owned used bag in&nbsp;<span class="desc_bold">excellent
+                                                    condition</span></li>
+                                            <li>Inside condition: Unnoticeable scratches</li>
+                                        </ul>
                                     </div>
-                                </div> --}}
-                                {{-- <div class="product-code">
-                                    Item Code: #453217907 :
                                 </div>
+                                <hr />
                                 <div class="product-info-stock">
                                     <div class="stock available">
-                                        <span class="label">Availability: </span>{{ $event->stock_condition }}
+                                        <span class="label">Availability: </span>In Stock
+
                                     </div>
                                 </div>
-                                <div class="product-condition">
-                                    Condition: {{ $event->condition }}
-                                </div> --}}
+                                <div class="product-info-price">
+                                    <div class="price-box">
+                                        <span class="price">$250.00</span>
+                                    </div>
+                                </div>
+                                <div class="product-add-form">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <p>Available Options:</p>
+                                            <form>
+
+                                                <div class="product-options-wrapper">
+
+
+                                                    <div class="form-qty">
+                                                        <label class="label">Qty: </label>
+                                                        <div class="control">
+                                                            <input type="text" readonly class="form-control input-qty"
+                                                                value='1' id="qty1" name="qty1" maxlength="10"
+                                                                minlength="1">
+                                                            <button class="btn-number  qtyminus" data-type="minus"
+                                                                data-field="qty1"><span>-</span></button>
+                                                            <button class="btn-number  qtyplus" data-type="plus"
+                                                                data-field="qty1"><span>+</span></button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <div class="product-options-bottom clearfix">
+
+                                                    <div class="actions">
+
+                                                        @if (Auth::check())
+                                                            <button type="button" title="Add to Cart"
+                                                                class="action btn-cart" data-product_id="1">
+                                                                <span>Add to Cart</span>
+                                                            </button>
+                                                            {{-- <button type="button" title="Add to Cart" class="action btn-cart"
+                                                                data-product_id="{{ $product->id }}">
+                                                                <span>Add to Cart</span>
+                                                            </button> --}}
+                                                        @else
+                                                            <a href="{{ route('customer.login') }}" title="Add to Cart"
+                                                                class="action btn-cart btn">
+                                                                <span>Add to Cart</span>
+                                                            </a>
+                                                        @endif
+                                                        <div class="product-addto-links">
+
+                                                            <a href="#" class="action btn-wishlist"
+                                                                title="Wish List">
+                                                                <span>Wishlist</span>
+                                                            </a>
+                                                            <a href="#" class="action btn-compare" title="Compare">
+                                                                <span>Compare</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <span class="label">Available Till </span>
+                                            <div class="countdown-container">
+                                                <div class="time-segment">
+                                                    <span class="time" id="days">00</span>
+                                                    <span class="label">DAYS</span>
+                                                </div>
+                                                <div class="time-segment">
+                                                    <span class="time" id="hours">00</span>
+                                                    <span class="label">HOURS</span>
+                                                </div>
+                                                <div class="time-segment">
+                                                    <span class="time" id="minutes">00</span>
+                                                    <span class="label">MIN</span>
+                                                </div>
+                                                <div class="time-segment">
+                                                    <span class="time" id="seconds">00</span>
+                                                    <span class="label">SEC</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product_meta">
+                                    <span class="sku_wrapper"><span class="title">SKU:</span> <span
+                                            class="sku">MK-FS-0010</span></span>
+                                    <span class="posted_in"><span class="title">Categories:</span><a
+                                            href="https://kuteshop.kutethemes.net/product-category/market/fashion/for-women/?demo=21"
+                                            rel="tag">For Women</a>, <a
+                                            href="https://kuteshop.kutethemes.net/product-category/market/fashion/summer-dresses/?demo=21"
+                                            rel="tag">Summer Dresses</a></span>
+                                    <span class="tagged_as"><span class="title">Tag:</span><a
+                                            href="https://kuteshop.kutethemes.net/product-tag/market/?demo=21"
+                                            rel="tag">Market</a></span>
+                                </div>
+                                <div class="payment-info">
+                                    <div class="item">
+                                        <span class="text">Guarantee safe &amp; Secure checkout</span>
+                                        <span class="image"><img
+                                                src="https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/product-payment.svg"
+                                                class="attachment-full size-full wp-post-image" alt=""
+                                                decoding="async"></span>
+                                    </div>
+                                </div>
+                                <div class="delivery-info">
+                                    <div class="item post-meta post-views">
+                                        <span class="icon main-icon-quickview-2"></span> <span class="text">
+                                            <b> 7854 views </b> this product. </span>
+                                    </div>
+                                    <div class="item">
+                                        <span class="icon main-icon-truck"></span>
+                                        <span class="text">Estimate delivery times: <b>12-26 days</b>
+                                            (International).</span>
+                                    </div>
+                                    <div class="item">
+                                        <span class="icon main-icon-sield"></span>
+                                        <span class="text">Return within <b>30 days</b> of purchase. Taxes are
+                                            non-refundable.</span>
+                                    </div>
+                                </div>
+                                <div class="share">
+                                    <img src="{{ asset('shopAssets/images/media/index1/share.png') }}" alt="share">
+                                </div>
+                            </div><!-- detail- product -->
+
+                        </div>
+                        {{-- <div class="col-sm-6 col-md-6 col-lg-6">
+
+                            <div class="product-info-main">
+
+                                <h1 class="page-title">
+                                    {{ $event->name }}
+                                </h1>
                                 <div class="product-overview">
                                     <div class="overview-content">
                                         {!! $event->description !!}
                                     </div>
                                 </div>
-                                {{-- <div class="product-add-form">
-                                    <p>Available Options:</p>
-                                    <form>
-
-                                        <div class="product-options-wrapper">
-                                            @php
-                                                $displayedColors = [];
-                                            @endphp
-
-                                            @foreach ($event->product_variant as $key => $row)
-                                                @if ($row->type == 'color' && !in_array($row->name, $displayedColors))
-                                                    @php
-                                                        $displayedColors[] = $row->name;
-                                                    @endphp
-                                                    <div class="swatch-opt">
-                                                        <div class="swatch-attribute color">
-                                                            <span class="swatch-attribute-label">Color:</span>
-                                                            <div class="swatch-attribute-options clearfix">
-                                                                <div class="swatch-option color @if ($key == 0) selected @endif"
-                                                                    style="background-color: {{ $row['name'] }};">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                                @if ($row->type == 'size')
-                                                    <div class="form-configurable">
-                                                        <label for="forSize" class="label">Size: </label>
-                                                        <div class="control">
-                                                            <select id="forSize" class="form-control attribute-select">
-                                                                <option value="{{ $row['id'] }}">{{ $row['name'] }}
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                        <a href="" class="size-chart">Size chart</a>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                            @if (count($event->product_variant) > 0)
-                                                <div class="form-qty">
-                                                    <label class="label">Qty: </label>
-                                                    <div class="control">
-                                                        <input type="text" readonly class="form-control input-qty"
-                                                            value='1' id="qty1" name="qty1"
-                                                            maxlength="{{ $row->value }}" minlength="1">
-                                                        <button class="btn-number  qtyminus" data-type="minus"
-                                                            data-field="qty1"><span>-</span></button>
-                                                        <button class="btn-number  qtyplus" data-type="plus"
-                                                            data-field="qty1"><span>+</span></button>
-                                                    </div>
-                                                </div>
-                                            @endif
-
-                                        </div>
-
-
-
-                                        <div class="product-options-bottom clearfix">
-
-                                            <div class="actions">
-
-                                                @if (Auth::check())
-                                                    <button type="button" title="Add to Cart" class="action btn-cart"
-                                                        data-product_id="{{ $event->id }}">
-                                                        <span>Add to Cart</span>
-                                                    </button>
-                                                @else
-                                                    <a href="{{ route('customer.login') }}" title="Add to Cart"
-                                                        class="action btn-cart btn">
-                                                        <span>Add to Cart</span>
-                                                    </a>
-                                                @endif
-                                                <div class="product-addto-links">
-
-                                                    <a href="#" class="action btn-wishlist" title="Wish List">
-                                                        <span>Wishlist</span>
-                                                    </a>
-                                                    <a href="#" class="action btn-compare" title="Compare">
-                                                        <span>Compare</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </form>
-                                </div> --}}
                                 <div class="product-addto-links-second">
                                     <a href="" class="action action-print">Print</a>
                                     <a href="" class="action action-friend">Send to a friend</a>
@@ -387,7 +465,7 @@
                                 </div>
                             </div><!-- detail- product -->
 
-                        </div><!-- Main detail -->
+                        </div><!-- Main detail --> --}}
 
                     </div>
 
@@ -1523,5 +1601,112 @@
                 modalImage.msRequestFullscreen();
             }
         }
+    </script>
+    <script>
+        $(document).ready(function() {
+            // const targetDate = new Date("2024-12-31T23:59:59").getTime();
+            const targetDate = new Date("{{ \Carbon\Carbon::createFromFormat('d/m/Y H:i', $event->start_date . ' ' . $event->start_time)->format('Y-m-d\TH:i:s') }}").getTime();
+            console.log('targetDate', targetDate);
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const timeleft = targetDate - now;
+
+                const days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+
+                $('#days').text(days < 10 ? '0' + days : days);
+                $('#hours').text(hours < 10 ? '0' + hours : hours);
+                $('#minutes').text(minutes < 10 ? '0' + minutes : minutes);
+                $('#seconds').text(seconds < 10 ? '0' + seconds : seconds);
+            }
+
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+    <script>
+         // add to cart
+         $(document).ready(function() {
+            $('.btn-cart').click(function() {
+                // var productId = $(this).data('product_id');
+                // var quantity = $('.input-qty').val();
+                // auth = "{{ auth()->check() }}";
+                // console.log(auth);
+                // if (auth != true) {
+                //     window.location.href = '/login';
+                // } else {
+                //     $.ajax({
+                //         type: 'GET',
+                //         url: '{{ route('add.to.cart') }}',
+                //         data: {
+                //             product_id: productId,
+                //             quantity: quantity
+                //         },
+                //         success: function(response) {
+
+                //             console.log(response);
+                //             var cartItems = response;
+                //             var html = '';
+                //             var total = 0;
+                //             var productHtml = '';
+                //             $.each(cartItems, function(index, cartItem) {
+                //                 // Construct HTML for each cart item
+                //                 var image = null;
+                //                 console.log(cartItem.product.image);
+                //                 if (cartItem.product.image != null && cartItem.product
+                //                     .image != '') {
+                //                     image = "{{ asset('productImage/') }}/" + cartItem
+                //                         .product.image;
+                //                 } else {
+                //                     image =
+                //                         'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                //                 }
+                //                 productHtml += `
+                //                     <li class="product-item cart-row-${cartItem.id}">
+                //                         <a class="product-item-photo" href="#" title="${cartItem.product.title}">
+                //                             <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
+                //                         </a>
+                //                         <div class="product-item-details">
+                //                             <strong class="product-item-name">
+                //                                 <a href="#">${cartItem.product.title}</a>
+                //                             </strong>
+                //                             <div class="product-item-price">
+                //                                 <span class="price">$${cartItem.product.new_price.toFixed(2)}</span>
+                //                             </div>
+                //                             <div class="product-item-qty">
+                //                                 <span class="label">Qty: </span><span class="number">${cartItem.quantity}</span>
+                //                             </div>
+                //                             <div class="product-item-actions">
+                //                                 <a class="action delete delete-cart" data-id="${cartItem.id}" href="javascript:void(0);" title="Remove item">
+                //                                     <span>Remove</span>
+                //                                 </a>
+                //                             </div>
+                //                         </div>
+                //                     </li>
+                //                 `;
+                //                 total += cartItem.product.new_price * cartItem.quantity;
+                //             });
+                //             $('#minicart-items').html(productHtml);
+                //             $('#minicart-items2').html(productHtml);
+                //             $('#cart-price').html('$' + total);
+                //             $('#cart-price2').html('$' + total);
+                //             $('.counter-price').html('$' + total);
+                //             $('.counter-number').html(cartItems.length);
+                //             $('.total-cart-items').html(cartItems.length);
+                //             $('.counter-label').html(cartItems.length + '<span>Items</span>');
+
+                //             // Insert the generated HTML into the designated container
+                //             alert('Product added to cart successfully!');
+                //         },
+                //         error: function(xhr, status, error) {
+                //             alert('Error adding product to cart:', error);
+                //             console.error('Error adding product to cart:', error);
+                //         }
+                //     });
+                // }
+            });
+        });
     </script>
 @endsection
