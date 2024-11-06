@@ -292,7 +292,7 @@
 
                                 <div class="product-overview">
                                     <div class="overview-content">
-                                        <ul>
+                                        {{-- <ul>
                                             <li>Brand name: Cartier</li>
                                             <li>Item Name: C de Cartier bag MM 2way shoulder bag</li>
                                             <li>Model No: L1002063</li>
@@ -301,11 +301,29 @@
                                             <li>Condition: Pre-owned used bag in&nbsp;<span class="desc_bold">excellent
                                                     condition</span></li>
                                             <li>Inside condition: Unnoticeable scratches</li>
-                                        </ul>
+                                        </ul> --}}
+                                        @php
+                                            $dresscode = explode(',', $event->dress_code);
+                                        @endphp
+                                        <p>
+                                            <span class="label">Dresscode: </span>
+                                            @foreach ($dresscode as $item)
+                                                <span class="badge badge-primary tag badge-lg"
+                                                    style="font-size: 1.25em;">{{ $item }}</span>
+                                            @endforeach
+                                            <br>
+                                            <span class="label">Event Type: </span>{{ $event->eventType }} 
+                                            <br>
+                                            <span class="label">Venue: </span>{{ $event->venue }}
+                                            <br>
+                                            <span class="label">Address: </span>{{ $event->address }}
+                                            <br>
+                                            <span class="label">Description: </span>{!! $event->description !!}
+                                        </p>
                                     </div>
                                 </div>
                                 <hr />
-                                <div class="product-info-stock">
+                                {{-- <div class="product-info-stock">
                                     <div class="stock available">
                                         <span class="label">Availability: </span>In Stock
 
@@ -315,16 +333,13 @@
                                     <div class="price-box">
                                         <span class="price">$250.00</span>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="product-add-form">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <p>Available Options:</p>
+                                            {{-- <p>Available Options:</p>
                                             <form>
-
                                                 <div class="product-options-wrapper">
-
-
                                                     <div class="form-qty">
                                                         <label class="label">Qty: </label>
                                                         <div class="control">
@@ -337,43 +352,35 @@
                                                                 data-field="qty1"><span>+</span></button>
                                                         </div>
                                                     </div>
+                                                </div> --}}
 
-                                                </div>
+                                            <div class="product-options-bottom clearfix">
 
+                                                <div class="actions">
 
+                                                    @if (Auth::check())
+                                                        <button type="button" title="Add to Cart" class="action btn-cart"
+                                                            data-event_id="1">
+                                                            <span>Add to Cart</span>
+                                                        </button>
+                                                    @else
+                                                        <a href="{{ route('customer.login') }}" title="Add to Cart"
+                                                            class="action btn-cart btn">
+                                                            <span>Add to Cart</span>
+                                                        </a>
+                                                    @endif
+                                                    <div class="product-addto-links">
 
-                                                <div class="product-options-bottom clearfix">
-
-                                                    <div class="actions">
-
-                                                        @if (Auth::check())
-                                                            <button type="button" title="Add to Cart"
-                                                                class="action btn-cart" data-product_id="1">
-                                                                <span>Add to Cart</span>
-                                                            </button>
-                                                            {{-- <button type="button" title="Add to Cart" class="action btn-cart"
-                                                                data-product_id="{{ $product->id }}">
-                                                                <span>Add to Cart</span>
-                                                            </button> --}}
-                                                        @else
-                                                            <a href="{{ route('customer.login') }}" title="Add to Cart"
-                                                                class="action btn-cart btn">
-                                                                <span>Add to Cart</span>
-                                                            </a>
-                                                        @endif
-                                                        <div class="product-addto-links">
-
-                                                            <a href="#" class="action btn-wishlist"
-                                                                title="Wish List">
-                                                                <span>Wishlist</span>
-                                                            </a>
-                                                            <a href="#" class="action btn-compare" title="Compare">
-                                                                <span>Compare</span>
-                                                            </a>
-                                                        </div>
+                                                        <a href="#" class="action btn-wishlist" title="Wish List">
+                                                            <span>Wishlist</span>
+                                                        </a>
+                                                        <a href="#" class="action btn-compare" title="Compare">
+                                                            <span>Compare</span>
+                                                        </a>
                                                     </div>
-
                                                 </div>
+
+                                            </div>
 
                                             </form>
                                         </div>
@@ -563,7 +570,7 @@
                                                 </div>
                                                 @if (Auth::check())
                                                     <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                        data-product_id="{{ $row->id }}">
+                                                        data-event_id="{{ $row->id }}">
                                                         <span>Add to Cart</span>
                                                     </button>
                                                 @else
@@ -643,7 +650,7 @@
                                                     <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                                 </div>
                                                 <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                    data-product_id="{{ $row->id }}">
+                                                    data-event_id="{{ $row->id }}">
                                                     <span>Add to Cart</span>
                                                 </button>
 
@@ -995,7 +1002,7 @@
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
                                             <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                data-product_id="{{ $event->id }}">
+                                                data-event_id="{{ $event->id }}">
                                                 <span>Add to Cart</span>
                                             </button>
                                             <span class="product-item-label label-price">30% <span>off</span></span>
@@ -1033,7 +1040,7 @@
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
                                             <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                data-product_id="{{ $event->id }}">
+                                                data-event_id="{{ $event->id }}">
                                                 <span>Add to Cart</span>
                                             </button>
 
@@ -1071,7 +1078,7 @@
                                                 <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                             </div>
                                             <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                data-product_id="{{ $event->id }}">
+                                                data-event_id="{{ $event->id }}">
                                                 <span>Add to Cart</span>
                                             </button>
                                             <span class="product-item-label label-price">30% <span>off</span></span>
@@ -1172,7 +1179,7 @@
                         $.each(response.data, function(index, product) {
                             var percentageDiscount = Math.round(((product.old_price - product
                                 .new_price) / product.old_price) * 100);
-                            var productHtml = `
+                            var eventHtml = `
                         <li class="col-sm-4 product-item">
                             <div class="product-item-opt-1">
                                 <div class="product-item-info">
@@ -1209,7 +1216,7 @@
                             </div>
                         </li>
                     `;
-                            $('#product-listing').append(productHtml);
+                            $('#product-listing').append(eventHtml);
                         });
 
                         // Display pagination links
@@ -1315,7 +1322,7 @@
         // add to cart
         $(document).ready(function() {
             $('.btn-cart').click(function() {
-                var productId = $(this).data('product_id');
+                var eventId = $(this).data('event_id');
                 var quantity = $('.input-qty').val();
                 auth = "{{ auth()->check() }}";
                 console.log(auth);
@@ -1326,7 +1333,7 @@
                         type: 'GET',
                         url: '{{ route('add.to.cart') }}',
                         data: {
-                            product_id: productId,
+                            event_id: eventId,
                             quantity: quantity
                         },
                         success: function(response) {
@@ -1335,7 +1342,7 @@
                             var cartItems = response;
                             var html = '';
                             var total = 0;
-                            var productHtml = '';
+                            var eventHtml = '';
                             $.each(cartItems, function(index, cartItem) {
                                 // Construct HTML for each cart item
                                 var image = null;
@@ -1348,7 +1355,7 @@
                                     image =
                                         'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                                 }
-                                productHtml += `
+                                eventHtml += `
                                     <li class="product-item cart-row-${cartItem.id}">
                                         <a class="product-item-photo" href="#" title="${cartItem.product.title}">
                                             <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
@@ -1373,8 +1380,8 @@
                                 `;
                                 total += cartItem.product.new_price * cartItem.quantity;
                             });
-                            $('#minicart-items').html(productHtml);
-                            $('#minicart-items2').html(productHtml);
+                            $('#minicart-items').html(eventHtml);
+                            $('#minicart-items2').html(eventHtml);
                             $('#cart-price').html('$' + total);
                             $('#cart-price2').html('$' + total);
                             $('.counter-price').html('$' + total);
@@ -1605,7 +1612,9 @@
     <script>
         $(document).ready(function() {
             // const targetDate = new Date("2024-12-31T23:59:59").getTime();
-            const targetDate = new Date("{{ \Carbon\Carbon::createFromFormat('d/m/Y H:i', $event->start_date . ' ' . $event->start_time)->format('Y-m-d\TH:i:s') }}").getTime();
+            const targetDate = new Date(
+                "{{ \Carbon\Carbon::createFromFormat('d/m/Y H:i', $event->start_date . ' ' . $event->start_time)->format('Y-m-d\TH:i:s') }}"
+            ).getTime();
             console.log('targetDate', targetDate);
 
             function updateCountdown() {
@@ -1624,89 +1633,6 @@
             }
 
             setInterval(updateCountdown, 1000);
-        });
-    </script>
-    <script>
-         // add to cart
-         $(document).ready(function() {
-            $('.btn-cart').click(function() {
-                // var productId = $(this).data('product_id');
-                // var quantity = $('.input-qty').val();
-                // auth = "{{ auth()->check() }}";
-                // console.log(auth);
-                // if (auth != true) {
-                //     window.location.href = '/login';
-                // } else {
-                //     $.ajax({
-                //         type: 'GET',
-                //         url: '{{ route('add.to.cart') }}',
-                //         data: {
-                //             product_id: productId,
-                //             quantity: quantity
-                //         },
-                //         success: function(response) {
-
-                //             console.log(response);
-                //             var cartItems = response;
-                //             var html = '';
-                //             var total = 0;
-                //             var productHtml = '';
-                //             $.each(cartItems, function(index, cartItem) {
-                //                 // Construct HTML for each cart item
-                //                 var image = null;
-                //                 console.log(cartItem.product.image);
-                //                 if (cartItem.product.image != null && cartItem.product
-                //                     .image != '') {
-                //                     image = "{{ asset('productImage/') }}/" + cartItem
-                //                         .product.image;
-                //                 } else {
-                //                     image =
-                //                         'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                //                 }
-                //                 productHtml += `
-                //                     <li class="product-item cart-row-${cartItem.id}">
-                //                         <a class="product-item-photo" href="#" title="${cartItem.product.title}">
-                //                             <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
-                //                         </a>
-                //                         <div class="product-item-details">
-                //                             <strong class="product-item-name">
-                //                                 <a href="#">${cartItem.product.title}</a>
-                //                             </strong>
-                //                             <div class="product-item-price">
-                //                                 <span class="price">$${cartItem.product.new_price.toFixed(2)}</span>
-                //                             </div>
-                //                             <div class="product-item-qty">
-                //                                 <span class="label">Qty: </span><span class="number">${cartItem.quantity}</span>
-                //                             </div>
-                //                             <div class="product-item-actions">
-                //                                 <a class="action delete delete-cart" data-id="${cartItem.id}" href="javascript:void(0);" title="Remove item">
-                //                                     <span>Remove</span>
-                //                                 </a>
-                //                             </div>
-                //                         </div>
-                //                     </li>
-                //                 `;
-                //                 total += cartItem.product.new_price * cartItem.quantity;
-                //             });
-                //             $('#minicart-items').html(productHtml);
-                //             $('#minicart-items2').html(productHtml);
-                //             $('#cart-price').html('$' + total);
-                //             $('#cart-price2').html('$' + total);
-                //             $('.counter-price').html('$' + total);
-                //             $('.counter-number').html(cartItems.length);
-                //             $('.total-cart-items').html(cartItems.length);
-                //             $('.counter-label').html(cartItems.length + '<span>Items</span>');
-
-                //             // Insert the generated HTML into the designated container
-                //             alert('Product added to cart successfully!');
-                //         },
-                //         error: function(xhr, status, error) {
-                //             alert('Error adding product to cart:', error);
-                //             console.error('Error adding product to cart:', error);
-                //         }
-                //     });
-                // }
-            });
         });
     </script>
 @endsection
