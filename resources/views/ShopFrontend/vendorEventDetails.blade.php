@@ -1612,12 +1612,9 @@
     </script>
     <script>
         $(document).ready(function() {
-            const startDate = "{{ $event->start_date ?? '' }}";
-            const startTime = "{{ $event->start_time ?? '' }}";
-
-            // Check if both startDate and startTime are available and in the correct format
-            let targetDate;
-            if (startDate && startTime) {
+            // Set targetDate only if start_date and start_time are valid
+            @if (!empty($event->start_date) && !empty($event->start_time))
+                let targetDate;
                 try {
                     targetDate = new Date(
                         "{{ \Carbon\Carbon::createFromFormat('d/m/Y H:i', $event->start_date . ' ' . $event->start_time)->format('Y-m-d\TH:i:s') }}"
@@ -1626,10 +1623,10 @@
                     console.warn("Invalid date format:", error);
                     targetDate = null;
                 }
-            } else {
+            @else
+                let targetDate = null;
                 console.warn("Start date or time is missing.");
-                targetDate = null;
-            }
+            @endif
 
             if (targetDate) {
                 function updateCountdown() {
@@ -1653,29 +1650,29 @@
             }
         });
 
-        // $(document).ready(function() {
-        //     // const targetDate = new Date("2024-12-31T23:59:59").getTime();
-        //     const targetDate = new Date(
-        //         "{{ \Carbon\Carbon::createFromFormat('d/m/Y H:i', $event->start_date . ' ' . $event->start_time)->format('Y-m-d\TH:i:s') }}"
-        //     ).getTime();
-        //     console.log('targetDate', targetDate);
+        {{-- $(document).ready(function() {
+            // const targetDate = new Date("2024-12-31T23:59:59").getTime();
+            const targetDate = new Date(
+                "{{ \Carbon\Carbon::createFromFormat('d/m/Y H:i', $event->start_date . ' ' . $event->start_time)->format('Y-m-d\TH:i:s') }}"
+            ).getTime();
+            console.log('targetDate', targetDate);
 
-        //     function updateCountdown() {
-        //         const now = new Date().getTime();
-        //         const timeleft = targetDate - now;
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const timeleft = targetDate - now;
 
-        //         const days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
-        //         const hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        //         const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
-        //         const seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+                const days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
 
-        //         $('#days').text(days < 10 ? '0' + days : days);
-        //         $('#hours').text(hours < 10 ? '0' + hours : hours);
-        //         $('#minutes').text(minutes < 10 ? '0' + minutes : minutes);
-        //         $('#seconds').text(seconds < 10 ? '0' + seconds : seconds);
-        //     }
+                $('#days').text(days < 10 ? '0' + days : days);
+                $('#hours').text(hours < 10 ? '0' + hours : hours);
+                $('#minutes').text(minutes < 10 ? '0' + minutes : minutes);
+                $('#seconds').text(seconds < 10 ? '0' + seconds : seconds);
+            }
 
-        //     setInterval(updateCountdown, 1000);
-        // });
+            setInterval(updateCountdown, 1000);
+        }); --}}
     </script>
 @endsection
