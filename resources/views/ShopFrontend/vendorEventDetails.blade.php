@@ -312,7 +312,7 @@
                                                     style="font-size: 1.25em;">{{ $item }}</span>
                                             @endforeach
                                             <br>
-                                            <span class="label">Event Type: </span>{{ $event->eventType }} 
+                                            <span class="label">Event Type: </span>{{ $event->eventType }}
                                             <br>
                                             <span class="label">Venue: </span>{{ $event->venue }}
                                             <br>
@@ -1185,7 +1185,7 @@
                                 <div class="product-item-info">
                                     <div class="product-item-photo">
                                         <a href="${product.slug}" class="product-item-img"><img src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg')}}"
-                                                alt="${product.title}"></a>
+                                                alt="${event.name}"></a>
                                         <div class="product-item-actions">
                                             <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
                                             <a href="#" class="btn btn-compare"><span>compare</span></a>
@@ -1195,7 +1195,7 @@
                                         <span class="product-item-label label-price">${percentageDiscount}% <span>off</span></span>
                                     </div>
                                     <div class="product-item-detail">
-                                        <strong class="product-item-name"><a href="${product.slug}">${product.title}</a></strong>
+                                        <strong class="product-item-name"><a href="${product.slug}">${event.name}</a></strong>
                                         <div class="clearfix">
                                             <div class="product-item-price">
                                                 <span class="price">$${product.new_price}</span>
@@ -1321,9 +1321,10 @@
 
         // add to cart
         $(document).ready(function() {
+            // var quantity = $('.input-qty').val();
             $('.btn-cart').click(function() {
                 var eventId = $(this).data('event_id');
-                var quantity = $('.input-qty').val();
+                var quantity = 1;
                 auth = "{{ auth()->check() }}";
                 console.log(auth);
                 if (auth != true) {
@@ -1333,8 +1334,9 @@
                         type: 'GET',
                         url: '{{ route('add.to.cart') }}',
                         data: {
-                            event_id: eventId,
-                            quantity: quantity
+                            product_id: eventId,
+                            quantity: quantity,
+                            type: 'event',
                         },
                         success: function(response) {
 
@@ -1346,26 +1348,25 @@
                             $.each(cartItems, function(index, cartItem) {
                                 // Construct HTML for each cart item
                                 var image = null;
-                                console.log(cartItem.product.image);
-                                if (cartItem.product.image != null && cartItem.product
-                                    .image != '') {
+                                if (cartItem.event.banner != null && cartItem.event
+                                    .banner != '') {
                                     image = "{{ asset('eventBanner/') }}/" + cartItem
-                                        .product.image;
+                                        .event.banner;
                                 } else {
                                     image =
                                         'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                                 }
                                 eventHtml += `
                                     <li class="product-item cart-row-${cartItem.id}">
-                                        <a class="product-item-photo" href="#" title="${cartItem.product.title}">
-                                            <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
+                                        <a class="product-item-photo" href="#" title="${cartItem.event.name}">
+                                            <img class="product-image-photo" src="${image}" alt="${cartItem.event.name}">
                                         </a>
                                         <div class="product-item-details">
                                             <strong class="product-item-name">
-                                                <a href="#">${cartItem.product.title}</a>
+                                                <a href="#">${cartItem.event.name}</a>
                                             </strong>
                                             <div class="product-item-price">
-                                                <span class="price">$${cartItem.product.new_price.toFixed(2)}</span>
+                                                <span class="price">$0</span>
                                             </div>
                                             <div class="product-item-qty">
                                                 <span class="label">Qty: </span><span class="number">${cartItem.quantity}</span>
@@ -1378,7 +1379,7 @@
                                         </div>
                                     </li>
                                 `;
-                                total += cartItem.product.new_price * cartItem.quantity;
+                                total += 1 * cartItem.quantity;
                             });
                             $('#minicart-items').html(eventHtml);
                             $('#minicart-items2').html(eventHtml);

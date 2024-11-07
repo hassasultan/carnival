@@ -14,16 +14,17 @@ class AddToCartController extends Controller
         $request->validate([
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
+            'type' => 'required',
         ]);
 
         if (!Auth::check()) {
             return response()->json(['error' => 'User is not authenticated'], 401);
         }
 
-        $product = Product::findOrFail($request->product_id);
-        if (!$product->isAvailable()) {
-            return response()->json(['error' => 'Product is not available'], 400);
-        }
+        // $product = Product::findOrFail($request->product_id);
+        // if (!$product->isAvailable()) {
+        //     return response()->json(['error' => 'Product is not available'], 400);
+        // }
 
         $user_id = Auth::id();
 
@@ -38,9 +39,10 @@ class AddToCartController extends Controller
                 'user_id' => $user_id,
                 'product_id' => $request->product_id,
                 'quantity' => $request->quantity,
+                'type' => $request->type,
             ]);
         }
-        $cartItem = Cart::with('user','product')->where('user_id', $user_id)->get();
+        $cartItem = Cart::with('user','product', 'event')->where('user_id', $user_id)->get();
 
         return  $cartItem;
     }

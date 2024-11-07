@@ -179,7 +179,9 @@
             $cartItems = \App\Models\Cart::where('user_id', Auth::id())->get();
             $total = 0;
             foreach ($cartItems as $cartItem) {
-                $total += $cartItem->product->new_price * $cartItem->quantity;
+                if ($cartItem->type === 'product') {
+                    $total += $cartItem->product->new_price * $cartItem->quantity;
+                }
             }
         }
     @endphp
@@ -344,25 +346,46 @@
                                                     <ol class="minicart-items" id="minicart-items">
                                                         @foreach ($cartItems as $cartItem)
                                                             @php
-                                                                $image = $cartItem->product->image
-                                                                    ? asset('productImage/' . $cartItem->product->image)
-                                                                    : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                                                if ($cartItem->type === 'product') {
+                                                                    $image = $cartItem->product->image
+                                                                        ? asset(
+                                                                            'productImage/' . $cartItem->product->image,
+                                                                        )
+                                                                        : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                                                } elseif ($cartItem->type === 'event') {
+                                                                    $image = $cartItem->event->banner
+                                                                        ? asset(
+                                                                            'eventBanner/' . $cartItem->event->banner,
+                                                                        )
+                                                                        : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                                                }
+
                                                             @endphp
                                                             <li class="product-item cart-row-{{ $cartItem->id }}">
                                                                 <a class="product-item-photo" href="#"
-                                                                    title="{{ $cartItem->product->title }}">
+                                                                    title="{{ $cartItem->type === 'product' ? $cartItem->product->title : ($cartItem->type === 'event' ? $cartItem->event->name : '') }}">
                                                                     <img class="product-image-photo"
                                                                         src="{{ $image }}"
-                                                                        alt="{{ $cartItem->product->title }}">
+                                                                        alt="{{ $cartItem->type === 'product' ? $cartItem->product->title : ($cartItem->type === 'event' ? $cartItem->event->name : '') }}">
                                                                 </a>
                                                                 <div class="product-item-details">
                                                                     <strong class="product-item-name">
-                                                                        <a
-                                                                            href="#">{{ $cartItem->product->title }}</a>
+                                                                        @if ($cartItem->type === 'product')
+                                                                            <a
+                                                                                href="#">{{ $cartItem->product->title }}</a>
+                                                                        @elseif($cartItem->type === 'event')
+                                                                            <a
+                                                                                href="#">{{ $cartItem->event->name }}</a>
+                                                                        @endif
                                                                     </strong>
                                                                     <div class="product-item-price">
-                                                                        <span
-                                                                            class="price">{{ $cartItem->product->new_price }}</span>
+                                                                        @if ($cartItem->type === 'product')
+                                                                            <span
+                                                                                class="price">{{ $cartItem->product->new_price }}</span>
+                                                                        @elseif($cartItem->type === 'event')
+                                                                            <span
+                                                                                class="price">0</span>
+                                                                        @endif
                                                                     </div>
                                                                     <div class="product-item-qty">
                                                                         <span class="label">Qty: </span><span

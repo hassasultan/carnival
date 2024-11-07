@@ -1245,7 +1245,8 @@
                         url: '{{ route('add.to.cart') }}',
                         data: {
                             product_id: productId,
-                            quantity: quantity
+                            quantity: quantity,
+                            type: 'product',
                         },
                         success: function(response) {
 
