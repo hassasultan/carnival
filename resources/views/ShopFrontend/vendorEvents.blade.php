@@ -73,15 +73,15 @@
                     </div><!-- images categori -->
 
                     <!-- link categori
-                            <ul class="category-links">
-                                <li class="current-cate"><a href="">Caribbean</a></li>
-                                <li><a href="">North America</a></li>
-                                <li><a href="">South America</a></li>
-                                <li><a href="">Europe</a></li>
-                                <li><a href="">Africa</a></li>
-                                <li><a href="">Asia</a></li>
-                                <li><a href="">Australia</a></li>
-                            </ul>link categori -->
+                                <ul class="category-links">
+                                    <li class="current-cate"><a href="">Caribbean</a></li>
+                                    <li><a href="">North America</a></li>
+                                    <li><a href="">South America</a></li>
+                                    <li><a href="">Europe</a></li>
+                                    <li><a href="">Africa</a></li>
+                                    <li><a href="">Asia</a></li>
+                                    <li><a href="">Australia</a></li>
+                                </ul>link categori -->
 
                     {{-- <div>
                         <form>
@@ -258,40 +258,47 @@
                 </div><!-- Main Content -->
 
                 <!-- Sidebar -->
-                <div class="col-md-3 col-md-pull-9  col-sidebar">
+                <div class="col-md-3 col-md-pull-9 col-sidebar">
                     <div class="block-sidebar block-banner-sidebar">
                         <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
-                            @foreach ($cat1 as $key => $row)
+                            @foreach ($cat1 as $row)
                                 <div class="item">
-                                    <img src="{{ asset($row->icon) }}" alt="{{ $row->alt_text }}">
+                                    <img src="{{ asset($row->icon) }}" alt="{{ $row->alt_text }}" class="category">
+                                    <input type="checkbox" class="category-checkbox" value="{{ $row->id }}"
+                                        style="display:none;">
                                 </div>
                             @endforeach
                         </div>
                     </div>
-                    <!-- block slide top -->
+
                     <div class="block-sidebar block-banner-sidebar">
                         <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
-                            @foreach ($cat2 as $key => $row)
+                            @foreach ($cat2 as $row)
                                 <div class="item">
-                                    <img src="{{ asset($row->icon) }}" alt="{{ $row->alt_text }}">
+                                    <img src="{{ asset($row->icon) }}" alt="{{ $row->alt_text }}" class="category">
+                                    <input type="checkbox" class="category-checkbox" value="{{ $row->id }}"
+                                        style="display:none;">
                                 </div>
                             @endforeach
                         </div>
-                    </div><!-- block slide top -->
-                    <!-- block slide top -->
+                    </div>
+
                     <div class="block-sidebar block-banner-sidebar">
                         <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
-                            @foreach ($cat3 as $key => $row)
+                            @foreach ($cat3 as $row)
                                 <div class="item">
-                                    <img src="{{ asset($$row->icon) }}" alt="images">
+                                    <img src="{{ asset($row->icon) }}" alt="{{ $row->alt_text }}" class="category">
+                                    <input type="checkbox" class="category-checkbox" value="{{ $row->id }}"
+                                        style="display:none;">
                                 </div>
                             @endforeach
                         </div>
-                    </div><!-- block slide top -->
+                    </div>
                 </div>
+
                 <!-- Sidebar -->
             </div>
         </div>
@@ -385,13 +392,27 @@
                 });
             }
 
-            $(document).on('change', '.category-checkbox', function() {
+            // $(document).on('change', '.category-checkbox', function() {
+            //     let selectedCategories = [];
+            //     $('.category-checkbox:checked').each(function() {
+            //         selectedCategories.push($(this).val());
+            //     });
+            //     fetchEvents(1, selectedCategories);
+            // });
+
+            $(document).on('click', '.category', function() {
+                $(this).siblings('.category-checkbox').prop('checked', function(i, value) {
+                    return !value;
+                });
+
                 let selectedCategories = [];
                 $('.category-checkbox:checked').each(function() {
                     selectedCategories.push($(this).val());
                 });
+
                 fetchEvents(1, selectedCategories);
             });
+
 
             $(document).on('click', '.pagination a', function(e) {
                 e.preventDefault();
