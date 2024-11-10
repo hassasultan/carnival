@@ -344,7 +344,7 @@ class FrontendConroller extends Controller
         //     ];
         // });
 
-        return view('ShopFrontend.vendorEvents', compact('user', 'events', 'banners', 'categories'));
+        return view('ShopFrontend.vendorEvents', compact('user', 'events', 'banners', 'cat1', 'cat2', 'cat3'));
     }
 
     public function myGallery($slug)
