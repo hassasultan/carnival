@@ -311,7 +311,7 @@ class FrontendConroller extends Controller
 
     public function about_us($slug)
     {
-        $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
+        $user = User::with('vendor', 'subVendor', 'products')->whereSlug($slug)->first();
         return view('ShopFrontend.vendorAboutUs', compact('user'));
     }
 

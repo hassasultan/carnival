@@ -169,6 +169,95 @@
             transition: transform 0.2s;
             /* Smooth zoom transition */
         }
+
+        .product-info-main {
+            font-family: Arial, sans-serif;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .ovic-share-socials .inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .social-btn .icon {
+            margin-right: 8px;
+        }
+
+        .social-btn.facebook {
+            background-color: #3b5998;
+        }
+
+        .social-btn.twitter {
+            background-color: #1da1f2;
+        }
+
+        .social-btn.instagram {
+            background-color: #e1306c;
+        }
+
+        .social-btn.linkedin {
+            background-color: #0077b5;
+        }
+
+        .social-btn.youtube {
+            background-color: #ff0000;
+        }
+
+        .social-btn.tiktok {
+            background-color: #000000;
+        }
+
+        .social-btn.whatsapp {
+            background-color: #25d366;
+        }
+
+        .social-btn:hover {
+            opacity: 0.85;
+        }
+
+        .contact-details {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* .contact-item {
+                            display: flex;
+                            align-items: center;
+                            padding: 10px 15px;
+                            border-radius: 5px;
+                            background-color: #f5f5f5;
+                            color: #333;
+                        } */
+
+        .contact-item .icon {
+            margin-right: 8px;
+            color: #333;
+        }
+
+        .contact-item .text {
+            font-weight: bold;
+            color: #333;
+        }
     </style>
 
 
@@ -236,83 +325,80 @@
                         <div class="col-sm-6 col-md-6 col-lg-6">
 
                             <div class="product-info-main">
-
                                 <h1 class="page-title">
                                     {{ optional($user->vendor)->name ?? (optional($user->subvendor)->name ?? 'N/A') }}
                                 </h1>
-                                <div class="product-code">
-                                    Email:
-                                    {{ optional($user->vendor)->email ?? (optional($user->subvendor)->email ?? 'N/A') }}
+
+                                <div class="ovic-share-socials">
+                                    <div class="inner">
+                                        <a class="social-btn facebook"
+                                            href="{{ optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook }}">
+                                            <span class="icon fab fa-facebook"></span>
+                                            <span class="text">Facebook</span>
+                                        </a>
+                                        <a class="social-btn twitter"
+                                            href="{{ optional($user->vendor)->twitter ?? optional($user->subvendor)->twitter }}">
+                                            <span class="icon fab fa-twitter"></span>
+                                            <span class="text">Twitter</span>
+                                        </a>
+                                        <a class="social-btn instagram"
+                                            href="{{ optional($user->vendor)->insta ?? optional($user->subvendor)->insta }}">
+                                            <span class="icon fab fa-instagram"></span>
+                                            <span class="text">Instagram</span>
+                                        </a>
+                                        <a class="social-btn linkedin"
+                                            href="{{ optional($user->vendor)->linkedin ?? optional($user->subvendor)->linkedin }}">
+                                            <span class="icon fab fa-linkedin"></span>
+                                            <span class="text">LinkedIn</span>
+                                        </a>
+                                        <a class="social-btn youtube"
+                                            href="{{ optional($user->vendor)->youtube ?? optional($user->subvendor)->youtube }}">
+                                            <span class="icon fab fa-youtube"></span>
+                                            <span class="text">YouTube</span>
+                                        </a>
+                                        <a class="social-btn tiktok"
+                                            href="{{ optional($user->vendor)->tiktok ?? optional($user->subvendor)->tiktok }}">
+                                            <span class="icon fab fa-tiktok"></span>
+                                            <span class="text">TikTok</span>
+                                        </a>
+                                        <a class="social-btn whatsapp"
+                                            href="{{ optional($user->vendor)->wa_business_page ?? optional($user->subvendor)->wa_business_page }}">
+                                            <span class="icon fab fa-whatsapp"></span>
+                                            <span class="text">WhatsApp</span>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="product-code">
-                                    Phone:
-                                    {{ optional($user->vendor)->phone ?? (optional($user->subvendor)->phone ?? 'N/A') }}
+
+                                <div class="contact-details">
+                                    <div class="contact-item">
+                                        <span class="icon fas fa-envelope"></span>
+                                        <span class="text">Email:</span>
+                                        <a href="mailto:{{ optional($user->vendor)->email ?? optional($user->subvendor)->email }}"
+                                            class="text">
+                                            {{ optional($user->vendor)->email ?? (optional($user->subvendor)->email ?? 'N/A') }}
+                                        </a>
+                                    </div>
+
+                                    <div class="contact-item">
+                                        <span class="icon fas fa-phone"></span>
+                                        <span class="text">Phone:</span>
+                                        <a href="tel:{{ optional($user->vendor)->phone ?? optional($user->subvendor)->phone }}"
+                                            class="text">
+                                            {{ optional($user->vendor)->phone ?? (optional($user->subvendor)->phone ?? 'N/A') }}
+                                        </a>
+                                    </div>
+
+                                    <div class="contact-item">
+                                        <span class="icon fas fa-map-marker-alt"></span>
+                                        <span class="text">Address:</span>
+                                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode(optional($user->vendor)->address ?? optional($user->subvendor)->address) }}"
+                                            target="_blank" class="text">
+                                            {{ optional($user->vendor)->address ?? (optional($user->subvendor)->address ?? 'N/A') }}
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="product-code">
-                                    Address:
-                                    {{ optional($user->vendor)->address ?? (optional($user->subvendor)->address ?? 'N/A') }}
-                                </div>
-                                <div class="block-content">
-                                    <ul>
-                                        @if (optional($user->vendor)->insta ?? optional($user->subvendor)->insta)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->insta ?? optional($user->subvendor)->insta }}">
-                                                    <i class="fab fa-instagram" style="color: #C13584;"></i> Instagram
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook }}">
-                                                    <i class="fab fa-facebook" style="color: #1877F2;"></i> Facebook
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (optional($user->vendor)->twitter ?? optional($user->subvendor)->twitter)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->twitter ?? optional($user->subvendor)->twitter }}">
-                                                    <i class="fab fa-twitter" style="color: #1DA1F2;"></i> Twitter
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (optional($user->vendor)->linkedin ?? optional($user->subvendor)->linkedin)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->linkedin ?? optional($user->subvendor)->linkedin }}">
-                                                    <i class="fab fa-linkedin" style="color: #0077B5;"></i> LinkedIn
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (optional($user->vendor)->youtube ?? optional($user->subvendor)->youtube)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->youtube ?? optional($user->subvendor)->youtube }}">
-                                                    <i class="fab fa-youtube" style="color: #FF0000;"></i> YouTube
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (optional($user->vendor)->tiktok ?? optional($user->subvendor)->tiktok)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->tiktok ?? optional($user->subvendor)->tiktok }}">
-                                                    <i class="fab fa-tiktok" style="color: #010101;"></i> TikTok
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (optional($user->vendor)->wa_business_page ?? optional($user->subvendor)->wa_business_page)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->wa_business_page ?? optional($user->subvendor)->wa_business_page }}">
-                                                    <i class="fab fa-whatsapp" style="color: #25D366;"></i> WA Business Page
-                                                </a>
-                                            </li>
-                                        @endif
-                                    </ul>
-                                </div>
-                            </div><!-- detail- product -->
+                            </div>
+
 
                         </div><!-- Main detail -->
 
@@ -320,13 +406,13 @@
 
                     <!-- product tab info -->
 
-                    {{-- <div class="product-info-detailed ">
+                    <div class="product-info-detailed ">
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-pills" role="tablist">
                             <li role="presentation" class="active"><a href="#description" role="tab"
                                     data-toggle="tab">Description </a></li>
-                            <li role="presentation"><a href="#social_links" role="tab" data-toggle="tab">Social Links
+                            <li role="presentation"><a href="#gallery" role="tab" data-toggle="tab">Gallery
                                 </a>
                             </li>
                         </ul>
@@ -340,72 +426,95 @@
 
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="social_links">
-                                <div class="block-title">information</div>
+                            <div role="tabpanel" class="tab-pane" id="gallery">
+                                <div class="block-title">Gallery</div>
                                 <div class="block-content">
-                                    <ul>
-                                        @if (optional($user->vendor)->insta ?? optional($user->subvendor)->insta)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->insta ?? optional($user->subvendor)->insta }}">
-                                                    <i class="fab fa-instagram" style="color: #C13584;"></i> Instagram
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook }}">
-                                                    <i class="fab fa-facebook" style="color: #1877F2;"></i> Facebook
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (optional($user->vendor)->twitter ?? optional($user->subvendor)->twitter)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->twitter ?? optional($user->subvendor)->twitter }}">
-                                                    <i class="fab fa-twitter" style="color: #1DA1F2;"></i> Twitter
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (optional($user->vendor)->linkedin ?? optional($user->subvendor)->linkedin)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->linkedin ?? optional($user->subvendor)->linkedin }}">
-                                                    <i class="fab fa-linkedin" style="color: #0077B5;"></i> LinkedIn
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (optional($user->vendor)->youtube ?? optional($user->subvendor)->youtube)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->youtube ?? optional($user->subvendor)->youtube }}">
-                                                    <i class="fab fa-youtube" style="color: #FF0000;"></i> YouTube
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (optional($user->vendor)->tiktok ?? optional($user->subvendor)->tiktok)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->tiktok ?? optional($user->subvendor)->tiktok }}">
-                                                    <i class="fab fa-tiktok" style="color: #010101;"></i> TikTok
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if (optional($user->vendor)->wa_business_page ?? optional($user->subvendor)->wa_business_page)
-                                            <li>
-                                                <a
-                                                    href="{{ optional($user->vendor)->wa_business_page ?? optional($user->subvendor)->wa_business_page }}">
-                                                    <i class="fab fa-whatsapp" style="color: #25D366;"></i> WA Business Page
-                                                </a>
-                                            </li>
-                                        @endif
-                                    </ul>
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <!-- product tab info -->
+
+                    <div class="block-related ">
+                        <div class="block-title">
+                            <strong class="title">RELATED products</strong>
+                        </div>
+                        <div class="block-content ">
+                            <ol class="product-items owl-carousel " data-nav="true" data-dots="false" data-margin="30"
+                                data-responsive='{"0":{"items":1},"480":{"items":2},"600":{"items":3},"992":{"items":3}}'>
+
+                                @foreach ($user->products as $row)
+                                    <li class="product-item product-item-opt-2">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a href="{{ route('get.products.detail', $row->slug) }}"
+                                                    class="product-item-img">
+                                                    @if ($row->image != '' && $row->image != null)
+                                                        <img src="{{ asset('productImage/' . $row->image) }}"
+                                                            alt="product name">
+                                                    @else
+                                                        <img src="{{ asset('shopAssets/images/media/detail/related2-2.jpg') }}"
+                                                            alt="product name">
+                                                    @endif
+                                                </a>
+                                                <div class="product-item-actions">
+                                                    <a href="" class="btn btn-wishlist"><span>wishlist</span></a>
+                                                    <a href="" class="btn btn-compare"><span>compare</span></a>
+                                                    <a href="" class="btn btn-quickview"><span>quickview</span></a>
+                                                </div>
+                                                {{-- @if (Auth::check())
+                                                    <button type="submit" title="Add to Cart" class="action btn-cart"
+                                                        data-product_id="{{ $row->id }}">
+                                                        <span>Add to Cart</span>
+                                                    </button>
+                                                @else
+                                                    <a href="{{ route('customer.login') }}" title="Add to Cart"
+                                                        class="action btn-cart btn">
+                                                        <span>Add to Cart</span>
+                                                    </a>
+                                                @endif --}}
+
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a
+                                                        href="">{{ $row->title }}</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+
+                                                        @php
+                                                            $oldPrice = $row->old_price;
+                                                            $newPrice = $row->new_price;
+                                                            if ($oldPrice > 0) {
+                                                                $percentageDiscount = round(
+                                                                    (($oldPrice - $newPrice) / $oldPrice) * 100,
+                                                                );
+                                                            } else {
+                                                                $percentageDiscount = 0;
+                                                            }
+                                                        @endphp
+                                                        <span class="price">${{ $row->new_price }}</span>
+                                                        <span class="old-price">${{ $row->old_price }}</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div class="rating-result"
+                                                                title="{{ $percentageDiscount }}%">
+                                                                <span style="width:{{ $percentageDiscount }}%">
+                                                                    <span><span>{{ $percentageDiscount }}</span>% of
+                                                                        <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+
+                            </ol>
+                        </div>
+                    </div>
 
                 </div><!-- Main Content -->
 
