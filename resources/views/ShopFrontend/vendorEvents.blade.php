@@ -73,15 +73,15 @@
                     </div><!-- images categori -->
 
                     <!-- link categori
-                        <ul class="category-links">
-                            <li class="current-cate"><a href="">Caribbean</a></li>
-                            <li><a href="">North America</a></li>
-                            <li><a href="">South America</a></li>
-                            <li><a href="">Europe</a></li>
-                            <li><a href="">Africa</a></li>
-                            <li><a href="">Asia</a></li>
-                            <li><a href="">Australia</a></li>
-                        </ul>link categori -->
+                            <ul class="category-links">
+                                <li class="current-cate"><a href="">Caribbean</a></li>
+                                <li><a href="">North America</a></li>
+                                <li><a href="">South America</a></li>
+                                <li><a href="">Europe</a></li>
+                                <li><a href="">Africa</a></li>
+                                <li><a href="">Asia</a></li>
+                                <li><a href="">Australia</a></li>
+                            </ul>link categori -->
 
                     {{-- <div>
                         <form>
@@ -259,73 +259,42 @@
 
                 <!-- Sidebar -->
                 <div class="col-md-3 col-md-pull-9  col-sidebar">
+                    <div class="block-sidebar block-banner-sidebar">
+                        <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
+                            data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
+                            @foreach ($cat1 as $key => $row)
+                                <div class="item">
+                                    <img src="{{ asset('category_icon/' . $row->icon) }}" alt="{{ $row->alt_text }}">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                     <!-- block slide top -->
-                    @foreach ($categories as $category)
-                        <div class="block-sidebar block-banner-sidebar">
-                            <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true"
-                                data-margin="0" data-items="1" data-autoplaytimeout="700" data-autoplay="true"
-                                data-loop="true">
-
-                                <div class="owl-stage-outer">
-                                    <div class="owl-stage"
-                                        style="transform: translate3d(-536px, 0px, 0px); transition: all; width: 1876px;">
-                                        <div class="owl-item cloned" style="width: 268px;">
-                                            <div class="item item2">
-                                                <img src="images/adspc5a.jpg" alt="images">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 268px;">
-                                            <div class="item item3">
-                                                <img src="images/adspc5b.jpg" alt="images">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item active" style="width: 268px;">
-                                            <div class="item item1">
-                                                <img src="images/adspc5.jpg" alt="images">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 268px;">
-                                            <div class="item item2">
-                                                <img src="images/adspc5a.jpg" alt="images">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 268px;">
-                                            <div class="item item3">
-                                                <img src="images/adspc5b.jpg" alt="images">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 268px;">
-                                            <div class="item item1">
-                                                <img src="images/adspc5.jpg" alt="images">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 268px;">
-                                            <div class="item item2">
-                                                <img src="images/adspc5a.jpg" alt="images">
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="block-sidebar block-banner-sidebar">
+                        <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
+                            data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
+                            @foreach ($cat2 as $key => $row)
+                                <div class="item">
+                                    <img src="{{ asset('category_icon/' . $row->icon) }}" alt="{{ $row->alt_text }}">
                                 </div>
-                                <div class="owl-nav disabled">
-                                    <div class="owl-prev"></div>
-                                    <div class="owl-next"></div>
-                                </div>
-                                <div class="owl-dots">
-                                    <div class="owl-dot active"><span></span></div>
-                                    <div class="owl-dot"><span></span></div>
-                                    <div class="owl-dot"><span></span></div>
-                                </div>
-                            </div>
-                        </div><!-- block slide top -->
-                    @endforeach
+                            @endforeach
+                        </div>
+                    </div><!-- block slide top -->
                     <!-- block slide top -->
-                </div><!-- Sidebar -->
-
-
+                    <div class="block-sidebar block-banner-sidebar">
+                        <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
+                            data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
+                            @foreach ($cat3 as $key => $row)
+                                <div class="item">
+                                    <img src="/category_icon/{{ $row->icon }}" alt="images">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div><!-- block slide top -->
+                </div>
+                <!-- Sidebar -->
             </div>
         </div>
-
-
     </main>
 @endsection
 

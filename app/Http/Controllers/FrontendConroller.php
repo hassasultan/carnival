@@ -320,7 +320,22 @@ class FrontendConroller extends Controller
         $banners = Banner::where('type', 'mascamps')->get();
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
         $events = Event::with('category')->where('user_id', $user->id)->get();
-        $categories = Category::where('status', 1)->take(3)->get();
+        $cat1 = Category::where('status', 1)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $cat2 = Category::where('status', 1)
+            ->whereNotIn('id', $cat1->pluck('id'))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $cat3 = Category::where('status', 1)
+            ->whereNotIn('id', $cat1->pluck('id')->merge($cat2->pluck('id')))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
         // $categories = $events->groupBy('category_id')->map(function ($events, $categoryId) {
         //     return [
         //         'id' => $categoryId,
