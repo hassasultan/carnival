@@ -264,7 +264,7 @@
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
                             @foreach ($cat1 as $key => $row)
                                 <div class="item">
-                                    <img src="{{ asset('category_icon/' . $row->icon) }}" alt="{{ $row->alt_text }}">
+                                    <img src="{{ asset($row->icon) }}" alt="{{ $row->alt_text }}">
                                 </div>
                             @endforeach
                         </div>
@@ -275,7 +275,7 @@
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
                             @foreach ($cat2 as $key => $row)
                                 <div class="item">
-                                    <img src="{{ asset('category_icon/' . $row->icon) }}" alt="{{ $row->alt_text }}">
+                                    <img src="{{ asset($row->icon) }}" alt="{{ $row->alt_text }}">
                                 </div>
                             @endforeach
                         </div>
@@ -286,7 +286,7 @@
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
                             @foreach ($cat3 as $key => $row)
                                 <div class="item">
-                                    <img src="/category_icon/{{ $row->icon }}" alt="images">
+                                    <img src="{{ asset($$row->icon) }}" alt="images">
                                 </div>
                             @endforeach
                         </div>
