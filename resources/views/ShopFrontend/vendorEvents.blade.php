@@ -42,18 +42,17 @@
 
                     </div><!-- images categori -->
 
-                    <!-- link categori
-                                    <ul class="category-links">
-                                        <li class="current-cate"><a href="">Caribbean</a></li>
-                                        <li><a href="">North America</a></li>
-                                        <li><a href="">South America</a></li>
-                                        <li><a href="">Europe</a></li>
-                                        <li><a href="">Africa</a></li>
-                                        <li><a href="">Asia</a></li>
-                                        <li><a href="">Australia</a></li>
-                                    </ul>link categori -->
+                    <ul class="category-links">
+                        <li class="current-cate"><a href="">Caribbean</a></li>
+                        <li><a href="">North America</a></li>
+                        <li><a href="">South America</a></li>
+                        <li><a href="">Europe</a></li>
+                        <li><a href="">Africa</a></li>
+                        <li><a href="">Asia</a></li>
+                        <li><a href="">Australia</a></li>
+                    </ul>
 
-                    {{-- <div>
+                    <div>
                         <form>
                             <input type="text" fdprocessedid="0nt0dd">
                             <button fdprocessedid="e68vzg">Search</button>
@@ -135,9 +134,9 @@
                             </li>
                         </ul>
 
-                    </div><!-- Toolbar --> --}}
+                    </div><!-- Toolbar -->
 
-                    <div>
+                    {{-- <div>
                         <!-- link categori -->
                         <ul class="category-links">
                             <li class="current-cate"><a href="">Caribbean</a></li>
@@ -149,7 +148,7 @@
                             <li><a href="">Australia</a></li>
                         </ul><!-- link categori -->
 
-                    </div>
+                    </div> --}}
 
 
                     <!-- List Events -->
