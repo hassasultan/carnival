@@ -240,6 +240,339 @@
 
                 <!-- Sidebar -->
                 <div class="col-md-3 col-md-pull-9 col-sidebar">
+                    <div id="layered-filter-block" class="block-sidebar block-filter no-hide">
+                        <div class="close-filter-products"><i class="fa fa-times" aria-hidden="true"></i></div>
+                        <div class="block-title">
+                            <strong>FILTER SELECTION</strong>
+                        </div>
+                        <div class="block-content">
+
+                            <!-- Filter Item  categori-->
+                            <div class="filter-options-item filter-options-categori">
+                                <div class="filter-options-title">Categories</div>
+                                <div class="filter-options-content">
+                                    <ol class="items">
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>Tops <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>Network &amp; Computer <span
+                                                        class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>Batteries &amp; Chargers <span
+                                                        class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>Dresses <span
+                                                        class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>Knitted <span
+                                                        class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>Pants <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>Best selling <span
+                                                        class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>Headphone &amp; Headset <span
+                                                        class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div><!-- Filter Item  categori-->
+
+                            <!-- filter price -->
+                            <div class="filter-options-item filter-options-price">
+                                <div class="filter-options-title">Price</div>
+                                <div class="filter-options-content">
+                                    <div class="slider-range">
+
+                                        <div id="slider-range"
+                                            class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                                            aria-disabled="false">
+                                            <div class="ui-slider-range ui-widget-header ui-corner-all"
+                                                style="left: 0%; width: 60%;"></div><a
+                                                class="ui-slider-handle ui-state-default ui-corner-all" href="#"
+                                                style="left: 0%;"></a><a
+                                                class="ui-slider-handle ui-state-default ui-corner-all" href="#"
+                                                style="left: 60%;"></a>
+                                        </div>
+
+                                        <div class="action">
+                                            <span class="price">
+                                                <span>Range:</span>
+                                                $<span id="amount-left">0</span>
+                                                -
+                                                $<span id="amount-right">300</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <ol class="items">
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>$20 - $50 <span class="count">(20)</span>
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>$50 - $100 <span class="count">(20)</span>
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>$100 - $250 <span class="count">(20)</span>
+                                                </span>
+                                            </label>
+                                        </li>
+
+                                    </ol>
+                                </div>
+                            </div><!-- filter price -->
+
+                            <!-- filter brad-->
+                            <div class="filter-options-item filter-options-brand">
+                                <div class="filter-options-title">BRAND</div>
+                                <div class="filter-options-content">
+                                    <ol class="items">
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>Channelo <span class="count">(20)</span>
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>Mamypokon <span class="count">(20)</span>
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>Pamperson <span class="count">(20)</span>
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>Pradano <span class="count">(20)</span>
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>Pumano <span class="count">(20)</span>
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>AME <span class="count">(20)</span> </span>
+                                            </label>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div><!-- Filter Item -->
+
+                            <!-- filter color-->
+                            {{-- <div class="filter-options-item filter-options-color">
+                                <div class="filter-options-title">COLOR</div>
+                                <div class="filter-options-content">
+                                    <ol class="items">
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox">
+                                                <span>
+                                                    <span class="img" style="background-color: #fca53c;"></span>
+                                                    <span class="count">(30)</span>
+                                                </span>
+
+                                            </label>
+                                        </li>
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox">
+                                                <span>
+                                                    <span class="img" style="background-color: #6b5a5c;"></span>
+                                                    <span class="count">(20)</span>
+                                                </span>
+
+                                            </label>
+                                        </li>
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox">
+                                                <span>
+                                                    <span class="img" style="background-color: #000000;"></span>
+                                                    <span class="count">(20)</span>
+                                                </span>
+
+                                            </label>
+                                        </li>
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox">
+                                                <span>
+                                                    <span class="img" style="background-color: #3063f2;"></span>
+                                                    <span class="count">(20)</span>
+                                                </span>
+
+                                            </label>
+                                        </li>
+
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox">
+                                                <span>
+                                                    <span class="img" style="background-color: #f9334a;"></span>
+                                                    <span class="count">(20)</span>
+                                                </span>
+
+                                            </label>
+                                        </li>
+
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox">
+                                                <span>
+                                                    <span class="img" style="background-color: #964b00;"></span>
+                                                    <span class="count">(20)</span>
+                                                </span>
+
+                                            </label>
+                                        </li>
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox">
+                                                <span>
+                                                    <span class="img" style="background-color: #faebd7;"></span>
+                                                    <span class="count">(20)</span>
+                                                </span>
+
+                                            </label>
+                                        </li>
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox">
+                                                <span>
+                                                    <span class="img" style="background-color: #e84c3d;"></span>
+                                                    <span class="count">(20)</span>
+                                                </span>
+
+                                            </label>
+                                        </li>
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox">
+                                                <span>
+                                                    <span class="img" style="background-color: #fccacd;"></span>
+                                                    <span class="count">(20)</span>
+                                                </span>
+
+                                            </label>
+                                        </li>
+
+                                    </ol>
+                                </div>
+                            </div><!-- Filter Item -->
+
+                            <!-- Filter Item  size-->
+                            <div class="filter-options-item filter-options-size">
+                                <div class="filter-options-title">SIZE</div>
+                                <div class="filter-options-content">
+                                    <ol class="items">
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>X <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>XXL <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>XXL <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>m <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>L <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>32 <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>36 <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>37 <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>X <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>XXL <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>XXL <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox"><span>m <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+
+                                    </ol>
+                                </div>
+                            </div><!-- Filter Item  size--> --}}
+
+                        </div>
+                    </div>
+
+
+
                     <div class="block-sidebar block-banner-sidebar">
                         <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
                             data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
