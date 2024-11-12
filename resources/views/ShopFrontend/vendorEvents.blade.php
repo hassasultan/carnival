@@ -42,15 +42,16 @@
 
                     </div><!-- images categori -->
 
-                    <ul class="category-links">
-                        <li class="current-cate"><a href="">Caribbean</a></li>
-                        <li><a href="">North America</a></li>
-                        <li><a href="">South America</a></li>
-                        <li><a href="">Europe</a></li>
-                        <li><a href="">Africa</a></li>
-                        <li><a href="">Asia</a></li>
-                        <li><a href="">Australia</a></li>
-                    </ul>
+                    {{-- <!-- link categori
+                                    <ul class="category-links">
+                                        <li class="current-cate"><a href="">Caribbean</a></li>
+                                        <li><a href="">North America</a></li>
+                                        <li><a href="">South America</a></li>
+                                        <li><a href="">Europe</a></li>
+                                        <li><a href="">Africa</a></li>
+                                        <li><a href="">Asia</a></li>
+                                        <li><a href="">Australia</a></li>
+                                    </ul>link categori --> --}}
 
                     <div>
                         <form>
@@ -60,10 +61,9 @@
                     </div>
 
 
-                    <!-- Toolbar -->
-                    <div class=" toolbar-events toolbar-top">
+                    <div class=" toolbar-products toolbar-top">
 
-                        <div class="btn-filter-events">
+                        <div class="btn-filter-products">
                             <span>Filter</span>
                         </div>
 
@@ -134,8 +134,20 @@
                             </li>
                         </ul>
 
-                    </div><!-- Toolbar -->
+                    </div>
+                    <div>
+                        <!-- link categori -->
+                        <ul class="category-links">
+                            <li class="current-cate"><a href="">Caribbean</a></li>
+                            <li><a href="">North America</a></li>
+                            <li><a href="">South America</a></li>
+                            <li><a href="">Europe</a></li>
+                            <li><a href="">Africa</a></li>
+                            <li><a href="">Asia</a></li>
+                            <li><a href="">Australia</a></li>
+                        </ul><!-- link categori -->
 
+                    </div>
                     {{-- <div>
                         <!-- link categori -->
                         <ul class="category-links">
