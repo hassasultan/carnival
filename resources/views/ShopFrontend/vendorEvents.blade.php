@@ -19,69 +19,39 @@
 
                     <!-- images categori -->
                     <div class="category-view">
-                        <div class="owl-carousel owl-loaded owl-drag" data-nav="true" data-dots="false" data-margin="0"
-                            data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
+                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0" data-items="1"
+                            data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
 
-
-
-                            <div class="owl-stage-outer">
-                                <div class="owl-stage"
-                                    style="transform: translate3d(-1740px, 0px, 0px); transition: all; width: 6090px;">
-                                    <div class="owl-item cloned" style="width: 870px;">
-                                        <div class="item ">
-                                            <a href=""><img src="https://carnivalguide.co/shop/images/eventbnr2.jpg" alt="category-images"></a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item cloned" style="width: 870px;">
-                                        <div class="item ">
-                                            <a href=""><img src="https://carnivalguide.co/shop/images/eventbnr3.jpg" alt="category-images"></a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item active" style="width: 870px;">
-                                        <div class="item ">
-                                            <a href=""><img src="https://carnivalguide.co/shop/images/eventbnr1.jpg" alt="category-images"></a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item" style="width: 870px;">
-                                        <div class="item ">
-                                            <a href=""><img src="https://carnivalguide.co/shop/images/eventbnr2.jpg" alt="category-images"></a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item" style="width: 870px;">
-                                        <div class="item ">
-                                            <a href=""><img src="https://carnivalguide.co/shop/images/eventbnr3.jpg" alt="category-images"></a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item cloned" style="width: 870px;">
-                                        <div class="item ">
-                                            <a href=""><img src="https://carnivalguide.co/shop/images/eventbnr1.jpg" alt="category-images"></a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item cloned" style="width: 870px;">
-                                        <div class="item ">
-                                            <a href=""><img src="https://carnivalguide.co/shop/images/eventbnr2.jpg" alt="category-images"></a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="item">
+                                <a href="">
+                                    <img src="https://carnivalguide.co/shop/images/eventbnr2.jpg" alt="category-images">
+                                </a>
                             </div>
-                            <div class="owl-nav">
-                                <div class="owl-prev"></div>
-                                <div class="owl-next"></div>
+                            <div class="item">
+                                <a href="">
+                                    <img src="https://carnivalguide.co/shop/images/eventbnr3.jpg" alt="category-images">
+                                </a>
                             </div>
-                            <div class="owl-dots disabled"></div>
+                            <div class="item">
+                                <a href="">
+                                    <img src="https://carnivalguide.co/shop/images/eventbnr1.jpg" alt="category-images">
+                                </a>
+                            </div>
+
                         </div>
+
                     </div><!-- images categori -->
 
                     <!-- link categori
-                                <ul class="category-links">
-                                    <li class="current-cate"><a href="">Caribbean</a></li>
-                                    <li><a href="">North America</a></li>
-                                    <li><a href="">South America</a></li>
-                                    <li><a href="">Europe</a></li>
-                                    <li><a href="">Africa</a></li>
-                                    <li><a href="">Asia</a></li>
-                                    <li><a href="">Australia</a></li>
-                                </ul>link categori -->
+                                    <ul class="category-links">
+                                        <li class="current-cate"><a href="">Caribbean</a></li>
+                                        <li><a href="">North America</a></li>
+                                        <li><a href="">South America</a></li>
+                                        <li><a href="">Europe</a></li>
+                                        <li><a href="">Africa</a></li>
+                                        <li><a href="">Asia</a></li>
+                                        <li><a href="">Australia</a></li>
+                                    </ul>link categori -->
 
                     {{-- <div>
                         <form>
