@@ -11772,7 +11772,8 @@ select.input-sm {
     height: 17px;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(../images/icon/slider-range.png)
+    background-image: url(../images/icon/slider-range.png);
+    z-index: 9;
 }
 
 .slider-range .action:after,
