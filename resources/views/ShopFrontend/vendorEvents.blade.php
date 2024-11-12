@@ -290,6 +290,8 @@
     <!-- Custom scripts -->
     <script>
         $(document).ready(function() {
+            $('body').addClass('catalog-category-view catalog-view_op1');
+
             function fetchEvents(page = 1, selectedCategories = []) {
                 $('#event-listing').html('');
 
