@@ -19513,7 +19513,11 @@ select.input-sm {
         display: none
     }
 }
+.catalog-view_op1 .category-view
+{
+    margin-bottom: 25px
 
+}
 .category-view {
     margin-top: 25px
 }
