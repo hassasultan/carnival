@@ -320,6 +320,7 @@ class FrontendConroller extends Controller
         $banners = Banner::where('type', 'mascamps')->get();
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
         $events = Event::with('category')->where('user_id', $user->id)->get();
+        $regions = Region::with('countries')->get();
         $cat1 = Category::where('status', 1)
             ->inRandomOrder()
             ->take(3)
@@ -336,15 +337,8 @@ class FrontendConroller extends Controller
             ->inRandomOrder()
             ->take(3)
             ->get();
-        // $categories = $events->groupBy('category_id')->map(function ($events, $categoryId) {
-        //     return [
-        //         'id' => $categoryId,
-        //         'category' => $events->first()->category->title,
-        //         'count' => $events->count()
-        //     ];
-        // });
 
-        return view('ShopFrontend.vendorEvents', compact('user', 'events', 'banners', 'cat1', 'cat2', 'cat3'));
+        return view('ShopFrontend.vendorEvents', compact('user', 'events', 'banners', 'cat1', 'cat2', 'cat3', 'regions'));
     }
 
     public function myGallery($slug)
@@ -367,10 +361,15 @@ class FrontendConroller extends Controller
 
     public function get_events(Request $request)
     {
+        $regionId = $request->get('getRegion');
+        
         $query = Event::with('images', 'tickets', 'country_tabs', 'User');
         if ($request->has('categories') && !empty($request->categories)) {
             $query->whereIn('category_id', $request->categories);
         }
+        // ->when($regionId, function ($query) use ($regionId) {
+        //     return $query->where('continent', $regionId);
+        // })
         $events = $query->paginate(18);
         return $events;
     }
