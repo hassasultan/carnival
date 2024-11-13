@@ -36,4 +36,14 @@ class EventTicket extends Model
     {
         return $this->belongsTo(Event::class);
     }
+
+    public function getMinTicketPriceAttribute()
+    {
+        return $this->tickets()->min('price');
+    }
+
+    public function getMaxTicketPriceAttribute()
+    {
+        return $this->tickets()->max('price');
+    }
 }

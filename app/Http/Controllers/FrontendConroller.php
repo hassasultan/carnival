@@ -361,14 +361,29 @@ class FrontendConroller extends Controller
 
     public function get_events(Request $request)
     {
+        // dd($request->toArray());
         $regionId = $request->get('getRegion');
-        
+        $event_type = $request->get('event_type');
+        $priceRanges = $request->get('price_ranges', []);
+
         $query = Event::with('images', 'tickets', 'country_tabs', 'User');
         if ($request->has('categories') && !empty($request->categories)) {
             $query->whereIn('category_id', $request->categories);
         }
-        // ->when($regionId, function ($query) use ($regionId) {
-        //     return $query->where('continent', $regionId);
+        if (!is_null($event_type)) {
+            $query->where('all_day', 1);
+        }
+        if ($request->filled('price_range')) {
+            $priceRanges = $request->price_range;
+
+            $query->whereHas('tickets', function ($query) use ($priceRanges) {
+                foreach ($priceRanges as $range) {
+                    $query->orWhereBetween('price', [$range['min'], $range['max']]);
+                }
+            });
+        }
+        // ->when($event_type, function ($query) use ($event_type) {
+        //     return $query->where('all_day', $regionId);
         // })
         $events = $query->paginate(18);
         return $events;

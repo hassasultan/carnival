@@ -165,7 +165,6 @@
 
                     <!-- block filter events -->
                     <div id="layered-filter-block" class="block-sidebar block-filter no-hide">
-                        <div class="close-filter-events"><i class="fa fa-times" aria-hidden="true"></i></div>
                         <div class="block-title">
                             <strong>FILTER SELECTION</strong>
                         </div>
@@ -188,25 +187,27 @@
                                         </div>
                                     </div>
                                     <ol class="items">
-                                        <li class="item ">
+                                        <li class="item">
                                             <label>
-                                                <input type="checkbox"><span>$20 - $50 <span class="count">(20)</span>
-                                                </span>
+                                                <input type="checkbox" class="price-checkbox" data-min="20"
+                                                    data-max="50">
+                                                <span>$20 - $50 <span class="count">(20)</span></span>
                                             </label>
                                         </li>
-                                        <li class="item ">
+                                        <li class="item">
                                             <label>
-                                                <input type="checkbox"><span>$50 - $100 <span class="count">(20)</span>
-                                                </span>
+                                                <input type="checkbox" class="price-checkbox" data-min="50"
+                                                    data-max="100">
+                                                <span>$50 - $100 <span class="count">(20)</span></span>
                                             </label>
                                         </li>
-                                        <li class="item ">
+                                        <li class="item">
                                             <label>
-                                                <input type="checkbox"><span>$100 - $250 <span class="count">(20)</span>
-                                                </span>
+                                                <input type="checkbox" class="price-checkbox" data-min="100"
+                                                    data-max="250">
+                                                <span>$100 - $250 <span class="count">(20)</span></span>
                                             </label>
                                         </li>
-
                                     </ol>
                                 </div>
                             </div><!-- filter price -->
@@ -262,7 +263,7 @@
                                     <ol class="items">
                                         <li class="item ">
                                             <label>
-                                                <input type="checkbox" id="event_type">Full Day
+                                                <input type="checkbox" id="event_type"><span>Full Day </span>
                                             </label>
                                         </li>
                                     </ol>
@@ -282,9 +283,10 @@
     <!-- Custom scripts -->
     <script>
         $(document).ready(function() {
-            function fetchEvents(page = 1, selectedCategories = [], eventType = null) {
+            function fetchEvents(page = 1, selectedCategories = [], eventType = null, priceRanges = []) {
                 $('#event-listing').html('');
 
+                // Display skeleton loaders
                 for (let i = 0; i < 18; i++) {
                     var skeletonHtml = `
                 <li class="col-sm-4 event-item">
@@ -295,18 +297,19 @@
                             <div class="skeleton-line" style="width: 70%;"></div>
                         </div>
                     </div>
-                </li>
-            `;
+                </li>`;
                     $('#event-listing').append(skeletonHtml);
                 }
 
+                // AJAX call to fetch events
                 $.ajax({
                     url: "{{ route('get.events') }}",
                     type: "GET",
                     data: {
                         page: page,
                         categories: selectedCategories,
-                        event_type: eventType
+                        event_type: eventType,
+                        price_ranges: priceRanges
                     },
                     success: function(response) {
                         $('#event-listing').empty();
@@ -315,8 +318,8 @@
                                 .banner :
                                 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                             var href =
-                                "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}";
-                            href = href.replace('event_slug_placeholder', event.slug);
+                                "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}"
+                                .replace('event_slug_placeholder', event.slug);
                             var eventHtml = `
                         <li class="col-sm-4 event-item">
                             <div class="event-item-opt-1">
@@ -337,27 +340,27 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                    `;
+                        </li>`;
                             $('#event-listing').append(eventHtml);
                         });
 
+                        // Pagination logic
                         $('.pagination').empty();
                         if (response.current_page > 1) {
                             $('.pagination').append(
                                 `<li class="action"><a href="#" data-page="${response.current_page - 1}"><i class="fa fa-angle-left"></i></a></li>`
-                            );
+                                );
                         }
                         for (let i = 1; i <= response.last_page; i++) {
                             let activeClass = i === response.current_page ? 'active' : '';
                             $('.pagination').append(
                                 `<li class="${activeClass}"><a href="#" data-page="${i}">${i}</a></li>`
-                            );
+                                );
                         }
                         if (response.current_page < response.last_page) {
                             $('.pagination').append(
                                 `<li class="action"><a href="#" data-page="${response.current_page + 1}"><i class="fa fa-angle-right"></i></a></li>`
-                            );
+                                );
                         }
                     },
                     error: function(xhr, status, error) {
@@ -366,149 +369,59 @@
                 });
             }
 
+            function getSelectedCategories() {
+                let selectedCategories = [];
+                $('.category-checkbox:checked').each(function() {
+                    selectedCategories.push($(this).val());
+                });
+                return selectedCategories;
+            }
+
+            function getSelectedPriceRanges() {
+                let priceRanges = [];
+                $('.price-checkbox:checked').each(function() {
+                    let min = $(this).data('min');
+                    let max = $(this).data('max');
+                    priceRanges.push({
+                        min: min,
+                        max: max
+                    });
+                });
+                return priceRanges;
+            }
+
             $(document).on('click', '.category', function() {
                 $(this).siblings('.category-checkbox').prop('checked', function(i, value) {
                     return !value;
                 });
 
-                let selectedCategories = [];
-                $('.category-checkbox:checked').each(function() {
-                    selectedCategories.push($(this).val());
-                });
+                let selectedCategories = getSelectedCategories();
+                let eventType = $('#event_type').is(':checked') ? 1 : null;
+                let priceRanges = getSelectedPriceRanges();
 
-                fetchEvents(1, selectedCategories);
+                fetchEvents(1, selectedCategories, eventType, priceRanges);
             });
 
+            // Event type filter
             $(document).on('click', '#event_type', function() {
-                let eventType = $(this).is(':checked') ? $(this).val() : null;
-                let selectedCategories = [];
-                $('.category-checkbox:checked').each(function() {
-                    selectedCategories.push($(this).val());
-                });
+                let eventType = $(this).is(':checked') ? 1 : null;
+                let selectedCategories = getSelectedCategories();
+                let priceRanges = getSelectedPriceRanges();
 
-                fetchEvents(1, selectedCategories, eventType);
+                fetchEvents(1, selectedCategories, eventType, priceRanges);
             });
 
+            // Price filter
+            $(document).on('click', '.price-checkbox', function() {
+                let eventType = $('#event_type').is(':checked') ? 1 : null;
+                let selectedCategories = getSelectedCategories();
+                let priceRanges = getSelectedPriceRanges();
+
+                fetchEvents(1, selectedCategories, eventType, priceRanges);
+            });
+
+            // Initial fetch
             fetchEvents();
         });
-
-        // $(document).ready(function() {
-        //     function fetchEvents(page = 1, selectedCategories = []) {
-        //         $('#event-listing').html('');
-
-        //         for (let i = 0; i < 18; i++) {
-        //             var skeletonHtml = `
-    //         <li class="col-sm-4 event-item">
-    //             <div class="skeleton-item">
-    //                 <div class="skeleton-content">
-    //                     <div class="skeleton-line" style="width: 80%;"></div>
-    //                     <div class="skeleton-line" style="width: 60%;"></div>
-    //                     <div class="skeleton-line" style="width: 70%;"></div>
-    //                 </div>
-    //             </div>
-    //         </li>
-    //     `;
-        //             $('#event-listing').append(skeletonHtml);
-        //         }
-
-        //         $.ajax({
-        //             url: "{{ route('get.events') }}",
-        //             type: "GET",
-        //             data: {
-        //                 page: page,
-        //                 categories: selectedCategories
-        //             },
-        //             success: function(response) {
-        //                 $('#event-listing').empty();
-        //                 $.each(response.data, function(index, event) {
-        //                     var image = event.banner ? "{{ asset('eventBanner/') }}/" + event
-        //                         .banner :
-        //                         'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-        //                     var href =
-        //                         "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}";
-        //                     href = href.replace('event_slug_placeholder', event.slug);
-        //                     var eventHtml = `
-    //                         <li class="col-sm-4 event-item">
-    //                             <div class="event-item-opt-1">
-    //                                 <div class="event-item-info">
-    //                                     <div class="event-item-photo">
-    //                                         <a href="${href}" class="event-item-img">
-    //                                             <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
-    //                                         </a>
-    //                                         <span class="event-item-label label-date">${event.start_date}</span>
-    //                                     </div>
-    //                                     <div class="event-item-detail">
-    //                                         <strong class="event-item-name"><a href="${href}">${event.name}</a></strong>
-    //                                         <div class="clearfix">
-    //                                             <div class="event-item-description">
-    //                                                 <p>${event.description.substring(0, 100)}...</p>
-    //                                             </div>
-    //                                         </div>
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
-    //                         </li>
-    //                     `;
-        //                     $('#event-listing').append(eventHtml);
-        //                 });
-
-        //                 $('.pagination').empty();
-        //                 if (response.current_page > 1) {
-        //                     $('.pagination').append(
-        //                         `<li class="action"><a href="#" data-page="${response.current_page - 1}"><i class="fa fa-angle-left"></i></a></li>`
-        //                     );
-        //                 }
-        //                 for (let i = 1; i <= response.last_page; i++) {
-        //                     let activeClass = i === response.current_page ? 'active' : '';
-        //                     $('.pagination').append(
-        //                         `<li class="${activeClass}"><a href="#" data-page="${i}">${i}</a></li>`
-        //                     );
-        //                 }
-        //                 if (response.current_page < response.last_page) {
-        //                     $('.pagination').append(
-        //                         `<li class="action"><a href="#" data-page="${response.current_page + 1}"><i class="fa fa-angle-right"></i></a></li>`
-        //                     );
-        //                 }
-        //             },
-        //             error: function(xhr, status, error) {
-        //                 console.error(error);
-        //             }
-        //         });
-        //     }
-
-        //     $(document).on('click', '.category', function() {
-        //         $(this).siblings('.category-checkbox').prop('checked', function(i, value) {
-        //             return !value;
-        //         });
-
-        //         let selectedCategories = [];
-        //         $('.category-checkbox:checked').each(function() {
-        //             selectedCategories.push($(this).val());
-        //         });
-
-        //         fetchEvents(1, selectedCategories);
-        //     });
-
-        //     // $(document).on('click', '.category', function() {
-        //     //     $(this).siblings('.category-checkbox').prop('checked', function(i, value) {
-        //     //         return !value;
-        //     //     });
-
-        //     //     let selectedCategories = [];
-        //     //     $('.category-checkbox:checked').each(function() {
-        //     //         selectedCategories.push($(this).val());
-        //     //     });
-
-        //     //     fetchEvents(1, selectedCategories);
-        //     // });
-
-        //     $(document).on('click', '#event_type', function() {
-        //         let eventType = $(this).is(':checked') ? $(this).val() :
-
-        //         fetchEvents(null, eventType);
-        //     });
-
-        //     fetchEvents();
-        // });
     </script>
 @endsection
