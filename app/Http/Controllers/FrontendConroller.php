@@ -81,9 +81,42 @@ class FrontendConroller extends Controller
     }
     public function get_product(Request $request)
     {
-        $products = Product::orderBy('id', 'DESC')->paginate(18);
+        $query = Product::with('product_images', 'media', 'category', 'brand', 'product_variant', 'user');
+
+        if ($request->has('categories') && !empty($request->categories)) {
+            $query->whereIn('category_id', $request->categories);
+        }
+
+        if ($request->filled('brands')) {
+            $query->whereIn('brand_id', $request->brands);
+        }
+
+        if ($request->filled('price_ranges')) {
+            $query->where(function ($q) use ($request) {
+                foreach ($request->price_ranges as $range) {
+                    $min = (float) $range['min'];
+                    $max = (float) $range['max'];
+                    $q->orWhereBetween('new_price', [$min, $max]);
+                }
+            });
+        }
+
+        if ($request->filled('product_condition')) {
+            $query->whereIn('condition', $request->product_condition);
+        }
+
+        if ($request->filled('stock_condition')) {
+            $query->whereIn('stock_condition', $request->stock_condition);
+        }
+
+        if ($request->filled('sale')) {
+            $query->where('sale', 'true');
+        }
+
+        $products = $query->orderBy('id', 'DESC')->paginate(18);
         return $products;
     }
+
     public function product_detail($slug)
     {
         $product = Product::with('variants', 'product_variant', 'product_images')->where('slug', $slug)->firstOrFail();
@@ -143,7 +176,27 @@ class FrontendConroller extends Controller
     public function product_listing()
     {
         $products = Product::with('brand')->get();
-        return view('ShopFrontend.product-listing', compact('products'));
+        $brands = Brand::where('status', 1)
+            ->withCount('products')
+            ->get();
+        $cat1 = Category::where('status', 1)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $cat2 = Category::where('status', 1)
+            ->whereNotIn('id', $cat1->pluck('id'))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $cat3 = Category::where('status', 1)
+            ->whereNotIn('id', $cat1->pluck('id')->merge($cat2->pluck('id')))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        return view('ShopFrontend.product-listing', compact('products', 'brands', 'cat1', 'cat2', 'cat3'));
     }
     public function package_detail()
     {

@@ -9,8 +9,7 @@
 
             <ol class="breadcrumb no-hide">
                 <li><a href="#">Home </a></li>
-                <li><a href="#">Electronics </a></li>
-                <li class="active">Machine Pro</li>
+                <li><a href="#">Product </a></li>
             </ol><!-- Block  Breadcrumb-->
 
             <div class="row">
@@ -49,9 +48,9 @@
                             <span>Filter</span>
                         </div>
 
-                        <h1 class="cate-title">Electronics</h1>
+                        <h1 class="cate-title">Products</h1>
 
-                        <div class="modes">
+                        {{-- <div class="modes">
                             <strong class="label">View as:</strong>
                             <strong class="modes-mode active mode-grid" title="Grid">
                                 <span>grid</span>
@@ -109,7 +108,7 @@
                                     <span><i aria-hidden="true" class="fa fa-angle-right"></i></span>
                                 </a>
                             </li>
-                        </ul>
+                        </ul> --}}
 
                     </div><!-- Toolbar -->
 
@@ -123,7 +122,7 @@
                     <!-- Toolbar -->
                     <div class=" toolbar-products toolbar-bottom">
 
-                        <div class="modes">
+                        {{-- <div class="modes">
                             <strong class="label">View as:</strong>
                             <strong class="modes-mode active mode-grid" title="Grid">
                                 <span>grid</span>
@@ -158,7 +157,7 @@
 
                             </div><!-- Show per page -->
 
-                        </div>
+                        </div> --}}
 
                         <ul class="pagination">
 
@@ -190,7 +189,186 @@
                 </div><!-- Main Content -->
 
                 <!-- Sidebar -->
-                <div class="col-md-3 col-md-pull-9  col-sidebar">
+                <div class="col-md-3 col-md-pull-9 col-sidebar">
+                    <div class="block-sidebar block-banner-sidebar">
+                        <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
+                            data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
+                            @foreach ($cat1 as $row)
+                                <div class="item">
+                                    <img src="{{ asset($row->icon) }}" alt="{{ $row->alt_text }}" class="category">
+                                    <input type="checkbox" class="category-checkbox" value="{{ $row->id }}"
+                                        style="display:none;">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="block-sidebar block-banner-sidebar">
+                        <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
+                            data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
+                            @foreach ($cat2 as $row)
+                                <div class="item">
+                                    <img src="{{ asset($row->icon) }}" alt="{{ $row->alt_text }}" class="category">
+                                    <input type="checkbox" class="category-checkbox" value="{{ $row->id }}"
+                                        style="display:none;">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="block-sidebar block-banner-sidebar">
+                        <div class="owl-carousel owl-loaded owl-drag" data-nav="false" data-dots="true" data-margin="0"
+                            data-items="1" data-autoplaytimeout="700" data-autoplay="true" data-loop="true">
+                            @foreach ($cat3 as $row)
+                                <div class="item">
+                                    <img src="{{ asset($row->icon) }}" alt="{{ $row->alt_text }}" class="category">
+                                    <input type="checkbox" class="category-checkbox" value="{{ $row->id }}"
+                                        style="display:none;">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <!-- block filter events -->
+                    <div id="layered-filter-block" class="block-sidebar block-filter no-hide">
+                        <div class="block-title">
+                            <strong>FILTER SELECTION</strong>
+                        </div>
+                        <div class="block-content">
+                            <!-- filter price -->
+                            <div class="filter-options-item filter-options-price">
+                                <div class="filter-options-title">Price</div>
+                                <div class="filter-options-content">
+                                    <div class="slider-range">
+
+                                        <div id="slider-range"></div>
+
+                                        <div class="action">
+                                            <span class="price">
+                                                <span>Range:</span>
+                                                $<span id="amount-left"></span>
+                                                -
+                                                $<span id="amount-right"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <ol class="items">
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox" class="price-checkbox" data-min="20"
+                                                    data-max="50">
+                                                <span>$20 - $50 <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox" class="price-checkbox" data-min="50"
+                                                    data-max="100">
+                                                <span>$50 - $100 <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox" class="price-checkbox" data-min="100"
+                                                    data-max="250">
+                                                <span>$100 - $250 <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div><!-- filter price -->
+
+                            <!-- filter brad-->
+                            <div class="filter-options-item filter-options-brand">
+                                <div class="filter-options-title">BRAND</div>
+                                <div class="filter-options-content">
+                                    <ol class="items">
+                                        @foreach ($brands as $brand)
+                                            <li class="item">
+                                                <label>
+                                                    <input type="checkbox" class="brand-checkbox"
+                                                        value="{{ $brand->id }}">
+                                                    <span>{{ $brand->title }} <span
+                                                            class="count">({{ $brand->products_count }})</span></span>
+                                                </label>
+                                            </li>
+                                        @endforeach
+                                    </ol>
+                                </div>
+                            </div><!-- Filter Item -->
+
+                            <!-- filter brad-->
+                            <div class="filter-options-item filter-options-brand">
+                                <div class="filter-options-title">Product Condition</div>
+                                <div class="filter-options-content">
+                                    <ol class="items">
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox" class="product_condition" value="New"><span>New
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox" class="product_condition" value="Old"><span>Old
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox" class="product_condition"
+                                                    value="Other"><span>Other </span>
+                                            </label>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div><!-- Filter Item -->
+
+                            <!-- filter brad-->
+                            <div class="filter-options-item filter-options-brand">
+                                <div class="filter-options-title">Sale</div>
+                                <div class="filter-options-content">
+                                    <ol class="items">
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox" id="sale" value="true"><span>Sale </span>
+                                            </label>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div><!-- Filter Item -->
+
+                            <!-- filter brad-->
+                            <div class="filter-options-item filter-options-brand">
+                                <div class="filter-options-title">Stock Condition</div>
+                                <div class="filter-options-content">
+                                    <ol class="items">
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox" class="stock_condition" value="Low"><span>Low
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox" class="stock_condition" value="In Stock"><span>In
+                                                    Stock </span>
+                                            </label>
+                                        </li>
+                                        <li class="item ">
+                                            <label>
+                                                <input type="checkbox" class="stock_condition"
+                                                    value="Out of Stock"><span>Out of Stock </span>
+                                            </label>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div><!-- Filter Item -->
+                        </div>
+                    </div><!-- Filter -->
+
+                </div>
+                {{-- <div class="col-md-3 col-md-pull-9  col-sidebar">
 
                     <!-- Block  bestseller products-->
                     <div class="block-sidebar block-sidebar-categorie">
@@ -621,11 +799,10 @@
                                                 src="images/media/floor5-1.jpg"></a>
                                     </div>
                                     <div class="product-item-detail">
-                                        <strong class="product-item-name"><a href="">Security Camera Size
-                                                Flared</a></strong>
+                                        <strong class="product-item-name"><a href="">{{ $products[0]->title }}</a></strong>
                                         <div class="clearfix">
                                             <div class="product-item-price">
-                                                <span class="price">$45.00</span>
+                                                <span class="price">${{ $products[0]->new_price }}</span>
                                             </div>
                                             <div class="product-reviews-summary">
                                                 <div class="rating-summary">
@@ -707,10 +884,8 @@
                     </div><!-- block slide top -->
 
 
-                </div><!-- Sidebar -->
-
-
-
+                </div>
+                <!-- Sidebar --> --}}
             </div>
         </div>
 
@@ -830,128 +1005,6 @@
                                                     @endforeach
                                                 </div>
                                             @endforeach
-                                            {{-- <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/digicel3.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/digicel4.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-                                            {{-- <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase3.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase4.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -1029,127 +1082,6 @@
                                                     @endforeach
                                                 </div>
                                             @endforeach
-                                            {{-- <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/flowt3.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/flowt4.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/flowt5.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/flowt6.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -1226,127 +1158,6 @@
                                                     @endforeach
                                                 </div>
                                             @endforeach
-                                            {{-- <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase1.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase2.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase3.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase4.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -1423,127 +1234,6 @@
                                                     @endforeach
                                                 </div>
                                             @endforeach
-                                            {{-- <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase1.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase2.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase3.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase4.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -1620,127 +1310,6 @@
                                                     @endforeach
                                                 </div>
                                             @endforeach
-                                            {{-- <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase1.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase2.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase3.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase4.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                     </div>
 
@@ -1818,127 +1387,6 @@
                                                     @endforeach
                                                 </div>
                                             @endforeach
-                                            {{-- <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase1.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase2.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase3.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase4.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -2015,127 +1463,6 @@
                                                     @endforeach
                                                 </div>
                                             @endforeach
-                                            {{-- <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase1.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase2.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase3.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase4.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -2212,127 +1539,6 @@
                                                     @endforeach
                                                 </div>
                                             @endforeach
-                                            {{-- <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase1.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase2.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase3.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                    <span class="old-price">$52.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="https://carnivalguide.co/travel/images/media/index1/showcase4.jpg"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Maecenas
-                                                                    consequat
-                                                                    mauris</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">$45.00</span>
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>80</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -2427,30 +1633,37 @@
     <!-- Custom scripts -->
     <script>
         $(document).ready(function() {
-            // Function to fetch and display products
-            function fetchProducts(page = 1) {
+            function fetchProducts(page = 1, selectedCategories = [], priceRanges = [],
+                selectedBrands = [], productCondition = [], stockCondition = [], sale = null) {
                 $('#product-listing').html('');
 
                 // Apply skeleton loading structure
                 for (let i = 0; i < 18; i++) { // Assuming 9 products per page
                     var skeletonHtml = `
-                <li class="col-sm-4 product-item">
-                    <div class="skeleton-item">
-                        <div class="skeleton-content">
-                            <div class="skeleton-line" style="width: 80%;"></div>
-                            <div class="skeleton-line" style="width: 60%;"></div>
-                            <div class="skeleton-line" style="width: 70%;"></div>
-                        </div>
-                    </div>
-                </li>
-            `;
+                        <li class="col-sm-4 product-item">
+                            <div class="skeleton-item">
+                                <div class="skeleton-content">
+                                    <div class="skeleton-line" style="width: 80%;"></div>
+                                    <div class="skeleton-line" style="width: 60%;"></div>
+                                    <div class="skeleton-line" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                        </li>
+                    `;
                     $('#product-listing').append(skeletonHtml);
                 }
                 $.ajax({
                     url: "{{ route('get.products.home') }}",
                     type: "GET",
                     data: {
-                        page: page
+                        page: page,
+                        categories: selectedCategories,
+                        // product_type: productType,
+                        price_ranges: priceRanges,
+                        brands: selectedBrands,
+                        product_condition: productCondition,
+                        stock_condition: stockCondition,
+                        sale: sale
                     },
                     success: function(response) {
                         console.log(response);
@@ -2459,22 +1672,20 @@
                         $.each(response.data, function(index, product) {
                             var percentageDiscount = Math.round(((product.old_price - product
                                 .new_price) / product.old_price) * 100);
-                                var image = null;
-                                console.log(product.image);
-                                if(product.image != null && product.image != '')
-                                {
-                                    image = "{{ asset('productImage/') }}/"+product.image;
-                                }
-                                else
-                                {
-                                    image = 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                                }
+                            var image = null;
+                            console.log(product.image);
+                            if (product.image != null && product.image != '') {
+                                image = "{{ asset('productImage/') }}/" + product.image;
+                            } else {
+                                image =
+                                    'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                            }
                             var productHtml = `
                         <li class="col-sm-4 product-item">
                             <div class="product-item-opt-1">
                                 <div class="product-item-info">
                                     <div class="product-item-photo">
-                                        <a href="{{ route('get.products.detail','') }}/${product.slug}" class="product-item-img"><img style="width:200px;height:200px;" src="${image}"
+                                        <a href="{{ route('get.products.detail', '') }}/${product.slug}" class="product-item-img"><img style="width:200px;height:200px;" src="${image}"
                                                 alt="${product.title}"></a>
                                         <div class="product-item-actions">
                                             <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
@@ -2485,7 +1696,7 @@
                                         <span class="product-item-label label-price">${percentageDiscount}% <span>off</span></span>
                                     </div>
                                     <div class="product-item-detail">
-                                        <strong class="product-item-name"><a href="{{ route('get.products.detail','') }}/${product.slug}">${product.title}</a></strong>
+                                        <strong class="product-item-name"><a href="{{ route('get.products.detail', '') }}/${product.slug}">${product.title}</a></strong>
                                         <div class="clearfix">
                                             <div class="product-item-price">
                                                 <span class="price">$${product.new_price}</span>
@@ -2522,7 +1733,7 @@
                         $('.pagination').append(previousPageHtml);
                         for (let i = 1; i <= response.last_page; i++) {
                             var activeClass = i === response.current_page ? 'active' : '';
-                                var paginationHtml = `
+                            var paginationHtml = `
                             <li class="${activeClass}">
                                 <a href="#" data-page="${i}">${i}</a>
                             </li>
@@ -2530,7 +1741,7 @@
                             $('.pagination').append(paginationHtml);
                         }
                         nxt = response.current_page + 1;
-                                var nextPageHtml = `
+                        var nextPageHtml = `
                             <li class="action">
                                 <a href="#" data-page="${nxt}"><span><i aria-hidden="true" class="fa fa-angle-right"></i></span></a>
                             </li>
@@ -2544,15 +1755,157 @@
                 });
             }
 
-            // Initial call to fetch products
-            fetchProducts();
+            function getSelectedCategories() {
+                let selectedCategories = [];
+                $('.category-checkbox:checked').each(function() {
+                    selectedCategories.push($(this).val());
+                });
+                return selectedCategories;
+            }
 
-            // Pagination click event handler
-            $(document).on('click', '.pagination a', function(e) {
-                e.preventDefault();
-                var page = $(this).data('page'); // Get the page number from the clicked link
-                fetchProducts(page);
+            function getSelectedPriceRanges() {
+                let priceRanges = [];
+                $('.price-checkbox:checked').each(function() {
+                    let min = $(this).data('min');
+                    let max = $(this).data('max');
+                    priceRanges.push({
+                        min: min,
+                        max: max
+                    });
+                });
+                return priceRanges;
+            }
+
+            function getSelectedBrands() {
+                let selectedBrands = [];
+                $('.brand-checkbox:checked').each(function() {
+                    selectedBrands.push($(this).val());
+                });
+                return selectedBrands;
+            }
+
+            function getSelectedProductCondition() {
+                let productCondition = [];
+                $('.product_condition:checked').each(function() {
+                    productCondition.push($(this).val());
+                });
+                return productCondition;
+            }
+
+            function getSelectedStockCondition() {
+                let stockCondition = [];
+                $('.stock_condition:checked').each(function() {
+                    stockCondition.push($(this).val());
+                });
+                return stockCondition;
+            }
+
+            function getSaleStatus() {
+                return $('#sale').is(':checked') ? 1 : null;
+            }
+
+            // Category filter
+            $(document).on('click', '.category', function() {
+                $(this).siblings('.category-checkbox').prop('checked', function(i, value) {
+                    return !value;
+                });
+
+                let selectedCategories = getSelectedCategories();
+                // let productType = $('.product_type').is(':checked') ? 1 : null;
+                let priceRanges = getSelectedPriceRanges();
+                let selectedBrands = getSelectedBrands();
+                let productCondition = getSelectedProductCondition();
+                let stockCondition = getSelectedStockCondition();
+                let sale = getSaleStatus();
+
+                fetchProducts(1, selectedCategories, priceRanges, selectedBrands,
+                    productCondition, stockCondition, sale);
             });
+
+            // Product type filter
+            // $(document).on('click', '.product_type', function() {
+            //     let selectedCategories = getSelectedCategories();
+            //     let productType = $(this).is(':checked') ? 1 : null;
+            //     let priceRanges = getSelectedPriceRanges();
+            //     let selectedBrands = getSelectedBrands();
+            //     let productCondition = getSelectedProductCondition();
+            //     let stockCondition = getSelectedStockCondition();
+            //     let sale = getSaleStatus();
+
+            //     fetchProducts(1, selectedCategories, priceRanges, selectedBrands,
+            //         productCondition, stockCondition, sale);
+            // });
+
+            // Price filter
+            $(document).on('click', '.price-checkbox', function() {
+                let selectedCategories = getSelectedCategories();
+                // let productType = $('.product_type').is(':checked') ? 1 : null;
+                let priceRanges = getSelectedPriceRanges();
+                let selectedBrands = getSelectedBrands();
+                let productCondition = getSelectedProductCondition();
+                let stockCondition = getSelectedStockCondition();
+                let sale = getSaleStatus();
+
+                fetchProducts(1, selectedCategories, priceRanges, selectedBrands,
+                    productCondition, stockCondition, sale);
+            });
+
+            // Brand filter
+            $(document).on('click', '.brand-checkbox', function() {
+                let selectedCategories = getSelectedCategories();
+                // let productType = $('.product_type').is(':checked') ? 1 : null;
+                let priceRanges = getSelectedPriceRanges();
+                let selectedBrands = getSelectedBrands();
+                let productCondition = getSelectedProductCondition();
+                let stockCondition = getSelectedStockCondition();
+                let sale = getSaleStatus();
+
+                fetchProducts(1, selectedCategories, priceRanges, selectedBrands,
+                    productCondition, stockCondition, sale);
+            });
+
+            // Event listeners for filter options
+            $(document).on('click', '.product_condition', function() {
+                let selectedCategories = getSelectedCategories();
+                // let productType = $('.product_type').is(':checked') ? 1 : null;
+                let priceRanges = getSelectedPriceRanges();
+                let selectedBrands = getSelectedBrands();
+                let productCondition = getSelectedProductCondition();
+                let stockCondition = getSelectedStockCondition();
+                let sale = getSaleStatus();
+
+                fetchProducts(1, selectedCategories, priceRanges, selectedBrands,
+                    productCondition, stockCondition, sale);
+            });
+
+            $(document).on('click', '.stock_condition', function() {
+                let selectedCategories = getSelectedCategories();
+                // let productType = $('.product_type').is(':checked') ? 1 : null;
+                let priceRanges = getSelectedPriceRanges();
+                let selectedBrands = getSelectedBrands();
+                let productCondition = getSelectedProductCondition();
+                let stockCondition = getSelectedStockCondition();
+                let sale = getSaleStatus();
+
+                fetchProducts(1, selectedCategories, priceRanges, selectedBrands,
+                    productCondition, stockCondition, sale);
+            });
+
+            $(document).on('click', '#sale', function() {
+                let selectedCategories = getSelectedCategories();
+                // let productType = $('.product_type').is(':checked') ? 1 : null;
+                let priceRanges = getSelectedPriceRanges();
+                let selectedBrands = getSelectedBrands();
+                let productCondition = getSelectedProductCondition();
+                let stockCondition = getSelectedStockCondition();
+                let sale = getSaleStatus();
+
+                fetchProducts(1, selectedCategories, priceRanges, selectedBrands,
+                    productCondition, stockCondition, sale);
+            });
+
+            // Initial fetch
+            fetchProducts();
         });
     </script>
 

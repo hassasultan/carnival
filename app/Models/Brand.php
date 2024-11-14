@@ -13,6 +13,6 @@ class Brand extends Model
     protected $fillable = ['title', 'logo', 'status'];
     public function products()
     {
-        return $this->belongsToMany(Product::class,'brand_id');
+        return $this->hasMany(Product::class,'brand_id');
     }
 }
