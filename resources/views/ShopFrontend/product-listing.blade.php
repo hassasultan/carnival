@@ -239,7 +239,7 @@
                             <div class="filter-options-item filter-options-price">
                                 <div class="filter-options-title">Price</div>
                                 <div class="filter-options-content">
-                                    <div class="slider-range">
+                                    {{-- <div class="slider-range">
 
                                         <div id="slider-range"></div>
 
@@ -251,7 +251,7 @@
                                                 $<span id="amount-right"></span>
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <ol class="items">
                                         <li class="item">
                                             <label>
