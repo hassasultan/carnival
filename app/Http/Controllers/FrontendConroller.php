@@ -166,8 +166,9 @@ class FrontendConroller extends Controller
             ]);
 
         if ($vendor_type) {
-            $package_id = Package::where('title', $vendor_type)->first();
-            $query->where('package_id', $package_id);
+            $query->whereHas('package', function ($query) use ($vendor_type) {
+                $query->where('title', $vendor_type);
+            });
         }
 
         if ($regionId) {
@@ -518,8 +519,9 @@ class FrontendConroller extends Controller
 
         return view('ShopFrontend.model.listing', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3'));
     }
-    public function modelDetail()
+    public function modelDetail($slug)
     {
+        $user = User::with('vendor', 'events')->whereSlug($slug)->first();
         $event = Event::with('category', 'images')
             ->first();
         $related = Event::with('user')->where('category_id', $event->category_id)
@@ -533,7 +535,7 @@ class FrontendConroller extends Controller
             ->take(9)
             ->get();
 
-        return view('ShopFrontend.model.detail', compact('event', 'related', 'same_cat'));
+        return view('ShopFrontend.model.detail', compact('event', 'related', 'same_cat', 'user'));
     }
     public function artistListing()
     {
@@ -558,8 +560,9 @@ class FrontendConroller extends Controller
 
         return view('ShopFrontend.artist.listing', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3'));
     }
-    public function artistDetail()
+    public function artistDetail($slug)
     {
+        $user = User::with('vendor', 'events')->whereSlug($slug)->first();
         $event = Event::with('category', 'images')
             ->first();
         $related = Event::with('user')->where('category_id', $event->category_id)
@@ -573,6 +576,6 @@ class FrontendConroller extends Controller
             ->take(9)
             ->get();
 
-        return view('ShopFrontend.artist.detail', compact('event', 'related', 'same_cat'));
+        return view('ShopFrontend.artist.detail', compact('event', 'related', 'same_cat', 'user'));
     }
 }

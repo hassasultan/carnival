@@ -13,7 +13,7 @@
 
             <ol class="breadcrumb no-hide">
                 <li><a href="#">Home </a></li>
-                <li class="active">Mascamps</li>
+                <li class="active">Models</li>
             </ol><!-- Block  Breadcrumb-->
 
             <div class="row">
@@ -76,7 +76,7 @@
                             <span>Filter</span>
                         </div>
 
-                        <h1 class="cate-title">Mascamps</h1>
+                        <h1 class="cate-title">Models</h1>
 
                         {{-- <div class="modes">
                             <strong class="label">View as:</strong>
@@ -331,7 +331,7 @@
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
                                                 <div class="product-item-photo">
-                                                    <a href="{{ route('front.vendor.detail', '') }}/${vendor.user.slug}" class="product-item-img">
+                                                    <a href="{{ route('model.detail', '') }}/${vendor.user.slug}" class="product-item-img">
                                                         <img style="width:200px;height:200px" src="${logo}"
                                                     alt="product name"></a>
                                                 </div>

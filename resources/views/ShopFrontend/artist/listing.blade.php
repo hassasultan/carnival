@@ -13,7 +13,7 @@
 
             <ol class="breadcrumb no-hide">
                 <li><a href="#">Home </a></li>
-                <li class="active">Mascamps</li>
+                <li class="active">Artists</li>
             </ol><!-- Block  Breadcrumb-->
 
             <div class="row">
@@ -76,7 +76,7 @@
                             <span>Filter</span>
                         </div>
 
-                        <h1 class="cate-title">Mascamps</h1>
+                        <h1 class="cate-title">Artists</h1>
 
                         {{-- <div class="modes">
                             <strong class="label">View as:</strong>
@@ -331,13 +331,13 @@
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
                                                 <div class="product-item-photo">
-                                                    <a href="{{ route('front.vendor.detail', '') }}/${vendor.user.slug}" class="product-item-img">
+                                                    <a href="{{ route('artist.detail', '') }}/${vendor.user.slug}" class="product-item-img">
                                                         <img style="width:200px;height:200px" src="${logo}"
                                                     alt="product name"></a>
                                                 </div>
                                             </div>
                                             <div class="product-item-detail">
-                                                <strong class="product-item-name"><a href="">${vendor.user.first_name} ${vendor.user.last_name}</a></strong>`;
+                                                <strong class="product-item-name"><a href="">${vendor.user.first_name} ${vendor.user.last_name} ${vendor.user.slug}</a></strong>`;
                             if (vendor.user.products.length > 0) {
                                 vendorHtml += `
                                                     <div class="clearfix">

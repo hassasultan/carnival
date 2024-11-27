@@ -204,6 +204,76 @@
             font-size: 12px;
             margin-top: 4px;
         }
+
+        .ovic-share-socials .inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .social-btn .icon {
+            margin-right: 8px;
+        }
+
+        .social-btn.facebook {
+            background-color: #3b5998;
+        }
+
+        .social-btn.twitter {
+            background-color: #1da1f2;
+        }
+
+        .social-btn.instagram {
+            background-color: #e1306c;
+        }
+
+        .social-btn.linkedin {
+            background-color: #0077b5;
+        }
+
+        .social-btn.youtube {
+            background-color: #ff0000;
+        }
+
+        .social-btn.tiktok {
+            background-color: #000000;
+        }
+
+        .social-btn.whatsapp {
+            background-color: #25d366;
+        }
+
+        .social-btn:hover {
+            opacity: 0.85;
+        }
+
+        .contact-details {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-item .icon {
+            margin-right: 8px;
+            color: #333;
+        }
+
+        .contact-item .text {
+            font-weight: bold;
+            color: #333;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -229,21 +299,22 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="product-gallery">
-                                <div class="col-sm-4">
-                                    <div class="product-thumbnails">
-                                        @foreach ($event->images as $key => $row)
-                                            <img class="thumbnail" src="{{ asset($row->image_url) }}"
-                                                data-full="{{ asset($row->image_url) }}" alt="Thumbnail {{ $key + 1 }}"
-                                                onclick="changeMainImage({{ $key }})" />
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-12">
                                     <div class="product-preview position-relative">
                                         <div class="zoom-container">
-                                            <img id="mainImage"
-                                                src="{{ $event->banner ? asset('eventBanner/' . $event->banner) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
-                                                alt="Main Image" class="main-image" />
+                                            @php
+                                                $image = null;
+
+                                                if ($user->vendor && $user->vendor->logo) {
+                                                    $image = asset('images/' . $user->vendor->logo);
+                                                } elseif ($user->image) {
+                                                    $image = asset('images/' . $user->image);
+                                                } else {
+                                                    $image = asset('shopAssets/images/media/product9.jpg');
+                                                }
+                                            @endphp
+                                            <img id="mainImage" src="{{ $image }}" alt="Main Image"
+                                                class="main-image" />
                                         </div>
                                         <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i
                                                 class="fas fa-expand"></i></button>
@@ -269,210 +340,82 @@
                         <div class="col-sm-6 col-md-6 col-lg-6">
 
                             <div class="product-info-main">
-
                                 <h1 class="page-title">
-                                    {{ $event->name }}
+                                    {{ optional($user->vendor)->name ?? (optional($user->subvendor)->name ?? 'N/A') }}
                                 </h1>
-                                <div class="product-reviews-summary">
-                                    <div class="rating-summary">
-                                        <div class="rating-result" title="70%">
-                                            <span style="width:70%">
-                                                <span><span>70</span>% of <span>100</span></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="reviews-actions">
-                                        <a href="" class="action view">Based on 3 ratings</a>
-                                        <a href="" class="action add"><img alt="img"
-                                                src="{{ asset('shopAssets/images/icon/write.png') }}">&#160;&#160;write a
-                                            review</a>
-                                    </div>
-                                </div>
 
-
-                                <div class="product-overview">
-                                    <div class="overview-content">
-                                        {{-- <ul>
-                                            <li>Brand name: Cartier</li>
-                                            <li>Item Name: C de Cartier bag MM 2way shoulder bag</li>
-                                            <li>Model No: L1002063</li>
-                                            <li>Size: W40.5 × H28 × D15.5cm（W15.9′ × H11.0′ × D6.1’/Shoulder
-                                            </li>
-                                            <li>Condition: Pre-owned used bag in&nbsp;<span class="desc_bold">excellent
-                                                    condition</span></li>
-                                            <li>Inside condition: Unnoticeable scratches</li>
-                                        </ul> --}}
-                                        @php
-                                            $dresscode = explode(',', $event->dress_code);
-                                        @endphp
-                                        <p>
-                                            <span class="label">Dresscode: </span>
-                                            @foreach ($dresscode as $item)
-                                                <span class="badge badge-primary tag badge-lg"
-                                                    style="font-size: 1.25em;">{{ $item }}</span>
-                                            @endforeach
-                                            <br>
-                                            <span class="label">Event Type: </span>{{ $event->eventType }}
-                                            <br>
-                                            <span class="label">Venue: </span>{{ $event->venue }}
-                                            <br>
-                                            <span class="label">Address: </span>{{ $event->address }}
-                                            <br>
-                                            <span class="label">Description: </span>{!! $event->description !!}
-                                        </p>
-                                    </div>
-                                </div>
-                                <hr />
-                                {{-- <div class="product-info-stock">
-                                    <div class="stock available">
-                                        <span class="label">Availability: </span>In Stock
-
-                                    </div>
-                                </div>
-                                <div class="product-info-price">
-                                    <div class="price-box">
-                                        <span class="price">$250.00</span>
-                                    </div>
-                                </div> --}}
-                                <div class="product-add-form">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            {{-- <p>Available Options:</p>
-                                            <form>
-                                                <div class="product-options-wrapper">
-                                                    <div class="form-qty">
-                                                        <label class="label">Qty: </label>
-                                                        <div class="control">
-                                                            <input type="text" readonly class="form-control input-qty"
-                                                                value='1' id="qty1" name="qty1" maxlength="10"
-                                                                minlength="1">
-                                                            <button class="btn-number  qtyminus" data-type="minus"
-                                                                data-field="qty1"><span>-</span></button>
-                                                            <button class="btn-number  qtyplus" data-type="plus"
-                                                                data-field="qty1"><span>+</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div> --}}
-
-                                            <div class="product-options-bottom clearfix">
-
-                                                <div class="actions">
-
-                                                    @if (Auth::check())
-                                                        <button type="button" title="Add to Cart" class="action btn-cart"
-                                                            data-event_id="1">
-                                                            <span>Add to Cart</span>
-                                                        </button>
-                                                    @else
-                                                        <a href="{{ route('customer.login') }}" title="Add to Cart"
-                                                            class="action btn-cart btn">
-                                                            <span>Add to Cart</span>
-                                                        </a>
-                                                    @endif
-                                                    <div class="product-addto-links">
-
-                                                        <a href="#" class="action btn-wishlist" title="Wish List">
-                                                            <span>Wishlist</span>
-                                                        </a>
-                                                        <a href="#" class="action btn-compare" title="Compare">
-                                                            <span>Compare</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            </form>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <span class="label">Available Till </span>
-                                            <div class="countdown-container">
-                                                <div class="time-segment">
-                                                    <span class="time" id="days">00</span>
-                                                    <span class="label">DAYS</span>
-                                                </div>
-                                                <div class="time-segment">
-                                                    <span class="time" id="hours">00</span>
-                                                    <span class="label">HOURS</span>
-                                                </div>
-                                                <div class="time-segment">
-                                                    <span class="time" id="minutes">00</span>
-                                                    <span class="label">MIN</span>
-                                                </div>
-                                                <div class="time-segment">
-                                                    <span class="time" id="seconds">00</span>
-                                                    <span class="label">SEC</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="ovic-share-socials">
+                                    <div class="inner">
+                                        <a class="social-btn facebook"
+                                            href="{{ optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook }}">
+                                            <span class="icon fab fa-facebook"></span>
+                                            <span class="text">Facebook</span>
+                                        </a>
+                                        <a class="social-btn twitter"
+                                            href="{{ optional($user->vendor)->twitter ?? optional($user->subvendor)->twitter }}">
+                                            <span class="icon fab fa-twitter"></span>
+                                            <span class="text">Twitter</span>
+                                        </a>
+                                        <a class="social-btn instagram"
+                                            href="{{ optional($user->vendor)->insta ?? optional($user->subvendor)->insta }}">
+                                            <span class="icon fab fa-instagram"></span>
+                                            <span class="text">Instagram</span>
+                                        </a>
+                                        <a class="social-btn linkedin"
+                                            href="{{ optional($user->vendor)->linkedin ?? optional($user->subvendor)->linkedin }}">
+                                            <span class="icon fab fa-linkedin"></span>
+                                            <span class="text">LinkedIn</span>
+                                        </a>
+                                        <a class="social-btn youtube"
+                                            href="{{ optional($user->vendor)->youtube ?? optional($user->subvendor)->youtube }}">
+                                            <span class="icon fab fa-youtube"></span>
+                                            <span class="text">YouTube</span>
+                                        </a>
+                                        <a class="social-btn tiktok"
+                                            href="{{ optional($user->vendor)->tiktok ?? optional($user->subvendor)->tiktok }}">
+                                            <span class="icon fab fa-tiktok"></span>
+                                            <span class="text">TikTok</span>
+                                        </a>
+                                        <a class="social-btn whatsapp"
+                                            href="{{ optional($user->vendor)->wa_business_page ?? optional($user->subvendor)->wa_business_page }}">
+                                            <span class="icon fab fa-whatsapp"></span>
+                                            <span class="text">WhatsApp</span>
+                                        </a>
                                     </div>
                                 </div>
 
-                                <div class="product_meta">
-                                    <span class="sku_wrapper"><span class="title">SKU:</span> <span
-                                            class="sku">MK-FS-0010</span></span>
-                                    <span class="posted_in"><span class="title">Categories:</span><a
-                                            href="https://kuteshop.kutethemes.net/product-category/market/fashion/for-women/?demo=21"
-                                            rel="tag">For Women</a>, <a
-                                            href="https://kuteshop.kutethemes.net/product-category/market/fashion/summer-dresses/?demo=21"
-                                            rel="tag">Summer Dresses</a></span>
-                                    <span class="tagged_as"><span class="title">Tag:</span><a
-                                            href="https://kuteshop.kutethemes.net/product-tag/market/?demo=21"
-                                            rel="tag">Market</a></span>
-                                </div>
-                                <div class="payment-info">
-                                    <div class="item">
-                                        <span class="text">Guarantee safe &amp; Secure checkout</span>
-                                        <span class="image"><img
-                                                src="https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/product-payment.svg"
-                                                class="attachment-full size-full wp-post-image" alt=""
-                                                decoding="async"></span>
+                                <div class="contact-details">
+                                    <div class="contact-item">
+                                        <span class="icon fas fa-envelope"></span>
+                                        <span class="text">Email:</span>
+                                        <a href="mailto:{{ optional($user->vendor)->email ?? optional($user->subvendor)->email }}"
+                                            class="text">
+                                            {{ optional($user->vendor)->email ?? (optional($user->subvendor)->email ?? 'N/A') }}
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="delivery-info">
-                                    <div class="item post-meta post-views">
-                                        <span class="icon main-icon-quickview-2"></span> <span class="text">
-                                            <b> 7854 views </b> this product. </span>
-                                    </div>
-                                    <div class="item">
-                                        <span class="icon main-icon-truck"></span>
-                                        <span class="text">Estimate delivery times: <b>12-26 days</b>
-                                            (International).</span>
-                                    </div>
-                                    <div class="item">
-                                        <span class="icon main-icon-sield"></span>
-                                        <span class="text">Return within <b>30 days</b> of purchase. Taxes are
-                                            non-refundable.</span>
-                                    </div>
-                                </div>
-                                <div class="share">
-                                    <img src="{{ asset('shopAssets/images/media/index1/share.png') }}" alt="share">
-                                </div>
-                            </div><!-- detail- product -->
 
-                        </div>
-                        {{-- <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="contact-item">
+                                        <span class="icon fas fa-phone"></span>
+                                        <span class="text">Phone:</span>
+                                        <a href="tel:{{ optional($user->vendor)->phone ?? optional($user->subvendor)->phone }}"
+                                            class="text">
+                                            {{ optional($user->vendor)->phone ?? (optional($user->subvendor)->phone ?? 'N/A') }}
+                                        </a>
+                                    </div>
 
-                            <div class="product-info-main">
-
-                                <h1 class="page-title">
-                                    {{ $event->name }}
-                                </h1>
-                                <div class="product-overview">
-                                    <div class="overview-content">
-                                        {!! $event->description !!}
+                                    <div class="contact-item">
+                                        <span class="icon fas fa-map-marker-alt"></span>
+                                        <span class="text">Address:</span>
+                                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode(optional($user->vendor)->address ?? optional($user->subvendor)->address) }}"
+                                            target="_blank" class="text">
+                                            {{ optional($user->vendor)->address ?? (optional($user->subvendor)->address ?? 'N/A') }}
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="product-addto-links-second">
-                                    <a href="" class="action action-print">Print</a>
-                                    <a href="" class="action action-friend">Send to a friend</a>
-                                </div>
-                                <div class="share">
-                                    <img src="{{ asset('shopAssets/images/media/index1/share.png') }}" alt="share">
-                                </div>
-                            </div><!-- detail- product -->
+                            </div>
 
-                        </div><!-- Main detail --> --}}
+
+                        </div><!-- Main detail -->
 
                     </div>
 

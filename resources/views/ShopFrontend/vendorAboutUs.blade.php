@@ -240,15 +240,6 @@
             gap: 10px;
         }
 
-        /* .contact-item {
-                            display: flex;
-                            align-items: center;
-                            padding: 10px 15px;
-                            border-radius: 5px;
-                            background-color: #f5f5f5;
-                            color: #333;
-                        } */
-
         .contact-item .icon {
             margin-right: 8px;
             color: #333;
