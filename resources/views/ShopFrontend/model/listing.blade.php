@@ -307,6 +307,7 @@
                     type: "GET",
                     data: {
                         page: page,
+                        vendor_type: 'Models',
                         getRegion: getRegion
                     },
                     success: function(response) {

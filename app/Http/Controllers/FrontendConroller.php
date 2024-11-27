@@ -127,26 +127,55 @@ class FrontendConroller extends Controller
         $same_cat = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->take(9)->get();
         return view('ShopFrontend.product-detail', compact('product', 'related', 'same_cat'));
     }
+    // public function get_vendors(Request $request)
+    // {
+    //     // dd($request->all());
+    //     $regionId = $request->get('getRegion');
+
+    //     $vendors = Vendor::with([
+    //         'user' => function ($query) {
+    //             $query->select('id', 'first_name', 'last_name', 'slug', 'image');
+    //         },
+    //         'user.products' => function ($query) {
+    //             $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
+    //                 ->groupBy('user_id');
+    //         }
+    //     ])
+    //         ->when($regionId, function ($query) use ($regionId) {
+    //             return $query->where('continent', $regionId);
+    //         })
+    //         ->where('package_id', 8)
+    //         ->orderBy('id', 'DESC')
+    //         ->paginate(18);
+    //     return $vendors;
+    // }
     public function get_vendors(Request $request)
     {
-        // dd($request->all());
+        $vendor_type = $request->get('vendor_type', null);
         $regionId = $request->get('getRegion');
 
-        $vendors = Vendor::with([
-            'user' => function ($query) {
-                $query->select('id', 'first_name', 'last_name', 'slug', 'image');
-            },
-            'user.products' => function ($query) {
-                $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
-                    ->groupBy('user_id');
-            }
-        ])
-            ->when($regionId, function ($query) use ($regionId) {
-                return $query->where('continent', $regionId);
-            })
-            ->where('package_id', 8)
-            ->orderBy('id', 'DESC')
-            ->paginate(18);
+        $query = Vendor::query()
+            ->with([
+                'user' => function ($query) {
+                    $query->select('id', 'first_name', 'last_name', 'slug', 'image');
+                },
+                'user.products' => function ($query) {
+                    $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
+                        ->groupBy('user_id');
+                },
+            ]);
+
+        if ($vendor_type) {
+            $package_id = Package::where('title', $vendor_type)->first();
+            $query->where('package_id', $package_id);
+        }
+
+        if ($regionId) {
+            $query->where('continent', $regionId);
+        }
+
+        $vendors = $query->orderBy('id', 'DESC')->paginate(18);
+
         return $vendors;
     }
     public function shop_home()
@@ -440,7 +469,7 @@ class FrontendConroller extends Controller
                 });
             });
         }
-        
+
         // dd($request->toArray(), $query->get()->count());
 
         $events = $query->orderBy('id', 'DESC')->paginate(18);
