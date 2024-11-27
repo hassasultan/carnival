@@ -92,12 +92,15 @@ class FrontendConroller extends Controller
         }
 
         if ($request->filled('price_ranges')) {
-            $query->where(function ($q) use ($request) {
-                foreach ($request->price_ranges as $range) {
-                    $min = (float) $range['min'];
-                    $max = (float) $range['max'];
-                    $q->orWhereBetween('new_price', [$min, $max]);
-                }
+            $price_ranges = $request->price_ranges;
+            $query->whereHas('product_variant', function ($q) use ($price_ranges) {
+                $q->where(function ($query) use ($price_ranges) {
+                    foreach ($price_ranges as $range) {
+                        $min = (float) $range['min'];
+                        $max = (float) $range['max'];
+                        $query->orWhereBetween('price', [$min, $max]);
+                    }
+                });
             });
         }
 
@@ -414,10 +417,8 @@ class FrontendConroller extends Controller
 
     public function get_events(Request $request)
     {
-        // dd($request->toArray());
         $regionId = $request->get('getRegion');
         $event_type = $request->get('event_type');
-        $priceRanges = $request->get('price_ranges', []);
 
         $query = Event::with('images', 'tickets', 'country_tabs', 'User');
         if ($request->has('categories') && !empty($request->categories)) {
@@ -426,19 +427,23 @@ class FrontendConroller extends Controller
         if (!is_null($event_type)) {
             $query->where('all_day', 1);
         }
-        if ($request->filled('price_range')) {
-            $priceRanges = $request->price_range;
 
-            $query->whereHas('tickets', function ($query) use ($priceRanges) {
-                foreach ($priceRanges as $range) {
-                    $query->orWhereBetween('price', [$range['min'], $range['max']]);
-                }
+        if ($request->filled('price_ranges')) {
+            $price_ranges = $request->price_ranges;
+            $query->whereHas('tickets', function ($q) use ($price_ranges) {
+                $q->where(function ($query) use ($price_ranges) {
+                    foreach ($price_ranges as $range) {
+                        $min = (float) $range['min'];
+                        $max = (float) $range['max'];
+                        $query->orWhereBetween('price', [$min, $max]);
+                    }
+                });
             });
         }
-        // ->when($event_type, function ($query) use ($event_type) {
-        //     return $query->where('all_day', $regionId);
-        // })
-        $events = $query->paginate(18);
+        
+        // dd($request->toArray(), $query->get()->count());
+
+        $events = $query->orderBy('id', 'DESC')->paginate(18);
         return $events;
     }
 
@@ -459,5 +464,86 @@ class FrontendConroller extends Controller
             ->get();
 
         return view('ShopFrontend.vendorEventDetails', compact('event', 'related', 'same_cat'));
+    }
+
+    public function modelListing()
+    {
+        $mascamp_banners = Banner::where('type', 'mascamps')->get();
+        $regions = Region::all();
+        $adv1 = Advertisement::where('status', 1)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $adv2 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id'))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $adv3 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id')->merge($adv2->pluck('id')))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        return view('ShopFrontend.model.listing', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3'));
+    }
+    public function modelDetail()
+    {
+        $event = Event::with('category', 'images')
+            ->first();
+        $related = Event::with('user')->where('category_id', $event->category_id)
+            ->where('user_id', $event->user_id)
+            ->where('id', '!=', $event->id)
+            ->orderBy('id', 'DESC')
+            ->get();
+        $same_cat = Event::with('user')->where('category_id', $event->category_id)
+            ->where('id', '!=', $event->id)
+            ->orderBy('id', 'DESC')
+            ->take(9)
+            ->get();
+
+        return view('ShopFrontend.model.detail', compact('event', 'related', 'same_cat'));
+    }
+    public function artistListing()
+    {
+        $mascamp_banners = Banner::where('type', 'mascamps')->get();
+        $regions = Region::all();
+        $adv1 = Advertisement::where('status', 1)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $adv2 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id'))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $adv3 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id')->merge($adv2->pluck('id')))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        return view('ShopFrontend.artist.listing', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3'));
+    }
+    public function artistDetail()
+    {
+        $event = Event::with('category', 'images')
+            ->first();
+        $related = Event::with('user')->where('category_id', $event->category_id)
+            ->where('user_id', $event->user_id)
+            ->where('id', '!=', $event->id)
+            ->orderBy('id', 'DESC')
+            ->get();
+        $same_cat = Event::with('user')->where('category_id', $event->category_id)
+            ->where('id', '!=', $event->id)
+            ->orderBy('id', 'DESC')
+            ->take(9)
+            ->get();
+
+        return view('ShopFrontend.artist.detail', compact('event', 'related', 'same_cat'));
     }
 }

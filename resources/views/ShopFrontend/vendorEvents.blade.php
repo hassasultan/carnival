@@ -1,5 +1,9 @@
 @extends('ShopFrontend.Layouts.layout')
 
+@section('title')
+    Events
+@endsection
+
 @section('main')
     <main class="site-main">
 
