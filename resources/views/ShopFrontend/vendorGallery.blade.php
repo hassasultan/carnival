@@ -318,10 +318,12 @@
                 </div>
             </div>
             <div class="gallery">
-                @foreach ($siteGallery[0]->images as $key => $row)
-                    <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}"
-                        onclick="openModal({{ $key }})">
-                @endforeach
+                @if ($siteGallery != null)
+                    @foreach ($siteGallery[0]->images as $key => $row)
+                        <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}"
+                            onclick="openModal({{ $key }})">
+                    @endforeach
+                @endif
             </div>
             {{-- <div class="row album-section">
                 @foreach ($siteGallery[0]->images as $key => $row)
