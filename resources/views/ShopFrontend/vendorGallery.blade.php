@@ -318,7 +318,7 @@
                 </div>
             </div>
             <div class="gallery">
-                @if ($siteGallery != null)
+                @if (count($siteGallery) > 0)
                     @foreach ($siteGallery[0]->images as $key => $row)
                         <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}"
                             onclick="openModal({{ $key }})">
