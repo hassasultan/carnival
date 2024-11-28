@@ -331,10 +331,11 @@
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
                                                 <div class="product-item-photo">
+                                                    <a href="{{ route('model.detail', '') }}/${vendor.user.slug}" class="product-item-img">
                                                     {{--
-                                                        <a href="{{ route('model.detail', '') }}/${vendor.user.slug}" class="product-item-img">
-                                                     --}}
+
                                                     <a href="{{ route('front.vendor.detail', '') }}/${vendor.user.slug}" class="product-item-img">
+                                                        --}}
                                                         <img style="width:200px;height:200px" src="${logo}"
                                                     alt="product name"></a>
                                                 </div>
