@@ -195,7 +195,7 @@
             background: #ccc;
             padding: 5px 10px;
             border-radius: 3px;
-            width: 50px;
+            width: 100%;
             text-align: center;
         }
 
@@ -478,7 +478,7 @@
 
                     <!-- product tab info -->
 
-                    <div class="product-info-detailed ">
+                    <div class="product-info-detailed col-md-9">
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-pills" role="tablist">
@@ -537,6 +537,18 @@
                                 </div>
                             </div> --}}
                         </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h2>Location</h2>
+                            <div class="map-div col-lg-12 col-sm-12 col-md-12 col-xs-12 eventview-no-padding map-setting">
+                                <a href="https://www.ticketgateway.com/venues/mystic-lounge" target="_blank" class="hidden-xs">
+                                    Mystic Lounge,<br> 50 Kennedy Road S, Canada</a>
+                                <iframe id="gmap_canvas"
+                                    src="https://maps.google.com/maps?q=50%2BKennedy%2BRoad%2BS%2C%2BCanada&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0" height="400px" width="100%"></iframe>
+
+
+                            </div>
                     </div>
                     <!-- product tab info -->
 
