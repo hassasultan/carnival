@@ -21,6 +21,8 @@ class Package extends Model
         'appointment',
         'ad_space',
         'blogging',
+        'product',
+        'costume',
         'status',
         'icon',
     ];

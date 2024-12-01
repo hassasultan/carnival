@@ -6,7 +6,7 @@
         <!-- nav bar -->
         <div class="w-100 mb-4 d-flex">
             <a href="/" class="navbar-brand mx-auto mt-2 flex-fill text-center"><img width="120"
-                src="{{ asset('shopAssets/images/logo.png') }}" alt="logo"></a>
+                    src="{{ asset('shopAssets/images/logo.png') }}" alt="logo"></a>
         </div>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
@@ -79,7 +79,8 @@
                 </ul>
             </li>
         </ul> --}}
-        @if (auth()->user()->hasPermission('products'))
+        {{-- @if (auth()->user()->hasPermission('products')) --}}
+        @if (Auth::user()->subvendor->package->events == 1)
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Products</span>
             </p>
@@ -100,6 +101,7 @@
             </ul>
         @endif
         {{-- @if (auth()->user()->hasPermission('blogs')) --}}
+        @if (Auth::user()->subvendor->package->blogging == 1)
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Blogs</span>
             </p>
@@ -111,46 +113,47 @@
                     </a>
                 </li>
             </ul>
-        {{-- @endif --}}
+        @endif
         {{-- @if (auth()->user()->hasPermission('costumes')) --}}
-            <p class="text-muted nav-heading mt-4 mb-2 pl-4">
-                <span>Costumes</span>
-            </p>
-            <ul class="navbar-nav flex-fill w-100 mb-2">
-                <li class="nav-item w-100">
-                    <a class="nav-link" href="{{ route('subVendor.costumes.index') }}">
-                        <i class="fe fe-layers fe-16"></i>
-                        <span class="ml-3 item-text">Costumes</span>
-                    </a>
-                </li>
-            </ul>
-        {{-- @endif --}}
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
-            <span>Events</span>
+            <span>Costumes</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="#ui-events" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('subVendor.costumes.index') }}">
                     <i class="fe fe-layers fe-16"></i>
-                    <span class="ml-3 item-text">Events</span>
+                    <span class="ml-3 item-text">Costumes</span>
                 </a>
-                <ul class="collapse list-unstyled w-100" id="ui-events">
-                    @if (auth()->user()->hasPermission('events'))
-                        <li class="nav-item @if (Route::is('subVendor.events')) active @endif">
-                            <a class="nav-link" href="{{ route('subVendor.events') }}"><span
-                                    class="ml-1 item-text">Events</span></a>
-                        </li>
-                    @endif
-                    {{-- @if (auth()->user()->hasPermission('tickets'))
+            </li>
+        </ul>
+        {{-- @endif --}}
+        @if (Auth::user()->subvendor->package->events == 1)
+            <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+                <span>Events</span>
+            </p>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item dropdown">
+                    <a href="#ui-events" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-layers fe-16"></i>
+                        <span class="ml-3 item-text">Events</span>
+                    </a>
+                    <ul class="collapse list-unstyled w-100" id="ui-events">
+                        @if (auth()->user()->hasPermission('events'))
+                            <li class="nav-item @if (Route::is('subVendor.events')) active @endif">
+                                <a class="nav-link" href="{{ route('subVendor.events') }}"><span
+                                        class="ml-1 item-text">Events</span></a>
+                            </li>
+                        @endif
+                        {{-- @if (auth()->user()->hasPermission('tickets'))
                         <li class="nav-item @if (Route::is('tickets.index')) active @endif">
                             <a class="nav-link" href="{{ route('tickets.index') }}">
                                 Tickets Types
                             </a>
                         </li>
                     @endif --}}
-                </ul>
-            </li>
-        </ul>
-
+                    </ul>
+                </li>
+            </ul>
+        @endif
     </nav>
 </aside>

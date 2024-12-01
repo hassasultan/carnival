@@ -59,4 +59,16 @@ class SubVendor extends Model
     {
         return $this->belongsTo(Role::class, 'continent');
     }
+
+    public function package()
+    {
+        return $this->hasOneThrough(
+            Package::class,
+            Vendor::class,
+            'id',
+            'id',
+            'vendor_id',
+            'package_id'
+        );
+    }
 }
