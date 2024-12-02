@@ -331,7 +331,7 @@
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
                                                 <div class="product-item-photo">
-                                                    <a href="{{ route('model.detail', '') }}/${vendor.user.slug}" class="product-item-img">
+                                                    <a href="{{ route('details.aboutUs', '') }}/${vendor.user.slug}" class="product-item-img">
                                                     {{--
 
                                                     <a href="{{ route('front.vendor.detail', '') }}/${vendor.user.slug}" class="product-item-img">

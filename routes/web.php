@@ -46,6 +46,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\VendorGalleryController;
 use App\Http\Controllers\SubvendorGalleryController;
+use App\Http\Controllers\ModelBookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,6 +97,10 @@ Route::get('/model-listing', [FrontendConroller::class, 'modelListing'])->name('
 Route::get('/model/{slug}', [FrontendConroller::class, 'modelDetail'])->name('model.detail');
 Route::get('/artist-listing', [FrontendConroller::class, 'artistListing'])->name('artist.listing');
 Route::get('/artist/{slug}', [FrontendConroller::class, 'artistDetail'])->name('artist.detail');
+
+// models appointment
+Route::get('{slug}/contact-us', [ModelBookingController::class, 'create'])->name('model.booking.create');
+Route::post('contact-us/store', [ModelBookingController::class, 'store'])->name('model.booking.store');
 
 Route::get('/unauthorized', function () {
     return view('unauthorized');
@@ -308,6 +313,9 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     Route::get('/vendor_site_gallery/{id}/edit', [VendorGalleryController::class, 'edit'])->name('vendor_site_gallery.edit');
     Route::put('/vendor_site_gallery/{id}', [VendorGalleryController::class, 'update'])->name('vendor_site_gallery.update');
     Route::delete('/vendor_site_gallery/{id}', [VendorGalleryController::class, 'destroy'])->name('vendor_site_gallery.destroy');
+    
+    // view my bokings
+    Route::get('myBookings/', [AdminController::class, 'model_bookings'])->name('vendor.bookings');
 });
 
 
@@ -354,6 +362,9 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
     Route::get('/subvendor_site_gallery/{id}/edit', [SubvendorGalleryController::class, 'edit'])->name('subvendor_site_gallery.edit');
     Route::put('/subvendor_site_gallery/{id}', [SubvendorGalleryController::class, 'update'])->name('subvendor_site_gallery.update');
     Route::delete('/subvendor_site_gallery/{id}', [SubvendorGalleryController::class, 'destroy'])->name('subvendor_site_gallery.destroy');
+
+    // view my bokings
+    Route::get('myBookings/', [AdminController::class, 'model_bookings'])->name('subvendor.bookings');
 });
 
 

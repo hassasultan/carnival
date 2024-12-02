@@ -127,4 +127,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Event::class);
     }
+
+    public function getPackageNameAttribute()
+    {
+        return optional($this->vendor?->package)->title 
+            ?? optional($this->subVendor?->package)->title;
+    }
 }

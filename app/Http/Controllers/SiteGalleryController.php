@@ -26,7 +26,8 @@ class SiteGalleryController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images.*' => 'required|mimes:jpeg,png,jpg,gif,svg,mp4,mkv,avi,webm,mp3,wav,aac,flac,ogg|max:20480',
             'status' => 'required|integer|in:0,1',
         ]);
 
@@ -82,7 +83,8 @@ class SiteGalleryController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images.*' => 'required|mimes:jpeg,png,jpg,gif,svg,mp4,mkv,avi,webm,mp3,wav,aac,flac,ogg|max:20480',
         ]);
 
         $siteGallery->update([

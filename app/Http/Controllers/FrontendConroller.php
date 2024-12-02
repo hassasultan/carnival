@@ -398,7 +398,24 @@ class FrontendConroller extends Controller
     public function about_us($slug)
     {
         $user = User::with('vendor', 'subVendor', 'products')->whereSlug($slug)->first();
-        return view('ShopFrontend.vendorAboutUs', compact('user'));
+
+        // for model
+        $event = Event::with('category', 'images')
+            ->first();
+        $related = Event::with('user')->where('category_id', $event->category_id)
+            ->where('user_id', $event->user_id)
+            ->where('id', '!=', $event->id)
+            ->orderBy('id', 'DESC')
+            ->get();
+
+            $vendorPackageName = optional($user->vendor?->package)->title;
+            $subVendorPackageName = optional($user->subVendor?->package)->title;
+
+            if ($vendorPackageName === 'Models' || $subVendorPackageName === 'Models') {
+                return view('ShopFrontend.model.detail', compact('event', 'user'));
+            } else {
+                return view('ShopFrontend.vendorAboutUs', compact('user'));
+            }
     }
 
     public function myEvents($slug)

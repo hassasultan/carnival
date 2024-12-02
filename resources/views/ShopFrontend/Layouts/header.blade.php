@@ -383,8 +383,7 @@
                                                                             <span
                                                                                 class="price">{{ $cartItem->product->new_price }}</span>
                                                                         @elseif($cartItem->type === 'event')
-                                                                            <span
-                                                                                class="price">0</span>
+                                                                            <span class="price">0</span>
                                                                         @endif
                                                                     </div>
                                                                     <div class="product-item-qty">
@@ -682,14 +681,23 @@
                             </div><!-- categori -->
 
                             <!-- search -->
-                            @if (Route::is('details.aboutUs') || Route::is('front.vendor.detail') || Route::is('front.subVendor.detail'))
+                            @if (Route::is('details.aboutUs') ||
+                                    Route::is('front.vendor.detail') ||
+                                    Route::is('front.subVendor.detail') ||
+                                    Route::is('model.detail'))
                                 <ul class="category-links">
                                     <li><a href="{{ route('details.aboutUs', $user->slug) }}">About us</a>
                                     </li>
-
-                                    <li><a
-                                            href="mailto:{{ $user->email }}?subject=Inquiry&body=Hello {{ $user->name }},">Send
-                                            a message</a></li>
+                                    <li>
+                                        @if ($user->packageName == 'Models')
+                                            <a href="{{ route('model.booking.create', $user->slug) }}">Send
+                                                a message</a>
+                                        @else
+                                            <a
+                                                href="mailto:{{ $user->vendor?->email ?? ($user->subVendor?->email ?? ($user->email ?? 'Email not available')) }}?subject=Inquiry&body=Hello {{ $user->name }},">Send
+                                                a message</a>
+                                        @endif
+                                    </li>
                                     <li><a href="{{ route('myEevent.listing', $user->slug) }}">Events</a></li>
                                     <li><a href="{{ route('front.myGallery', $user->slug) }}">Gallery</a></li>
                                 </ul>
