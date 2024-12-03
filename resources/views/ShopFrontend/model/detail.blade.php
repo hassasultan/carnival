@@ -558,16 +558,16 @@
                 // Apply skeleton loading structure
                 for (let i = 0; i < 9; i++) { // Assuming 9 products per page
                     var skeletonHtml = `
-                <li class="col-sm-4 product-item">
-                    <div class="skeleton-item">
-                        <div class="skeleton-content">
-                            <div class="skeleton-line" style="width: 80%;"></div>
-                            <div class="skeleton-line" style="width: 60%;"></div>
-                            <div class="skeleton-line" style="width: 70%;"></div>
-                        </div>
-                    </div>
-                </li>
-            `;
+                        <li class="col-sm-4 product-item">
+                            <div class="skeleton-item">
+                                <div class="skeleton-content">
+                                    <div class="skeleton-line" style="width: 80%;"></div>
+                                    <div class="skeleton-line" style="width: 60%;"></div>
+                                    <div class="skeleton-line" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                        </li>
+                    `;
                     $('#product-listing').append(skeletonHtml);
                 }
                 $.ajax({

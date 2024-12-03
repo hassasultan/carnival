@@ -19,6 +19,8 @@ use App\Models\Advertisement;
 use App\Models\Package;
 use App\Models\Brand;
 use App\Models\GalleryAlbum;
+use App\Models\Music;
+use App\Models\Costume;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -316,13 +318,23 @@ class FrontendConroller extends Controller
     {
         $user = User::with('banners')->whereSlug($slug)->first();
         $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user->id)->first();
-        $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
+        $subvendors = SubVendor::with('products', 'products.category', 'events', 'music')->where('vendor_id', $user->id)->get();
         // dd($subvendors->toArray());
         $categories = $vendor->products->pluck('category')->unique('id');
         $products = Product::where('user_id', $user->id)->with('brand')->get();
         $ads = Advertisement::where('status', 1)->take(2)->get();
+        $vendorPackageName = optional($user->vendor?->package)->title;
+        $subVendorPackageName = optional($user->subVendor?->package)->title;
 
-        return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors', 'user'));
+        if ($vendorPackageName === 'Artistes' || $subVendorPackageName === 'Artistes') {
+            $events = Event::with('category', 'images')->orderBy('start_date', 'DESC')->take(3)->get();
+            $musics = Music::with('images')->orderBy('id', 'DESC')->get();
+            $costumes = Costume::with('category')->orderBy('id', 'DESC')->get();
+            return view('ShopFrontend.artist.detail', compact('events', 'vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'musics', 'costumes'));
+        } else {
+            return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors', 'user'));
+        }
+
     }
     public function get_vendor_products($slug, Request $request)
     {
@@ -408,14 +420,14 @@ class FrontendConroller extends Controller
             ->orderBy('id', 'DESC')
             ->get();
 
-            $vendorPackageName = optional($user->vendor?->package)->title;
-            $subVendorPackageName = optional($user->subVendor?->package)->title;
+        $vendorPackageName = optional($user->vendor?->package)->title;
+        $subVendorPackageName = optional($user->subVendor?->package)->title;
 
-            if ($vendorPackageName === 'Models' || $subVendorPackageName === 'Models') {
-                return view('ShopFrontend.model.detail', compact('event', 'user'));
-            } else {
-                return view('ShopFrontend.vendorAboutUs', compact('user'));
-            }
+        if ($vendorPackageName === 'Models' || $subVendorPackageName === 'Models') {
+            return view('ShopFrontend.model.detail', compact('event', 'user'));
+        } else {
+            return view('ShopFrontend.vendorAboutUs', compact('user'));
+        }
     }
 
     public function myEvents($slug)
@@ -594,5 +606,61 @@ class FrontendConroller extends Controller
             ->get();
 
         return view('ShopFrontend.artist.detail', compact('event', 'related', 'same_cat', 'user'));
+    }
+
+    public function get_music(Request $request)
+    {
+        $query = Music::with('images');
+
+        if ($request->has('artiste_name') && !empty($request->artiste_name)) {
+            $query->where('artiste_name', 'like', '%' . $request->artiste_name . '%');
+        }
+
+        if ($request->has('real_name') && !empty($request->real_name)) {
+            $query->where('real_name', 'like', '%' . $request->real_name . '%');
+        }
+
+        if ($request->has('producer') && !empty($request->producer)) {
+            $query->where('producer', 'like', '%' . $request->producer . '%');
+        }
+
+        if ($request->has('writer') && !empty($request->writer)) {
+            $query->where('writer', 'like', '%' . $request->writer . '%');
+        }
+
+        if ($request->has('song_title') && !empty($request->song_title)) {
+            $query->where('song_title', 'like', '%' . $request->song_title . '%');
+        }
+
+        if ($request->has('release_date') && !empty($request->release_date)) {
+            $query->whereDate('release_date', $request->release_date);
+        }
+
+        if ($request->has('country') && !empty($request->country)) {
+            $query->where('country', $request->country);
+        }
+
+        if ($request->has('region') && !empty($request->region)) {
+            $query->where('region', $request->region);
+        }
+
+        if ($request->has('event_id') && !empty($request->event_id)) {
+            $query->where('event_id', $request->event_id);
+        }
+
+        if ($request->has('for_sale') && $request->for_sale !== null) {
+            $query->where('for_sale', $request->for_sale);
+        }
+
+        if ($request->has('price_min') && $request->has('price_max')) {
+            $query->whereBetween('price', [$request->price_min, $request->price_max]);
+        } elseif ($request->has('price_min')) {
+            $query->where('price', '>=', $request->price_min);
+        } elseif ($request->has('price_max')) {
+            $query->where('price', '<=', $request->price_max);
+        }
+
+        $musics = $query->orderBy('id', 'DESC')->paginate(18);
+        return $musics;
     }
 }
