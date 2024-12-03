@@ -114,6 +114,17 @@
                 </li>
             </ul>
         @endif
+        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+            <span>Inquiries</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('subvendor.bookings') }}">
+                    <i class="fe fe-layers fe-16"></i>
+                    <span class="ml-3 item-text">View Inquiries</span>
+                </a>
+            </li>
+        </ul>
         {{-- @if (auth()->user()->hasPermission('costumes')) --}}
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Costumes</span>
