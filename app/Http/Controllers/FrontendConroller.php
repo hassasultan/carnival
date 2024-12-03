@@ -318,7 +318,7 @@ class FrontendConroller extends Controller
     {
         $user = User::with('banners')->whereSlug($slug)->first();
         $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user->id)->first();
-        $subvendors = SubVendor::with('products', 'products.category', 'events', 'music')->where('vendor_id', $user->id)->get();
+        $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
         // dd($subvendors->toArray());
         $categories = $vendor->products->pluck('category')->unique('id');
         $products = Product::where('user_id', $user->id)->with('brand')->get();
@@ -327,9 +327,9 @@ class FrontendConroller extends Controller
         $subVendorPackageName = optional($user->subVendor?->package)->title;
 
         if ($vendorPackageName === 'Artistes' || $subVendorPackageName === 'Artistes') {
-            $events = Event::with('category', 'images')->orderBy('start_date', 'DESC')->take(3)->get();
-            $musics = Music::with('images')->orderBy('id', 'DESC')->get();
-            $costumes = Costume::with('category')->orderBy('id', 'DESC')->get();
+            $events = Event::with('category', 'images')->where('user_id', $user->id)->orderBy('start_date', 'DESC')->take(3)->get();
+            $musics = Music::with('images')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
+            $costumes = Costume::with('category')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
             return view('ShopFrontend.artist.detail', compact('events', 'vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'musics', 'costumes'));
         } else {
             return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors', 'user'));

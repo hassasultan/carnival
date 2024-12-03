@@ -127,6 +127,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Event::class);
     }
+    public function costumes()
+    {
+        return $this->hasMany(Costume::class);
+    }
 
     public function getPackageNameAttribute()
     {
