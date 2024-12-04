@@ -152,31 +152,6 @@
                 });
             });
 
-            // Handle deletion of music records
-            $('#confirmDeleteBtn').click(function() {
-                var formData = $('#deleteConfirmationModal form').serialize();
-                $.ajax({
-                    url: '{{ route('musics.destroy', ['music' => ':id']) }}'.replace(':id',
-                        musicId),
-                    type: 'DELETE',
-                    data: formData,
-                    success: function(response) {
-                        $('#deleteConfirmationModal').modal('hide');
-                        $('#tableData').html(response.table_html);
-                        $('#musicMessage').html(
-                            '<div class="alert alert-success" role="alert">' + response
-                            .message + '</div>'
-                        );
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                        $('#musicMessage').html(
-                            '<div class="alert alert-danger" role="alert">Failed to delete music</div>'
-                        );
-                    }
-                });
-            });
-
             // display name of selected files
             $('.custom-file-input').on('change', function() {
                 let fileNames = [];
@@ -189,42 +164,6 @@
                 } else {
                     label.text(fileNames.join(', '));
                 }
-            });
-
-            // Handle deletion of music records
-            $('.deleteMusicBtn').click(function(event) {
-                event.preventDefault();
-                var deleteForm = $(this).closest('form'); // Find the closest form element
-                var deleteConfirmationModal = $('#deleteConfirmationModal');
-                var musicId = $(this).data('music-id'); // Get the music id from the data attribute
-
-                deleteConfirmationModal.modal('show');
-
-                // When the user confirms deletion
-                $('#confirmDeleteBtn').off('click').on('click', function() {
-                    var formData = deleteForm.serialize(); // Serialize the form data
-                    $.ajax({
-                        url: '{{ route('musics.destroy', ['music' => ':id']) }}'.replace(
-                            ':id', musicId),
-                        type: 'DELETE',
-                        data: formData, // Use the serialized form data
-                        success: function(response) {
-                            deleteConfirmationModal.modal(
-                                'hide'); // Hide the confirmation modal
-                            $('#tableData').html(response
-                                .table_html); // Update the table data
-                            $('#musicMessage').html(
-                                '<div class="alert alert-success" role="alert">' +
-                                response.message + '</div>'); // Display success message
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
-                            $('#musicMessage').html(
-                                '<div class="alert alert-danger" role="alert">Failed to delete music</div>'
-                            ); // Display error message
-                        }
-                    });
-                });
             });
         });
     </script>

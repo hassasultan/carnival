@@ -53,10 +53,8 @@ class MusicController extends Controller
 
     public function edit($id)
     {
-    dd($id);    
-        $musics = Music::with('images')->get();
-        $events = Event::all();
-        return view('dashboard.admin.musics.index', compact('musics', 'events'));
+        $music = Music::with('images')->find($id);
+        return view('dashboard.admin.musics.edit', compact('music'));
     }
 
     public function update(Request $request, $id)
