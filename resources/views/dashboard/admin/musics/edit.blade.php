@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="price">Price</label>
-                                    <input type="text" class="form-control" id="edit_price" name="price">
+                                    <input type="text" class="form-control" id="edit_price" name="price" value="{{ $music->price }}">
                                 </div>
                                 <button type="submit" class="btn btn-primary" id="edit_saveMusicBtn">Update
                                     Music</button>
