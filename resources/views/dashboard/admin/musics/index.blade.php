@@ -82,7 +82,7 @@
                             <label for="region">Region</label>
                             <input type="text" class="form-control" id="region" name="region" required>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="event">Event</label>
                             <select class="form-control" id="event" name="event_id" required>
                                 <option value="">Select Event</option>
@@ -90,7 +90,7 @@
                                     <option value="{{ $event->id }}">{{ $event->name }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="form-group mb-3">
                             <label for="cover_image">Cover Image</label>
                             <div class="custom-file">
@@ -138,7 +138,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editMusicModalLabel">New Music</h5>
+                    <h5 class="modal-title" id="editMusicModalLabel">Edit Music</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -189,7 +189,7 @@
                             <label for="region">Region</label>
                             <input type="text" class="form-control" id="edit_region" name="region" required>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="event">Event</label>
                             <select class="form-control" id="edit_event" name="event_id" required>
                                 <option value="">Select Event</option>
@@ -197,7 +197,7 @@
                                     <option value="{{ $event->id }}">{{ $event->name }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="form-group mb-3">
                             <label for="cover_image">Cover Image</label>
                             <div class="custom-file">

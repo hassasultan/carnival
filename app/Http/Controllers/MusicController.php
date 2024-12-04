@@ -50,6 +50,15 @@ class MusicController extends Controller
             return response()->json(['error' => 'Failed to create Music'], 500);
         }
     }
+
+    public function edit($id)
+    {
+    dd($id);    
+        $musics = Music::with('images')->get();
+        $events = Event::all();
+        return view('dashboard.admin.musics.index', compact('musics', 'events'));
+    }
+
     public function update(Request $request, $id)
     {
         $data = $request->except(['cover_image', 'images', 'video']);
