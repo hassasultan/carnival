@@ -13,6 +13,7 @@ class Music extends Model
     protected $table = 'musics';
 
     protected $fillable = [
+        'user_id',
         'artiste_name',
         'real_name',
         'producer',

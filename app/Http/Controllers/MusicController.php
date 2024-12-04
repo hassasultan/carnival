@@ -7,6 +7,7 @@ use App\Models\Music;
 use App\Models\Event;
 use App\Models\MusicImage;
 use App\Traits\ImageTrait;
+use Illuminate\Support\Facades\Auth;
 
 class MusicController extends Controller
 {
@@ -26,6 +27,7 @@ class MusicController extends Controller
 
         $video = $this->uploadImage($request->file('video'), 'videos');
 
+        $data['user_id'] = Auth::id();
         $data['cover_image'] = $coverImage;
         $data['video'] = $video;
 
@@ -53,6 +55,10 @@ class MusicController extends Controller
         $data = $request->except(['cover_image', 'images', 'video']);
 
         $music = Music::findOrFail($id);
+
+        if ($music->user_id == null) {
+            $data['user_id'] = Auth::id();
+        }
 
         if ($request->hasFile('cover_image')) {
             $this->deleteImage($music->cover_image);
