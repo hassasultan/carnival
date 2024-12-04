@@ -12,8 +12,10 @@
                             <!-- Music Messages -->
                             <div id="musicMessage"></div>
                             <!-- Table Data -->
-                            <form id="editMusicForm">
+                            <form id="editMusicForm" action="{{ route('musics.update', ['music' => $music->id]) }}"
+                                method="POST" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="form-group">
                                     <label for="artiste_name">Artiste Name</label>
                                     <input type="text" class="form-control" id="edit_artiste_name"
@@ -65,8 +67,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="region">Region</label>
-                                    <input type="text" class="form-control" id="edit_region" value="{{ $music->region }}"
-                                        name="region" required>
+                                    <input type="text" class="form-control" id="edit_region"
+                                        value="{{ $music->region }}" name="region" required>
                                 </div>
                                 {{-- <div class="form-group">
                                 <label for="event">Event</label>
@@ -113,7 +115,8 @@
                                     <label for="price">Price</label>
                                     <input type="text" class="form-control" id="edit_price" name="price">
                                 </div>
-                                <button type="submit" class="btn btn-primary" id="edit_saveMusicBtn">Update Music</button>
+                                <button type="submit" class="btn btn-primary" id="edit_saveMusicBtn">Update
+                                    Music</button>
                             </form>
                         </div>
                     </div>
@@ -136,7 +139,7 @@
                 event.preventDefault();
                 var formData = new FormData($(this)[0]);
                 $.ajax({
-                    url: '{{ route('musics.update') }}',
+                    url: '{{ route('musics.update', ['music' => $music->id]) }}',
                     type: 'POST',
                     data: formData,
                     contentType: false,
