@@ -41,10 +41,16 @@
                                     <input type="text" class="form-control" id="edit_song_title"
                                         value="{{ $music->song_title }}" name="song_title" required>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="release_date">Release Date</label>
                                     <input type="date" class="form-control" id="edit_release_date"
                                         value="{{ $music->release_date }}" name="release_date" required>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label for="release_date">Release Date</label>
+                                    <input type="date" class="form-control" id="edit_release_date"
+                                        value="{{ \Carbon\Carbon::parse($music->release_date)->format('Y-m-d') }}" 
+                                        name="release_date" required>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="video">Document</label>
