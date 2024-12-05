@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Music;
 use App\Models\Event;
 use App\Models\MusicImage;
+use App\Models\User;
 use App\Traits\ImageTrait;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,9 +15,43 @@ class MusicController extends Controller
     use ImageTrait;
     public function index()
     {
-        $musics = Music::with('images')->get();
+        if (Auth::user()->isAdmin()) {
+            $musics = Music::with('images')->get();
+        } else {
+            $musics = Music::with('images')->where('user_id', Auth::id())->get();
+        }
+
         $events = Event::all();
         return view('dashboard.admin.musics.index', compact('musics', 'events'));
+    }
+
+    public function create()
+    {
+        $users = '';
+        if (Auth::user()->isAdmin()) {
+            $users = User::whereHas('vendor.package', function ($query) {
+                $query->where('title', 'Artistes');
+            })->orWhereHas('subVendor.package', function ($query) {
+                $query->where('title', 'Artistes');
+            })->get();
+        }
+        // if (Auth::user()->isAdmin()) {
+        //     return view('dashboard.admin.musics.create');
+        // } elseif (Auth::user()->isVendor()) {
+        //     return view('dashboard.vendor.musics.create');
+        // } elseif (Auth::user()->isSubVendor()) {
+        //     return view('dashboard.subVendor.musics.create');
+        // }
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subvendor.layouts.app',
+        // default => 'dashboard.layouts.default',
+        };
+
+        // dd($layout);
+
+        return view('dashboard.admin.musics.create', compact('layout', 'users'));
     }
 
     public function store(Request $request)
@@ -27,7 +62,15 @@ class MusicController extends Controller
 
         $video = $this->uploadImage($request->file('video'), 'videos');
 
-        $data['user_id'] = Auth::id();
+        if (isset($request->user_id) && $request->user_id != null) {
+            $data['user_id'] = $request->user_id;
+        } else {
+
+            $data['user_id'] = Auth::id();
+        }
+        
+        // dd($data['user_id']);
+
         $data['cover_image'] = $coverImage;
         $data['video'] = $video;
 
@@ -45,7 +88,14 @@ class MusicController extends Controller
             $musics = Music::all();
             $view = view('dashboard.admin.musics.table', compact('musics'))->render();
 
-            return response()->json(['message' => 'Music created successfully', 'table_html' => $view], 200);
+            $route = match (Auth::user()->role->name) {
+                'Admin' => route('musics.index'),
+                'Vendor' => route('vendor.musics.index'),
+                'SubVendor' => route('subvendor.musics.index'),
+            };
+
+            return redirect()->route($route)->with(['message' => 'Music created successfully', 'table_html' => $view], 200);
+            // return response()->json(['message' => 'Music created successfully', 'table_html' => $view, 'route' => $route], 200);
         } else {
             return response()->json(['error' => 'Failed to create Music'], 500);
         }

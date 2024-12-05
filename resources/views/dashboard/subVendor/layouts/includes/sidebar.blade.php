@@ -80,7 +80,7 @@
             </li>
         </ul> --}}
         {{-- @if (auth()->user()->hasPermission('products')) --}}
-        @if (Auth::user()->subvendor->package->events == 1)
+        {{-- @if (Auth::user()->subVendor->package->events == 1) --}}
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Products</span>
             </p>
@@ -99,9 +99,9 @@
                     </a>
                 </li>
             </ul>
-        @endif
+        {{-- @endif --}}
         {{-- @if (auth()->user()->hasPermission('blogs')) --}}
-        @if (Auth::user()->subvendor->package->blogging == 1)
+        {{-- @if (Auth::user()->subVendor->package->blogging == 1) --}}
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Blogs</span>
             </p>
@@ -113,7 +113,7 @@
                     </a>
                 </li>
             </ul>
-        @endif
+        {{-- @endif --}}
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Inquiries</span>
         </p>
@@ -138,7 +138,7 @@
             </li>
         </ul>
         {{-- @endif --}}
-        @if (Auth::user()->subvendor->package->events == 1)
+        {{-- @if (Auth::user()->subVendor->package->events == 1) --}}
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Events</span>
             </p>
@@ -165,6 +165,6 @@
                     </ul>
                 </li>
             </ul>
-        @endif
+        {{-- @endif --}}
     </nav>
 </aside>

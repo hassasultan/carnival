@@ -318,6 +318,15 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     
     // view my bokings
     Route::get('myBookings/', [AdminController::class, 'model_bookings'])->name('vendor.bookings');
+
+    //musics
+    Route::get('/musics', [MusicController::class, 'index'])->name('vendor.musics.index');
+    Route::get('/musics/create', [MusicController::class, 'create'])->name('vendor.musics.create');
+    Route::post('/musics', [MusicController::class, 'store'])->name('vendor.musics.store');
+    Route::get('/musics/{id}', [MusicController::class, 'show'])->name('vendor.musics.show');
+    Route::get('/musics/{id}/edit', [MusicController::class, 'edit'])->name('vendor.musics.edit');
+    Route::put('/musics/{id}', [MusicController::class, 'update'])->name('vendor.musics.update');
+    Route::delete('/musics/{id}', [MusicController::class, 'destroy'])->name('vendor.musics.destroy');
 });
 
 
@@ -367,6 +376,15 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
 
     // view my bokings
     Route::get('myBookings/', [AdminController::class, 'model_bookings'])->name('subvendor.bookings');
+
+    //musics
+    Route::get('/musics', [MusicController::class, 'index'])->name('subvendor.musics.index');
+    Route::get('/musics/create', [MusicController::class, 'create'])->name('subvendor.musics.create');
+    Route::post('/musics', [MusicController::class, 'store'])->name('subvendor.musics.store');
+    Route::get('/musics/{id}', [MusicController::class, 'show'])->name('subvendor.musics.show');
+    Route::get('/musics/{id}/edit', [MusicController::class, 'edit'])->name('subvendor.musics.edit');
+    Route::put('/musics/{id}', [MusicController::class, 'update'])->name('subvendor.musics.update');
+    Route::delete('/musics/{id}', [MusicController::class, 'destroy'])->name('subvendor.musics.destroy');
 });
 
 

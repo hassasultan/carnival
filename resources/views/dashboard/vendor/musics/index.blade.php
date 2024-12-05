@@ -10,20 +10,8 @@
                 <div class="col-md-12">
                     {{-- <button type="button" class="btn btn-primary" id="openMusicModal"><span
                             class="fe fe-plus fe-16 mr-3"></span>New Music</button> --}}
-                    @php
-                        $route = '#'; // Default route
-                        if (Auth::user()->isAdmin()) {
-                            $route = route('musics.create');
-                        } elseif (Auth::user()->isVendor()) {
-                            $route = route('vendor.musics.create');
-                        } elseif (Auth::user()->isSubVendor()) {
-                            $route = route('subvendor.musics.create');
-                        }
-                    @endphp
-
-                    <a href="{{ $route }}" class="btn btn-primary">
-                        <span class="fe fe-plus fe-16 mr-3"></span>New Music
-                    </a>
+                    <a href="{{ route('musics.create') }}" class="btn btn-primary"><span
+                            class="fe fe-plus fe-16 mr-3"></span>New Music</a>
                     <div class="card shadow">
                         <div class="card-body">
                             <!-- Music Messages -->
