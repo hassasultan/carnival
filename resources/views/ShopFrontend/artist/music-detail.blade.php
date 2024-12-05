@@ -839,7 +839,7 @@
             });
         });
     </script>
-    <script>
+    {{-- <script>
         let images = [
             @foreach ($event->images as $row)
                 {
@@ -880,7 +880,7 @@
                 if (event.key === "Escape") closeModal();
             }
         });
-    </script>
+    </script> --}}
     <script>
         let zoomLevel = 1; // Default zoom level
 
@@ -910,7 +910,7 @@
         }
     </script>
     <script>
-        $(document).ready(function() {
+        {{-- $(document).ready(function() {
             // Set targetDate only if start_date and start_time are valid
             @if (!empty($event->start_date) && !empty($event->start_time))
                 let targetDate;
@@ -947,7 +947,7 @@
             } else {
                 $('#countdown').text("Countdown unavailable due to missing or invalid date.");
             }
-        });
+        }); --}}
 
         {{-- $(document).ready(function() {
             // const targetDate = new Date("2024-12-31T23:59:59").getTime();
