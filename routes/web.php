@@ -99,7 +99,7 @@ Route::get('/artist-listing', [FrontendConroller::class, 'artistListing'])->name
 Route::get('/artist/{slug}', [FrontendConroller::class, 'artistDetail'])->name('artist.detail');
 // Route::get('/music-detail/{slug}', [FrontendConroller::class, 'musicDetail'])->name('music.detail');
 Route::get('/get-music', [FrontendConroller::class, 'get_music'])->name('get.musics.home');
-Route::get('/shop/music/{slug}', [FrontendConroller::class, 'music_detail'])->name('get.musics.detail');
+Route::get('/shop/music/{slug}', [FrontendConroller::class, 'musicDetail'])->name('get.musics.detail');
 
 // models appointment
 Route::get('{slug}/contact-us', [ModelBookingController::class, 'create'])->name('model.booking.create');
