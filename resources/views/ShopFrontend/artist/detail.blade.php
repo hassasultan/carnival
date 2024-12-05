@@ -2431,7 +2431,7 @@
                         <div class="music-item-opt-1">
                             <div class="music-item-info">
                                 <div class="music-item-photo">
-                                    <a href="{{ route('get.musics.detail', '') }}/${music.slug}" class="music-item-img"><img style="width:200px;height:200px;" src="${image}"
+                                    <a href="{{ route('get.musics.detail', '') }}/${music.id}" class="music-item-img"><img style="width:200px;height:200px;" src="${image}"
                                             alt="${music.song_title}"></a>
                                     <div class="music-item-actions">
                                         <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>

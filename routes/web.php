@@ -97,6 +97,7 @@ Route::get('/model-listing', [FrontendConroller::class, 'modelListing'])->name('
 Route::get('/model/{slug}', [FrontendConroller::class, 'modelDetail'])->name('model.detail');
 Route::get('/artist-listing', [FrontendConroller::class, 'artistListing'])->name('artist.listing');
 Route::get('/artist/{slug}', [FrontendConroller::class, 'artistDetail'])->name('artist.detail');
+// Route::get('/music-detail/{slug}', [FrontendConroller::class, 'musicDetail'])->name('music.detail');
 Route::get('/get-music', [FrontendConroller::class, 'get_music'])->name('get.musics.home');
 Route::get('/shop/music/{slug}', [FrontendConroller::class, 'music_detail'])->name('get.musics.detail');
 
@@ -315,7 +316,7 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     Route::get('/vendor_site_gallery/{id}/edit', [VendorGalleryController::class, 'edit'])->name('vendor_site_gallery.edit');
     Route::put('/vendor_site_gallery/{id}', [VendorGalleryController::class, 'update'])->name('vendor_site_gallery.update');
     Route::delete('/vendor_site_gallery/{id}', [VendorGalleryController::class, 'destroy'])->name('vendor_site_gallery.destroy');
-    
+
     // view my bokings
     Route::get('myBookings/', [AdminController::class, 'model_bookings'])->name('vendor.bookings');
 
