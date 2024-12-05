@@ -12,8 +12,19 @@
                             <!-- Music Messages -->
                             <div id="musicMessage"></div>
                             <!-- Table Data -->
-                            <form id="editMusicForm" action="{{ route('musics.update', ['music' => $music->id]) }}"
-                                method="POST" enctype="multipart/form-data">
+                            @php
+                                $route = '#'; // Default route
+                                if (Auth::user()->isAdmin()) {
+                                    $route = route('musics.update', ['music' => $music->id]);
+                                } elseif (Auth::user()->isVendor()) {
+                                    $route = route('vendor.musics.update', ['music' => $music->id]); // Ensure the music ID is passed
+                                } elseif (Auth::user()->isSubVendor()) {
+                                    $route = route('subvendor.musics.update', ['music' => $music->id]); // Ensure the music ID is passed
+                                }
+                            @endphp
+
+                            <form id="editMusicForm" action="{{ $route }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
@@ -145,24 +156,24 @@
             $('#editMusicForm').submit(function(event) {
                 event.preventDefault();
                 var formData = new FormData($(this)[0]);
-                var userRole = '{{ Auth::user()->role->name }}';
-                var url;
+                // var userRole = '{{ Auth::user()->role->name }}';
+                // var url;
 
-                var musicId = '{{ $music->id }}';
+                // var musicId = '{{ $music->id }}';
 
-                if (userRole === 'Admin') {
-                    url = '{{ route('musics.update', ['music' => '__music_id__']) }}'.replace(
-                        '__music_id__', musicId);
-                } else if (userRole === 'Vendor') {
-                    url = '{{ route('vendor.musics.update', ['music' => '__music_id__']) }}'.replace(
-                        '__music_id__', musicId);
-                } else if (userRole === 'SubVendor') {
-                    url = '{{ route('subvendor.musics.update', ['music' => '__music_id__']) }}'.replace(
-                        '__music_id__', musicId);
-                }
+                // if (userRole === 'Admin') {
+                //     url = '{{ route('musics.update', ['music' => '__music_id__']) }}'.replace(
+                //         '__music_id__', musicId);
+                // } else if (userRole === 'Vendor') {
+                //     url = '{{ route('vendor.musics.update', ['music' => '__music_id__']) }}'.replace(
+                //         '__music_id__', musicId);
+                // } else if (userRole === 'SubVendor') {
+                //     url = '{{ route('subvendor.musics.update', ['music' => '__music_id__']) }}'.replace(
+                //         '__music_id__', musicId);
+                // }
 
                 $.ajax({
-                    url: url,
+                    url: $('#editMusicForm').attr('action'),
                     // url: url'{{ route('musics.update', ['music' => $music->id]) }}',
                     type: 'POST',
                     data: formData,

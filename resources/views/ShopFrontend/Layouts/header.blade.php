@@ -438,9 +438,9 @@
                                     <li class="{{ Request::routeIs('front.marketplace') ? 'active' : '' }}"><a
                                             href="{{ route('front.marketplace') }}"> MARKET PLACE </a></li>
                                     <li class="{{ Request::routeIs('front.compare.produts') ? 'active' : '' }}"><a
-                                            href=""> MODELS </a></li>
+                                            href=""{{ route('model.listing') }}> MODELS </a></li>
                                     <li class="{{ Request::routeIs('front.compare.produts') ? 'active' : '' }}"><a
-                                            href=""> ARTISTES </a></li>
+                                            href=""{{ route('artist.listing') }}> ARTISTES </a></li>
                                     <li class="{{ Request::routeIs('front.event.listing') ? 'active' : '' }}"><a
                                             href="{{ route('front.event.listing') }}"> EVENTS </a></li>
                                     @if (Auth::check())
