@@ -285,7 +285,7 @@
 
             <ol class="breadcrumb no-hide">
                 <li><a href="#">Home </a></li>
-                <li><a href="#">{{ $music->user->name }} </a></li>
+                <li><a href="#">{{ $music->user->first_name }} {{ $music->user->last_name }}</a></li>
                 <li class="active">Album</li>
             </ol><!-- Block  Breadcrumb-->
 
