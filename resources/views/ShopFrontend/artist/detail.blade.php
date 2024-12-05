@@ -316,7 +316,7 @@
                                         <div class="product-item  product-item-opt-1 ">
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
-                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                    <a class="product-item-img" href="{{ route('get.musics.detail',$music->id) }}"><img alt="product name"
                                                             src="{{ asset('covers/' . $music->cover_image) }}"></a>
                                                             {{-- src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a> --}}
                                                     <div class="product-item-actions">
@@ -366,7 +366,7 @@
                                         <div class="product-item  product-item-opt-1 ">
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
-                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                    <a class="product-item-img" href="{{ route('get.musics.detail',$music->id) }}"><img alt="product name"
                                                             src="{{ asset('covers/' . $music->cover_image) }}"></a>
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
@@ -416,7 +416,7 @@
                                         <div class="product-item  product-item-opt-1 ">
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
-                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                    <a class="product-item-img" href="{{ route('get.musics.detail',$music->id) }}"><img alt="product name"
                                                             src="{{ asset('covers/' . $music->cover_image) }}"></a>
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
@@ -2442,7 +2442,7 @@
                                     <span class="music-item-label label-price">${percentageDiscount}% <span>off</span></span>
                                 </div>
                                 <div class="music-item-detail">
-                                    <strong class="music-item-name"><a href="{{ route('get.musics.detail', '') }}/${music.slug}">${music.song_title}</a></strong>
+                                    <strong class="music-item-name"><a href="{{ route('get.musics.detail', '') }}/${music.id}">${music.song_title}</a></strong>
                                     <div class="clearfix">
                                         <div class="music-item-price">
                                             <span class="price">$${music.price}</span>
