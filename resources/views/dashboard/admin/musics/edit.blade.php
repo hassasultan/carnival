@@ -17,11 +17,12 @@
                                 if (Auth::user()->isAdmin()) {
                                     $route = route('musics.update', ['music' => $music->id]);
                                 } elseif (Auth::user()->isVendor()) {
-                                    $route = route('vendor.musics.update', ['music' => $music->id]);
+                                    $route = route('vendor.musics.update', ['music' => $music->id]); // Ensure the music ID is passed
                                 } elseif (Auth::user()->isSubVendor()) {
-                                    $route = route('subvendor.musics.update', ['music' => $music->id]);
+                                    $route = route('subvendor.musics.update', ['music' => $music->id]); // Ensure the music ID is passed
                                 }
                             @endphp
+
                             <form id="editMusicForm" action="{{ $route }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf

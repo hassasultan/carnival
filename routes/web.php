@@ -325,7 +325,7 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     Route::post('/musics', [MusicController::class, 'store'])->name('vendor.musics.store');
     Route::get('/musics/{id}', [MusicController::class, 'show'])->name('vendor.musics.show');
     Route::get('/musics/{id}/edit', [MusicController::class, 'edit'])->name('vendor.musics.edit');
-    Route::put('/musics/{id}', [MusicController::class, 'update'])->name('vendor.musics.update');
+    Route::put('/musics/{music}', [MusicController::class, 'update'])->name('vendor.musics.update');
     Route::delete('/musics/{id}', [MusicController::class, 'destroy'])->name('vendor.musics.destroy');
 });
 
@@ -383,7 +383,7 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
     Route::post('/musics', [MusicController::class, 'store'])->name('subvendor.musics.store');
     Route::get('/musics/{id}', [MusicController::class, 'show'])->name('subvendor.musics.show');
     Route::get('/musics/{id}/edit', [MusicController::class, 'edit'])->name('subvendor.musics.edit');
-    Route::put('/musics/{id}', [MusicController::class, 'update'])->name('subvendor.musics.update');
+    Route::put('/musics/{music}', [MusicController::class, 'update'])->name('subvendor.musics.update');
     Route::delete('/musics/{id}', [MusicController::class, 'destroy'])->name('subvendor.musics.destroy');
 });
 
