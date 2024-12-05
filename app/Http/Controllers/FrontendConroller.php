@@ -607,6 +607,13 @@ class FrontendConroller extends Controller
 
         return view('ShopFrontend.artist.detail', compact('event', 'related', 'same_cat', 'user'));
     }
+    public function musicDetail($slug)
+    {
+        $music = Music::where('id',$slug)->first();
+        $related_music = Music::where('user_id',$music->user_id)->get();
+        $user = User::with('vendor', 'events')->where('id',$music->user_id)->first();
+        return view('ShopFrontend.artist.music-detail', compact('music', 'related_music', 'user'));
+    }
 
     public function get_music(Request $request)
     {
