@@ -391,7 +391,7 @@
                                     <li class="product-item product-item-opt-2">
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
-                                                <a href="{{ route('get.myEvent.detail', $row->id) }}"
+                                                <a href="{{ route('get.musics.detail', $row->id) }}"
                                                     class="event-item-img">
                                                     @if ($row->cover_image != '' && $row->cover_image != null)
                                                         <img src="{{ asset('covers/' . $row->cover_image) }}"
