@@ -148,15 +148,19 @@
                 var userRole = '{{ Auth::user()->role->name }}';
                 var url;
 
-                // Determine the correct URL based on the user's role
+                var musicId = '{{ $music->id }}';
+
                 if (userRole === 'Admin') {
-                    url = '{{ route('musics.update', ['music' => $music->id]) }}';
+                    url = '{{ route('musics.update', ['music' => '__music_id__']) }}'.replace(
+                        '__music_id__', musicId);
                 } else if (userRole === 'Vendor') {
-                    url = '{{ route('vendor.musics.update', ['music' => $music->id]) }}';
+                    url = '{{ route('vendor.musics.update', ['music' => '__music_id__']) }}'.replace(
+                        '__music_id__', musicId);
                 } else if (userRole === 'SubVendor') {
-                    url = '{{ route('subvendor.musics.update', ['music' => $music->id]) }}';
+                    url = '{{ route('subvendor.musics.update', ['music' => '__music_id__']) }}'.replace(
+                        '__music_id__', musicId);
                 }
-                
+
                 $.ajax({
                     url: url,
                     // url: url'{{ route('musics.update', ['music' => $music->id]) }}',
