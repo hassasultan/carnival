@@ -23,10 +23,26 @@
                 <td id="artiste_name{{ $music->id }}">{{ $music->artiste_name }}</td>
                 <td id="release_date{{ $music->id }}">{{ $music->release_date }}</td>
                 <td id="btn{{ $music->id }}">
-                    <a href="{{ route('musics.edit', ['music' => $music->id]) }}"
+                    {{-- <a href="{{ route('musics.edit', ['music' => $music->id]) }}"
                         class="btn btn-sm btn-primary rounded text-white" title="Edit Music">
                         <i class="fas fa-edit"></i> Edit
-                    </a>
+                    </a> --}}
+                    @if ($userRole === 'Admin')
+                        <a href="{{ route('musics.edit', ['music' => $music->id]) }}"
+                            class="btn btn-sm btn-primary rounded text-white" title="Edit Music">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                    @elseif ($userRole === 'Vendor')
+                        <a href="{{ route('vendor.musics.edit', ['music' => $music->id]) }}"
+                            class="btn btn-sm btn-primary rounded text-white" title="Edit Music">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                    @elseif ($userRole === 'SubVendor')
+                        <a href="{{ route('subvendor.musics.edit', ['music' => $music->id]) }}"
+                            class="btn btn-sm btn-primary rounded text-white" title="Edit Music">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                    @endif
                     {{-- <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted editMusicBtn"
                         type="button" data-id="{{ $music->id }}" data-toggle="modal"
                         data-target="#editMusicModal">
