@@ -363,6 +363,13 @@
                                         <span class="text">Release Date:</span>
                                         {{ $music->release_date }}
                                     </div>
+                                    <div class="contact-item">
+                                        <video controls>
+                                            <source src="{{ asset('videos/' . $music->video) }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+
+                                    </div>
 
 
                                 </div>
