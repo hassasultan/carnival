@@ -317,7 +317,7 @@
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
                                                     <a class="product-item-img" href=""><img alt="product name"
-                                                            src="{{ asset('images' . $product->image_url) }}"></a>
+                                                            src="{{ asset('images' . $music->cover_image) }}"></a>
                                                             {{-- src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a> --}}
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
@@ -367,7 +367,7 @@
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
                                                     <a class="product-item-img" href=""><img alt="product name"
-                                                            src="{{ asset('images' . $product->image_url) }}"></a>
+                                                            src="{{ asset('images' . $music->cover_image) }}"></a>
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
                                                         <a class="btn btn-compare" href=""><span>compare</span></a>
@@ -417,7 +417,7 @@
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
                                                     <a class="product-item-img" href=""><img alt="product name"
-                                                            src="{{ asset('images' . $product->image_url) }}"></a>
+                                                            src="{{ asset('images' . $music->cover_image) }}"></a>
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
                                                         <a class="btn btn-compare" href=""><span>compare</span></a>
