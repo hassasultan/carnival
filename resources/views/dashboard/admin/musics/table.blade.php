@@ -27,17 +27,17 @@
                         class="btn btn-sm btn-primary rounded text-white" title="Edit Music">
                         <i class="fas fa-edit"></i> Edit
                     </a> --}}
-                    @if (Auth::user()->isAdmin() === 'Admin')
+                    @if (Auth::user()->isAdmin())
                         <a href="{{ route('musics.edit', ['music' => $music->id]) }}"
                             class="btn btn-sm btn-primary rounded text-white" title="Edit Music">
                             <i class="fas fa-edit"></i> Edit
                         </a>
-                    @elseif (Auth::user()->isVendor() === 'Vendor')
+                    @elseif (Auth::user()->isVendor())
                         <a href="{{ route('vendor.musics.edit', ['music' => $music->id]) }}"
                             class="btn btn-sm btn-primary rounded text-white" title="Edit Music">
                             <i class="fas fa-edit"></i> Edit
                         </a>
-                    @elseif (Auth::user()->isSubVendor() === 'SubVendor')
+                    @elseif (Auth::user()->isSubVendor())
                         <a href="{{ route('subvendor.musics.edit', ['music' => $music->id]) }}"
                             class="btn btn-sm btn-primary rounded text-white" title="Edit Music">
                             <i class="fas fa-edit"></i> Edit
