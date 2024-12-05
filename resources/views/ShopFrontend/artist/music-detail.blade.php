@@ -304,8 +304,8 @@
                                         <div class="zoom-container">
                                             @php
                                                 $image = null;
-                                                if ($music->cover_image) {
-                                                    $image = asset('cover_image/' . $music->cover_image);
+                                                @if ($music->cover_image != '' && $music->cover_image != null) {
+                                                    $image = asset('covers/' . $music->cover_image);
                                                 } else {
                                                     $image = asset('shopAssets/images/media/product9.jpg');
                                                 }
