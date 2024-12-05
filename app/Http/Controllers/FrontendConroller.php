@@ -612,7 +612,11 @@ class FrontendConroller extends Controller
         $music = Music::where('id',$slug)->first();
         $related_music = Music::where('user_id',$music->user_id)->get();
         $user = User::with('vendor', 'events')->where('id',$music->user_id)->first();
-        return view('ShopFrontend.artist.music-detail', compact('music', 'related_music', 'user'));
+        $products = Product::with('brand')->get();
+        $brands = Brand::where('status', 1)
+            ->withCount('products')
+            ->get();
+        return view('ShopFrontend.artist.music-detail', compact('products','brands','music', 'related_music', 'user'));
     }
 
     public function get_music(Request $request)
