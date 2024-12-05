@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label for="release_date">Release Date</label>
                                     <input type="date" class="form-control" id="edit_release_date"
-                                        value="{{ \Carbon\Carbon::parse($music->release_date)->format('Y-m-d') }}" 
+                                        value="{{ \Carbon\Carbon::parse($music->release_date)->format('Y-m-d') }}"
                                         name="release_date" required>
                                 </div>
                                 <div class="form-group mb-3">
@@ -119,7 +119,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="price">Price</label>
-                                    <input type="text" class="form-control" id="edit_price" name="price" value="{{ $music->price }}">
+                                    <input type="text" class="form-control" id="edit_price" name="price"
+                                        value="{{ $music->price }}">
                                 </div>
                                 <button type="submit" class="btn btn-primary" id="edit_saveMusicBtn">Update
                                     Music</button>
@@ -144,8 +145,25 @@
             $('#editMusicForm').submit(function(event) {
                 event.preventDefault();
                 var formData = new FormData($(this)[0]);
+                var userRole = '{{ Auth::user()->role->name }}';
+                var url;
+
+                var musicId = '{{ $music->id }}';
+
+                if (userRole === 'Admin') {
+                    url = '{{ route('musics.update', ['music' => '__music_id__']) }}'.replace(
+                        '__music_id__', musicId);
+                } else if (userRole === 'Vendor') {
+                    url = '{{ route('vendor.musics.update', ['music' => '__music_id__']) }}'.replace(
+                        '__music_id__', musicId);
+                } else if (userRole === 'SubVendor') {
+                    url = '{{ route('subvendor.musics.update', ['music' => '__music_id__']) }}'.replace(
+                        '__music_id__', musicId);
+                }
+
                 $.ajax({
-                    url: '{{ route('musics.update', ['music' => $music->id]) }}',
+                    url: url,
+                    // url: url'{{ route('musics.update', ['music' => $music->id]) }}',
                     type: 'POST',
                     data: formData,
                     contentType: false,
