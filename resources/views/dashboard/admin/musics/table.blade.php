@@ -33,12 +33,12 @@
                             <i class="fas fa-edit"></i> Edit
                         </a>
                     @elseif (Auth::user()->isVendor())
-                        <a href="{{ route('vendor.musics.edit', ['music' => $music->id]) }}"
+                        <a href="{{ route('vendor.musics.edit', ['id' => $music->id]) }}"
                             class="btn btn-sm btn-primary rounded text-white" title="Edit Music">
                             <i class="fas fa-edit"></i> Edit
                         </a>
                     @elseif (Auth::user()->isSubVendor())
-                        <a href="{{ route('subvendor.musics.edit', ['music' => $music->id]) }}"
+                        <a href="{{ route('subvendor.musics.edit', ['id' => $music->id]) }}"
                             class="btn btn-sm btn-primary rounded text-white" title="Edit Music">
                             <i class="fas fa-edit"></i> Edit
                         </a>
