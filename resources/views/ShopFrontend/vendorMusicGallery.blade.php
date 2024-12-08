@@ -318,13 +318,13 @@
                 </div>
             </div>
             <div class="gallery">
-                @if (isset($siteGallery[0]->imagesRelation) && $siteGallery[0]->imagesRelation->isNotEmpty())
+                {{-- @if (isset($siteGallery[0]->imagesRelation) && $siteGallery[0]->imagesRelation->isNotEmpty())
                     @foreach ($siteGallery[0]->imagesRelation as $key => $row)
                         <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}">
                     @endforeach
                 @else
                     <p>No images to display.</p>
-                @endif
+                @endif --}}
             </div>
             <div class="row album-wrp">
                 <h2 class="cate-title">Albums</h2>
