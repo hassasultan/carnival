@@ -54,7 +54,7 @@ class Music extends Model
         return json_decode($value, true);
     }
 
-    public function images()
+    public function imagesRelation()
     {
         return $this->hasMany(MusicImage::class, 'music_id');
     }

@@ -677,7 +677,7 @@ class FrontendConroller extends Controller
     public function myMusicGallery($slug)
     {
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
-        $siteGallery = Music::with('images')->where('user_id', $user->id)
+        $siteGallery = Music::with('imagesRelation')->where('user_id', $user->id)
             ->get();
 
         return view('ShopFrontend.vendorMusicGallery', compact('user', 'siteGallery'));
