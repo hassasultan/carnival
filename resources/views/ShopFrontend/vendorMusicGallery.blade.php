@@ -331,7 +331,7 @@
                 @foreach ($siteGallery as $key => $row)
                     <div class="col-md-3 album-cnt" data-id="{{ $row->id }}">
                         <div class="album bg-brown"
-                            style="background-image: url('{{ asset('images/' . $row->images[0]->image) }}');">
+                            style="background-image: url('{{ asset('images/' . $row->imagesRelation[0]->image) }}');">
                         </div>
                         <div class="album-title">
                             <span>{{ $row->song_title }}</span>
