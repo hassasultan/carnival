@@ -294,8 +294,8 @@
             margin-top: 15px;
             margin-bottom: 15px;
         }
-        .album-wrp h2
-        {
+
+        .album-wrp h2 {
             padding: 10px 0px;
         }
     </style>
@@ -319,8 +319,8 @@
             </div>
             <div class="gallery">
                 @if (count($siteGallery) > 0)
-                @foreach ($siteGallery[0]->images as $key => $row)
-                {{ dd(count($siteGallery), $siteGallery->toArray(), $siteGallery[0] $row->toArray()) }}
+                    @foreach ($siteGallery[0]->images as $key => $row)
+                        {{ dd(count($siteGallery), $siteGallery->toArray(), $siteGallery[0], $row->toArray()) }}
                         <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}"
                             onclick="openModal({{ $key }})">
                     @endforeach
@@ -384,7 +384,7 @@
                     var html = '';
                     $('.gallery').html('');
                     $.each(data.images, function(index, row) {
-                        html += setImgs(row.image,index)
+                        html += setImgs(row.image, index)
                     });
                     $('.gallery').html(html);
                     images = document.querySelectorAll('.gallery img');
@@ -396,10 +396,10 @@
                 }
             });
         });
-        function setImgs(img,index)
-        {
-            return response = `<img src="{{ asset('images') }}/`+img+`" alt="Image `+index+`"
-                        onclick="openModal(`+index+`)">`;
+
+        function setImgs(img, index) {
+            return response = `<img src="{{ asset('images') }}/` + img + `" alt="Image ` + index + `"
+                        onclick="openModal(` + index + `)">`;
         }
 
         // JavaScript to handle modal and image navigation
