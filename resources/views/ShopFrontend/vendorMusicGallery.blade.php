@@ -319,9 +319,9 @@
             </div>
             <div class="gallery">
                 @if (count($siteGallery) > 0)
-                {{ dd(count($siteGallery), $siteGallery->toArray(), $siteGallery[0]->images_relation, $siteGallery[0]['images_relation']) }}
-                    @foreach ($siteGallery[0]->images as $key => $row)
-                        <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}"
+                {{-- {{ dd(count($siteGallery), $siteGallery->toArray(), $siteGallery[0]->images_relation, $siteGallery[0]['images_relation']) }} --}}
+                    @foreach ($siteGallery[0]->imagesRelation as $key => $row)
+                        <img src="{{ asset('imagesRelation/' . $row->image) }}" alt="Image {{ $key }}"
                             onclick="openModal({{ $key }})">
                     @endforeach
                 @endif
