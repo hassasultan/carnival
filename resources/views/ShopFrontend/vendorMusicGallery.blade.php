@@ -318,6 +318,7 @@
                 </div>
             </div>
             <div class="gallery">
+                {{ count($siteGallery) }}
                 @if (count($siteGallery) > 0)
                     @foreach ($siteGallery[0]->images as $key => $row)
                         <img src="{{ asset('covers/' . $row->image) }}" alt="Image {{ $key }}"
