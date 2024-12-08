@@ -318,12 +318,13 @@
                 </div>
             </div>
             <div class="gallery">
-                @if (count($siteGallery) > 0)
-                {{ dd(count($siteGallery), $siteGallery->toArray(), $siteGallery[0]->images) }}
+                @if (isset($siteGallery[0]->images) && is_array($siteGallery[0]->images))
                     @foreach ($siteGallery[0]->images as $key => $row)
-                        <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}"
+                        <img src="{{ asset('images/' . $row['image']) }}" alt="Image {{ $key }}"
                             onclick="openModal({{ $key }})">
                     @endforeach
+                @else
+                    <p>No images to display.</p>
                 @endif
             </div>
             <div class="row album-wrp">
