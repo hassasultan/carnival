@@ -321,7 +321,7 @@
                 @if (count($siteGallery) > 0)
                 {{ dd(count($siteGallery), $siteGallery->toArray()) }}
                     @foreach ($siteGallery[0]->images as $key => $row)
-                        <img src="{{ asset('covers/' . $row->image) }}" alt="Image {{ $key }}"
+                        <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}"
                             onclick="openModal({{ $key }})">
                     @endforeach
                 @endif
@@ -331,7 +331,7 @@
                 @foreach ($siteGallery as $key => $row)
                     <div class="col-md-3 album-cnt" data-id="{{ $row->id }}">
                         <div class="album bg-brown"
-                            style="background-image: url('{{ asset('covers/' . $row->images[0]->image) }}');">
+                            style="background-image: url('{{ asset('images/' . $row->images[0]->image) }}');">
                         </div>
                         <div class="album-title">
                             <span>{{ $row->song_title }}</span>
