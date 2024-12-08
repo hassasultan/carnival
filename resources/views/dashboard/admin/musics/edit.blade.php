@@ -188,6 +188,19 @@
                         setTimeout(function() {
                             $('#musicMessage').html('');
                         }, 3000);
+                        // var userRole =
+                        //     '{{ Auth::user()->role->name }}';
+
+                        // var route;
+                        // if (userRole === 'Admin') {
+                        //     route = '{{ route('musics.index') }}';
+                        // } else if (userRole === 'Vendor') {
+                        //     route = '{{ route('vendor.musics.index') }}';
+                        // } else if (userRole === 'SubVendor') {
+                        //     route = '{{ route('subvendor.musics.index') }}';
+                        // }
+
+                        // window.location.href = route;
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
