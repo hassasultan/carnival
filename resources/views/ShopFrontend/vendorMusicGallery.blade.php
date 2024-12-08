@@ -320,7 +320,7 @@
             <div class="gallery">
                 @if (count($siteGallery) > 0)
                     @foreach ($siteGallery[0]->images as $key => $row)
-                        {{ dd(count($siteGallery), $siteGallery->toArray(), $siteGallery[0], $row->toArray()) }}
+                        {{ dd(count($siteGallery), $siteGallery->toArray(), $siteGallery[0]->toArray()) }}
                         <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}"
                             onclick="openModal({{ $key }})">
                     @endforeach
