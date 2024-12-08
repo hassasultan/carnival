@@ -304,16 +304,16 @@
             <ol class="breadcrumb no-hide">
                 @if ($user->vendor)
                     <a href="{{ route('front.vendor.detail', $user->vendor->id) }}">Mascamps</a>
-                    {{ $user->vendor->name }} Gallery
+                    {{ $user->vendor->name }} / Music Gallery
                 @elseif ($user->subvendor)
                     <a href="{{ route('front.subVendor.detail', $user->subvendor->id) }}">Section Leaders</a>
-                    {{ $user->subvendor->name }} Gallery
+                    {{ $user->subvendor->name }} / Music Gallery
                 @endif
             </ol>
             <div class="row">
                 <div class="col-main">
                     <div class="toolbar-gallery toolbar-top">
-                        <h1 class="cate-title">Gallery</h1>
+                        <h1 class="cate-title">Music Gallery</h1>
                     </div>
                 </div>
             </div>
