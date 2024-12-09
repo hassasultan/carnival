@@ -117,6 +117,44 @@
             gap: 10px;
         }
 
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 10px;
+        }
+
+        .image-container {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 216px;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-container:hover img {
+            opacity: 0.5;
+        }
+
+        .image-container .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            display: none;
+            pointer-events: none;
+        }
+
+        .image-container:hover .play-btn {
+            display: block;
+        }
+
         .gallery img {
             width: 100%;
             height: 216px;
@@ -294,8 +332,8 @@
             margin-top: 15px;
             margin-bottom: 15px;
         }
-        .album-wrp h2
-        {
+
+        .album-wrp h2 {
             padding: 10px 0px;
         }
     </style>
@@ -317,12 +355,21 @@
                     </div>
                 </div>
             </div>
-            <div class="gallery">
+            {{-- <div class="gallery">
                 @if (count($siteGallery) > 0)
-                {{-- {{ dd(count($siteGallery), $siteGallery->toArray(), $siteGallery[0]->imagesRelation->toArray()) }} --}}
                     @foreach ($siteGallery[1]->imagesRelation as $key => $row)
                         <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}"
                             onclick="openModal({{ $key }})">
+                    @endforeach
+                @endif
+            </div> --}}
+            <div class="gallery">
+                @if (count($siteGallery) > 0)
+                    @foreach ($siteGallery[1]->imagesRelation as $key => $row)
+                        <div class="image-container" data-index="{{ $key }}">
+                            <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}">
+                            <div class="play-btn"><i class="fas fa-play-circle"></i></div>
+                        </div>
                     @endforeach
                 @endif
             </div>
@@ -350,18 +397,6 @@
                     <span class="next" onclick="changeImage(1)">&#10095;</span>
                 </div>
             </div>
-            {{-- <div id="imageModal" class="modal">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
-                <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
-                <button onclick="viewFullScreen()" class="fun-btn full-screen"><i class="fas fa-expand"></i></button>
-                <div class="modal-content">
-                    <img id="modalImage" alt="Modal Image" class="modal-image">
-
-                </div>
-                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-                <button class="next" onclick="changeSlide(1)">&#10095;</button>
-            </div> --}}
         </div>
     </main>
 
@@ -384,7 +419,7 @@
                     var html = '';
                     $('.gallery').html('');
                     $.each(data.images, function(index, row) {
-                        html += setImgs(row.image,index)
+                        html += setImgs(row.image, index)
                     });
                     $('.gallery').html(html);
                     images = document.querySelectorAll('.gallery img');
@@ -396,15 +431,13 @@
                 }
             });
         });
-        function setImgs(img,index)
-        {
-            return response = `<img src="{{ asset('images') }}/`+img+`" alt="Image `+index+`"
-                        onclick="openModal(`+index+`)">`;
+
+        function setImgs(img, index) {
+            return response = `<img src="{{ asset('images') }}/` + img + `" alt="Image ` + index + `"
+                        onclick="openModal(` + index + `)">`;
         }
 
         // JavaScript to handle modal and image navigation
-
-
         function openModal(index) {
             currentImageIndex = index;
             modalImage.src = images[currentImageIndex].src;
@@ -433,16 +466,16 @@
         });
     </script>
     <script>
-        let zoomLevel = 1; // Default zoom level
+        let zoomLevel = 1;
 
         function zoomIn() {
-            zoomLevel += 0.1; // Increase zoom level
+            zoomLevel += 0.1;
             document.getElementById("modalImage").style.transform = `scale(${zoomLevel})`;
         }
 
         function zoomOut() {
             if (zoomLevel > 0.1) {
-                zoomLevel -= 0.1; // Decrease zoom level
+                zoomLevel -= 0.1;
                 document.getElementById("modalImage").style.transform = `scale(${zoomLevel})`;
             }
         }
@@ -451,14 +484,23 @@
             const modalImage = document.getElementById("modalImage");
             if (modalImage.requestFullscreen) {
                 modalImage.requestFullscreen();
-            } else if (modalImage.mozRequestFullScreen) { // For Firefox
+            } else if (modalImage.mozRequestFullScreen) {
                 modalImage.mozRequestFullScreen();
-            } else if (modalImage.webkitRequestFullscreen) { // For Chrome, Safari, Opera
+            } else if (modalImage.webkitRequestFullscreen) {
                 modalImage.webkitRequestFullscreen();
-            } else if (modalImage.msRequestFullscreen) { // For IE/Edge
+            } else if (modalImage.msRequestFullscreen) {
                 modalImage.msRequestFullscreen();
             }
         }
+
+        $('.image-container').hover(
+            function() {
+                const index = $(this).data('index');
+                console.log('Hovering over image index:', index);
+            },
+            function() {
+                console.log('Hover out from image');
+            }
+        );
     </script>
-@endsection
 @endsection
