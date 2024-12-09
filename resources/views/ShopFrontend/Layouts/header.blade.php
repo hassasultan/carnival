@@ -686,8 +686,10 @@
                                     Route::is('front.subVendor.detail') ||
                                     Route::is('model.detail'))
                                 <ul class="category-links">
-                                    <li><a href="{{ route('details.aboutUs', $user->slug) }}">About us</a>
-                                    </li>
+                                    @if ($user->packageName != 'Artistes')
+                                        <li><a href="{{ route('details.aboutUs', $user->slug) }}">About us</a>
+                                        </li>
+                                    @endif
                                     <li>
                                         @if ($user->packageName == 'Models')
                                             <a href="{{ route('model.booking.create', $user->slug) }}">Send

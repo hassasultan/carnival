@@ -468,16 +468,13 @@ class FrontendConroller extends Controller
     }
     public function getAlbumImgs(Request $request)
     {
-        // $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
-        // // $siteGallery = SiteGallery::where('user_id', $user->id)
         $siteGallery = GalleryAlbum::with('images')->where('id', $request->id)
             ->first();
         return $siteGallery;
     }
+
     public function getAlbumMusic(Request $request)
     {
-        // $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
-        // // $siteGallery = SiteGallery::where('user_id', $user->id)
         $siteGallery = Music::with('imagesRelation')->where('id', $request->id)
             ->first();
         return $siteGallery;
@@ -618,14 +615,14 @@ class FrontendConroller extends Controller
     }
     public function musicDetail($slug)
     {
-        $music = Music::where('id',$slug)->first();
-        $related_music = Music::where('user_id',$music->user_id)->get();
-        $user = User::with('vendor', 'events')->where('id',$music->user_id)->first();
+        $music = Music::where('id', $slug)->first();
+        $related_music = Music::where('user_id', $music->user_id)->get();
+        $user = User::with('vendor', 'events')->where('id', $music->user_id)->first();
         $products = Product::with('brand')->get();
         $brands = Brand::where('status', 1)
             ->withCount('products')
             ->get();
-        return view('ShopFrontend.artist.music-detail', compact('products','brands','music', 'related_music', 'user'));
+        return view('ShopFrontend.artist.music-detail', compact('products', 'brands', 'music', 'related_music', 'user'));
     }
 
     public function get_music(Request $request)
@@ -688,7 +685,7 @@ class FrontendConroller extends Controller
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
         $siteGallery = Music::with('imagesRelation')->has('imagesRelation')->where('user_id', $user->id)
             ->get();
-            // dd($siteGallery->toArray(), $siteGallery[0]->imagesRelation->toArray());
+        // dd($siteGallery->toArray(), $siteGallery[0]->imagesRelation->toArray());
 
         return view('ShopFrontend.vendorMusicGallery', compact('user', 'siteGallery'));
     }

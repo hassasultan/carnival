@@ -364,10 +364,38 @@
                 @endif
             </div> --}}
             <div class="gallery">
-                @if (count($siteGallery) > 0)
+                {{-- @if (count($siteGallery) > 0)
                     @foreach ($siteGallery[0]->imagesRelation as $key => $row)
                         <div class="image-container" data-index="{{ $key }}">
                             <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}">
+                            <div class="play-btn"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                    @endforeach
+                @endif --}}
+                @if (count($siteGallery) > 0)
+                    @foreach ($siteGallery[1]->imagesRelation as $key => $row)
+                        <div class="image-container" data-index="{{ $key }}">
+                            <!-- For Image -->
+                            <img src="{{ asset($row->image) }}" alt="Image {{ $key }}" class="image">
+
+                            <!-- Check if the document is audio or video -->
+                            @if (strpos($row->document, '.mp3') !== false || strpos($row->document, '.wav') !== false)
+                                <!-- Audio -->
+                                <audio class="media" controls style="display: none;">
+                                    <source src="{{ asset($row->document) }}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            @elseif (strpos($row->document, '.mp4') !== false ||
+                                    strpos($row->document, '.avi') !== false ||
+                                    strpos($row->document, '.mov') !== false)
+                                <!-- Video -->
+                                <video class="media" controls style="display: none;">
+                                    <source src="{{ asset($row->document) }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            @endif
+
+                            <!-- Play Button -->
                             <div class="play-btn"><i class="fas fa-play-circle"></i></div>
                         </div>
                     @endforeach
@@ -416,15 +444,24 @@
                     id: id
                 },
                 success: function(data) {
-                    var html = '';
-                    $('.gallery').html('');
-                    $.each(data.imagesRelation, function(index, row) {
-                        html += setImgs(row.image, index)
-                    });
-                    $('.gallery').html(html);
-                    images = document.querySelectorAll('.gallery img');
-                    modal = document.getElementById('imageModal');
-                    modalImage = document.getElementById('modalImage');
+
+                    if (data && data.images_relation && Array.isArray(data.images_relation)) {
+                        var html = '';
+                        $('.gallery').html('');
+
+                        $.each(data.images_relation, function(index, row) {
+                            console.log('row', row);
+                            html += setImgs(row.image, index);
+                        });
+
+                        $('.gallery').html(html);
+
+                        images = document.querySelectorAll('.gallery img');
+                        modal = document.getElementById('imageModal');
+                        modalImage = document.getElementById('modalImage');
+                    } else {
+                        console.error('images_relation is not available or is not an array');
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.error(error);
@@ -496,11 +533,24 @@
         $('.image-container').hover(
             function() {
                 const index = $(this).data('index');
-                console.log('Hovering over image index:', index);
             },
-            function() {
-                console.log('Hover out from image');
-            }
+            function() {}
         );
+
+        $(document).on('click', '.image-container', function() {
+            console.log('okokok');
+            var container = $(this).closest('.image-container');
+            var media = container.find('.media');
+
+            $('.media').each(function() {
+                this.pause();
+                $(this).hide();
+            });
+
+            container.find('img').hide();
+
+            media.show();
+            media[0].play();
+        });
     </script>
 @endsection
