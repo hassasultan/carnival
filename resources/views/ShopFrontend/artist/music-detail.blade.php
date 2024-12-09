@@ -1581,7 +1581,7 @@
             });
         });
     </script>
-    {{-- <script>
+    <script>
         let images = [
             @foreach ($event->images as $row)
                 {
@@ -1622,7 +1622,7 @@
                 if (event.key === "Escape") closeModal();
             }
         });
-    </script> --}}
+    </script>
     <script>
         let zoomLevel = 1; // Default zoom level
 
