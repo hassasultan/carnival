@@ -1583,10 +1583,10 @@
     </script>
     <script>
         let images = [
-            @foreach ($event->images as $row)
+            @foreach ($music->imagesRelation as $row)
                 {
-                    full: "{{ asset($row->image_url) }}",
-                    thumbnail: "{{ asset($row->image_url) }}"
+                    full: "{{ asset($row->document) }}",
+                    thumbnail: "{{ asset($row->image) }}"
                 },
             @endforeach
         ];
