@@ -29,18 +29,21 @@
                     </a> --}}
                     @if (Auth::user()->isAdmin())
                         <a href="{{ route('musics.edit', ['music' => $music->id]) }}"
-                            class="btn btn-sm btn-primary rounded text-white" title="Edit Music">
-                            <i class="fas fa-edit"></i> Edit
+                            class="btn btn-sm btn-sm rounded" title="Edit Music">
+                            <span class="fe fe-edit fe-12 mr-3"></span>
+                            <span class="text-muted sr-only">Edit</span>
                         </a>
                     @elseif (Auth::user()->isVendor())
                         <a href="{{ route('vendor.musics.edit', ['id' => $music->id]) }}"
-                            class="btn btn-sm btn-primary rounded text-white" title="Edit Music">
-                            <i class="fas fa-edit"></i> Edit
+                            class="btn btn-sm btn-sm rounded" title="Edit Music">
+                            <span class="fe fe-edit fe-12 mr-3"></span>
+                            <span class="text-muted sr-only">Edit</span>
                         </a>
                     @elseif (Auth::user()->isSubVendor())
                         <a href="{{ route('subvendor.musics.edit', ['id' => $music->id]) }}"
-                            class="btn btn-sm btn-primary rounded text-white" title="Edit Music">
-                            <i class="fas fa-edit"></i> Edit
+                            class="btn btn-sm btn-sm rounded" title="Edit Music">
+                            <span class="fe fe-edit fe-12 mr-3"></span>
+                            <span class="text-muted sr-only">Edit</span>
                         </a>
                     @endif
                     {{-- <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted editMusicBtn"

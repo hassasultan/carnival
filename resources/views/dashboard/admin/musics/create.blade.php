@@ -54,15 +54,6 @@
                                     <input type="date" class="form-control" id="release_date" name="release_date"
                                         required>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label for="video">Document</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="video_input" name="video"
-                                            multiple>
-                                        <label class="custom-file-label" for="video_input" id="video_label">Choose
-                                            file</label>
-                                    </div>
-                                </div>
                                 <div class="form-group">
                                     <label for="music">Music</label>
                                     <input type="text" class="form-control" id="music" name="music" required>
@@ -85,7 +76,7 @@
                             </select>
                         </div> --}}
                                 <div class="form-group mb-3">
-                                    <label for="cover_image">Cover Image</label>
+                                    <label for="cover_image">Album Cover Image</label>
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="cover_image_input"
                                             name="cover_image">
@@ -94,15 +85,39 @@
                                             file</label>
                                     </div>
                                 </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="images">Images</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="images_input" name="images[]"
-                                            multiple>
-                                        <label class="custom-file-label" for="images_input" id="images_label">Choose
-                                            file</label>
+                                <div class="border border-white p-3 rounded mb-3">
+                                    <button class="btn btn-primary btn-sm add-doc float-right" type="button">Add
+                                        More</button>
+                                    <div class="form-group mb-3">
+                                        <label for="images">Document Cover Image</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="images_input"
+                                                name="images[]">
+                                            <label class="custom-file-label" for="images_input" id="images_label">Choose
+                                                file</label>
+                                        </div>
                                     </div>
+                                    {{-- <div class="form-group mb-3">
+                                        <label for="video">Document</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="video_input"
+                                                name="video[]" multiple>
+                                            <label class="custom-file-label" for="video_input" id="video_label">Choose
+                                                file</label>
+                                        </div>
+                                    </div> --}}
+                                    <div class="form-group mb-3">
+                                        <label for="video">Document</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="video_input"
+                                                name="video[]" multiple accept="audio/*,video/*">
+                                            <label class="custom-file-label" for="video_input" id="video_label">Choose
+                                                file</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="document-container">
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -219,7 +234,51 @@
             });
 
             // display name of selected files
-            $('.custom-file-input').on('change', function() {
+            $('.add-doc').on('click', function() {
+                var uniqueId = Date.now();
+                var html = `<div class="border border-white p-3 rounded mb-3">
+                <button class="btn btn-danger btn-sm remove-doc float-right" type="button">Remove</button>
+                <div class="form-group mb-3">
+                    <label for="images_${uniqueId}">Document Cover Image</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="images_${uniqueId}" name="images[]">
+                        <label class="custom-file-label" for="images_${uniqueId}">Choose file</label>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="video_${uniqueId}">Document</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="video_${uniqueId}" name="video[]" multiple accept="audio/*,video/*">
+                        <label class="custom-file-label" for="video_${uniqueId}">Choose file</label>
+                    </div>
+                </div>
+            </div>`;
+
+                $('.document-container').append(html);
+            });
+
+
+            $(document).on('click', '.remove-doc', function() {
+                $(this).closest('.border').remove();
+            });
+
+            $(document).ready(function() {
+                $('#video_input').on('change', function() {
+                    const files = $(this)[0].files;
+                    let label = 'Choose file';
+
+                    if (files.length > 1) {
+                        label = `${files.length} files selected`;
+                    } else if (files.length === 1) {
+                        label = files[0].name;
+                    }
+
+                    $('#video_label').text(label);
+                });
+            });
+
+            // display name of selected files
+            $(document).on('change', '.custom-file-input', function() {
                 let fileNames = [];
                 $.each(this.files, function(index, file) {
                     fileNames.push(file.name);

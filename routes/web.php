@@ -78,6 +78,7 @@ Route::get('/{slug}/event-listing', [FrontendConroller::class, 'myEvents'])->nam
 Route::get('/{slug}/gallery', [FrontendConroller::class, 'myGallery'])->name('front.myGallery');
 Route::get('/{slug}/music-gallery', [FrontendConroller::class, 'myMusicGallery'])->name('front.myMusicGallery');
 Route::get('/get/album/imgs', [FrontendConroller::class, 'getAlbumImgs'])->name('front.album.imgs');
+Route::get('/get/album/music', [FrontendConroller::class, 'getAlbumMusic'])->name('front.album.music');
 Route::get('/contact-us', [FrontendConroller::class, 'contact_us'])->name('front.contact');
 Route::get('/marketplace', [FrontendConroller::class, 'marketplace'])->name('front.marketplace');
 Route::get('/compare-produts', [FrontendConroller::class, 'compare_produts'])->name('front.compare.produts');

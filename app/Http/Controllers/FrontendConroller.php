@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MusicImage;
 use App\Models\Product;
 use App\Models\Testimonials;
 use App\Models\Blogs;
@@ -328,7 +329,7 @@ class FrontendConroller extends Controller
 
         if ($vendorPackageName === 'Artistes' || $subVendorPackageName === 'Artistes') {
             $events = Event::with('category', 'images')->where('user_id', $user->id)->orderBy('start_date', 'DESC')->take(3)->get();
-            $musics = Music::with('images')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
+            $musics = Music::with('imagesRelation')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
             $costumes = Costume::with('category')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
             return view('ShopFrontend.artist.detail', compact('events', 'vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'musics', 'costumes'));
         } else {
@@ -470,6 +471,14 @@ class FrontendConroller extends Controller
         // $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
         // // $siteGallery = SiteGallery::where('user_id', $user->id)
         $siteGallery = GalleryAlbum::with('images')->where('id', $request->id)
+            ->first();
+        return $siteGallery;
+    }
+    public function getAlbumMusic(Request $request)
+    {
+        // $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
+        // // $siteGallery = SiteGallery::where('user_id', $user->id)
+        $siteGallery = Music::with('imagesRelation')->where('id', $request->id)
             ->first();
         return $siteGallery;
     }
@@ -621,7 +630,7 @@ class FrontendConroller extends Controller
 
     public function get_music(Request $request)
     {
-        $query = Music::with('images');
+        $query = Music::with('imagesRelation');
 
         if ($request->has('artiste_name') && !empty($request->artiste_name)) {
             $query->where('artiste_name', 'like', '%' . $request->artiste_name . '%');

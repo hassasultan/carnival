@@ -20,7 +20,6 @@ class Music extends Model
         'writer',
         'song_title',
         'release_date',
-        'video',
         'images',
         'music',
         'country',

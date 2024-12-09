@@ -365,7 +365,7 @@
             </div> --}}
             <div class="gallery">
                 @if (count($siteGallery) > 0)
-                    @foreach ($siteGallery[1]->imagesRelation as $key => $row)
+                    @foreach ($siteGallery[0]->imagesRelation as $key => $row)
                         <div class="image-container" data-index="{{ $key }}">
                             <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}">
                             <div class="play-btn"><i class="fas fa-play-circle"></i></div>
@@ -410,7 +410,7 @@
         $('.album-cnt').click(function() {
             let id = $(this).data('id');
             $.ajax({
-                url: "{{ route('front.album.imgs') }}",
+                url: "{{ route('front.album.music') }}",
                 type: "GET",
                 data: {
                     id: id
@@ -418,7 +418,7 @@
                 success: function(data) {
                     var html = '';
                     $('.gallery').html('');
-                    $.each(data.images, function(index, row) {
+                    $.each(data.imagesRelation, function(index, row) {
                         html += setImgs(row.image, index)
                     });
                     $('.gallery').html(html);

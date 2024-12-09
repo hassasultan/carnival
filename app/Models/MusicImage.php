@@ -11,6 +11,7 @@ class MusicImage extends Pivot
     protected $fillable = [
         'music_id',
         'image',
+        'document',
     ];
 
     public function music()
