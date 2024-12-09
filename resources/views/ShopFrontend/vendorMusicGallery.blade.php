@@ -146,7 +146,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 3rem;
-            color: white;
+            color: black;
             display: none;
             pointer-events: none;
         }
