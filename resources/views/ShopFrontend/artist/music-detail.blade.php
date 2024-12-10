@@ -327,7 +327,11 @@
                             <button onclick="viewFullScreen()" class="fun-btn full-screen"><i
                                     class="fas fa-expand"></i></button>
                             <div class="modal-content">
-                                <img id="modalImage" alt="Modal Image" class="modal-image">
+                                <video controls style="width: 400px;">
+                                    <source src="{{ asset('videos/' . $music->video) }}" id="modalImage" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                {{-- <img id="modalImage" alt="Modal Image" class="modal-image"> --}}
 
                             </div>
                             <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
