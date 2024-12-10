@@ -969,6 +969,10 @@
     </script>
     <script>
         let images = [
+            {
+                full: "{{ asset('images/' . $user->vendor->logo) }}",
+                thumbnail: "{{ asset('images/' . $user->vendor->logo) }}"
+            },
             @foreach ($user->gallery as $key => $row)
                 {
                     full: "{{ asset('images/' . $row->images[0]->image) }}",
