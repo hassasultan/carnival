@@ -299,7 +299,17 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="product-gallery">
-                                <div class="col-sm-12">
+                                <div class="col-sm-4">
+                                    <div class="product-thumbnails">
+                                        @foreach ($music->imagesRelation as $row)
+                                            <img class="thumbnail" src="{{ asset($row->image) }}"
+                                                data-full="{{ asset($row->image) }}"
+                                                alt="Thumbnail {{ $key + 1 }}"
+                                                onclick="changeMainImage({{ $key }})" />
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
                                     <div class="product-preview position-relative">
                                         <div class="zoom-container">
                                             @php
