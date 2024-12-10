@@ -1609,7 +1609,7 @@
         let images = [
             @foreach ($music->imagesRelation as $row)
                 {
-                    full: "{{ asset($row->document) }}",
+                    full: "{{ asset($row->image) }}",
                     thumbnail: "{{ asset($row->image) }}"
                 },
             @endforeach
