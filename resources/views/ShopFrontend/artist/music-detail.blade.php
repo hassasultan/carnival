@@ -1607,6 +1607,10 @@
     </script>
     <script>
         let images = [
+            {
+                full: "{{ asset('covers/' . $music->cover_image) }}",
+                thumbnail: "{{ asset('covers/' . $music->cover_image) }}"
+            },
             @foreach ($music->imagesRelation as $row)
                 {
                     full: "{{ asset($row->image) }}",
