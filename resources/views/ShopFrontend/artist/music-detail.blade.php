@@ -347,7 +347,7 @@
                             <button onclick="viewFullScreen()" class="fun-btn full-screen"><i
                                     class="fas fa-expand"></i></button>
                             <div class="modal-content">
-                                <video controls style="width: 400px;" id="modalVideoTag">
+                                <video controls controlsList="nodownload" style="width: 400px;" id="modalVideoTag">
                                     <source src="{{ asset('videos/' . $music->video) }}" id="modalVideo" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
@@ -1638,7 +1638,9 @@
             currentIndex = (index + images.length) % images.length;
             $("#modalImage").attr("src", images[currentIndex].full);
             $("#modalVideo").attr("src", images[currentIndex].thumbnail);
-            $("#modalVideoTag").play();
+            const videoElement = document.getElementById("modalVideoTag");
+            videoElement.load(); // Reload the video to ensure the new source is applied
+            videoElement.play();
         }
 
         function changeSlide(step) {
