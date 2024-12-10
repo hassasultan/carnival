@@ -299,7 +299,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="product-gallery">
-                                <div class="col-sm-4">
+                                <div class="col-sm-2">
                                     <div class="product-thumbnails">
                                         @php
                                             $image = null;
@@ -319,7 +319,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-10">
                                     <div class="product-preview position-relative">
                                         <div class="zoom-container">
                                             @php
@@ -348,7 +348,7 @@
                                     class="fas fa-expand"></i></button>
                             <div class="modal-content">
                                 <video controls style="width: 400px;">
-                                    <source src="{{ asset('videos/' . $music->video) }}" id="modalImage" type="video/mp4">
+                                    <source src="{{ asset('videos/' . $music->video) }}" id="modalVideo" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                                 {{-- <img id="modalImage" alt="Modal Image" class="modal-image"> --}}
@@ -1609,12 +1609,12 @@
         let images = [
             {
                 full: "{{ asset('covers/' . $music->cover_image) }}",
-                thumbnail: "{{ asset('covers/' . $music->cover_image) }}"
+                thumbnail: "{{ asset('covers/' . $music->document) }}"
             },
             @foreach ($music->imagesRelation as $row)
                 {
                     full: "{{ asset($row->image) }}",
-                    thumbnail: "{{ asset($row->image) }}"
+                    thumbnail: "{{ asset('videos/' . $row->document) }}"
                 },
             @endforeach
         ];
@@ -1637,6 +1637,7 @@
         function showSlide(index) {
             currentIndex = (index + images.length) % images.length;
             $("#modalImage").attr("src", images[currentIndex].full);
+            $("#modalVideo").attr("src", images[currentIndex].thumbnail);
         }
 
         function changeSlide(step) {
