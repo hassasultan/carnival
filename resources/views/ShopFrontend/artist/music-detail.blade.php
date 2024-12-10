@@ -301,7 +301,7 @@
                             <div class="product-gallery">
                                 <div class="col-sm-4">
                                     <div class="product-thumbnails">
-                                        @foreach ($music->imagesRelation as $row)
+                                        @foreach ($music->imagesRelation as $key => $row)
                                             <img class="thumbnail" src="{{ asset($row->image) }}"
                                                 data-full="{{ asset($row->image) }}"
                                                 alt="Thumbnail {{ $key + 1 }}"
