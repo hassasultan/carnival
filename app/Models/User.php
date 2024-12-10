@@ -107,6 +107,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Product::class);
     }
+    public function gallery()
+    {
+        return $this->hasMany(GalleryAlbum::class);
+    }
     public function cart()
     {
         return $this->hasMany(Cart::class);
@@ -134,7 +138,7 @@ class User extends Authenticatable
 
     public function getPackageNameAttribute()
     {
-        return optional($this->vendor?->package)->title 
+        return optional($this->vendor?->package)->title
             ?? optional($this->subVendor?->package)->title;
     }
 }

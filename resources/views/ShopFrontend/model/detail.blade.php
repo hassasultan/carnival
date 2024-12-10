@@ -299,7 +299,30 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="product-gallery">
-                                <div class="col-sm-12">
+                                <div class="col-sm-2">
+                                    <div class="product-thumbnails">
+                                        @php
+                                            $image = null;
+
+                                            if ($user->vendor && $user->vendor->logo) {
+                                                $image = asset('images/' . $user->vendor->logo);
+                                            } elseif ($user->image) {
+                                                $image = asset('images/' . $user->image);
+                                            } else {
+                                                $image = asset('shopAssets/images/media/product9.jpg');
+                                            }
+                                        @endphp
+                                        <img class="thumbnail" src="{{ $image }}" data-full="{{ $image }}"
+                                            alt="Thumbnail 0" onclick="changeMainImage(0)" />
+                                        @foreach ($user->gallery as $key => $row)
+                                            <img class="thumbnail" src="{{ asset('images/' . $row->images[0]->image) }}"
+                                                data-full="{{ asset('images/' . $row->images[0]->image) }}"
+                                                alt="Thumbnail {{ $key + 1 }}"
+                                                onclick="changeMainImage({{ $key + 1 }})" />
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <div class="col-sm-10">
                                     <div class="product-preview position-relative">
                                         <div class="zoom-container">
                                             @php
@@ -946,10 +969,10 @@
     </script>
     <script>
         let images = [
-            @foreach ($event->images as $row)
+            @foreach ($user->gallery as $key => $row)
                 {
-                    full: "{{ asset($row->image_url) }}",
-                    thumbnail: "{{ asset($row->image_url) }}"
+                    full: "{{ asset('images/' . $row->images[0]->image) }}",
+                    thumbnail: "{{ asset('images/' . $row->images[0]->image) }}"
                 },
             @endforeach
         ];
