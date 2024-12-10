@@ -423,9 +423,12 @@ class FrontendConroller extends Controller
 
         $vendorPackageName = optional($user->vendor?->package)->title;
         $subVendorPackageName = optional($user->subVendor?->package)->title;
-
+        $products = Product::with('brand')->get();
+        $brands = Brand::where('status', 1)
+            ->withCount('products')
+            ->get();
         if ($vendorPackageName === 'Models' || $subVendorPackageName === 'Models') {
-            return view('ShopFrontend.model.detail', compact('event', 'user'));
+            return view('ShopFrontend.model.detail', compact('event', 'user','products','brands'));
         } else {
             return view('ShopFrontend.vendorAboutUs', compact('user'));
         }
