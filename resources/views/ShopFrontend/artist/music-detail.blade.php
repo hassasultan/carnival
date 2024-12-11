@@ -386,6 +386,7 @@
                                         <span class="text">Release Date:</span>
                                         {{ $music->release_date }}
                                     </div>
+                                    <div class="actions">
                                     @if (Auth::check())
                                         <button type="button" title="Add to Cart" class="action btn-cart"
                                             data-music_id="{{ $music->id }}">
@@ -397,6 +398,7 @@
                                             <span>Add to Cart</span>
                                         </a>
                                     @endif
+                                    </div>
                                     <div class="contact-item">
                                         <video controls style="width: 400px;">
                                             <source src="{{ asset('videos/' . $music->video) }}" type="video/mp4">
