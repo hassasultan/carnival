@@ -330,8 +330,17 @@
                                                         <a class="btn btn-quickview"
                                                             href=""><span>quickview</span></a>
                                                     </div>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
+                                                    @if (Auth::check())
+                                                        <button type="button" title="Add to Cart"
+                                                            class="action btn-cart" data-music_id="{{ $music->id }}">
+                                                            <span>Add to Cart</span>
+                                                        </button>
+                                                    @else
+                                                        <a href="{{ route('customer.login') }}" title="Add to Cart"
+                                                            class="action btn-cart btn">
+                                                            <span>Add to Cart</span>
+                                                        </a>
+                                                    @endif
                                                     {{-- <span class="product-item-label label-price">30% <span>off</span></span> --}}
                                                 </div>
                                                 <div class="product-item-detail">
@@ -358,7 +367,8 @@
                                 </div>
                             </div><!-- tab 1 -->
 
-                            <a href="{{ route('front.myMusicGallery', $user->slug) }}" type="submit" class="btn mb-2 btn-danger" id="">View All</a>
+                            <a href="{{ route('front.myMusicGallery', $user->slug) }}" type="submit"
+                                class="btn mb-2 btn-danger" id="">View All</a>
 
                         </div>
 
@@ -508,7 +518,8 @@
                                         <div class="product-item  product-item-opt-1 ">
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
-                                                    <a class="product-item-img" style="height: 266px; width: 186px;" href=""><img alt="product name"
+                                                    <a class="product-item-img" style="height: 266px; width: 186px;"
+                                                        href=""><img alt="product name"
                                                             src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
@@ -564,7 +575,8 @@
                                         <div class="product-item  product-item-opt-1 ">
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
-                                                    <a class="product-item-img" style="height: 266px; width: 186px;" href=""><img alt="product name"
+                                                    <a class="product-item-img" style="height: 266px; width: 186px;"
+                                                        href=""><img alt="product name"
                                                             src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
@@ -621,7 +633,8 @@
                                         <div class="product-item  product-item-opt-1 ">
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
-                                                    <a class="product-item-img" style="height: 266px; width: 186px;" href=""><img alt="product name"
+                                                    <a class="product-item-img" style="height: 266px; width: 186px;"
+                                                        href=""><img alt="product name"
                                                             src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
@@ -679,8 +692,8 @@
                                             <div class="product-item  product-item-opt-1 ">
                                                 <div class="product-item-info">
                                                     <div class="product-item-photo">
-                                                        <a class="product-item-img" style="height: 266px; width: 186px;" href=""><img
-                                                                alt="product name"
+                                                        <a class="product-item-img" style="height: 266px; width: 186px;"
+                                                            href=""><img alt="product name"
                                                                 src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
                                                         <div class="product-item-actions">
                                                             <a class="btn btn-wishlist"
@@ -2392,5 +2405,89 @@
             });
 
         })(jQuery);
+    </script>
+    <script>
+        // add to cart
+        $(document).ready(function() {
+            // var quantity = $('.input-qty').val();
+            $('.btn-cart').click(function() {
+                var musicId = $(this).data('music_id');
+                var quantity = 1;
+                auth = "{{ auth()->check() }}";
+                console.log(auth);
+                if (auth != true) {
+                    window.location.href = '/login';
+                } else {
+                    $.ajax({
+                        type: 'GET',
+                        url: '{{ route('add.to.cart') }}',
+                        data: {
+                            product_id: musicId,
+                            quantity: quantity,
+                            type: 'music',
+                        },
+                        success: function(response) {
+
+                            console.log(response);
+                            var cartItems = response;
+                            var html = '';
+                            var total = 0;
+                            var eventHtml = '';
+                            $.each(cartItems, function(index, cartItem) {
+                                // Construct HTML for each cart item
+                                var image = null;
+                                if (cartItem.event.banner != null && cartItem.event
+                                    .banner != '') {
+                                    image = "{{ asset('eventBanner/') }}/" + cartItem
+                                        .event.banner;
+                                } else {
+                                    image =
+                                        'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                }
+                                eventHtml += `
+                                    <li class="product-item cart-row-${cartItem.id}">
+                                        <a class="product-item-photo" href="#" title="${cartItem.event.name}">
+                                            <img class="product-image-photo" src="${image}" alt="${cartItem.event.name}">
+                                        </a>
+                                        <div class="product-item-details">
+                                            <strong class="product-item-name">
+                                                <a href="#">${cartItem.event.name}</a>
+                                            </strong>
+                                            <div class="product-item-price">
+                                                <span class="price">$0</span>
+                                            </div>
+                                            <div class="product-item-qty">
+                                                <span class="label">Qty: </span><span class="number">${cartItem.quantity}</span>
+                                            </div>
+                                            <div class="product-item-actions">
+                                                <a class="action delete delete-cart" data-id="${cartItem.id}" href="javascript:void(0);" title="Remove item">
+                                                    <span>Remove</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                `;
+                                total += 1 * cartItem.quantity;
+                            });
+                            $('#minicart-items').html(eventHtml);
+                            $('#minicart-items2').html(eventHtml);
+                            $('#cart-price').html('$' + total);
+                            $('#cart-price2').html('$' + total);
+                            $('.counter-price').html('$' + total);
+                            $('.counter-number').html(cartItems.length);
+                            $('.total-cart-items').html(cartItems.length);
+                            $('.counter-label').html(cartItems.length + '<span>Items</span>');
+
+                            // Insert the generated HTML into the designated container
+                            alert('Product added to cart successfully!');
+                        },
+                        error: function(xhr, status, error) {
+                            alert('Error adding product to cart:', error);
+                            console.error('Error adding product to cart:', error);
+                        }
+                    });
+                }
+            });
+        });
     </script>
 @endsection
