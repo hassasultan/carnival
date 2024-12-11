@@ -452,7 +452,7 @@
 
                         $.each(data.images_relation, function(index, row) {
                             console.log('row', row);
-                            html += setImgs(row.image, index);
+                            html += setImgs(row.image, index, row.document);
                         });
 
                         $('.gallery').html(html);
@@ -470,10 +470,46 @@
             });
         });
 
-        function setImgs(img, index) {
-            return response = `<img src="{{ asset('images') }}/` + img + `" alt="Image ` + index + `"
-                        onclick="openModal(` + index + `)">`;
+        function setImgs(img, index, document) {
+            let mediaElement = '';
+
+            // Check if document exists and determine its type
+            if (document) {
+                if (document.endsWith('.mp3') || document.endsWith('.wav')) {
+                    // Audio
+                    mediaElement = `
+                <audio class="media" controls style="display: none;">
+                    <source src="${document}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>`;
+                } else if (document.endsWith('.mp4') || document.endsWith('.avi') || document.endsWith('.mov')) {
+                    // Video
+                    mediaElement = `
+                <video class="media" controls style="display: none;">
+                    <source src="${document}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>`;
+                }
+            }
+
+            // Construct the HTML for the image and media
+            return `
+        <div class="image-container" data-index="${index}">
+            <!-- Image -->
+            <img src="${img}" alt="Image ${index}" class="image">
+
+            <!-- Media -->
+            ${mediaElement}
+
+            <!-- Play Button -->
+            <div class="play-btn"><i class="fas fa-play-circle"></i></div>
+        </div>`;
         }
+
+        // function setImgs(img, index) {
+        //     return response = `<img src="{{ asset('images') }}/` + img + `" alt="Image ` + index + `"
+        //                 onclick="openModal(` + index + `)">`;
+        // }
 
         // JavaScript to handle modal and image navigation
         function openModal(index) {
