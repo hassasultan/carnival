@@ -386,6 +386,7 @@
                                         <span class="text">Release Date:</span>
                                         {{ $music->release_date }}
                                     </div>
+                                    @if ($music->for_sale == 'for_sale')
                                     <div class="product-options-bottom clearfix">
                                         <div class="actions">
                                             @if (Auth::check())
@@ -401,6 +402,7 @@
                                             @endif
                                         </div>
                                     </div>
+                                    @endif
                                     <div class="contact-item">
                                         <video controls style="width: 400px;">
                                             <source src="{{ asset('videos/' . $music->video) }}" type="video/mp4">
