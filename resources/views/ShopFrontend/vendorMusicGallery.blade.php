@@ -40,64 +40,44 @@
         }
 
         .modal {
-            display: none;
             position: fixed;
-            z-index: 1000;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        #mediaContainer {
+            display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .modal-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            text-align: center;
-        }
-
-        .modal-image {
+        audio,
+        video {
             max-width: 100%;
-            max-height: 80vh;
-            border-radius: 8px;
-        }
-
-        .modal .prev,
-        .modal .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            border: none;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            border-radius: 50%;
-        }
-
-        .modal .prev {
-            left: 10px;
-        }
-
-        .modal .next {
-            right: 10px;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            color: #ccc;
         }
 
         @media (max-width: 768px) {
@@ -414,7 +394,7 @@
                     </div>
                 @endforeach
             </div>
-            <div id="imageModal" class="modal">
+            {{-- <div id="imageModal" class="modal">
                 <span class="close" onclick="closeModal();">&times;</span>
                 <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
                 <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
@@ -423,6 +403,12 @@
                     <img id="modalImage" alt="Modal Image" class="modal-image">
                     <span class="prev" onclick="changeImage(-1)">&#10094;</span>
                     <span class="next" onclick="changeImage(1)">&#10095;</span>
+                </div>
+            </div> --}}
+            <div id="mediaModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">×</span>
+                    <div id="mediaContainer"></div>
                 </div>
             </div>
         </div>
@@ -470,74 +456,96 @@
             });
         });
 
-        function setImgs(img, index, document) {
-            let mediaElement = '';
+        function setImgs(img, index, document = null) {
+            let mediaType = '';
+            let onClickAction = '';
 
-            // Check if document exists and determine its type
             if (document) {
                 if (document.endsWith('.mp3') || document.endsWith('.wav')) {
-                    // Audio
-                    mediaElement = `
-                <audio class="media" controls style="display: none;">
-                    <source src="${document}" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>`;
+                    mediaType = 'audio';
                 } else if (document.endsWith('.mp4') || document.endsWith('.avi') || document.endsWith('.mov')) {
-                    // Video
-                    mediaElement = `
-                <video class="media" controls style="display: none;">
-                    <source src="${document}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>`;
+                    mediaType = 'video';
                 }
+
+                onClickAction = `onclick="openModal('${document}', '${mediaType}')"`
             }
 
-            // Construct the HTML for the image and media
             return `
-        <div class="image-container" data-index="${index}">
-            <!-- Image -->
-            <img src="${img}" alt="Image ${index}" class="image">
-
-            <!-- Media -->
-            ${mediaElement}
-
-            <!-- Play Button -->
-            <div class="play-btn"><i class="fas fa-play-circle"></i></div>
-        </div>`;
+            <div class="image-container" data-index="${index}">
+                <img src="${img}" alt="Image ${index}" class="image" ${onClickAction}>
+                <div class="play-btn"><i class="fas fa-play-circle"></i></div>
+            </div>`;
         }
 
-        // function setImgs(img, index) {
-        //     return response = `<img src="{{ asset('images') }}/` + img + `" alt="Image ` + index + `"
-        //                 onclick="openModal(` + index + `)">`;
-        // }
+        function openModal(mediaSrc, mediaType) {
+            const mediaContainer = document.getElementById('mediaContainer');
+            const modal = document.getElementById('mediaModal');
 
-        // JavaScript to handle modal and image navigation
-        function openModal(index) {
-            currentImageIndex = index;
-            modalImage.src = images[currentImageIndex].src;
+            // Clear any existing content
+            mediaContainer.innerHTML = '';
+
+            // Add the appropriate media element
+            if (mediaType === 'audio') {
+                mediaContainer.innerHTML = `
+                <audio controls autoplay>
+                    <source src="${mediaSrc}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>`;
+            } else if (mediaType === 'video') {
+                mediaContainer.innerHTML = `
+                <video controls autoplay>
+                    <source src="${mediaSrc}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>`;
+            }
+
+            // Show the modal
             modal.style.display = 'flex';
         }
 
         function closeModal() {
+            const modal = document.getElementById('mediaModal');
             modal.style.display = 'none';
+
+            // Stop playback
+            const media = document.querySelector('#mediaContainer audio, #mediaContainer video');
+            if (media) {
+                media.pause();
+            }
         }
 
-        function changeImage(direction) {
-            currentImageIndex += direction;
-            if (currentImageIndex < 0) {
-                currentImageIndex = images.length - 1;
-            } else if (currentImageIndex >= images.length) {
-                currentImageIndex = 0;
-            }
-            modalImage.src = images[currentImageIndex].src;
-        }
+        // function setImgs(img, index) {
+        //     return response = `<img src="{{ asset('images') }}/` + img + `" alt="Image ` + index + `"
+    //                 onclick="openModal(` + index + `)">`;
+        // }
 
-        // Close modal when clicking outside the image
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
+        // JavaScript to handle modal and image navigation
+        // function openModal(index) {
+        //     currentImageIndex = index;
+        //     modalImage.src = images[currentImageIndex].src;
+        //     modal.style.display = 'flex';
+        // }
+
+        // function closeModal() {
+        //     modal.style.display = 'none';
+        // }
+
+        // function changeImage(direction) {
+        //     currentImageIndex += direction;
+        //     if (currentImageIndex < 0) {
+        //         currentImageIndex = images.length - 1;
+        //     } else if (currentImageIndex >= images.length) {
+        //         currentImageIndex = 0;
+        //     }
+        //     modalImage.src = images[currentImageIndex].src;
+        // }
+
+        // // Close modal when clicking outside the image
+        // modal.addEventListener('click', (e) => {
+        //     if (e.target === modal) {
+        //         closeModal();
+        //     }
+        // });
     </script>
     <script>
         let zoomLevel = 1;
