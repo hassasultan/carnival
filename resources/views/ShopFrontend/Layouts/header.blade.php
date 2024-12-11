@@ -358,6 +358,12 @@
                                                                             'eventBanner/' . $cartItem->event->banner,
                                                                         )
                                                                         : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                                                } elseif ($cartItem->type === 'music') {
+                                                                    $image = $cartItem->event->banner
+                                                                        ? asset(
+                                                                            'cover_image/' . $cartItem->music->cover_image,
+                                                                        )
+                                                                        : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                                                                 }
 
                                                             @endphp

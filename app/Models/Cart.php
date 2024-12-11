@@ -32,6 +32,11 @@ class Cart extends Model
         return $this->belongsTo(Event::class, 'product_id');
     }
 
+    public function music()
+    {
+        return $this->belongsTo(Music::class, 'product_id');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
