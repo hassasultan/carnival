@@ -390,7 +390,7 @@
                                         <div class="actions">
                                             @if (Auth::check())
                                                 <button type="button" title="Add to Cart" class="action btn-cart"
-                                                    data-product_id="{{ $music->id }}">
+                                                    data-music_id="{{ $music->id }}">
                                                     <span>Add to Cart</span>
                                                 </button>
                                             @else
@@ -1402,7 +1402,7 @@
         $(document).ready(function() {
             // var quantity = $('.input-qty').val();
             $('.btn-cart').click(function() {
-                var eventId = $(this).data('event_id');
+                var musicId = $(this).data('music_id');
                 var quantity = 1;
                 auth = "{{ auth()->check() }}";
                 console.log(auth);
@@ -1413,7 +1413,7 @@
                         type: 'GET',
                         url: '{{ route('add.to.cart') }}',
                         data: {
-                            product_id: eventId,
+                            product_id: musicId,
                             quantity: quantity,
                             type: 'music',
                         },
