@@ -388,7 +388,7 @@
                                     </div>
                                     @if (Auth::check())
                                         <button type="button" title="Add to Cart" class="action btn-cart"
-                                            data-product_id="{{ $product->id }}">
+                                            data-music_id="{{ $music->id }}">
                                             <span>Add to Cart</span>
                                         </button>
                                     @else
