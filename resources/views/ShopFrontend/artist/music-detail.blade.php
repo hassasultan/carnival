@@ -389,7 +389,7 @@
                                     <div class="product-options-bottom clearfix">
                                         <div class="actions">
                                             @if (Auth::check())
-                                                <button type="button" title="Add to Cart" class="action btn-cart-music"
+                                                <button type="button" title="Add to Cart" class="action btn-cart"
                                                     data-product_id="{{ $music->id }}">
                                                     <span>Add to Cart</span>
                                                 </button>
@@ -1401,7 +1401,7 @@
         // add to cart
         $(document).ready(function() {
             // var quantity = $('.input-qty').val();
-            $('.btn-cart-music').click(function() {
+            $('.btn-cart').click(function() {
                 var eventId = $(this).data('event_id');
                 var quantity = 1;
                 auth = "{{ auth()->check() }}";
