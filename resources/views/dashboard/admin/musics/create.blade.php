@@ -128,7 +128,7 @@
                                     <div class="form-group col-md-6">
                                         <label for="free_upload">Free Upload</label>
                                         <input type="radio" class="form-control" id="free_upload" name="for_sale"
-                                            value="for_sale">
+                                            value="free">
                                     </div>
                                 </div>
                                 <div class="form-group">

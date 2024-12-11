@@ -309,13 +309,12 @@
                                                 $image = asset('shopAssets/images/media/product9.jpg');
                                             }
                                         @endphp
-                                        <img class="thumbnail" src="{{ $image }}"
-                                            data-full="{{ $image }}" alt="Thumbnail 0"
-                                            onclick="changeMainImage(0)" />
+                                        <img class="thumbnail" src="{{ $image }}" data-full="{{ $image }}"
+                                            alt="Thumbnail 0" onclick="changeMainImage(0)" />
                                         @foreach ($music->imagesRelation as $key => $row)
                                             <img class="thumbnail" src="{{ asset($row->image) }}"
                                                 data-full="{{ asset($row->image) }}" alt="Thumbnail {{ $key + 1 }}"
-                                                onclick="changeMainImage({{ $key+1 }})" />
+                                                onclick="changeMainImage({{ $key + 1 }})" />
                                         @endforeach
                                     </div>
                                 </div>
@@ -387,6 +386,17 @@
                                         <span class="text">Release Date:</span>
                                         {{ $music->release_date }}
                                     </div>
+                                    @if (Auth::check())
+                                        <button type="button" title="Add to Cart" class="action btn-cart"
+                                            data-product_id="{{ $product->id }}">
+                                            <span>Add to Cart</span>
+                                        </button>
+                                    @else
+                                        <a href="{{ route('customer.login') }}" title="Add to Cart"
+                                            class="action btn-cart btn">
+                                            <span>Add to Cart</span>
+                                        </a>
+                                    @endif
                                     <div class="contact-item">
                                         <video controls style="width: 400px;">
                                             <source src="{{ asset('videos/' . $music->video) }}" type="video/mp4">
@@ -1606,8 +1616,7 @@
         });
     </script>
     <script>
-        let images = [
-            {
+        let images = [{
                 full: "{{ asset('covers/' . $music->cover_image) }}",
                 thumbnail: "{{ asset('videos/' . $music->video) }}"
             },
