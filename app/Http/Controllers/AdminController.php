@@ -15,7 +15,13 @@ class AdminController extends Controller
     
     public function model_bookings()
     {
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subvendor.layouts.app',
+        };
+
         $bookings = ModelBooking::where('model_id', Auth::id())->get();
-        return view('dashboard.modelBookings.index', compact('bookings'));
+        return view('dashboard.modelBookings.index', compact('layout', 'bookings'));
     }
 }
