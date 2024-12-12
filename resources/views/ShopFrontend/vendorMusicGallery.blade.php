@@ -354,7 +354,7 @@
                 @endif --}}
                 @if (count($siteGallery) > 0)
                     @foreach ($siteGallery[1]->imagesRelation as $key => $row)
-                        <div class="image-container" data-index="{{ $key }}">
+                        <div class="image-container" data-index="{{ $key }}" onclick="openModal({{ $row->document }}, {{ strpos($row->document) }})">
                             <!-- For Image -->
                             <img src="{{ asset($row->image) }}" alt="Image {{ $key }}" class="image">
 
@@ -589,7 +589,7 @@
 
             $('.media').each(function() {
                 this.pause();
-                $(this).hide();
+                // $(this).hide();
             });
 
             container.find('img').hide();
