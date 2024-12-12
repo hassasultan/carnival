@@ -354,7 +354,7 @@
                 @endif --}}
                 @if (count($siteGallery) > 0)
                     @foreach ($siteGallery[1]->imagesRelation as $key => $row)
-                        <div class="image-container" data-index="{{ $key }}" onclick="openModal('{{ asset($row->document) }}', '{{ pathinfo($row->document, PATHINFO_EXTENSION) }}')">>
+                        <div class="image-container" data-index="{{ $key }}" onclick="openModal('{{ asset($row->document) }}', '{{ pathinfo($row->document, PATHINFO_EXTENSION) }}')">
                             <!-- For Image -->
                             <img src="{{ asset($row->image) }}" alt="Image {{ $key }}" class="image">
 
