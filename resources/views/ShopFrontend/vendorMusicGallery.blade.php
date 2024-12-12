@@ -592,7 +592,7 @@
                 // $(this).hide();
             });
 
-            container.find('img').hide();
+            // container.find('img').hide();
 
             media.show();
             media[0].play();
