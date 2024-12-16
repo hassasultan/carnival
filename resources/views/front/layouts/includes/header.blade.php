@@ -123,7 +123,7 @@
                                 <b>Sign in</b>
                                 <a href="#" class="drop-list"><i class="fa fa-angle-down"></i></a>
                                 <span>
-                                    <a href="#">Sign in</a>
+                                    <a href="{{ route('customer.login') }}">Sign in</a>
                                     <a href="#">connect with <i class="fa fa-facebook"></i></a>
                                     <a href="#">connect with <i class="fa fa-google-plus"></i></a>
                                     <a href="#">connect with <i class="fa fa-pinterest"></i></a>
@@ -144,7 +144,7 @@
                     <form action="#" class="form-block">
                         <div class="input-style-1 b-50 color-3">
                             <img src="https://carnivalguide.co/travel/img/search_icon_small.png" alt="">
-                            <input placeholder="Search.dasdas.." type="text">
+                            <input placeholder="Search..." type="text">
                         </div>
                     </form>
                 </div>
@@ -170,10 +170,10 @@
                             <li class="type-1"><a href="#">Services<span
                                         class="fa fa-angle-down"></span></a>
                                 <ul class="dropmenu">
-                                    <li><a href="index_10.html">Flights</a></li>
-                                    <li><a href="index_3.html">Hotels</a></li>
-                                    <li><a href="cars.html">Car Rentals</a></li>
-                                    <li><a href="index-orig.html">Tours & Activities</a></li>
+                                    <li><a href="{{ route('front.flight.listing') }}">Flights</a></li>
+                                    <li><a href="{{ route('front.hotel.listing') }}">Hotels</a></li>
+                                    <li><a href="{{ route('front.car.rental') }}">Car Rentals</a></li>
+                                    <li><a href="{{ route('front.tour.listing') }}">Tours & Activities</a></li>
 
                                 </ul>
                             </li>
@@ -181,7 +181,7 @@
 
 
 
-                            <li class="type-1"><a href="index_9.html">Events & Tickets<span
+                            <li class="type-1"><a href="{{ route('front.event.listing') }}.html">Events & Tickets<span
                                         class="fa fa-angle-down"></span></a>
 
                             </li>
@@ -193,18 +193,18 @@
 
 
 
-                            <li class="type-1"><a href="https://carnivalguide.co/shop/">Shop <span
+                            <li class="type-1"><a href="{{ route('front.shop') }}">Shop <span
                                         class="fa fa-chevron-right"></span></a>
                                 <ul class="dropmenu">
                                     <li><a href="faq.html">Costumes</a></li>
-                                    <li><a href="faq1.html">Mas Camps</a></li>
+                                    <li><a href="{{ route('front.vendors') }}">Mas Camps</a></li>
                                 </ul>
                             </li>
                             <li><a href="carnivalpage.html">Carnival Listing <span
                                         class="fa fa-chevron-right"></span></a>
 
                             </li>
-                            <li class="type-1"><a href="#">Gallery/Media <span
+                            <li class="type-1"><a href="">Gallery/Media <span
                                         class="fa fa-chevron-right"></span></a>
                                 <ul class="dropmenu">
                                     <li><a href="gallery_2.html">Pictures</a></li>
