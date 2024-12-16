@@ -143,12 +143,16 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="for_sale">For Sale</label>
-                                        <input type="radio" class="form-control" id="edit_for_sale" name="for_sale"
+                                        <input type="radio" @if ($music->for_sale == 'for_sale')
+                                            checked
+                                        @endif class="form-control" id="edit_for_sale" name="for_sale"
                                             value="for_sale">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="free_upload">Free Upload</label>
-                                        <input type="radio" class="form-control" id="edit_free_upload" name="for_sale"
+                                        <input type="radio" @if ($music->for_sale == 'free')
+                                            checked
+                                        @endif class="form-control" id="edit_free_upload" name="for_sale"
                                             value="free">
                                     </div>
                                 </div>

@@ -144,7 +144,7 @@
                     <form action="#" class="form-block">
                         <div class="input-style-1 b-50 color-3">
                             <img src="https://carnivalguide.co/travel/img/search_icon_small.png" alt="">
-                            <input placeholder="Search..." type="text">
+                            <input placeholder="Search.dasdas.." type="text">
                         </div>
                     </form>
                 </div>
