@@ -1,4 +1,4 @@
-@extends('dashboard.vendor.layouts.app')
+@extends($layout)
 
 @section('content')
 <style>

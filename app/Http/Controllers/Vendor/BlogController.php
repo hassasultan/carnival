@@ -22,14 +22,29 @@ class BlogController extends Controller
         if ($request->has("type")) {
             return $blogs;
         }
-        return view('dashboard.vendor.blogs.index', compact('blogs'));
+
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subvendor.layouts.app',
+        };
+
+        return view('dashboard.vendor.blogs.index', compact('blogs', 'layout'));
     }
 
     public function create()
     {
         $user = User::where('role_id', '!=', 1)->get();
         $categories = Category::where('type', 'blogging')->get();
-        return view('dashboard.vendor.blogs.create', compact('categories', 'user'));
+        
+
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subvendor.layouts.app',
+        };
+        
+        return view('dashboard.vendor.blogs.create', compact('categories', 'user', 'layout'));
     }
     public function store(Request $request)
     {
@@ -74,7 +89,13 @@ class BlogController extends Controller
     {
         $user = User::where('role_id', '!=', 1)->get();
         $categories = Category::where('type', 'blogging')->get();
-        return view('dashboard.vendor.blogs.edit', compact('blog', 'categories', 'user'));
+
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subvendor.layouts.app',
+        };
+        return view('dashboard.vendor.blogs.edit', compact('blog', 'categories', 'user', 'layout'));
     }
 
     public function update(Request $request, Blogs $blog)

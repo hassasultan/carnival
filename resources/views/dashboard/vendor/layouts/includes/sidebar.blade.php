@@ -6,7 +6,7 @@
         <!-- nav bar -->
         <div class="w-100 mb-4 d-flex">
             <a href="/" class="navbar-brand mx-auto mt-2 flex-fill text-center"><img width="120"
-                src="{{ asset('shopAssets/images/logo.png') }}" alt="logo"></a>
+                    src="{{ asset('shopAssets/images/logo.png') }}" alt="logo"></a>
         </div>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
@@ -79,26 +79,25 @@
                 </ul>
             </li>
         </ul> --}}
-        @if (auth()->user()->hasPermission('products'))
-            <p class="text-muted nav-heading mt-4 mb-2 pl-4">
-                <span>Products</span>
-            </p>
-            <ul class="navbar-nav flex-fill w-100 mb-2">
-                <li class="nav-item w-100">
-                    <a class="nav-link" href="{{ route('vendor.products') }}">
-                        <i class="fe fe-layers fe-16"></i>
-                        <span class="ml-3 item-text">Products</span>
-                        {{-- <span class="badge badge-pill badge-primary">New</span> --}}
-                    </a>
-                </li>
-                <li class="nav-item w-100">
-                    <a class="nav-link" href="{{ route('vendor_site_gallery.index') }}">
-                        <i class="fe fe-layers fe-16"></i>
-                        <span class="ml-3 item-text">Gallery</span>
-                    </a>
-                </li>
-            </ul>
-        @endif
+        {{-- @if (auth()->user()->hasPermission('products')) --}}
+        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+            <span>Members</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('vendor.products') }}">
+                    <i class="fe fe-layers fe-16"></i>
+                    <span class="ml-3 item-text">Carnival Commitee</span>
+                    {{-- <span class="badge badge-pill badge-primary">New</span> --}}
+                </a>
+            </li>
+            {{-- <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('vendor_site_gallery.index') }}">
+                    <i class="fe fe-layers fe-16"></i>
+                    <span class="ml-3 item-text">Gallery</span>
+                </a>
+            </li> --}}
+        </ul>
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Events</span>
         </p>
@@ -116,13 +115,67 @@
                         </li>
                     @endif
                     {{-- @if (auth()->user()->hasPermission('tickets'))
-                        <li class="nav-item @if (Route::is('tickets.index')) active @endif">
-                            <a class="nav-link" href="{{ route('tickets.index') }}">
-                                Tickets Types
-                            </a>
-                        </li>
-                    @endif --}}
+                            <li class="nav-item @if (Route::is('tickets.index')) active @endif">
+                                <a class="nav-link" href="{{ route('tickets.index') }}">
+                                    Tickets Types
+                                </a>
+                            </li>
+                        @endif --}}
                 </ul>
+            </li>
+        </ul>
+        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+            <span>Products</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('vendor.products') }}">
+                    <i class="fe fe-layers fe-16"></i>
+                    <span class="ml-3 item-text">Products</span>
+                    {{-- <span class="badge badge-pill badge-primary">New</span> --}}
+                </a>
+            </li>
+            {{-- <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('vendor_site_gallery.index') }}">
+                    <i class="fe fe-layers fe-16"></i>
+                    <span class="ml-3 item-text">Gallery</span>
+                </a>
+            </li> --}}
+        </ul>
+        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+            <span>Artiste (Music)</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('vendor.musics.index') }}">
+                    <i class="fe fe-layers fe-16"></i>
+                    <span class="ml-3 item-text">Artiste</span>
+                    {{-- <span class="badge badge-pill badge-primary">New</span> --}}
+                </a>
+            </li>
+        </ul>
+        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+            <span>My Masbands</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('vendor.products') }}">
+                    <i class="fe fe-layers fe-16"></i>
+                    <span class="ml-3 item-text">My Masbands</span>
+                    {{-- <span class="badge badge-pill badge-primary">New</span> --}}
+                </a>
+            </li>
+        </ul>
+        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+            <span>Contestants</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('vendor.products') }}">
+                    <i class="fe fe-layers fe-16"></i>
+                    <span class="ml-3 item-text">Queen Show</span>
+                    {{-- <span class="badge badge-pill badge-primary">New</span> --}}
+                </a>
             </li>
         </ul>
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
@@ -147,7 +200,7 @@
                 </a>
             </li>
         </ul>
-        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+        {{-- <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Costumes</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
@@ -157,13 +210,7 @@
                     <span class="ml-3 item-text">Costumes</span>
                 </a>
             </li>
-            <li class="nav-item w-100">
-                <a class="nav-link" href="{{ route('vendor.musics.index') }}">
-                    <i class="fe fe-layers fe-16"></i>
-                    <span class="ml-3 item-text">Musics</span>
-                </a>
-            </li>
-        </ul>
+        </ul> --}}
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Subvendors</span>
         </p>

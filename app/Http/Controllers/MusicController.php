@@ -63,7 +63,6 @@ class MusicController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->toArray());
         $data = $request->except(['cover_image', 'images', 'video']);
 
         $coverImage = $this->uploadImage($request->file('cover_image'), 'covers');
@@ -112,7 +111,13 @@ class MusicController extends Controller
     public function edit($id)
     {
         $music = Music::with('imagesRelation')->find($id);
-        return view('dashboard.admin.musics.edit', compact('music'));
+
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subvendor.layouts.app',
+        };
+        return view('dashboard.admin.musics.edit', compact('music', 'layout'));
     }
 
     public function update(Request $request, $id)
