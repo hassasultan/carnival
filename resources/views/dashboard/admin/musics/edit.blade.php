@@ -97,7 +97,7 @@
                                 </select>
                             </div> --}}
                                 <div class="form-group mb-3">
-                                    <label for="cover_image">Cover Image</label>
+                                    <label for="cover_image">Album Cover Image</label>
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="edit_cover_image_input"
                                             name="cover_image">
@@ -105,6 +105,30 @@
                                             id="edit_cover_image_label">Choose
                                             file</label>
                                     </div>
+                                </div>
+
+                                <div class="border border-white p-3 rounded mb-3">
+                                    <button class="btn btn-primary btn-sm add-doc float-right" type="button">Add
+                                        More</button>
+                                    @foreach ($music->imagesRelation as $row)
+                                        <div class="form-group mb-3">
+                                            <label for="images">Document Cover Image</label>
+                                            <div class="custom-fileasd">
+                                               <img src="{{ $row->image }}" width="100px" height="100px" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="video">Document</label>
+                                            <div class="custom-fileasd">
+                                                <video controls controlsList="nodownload" style="width: 400px;" id="modalVideoTag">
+                                                    <source src="{{ $row->document }}" id="modalVideo" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="document-container">
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -223,6 +247,50 @@
                 } else {
                     label.text(fileNames.join(', '));
                 }
+            });
+
+            // display name of selected files
+            $('.add-doc').on('click', function() {
+                var uniqueId = Date.now();
+                var html = `<div class="border border-white p-3 rounded mb-3">
+                    <button class="btn btn-danger btn-sm remove-doc float-right" type="button">Remove</button>
+                    <div class="form-group mb-3">
+                        <label for="images_${uniqueId}">Document Cover Image</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="images_${uniqueId}" name="images[]">
+                            <label class="custom-file-label" for="images_${uniqueId}">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="video_${uniqueId}">Document</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="video_${uniqueId}" name="video[]" multiple accept="audio/*,video/*">
+                            <label class="custom-file-label" for="video_${uniqueId}">Choose file</label>
+                        </div>
+                    </div>
+                </div>`;
+
+                $('.document-container').append(html);
+            });
+
+
+            $(document).on('click', '.remove-doc', function() {
+                $(this).closest('.border').remove();
+            });
+
+            $(document).ready(function() {
+                $('#video_input').on('change', function() {
+                    const files = $(this)[0].files;
+                    let label = 'Choose file';
+
+                    if (files.length > 1) {
+                        label = `${files.length} files selected`;
+                    } else if (files.length === 1) {
+                        label = files[0].name;
+                    }
+
+                    $('#video_label').text(label);
+                });
             });
         });
     </script>

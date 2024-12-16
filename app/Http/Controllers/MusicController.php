@@ -23,8 +23,14 @@ class MusicController extends Controller
             $musics = Music::with('imagesRelation')->where('user_id', Auth::id())->get();
         }
 
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subvendor.layouts.app',
+        };
+
         $events = Event::all();
-        return view('dashboard.admin.musics.index', compact('musics', 'events'));
+        return view('dashboard.admin.musics.index', compact('layout', 'musics', 'events'));
     }
 
     public function create()
@@ -48,7 +54,6 @@ class MusicController extends Controller
             'Admin' => 'dashboard.admin.layouts.app',
             'Vendor' => 'dashboard.vendor.layouts.app',
             'SubVendor' => 'dashboard.subvendor.layouts.app',
-        // default => 'dashboard.layouts.default',
         };
 
         // dd($layout);
@@ -58,7 +63,7 @@ class MusicController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->toArray());
+        dd($request->toArray());
         $data = $request->except(['cover_image', 'images', 'video']);
 
         $coverImage = $this->uploadImage($request->file('cover_image'), 'covers');

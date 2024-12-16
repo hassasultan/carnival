@@ -1,4 +1,4 @@
-@extends('dashboard.admin.layouts.app')
+@extends($layout)
 
 @section('content')
     <div class="row justify-content-center">

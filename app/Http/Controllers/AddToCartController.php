@@ -28,7 +28,7 @@ class AddToCartController extends Controller
 
         $user_id = Auth::id();
 
-        $cartItem = Cart::with('user','product')->where('user_id', $user_id)
+        $cartItem = Cart::with('user','product', 'event', 'music')->where('user_id', $user_id)
             ->where('product_id', $request->product_id)
             ->first();
 
@@ -42,7 +42,7 @@ class AddToCartController extends Controller
                 'type' => $request->type,
             ]);
         }
-        $cartItem = Cart::with('user','product', 'event')->where('user_id', $user_id)->get();
+        $cartItem = Cart::with('user','product', 'event', 'music')->where('user_id', $user_id)->get();
 
         return  $cartItem;
     }

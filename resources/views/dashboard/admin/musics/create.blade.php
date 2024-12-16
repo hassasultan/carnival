@@ -97,15 +97,6 @@
                                                 file</label>
                                         </div>
                                     </div>
-                                    {{-- <div class="form-group mb-3">
-                                        <label for="video">Document</label>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="video_input"
-                                                name="video[]" multiple>
-                                            <label class="custom-file-label" for="video_input" id="video_label">Choose
-                                                file</label>
-                                        </div>
-                                    </div> --}}
                                     <div class="form-group mb-3">
                                         <label for="video">Document</label>
                                         <div class="custom-file">
@@ -115,7 +106,6 @@
                                                 file</label>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="document-container">
                                 </div>
@@ -233,7 +223,6 @@
                 });
             });
 
-            // display name of selected files
             $('.add-doc').on('click', function() {
                 var uniqueId = Date.now();
                 var html = `<div class="border border-white p-3 rounded mb-3">
