@@ -67,14 +67,14 @@
                                     <input type="text" class="form-control" id="region" name="region" required>
                                 </div>
                                 {{-- <div class="form-group">
-                            <label for="event">Event</label>
-                            <select class="form-control" id="event" name="event_id" required>
-                                <option value="">Select Event</option>
-                                @foreach ($events as $event)
-                                    <option value="{{ $event->id }}">{{ $event->name }}</option>
-                                @endforeach
-                            </select>
-                        </div> --}}
+                                    <label for="event">Event</label>
+                                    <select class="form-control" id="event" name="event_id" required>
+                                        <option value="">Select Event</option>
+                                        @foreach ($events as $event)
+                                            <option value="{{ $event->id }}">{{ $event->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div> --}}
                                 <div class="form-group mb-3">
                                     <label for="cover_image">Album Cover Image</label>
                                     <div class="custom-file">
