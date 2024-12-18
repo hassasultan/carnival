@@ -337,7 +337,8 @@
                 });
             });
 
-            $('.head_team').on('change', function() {
+            $(document).on('change','.head_team', function() {
+                console.log("check");
                 var carnivalId = $(this).attr('id').replace('head_team', '');
                 var selectedOption = $(this).find('option:selected');
                 var selectedValue = selectedOption.val();
