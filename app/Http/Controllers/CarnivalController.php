@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carnival;
 use App\Models\User;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Str;
 
@@ -11,8 +12,9 @@ class CarnivalController extends Controller
 {
     public function index()
     {
-        $carnivals = Carnival::with('user')->get();
-        return view('dashboard.admin.carnivals.index', compact('carnivals'));
+        $carnivals = Carnival::with('mascamps.user', 'user')->get();
+        $mascamps = Vendor::with('user')->get();
+        return view('dashboard.admin.carnivals.index', compact('carnivals', 'mascamps'));
     }
 
     public function create()
@@ -114,5 +116,19 @@ class CarnivalController extends Controller
         $full_name = $head->user->first_name . ' ' . $head->user->last_name;
 
         return response()->json(['full_name' => $full_name]);
+    }
+
+    public function assignModels(Request $request)
+    {
+        $carnival = Carnival::findOrFail($request->carnival_id);
+        $carnival->mascamps()->sync($request->mascamps); // Sync mascamps
+        return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
+    }
+
+    public function getAssignedMascamps($id)
+    {
+        $carnival = Carnival::with('mascamps')->findOrFail($id);
+        $selectedMascamps = $carnival->mascamps->pluck('id'); // IDs of assigned mascamps
+        return response()->json(['selectedMascamps' => $selectedMascamps]);
     }
 }

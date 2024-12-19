@@ -64,4 +64,10 @@ class Vendor extends Model
     {
         return $this->hasMany(SiteGallery::class, 'user_id', 'user_id');
     }
+
+    public function carnivals()
+    {
+        return $this->belongsToMany(Carnival::class, 'pivot_carnival_mascamps', 'mascamp_id', 'carnival_id')
+                    ->withTimestamps();
+    }
 }

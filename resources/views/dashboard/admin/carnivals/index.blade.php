@@ -119,6 +119,39 @@
         </div>
     </div>
 
+    <!-- Assign mascamp modal -->
+    <div class="modal fade" id="assignMasscampModal" tabindex="-1" role="dialog"
+        aria-labelledby="assignMasscampModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="assignMasscampModalLabel">Edit Carnival</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="assignMasscampForm">
+                        @csrf
+                        @method('POST')
+                        <input type="hidden" id="carnival_id" name="carnival_id">
+                        <div class="form-group">
+                            <label for="mascamp">Mascamps</label><br>
+                            <select id="mascamp" name="mascamps[]" class="form-control select2" multiple>
+                                @foreach ($mascamps as $row)
+                                    <option value="{{ $row->id }}">
+                                        {{ $row->user->first_name . ' ' . $row->user->last_name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="assignMasscampBtn">Update Carnival</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Delete Carnival Confirmation Modal -->
     <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog"
         aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
@@ -188,6 +221,33 @@
                     }
                 });
             });
+
+            $(document).on('click', '.assignMasscamp', function() {
+                var carnivalId = $(this).data('id');
+                $('#carnival_id').val(carnivalId);
+
+                // Fetch assigned mascamps for the selected carnival
+                $.ajax({
+                    url: '{{ route('carnivals.assigned.mascamps', ':id') }}'.replace(':id',
+                        carnivalId),
+                    type: 'GET',
+                    success: function(response) {
+                        // Clear existing selections
+                        $('#mascamp').val([]).trigger('change');
+
+                        // Set selected values
+                        if (response.selectedMascamps) {
+                            $('#mascamp').val(response.selectedMascamps).trigger('change');
+                        }
+                        $('#assignMasscampModal').modal('show');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        alert('Failed to fetch assigned mascamps.');
+                    }
+                });
+            });
+
 
             $('#editCarnivalModal').on('hidden.bs.modal', function() {
                 clearEditModalFields();
@@ -273,6 +333,44 @@
                 });
             });
 
+            $('#assignMasscampForm').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: '{{ route('assign.models') }}',
+                    type: 'POST',
+                    headers: {
+                        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: formData,
+                    success: function(response) {
+                        $('#assignMasscampModal').modal('hide');
+                        toastr.success(response.success);
+
+                        // $('#dataTable-1').DataTable({
+                        //     autoWidth: true,
+                        //     "lengthMenu": [
+                        //         [16, 32, 64, -1],
+                        //         [16, 32, 64, "All"]
+                        //     ]
+                        // });
+
+                        $('#carnivalMessage').html(
+                            '<div class="alert alert-success" role="alert">Carnival created successfully</div>'
+                        );
+                        setTimeout(function() {
+                            $('#carnivalMessage').html('');
+                        }, 3000);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        $('#carnivalMessage').html(
+                            '<div class="alert alert-danger" role="alert">Failed to create carnival</div>'
+                        );
+                    }
+                });
+            });
+
             $(document).on('click', '.deleteCarnivalBtn', function(event) {
                 event.preventDefault();
                 var deleteForm = $(this).closest('form');
@@ -337,7 +435,7 @@
                 });
             });
 
-            $(document).on('change','.head_team', function() {
+            $(document).on('change', '.head_team', function() {
                 console.log("check");
                 var carnivalId = $(this).attr('id').replace('head_team', '');
                 var selectedOption = $(this).find('option:selected');

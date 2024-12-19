@@ -24,4 +24,10 @@ class Carnival extends Model
     {
         return $this->belongsTo(User::class, 'head');
     }
+
+    public function mascamps()
+    {
+        return $this->belongsToMany(Vendor::class, 'pivot_carnival_mascamps', 'carnival_id', 'mascamp_id')
+                    ->withTimestamps();
+    }
 }

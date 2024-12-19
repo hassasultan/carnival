@@ -31,6 +31,7 @@
                 <td><a href="{{ $carnival->link }}" target="_blank" class="text-white text-decoration-underline">Open
                         Link</a></td>
                 <td>
+                    <button class="btn btn-sm btn-primary assignMasscamp" data-id="{{ $carnival->id }}">Assign Mascamp</button>
                     <button class="btn btn-sm btn-warning editCarnivalBtn" data-id="{{ $carnival->id }}">Edit</button>
                     <form action="{{ route('carnivals.destroy', $carnival->id) }}" method="POST"
                         style="display:inline;">

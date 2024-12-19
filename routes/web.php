@@ -225,7 +225,11 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // get head_team
     Route::post('/update/head_team', [CarnivalController::class, 'carnivalHead'])->name('update.carnival.head');
+    
+    // assign carnivals to mascamp
+    Route::post('/assign/mascamps', [CarnivalController::class, 'assignModels'])->name('assign.models');
 
+    Route::get('carnivals/{id}/assigned-mascamps', [CarnivalController::class, 'getAssignedMascamps'])->name('carnivals.assigned.mascamps');
 
     // Regions CRUD
     Route::resource('regions', RegionController::class);
@@ -330,6 +334,15 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     Route::get('/musics/{id}/edit', [MusicController::class, 'edit'])->name('vendor.musics.edit');
     Route::put('/musics/{music}', [MusicController::class, 'update'])->name('vendor.musics.update');
     Route::delete('/musics/{id}', [MusicController::class, 'destroy'])->name('vendor.musics.destroy');
+    
+    // carnival committee
+    Route::get('carnival-committee/', [VendorController::class, 'carnivalCommittee'])->name('vendor.carnival.committee');
+    
+    // my masbands(subvendrs)
+    Route::get('my-masbands/', [VendorController::class, 'myMasbands'])->name('vendor.myMasbands');
+    
+    // Queen Show
+    Route::get('queen-show/', [VendorController::class, 'queenShow'])->name('vendor.queen.show');
 });
 
 

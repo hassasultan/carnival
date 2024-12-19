@@ -10,6 +10,7 @@ use App\Models\Event;
 use App\Models\Ticket;
 use App\Models\Package;
 use App\Models\Region;
+use App\Models\Vendor;
 use Illuminate\Support\Facades\Auth;
 use App\Services\ProductService;
 use App\Services\EventService;
@@ -159,6 +160,34 @@ class VendorController extends Controller
         $continents = Region::all();
         $packages = Package::where('status', 1)->get();
 
-        return view('dashboard.vendor.subvendor.create', compact( 'packages', 'continents'));
+        return view('dashboard.vendor.subvendor.create', compact('packages', 'continents'));
+    }
+
+    public function carnivalCommittee(Request $request, Event $event)
+    {
+        $carnivals = Auth::user()->vendor->carnivals;
+
+        return view('dashboard.vendor.pages.carnival_committee', compact('carnivals'));
+    }
+
+    public function myMasbands(Request $request, Event $event)
+    {
+        $masbands = Auth::user()->vendor->subvendor;
+
+        return view('dashboard.vendor.pages.my_masbands', compact('masbands'));
+    }
+
+    public function queenShow(Request $request, Event $event)
+    {
+        $carnivals = Auth::user()->vendor->carnivals;
+        $mascamps = $carnivals->flatMap(function ($carnival) {
+            return $carnival->mascamps;
+        });
+        $mascamps = $mascamps->unique('id');
+        $mascamps = $mascamps->filter(function ($mascamp) {
+            return $mascamp->vendor_id !== Auth::user()->vendor->id;
+        });
+
+        return view('dashboard.vendor.pages.queen_show', compact('mascamps'));
     }
 }

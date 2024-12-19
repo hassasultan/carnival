@@ -85,7 +85,7 @@
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-                <a class="nav-link" href="{{ route('vendor.products') }}">
+                <a class="nav-link" href="{{ route('vendor.carnival.committee') }}">
                     <i class="fe fe-layers fe-16"></i>
                     <span class="ml-3 item-text">Carnival Commitee</span>
                     {{-- <span class="badge badge-pill badge-primary">New</span> --}}
@@ -159,7 +159,7 @@
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-                <a class="nav-link" href="{{ route('vendor.products') }}">
+                <a class="nav-link" href="{{ route('vendor.myMasbands') }}">
                     <i class="fe fe-layers fe-16"></i>
                     <span class="ml-3 item-text">My Masbands</span>
                     {{-- <span class="badge badge-pill badge-primary">New</span> --}}
@@ -171,7 +171,7 @@
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-                <a class="nav-link" href="{{ route('vendor.products') }}">
+                <a class="nav-link" href="{{ route('vendor.queen.show') }}">
                     <i class="fe fe-layers fe-16"></i>
                     <span class="ml-3 item-text">Queen Show</span>
                     {{-- <span class="badge badge-pill badge-primary">New</span> --}}
