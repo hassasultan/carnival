@@ -171,6 +171,8 @@ class UserManagementController extends Controller
             ]);
         }
 
+        dd($data);
+
         if ($data['role_id'] == 3) {
             SubVendor::create([
                 'user_id' => $user->id,
