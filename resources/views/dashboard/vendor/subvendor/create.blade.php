@@ -5,7 +5,8 @@
         <form method="POST" action="{{ route('vendor.subvendor.register') }}" class="col-lg-8 col-md-10 col-12 mx-auto"
             enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="vendor_id" value="{{ Auth::id() }}">
+            {{ dd(Auth::user()->vendor->id) }}
+            <input type="hidden" name="vendor_id" value="{{ Auth::user()->vendor->id }}">
             <input type="hidden" name="package_id" value="section_leader">
             <div class="mx-auto text-center my-4 card-header">
                 <h2 class="my-3">Register New User</h2>
