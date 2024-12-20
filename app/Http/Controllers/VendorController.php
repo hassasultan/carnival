@@ -173,6 +173,7 @@ class VendorController extends Controller
     public function myMasbands(Request $request, Event $event)
     {
         $masbands = Auth::user()->vendor->subvendor;
+        dd($masbands);
 
         return view('dashboard.vendor.pages.my_masbands', compact('masbands'));
     }

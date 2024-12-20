@@ -3,8 +3,8 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-12">
-            <h2 class="mb-2 page-title">My Masbands</h2>
-            <p class="card-text">My Masbands table.</p>
+            <h2 class="mb-2 page-title">Queen Show</h2>
+            <p class="card-text">Queen Show table.</p>
             <div class="row my-4">
                 <!-- data table -->
                 <div class="col-md-12">
