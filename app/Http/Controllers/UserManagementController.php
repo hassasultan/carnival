@@ -211,8 +211,8 @@ class UserManagementController extends Controller
             DB::commit();
             return $user;
         } catch (\Exception $e) {
+            dd($e->getMessage());
             DB::rollBack();
-            Log::error('Error creating user: ' . $e->getMessage());
             throw new \RuntimeException('Unable to create user at this time.');
         }
     }
