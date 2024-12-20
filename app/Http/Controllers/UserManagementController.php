@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Traits\ImageTrait;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class UserManagementController extends Controller
 {
@@ -104,112 +105,226 @@ class UserManagementController extends Controller
 
     protected function create(array $data)
     {
-        // dd($data);
-        $slug = $this->generateUniqueSlug($data['first_name'] . ' ' . $data['last_name']);
+        DB::beginTransaction();
 
-        if ($data['package_id'] == 'section_leader') {
-            $data['package_id'] = '123';
-            $data['role_id'] = '3';
-        } else {
-            $data['role_id'] = '2';
-        }
+        try {
+            $slug = $this->generateUniqueSlug($data['first_name'] . ' ' . $data['last_name']);
 
-        if ($data['logo']) {
-            $imageName = $this->uploadImage($data['logo'], 'images');
-            $logo = $imageName;
-        }
+            if ($data['package_id'] == 'section_leader') {
+                $data['package_id'] = '123';
+                $data['role_id'] = '3';
+            } else {
+                $data['role_id'] = '2';
+            }
 
-        $user = User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'full_name' => $data['first_name'] . ' ' . $data['last_name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'phone' => $data['phone'],
-            'address' => $data['address'],
-            'city' => $data['city'],
-            'state' => $data['state'],
-            'country' => $data['country'],
-            'zipcode' => $data['zipcode'],
-            'role_id' => $data['role_id'],
-            'slug' => $slug,
-        ]);
+            if ($data['logo']) {
+                $imageName = $this->uploadImage($data['logo'], 'images');
+                $logo = $imageName;
+            }
 
-        if (isset($data['banner']) && is_array($data['banner'])) {
-            foreach ($data['banner'] as $index => $banner) {
-                $imageName = $this->uploadImage($banner, 'userBanners');
+            $user = User::create([
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'full_name' => $data['first_name'] . ' ' . $data['last_name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'phone' => $data['phone'],
+                'address' => $data['address'],
+                'city' => $data['city'],
+                'state' => $data['state'],
+                'country' => $data['country'],
+                'zipcode' => $data['zipcode'],
+                'role_id' => $data['role_id'],
+                'slug' => $slug,
+            ]);
 
-                UserDetailBanner::create([
+            if (isset($data['banner']) && is_array($data['banner'])) {
+                foreach ($data['banner'] as $index => $banner) {
+                    $imageName = $this->uploadImage($banner, 'userBanners');
+                    UserDetailBanner::create([
+                        'user_id' => $user->id,
+                        'banner' => 'userBanners/' . $imageName,
+                        'title' => $data['banner_title'][$index] ?? null,
+                        'subtitle' => $data['banner_subtitle'][$index] ?? null,
+                        'description' => $data['banner_description'][$index] ?? null,
+                        'button_text' => $data['banner_button'][$index] ?? null,
+                    ]);
+                }
+            }
+
+            if ($data['role_id'] == 2) {
+                Vendor::create([
                     'user_id' => $user->id,
-                    'banner' => 'userBanners/'.$imageName,
-                    'title' => $data['banner_title'][$index] ?? null,
-                    'subtitle' => $data['banner_subtitle'][$index] ?? null,
-                    'description' => $data['banner_description'][$index] ?? null,
-                    'button_text' => $data['banner_button'][$index] ?? null,
+                    'package_id' => $data['package_id'],
+                    'name' => $data['shop_name'],
+                    'email' => $data['shop_email'],
+                    'address' => $data['shop_address'],
+                    'phone' => $data['shop_phone'],
+                    'continent' => $data['continent'],
+                    'insta' => $data['shop_insta'] ?? null,
+                    'facebook' => $data['shop_facebook'] ?? null,
+                    'youtube' => $data['shop_youtube'] ?? null,
+                    'twitter' => $data['shop_twitter'] ?? null,
+                    'tiktok' => $data['shop_tiktok'] ?? null,
+                    'wa_business_page' => $data['shop_wa_business_page'] ?? null,
+                    'linkedin' => $data['shop_linkedin'] ?? null,
+                    'status' => 1,
+                    'logo' => $logo ?? null,
                 ]);
             }
+
+            dd($data);
+
+            if ($data['role_id'] == 3) {
+                SubVendor::create([
+                    'user_id' => $user->id,
+                    'vendor_id' => $data['vendor_id'],
+                    'name' => $data['shop_name'],
+                    'email' => $data['shop_email'],
+                    'address' => $data['shop_address'],
+                    'phone' => $data['shop_phone'],
+                    'continent' => $data['continent'],
+                    'insta' => $data['shop_insta'] ?? null,
+                    'facebook' => $data['shop_facebook'] ?? null,
+                    'youtube' => $data['shop_youtube'] ?? null,
+                    'twitter' => $data['shop_twitter'] ?? null,
+                    'tiktok' => $data['shop_tiktok'] ?? null,
+                    'wa_business_page' => $data['shop_wa_business_page'] ?? null,
+                    'linkedin' => $data['shop_linkedin'] ?? null,
+                    'ecommerce' => $data['ecommerce'] ?? 0,
+                    'events' => $data['events'] ?? 0,
+                    'music' => $data['music'] ?? 0,
+                    'appointment' => $data['appointment'] ?? 0,
+                    'ad_space' => $data['ad_space'] ?? 0,
+                    'blogging' => $data['blogging'] ?? 0,
+                    'status' => 1,
+                    'logo' => $logo ?? null,
+                ]);
+            }
+
+            if ($data['role_id'] == 4) {
+                Customer::create([
+                    'user_id' => $user->id,
+                    'package_id' => $data['package_id'],
+                    'status' => 1,
+                ]);
+            }
+
+            DB::commit();
+            return $user;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error creating user: ' . $e->getMessage());
+            throw new \RuntimeException('Unable to create user at this time.');
         }
-
-        if ($data['role_id'] == 2) {
-            Vendor::create([
-                'user_id' => $user->id,
-                'package_id' => $data['package_id'],
-                'name' => $data['shop_name'],
-                'email' => $data['shop_email'],
-                'address' => $data['shop_address'],
-                'phone' => $data['shop_phone'],
-                'continent' => $data['continent'],
-                'insta' => isset($data['shop_insta']) ? $data['shop_insta'] : null,
-                'facebook' => isset($data['shop_facebook']) ? $data['shop_facebook'] : null,
-                'youtube' => isset($data['shop_youtube']) ? $data['shop_youtube'] : null,
-                'twitter' => isset($data['shop_twitter']) ? $data['shop_twitter'] : null,
-                'tiktok' => isset($data['shop_tiktok']) ? $data['shop_tiktok'] : null,
-                'wa_business_page' => isset($data['shop_wa_business_page']) ? $data['shop_wa_business_page'] : null,
-                'linkedin' => isset($data['shop_linkedin']) ? $data['shop_linkedin'] : null,
-                'status' => 1,
-                'logo' => $logo,
-            ]);
-        }
-
-        dd($data);
-
-        if ($data['role_id'] == 3) {
-            SubVendor::create([
-                'user_id' => $user->id,
-                'vendor_id' => $data['vendor_id'],
-                'name' => $data['shop_name'],
-                'email' => $data['shop_email'],
-                'address' => $data['shop_address'],
-                'phone' => $data['shop_phone'],
-                'continent' => $data['continent'],
-                'insta' => isset($data['shop_insta']) ? $data['shop_insta'] : null,
-                'facebook' => isset($data['shop_facebook']) ? $data['shop_facebook'] : null,
-                'youtube' => isset($data['shop_youtube']) ? $data['shop_youtube'] : null,
-                'twitter' => isset($data['shop_twitter']) ? $data['shop_twitter'] : null,
-                'tiktok' => isset($data['shop_tiktok']) ? $data['shop_tiktok'] : null,
-                'wa_business_page' => isset($data['shop_wa_business_page']) ? $data['shop_wa_business_page'] : null,
-                'linkedin' => isset($data['shop_linkedin']) ? $data['shop_linkedin'] : null,
-                'ecommerce' => isset($data['ecommerce']) ? $data['ecommerce'] : 0,
-                'events' => isset($data['events']) ? $data['events'] : 0,
-                'music' => isset($data['music']) ? $data['music'] : 0,
-                'appointment' => isset($data['appointment']) ? $data['appointment'] : 0,
-                'ad_space' => isset($data['ad_space']) ? $data['ad_space'] : 0,
-                'blogging' => isset($data['blogging']) ? $data['blogging'] : 0,
-                'status' => 1,
-                'logo' => $logo,
-            ]);
-        }
-
-        if ($data['role_id'] == 4) {
-            Customer::create([
-                'user_id' => $user->id,
-                'package_id' => $data['package_id'],
-                'status' => 1,
-            ]);
-        }
-
-        return $user;
     }
+
+    // protected function create(array $data)
+    // {
+    //     // dd($data);
+    //     $slug = $this->generateUniqueSlug($data['first_name'] . ' ' . $data['last_name']);
+
+    //     if ($data['package_id'] == 'section_leader') {
+    //         $data['package_id'] = '123';
+    //         $data['role_id'] = '3';
+    //     } else {
+    //         $data['role_id'] = '2';
+    //     }
+
+    //     if ($data['logo']) {
+    //         $imageName = $this->uploadImage($data['logo'], 'images');
+    //         $logo = $imageName;
+    //     }
+
+    //     $user = User::create([
+    //         'first_name' => $data['first_name'],
+    //         'last_name' => $data['last_name'],
+    //         'full_name' => $data['first_name'] . ' ' . $data['last_name'],
+    //         'email' => $data['email'],
+    //         'password' => Hash::make($data['password']),
+    //         'phone' => $data['phone'],
+    //         'address' => $data['address'],
+    //         'city' => $data['city'],
+    //         'state' => $data['state'],
+    //         'country' => $data['country'],
+    //         'zipcode' => $data['zipcode'],
+    //         'role_id' => $data['role_id'],
+    //         'slug' => $slug,
+    //     ]);
+
+    //     if (isset($data['banner']) && is_array($data['banner'])) {
+    //         foreach ($data['banner'] as $index => $banner) {
+    //             $imageName = $this->uploadImage($banner, 'userBanners');
+
+    //             UserDetailBanner::create([
+    //                 'user_id' => $user->id,
+    //                 'banner' => 'userBanners/'.$imageName,
+    //                 'title' => $data['banner_title'][$index] ?? null,
+    //                 'subtitle' => $data['banner_subtitle'][$index] ?? null,
+    //                 'description' => $data['banner_description'][$index] ?? null,
+    //                 'button_text' => $data['banner_button'][$index] ?? null,
+    //             ]);
+    //         }
+    //     }
+
+    //     if ($data['role_id'] == 2) {
+    //         Vendor::create([
+    //             'user_id' => $user->id,
+    //             'package_id' => $data['package_id'],
+    //             'name' => $data['shop_name'],
+    //             'email' => $data['shop_email'],
+    //             'address' => $data['shop_address'],
+    //             'phone' => $data['shop_phone'],
+    //             'continent' => $data['continent'],
+    //             'insta' => isset($data['shop_insta']) ? $data['shop_insta'] : null,
+    //             'facebook' => isset($data['shop_facebook']) ? $data['shop_facebook'] : null,
+    //             'youtube' => isset($data['shop_youtube']) ? $data['shop_youtube'] : null,
+    //             'twitter' => isset($data['shop_twitter']) ? $data['shop_twitter'] : null,
+    //             'tiktok' => isset($data['shop_tiktok']) ? $data['shop_tiktok'] : null,
+    //             'wa_business_page' => isset($data['shop_wa_business_page']) ? $data['shop_wa_business_page'] : null,
+    //             'linkedin' => isset($data['shop_linkedin']) ? $data['shop_linkedin'] : null,
+    //             'status' => 1,
+    //             'logo' => $logo,
+    //         ]);
+    //     }
+
+    //     if ($data['role_id'] == 3) {
+    //         SubVendor::create([
+    //             'user_id' => $user->id,
+    //             'vendor_id' => $data['vendor_id'],
+    //             'name' => $data['shop_name'],
+    //             'email' => $data['shop_email'],
+    //             'address' => $data['shop_address'],
+    //             'phone' => $data['shop_phone'],
+    //             'continent' => $data['continent'],
+    //             'insta' => isset($data['shop_insta']) ? $data['shop_insta'] : null,
+    //             'facebook' => isset($data['shop_facebook']) ? $data['shop_facebook'] : null,
+    //             'youtube' => isset($data['shop_youtube']) ? $data['shop_youtube'] : null,
+    //             'twitter' => isset($data['shop_twitter']) ? $data['shop_twitter'] : null,
+    //             'tiktok' => isset($data['shop_tiktok']) ? $data['shop_tiktok'] : null,
+    //             'wa_business_page' => isset($data['shop_wa_business_page']) ? $data['shop_wa_business_page'] : null,
+    //             'linkedin' => isset($data['shop_linkedin']) ? $data['shop_linkedin'] : null,
+    //             'ecommerce' => isset($data['ecommerce']) ? $data['ecommerce'] : 0,
+    //             'events' => isset($data['events']) ? $data['events'] : 0,
+    //             'music' => isset($data['music']) ? $data['music'] : 0,
+    //             'appointment' => isset($data['appointment']) ? $data['appointment'] : 0,
+    //             'ad_space' => isset($data['ad_space']) ? $data['ad_space'] : 0,
+    //             'blogging' => isset($data['blogging']) ? $data['blogging'] : 0,
+    //             'status' => 1,
+    //             'logo' => $logo,
+    //         ]);
+    //     }
+
+    //     if ($data['role_id'] == 4) {
+    //         Customer::create([
+    //             'user_id' => $user->id,
+    //             'package_id' => $data['package_id'],
+    //             'status' => 1,
+    //         ]);
+    //     }
+
+    //     return $user;
+    // }
 
     public function edit($id)
     {
