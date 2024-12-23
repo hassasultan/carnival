@@ -225,11 +225,18 @@
             $(document).on('click', '.assignMasscamp', function() {
                 var carnivalId = $(this).data('id');
                 $('#carnival_id').val(carnivalId);
+                var model = $(this).data('model');
+                let data = '';
+                if(model == 'yes')
+                {
+                    data = model;
+                }
 
                 // Fetch assigned mascamps for the selected carnival
                 $.ajax({
                     url: '{{ route('carnivals.assigned.mascamps', ':id') }}'.replace(':id',
                         carnivalId),
+                    data : model;
                     type: 'GET',
                     success: function(response) {
                         // Clear existing selections

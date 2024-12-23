@@ -125,14 +125,18 @@ class CarnivalController extends Controller
         return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
     }
 
-    public function getAssignedMascamps($id)
+    public function getAssignedMascamps(Request $request,$id)
     {
         $carnivalId = $id;
         $vendors = Vendor::with('carnivals','user')
         ->whereDoesntHave('carnivals', function ($query) use ($carnivalId) {
             $query->where('carnival_id', $carnivalId);
-        })
-        ->get();
+        });
+        if($request->has('model') && $request->model == 'yes')
+        {
+            $vendors = $vendors->where('package_id',1);
+        }
+        $vendors = $vendors->get();
         // $carnival = Carnival::with('mascamps')->findOrFail($id);
         // $selectedMascamps = $carnival->mascamps->pluck('id'); // IDs of assigned mascamps
         return response()->json(['vendors' => $vendors]);
