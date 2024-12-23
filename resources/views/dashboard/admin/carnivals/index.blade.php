@@ -236,7 +236,7 @@
                 $.ajax({
                     url: '{{ route('carnivals.assigned.mascamps', ':id') }}'.replace(':id',
                         carnivalId),
-                    data : model;
+                    data : model,
                     type: 'GET',
                     success: function(response) {
                         // Clear existing selections
