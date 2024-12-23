@@ -167,6 +167,7 @@ class VendorController extends Controller
     public function carnivalCommittee(Request $request, Event $event)
     {
         $carnivals = Carnival::where('head',auth()->user()->id);
+        dd($carnivals->toArray());
         // $carnivals = Auth::user()->vendor->carnivals;
 
         return view('dashboard.vendor.pages.carnival_committee', compact('carnivals'));
