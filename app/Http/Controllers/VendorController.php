@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carnival;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
@@ -165,7 +166,8 @@ class VendorController extends Controller
 
     public function carnivalCommittee(Request $request, Event $event)
     {
-        $carnivals = Auth::user()->vendor->carnivals;
+        $carnivals = Carnival::where('head_team_id',auth()->user()->id);
+        // $carnivals = Auth::user()->vendor->carnivals;
 
         return view('dashboard.vendor.pages.carnival_committee', compact('carnivals'));
     }
