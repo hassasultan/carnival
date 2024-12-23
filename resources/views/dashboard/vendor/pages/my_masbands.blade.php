@@ -30,7 +30,7 @@
                                             <td>{{ $masband->carnival->name }}</td>
                                             <td>{{ $masband->carnival->start_date }}</td>
                                             <td>{{ $masband->carnival->end_date }}</td>
-                                            <td>{{ $masband->name ?? $masband->mascamp->user->first_name . ' ' . $masband->user->last_name }}
+                                            <td>{{ $masband->name ?? $masband->mascamp->user->first_name . ' ' . $masband->mascamp->user->last_name }}
                                             </td>
                                         </tr>
                                     @endforeach
