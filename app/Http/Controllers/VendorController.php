@@ -175,8 +175,20 @@ class VendorController extends Controller
 
     public function myMasbands(Request $request, Event $event)
     {
-        $masbands = Auth::user()->vendor->subvendor;
+        // $masbands = Auth::user()->vendor->subvendor;
+        $carnivals = Carnival::where('head', auth()->user()->id)
+        ->with('mascamps') // Eager load mascamps relationship
+        ->get();
 
+    // Format the response as an array
+        $result = $carnivals->map(function ($carnival) {
+            return [
+                'carnival' => $carnival,
+                'mascamps' => $carnival->mascamps,
+            ];
+        });
+        $masbands = $result->toArray();
+        dd($masbands);
         return view('dashboard.vendor.pages.my_masbands', compact('masbands'));
     }
 
