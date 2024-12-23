@@ -128,13 +128,13 @@ class CarnivalController extends Controller
     public function getAssignedMascamps($id)
     {
         $carnivalId = $id;
-        $vendors = Vendor::with('carnivals')
+        $vendors = Vendor::with('carnivals','user')
         ->whereDoesntHave('carnivals', function ($query) use ($carnivalId) {
             $query->where('carnival_id', $carnivalId);
         })
         ->get();
-        $carnival = Carnival::with('mascamps')->findOrFail($id);
-        $selectedMascamps = $carnival->mascamps->pluck('id'); // IDs of assigned mascamps
-        return response()->json(['selectedMascamps' => $selectedMascamps]);
+        // $carnival = Carnival::with('mascamps')->findOrFail($id);
+        // $selectedMascamps = $carnival->mascamps->pluck('id'); // IDs of assigned mascamps
+        return response()->json(['vendors' => $vendors]);
     }
 }

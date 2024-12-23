@@ -234,10 +234,19 @@
                     success: function(response) {
                         // Clear existing selections
                         $('#mascamp').val([]).trigger('change');
+                        $('#mascamp').html = '';
 
                         // Set selected values
-                        if (response.selectedMascamps) {
-                            $('#mascamp').val(response.selectedMascamps).trigger('change');
+                        if (response.vendors) {
+                            $.each(response.vendors, function(index, row) {
+                                var html =
+                                    `<option value="${row.id}">${row.user.first_name} ${row.user.last_name}</option>`;
+                            });
+                            $('#mascamp').html = html;
+                            $('.select2').select2({
+                                theme: 'bootstrap4',
+                            });
+                            // $('#mascamp').val(response.selectedMascamps).trigger('change');
                         }
                         $('#assignMasscampModal').modal('show');
                     },
