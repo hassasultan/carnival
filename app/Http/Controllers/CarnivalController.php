@@ -132,7 +132,7 @@ class CarnivalController extends Controller
         ->whereDoesntHave('carnivals', function ($query) use ($carnivalId) {
             $query->where('carnival_id', $carnivalId);
         });
-        if($request->has('model') && $request->model == 'yes')
+        if($request->has('yes'))
         {
             $vendors = $vendors->where('package_id',1);
         }
