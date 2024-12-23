@@ -229,7 +229,7 @@
                 let data = '';
                 if(model == 'yes')
                 {
-                    data = model;
+                    data = {'model':model};
                 }
 
                 // Fetch assigned mascamps for the selected carnival
