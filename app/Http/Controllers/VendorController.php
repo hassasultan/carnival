@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carnival;
+use App\Models\CarnivalMascamps;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
@@ -166,7 +167,7 @@ class VendorController extends Controller
 
     public function carnivalCommittee(Request $request, Event $event)
     {
-        $carnivals = Carnival::where('head',auth()->user()->id)->get();
+        $carnivals = Carnival::where('head', auth()->user()->id)->get();
         // dd($carnivals->toArray());
         // $carnivals = Auth::user()->vendor->carnivals;
 
@@ -176,19 +177,10 @@ class VendorController extends Controller
     public function myMasbands(Request $request, Event $event)
     {
         // $masbands = Auth::user()->vendor->subvendor;
-        $carnivals = Carnival::where('head', auth()->user()->id)
-        ->with('mascamps') // Eager load mascamps relationship
-        ->get();
+        $carnivals = Carnival::where('head', auth()->user()->id)->pluck('id');
+        $masbands = CarnivalMascamps::with('carnival', 'mascamp')->whereIn('carnival_id', $carnivals)->get();
+        dd($masbands->toArray());
 
-    // Format the response as an array
-        $result = $carnivals->map(function ($carnival) {
-            return [
-                'carnival' => $carnival,
-                'mascamps' => $carnival->mascamps,
-            ];
-        });
-        $masbands = $result->toArray();
-        dd($masbands);
         return view('dashboard.vendor.pages.my_masbands', compact('masbands'));
     }
 
