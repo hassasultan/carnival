@@ -227,9 +227,12 @@
                 $('#carnival_id').val(carnivalId);
                 var model = $(this).data('model');
                 let data = '';
+                let modelInput = '';
+                $('#is-model').remove();
                 if(model == 'yes')
                 {
                     data = model;
+                    modelInput = '<input type="hidden" name="is_model" value="yes" id="is-model"/>'
                 }
 
                 // Fetch assigned mascamps for the selected carnival
@@ -255,6 +258,7 @@
                             });
                             // $('#mascamp').val(response.selectedMascamps).trigger('change');
                         }
+                        $('#assignMasscampForm').append(modelInput);
                         $('#assignMasscampModal').modal('show');
                     },
                     error: function(xhr, status, error) {
