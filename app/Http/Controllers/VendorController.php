@@ -186,15 +186,17 @@ class VendorController extends Controller
 
     public function queenShow(Request $request, Event $event)
     {
-        $carnivals = Auth::user()->vendor->carnivals;
-        $mascamps = $carnivals->flatMap(function ($carnival) {
-            return $carnival->mascamps;
-        });
-        $mascamps = $mascamps->unique('id');
-        $mascamps = $mascamps->filter(function ($mascamp) {
-            return $mascamp->vendor_id !== Auth::user()->vendor->id;
-        });
+        // $carnivals = Auth::user()->vendor->carnivals;
+        // $mascamps = $carnivals->flatMap(function ($carnival) {
+        //     return $carnival->mascamps;
+        // });
+        // $mascamps = $mascamps->unique('id');
+        // $mascamps = $mascamps->filter(function ($mascamp) {
+        //     return $mascamp->vendor_id !== Auth::user()->vendor->id;
+        // });
+        $carnivals = Carnival::where('head', auth()->user()->id)->pluck('id');
+        $models = CarnivalMascamps::with('carnival', 'mascamp')->where('is_model',1)->whereIn('carnival_id', $carnivals)->get();
 
-        return view('dashboard.vendor.pages.queen_show', compact('mascamps'));
+        return view('dashboard.vendor.pages.queen_show', compact('models'));
     }
 }
