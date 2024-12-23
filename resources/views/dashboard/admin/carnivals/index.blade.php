@@ -234,15 +234,15 @@
                     success: function(response) {
                         // Clear existing selections
                         $('#mascamp').val([]).trigger('change');
-                        $('#mascamp').html = '';
+                        $('#mascamp').html('');
 
                         // Set selected values
                         if (response.vendors) {
                             $.each(response.vendors, function(index, row) {
                                 var html =
                                     `<option value="${row.id}">${row.user.first_name} ${row.user.last_name}</option>`;
+                                    $('#mascamp').append(html);
                             });
-                            $('#mascamp').html = html;
                             $('.select2').select2({
                                 theme: 'bootstrap4',
                             });
