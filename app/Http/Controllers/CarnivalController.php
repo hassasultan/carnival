@@ -102,7 +102,11 @@ class CarnivalController extends Controller
 
     public function head_team($id)
     {
-        $head_team = User::where('carnival_id', 0)->doesntHave('isCustomer')->get();
+        $head_team = User::where('carnival_id', 0)
+            ->where('packageName', 3)
+            ->doesntHave('isCustomer')
+            ->get();
+        dd($head_team->count());
 
         return response()->json(['head_team' => $head_team]);
     }
