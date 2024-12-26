@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carnival;
+use App\Models\CarnivalMascamps;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
@@ -165,29 +167,36 @@ class VendorController extends Controller
 
     public function carnivalCommittee(Request $request, Event $event)
     {
-        $carnivals = Auth::user()->vendor->carnivals;
+        $carnivals = Carnival::where('head', auth()->user()->id)->get();
+        // dd($carnivals->toArray());
+        // $carnivals = Auth::user()->vendor->carnivals;
 
         return view('dashboard.vendor.pages.carnival_committee', compact('carnivals'));
     }
 
     public function myMasbands(Request $request, Event $event)
     {
-        $masbands = Auth::user()->vendor->subvendor;
+        // $masbands = Auth::user()->vendor->subvendor;
+        $carnivals = Carnival::where('head', auth()->user()->id)->pluck('id');
+        $masbands = CarnivalMascamps::with('carnival', 'mascamp')->whereIn('carnival_id', $carnivals)->get();
+        // dd($masbands->toArray());
 
         return view('dashboard.vendor.pages.my_masbands', compact('masbands'));
     }
 
     public function queenShow(Request $request, Event $event)
     {
-        $carnivals = Auth::user()->vendor->carnivals;
-        $mascamps = $carnivals->flatMap(function ($carnival) {
-            return $carnival->mascamps;
-        });
-        $mascamps = $mascamps->unique('id');
-        $mascamps = $mascamps->filter(function ($mascamp) {
-            return $mascamp->vendor_id !== Auth::user()->vendor->id;
-        });
+        // $carnivals = Auth::user()->vendor->carnivals;
+        // $mascamps = $carnivals->flatMap(function ($carnival) {
+        //     return $carnival->mascamps;
+        // });
+        // $mascamps = $mascamps->unique('id');
+        // $mascamps = $mascamps->filter(function ($mascamp) {
+        //     return $mascamp->vendor_id !== Auth::user()->vendor->id;
+        // });
+        $carnivals = Carnival::where('head', auth()->user()->id)->pluck('id');
+        $models = CarnivalMascamps::with('carnival', 'mascamp')->where('is_model',1)->whereIn('carnival_id', $carnivals)->get();
 
-        return view('dashboard.vendor.pages.queen_show', compact('mascamps'));
+        return view('dashboard.vendor.pages.queen_show', compact('models'));
     }
 }

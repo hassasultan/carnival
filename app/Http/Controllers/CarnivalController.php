@@ -125,14 +125,33 @@ class CarnivalController extends Controller
     public function assignModels(Request $request)
     {
         $carnival = Carnival::findOrFail($request->carnival_id);
+        if($request->has('is_model'))
+        {
+            $mascampsWithData = [];
+            foreach ($request->mascamps as $mascampId) {
+                $mascampsWithData[$mascampId] = ['is_model' => 1];
+            }
+            $carnival->mascamps()->sync($mascampsWithData);
+            return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
+        }
         $carnival->mascamps()->sync($request->mascamps); // Sync mascamps
         return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
     }
 
-    public function getAssignedMascamps($id)
+    public function getAssignedMascamps(Request $request,$id)
     {
-        $carnival = Carnival::with('mascamps')->findOrFail($id);
-        $selectedMascamps = $carnival->mascamps->pluck('id'); // IDs of assigned mascamps
-        return response()->json(['selectedMascamps' => $selectedMascamps]);
+        $carnivalId = $id;
+        $vendors = Vendor::with('carnivals','user')
+        ->whereDoesntHave('carnivals', function ($query) use ($carnivalId) {
+            $query->where('carnival_id', $carnivalId);
+        });
+        if($request->has('yes'))
+        {
+            $vendors = $vendors->where('package_id',1);
+        }
+        $vendors = $vendors->get();
+        // $carnival = Carnival::with('mascamps')->findOrFail($id);
+        // $selectedMascamps = $carnival->mascamps->pluck('id'); // IDs of assigned mascamps
+        return response()->json(['vendors' => $vendors]);
     }
 }

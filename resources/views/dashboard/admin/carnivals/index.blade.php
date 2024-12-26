@@ -225,20 +225,40 @@
             $(document).on('click', '.assignMasscamp', function() {
                 var carnivalId = $(this).data('id');
                 $('#carnival_id').val(carnivalId);
+                var model = $(this).data('model');
+                let data = '';
+                let modelInput = '';
+                $('#is-model').remove();
+                if(model == 'yes')
+                {
+                    data = model;
+                    modelInput = '<input type="hidden" name="is_model" value="yes" id="is-model"/>'
+                }
 
                 // Fetch assigned mascamps for the selected carnival
                 $.ajax({
                     url: '{{ route('carnivals.assigned.mascamps', ':id') }}'.replace(':id',
                         carnivalId),
+                    data : model,
                     type: 'GET',
                     success: function(response) {
                         // Clear existing selections
                         $('#mascamp').val([]).trigger('change');
+                        $('#mascamp').html('');
 
                         // Set selected values
-                        if (response.selectedMascamps) {
-                            $('#mascamp').val(response.selectedMascamps).trigger('change');
+                        if (response.vendors) {
+                            $.each(response.vendors, function(index, row) {
+                                var html =
+                                    `<option value="${row.id}">${row.user.first_name} ${row.user.last_name}</option>`;
+                                    $('#mascamp').append(html);
+                            });
+                            $('.select2').select2({
+                                theme: 'bootstrap4',
+                            });
+                            // $('#mascamp').val(response.selectedMascamps).trigger('change');
                         }
+                        $('#assignMasscampForm').append(modelInput);
                         $('#assignMasscampModal').modal('show');
                     },
                     error: function(xhr, status, error) {

@@ -15,17 +15,19 @@
                                 <thead>
                                     <tr>
                                         <th>Sr#</th>
-                                        <th>Name</th>
+                                        <th>Carnival Name</th>
+                                        <th>Model Name</th>
                                         {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $counter = 1 @endphp
-                                    @foreach ($mascamps as $mascamp)
-                                        @if ($mascamp->user->id != Auth::id())
+                                    @foreach ($models as $model)
+                                        @if ($model->mascamp->user->id != Auth::id())
                                             <tr>
                                                 <td>{{ $counter++ }}</td>
-                                                <td>{{ $mascamp->name ?? $mascamp->user->first_name . ' ' . $mascamp->user->last_name }}
+                                                <td>{{ $model->carnival->name }}</td>
+                                                <td>{{ $model->mascamp->name ?? $model->mascamp->user->first_name . ' ' . $model->mascamp->user->last_name }}
                                                 </td>
                                             </tr>
                                         @endif
