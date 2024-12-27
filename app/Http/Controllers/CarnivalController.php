@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carnival;
 use App\Models\User;
 use App\Models\Vendor;
+use App\Models\CarnivalMembers;
 use Illuminate\Http\Request;
 use Str;
 
@@ -106,7 +107,7 @@ class CarnivalController extends Controller
             ->where('packageName', 3)
             ->doesntHave('isCustomer')
             ->get();
-        dd($head_team->count());
+        // dd($head_team->count());
 
         return response()->json(['head_team' => $head_team]);
     }
@@ -124,34 +125,79 @@ class CarnivalController extends Controller
 
     public function assignModels(Request $request)
     {
-        $carnival = Carnival::findOrFail($request->carnival_id);
-        if($request->has('is_model'))
-        {
-            $mascampsWithData = [];
-            foreach ($request->mascamps as $mascampId) {
-                $mascampsWithData[$mascampId] = ['is_model' => 1];
-            }
-            $carnival->mascamps()->sync($mascampsWithData);
-            return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
+        // dd($request->toArray());
+        $validatedData = $request->validate([
+            'carnival_id' => 'required|exists:carnivals,id',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:carnival_members,email,' . $request->member_id,
+            'phone' => 'nullable|string|max:20',
+            'address' => 'nullable|string',
+            'city' => 'nullable|string|max:255',
+            'state' => 'nullable|string|max:255',
+            'country' => 'nullable|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('uploads/carnival_members', 'public');
+            $validatedData['image'] = url('storage/' . $imagePath);
         }
-        $carnival->mascamps()->sync($request->mascamps); // Sync mascamps
-        return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
+
+        try {
+            if ($request->member_id == 0) {
+                $carnivalMember = CarnivalMembers::create($validatedData);
+            } else {
+                $carnivalMember = CarnivalMembers::find($request->member_id);
+                if (!$carnivalMember) {
+                    return response()->json(['message' => 'Member not found.'], 404);
+                }
+                $carnivalMember->update($validatedData);
+            }
+
+            return response()->json([
+                'message' => 'Carnival member successfully assigned.',
+                'member' => $carnivalMember->fresh(), // Ensure updated data is returned
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'An error occurred while processing your request.',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+
+        // $carnival = Carnival::findOrFail($request->carnival_id);
+        // if ($request->has('is_model')) {
+        //     $mascampsWithData = [];
+        //     foreach ($request->mascamps as $mascampId) {
+        //         $mascampsWithData[$mascampId] = ['is_model' => 1];
+        //     }
+        //     $carnival->mascamps()->sync($mascampsWithData);
+        //     return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
+        // }
+        // $carnival->mascamps()->sync($request->mascamps); // Sync mascamps
+        // return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
     }
 
-    public function getAssignedMascamps(Request $request,$id)
+    public function getAssignedMascamps(Request $request, $id)
     {
         $carnivalId = $id;
-        $vendors = Vendor::with('carnivals','user')
-        ->whereDoesntHave('carnivals', function ($query) use ($carnivalId) {
-            $query->where('carnival_id', $carnivalId);
-        });
-        if($request->has('yes'))
-        {
-            $vendors = $vendors->where('package_id',1);
+        $vendors = Vendor::with('carnivals', 'user')
+            ->whereDoesntHave('carnivals', function ($query) use ($carnivalId) {
+                $query->where('carnival_id', $carnivalId);
+            });
+        if ($request->has('yes')) {
+            $vendors = $vendors->where('package_id', 1);
         }
         $vendors = $vendors->get();
         // $carnival = Carnival::with('mascamps')->findOrFail($id);
         // $selectedMascamps = $carnival->mascamps->pluck('id'); // IDs of assigned mascamps
         return response()->json(['vendors' => $vendors]);
+    }
+
+    public function getCarnivalsMembers(Request $request, $id)
+    {
+        $members = CarnivalMembers::where('carnival_id', $id)->get();
+        return response()->json(['members' => $members]);
     }
 }

@@ -1,6 +1,12 @@
 @extends('dashboard.admin.layouts.app')
 
 @section('content')
+    <style>
+        .modal-lg {
+            max-width: 90%;
+            /* Increase modal width */
+        }
+    </style>
     <div class="row justify-content-center">
         <div class="col-12">
             <h2 class="mb-2 page-title">Carnivals</h2>
@@ -119,10 +125,10 @@
         </div>
     </div>
 
-    <!-- Assign mascamp modal -->
+    <!-- Modal -->
     <div class="modal fade" id="assignMasscampModal" tabindex="-1" role="dialog"
         aria-labelledby="assignMasscampModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document"> <!-- Increased modal width -->
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="assignMasscampModalLabel">Edit Carnival</h5>
@@ -131,22 +137,75 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <!-- Form -->
                     <form id="assignMasscampForm">
                         @csrf
                         @method('POST')
                         <input type="hidden" id="carnival_id" name="carnival_id">
+                        <input type="hidden" id="member_id" name="member_id">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="firstname">Firstname <span class="text-danger">*</span></label>
+                                <input id="firstname" type="text" class="form-control" name="first_name" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lastname">Lastname <span class="text-danger">*</span></label>
+                                <input id="lastname" type="text" class="form-control" name="last_name" required>
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <label for="mascamp">Mascamps</label><br>
-                            <select id="mascamp" name="mascamps[]" class="form-control select2" multiple>
-                                @foreach ($mascamps as $row)
-                                    <option value="{{ $row->id }}">
-                                        {{ $row->user->first_name . ' ' . $row->user->last_name }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <label for="email">Email Address <span class="text-danger">*</span></label>
+                            <input id="email" type="email" class="form-control" name="email">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="image">Image</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="image" name="image">
+                                    <label class="custom-file-label" for="image" id="image_label">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="phone">Phone <span class="text-danger">*</span></label>
+                                <input id="phone" type="text" class="form-control" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address <span class="text-danger">*</span></label>
+                            <input id="address" type="text" class="form-control" name="address">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="city">City</label>
+                                <input id="city" type="text" class="form-control" name="city">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="state">State</label>
+                                <input id="state" type="text" class="form-control" name="state">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="country">Country</label>
+                                <input id="country" type="text" class="form-control" name="country">
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary" id="assignMasscampBtn">Update Carnival</button>
                     </form>
+
+                    <!-- Table -->
+                    <h5 class="mt-4">Added Members</h5>
+                    <table class="table table-bordered mt-3">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="membersTableBody">
+                            <!-- Rows will be dynamically added -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -225,47 +284,47 @@
             $(document).on('click', '.assignMasscamp', function() {
                 var carnivalId = $(this).data('id');
                 $('#carnival_id').val(carnivalId);
-                var model = $(this).data('model');
-                let data = '';
-                let modelInput = '';
-                $('#is-model').remove();
-                if(model == 'yes')
-                {
-                    data = model;
-                    modelInput = '<input type="hidden" name="is_model" value="yes" id="is-model"/>'
-                }
+                $('#assignMasscampModal').modal('show');
+                // var model = $(this).data('model');
+                // let data = '';
+                // let modelInput = '';
+                // $('#is-model').remove();
+                // if(model == 'yes')
+                // {
+                //     data = model;
+                //     modelInput = '<input type="hidden" name="is_model" value="yes" id="is-model"/>'
+                // }
 
-                // Fetch assigned mascamps for the selected carnival
-                $.ajax({
-                    url: '{{ route('carnivals.assigned.mascamps', ':id') }}'.replace(':id',
-                        carnivalId),
-                    data : model,
-                    type: 'GET',
-                    success: function(response) {
-                        // Clear existing selections
-                        $('#mascamp').val([]).trigger('change');
-                        $('#mascamp').html('');
+                // // Fetch assigned mascamps for the selected carnival
+                // $.ajax({
+                //     url: '{{ route('carnivals.assigned.mascamps', ':id') }}'.replace(':id',
+                //         carnivalId),
+                //     data : model,
+                //     type: 'GET',
+                //     success: function(response) {
+                //         // Clear existing selections
+                //         $('#mascamp').val([]).trigger('change');
+                //         $('#mascamp').html('');
 
-                        // Set selected values
-                        if (response.vendors) {
-                            $.each(response.vendors, function(index, row) {
-                                var html =
-                                    `<option value="${row.id}">${row.user.first_name} ${row.user.last_name}</option>`;
-                                    $('#mascamp').append(html);
-                            });
-                            $('.select2').select2({
-                                theme: 'bootstrap4',
-                            });
-                            // $('#mascamp').val(response.selectedMascamps).trigger('change');
-                        }
-                        $('#assignMasscampForm').append(modelInput);
-                        $('#assignMasscampModal').modal('show');
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                        alert('Failed to fetch assigned mascamps.');
-                    }
-                });
+                //         // Set selected values
+                //         if (response.vendors) {
+                //             $.each(response.vendors, function(index, row) {
+                //                 var html =
+                //                     `<option value="${row.id}">${row.user.first_name} ${row.user.last_name}</option>`;
+                //                     $('#mascamp').append(html);
+                //             });
+                //             $('.select2').select2({
+                //                 theme: 'bootstrap4',
+                //             });
+                //         }
+                //         $('#assignMasscampForm').append(modelInput);
+                //         $('#assignMasscampModal').modal('show');
+                //     },
+                //     error: function(xhr, status, error) {
+                //         console.error(xhr.responseText);
+                //         alert('Failed to fetch assigned mascamps.');
+                //     }
+                // });
             });
 
 
@@ -378,6 +437,7 @@
                         $('#carnivalMessage').html(
                             '<div class="alert alert-success" role="alert">Carnival created successfully</div>'
                         );
+                        window.location.reload();
                         setTimeout(function() {
                             $('#carnivalMessage').html('');
                         }, 3000);
@@ -482,5 +542,81 @@
                 });
             });
         });
+    </script>
+    <script>
+        let members = []; // Define globally
+
+        $(document).on('click', '.edit-carnival', function() {
+            var carnivalId = $(this).data('id'); // Get the carnival ID
+            console.log('carnivalId', carnivalId);
+            $('#carnival_id').val(carnivalId);
+
+            // Fetch assigned members for the selected carnival
+            $.ajax({
+                url: '{{ route('get.carnivals.members', ':id') }}'.replace(':id', carnivalId),
+                type: 'GET',
+                success: function(response) {
+                    if (response.members) {
+                        members = response.members; // Assign globally
+                        loadMembers(members);
+                    } else {
+                        alert('No members found for this carnival.');
+                    }
+
+                    $('#assignMasscampModal').modal('show');
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert('Failed to fetch carnival members.');
+                }
+            });
+        });
+
+        function loadMembers(members) {
+            const tableBody = document.getElementById("membersTableBody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            members.forEach(member => {
+                const row = `
+            <tr>
+                <td>${member.first_name} ${member.last_name}</td>
+                <td>${member.email}</td>
+                <td>${member.phone}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary" onclick="editMember(${member.id})">Edit</button>
+                </td>
+            </tr>
+        `;
+                tableBody.insertAdjacentHTML("beforeend", row);
+            });
+
+            // Save members globally for editing
+            window.membersList = members; // Store members globally in a safe place
+        }
+
+        function editMember(memberId) {
+            // Retrieve the specific member from the global list
+            const member = window.membersList.find(m => m.id === memberId);
+
+            if (member) {
+                // Populate the form with member details
+                document.getElementById("member_id").value = memberId;
+                document.getElementById("firstname").value = member.first_name;
+                document.getElementById("lastname").value = member.last_name;
+                document.getElementById("email").value = member.email;
+                document.getElementById("phone").value = member.phone;
+                document.getElementById("address").value = member.address;
+                document.getElementById("city").value = member.city;
+                document.getElementById("state").value = member.state;
+                document.getElementById("country").value = member.country;
+
+                // Scroll to the form
+                document.getElementById("assignMasscampForm").scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                alert("Member not found!");
+            }
+        }
     </script>
 @endsection
