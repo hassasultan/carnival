@@ -310,7 +310,7 @@
                 @endforeach
             </div>
         </div>
-        @if (!Route::name('front.carnival.listing'))
+        @if (Route::is('home'))
             <a href="{{ route('front.carnival.listing') }}"
                 class="c-button b-50 bg-green hv-green-o discover-more">DISCOVER MORE</a>
         @endif
