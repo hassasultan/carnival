@@ -6,10 +6,14 @@
 
             // Get the region ID from the clicked item
             let regionId = $(this).data('region');
+            let url  = `/get-carnivals-by-region/${regionId}`;
+            @if(Route::is('front.home'))
+                url = `/get-carnivals-by-region-for-home/${regionId}`;
+            @endif
 
             // AJAX call to fetch carnivals by region
             $.ajax({
-                url: `/get-carnivals-by-region/${regionId}`,
+                url: url,
                 method: 'GET',
                 success: function(data) {
                     // Empty the #carnival-wrapper to load new data

@@ -61,6 +61,7 @@ use App\Http\Controllers\ModelBookingController;
 
 Route::get('/', [FrontendConroller::class, 'home'])->name('front.home');
 Route::get('/get-carnivals-by-region/{id}', [FrontendConroller::class, 'get_carnivals_by_region'])->name('front.getCarnivalsbyRegion');
+Route::get('/get-carnivals-by-region-for-home/{id}', [FrontendConroller::class, 'get_carnivals_by_region_for_home'])->name('front.getCarnivalsbyRegionForHome');
 Route::get('/carnival-listing', [FrontendConroller::class, 'carnival_listing'])->name('front.carnival.listing');
 
 Route::get('/event-listing', [FrontendConroller::class, 'event_listing'])->name('front.event.listing');

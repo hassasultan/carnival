@@ -52,12 +52,31 @@ class FrontendConroller extends Controller
 
         $regions = Region::with('countries')->get();
         $carnivals = Carnival::with('user')->get();
+        $investors = Investor::all();
+        $blogs = Blogs::with('user')->get()->take('3');
+        $products = Product::with('brand')->get();
         // dd($events->toArray());
-        return view('front.carnival-listing', compact('carnivals',  'regions'));
+        return view('front.carnival-listing', compact('products','blogs','carnivals', 'investors', 'regions'));
     }
     public function get_carnivals_by_region($id)
     {
         $carnivals = Carnival::with('user')->where('region_id', $id)->get();
+
+        // Format the data to send as JSON
+        $data = $carnivals->map(function ($carnival) {
+            return [
+                'name' => $carnival->name,
+                'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                // 'image_url' => asset('images/carnivals/' . $carnival->image),
+
+            ];
+        });
+
+        return response()->json($data);
+    }
+    public function get_carnivals_by_region_for_home($id)
+    {
+        $carnivals = Carnival::with('user')->where('region_id', $id)->take(6)->get();
 
         // Format the data to send as JSON
         $data = $carnivals->map(function ($carnival) {
