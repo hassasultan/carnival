@@ -4,6 +4,7 @@
             <th>ID</th>
             <th>Carnival Committee</th>
             <th>Name</th>
+            <th>Region</th>
             <th>Link</th>
             <th>Actions</th>
         </tr>
@@ -28,6 +29,7 @@
                     {{-- @endif --}}
                 </td>
                 <td>{{ $carnival->name }}</td>
+                <td>{{ $carnival->regions->name }}</td>
                 <td><a href="{{ $carnival->link }}" target="_blank" class="text-white text-decoration-underline">Open
                         Link</a></td>
                 <td>

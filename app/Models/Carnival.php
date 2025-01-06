@@ -17,12 +17,17 @@ class Carnival extends Model
         'start_date',
         'end_date',
         'region',
+        'region_id',
         'description',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'head');
+    }
+    public function regions()
+    {
+        return $this->belongsTo(Region::class, 'region_id');
     }
 
     public function mascamps()

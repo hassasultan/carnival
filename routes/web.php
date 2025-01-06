@@ -60,6 +60,9 @@ use App\Http\Controllers\ModelBookingController;
 */
 
 Route::get('/', [FrontendConroller::class, 'home'])->name('front.home');
+Route::get('/get-carnivals-by-region/{id}', [FrontendConroller::class, 'get_carnivals_by_region'])->name('front.getCarnivalsbyRegion');
+Route::get('/carnival-listing', [FrontendConroller::class, 'carnival_listing'])->name('front.carnival.listing');
+
 Route::get('/event-listing', [FrontendConroller::class, 'event_listing'])->name('front.event.listing');
 Route::get('/tour-listing', [FrontendConroller::class, 'tour_listing'])->name('front.tour.listing');
 Route::get('/flight-listing', [FrontendConroller::class, 'flight_listing'])->name('front.flight.listing');
@@ -225,7 +228,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // get head_team
     Route::post('/update/head_team', [CarnivalController::class, 'carnivalHead'])->name('update.carnival.head');
-    
+
     // assign carnivals to mascamp
     Route::post('/assign/mascamps', [CarnivalController::class, 'assignModels'])->name('assign.models');
 
@@ -334,13 +337,13 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     Route::get('/musics/{id}/edit', [MusicController::class, 'edit'])->name('vendor.musics.edit');
     Route::put('/musics/{music}', [MusicController::class, 'update'])->name('vendor.musics.update');
     Route::delete('/musics/{id}', [MusicController::class, 'destroy'])->name('vendor.musics.destroy');
-    
+
     // carnival committee
     Route::get('carnival-committee/', [VendorController::class, 'carnivalCommittee'])->name('vendor.carnival.committee');
-    
+
     // my masbands(subvendrs)
     Route::get('my-masbands/', [VendorController::class, 'myMasbands'])->name('vendor.myMasbands');
-    
+
     // Queen Show
     Route::get('queen-show/', [VendorController::class, 'queenShow'])->name('vendor.queen.show');
 });

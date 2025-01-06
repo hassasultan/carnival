@@ -22,6 +22,7 @@ use App\Models\Brand;
 use App\Models\GalleryAlbum;
 use App\Models\Music;
 use App\Models\Costume;
+use App\Models\Carnival;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -42,8 +43,33 @@ class FrontendConroller extends Controller
         $investors = Investor::all();
         $testimonials = Testimonials::all();
         $blogs = Blogs::with('user')->get()->take('3');
+        $carnivals = Carnival::with('user')->get()->take('6');
         // dd($events->toArray());
-        return view('front.home', compact('events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials'));
+        return view('front.home', compact('carnivals', 'events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials'));
+    }
+    public function carnival_listing()
+    {
+
+        $regions = Region::with('countries')->get();
+        $carnivals = Carnival::with('user')->get();
+        // dd($events->toArray());
+        return view('front.carnival-listing', compact('carnivals',  'regions'));
+    }
+    public function get_carnivals_by_region($id)
+    {
+        $carnivals = Carnival::with('user')->where('region_id', $id)->get();
+
+        // Format the data to send as JSON
+        $data = $carnivals->map(function ($carnival) {
+            return [
+                'name' => $carnival->name,
+                'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                // 'image_url' => asset('images/carnivals/' . $carnival->image),
+
+            ];
+        });
+
+        return response()->json($data);
     }
     public function event_listing()
     {
@@ -335,7 +361,6 @@ class FrontendConroller extends Controller
         } else {
             return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors', 'user'));
         }
-
     }
     public function get_vendor_products($slug, Request $request)
     {
@@ -428,7 +453,7 @@ class FrontendConroller extends Controller
             ->withCount('products')
             ->get();
         if ($vendorPackageName === 'Models' || $subVendorPackageName === 'Models') {
-            return view('ShopFrontend.model.detail', compact('event', 'user','products','brands'));
+            return view('ShopFrontend.model.detail', compact('event', 'user', 'products', 'brands'));
         } else {
             return view('ShopFrontend.vendorAboutUs', compact('user'));
         }

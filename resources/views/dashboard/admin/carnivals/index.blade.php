@@ -62,8 +62,14 @@
                             <input type="date" class="form-control" id="end_date" name="end_date" required>
                         </div>
                         <div class="form-group">
-                            <label for="region">region</label>
-                            <input type="text" class="form-control" id="region" name="region" required>
+                            <label for="region">Region</label>
+                            <select class="form-control" id="region_id" name="region_id" required>
+                                <option value="">Select Region</option>
+                                @foreach ($region as $row)
+                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                @endforeach
+                            </select>
+                            {{-- <input type="text" class="form-control" id="region" name="region" required> --}}
                         </div>
                         <div class="form-group">
                             <label for="description">description</label>
@@ -112,7 +118,13 @@
                         </div>
                         <div class="form-group">
                             <label for="region">region</label>
-                            <input type="text" class="form-control" id="edit_region" name="region" required>
+                            <select class="form-control" id="edit_region" name="region_id" required>
+                                <option value="">Select Region</option>
+                                @foreach ($region as $row)
+                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                @endforeach
+                            </select>
+                            {{-- <input type="text" class="form-control" id="edit_region" name="region" required> --}}
                         </div>
                         <div class="form-group">
                             <label for="description">description</label>
@@ -268,7 +280,7 @@
                         $('#edit_link').val(response.carnival.link);
                         $('#edit_start_date').val(response.carnival.start_date);
                         $('#edit_end_date').val(response.carnival.end_date);
-                        $('#edit_region').val(response.carnival.region);
+                        $('#edit_region').val(response.carnival.region_id);
                         $('#edit_description').val(response.carnival.description);
                         $('#editCarnivalModal').modal('show');
                     },
