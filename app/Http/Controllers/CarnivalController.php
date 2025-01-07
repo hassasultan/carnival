@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carnival;
+use App\Models\Region;
 use App\Models\User;
 use App\Models\Vendor;
 use App\Models\CarnivalMembers;
@@ -13,9 +14,10 @@ class CarnivalController extends Controller
 {
     public function index()
     {
-        $carnivals = Carnival::with('mascamps.user', 'user')->get();
+        $carnivals = Carnival::with('mascamps.user', 'user','regions')->get();
         $mascamps = Vendor::with('user')->get();
-        return view('dashboard.admin.carnivals.index', compact('carnivals', 'mascamps'));
+        $region = Region::all();
+        return view('dashboard.admin.carnivals.index', compact('region','carnivals', 'mascamps'));
     }
 
     public function create()
@@ -40,7 +42,7 @@ class CarnivalController extends Controller
             'start_date' => $request->start_date,
             'slug' => $slug,
             'end_date' => $request->end_date,
-            'region' => $request->region,
+            'region_id' => $request->region_id,
             'description' => $request->description,
             'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
         ]);
@@ -78,7 +80,7 @@ class CarnivalController extends Controller
             'name' => $request->name,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
-            'region' => $request->region,
+            'region_id' => $request->region_id,
             'description' => $request->description,
             'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
         ]);

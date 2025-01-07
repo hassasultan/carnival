@@ -43,8 +43,52 @@ class FrontendConroller extends Controller
         $investors = Investor::all();
         $testimonials = Testimonials::all();
         $blogs = Blogs::with('user')->get()->take('3');
+        $carnivals = Carnival::with('user')->get()->take('6');
         // dd($events->toArray());
-        return view('front.home', compact('events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials'));
+        return view('front.home', compact('carnivals', 'events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials'));
+    }
+    public function carnival_listing()
+    {
+
+        $regions = Region::with('countries')->get();
+        $carnivals = Carnival::with('user')->get();
+        $investors = Investor::all();
+        $blogs = Blogs::with('user')->get()->take('3');
+        $products = Product::with('brand')->get();
+        // dd($events->toArray());
+        return view('front.carnival-listing', compact('products','blogs','carnivals', 'investors', 'regions'));
+    }
+    public function get_carnivals_by_region($id)
+    {
+        $carnivals = Carnival::with('user')->where('region_id', $id)->get();
+
+        // Format the data to send as JSON
+        $data = $carnivals->map(function ($carnival) {
+            return [
+                'name' => $carnival->name,
+                'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                // 'image_url' => asset('images/carnivals/' . $carnival->image),
+
+            ];
+        });
+
+        return response()->json($data);
+    }
+    public function get_carnivals_by_region_for_home($id)
+    {
+        $carnivals = Carnival::with('user')->where('region_id', $id)->take(6)->get();
+
+        // Format the data to send as JSON
+        $data = $carnivals->map(function ($carnival) {
+            return [
+                'name' => $carnival->name,
+                'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                // 'image_url' => asset('images/carnivals/' . $carnival->image),
+
+            ];
+        });
+
+        return response()->json($data);
     }
     public function event_listing()
     {
@@ -336,7 +380,6 @@ class FrontendConroller extends Controller
         } else {
             return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors', 'user'));
         }
-
     }
     public function get_vendor_products($slug, Request $request)
     {
