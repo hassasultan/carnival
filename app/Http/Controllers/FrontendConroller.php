@@ -800,6 +800,7 @@ class FrontendConroller extends Controller
         $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user_id)->first();
         $user = User::with('banners')->where('id', $user_id)->first();
         // dd($user, $user_id, $carnival->toArray());
+        $blogs = Blogs::where('user_id', $user_id)->with('user')->get()->take('6');
         $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
         // dd($subvendors->toArray());
         $categories = $vendor->products->pluck('category')->unique('id');

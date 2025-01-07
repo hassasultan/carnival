@@ -107,6 +107,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Product::class);
     }
+    public function blogs()
+    {
+        return $this->hasMany(Blogs::class);
+    }
     public function gallery()
     {
         return $this->hasMany(GalleryAlbum::class);
