@@ -794,16 +794,17 @@ class FrontendConroller extends Controller
 
     public function carnival_detail($slug)
     {
-        // $user = User::with('banners')->whereSlug($slug)->first();
-        $carnival = Carnival::whereSlug($slug)->first();
-        // $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user->id)->first();
-        // $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
-        // // dd($subvendors->toArray());
-        // $categories = $vendor->products->pluck('category')->unique('id');
-        // $products = Product::where('user_id', $user->id)->with('brand')->get();
+        $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->last();
+        $user = User::with('banners')->where('id', $vendor->user_id)->first();
+        $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
+        // dd($subvendors->toArray());
+        $categories = $vendor->products->pluck('category')->unique('id');
+        $products = Product::where('user_id', $user->id)->with('brand')->get();
         $ads = Advertisement::where('status', 1)->take(2)->get();
-        // $vendorPackageName = optional($user->vendor?->package)->title;
-        // $subVendorPackageName = optional($user->subVendor?->package)->title;
+        $vendorPackageName = optional($user->vendor?->package)->title;
+        $subVendorPackageName = optional($user->subVendor?->package)->title;
+
+        $carnival = Carnival::whereSlug($slug)->first();
         return view('ShopFrontend.carnival.detail', compact('carnival', 'ads'));
     }
 }

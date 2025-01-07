@@ -30,6 +30,9 @@
                             </label>
                         </div>
                     </div>
+
+
+
                 </div>
             </div>
         </div><!--  Popup Newsletter-->
@@ -46,7 +49,7 @@
                         </div>
 
                         <div class="block-content">
-                            {{-- <ul class="ui-categori">
+                            <ul class="ui-categori">
                                 @foreach ($vendor->subvendor as $row)
                                     <li class="">
                                         <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
@@ -57,7 +60,7 @@
                                         </a>
                                     </li>
                                 @endforeach
-                            </ul> --}}
+                            </ul>
                         </div>
 
                     </div><!-- categori -->
@@ -68,7 +71,7 @@
                         <div class="owl-carousel dotsData" data-nav="true" data-dots="true" data-margin="0" data-items='1'
                             data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
 
-                            {{-- @foreach ($vendor->user->banners as $key => $banner)
+                            @foreach ($vendor->user->banners as $key => $banner)
                                 <div class="item item{{ ++$key }}"
                                     style="background-image: url('{{ asset($banner->banner) }}');"
                                     data-dot="{{ $loop->iteration }}">
@@ -80,9 +83,10 @@
                                             class="btn">{{ $banner->button_text ?? 'Shop Now' }}</a>
                                     </div>
                                 </div>
-                            @endforeach --}}
+                            @endforeach
 
                         </div> <!-- slide -->
+
                     </div><!-- block slide top -->
 
                     <!-- banner -->
@@ -154,8 +158,15 @@
                         <div class="block-title">
                             <ul class="nav" role="tablist">
                                 <li role="presentation" class="active">
-                                    <a href="#tabproduct1" role="tab" id="best-sell" data-toggle="tab">Recent Albums
+                                    <a href="#tabproduct1" role="tab" id="best-sell" data-toggle="tab">best SELLERS
                                     </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#tabproduct2" role="tab" id="on-sell" data-toggle="tab">ON SALE</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#tabproduct3" role="tab" id="new-products" data-toggle="tab">NEW
+                                        PRODUCTS</a>
                                 </li>
                             </ul>
                         </div>
@@ -173,52 +184,548 @@
                                     "992":{"items":3}
                                 }'
                                     id="best-sell-div">
-                                    {{-- @foreach ($musics as $music)
-                                        <div class="product-item  product-item-opt-1 ">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img"
-                                                        href="{{ route('get.musics.detail', $music->id) }}"
-                                                        style="height: 266px; width: 186px;">
-                                                        <img alt="product name"
-                                                            src="{{ asset('covers/' . $music->cover_image) }}">
-                                                    </a>
-                                                    <div class="product-item-actions">
-                                                        <a class="btn btn-wishlist"
-                                                            href=""><span>wishlist</span></a>
-                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                        <a class="btn btn-quickview"
-                                                            href=""><span>quickview</span></a>
-                                                    </div>
-                                                    @if (Auth::check())
-                                                        <button type="button" title="Add to Cart"
-                                                            class="action btn-cart" data-music_id="{{ $music->id }}">
-                                                            <span>Add to Cart</span>
-                                                        </button>
-                                                    @else
-                                                        <a href="{{ route('customer.login') }}" title="Add to Cart"
-                                                            class="action btn-cart btn">
-                                                            <span>Add to Cart</span>
-                                                        </a>
-                                                    @endif
+
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
                                                 </div>
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a
-                                                            href="">{{ $music->song_title }}</a></strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">${{ $music->price }}</span>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                                <span class="product-item-label label-price">30% <span>off</span></span>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                        <span class="old-price">$52.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach --}}
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers2.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                                <span class="product-item-label label-new">New</span>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers3.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers2.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers3.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div><!-- tab 1 -->
 
-                            {{-- <a href="{{ route('front.myMusicGallery', $user->slug) }}" type="submit"
-                                class="btn mb-2 btn-danger" id="">View All</a> --}}
+                            <!-- tab 2 -->
+                            <div role="tabpanel" class="tab-pane fade" id="tabproduct2">
+                                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                    data-responsive='{
+                                    "0":{"items":1},
+                                    "480":{"items":2},
+                                    "480":{"items":2},
+                                    "768":{"items":3},
+                                    "992":{"items":3}
+                                }'
+                                    id="on-sell-div">
+
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                        <span class="old-price">$52.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers2.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers3.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers2.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers3.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><!-- tab 2 -->
+
+                            <!-- tab 3-->
+                            <div role="tabpanel" class="tab-pane fade" id="tabproduct3">
+                                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                    data-responsive='{
+                                    "0":{"items":1},
+                                    "480":{"items":2},
+                                    "480":{"items":2},
+                                    "768":{"items":3},
+                                    "992":{"items":3}
+                                }'
+                                    id="new-product-div">
+
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                        <span class="old-price">$52.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers2.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers3.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers2.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/sellers3.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><!-- tab 3-->
 
                         </div>
 
@@ -244,31 +751,91 @@
                                 "992":{"items":1},
                                 "1200":{"items":1}
                                 }'>
-                                {{-- @foreach ($events as $event)
-                                    <div class="product-item  product-item-opt-1 ">
-                                        <div class="deals-of-countdown">
 
-                                            <div class="count-down-time" data-countdown="{{ $event->start_date }}"></div>
-                                        </div>
-                                        <div class="product-item-info">
-                                            <div class="product-item-photo">
-                                                <a class="product-item-img" href=""><img alt="product name"
-                                                        src="{{ asset('eventBanner/' . $event->banner) }}"></a>
-                                                <div class="product-item-actions">
-                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
-                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
-                                                </div>
-                                                <button type="button" class="btn btn-cart"><span>Add to
-                                                        Cart</span></button>
+                                <div class="product-item  product-item-opt-1 ">
+                                    <div class="deals-of-countdown">
+
+                                        <div class="count-down-time" data-countdown="2016/12/25"></div>
+                                    </div>
+                                    <div class="product-item-info">
+                                        <div class="product-item-photo">
+                                            <a class="product-item-img" href=""><img alt="product name"
+                                                    src="{{ asset('shopAssets/images/media/index1/deals-of1.jpg') }}"></a>
+                                            <div class="product-item-actions">
+                                                <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                <a class="btn btn-quickview" href=""><span>quickview</span></a>
                                             </div>
-                                            <div class="product-item-detail">
-                                                <strong class="product-item-name"><a
-                                                        href="">{{ $event->title }}</a></strong>
+                                            <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
+                                        </div>
+                                        <div class="product-item-detail">
+                                            <strong class="product-item-name"><a href="">Maecenas consequat
+                                                    mauris</a></strong>
+                                            <div class="clearfix">
+                                                <div class="product-item-price">
+                                                    <span class="price">$108.00</span>
+                                                    <span class="old-price">(-20%)</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach --}}
+                                </div>
+                                <div class="product-item  product-item-opt-1 ">
+                                    <div class="deals-of-countdown">
+
+                                        <div class="count-down-time" data-countdown="2016/11/25"></div>
+                                    </div>
+                                    <div class="product-item-info">
+                                        <div class="product-item-photo">
+                                            <a class="product-item-img" href=""><img alt="product name"
+                                                    src="{{ asset('shopAssets/images/media/index1/deals-of2.jpg') }}"></a>
+                                            <div class="product-item-actions">
+                                                <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                            </div>
+                                            <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
+                                        </div>
+                                        <div class="product-item-detail">
+                                            <strong class="product-item-name"><a href="">Sale Couple of
+                                                    Smartphones</a></strong>
+                                            <div class="clearfix">
+                                                <div class="product-item-price">
+                                                    <span class="price">$45.00</span>
+                                                    <span class="old-price">(-20%)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-item  product-item-opt-1 ">
+                                    <div class="deals-of-countdown">
+
+                                        <div class="count-down-time" data-countdown="2016/12/30"></div>
+                                    </div>
+                                    <div class="product-item-info">
+                                        <div class="product-item-photo">
+                                            <a class="product-item-img" href=""><img alt="product name"
+                                                    src="{{ asset('shopAssets/images/media/index1/deals-of3.jpg') }}"></a>
+                                            <div class="product-item-actions">
+                                                <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                            </div>
+                                            <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
+                                        </div>
+                                        <div class="product-item-detail">
+                                            <strong class="product-item-name"><a href="">Sale Couple of
+                                                    Smartphones</a></strong>
+                                            <div class="clearfix">
+                                                <div class="product-item-price">
+                                                    <span class="price">$45.00</span>
+                                                    <span class="old-price">(-20%)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -285,7 +852,7 @@
                 <div class="container">
                     <div class="block-title ">
                         <span class="title"><img alt="img"
-                                src="{{ asset('shopAssets/images/media/index1/floor1.png') }}">{{ $carnival->name }}</span>
+                                src="{{ asset('shopAssets/images/media/index1/floor1.png') }}">{{ $vendor->name }}</span>
                         <div class="links dropdown">
                             <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
@@ -299,11 +866,11 @@
                                             Viewed </a></li>
                                     <li role="presentation"><a href="#floor1-3" id="new-arr-tab" role="tab"
                                             data-toggle="tab">New Arrivals <span class="label-cat">12</span></a></li>
-                                    {{-- @foreach ($categories as $row)
+                                    @foreach ($categories as $row)
                                         <li role="presentation"><a href="#floor1-4-{{ $row->id }}"
                                                 onclick="catProduct({{ $row->id }},'vendors-cat-div-{{ $row->id }}')"
                                                 role="tab" data-toggle="tab">{{ $row->title }} </a></li>
-                                    @endforeach --}}
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -340,7 +907,7 @@
                                     alt="baner-floor"></a>
                         </div>
 
-                        {{-- <div class="col-products tab-content">
+                        <div class="col-products tab-content">
 
                             <!-- tab 1 -->
                             <div class="tab-pane active in  fade " id="floor1-1" role="tabpanel">
@@ -354,49 +921,174 @@
                                     "1200":{"items":4}
                                 }'
                                     id="best-seller-floor">
-                                    @foreach ($costumes as $costume)
-                                        <div class="product-item  product-item-opt-1 ">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                        href=""><img alt="product name"
-                                                            src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
-                                                    <div class="product-item-actions">
-                                                        <a class="btn btn-wishlist"
-                                                            href=""><span>wishlist</span></a>
-                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                        <a class="btn btn-quickview"
-                                                            href=""><span>quickview</span></a>
-                                                    </div>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
+                                    <div class=" product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-1.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
                                                 </div>
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a
-                                                            href="">{{ $costume->title }}</a></strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">${{ $costume->new_price }}</span>
-                                                            @if ($costume->old_price)
-                                                                <span class="old-price">${{ $costume->old_price }}</span>
-                                                            @endif
-                                                        </div>
-                                                        <div class="product-reviews-summary">
-                                                            <div class="rating-summary">
-                                                                <div title="{{ $costume->discount }}%"
-                                                                    class="rating-result">
-                                                                    <span style="width:{{ $costume->discount }}%">
-                                                                        <span><span>{{ $costume->discount }}</span>%
-                                                                            of <span>100</span></span>
-                                                                    </span>
-                                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                                <span class="product-item-label label-price">30% <span>off</span></span>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                        <span class="old-price">$52.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-2.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-3.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-4.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-4.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -411,49 +1103,174 @@
                                     "992":{"items":3},
                                     "1200":{"items":4}
                                 }'>
-                                    @foreach ($costumes as $costume)
-                                        <div class="product-item  product-item-opt-1 ">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                        href=""><img alt="product name"
-                                                            src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
-                                                    <div class="product-item-actions">
-                                                        <a class="btn btn-wishlist"
-                                                            href=""><span>wishlist</span></a>
-                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                        <a class="btn btn-quickview"
-                                                            href=""><span>quickview</span></a>
-                                                    </div>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
+                                    <div class=" product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-1.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
                                                 </div>
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a
-                                                            href="">{{ $costume->title }}</a></strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">${{ $costume->new_price }}</span>
-                                                            @if ($costume->old_price)
-                                                                <span class="old-price">${{ $costume->old_price }}</span>
-                                                            @endif
-                                                        </div>
-                                                        <div class="product-reviews-summary">
-                                                            <div class="rating-summary">
-                                                                <div title="{{ $costume->discount }}%"
-                                                                    class="rating-result">
-                                                                    <span style="width:{{ $costume->discount }}%">
-                                                                        <span><span>{{ $costume->discount }}</span>%
-                                                                            of <span>100</span></span>
-                                                                    </span>
-                                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                                <span class="product-item-label label-price">30% <span>off</span></span>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                        <span class="old-price">$52.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-2.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-3.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-4.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-4.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -469,49 +1286,179 @@
                                     "1200":{"items":4}
                                 }'
                                     id="new-arrival-products">
-                                    @foreach ($costumes as $costume)
-                                        <div class="product-item  product-item-opt-1 ">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                        href=""><img alt="product name"
-                                                            src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
-                                                    <div class="product-item-actions">
-                                                        <a class="btn btn-wishlist"
-                                                            href=""><span>wishlist</span></a>
-                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                        <a class="btn btn-quickview"
-                                                            href=""><span>quickview</span></a>
-                                                    </div>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
+                                    <div class=" product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-1.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview"
+                                                        href=""><span>quickview</span></a>
                                                 </div>
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a
-                                                            href="">{{ $costume->title }}</a></strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">${{ $costume->new_price }}</span>
-                                                            @if ($costume->old_price)
-                                                                <span class="old-price">${{ $costume->old_price }}</span>
-                                                            @endif
-                                                        </div>
-                                                        <div class="product-reviews-summary">
-                                                            <div class="rating-summary">
-                                                                <div title="{{ $costume->discount }}%"
-                                                                    class="rating-result">
-                                                                    <span style="width:{{ $costume->discount }}%">
-                                                                        <span><span>{{ $costume->discount }}</span>%
-                                                                            of <span>100</span></span>
-                                                                    </span>
-                                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                                <span class="product-item-label label-price">30% <span>off</span></span>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                        <span class="old-price">$52.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-2.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview"
+                                                        href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-3.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview"
+                                                        href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-4.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview"
+                                                        href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item  product-item-opt-1 ">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a class="product-item-img" href=""><img alt="product name"
+                                                        src="{{ asset('shopAssets/images/media/index1/floor1-4.jpg') }}"></a>
+                                                <div class="product-item-actions">
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                    <a class="btn btn-quickview"
+                                                        href=""><span>quickview</span></a>
+                                                </div>
+                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                        Cart</span></button>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="">Maecenas consequat
+                                                        mauris</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$45.00</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div title="80%" class="rating-result">
+                                                                <span style="width:80%">
+                                                                    <span><span>80</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -528,62 +1475,201 @@
                                         "1200":{"items":4}
                                     }'
                                         id="vendors-cat-div-{{ $row->id }}">
-                                        @foreach ($costumes as $costume)
-                                            <div class="product-item  product-item-opt-1 ">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                            href=""><img alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
+                                        <div class=" product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor1-1.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
                                                     </div>
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a
-                                                                href="">{{ $costume->title }}</a></strong>
-                                                        <div class="clearfix">
-                                                            <div class="product-item-price">
-                                                                <span class="price">${{ $costume->new_price }}</span>
-                                                                @if ($costume->old_price)
-                                                                    <span
-                                                                        class="old-price">${{ $costume->old_price }}</span>
-                                                                @endif
-                                                            </div>
-                                                            <div class="product-reviews-summary">
-                                                                <div class="rating-summary">
-                                                                    <div title="{{ $costume->discount }}%"
-                                                                        class="rating-result">
-                                                                        <span style="width:{{ $costume->discount }}%">
-                                                                            <span><span>{{ $costume->discount }}</span>%
-                                                                                of <span>100</span></span>
-                                                                        </span>
-                                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                    <span class="product-item-label label-price">30%
+                                                        <span>off</span></span>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                            <span class="old-price">$52.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor1-2.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor1-3.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor1-4.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor1-4.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
 
-                        </div> --}}
+                        </div>
 
                     </div>
 
                 </div>
             </div>
-            {{-- @foreach ($vendor->subvendor as $key => $row)
+            @foreach ($vendor->subvendor as $key => $row)
                 <div class="block-floor-products block-floor-products-opt1 floor-products2"
                     id="floor0-{{ ++$key }}">
                     <div class="container">
@@ -605,8 +1691,8 @@
                                                 href="#floor-seller-{{ $row->id }}"
                                                 onclick="subvendorProduct('bestSale','{{ $row->user->id }}','best-seller-subvendor-{{ $row->id }}')"
                                                 role="tab" data-toggle="tab">Best Seller </a></li>
-                                        <li role="presentation"><a href="#floor-most-{{ $row->id }}" role="tab"
-                                                data-toggle="tab">Most Viewed </a></li>
+                                        <li role="presentation"><a href="#floor-most-{{ $row->id }}"
+                                                role="tab" data-toggle="tab">Most Viewed </a></li>
                                         <li role="presentation"><a href="#floor-new-{{ $row->id }}"
                                                 onclick="subvendorProduct('new','{{ $row->user->id }}','new-arrival-subvendor-{{ $row->id }}')"
                                                 role="tab" data-toggle="tab">New Arrivals <span
@@ -614,6 +1700,7 @@
                                         @php
                                             $subCategories = collect();
                                         @endphp
+                                        {{-- {{ dd($row->products->toArray()) }} --}}
                                         @foreach ($row->products as $product)
                                             @if ($product->subcategory)
                                                 @php
@@ -632,8 +1719,6 @@
                                                     onclick="subcatProduct({{ $subCategory['id'] }},'vendors-subcat-div-{{ $subCategory['id'] }}')"
                                                     data-toggle="tab">{{ $subCategory['title'] }}</a></li>
                                         @endforeach
-                                        <li role="presentation"><a href="#floor2-7" role="tab"
-                                                data-toggle="tab">Climbing</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -642,8 +1727,8 @@
                                 $nxt = $key + 1;
                             @endphp
                             <div class="actions">
-                                <a href="#floor0-{{ $pre }}" class="action action-up"><i class="fa fa-angle-up"
-                                        aria-hidden="true"></i></a>
+                                <a href="#floor0-{{ $pre }}" class="action action-up"><i
+                                        class="fa fa-angle-up" aria-hidden="true"></i></a>
                                 <a href="#floor0-{{ $nxt }}" class="action action-down"><i
                                         class="fa fa-angle-down" aria-hidden="true"></i></a>
                             </div>
@@ -677,6 +1762,7 @@
                             </div>
 
                             <div class="col-products tab-content">
+
                                 <!-- tab 1 -->
                                 <div class="tab-pane active in  fade " id="floor-seller-{{ $row->id }}"
                                     role="tabpanel">
@@ -690,49 +1776,618 @@
                                         "1200":{"items":4}
                                     }'
                                         id="best-seller-subvendor-{{ $row->id }}">
-                                        @php
-                                            $combined = collect();
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                            <span class="old-price">$52.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-2.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-4.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                            <span class="old-price">$52.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                            foreach ($vendor->subvendor as $subVendor) {
-                                                if ($subVendor->user) {
-                                                    $events = $subVendor->user->events ?? collect();
-                                                    $costumes = $subVendor->user->costumes ?? collect();
+                                <!-- tab 2-->
+                                <div class="tab-pane fade " id="floor-most-{{ $row->id }}" role="tabpanel">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
+                                        "0":{"items":1},
+                                        "420":{"items":2},
+                                        "600":{"items":3},
+                                        "768":{"items":3},
+                                        "992":{"items":3},
+                                        "1200":{"items":4}
+                                    }'
+                                        id="most-viwed-subvendor-{{ $row->id }}">
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                            <span class="old-price">$52.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-2.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-4.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                            <span class="old-price">$52.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                                    // Merge events and costumes by interleaving items
-                                                    $merged = $events->zip($costumes)->flatten()->filter();
+                                <!-- tab 3 -->
+                                <div class="tab-pane fade " id="floor-new-{{ $row->id }}" role="tabpanel">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
+                                        "0":{"items":1},
+                                        "420":{"items":2},
+                                        "600":{"items":3},
+                                        "768":{"items":3},
+                                        "992":{"items":3},
+                                        "1200":{"items":4}
+                                    }'
+                                        id="new-arrival-subvendor-{{ $row->id }}">
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                            <span class="old-price">$52.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-2.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-4.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                            <span class="old-price">$52.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                                    $combined = $combined->merge($merged);
-                                                }
-                                            }
-                                        @endphp
-
-                                        @foreach ($combined as $item)
-                                            <div class="product-item product-item-opt-1">
+                                <!-- tab 4 -->
+                                @foreach ($subCategories->unique() as $subCategory)
+                                    <div class="tab-pane fade " id="floor2-subcat-{{ $subCategory['id'] }}"
+                                        role="tabpanel">
+                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                            data-responsive='{
+                                        "0":{"items":1},
+                                        "420":{"items":2},
+                                        "600":{"items":3},
+                                        "768":{"items":3},
+                                        "992":{"items":3},
+                                        "1200":{"items":4}
+                                    }'id="vendors-subcat-div-{{ $subCategory['id'] }}">
+                                            <div class="product-item  product-item-opt-1 ">
                                                 <div class="product-item-info">
                                                     <div class="product-item-photo">
-                                                        <a class="product-item-img" href="">
-                                                            <img alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}">
-                                                        </a>
+                                                        <a class="product-item-img" href=""><img
+                                                                alt="product name"
+                                                                src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}"></a>
                                                         <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist" href="">
-                                                                <span>wishlist</span>
-                                                            </a>
-                                                            <a class="btn btn-compare" href="">
-                                                                <span>compare</span>
-                                                            </a>
-                                                            <a class="btn btn-quickview" href="">
-                                                                <span>quickview</span>
-                                                            </a>
+                                                            <a class="btn btn-wishlist"
+                                                                href=""><span>wishlist</span></a>
+                                                            <a class="btn btn-compare"
+                                                                href=""><span>compare</span></a>
+                                                            <a class="btn btn-quickview"
+                                                                href=""><span>quickview</span></a>
                                                         </div>
-                                                        <button type="button" class="btn btn-cart">
-                                                            <span>Add to Cart</span>
-                                                        </button>
+                                                        <button type="button" class="btn btn-cart"><span>Add to
+                                                                Cart</span></button>
                                                     </div>
                                                     <div class="product-item-detail">
-                                                        <strong class="product-item-name">
-                                                            <a href="">{{ $item->name ?? 'Product Name' }}</a>
-                                                        </strong>
+                                                        <strong class="product-item-name"><a href="">Maecenas
+                                                                consequat mauris</a></strong>
                                                         <div class="clearfix">
                                                             <div class="product-item-price">
                                                                 <span class="price">$45.00</span>
@@ -752,15 +2407,758 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                            <div class="product-item  product-item-opt-1 ">
+                                                <div class="product-item-info">
+                                                    <div class="product-item-photo">
+                                                        <a class="product-item-img" href=""><img
+                                                                alt="product name"
+                                                                src="{{ asset('shopAssets/images/media/index1/floor2-2.jpg') }}"></a>
+                                                        <div class="product-item-actions">
+                                                            <a class="btn btn-wishlist"
+                                                                href=""><span>wishlist</span></a>
+                                                            <a class="btn btn-compare"
+                                                                href=""><span>compare</span></a>
+                                                            <a class="btn btn-quickview"
+                                                                href=""><span>quickview</span></a>
+                                                        </div>
+                                                        <button type="button" class="btn btn-cart"><span>Add to
+                                                                Cart</span></button>
+                                                    </div>
+                                                    <div class="product-item-detail">
+                                                        <strong class="product-item-name"><a href="">Maecenas
+                                                                consequat mauris</a></strong>
+                                                        <div class="clearfix">
+                                                            <div class="product-item-price">
+                                                                <span class="price">$45.00</span>
+                                                            </div>
+                                                            <div class="product-reviews-summary">
+                                                                <div class="rating-summary">
+                                                                    <div title="80%" class="rating-result">
+                                                                        <span style="width:80%">
+                                                                            <span><span>80</span>% of
+                                                                                <span>100</span></span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-item  product-item-opt-1 ">
+                                                <div class="product-item-info">
+                                                    <div class="product-item-photo">
+                                                        <a class="product-item-img" href=""><img
+                                                                alt="product name"
+                                                                src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                        <div class="product-item-actions">
+                                                            <a class="btn btn-wishlist"
+                                                                href=""><span>wishlist</span></a>
+                                                            <a class="btn btn-compare"
+                                                                href=""><span>compare</span></a>
+                                                            <a class="btn btn-quickview"
+                                                                href=""><span>quickview</span></a>
+                                                        </div>
+                                                        <button type="button" class="btn btn-cart"><span>Add to
+                                                                Cart</span></button>
+                                                    </div>
+                                                    <div class="product-item-detail">
+                                                        <strong class="product-item-name"><a href="">Maecenas
+                                                                consequat mauris</a></strong>
+                                                        <div class="clearfix">
+                                                            <div class="product-item-price">
+                                                                <span class="price">$45.00</span>
+                                                            </div>
+                                                            <div class="product-reviews-summary">
+                                                                <div class="rating-summary">
+                                                                    <div title="80%" class="rating-result">
+                                                                        <span style="width:80%">
+                                                                            <span><span>80</span>% of
+                                                                                <span>100</span></span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-item  product-item-opt-1 ">
+                                                <div class="product-item-info">
+                                                    <div class="product-item-photo">
+                                                        <a class="product-item-img" href=""><img
+                                                                alt="product name"
+                                                                src="{{ asset('shopAssets/images/media/index1/floor2-4.jpg') }}"></a>
+                                                        <div class="product-item-actions">
+                                                            <a class="btn btn-wishlist"
+                                                                href=""><span>wishlist</span></a>
+                                                            <a class="btn btn-compare"
+                                                                href=""><span>compare</span></a>
+                                                            <a class="btn btn-quickview"
+                                                                href=""><span>quickview</span></a>
+                                                        </div>
+                                                        <button type="button" class="btn btn-cart"><span>Add to
+                                                                Cart</span></button>
+                                                    </div>
+                                                    <div class="product-item-detail">
+                                                        <strong class="product-item-name"><a href="">Maecenas
+                                                                consequat mauris</a></strong>
+                                                        <div class="clearfix">
+                                                            <div class="product-item-price">
+                                                                <span class="price">$45.00</span>
+                                                            </div>
+                                                            <div class="product-reviews-summary">
+                                                                <div class="rating-summary">
+                                                                    <div title="80%" class="rating-result">
+                                                                        <span style="width:80%">
+                                                                            <span><span>80</span>% of
+                                                                                <span>100</span></span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-item  product-item-opt-1 ">
+                                                <div class="product-item-info">
+                                                    <div class="product-item-photo">
+                                                        <a class="product-item-img" href=""><img
+                                                                alt="product name"
+                                                                src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                        <div class="product-item-actions">
+                                                            <a class="btn btn-wishlist"
+                                                                href=""><span>wishlist</span></a>
+                                                            <a class="btn btn-compare"
+                                                                href=""><span>compare</span></a>
+                                                            <a class="btn btn-quickview"
+                                                                href=""><span>quickview</span></a>
+                                                        </div>
+                                                        <button type="button" class="btn btn-cart"><span>Add to
+                                                                Cart</span></button>
+                                                    </div>
+                                                    <div class="product-item-detail">
+                                                        <strong class="product-item-name"><a href="">Maecenas
+                                                                consequat mauris</a></strong>
+                                                        <div class="clearfix">
+                                                            <div class="product-item-price">
+                                                                <span class="price">$45.00</span>
+                                                                <span class="old-price">$52.00</span>
+                                                            </div>
+                                                            <div class="product-reviews-summary">
+                                                                <div class="rating-summary">
+                                                                    <div title="80%" class="rating-result">
+                                                                        <span style="width:80%">
+                                                                            <span><span>80</span>% of
+                                                                                <span>100</span></span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
 
+                                <!-- tab 5 -->
+                                <div class="tab-pane fade " id="floor2-5" role="tabpanel">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
+                                        "0":{"items":1},
+                                        "420":{"items":2},
+                                        "600":{"items":3},
+                                        "768":{"items":3},
+                                        "992":{"items":3},
+                                        "1200":{"items":4}
+                                    }'>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                            <span class="old-price">$52.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-2.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-4.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                            <span class="old-price">$52.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <!-- tab 6 -->
+                                <div class="tab-pane fade " id="floor2-6" role="tabpanel">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
+                                        "0":{"items":1},
+                                        "420":{"items":2},
+                                        "600":{"items":3},
+                                        "768":{"items":3},
+                                        "992":{"items":3},
+                                        "1200":{"items":4}
+                                    }'>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                            <span class="old-price">$52.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-2.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-4.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                            <span class="old-price">$52.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- tab 7 -->
+                                <div class="tab-pane fade " id="floor2-7" role="tabpanel">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
+                                        "0":{"items":1},
+                                        "420":{"items":2},
+                                        "600":{"items":3},
+                                        "768":{"items":3},
+                                        "992":{"items":3},
+                                        "1200":{"items":4}
+                                    }'>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                            <span class="old-price">$52.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-2.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-4.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/floor2-3.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare"
+                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                            <span class="old-price">$52.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
+
                         </div>
+
                     </div>
                 </div>
-            @endforeach --}}
+            @endforeach
 
             <!-- Banner -->
             <div class="block-banner-opt1 effect-banner3">
@@ -768,11 +3166,13 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <a href="" class="box-img"><img
-                                    src="{{ asset('shopAssets/images/media/index1/banner7-1.jpg') }}" alt="banner"></a>
+                                    src="{{ asset('shopAssets/images/media/index1/banner7-1.jpg') }}"
+                                    alt="banner"></a>
                         </div>
                         <div class="col-sm-6">
                             <a href="" class="box-img"><img
-                                    src="{{ asset('shopAssets/images/media/index1/banner7-2.jpg') }}" alt="banner"></a>
+                                    src="{{ asset('shopAssets/images/media/index1/banner7-2.jpg') }}"
+                                    alt="banner"></a>
                         </div>
                     </div>
                 </div>
@@ -781,7 +3181,7 @@
         </div>
 
         <!-- block  showcase-->
-        {{-- <div class="block-showcase block-showcase-opt1 block-brand-tabs">
+        <div class="block-showcase block-showcase-opt1 block-brand-tabs">
             <div class="container">
 
                 <div class="block-title">
@@ -1563,7 +3963,7 @@
                 </div>
 
             </div>
-        </div><!-- block  showcase--> --}}
+        </div><!-- block  showcase-->
 
         <!-- block  hot categories-->
         <div class="block-hot-categories-opt1">
@@ -1698,4 +4098,195 @@
 @endsection
 
 @section('script')
+    <!-- Custom scripts -->
+    <script>
+        var slug = '{{ $vendor->user_id }}';
+        var cat = 0;
+        var subcat = 0;
+        @foreach ($vendor->subvendor as $row)
+            subvendorProduct('bestSale', '{{ $row->user->id }}', 'best-seller-subvendor-{{ $row->id }}');
+        @endforeach
+        function subvendorProduct(attr, subVendorSlug, id) {
+            slug = subVendorSlug;
+            getProducts(attr, id);
+            slug = '{{ $vendor->user_id }}';
+
+        }
+
+        function subcatProduct(subcategory, id) {
+            var attr = "";
+            subcat = subcategory;
+            getProducts(attr, id);
+            subcat = 0;
+        }
+
+        function catProduct(category, id) {
+            var attr = "";
+            cat = category;
+            getProducts(attr, id);
+            cat = 0;
+
+        }
+        // $(document).ready(function() {
+        getProducts('bestSale', 'best-sell-div');
+        getProducts('bestSale', 'best-seller-floor');
+        $("#best-sell").click(function() {
+            getProducts('bestSale', 'best-sell-div');
+        });
+        $("#best-seller-tab").click(function() {
+            getProducts('bestSale', 'best-seller-floor');
+        });
+        $("#on-sell").click(function() {
+            getProducts('onsale', 'on-sell-div');
+        });
+        $("#new-products").click(function() {
+            getProducts('new', 'new-product-div');
+        });
+        $("#new-arr-tab").click(function() {
+            getProducts('new', 'new-arrival-products');
+        });
+
+        function printTiles(id, response) {
+            // console.log(response);
+            $.each(response, function(index, product) {
+                var percentageDiscount = Math.round(((product.old_price - product
+                    .new_price) / product.old_price) * 100);
+                var productHtml = `
+                        <div class="product-item product-item-opt-1">
+                            <div class="product-item-info">
+                                <div class="product-item-photo">`;
+                if (product.image != null && product.image != '') {
+                    productHtml +=
+                        `
+                                        <a href="{{ route('get.products.detail', '') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="{{ asset('productImage/${product.image}') }}" alt="${product.title}"></a>`;
+                } else {
+                    productHtml +=
+                        `
+                                        <a href="{{ route('get.products.detail', '') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg" alt="${product.title}"></a>`;
+                }
+                productHtml += `
+                                    <div class="product-item-actions">
+                                        <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
+                                        <a href="#" class="btn btn-compare"><span>compare</span></a>
+                                        <a href="#" class="btn btn-quickview"><span>quickview</span></a>
+                                    </div>
+                                    <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                    <span class="product-item-label label-price">${percentageDiscount}% <span>off</span></span>
+                                </div>
+                                <div class="product-item-detail">
+                                    <strong class="product-item-name"><a href="${product.slug}">${product.title}</a></strong>
+                                    <div class="clearfix">
+                                        <div class="product-item-price">
+                                            <span class="price">$${product.new_price}</span>
+                                            <span class="old-price">$${product.old_price}</span>
+                                        </div>
+                                        <div class="product-reviews-summary">
+                                            <div class="rating-summary">
+                                                <div class="rating-result" title="${percentageDiscount}%">
+                                                    <span style="width:${percentageDiscount}%">
+                                                        <span><span>${percentageDiscount}</span>% of <span>100</span></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                $('#' + id + ' .owl-item').html(productHtml);
+
+            });
+            $('#slider-range').slider({
+                range: true,
+
+                min: 0,
+
+                max: 500,
+
+                values: [0, 300],
+
+                slide: function(event, ui) {
+
+                    $('#amount-left').text(ui.values[0]);
+                    $('#amount-right').text(ui.values[1]);
+
+                }
+
+            });
+
+            $('#amount-left').text($('#slider-range').slider('values', 0));
+
+            $('#amount-right').text($('#slider-range').slider('values', 1));
+        }
+
+        function getProducts(attribute, id) {
+            $.ajax({
+                url: "{{ route('front.vendor.products', '') }}/" + slug,
+                type: "GET",
+                data: {
+                    attribute: attribute,
+                    cat: cat,
+                    subcat: subcat,
+                },
+                success: function(response) {
+                    console.log(response);
+                    $('#product-listing').empty();
+                    $('#product-listing').removeClass('blur-effect');
+
+                    printTiles(id, response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        // Pagination click event handler
+        $(document).on('click', '.pagination a', function(e) {
+            e.preventDefault();
+            var page = $(this).data('page'); // Get the page number from the clicked link
+            fetchProducts(page);
+        });
+        // });
+    </script>
+
+    <script>
+        (function($) {
+
+            "use strict";
+
+            $(document).ready(function() {
+
+                /*  [ Filter by price ]
+
+                - - - - - - - - - - - - - - - - - - - - */
+
+                $('#slider-range').slider({
+
+                    range: true,
+
+                    min: 0,
+
+                    max: 500,
+
+                    values: [0, 300],
+
+                    slide: function(event, ui) {
+
+                        $('#amount-left').text(ui.values[0]);
+                        $('#amount-right').text(ui.values[1]);
+
+                    }
+
+                });
+
+                $('#amount-left').text($('#slider-range').slider('values', 0));
+
+                $('#amount-right').text($('#slider-range').slider('values', 1));
+            });
+
+        })(jQuery);
+    </script>
 @endsection
