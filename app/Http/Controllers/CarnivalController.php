@@ -169,8 +169,6 @@ class CarnivalController extends Controller
                 'error' => $e->getMessage(),
             ], 500);
         }
-        $carnival->mascamps()->sync($request->mascamps); // Sync mascamps
-        return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
     }
 
     public function assignModels(Request $request)
