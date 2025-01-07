@@ -128,9 +128,8 @@ class CarnivalController extends Controller
         return response()->json(['full_name' => $full_name]);
     }
 
-    public function assignModels(Request $request)
+    public function assignCarnivalMember(Request $request)
     {
-        // dd($request->toArray());
         $validatedData = $request->validate([
             'carnival_id' => 'required|exists:carnivals,id',
             'first_name' => 'required|string|max:255',
@@ -170,18 +169,25 @@ class CarnivalController extends Controller
                 'error' => $e->getMessage(),
             ], 500);
         }
+        $carnival->mascamps()->sync($request->mascamps); // Sync mascamps
+        return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
+    }
 
-        // $carnival = Carnival::findOrFail($request->carnival_id);
-        // if ($request->has('is_model')) {
-        //     $mascampsWithData = [];
-        //     foreach ($request->mascamps as $mascampId) {
-        //         $mascampsWithData[$mascampId] = ['is_model' => 1];
-        //     }
-        //     $carnival->mascamps()->sync($mascampsWithData);
-        //     return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
-        // }
-        // $carnival->mascamps()->sync($request->mascamps); // Sync mascamps
-        // return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
+    public function assignModels(Request $request)
+    {
+        // dd($request->toArray());
+
+        $carnival = Carnival::findOrFail($request->carnival_id);
+        if ($request->has('is_model')) {
+            $mascampsWithData = [];
+            foreach ($request->mascamps as $mascampId) {
+                $mascampsWithData[$mascampId] = ['is_model' => 1];
+            }
+            $carnival->mascamps()->sync($mascampsWithData);
+            return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
+        }
+        $carnival->mascamps()->sync($request->mascamps); // Sync mascamps
+        return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
     }
 
     public function getAssignedMascamps(Request $request, $id)
