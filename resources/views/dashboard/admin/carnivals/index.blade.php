@@ -138,7 +138,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="assignMasscampModal" tabindex="-1" role="dialog"
+    {{-- <div class="modal fade" id="assignMasscampModal" tabindex="-1" role="dialog"
         aria-labelledby="assignMasscampModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document"> <!-- Increased modal width -->
             <div class="modal-content">
@@ -221,7 +221,40 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+
+    <!-- Modal -->
+    <div class="modal fade" id="assignMasscampModal" tabindex="-1" role="dialog"
+        aria-labelledby="assignMasscampModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="assignMasscampModalLabel">Edit Carnival</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="assignMasscampForm">
+                        @csrf
+                        @method('POST')
+                        <input type="hidden" id="carnival_id" name="carnival_id">
+                        <div class="form-group">
+                            <label for="mascamp">Mascamps</label><br>
+                            <select id="mascamp" name="mascamps[]" class="form-control select2" multiple>
+                                @foreach ($mascamps as $row)
+                                    <option value="{{ $row->id }}">
+                                        {{ $row->user->first_name . ' ' . $row->user->last_name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="assignMasscampBtn">Update Carnival</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Delete Carnival Confirmation Modal -->
     <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog"
@@ -296,47 +329,47 @@
             $(document).on('click', '.assignMasscamp', function() {
                 var carnivalId = $(this).data('id');
                 $('#carnival_id').val(carnivalId);
-                $('#assignMasscampModal').modal('show');
-                // var model = $(this).data('model');
-                // let data = '';
-                // let modelInput = '';
-                // $('#is-model').remove();
-                // if(model == 'yes')
-                // {
-                //     data = model;
-                //     modelInput = '<input type="hidden" name="is_model" value="yes" id="is-model"/>'
-                // }
+                // $('#assignMasscampModal').modal('show');
+                var model = $(this).data('model');
+                let data = '';
+                let modelInput = '';
+                $('#is-model').remove();
+                if(model == 'yes')
+                {
+                    data = model;
+                    modelInput = '<input type="hidden" name="is_model" value="yes" id="is-model"/>'
+                }
 
-                // // Fetch assigned mascamps for the selected carnival
-                // $.ajax({
-                //     url: '{{ route('carnivals.assigned.mascamps', ':id') }}'.replace(':id',
-                //         carnivalId),
-                //     data : model,
-                //     type: 'GET',
-                //     success: function(response) {
-                //         // Clear existing selections
-                //         $('#mascamp').val([]).trigger('change');
-                //         $('#mascamp').html('');
+                // Fetch assigned mascamps for the selected carnival
+                $.ajax({
+                    url: '{{ route('carnivals.assigned.mascamps', ':id') }}'.replace(':id',
+                        carnivalId),
+                    data : model,
+                    type: 'GET',
+                    success: function(response) {
+                        // Clear existing selections
+                        $('#mascamp').val([]).trigger('change');
+                        $('#mascamp').html('');
 
-                //         // Set selected values
-                //         if (response.vendors) {
-                //             $.each(response.vendors, function(index, row) {
-                //                 var html =
-                //                     `<option value="${row.id}">${row.user.first_name} ${row.user.last_name}</option>`;
-                //                     $('#mascamp').append(html);
-                //             });
-                //             $('.select2').select2({
-                //                 theme: 'bootstrap4',
-                //             });
-                //         }
-                //         $('#assignMasscampForm').append(modelInput);
-                //         $('#assignMasscampModal').modal('show');
-                //     },
-                //     error: function(xhr, status, error) {
-                //         console.error(xhr.responseText);
-                //         alert('Failed to fetch assigned mascamps.');
-                //     }
-                // });
+                        // Set selected values
+                        if (response.vendors) {
+                            $.each(response.vendors, function(index, row) {
+                                var html =
+                                    `<option value="${row.id}">${row.user.first_name} ${row.user.last_name}</option>`;
+                                    $('#mascamp').append(html);
+                            });
+                            $('.select2').select2({
+                                theme: 'bootstrap4',
+                            });
+                        }
+                        $('#assignMasscampForm').append(modelInput);
+                        $('#assignMasscampModal').modal('show');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        alert('Failed to fetch assigned mascamps.');
+                    }
+                });
             });
 
 
