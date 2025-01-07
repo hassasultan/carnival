@@ -197,21 +197,10 @@
                                                         <span>off</span></span>
                                                 </div>
                                                 <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a href="">Maecenas consequat
-                                                            mauris</a></strong>
+                                                    {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
                                                     <div class="clearfix">
                                                         <div class="product-item-price">
-                                                            <span class="price">$45.00</span>
-                                                            <span class="old-price">$52.00</span>
-                                                        </div>
-                                                        <div class="product-reviews-summary">
-                                                            <div class="rating-summary">
-                                                                <div title="80%" class="rating-result">
-                                                                    <span style="width:80%">
-                                                                        <span><span>80</span>% of <span>100</span></span>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
+                                                            <span class="price">{{ $item->name }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
