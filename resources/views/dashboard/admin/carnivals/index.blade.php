@@ -153,7 +153,7 @@
                     <form id="assignMemberForm">
                         @csrf
                         @method('POST')
-                        <input type="hidden" id="carnival_id" name="carnival_id">
+                        <input type="hidden" id="carnival_id_member" name="carnival_id">
                         <input type="hidden" id="member_id" name="member_id">
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -679,7 +679,7 @@
 
         $(document).on('click', '.assignMember', function() {
             var carnivalId = $(this).data('id');
-            $('#carnival_id').val(carnivalId);
+            $('#carnival_id_member').val(carnivalId);
 
             $.ajax({
                 url: '{{ route('get.carnivals.members', ':id') }}'.replace(':id', carnivalId),
