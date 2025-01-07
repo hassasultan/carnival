@@ -335,15 +335,15 @@
 
                 members.forEach(member => {
                     const row = `
-            <tr>
-                <td>${member.first_name} ${member.last_name}</td>
-                <td>${member.email}</td>
-                <td>${member.phone}</td>
-                <td>
-                    <button class="btn btn-sm btn-primary" onclick="editMember(${member.id})">Edit</button>
-                </td>
-            </tr>
-        `;
+                        <tr>
+                            <td>${member.first_name} ${member.last_name}</td>
+                            <td>${member.email}</td>
+                            <td>${member.phone}</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary" onclick="editMember(${member.id})">Edit</button>
+                            </td>
+                        </tr>
+                    `;
                     tableBody.insertAdjacentHTML("beforeend", row);
                 });
 
@@ -368,7 +368,7 @@
                     document.getElementById("country").value = member.country;
 
                     // Scroll to the form
-                    document.getElementById("assignMasscampForm").scrollIntoView({
+                    document.getElementById("assignMemberForm").scrollIntoView({
                         behavior: "smooth"
                     });
                 } else {
