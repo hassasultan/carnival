@@ -217,8 +217,8 @@
                                 </div>
                             </div><!-- tab 1 -->
 
-                            <a href="{{ route('front.myMusicGallery', $user->slug) }}" type="submit"
-                                class="btn mb-2 btn-danger" id="">View All</a>
+                            {{-- <a href="{{ route('front.myMusicGallery', $user->slug) }}" type="submit"
+                                class="btn mb-2 btn-danger" id="">View All</a> --}}
 
                         </div>
 
