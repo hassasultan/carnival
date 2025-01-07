@@ -173,7 +173,7 @@
                                     "992":{"items":3}
                                 }'
                                     id="best-sell-div">
-                                    @foreach ($musics as $music)
+                                    {{-- @foreach ($musics as $music)
                                         <div class="product-item  product-item-opt-1 ">
                                             <div class="product-item-info">
                                                 <div class="product-item-photo">
@@ -213,7 +213,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    @endforeach --}}
                                 </div>
                             </div><!-- tab 1 -->
 
@@ -244,7 +244,7 @@
                                 "992":{"items":1},
                                 "1200":{"items":1}
                                 }'>
-                                @foreach ($events as $event)
+                                {{-- @foreach ($events as $event)
                                     <div class="product-item  product-item-opt-1 ">
                                         <div class="deals-of-countdown">
 
@@ -268,7 +268,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
+                                @endforeach --}}
                             </div>
 
                         </div>
