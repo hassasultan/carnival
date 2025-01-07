@@ -340,7 +340,7 @@
                                     alt="baner-floor"></a>
                         </div>
 
-                        <div class="col-products tab-content">
+                        {{-- <div class="col-products tab-content">
 
                             <!-- tab 1 -->
                             <div class="tab-pane active in  fade " id="floor1-1" role="tabpanel">
@@ -516,7 +516,7 @@
                             </div>
 
                             <!-- tab 4 -->
-                            {{-- @foreach ($categories as $row)
+                            @foreach ($categories as $row)
                                 <div class="tab-pane  fade" id="floor1-4-{{ $row->id }}" role="tabpanel">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
                                         data-responsive='{
@@ -575,9 +575,9 @@
                                         @endforeach
                                     </div>
                                 </div>
-                            @endforeach --}}
+                            @endforeach
 
-                        </div>
+                        </div> --}}
 
                     </div>
 
