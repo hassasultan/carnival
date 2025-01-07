@@ -236,6 +236,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     // assign carnivals to mascamp
     Route::post('/assign/mascamps', [CarnivalController::class, 'assignModels'])->name('assign.models');
 
+    // assign carnivals to mascamp
+    Route::post('/assign/carnival-member', [CarnivalController::class, 'assignCarnivalMember'])->name('assign.CarnivalMember');
+
     Route::get('carnivals/{id}/assigned-mascamps', [CarnivalController::class, 'getAssignedMascamps'])->name('carnivals.assigned.mascamps');
 
     // Regions CRUD

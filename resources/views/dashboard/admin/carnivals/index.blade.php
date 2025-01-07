@@ -502,6 +502,45 @@
                 });
             });
 
+            $('#assignMemberForm').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: '{{ route('assign.CarnivalMember') }}',
+                    type: 'POST',
+                    headers: {
+                        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: formData,
+                    success: function(response) {
+                        $('#assignMasscampModal').modal('hide');
+                        toastr.success(response.success);
+
+                        // $('#dataTable-1').DataTable({
+                        //     autoWidth: true,
+                        //     "lengthMenu": [
+                        //         [16, 32, 64, -1],
+                        //         [16, 32, 64, "All"]
+                        //     ]
+                        // });
+
+                        $('#carnivalMessage').html(
+                            '<div class="alert alert-success" role="alert">Carnival created successfully</div>'
+                        );
+                        window.location.reload();
+                        setTimeout(function() {
+                            $('#carnivalMessage').html('');
+                        }, 3000);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        $('#carnivalMessage').html(
+                            '<div class="alert alert-danger" role="alert">Failed to create carnival</div>'
+                        );
+                    }
+                });
+            });
+
             $(document).on('click', '.deleteCarnivalBtn', function(event) {
                 event.preventDefault();
                 var deleteForm = $(this).closest('form');
