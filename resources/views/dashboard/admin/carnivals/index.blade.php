@@ -352,10 +352,29 @@
             }
 
             function editMember(memberId) {
+                console.log("check");
                 // Retrieve the specific member from the global list
-                const member = window.membersList.find(m => m.id === memberId);
+                // const member = window.membersList.find(m => m.id === memberId);
 
+                // if (member) {
+                //     // Populate the form with member details
+                //     document.getElementById("member_id").value = memberId;
+                //     document.getElementById("firstname").value = member.first_name;
+                //     document.getElementById("lastname").value = member.last_name;
+                //     document.getElementById("email").value = member.email;
+                //     document.getElementById("phone").value = member.phone;
+                //     document.getElementById("address").value = member.address;
+                //     document.getElementById("city").value = member.city;
+                //     document.getElementById("state").value = member.state;
+                //     document.getElementById("country").value = member.country;
 
+                //     // Scroll to the form
+                //     document.getElementById("assignMemberForm").scrollIntoView({
+                //         behavior: "smooth"
+                //     });
+                // } else {
+                //     alert("Member not found!");
+                // }
             }
 
             $(document).on('click', '.assignMember', function() {
