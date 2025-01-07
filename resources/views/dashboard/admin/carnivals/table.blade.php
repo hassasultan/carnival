@@ -34,7 +34,7 @@
                         Link</a></td>
                 <td>
                     {{-- <button class="btn btn-sm btn-primary assignMasscamp" data-id="{{ $carnival->id }}" data-model="no">Assign Mascamp</button> --}}
-                    <button class="btn btn-primary edit-carnival" data-id="{{ $carnival->id }}">
+                    <button class="btn btn-primary assignMember" data-id="{{ $carnival->id }}">
                         Assign Members
                     </button>
                     <button class="btn btn-sm btn-primary assignMasscamp" data-id="{{ $carnival->id }}" data-model="yes" >Assign Models</button>

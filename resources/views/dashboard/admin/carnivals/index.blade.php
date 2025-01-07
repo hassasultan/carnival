@@ -138,19 +138,19 @@
     </div>
 
     <!-- Modal -->
-    {{-- <div class="modal fade" id="assignMasscampModal" tabindex="-1" role="dialog"
-        aria-labelledby="assignMasscampModalLabel" aria-hidden="true">
+    <div class="modal fade" id="assignMemberModal" tabindex="-1" role="dialog"
+        aria-labelledby="assignMemberModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document"> <!-- Increased modal width -->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="assignMasscampModalLabel">Edit Carnival</h5>
+                    <h5 class="modal-title" id="assignMemberModalLabel">Edit Carnival</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <!-- Form -->
-                    <form id="assignMasscampForm">
+                    <form id="assignMemberForm">
                         @csrf
                         @method('POST')
                         <input type="hidden" id="carnival_id" name="carnival_id">
@@ -221,7 +221,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="assignMasscampModal" tabindex="-1" role="dialog"
@@ -324,6 +324,12 @@
                         );
                     }
                 });
+            });
+            
+            $(document).on('click', '.assignMember', function() {
+                var carnivalId = $(this).data('id');
+                $('#carnival_id').val(carnivalId);
+                $('#assignMemberModal').modal('show');
             });
 
             $(document).on('click', '.assignMasscamp', function() {
