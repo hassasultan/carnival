@@ -56,7 +56,7 @@ class FrontendConroller extends Controller
         $blogs = Blogs::with('user')->get()->take('3');
         $products = Product::with('brand')->get();
         // dd($events->toArray());
-        return view('front.carnival-listing', compact('products','blogs','carnivals', 'investors', 'regions'));
+        return view('front.carnival-listing', compact('products', 'blogs', 'carnivals', 'investors', 'regions'));
     }
     public function get_carnivals_by_region($id)
     {
@@ -790,5 +790,21 @@ class FrontendConroller extends Controller
         $vendors = $query->orderBy('id', 'DESC')->paginate(18);
 
         return $vendors;
+    }
+
+    public function carnival_detail($slug)
+    {
+        // $user = User::with('banners')->whereSlug($slug)->first();
+        $carnival = Carnival::whereSlug($slug)->first();
+        // $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user->id)->first();
+        // $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
+        // // dd($subvendors->toArray());
+        // $categories = $vendor->products->pluck('category')->unique('id');
+        // $products = Product::where('user_id', $user->id)->with('brand')->get();
+        // $ads = Advertisement::where('status', 1)->take(2)->get();
+        // $vendorPackageName = optional($user->vendor?->package)->title;
+        // $subVendorPackageName = optional($user->subVendor?->package)->title;
+        dd($carnival);
+        return view('ShopFrontend.artist.detail', compact('events', 'vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'musics', 'costumes'));
     }
 }

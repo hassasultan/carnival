@@ -92,6 +92,7 @@ Route::get('/blog-list', [FrontendConroller::class, 'blog_list'])->name('front.b
 Route::get('/blog-detail/{id}', [FrontendConroller::class, 'blog_detail'])->name('front.blog.detail');
 Route::get('/get-section-leaders', [FrontendConroller::class, 'sub_vendor_listing'])->name('get.subvendors.front');
 Route::get('/shop/{slug}', [FrontendConroller::class, 'vendor_detail'])->name('front.vendor.detail');
+Route::get('/carnival/{slug}', [FrontendConroller::class, 'carnival_detail'])->name('front.carnival.detail');
 Route::get('/get/shop/products/{slug}', [FrontendConroller::class, 'get_vendor_products'])->name('front.vendor.products');
 Route::get('/get-products', [FrontendConroller::class, 'get_product'])->name('get.products.home');
 Route::get('/shop/product/{slug}', [FrontendConroller::class, 'product_detail'])->name('get.products.detail');
