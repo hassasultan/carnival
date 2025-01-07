@@ -805,6 +805,6 @@ class FrontendConroller extends Controller
         $subVendorPackageName = optional($user->subVendor?->package)->title;
 
         $carnival = Carnival::whereSlug($slug)->first();
-        return view('ShopFrontend.carnival.detail', compact('carnival', 'ads'));
+        return view('ShopFrontend.carnival.detail', compact('carnival', 'vendor', 'categories', 'products', 'ads', 'subvendors', 'user'));
     }
 }
