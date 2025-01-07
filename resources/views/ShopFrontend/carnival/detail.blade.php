@@ -299,11 +299,11 @@
                                             Viewed </a></li>
                                     <li role="presentation"><a href="#floor1-3" id="new-arr-tab" role="tab"
                                             data-toggle="tab">New Arrivals <span class="label-cat">12</span></a></li>
-                                    @foreach ($categories as $row)
+                                    {{-- @foreach ($categories as $row)
                                         <li role="presentation"><a href="#floor1-4-{{ $row->id }}"
                                                 onclick="catProduct({{ $row->id }},'vendors-cat-div-{{ $row->id }}')"
                                                 role="tab" data-toggle="tab">{{ $row->title }} </a></li>
-                                    @endforeach
+                                    @endforeach --}}
                                 </ul>
                             </div>
                         </div>
@@ -516,7 +516,7 @@
                             </div>
 
                             <!-- tab 4 -->
-                            @foreach ($categories as $row)
+                            {{-- @foreach ($categories as $row)
                                 <div class="tab-pane  fade" id="floor1-4-{{ $row->id }}" role="tabpanel">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
                                         data-responsive='{
@@ -575,7 +575,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                            @endforeach
+                            @endforeach --}}
 
                         </div>
 
