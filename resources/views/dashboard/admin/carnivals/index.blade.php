@@ -327,80 +327,7 @@
                 });
             });
 
-            let members = [];
 
-            function loadMembers(members) {
-                const tableBody = document.getElementById("membersTableBody");
-                tableBody.innerHTML = ""; // Clear existing rows
-
-                members.forEach(member => {
-                    const row = `
-                        <tr>
-                            <td>${member.first_name} ${member.last_name}</td>
-                            <td>${member.email}</td>
-                            <td>${member.phone}</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary" onclick="editMember(${member.id})">Edit</button>
-                            </td>
-                        </tr>
-                    `;
-                    tableBody.insertAdjacentHTML("beforeend", row);
-                });
-
-                // Save members globally for editing
-                window.membersList = members; // Store members globally in a safe place
-            }
-
-            function editMember(memberId) {
-                console.log("check");
-                // Retrieve the specific member from the global list
-                // const member = window.membersList.find(m => m.id === memberId);
-
-                // if (member) {
-                //     // Populate the form with member details
-                //     document.getElementById("member_id").value = memberId;
-                //     document.getElementById("firstname").value = member.first_name;
-                //     document.getElementById("lastname").value = member.last_name;
-                //     document.getElementById("email").value = member.email;
-                //     document.getElementById("phone").value = member.phone;
-                //     document.getElementById("address").value = member.address;
-                //     document.getElementById("city").value = member.city;
-                //     document.getElementById("state").value = member.state;
-                //     document.getElementById("country").value = member.country;
-
-                //     // Scroll to the form
-                //     document.getElementById("assignMemberForm").scrollIntoView({
-                //         behavior: "smooth"
-                //     });
-                // } else {
-                //     alert("Member not found!");
-                // }
-            }
-
-            $(document).on('click', '.assignMember', function() {
-                var carnivalId = $(this).data('id');
-                $('#carnival_id').val(carnivalId);
-
-                $.ajax({
-                    url: '{{ route('get.carnivals.members', ':id') }}'.replace(':id', carnivalId),
-                    type: 'GET',
-                    success: function(response) {
-                        if (response.members) {
-                            members = response.members; // Assign globally
-                            loadMembers(members);
-                        } else {
-                            alert('No members found for this carnival.');
-                        }
-
-                        $('#assignMemberModal').modal('show');
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                        alert('Failed to fetch carnival members.');
-                    }
-                });
-                // $('#assignMemberModal').modal('show');
-            });
 
             $(document).on('click', '.assignMasscamp', function() {
                 var carnivalId = $(this).data('id');
@@ -700,6 +627,79 @@
                     }
                 });
             });
+        });
+        let members = [];
+
+        function loadMembers(members) {
+            const tableBody = document.getElementById("membersTableBody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            members.forEach(member => {
+                const row = `
+                        <tr>
+                            <td>${member.first_name} ${member.last_name}</td>
+                            <td>${member.email}</td>
+                            <td>${member.phone}</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary" onclick="editMember(${member.id})">Edit</button>
+                            </td>
+                        </tr>
+                    `;
+                tableBody.insertAdjacentHTML("beforeend", row);
+            });
+
+            // Save members globally for editing
+            window.membersList = members; // Store members globally in a safe place
+        }
+
+        function editMember(memberId) {
+            // Retrieve the specific member from the global list
+            const member = window.membersList.find(m => m.id === memberId);
+
+            if (member) {
+                // Populate the form with member details
+                document.getElementById("member_id").value = memberId;
+                document.getElementById("firstname").value = member.first_name;
+                document.getElementById("lastname").value = member.last_name;
+                document.getElementById("email").value = member.email;
+                document.getElementById("phone").value = member.phone;
+                document.getElementById("address").value = member.address;
+                document.getElementById("city").value = member.city;
+                document.getElementById("state").value = member.state;
+                document.getElementById("country").value = member.country;
+
+                // Scroll to the form
+                document.getElementById("assignMemberForm").scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                alert("Member not found!");
+            }
+        }
+
+        $(document).on('click', '.assignMember', function() {
+            var carnivalId = $(this).data('id');
+            $('#carnival_id').val(carnivalId);
+
+            $.ajax({
+                url: '{{ route('get.carnivals.members', ':id') }}'.replace(':id', carnivalId),
+                type: 'GET',
+                success: function(response) {
+                    if (response.members) {
+                        members = response.members; // Assign globally
+                        loadMembers(members);
+                    } else {
+                        alert('No members found for this carnival.');
+                    }
+
+                    $('#assignMemberModal').modal('show');
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert('Failed to fetch carnival members.');
+                }
+            });
+            // $('#assignMemberModal').modal('show');
         });
     </script>
     <script>
