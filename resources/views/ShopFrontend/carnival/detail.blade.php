@@ -781,7 +781,7 @@
         </div>
 
         <!-- block  showcase-->
-        <div class="block-showcase block-showcase-opt1 block-brand-tabs">
+        {{-- <div class="block-showcase block-showcase-opt1 block-brand-tabs">
             <div class="container">
 
                 <div class="block-title">
@@ -1563,7 +1563,7 @@
                 </div>
 
             </div>
-        </div><!-- block  showcase-->
+        </div><!-- block  showcase--> --}}
 
         <!-- block  hot categories-->
         <div class="block-hot-categories-opt1">

@@ -801,7 +801,7 @@ class FrontendConroller extends Controller
         // // dd($subvendors->toArray());
         // $categories = $vendor->products->pluck('category')->unique('id');
         // $products = Product::where('user_id', $user->id)->with('brand')->get();
-        // $ads = Advertisement::where('status', 1)->take(2)->get();
+        $ads = Advertisement::where('status', 1)->take(2)->get();
         // $vendorPackageName = optional($user->vendor?->package)->title;
         // $subVendorPackageName = optional($user->subVendor?->package)->title;
         return view('ShopFrontend.carnival.detail', compact('carnival'));
