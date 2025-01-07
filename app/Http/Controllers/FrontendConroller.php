@@ -804,7 +804,6 @@ class FrontendConroller extends Controller
         // $ads = Advertisement::where('status', 1)->take(2)->get();
         // $vendorPackageName = optional($user->vendor?->package)->title;
         // $subVendorPackageName = optional($user->subVendor?->package)->title;
-        dd($carnival);
         return view('ShopFrontend.carnival.detail', compact('carnival'));
     }
 }
