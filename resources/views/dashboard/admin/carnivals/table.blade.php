@@ -37,7 +37,7 @@
                     <button class="btn btn-primary edit-carnival" data-id="{{ $carnival->id }}">
                         Assign Members
                     </button>
-                    {{-- <button class="btn btn-sm btn-primary assignMasscamp" data-id="{{ $carnival->id }}" data-model="yes" >Assign Models</button> --}}
+                    <button class="btn btn-sm btn-primary assignMasscamp" data-id="{{ $carnival->id }}" data-model="yes" >Assign Models</button>
                     <button class="btn btn-sm btn-warning editCarnivalBtn" data-id="{{ $carnival->id }}">Edit</button>
                     <form action="{{ route('carnivals.destroy', $carnival->id) }}" method="POST"
                         style="display:inline;">
