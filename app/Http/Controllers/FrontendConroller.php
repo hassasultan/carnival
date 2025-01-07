@@ -22,6 +22,7 @@ use App\Models\Brand;
 use App\Models\GalleryAlbum;
 use App\Models\Music;
 use App\Models\Costume;
+use App\Models\Carnival;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -428,7 +429,7 @@ class FrontendConroller extends Controller
             ->withCount('products')
             ->get();
         if ($vendorPackageName === 'Models' || $subVendorPackageName === 'Models') {
-            return view('ShopFrontend.model.detail', compact('event', 'user','products','brands'));
+            return view('ShopFrontend.model.detail', compact('event', 'user', 'products', 'brands'));
         } else {
             return view('ShopFrontend.vendorAboutUs', compact('user'));
         }
@@ -683,6 +684,7 @@ class FrontendConroller extends Controller
         $musics = $query->orderBy('id', 'DESC')->paginate(18);
         return $musics;
     }
+
     public function myMusicGallery($slug)
     {
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
@@ -691,5 +693,59 @@ class FrontendConroller extends Controller
         // dd($siteGallery->toArray(), $siteGallery[0]->imagesRelation->toArray());
 
         return view('ShopFrontend.vendorMusicGallery', compact('user', 'siteGallery'));
+    }
+
+    public function carnival_listing()
+    {
+        $mascamp_banners = Banner::where('type', 'mascamps')->get();
+        $regions = Region::all();
+        $adv1 = Advertisement::where('status', 1)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $adv2 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id'))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $adv3 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id')->merge($adv2->pluck('id')))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        return view('ShopFrontend.carnivals', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3'));
+    }
+    public function get_carnivals(Request $request)
+    {
+        $vendor_type = $request->get('vendor_type', null);
+        $regionId = $request->get('getRegion');
+
+        $query = Carnival::query()
+            ->with([
+                'user' => function ($query) {
+                    $query->select('id', 'first_name', 'last_name', 'slug', 'image');
+                },
+                'user.products' => function ($query) {
+                    $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
+                        ->groupBy('user_id');
+                },
+            ]);
+
+        if ($vendor_type) {
+            $query->whereHas('package', function ($query) use ($vendor_type) {
+                $query->where('title', $vendor_type);
+            });
+        }
+
+        if ($regionId) {
+            $query->where('continent', $regionId);
+        }
+
+        $vendors = $query->orderBy('id', 'DESC')->paginate(18);
+
+        return $vendors;
     }
 }

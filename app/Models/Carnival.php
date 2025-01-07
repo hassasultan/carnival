@@ -18,6 +18,7 @@ class Carnival extends Model
         'end_date',
         'region',
         'description',
+        'slug',
     ];
 
     public function user()

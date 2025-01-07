@@ -31,11 +31,14 @@ class CarnivalController extends Controller
 
         $uniqueId = $this->generateUniqueId();
 
+        $slug = $request->name . '-' . $uniqueId;
+
         $carnivals = Carnival::create([
             'unique_id' => $uniqueId,
             'head' => $request->head ?? 0,
             'name' => $request->name,
             'start_date' => $request->start_date,
+            'slug' => $slug,
             'end_date' => $request->end_date,
             'region' => $request->region,
             'description' => $request->description,
