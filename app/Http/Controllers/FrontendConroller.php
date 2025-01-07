@@ -738,29 +738,29 @@ class FrontendConroller extends Controller
         return view('ShopFrontend.vendorMusicGallery', compact('user', 'siteGallery'));
     }
 
-    public function carnival_listing()
-    {
-        $mascamp_banners = Banner::where('type', 'mascamps')->get();
-        $regions = Region::all();
-        $adv1 = Advertisement::where('status', 1)
-            ->inRandomOrder()
-            ->take(3)
-            ->get();
+    // public function carnival_listing()
+    // {
+    //     $mascamp_banners = Banner::where('type', 'mascamps')->get();
+    //     $regions = Region::all();
+    //     $adv1 = Advertisement::where('status', 1)
+    //         ->inRandomOrder()
+    //         ->take(3)
+    //         ->get();
 
-        $adv2 = Advertisement::where('status', 1)
-            ->whereNotIn('id', $adv1->pluck('id'))
-            ->inRandomOrder()
-            ->take(3)
-            ->get();
+    //     $adv2 = Advertisement::where('status', 1)
+    //         ->whereNotIn('id', $adv1->pluck('id'))
+    //         ->inRandomOrder()
+    //         ->take(3)
+    //         ->get();
 
-        $adv3 = Advertisement::where('status', 1)
-            ->whereNotIn('id', $adv1->pluck('id')->merge($adv2->pluck('id')))
-            ->inRandomOrder()
-            ->take(3)
-            ->get();
+    //     $adv3 = Advertisement::where('status', 1)
+    //         ->whereNotIn('id', $adv1->pluck('id')->merge($adv2->pluck('id')))
+    //         ->inRandomOrder()
+    //         ->take(3)
+    //         ->get();
 
-        return view('ShopFrontend.carnivals', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3'));
-    }
+    //     return view('ShopFrontend.carnivals', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3'));
+    // }
     public function get_carnivals(Request $request)
     {
         $vendor_type = $request->get('vendor_type', null);
