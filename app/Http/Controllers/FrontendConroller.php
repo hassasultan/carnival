@@ -794,8 +794,9 @@ class FrontendConroller extends Controller
 
     public function carnival_detail($slug)
     {
-        $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->orderBy('id', 'desc')->get()->take('5')->first();
-        $user = User::with('banners')->where('id', $vendor->user_id)->first();
+        $carnival = Carnival::whereSlug($slug)->first();
+        $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $carnival->user_id)->first();
+        $user = User::with('banners')->where('id', $carnival->user_id)->first();
         $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
         // dd($subvendors->toArray());
         $categories = $vendor->products->pluck('category')->unique('id');
@@ -804,7 +805,6 @@ class FrontendConroller extends Controller
         $vendorPackageName = optional($user->vendor?->package)->title;
         $subVendorPackageName = optional($user->subVendor?->package)->title;
 
-        $carnival = Carnival::whereSlug($slug)->first();
         return view('ShopFrontend.carnival.detail', compact('carnival', 'vendor', 'categories', 'products', 'ads', 'subvendors', 'user'));
     }
 }
