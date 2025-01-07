@@ -805,6 +805,6 @@ class FrontendConroller extends Controller
         // $vendorPackageName = optional($user->vendor?->package)->title;
         // $subVendorPackageName = optional($user->subVendor?->package)->title;
         dd($carnival);
-        return view('ShopFrontend.artist.detail', compact('events', 'vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'musics', 'costumes'));
+        return view('ShopFrontend.carnival.detail', compact('carnival'));
     }
 }
