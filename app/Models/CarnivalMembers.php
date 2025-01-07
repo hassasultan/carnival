@@ -26,4 +26,9 @@ class CarnivalMembers extends Model
     {
         return $this->belongsTo(Carnival::class);
     }
+
+    public function getFullnameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }
