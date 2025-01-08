@@ -214,7 +214,7 @@
                                 </ul>
                             </li>
                             <li><a href="policies.html">Paid 2 Parti</a></li>
-                            <li><a href="sitemap.html">About us</a></li>
+                            <li><a href="{{ route('front.aboutus') }}">About us</a></li>
 
                             <!-- <li><a href="login.html">FAQ</a></li> -->
 
