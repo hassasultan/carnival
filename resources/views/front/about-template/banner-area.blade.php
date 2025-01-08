@@ -1,9 +1,15 @@
+<style>
+    .top-baner .pagination
+    {
+        text-align: left !important;
+    }
+</style>
 <div class="top-baner">
 	<div class="swiper-container main-slider-3" data-autoplay="0" data-loop="1" data-speed="900" data-center="0" data-slides-per-view="1">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide active" data-val="0">
 					<div class="clip">
-						<div class="bg bg-bg-chrome act" style="background-image:url(img/home_8/slide.jpg)"></div>
+						<div class="bg bg-bg-chrome act" style="background-image:url({{ asset('assets/images/slide.jpg') }})"></div>
 					</div>
 					<div class="vertical-bottom">
 						<div class="container">
@@ -21,7 +27,7 @@
 			</div>
 			<div class="swiper-slide" data-val="1">
 					<div class="clip">
-						<div class="bg bg-bg-chrome act" style="background-image:url(img/home_8/slide.jpg)"></div>
+						<div class="bg bg-bg-chrome act" style="background-image:url({{ asset('assets/images/slide.jpg') }})"></div>
 					</div>
 					<div class="vertical-bottom">
 						<div class="container">

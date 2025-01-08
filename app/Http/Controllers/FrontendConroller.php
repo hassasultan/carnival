@@ -49,7 +49,14 @@ class FrontendConroller extends Controller
     }
     public function aboutus()
     {
-        return view('front.aboutus');
+        $services = OurService::get()->take('4');
+        $investors = Investor::all();
+        $testimonials = Testimonials::all();
+        $siteGallery = SiteGallery::get();
+        $blogs = Blogs::with('user')->get()->take('3');
+        $products = Product::with('brand')->get();
+
+        return view('front.aboutus',compact('services','products','blogs','investors','testimonials','siteGallery'));
     }
     public function carnival_listing()
     {
