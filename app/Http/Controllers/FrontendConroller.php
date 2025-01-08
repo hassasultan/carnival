@@ -47,6 +47,10 @@ class FrontendConroller extends Controller
         // dd($events->toArray());
         return view('front.home', compact('carnivals', 'events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials'));
     }
+    public function aboutus()
+    {
+        return view('front.aboutus');
+    }
     public function carnival_listing()
     {
 
