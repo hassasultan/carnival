@@ -9,8 +9,8 @@
             <div class="container" style="margin-top:30px">
 
                 <div class="arrows">
-                    <div class="swiper-container main-slider-5" style="margin: 88px auto;" data-autoplay="0" data-loop="1" data-speed="900"
-                        data-center="0" data-slides-per-view="1">
+                    <div class="swiper-container main-slider-5" style="margin: 88px auto;" data-autoplay="0"
+                        data-loop="1" data-speed="900" data-center="0" data-slides-per-view="1">
                         <div class="swiper-wrapper">
                             <style>
                                 .slider-extra {
@@ -127,311 +127,19 @@
                                                                                 <div class="nav-tab-item d-none events">
                                                                                     Events
                                                                                 </div>
+                                                                                <div class="nav-tab-item d-none costume">
+                                                                                    Costume
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="tabs-content clearfix">
-                                                                            <div
-                                                                                class="tab-info active d-none flight-tab">
-                                                                                <div class="hotel-line clearfix">
-                                                                                    <a class="hotel-img black-hover"
-                                                                                        href="#">
-                                                                                        <img class="img-responsive"
-                                                                                            src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                                                                            alt="">
-                                                                                        <div class="tour-layer delay-1">
-                                                                                        </div>
-                                                                                    </a>
-                                                                                    <div class="hotel-line-content">
-                                                                                        <a class="hotel-line-title"
-                                                                                            href="#">1. bristol
-                                                                                            Hotel</a>
-                                                                                        <div class="rate-wrap">
-                                                                                            <div class="rate">
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                            </div>
-                                                                                            <i>485 Rewies</i>
-                                                                                        </div>
-                                                                                        <div class="hotel-line-price">
-                                                                                            from $273</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="hotel-line clearfix">
-                                                                                    <a class="hotel-img black-hover"
-                                                                                        href="#">
-                                                                                        <img class="img-responsive"
-                                                                                            src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                                                                            alt="">
-                                                                                        <div class="tour-layer delay-1">
-                                                                                        </div>
-                                                                                    </a>
-                                                                                    <div class="hotel-line-content">
-                                                                                        <a class="hotel-line-title"
-                                                                                            href="#">2. Mykonos
-                                                                                            Hotel</a>
-                                                                                        <div class="rate-wrap">
-                                                                                            <div class="rate">
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                            </div>
-                                                                                            <i>485 Rewies</i>
-                                                                                        </div>
-                                                                                        <div class="hotel-line-price">
-                                                                                            from $273</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="hotel-line clearfix">
-                                                                                    <a class="hotel-img black-hover"
-                                                                                        href="#">
-                                                                                        <img class="img-responsive"
-                                                                                            src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                                                                            alt="">
-                                                                                        <div class="tour-layer delay-1">
-                                                                                        </div>
-                                                                                    </a>
-                                                                                    <div class="hotel-line-content">
-                                                                                        <a class="hotel-line-title"
-                                                                                            href="#">3. bristol
-                                                                                            Hotel</a>
-                                                                                        <div class="rate-wrap">
-                                                                                            <div class="rate">
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                            </div>
-                                                                                            <i>485 Rewies</i>
-                                                                                        </div>
-                                                                                        <div class="hotel-line-price">
-                                                                                            from $273</div>
-                                                                                    </div>
-                                                                                </div>
+                                                                            <div class="tab-info active d-none flight-tab">
                                                                             </div>
-                                                                            <div
-                                                                                class="tab-info active d-none hotel-tab">
-                                                                                <div class="hotel-line clearfix">
-                                                                                    <a class="hotel-img black-hover"
-                                                                                        href="#">
-                                                                                        <img class="img-responsive"
-                                                                                            src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                                                                            alt="">
-                                                                                        <div
-                                                                                            class="tour-layer delay-1">
-                                                                                        </div>
-                                                                                    </a>
-                                                                                    <div class="hotel-line-content">
-                                                                                        <a class="hotel-line-title"
-                                                                                            href="#">1. luxury
-                                                                                            Hotel</a>
-                                                                                        <div class="rate-wrap">
-                                                                                            <div class="rate">
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                            </div>
-                                                                                            <i>485 Rewies</i>
-                                                                                        </div>
-                                                                                        <div class="hotel-line-price">
-                                                                                            from $273</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="hotel-line clearfix">
-                                                                                    <a class="hotel-img black-hover"
-                                                                                        href="#">
-                                                                                        <img class="img-responsive"
-                                                                                            src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                                                                            alt="">
-                                                                                        <div
-                                                                                            class="tour-layer delay-1">
-                                                                                        </div>
-                                                                                    </a>
-                                                                                    <div class="hotel-line-content">
-                                                                                        <a class="hotel-line-title"
-                                                                                            href="#">2. bristol
-                                                                                            Hotel</a>
-                                                                                        <div class="rate-wrap">
-                                                                                            <div class="rate">
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                            </div>
-                                                                                            <i>485 Rewies</i>
-                                                                                        </div>
-                                                                                        <div class="hotel-line-price">
-                                                                                            from $273</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="hotel-line clearfix">
-                                                                                    <a class="hotel-img black-hover"
-                                                                                        href="#">
-                                                                                        <img class="img-responsive"
-                                                                                            src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                                                                            alt="">
-                                                                                        <div
-                                                                                            class="tour-layer delay-1">
-                                                                                        </div>
-                                                                                    </a>
-                                                                                    <div class="hotel-line-content">
-                                                                                        <a class="hotel-line-title"
-                                                                                            href="#">3. bristol
-                                                                                            Hotel</a>
-                                                                                        <div class="rate-wrap">
-                                                                                            <div class="rate">
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                            </div>
-                                                                                            <i>485 Rewies</i>
-                                                                                        </div>
-                                                                                        <div class="hotel-line-price">
-                                                                                            from $273</div>
-                                                                                    </div>
-                                                                                </div>
+                                                                            <div class="tab-info active d-none hotel-tab">
                                                                             </div>
-                                                                            <div
-                                                                                class="tab-info active d-none events-tab">
-                                                                                <div class="hotel-line clearfix">
-                                                                                    <a class="hotel-img black-hover"
-                                                                                        href="#">
-                                                                                        <img class="img-responsive"
-                                                                                            src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                                                                            alt="">
-                                                                                        <div
-                                                                                            class="tour-layer delay-1">
-                                                                                        </div>
-                                                                                    </a>
-                                                                                    <div class="hotel-line-content">
-                                                                                        <a class="hotel-line-title"
-                                                                                            href="#">1. bristol
-                                                                                            Hotel</a>
-                                                                                        <div class="rate-wrap">
-                                                                                            <div class="rate">
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                            </div>
-                                                                                            <i>485 Rewies</i>
-                                                                                        </div>
-                                                                                        <div class="hotel-line-price">
-                                                                                            from $273</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="hotel-line clearfix">
-                                                                                    <a class="hotel-img black-hover"
-                                                                                        href="#">
-                                                                                        <img class="img-responsive"
-                                                                                            src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                                                                            alt="">
-                                                                                        <div
-                                                                                            class="tour-layer delay-1">
-                                                                                        </div>
-                                                                                    </a>
-                                                                                    <div class="hotel-line-content">
-                                                                                        <a class="hotel-line-title"
-                                                                                            href="#">2. Mykonos
-                                                                                            Hotel</a>
-                                                                                        <div class="rate-wrap">
-                                                                                            <div class="rate">
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                            </div>
-                                                                                            <i>485 Rewies</i>
-                                                                                        </div>
-                                                                                        <div class="hotel-line-price">
-                                                                                            from $273</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="hotel-line clearfix">
-                                                                                    <a class="hotel-img black-hover"
-                                                                                        href="#">
-                                                                                        <img class="img-responsive"
-                                                                                            src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                                                                            alt="">
-                                                                                        <div
-                                                                                            class="tour-layer delay-1">
-                                                                                        </div>
-                                                                                    </a>
-                                                                                    <div class="hotel-line-content">
-                                                                                        <a class="hotel-line-title"
-                                                                                            href="#">3. luxury
-                                                                                            Hotel</a>
-                                                                                        <div class="rate-wrap">
-                                                                                            <div class="rate">
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                                <span
-                                                                                                    class="fa fa-star color-yellow"></span>
-                                                                                            </div>
-                                                                                            <i>485 Rewies</i>
-                                                                                        </div>
-                                                                                        <div class="hotel-line-price">
-                                                                                            from $273</div>
-                                                                                    </div>
-                                                                                </div>
+                                                                            <div class="tab-info active d-none events-tab">
+                                                                            </div>
+                                                                            <div class="tab-info active d-none costume-tab">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -525,31 +233,22 @@
                                                                 class="c-button b-50 bg-green hv-green-o ">view
                                                                 more</a>
                                                             <div class="slide-preview">
-                                                                {{-- @foreach ($row->images as $item)
-                                                                    <a href="javacript:void(0);"
-                                                                        class="show-action-box"
-                                                                        data-id="{{ $key }}"
-                                                                        onclick="showActionBox({{ $key }})"><img
-                                                                            class="img-responsive "
-                                                                            src="{{ asset($item->image_url) }}"
-                                                                            alt=""></a>
-                                                                @endforeach --}}
                                                                 <a href="javacript:void(0);"
-                                                                    onclick="showActionBox('flight')"
+                                                                    onclick="showActionBox('flight', {{ $row->id }})"
                                                                     class="show-action-box" data-id="flight">
                                                                     <img class="img-responsive"
                                                                         src="https://carnivalguide.co/new/img/home/slide_preview_1.jpg"
                                                                         alt="">
                                                                 </a>
                                                                 <a href="javacript:void(0);"
-                                                                    onclick="showActionBox('hotel')"
+                                                                    onclick="showActionBox('hotel', {{ $row->id }})"
                                                                     class="show-action-box" data-id="hotel"><img
                                                                         class="img-responsive"
                                                                         src="https://carnivalguide.co/travel/img/home/slide_preview_2.jpg"
                                                                         alt=""></a>
                                                                 <a href="javacript:void(0);"
-                                                                    onclick="showActionBox('events')"
-                                                                    class="show-action-box" data-id="events"><img
+                                                                    onclick="showActionBox('costume', {{ $row->id }})"
+                                                                    class="show-action-box" data-id="costume"><img
                                                                         class="img-responsive"
                                                                         src="https://carnivalguide.co/travel/img/home/slide_preview_3.jpg"
                                                                         alt=""></a>
@@ -557,19 +256,19 @@
                                                             <div class="slide-preview">
                                                                 <a href="javacript:void(0);" class="show-action-box"
                                                                     data-id="flight"
-                                                                    onclick="showActionBox('flight')"><img
+                                                                    onclick="showActionBox('flight', {{ $row->id }})"><img
                                                                         class="img-responsive"
                                                                         src="https://carnivalguide.co/travel/img/home/slide_preview_4.jpg"
                                                                         alt=""></a>
                                                                 <a href="javacript:void(0);" class="show-action-box"
-                                                                    data-id="hotel"
-                                                                    onclick="showActionBox('hotel')"><img
+                                                                    data-id="events"
+                                                                    onclick="showActionBox('events', {{ $row->id }})"><img
                                                                         class="img-responsive"
                                                                         src="https://carnivalguide.co/travel/img/home/slide_preview_5.jpg"
                                                                         alt=""></a>
                                                                 <a href="javacript:void(0);" class="show-action-box"
-                                                                    data-id="events"
-                                                                    onclick="showActionBox('events')"><img
+                                                                    data-id="hotel"
+                                                                    onclick="showActionBox('hotel', {{ $row->id }})"><img
                                                                         class="img-responsive"
                                                                         src="https://carnivalguide.co/travel/img/home/slide_preview_6.jpg"
                                                                         alt=""></a>

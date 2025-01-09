@@ -811,4 +811,31 @@ class FrontendConroller extends Controller
 
         return view('ShopFrontend.carnival.detail', compact('carnival', 'vendor', 'categories', 'products', 'ads', 'subvendors', 'user'));
     }
+
+    public function loadBannerDetails(Request $request)
+    {
+        // dd($request->toArray());
+
+        $data = [];
+        $type = $request->type;
+        $carnival = $request->carnival_id;
+
+        switch ($type) {
+            case 'costume':
+                $data = Event::with('images', 'tickets', 'country_tabs')->orderBy('id', 'desc')->get()->take('5');
+                break;
+        
+            case 'events':
+                $data = Costume::with('category')->orderBy('id', 'DESC')->get();
+                break;
+        
+            // default:
+            //     // Optional: code for cases not matching 'costumes' or 'events'
+            //     break;
+        }
+        
+
+
+        return view('partials.banner_details', compact('type', 'data'));
+    }
 }
