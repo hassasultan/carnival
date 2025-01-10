@@ -374,7 +374,7 @@ class FrontendConroller extends Controller
     public function vendor_detail($slug)
     {
         $user = User::with('banners')->whereSlug($slug)->first();
-        $carnival = Carnival::with('mascamps', 'members')->where('user_id', $user->id)->first();
+        $carnival = Carnival::with('mascamps', 'members')->where('head', $user->id)->first();
         $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user->id)->first();
         $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
         // dd($subvendors->toArray());
