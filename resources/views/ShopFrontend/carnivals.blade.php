@@ -324,7 +324,7 @@
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
                                                 <div class="product-item-photo">
-                                                    <a href="{{ route('front.carnival.detail', '') }}/${vendor.slug}" class="product-item-img">
+                                                    <a href="{{ route('front.carnival.detail', '') }}/${vendor.user.slug}" class="product-item-img">
                                                         <img style="width:200px;height:200px" src="${logo}"
                                                     alt="product name"></a>
                                                 </div>
@@ -333,7 +333,7 @@
                                                 vendorHtml += `
                                                     <div class="clearfix">
                                                         <div class="product-item-price">
-                                                            <span class="price">${vendor.name}</span>
+                                                            <span class="price">${vendor.user.first_name} ${vendor.user.last_name}</span>
                                                         </div>
 
                                                     </div>`;
