@@ -56,7 +56,7 @@ class FrontendConroller extends Controller
         $blogs = Blogs::with('user')->get()->take('3');
         $products = Product::with('brand')->get();
 
-        return view('front.aboutus',compact('services','products','blogs','investors','testimonials','siteGallery'));
+        return view('front.aboutus', compact('services', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery'));
     }
     public function carnival_listing()
     {
@@ -776,8 +776,10 @@ class FrontendConroller extends Controller
     {
         $vendor_type = $request->get('vendor_type', null);
         $regionId = $request->get('getRegion');
+        $carnival_commitee = Carnival::has('user')->pluck('id');
 
-        $query = Carnival::query()
+        $query = Vendor::query()
+            ->whereIn('user_id', $carnival_commitee)
             ->with([
                 'user' => function ($query) {
                     $query->select('id', 'first_name', 'last_name', 'slug', 'image');
@@ -825,27 +827,23 @@ class FrontendConroller extends Controller
 
     public function loadBannerDetails(Request $request)
     {
-        // dd($request->toArray());
-
         $data = [];
         $type = $request->type;
-        $carnival = $request->carnival_id;
+        $carnival = Carnival::find($request->carnival_id);
 
         switch ($type) {
             case 'costume':
-                $data = Event::with('images', 'tickets', 'country_tabs')->orderBy('id', 'desc')->get()->take('5');
+                $data = Costume::where('user_id', $carnival->head)->with('category')->orderBy('id', 'DESC')->get()->take('10');
                 break;
-        
+
             case 'events':
-                $data = Costume::with('category')->orderBy('id', 'DESC')->get();
+                $data = Event::where('user_id', $carnival->head)->with('images', 'tickets', 'country_tabs')->orderBy('id', 'desc')->get()->take('10');
                 break;
-        
+
             // default:
             //     // Optional: code for cases not matching 'costumes' or 'events'
             //     break;
         }
-        
-
 
         return view('partials.banner_details', compact('type', 'data'));
     }

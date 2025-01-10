@@ -314,6 +314,7 @@
                         $('#product-listing').empty();
                         $('#product-listing').removeClass('blur-effect');
                         $.each(response.data, function(index, vendor) {
+                            console.log(response.data);
                             var logo = null;
                             logo = "{{ asset('shopAssets/images/media/product9.jpg') }}";
                             var vendorHtml =
