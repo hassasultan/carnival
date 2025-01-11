@@ -9,7 +9,6 @@
 @include('front.home-template.our-gallery')
 @include('front.home-template.subscribe')
 @include('front.home-template.news')
-@include('front.home-template.news')
 @include('front.home-template.brand-showcase')
 <div class="main-wraper bg-grey-2 padd-90">
 	<div class="container">
