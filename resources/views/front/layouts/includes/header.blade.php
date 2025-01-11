@@ -200,7 +200,7 @@
                                     <li><a href="{{ route('front.vendors') }}">Mas Camps</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{{ route('front.carnival_listing') }}">Carnival Listing <span
+                            <li><a href="{{ route('front.carnival.listing') }}">Carnival Listing <span
                                         class="fa fa-chevron-right"></span></a>
 
                             </li>
