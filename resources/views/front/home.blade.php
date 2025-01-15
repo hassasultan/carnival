@@ -16,35 +16,9 @@
 @section('front-script')
     @include('front.home-template.js.carnival-script')
     <script>
-        function showOurServiceModal(title, description, icon) {
-            document.getElementById('ourServiceModalLabel').textContent = title;
 
-            let more_description = '<strong>Detail: </strong>' + description;
-            document.getElementById('ourServiceDescription').innerHTML = more_description;
 
-            document.getElementById('ourServiceIcon').src = icon;
 
-            $('#ourServiceModal').modal('show');
-        }
-
-        function showTestimonialModal(name, location, rating, description, image) {
-            // Set the modal title and body with the passed testimonial data
-            document.getElementById('testimonialModalLabel').textContent = name;
-            document.getElementById('testimonialLocation').innerHTML = `<strong>Location:</strong> ${location}`;
-
-            // Dynamically generate the rating
-            let ratingHtml = '<strong>Rating:</strong> ';
-            for (let i = 1; i <= rating; i++) {
-                ratingHtml += '<span class="fa fa-heart color-green"></span>';
-            }
-            document.getElementById('testimonialRating').innerHTML = ratingHtml;
-            let more_description = '<Strong>Detail: </strong>' + description;
-            document.getElementById('testimonialDescription').innerHTML = more_description;
-            document.getElementById('testimonialImage').src = image;
-
-            // Show the modal (Bootstrap v3 syntax)
-            $('#testimonialModal').modal('show');
-        }
 
         $(document).ready(function() {
             $('.city-entry-new').css('display', 'none');

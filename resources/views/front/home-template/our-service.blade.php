@@ -20,10 +20,10 @@
                                     src="{{ asset('images/' . $service->icon) }}" alt="">
                                 <h5 class="icon-title color-dark-2">{{ $service->title }}</h5>
                                 <div class="icon-text color-dark-2-light">{{ $service->description }}</div>
-                                <a href="javascript:void(0);"
+                                <button href="javascript:void(0);"
                                     onclick="showOurServiceModal('{{ $service->title }}', '{{ $service->description }}', '{{ asset('images/' . $service->icon) }}')"
                                     class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view
-                                        more</span></a>
+                                        more</span></button>
                             </div>
                         </div>
                     @endforeach
@@ -42,13 +42,28 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="ourServiceModalLabel"></h4>
             </div>
-            <div class="modal-body">
-                <img id="ourServiceIcon" src="" alt="" class="img-responsive" width="100"
-                    style="border-radius: 50%;">
-                <div id="ourServiceDescription" style="margin: 10px 0;"></div>
+            <div class="modal-body text-center">
+                <img id="ourServiceIcon" src="" alt="" class="icon-img bg-dr-blue-2 border-grey-2" >
+                <div class="txt">
+                    <h4 class="modal-title" id="ourServiceModalLabel"></h4>
+                    <div id="ourServiceDescription" style="margin: 10px 0;"></div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function showOurServiceModal(title, description, icon) {
+        console.log(title, description, icon);
+        document.getElementById('ourServiceModalLabel').textContent = title;
+
+        // let more_description = '<strong>Detail: </strong>' + description;
+        let more_description = description;
+        document.getElementById('ourServiceDescription').innerHTML = more_description;
+
+        document.getElementById('ourServiceIcon').src = icon;
+
+        $('#ourServiceModal').modal('show');
+    }
+</script>

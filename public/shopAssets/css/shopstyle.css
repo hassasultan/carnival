@@ -215,7 +215,7 @@ ul li {
 
 .pagination {
     text-align: center;
-    display: block;
+    display: inline-block;
     margin: 0
 }
 
