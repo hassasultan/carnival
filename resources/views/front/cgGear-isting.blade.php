@@ -646,226 +646,65 @@
                                     "992":{"items":3},
                                     "1200":{"items":3}
                                 }'>
-                                        <div class="item">
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                            <span class="old-price">$140.00</span>
+                                        @foreach ($products as $row)
+                                            <div class="item">
+                                                <div class=" product-item product-item-opt-12">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name"><a href="">{{ $row->title }}
+                                                                </a></strong>
+                                                            <div class="product-item-price">
+                                                                <span class="price">$138,95</span>
+                                                                <span class="old-price">$140.00</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-1.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href=""><img
+                                                                    alt="product name"
+                                                                    src="{{ asset('shopAssets/images/media/index12/floor1-1.jpg') }}"></a>
+                                                            <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist"
+                                                                    href=""><span>wishlist</span></a>
+                                                                <a class="btn btn-compare"
+                                                                    href=""><span>compare</span></a>
+                                                                <a class="btn btn-quickview"
+                                                                    href=""><span>quickview</span></a>
+                                                            </div>
+                                                            <button type="button" class="btn btn-cart"><span>Add to
+                                                                    Cart</span></button>
                                                         </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
+                                                <div class=" product-item product-item-opt-12">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name"><a href="">{{ $row->title }}
+                                                                </a></strong>
+                                                            <div class="product-item-price">
+                                                                <span class="price">$138,95</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-2.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href=""><img
+                                                                    alt="product name"
+                                                                    src="{{ asset('shopAssets/images/media/index12/floor1-2.jpg') }}"></a>
+                                                            <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist"
+                                                                    href=""><span>wishlist</span></a>
+                                                                <a class="btn btn-compare"
+                                                                    href=""><span>compare</span></a>
+                                                                <a class="btn btn-quickview"
+                                                                    href=""><span>quickview</span></a>
+                                                            </div>
+                                                            <button type="button" class="btn btn-cart"><span>Add to
+                                                                    Cart</span></button>
 
-                                                        <span class="product-item-label label-new">new</span>
+                                                            <span class="product-item-label label-new">new</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-3.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-4.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-5.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                        <span class="product-item-label label-sale">sale</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-6.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-5.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-6.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
 
@@ -881,226 +720,65 @@
                                     "992":{"items":3},
                                     "1200":{"items":3}
                                 }'>
-                                        <div class="item">
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                            <span class="old-price">$140.00</span>
+                                        @foreach ($products as $row)
+                                            <div class="item">
+                                                <div class=" product-item product-item-opt-12">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name"><a href="">{{ $row->title }}
+                                                                </a></strong>
+                                                            <div class="product-item-price">
+                                                                <span class="price">$138,95</span>
+                                                                <span class="old-price">$140.00</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-1.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href=""><img
+                                                                    alt="product name"
+                                                                    src="{{ asset('shopAssets/images/media/index12/floor1-1.jpg') }}"></a>
+                                                            <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist"
+                                                                    href=""><span>wishlist</span></a>
+                                                                <a class="btn btn-compare"
+                                                                    href=""><span>compare</span></a>
+                                                                <a class="btn btn-quickview"
+                                                                    href=""><span>quickview</span></a>
+                                                            </div>
+                                                            <button type="button" class="btn btn-cart"><span>Add to
+                                                                    Cart</span></button>
                                                         </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
+                                                <div class=" product-item product-item-opt-12">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name"><a href="">{{ $row->title }}
+                                                                </a></strong>
+                                                            <div class="product-item-price">
+                                                                <span class="price">$138,95</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-2.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href=""><img
+                                                                    alt="product name"
+                                                                    src="{{ asset('shopAssets/images/media/index12/floor1-2.jpg') }}"></a>
+                                                            <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist"
+                                                                    href=""><span>wishlist</span></a>
+                                                                <a class="btn btn-compare"
+                                                                    href=""><span>compare</span></a>
+                                                                <a class="btn btn-quickview"
+                                                                    href=""><span>quickview</span></a>
+                                                            </div>
+                                                            <button type="button" class="btn btn-cart"><span>Add to
+                                                                    Cart</span></button>
 
-                                                        <span class="product-item-label label-new">new</span>
+                                                            <span class="product-item-label label-new">new</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-3.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-4.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-5.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                        <span class="product-item-label label-sale">sale</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-6.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-5.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-6.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
 
@@ -1116,226 +794,65 @@
                                     "992":{"items":3},
                                     "1200":{"items":3}
                                 }'>
-                                        <div class="item">
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                            <span class="old-price">$140.00</span>
+                                        @foreach ($products as $row)
+                                            <div class="item">
+                                                <div class=" product-item product-item-opt-12">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name"><a href="">{{ $row->title }}
+                                                                </a></strong>
+                                                            <div class="product-item-price">
+                                                                <span class="price">$138,95</span>
+                                                                <span class="old-price">$140.00</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-1.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href=""><img
+                                                                    alt="product name"
+                                                                    src="{{ asset('shopAssets/images/media/index12/floor1-1.jpg') }}"></a>
+                                                            <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist"
+                                                                    href=""><span>wishlist</span></a>
+                                                                <a class="btn btn-compare"
+                                                                    href=""><span>compare</span></a>
+                                                                <a class="btn btn-quickview"
+                                                                    href=""><span>quickview</span></a>
+                                                            </div>
+                                                            <button type="button" class="btn btn-cart"><span>Add to
+                                                                    Cart</span></button>
                                                         </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
+                                                <div class=" product-item product-item-opt-12">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name"><a href="">{{ $row->title }}
+                                                                </a></strong>
+                                                            <div class="product-item-price">
+                                                                <span class="price">$138,95</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-2.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href=""><img
+                                                                    alt="product name"
+                                                                    src="{{ asset('shopAssets/images/media/index12/floor1-2.jpg') }}"></a>
+                                                            <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist"
+                                                                    href=""><span>wishlist</span></a>
+                                                                <a class="btn btn-compare"
+                                                                    href=""><span>compare</span></a>
+                                                                <a class="btn btn-quickview"
+                                                                    href=""><span>quickview</span></a>
+                                                            </div>
+                                                            <button type="button" class="btn btn-cart"><span>Add to
+                                                                    Cart</span></button>
 
-                                                        <span class="product-item-label label-new">new</span>
+                                                            <span class="product-item-label label-new">new</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-3.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-4.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-5.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                        <span class="product-item-label label-sale">sale</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-6.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red Dress
-                                                            </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-5.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class=" product-item product-item-opt-12">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Sexy Red
-                                                                Dress </a></strong>
-                                                        <div class="product-item-price">
-                                                            <span class="price">$138,95</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index12/floor1-6.jpg') }}"></a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare"
-                                                                href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
 

@@ -376,8 +376,7 @@ class FrontendConroller extends Controller
         $user = User::with('banners')->whereSlug($slug)->first();
         if ($user->carnivals) {
             $carnival = Carnival::with('mascamps', 'members')->where('head', $user->id)->first();
-        }
-        else {
+        } else {
             $carnival = '';
         }
         $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user->id)->first();
@@ -856,6 +855,12 @@ class FrontendConroller extends Controller
 
     public function cgGear_listing(Request $request)
     {
-        return view('front.cgGear-isting');
+        $products = Product::whereHas('user', function ($query) {
+            $query->whereHas('role', function ($query) {
+                $query->where('name', 'Admin');
+            });
+        })->get();
+
+        return view('front.cgGear-isting', compact('products'));
     }
 }
