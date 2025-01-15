@@ -18,8 +18,10 @@
                             <div class="icon-block style-2 bg-white">
                                 <img class="icon-img bg-dr-blue-2 border-grey-2"
                                     src="{{ asset('images/' . $service->icon) }}" alt="">
-                                <h5 class="icon-title color-dark-2">{{ $service->title }}</h5>
-                                <div class="icon-text color-dark-2-light">{{ $service->description }}</div>
+                                <div class="icon-text color-dark-2-light">
+                                    <h5 class="icon-title color-dark-2">{{ $service->title }}</h5>
+                                    {{ $service->description }}
+                                </div>
                                 <button href="javascript:void(0);"
                                     onclick="showOurServiceModal('{{ $service->title }}', '{{ $service->description }}', '{{ asset('images/' . $service->icon) }}')"
                                     class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view
@@ -44,7 +46,7 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-                <img id="ourServiceIcon" src="" alt="" class="icon-img bg-dr-blue-2 border-grey-2" >
+                <img id="ourServiceIcon" src="" alt="" class="icon-img bg-dr-blue-2 border-grey-2">
                 <div class="txt">
                     <h4 class="modal-title" id="ourServiceModalLabel"></h4>
                     <div id="ourServiceDescription" style="margin: 10px 0;"></div>
