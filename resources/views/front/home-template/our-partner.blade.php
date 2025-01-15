@@ -18,8 +18,8 @@
             @foreach ($investors as $investor)
                 <div class="swiper-slide text-center">
                     <div class="partner-entry">
-                        <a href="#"><img class="img-responsive" src="{{ asset('images/' . $investor->icon) }}"
-                                alt=""></a>
+                        <a href="javascript:void(0);"><img class="img-responsive"
+                                src="{{ asset('images/' . $investor->icon) }}" alt=""></a>
                     </div>
                 </div>
             @endforeach

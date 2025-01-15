@@ -853,4 +853,9 @@ class FrontendConroller extends Controller
 
         return view('partials.banner_details', compact('type', 'data'));
     }
+
+    public function cgGear_listing(Request $request)
+    {
+        return view('front.cgGear-isting');
+    }
 }
