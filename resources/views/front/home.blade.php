@@ -16,6 +16,17 @@
 @section('front-script')
     @include('front.home-template.js.carnival-script')
     <script>
+        function showOurServiceModal(title, description, icon) {
+            document.getElementById('ourServiceModalLabel').textContent = title;
+
+            let more_description = '<strong>Detail: </strong>' + description;
+            document.getElementById('ourServiceDescription').innerHTML = more_description;
+
+            document.getElementById('ourServiceIcon').src = icon;
+
+            $('#ourServiceModal').modal('show');
+        }
+
         function showTestimonialModal(name, location, rating, description, image) {
             // Set the modal title and body with the passed testimonial data
             document.getElementById('testimonialModalLabel').textContent = name;
