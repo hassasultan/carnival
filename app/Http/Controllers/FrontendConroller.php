@@ -45,7 +45,22 @@ class FrontendConroller extends Controller
         $blogs = Blogs::with('user')->get()->take('3');
         $carnivals = Carnival::with('user')->get()->take('6');
         // dd($events->toArray());
-        return view('front.home', compact('carnivals', 'events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials'));
+        $carnival_com = Carnival::has('user')->pluck('head');
+
+        $query = Vendor::query()
+            ->whereIn('user_id', $carnival_com)
+            ->with([
+                'user' => function ($query) {
+                    $query->select('id', 'first_name', 'last_name', 'slug', 'image');
+                },
+                'user.products' => function ($query) {
+                    $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
+                        ->groupBy('user_id');
+                },
+            ]);
+        $carnival_commitee = $query->orderBy('id', 'DESC')->paginate(18);
+
+        return view('front.home', compact('carnivals', 'events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials', 'carnival_commitee'));
     }
     public function aboutus()
     {
@@ -855,12 +870,48 @@ class FrontendConroller extends Controller
 
     public function cgGear_listing(Request $request)
     {
+        // Retrieve products by admin users
         $products = Product::whereHas('user', function ($query) {
             $query->whereHas('role', function ($query) {
                 $query->where('name', 'Admin');
             });
-        })->get();
+        })->take(30)->get();
 
-        return view('front.cgGear-isting', compact('products'));
+        // Filter for best-seller products
+        $bestSeller = $products->filter(function ($product) {
+            return $product->sale > 100;
+        });
+
+        // Exclude best-seller products from the new arrivals
+        $newArrivals = $products->whereNotIn('id', $bestSeller->pluck('id'))
+            ->sortByDesc('created_at')
+            ->take(16);
+
+        // Exclude both best-seller and new-arrival products from the most-reviewed
+        $mostReviews = $products->whereNotIn('id', $bestSeller->pluck('id'))
+            ->whereNotIn('id', $newArrivals->pluck('id'))
+            ->sortByDesc('reviews')
+            ->take(16);
+
+        return view('front.cgGear-listing', compact('products', 'bestSeller', 'newArrivals', 'mostReviews'));
     }
+
+    // public function cgGear_listing(Request $request)
+    // {
+    //     $products = Product::whereHas('user', function ($query) {
+    //         $query->whereHas('role', function ($query) {
+    //             $query->where('name', 'Admin');
+    //         });
+    //     })->get()->take(30);
+
+    //     $bestSeller = $products->filter(function ($product) {
+    //         return $product->sale > 100;
+    //     });
+
+    //     $newArrivals = $products->sortByDesc('created_at')->take(16);
+
+    //     $mostReviews = $products->sortByDesc('reviews')->take(16);
+
+    //     return view('front.cgGear-isting', compact('products', 'bestSeller', 'newArrivals', 'mostReviews'));
+    // }
 }
