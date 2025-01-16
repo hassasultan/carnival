@@ -58,6 +58,7 @@
                             } else {
                                 $logo = '{{ asset("shopAssets/images/media/product9.jpg") }}';
                             }
+                            dd($logo);
                         @endphp
                         <a href="javascript:void(0);"><img class="img-responsive" src="{{ $logo }}"
                                 alt=""></a>
