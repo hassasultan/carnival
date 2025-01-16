@@ -61,8 +61,12 @@ class FrontendConroller extends Controller
         $siteGallery = SiteGallery::get();
         $blogs = Blogs::with('user')->get()->take('3');
         $products = Product::with('brand')->get();
+        $carnival_com = Carnival::has('user')->pluck('head');
 
-        return view('front.aboutus', compact('services', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery'));
+        $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
+
+
+        return view('front.aboutus', compact('services','carnival_commitee', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery'));
     }
     public function carnival_listing()
     {
