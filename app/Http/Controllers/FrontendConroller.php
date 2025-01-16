@@ -47,18 +47,9 @@ class FrontendConroller extends Controller
         // dd($events->toArray());
         $carnival_com = Carnival::has('user')->pluck('head');
 
-        $query = Vendor::query()
-            ->whereIn('user_id', $carnival_com)
-            ->with([
-                'user' => function ($query) {
-                    $query->select('id', 'first_name', 'last_name', 'slug', 'image');
-                },
-                'user.products' => function ($query) {
-                    $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
-                        ->groupBy('user_id');
-                },
-            ]);
-        $carnival_commitee = $query->orderBy('id', 'DESC')->paginate(18);
+        $carnival_commitee = Vendor::whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
+
+        dd($carnival_commitee, $carnival_com);
 
         return view('front.home', compact('carnivals', 'events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials', 'carnival_commitee'));
     }
