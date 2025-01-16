@@ -49,7 +49,7 @@ class FrontendConroller extends Controller
 
         $carnival_commitee = Vendor::whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
 
-        dd($carnival_commitee, $carnival_com);
+        // dd($carnival_commitee, $carnival_com);
 
         return view('front.home', compact('carnivals', 'events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials', 'carnival_commitee'));
     }
