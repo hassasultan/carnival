@@ -49,18 +49,7 @@
             @foreach ($carnival_commitee as $row)
                 <div class="swiper-slide text-center">
                     <div class="partner-entry">
-                        @php
-                            $logo = null;
-                            if ($row->logo != null) {
-                                $logo = '{{ asset("images/" . $row->logo) }}';
-                            } elseif ($row->user->image != null) {
-                                $logo = '{{ asset("images/" . $row->user->image) }}';
-                            } else {
-                                $logo = '{{ asset("shopAssets/images/media/product9.jpg") }}';
-                            }
-                            dd($logo);
-                        @endphp
-                        <a href="javascript:void(0);"><img class="img-responsive" src="{{ $logo }}"
+                        <a href="javascript:void(0);"><img class="img-responsive" src="{{ asset("images/" . $row->logo) }}"
                                 alt=""></a>
                     </div>
                 </div>
