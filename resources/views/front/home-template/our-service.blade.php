@@ -22,11 +22,11 @@
                                     <h5 class="icon-title color-dark-2">{{ $service->title }}</h5>
                                     {{ $service->description }}
                                 </div>
-                                <a href="javascript:void(0);"
+                                <button type="button"
                                     onclick="showOurServiceModal('{{ $service->title }}', '{{ $service->description }}', '{{ asset('images/' . $service->icon) }}')"
                                     class="c-button small bg-dr-blue-2 hv-dr-blue-2-o">
                                     <span>view more</span>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     @endforeach
