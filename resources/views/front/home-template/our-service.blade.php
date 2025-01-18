@@ -23,10 +23,10 @@
                                     {{ $service->description }}
                                 </div>
                                 <button type="button"
-                                    onclick='showOurServiceModal("{{ $service->title }}", "{{ $service->description }}", "{{ asset("images/" . $service->icon) }}")"
+                                    onclick="showOurServiceModal('{{ $service->title }}', '{{ $service->description }}', '{{ asset('images/' . $service->icon) }}')"
                                     class="c-button small bg-dr-blue-2 hv-dr-blue-2-o">
                                     <span>view more</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     @endforeach
