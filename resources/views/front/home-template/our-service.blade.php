@@ -22,10 +22,11 @@
                                     <h5 class="icon-title color-dark-2">{{ $service->title }}</h5>
                                     {{ $service->description }}
                                 </div>
-                                <button href="javascript:void(0);"
-                                    onclick="showOurServiceModal('{{ $service->title }}', '{{ $service->description }}', '{{ asset('images/' . $service->icon) }}')"
-                                    class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view
-                                        more</span></button>
+                                <button type="button"
+                                    onclick="showOurServiceModal({{ $service->id }})"
+                                    class="c-button small bg-dr-blue-2 hv-dr-blue-2-o">
+                                    <span>view more</span>
+                                    </a>
                             </div>
                         </div>
                     @endforeach
@@ -36,36 +37,38 @@
     </div>
 </div>
 <!-- Modal Structure for Bootstrap 3 -->
-<div class="modal fade" id="ourServiceModal" tabindex="-1" role="dialog" aria-labelledby="ourServiceModalLabel"
-    style="z-index: 105050;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <img id="ourServiceIcon" src="" alt="" class="icon-img bg-dr-blue-2 border-grey-2">
-                <div class="txt">
-                    <h4 class="modal-title" id="ourServiceModalLabel"></h4>
-                    <div id="ourServiceDescription" style="margin: 10px 0;"></div>
+@foreach ($services as $service)
+    <div class="modal fade" id="ourServiceModal-{{ $service->id }}" tabindex="-1" role="dialog" aria-labelledby="ourServiceModalLabel"
+        style="z-index: 105050;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="ourServiceIcon" src="{{ asset('images/' . $service->icon) }}" alt="" class="icon-img bg-dr-blue-2 border-grey-2">
+                    <div class="txt">
+                        <h4 class="modal-title" id="ourServiceModalLabel">{{ $service->title }}</h4>
+                        <div id="ourServiceDescription" style="margin: 10px 0;">{{ $service->description }}</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+@endforeach
 <script>
-    function showOurServiceModal(title, description, icon) {
-        console.log(title, description, icon);
-        document.getElementById('ourServiceModalLabel').textContent = title;
+    function showOurServiceModal(id) {
+        // console.log(title, description, icon);
+        // document.getElementById('ourServiceModalLabel').textContent = title;
 
-        // let more_description = '<strong>Detail: </strong>' + description;
-        let more_description = description;
-        document.getElementById('ourServiceDescription').innerHTML = more_description;
+        // // let more_description = '<strong>Detail: </strong>' + description;
+        // let more_description = description;
+        // document.getElementById('ourServiceDescription').innerHTML = more_description;
 
-        document.getElementById('ourServiceIcon').src = icon;
+        // document.getElementById('ourServiceIcon').src = icon;
 
-        $('#ourServiceModal').modal('show');
+        $('#ourServiceModal-'+id).modal('show');
     }
 </script>
