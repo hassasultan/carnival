@@ -21,7 +21,10 @@ class Carnival extends Model
         'description',
         'slug',
     ];
-
+    public function country_tabs()
+    {
+        return $this->hasMany(EventsCountryTab::class);
+    }
     public function user()
     {
         return $this->belongsTo(User::class, 'head');

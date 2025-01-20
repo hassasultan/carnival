@@ -460,13 +460,13 @@ class FrontendConroller extends Controller
 
     public function eventViewMore($slug)
     {
-        $event = Event::with('country_tabs')->find($slug);
+        $carnivals = Carnival::with('country_tabs')->find($slug);
         // dd($event->toArray());
         $products = Product::with('brand')->get();
         $blogs = Blogs::with('user')->get()->take('3');
         $all_blogs = Blogs::with('user')->paginate(12);
 
-        return view('front.view_more', compact('event', 'products', 'blogs', 'all_blogs'));
+        return view('front.view_more', compact('carnivals', 'products', 'blogs', 'all_blogs'));
     }
 
     public function getDiscounted(Request $request)

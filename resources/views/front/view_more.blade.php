@@ -119,7 +119,7 @@
                         <div class="simple-tab type-2 tab-wrapper">
                             <div class="tab-nav-wrapper">
                                 <div class="nav-tab  clearfix">
-                                    @foreach ($event->country_tabs as $key => $row)
+                                    @foreach ($carnivals->country_tabs as $key => $row)
                                         <div class="nav-tab-item @if ($key == 0) active @endif">
                                             {{ $row->tab }}
                                         </div>
@@ -260,7 +260,7 @@
                                 }
                             </style>
                             <div class="tabs-content clearfix">
-                                @foreach ($event->country_tabs as $key => $row)
+                                @foreach ($carnivals->country_tabs as $key => $row)
                                     <div class="tab-info @if ($key == 0) active @endif">
                                         <div class="carousel">
                                             <div class="carousel-wrapper">
@@ -1886,10 +1886,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -1919,10 +1919,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -1952,10 +1952,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -1987,10 +1987,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2020,10 +2020,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2053,10 +2053,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2088,10 +2088,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2121,10 +2121,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2154,10 +2154,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2189,10 +2189,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2222,10 +2222,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2255,10 +2255,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2615,10 +2615,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2648,10 +2648,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2681,10 +2681,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2716,10 +2716,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2749,10 +2749,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2782,10 +2782,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2817,10 +2817,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2850,10 +2850,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2883,10 +2883,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2918,10 +2918,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2951,10 +2951,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2984,10 +2984,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -5949,11 +5949,11 @@
                                                         <div class="tour-info fl">
                                                                <img src="img/comment_icon_grey.png" alt="">
                                                                <span class="font-style-2 color-dark-2">10 comments</span>
-                                                           </div>						
+                                                           </div>
                                                     </div>
                                                     <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                    <a href="{{ route('front.blog.detail', $item->slug) }}" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
-                                                </div>				
+                                                    <a href="{{ route('front.blog.detail', $item->slug) }}" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                                </div>
                                             </div>
                                         @endforeach
                                     </div>
@@ -5976,11 +5976,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -5998,11 +5998,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
-                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>	
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>					  	 	
-                                            </div>				
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6020,11 +6020,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>						  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6042,11 +6042,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6064,11 +6064,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
-                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>	
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>					  	 	
-                                            </div>				
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6086,11 +6086,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>						  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6108,11 +6108,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6130,11 +6130,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
-                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>	
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>					  	 	
-                                            </div>				
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6152,11 +6152,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>						  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6174,11 +6174,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6196,11 +6196,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
-                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>	
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>					  	 	
-                                            </div>				
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6218,12 +6218,12 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>						  	 	
-                                            </div>				
-                                        </div>															
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
+                                        </div>
                                     </div> --}}
                                     <div class="c_pagination clearfix">
                                         <a href="#" class="c-button b-40 bg-dr-blue-2 hv-dr-blue-2-o fl">prev
