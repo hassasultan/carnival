@@ -78,6 +78,7 @@
                                         <th>Title</th>
                                         <th>Author</th>
                                         <th>Category</th>
+                                        <th>Region</th>
                                         <th>Status</th>
                                         <th>Date</th>
                                         <th>Action</th>
@@ -86,6 +87,11 @@
                                 <tbody id="user-table-body">
                                     @for ($i = 1; $i <= 10; $i++)
                                         <tr>
+                                            <td class="skeleton-item">
+                                                <div class="skeleton-content">
+                                                    <div class="skeleton-line" style="width: 100%;"></div>
+                                                </div>
+                                            </td>
                                             <td class="skeleton-item">
                                                 <div class="skeleton-content">
                                                     <div class="skeleton-line" style="width: 100%;"></div>
@@ -200,15 +206,17 @@
 
         function generateTableRows(response) {
             var html = '';
-            const currentUrl = window.location.href;
+            // const currentUrl = window.location.href;
             let i = 1;
             $.each(response, function(index, row) {
+                const currentUrl = "{{ route('blogs.edit', ':id') }}".replace(':id', row.id);
                 html += '<tr>';
                 html += '<td></td>';
                 html += '<td>' + i + '</td>';
                 html += '<td>' + row.title + '</td>';
                 html += '<td>' + row.user.first_name + ' ' + row.user.last_name + '</td>';
                 html += '<td>' + row.category.title + '</td>';
+                html += '<td>' + (row.region ? row.region.name : '0') + '</td>';
                 html += '<td>';
                 html += row.status == 1 ? '<span class="badge bg-success">Acrive</span>' :
                     '<span class="badge bg-danger">InActive</span>';
@@ -220,8 +228,9 @@
                 html += '<span class="text-muted sr-only">Action</span>';
                 html += '</button>';
                 html += '<div class="dropdown-menu dropdown-menu-right shadow">';
-                html += '<a class="dropdown-item" href="' + currentUrl + '/' + row.id +
-                    '/edit"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
+                html += '<a class="dropdown-item" href="'+ currentUrl +'"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
+                // html += '<a class="dropdown-item" href="' + currentUrl + '/' + row.id +
+                //     '/edit"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
                 // html += '<a class="dropdown-item" href="#"><i class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove</a>';
                 // html += '<a class="dropdown-item" href="#"><i class="fe fe-flag fe-12 mr-3 text-muted"></i>Assign</a>';
                 html += '</div></td>';

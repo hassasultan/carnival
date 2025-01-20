@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Blogs extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','category_id','title', 'slug', 'image', 'description', 'status'];
+    protected $fillable = ['user_id','category_id','title', 'slug', 'image', 'description', 'status', 'region_id',];
 
     public function user()
     {
@@ -23,5 +23,9 @@ class Blogs extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function region()
+    {
+        return $this->belongsTo(Region::class, 'region_id');
     }
 }

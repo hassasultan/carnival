@@ -44,6 +44,15 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="region">Region</label>
+                                <select class="form-control" id="edit_region" name="region_id" required>
+                                    <option value="">Select Region</option>
+                                    @foreach ($regions as $row)
+                                        <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="form-group mb-3">
                                 <label for="blog_image">Blog Image</label>
                                 <input type="file" id="blog_image" name="image" class="form-control" accept="image/*" onchange="previewImage(event)" required>

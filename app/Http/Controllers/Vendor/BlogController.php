@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Region;
 
 class BlogController extends Controller
 {
     public function index(Request $request)
     {
-        $blogs = Blogs::with("category", "user")->where('user_id', Auth::id());
+        $blogs = Blogs::with("category", "user","regions")->where('user_id', Auth::id());
         if ($request->has('search') && $request->search != null && $request->search != '') {
             $blogs = $blogs->where('title', 'LIKE', '%' . $request->search . '%');
         }
@@ -36,6 +37,7 @@ class BlogController extends Controller
     {
         $user = User::where('role_id', '!=', 1)->get();
         $categories = Category::where('type', 'blogging')->get();
+        $regions = Region::all();
         
 
         $layout = match (Auth::user()->role->name) {
@@ -44,7 +46,7 @@ class BlogController extends Controller
             'SubVendor' => 'dashboard.subvendor.layouts.app',
         };
         
-        return view('dashboard.vendor.blogs.create', compact('categories', 'user', 'layout'));
+        return view('dashboard.vendor.blogs.create', compact('categories', 'user', 'layout', 'regions'));
     }
     public function store(Request $request)
     {
@@ -57,7 +59,11 @@ class BlogController extends Controller
                 'category_id' => [
                     'required',
                     'exists:categories,id'
-                ]
+                ],
+                'region_id' => [
+                    'required',
+                    'exists:regions,id'
+                ],
             ]);
             if (auth()->user()->role_id == 1) {
                 $request->validate([
@@ -89,13 +95,14 @@ class BlogController extends Controller
     {
         $user = User::where('role_id', '!=', 1)->get();
         $categories = Category::where('type', 'blogging')->get();
+        $regions = Region::all();
 
         $layout = match (Auth::user()->role->name) {
             'Admin' => 'dashboard.admin.layouts.app',
             'Vendor' => 'dashboard.vendor.layouts.app',
             'SubVendor' => 'dashboard.subvendor.layouts.app',
         };
-        return view('dashboard.vendor.blogs.edit', compact('blog', 'categories', 'user', 'layout'));
+        return view('dashboard.vendor.blogs.edit', compact('blog', 'categories', 'user', 'layout', 'regions'));
     }
 
     public function update(Request $request, Blogs $blog)
@@ -109,7 +116,11 @@ class BlogController extends Controller
                 'category_id' => [
                     'required',
                     'exists:categories,id'
-                ]
+                ],
+                'region_id' => [
+                    'required',
+                    'exists:regions,id'
+                ],
             ]);
 
             if (auth()->user()->role_id == 1) {

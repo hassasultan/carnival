@@ -59,6 +59,17 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="region">Region</label>
+                                    <select class="form-control" id="edit_region" name="region_id" required>
+                                        <option value="" disabled>Select Region</option>
+                                        @foreach ($regions as $row)
+                                            <option value="{{ $row->id }}" {{ $blog->region_id == $row->id ? 'selected' : '' }}>
+                                                {{ $row->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <!-- Blog Image -->
                                 <div class="form-group mb-3">
                                     <label for="blog_image">Blog Image</label>

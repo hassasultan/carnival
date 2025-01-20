@@ -7,13 +7,14 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Region;
 
 class BlogsController extends Controller
 {
     //
     public function index(Request $request)
     {
-        $blogs = Blogs::with("category", "user");
+        $blogs = Blogs::with("category", "user", "region");
         if ($request->has('search') && $request->search != null && $request->search != '') {
             $blogs = $blogs->where('title', 'LIKE', '%' . $request->search . '%');
         }
@@ -21,6 +22,7 @@ class BlogsController extends Controller
         if ($request->has("type")) {
             return $blogs;
         }
+
         return view('dashboard.admin.blogs.index', compact('blogs'));
     }
 
@@ -28,7 +30,8 @@ class BlogsController extends Controller
     {
         $user = User::where('role_id', '!=', 1)->get();
         $categories = Category::where('type', 'blogging')->get();
-        return view('dashboard.admin.blogs.create', compact('categories', 'user'));
+        $regions = Region::all();
+        return view('dashboard.admin.blogs.create', compact('categories', 'user', 'regions'));
     }
 
     public function store(Request $request)
@@ -42,7 +45,11 @@ class BlogsController extends Controller
                 'category_id' => [
                     'required',
                     'exists:categories,id'
-                ]
+                ],
+                'region_id' => [
+                    'required',
+                    'exists:regions,id'
+                ],
             ]);
             if (auth()->user()->role_id == 1) {
                 $request->validate([
@@ -56,6 +63,7 @@ class BlogsController extends Controller
             $blogs = new Blogs();
             $blogs->user_id = $request->user_id;
             $blogs->category_id = $request->category_id;
+            $blogs->region_id = $request->region_id;
             $blogs->title = $request->title;
             $blogs->slug = Str::slug($request->title, '-');
             if ($request->hasFile('image')) {
@@ -74,7 +82,8 @@ class BlogsController extends Controller
     {
         $user = User::where('role_id', '!=', 1)->get();
         $categories = Category::where('type', 'blogging')->get();
-        return view('dashboard.admin.blogs.edit', compact('blog', 'categories', 'user'));
+        $regions = Region::all();
+        return view('dashboard.admin.blogs.edit', compact('blog', 'categories', 'user', 'regions'));
     }
 
     public function update(Request $request, Blogs $blog)
@@ -88,7 +97,11 @@ class BlogsController extends Controller
                 'category_id' => [
                     'required',
                     'exists:categories,id'
-                ]
+                ],
+                'region_id' => [
+                    'required',
+                    'exists:regions,id'
+                ],
             ]);
 
             if (auth()->user()->role_id == 1) {
@@ -104,6 +117,7 @@ class BlogsController extends Controller
             $blog->slug = Str::slug($request->title, '-');
             $blog->user_id = $request->user_id;
             $blog->category_id = $request->category_id;
+            $blog->region_id = $request->region_id;
 
             if ($request->hasFile('image')) {
                 $blog->image = $request->file('image')->store('images/blogs');
