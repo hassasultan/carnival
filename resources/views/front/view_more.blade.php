@@ -276,7 +276,7 @@
                                                         </div>
                                                         <div class="slide">
                                                             <img class="img-responsive img-full"
-                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                                src="{{ asset('files/'. $row->file) }}"
                                                                 alt="Slide 2">
                                                         </div>
                                                         <div class="slide">
