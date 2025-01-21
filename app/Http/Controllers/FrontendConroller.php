@@ -35,13 +35,13 @@ class FrontendConroller extends Controller
     public function home()
     {
         // $events = Event::with('images', 'tickets', 'country_tabs')->whereHas('country_tabs')->orderBy('id', 'desc')->get()->take('5');
-        $events = Event::with('images','tickets')->orderBy('id','desc')->get()->take('5');
+        $events = Event::with('images', 'tickets')->orderBy('id', 'desc')->get()->take('5');
         $regions = Region::with('countries')->get();
         $services = OurService::get()->take('4');
         $siteGallery = SiteGallery::get();
         $products = Product::with('brand')->get();
         $investors = Investor::all();
-        $testimonials = Testimonials::where('status',1)->get();
+        $testimonials = Testimonials::where('status', 1)->get();
         $blogs = Blogs::with('user')->get()->take('3');
         $carnivals = Carnival::with('user')->get()->take('6');
         // dd($events->toArray());
@@ -57,7 +57,7 @@ class FrontendConroller extends Controller
     {
         $services = OurService::get()->take('4');
         $investors = Investor::all();
-        $testimonials = Testimonials::where('status',1)->get();
+        $testimonials = Testimonials::where('status', 1)->get();
         $siteGallery = SiteGallery::get();
         $blogs = Blogs::with('user')->get()->take('3');
         $products = Product::with('brand')->get();
@@ -66,7 +66,7 @@ class FrontendConroller extends Controller
         $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
 
 
-        return view('front.aboutus', compact('services','carnival_commitee', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery'));
+        return view('front.aboutus', compact('services', 'carnival_commitee', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery'));
     }
     public function carnival_listing()
     {
@@ -356,7 +356,10 @@ class FrontendConroller extends Controller
     {
         $products = Product::with('brand')->get();
         $blog = Blogs::with('user')->where('slug', $id)->first();
-        $related_blogs = Blogs::with('user')->where('category_id', $blog->category_id)->get();
+        $related_blogs = Blogs::with('user')
+            ->where('id', '!=', $blog->id)
+            ->where('category_id', $blog->category_id)
+            ->get();
         return view('ShopFrontend.blog-detail', compact('products', 'blog', 'related_blogs'));
     }
     public function sub_vendor_listing()

@@ -85,7 +85,7 @@
                                             data-widget_type="text-editor.default">
                                             <div class="elementor-widget-container">
                                                 <p>
-                                                    {{ $blog->description }}
+                                                    {!! $blog->description !!}
                                                 </p>
                                             </div>
                                         </div>
@@ -172,7 +172,7 @@
                                                 style="margin-right: 0px; width: 289.333px;" tabindex="0">
                                                 <div class="post-inner">
                                                     <div class="post-thumb">
-                                                        <a href="{{ route('front.blog.detail', $row->title) }}"
+                                                        <a href="{{ route('front.blog.detail', $row->slug) }}"
                                                             class="thumb-link effect background-zoom" tabindex="0">
                                                             <figure>
                                                                 <img width="440" height="280"
@@ -190,7 +190,7 @@
                                                                     rel="tag" tabindex="0">{{ $blog->category->title }}</a></div>
                                                         </div>
                                                         <h1 class="post-title"><a
-                                                                href="{{ route('front.blog.detail', $row->title) }}"
+                                                                href="{{ route('front.blog.detail', $row->slug) }}"
                                                                 tabindex="0">{{ $blog->title }}</a></h1>
                                                     </div>
                                                 </div>
