@@ -19,9 +19,9 @@ class EventsCountryTabController extends Controller
 
     public function create()
     {
-        $events = Event::all();
+        $carnivals = Carnival::all();
         $countries = Country::all();
-        return view('dashboard.admin.events_country_tabs.create', compact('events', 'countries'));
+        return view('dashboard.admin.events_country_tabs.create', compact('carnivals', 'countries'));
     }
 
     public function store(Request $request)
