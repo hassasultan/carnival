@@ -66,8 +66,14 @@ class BlogsController extends Controller
             $blogs->region_id = $request->region_id;
             $blogs->title = $request->title;
             $blogs->slug = Str::slug($request->title, '-');
+            // if ($request->hasFile('image')) {
+            //     $blogs->image = $request->file('image')->store('images/blogs');
+            // }
             if ($request->hasFile('image')) {
-                $blogs->image = $request->file('image')->store('images/blogs');
+                $fileName = time() . '.' . $request->file->extension();
+                $request->file->move(public_path('blog_images'), $fileName);
+                $file = $request->file('image');
+                $blog->image = $fileName;
             }
             $blogs->description = $request->description;
             $blogs->status = $request->status;
@@ -119,8 +125,14 @@ class BlogsController extends Controller
             $blog->category_id = $request->category_id;
             $blog->region_id = $request->region_id;
 
+            // if ($request->hasFile('image')) {
+            //     $blog->image = $request->file('image')->store('images/blogs');
+            // }
             if ($request->hasFile('image')) {
-                $blog->image = $request->file('image')->store('images/blogs');
+                $fileName = time() . '.' . $request->file->extension();
+                $request->file->move(public_path('blog_images'), $fileName);
+                $file = $request->file('image');
+                $blog->image = $fileName;
             }
 
             $blog->description = $request->description;
