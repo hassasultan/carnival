@@ -360,12 +360,12 @@ class FrontendConroller extends Controller
             ->where('id', '!=', $blog->id)
             ->where('category_id', $blog->category_id)
             ->orderBy('id', 'desc')
-            ->get();
+            ->get()->take(3);
         $recent_blogs = Blogs::with('user')
             ->where('id', '!=', $blog->id)
             ->where('category_id', $blog->category_id)
             ->orderBy('id', 'desc')
-            ->get();
+            ->get()->take(7);
         return view('ShopFrontend.blog-detail', compact('products', 'blog', 'related_blogs', 'recent_blogs'));
     }
     public function sub_vendor_listing()
