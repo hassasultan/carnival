@@ -112,7 +112,6 @@ class BlogsController extends Controller
                     ]
                 ]);
             }
-            dd($request->toArray(), 'ok');
 
             $blog->title = $request->title;
             $blog->slug = Str::slug($request->title, '-');
