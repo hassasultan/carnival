@@ -88,8 +88,6 @@ class BlogsController extends Controller
 
     public function update(Request $request, Blogs $blog)
     {
-        dd($request->toArray());
-
         try {
             $request->validate([
                 'title' => 'required',
@@ -114,6 +112,7 @@ class BlogsController extends Controller
                     ]
                 ]);
             }
+            dd($request->toArray(), 'ok');
 
             $blog->title = $request->title;
             $blog->slug = Str::slug($request->title, '-');
