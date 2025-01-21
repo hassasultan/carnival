@@ -6689,7 +6689,7 @@
                             <div class="widget-slider arrows">
                                 <div class="swiper-container swiper-swiper-unique-id-2 initialized" data-autoplay="0"
                                     data-loop="1" data-speed="900" data-center="0" data-slides-per-view="1"
-                                    id="swiper-unique-id-2">
+                                    id="swiper-unique-id-2" style="height:600px !important;">
                                     <div class="swiper-wrapper"
                                         style="width: 1480px; transform: translate3d(-370px, 0px, 0px); transition-duration: 0s; height: 215px;">
                                         <div class="swiper-slide radius-4 background-block swiper-slide-duplicate"
