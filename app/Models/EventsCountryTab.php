@@ -10,7 +10,7 @@ class EventsCountryTab extends Model
     use HasFactory;
     protected $table = 'events_country_tabs';
 
-    protected $fillable = ['event_id', 'country_id', 'city_id', 'tab', 'file', 'file_type', 'content', 'status'];
+    protected $fillable = ['carnival_id', 'country_id', 'city_id', 'tab', 'file', 'file_type', 'content', 'status'];
 
     public function country()
     {
@@ -22,8 +22,8 @@ class EventsCountryTab extends Model
         return $this->belongsTo(City::class);
     }
 
-    public function event()
+    public function carnival()
     {
-        return $this->belongsTo(Event::class);
+        return $this->belongsTo(Carnival::class);
     }
 }

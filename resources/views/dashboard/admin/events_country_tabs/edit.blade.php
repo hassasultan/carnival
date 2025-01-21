@@ -10,10 +10,10 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="event_id">Event:</label>
-                            <select class="form-control" id="event_id" name="event_id" required>
-                                @foreach ($events as $event)
-                                    <option value="{{ $event->id }}" {{ $eventsCountryTab->event_id == $event->id ? 'selected' : '' }}>{{ $event->name }}</option>
+                            <label for="carnival_id">Carnival:</label>
+                            <select class="form-control" id="carnival_id" name="carnival_id" required>
+                                @foreach ($carnivals as $carnival)
+                                    <option value="{{ $carnival->id }}" {{ $eventsCountryTab->carnival_id == $carnival->id ? 'selected' : '' }}>{{ $carnival->name }}</option>
                                 @endforeach
                             </select>
                         </div>

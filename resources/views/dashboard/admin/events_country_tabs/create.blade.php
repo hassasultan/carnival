@@ -9,11 +9,11 @@
                     <form action="{{ route('events_country_tabs.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="event_id">Event:</label>
-                            <select class="form-control" id="event_id" name="event_id" required>
-                                <option value="">Select Event</option>
-                                @foreach ($events as $event)
-                                    <option value="{{ $event->id }}">{{ $event->name }}</option>
+                            <label for="carnival_id">Carnival:</label>
+                            <select class="form-control" id="carnival_id" name="carnival_id" required>
+                                <option value="">Select Carnival</option>
+                                @foreach ($carnivals as $carnival)
+                                    <option value="{{ $carnival->id }}">{{ $carnival->name }}</option>
                                 @endforeach
                             </select>
                         </div>

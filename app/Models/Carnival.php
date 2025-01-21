@@ -41,4 +41,9 @@ class Carnival extends Model
     {
         return $this->hasMany(CarnivalMembers::class);
     }
+    
+    public function country_tabs()
+    {
+        return $this->hasMany(EventsCountryTab::class);
+    }
 }
