@@ -78,7 +78,7 @@
                                     <div id="imagePreview">
                                         @if ($blog->image)
                                             {{-- <img src="{{ asset('storage/' . $blog->image) }}" alt="Blog Image" --}}
-                                            <img src="{{ asset('storage/images/blogs/' . $blog->image) }}" alt="Blog Image"
+                                            <img src="{{ asset('blog_images/' . $blog->image) }}" alt="Blog Image"
                                                 class="img-preview">
                                             <button type="button" class="delete-button"
                                                 onclick="deleteImage(event)">❌</button>
