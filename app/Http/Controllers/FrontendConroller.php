@@ -359,8 +359,8 @@ class FrontendConroller extends Controller
         $related_blogs = Blogs::with('user')
             ->where('id', '!=', $blog->id)
             ->where('category_id', $blog->category_id)
+            ->orderBy('id', 'desc')
             ->get();
-            dd($related_blogs->toArray());
         return view('ShopFrontend.blog-detail', compact('products', 'blog', 'related_blogs'));
     }
     public function sub_vendor_listing()
