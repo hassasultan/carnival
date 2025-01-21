@@ -165,7 +165,6 @@
                                 <div class="slick-list draggable">
                                     <div class="slick-track"
                                         style="opacity: 1; width: 578.667px; transform: translate3d(0px, 0px, 0px);">
-                                        {{ dd($related_blogs->toArray()) }}
                                         @foreach ($related_blogs as $row)
                                             <article
                                                 class="blog-item style-02 format-standard post-4484 post type-post status-publish has-post-thumbnail hentry category-sunglasses tag-sunglasses slick-slide slick-current slick-active first-slick"
