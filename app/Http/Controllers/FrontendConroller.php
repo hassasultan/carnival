@@ -68,6 +68,10 @@ class FrontendConroller extends Controller
 
         return view('front.aboutus', compact('services', 'carnival_commitee', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery'));
     }
+    public function travel()
+    {
+        return view('front.travel');
+    }
     public function carnival_listing()
     {
 
