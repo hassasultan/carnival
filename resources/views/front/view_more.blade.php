@@ -300,7 +300,7 @@
                                                 <div class="carousel-thumbnails">
                                                     <div class="thumbnail">
                                                         <img class="img-responsive img-thumb"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                            src="{{ asset('files/'. $row->file) }}"
                                                             alt="Thumbnail 1">
                                                     </div>
                                                     <div class="thumbnail">
