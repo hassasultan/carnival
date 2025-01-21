@@ -6,27 +6,28 @@ use App\Models\EventsCountryTab;
 use App\Models\Event;
 use App\Models\Country;
 use App\Models\City;
+use App\Models\Carnival;
 use Illuminate\Http\Request;
 
 class EventsCountryTabController extends Controller
 {
     public function index()
     {
-        $eventsCountryTabs = EventsCountryTab::with('event', 'country', 'city')->get();
+        $eventsCountryTabs = EventsCountryTab::with('carnival', 'country', 'city')->get();
         return view('dashboard.admin.events_country_tabs.index', compact('eventsCountryTabs'));
     }
 
     public function create()
     {
-        $events = Event::all();
+        $carnivals = Carnival::all();
         $countries = Country::all();
-        return view('dashboard.admin.events_country_tabs.create', compact('events', 'countries'));
+        return view('dashboard.admin.events_country_tabs.create', compact('carnivals', 'countries'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'event_id' => 'required|exists:events,id',
+            'carnival_id' => 'required|exists:carnivals,id',
             'country_id' => 'required|exists:country,id',
             'city_id' => 'required|exists:city,id',
             'tab' => 'required|string|max:255',
@@ -67,16 +68,16 @@ class EventsCountryTabController extends Controller
 
     public function edit(EventsCountryTab $eventsCountryTab)
     {
-        $events = Event::all();
+        $carnivals = Carnival::all();
         $countries = Country::all();
         $cities = City::where('country_id', $eventsCountryTab->country_id)->get();
-        return view('dashboard.admin.events_country_tabs.edit', compact('eventsCountryTab', 'events', 'countries', 'cities'));
+        return view('dashboard.admin.events_country_tabs.edit', compact('eventsCountryTab', 'carnivals', 'countries', 'cities'));
     }
 
     public function update(Request $request, EventsCountryTab $eventsCountryTab)
     {
         $request->validate([
-            'event_id' => 'required|exists:events,id',
+            'carnival_id' => 'required|exists:carnivals,id',
             'country_id' => 'required|exists:country,id',
             'city_id' => 'required|exists:city,id',
             'tab' => 'required|string|max:255',

@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <strong>Event:</strong>
-                        {{ $eventsCountryTab->event->name }}
+                        {{ $eventsCountryTab->carnival->name }}
                     </div>
                     <div class="form-group">
                         <strong>Country:</strong>

@@ -21,7 +21,7 @@
                             <table class="table table-bordered mt-3">
                                 <tr>
                                     <th>ID</th>
-                                    <th>Event</th>
+                                    <th>Carnival</th>
                                     <th>Country</th>
                                     <th>City</th>
                                     <th>Tab</th>
@@ -34,7 +34,7 @@
                                 @foreach ($eventsCountryTabs as $eventsCountryTab)
                                     <tr>
                                         <td>{{ $eventsCountryTab->id }}</td>
-                                        <td>{{ $eventsCountryTab->event->name }}</td>
+                                        <td>{{ $eventsCountryTab->carnival->name }}</td>
                                         <td>{{ $eventsCountryTab->country->name }}</td>
                                         <td>{{ $eventsCountryTab->city->name }}</td>
                                         <td>{{ $eventsCountryTab->tab }}</td>
