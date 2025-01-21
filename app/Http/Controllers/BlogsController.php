@@ -70,7 +70,7 @@ class BlogsController extends Controller
             //     $blogs->image = $request->file('image')->store('images/blogs');
             // }
             if ($request->hasFile('image')) {
-                $fileName = time() . '.' . $request->file->extension();
+                $fileName = time() . '.' . $request->image->extension();
                 $request->file->move(public_path('blog_images'), $fileName);
                 $file = $request->file('image');
                 $blog->image = $fileName;
@@ -129,7 +129,7 @@ class BlogsController extends Controller
             //     $blog->image = $request->file('image')->store('images/blogs');
             // }
             if ($request->hasFile('image')) {
-                $fileName = time() . '.' . $request->file->extension();
+                $fileName = time() . '.' . $request->image->extension();
                 $request->file->move(public_path('blog_images'), $fileName);
                 $file = $request->file('image');
                 $blog->image = $fileName;
