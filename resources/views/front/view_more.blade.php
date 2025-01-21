@@ -6262,20 +6262,20 @@
                                         prevButton.addEventListener('click', () => {
                                             currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.children.length - 1;
                                             console.log(currentSlide);
-                                            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+                                            slides.style.transform = `translateX(${currentSlide * 100}%)`;
                                         });
 
                                         nextButton.addEventListener('click', () => {
                                             currentSlide = (currentSlide < slides.children.length - 1) ? currentSlide + 1 : 0;
                                             console.log(currentSlide);
 
-                                            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+                                            slides.style.transform = `translateX(${currentSlide * 100}%)`;
                                         });
 
                                         carousel.querySelectorAll('.thumbnail').forEach((thumbnail, index) => {
                                             thumbnail.addEventListener('click', () => {
                                                 currentSlide = index;
-                                                slides.style.transform = `translateX(-${index * 100}%)`;
+                                                slides.style.transform = `translateX(${index * 100}%)`;
                                             });
                                         });
                                     });
