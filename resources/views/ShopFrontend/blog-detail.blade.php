@@ -53,7 +53,7 @@
                                             <span class="text">Twitter</span>
                                         </a>
                                         <a class="pinterest"
-                                            href="https://pinterest.com/pin/create/button/?url=https://kuteshop.kutethemes.net/how-to-choose-sunglasses-for-the-beach/?demo=21&amp;description=Smart%20kitchen%20appliances%20are%20currently%20used%20by%20many%20families.%20Smart%20kitchen%20appliances%20will%20not%20only%20bring%20a%20luxurious%20beauty%20to%20the%20kitchen,%20but%20it%20will%20also%20create%20unexpected%20amenities%20and%20utilities%20for%20you%20to%20use,%20especially,%20it%20also%20saves%20a%20lot%20of%20space%20for%20It’s%20your%20small%20kitchen.%20Built-in%20hood%20is%20a%20slim%20and%20modern%20%5B…%5D&amp;media={{ asset('storage/' . $blog->image) }}"
+                                            href="https://pinterest.com/pin/create/button/?url=https://kuteshop.kutethemes.net/how-to-choose-sunglasses-for-the-beach/?demo=21&amp;description=Smart%20kitchen%20appliances%20are%20currently%20used%20by%20many%20families.%20Smart%20kitchen%20appliances%20will%20not%20only%20bring%20a%20luxurious%20beauty%20to%20the%20kitchen,%20but%20it%20will%20also%20create%20unexpected%20amenities%20and%20utilities%20for%20you%20to%20use,%20especially,%20it%20also%20saves%20a%20lot%20of%20space%20for%20It’s%20your%20small%20kitchen.%20Built-in%20hood%20is%20a%20slim%20and%20modern%20%5B…%5D&amp;media={{ asset('blog_images/' . $blog->image) }}"
                                             onclick="window.open(this.href, &quot;&quot;, &quot;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&quot;);return false;">
                                             <span class="icon fa fa-pinterest-square"></span>
                                             <span class="text">Pinterest</span>
@@ -69,10 +69,10 @@
                                 </a>
                             </div>
                             <img width="1170" height="791"
-                                src="{{ asset('storage/' . $blog->image) }}"
+                                src="{{ asset('blog_images/' . $blog->image) }}"
                                 class="attachment-full size-full wp-post-image wp-post-image" alt=""
                                 decoding="async"
-                                srcset="{{ asset('storage/' . $blog->image) }} 1170w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-300x203.jpg 300w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-1024x692.jpg 1024w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-768x519.jpg 768w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-220x149.jpg 220w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-800x541.jpg 800w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-86x58.jpg 86w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-64x43.jpg 64w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-370x250.jpg 370w"
+                                srcset="{{ asset('blog_images/' . $blog->image) }} 1170w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-300x203.jpg 300w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-1024x692.jpg 1024w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-768x519.jpg 768w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-220x149.jpg 220w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-800x541.jpg 800w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-86x58.jpg 86w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-64x43.jpg 64w, https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-370x250.jpg 370w"
                                 sizes="(max-width: 1170px) 100vw, 1170px">
                         </div>
                         <div class="post-content">
@@ -133,7 +133,7 @@
                                         <span class="text">Twitter</span>
                                     </a>
                                     <a class="pinterest"
-                                        href="https://pinterest.com/pin/create/button/?url=https://kuteshop.kutethemes.net/how-to-choose-sunglasses-for-the-beach/?demo=21&amp;description=Smart%20kitchen%20appliances%20are%20currently%20used%20by%20many%20families.%20Smart%20kitchen%20appliances%20will%20not%20only%20bring%20a%20luxurious%20beauty%20to%20the%20kitchen,%20but%20it%20will%20also%20create%20unexpected%20amenities%20and%20utilities%20for%20you%20to%20use,%20especially,%20it%20also%20saves%20a%20lot%20of%20space%20for%20It’s%20your%20small%20kitchen.%20Built-in%20hood%20is%20a%20slim%20and%20modern%20%5B…%5D&amp;media={{ asset('storage/' . $blog->image) }}"
+                                        href="https://pinterest.com/pin/create/button/?url=https://kuteshop.kutethemes.net/how-to-choose-sunglasses-for-the-beach/?demo=21&amp;description=Smart%20kitchen%20appliances%20are%20currently%20used%20by%20many%20families.%20Smart%20kitchen%20appliances%20will%20not%20only%20bring%20a%20luxurious%20beauty%20to%20the%20kitchen,%20but%20it%20will%20also%20create%20unexpected%20amenities%20and%20utilities%20for%20you%20to%20use,%20especially,%20it%20also%20saves%20a%20lot%20of%20space%20for%20It’s%20your%20small%20kitchen.%20Built-in%20hood%20is%20a%20slim%20and%20modern%20%5B…%5D&amp;media={{ asset('blog_images/' . $blog->image) }}"
                                         onclick="window.open(this.href, &quot;&quot;, &quot;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&quot;);return false;">
                                         <span class="icon fa fa-pinterest-square"></span>
                                         <span class="text">Pinterest</span>
@@ -176,7 +176,7 @@
                                                             class="thumb-link effect background-zoom" tabindex="0">
                                                             <figure>
                                                                 <img width="440" height="280"
-                                                                    src="{{ asset('storage/' . $row->image) }}"
+                                                                    src="{{ asset('blog_images/' . $row->image) }}"
                                                                     class="attachment-440x280 size-440x280 wp-post-image"
                                                                     alt="">
                                                             </figure>
@@ -244,7 +244,7 @@
                                             class="thumb-link effect background-zoom">
                                             <figure>
                                                 <img width="90" height="57"
-                                                    src="{{ asset('storage/' . $row->image) }}"
+                                                    src="{{ asset('blog_images/' . $row->image) }}"
                                                     class="attachment-90x57 size-90x57 wp-post-image" alt="">
                                             </figure>
                                         </a>
