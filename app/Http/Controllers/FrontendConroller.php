@@ -356,7 +356,8 @@ class FrontendConroller extends Controller
     {
         $products = Product::with('brand')->get();
         $blog = Blogs::with('user')->where('slug', $id)->first();
-        return view('ShopFrontend.blog-detail', compact('products', 'blog'));
+        $related_blogs = Blogs::with('user')->where('category_id', $blog->category_id)->get();
+        return view('ShopFrontend.blog-detail', compact('products', 'blog', 'related_blogs'));
     }
     public function sub_vendor_listing()
     {
