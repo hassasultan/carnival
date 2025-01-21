@@ -34,15 +34,15 @@ class FrontendConroller extends Controller
 {
     public function home()
     {
-        // $events = Event::with('images', 'tickets', 'country_tabs')->whereHas('country_tabs')->orderBy('id', 'desc')->get()->take('5');
-        $events = Event::with('images', 'tickets')->orderBy('id', 'desc')->get()->take('5');
+        $events = Event::with('images', 'tickets', 'country_tabs')->whereHas('country_tabs')->orderBy('id', 'desc')->get()->take('5');
+        // $events = Event::with('images','tickets')->orderBy('id','desc')->get()->take('5');
         $regions = Region::with('countries')->get();
         $services = OurService::get()->take('4');
         $siteGallery = SiteGallery::get();
         $products = Product::with('brand')->get();
         $investors = Investor::all();
-        $testimonials = Testimonials::where('status', 1)->get();
-        $blogs = Blogs::with('user')->orderBy('id', 'DESC')->get()->take('3');
+        $testimonials = Testimonials::where('status',1)->get();
+        $blogs = Blogs::with('user')->get()->take('3');
         $carnivals = Carnival::with('user')->get()->take('6');
         // dd($events->toArray());
         $carnival_com = Carnival::has('user')->pluck('head');
@@ -57,7 +57,7 @@ class FrontendConroller extends Controller
     {
         $services = OurService::get()->take('4');
         $investors = Investor::all();
-        $testimonials = Testimonials::where('status', 1)->get();
+        $testimonials = Testimonials::where('status',1)->get();
         $siteGallery = SiteGallery::get();
         $blogs = Blogs::with('user')->get()->take('3');
         $products = Product::with('brand')->get();
@@ -66,7 +66,7 @@ class FrontendConroller extends Controller
         $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
 
 
-        return view('front.aboutus', compact('services', 'carnival_commitee', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery'));
+        return view('front.aboutus', compact('services','carnival_commitee', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery'));
     }
     public function travel()
     {
@@ -371,55 +371,6 @@ class FrontendConroller extends Controller
             ->orderBy('id', 'desc')
             ->get()->take(7);
         return view('ShopFrontend.blog-detail', compact('products', 'blog', 'related_blogs', 'recent_blogs'));
-    }
-    public function sub_vendor_listing()
-    {
-        $banners = Banner::where('type', 'section_leader')->get();
-        $regions = Region::all();
-        $adv1 = Advertisement::where('status', 1)
-            ->inRandomOrder()
-            ->take(3)
-            ->get();
-
-        $adv2 = Advertisement::where('status', 1)
-            ->whereNotIn('id', $adv1->pluck('id'))
-            ->inRandomOrder()
-            ->take(3)
-            ->get();
-
-        $adv3 = Advertisement::where('status', 1)
-            ->whereNotIn('id', $adv1->pluck('id')->merge($adv2->pluck('id')))
-            ->inRandomOrder()
-            ->take(3)
-            ->get();
-
-        return view('ShopFrontend.subVendor', compact('banners', 'regions', 'adv1', 'adv2', 'adv3'));
-    }
-    public function vendor_detail($slug)
-    {
-        $user = User::with('banners')->whereSlug($slug)->first();
-        if ($user->carnivals) {
-            $carnival = Carnival::with('mascamps', 'members')->where('head', $user->id)->first();
-        } else {
-            $carnival = '';
-        }
-        $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user->id)->first();
-        $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
-        // dd($subvendors->toArray());
-        $categories = $vendor->products->pluck('category')->unique('id');
-        $products = Product::where('user_id', $user->id)->with('brand')->get();
-        $ads = Advertisement::where('status', 1)->take(2)->get();
-        $vendorPackageName = optional($user->vendor?->package)->title;
-        $subVendorPackageName = optional($user->subVendor?->package)->title;
-
-        if ($vendorPackageName === 'Artistes' || $subVendorPackageName === 'Artistes') {
-            $events = Event::with('category', 'images')->where('user_id', $user->id)->orderBy('start_date', 'DESC')->take(3)->get();
-            $musics = Music::with('imagesRelation')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
-            $costumes = Costume::with('category')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
-            return view('ShopFrontend.artist.detail', compact('events', 'vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'musics', 'costumes'));
-        } else {
-            return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'carnival'));
-        }
     }
     public function get_vendor_products($slug, Request $request)
     {

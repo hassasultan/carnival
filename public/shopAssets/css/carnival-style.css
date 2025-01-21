@@ -530,7 +530,7 @@ body.background-block {
   -o-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  top: 50%;
+  top: 40%;
   position: absolute;
   width: 100%;
   left: 0px;
@@ -3221,11 +3221,11 @@ nav li.type-4 .dropmenu .fa-chevron-right {
 }
 
 .m-200 .swiper-arrow-left {
-  margin-top: -200px;
+  margin-top: -15px;
 }
 
 .m-200 .swiper-arrow-right {
-  margin-top: -200px;
+  margin-top: -15px;
 }
 
 .offers-arrow {
