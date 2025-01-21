@@ -107,7 +107,6 @@ class BlogController extends Controller
 
     public function update(Request $request, Blogs $blog)
     {
-        dd($request->toArray());
         try {
             $request->validate([
                 'title' => 'required',
