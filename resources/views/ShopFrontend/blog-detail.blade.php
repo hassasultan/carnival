@@ -187,11 +187,11 @@
                                                             <div class="inner"><a
                                                                     href="javascript:void(0)"
                                                                     {{-- href="https://kuteshop.kutethemes.net/category/sunglasses/?demo=21" --}}
-                                                                    rel="tag" tabindex="0">{{ $blog->category->title }}</a></div>
+                                                                    rel="tag" tabindex="0">{{ $row->category->title }}</a></div>
                                                         </div>
                                                         <h1 class="post-title"><a
                                                                 href="{{ route('front.blog.detail', $row->slug) }}"
-                                                                tabindex="0">{{ $blog->title }}</a></h1>
+                                                                tabindex="0">{{ $row->title }}</a></h1>
                                                     </div>
                                                 </div>
                                             </article>
@@ -235,27 +235,30 @@
                     <h2 class="widget-title"><span class="text">Recent Posts</span><span class="arrow"></span></h2>
                     <div class="ovic-blog style-01">
                         <div class="content-post">
+                            @foreach ($recent_blogs as $row)
                             <article
                                 class="blog-item style-01 format-standard post-4495 post type-post status-publish has-post-thumbnail hentry category-sunglasses tag-sunglasses">
                                 <div class="post-inner">
                                     <div class="post-thumb">
-                                        <a href="https://kuteshop.kutethemes.net/how-to-choose-sunglasses-for-the-beach/?demo=21"
+                                        <a href="{{ route('front.blog.detail', $row->slug) }}"
                                             class="thumb-link effect background-zoom">
                                             <figure>
                                                 <img width="90" height="57"
-                                                    src="https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses3-90x57.jpg"
+                                                    src="{{ asset('storage/' . $row->image) }}"
                                                     class="attachment-90x57 size-90x57 wp-post-image" alt="">
                                             </figure>
                                         </a>
                                     </div>
                                     <div class="post-info">
                                         <h1 class="post-title"><a
-                                                href="https://kuteshop.kutethemes.net/how-to-choose-sunglasses-for-the-beach/?demo=21">How
-                                                to Choose Sunglasses for the Beach</a></h1>
+                                                href="{{ route('front.blog.detail', $row->slug) }}">
+                                                {{ $row->title }}
+                                            </a></h1>
                                         <div class="post-metas">
                                             <div class="post-meta post-date">
                                                 <a href="https://kuteshop.kutethemes.net/2023/02/22/?demo=21">
-                                                    February 22, 2023 </a>
+                                                    {{ $blog->created_at->format('M d, Y') }}
+                                                </a>
                                             </div>
                                             <div class="post-meta post-comment">
                                                 <a href="https://kuteshop.kutethemes.net/how-to-choose-sunglasses-for-the-beach/?demo=21#comments"
@@ -266,161 +269,7 @@
                                     </div>
                                 </div>
                             </article>
-                            <article
-                                class="blog-item style-01 format-standard post-4484 post type-post status-publish has-post-thumbnail hentry category-sunglasses tag-sunglasses">
-                                <div class="post-inner">
-                                    <div class="post-thumb">
-                                        <a href="https://kuteshop.kutethemes.net/eye-wear-tips-to-master-your-zoom-calls/?demo=21"
-                                            class="thumb-link effect background-zoom">
-                                            <figure>
-                                                <img width="90" height="57"
-                                                    src="https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses-2-90x57.jpg"
-                                                    class="attachment-90x57 size-90x57 wp-post-image" alt="">
-                                            </figure>
-                                        </a>
-                                    </div>
-                                    <div class="post-info">
-                                        <h1 class="post-title"><a
-                                                href="https://kuteshop.kutethemes.net/eye-wear-tips-to-master-your-zoom-calls/?demo=21">Eye-wear
-                                                Tips To Master Your Zoom Calls</a></h1>
-                                        <div class="post-metas">
-                                            <div class="post-meta post-date">
-                                                <a href="https://kuteshop.kutethemes.net/2023/02/22/?demo=21">
-                                                    February 22, 2023 </a>
-                                            </div>
-                                            <div class="post-meta post-comment">
-                                                <a href="https://kuteshop.kutethemes.net/eye-wear-tips-to-master-your-zoom-calls/?demo=21#comments"
-                                                    class="comment">
-                                                    <span class="icon"></span> (0) </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article
-                                class="blog-item style-01 format-standard post-4476 post type-post status-publish has-post-thumbnail hentry category-sunglasses">
-                                <div class="post-inner">
-                                    <div class="post-thumb">
-                                        <a href="https://kuteshop.kutethemes.net/beautiful-girl-in-stylish-sunglasses-at-sunset/?demo=21"
-                                            class="thumb-link effect background-zoom">
-                                            <figure>
-                                                <img width="90" height="57"
-                                                    src="https://kuteshop.b-cdn.net/wp-content/uploads/2023/02/imgs-blog-Sunglasses-90x57.jpg"
-                                                    class="attachment-90x57 size-90x57 wp-post-image" alt="">
-                                            </figure>
-                                        </a>
-                                    </div>
-                                    <div class="post-info">
-                                        <h1 class="post-title"><a
-                                                href="https://kuteshop.kutethemes.net/beautiful-girl-in-stylish-sunglasses-at-sunset/?demo=21">Beautiful
-                                                Girl In Stylish Sunglasses At Sunset</a></h1>
-                                        <div class="post-metas">
-                                            <div class="post-meta post-date">
-                                                <a href="https://kuteshop.kutethemes.net/2023/02/22/?demo=21">
-                                                    February 22, 2023 </a>
-                                            </div>
-                                            <div class="post-meta post-comment">
-                                                <a href="https://kuteshop.kutethemes.net/beautiful-girl-in-stylish-sunglasses-at-sunset/?demo=21#comments"
-                                                    class="comment">
-                                                    <span class="icon"></span> (0) </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article
-                                class="blog-item style-01 format-standard post-3912 post type-post status-publish has-post-thumbnail hentry category-fashion-bg">
-                                <div class="post-inner">
-                                    <div class="post-thumb">
-                                        <a href="https://kuteshop.kutethemes.net/what-is-long-exposure-photography/?demo=21"
-                                            class="thumb-link effect background-zoom">
-                                            <figure>
-                                                <img width="90" height="57"
-                                                    src="https://kuteshop.b-cdn.net/wp-content/uploads/2022/05/FS-BLOG-3-90x57.jpg"
-                                                    class="attachment-90x57 size-90x57 wp-post-image" alt="">
-                                            </figure>
-                                        </a>
-                                    </div>
-                                    <div class="post-info">
-                                        <h1 class="post-title"><a
-                                                href="https://kuteshop.kutethemes.net/what-is-long-exposure-photography/?demo=21">What
-                                                Is Long Exposure Photography</a></h1>
-                                        <div class="post-metas">
-                                            <div class="post-meta post-date">
-                                                <a href="https://kuteshop.kutethemes.net/2022/05/11/?demo=21">
-                                                    May 11, 2022 </a>
-                                            </div>
-                                            <div class="post-meta post-comment">
-                                                <a href="https://kuteshop.kutethemes.net/what-is-long-exposure-photography/?demo=21#comments"
-                                                    class="comment">
-                                                    <span class="icon"></span> (0) </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article
-                                class="blog-item style-01 format-standard post-3892 post type-post status-publish has-post-thumbnail hentry category-fashion-bg">
-                                <div class="post-inner">
-                                    <div class="post-thumb">
-                                        <a href="https://kuteshop.kutethemes.net/how-to-use-foreground-middle-ground-and-background-in-photography/?demo=21"
-                                            class="thumb-link effect background-zoom">
-                                            <figure>
-                                                <img width="90" height="57"
-                                                    src="https://kuteshop.b-cdn.net/wp-content/uploads/2022/05/FS-BLOG-9-90x57.jpg"
-                                                    class="attachment-90x57 size-90x57 wp-post-image" alt="">
-                                            </figure>
-                                        </a>
-                                    </div>
-                                    <div class="post-info">
-                                        <h1 class="post-title"><a
-                                                href="https://kuteshop.kutethemes.net/how-to-use-foreground-middle-ground-and-background-in-photography/?demo=21">How
-                                                to Use Foreground, Middle ground, and Background in Photography</a></h1>
-                                        <div class="post-metas">
-                                            <div class="post-meta post-date">
-                                                <a href="https://kuteshop.kutethemes.net/2022/05/11/?demo=21">
-                                                    May 11, 2022 </a>
-                                            </div>
-                                            <div class="post-meta post-comment">
-                                                <a href="https://kuteshop.kutethemes.net/how-to-use-foreground-middle-ground-and-background-in-photography/?demo=21#comments"
-                                                    class="comment">
-                                                    <span class="icon"></span> (0) </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article
-                                class="blog-item style-01 format-standard post-3884 post type-post status-publish has-post-thumbnail hentry category-fashion-bg">
-                                <div class="post-inner">
-                                    <div class="post-thumb">
-                                        <a href="https://kuteshop.kutethemes.net/what-is-moira-pattern-in-photos/?demo=21"
-                                            class="thumb-link effect background-zoom">
-                                            <figure>
-                                                <img width="90" height="57"
-                                                    src="https://kuteshop.b-cdn.net/wp-content/uploads/2022/05/FS-BLOG-2-1-90x57.jpg"
-                                                    class="attachment-90x57 size-90x57 wp-post-image" alt="">
-                                            </figure>
-                                        </a>
-                                    </div>
-                                    <div class="post-info">
-                                        <h1 class="post-title"><a
-                                                href="https://kuteshop.kutethemes.net/what-is-moira-pattern-in-photos/?demo=21">What
-                                                Is Moira Pattern in Photos?</a></h1>
-                                        <div class="post-metas">
-                                            <div class="post-meta post-date">
-                                                <a href="https://kuteshop.kutethemes.net/2022/05/11/?demo=21">
-                                                    May 11, 2022 </a>
-                                            </div>
-                                            <div class="post-meta post-comment">
-                                                <a href="https://kuteshop.kutethemes.net/what-is-moira-pattern-in-photos/?demo=21#comments"
-                                                    class="comment">
-                                                    <span class="icon"></span> (0) </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
+                            @endforeach
                         </div>
                     </div>
                 </div>

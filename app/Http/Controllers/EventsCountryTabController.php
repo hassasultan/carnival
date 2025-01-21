@@ -57,7 +57,7 @@ class EventsCountryTabController extends Controller
 
         EventsCountryTab::create($data);
 
-        return redirect()->route('carnivals_country_tabs.index')
+        return redirect()->route('events_country_tabs.index')
             ->with('success', 'Event Country Tab created successfully.');
     }
 
