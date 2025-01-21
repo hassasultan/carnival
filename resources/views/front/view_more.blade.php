@@ -119,11 +119,13 @@
                         <div class="simple-tab type-2 tab-wrapper">
                             <div class="tab-nav-wrapper">
                                 <div class="nav-tab  clearfix">
-                                    @foreach ($event->country_tabs as $key => $row)
-                                        <div class="nav-tab-item @if ($key == 0) active @endif">
-                                            {{ $row->tab }}
-                                        </div>
-                                    @endforeach
+                                    @if ($carnivals->country_tabs != null)
+                                        @foreach ($carnivals->country_tabs as $key => $row)
+                                            <div class="nav-tab-item @if ($key == 0) active @endif">
+                                                {{ $row->tab }}
+                                            </div>
+                                        @endforeach
+                                    @endif
                                     {{-- <div class="nav-tab-item">
                                         Sports
                                     </div>
@@ -260,73 +262,75 @@
                                 }
                             </style>
                             <div class="tabs-content clearfix">
-                                @foreach ($event->country_tabs as $key => $row)
-                                    <div class="tab-info @if ($key == 0) active @endif">
-                                        <div class="carousel">
-                                            <div class="carousel-wrapper">
-                                                <button class="carousel-control prev">&#10094;</button>
-                                                <div class="carousel-slides">
-                                                    <div class="slide active">
-                                                        <img class="img-responsive img-full"
+                                @if ($carnivals->country_tabs != null)
+                                    @foreach ($carnivals->country_tabs as $key => $row)
+                                        <div class="tab-info @if ($key == 0) active @endif">
+                                            <div class="carousel">
+                                                <div class="carousel-wrapper">
+                                                    <button class="carousel-control prev">&#10094;</button>
+                                                    <div class="carousel-slides">
+                                                        <div class="slide active">
+                                                            <img class="img-responsive img-full"
+                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                                alt="Slide 1">
+                                                        </div>
+                                                        <div class="slide">
+                                                            <img class="img-responsive img-full"
+                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                                alt="Slide 2">
+                                                        </div>
+                                                        <div class="slide">
+                                                            <img class="img-responsive img-full"
+                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                                alt="Slide 3">
+                                                        </div>
+                                                        <div class="slide">
+                                                            <img class="img-responsive img-full"
+                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                                alt="Slide 4">
+                                                        </div>
+                                                        <div class="slide">
+                                                            <img class="img-responsive img-full"
+                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                                alt="Slide 5">
+                                                        </div>
+                                                    </div>
+                                                    <button class="carousel-control next">&#10095;</button>
+                                                </div>
+                                                <div class="carousel-thumbnails">
+                                                    <div class="thumbnail">
+                                                        <img class="img-responsive img-thumb"
                                                             src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
-                                                            alt="Slide 1">
+                                                            alt="Thumbnail 1">
                                                     </div>
-                                                    <div class="slide">
-                                                        <img class="img-responsive img-full"
+                                                    <div class="thumbnail">
+                                                        <img class="img-responsive img-thumb"
                                                             src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
-                                                            alt="Slide 2">
+                                                            alt="Thumbnail 2">
                                                     </div>
-                                                    <div class="slide">
-                                                        <img class="img-responsive img-full"
+                                                    <div class="thumbnail">
+                                                        <img class="img-responsive img-thumb"
                                                             src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
-                                                            alt="Slide 3">
+                                                            alt="Thumbnail 3">
                                                     </div>
-                                                    <div class="slide">
-                                                        <img class="img-responsive img-full"
+                                                    <div class="thumbnail">
+                                                        <img class="img-responsive img-thumb"
                                                             src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
-                                                            alt="Slide 4">
+                                                            alt="Thumbnail 4">
                                                     </div>
-                                                    <div class="slide">
-                                                        <img class="img-responsive img-full"
+                                                    <div class="thumbnail">
+                                                        <img class="img-responsive img-thumb"
                                                             src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
-                                                            alt="Slide 5">
+                                                            alt="Thumbnail 5">
                                                     </div>
                                                 </div>
-                                                <button class="carousel-control next">&#10095;</button>
                                             </div>
-                                            <div class="carousel-thumbnails">
-                                                <div class="thumbnail">
-                                                    <img class="img-responsive img-thumb"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
-                                                        alt="Thumbnail 1">
-                                                </div>
-                                                <div class="thumbnail">
-                                                    <img class="img-responsive img-thumb"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
-                                                        alt="Thumbnail 2">
-                                                </div>
-                                                <div class="thumbnail">
-                                                    <img class="img-responsive img-thumb"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
-                                                        alt="Thumbnail 3">
-                                                </div>
-                                                <div class="thumbnail">
-                                                    <img class="img-responsive img-thumb"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
-                                                        alt="Thumbnail 4">
-                                                </div>
-                                                <div class="thumbnail">
-                                                    <img class="img-responsive img-thumb"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
-                                                        alt="Thumbnail 5">
-                                                </div>
+                                            <div class="col-md-12">
+                                                {!! $row->content !!}
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
-                                            {!! $row->content !!}
-                                        </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                @endif
                                 {{-- Flights --}}
                                 <div class="tab-info" style="position: relative;">
                                     {{-- <img class="img-responsive" src="https://carnivalguide.co/new/img/detail/guide_6a.jpg"
@@ -1886,10 +1890,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -1919,10 +1923,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -1952,10 +1956,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -1987,10 +1991,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2020,10 +2024,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2053,10 +2057,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2088,10 +2092,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2121,10 +2125,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2154,10 +2158,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2189,10 +2193,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2222,10 +2226,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2255,10 +2259,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2615,10 +2619,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2648,10 +2652,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2681,10 +2685,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2716,10 +2720,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2749,10 +2753,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2782,10 +2786,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2817,10 +2821,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2850,10 +2854,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2883,10 +2887,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2918,10 +2922,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2951,10 +2955,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -2984,10 +2988,10 @@
                                                             <i class="fa fa-money"></i>
                                                                 <span><b>Adult:</b> 2500$</span>
                                                                 <span><b>Children:</b> 1200$</span>
-                                                        </div>  
-                            
+                                                        </div>
+
                                                     <a href="booking.html" class="c-button bg-dr-blue hv-dr-blue-o b-50 fl">book now</a>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -5934,26 +5938,34 @@
                                             <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                                 <div class="s_news-entry style-2">
                                                     <a href="{{ route('front.blog.detail', $item->slug) }}">
-                                                        <img class="s_news-img img-responsive" src="https://carnivalguide.co/new/img/inner/blog_grid_1.jpg" alt="">
+                                                        <img class="s_news-img img-responsive"
+                                                            src="https://carnivalguide.co/new/img/inner/blog_grid_1.jpg"
+                                                            alt="">
                                                     </a>
-                                                    <h4 class="s_news-title"><a href="{{ route('front.blog.detail', $item->slug) }}">{{ $item->title }}</a></h4>
+                                                    <h4 class="s_news-title"><a
+                                                            href="{{ route('front.blog.detail', $item->slug) }}">{{ $item->title }}</a>
+                                                    </h4>
                                                     <div class="tour-info-line clearfix">
                                                         <div class="tour-info fl">
-                                                               <img src="img/calendar_icon_grey.png" alt="">
-                                                               <span class="font-style-2 color-dark-2">03/07/2015</span>
-                                                           </div>
+                                                            <img src="img/calendar_icon_grey.png" alt="">
+                                                            <span class="font-style-2 color-dark-2">03/07/2015</span>
+                                                        </div>
                                                         <div class="tour-info fl">
-                                                               <img src="img/people_icon_grey.png" alt="">
-                                                               <span class="font-style-2 color-dark-2">By Emma Stone</span>
-                                                           </div>
+                                                            <img src="img/people_icon_grey.png" alt="">
+                                                            <span class="font-style-2 color-dark-2">By Emma Stone</span>
+                                                        </div>
                                                         <div class="tour-info fl">
-                                                               <img src="img/comment_icon_grey.png" alt="">
-                                                               <span class="font-style-2 color-dark-2">10 comments</span>
-                                                           </div>						
+                                                            <img src="img/comment_icon_grey.png" alt="">
+                                                            <span class="font-style-2 color-dark-2">10 comments</span>
+                                                        </div>
                                                     </div>
-                                                    <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                    <a href="{{ route('front.blog.detail', $item->slug) }}" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
-                                                </div>				
+                                                    <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet,
+                                                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                                        labore et dolore magna aliqua.</div>
+                                                    <a href="{{ route('front.blog.detail', $item->slug) }}"
+                                                        class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view
+                                                            more</span></a>
+                                                </div>
                                             </div>
                                         @endforeach
                                     </div>
@@ -5976,11 +5988,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -5998,11 +6010,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
-                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>	
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>					  	 	
-                                            </div>				
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6020,11 +6032,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>						  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6042,11 +6054,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6064,11 +6076,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
-                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>	
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>					  	 	
-                                            </div>				
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6086,11 +6098,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>						  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6108,11 +6120,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6130,11 +6142,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
-                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>	
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>					  	 	
-                                            </div>				
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6152,11 +6164,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>						  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6174,11 +6186,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>	  	 	
-                                            </div>				
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6196,11 +6208,11 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
-                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>	
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>					  	 	
-                                            </div>				
+                                                <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
                                         </div>
                                         <div class="blog-grid-entry col-mob-12 col-xs-12 col-sm-6 col-md-4">
                                             <div class="s_news-entry style-2">
@@ -6218,12 +6230,12 @@
                                                     <div class="tour-info fl">
                                                            <img src="img/comment_icon_grey.png" alt="">
                                                            <span class="font-style-2 color-dark-2">10 comments</span>
-                                                       </div>						
+                                                       </div>
                                                 </div>
                                                 <div class="s_news-text color-grey-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>						  	 	
-                                            </div>				
-                                        </div>															
+                                                <a href="blog_detail.html" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o"><span>view more</span></a>
+                                            </div>
+                                        </div>
                                     </div> --}}
                                     <div class="c_pagination clearfix">
                                         <a href="#" class="c-button b-40 bg-dr-blue-2 hv-dr-blue-2-o fl">prev

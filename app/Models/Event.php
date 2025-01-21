@@ -69,10 +69,7 @@ class Event extends Model
     {
         return $this->hasMany(EventTicket::class);
     }
-    public function country_tabs()
-    {
-        return $this->hasMany(EventsCountryTab::class);
-    }
+
 
     public function getStartDateAttribute($value)
     {
