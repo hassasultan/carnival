@@ -2,7 +2,7 @@
 @section('front-content')
     <div class="top-baner swiper-animate arrows">
         <div class="swiper-container main-slider" data-autoplay="5000" data-loop="1" data-speed="900" data-center="0"
-            data-slides-per-view="1">
+            data-slides-per-view="1" style="height:600px !important;">
             <div class="swiper-wrapper">
                 <div class="swiper-slide active" data-val="0">
                     <div class="clip">
@@ -6689,7 +6689,7 @@
                             <div class="widget-slider arrows">
                                 <div class="swiper-container swiper-swiper-unique-id-2 initialized" data-autoplay="0"
                                     data-loop="1" data-speed="900" data-center="0" data-slides-per-view="1"
-                                    id="swiper-unique-id-2" style="height:600px !important;">
+                                    id="swiper-unique-id-2" >
                                     <div class="swiper-wrapper"
                                         style="width: 1480px; transform: translate3d(-370px, 0px, 0px); transition-duration: 0s; height: 215px;">
                                         <div class="swiper-slide radius-4 background-block swiper-slide-duplicate"
