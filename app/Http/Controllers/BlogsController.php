@@ -71,9 +71,9 @@ class BlogsController extends Controller
             // }
             if ($request->hasFile('image')) {
                 $fileName = time() . '.' . $request->image->extension();
-                $request->file->move(public_path('blog_images'), $fileName);
+                $request->image->move(public_path('blog_images'), $fileName);
                 $file = $request->file('image');
-                $blog->image = $fileName;
+                $blogs->image = $fileName;
             }
             $blogs->description = $request->description;
             $blogs->status = $request->status;
@@ -130,7 +130,7 @@ class BlogsController extends Controller
             // }
             if ($request->hasFile('image')) {
                 $fileName = time() . '.' . $request->image->extension();
-                $request->file->move(public_path('blog_images'), $fileName);
+                $request->image->move(public_path('blog_images'), $fileName);
                 $file = $request->file('image');
                 $blog->image = $fileName;
             }
