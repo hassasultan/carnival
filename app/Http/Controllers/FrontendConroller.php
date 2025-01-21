@@ -360,6 +360,7 @@ class FrontendConroller extends Controller
             ->where('id', '!=', $blog->id)
             ->where('category_id', $blog->category_id)
             ->get();
+            dd($related_blogs->toArray());
         return view('ShopFrontend.blog-detail', compact('products', 'blog', 'related_blogs'));
     }
     public function sub_vendor_listing()
