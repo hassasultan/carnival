@@ -271,7 +271,7 @@
                                                     <div class="carousel-slides">
                                                         <div class="slide active">
                                                             <img class="img-responsive img-full"
-                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                                src="{{ asset('files/'. $row->file) }}"
                                                                 alt="Slide 1">
                                                         </div>
                                                         <div class="slide">
