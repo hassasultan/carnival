@@ -305,7 +305,7 @@
                                                     </div>
                                                     <div class="thumbnail">
                                                         <img class="img-responsive img-thumb"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                            src="{{ asset('files/'. $row->file) }}"
                                                             alt="Thumbnail 2">
                                                     </div>
                                                     <div class="thumbnail">
