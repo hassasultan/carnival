@@ -10,7 +10,7 @@
                             style="background-image:url(https://carnivalguide.co/travel/img/home_9/slide_1a.jpg)">
                         </div>
                     </div>
-                    <div class="vertical-align">
+                    <div class="vertical-align" style="top:40% !important;">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
