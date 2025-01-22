@@ -530,7 +530,7 @@ body.background-block {
   -o-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  top: 40%;
+  top: 50%;
   position: absolute;
   width: 100%;
   left: 0px;
