@@ -10,7 +10,7 @@ class EventsCountryTab extends Model
     use HasFactory;
     protected $table = 'events_country_tabs';
 
-    protected $fillable = ['carnival_id', 'country_id', 'city_id', 'tab', 'file', 'file_type', 'content', 'status'];
+    protected $fillable = ['carnival_id', 'country_id', 'city_id', 'tab', 'file', 'file_type', 'content', 'status', 'placement'];
 
     public function country()
     {

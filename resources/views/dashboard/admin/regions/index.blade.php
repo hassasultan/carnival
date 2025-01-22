@@ -30,6 +30,7 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Icon</th>
+                                        <th>Placement Order Number</th>
                                         <th>Actions</th>
                                     </tr>
                                     @foreach ($regions as $region)
@@ -38,6 +39,7 @@
                                             <td>{{ $region->name }}</td>
                                             <td><img src="{{ asset('images/' . $region->icon) }}" alt="{{ $region->name }}"
                                                     width="50"></td>
+                                            <td>{{ $region->placement }}</td>
                                             <td>
                                                 <a href="{{ route('regions.show', $region->id) }}"
                                                     class="btn btn-info">Show</a>

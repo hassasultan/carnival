@@ -25,6 +25,7 @@
                                     <th>Country</th>
                                     <th>City</th>
                                     <th>Tab</th>
+                                    <th>Placement Index</th>
                                     <th>File</th>
                                     <th>File Type</th>
                                     {{-- <th>Content</th> --}}
@@ -34,10 +35,11 @@
                                 @foreach ($eventsCountryTabs as $eventsCountryTab)
                                     <tr>
                                         <td>{{ $eventsCountryTab->id }}</td>
-                                        <td>{{ $eventsCountryTab->carnival->name }}</td>
+                                        <td>{{ $eventsCountryTab->carnival?->name }}</td>
                                         <td>{{ $eventsCountryTab->country->name }}</td>
                                         <td>{{ $eventsCountryTab->city->name }}</td>
                                         <td>{{ $eventsCountryTab->tab }}</td>
+                                        <td>{{ $eventsCountryTab->placement }}</td>
                                         <td>
                                             @if($eventsCountryTab->file_type == 'image')
                                                 <img src="{{ asset('files/' . $eventsCountryTab->file) }}" alt="file" width="50">

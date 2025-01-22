@@ -19,6 +19,10 @@
                         <label for="icon">Icon:</label>
                         <input type="file" class="form-control" id="icon" name="icon" required>
                     </div>
+                    <div class="form-group">
+                        <label for="placement">Placement Order Number:</label>
+                        <input type="number" class="form-control" id="placement" name="placement"  required>
+                    </div>
                     <button type="submit" class="btn btn-primary mt-3">Save</button>
                 </form>
             </div>

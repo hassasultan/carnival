@@ -42,6 +42,10 @@
                             <div id="file-preview"></div>
                         </div>
                         <div class="form-group">
+                            <label for="placement">Placement Order Number:</label>
+                            <input type="number" class="form-control" id="placement" name="placement"  required>
+                        </div>
+                        <div class="form-group">
                             <label for="content">Content:</label>
                             <textarea class="form-control summernote" id="content" name="content"></textarea>
                         </div>
@@ -62,7 +66,7 @@
     <script>
         document.getElementById('country_id').addEventListener('change', function() {
             var countryId = this.value;
-            
+
             fetch(`{{ route('get.cities.by.country', '') }}/${countryId}`)
                 .then(response => response.json())
                 .then(data => {
