@@ -47,6 +47,7 @@ use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\VendorGalleryController;
 use App\Http\Controllers\SubvendorGalleryController;
 use App\Http\Controllers\ModelBookingController;
+use App\Http\Controllers\FAQController;
 
 /*
 |--------------------------------------------------------------------------
@@ -283,6 +284,14 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // advertisements
     Route::resource('advertisements', AdvertisementController::class);
+
+    Route::get('/faqs', [FAQController::class, 'index'])->name('faqs.index');
+    Route::get('/faqs/create', [FAQController::class, 'create'])->name('faqs.create');
+    Route::post('/faqs', [FAQController::class, 'store'])->name('faqs.store');
+    Route::get('/faqs/{id}', [FAQController::class, 'show'])->name('faqs.show');
+    Route::get('/faqs/{id}/edit', [FAQController::class, 'edit'])->name('faqs.edit');
+    Route::put('/faqs/{id}', [FAQController::class, 'update'])->name('faqs.update');
+    Route::delete('/faqs/{id}', [FAQController::class, 'destroy'])->name('faqs.destroy');
 });
 
 Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');

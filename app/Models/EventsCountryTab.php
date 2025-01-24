@@ -26,4 +26,9 @@ class EventsCountryTab extends Model
     {
         return $this->belongsTo(Carnival::class);
     }
+    
+    public function faqs()
+    {
+        return $this->morphMany(FAQ::class, 'modelable');
+    }
 }
