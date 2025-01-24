@@ -21,6 +21,10 @@
                             <input type="file" class="form-control" id="icon" name="icon">
                             <img src="{{ asset('images/' . $region->icon) }}" alt="{{ $region->name }}" width="100" class="mt-2">
                         </div>
+                        <div class="form-group">
+                            <label for="placement">Placement Order Number:</label>
+                            <input type="number" class="form-control" id="placement" name="placement" value="{{ $region->placement }}" required>
+                        </div>
                         <button type="submit" class="btn btn-primary mt-3">Save</button>
                     </form>
                 </div>

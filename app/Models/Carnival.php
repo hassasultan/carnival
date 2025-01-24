@@ -43,6 +43,6 @@ class Carnival extends Model
     }
     public function country_tabs()
     {
-        return $this->hasMany(EventsCountryTab::class);
+        return $this->hasMany(EventsCountryTab::class)->orderBy('placement', 'asc');
     }
 }

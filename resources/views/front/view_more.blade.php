@@ -2,7 +2,7 @@
 @section('front-content')
     <div class="top-baner swiper-animate arrows">
         <div class="swiper-container main-slider" data-autoplay="5000" data-loop="1" data-speed="900" data-center="0"
-            data-slides-per-view="1">
+            data-slides-per-view="1" style="height:600px !important;">
             <div class="swiper-wrapper">
                 <div class="swiper-slide active" data-val="0">
                     <div class="clip">
@@ -10,7 +10,7 @@
                             style="background-image:url(https://carnivalguide.co/travel/img/home_9/slide_1a.jpg)">
                         </div>
                     </div>
-                    <div class="vertical-align">
+                    <div class="vertical-align" style="top:40% !important;">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
@@ -271,12 +271,12 @@
                                                     <div class="carousel-slides">
                                                         <div class="slide active">
                                                             <img class="img-responsive img-full"
-                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                                src="{{ asset('files/'. $row->file) }}"
                                                                 alt="Slide 1">
                                                         </div>
                                                         <div class="slide">
                                                             <img class="img-responsive img-full"
-                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                                src="{{ asset('files/'. $row->file) }}"
                                                                 alt="Slide 2">
                                                         </div>
                                                         <div class="slide">
@@ -300,12 +300,12 @@
                                                 <div class="carousel-thumbnails">
                                                     <div class="thumbnail">
                                                         <img class="img-responsive img-thumb"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                            src="{{ asset('files/'. $row->file) }}"
                                                             alt="Thumbnail 1">
                                                     </div>
                                                     <div class="thumbnail">
                                                         <img class="img-responsive img-thumb"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                            src="{{ asset('files/'. $row->file) }}"
                                                             alt="Thumbnail 2">
                                                     </div>
                                                     <div class="thumbnail">
@@ -6261,18 +6261,21 @@
 
                                         prevButton.addEventListener('click', () => {
                                             currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.children.length - 1;
-                                            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+                                            console.log(currentSlide);
+                                            slides.style.transform = `translateX(${currentSlide * 100}%)`;
                                         });
 
                                         nextButton.addEventListener('click', () => {
                                             currentSlide = (currentSlide < slides.children.length - 1) ? currentSlide + 1 : 0;
-                                            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+                                            console.log(currentSlide);
+
+                                            slides.style.transform = `translateX(${currentSlide * 100}%)`;
                                         });
 
                                         carousel.querySelectorAll('.thumbnail').forEach((thumbnail, index) => {
                                             thumbnail.addEventListener('click', () => {
                                                 currentSlide = index;
-                                                slides.style.transform = `translateX(-${index * 100}%)`;
+                                                slides.style.transform = `translateX(${index * 100}%)`;
                                             });
                                         });
                                     });
@@ -6686,7 +6689,7 @@
                             <div class="widget-slider arrows">
                                 <div class="swiper-container swiper-swiper-unique-id-2 initialized" data-autoplay="0"
                                     data-loop="1" data-speed="900" data-center="0" data-slides-per-view="1"
-                                    id="swiper-unique-id-2">
+                                    id="swiper-unique-id-2" >
                                     <div class="swiper-wrapper"
                                         style="width: 1480px; transform: translate3d(-370px, 0px, 0px); transition-duration: 0s; height: 215px;">
                                         <div class="swiper-slide radius-4 background-block swiper-slide-duplicate"
