@@ -78,6 +78,7 @@ Route::get('/car-rental/listing', [FrontendConroller::class, 'car_rental'])->nam
 Route::get('/category-tour-listing', [FrontendConroller::class, 'category_tour_listing'])->name('front.category.tour.listing');
 Route::get('/product-listing', [FrontendConroller::class, 'product_listing'])->name('front.product_listing');
 Route::get('/shop/carnival-listing', [FrontendConroller::class, 'carnival_listing_all'])->name('front.carnival_listing');
+Route::get('/shop/event-listing', [FrontendConroller::class, 'shop_event_listing'])->name('front.shop_listing');
 Route::get('/package/detail', [FrontendConroller::class, 'package_detail'])->name('front.package.detail');
 Route::get('/shop', [FrontendConroller::class, 'shop_home'])->name('front.shop');
 Route::get('/get-discounted', [FrontendConroller::class, 'getDiscounted'])->name('front.get_discounted');

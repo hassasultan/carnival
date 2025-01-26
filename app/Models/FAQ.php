@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\EventsCountryTab;
 
 class FAQ extends Model
 {
@@ -19,8 +20,13 @@ class FAQ extends Model
         'status',
     ];
 
-    public function modelable()
+    public function eventsCountryTab()
     {
-        return $this->morphTo();
+        return $this->belongsTo(EventsCountryTab::class, 'modelable_id');
     }
+
+    // public function modelable()
+    // {
+    //     return $this->morphTo();
+    // }
 }

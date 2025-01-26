@@ -18,7 +18,8 @@
                                 <tr>
                                     <th></th>
                                     <th>Sr#</th>
-                                    <th>Model</th>
+                                    {{-- <th>Model</th> --}}
+                                    <th>EventsCountryTab</th>
                                     <th>Question</th>
                                     <th>Answer</th>
                                     <th>Status</th>
@@ -37,7 +38,8 @@
                                         </div>
                                     </td>
                                     <td>{{ $counter++ }}</td>
-                                    <td>{{ $faq->modelable_type }}</td>
+                                    {{-- <td>{{ $faq->modelable_type }}</td> --}}
+                                    <td>{{ $faq->eventsCountryTab->tab }}</td>
                                     <td>{{ $faq->question }}</td>
                                     <td>{{ Str::limit($faq->answer, 50) }}</td>
                                     <td>

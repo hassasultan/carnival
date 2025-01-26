@@ -11,7 +11,7 @@ class FAQController extends Controller
 {
     public function index()
     {
-        $faqs = FAQ::all();
+        $faqs = FAQ::with('eventsCountryTab')->get();
         return view('dashboard.admin.faqs.index', compact('faqs'));
     }
 
