@@ -23,7 +23,7 @@
                         <div class="item-block style-2">
                             <div class="video-open">
                                 <img src="https://carnivalguide.co/travel/img/home_2/play.png" alt="palay"
-                                    data-src="http://www.youtube.com/embed/mzPxo7Y6JyA?autoplay=1&amp;fs=1&amp;loop=1&amp;rel=0&amp;showinfo=0&amp;color=white&amp;wmode=opaque">
+                                    data-src="https://www.youtube.com/embed/mzPxo7Y6JyA?autoplay=1&amp;fs=1&amp;loop=1&amp;rel=0&amp;showinfo=0&amp;color=white&amp;wmode=opaque">
                             </div>
                         </div>
                     </div>
