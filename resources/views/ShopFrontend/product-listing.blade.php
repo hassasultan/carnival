@@ -286,7 +286,7 @@
                                         @foreach ($brands as $brand)
                                             <li class="item">
                                                 <label>
-                                                    <input type="checkbox" class="brand-checkbox"
+                                                    <input type="checkbox" class="brand-checkbox" @if($brand->title == $selected_brand) checked @endif
                                                         value="{{ $brand->id }}">
                                                     <span>{{ $brand->title }} <span
                                                             class="count">({{ $brand->products_count }})</span></span>

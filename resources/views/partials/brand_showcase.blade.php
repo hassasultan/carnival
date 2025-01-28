@@ -14,31 +14,49 @@
                             "992":{"items":8}
                         }'>
                 <li class="active" data-tab="brand1-1">
-                    <img src="https://carnivalguide.co/travel/images/digicelt.jpg" alt="img">
+                    <a href="{{ route('front.product_listing', ['brand' => 'DIGICEL']) }}">
+                        <img src="https://carnivalguide.co/travel/images/digicelt.jpg" alt="img">
+                    </a>
                 </li>
                 <li data-tab="brand1-2">
-                    <img src="https://carnivalguide.co/travel/images/flowt.jpg" alt="img">
+                    <a href="{{ route('front.product_listing', ['brand' => 'FLOW']) }}">
+                        <img src="https://carnivalguide.co/travel/images/flowt.jpg" alt="img">
+                    </a>
                 </li>
                 <li data-tab="brand1-3">
-                    <img src="https://carnivalguide.co/travel/images/clarksct.jpg" alt="img">
+                    <a href="{{ route('front.product_listing', ['brand' => 'CLARKES COURT']) }}">
+                        <img src="https://carnivalguide.co/travel/images/clarksct.jpg" alt="img">
+                    </a>
                 </li>
                 <li data-tab="brand1-4">
-                    <img src="https://carnivalguide.co/travel/images/caribt.jpg" alt="img">
+                    <a href="{{ route('front.product_listing', ['brand' => 'CARIB']) }}">
+                        <img src="https://carnivalguide.co/travel/images/caribt.jpg" alt="img">
+                    </a>
                 </li>
                 <li data-tab="brand1-5">
-                    <img src="https://carnivalguide.co/travel/images/hugginst.jpg" alt="img">
+                    <a href="{{ route('front.product_listing', ['brand' => 'HUGGINS']) }}">
+                        <img src="https://carnivalguide.co/travel/images/hugginst.jpg" alt="img">
+                    </a>
                 </li>
                 <li data-tab="brand1-6">
-                    <img src="https://carnivalguide.co/travel/images/glenlgt.jpg" alt="img">
+                    <a href="{{ route('front.product_listing', ['brand' => 'GLENELG']) }}">
+                        <img src="https://carnivalguide.co/travel/images/glenlgt.jpg" alt="img">
+                    </a>
                 </li>
                 <li data-tab="brand1-7">
-                    <img src="https://carnivalguide.co/travel/images/intert.jpg" alt="img">
+                    <a href="{{ route('front.product_listing', ['brand' => 'Inter Caribbean']) }}">
+                        <img src="https://carnivalguide.co/travel/images/intert.jpg" alt="img">
+                    </a>
                 </li>
                 <li data-tab="brand1-8">
-                    <img src="https://carnivalguide.co/travel/images/cococolat.jpg" alt="img">
+                    <a href="{{ route('front.product_listing', ['brand' => 'selected_brand']) }}">
+                        <img src="https://carnivalguide.co/travel/images/cococolat.jpg" alt="img">
+                    </a>
                 </li>
                 <li data-tab="brand1-9">
-                    <img src="https://carnivalguide.co/travel/images/clarksct.jpg" alt="img">
+                    <a href="{{ route('front.product_listing', ['brand' => 'CLARKES COURT']) }}">
+                        <img src="https://carnivalguide.co/travel/images/clarksct.jpg" alt="img">
+                    </a>
                 </li>
             </ul>
             <div class="tab-content">

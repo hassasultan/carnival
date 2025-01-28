@@ -41,7 +41,7 @@ class FrontendConroller extends Controller
         $siteGallery = SiteGallery::get();
         $products = Product::with('brand')->get();
         $investors = Investor::all();
-        $testimonials = Testimonials::where('status',1)->get();
+        $testimonials = Testimonials::where('status', 1)->get();
         $blogs = Blogs::with('user')->get()->take('3');
         $carnivals = Carnival::with('user')->get()->take('6');
         // dd($events->toArray());
@@ -57,7 +57,7 @@ class FrontendConroller extends Controller
     {
         $services = OurService::get()->take('4');
         $investors = Investor::all();
-        $testimonials = Testimonials::where('status',1)->get();
+        $testimonials = Testimonials::where('status', 1)->get();
         $siteGallery = SiteGallery::get();
         $blogs = Blogs::with('user')->get()->take('3');
         $products = Product::with('brand')->get();
@@ -66,7 +66,7 @@ class FrontendConroller extends Controller
         $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
 
 
-        return view('front.aboutus', compact('services','carnival_commitee', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery'));
+        return view('front.aboutus', compact('services', 'carnival_commitee', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery'));
     }
     public function travel()
     {
@@ -279,7 +279,7 @@ class FrontendConroller extends Controller
         // dd($products->toArray());
         return view('ShopFrontend.home', compact('products', 'investors', 'blogs', 'categories', 'oackages', 'new_arrivals', 'top_sellers', 'brands', 'discounted_products'));
     }
-    public function product_listing()
+    public function product_listing(Request $request)
     {
         $products = Product::with('brand')->get();
         $brands = Brand::where('status', 1)
@@ -302,7 +302,14 @@ class FrontendConroller extends Controller
             ->take(3)
             ->get();
 
-        return view('ShopFrontend.product-listing', compact('products', 'brands', 'cat1', 'cat2', 'cat3'));
+        $selected_brand = '';
+
+        if ($request->brand && $request->brand != null) {
+            $selected_brand = $request->brand;
+        }
+
+
+        return view('ShopFrontend.product-listing', compact('products', 'brands', 'cat1', 'cat2', 'cat3', 'selected_brand'));
     }
     public function package_detail()
     {
@@ -785,14 +792,14 @@ class FrontendConroller extends Controller
         $query = Vendor::query()
             ->whereIn('user_id', $carnival_commitee)
             ->with([
-                'user' => function ($query) {
-                    $query->select('id', 'first_name', 'last_name', 'slug', 'image');
-                },
-                'user.products' => function ($query) {
-                    $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
-                        ->groupBy('user_id');
-                },
-            ]);
+                    'user' => function ($query) {
+                        $query->select('id', 'first_name', 'last_name', 'slug', 'image');
+                    },
+                    'user.products' => function ($query) {
+                        $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
+                            ->groupBy('user_id');
+                    },
+                ]);
 
         if ($vendor_type) {
             $query->whereHas('package', function ($query) use ($vendor_type) {
