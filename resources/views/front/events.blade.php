@@ -1577,7 +1577,8 @@
     </div>
 
     <!-- HOTEL-ITEM-->
-    <div class="main-wraper padd-90 bg-grey-2">
+    @include('partials.brand_showcase')
+    {{-- <div class="main-wraper padd-90 bg-grey-2">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -1678,5 +1679,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

@@ -117,7 +117,8 @@ class FrontendConroller extends Controller
     }
     public function event_listing()
     {
-        return view('front.events');
+        $products = Product::with('brand')->get();
+        return view('front.events',compact('products'));
     }
     public function category_tour_listing()
     {
