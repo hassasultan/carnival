@@ -373,6 +373,32 @@ class FrontendConroller extends Controller
             ->get()->take(7);
         return view('ShopFrontend.blog-detail', compact('products', 'blog', 'related_blogs', 'recent_blogs'));
     }
+    public function vendor_detail($slug)
+    {
+        $user = User::with('banners')->whereSlug($slug)->first();
+        if ($user->carnivals) {
+            $carnival = Carnival::with('mascamps', 'members')->where('head', $user->id)->first();
+        } else {
+            $carnival = '';
+        }
+        $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user->id)->first();
+        $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
+        // dd($subvendors->toArray());
+        $categories = $vendor->products->pluck('category')->unique('id');
+        $products = Product::where('user_id', $user->id)->with('brand')->get();
+        $ads = Advertisement::where('status', 1)->take(2)->get();
+        $vendorPackageName = optional($user->vendor?->package)->title;
+        $subVendorPackageName = optional($user->subVendor?->package)->title;
+
+        if ($vendorPackageName === 'Artistes' || $subVendorPackageName === 'Artistes') {
+            $events = Event::with('category', 'images')->where('user_id', $user->id)->orderBy('start_date', 'DESC')->take(3)->get();
+            $musics = Music::with('imagesRelation')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
+            $costumes = Costume::with('category')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
+            return view('ShopFrontend.artist.detail', compact('events', 'vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'musics', 'costumes'));
+        } else {
+            return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'carnival'));
+        }
+    }
     public function get_vendor_products($slug, Request $request)
     {
         $products = Product::where('user_id', $slug);
