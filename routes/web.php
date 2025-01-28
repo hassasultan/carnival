@@ -84,7 +84,7 @@ Route::get('/shop', [FrontendConroller::class, 'shop_home'])->name('front.shop')
 Route::get('/get-discounted', [FrontendConroller::class, 'getDiscounted'])->name('front.get_discounted');
 Route::get('/mascamps', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
 Route::get('/about-us/{slug}', [FrontendConroller::class, 'about_us'])->name('details.aboutUs');
-Route::get('/{slug}/event-listing', [FrontendConroller::class, 'myEvents'])->name('myEevent.listing');
+Route::get('/shop/{slug}/event-listing', [FrontendConroller::class, 'myEvents'])->name('myEevent.listing');
 Route::get('/{slug}/gallery', [FrontendConroller::class, 'myGallery'])->name('front.myGallery');
 Route::get('/{slug}/music-gallery', [FrontendConroller::class, 'myMusicGallery'])->name('front.myMusicGallery');
 Route::get('/get/album/imgs', [FrontendConroller::class, 'getAlbumImgs'])->name('front.album.imgs');
