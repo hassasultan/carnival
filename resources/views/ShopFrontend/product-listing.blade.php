@@ -889,7 +889,9 @@
             </div>
         </div>
 
-        <!-- block  showcase-->
+        @include('partials.brand_showcase')
+        
+        {{-- <!-- block  showcase-->
         <div class="block-showcase block-showcase-opt1 block-brand-tabs">
             <div class="container">
                 <div class="block-title">
@@ -967,14 +969,14 @@
                                                             <div class="product-item  product-item-opt-1 ">
                                                                 <div class="product-item-info">
                                                                     <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
+                                                                        <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                             <img alt="product image"
                                                                                 src="{{ $product->image_url }}">
                                                                         </a>
                                                                     </div>
                                                                     <div class="product-item-detail">
                                                                         <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
+                                                                            <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                         </strong>
                                                                         <div class="clearfix">
                                                                             <div class="product-item-price">
@@ -1044,14 +1046,14 @@
                                                             <div class="product-item  product-item-opt-1 ">
                                                                 <div class="product-item-info">
                                                                     <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
+                                                                        <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                             <img alt="product name"
                                                                                 src="{{ $product->image_url }}">
                                                                         </a>
                                                                     </div>
                                                                     <div class="product-item-detail">
                                                                         <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
+                                                                            <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                         </strong>
                                                                         <div class="clearfix">
                                                                             <div class="product-item-price">
@@ -1120,14 +1122,14 @@
                                                             <div class="product-item  product-item-opt-1 ">
                                                                 <div class="product-item-info">
                                                                     <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
+                                                                        <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                             <img alt="product name"
                                                                                 src="{{ $product->image_url }}">
                                                                         </a>
                                                                     </div>
                                                                     <div class="product-item-detail">
                                                                         <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
+                                                                            <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                         </strong>
                                                                         <div class="clearfix">
                                                                             <div class="product-item-price">
@@ -1196,14 +1198,14 @@
                                                             <div class="product-item  product-item-opt-1 ">
                                                                 <div class="product-item-info">
                                                                     <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
+                                                                        <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                             <img alt="product name"
                                                                                 src="{{ $product->image_url }}">
                                                                         </a>
                                                                     </div>
                                                                     <div class="product-item-detail">
                                                                         <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
+                                                                            <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                         </strong>
                                                                         <div class="clearfix">
                                                                             <div class="product-item-price">
@@ -1272,14 +1274,14 @@
                                                             <div class="product-item  product-item-opt-1 ">
                                                                 <div class="product-item-info">
                                                                     <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
+                                                                        <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                             <img alt="product name"
                                                                                 src="{{ $product->image_url }}">
                                                                         </a>
                                                                     </div>
                                                                     <div class="product-item-detail">
                                                                         <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
+                                                                            <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                         </strong>
                                                                         <div class="clearfix">
                                                                             <div class="product-item-price">
@@ -1349,14 +1351,14 @@
                                                             <div class="product-item  product-item-opt-1 ">
                                                                 <div class="product-item-info">
                                                                     <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
+                                                                        <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                             <img alt="product name"
                                                                                 src="{{ $product->image_url }}">
                                                                         </a>
                                                                     </div>
                                                                     <div class="product-item-detail">
                                                                         <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
+                                                                            <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                         </strong>
                                                                         <div class="clearfix">
                                                                             <div class="product-item-price">
@@ -1425,14 +1427,14 @@
                                                             <div class="product-item  product-item-opt-1 ">
                                                                 <div class="product-item-info">
                                                                     <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
+                                                                        <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                             <img alt="product name"
                                                                                 src="{{ $product->image_url }}">
                                                                         </a>
                                                                     </div>
                                                                     <div class="product-item-detail">
                                                                         <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
+                                                                            <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                         </strong>
                                                                         <div class="clearfix">
                                                                             <div class="product-item-price">
@@ -1501,14 +1503,14 @@
                                                             <div class="product-item  product-item-opt-1 ">
                                                                 <div class="product-item-info">
                                                                     <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
+                                                                        <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                             <img alt="product name"
                                                                                 src="{{ $product->image_url }}">
                                                                         </a>
                                                                     </div>
                                                                     <div class="product-item-detail">
                                                                         <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
+                                                                            <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                         </strong>
                                                                         <div class="clearfix">
                                                                             <div class="product-item-price">
@@ -1577,14 +1579,14 @@
                                                             <div class="product-item  product-item-opt-1 ">
                                                                 <div class="product-item-info">
                                                                     <div class="product-item-photo">
-                                                                        <a class="product-item-img" href="">
+                                                                        <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                             <img alt="product name"
                                                                                 src="{{ $product->image_url }}">
                                                                         </a>
                                                                     </div>
                                                                     <div class="product-item-detail">
                                                                         <strong class="product-item-name">
-                                                                            <a href="">{{ $product->name }}</a>
+                                                                            <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                         </strong>
                                                                         <div class="clearfix">
                                                                             <div class="product-item-price">
@@ -1624,7 +1626,7 @@
                     </div>
                 </div>
             </div>
-        </div><!-- block  showcase-->
+        </div><!-- block  showcase--> --}}
 
     </main><!-- end MAIN -->
 @endsection

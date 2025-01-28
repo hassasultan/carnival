@@ -6983,6 +6983,7 @@
     <!-- S_NEWS-ENTRY -->
     @include('front.home-template.news')
 
+    @include('partials.brand_showcase')
 
     <!-- block  showcase-->
     @include('front.home-template.brand-showcase')

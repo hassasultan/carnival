@@ -523,7 +523,7 @@ class FrontendConroller extends Controller
         $regionId = $request->get('getRegion');
         $event_type = $request->get('event_type');
 
-        $query = Event::with('images', 'tickets', 'country_tabs', 'User');
+        $query = Event::with('images', 'tickets', 'User');
         if ($request->has('categories') && !empty($request->categories)) {
             $query->whereIn('category_id', $request->categories);
         }
@@ -751,6 +751,30 @@ class FrontendConroller extends Controller
             ->get();
 
         return view('ShopFrontend.carnivals', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3'));
+    }
+
+    public function shop_event_listing()
+    {
+        $mascamp_banners = Banner::where('type', 'mascamps')->get();
+        $regions = Region::all();
+        $adv1 = Advertisement::where('status', 1)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $adv2 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id'))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $adv3 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id')->merge($adv2->pluck('id')))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        return view('ShopFrontend.events', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3'));
     }
     public function get_carnivals(Request $request)
     {

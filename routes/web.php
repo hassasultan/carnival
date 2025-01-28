@@ -47,6 +47,7 @@ use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\VendorGalleryController;
 use App\Http\Controllers\SubvendorGalleryController;
 use App\Http\Controllers\ModelBookingController;
+use App\Http\Controllers\FAQController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +78,7 @@ Route::get('/car-rental/listing', [FrontendConroller::class, 'car_rental'])->nam
 Route::get('/category-tour-listing', [FrontendConroller::class, 'category_tour_listing'])->name('front.category.tour.listing');
 Route::get('/product-listing', [FrontendConroller::class, 'product_listing'])->name('front.product_listing');
 Route::get('/shop/carnival-listing', [FrontendConroller::class, 'carnival_listing_all'])->name('front.carnival_listing');
+Route::get('/shop/event-listing', [FrontendConroller::class, 'shop_event_listing'])->name('front.shop_listing');
 Route::get('/package/detail', [FrontendConroller::class, 'package_detail'])->name('front.package.detail');
 Route::get('/shop', [FrontendConroller::class, 'shop_home'])->name('front.shop');
 Route::get('/get-discounted', [FrontendConroller::class, 'getDiscounted'])->name('front.get_discounted');
@@ -283,6 +285,14 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // advertisements
     Route::resource('advertisements', AdvertisementController::class);
+
+    Route::get('/faqs', [FAQController::class, 'index'])->name('faqs.index');
+    Route::get('/faqs/create', [FAQController::class, 'create'])->name('faqs.create');
+    Route::post('/faqs', [FAQController::class, 'store'])->name('faqs.store');
+    Route::get('/faqs/{id}', [FAQController::class, 'show'])->name('faqs.show');
+    Route::get('/faqs/{id}/edit', [FAQController::class, 'edit'])->name('faqs.edit');
+    Route::put('/faqs/{id}', [FAQController::class, 'update'])->name('faqs.update');
+    Route::delete('/faqs/{id}', [FAQController::class, 'destroy'])->name('faqs.destroy');
 });
 
 Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
