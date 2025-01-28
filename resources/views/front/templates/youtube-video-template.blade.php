@@ -70,7 +70,7 @@
 </style>
 <div class="video-container" >
     @php
-        $videoUrl = "http://www.youtube.com/embed/mzPxo7Y6JyA?autoplay=1&amp;fs=1&amp;loop=1&amp;rel=0&amp;showinfo=0&amp;color=white&amp;wmode=opaque";
+        $videoUrl = "https://www.youtube.com/embed/mzPxo7Y6JyA?autoplay=1&amp;fs=1&amp;loop=1&amp;rel=0&amp;showinfo=0&amp;color=white&amp;wmode=opaque";
     @endphp
     <div class="hero">
         <h4>NORWAY TOURS</h4>
