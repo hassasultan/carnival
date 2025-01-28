@@ -36,7 +36,7 @@ class FrontendConroller extends Controller
     {
         $events = Event::with('images', 'tickets')->orderBy('id', 'desc')->get()->take('5');
         // $events = Event::with('images','tickets')->orderBy('id','desc')->get()->take('5');
-        $regions = Region::with('countries')->get();
+        $regions = Region::with('countries')->OrderBy('placement','ASC')->get();
         $services = OurService::get()->take('4');
         $siteGallery = SiteGallery::get();
         $products = Product::with('brand')->get();
