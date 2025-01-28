@@ -447,8 +447,8 @@
                                             href="{{ route('model.listing') }}"> MODELS </a></li>
                                     <li class="{{ Request::routeIs('artist.listing') ? 'active' : '' }}"><a
                                             href="{{ route('artist.listing') }}"> ARTISTES </a></li>
-                                    <li class="{{ Request::routeIs('front.event.listing') ? 'active' : '' }}"><a
-                                            href="{{ route('front.event.listing') }}"> EVENTS </a></li>
+                                    <li class="{{ Request::routeIs('front.shop_listing') ? 'active' : '' }}"><a
+                                            href="{{ route('front.shop_listing') }}"> EVENTS </a></li>
                                     @if (Auth::check())
                                         <li class="parent parent-submenu">
                                             <a> My Account </a>

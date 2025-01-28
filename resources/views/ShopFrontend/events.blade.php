@@ -13,7 +13,13 @@
 
             <ol class="breadcrumb no-hide">
                 <li><a href="#">Home </a></li>
-                <li class="active">Carnivals</li>
+                <li class="active">
+                    @if (Route::is('front.shop_listing'))
+                        Events
+                    @else
+                        Carnivals
+                    @endif
+                </li>
             </ol><!-- Block  Breadcrumb-->
 
             <div class="row">
@@ -76,7 +82,13 @@
                             <span>Filter</span>
                         </div>
 
-                        <h1 class="cate-title">Carnivals</h1>
+                        <h1 class="cate-title">
+                            @if (Route::is('front.shop_listing'))
+                                Events
+                            @else
+                                Carnivals
+                            @endif
+                        </h1>
 
                         {{-- <div class="modes">
                             <strong class="label">View as:</strong>
