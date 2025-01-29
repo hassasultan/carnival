@@ -37,13 +37,20 @@
                             <input type="text" class="form-control" id="tab" name="tab" required>
                         </div>
                         <div class="form-group">
+                            <label for="file">Files:</label>
+                            <input type="file" class="form-control-file" id="file" name="file[]" multiple
+                                accept="image/*">
+                            <div id="file-preview"></div>
+                        </div>
+
+                        {{-- <div class="form-group">
                             <label for="file">File:</label>
                             <input type="file" class="form-control-file" id="file" name="file">
                             <div id="file-preview"></div>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="placement">Placement Order Number:</label>
-                            <input type="number" class="form-control" id="placement" name="placement"  required>
+                            <input type="number" class="form-control" id="placement" name="placement" required>
                         </div>
                         <div class="form-group">
                             <label for="content">Content:</label>
@@ -80,30 +87,49 @@
                     });
                 });
         });
+        
+        document.getElementById('file').addEventListener('change', function(event) {
+            let preview = document.getElementById('file-preview');
+            preview.innerHTML = ''; // Clear previous previews
 
-        document.getElementById('file').addEventListener('change', function() {
-            var file = this.files[0];
-            var preview = document.getElementById('file-preview');
-            preview.innerHTML = '';
-
-            if (file) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    if (file.type.startsWith('image/')) {
-                        var img = document.createElement('img');
+            Array.from(event.target.files).forEach(file => {
+                if (file.type.startsWith('image/')) { // Ensure it's an image
+                    let reader = new FileReader();
+                    reader.onload = function(e) {
+                        let img = document.createElement('img');
                         img.src = e.target.result;
                         img.style.maxWidth = '100px';
+                        img.style.margin = '5px';
                         preview.appendChild(img);
-                    } else if (file.type.startsWith('video/')) {
-                        var video = document.createElement('video');
-                        video.src = e.target.result;
-                        video.controls = true;
-                        video.style.maxWidth = '100px';
-                        preview.appendChild(video);
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
         });
+
+        // document.getElementById('file').addEventListener('change', function() {
+        //     var file = this.files[0];
+        //     var preview = document.getElementById('file-preview');
+        //     preview.innerHTML = '';
+
+        //     if (file) {
+        //         var reader = new FileReader();
+        //         reader.onload = function(e) {
+        //             if (file.type.startsWith('image/')) {
+        //                 var img = document.createElement('img');
+        //                 img.src = e.target.result;
+        //                 img.style.maxWidth = '100px';
+        //                 preview.appendChild(img);
+        //             } else if (file.type.startsWith('video/')) {
+        //                 var video = document.createElement('video');
+        //                 video.src = e.target.result;
+        //                 video.controls = true;
+        //                 video.style.maxWidth = '100px';
+        //                 preview.appendChild(video);
+        //             }
+        //         };
+        //         reader.readAsDataURL(file);
+        //     }
+        // });
     </script>
 @endsection

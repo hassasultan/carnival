@@ -769,3 +769,10 @@
         </div>
     </div>
 </div><!-- block  showcase-->
+
+
+<script>
+    $(document).on("click", ".nav-brand a", function(e) {
+        window.location.href = $(this).attr("href");
+    });
+</script>

@@ -31,4 +31,9 @@ class EventsCountryTab extends Model
     {
         return $this->morphMany(FAQ::class, 'modelable');
     }
+
+    public function images()
+    {
+        return $this->hasMany(EventsCountryTabImages::class, 'events_country_tab_id');
+    }
 }

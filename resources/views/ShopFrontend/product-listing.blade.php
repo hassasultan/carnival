@@ -1906,8 +1906,23 @@
                     productCondition, stockCondition, sale);
             });
 
-            // Initial fetch
-            fetchProducts();
+            var checkBrand = '{{ $selected_brand }}';
+
+            if (checkBrand != '') {
+                let selectedCategories = getSelectedCategories();
+                let priceRanges = getSelectedPriceRanges();
+                let selectedBrands = getSelectedBrands();
+                let productCondition = getSelectedProductCondition();
+                let stockCondition = getSelectedStockCondition();
+                let sale = getSaleStatus();
+                fetchProducts(1, selectedCategories, priceRanges, selectedBrands,
+                    productCondition, stockCondition, sale);
+            }
+            else {
+                // Initial fetch
+                fetchProducts();
+            }
+
         });
     </script>
 

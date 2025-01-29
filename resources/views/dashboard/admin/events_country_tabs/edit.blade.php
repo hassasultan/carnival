@@ -6,14 +6,17 @@
             <h2 class="mb-2 page-title">Edit Event Country Tab</h2>
             <div class="card shadow">
                 <div class="card-body">
-                    <form action="{{ route('events_country_tabs.update', $eventsCountryTab->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('events_country_tabs.update', $eventsCountryTab->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label for="carnival_id">Carnival:</label>
                             <select class="form-control" id="carnival_id" name="carnival_id" required>
                                 @foreach ($carnivals as $carnival)
-                                    <option value="{{ $carnival->id }}" {{ $eventsCountryTab->carnival_id == $carnival->id ? 'selected' : '' }}>{{ $carnival->name }}</option>
+                                    <option
+                                        value="{{ $carnival->id }}"{{ $eventsCountryTab->carnival_id == $carnival->id ? 'selected' : '' }}>
+                                        {{ $carnival->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -21,7 +24,9 @@
                             <label for="country_id">Country:</label>
                             <select class="form-control" id="country_id" name="country_id" required>
                                 @foreach ($countries as $country)
-                                    <option value="{{ $country->id }}" {{ $eventsCountryTab->country_id == $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
+                                    <option
+                                        value="{{ $country->id }}"{{ $eventsCountryTab->country_id == $country->id ? 'selected' : '' }}>
+                                        {{ $country->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -29,28 +34,33 @@
                             <label for="city_id">City:</label>
                             <select class="form-control" id="city_id" name="city_id" required>
                                 @foreach ($cities as $city)
-                                    <option value="{{ $city->id }}" {{ $eventsCountryTab->city_id == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
+                                    <option
+                                        value="{{ $city->id }}"{{ $eventsCountryTab->city_id == $city->id ? 'selected' : '' }}>
+                                        {{ $city->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="tab">Tab:</label>
-                            <input type="text" class="form-control" id="tab" name="tab" value="{{ $eventsCountryTab->tab }}" required>
+                            <input type="text" class="form-control" id="tab" name="tab"
+                                value="{{ $eventsCountryTab->tab }}" required>
                         </div>
                         <div class="form-group">
-                            <label for="file">File:</label>
-                            <input type="file" class="form-control-file" id="file" name="file">
+                            <label for="file">Files:</label>
+                            <input type="file" class="form-control-file" id="file" name="file[]" multiple accept="image/*">
                             <div id="file-preview">
-                                @if($eventsCountryTab->file_type == 'image')
-                                    <img src="{{ asset('files/' . $eventsCountryTab->file) }}" alt="file" style="max-width: 100px;">
-                                @elseif($eventsCountryTab->file_type == 'video')
-                                    <video src="{{ asset('files/' . $eventsCountryTab->file) }}" controls style="max-width: 100px;"></video>
-                                @endif
+                                @foreach($eventsCountryTab->images as $image)
+                                    <div class="image-container">
+                                        <img src="{{ asset('file/'.$image->file) }}" style="max-width: 100px; margin: 5px;">
+                                        <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="deleteImage(this, {{ $image->id }})">X</button>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="placement">Placement Order Number:</label>
-                            <input type="number" class="form-control" id="placement" name="placement" value="{{ $eventsCountryTab->placement }}" required>
+                            <input type="number" class="form-control" id="placement" name="placement"
+                                value="{{ $eventsCountryTab->placement }}" required>
                         </div>
                         <div class="form-group">
                             <label for="content">Content:</label>
@@ -59,8 +69,10 @@
                         <div class="form-group">
                             <label for="status">Status:</label>
                             <select class="form-control" id="status" name="status" required>
-                                <option value="1" {{ $eventsCountryTab->status == 1 ? 'selected' : '' }}>Enabled</option>
-                                <option value="0" {{ $eventsCountryTab->status == 0 ? 'selected' : '' }}>Disabled</option>
+                                <option value="1" {{ $eventsCountryTab->status == 1 ? 'selected' : '' }}>Enabled
+                                </option>
+                                <option value="0" {{ $eventsCountryTab->status == 0 ? 'selected' : '' }}>Disabled
+                                </option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary mt-3">Save</button>
@@ -87,29 +99,41 @@
                 });
         });
 
-        document.getElementById('file').addEventListener('change', function() {
-            var file = this.files[0];
-            var preview = document.getElementById('file-preview');
-            preview.innerHTML = '';
+        function deleteImage(button) {
+            const imageContainer = button.closest('.image-container');
+            imageContainer.remove(); // Remove image from preview
+        }
 
-            if (file) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    if (file.type.startsWith('image/')) {
-                        var img = document.createElement('img');
+        document.getElementById('file').addEventListener('change', function(event) {
+            let preview = document.getElementById('file-preview');
+            preview.innerHTML = ''; // Clear previous previews
+
+            Array.from(event.target.files).forEach(file => {
+                if (file.type.startsWith('image/')) { // Ensure it's an image
+                    let reader = new FileReader();
+                    reader.onload = function(e) {
+                        let imageContainer = document.createElement('div');
+                        imageContainer.classList.add('image-container');
+
+                        let img = document.createElement('img');
                         img.src = e.target.result;
                         img.style.maxWidth = '100px';
-                        preview.appendChild(img);
-                    } else if (file.type.startsWith('video/')) {
-                        var video = document.createElement('video');
-                        video.src = e.target.result;
-                        video.controls = true;
-                        video.style.maxWidth = '100px';
-                        preview.appendChild(video);
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
+                        img.style.margin = '5px';
+                        imageContainer.appendChild(img);
+
+                        let deleteBtn = document.createElement('button');
+                        deleteBtn.innerHTML = 'X';
+                        deleteBtn.classList.add('btn', 'btn-danger', 'btn-sm', 'delete-btn');
+                        deleteBtn.onclick = function() {
+                            deleteImage(deleteBtn)
+                        };
+                        imageContainer.appendChild(deleteBtn);
+
+                        preview.appendChild(imageContainer);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
         });
     </script>
 @endsection
