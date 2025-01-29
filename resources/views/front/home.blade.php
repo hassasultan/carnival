@@ -1,5 +1,12 @@
 @extends('front.layouts.app')
 @section('front-content')
+    <style>
+        @media (max-width: 480px) {
+            .video-wrapper .vertical-align {
+                top: 0px !important;
+            }
+        }
+    </style>
     @include('front.home-template.banner-area')
     <!-- CONTRY-ITEM -->
 
@@ -16,10 +23,6 @@
 @section('front-script')
     @include('front.home-template.js.carnival-script')
     <script>
-
-
-
-
         $(document).ready(function() {
             $('.city-entry-new').css('display', 'none');
             // $('.new-slider').css('display','none');

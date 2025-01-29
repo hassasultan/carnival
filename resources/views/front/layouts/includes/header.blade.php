@@ -181,7 +181,7 @@
 
 
 
-                            <li class="type-1"><a href="{{ route('front.event.listing') }}.html">Events & Tickets<span
+                            <li class="type-1"><a href="{{ route('front.event.listing') }}">Events & Tickets<span
                                         class="fa fa-angle-down"></span></a>
 
                             </li>
