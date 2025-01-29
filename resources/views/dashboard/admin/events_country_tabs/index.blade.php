@@ -26,9 +26,8 @@
                                     <th>City</th>
                                     <th>Tab</th>
                                     <th>Placement Index</th>
-                                    <th>File</th>
-                                    <th>File Type</th>
-                                    {{-- <th>Content</th> --}}
+                                    {{-- <th>File</th>
+                                    <th>File Type</th> --}}
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
@@ -40,7 +39,7 @@
                                         <td>{{ $eventsCountryTab->city->name }}</td>
                                         <td>{{ $eventsCountryTab->tab }}</td>
                                         <td>{{ $eventsCountryTab->placement }}</td>
-                                        <td>
+                                        {{-- <td>
                                             @if($eventsCountryTab->file_type == 'image')
                                                 <img src="{{ asset('files/' . $eventsCountryTab->file) }}" alt="file" width="50">
                                             @elseif($eventsCountryTab->file_type == 'video')
@@ -50,8 +49,7 @@
                                                 </video>
                                             @endif
                                         </td>
-                                        <td>{{ $eventsCountryTab->file_type }}</td>
-                                        {{-- <td>{!! $eventsCountryTab->content !!}</td> --}}
+                                        <td>{{ $eventsCountryTab->file_type }}</td> --}}
                                         <td>{{ $eventsCountryTab->status ? 'Enabled' : 'Disabled' }}</td>
                                         <td>
                                             <a href="{{ route('events_country_tabs.show', $eventsCountryTab->id) }}" class="btn btn-info">Show</a>
