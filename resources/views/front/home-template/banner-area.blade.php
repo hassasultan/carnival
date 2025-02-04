@@ -213,21 +213,15 @@
                                                                 </div>
                                                                 <i>485 Reviews</i>
                                                             </div>
-                                                            <h4 class="sb-title">{{ $row->name }} <span
-                                                                    style="">Spice
-                                                                    Mas</span>
+                                                            <h4 class="sb-title"><span
+                                                                    style="">{{ $row->name }}</span>
                                                             </h4>
                                                             <div class="sb-price color-dark-2">
                                                                 <span>$100</span> / per
                                                                 {{-- <span>${{ $row->tickets[0]->price }}</span> / per --}}
                                                                 person
                                                             </div>
-                                                            <div class="sb-text">Spicemas is the premier cultural event
-                                                                in Grenada. It's the party everyone waits all year to
-                                                                participate in, watch, and enjoy.
-                                                                Spicemas events are colourful, funny, surprising, and
-                                                                energetic, linking back to Grenada's African, French,
-                                                                British, and Caribbean heritage.
+                                                            <div class="sb-text">{!! $row->description !!}
                                                             </div>
                                                             <a href="{{ route('events.view.more', $row->id) }}"
                                                                 class="c-button b-50 bg-green hv-green-o ">view

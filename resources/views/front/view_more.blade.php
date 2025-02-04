@@ -128,7 +128,7 @@
                                     </div>
                                     <div class="nav-tab-item">
                                         Nightlife
-                                    </div> --}}
+                                    </div>
                                     <div class="nav-tab-item">
                                         Flights
                                     </div>
@@ -154,13 +154,13 @@
                                     <div class="nav-tab-item">
                                         Gallery
                                     </div>
-
-                                    {{-- <div class="nav-tab-item ">
+                                    
+                                    <div class="nav-tab-item ">
                                         Restaurants
-                                    </div> --}}
+                                    </div>
                                     <div class="nav-tab-item">
                                         Blog
-                                    </div>
+                                    </div> --}}
 
                                 </div>
                             </div>
@@ -316,7 +316,10 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
-                                                {!! $row->content !!}
+                                                {{-- {!! $row->content !!} --}}
+                                                <h4><b>{{ $carnivals->name }}</b></h4>
+                                                <span class="f-14 color-dark-2 grid-hidden">{{ $carnivals->start_date . ' - ' . $carnivals->end_date }}</span>
+                                                <p class="f-14">{{ $carnivals->description }}</p>
                                             </div>
                                             <div class="col-md-12">
                                                     <div class="row">
@@ -329,52 +332,21 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="accordeon-wrapper">
-                                                                <div class="accordeon-entry active">
-                                                                    <h5>Mauris augue mauris</h5>
+                                                                @foreach ($row->faqs as $item)
+                                                                <div class="accordeon-entry">
+                                                                    <h5>{{ $item->question }}</h5>
                                                                     <div class="toggle-content act">
                                                                       <div class="accordeon-wrap">
-                                                                        <p>Nulla ut ante vel lorem tempus lobortis. Sed quam metus, faucibus et pulvinar ut, volutpat ut orci. Nulla ornare ex lectus. Integer non neque sed eros sollicitudin congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam vel lectus in urna mattis ullamcorper. Etiam vel dolor leo. Vestibulum congue dolor at sollicitudin placerat. Mauris cursus vestibulum sapien ut ultricies. Praesent est arcu, condimentum.</p>
+                                                                        <p>{{ $item->answer }}</p>
                                                                       </div>
                                                                     </div>
                                                                 </div>
-
-                                                                <div class="accordeon-entry">
-                                                                    <h5>Maecenas euismod ultrices urna sit amet</h5>
-                                                                    <div class="toggle-content">
-                                                                      <div class="accordeon-wrap">
-                                                                        <p>Nulla ut ante vel lorem tempus lobortis. Sed quam metus, faucibus et pulvinar ut, volutpat ut orci. Nulla ornare ex lectus. Integer non neque sed eros sollicitudin congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam vel lectus in urna mattis ullamcorper. Etiam vel dolor leo. Vestibulum congue dolor at sollicitudin placerat. Mauris cursus vestibulum sapien ut ultricies. Praesent est arcu, condimentum.</p>
-                                                                      </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="accordeon-entry">
-                                                                    <h5>Vestibulum ornare, sem vitae tempus ornare</h5>
-                                                                    <div class="toggle-content">
-                                                                      <div class="accordeon-wrap">
-                                                                        <p>Nulla ut ante vel lorem tempus lobortis. Sed quam metus, faucibus et pulvinar ut, volutpat ut orci. Nulla ornare ex lectus. Integer non neque sed eros sollicitudin congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam vel lectus in urna mattis ullamcorper. Etiam vel dolor leo. Vestibulum congue dolor at sollicitudin placerat. Mauris cursus vestibulum sapien ut ultricies. Praesent est arcu, condimentum.</p>
-                                                                      </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="accordeon-entry">
-                                                                    <h5>Etiam sed ligula anteem vitae tempus ornare</h5>
-                                                                    <div class="toggle-content">
-                                                                      <div class="accordeon-wrap">
-                                                                        <p>Nulla ut ante vel lorem tempus lobortis. Sed quam metus, faucibus et pulvinar ut, volutpat ut orci. Nulla ornare ex lectus. Integer non neque sed eros sollicitudin congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam vel lectus in urna mattis ullamcorper. Etiam vel dolor leo. Vestibulum congue dolor at sollicitudin placerat. Mauris cursus vestibulum sapien ut ultricies. Praesent est arcu, condimentum.</p>
-                                                                      </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="accordeon-entry">
-                                                                    <h5>Curabitur quis ante a felis eleifend</h5>
-                                                                    <div class="toggle-content">
-                                                                      <div class="accordeon-wrap">
-                                                                        <p>Nulla ut ante vel lorem tempus lobortis. Sed quam metus, faucibus et pulvinar ut, volutpat ut orci. Nulla ornare ex lectus. Integer non neque sed eros sollicitudin congue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam vel lectus in urna mattis ullamcorper. Etiam vel dolor leo. Vestibulum congue dolor at sollicitudin placerat. Mauris cursus vestibulum sapien ut ultricies. Praesent est arcu, condimentum.</p>
-                                                                      </div>
-                                                                    </div>
-                                                                </div>
+                                                                @endforeach
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        {{-- <div class="col-md-6">
                                                             <div class="accordeon-wrapper style-2">
-                                                                <div class="accordeon-entry active">
+                                                                <div class="accordeon-entry">
                                                                     <h5>Mauris augue mauris</h5>
                                                                     <div class="toggle-content act">
                                                                       <div class="accordeon-wrap">
@@ -416,7 +388,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                             </div>
                                         </div>
@@ -6976,8 +6948,6 @@
                 </div>
             </div>
 
-            <!-- S_NEWS-ENTRY -->
-            @include('front.home-template.news')
             <div class="additional-block padd-90">
                 <h4 class="additional-title">may interest you</h4>
                 <div class="may-interested">
@@ -7085,9 +7055,11 @@
     </div>
     @include('front.home-template.subscribe')
 
+    <!-- S_NEWS-ENTRY -->
+    @include('front.home-template.news')
     @include('partials.brand_showcase')
 
     <!-- block  showcase-->
-    @include('front.home-template.brand-showcase')
+    {{-- @include('front.home-template.brand-showcase') --}}
     <!-- block  showcase-->
 @endsection
