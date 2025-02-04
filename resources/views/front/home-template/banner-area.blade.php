@@ -46,7 +46,7 @@
                                     width: 100%;
                                     height: auto;
                                     border-radius: 0px;
-                                    margin-top: 70px;
+                                    /* margin-top: 46px; */
                                 }
 
                                 .slide-new video {
