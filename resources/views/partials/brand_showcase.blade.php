@@ -770,9 +770,13 @@
     </div>
 </div><!-- block  showcase-->
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).on("click", ".nav-brand a", function(e) {
-        window.location.href = $(this).attr("href");
+    $(document).ready(function() {
+        $(document).on("click", ".nav-brand a", function(e) {
+            console.log('asd', e);
+            console.log($(this).attr("href"));
+            window.location.href = $(this).attr("href");
+        });
     });
 </script>
