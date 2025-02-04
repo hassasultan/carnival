@@ -80,8 +80,10 @@ class FrontendConroller extends Controller
         $investors = Investor::all();
         $blogs = Blogs::with('user')->get()->take('3');
         $products = Product::with('brand')->get();
+        $carnival_com = Carnival::has('user')->pluck('head');
+        $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
         // dd($events->toArray());
-        return view('front.carnival-listing', compact('products', 'blogs', 'carnivals', 'investors', 'regions'));
+        return view('front.carnival-listing', compact('products', 'blogs', 'carnivals', 'investors', 'regions', 'carnival_commitee'));
     }
     public function get_carnivals_by_region($id)
     {

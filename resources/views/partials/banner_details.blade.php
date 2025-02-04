@@ -31,7 +31,7 @@
                     </div>
                 </a>
                 <div class="hotel-line-content">
-                    <a class="hotel-line-title" href="{{ route('') }}">{{ $key }}. {{ $row->title }}</a>
+                    <a class="hotel-line-title" href="">{{ $key }}. {{ $row->title }}</a>
                     <div class="rate-wrap">
                         <div class="rate">
                             <span class="fa fa-star color-yellow"></span>
