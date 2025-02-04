@@ -3867,7 +3867,8 @@ nav li.type-4 .dropmenu .fa-chevron-right {
 }
 
 .main-slider-5 .swiper-slide {
-  min-height: 762px;
+  min-height: 1200px;
+  /* min-height: 762px; */
 }
 
 .main-slider-5 .cell-view {
@@ -12715,7 +12716,14 @@ footer.type-2 .copyright {
   line-height: 18px;
   font-weight: 400;
 }
-
+.content-area-start
+{
+    padding:160px 0px 0px 0px;
+}
+.home-top-banner
+  {
+    margin: 88px auto;
+  }
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 /* MEDIA QUERIES */
 /*-------------------------------------------------------------------------------------------------------------------------------*/
@@ -13886,7 +13894,14 @@ footer.type-2 .copyright {
   header.type-2 .nav-menu-icon {
     border-left: none;
   }
-
+  .content-area-start
+  {
+      padding:200px 0px 0px 0px;
+  }
+  .home-top-banner
+  {
+    margin: 60px auto !important;
+  }
   header.type-2 .inner-header {
     display: none;
   }
@@ -13962,7 +13977,22 @@ footer.type-2 .copyright {
   .main-slider-5 .slider-block-right {
     width: 100%;
   }
-
+  .slider-block-right .rate-wrap
+  {
+    display: none !important;
+  }
+  .slider-block-right .sb-title
+  {
+    display: none;
+  }
+  .slider-block-right .sb-price
+  {
+    display: none;
+  }
+  .slider-block-right .sb-text
+  {
+    display: none;
+  }
   .main-slider-5 .rate-wrap {
     margin-bottom: 0px;
   }
@@ -15015,6 +15045,10 @@ footer.type-2 .copyright {
 
   .main-slider-5 {
     margin-top: -70px;
+  }
+  .home-top-banner
+  {
+    margin: 60px auto !important;
   }
 
   .main-slider-5 .slider-block-left {

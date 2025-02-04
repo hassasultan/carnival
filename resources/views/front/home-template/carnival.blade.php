@@ -21,7 +21,7 @@
         margin-top: 20px;
     }
 </style>
-<div class="main-wraper" style="padding:160px 0px 0px 0px">
+<div class="main-wraper content-area-start" >
     <div class="container clearfix contry-wrapp">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-3">

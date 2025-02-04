@@ -9,7 +9,7 @@
             <div class="container" style="margin-top:30px">
 
                 <div class="arrows">
-                    <div class="swiper-container main-slider-5" style="margin: 88px auto;" data-autoplay="0"
+                    <div class="swiper-container main-slider-5 home-top-banner"  data-autoplay="0"
                         data-loop="1" data-speed="900" data-center="0" data-slides-per-view="1">
                         <div class="swiper-wrapper">
                             <style>
@@ -17,7 +17,7 @@
                                     display: flex;
                                     justify-content: center;
                                     align-items: center;
-                                    min-height: 99vh;
+                                    min-height: auto;
                                     background-color: #f3f3f3;
                                 }
 
@@ -44,8 +44,9 @@
 
                                 .slide-new img {
                                     width: 100%;
-                                    height: 100%;
+                                    height: auto;
                                     border-radius: 0px;
+                                    margin-top: 70px;
                                 }
 
                                 .slide-new video {
@@ -82,6 +83,14 @@
 
                                 .d-none {
                                     display: none !important;
+                                }
+                                @media screen and (max-width: 480px) {
+                                    .slider-extra {
+                                        min-height: auto;
+                                    }
+                                    .slide-new img {
+                                        margin-top: 0px;
+                                    }
                                 }
                             </style>
                             @foreach ($carnivals as $key => $row)
@@ -201,6 +210,7 @@
                                                                 <button class="next"
                                                                     onclick="nextSlide()">&#10095;</button>
                                                             </div>
+
                                                         </div>
                                                         <div class="slider-block-right">
                                                             <div class="rate-wrap">
