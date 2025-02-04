@@ -29,7 +29,7 @@ class EventsCountryTab extends Model
     
     public function faqs()
     {
-        return $this->morphMany(FAQ::class, 'modelable');
+        return $this->hasMany(FAQ::class, 'modelable_id');
     }
 
     public function images()
