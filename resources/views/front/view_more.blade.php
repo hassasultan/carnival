@@ -6874,6 +6874,9 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- S_NEWS-ENTRY -->
+            @include('front.home-template.news')
             <div class="additional-block padd-90">
                 <h4 class="additional-title">may interest you</h4>
                 <div class="may-interested">
@@ -6980,8 +6983,6 @@
         </div>
     </div>
     @include('front.home-template.subscribe')
-    <!-- S_NEWS-ENTRY -->
-    @include('front.home-template.news')
 
     @include('partials.brand_showcase')
 
