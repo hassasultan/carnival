@@ -6986,6 +6986,6 @@
     @include('partials.brand_showcase')
 
     <!-- block  showcase-->
-    {{-- @include('front.home-template.brand-showcase') --}}
+    @include('front.home-template.brand-showcase')
     <!-- block  showcase-->
 @endsection
