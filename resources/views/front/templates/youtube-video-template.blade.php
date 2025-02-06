@@ -134,9 +134,9 @@
 </style>
 {{-- <img src="https://carnivalguide.co/new/img/home/vincymas-2024.jpg" alt="Image 1"> --}}
 <div class="arrows">
-    <div class="swiper-container main-slider-5 adjust-height" data-autoplay="0" data-loop="1" data-speed="900" data-center="0" data-slides-per-view="1">
+    <div class="swiper-container main-slider-5 " data-autoplay="0" data-loop="1" data-speed="900" data-center="0" data-slides-per-view="1">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" data-val="0">
+            <div class="swiper-slide adjust-height" data-val="0">
                 <div class="video-container">
                     @php
                         $videoUrl = asset('videos/sample-video.mp4'); // Use local or hosted video
