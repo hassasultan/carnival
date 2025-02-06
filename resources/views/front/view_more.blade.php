@@ -172,10 +172,10 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
-                                                {{-- {!! $row->content !!} --}}
                                                 <h4><b>{{ $carnivals->name }}</b></h4>
                                                 <span class="f-14 color-dark-2 grid-hidden">{{ $carnivals->start_date . ' - ' . $carnivals->end_date }}</span>
                                                 <p class="f-14">{{ $carnivals->description }}</p>
+                                                {!! $row->content !!}
                                             </div>
                                             <div class="col-md-12">
                                                     <div class="row">
