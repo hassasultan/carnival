@@ -3868,7 +3868,7 @@ nav li.type-4 .dropmenu .fa-chevron-right {
 
 .main-slider-5 .swiper-slide {
   /* min-height: 1200px; */
-  min-height: 762px;
+  min-height: auto;
 }
 .adjust-height
 {
