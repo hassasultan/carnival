@@ -188,7 +188,7 @@
                                                         </div>
                                                         <div class="row">
                                                             @foreach ($row->faqs as $item)
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-12">
                                                                 <div class="accordeon-wrapper">
                                                                     <div class="accordeon-entry">
                                                                         <h5>{{ $item->question }}</h5>
