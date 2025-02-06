@@ -18,6 +18,34 @@
                                             </div>
                                         @endforeach
                                     @endif
+                                    <div class="nav-tab-item">
+                                        Flights
+                                    </div>
+                                    <div class="nav-tab-item">
+                                        Cars/Rentals
+                                    </div>
+                                    <div class="nav-tab-item">
+                                        Hotels
+                                    </div>
+
+                                    <div class="nav-tab-item">
+                                        Air BNB
+                                    </div>
+                                    <div class="nav-tab-item">
+                                        Events & Tickets
+                                    </div>
+                                    <div class="nav-tab-item">
+                                        Mas Camps/Costumes
+                                    </div>
+                                    <div class="nav-tab-item">
+                                        Tours and Activities
+                                    </div>
+                                    <div class="nav-tab-item">
+                                        Gallery
+                                    </div>
+                                    <div class="nav-tab-item">
+                                        Blog
+                                    </div>
                                 </div>
                             </div>
                             <style>
