@@ -187,9 +187,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
+                                                            @foreach ($row->faqs as $item)
                                                             <div class="col-md-6">
                                                                 <div class="accordeon-wrapper">
-                                                                    @foreach ($row->faqs as $item)
                                                                     <div class="accordeon-entry">
                                                                         <h5>{{ $item->question }}</h5>
                                                                         <div class="toggle-content act">
@@ -198,9 +198,9 @@
                                                                         </div>
                                                                         </div>
                                                                     </div>
-                                                                    @endforeach
                                                                 </div>
                                                             </div>
+                                                            @endforeach
                                                         </div>
                                                 </div>
                                             @endif
