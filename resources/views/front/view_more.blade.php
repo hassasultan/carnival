@@ -177,31 +177,33 @@
                                                 <p class="f-14">{{ $carnivals->description }}</p>
                                                 {!! $row->content !!}
                                             </div>
-                                            <div class="col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                                                            <div class="second-title">
-                                                                <h2>Toggles</h2>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="accordeon-wrapper">
-                                                                @foreach ($row->faqs as $item)
-                                                                <div class="accordeon-entry">
-                                                                    <h5>{{ $item->question }}</h5>
-                                                                    <div class="toggle-content act">
-                                                                      <div class="accordeon-wrap">
-                                                                        <p>{{ $item->answer }}</p>
-                                                                      </div>
-                                                                    </div>
+                                            @if ($row->faqs != null)
+                                                <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                                                                <div class="second-title">
+                                                                    <h2>Toggles</h2>
                                                                 </div>
-                                                                @endforeach
                                                             </div>
                                                         </div>
-                                                    </div>
-                                            </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="accordeon-wrapper">
+                                                                    @foreach ($row->faqs as $item)
+                                                                    <div class="accordeon-entry">
+                                                                        <h5>{{ $item->question }}</h5>
+                                                                        <div class="toggle-content act">
+                                                                        <div class="accordeon-wrap">
+                                                                            <p>{{ $item->answer }}</p>
+                                                                        </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            @endif
                                         </div>
                                     @endforeach
                                 @endif
