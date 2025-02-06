@@ -179,29 +179,29 @@
                                             </div>
                                             @if (count($row->faqs) > 0)
                                                 <div class="col-md-12">
-                                                        <div class="row">
-                                                            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                                                                <div class="second-title">
-                                                                    <h2>Toggles</h2>
-                                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                                                            <div class="second-title">
+                                                                <h2>Toggles</h2>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            @foreach ($row->faqs as $key => $item)
+                                                    </div>
+                                                    <div class="row">
+                                                        @foreach ($row->faqs as $key => $item)
                                                             <div class="col-md-12">
                                                                 <div class="accordeon-wrapper">
-                                                                    <div class="accordeon-entry @if($key == 0) active endif">
+                                                                    <div class="accordeon-entry @if($key == 0) active @endif">
                                                                         <h5>{{ $item->question }}</h5>
                                                                         <div class="toggle-content act">
-                                                                        <div class="accordeon-wrap">
-                                                                            <p>{{ $item->answer }}</p>
-                                                                        </div>
+                                                                            <div class="accordeon-wrap">
+                                                                                <p>{{ $item->answer }}</p>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @endforeach
-                                                        </div>
+                                                        @endforeach
+                                                    </div>
                                                 </div>
                                             @endif
                                         </div>
