@@ -48,8 +48,10 @@ use App\Http\Controllers\VendorGalleryController;
 use App\Http\Controllers\SubvendorGalleryController;
 use App\Http\Controllers\ModelBookingController;
 use App\Http\Controllers\FAQController;
+use App\Http\Controllers\FAQPageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\OurTeamController;
+use App\Http\Controllers\SubscriberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -147,6 +149,8 @@ Route::get('/events/view-more/{slug}', [FrontendConroller::class, 'eventViewMore
 
 // load carnival banner details
 Route::get('/carnival-banner_details', [FrontendConroller::class, 'loadBannerDetails'])->name('front.carnival.banner_details');
+
+Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe.store');
 
 
 // Admin Routes
@@ -296,6 +300,15 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/faqs/{id}/edit', [FAQController::class, 'edit'])->name('faqs.edit');
     Route::put('/faqs/{id}', [FAQController::class, 'update'])->name('faqs.update');
     Route::delete('/faqs/{id}', [FAQController::class, 'destroy'])->name('faqs.destroy');
+    Route::resource('advertisements', AdvertisementController::class);
+
+    Route::get('/faqs_page', [FAQPageController::class, 'index'])->name('faqs_page.index');
+    Route::get('/faqs_page/create', [FAQPageController::class, 'create'])->name('faqs_page.create');
+    Route::post('/faqs_page', [FAQPageController::class, 'store'])->name('faqs_page.store');
+    Route::get('/faqs_page/{id}', [FAQPageController::class, 'show'])->name('faqs_page.show');
+    Route::get('/faqs_page/{id}/edit', [FAQPageController::class, 'edit'])->name('faqs_page.edit');
+    Route::put('/faqs_page/{id}', [FAQPageController::class, 'update'])->name('faqs_page.update');
+    Route::delete('/faqs_page/{id}', [FAQPageController::class, 'destroy'])->name('faqs_page.destroy');
 
     Route::get('/our-team', [OurTeamController::class, 'index'])->name('our_team.index');
     Route::get('/our-team/create', [OurTeamController::class, 'create'])->name('our_team.create');

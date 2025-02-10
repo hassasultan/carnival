@@ -9,26 +9,18 @@
                     <strong class="card-title">FAQ Information</strong>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('faqs.store') }}">
+                    <form method="POST" action="{{ route('faqs_page.store') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group mb-3 d-none">
-                                    <label for="model">Model</label>
-                                    <select id="model" name="modelable_type" class="form-control" required>
-                                        <option value="" selected disabled>Select Model</option>
-                                        <option value="EventsCountryTab" selected>EventsCountryTab</option>
+                                <div class="form-group mb-3">
+                                    <label for="page">Page</label>
+                                    <select id="page" name="page" class="form-control" required>
+                                        <option value="" selected disabled>Select Page</option>
+                                        <option value="AboutUs">About Us</option>
+                                        <option value="ContactUs">Contact Us</option>
                                         {{-- <option value="Mascamp" selected>Mascamp</option>
                                         <option value="Product" selected>Product</option> --}}
-                                    </select>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="model">Select EventsCountryTab</label>
-                                    <select id="model" name="modelable_id" class="form-control" required>
-                                        <option value="" selected disabled>Select Model</option>
-                                        @foreach ($modelVal as $item)
-                                            <option value="{{ $item->id }}" selected>{{ $item->tab }}</option>
-                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group mb-3">

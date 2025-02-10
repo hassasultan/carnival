@@ -28,6 +28,7 @@
                 <option value="event" @if ($banner->type == 'event') selected @endif>Event</option>
                 <option value="flight" @if ($banner->type == 'flight') selected @endif>Flight</option>
                 <option value="about" @if ($banner->type == 'about') selected @endif>About</option>
+                <option value="aboutus" @if ($banner->type == 'aboutus') selected @endif>Aboutus</option>
             </select>
         </div>
 

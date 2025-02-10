@@ -26,6 +26,7 @@
                 <option value="event">Event</option>
                 <option value="flight">Flight</option>
                 <option value="about">About</option>
+                <option value="aboutus">Aboutus</option>
             </select>
         </div>
 

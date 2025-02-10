@@ -22,6 +22,7 @@ use App\Models\Brand;
 use App\Models\GalleryAlbum;
 use App\Models\Music;
 use App\Models\Costume;
+use App\Models\FAQPage;
 use App\Models\Carnival;
 use App\Models\OurTeam;
 use Illuminate\Http\Request;
@@ -56,6 +57,7 @@ class FrontendConroller extends Controller
     }
     public function aboutus()
     {
+        $banners = Banner::where('type', 'aboutus')->get();
         $services = OurService::get()->take('4');
         $investors = Investor::all();
         $testimonials = Testimonials::where('status', 1)->get();
@@ -64,11 +66,11 @@ class FrontendConroller extends Controller
         $products = Product::with('brand')->get();
         $carnival_com = Carnival::has('user')->pluck('head');
         $ourTeam = OurTeam::take(3)->get();
-
+        $faqs = FAQPage::where('status', 1)->where('page', 'AboutUs')->get();
         $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
 
 
-        return view('front.aboutus', compact('services', 'carnival_commitee', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery', 'ourTeam'));
+        return view('front.aboutus', compact('services', 'carnival_commitee', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery', 'ourTeam', 'faqs', 'banners'));
     }
     public function travel()
     {

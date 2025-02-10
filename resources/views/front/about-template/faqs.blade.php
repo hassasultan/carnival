@@ -1,4 +1,4 @@
-<div class="main-wraper bg-white padd-90">
+{{-- <div class="main-wraper bg-white padd-90">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -100,4 +100,34 @@
 			</div>
 		</div>
 	</div>
+</div> --}}
+
+<div class="main-wraper bg-white padd-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                <div class="second-title">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach ($faqs->chunk(ceil($faqs->count() / 2)) as $faqChunk)
+                <div class="col-md-6">
+                    <div class="accordeon-wrapper">
+                        @foreach ($faqChunk as $index => $faq)
+                            <div class="accordeon-entry {{ $loop->first ? 'active' : '' }}">
+                                <h5>{{ $faq->question }}</h5>
+                                <div class="toggle-content {{ $loop->first ? 'act' : '' }}">
+                                    <div class="accordeon-wrap">
+                                        <p>{{ $faq->answer }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 </div>

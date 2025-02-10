@@ -164,6 +164,18 @@
                     <span class="ml-3 item-text">FAQs</span>
                 </a>
             </li>
+            <li class="nav-item dropdown">
+                <a href="{{ route('our_team.index') }}" class="dropdown-toggle nav-link">
+                    <i class="fe fe-box fe-16"></i>
+                    <span class="ml-3 item-text">Our Team</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="{{ route('faqs_page.index') }}" class="dropdown-toggle nav-link">
+                    <i class="fe fe-box fe-16"></i>
+                    <span class="ml-3 item-text">FAQs Pages</span>
+                </a>
+            </li>
         </ul>
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Category/Package</span>
