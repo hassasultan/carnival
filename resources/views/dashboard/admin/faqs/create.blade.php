@@ -13,11 +13,13 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group mb-3 d-none">
+                                <div class="form-group mb-3">
                                     <label for="model">Model</label>
                                     <select id="model" name="modelable_type" class="form-control" required>
                                         <option value="" selected disabled>Select Model</option>
                                         <option value="EventsCountryTab" selected>EventsCountryTab</option>
+                                        <option value="Mascamp" selected>Mascamp</option>
+                                        <option value="Product" selected>Product</option>
                                     </select>
                                 </div>
                                 <div class="form-group mb-3">

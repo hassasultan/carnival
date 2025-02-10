@@ -18,7 +18,9 @@
                                     <label for="model">Model</label>
                                     <select id="model" name="modelable_type" class="form-control" required>
                                         <option value="" selected disabled>Select Model</option>
-                                        <option value="EventsCountryTab" selected>EventsCountryTab</option>
+                                        <option value="EventsCountryTab" @if($faq->modelable_type) selected @endif>EventsCountryTab</option>
+                                        <option value="Mascamp" @if($faq->modelable_type) selected @endif>Mascamp</option>
+                                        <option value="Product" @if($faq->modelable_type) selected @endif>Product</option>
                                     </select>
                                 </div>
                                 <div class="form-group mb-3">

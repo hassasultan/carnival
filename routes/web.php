@@ -49,6 +49,7 @@ use App\Http\Controllers\SubvendorGalleryController;
 use App\Http\Controllers\ModelBookingController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\OurTeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -295,6 +296,14 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/faqs/{id}/edit', [FAQController::class, 'edit'])->name('faqs.edit');
     Route::put('/faqs/{id}', [FAQController::class, 'update'])->name('faqs.update');
     Route::delete('/faqs/{id}', [FAQController::class, 'destroy'])->name('faqs.destroy');
+
+    Route::get('/our-team', [OurTeamController::class, 'index'])->name('our_team.index');
+    Route::get('/our-team/create', [OurTeamController::class, 'create'])->name('our_team.create');
+    Route::post('/our-team', [OurTeamController::class, 'store'])->name('our_team.store');
+    Route::get('/our-team/{id}', [OurTeamController::class, 'show'])->name('our_team.show');
+    Route::get('/our-team/{id}/edit', [OurTeamController::class, 'edit'])->name('our_team.edit');
+    Route::put('/our-team/{id}', [OurTeamController::class, 'update'])->name('our_team.update');
+    Route::delete('/our-team/{id}', [OurTeamController::class, 'destroy'])->name('our_team.destroy');
 });
 
 Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
