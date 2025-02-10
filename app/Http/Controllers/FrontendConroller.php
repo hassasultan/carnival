@@ -23,6 +23,7 @@ use App\Models\GalleryAlbum;
 use App\Models\Music;
 use App\Models\Costume;
 use App\Models\Carnival;
+use App\Models\OurTeam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -62,11 +63,12 @@ class FrontendConroller extends Controller
         $blogs = Blogs::with('user')->get()->take('3');
         $products = Product::with('brand')->get();
         $carnival_com = Carnival::has('user')->pluck('head');
+        $ourTeam = OurTeam::take(3)->get();
 
         $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
 
 
-        return view('front.aboutus', compact('services', 'carnival_commitee', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery'));
+        return view('front.aboutus', compact('services', 'carnival_commitee', 'products', 'blogs', 'investors', 'testimonials', 'siteGallery', 'ourTeam'));
     }
     public function travel()
     {

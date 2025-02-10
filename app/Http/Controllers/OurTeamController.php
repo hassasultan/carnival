@@ -34,7 +34,10 @@ class OurTeamController extends Controller
 
         // Handle image upload
         if ($request->hasFile('image')) {
-            $validatedData['image'] = $request->file('image')->store('images/ourTeam');
+            $fileName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('ourTeam'), $fileName);
+            $file = $request->file('image');
+            $validatedData['image'] = $fileName;
         }
 
         OurTeam::create($validatedData);
@@ -78,7 +81,10 @@ class OurTeamController extends Controller
                 }
 
                 // Store new image
-                $validatedData['image'] = $request->file('image')->store('images/ourTeam');
+                $fileName = time() . '.' . $request->image->extension();
+                $request->image->move(public_path('ourTeam'), $fileName);
+                $file = $request->file('image');
+                $validatedData['image'] = $fileName;
             }
 
             $teamMember->update($validatedData);
