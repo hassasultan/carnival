@@ -48,6 +48,7 @@ use App\Http\Controllers\VendorGalleryController;
 use App\Http\Controllers\SubvendorGalleryController;
 use App\Http\Controllers\ModelBookingController;
 use App\Http\Controllers\FAQController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,6 +119,7 @@ Route::get('/shop/music/{slug}', [FrontendConroller::class, 'musicDetail'])->nam
 // models appointment
 Route::get('{slug}/contact-us', [ModelBookingController::class, 'create'])->name('model.booking.create');
 Route::post('contact-us/store', [ModelBookingController::class, 'store'])->name('model.booking.store');
+Route::post('/contact-submit', [ContactController::class, 'submitForm'])->name('contact.submit');
 
 Route::get('/unauthorized', function () {
     return view('unauthorized');

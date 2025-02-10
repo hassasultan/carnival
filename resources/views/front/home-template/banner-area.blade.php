@@ -247,9 +247,10 @@
                                                                             style="">{{ $row->name }}</span>
                                                                     </h4>
                                                                     <div class="sb-price color-dark-2">
-                                                                        <span>$100</span> / per
-                                                                        {{-- <span>${{ $row->tickets[0]->price }}</span> / per --}}
-                                                                        person
+                                                                        {{-- <span>$100</span> / per
+                                                                        <span>${{ $row->tickets[0]->price }}</span> / per
+                                                                        person --}}
+                                                                        {{ $row->start_date . ' ' . $row->end_date }}
                                                                     </div>
                                                                     <div class="sb-text">{!! $row->description !!}
                                                                     </div>
