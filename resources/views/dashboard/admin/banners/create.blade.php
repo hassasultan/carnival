@@ -25,6 +25,7 @@
                 <option value="section_leader">Section Leader</option>
                 <option value="event">Event</option>
                 <option value="flight">Flight</option>
+                <option value="about">About</option>
             </select>
         </div>
 

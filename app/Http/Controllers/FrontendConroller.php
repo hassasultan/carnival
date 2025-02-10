@@ -37,7 +37,7 @@ class FrontendConroller extends Controller
     {
         $events = Event::with('images', 'tickets')->orderBy('id', 'desc')->get()->take('5');
         // $events = Event::with('images','tickets')->orderBy('id','desc')->get()->take('5');
-        $regions = Region::with('countries')->OrderBy('placement','ASC')->get();
+        $regions = Region::with('countries')->OrderBy('placement', 'ASC')->get();
         $services = OurService::get()->take('4');
         $siteGallery = SiteGallery::get();
         $products = Product::with('brand')->get();
@@ -122,7 +122,7 @@ class FrontendConroller extends Controller
     public function event_listing()
     {
         $products = Product::with('brand')->get();
-        return view('front.events',compact('products'));
+        return view('front.events', compact('products'));
     }
     public function category_tour_listing()
     {
@@ -233,6 +233,7 @@ class FrontendConroller extends Controller
         $regionId = $request->get('getRegion');
 
         $query = Vendor::query()
+            ->whereHas('user.costumes')
             ->with([
                 'user' => function ($query) {
                     $query->select('id', 'first_name', 'last_name', 'slug', 'image');
@@ -823,14 +824,14 @@ class FrontendConroller extends Controller
         $query = Vendor::query()
             ->whereIn('user_id', $carnival_commitee)
             ->with([
-                    'user' => function ($query) {
-                        $query->select('id', 'first_name', 'last_name', 'slug', 'image');
-                    },
-                    'user.products' => function ($query) {
-                        $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
-                            ->groupBy('user_id');
-                    },
-                ]);
+                'user' => function ($query) {
+                    $query->select('id', 'first_name', 'last_name', 'slug', 'image');
+                },
+                'user.products' => function ($query) {
+                    $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
+                        ->groupBy('user_id');
+                },
+            ]);
 
         if ($vendor_type) {
             $query->whereHas('package', function ($query) use ($vendor_type) {

@@ -27,6 +27,7 @@
                 <option value="section_leader" @if ($banner->type == 'section_leader') selected @endif>Section Leader</option>
                 <option value="event" @if ($banner->type == 'event') selected @endif>Event</option>
                 <option value="flight" @if ($banner->type == 'flight') selected @endif>Flight</option>
+                <option value="about" @if ($banner->type == 'about') selected @endif>About</option>
             </select>
         </div>
 
