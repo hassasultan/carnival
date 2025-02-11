@@ -7,6 +7,7 @@ use App\Models\Region;
 use App\Models\User;
 use App\Models\Vendor;
 use App\Models\CarnivalMembers;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use Str;
 
@@ -43,6 +44,7 @@ class CarnivalController extends Controller
             'slug' => $slug,
             'end_date' => $request->end_date,
             'region_id' => $request->region_id,
+            'country_id' => $request->country_id,
             'description' => $request->description,
             'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
         ]);
@@ -81,6 +83,7 @@ class CarnivalController extends Controller
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'region_id' => $request->region_id,
+            'country_id' => $request->country_id,
             'description' => $request->description,
             'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
         ]);
@@ -208,5 +211,12 @@ class CarnivalController extends Controller
     {
         $members = CarnivalMembers::where('carnival_id', $id)->get();
         return response()->json(['members' => $members]);
+    }
+
+    public function getCountriesByRegion(Request $request)
+    {
+        $regionId = $request->region_id;
+        $countries = Country::where('region_id', $regionId)->get();
+        return response()->json(['countries' => $countries]);
     }
 }
