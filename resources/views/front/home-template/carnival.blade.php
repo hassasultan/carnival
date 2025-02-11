@@ -318,7 +318,7 @@
                                             </div>
                                         </div>
                                         <div class="discover-more">
-                                            <a href="{{ route('events.view.more', $row->id) }}">DISCOVER MORE</a>
+                                            <a href="{{ route('events.view.more', $row->id) }}">View More</a>
                                         </div>
                                     </div>
                                 </div>
