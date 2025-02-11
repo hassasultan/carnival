@@ -264,8 +264,8 @@
                                                                                 default => 'th',
                                                                             };
                                                                         @endphp
-                                                                        <strong>{{ $day }}<sup>{{ $suffix }}</sup>
-                                                                        {{ $month }}</strong>
+                                                                        <strong>{{ $month }} {{ $day }}<sup>{{ $suffix }}</sup>
+                                                                        </strong>
                                                                     </div>
                                                                     <div class="sb-text">{!! $row->description !!}
                                                                     </div>
