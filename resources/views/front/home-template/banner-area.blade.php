@@ -2,12 +2,22 @@
     <div class="video-wrapper">
         <div class="full-height">
             <div class="video-wrapper">
-                <video loop autoplay muted poster="https://carnivalguide.co/travel/img/poster.jpg" class="bgvid"
-                    id="bgvid">
-                    <source type="video/mp4" src="https://carnivalguide.co/travel/video/soca.mp4" />
-                    <source type="video/ogv" src="https://carnivalguide.co/travel/video/soca.ogv" />
-                    <source type="video/webm" src="https://carnivalguide.co/travel/video/soca.webm" />
-                </video>
+                @foreach ($siteGallery as $key => $row)
+                    {{-- <div class="col-md-3 album-cnt" data-id="{{ $row->id }}">
+                        <div class="album bg-brown"
+                            style="background-image: url('{{ asset('images/' . $row->images[0]->image) }}');">
+                        </div>
+                        <div class="album-title">
+                            <span>{{ $row->title }}</span>
+                        </div>
+                    </div> --}}
+                    <video loop autoplay muted poster="https://carnivalguide.co/travel/img/poster.jpg" class="bgvid"
+                        id="bgvid">
+                        <source type="video/mp4" src="https://carnivalguide.co/travel/video/soca.mp4" />
+                        <source type="video/ogv" src="https://carnivalguide.co/travel/video/soca.ogv" />
+                        <source type="video/webm" src="https://carnivalguide.co/travel/video/soca.webm" />
+                    </video>
+                @endforeach
                 <div class="vertical-align">
                     <div class="container" style="margin-top:30px">
 
