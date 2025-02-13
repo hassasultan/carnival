@@ -69,7 +69,12 @@
                                     <option value="{{ $row->id }}">{{ $row->name }}</option>
                                 @endforeach
                             </select>
-                            {{-- <input type="text" class="form-control" id="region" name="region" required> --}}
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select class="form-control" id="country_id" name="country_id" required>
+                                <option value="">Select Country</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="description">description</label>
@@ -124,7 +129,12 @@
                                     <option value="{{ $row->id }}">{{ $row->name }}</option>
                                 @endforeach
                             </select>
-                            {{-- <input type="text" class="form-control" id="edit_region" name="region" required> --}}
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select class="form-control" id="edit_country_id" name="country_id" required>
+                                <option value="">Select Country</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="description">description</label>
@@ -626,6 +636,62 @@
                         console.error('Update failed', xhr.responseText);
                     }
                 });
+            });
+
+            $('#region_id').change(function() {
+                var regionId = $(this).val();
+                if(regionId) {
+                    $.ajax({
+                        url: '{{ route("get.countries") }}',
+                        type: 'GET',
+                        data: {
+                            region_id: regionId
+                        },
+                        success: function(response) {
+                            var countrySelect = $('#country_id');
+                            countrySelect.empty();
+                            countrySelect.append('<option value="">Select Country</option>');
+
+                            $.each(response.countries, function(key, value) {
+                                countrySelect.append('<option value="' + value.id + '">' + value.name + '</option>');
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching countries:', error);
+                            toastr.error('Failed to fetch countries');
+                        }
+                    });
+                } else {
+                    $('#country_id').empty().append('<option value="">Select Country</option>');
+                }
+            });
+
+            $('#edit_region').change(function() {
+                var regionId = $(this).val();
+                if(regionId) {
+                    $.ajax({
+                        url: '{{ route("get.countries") }}',
+                        type: 'GET',
+                        data: {
+                            region_id: regionId
+                        },
+                        success: function(response) {
+                            var countrySelect = $('#edit_country_id');
+                            countrySelect.empty();
+                            countrySelect.append('<option value="">Select Country</option>');
+
+                            $.each(response.countries, function(key, value) {
+                                countrySelect.append('<option value="' + value.id + '">' + value.name + '</option>');
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching countries:', error);
+                            toastr.error('Failed to fetch countries');
+                        }
+                    });
+                } else {
+                    $('#edit_country_id').empty().append('<option value="">Select Country</option>');
+                }
             });
         });
         let members = [];

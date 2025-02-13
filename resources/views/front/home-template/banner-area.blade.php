@@ -253,14 +253,29 @@
                                                                         </div>
                                                                         <i>485 Reviews</i>
                                                                     </div>
-                                                                    <h4 class="sb-title"><span
+                                                                    <h4 class="sb-title" style="margin-bottom: 0px;"><span
                                                                             style="">{{ $row->name }}</span>
                                                                     </h4>
+                                                                    <div style="color: #222;opacity: 0.6; font-size: 10px; font-family: 'Open Sans', sans-serif;">{{ $row->country?->name ?? 'Country Not Set' }}
+                                                                    </div>
                                                                     <div class="sb-price color-dark-2">
-                                                                        {{-- <span>$100</span> / per
-                                                                        <span>${{ $row->tickets[0]->price }}</span> / per
-                                                                        person --}}
-                                                                        {{ $row->start_date . ' ' . $row->end_date }}
+                                                                        @php
+                                                                            $date = \Carbon\Carbon::parse(
+                                                                                $row->start_date,
+                                                                            );
+                                                                            $day = $date->day;
+                                                                            $month = $date->format('M');
+
+                                                                            // Add suffix to day
+                                                                            $suffix = match ($day % 10) {
+                                                                                1 => $day == 11 ? 'th' : 'st',
+                                                                                2 => $day == 12 ? 'th' : 'nd',
+                                                                                3 => $day == 13 ? 'th' : 'rd',
+                                                                                default => 'th',
+                                                                            };
+                                                                        @endphp
+                                                                        <strong>{{ $month }} {{ $day }}<sup>{{ $suffix }}</sup>
+                                                                        </strong>
                                                                     </div>
                                                                     <div class="sb-text">{!! $row->description !!}
                                                                     </div>

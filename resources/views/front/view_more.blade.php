@@ -64,7 +64,7 @@
 
                                 .carousel-slides {
                                     display: flex;
-                                    transition: transform 0.5s ease;
+                                    transition: transform 0.3s ease;
                                     align-items: center;
                                     /* Center the slides vertically */
                                     justify-content: center;
@@ -78,6 +78,8 @@
                                     justify-content: center;
                                     align-items: center;
                                     background-color: #f0f0f0;
+                                    flex: 0 0 100%;
+                                    width: 100%;
                                     /* Ensure the slide has a background */
                                 }
 
@@ -146,12 +148,20 @@
                                             <div class="carousel">
                                                 <div class="carousel-wrapper">
                                                     <button class="carousel-control prev">&#10094;</button>
-                                                    <div class="carousel-slides">
-                                                        <div class="slide active">
-                                                            <img class="img-responsive img-full"
-                                                                src="{{ asset('files/' . $row->file) }}" alt="Slide 1">
-                                                        </div>
-                                                        <div class="slide">
+                                                    <div class="carousel-slides ">
+                                                        @foreach ($row->images as $index => $image)
+                                                            <div class="slide @if($index == 0) active @endif" data-index="{{ $index }}">
+                                                                @if($image->file_type == 'image')
+                                                                    <img class="img-responsive img-full" src="{{ asset('file/'.$image->file) }}" alt="Slide {{ $index }}">
+                                                                @elseif($image->file_type == 'video')
+                                                                    <video class="img-responsive img-full" controls style="width: 100%; height: 100%; object-fit: cover;" alt="Slide {{ $index }}">
+                                                                        <source src="{{ asset('file/'.$image->file) }}" type="video/mp4">
+                                                                        Your browser does not support the video tag.
+                                                                    </video>
+                                                                @endif
+                                                            </div>
+                                                        @endforeach
+                                                        {{-- <div class="slide">
                                                             <img class="img-responsive img-full"
                                                                 src="{{ asset('files/' . $row->file) }}" alt="Slide 2">
                                                         </div>
@@ -169,34 +179,27 @@
                                                             <img class="img-responsive img-full"
                                                                 src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
                                                                 alt="Slide 5">
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                     <button class="carousel-control next">&#10095;</button>
                                                 </div>
                                                 <div class="carousel-thumbnails">
-                                                    <div class="thumbnail">
-                                                        <img class="img-responsive img-thumb"
-                                                            src="{{ asset('files/' . $row->file) }}" alt="Thumbnail 1">
-                                                    </div>
-                                                    <div class="thumbnail">
-                                                        <img class="img-responsive img-thumb"
-                                                            src="{{ asset('files/' . $row->file) }}" alt="Thumbnail 2">
-                                                    </div>
-                                                    <div class="thumbnail">
-                                                        <img class="img-responsive img-thumb"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
-                                                            alt="Thumbnail 3">
-                                                    </div>
-                                                    <div class="thumbnail">
-                                                        <img class="img-responsive img-thumb"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
-                                                            alt="Thumbnail 4">
-                                                    </div>
-                                                    <div class="thumbnail">
-                                                        <img class="img-responsive img-thumb"
-                                                            src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
-                                                            alt="Thumbnail 5">
-                                                    </div>
+                                                    @foreach ($row->images as $index => $image)
+                                                        <div class="thumbnail" data-index="{{ $index }}">
+                                                            @if($image->file_type == 'image')
+                                                                <img class="img-responsive img-thumb" src="{{ asset('file/'.$image->file) }}" alt="Thumbnail {{ $index }}">
+                                                            @elseif($image->file_type == 'video')
+                                                            <video class="img-responsive img-full img-thumb"  style="width: 100%; height: 100%; object-fit: cover;" alt="Thumbnail {{ $index }}">
+                                                                <source src="{{ asset('file/'.$image->file) }}" type="video/mp4">
+                                                                Your browser does not support the video tag.
+                                                            </video>
+                                                                {{-- <img class="img-responsive img-thumb" src="{{ asset('file/'.$image->file) }}" alt="Video Thumbnail {{ $index + 1 }}"> --}}
+                                                            @endif
+                                                        </div>
+                                                    @endforeach
+                                                    {{-- <div class="thumbnail">
+                                                        <img class="img-responsive img-thumb" src="{{ asset('files/' . $row->file) }}" alt="Additional Thumbnail">
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -5253,25 +5256,33 @@
                                         const nextButton = carousel.querySelector('.next');
                                         let currentSlide = 0;
 
+                                        // Function to update slide position
+                                        const updateSlidePosition = () => {
+                                            // Calculate negative translateX to move slides left
+                                            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+                                        };
+
                                         prevButton.addEventListener('click', () => {
+                                            // Decrease current slide, loop to end if at start
                                             currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.children.length - 1;
-                                            console.log(currentSlide);
-                                            slides.style.transform = `translateX(${currentSlide * 100}%)`;
+                                            updateSlidePosition();
                                         });
 
                                         nextButton.addEventListener('click', () => {
+                                            // Increase current slide, loop to start if at end
                                             currentSlide = (currentSlide < slides.children.length - 1) ? currentSlide + 1 : 0;
-                                            console.log(currentSlide);
-
-                                            slides.style.transform = `translateX(${currentSlide * 100}%)`;
+                                            updateSlidePosition();
                                         });
 
                                         carousel.querySelectorAll('.thumbnail').forEach((thumbnail, index) => {
                                             thumbnail.addEventListener('click', () => {
                                                 currentSlide = index;
-                                                slides.style.transform = `translateX(${index * 100}%)`;
+                                                updateSlidePosition();
                                             });
                                         });
+
+                                        // Initialize first slide position
+                                        updateSlidePosition();
                                     });
                                 </script>
                             </div>
@@ -5330,9 +5341,9 @@
                             <a class="help-phone color-dark-2 link-dr-blue-2" href="tel:0200059600"><img
                                     src="https://carnivalguide.co/travel/img/detail/phone24-dark-2.png" alt="">020
                                 00 59 600</a>
-                            <a class="help-mail color-dark-2 link-dr-blue-2" href="mailto:let’s_travel@world.com"><img
+                            <a class="help-mail color-dark-2 link-dr-blue-2" href="mailto:let's_travel@world.com"><img
                                     src="https://carnivalguide.co/travel/img/detail/letter-dark-2.png"
-                                    alt="">let’s_travel@world.com</a>
+                                    alt="">let's_travel@world.com</a>
                         </div> --}}
                         <div class="sidebar-block type-2">
                             <h4 class="sidebar-title color-dark-2">popular posts</h4>

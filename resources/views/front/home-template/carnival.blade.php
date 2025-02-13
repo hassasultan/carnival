@@ -20,6 +20,21 @@
     .discover-more {
         margin-top: 20px;
     }
+
+    .discover-more a {
+        border: 2px solid #ff6600;
+        transition: all 0.3s ease;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #ff6600;
+        color: #fff;
+    }
+
+    .discover-more a:hover {
+        background-color: #fff;
+        color: #ff6600;
+        border-color: #ff6600;
+    }
 </style>
 <div class="main-wraper content-area-start" >
     <div class="container clearfix contry-wrapp">
@@ -301,6 +316,9 @@
                                                     <div class="hotel-line-price">from $273</div>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="discover-more">
+                                            <a href="{{ route('events.view.more', $row->id) }}">View More</a>
                                         </div>
                                     </div>
                                 </div>
