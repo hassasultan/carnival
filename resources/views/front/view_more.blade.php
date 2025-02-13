@@ -64,7 +64,7 @@
 
                                 .carousel-slides {
                                     display: flex;
-                                    transition: transform 0.5s ease;
+                                    transition: transform 0.3s ease;
                                     align-items: center;
                                     /* Center the slides vertically */
                                     justify-content: center;
@@ -78,6 +78,8 @@
                                     justify-content: center;
                                     align-items: center;
                                     background-color: #f0f0f0;
+                                    flex: 0 0 100%;
+                                    width: 100%;
                                     /* Ensure the slide has a background */
                                 }
 
@@ -5050,33 +5052,37 @@
                                 <script>
                                     document.querySelectorAll('.carousel').forEach(carousel => {
                                         const slides = carousel.querySelector('.carousel-slides');
-                                        console.log(slides);
                                         const prevButton = carousel.querySelector('.prev');
                                         const nextButton = carousel.querySelector('.next');
-                                        let currentSlide = 1;
+                                        let currentSlide = 0;
+
+                                        // Function to update slide position
+                                        const updateSlidePosition = () => {
+                                            // Calculate negative translateX to move slides left
+                                            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+                                        };
 
                                         prevButton.addEventListener('click', () => {
+                                            // Decrease current slide, loop to end if at start
                                             currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.children.length - 1;
-                                            console.log(currentSlide);
-                                            slides.style.transform = `translateX(${currentSlide * 100}%)`;
+                                            updateSlidePosition();
                                         });
 
                                         nextButton.addEventListener('click', () => {
-                                            console.log(slides.children.length);
-                                            console.log(currentSlide);
-                                            console.log(currentSlide);
+                                            // Increase current slide, loop to start if at end
                                             currentSlide = (currentSlide < slides.children.length - 1) ? currentSlide + 1 : 0;
-
-                                            slides.style.transform = `translateX(${currentSlide * 100}%)`;
+                                            updateSlidePosition();
                                         });
 
                                         carousel.querySelectorAll('.thumbnail').forEach((thumbnail, index) => {
                                             thumbnail.addEventListener('click', () => {
-                                                console.log(thumbnail);
                                                 currentSlide = index;
-                                                slides.style.transform = `translateX(${index * 100}%)`;
+                                                updateSlidePosition();
                                             });
                                         });
+
+                                        // Initialize first slide position
+                                        updateSlidePosition();
                                     });
                                 </script>
                             </div>
