@@ -202,12 +202,14 @@
                                                     </div> --}}
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
-                                                <h4><b>{{ $carnivals->name }}</b></h4>
-                                                <span class="f-14 color-dark-2 grid-hidden">{{ $carnivals->start_date . ' - ' . $carnivals->end_date }}</span>
-                                                <p class="f-14">{{ $carnivals->description }}</p>
-                                                {!! $row->content !!}
-                                            </div>
+                                            @if ($row->placement == 0)
+                                                <div class="col-md-12">
+                                                    <h4><b>{{ $carnivals->name }}</b></h4>
+                                                    <span class="f-14 color-dark-2 grid-hidden">{{ $carnivals->start_date . ' - ' . $carnivals->end_date }}</span>
+                                                    <p class="f-14">{{ $carnivals->description }}</p>
+                                                    {!! $row->content !!}
+                                                </div>
+                                            @endif
                                             @if (count($row->faqs) > 0)
                                                 <div class="col-md-12">
                                                     <div class="row">
