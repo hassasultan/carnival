@@ -513,6 +513,7 @@
                 var carnivalId = $(this).find('#edit_id').val();
                 event.preventDefault();
                 var formData = $(this).serialize();
+                console.log(formData);
                 var url = '{{ route('carnivals.update', ['carnival' => ':id']) }}'.replace(':id',
                     carnivalId);
 
