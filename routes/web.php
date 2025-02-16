@@ -52,6 +52,7 @@ use App\Http\Controllers\FAQPageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\OurTeamController;
 use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\StateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -187,6 +188,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // Subcategories Crud
     Route::resource('subcategories', SubcategoryController::class);
+
+    // States Crud
+    Route::resource('states', StateController::class);
 
     // Tickets Crud
     Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');

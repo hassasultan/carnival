@@ -119,6 +119,14 @@
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
+                <a href="{{ route('states.index') }}" class="dropdown-toggle nav-link">
+                    <i class="fe fe-box fe-16"></i>
+                    <span class="ml-3 item-text">States</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
                 <a href="{{ route('cities.index') }}" class="dropdown-toggle nav-link">
                     <i class="fe fe-box fe-16"></i>
                     <span class="ml-3 item-text">Cities</span>

@@ -4,7 +4,7 @@
             <span class="fa fa-cog"></span>
             <h6>Theme options</h6>
         </div>
-        <a href="index.html" class="site-logo"><img src="https://carnivalguide.co/travel/img/theme-1/logo_dark.png"
+        <a href="{{ route('front.home') }}" class="site-logo"><img src="https://carnivalguide.co/travel/img/theme-1/logo_dark.png"
                 alt=""></a>
         <div class="color-block">
             <h5>change color</h5>
@@ -91,7 +91,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="header-bar">
-                        <a href="index.html" class="logo">
+                        <a href="{{ route('front.home') }}" class="logo">
                             <img src="https://carnivalguide.co/travel/img/theme-1/logo.fw.png" alt="lets travel"
                                 height="50px">
                         </a>
@@ -163,7 +163,7 @@
                         <ul>
 
                             <li class="type-1 active">
-                                <a href="index.html">home<span class="fa fa-angle-down"></span></a>
+                                <a href="{{ route('front.home') }}">home<span class="fa fa-angle-down"></span></a>
 
                             </li>
 
