@@ -354,13 +354,19 @@
                         if (response.carnival.images && response.carnival.images.length > 0) {
                             response.carnival.images.forEach((image, index) => {
                                 console.log(image, index, 'asd');
+
+                                // Ensure the image path is correct
+                                const imageUrl = image.full_url ? image.full_url :
+                                    '{{ asset('images/carnivalImages/') }}/' + image
+                                    .image;
+
                                 const imageWrapper = $('<div>').addClass(
                                     'position-relative mr-2 mb-2');
                                 const img = $('<img>').addClass('img-thumbnail').css({
                                     'height': '100px',
                                     'width': '100px',
                                     'object-fit': 'cover'
-                                }).attr('src', '{{ asset('+image.image+') }}');
+                                }).attr('src', imageUrl); // Use full URL if available
 
                                 const removeBtn = $('<button>').addClass(
                                         'btn btn-danger btn-sm position-absolute')
@@ -374,7 +380,6 @@
                                         if (confirm(
                                                 'Are you sure you want to remove this image?'
                                             )) {
-                                            // Add AJAX call to delete image from server
                                             $.ajax({
                                                 url: '{{ route('carnivals.delete.image', [':carnivalId', ':imageId']) }}'
                                                     .replace(':carnivalId',
@@ -400,7 +405,7 @@
                                                     );
                                                     alert(
                                                         'Failed to delete image'
-                                                    );
+                                                        );
                                                 }
                                             });
                                         }
@@ -410,6 +415,66 @@
                                 $('#existingImagesContainer').append(imageWrapper);
                             });
                         }
+                        // if (response.carnival.images && response.carnival.images.length > 0) {
+                        //     response.carnival.images.forEach((image, index) => {
+                        //         console.log(image, index, 'asd');
+                        //         const imageWrapper = $('<div>').addClass(
+                        //             'position-relative mr-2 mb-2');
+                        //         const img = $('<img>').addClass('img-thumbnail').css({
+                        //             'height': '100px',
+                        //             'width': '100px',
+                        //             'object-fit': 'cover'
+                        //         }).attr('src', '/images/carnivalImages/' + image
+                        //             .image);
+
+                        //         const removeBtn = $('<button>').addClass(
+                        //                 'btn btn-danger btn-sm position-absolute')
+                        //             .css({
+                        //                 'top': '0',
+                        //                 'right': '0',
+                        //                 'padding': '0.2rem 0.4rem'
+                        //             })
+                        //             .html('&times;')
+                        //             .on('click', function() {
+                        //                 if (confirm(
+                        //                         'Are you sure you want to remove this image?'
+                        //                     )) {
+                        //                     // Add AJAX call to delete image from server
+                        //                     $.ajax({
+                        //                         url: '{{ route('carnivals.delete.image', [':carnivalId', ':imageId']) }}'
+                        //                             .replace(':carnivalId',
+                        //                                 carnivalId)
+                        //                             .replace(':imageId',
+                        //                                 image.id),
+                        //                         type: 'DELETE',
+                        //                         headers: {
+                        //                             'X-CSRF-Token': $(
+                        //                                 'meta[name="csrf-token"]'
+                        //                             ).attr(
+                        //                                 'content')
+                        //                         },
+                        //                         success: function() {
+                        //                             imageWrapper
+                        //                                 .remove();
+                        //                         },
+                        //                         error: function(xhr) {
+                        //                             console.error(
+                        //                                 'Error deleting image:',
+                        //                                 xhr
+                        //                                 .responseText
+                        //                             );
+                        //                             alert(
+                        //                                 'Failed to delete image'
+                        //                             );
+                        //                         }
+                        //                     });
+                        //                 }
+                        //             });
+
+                        //         imageWrapper.append(img, removeBtn);
+                        //         $('#existingImagesContainer').append(imageWrapper);
+                        //     });
+                        // }
                         $('#editCarnivalModal').modal('show');
                     },
                     error: function(xhr, status, error) {
