@@ -353,13 +353,14 @@
                         $('#edit_description').val(response.carnival.description);
                         if (response.carnival.images && response.carnival.images.length > 0) {
                             response.carnival.images.forEach((image, index) => {
+                                console.log(image, index, 'asd');
                                 const imageWrapper = $('<div>').addClass(
                                     'position-relative mr-2 mb-2');
                                 const img = $('<img>').addClass('img-thumbnail').css({
                                     'height': '100px',
                                     'width': '100px',
                                     'object-fit': 'cover'
-                                }).attr('src', image.url);
+                                }).attr('src', image.image);
 
                                 const removeBtn = $('<button>').addClass(
                                         'btn btn-danger btn-sm position-absolute')
@@ -419,8 +420,6 @@
                     }
                 });
             });
-
-
 
             $(document).on('click', '.assignMasscamp', function() {
                 var carnivalId = $(this).data('id');
