@@ -360,8 +360,7 @@
                                     'height': '100px',
                                     'width': '100px',
                                     'object-fit': 'cover'
-                                }).attr('src', 'images/carnivalImages' + image
-                                    .image);
+                                }).attr('src', '{{ asset('+image.image+') }}');
 
                                 const removeBtn = $('<button>').addClass(
                                         'btn btn-danger btn-sm position-absolute')
