@@ -77,6 +77,17 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="create_images">Images</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="create_images" name="images[]" multiple
+                                    accept="image/*">
+                                <label class="custom-file-label" for="create_images">Choose files</label>
+                            </div>
+                            <div id="createImagePreviewContainer" class="mt-2 d-flex flex-wrap">
+                                <!-- Image previews will be added here -->
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="description">description</label>
                             <textarea name="description" class="form-control" id="description" cols="30" rows="10">Add description here</textarea>
                         </div>
@@ -135,6 +146,20 @@
                             <select class="form-control" id="edit_country_id" name="country_id" required>
                                 <option value="">Select Country</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_images">Images</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="edit_images" name="images[]"
+                                    multiple accept="image/*">
+                                <label class="custom-file-label" for="edit_images">Choose files</label>
+                            </div>
+                            <div id="existingImagesContainer" class="mt-2 d-flex flex-wrap">
+                                <!-- Existing images will be loaded here -->
+                            </div>
+                            <div id="editImagePreviewContainer" class="mt-2 d-flex flex-wrap">
+                                <!-- New image previews will be added here -->
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="description">description</label>
@@ -326,6 +351,63 @@
                         $('#edit_end_date').val(response.carnival.end_date);
                         $('#edit_region').val(response.carnival.region_id);
                         $('#edit_description').val(response.carnival.description);
+                        if (response.carnival.images && response.carnival.images.length > 0) {
+                            response.carnival.images.forEach((image, index) => {
+                                const imageWrapper = $('<div>').addClass(
+                                    'position-relative mr-2 mb-2');
+                                const img = $('<img>').addClass('img-thumbnail').css({
+                                    'height': '100px',
+                                    'width': '100px',
+                                    'object-fit': 'cover'
+                                }).attr('src', image.url);
+
+                                const removeBtn = $('<button>').addClass(
+                                        'btn btn-danger btn-sm position-absolute')
+                                    .css({
+                                        'top': '0',
+                                        'right': '0',
+                                        'padding': '0.2rem 0.4rem'
+                                    })
+                                    .html('&times;')
+                                    .on('click', function() {
+                                        if (confirm(
+                                                'Are you sure you want to remove this image?'
+                                                )) {
+                                            // Add AJAX call to delete image from server
+                                            $.ajax({
+                                                url: '{{ route('carnivals.delete.image', [':carnivalId', ':imageId']) }}'
+                                                    .replace(':carnivalId',
+                                                        carnivalId)
+                                                    .replace(':imageId',
+                                                        image.id),
+                                                type: 'DELETE',
+                                                headers: {
+                                                    'X-CSRF-Token': $(
+                                                        'meta[name="csrf-token"]'
+                                                        ).attr(
+                                                        'content')
+                                                },
+                                                success: function() {
+                                                    imageWrapper
+                                                    .remove();
+                                                },
+                                                error: function(xhr) {
+                                                    console.error(
+                                                        'Error deleting image:',
+                                                        xhr
+                                                        .responseText
+                                                        );
+                                                    alert(
+                                                        'Failed to delete image');
+                                                }
+                                            });
+                                        }
+                                    });
+
+                                imageWrapper.append(img, removeBtn);
+                                $('#existingImagesContainer').append(imageWrapper);
+                            });
+                        }
                         $('#editCarnivalModal').modal('show');
                     },
                     error: function(xhr, status, error) {
@@ -640,9 +722,9 @@
 
             $('#region_id').change(function() {
                 var regionId = $(this).val();
-                if(regionId) {
+                if (regionId) {
                     $.ajax({
-                        url: '{{ route("get.countries") }}',
+                        url: '{{ route('get.countries') }}',
                         type: 'GET',
                         data: {
                             region_id: regionId
@@ -653,7 +735,8 @@
                             countrySelect.append('<option value="">Select Country</option>');
 
                             $.each(response.countries, function(key, value) {
-                                countrySelect.append('<option value="' + value.id + '">' + value.name + '</option>');
+                                countrySelect.append('<option value="' + value.id +
+                                    '">' + value.name + '</option>');
                             });
                         },
                         error: function(xhr, status, error) {
@@ -668,9 +751,9 @@
 
             $('#edit_region').change(function() {
                 var regionId = $(this).val();
-                if(regionId) {
+                if (regionId) {
                     $.ajax({
-                        url: '{{ route("get.countries") }}',
+                        url: '{{ route('get.countries') }}',
                         type: 'GET',
                         data: {
                             region_id: regionId
@@ -681,7 +764,8 @@
                             countrySelect.append('<option value="">Select Country</option>');
 
                             $.each(response.countries, function(key, value) {
-                                countrySelect.append('<option value="' + value.id + '">' + value.name + '</option>');
+                                countrySelect.append('<option value="' + value.id +
+                                    '">' + value.name + '</option>');
                             });
                         },
                         error: function(xhr, status, error) {
@@ -692,6 +776,73 @@
                 } else {
                     $('#edit_country_id').empty().append('<option value="">Select Country</option>');
                 }
+            });
+
+            function handleImagePreview(input, previewContainer) {
+                if (input.files) {
+                    $(previewContainer).empty();
+
+                    Array.from(input.files).forEach((file, index) => {
+                        const reader = new FileReader();
+
+                        reader.onload = function(e) {
+                            const previewWrapper = $('<div>').addClass('position-relative mr-2 mb-2');
+                            const preview = $('<img>').addClass('img-thumbnail').css({
+                                'height': '100px',
+                                'width': '100px',
+                                'object-fit': 'cover'
+                            }).attr('src', e.target.result);
+
+                            const removeBtn = $('<button>').addClass(
+                                    'btn btn-danger btn-sm position-absolute')
+                                .css({
+                                    'top': '0',
+                                    'right': '0',
+                                    'padding': '0.2rem 0.4rem'
+                                })
+                                .html('&times;')
+                                .on('click', function() {
+                                    const dt = new DataTransfer();
+                                    const {
+                                        files
+                                    } = input;
+
+                                    for (let i = 0; i < files.length; i++) {
+                                        if (i !== index) {
+                                            dt.items.add(files[i]);
+                                        }
+                                    }
+
+                                    input.files = dt.files;
+                                    previewWrapper.remove();
+                                    updateFileLabel(input);
+                                });
+
+                            previewWrapper.append(preview, removeBtn);
+                            $(previewContainer).append(previewWrapper);
+                        };
+
+                        reader.readAsDataURL(file);
+                    });
+                }
+            }
+
+            function updateFileLabel(input) {
+                const fileCount = input.files.length;
+                const label = $(input).next('.custom-file-label');
+                label.html(fileCount > 0 ? `${fileCount} files selected` : 'Choose files');
+            }
+
+            // Create form image handling
+            $('#create_images').on('change', function() {
+                handleImagePreview(this, '#createImagePreviewContainer');
+                updateFileLabel(this);
+            });
+
+            // Edit form image handling
+            $('#edit_images').on('change', function() {
+                handleImagePreview(this, '#editImagePreviewContainer');
+                updateFileLabel(this);
             });
         });
         let members = [];

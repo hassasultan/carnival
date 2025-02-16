@@ -50,4 +50,8 @@ class Carnival extends Model
     {
         return $this->hasMany(EventsCountryTab::class)->orderBy('placement', 'asc');
     }
+    public function images()
+    {
+        return $this->hasMany(CarnivalImages::class);
+    }
 }

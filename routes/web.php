@@ -254,7 +254,8 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // assign carnivals to mascamp
     Route::post('/assign/mascamps', [CarnivalController::class, 'assignModels'])->name('assign.models');
-
+    Route::delete('carnivals/{carnival}/images/{image}', [CarnivalController::class, 'deleteImage'])
+    ->name('carnivals.delete.image');
     // assign carnivals to mascamp
     Route::post('/assign/carnival-member', [CarnivalController::class, 'assignCarnivalMember'])->name('assign.CarnivalMember');
 

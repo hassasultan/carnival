@@ -8,7 +8,9 @@ use App\Models\User;
 use App\Models\Vendor;
 use App\Models\CarnivalMembers;
 use App\Models\Country;
+use App\Models\CarnivalImages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Str;
 
 class CarnivalController extends Controller
@@ -50,6 +52,18 @@ class CarnivalController extends Controller
         ]);
 
         if ($carnivals) {
+            if($request->hasFile('images'))
+            {
+                foreach($request->file('images') as $image)
+                {
+                    $imageName = time() . '.' . $image->extension();
+                    $image->move(public_path('images/carnivalImages'), $imageName);
+                    CarnivalImages::create([
+                        'carnival_id' => $carnivals->id,
+                        'image' => $imageName
+                    ]);
+                }
+            }
             $carnivals = Carnival::all();
             $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
 
@@ -66,6 +80,7 @@ class CarnivalController extends Controller
 
     public function edit(Carnival $carnival)
     {
+        $carnival = Carnival::with('images')->find($carnival->id);
         return response()->json(['carnival' => $carnival]);
     }
 
@@ -77,7 +92,7 @@ class CarnivalController extends Controller
 
         $uniqueId = $this->generateUniqueId();
 
-        $carnival = $carnival->update([
+        $carnivals = $carnival->update([
             'unique_id' => $uniqueId,
             'name' => $request->name,
             'start_date' => $request->start_date,
@@ -88,16 +103,50 @@ class CarnivalController extends Controller
             'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
         ]);
 
-        if ($carnival) {
+        if ($carnivals) {
+            if($request->hasFile('images'))
+            {
+                foreach($request->file('images') as $image)
+                {
+                    $imageName = time() . '.' . $image->extension();
+                    $image->move(public_path('images/carnivalImages'), $imageName);
+                    CarnivalImages::create([
+                        'carnival_id' => $carnival->id,
+                        'image' => $imageName
+                    ]);
+                }
+            }
             $carnivals = Carnival::all();
             $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
-
             return response()->json(['carnival' => $carnival, 'message' => 'Carnival updated successfully', 'table_html' => $view], 200);
         } else {
             return response()->json(['error' => 'No changes detected for the carnival'], 400);
         }
     }
+    public function deleteImage(Carnival $carnival, $imageId)
+    {
+        try {
+            // Find the image
+            $image = CarnivalImages::findOrFail($imageId);
 
+            // Check if image belongs to this carnival
+            if ($image->carnival_id !== $carnival->id) {
+                return response()->json(['error' => 'Image does not belong to this carnival'], 403);
+            }
+
+            // Delete the file from storage
+            if (Storage::exists($image->image)) {
+                Storage::delete($image->image);
+            }
+
+            // Delete the database record
+            $image->delete();
+
+            return response()->json(['message' => 'Image deleted successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to delete image: ' . $e->getMessage()], 500);
+        }
+    }
     public function destroy(Carnival $carnival)
     {
         $carnival->delete();
