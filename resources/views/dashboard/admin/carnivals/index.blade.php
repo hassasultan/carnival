@@ -43,7 +43,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="createCarnivalForm">
+                    <form id="createCarnivalForm" enctype="multipart/form-data">
                         @csrf
                         {{-- <div class="form-group">
                             <label for="head">Head</label>
@@ -110,7 +110,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="editCarnivalForm">
+                    <form id="editCarnivalForm" enctype="multipart/form-data">
                         @csrf
                         @method('GET')
                         <input type="hidden" id="edit_id" name="edit_id">
