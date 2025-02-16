@@ -360,7 +360,8 @@
                                     'height': '100px',
                                     'width': '100px',
                                     'object-fit': 'cover'
-                                }).attr('src', image.image);
+                                }).attr('src', 'images/carnivalImages' + image
+                                    .image);
 
                                 const removeBtn = $('<button>').addClass(
                                         'btn btn-danger btn-sm position-absolute')
@@ -400,7 +401,7 @@
                                                     );
                                                     alert(
                                                         'Failed to delete image'
-                                                        );
+                                                    );
                                                 }
                                             });
                                         }
