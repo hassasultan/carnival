@@ -112,7 +112,7 @@
                 <div class="modal-body">
                     <form id="editCarnivalForm" enctype="multipart/form-data">
                         @csrf
-                        @method('GET')
+                        @method('POST')
                         <input type="hidden" id="edit_id" name="edit_id">
                         {{-- <div class="form-group">
                             <label for="edit_head">Head</label>
