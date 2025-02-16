@@ -28,7 +28,8 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5); /* Darker overlay */
+        background: rgba(0, 0, 0, 0.5);
+        /* Darker overlay */
         z-index: -1;
     }
 
@@ -132,16 +133,17 @@
         cursor: pointer;
     }
 </style>
-{{-- <img src="https://carnivalguide.co/new/img/home/vincymas-2024.jpg" alt="Image 1"> --}}
 <div class="arrows">
-    <div class="swiper-container main-slider-5 " data-autoplay="0" data-loop="1" data-speed="900" data-center="0" data-slides-per-view="1">
+    <div class="swiper-container main-slider-5 " data-autoplay="0" data-loop="1" data-speed="900" data-center="0"
+        data-slides-per-view="1">
         <div class="swiper-wrapper">
-            <div class="swiper-slide adjust-height" data-val="0">
+            {{-- <div class="swiper-slide adjust-height" data-val="0">
                 <div class="video-container">
                     @php
-                        $videoUrl = asset('videos/sample-video.mp4'); // Use local or hosted video
+                        $videoUrl = asset('videos/sample-video.mp4');
                     @endphp
-                    <div class="hero" style="background-image: url('https://carnivalguide.co/new/img/home/vincymas-2024.jpg')">
+                    <div class="hero"
+                        style="background-image: url('https://carnivalguide.co/new/img/home/vincymas-2024.jpg')">
                         <h4>NORWAY TOURS</h4>
                         <h1>ROMANTIC HOLIDAYS IN NORWAY</h1>
                         <p class="text-orange">FROM <span>$400</span> PER PERSON</p>
@@ -149,14 +151,47 @@
                             <i class="fa fa-play"></i>
                         </div>
                         <p>JULY <span>19TH</span> TO JULY <span>26TH</span></p>
-                        <p class="color-white-light">Curabitur nunc erat, consequat in erat ut, congue bibendum nulla.</p>
+                        <p class="color-white-light">Curabitur nunc erat, consequat in erat ut, congue bibendum nulla.
+                        </p>
                         <div class="buttons">
                             <a href="#" class="c-button b-60 bg-red hv-red-o delay-2"><span>view more</span></a>
                             <a href="#" class="c-button b-60 bg-tr-1 hv-red delay-2"><span>book now</span></a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
+            @foreach ($carnivals->images as $image)
+                <div class="swiper-slide adjust-height">
+                    <div class="video-container">
+                        <div class="hero"
+                            style="background-image: url('{{ asset('images/carnivalImages/' . $image->image) }}')">
+                            <h4>NORWAY TOURS</h4>
+                            <h1>ROMANTIC HOLIDAYS IN NORWAY</h1>
+                            <p class="text-orange">FROM <span>$440</span> PER PERSON</p>
+
+                            @php
+                                $fileExt = pathinfo($image->image, PATHINFO_EXTENSION);
+                            @endphp
+
+                            @if (in_array($fileExt, ['mp4', 'avi', 'mov']))
+                                <div class="play-button"
+                                    onclick="openVideoPopup('{{ asset('images/carnivalImages/' . $image->image) }}')">
+                                    <i class="fa fa-play"></i>
+                                </div>
+                            @endif
+
+                            <p>JULY <span>19TH</span> TO JULY <span>26TH</span></p>
+                            <p class="color-white-light">Curabitur nunc erat, consequat in erat ut, congue bibendum
+                                nulla.</p>
+                            <div class="buttons">
+                                <a href="#" class="c-button b-60 bg-red hv-red-o delay-2"><span>view
+                                        more</span></a>
+                                <a href="#" class="c-button b-60 bg-tr-1 hv-red delay-2"><span>book now</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
         <div class="pagination pagination-hidden poin-style-1"></div>
         <div class="arrow-wrapp arr-s-2">
@@ -175,42 +210,40 @@
 </div>
 
 <script>
-function openVideoPopup(videoUrl) {
-    const videoContainer = document.getElementById("videoContainer");
-    const popup = document.getElementById("videoPopup");
+    function openVideoPopup(videoUrl) {
+        const videoContainer = document.getElementById("videoContainer");
+        const popup = document.getElementById("videoPopup");
 
-    videoContainer.innerHTML = `
+        videoContainer.innerHTML = `
         <video width="800" height="450" controls autoplay>
             <source src="${videoUrl}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     `;
-    popup.style.display = "flex";
-}
+        popup.style.display = "flex";
+    }
 
-function closeVideoPopup() {
-    const popup = document.getElementById("videoPopup");
-    const videoContainer = document.getElementById("videoContainer");
+    function closeVideoPopup() {
+        const popup = document.getElementById("videoPopup");
+        const videoContainer = document.getElementById("videoContainer");
 
-    popup.style.display = "none";
-    videoContainer.innerHTML = ""; // Clear video to stop playback
-}
+        popup.style.display = "none";
+        videoContainer.innerHTML = "";
+    }
 
-// Initialize Swiper
-document.addEventListener('DOMContentLoaded', function() {
-    new Swiper('.main-slider-5', {
-        loop: true,
-        speed: 900,
-        slidesPerView: 1,
-        navigation: {
-            nextEl: '.swiper-arrow-right',
-            prevEl: '.swiper-arrow-left',
-        },
-        pagination: {
-            el: '.pagination',
-            clickable: true
-        }
+    document.addEventListener('DOMContentLoaded', function() {
+        new Swiper('.main-slider-5', {
+            loop: true,
+            speed: 900,
+            slidesPerView: 1,
+            navigation: {
+                nextEl: '.swiper-arrow-right',
+                prevEl: '.swiper-arrow-left',
+            },
+            pagination: {
+                el: '.pagination',
+                clickable: true
+            }
+        });
     });
-});
 </script>
-

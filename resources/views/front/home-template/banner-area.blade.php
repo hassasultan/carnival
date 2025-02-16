@@ -2,22 +2,39 @@
     <div class="video-wrapper">
         <div class="full-height">
             <div class="video-wrapper">
-                @foreach ($siteGallery as $key => $row)
-                    {{-- <div class="col-md-3 album-cnt" data-id="{{ $row->id }}">
+                {{-- @foreach ($siteGallery as $key => $row)
+                    <div class="col-md-3 album-cnt" data-id="{{ $row->id }}">
                         <div class="album bg-brown"
                             style="background-image: url('{{ asset('images/' . $row->images[0]->image) }}');">
                         </div>
                         <div class="album-title">
                             <span>{{ $row->title }}</span>
                         </div>
-                    </div> --}}
-                    <video loop autoplay muted poster="https://carnivalguide.co/travel/img/poster.jpg" class="bgvid"
-                        id="bgvid">
-                        <source type="video/mp4" src="https://carnivalguide.co/travel/video/soca.mp4" />
-                        <source type="video/ogv" src="https://carnivalguide.co/travel/video/soca.ogv" />
-                        <source type="video/webm" src="https://carnivalguide.co/travel/video/soca.webm" />
-                    </video>
+                    </div>
+                    @endforeach --}}
+                @foreach ($banners as $banner)
+                    @php
+                        $filePath = asset($banner->banner_image);
+                        $fileExtension = pathinfo($filePath, PATHINFO_EXTENSION);
+                    @endphp
+
+                    @if (in_array($fileExtension, ['mp4', 'ogv', 'webm']))
+                        <!-- Video -->
+                        <video loop autoplay muted poster="https://carnivalguide.co/travel/img/poster.jpg" class="bgvid"
+                            id="bgvid">
+                            <source src="{{ $filePath }}" type="video/{{ $fileExtension }}" />
+                        </video>
+                    @else
+                        <!-- Image -->
+                        <img src="{{ $filePath }}" alt="Banner Image" class="banner-image">
+                    @endif
                 @endforeach
+                {{-- <video loop autoplay muted poster="https://carnivalguide.co/travel/img/poster.jpg" class="bgvid"
+                    id="bgvid">
+                    <source type="video/mp4" src="https://carnivalguide.co/travel/video/soca.mp4" />
+                    <source type="video/ogv" src="https://carnivalguide.co/travel/video/soca.ogv" />
+                    <source type="video/webm" src="https://carnivalguide.co/travel/video/soca.webm" />
+                </video> --}}
                 <div class="vertical-align">
                     <div class="container" style="margin-top:30px">
 
@@ -253,10 +270,12 @@
                                                                         </div>
                                                                         <i>485 Reviews</i>
                                                                     </div>
-                                                                    <h4 class="sb-title" style="margin-bottom: 0px;"><span
-                                                                            style="">{{ $row->name }}</span>
+                                                                    <h4 class="sb-title" style="margin-bottom: 0px;">
+                                                                        <span style="">{{ $row->name }}</span>
                                                                     </h4>
-                                                                    <div style="color: #222;opacity: 0.6; font-size: 10px; font-family: 'Open Sans', sans-serif;">{{ $row->country?->name ?? 'Country Not Set' }}
+                                                                    <div
+                                                                        style="color: #222;opacity: 0.6; font-size: 10px; font-family: 'Open Sans', sans-serif;">
+                                                                        {{ $row->country?->name ?? 'Country Not Set' }}
                                                                     </div>
                                                                     <div class="sb-price color-dark-2">
                                                                         @php
@@ -274,7 +293,8 @@
                                                                                 default => 'th',
                                                                             };
                                                                         @endphp
-                                                                        <strong>{{ $month }} {{ $day }}<sup>{{ $suffix }}</sup>
+                                                                        <strong>{{ $month }}
+                                                                            {{ $day }}<sup>{{ $suffix }}</sup>
                                                                         </strong>
                                                                     </div>
                                                                     <div class="sb-text">{!! $row->description !!}
