@@ -89,7 +89,6 @@ class CarnivalController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
-        dd($request->all());
         $uniqueId = $this->generateUniqueId();
 
         $carnivals = $carnival->update([
