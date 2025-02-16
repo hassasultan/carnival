@@ -372,7 +372,7 @@
                                     .on('click', function() {
                                         if (confirm(
                                                 'Are you sure you want to remove this image?'
-                                                )) {
+                                            )) {
                                             // Add AJAX call to delete image from server
                                             $.ajax({
                                                 url: '{{ route('carnivals.delete.image', [':carnivalId', ':imageId']) }}'
@@ -384,21 +384,22 @@
                                                 headers: {
                                                     'X-CSRF-Token': $(
                                                         'meta[name="csrf-token"]'
-                                                        ).attr(
+                                                    ).attr(
                                                         'content')
                                                 },
                                                 success: function() {
                                                     imageWrapper
-                                                    .remove();
+                                                        .remove();
                                                 },
                                                 error: function(xhr) {
                                                     console.error(
                                                         'Error deleting image:',
                                                         xhr
                                                         .responseText
-                                                        );
+                                                    );
                                                     alert(
-                                                        'Failed to delete image');
+                                                        'Failed to delete image'
+                                                        );
                                                 }
                                             });
                                         }
@@ -510,20 +511,27 @@
             });
 
             $('#editCarnivalForm').submit(function(event) {
-                var carnivalId = $(this).find('#edit_id').val();
                 event.preventDefault();
-                var formData = $(this).serialize();
-                console.log(formData);
+                var carnivalId = $(this).find('#edit_id').val();
+
+                // Create FormData object instead of serialize()
+                var formData = new FormData(this);
+
+                // Add method spoofing for PUT request
+                formData.append('_method', 'PUT');
+
                 var url = '{{ route('carnivals.update', ['carnival' => ':id']) }}'.replace(':id',
                     carnivalId);
 
                 $.ajax({
                     url: url,
-                    type: 'PUT',
+                    type: 'POST', // Change to POST as FormData doesn't support PUT
                     headers: {
                         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
                     },
                     data: formData,
+                    processData: false, // Important for FormData
+                    contentType: false, // Important for FormData
                     success: function(response) {
                         $('#editCarnivalModal').modal('hide');
                         $('#tableData').html(response.table_html);
@@ -551,6 +559,48 @@
                     }
                 });
             });
+            // $('#editCarnivalForm').submit(function(event) {
+            //     var carnivalId = $(this).find('#edit_id').val();
+            //     event.preventDefault();
+            //     var formData = $(this).serialize();
+            //     console.log(formData);
+            //     var url = '{{ route('carnivals.update', ['carnival' => ':id']) }}'.replace(':id',
+            //         carnivalId);
+
+            //     $.ajax({
+            //         url: url,
+            //         type: 'PUT',
+            //         headers: {
+            //             'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            //         },
+            //         data: formData,
+            //         success: function(response) {
+            //             $('#editCarnivalModal').modal('hide');
+            //             $('#tableData').html(response.table_html);
+
+            //             $('#dataTable-1').DataTable({
+            //                 autoWidth: true,
+            //                 "lengthMenu": [
+            //                     [16, 32, 64, -1],
+            //                     [16, 32, 64, "All"]
+            //                 ]
+            //             });
+
+            //             $('#carnivalMessage').html(
+            //                 '<div class="alert alert-success" role="alert">Carnival updated successfully</div>'
+            //             );
+            //             setTimeout(function() {
+            //                 $('#carnivalMessage').html('');
+            //             }, 3000);
+            //         },
+            //         error: function(xhr, status, error) {
+            //             console.error(xhr.responseText);
+            //             $('#carnivalMessage').html(
+            //                 '<div class="alert alert-danger" role="alert">Failed to update carnival</div>'
+            //             );
+            //         }
+            //     });
+            // });
 
             $('#assignMasscampForm').submit(function(event) {
                 event.preventDefault();
