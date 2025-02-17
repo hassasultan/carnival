@@ -1146,7 +1146,7 @@
                                                     <div class="radius-top">
                                                         <img src="https://carnivalguide.co/new/img/car_8.png"
                                                             alt="">
-                                                        <div class="price price-s-1">$400<span>/day</span></div>
+                                                        <div class="price price-s-1">$409<span>/day</span></div>
                                                     </div>
                                                     <div class="title">
                                                         <h4><a href="#">volkswagen</a></h4>

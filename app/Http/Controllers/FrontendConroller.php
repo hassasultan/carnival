@@ -38,6 +38,7 @@ class FrontendConroller extends Controller
     {
         $events = Event::with('images', 'tickets')->orderBy('id', 'desc')->get()->take('5');
         // $events = Event::with('images','tickets')->orderBy('id','desc')->get()->take('5');
+        $banners = Banner::where('type', 'home')->get();
         $regions = Region::with('countries')->OrderBy('placement', 'ASC')->get();
         $services = OurService::get()->take('4');
         $siteGallery = SiteGallery::get();
@@ -53,7 +54,7 @@ class FrontendConroller extends Controller
 
         // dd($carnival_commitee, $carnival_com);
 
-        return view('front.home', compact('carnivals', 'events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials', 'carnival_commitee'));
+        return view('front.home', compact('carnivals', 'events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials', 'carnival_commitee', 'banners'));
     }
     public function aboutus()
     {
@@ -466,7 +467,7 @@ class FrontendConroller extends Controller
 
     public function eventViewMore($slug)
     {
-        $carnivals = Carnival::with('country_tabs')->find($slug);
+        $carnivals = Carnival::with('country_tabs', 'images')->find($slug);
         // dd($event->toArray());
         $products = Product::with('brand')->get();
         $blogs = Blogs::with('user')->get()->take('3');

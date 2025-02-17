@@ -338,6 +338,7 @@
             });
 
             $(document).on('click', '.editCarnivalBtn', function() {
+                $('#existingImagesContainer').html('');
                 var carnivalId = $(this).data('id');
                 $.ajax({
                     url: '{{ route('carnivals.edit', ':id') }}'.replace(':id', carnivalId),
@@ -353,13 +354,20 @@
                         $('#edit_description').val(response.carnival.description);
                         if (response.carnival.images && response.carnival.images.length > 0) {
                             response.carnival.images.forEach((image, index) => {
+                                console.log(image, index, 'asd');
+
+                                // Ensure the image path is correct
+                                const imageUrl = image.full_url ? image.full_url :
+                                    '{{ asset('images/carnivalImages/') }}/' + image
+                                    .image;
+
                                 const imageWrapper = $('<div>').addClass(
                                     'position-relative mr-2 mb-2');
                                 const img = $('<img>').addClass('img-thumbnail').css({
                                     'height': '100px',
                                     'width': '100px',
                                     'object-fit': 'cover'
-                                }).attr('src', image.url);
+                                }).attr('src', imageUrl); // Use full URL if available
 
                                 const removeBtn = $('<button>').addClass(
                                         'btn btn-danger btn-sm position-absolute')
@@ -373,7 +381,6 @@
                                         if (confirm(
                                                 'Are you sure you want to remove this image?'
                                             )) {
-                                            // Add AJAX call to delete image from server
                                             $.ajax({
                                                 url: '{{ route('carnivals.delete.image', [':carnivalId', ':imageId']) }}'
                                                     .replace(':carnivalId',
@@ -399,7 +406,7 @@
                                                     );
                                                     alert(
                                                         'Failed to delete image'
-                                                        );
+                                                    );
                                                 }
                                             });
                                         }
@@ -419,8 +426,6 @@
                     }
                 });
             });
-
-
 
             $(document).on('click', '.assignMasscamp', function() {
                 var carnivalId = $(this).data('id');
