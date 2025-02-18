@@ -223,6 +223,22 @@
 
                                                                     <div class="slider new-slider">
                                                                         <div class="slides">
+                                                                            @foreach($row->images as $image)
+                                                                                <div class="slide-new {{ $loop->first ? 'active' : '' }}">
+                                                                                    @php
+                                                                                        $extension = pathinfo($image->image, PATHINFO_EXTENSION);
+                                                                                        $imageUrl = asset('images/carnivalImages/' . $image->image);
+                                                                                    @endphp
+                                                                        
+                                                                                    @if(in_array($extension, ['mp4', 'webm', 'ogg']))
+                                                                                        <video src="{{ $imageUrl }}" controls loop autoplay muted></video>
+                                                                                    @else
+                                                                                        <img src="{{ $imageUrl }}" alt="Carnival Image">
+                                                                                    @endif
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                        {{-- <div class="slides">
                                                                             <div class="slide-new active">
                                                                                 <img src="https://carnivalguide.co/new/img/home/vincymas-2024.jpg"
                                                                                     alt="Image 1">
@@ -232,9 +248,6 @@
                                                                                     alt="Image 2">
                                                                             </div>
                                                                             <div class="slide-new">
-                                                                                {{-- <video  controls loop autoplay muted>
-                                                                            <source src="https://www.shutterstock.com/shutterstock/videos/3433223239/preview/stock-footage-cozumel-mexico-behold-the-majesty-a-carnival-cruise-ship-sails-gracefully-across.webm" type="video/webm"><source src="https://www.shutterstock.com/shutterstock/videos/3433223239/preview/stock-footage-cozumel-mexico-behold-the-majesty-a-carnival-cruise-ship-sails-gracefully-across.mp4" type="video/mp4">
-                                                                        </video> --}}
                                                                                 <video
                                                                                     src="https://carnivalguide.co/travel/video/soca.mp4"
                                                                                     controls loop autoplay
@@ -244,7 +257,7 @@
                                                                                 <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg"
                                                                                     alt="Image 4">
                                                                             </div>
-                                                                        </div>
+                                                                        </div> --}}
 
                                                                         <!-- Navigation buttons -->
                                                                         <button class="prev"
@@ -277,7 +290,36 @@
                                                                         style="color: #222;opacity: 0.6; font-size: 10px; font-family: 'Open Sans', sans-serif;">
                                                                         {{ $row->country?->name ?? 'Country Not Set' }}
                                                                     </div>
+                                                                    @php
+                                                                        $getDaySuffix = function ($day) {
+                                                                            return match ($day % 10) {
+                                                                                1 => $day == 11 ? 'th' : 'st',
+                                                                                2 => $day == 12 ? 'th' : 'nd',
+                                                                                3 => $day == 13 ? 'th' : 'rd',
+                                                                                default => 'th',
+                                                                            };
+                                                                        };
+
+                                                                        $startDate = Carbon\Carbon::parse($row->start_date);
+                                                                        $endDate = Carbon\Carbon::parse($row->end_date);
+
+                                                                        $startDay = $startDate->day;
+                                                                        $startMonth = $startDate->format('M');
+                                                                        $startSuffix = $getDaySuffix($startDay);
+
+                                                                        $endDay = $endDate->day;
+                                                                        $endMonth = $endDate->format('M');
+                                                                        $endSuffix = $getDaySuffix($endDay);
+                                                                    @endphp
+
                                                                     <div class="sb-price color-dark-2">
+                                                                        <strong>
+                                                                            {{ $startMonth }}{{ $startDay }}<sup>{{ $startSuffix }}</sup>
+                                                                            -
+                                                                            {{ $endMonth }}{{ $endDay }}<sup>{{ $endSuffix }}</sup>
+                                                                        </strong>
+                                                                    </div>
+                                                                    {{-- <div class="sb-price color-dark-2">
                                                                         @php
                                                                             $date = \Carbon\Carbon::parse(
                                                                                 $row->start_date,
@@ -292,11 +334,25 @@
                                                                                 3 => $day == 13 ? 'th' : 'rd',
                                                                                 default => 'th',
                                                                             };
+                                                                            
+                                                                            $enddate = \Carbon\Carbon::parse(
+                                                                                $row->end_date,
+                                                                            );
+                                                                            $endday = $enddate->day;
+                                                                            $endmonth = $enddate->format('M');
+
+                                                                            // Add suffix to day
+                                                                            $endsuffix = match ($endday % 10) {
+                                                                                1 => $endday == 11 ? 'th' : 'st',
+                                                                                2 => $endday == 12 ? 'th' : 'nd',
+                                                                                3 => $endday == 13 ? 'th' : 'rd',
+                                                                                default => 'th',
+                                                                            };
                                                                         @endphp
-                                                                        <strong>{{ $month }}
-                                                                            {{ $day }}<sup>{{ $suffix }}</sup>
+                                                                        <strong>
+                                                                            {{ $month }}{{ $day }}<sup>{{ $suffix }}</sup> - {{ $endmonth }}{{ $endday }}<sup>{{ $endsuffix }}</sup>
                                                                         </strong>
-                                                                    </div>
+                                                                    </div> --}}
                                                                     <div class="sb-text">{!! $row->description !!}
                                                                     </div>
                                                                     <a href="{{ route('events.view.more', $row->id) }}"
