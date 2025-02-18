@@ -65,9 +65,9 @@
                                 .carousel-slides {
                                     display: flex;
                                     transition: transform 0.3s ease;
-                                    align-items: center;
+                                    align-items: flex-start;
                                     /* Center the slides vertically */
-                                    justify-content: center;
+                                    justify-content: flex-start;
                                     /* Center the slides horizontally */
                                 }
 
@@ -150,12 +150,18 @@
                                                     <button class="carousel-control prev">&#10094;</button>
                                                     <div class="carousel-slides ">
                                                         @foreach ($row->images as $index => $image)
-                                                            <div class="slide @if($index == 0) active @endif" data-index="{{ $index }}">
-                                                                @if($image->file_type == 'image')
-                                                                    <img class="img-responsive img-full" src="{{ asset('file/'.$image->file) }}" alt="Slide {{ $index }}">
+                                                            <div class="slide @if ($index == 0) active @endif"
+                                                                data-index="{{ $index }}">
+                                                                @if ($image->file_type == 'image')
+                                                                    <img class="img-responsive img-full"
+                                                                        src="{{ asset('file/' . $image->file) }}"
+                                                                        alt="Slide {{ $index }}">
                                                                 @elseif($image->file_type == 'video')
-                                                                    <video class="img-responsive img-full" controls style="width: 100%; height: 100%; object-fit: cover;" alt="Slide {{ $index }}">
-                                                                        <source src="{{ asset('file/'.$image->file) }}" type="video/mp4">
+                                                                    <video class="img-responsive img-full" controls
+                                                                        style="width: 100%; height: 100%; object-fit: cover;"
+                                                                        alt="Slide {{ $index }}">
+                                                                        <source src="{{ asset('file/' . $image->file) }}"
+                                                                            type="video/mp4">
                                                                         Your browser does not support the video tag.
                                                                     </video>
                                                                 @endif
@@ -186,13 +192,18 @@
                                                 <div class="carousel-thumbnails">
                                                     @foreach ($row->images as $index => $image)
                                                         <div class="thumbnail" data-index="{{ $index }}">
-                                                            @if($image->file_type == 'image')
-                                                                <img class="img-responsive img-thumb" src="{{ asset('file/'.$image->file) }}" alt="Thumbnail {{ $index }}">
+                                                            @if ($image->file_type == 'image')
+                                                                <img class="img-responsive img-thumb"
+                                                                    src="{{ asset('file/' . $image->file) }}"
+                                                                    alt="Thumbnail {{ $index }}">
                                                             @elseif($image->file_type == 'video')
-                                                            <video class="img-responsive img-full img-thumb"  style="width: 100%; height: 100%; object-fit: cover;" alt="Thumbnail {{ $index }}">
-                                                                <source src="{{ asset('file/'.$image->file) }}" type="video/mp4">
-                                                                Your browser does not support the video tag.
-                                                            </video>
+                                                                <video class="img-responsive img-full img-thumb"
+                                                                    style="width: 100%; height: 100%; object-fit: cover;"
+                                                                    alt="Thumbnail {{ $index }}">
+                                                                    <source src="{{ asset('file/' . $image->file) }}"
+                                                                        type="video/mp4">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
                                                                 {{-- <img class="img-responsive img-thumb" src="{{ asset('file/'.$image->file) }}" alt="Video Thumbnail {{ $index + 1 }}"> --}}
                                                             @endif
                                                         </div>
@@ -203,13 +214,14 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
-                                                    @if ($row->placement == 0)
+                                                @if ($row->placement == 0)
                                                     <h4><b>{{ $carnivals->name }}</b></h4>
-                                                    <span class="f-14 color-dark-2 grid-hidden">{{ $carnivals->start_date . ' - ' . $carnivals->end_date }}</span>
+                                                    <span
+                                                        class="f-14 color-dark-2 grid-hidden">{{ $carnivals->start_date . ' - ' . $carnivals->end_date }}</span>
                                                     <p class="f-14">{{ $carnivals->description }}</p>
-                                                    @endif
-                                                    {!! $row->content !!}
-                                                </div>
+                                                @endif
+                                                {!! $row->content !!}
+                                            </div>
                                             @if (count($row->faqs) > 0)
                                                 <div class="col-md-12">
                                                     <div class="row">
@@ -223,7 +235,8 @@
                                                         @foreach ($row->faqs as $key => $item)
                                                             <div class="col-md-12">
                                                                 <div class="accordeon-wrapper">
-                                                                    <div class="accordeon-entry @if($key == 0) active @endif">
+                                                                    <div
+                                                                        class="accordeon-entry @if ($key == 0) active @endif">
                                                                         <h5>{{ $item->question }}</h5>
                                                                         <div class="toggle-content act">
                                                                             <div class="accordeon-wrap">
@@ -5258,33 +5271,38 @@
                                         const nextButton = carousel.querySelector('.next');
                                         let currentSlide = 0;
 
-                                        // Function to update slide position
-                                        const updateSlidePosition = () => {
-                                            // Calculate negative translateX to move slides left
-                                            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-                                        };
-
-                                        prevButton.addEventListener('click', () => {
-                                            // Decrease current slide, loop to end if at start
-                                            currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.children.length - 1;
-                                            updateSlidePosition();
-                                        });
-
                                         nextButton.addEventListener('click', () => {
-                                            // Increase current slide, loop to start if at end
-                                            currentSlide = (currentSlide < slides.children.length - 1) ? currentSlide + 1 : 0;
-                                            updateSlidePosition();
+                                            currentSlide = (currentSlide < slides.children.length - 1) ? currentSlide - 1 : 0;
+                                            console.log(currentSlide);
+                                            console.log('length :' + slides.children.length);
+                                            if(currentSlide == (-slides.children.length))
+                                            {
+                                                currentSlide = 0;
+                                            }
+                                            slides.style.transform = `translateX(${currentSlide * 100}%)`;
+                                        });
+                                        // prevButton
+                                        prevButton.addEventListener('click', () => {
+                                            if(currentSlide == 0)
+                                            {
+                                                currentSlide = -(slides.children.length - 1);
+                                            }
+                                            else
+                                            {
+                                                currentSlide = (currentSlide < slides.children.length - 1) ? currentSlide + 1 : 0;
+                                            }
+                                            console.log('prevSlide :' +currentSlide);
+                                            console.log('prevlength :' + slides.children.length);
+                                            slides.style.transform = `translateX(${currentSlide * 100}%)`;
                                         });
 
                                         carousel.querySelectorAll('.thumbnail').forEach((thumbnail, index) => {
                                             thumbnail.addEventListener('click', () => {
-                                                currentSlide = index;
-                                                updateSlidePosition();
+                                                currentSlide = -index;
+                                                console.log(currentSlide);
+                                                slides.style.transform = `translateX(${-index * 100}%)`;
                                             });
                                         });
-
-                                        // Initialize first slide position
-                                        updateSlidePosition();
                                     });
                                 </script>
                             </div>
