@@ -22,7 +22,31 @@
                         <div class="owl-carousel " data-nav="true" data-dots="true" data-margin="0" data-items='1'
                             data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
 
-                            <div class="item">
+                            @foreach ($banners as $banner)
+                                @php
+                                    $extension = pathinfo($banner->banner_image, PATHINFO_EXTENSION);
+                                    $bannerUrl = asset('shopAssets/images/media/' . $banner->banner_image);
+                                @endphp
+
+                                <div class="item">
+                                    @if (in_array($extension, ['mp4', 'webm', 'ogg']))
+                                        <video src="{{ $bannerUrl }}" autoplay loop muted
+                                            style="width: 100%; height: auto; min-height: 600px;"></video>
+                                    @else
+                                        <img src="{{ $bannerUrl }}" alt="banner image" class="img-slide"
+                                            style="height: 100%; min-height: 600px;">
+                                    @endif
+
+                                    <div class="description" style="top: 30%;">
+                                        <span class="subtitle">Paris fashion week</span>
+                                        <span class="title">Fashion talents from Paris</span>
+                                        <span class="des">Quisque malesuada placerat nisl. Quisque libero metus,
+                                            condimentum quis quam at, tincidunt gravida lorem.</span>
+                                        <a href="" class="view-opt8">SHOP NOW</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                            {{-- <div class="item">
                                 <img src="{{ asset('shopAssets/images/media/index8/slide1.jpg') }}" alt="slide1"
                                     class="img-slide" style="height: 100%;min-height:600px;">
                                 <div class="description" style="top: 30%;">
@@ -43,7 +67,7 @@
                                         condimen</span>
                                     <a href="" class="view-opt8">SHOP NOW</a>
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div> <!-- slide -->
 

@@ -273,6 +273,7 @@ class FrontendConroller extends Controller
             ->orderBy('id', 'DESC')
             ->take(10)
             ->get();
+        $banners = Banner::where('type', 'shop')->get();
 
         $top_sellers = collect();
 
@@ -286,7 +287,7 @@ class FrontendConroller extends Controller
         $investors = Investor::all();
         $blogs = Blogs::with('user')->get()->take('6');
         // dd($products->toArray());
-        return view('ShopFrontend.home', compact('products', 'investors', 'blogs', 'categories', 'oackages', 'new_arrivals', 'top_sellers', 'brands', 'discounted_products'));
+        return view('ShopFrontend.home', compact('products', 'investors', 'blogs', 'categories', 'oackages', 'new_arrivals', 'top_sellers', 'brands', 'discounted_products', 'banners'));
     }
     public function product_listing(Request $request)
     {
