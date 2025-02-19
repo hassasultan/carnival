@@ -134,8 +134,6 @@ class FrontendConroller extends Controller
         ->where('start_date', '>',Carbon::now())->orderBy('id','DESC')->get()->take(8);
         $all_events = Event::with('tickets')->where('status','active')
         ->where('start_date', '>',Carbon::now())->orderBy('id','DESC')->get()->take(4);
-        $all_events = Event::with('tickets')->where('status','active')
-        ->where('start_date', '>',Carbon::now())->orderBy('id','DESC')->get()->take(4);
         // dd($carnival_events->toArray());
         return view('front.events', compact('products','upcoming_events','all_events','carnival_events'));
     }
