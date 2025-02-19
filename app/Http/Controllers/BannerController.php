@@ -50,7 +50,8 @@ class BannerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'banner_image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048|dimensions:width=870,height=328',
+            'banner_image' => 'required|mimes:jpeg,png,jpg,gif,mp4,avi,mov,wmv|max:51200',
+            // 'banner_image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048|dimensions:width=870,height=328',
             'description' => 'nullable|string',
             'status' => 'boolean',
         ]);
