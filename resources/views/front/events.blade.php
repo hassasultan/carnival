@@ -681,7 +681,8 @@
         }
     </style>
     <div class="arrows">
-        <div class="swiper-container main-slider-5" data-autoplay="0" data-loop="1" data-speed="900" data-center="0" data-slides-per-view="1">
+        <div class="swiper-container main-slider-5" data-autoplay="0" data-loop="1" data-speed="900" data-center="0"
+            data-slides-per-view="1">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" data-val="0">
                     <div class="video-container">
@@ -696,7 +697,8 @@
                                 <i class="fa fa-play"></i>
                             </div>
                             <p>JULY <span>19TH</span> TO JULY <span>26TH</span></p>
-                            <p class="color-white-light">Curabitur nunc erat, consequat in erat ut, congue bibendum nulla.</p>
+                            <p class="color-white-light">Curabitur nunc erat, consequat in erat ut, congue bibendum nulla.
+                            </p>
                             <div class="buttons">
                                 <a href="#" class="c-button b-60 bg-red hv-red-o delay-2"><span>view more</span></a>
                                 <a href="#" class="c-button b-60 bg-tr-1 hv-red delay-2"><span>book now</span></a>
@@ -722,43 +724,43 @@
     </div>
 
     <script>
-    function openVideoPopup(videoUrl) {
-        const videoContainer = document.getElementById("videoContainer");
-        const popup = document.getElementById("videoPopup");
+        function openVideoPopup(videoUrl) {
+            const videoContainer = document.getElementById("videoContainer");
+            const popup = document.getElementById("videoPopup");
 
-        videoContainer.innerHTML = `
+            videoContainer.innerHTML = `
             <video width="800" height="450" controls autoplay>
                 <source src="${videoUrl}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         `;
-        popup.style.display = "flex";
-    }
+            popup.style.display = "flex";
+        }
 
-    function closeVideoPopup() {
-        const popup = document.getElementById("videoPopup");
-        const videoContainer = document.getElementById("videoContainer");
+        function closeVideoPopup() {
+            const popup = document.getElementById("videoPopup");
+            const videoContainer = document.getElementById("videoContainer");
 
-        popup.style.display = "none";
-        videoContainer.innerHTML = ""; // Clear video to stop playback
-    }
+            popup.style.display = "none";
+            videoContainer.innerHTML = ""; // Clear video to stop playback
+        }
 
-    // Initialize Swiper
-    document.addEventListener('DOMContentLoaded', function() {
-        new Swiper('.main-slider-5', {
-            loop: true,
-            speed: 900,
-            slidesPerView: 1,
-            navigation: {
-                nextEl: '.swiper-arrow-right',
-                prevEl: '.swiper-arrow-left',
-            },
-            pagination: {
-                el: '.pagination',
-                clickable: true
-            }
+        // Initialize Swiper
+        document.addEventListener('DOMContentLoaded', function() {
+            new Swiper('.main-slider-5', {
+                loop: true,
+                speed: 900,
+                slidesPerView: 1,
+                navigation: {
+                    nextEl: '.swiper-arrow-right',
+                    prevEl: '.swiper-arrow-left',
+                },
+                pagination: {
+                    el: '.pagination',
+                    clickable: true
+                }
+            });
         });
-    });
     </script>
 
 
@@ -778,302 +780,52 @@
                     data-slides-per-view="responsive" data-mob-slides="1" data-xs-slides="2" data-sm-slides="2"
                     data-md-slides="3" data-lg-slides="4" data-add-slides="4">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="hotel-item style-6">
-                                <div class="radius-top">
-                                    <img src="https://carnivalguide.co/travel/images/kidscarn.jpg" alt="">
-                                </div>
-                                <div class="title">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">alaska</span>
-                                        </div>
+                        @foreach ($upcoming_events as $event)
+                            <div class="swiper-slide">
+                                <div class="hotel-item style-6">
+                                    <div class="radius-top">
+                                        <img width="270" height="200"
+                                            src="{{ asset('eventBanner/' . $event->banner) }}" alt="{{ $event->name }}">
                                     </div>
-                                    <h4><b>Kiddies Carnival</b></h4>
-                                    <div class="rate-wrap">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
+                                    <div class="title">
+                                        <div class="tour-info-line clearfix">
+                                            <div class="tour-info fl">
+                                                <img src="{{ asset('travel/img/calendar_icon_grey.png') }}" alt="">
+                                                <span class="font-style-2 color-grey-3">
+                                                    {{ \Carbon\Carbon::parse($event->start_date)->format('F dS, Y') }}
+                                                </span>
+                                            </div>
+                                            <div class="tour-info fl">
+                                                <img src="{{ asset('travel/img/loc_icon_small_grey.png') }}" alt="">
+                                                <span class="font-style-2 color-grey-3">{{ $event->venue }}</span>
+                                            </div>
                                         </div>
-                                        <i>485 rewies</i>
+                                        <h4><b>{{ $event->name }}</b></h4>
+                                        <div class="rate-wrap">
+                                            <div class="rate">
+                                                <span class="fa fa-star color-yellow"></span>
+                                                <span class="fa fa-star color-yellow"></span>
+                                                <span class="fa fa-star color-yellow"></span>
+                                                <span class="fa fa-star color-yellow"></span>
+                                                <span class="fa fa-star color-yellow"></span>
+                                            </div>
+                                            <i>485 reviews</i>
+                                        </div>
+                                        @if (count($event->tickets) > 0)
+                                            <h5>from <strong>${{ $event->tickets[0]->price }}</strong> / person</h5>
+                                        @else
+                                            <h5>from <strong>FREE</strong></h5>
+                                        @endif
+                                        <p class="f-14 color-grey-3">{{ $event->description }}</p>
+                                        <a href="{{ route('get.myEvent.detail', $event->slug) }}"
+                                            class="c-button b-50 bg-grey-3-t1 hv-grey-3-t">detail</a>
+                                        <a href="#" class="c-button bg-dr-blue-2 hv-dr-blue-2-o fr">book now</a>
+                                        {{-- <a href="{{ route('event.booking', $event->slug) }}"
+                                            class="c-button bg-dr-blue-2 hv-dr-blue-2-o fr">book now</a> --}}
                                     </div>
-                                    <h5>from <strong>$860</strong> / person</h5>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <a href="#" class="c-button b-50 bg-grey-3-t1 hv-grey-3-t">detail</a>
-                                    <a href="#" class="c-button bg-dr-blue-2 hv-dr-blue-2-o fr">book now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="hotel-item style-6">
-                                <div class="radius-top">
-                                    <img src="https://carnivalguide.co/travel/images/dimanchegras.jpg" alt="">
-                                </div>
-                                <div class="title">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">alaska</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Dimanche Gras</b></h4>
-                                    <div class="rate-wrap">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <h5>from <strong>$600</strong> / person</h5>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <a href="#" class="c-button b-50 bg-grey-3-t1 hv-grey-3-t">detail</a>
-                                    <a href="#" class="c-button bg-dr-blue-2 hv-dr-blue-2-o fr">book now</a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="hotel-item style-6">
-                                <div class="radius-top">
-                                    <img src="https://carnivalguide.co/travel/images/socamonarch.jpg" alt="">
-                                </div>
-                                <div class="title">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">alaska</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Soca Monarch</b></h4>
-                                    <div class="rate-wrap">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <h5>from <strong>$455</strong> / person</h5>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <a href="#" class="c-button b-50 bg-grey-3-t1 hv-grey-3-t">detail</a>
-                                    <a href="#" class="c-button bg-dr-blue-2 hv-dr-blue-2-o fr">book now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="hotel-item style-6">
-                                <div class="radius-top">
-                                    <img src="https://carnivalguide.co/travel/images/panorama.jpg" alt="">
-                                </div>
-                                <div class="title">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">alaska</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Panorama</b></h4>
-                                    <div class="rate-wrap">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <h5>from <strong>$990</strong> / person</h5>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <a href="#" class="c-button b-50 bg-grey-3-t1 hv-grey-3-t">detail</a>
-                                    <a href="#" class="c-button bg-dr-blue-2 hv-dr-blue-2-o fr">book now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="hotel-item style-6">
-                                <div class="radius-top">
-                                    <img src="https://carnivalguide.co/travel/img/home_9/tour_1.jpg" alt="">
-                                </div>
-                                <div class="title">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">alaska</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Queen Show</b></h4>
-                                    <div class="rate-wrap">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <h5>from <strong>$860</strong> / person</h5>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <a href="#" class="c-button b-50 bg-grey-3-t1 hv-grey-3-t">detail</a>
-                                    <a href="#" class="c-button bg-dr-blue-2 hv-dr-blue-2-o fr">book now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="hotel-item style-6">
-                                <div class="radius-top">
-                                    <img src="https://carnivalguide.co/travel/img/home_9/tour_2.jpg" alt="">
-                                </div>
-                                <div class="title">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">alaska</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Jouvert</b></h4>
-                                    <div class="rate-wrap">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <h5>from <strong>$600</strong> / person</h5>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <a href="#" class="c-button b-50 bg-grey-3-t1 hv-grey-3-t">detail</a>
-                                    <a href="#" class="c-button bg-dr-blue-2 hv-dr-blue-2-o fr">book now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="hotel-item style-6">
-                                <div class="radius-top">
-                                    <img src="https://carnivalguide.co/travel/img/home_9/tour_3.jpg" alt="">
-                                </div>
-                                <div class="title">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">alaska</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Pretty Mas</b></h4>
-                                    <div class="rate-wrap">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <h5>from <strong>$455</strong> / person</h5>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <a href="#" class="c-button b-50 bg-grey-3-t1 hv-grey-3-t">detail</a>
-                                    <a href="#" class="c-button bg-dr-blue-2 hv-dr-blue-2-o fr">book now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="hotel-item style-6">
-                                <div class="radius-top">
-                                    <img src="https://carnivalguide.co/travel/img/home_9/tour_4.jpg" alt="">
-                                </div>
-                                <div class="title">
-                                    <div class="tour-info-line clearfix">
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                                        </div>
-                                        <div class="tour-info fl">
-                                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png"
-                                                alt="">
-                                            <span class="font-style-2 color-grey-3">alaska</span>
-                                        </div>
-                                    </div>
-                                    <h4><b>Monday Night Mas</b></h4>
-                                    <div class="rate-wrap">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 rewies</i>
-                                    </div>
-                                    <h5>from <strong>$990</strong> / person</h5>
-                                    <p class="f-14 color-grey-3">San Juan, Charlotte Amalie, Philipsburg, Castries,
-                                        Basseterre, Ponta Delgada, Southampton.</p>
-                                    <a href="#" class="c-button b-50 bg-grey-3-t1 hv-grey-3-t">detail</a>
-                                    <a href="#" class="c-button bg-dr-blue-2 hv-dr-blue-2-o fr">book now</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="pagination poin-style-2"></div>
                 </div>
@@ -1083,39 +835,46 @@
 
     <!-- TOP PREVIEW-->
     <div class="top-preview row no-margin">
-        <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3 no-padding">
-            <div class="tp_entry style-2">
-                <div class="tp_image">
-                    <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/preview_1a.jpg"
-                        alt="">
-                </div>
-                <div class="tp_content">
-                    <div class="rate-wrap clearfix">
-                        <div class="rate">
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                        </div>
-                        <i>485 rewies</i>
-                        <div class="tp_price">$273</div>
+        @foreach ($carnival_events as $event)
+            <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3 no-padding">
+                <div class="tp_entry style-2">
+                    <div class="tp_image">
+                        <img class="center-image" src="{{ asset('eventBanner/' . $event->banner) }}"
+                            alt="{{ $event->name }}">
                     </div>
-                    <h4><b>tours in monaco</b></h4>
-                    <div class="tour-info-line clearfix">
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
+                    <div class="tp_content">
+                        <div class="rate-wrap clearfix">
+                            <div class="rate">
+                                <span class="fa fa-star color-yellow"></span>
+                                <span class="fa fa-star color-yellow"></span>
+                                <span class="fa fa-star color-yellow"></span>
+                                <span class="fa fa-star color-yellow"></span>
+                                <span class="fa fa-star color-yellow"></span>
+                            </div>
+                            <i>485 rewies</i>
+                            @if (count($event->tickets) > 0)
+                                <div class="tp_price">$273</div>
+                            @else
+                                <div class="tp_price"> <strong>FREE</strong></div>
+                            @endif
                         </div>
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">alaska</span>
+                        <h4><b>{{ $event->name }}</b></h4>
+                        <div class="tour-info-line clearfix">
+                            <div class="tour-info fl">
+                                <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
+                                <span
+                                    class="font-style-2 color-grey-3">{{ \Carbon\Carbon::parse($event->start_date)->format('F dS, Y') }}</span>
+                            </div>
+                            <div class="tour-info fl">
+                                <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
+                                <span class="font-style-2 color-grey-3">{{ $event->venue }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3 no-padding">
+        @endforeach
+        {{-- <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3 no-padding">
             <div class="tp_entry style-2">
                 <div class="tp_image">
                     <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/preview_2a.jpg"
@@ -1147,198 +906,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3 no-padding">
-            <div class="tp_entry style-2">
-                <div class="tp_image">
-                    <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/preview_3a.jpg"
-                        alt="">
-                </div>
-                <div class="tp_content">
-                    <div class="rate-wrap clearfix">
-                        <div class="rate">
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                        </div>
-                        <i>485 rewies</i>
-                        <div class="tp_price">$273</div>
-                    </div>
-                    <h4><b>cruise in monaco for two</b></h4>
-                    <div class="tour-info-line clearfix">
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                        </div>
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">alaska</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3 no-padding">
-            <div class="tp_entry style-2">
-                <div class="tp_image">
-                    <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/preview_4a.jpg"
-                        alt="">
-                </div>
-                <div class="tp_content">
-                    <div class="rate-wrap clearfix">
-                        <div class="rate">
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                        </div>
-                        <i>485 rewies</i>
-                        <div class="tp_price">$273</div>
-                    </div>
-                    <h4><b>tours in monaco</b></h4>
-                    <div class="tour-info-line clearfix">
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                        </div>
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">alaska</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3 no-padding">
-            <div class="tp_entry style-2">
-                <div class="tp_image">
-                    <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/preview_5a.jpg"
-                        alt="">
-                </div>
-                <div class="tp_content">
-                    <div class="rate-wrap clearfix">
-                        <div class="rate">
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                        </div>
-                        <i>485 rewies</i>
-                        <div class="tp_price">$273</div>
-                    </div>
-                    <h4><b>tours in monaco</b></h4>
-                    <div class="tour-info-line clearfix">
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                        </div>
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">alaska</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3 no-padding">
-            <div class="tp_entry style-2">
-                <div class="tp_image">
-                    <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/preview_6a.jpg"
-                        alt="">
-                </div>
-                <div class="tp_content">
-                    <div class="rate-wrap clearfix">
-                        <div class="rate">
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                        </div>
-                        <i>485 rewies</i>
-                        <div class="tp_price">$273</div>
-                    </div>
-                    <h4><b>tours in monaco</b></h4>
-                    <div class="tour-info-line clearfix">
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                        </div>
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">alaska</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3 no-padding">
-            <div class="tp_entry style-2">
-                <div class="tp_image">
-                    <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/preview_7a.jpg"
-                        alt="">
-                </div>
-                <div class="tp_content">
-                    <div class="rate-wrap clearfix">
-                        <div class="rate">
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                        </div>
-                        <i>485 rewies</i>
-                        <div class="tp_price">$273</div>
-                    </div>
-                    <h4><b>tours in monaco</b></h4>
-                    <div class="tour-info-line clearfix">
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                        </div>
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">alaska</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-mob-12 col-xs-6 col-sm-6 col-md-3 no-padding">
-            <div class="tp_entry style-2">
-                <div class="tp_image">
-                    <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/preview_8a.jpg"
-                        alt="">
-                </div>
-                <div class="tp_content">
-                    <div class="rate-wrap clearfix">
-                        <div class="rate">
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                            <span class="fa fa-star color-yellow"></span>
-                        </div>
-                        <i>485 rewies</i>
-                        <div class="tp_price">$273</div>
-                    </div>
-                    <h4><b>tours in monaco</b></h4>
-                    <div class="tour-info-line clearfix">
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/calendar_icon_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">July <strong>19th 2015</strong></span>
-                        </div>
-                        <div class="tour-info fl">
-                            <img src="https://carnivalguide.co/travel/img/loc_icon_small_grey.png" alt="">
-                            <span class="font-style-2 color-grey-3">alaska</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+         --}}
     </div>
 
     <!-- HOTEL-ITEM-->
@@ -1353,44 +921,51 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="world-city black-hover">
-                        <div class="tour-layer delay-1"></div>
-                        <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/city_1a.jpg"
-                            alt="">
-                        <div class="vertical-align">
-                            <h3 class="world-title color-white">italy</h3>
-                            <h4 class="world-price color-white">from <b>$860</b></h4>
-                            <div class="rate">
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
+                @foreach ($carnival_events as $event)
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="world-city black-hover">
+                            <div class="tour-layer delay-1"></div>
+                            <img class="center-image" src="{{ asset('eventBanner/' . $event->banner) }}"
+                                alt="{{ $event->name }}">
+                            <div class="vertical-align">
+                                <h3 class="world-title color-white">{{ $event->venue }}</h3>
+                                @if (count($event->tickets) > 0)
+                                    <h4 class="world-price color-white">from <b>${{ $event->tickets[0]->price }}</b></h4>
+                                @else
+                                    <h4><strong>FREE</strong></h4>
+                                @endif
+                                <div class="rate">
+                                    <span class="fa fa-star color-yellow"></span>
+                                    <span class="fa fa-star color-yellow"></span>
+                                    <span class="fa fa-star color-yellow"></span>
+                                    <span class="fa fa-star color-yellow"></span>
+                                    <span class="fa fa-star color-yellow"></span>
+                                </div>
+                                <p class="color-white-light">{{ $event->description }}</p>
+                                <a href="{{ route('get.myEvent.detail', $event->slug) }}" class="c-button b-40 bg-blue-3 hv-blue-3-o"><span>view more</span></a>
                             </div>
-                            <p class="color-white-light">Nunc cursus libero purus ac congue arcu cursus ut.</p>
-                            <a href="#" class="c-button b-40 bg-blue-3 hv-blue-3-o"><span>view more</span></a>
                         </div>
                     </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="world-country">
-                        <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/country_1.png"
-                            alt="">
-                        <div class="vertical-align">
-                            <h4>destinations in italy</h4>
-                            <ul class="color-grey-3">
-                                <li>Cagliari (Sardinia), Italy</li>
-                                <li>La Spezia, Italy</li>
-                                <li>Messina (Sicily), Italy</li>
-                                <li>Naples (Salerno), Italy</li>
-                                <li>Rome (Civitavecchia), Italy</li>
-                                <li>Venice, Italy</li>
-                            </ul>
+
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="world-country">
+                            <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/country_1.png"
+                                alt="">
+                            <div class="vertical-align">
+                                <h4>destinations in {{ $event->venue }}</h4>
+                                <ul class="color-grey-3">
+                                    <li>Cagliari (Sardinia), Italy</li>
+                                    <li>La Spezia, Italy</li>
+                                    <li>Messina (Sicily), Italy</li>
+                                    <li>Naples (Salerno), Italy</li>
+                                    <li>Rome (Civitavecchia), Italy</li>
+                                    <li>Venice, Italy</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
+                @endforeach
+                {{-- <div class="col-xs-12 col-sm-6 col-md-3">
                     <div class="world-city black-hover">
                         <div class="tour-layer delay-1"></div>
                         <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/city_2a.jpg"
@@ -1427,79 +1002,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="world-city black-hover">
-                        <div class="tour-layer delay-1"></div>
-                        <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/city_3a.jpg"
-                            alt="">
-                        <div class="vertical-align">
-                            <h3 class="world-title color-white">United Kingdom</h3>
-                            <h4 class="world-price color-white">from <b>$700</b></h4>
-                            <div class="rate">
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                            </div>
-                            <p class="color-white-light">Nunc cursus libero purus ac congue arcu cursus ut.</p>
-                            <a href="#" class="c-button b-40 bg-blue-3 hv-blue-3-o"><span>view more</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="world-country">
-                        <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/country_3.png"
-                            alt="">
-                        <div class="vertical-align">
-                            <h4>destinations in USA</h4>
-                            <ul class="color-grey-3">
-                                <li>Ayr (Glasgow), Scotland</li>
-                                <li>Dover, England</li>
-                                <li>Edinburgh, Scotland</li>
-                                <li>Greenock (Glasgow), Scotland</li>
-                                <li>olyhead, Wales</li>
-                                <li> Inverness/Loch Ness, Scotland</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="world-city black-hover">
-                        <div class="tour-layer delay-1"></div>
-                        <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/city_4a.jpg"
-                            alt="">
-                        <div class="vertical-align">
-                            <h3 class="world-title color-white">Spain</h3>
-                            <h4 class="world-price color-white">from <b>$550</b></h4>
-                            <div class="rate">
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                            </div>
-                            <p class="color-white-light">Nunc cursus libero purus ac congue arcu cursus ut.</p>
-                            <a href="#" class="c-button b-40 bg-blue-3 hv-blue-3-o"><span>view more</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="world-country">
-                        <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/country_4.png"
-                            alt="">
-                        <div class="vertical-align">
-                            <h4>destinations in spaine</h4>
-                            <ul class="color-grey-3">
-                                <li>Cadiz, Spain</li>
-                                <li>Cartagena, Spain</li>
-                                <li>Fuerteventura, Canary</li>
-                                <li>Ibiza, Spain</li>
-                                <li>Lanzarote, Canary Islands</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                 --}}
             </div>
         </div>
     </div>
@@ -1593,8 +1096,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/bg_3.jpg"
-                        alt="">
+                    <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/bg_3.jpg" alt="">
                     <div class="slider-tour style-2 padd-100">
                         <div class="container">
                             <div class="row">
@@ -1646,7 +1148,7 @@
         </div>
     </div>
 
-    @include('front.templates.youtube-video-template')
+    @include('front.templates.video-slider-template')
     <!-- HOTEL-ITEM-->
     <div class="main-wraper padd-90">
         <div class="container">
@@ -1766,11 +1268,11 @@
                         <div class="tour-layer delay-1"></div>
                         <div class="vertical-align">
                             <!-- <h4 class="ib-subtitle hover-it"><span>-20%</span> off</h4>
-                               <h3 class="hover-it">honeymoon cruise</h3>
-                                <p>Cursus libero purus ac cursus ut sed.Nunc cursus libero purus ac congue arcu.</p>
-                                <div class="ib-undertitle">from only</div>
-                                <div class="ib-price">$860</div>
-                                <a href="#" class="c-button b-40 bg-blue-3 hv-transparent"><span>view more</span></a> -->
+                                                           <h3 class="hover-it">honeymoon cruise</h3>
+                                                            <p>Cursus libero purus ac cursus ut sed.Nunc cursus libero purus ac congue arcu.</p>
+                                                            <div class="ib-undertitle">from only</div>
+                                                            <div class="ib-price">$860</div>
+                                                            <a href="#" class="c-button b-40 bg-blue-3 hv-transparent"><span>view more</span></a> -->
                         </div>
                     </div>
                 </div>
