@@ -126,11 +126,11 @@ class FrontendConroller extends Controller
     public function event_listing()
     {
         $products = Product::with('brand')->get();
-        $upcoming_events = Event::with('tickets')->where('status','active')->whereBetween('start_date', [
+        $upcoming_events = Event::with('tickets')->where('status','active')->where('package_id',6)->whereBetween('start_date', [
             Carbon::now(), // current date
             Carbon::now()->addMonths(3), // date 3 months from now
         ])->orderBy('id','DESC')->get();
-        $carnival_events = Event::with('tickets')->where('status','active')->where('package_id',6)
+        $carnival_events = Event::with('tickets')->where('status','active')
         ->where('start_date', '>',Carbon::now())->orderBy('id','DESC')->get()->take(8);
         $all_events = Event::with('tickets')->where('status','active')
         ->where('start_date', '>',Carbon::now())->orderBy('id','DESC')->get()->take(4);
