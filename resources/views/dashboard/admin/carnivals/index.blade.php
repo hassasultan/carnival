@@ -44,6 +44,7 @@
                 </div>
                 <div class="modal-body">
                     <form id="createCarnivalForm" enctype="multipart/form-data">
+                        <div class="error"></div>
                         @csrf
                         {{-- <div class="form-group">
                             <label for="head">Head</label>
@@ -113,6 +114,7 @@
                     <form id="editCarnivalForm" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
+                        <div class="error"></div>
                         <input type="hidden" id="edit_id" name="edit_id">
                         {{-- <div class="form-group">
                             <label for="edit_head">Head</label>
@@ -479,7 +481,10 @@
 
             $('#createCarnivalForm').submit(function(event) {
                 event.preventDefault();
-                var formData = $(this).serialize();
+
+                var form = $(this); // Store the form element
+                var formData = new FormData(this); // Use FormData for file uploads
+
                 $.ajax({
                     url: '{{ route('carnivals.store') }}',
                     type: 'POST',
@@ -487,6 +492,8 @@
                         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
                     },
                     data: formData,
+                    processData: false, // Prevent jQuery from processing the data
+                    contentType: false, // Prevent jQuery from setting the content type
                     success: function(response) {
                         $('#carnivalModal').modal('hide');
                         $('#tableData').html(response.table_html);
@@ -508,8 +515,9 @@
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        $('#carnivalMessage').html(
-                            '<div class="alert alert-danger" role="alert">Failed to create carnival</div>'
+                        form.find('.error').html( // Use form instead of $(this)
+                            '<div class="alert alert-danger" role="alert">' + error +
+                            '</div>'
                         );
                     }
                 });
@@ -558,9 +566,12 @@
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        $('#carnivalMessage').html(
-                            '<div class="alert alert-danger" role="alert">Failed to update carnival</div>'
+                        console.error('error : ' + error);
+                        $(this).find('.error').html(
+                            '<div class="alert alert-danger" role="alert">' + error +
+                            '</div>'
                         );
+
                     }
                 });
             });
