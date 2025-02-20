@@ -481,7 +481,10 @@
 
             $('#createCarnivalForm').submit(function(event) {
                 event.preventDefault();
-                var formData = new FormData(this);
+
+                var form = $(this); // Store the form element
+                var formData = new FormData(this); // Use FormData for file uploads
+
                 $.ajax({
                     url: '{{ route('carnivals.store') }}',
                     type: 'POST',
@@ -489,6 +492,8 @@
                         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
                     },
                     data: formData,
+                    processData: false, // Prevent jQuery from processing the data
+                    contentType: false, // Prevent jQuery from setting the content type
                     success: function(response) {
                         $('#carnivalModal').modal('hide');
                         $('#tableData').html(response.table_html);
@@ -510,8 +515,9 @@
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        $(this).find('.error').html(
-                            '<div class="alert alert-danger" role="alert">'+ error +'</div>'
+                        form.find('.error').html( // Use form instead of $(this)
+                            '<div class="alert alert-danger" role="alert">' + error +
+                            '</div>'
                         );
                     }
                 });
@@ -560,9 +566,10 @@
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        console.error('error : '+ error);
+                        console.error('error : ' + error);
                         $(this).find('.error').html(
-                            '<div class="alert alert-danger" role="alert">'+ error +'</div>'
+                            '<div class="alert alert-danger" role="alert">' + error +
+                            '</div>'
                         );
 
                     }
