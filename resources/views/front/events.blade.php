@@ -1227,37 +1227,43 @@
                     </div>
                 </div> --}}
                 {{-- @if ($popular_events->isNotEmpty()) --}}
-                    @foreach ($popular_events->chunk(4) as $chunk)
-                        <div class="row">
-                            @foreach ($chunk as $event)
-                                <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <div class="hotel-small style-2 clearfix">
-                                        <a class="hotel-img black-hover" href="{{ route('events.show', $event->id) }}">
-                                            <img class="img-responsive radius-0"
-                                                src="{{ $event->banner ? asset('storage/' . $event->banner) : asset('default-image.jpg') }}"
-                                                alt="{{ $event->name }}">
-                                            <div class="tour-layer delay-1"></div>
-                                        </a>
-                                        <div class="hotel-desc">
-                                            <h5>
-                                                <span class="color-dark-2">
-                                                    <strong>${{ number_format($event->tickets->min('price'), 2) }}</strong>
-                                                    / person
-                                                </span>
-                                            </h5>
-                                            <h4>{{ $event->name }}</h4>
-                                            <div class="hotel-loc tt">
-                                                <strong>{{ \Carbon\Carbon::parse($event->start_date)->format('d.m') }} -
-                                                    {{ \Carbon\Carbon::parse($event->end_date)->format('d.m') }} /
-                                                    {{ \Carbon\Carbon::parse($event->start_date)->diffInDays($event->end_date) }}
-                                                    nights</strong>
-                                            </div>
+                @foreach ($popular_events->chunk(4) as $chunk)
+                    <div class="row">
+                        @foreach ($chunk as $event)
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="hotel-small style-2 clearfix">
+                                    <a class="hotel-img black-hover"
+                                        href="{{ route('get.myEvent.detail', $event->slug) }}">
+                                        <img class="img-responsive radius-0"
+                                            src="{{ asset('eventBanner/' . $event->banner) }}"
+                                            alt="{{ $event->name }}">
+                                        <div class="tour-layer delay-1"></div>
+                                    </a>
+                                    <div class="hotel-desc">
+                                        <h5>
+                                            <span class="color-dark-2">
+                                                {{-- <strong>${{ number_format($event->tickets->min('price'), 2) }}</strong> --}}
+                                                @if (count($event->tickets) > 0)
+                                                    <h4 class="world-price color-white">from
+                                                        <b>${{ $event->tickets[0]->price }}/ person</b></h4>
+                                                @else
+                                                    <h4><strong>FREE</strong></h4>
+                                                @endif
+                                            </span>
+                                        </h5>
+                                        <h4>{{ $event->name }}</h4>
+                                        <div class="hotel-loc tt">
+                                            <strong>{{ \Carbon\Carbon::parse($event->start_date)->format('d.m') }} -
+                                                {{ \Carbon\Carbon::parse($event->end_date)->format('d.m') }} /
+                                                {{ \Carbon\Carbon::parse($event->start_date)->diffInDays($event->end_date) }}
+                                                nights</strong>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
-                    @endforeach
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
                 {{-- @else
                     <p class="text-center">No popular events available.</p>
                 @endif --}}
