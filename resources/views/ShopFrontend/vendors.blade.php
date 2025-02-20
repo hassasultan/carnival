@@ -241,7 +241,16 @@
                         "600":{"items":5},
                         "992":{"items":7}
                     }'>
-                    <div class="item">
+                    {{-- @include('front.home-template.our-partner') --}}
+                    @foreach ($carnival_commitee as $row)
+                        <div class="swiper-slide text-center">
+                            <div class="partner-entry">
+                                <a href="{{ route('front.vendor.detail', $row->user->slug) }}"><img class="img-responsive"
+                                        src="{{ asset('images/' . $row->logo) }}" alt=""></a>
+                            </div>
+                        </div>
+                    @endforeach
+                    {{-- <div class="item">
                         <a href=""><img src="{{ asset('shopAssets/CarnivalCommitees/partner_1.png') }}"
                                 alt="brand"></a>
                     </div>
@@ -260,7 +269,7 @@
                     <div class="item">
                         <a href=""><img src="{{ asset('shopAssets/CarnivalCommitees/partner_5.png') }}"
                                 alt="brand"></a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div><!-- block-brand -->

@@ -126,16 +126,16 @@ class FrontendConroller extends Controller
     public function event_listing()
     {
         $products = Product::with('brand')->get();
-        $upcoming_events = Event::with('tickets')->where('status','active')->where('package_id',6)->whereBetween('start_date', [
+        $upcoming_events = Event::with('tickets')->where('status', 'active')->where('package_id', 6)->whereBetween('start_date', [
             Carbon::now(), // current date
             Carbon::now()->addMonths(3), // date 3 months from now
-        ])->orderBy('id','DESC')->get();
-        $carnival_events = Event::with('tickets')->where('status','active')
-        ->where('start_date', '>',Carbon::now())->orderBy('id','DESC')->get()->take(8);
-        $all_events = Event::with('tickets')->where('status','active')
-        ->where('start_date', '>',Carbon::now())->orderBy('id','DESC')->get()->take(4);
+        ])->orderBy('id', 'DESC')->get();
+        $carnival_events = Event::with('tickets')->where('status', 'active')
+            ->where('start_date', '>', Carbon::now())->orderBy('id', 'DESC')->get()->take(8);
+        $all_events = Event::with('tickets')->where('status', 'active')
+            ->where('start_date', '>', Carbon::now())->orderBy('id', 'DESC')->get()->take(4);
         // dd($carnival_events->toArray());
-        return view('front.events', compact('products','upcoming_events','all_events','carnival_events'));
+        return view('front.events', compact('products', 'upcoming_events', 'all_events', 'carnival_events'));
     }
     public function category_tour_listing()
     {
@@ -358,7 +358,10 @@ class FrontendConroller extends Controller
             ->take(3)
             ->get();
 
-        return view('ShopFrontend.vendors', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3'));
+        $carnival_com = Carnival::has('user')->pluck('head');
+        $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
+
+        return view('ShopFrontend.vendors', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3', 'carnival_commitee'));
     }
     public function contact_us()
     {
