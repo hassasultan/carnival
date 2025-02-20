@@ -942,7 +942,8 @@
                                     <span class="fa fa-star color-yellow"></span>
                                 </div>
                                 <p class="color-white-light">{{ $event->description }}</p>
-                                <a href="{{ route('get.myEvent.detail', $event->slug) }}" class="c-button b-40 bg-blue-3 hv-blue-3-o"><span>view more</span></a>
+                                <a href="{{ route('get.myEvent.detail', $event->slug) }}"
+                                    class="c-button b-40 bg-blue-3 hv-blue-3-o"><span>view more</span></a>
                             </div>
                         </div>
                     </div>
@@ -954,60 +955,24 @@
                             <div class="vertical-align">
                                 <h4>destinations in {{ $event->venue }}</h4>
                                 <ul class="color-grey-3">
-                                    <li>Cagliari (Sardinia), Italy</li>
-                                    <li>La Spezia, Italy</li>
+                                    @foreach ($event->relatedEvents as $item)
+                                        <li>{{ $item->name . ', ' . $item->venue }}</li>
+                                    @endforeach
+                                    {{-- <li>La Spezia, Italy</li>
                                     <li>Messina (Sicily), Italy</li>
                                     <li>Naples (Salerno), Italy</li>
                                     <li>Rome (Civitavecchia), Italy</li>
-                                    <li>Venice, Italy</li>
+                                    <li>Venice, Italy</li> --}}
                                 </ul>
                             </div>
                         </div>
                     </div>
                 @endforeach
-                {{-- <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="world-city black-hover">
-                        <div class="tour-layer delay-1"></div>
-                        <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/city_2a.jpg"
-                            alt="">
-                        <div class="vertical-align">
-                            <h3 class="world-title color-white">france</h3>
-                            <h4 class="world-price color-white">from <b>$655</b></h4>
-                            <div class="rate">
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                            </div>
-                            <p class="color-white-light">Nunc cursus libero purus ac congue arcu cursus ut.</p>
-                            <a href="#" class="c-button b-40 bg-blue-3 hv-blue-3-o"><span>view more</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="world-country">
-                        <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/country_2.png"
-                            alt="">
-                        <div class="vertical-align">
-                            <h4>destinations in frace</h4>
-                            <ul class="color-grey-3">
-                                <li>Ajaccio, Corsica</li>
-                                <li>Cannes, France</li>
-                                <li>Le Havre (Paris), France</li>
-                                <li>Marseille, France</li>
-                                <li>Nice (Villefranche)</li>
-                                <li>Provence (Toulon), France</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                 --}}
             </div>
         </div>
     </div>
 
-    <div class="top-baner arrows">
+    {{-- <div class="top-baner arrows">
         <div class="swiper-container" data-autoplay="0" data-loop="1" data-speed="1000" data-center="0"
             data-slides-per-view="1" id="tour-slide-2">
             <div class="swiper-wrapper">
@@ -1146,7 +1111,7 @@
                 <div class="swiper-arrow-right sw-arrow"><span class="fa fa-angle-right"></span></div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     @include('front.templates.video-slider-template')
     <!-- HOTEL-ITEM-->
@@ -1268,11 +1233,11 @@
                         <div class="tour-layer delay-1"></div>
                         <div class="vertical-align">
                             <!-- <h4 class="ib-subtitle hover-it"><span>-20%</span> off</h4>
-                                                           <h3 class="hover-it">honeymoon cruise</h3>
-                                                            <p>Cursus libero purus ac cursus ut sed.Nunc cursus libero purus ac congue arcu.</p>
-                                                            <div class="ib-undertitle">from only</div>
-                                                            <div class="ib-price">$860</div>
-                                                            <a href="#" class="c-button b-40 bg-blue-3 hv-transparent"><span>view more</span></a> -->
+                                                               <h3 class="hover-it">honeymoon cruise</h3>
+                                                                <p>Cursus libero purus ac cursus ut sed.Nunc cursus libero purus ac congue arcu.</p>
+                                                                <div class="ib-undertitle">from only</div>
+                                                                <div class="ib-price">$860</div>
+                                                                <a href="#" class="c-button b-40 bg-blue-3 hv-transparent"><span>view more</span></a> -->
                         </div>
                     </div>
                 </div>
@@ -1282,106 +1247,4 @@
 
     <!-- HOTEL-ITEM-->
     @include('partials.brand_showcase')
-    {{-- <div class="main-wraper padd-90 bg-grey-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                    <div class="second-title">
-                        <h4 class="subtitle color-dr-blue-2">Carnival Guide</h4>
-                        <h2 class="color-dark-2">Supporting Brands</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="icon-block style-3 bg-white">
-                        <div class="icon-price color-dark-2">from <strong>$750</strong></div>
-                        <img class="icon-img" src="https://carnivalguide.co/travel/img/home_9/icon_1a.jpg"
-                            alt="">
-                        <div class="rate-wrap clearfix">
-                            <div class="rate">
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                            </div>
-                            <i>485 Rewies</i>
-                        </div>
-                        <h5 class="icon-title color-dark-2">Carib</h5>
-                        <div class="icon-text color-grey-3">Sed sit amet leo orci. Fusce tincidunt accu msan pretium.
-                            Donec fermentum.</div>
-                        <a href="#" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o delay-2"><span>view
-                                more</span></a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="icon-block style-3 bg-white">
-                        <div class="icon-price color-dark-2">from <strong>$750</strong></div>
-                        <img class="icon-img" src="https://carnivalguide.co/travel/img/home_9/icon_2a.jpg"
-                            alt="">
-                        <div class="rate-wrap clearfix">
-                            <div class="rate">
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                            </div>
-                            <i>485 Rewies</i>
-                        </div>
-                        <h5 class="icon-title color-dark-2">Clarkes Court</h5>
-                        <div class="icon-text color-grey-3">Sed sit amet leo orci. Fusce tincidunt accu msan pretium.
-                            Donec fermentum.</div>
-                        <a href="#" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o delay-2"><span>view
-                                more</span></a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="icon-block style-3 bg-white">
-                        <div class="icon-price color-dark-2">from <strong>$750</strong></div>
-                        <img class="icon-img" src="https://carnivalguide.co/travel/img/home_9/icon_3a.jpg"
-                            alt="">
-                        <div class="rate-wrap clearfix">
-                            <div class="rate">
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                            </div>
-                            <i>485 Rewies</i>
-                        </div>
-                        <h5 class="icon-title color-dark-2">Coca Cola</h5>
-                        <div class="icon-text color-grey-3">Sed sit amet leo orci. Fusce tincidunt accu msan pretium.
-                            Donec fermentum.</div>
-                        <a href="#" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o delay-2"><span>view
-                                more</span></a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="icon-block style-3 bg-white">
-                        <div class="icon-price color-dark-2">from <strong>$750</strong></div>
-                        <img class="icon-img" src="https://carnivalguide.co/travel/img/home_9/icon_4a.jpg"
-                            alt="">
-                        <div class="rate-wrap clearfix">
-                            <div class="rate">
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                                <span class="fa fa-star color-yellow"></span>
-                            </div>
-                            <i>485 Rewies</i>
-                        </div>
-                        <h5 class="icon-title color-dark-2">Digicel</h5>
-                        <div class="icon-text color-grey-3">Sed sit amet leo orci. Fusce tincidunt accu msan pretium.
-                            Donec fermentum.</div>
-                        <a href="#" class="c-button small bg-dr-blue-2 hv-dr-blue-2-o delay-2"><span>view
-                                more</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 @endsection

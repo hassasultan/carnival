@@ -70,7 +70,6 @@ class Event extends Model
         return $this->hasMany(EventTicket::class);
     }
 
-
     public function getStartDateAttribute($value)
     {
         return \Carbon\Carbon::parse($value)->format('m/d/Y');
@@ -79,5 +78,10 @@ class Event extends Model
     public function getEndDateAttribute($value)
     {
         return \Carbon\Carbon::parse($value)->format('m/d/Y');
+    }
+
+    public function relatedEvents()
+    {
+        return $this->hasMany(Event::class, 'venue', 'venue')->where('id', '!=', $this->id);
     }
 }
