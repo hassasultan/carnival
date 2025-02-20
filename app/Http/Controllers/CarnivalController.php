@@ -60,17 +60,17 @@ class CarnivalController extends Controller
                 'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
             ]);
 
-            if ($carnivals) {
-                if ($request->hasFile('images')) {
-                    foreach ($request->file('images') as $image) {
-                        $imageName = time() . '.' . $image->extension();
-                        $image->move(public_path('images/carnivalImages'), $imageName);
-                        CarnivalImages::create([
-                            'carnival_id' => $carnivals->id,
-                            'image' => $imageName
-                        ]);
-                    }
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $image) {
+                    $imageName = time() . '.' . $image->extension();
+                    $image->move(public_path('images/carnivalImages'), $imageName);
+                    CarnivalImages::create([
+                        'carnival_id' => $carnivals->id,
+                        'image' => $imageName
+                    ]);
                 }
+            }
+            if ($carnivals) {
                 $carnivals = Carnival::all();
                 $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
 
