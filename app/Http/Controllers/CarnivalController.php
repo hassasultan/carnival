@@ -16,9 +16,9 @@ use Str;
 
 class CarnivalController extends Controller
 {
-    public function validation($data)
+    public function validation(Request $request)
     {
-        $data->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
             'region_id' => 'required|exists:regions,id',
             'country_id' => 'required|exists:country,id',
@@ -41,7 +41,7 @@ class CarnivalController extends Controller
 
     public function store(Request $request)
     {
-        $this->validation($request->all());
+        $this->validation($request);
         try {
             $uniqueId = $this->generateUniqueId();
 
@@ -94,7 +94,7 @@ class CarnivalController extends Controller
 
     public function update(Request $request, Carnival $carnival)
     {
-        $this->validation($request->all());
+        $this->validation($request);
         try
         {
             $uniqueId = $this->generateUniqueId();
