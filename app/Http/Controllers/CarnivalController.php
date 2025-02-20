@@ -42,6 +42,7 @@ class CarnivalController extends Controller
     public function store(Request $request)
     {
         $this->validation($request);
+        dd($request->all());
         try {
             $uniqueId = $this->generateUniqueId();
 
