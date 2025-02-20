@@ -566,7 +566,6 @@
                         );
 
                     }
-                    }
                 });
             });
             // $('#editCarnivalForm').submit(function(event) {
