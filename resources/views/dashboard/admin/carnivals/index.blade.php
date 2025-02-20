@@ -481,7 +481,7 @@
 
             $('#createCarnivalForm').submit(function(event) {
                 event.preventDefault();
-                var formData = $(this).serialize();
+                var formData = new FormData(this);
                 $.ajax({
                     url: '{{ route('carnivals.store') }}',
                     type: 'POST',
