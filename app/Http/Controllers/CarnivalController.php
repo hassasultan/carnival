@@ -149,7 +149,7 @@ class CarnivalController extends Controller
             $image->delete();
 
             return response()->json(['message' => 'Image deleted successfully']);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['error' => 'Failed to delete image: ' . $e->getMessage()], 500);
         }
     }
