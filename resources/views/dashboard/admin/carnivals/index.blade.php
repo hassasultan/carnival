@@ -510,8 +510,8 @@
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        $(this ' > .error').html(
-                            '<div class="alert alert-danger" role="alert">Failed to create carnival</div>'
+                        $(this).find('.error').html(
+                            '<div class="alert alert-danger" role="alert">'+ error +'</div>'
                         );
                     }
                 });
@@ -561,9 +561,10 @@
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
                         console.error('error : ' error);
-                        $(this ' > .error').html(
-                            '<div class="alert alert-danger" role="alert">Failed to create carnival</div>'
+                        $(this).find('.error').html(
+                            '<div class="alert alert-danger" role="alert">'+ error +'</div>'
                         );
+
                     }
                     }
                 });
