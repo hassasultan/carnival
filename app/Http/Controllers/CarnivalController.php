@@ -16,6 +16,16 @@ use Str;
 
 class CarnivalController extends Controller
 {
+    public function validation($data)
+    {
+        $data->validate([
+            'name' => 'required|string|max:255',
+            'region_id' => 'required|exists:regions,id',
+            'country_id' => 'required|exists:country,id',
+            'start_date' => 'required|date|after_or_equal:today',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
+    }
     public function index()
     {
         $carnivals = Carnival::with('mascamps.user', 'user', 'regions')->get();
@@ -31,9 +41,7 @@ class CarnivalController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-        ]);
+        $this->validation($request->all());
         try {
             $uniqueId = $this->generateUniqueId();
 
@@ -86,9 +94,7 @@ class CarnivalController extends Controller
 
     public function update(Request $request, Carnival $carnival)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-        ]);
+        $this->validation($request->all());
         try
         {
             $uniqueId = $this->generateUniqueId();

@@ -44,6 +44,7 @@
                 </div>
                 <div class="modal-body">
                     <form id="createCarnivalForm" enctype="multipart/form-data">
+                        <div class="error"></div>
                         @csrf
                         {{-- <div class="form-group">
                             <label for="head">Head</label>
@@ -113,6 +114,7 @@
                     <form id="editCarnivalForm" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
+                        <div class="error"></div>
                         <input type="hidden" id="edit_id" name="edit_id">
                         {{-- <div class="form-group">
                             <label for="edit_head">Head</label>
@@ -508,7 +510,7 @@
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        $('#carnivalMessage').html(
+                        $(this ' > .error').html(
                             '<div class="alert alert-danger" role="alert">Failed to create carnival</div>'
                         );
                     }
@@ -558,9 +560,11 @@
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        $('#carnivalMessage').html(
-                            '<div class="alert alert-danger" role="alert">Failed to update carnival</div>'
+                        console.error('error : ' error);
+                        $(this ' > .error').html(
+                            '<div class="alert alert-danger" role="alert">Failed to create carnival</div>'
                         );
+                    }
                     }
                 });
             });
