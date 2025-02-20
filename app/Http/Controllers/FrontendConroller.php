@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Services\ProductService;
 use DB;
+use Carbon\Carbon;
 
 
 class FrontendConroller extends Controller
@@ -125,7 +126,16 @@ class FrontendConroller extends Controller
     public function event_listing()
     {
         $products = Product::with('brand')->get();
-        return view('front.events', compact('products'));
+        $upcoming_events = Event::with('tickets')->where('status','active')->where('package_id',6)->whereBetween('start_date', [
+            Carbon::now(), // current date
+            Carbon::now()->addMonths(3), // date 3 months from now
+        ])->orderBy('id','DESC')->get();
+        $carnival_events = Event::with('tickets')->where('status','active')
+        ->where('start_date', '>',Carbon::now())->orderBy('id','DESC')->get()->take(8);
+        $all_events = Event::with('tickets')->where('status','active')
+        ->where('start_date', '>',Carbon::now())->orderBy('id','DESC')->get()->take(4);
+        // dd($carnival_events->toArray());
+        return view('front.events', compact('products','upcoming_events','all_events','carnival_events'));
     }
     public function category_tour_listing()
     {
