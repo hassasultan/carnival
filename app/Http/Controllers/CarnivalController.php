@@ -9,6 +9,7 @@ use App\Models\Vendor;
 use App\Models\CarnivalMembers;
 use App\Models\Country;
 use App\Models\CarnivalImages;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Str;
@@ -17,10 +18,10 @@ class CarnivalController extends Controller
 {
     public function index()
     {
-        $carnivals = Carnival::with('mascamps.user', 'user','regions')->get();
+        $carnivals = Carnival::with('mascamps.user', 'user', 'regions')->get();
         $mascamps = Vendor::with('user')->get();
         $region = Region::all();
-        return view('dashboard.admin.carnivals.index', compact('region','carnivals', 'mascamps'));
+        return view('dashboard.admin.carnivals.index', compact('region', 'carnivals', 'mascamps'));
     }
 
     public function create()
@@ -33,43 +34,42 @@ class CarnivalController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
+        try {
+            $uniqueId = $this->generateUniqueId();
 
-        $uniqueId = $this->generateUniqueId();
+            $slug = $request->name . '-' . $uniqueId;
 
-        $slug = $request->name . '-' . $uniqueId;
+            $carnivals = Carnival::create([
+                'unique_id' => $uniqueId,
+                'head' => $request->head ?? 0,
+                'name' => $request->name,
+                'start_date' => $request->start_date,
+                'slug' => $slug,
+                'end_date' => $request->end_date,
+                'region_id' => $request->region_id,
+                'country_id' => $request->country_id,
+                'description' => $request->description,
+                'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
+            ]);
 
-        $carnivals = Carnival::create([
-            'unique_id' => $uniqueId,
-            'head' => $request->head ?? 0,
-            'name' => $request->name,
-            'start_date' => $request->start_date,
-            'slug' => $slug,
-            'end_date' => $request->end_date,
-            'region_id' => $request->region_id,
-            'country_id' => $request->country_id,
-            'description' => $request->description,
-            'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
-        ]);
-
-        if ($carnivals) {
-            if($request->hasFile('images'))
-            {
-                foreach($request->file('images') as $image)
-                {
-                    $imageName = time() . '.' . $image->extension();
-                    $image->move(public_path('images/carnivalImages'), $imageName);
-                    CarnivalImages::create([
-                        'carnival_id' => $carnivals->id,
-                        'image' => $imageName
-                    ]);
+            if ($carnivals) {
+                if ($request->hasFile('images')) {
+                    foreach ($request->file('images') as $image) {
+                        $imageName = time() . '.' . $image->extension();
+                        $image->move(public_path('images/carnivalImages'), $imageName);
+                        CarnivalImages::create([
+                            'carnival_id' => $carnivals->id,
+                            'image' => $imageName
+                        ]);
+                    }
                 }
-            }
-            $carnivals = Carnival::all();
-            $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
+                $carnivals = Carnival::all();
+                $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
 
-            return response()->json(['message' => 'Carnival created successfully', 'table_html' => $view], 200);
-        } else {
-            return response()->json(['error' => 'Failed to create Carnival'], 500);
+                return response()->json(['message' => 'Carnival created successfully', 'table_html' => $view], 200);
+            }
+        } catch (Exception $exception) {
+            return response()->json(['error' => $exception->getMessage()], 500);
         }
     }
 
@@ -89,37 +89,38 @@ class CarnivalController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
-        $uniqueId = $this->generateUniqueId();
+        try
+        {
+            $uniqueId = $this->generateUniqueId();
 
-        $carnivals = $carnival->update([
-            'unique_id' => $uniqueId,
-            'name' => $request->name,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'region_id' => $request->region_id,
-            'country_id' => $request->country_id,
-            'description' => $request->description,
-            'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
-        ]);
+            $carnivals = $carnival->update([
+                'unique_id' => $uniqueId,
+                'name' => $request->name,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'region_id' => $request->region_id,
+                'country_id' => $request->country_id,
+                'description' => $request->description,
+                'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
+            ]);
 
-        if ($carnivals) {
-            if($request->hasFile('images'))
-            {
-                foreach($request->file('images') as $image)
-                {
-                    $imageName = time() . '.' . $image->extension();
-                    $image->move(public_path('images/carnivalImages'), $imageName);
-                    CarnivalImages::create([
-                        'carnival_id' => $carnival->id,
-                        'image' => $imageName
-                    ]);
+            if ($carnivals) {
+                if ($request->hasFile('images')) {
+                    foreach ($request->file('images') as $image) {
+                        $imageName = time() . '.' . $image->extension();
+                        $image->move(public_path('images/carnivalImages'), $imageName);
+                        CarnivalImages::create([
+                            'carnival_id' => $carnival->id,
+                            'image' => $imageName
+                        ]);
+                    }
                 }
+                $carnivals = Carnival::all();
+                $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
+                return response()->json(['carnival' => $carnival, 'message' => 'Carnival updated successfully', 'table_html' => $view], 200);
             }
-            $carnivals = Carnival::all();
-            $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
-            return response()->json(['carnival' => $carnival, 'message' => 'Carnival updated successfully', 'table_html' => $view], 200);
-        } else {
-            return response()->json(['error' => 'No changes detected for the carnival'], 400);
+        } catch (Exception $exception) {
+            return response()->json(['error' => $exception->getMessage()], 500);
         }
     }
     public function deleteImage(Carnival $carnival, $imageId)
