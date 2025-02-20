@@ -560,7 +560,7 @@
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
-                        console.error('error : ' error);
+                        console.error('error : '+ error);
                         $(this).find('.error').html(
                             '<div class="alert alert-danger" role="alert">'+ error +'</div>'
                         );
