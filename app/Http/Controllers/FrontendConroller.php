@@ -295,9 +295,10 @@ class FrontendConroller extends Controller
         }
         // dd($top_sellers->toArray());
         $investors = Investor::all();
+        $ads = Advertisement::all()->take('2');
         $blogs = Blogs::with('user')->get()->take('6');
         // dd($products->toArray());
-        return view('ShopFrontend.home', compact('products', 'investors', 'blogs', 'categories', 'oackages', 'new_arrivals', 'top_sellers', 'brands', 'discounted_products', 'banners'));
+        return view('ShopFrontend.home', compact('products', 'investors', 'blogs', 'categories', 'oackages', 'new_arrivals', 'top_sellers', 'brands', 'discounted_products', 'banners', 'ads'));
     }
     public function product_listing(Request $request)
     {

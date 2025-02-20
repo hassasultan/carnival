@@ -460,14 +460,16 @@
         <div class="block-banner-opt1 effect-banner3">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-6">
+                    @foreach ($ads as $item)
+                        <div class="col-sm-6">
+                            <a href="" class="box-img"><img src="{{ asset('images/' . $item->image) }}"
+                                    alt="banner"></a>
+                        </div>
+                    @endforeach
+                    {{-- <div class="col-sm-6">
                         <a href="" class="box-img"><img src="{{ asset('assets/images/580X99.jpeg') }}"
                                 alt="banner"></a>
-                    </div>
-                    <div class="col-sm-6">
-                        <a href="" class="box-img"><img src="{{ asset('assets/images/580X99.jpeg') }}"
-                                alt="banner"></a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
