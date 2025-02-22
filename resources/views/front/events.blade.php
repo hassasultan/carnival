@@ -1269,7 +1269,7 @@
                 @endif --}}
                 <div class="col-xs-12 col-sm-12 col-md-4">
                     <div class="item-block style-5 hover-blue-3">
-                        <img class="center-image" src="https://carnivalguide.co/travel/img/home_9/special1.jpg"
+                        <img class="center-image" src="{{ asset('eventpromotional_image/' . $event->promotional_image) }}"
                             alt="">
                         <div class="tour-layer delay-1"></div>
                         <div class="vertical-align">

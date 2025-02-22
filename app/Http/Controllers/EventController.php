@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\EventTicket;
 use App\Models\EventImage;
 use App\Models\Vendor;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Services\EventService;
@@ -52,6 +53,7 @@ class EventController extends Controller
     {
         $packages = Package::all();
         $ticktes = Ticket::all();
+        $countries = Country::all();
         $categories = Category::where('type', 'events')->get();
         $show_events = Event::with("category", "package");
         $events = Event::all(['id', 'name', 'start_date', 'end_date']);
@@ -59,7 +61,7 @@ class EventController extends Controller
             $query->where('status', 1);
         })->get();
 
-        return view('dashboard.admin.events.create', compact('packages', 'categories', 'ticktes', 'show_events', 'events', 'vendors'));
+        return view('dashboard.admin.events.create', compact('packages', 'categories', 'ticktes', 'show_events', 'events', 'vendors', 'countries'));
     }
 
     public function store(Request $request)
@@ -110,7 +112,8 @@ class EventController extends Controller
 
         $packages = Package::all();
         $categories = Category::all();
-        return response()->json(['event' => $event, 'packages' => $packages, 'categories' => $categories]);
+        $countries = Country::all();
+        return response()->json(['event' => $event, 'packages' => $packages, 'categories' => $categories, 'countries' => $countries]);
     }
 
     public function update(Request $request, Event $event)

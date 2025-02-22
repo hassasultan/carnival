@@ -49,8 +49,14 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="edit_venue">Venue</label>
-                                    <input type="text" id="edit_venue" name="venue" class="form-control"
-                                        placeholder="Enter Venue Name" value="" required>
+                                    <select id="venue" name="venue" class="form-control" required>
+                                        <option value="">Select Venue</option>
+                                        @foreach ($countries as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    {{-- <input type="text" id="edit_venue" name="venue" class="form-control"
+                                        placeholder="Enter Venue Name" value="" required> --}}
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="edit_address">Address</label>
@@ -134,6 +140,15 @@
                                             id="edit_additional_images" name="additional_images[]" multiple>
                                         <label class="custom-file-label" for="edit_additional_images"
                                             id="edit_additional_images_label">Choose file</label>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="promotional_image">Promotional Image</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input"
+                                            id="promotional_image" name="promotional_image[]">
+                                        <label class="custom-file-label" for="promotional_image"
+                                            id="promotional_image_label">Choose file</label>
                                     </div>
                                 </div>
                             </div>
@@ -574,6 +589,21 @@
                     );
                 }
             });
+        });
+
+        // Update label text when files are selected for promotional images
+        $('#promotional_image').on('change', function() {
+            // Get the file names
+            var files = $(this)[0].files;
+            var fileNames = '';
+            for (var i = 0; i < files.length; i++) {
+                fileNames += files[i].name;
+                if (i < files.length - 1) {
+                    fileNames += ', ';
+                }
+            }
+            // Update the label text
+            $('#promotional_image_label').text(fileNames);
         });
     </script>
 @endsection

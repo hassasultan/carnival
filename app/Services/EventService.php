@@ -24,6 +24,11 @@ class EventService
             $eventData['banner'] = $banner;
         }
 
+        if (isset($data['promotional_image'])) {
+            $promotional_image = $this->uploadImage($data['promotional_image'], 'eventpromotional_image');
+            $eventData['promotional_image'] = $promotional_image;
+        }
+
         $event = Event::create($eventData);
 
         if (isset($data['additional_images'])) {

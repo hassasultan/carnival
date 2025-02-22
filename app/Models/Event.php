@@ -45,6 +45,7 @@ class Event extends Model
         'ticket_instructions_btn',
         'special_instructions',
         'tags_btn',
+        'promotional_image',
     ];
 
     public function user()
