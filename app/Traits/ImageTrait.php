@@ -7,7 +7,7 @@ use Illuminate\Http\UploadedFile;
 
 trait ImageTrait
 {
-    public function uploadImage($image, $folder)
+    public function uploadImage(UploadedFile $image, $folder)
     {
         $imageName = time() . '_' . $image->getClientOriginalName();
         $image->move(public_path($folder), $imageName);
