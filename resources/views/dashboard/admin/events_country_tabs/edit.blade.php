@@ -155,15 +155,15 @@
 
             if (carnivalId) {
                 $.ajax({
-                    url: '/get-placements/' + carnivalId,
+                    url: "{{ route('get.placements', '') }}/" + carnivalId,
                     type: 'GET',
                     dataType: 'json',
                     success: function(data) {
                         $.each(data, function(index, tab) {
                             var selected = (tab.id == {{ $eventsCountryTab->placement }}) ?
                                 'selected' : '';
-                            placementDropdown.append('<option value="' + tab.id + '" ' +
-                                selected + '>' + tab.name + '</option>');
+                            placementDropdown.append('<option value="' + tab.placement + '" ' +
+                                selected + '>' + tab.tab + '</option>');
                         });
                     },
                     error: function() {

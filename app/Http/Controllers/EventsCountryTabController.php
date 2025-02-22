@@ -47,6 +47,7 @@ class EventsCountryTabController extends Controller
             'file.*' => 'nullable|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi',
             'content' => 'nullable|string',
             'status' => 'required|boolean',
+            'placement' => 'required',
             // 'placement' => 'required|integer|unique:events_country_tabs,placement',
         ]);
 
@@ -113,7 +114,7 @@ class EventsCountryTabController extends Controller
             'file.*' => 'nullable|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi',
             'content' => 'nullable|string',
             'status' => 'required|boolean',
-            'placement' => 'required|integer|unique:events_country_tabs,placement,' . $eventsCountryTab->id,
+            'placement' => 'required',
         ]);
 
         try {

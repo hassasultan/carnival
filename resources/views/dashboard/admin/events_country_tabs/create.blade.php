@@ -132,7 +132,7 @@
                     dataType: 'json',
                     success: function(data) {
                         $.each(data, function(index, tab) {
-                            placementDropdown.append('<option value="' + tab.id + '">' + tab
+                            placementDropdown.append('<option value="' + tab.placement + '">' + tab
                                 .tab + '</option>');
                         });
                     },
