@@ -27,6 +27,18 @@ class EventsCountryTabController extends Controller
 
     public function store(Request $request)
     {
+        // Get all existing placements for the selected carnival
+        $existingPlacements = EventsCountryTab::where('carnival_id', $request->carnival_id)
+            ->pluck('placement')
+            ->toArray();
+
+        $placement = $request->placement;
+        while (in_array($placement, $existingPlacements)) {
+            $placement++;
+        }
+
+        $request->merge(['placement' => $placement]);
+
         $request->validate([
             'carnival_id' => 'required|exists:carnivals,id',
             'country_id' => 'required|exists:country,id',
@@ -35,12 +47,11 @@ class EventsCountryTabController extends Controller
             'file.*' => 'nullable|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi',
             'content' => 'nullable|string',
             'status' => 'required|boolean',
-            'placement' => 'required|integer|unique:events_country_tabs,placement',
+            // 'placement' => 'required|integer|unique:events_country_tabs,placement',
         ]);
 
         try {
             $data = $request->except('file');
-
             $eventCountryTab = EventsCountryTab::create($data);
 
             if ($request->hasFile('file')) {
@@ -64,47 +75,6 @@ class EventsCountryTabController extends Controller
         }
     }
 
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'carnival_id' => 'required|exists:carnivals,id',
-    //         'country_id' => 'required|exists:country,id',
-    //         'city_id' => 'required|exists:city,id',
-    //         'tab' => 'required|string|max:255',
-    //         'file' => 'nullable|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi',
-    //         'content' => 'nullable|string',
-    //         'status' => 'required|boolean',
-    //         'placement' => 'required|integer|unique:events_country_tabs,placement',
-    //     ]);
-    //     try {
-    //         $data = $request->all();
-
-    //         if ($request->hasFile('file')) {
-    //             $fileName = time() . '.' . $request->file->extension();
-    //             $request->file->move(public_path('files'), $fileName);
-    //             $file = $request->file('file');
-    //             // $path = $file->store('files', 'public');
-    //             $data['file'] = $fileName;
-
-    //             // Determine the file type
-    //             if (str_starts_with($file->getClientMimeType(), 'image/')) {
-    //                 $data['file_type'] = 'image';
-    //             } elseif (str_starts_with($file->getClientMimeType(), 'video/')) {
-    //                 $data['file_type'] = 'video';
-    //             } else {
-    //                 $data['file_type'] = 'other';
-    //             }
-    //         }
-
-    //         EventsCountryTab::create($data);
-
-    //         return redirect()->route('events_country_tabs.index')
-    //             ->with('success', 'Event Country Tab created successfully.');
-    //     } catch (Exception $ex) {
-    //         return redirect()->back()->with('error', $ex->getMessage());
-    //     }
-    // }
-
     public function show(EventsCountryTab $eventsCountryTab)
     {
         return view('dashboard.admin.events_country_tabs.show', compact('eventsCountryTab'));
@@ -115,11 +85,26 @@ class EventsCountryTabController extends Controller
         $carnivals = Carnival::all();
         $countries = Country::all();
         $cities = City::where('country_id', $eventsCountryTab->country_id)->get();
-        return view('dashboard.admin.events_country_tabs.edit', compact('eventsCountryTab', 'carnivals', 'countries', 'cities'));
+        $placements = EventsCountryTab::where('carnival_id', $eventsCountryTab->carnival_id)->get();
+        return view('dashboard.admin.events_country_tabs.edit', compact('eventsCountryTab', 'carnivals', 'countries', 'cities', 'placements'));
     }
 
     public function update(Request $request, EventsCountryTab $eventsCountryTab)
     {
+        // Get all existing placements for the selected carnival, excluding the current record
+        $existingPlacements = EventsCountryTab::where('carnival_id', $request->carnival_id)
+            ->where('id', '!=', $eventsCountryTab->id)
+            ->pluck('placement')
+            ->toArray();
+
+        // Ensure unique placement
+        $placement = $request->placement;
+        while (in_array($placement, $existingPlacements)) {
+            $placement++; // Increment until a unique placement is found
+        }
+
+        $request->merge(['placement' => $placement]); // Update request with unique placement
+
         $request->validate([
             'carnival_id' => 'required|exists:carnivals,id',
             'country_id' => 'required|exists:country,id',
@@ -133,50 +118,31 @@ class EventsCountryTabController extends Controller
 
         try {
             $data = $request->except('file');
-
             $eventsCountryTab->update($data);
 
             if ($request->hasFile('file')) {
                 // Delete existing images
                 foreach ($eventsCountryTab->images as $image) {
-                    // Delete the file from the filesystem
                     $imagePath = public_path('file/' . $image->file);
                     if (file_exists($imagePath)) {
                         unlink($imagePath);
                     }
-                    
-                    // Delete the image record from the database
                     $image->delete();
                 }
-            
-                // Now store the new images
+
+                // Store the new images
                 foreach ($request->file('file') as $file) {
                     $fileName = time() . '-' . uniqid() . '.' . $file->extension();
                     $file->move(public_path('file'), $fileName);
-            
+
                     $fileType = str_starts_with($file->getClientMimeType(), 'image/') ? 'image' : 'video';
-            
-                    // Create new image record
+
                     $eventsCountryTab->images()->create([
                         'file' => $fileName,
                         'file_type' => $fileType,
                     ]);
                 }
             }
-            
-            // if ($request->hasFile('file')) {
-            //     foreach ($request->file('file') as $file) {
-            //         $fileName = time() . '-' . uniqid() . '.' . $file->extension();
-            //         $file->move(public_path('file'), $fileName);
-
-            //         $fileType = str_starts_with($file->getClientMimeType(), 'image/') ? 'image' : 'video';
-
-            //         $eventsCountryTab->images()->create([
-            //             'file' => $fileName,
-            //             'file_type' => $fileType,
-            //         ]);
-            //     }
-            // }
 
             return redirect()->route('events_country_tabs.index')
                 ->with('success', 'Event Country Tab updated successfully.');
@@ -192,33 +158,44 @@ class EventsCountryTabController extends Controller
     //         'country_id' => 'required|exists:country,id',
     //         'city_id' => 'required|exists:city,id',
     //         'tab' => 'required|string|max:255',
-    //         'file' => 'nullable|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi',
+    //         'file.*' => 'nullable|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi',
     //         'content' => 'nullable|string',
     //         'status' => 'required|boolean',
     //         'placement' => 'required|integer|unique:events_country_tabs,placement,' . $eventsCountryTab->id,
     //     ]);
+
     //     try {
-
-    //         $data = $request->all();
-
-    //         if ($request->hasFile('file')) {
-    //             $fileName = time() . '.' . $request->file->extension();
-    //             $request->file->move(public_path('files'), $fileName);
-    //             $file = $request->file('file');
-    //             // $path = $file->store('files', 'public');
-    //             $data['file'] = $fileName;
-
-    //             // Determine the file type
-    //             if (str_starts_with($file->getClientMimeType(), 'image/')) {
-    //                 $data['file_type'] = 'image';
-    //             } elseif (str_starts_with($file->getClientMimeType(), 'video/')) {
-    //                 $data['file_type'] = 'video';
-    //             } else {
-    //                 $data['file_type'] = 'other';
-    //             }
-    //         }
+    //         $data = $request->except('file');
 
     //         $eventsCountryTab->update($data);
+
+    //         if ($request->hasFile('file')) {
+    //             // Delete existing images
+    //             foreach ($eventsCountryTab->images as $image) {
+    //                 // Delete the file from the filesystem
+    //                 $imagePath = public_path('file/' . $image->file);
+    //                 if (file_exists($imagePath)) {
+    //                     unlink($imagePath);
+    //                 }
+
+    //                 // Delete the image record from the database
+    //                 $image->delete();
+    //             }
+
+    //             // Now store the new images
+    //             foreach ($request->file('file') as $file) {
+    //                 $fileName = time() . '-' . uniqid() . '.' . $file->extension();
+    //                 $file->move(public_path('file'), $fileName);
+
+    //                 $fileType = str_starts_with($file->getClientMimeType(), 'image/') ? 'image' : 'video';
+
+    //                 // Create new image record
+    //                 $eventsCountryTab->images()->create([
+    //                     'file' => $fileName,
+    //                     'file_type' => $fileType,
+    //                 ]);
+    //             }
+    //         }
 
     //         return redirect()->route('events_country_tabs.index')
     //             ->with('success', 'Event Country Tab updated successfully.');
@@ -238,5 +215,10 @@ class EventsCountryTabController extends Controller
     {
         $cities = City::where('country_id', $country_id)->get();
         return response()->json($cities);
+    }
+    public function getPlacementByCarnival($carnival_id)
+    {
+        $tabs = EventsCountryTab::where('carnival_id', $carnival_id)->get();
+        return response()->json($tabs);
     }
 }

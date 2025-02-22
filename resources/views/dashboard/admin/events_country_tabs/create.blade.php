@@ -8,6 +8,15 @@
                 <div class="card-body">
                     <form action="{{ route('events_country_tabs.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        {{-- <div class="form-group">
+                            <label for="carnival_id">Carnival:</label>
+                            <select class="form-control" id="carnival_id" name="carnival_id" required>
+                                <option value="">Select Carnival</option>
+                                @foreach ($carnivals as $carnival)
+                                    <option value="{{ $carnival->id }}">{{ $carnival->name }}</option>
+                                @endforeach
+                            </select>
+                        </div> --}}
                         <div class="form-group">
                             <label for="carnival_id">Carnival:</label>
                             <select class="form-control" id="carnival_id" name="carnival_id" required>
@@ -49,8 +58,10 @@
                             <div id="file-preview"></div>
                         </div> --}}
                         <div class="form-group">
-                            <label for="placement">Placement Order Number:</label>
-                            <input type="number" class="form-control" id="placement" name="placement" required>
+                            <label for="placement">Placement After:</label>
+                            <select class="form-control" id="placement" name="placement" required>
+                                <option value="">Select</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="content">Content:</label>
@@ -70,6 +81,7 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         document.getElementById('country_id').addEventListener('change', function() {
             var countryId = this.value;
@@ -87,7 +99,7 @@
                     });
                 });
         });
-        
+
         document.getElementById('file').addEventListener('change', function(event) {
             let preview = document.getElementById('file-preview');
             preview.innerHTML = ''; // Clear previous previews
@@ -106,6 +118,31 @@
                 }
             });
         });
+
+        $(document).on('change', '#carnival_id', function() {
+            var carnivalId = $(this).val();
+            var placementDropdown = $('#placement');
+
+            placementDropdown.empty().append('<option value="">Select</option>');
+
+            if (carnivalId) {
+                $.ajax({
+                    url: "{{ route('get.placements', '') }}/" + carnivalId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        $.each(data, function(index, tab) {
+                            placementDropdown.append('<option value="' + tab.id + '">' + tab
+                                .tab + '</option>');
+                        });
+                    },
+                    error: function() {
+                        alert('Error fetching placements. Please try again.');
+                    }
+                });
+            }
+        });
+
 
         // document.getElementById('file').addEventListener('change', function() {
         //     var file = this.files[0];

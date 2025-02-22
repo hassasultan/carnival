@@ -47,20 +47,30 @@
                         </div>
                         <div class="form-group">
                             <label for="file">Files:</label>
-                            <input type="file" class="form-control-file" id="file" name="file[]" multiple accept="image/*">
+                            <input type="file" class="form-control-file" id="file" name="file[]" multiple
+                                accept="image/*">
                             <div id="file-preview">
-                                @foreach($eventsCountryTab->images as $image)
+                                @foreach ($eventsCountryTab->images as $image)
                                     <div class="image-container">
-                                        <img src="{{ asset('file/'.$image->file) }}" style="max-width: 100px; margin: 5px;">
-                                        <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="deleteImage(this, {{ $image->id }})">X</button>
+                                        <img src="{{ asset('file/' . $image->file) }}"
+                                            style="max-width: 100px; margin: 5px;">
+                                        <button type="button" class="btn btn-danger btn-sm delete-btn"
+                                            onclick="deleteImage(this, {{ $image->id }})">X</button>
                                     </div>
                                 @endforeach
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="placement">Placement Order Number:</label>
-                            <input type="number" class="form-control" id="placement" name="placement"
-                                value="{{ $eventsCountryTab->placement }}" required>
+                            <select class="form-control" id="placement" name="placement" required>
+                                <option value="">Select</option>
+                                @foreach ($placements as $placement)
+                                    <option value="{{ $placement->id }}"
+                                        {{ $eventsCountryTab->placement == $placement->id ? 'selected' : '' }}>
+                                        {{ $placement->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="content">Content:</label>
@@ -82,6 +92,7 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         document.getElementById('country_id').addEventListener('change', function() {
             var countryId = this.value;
@@ -134,6 +145,32 @@
                     reader.readAsDataURL(file);
                 }
             });
+        });
+
+        $(document).on('change', '#carnival_id', function() {
+            var carnivalId = $(this).val();
+            var placementDropdown = $('#placement');
+
+            placementDropdown.empty().append('<option value="">Select</option>');
+
+            if (carnivalId) {
+                $.ajax({
+                    url: '/get-placements/' + carnivalId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        $.each(data, function(index, tab) {
+                            var selected = (tab.id == {{ $eventsCountryTab->placement }}) ?
+                                'selected' : '';
+                            placementDropdown.append('<option value="' + tab.id + '" ' +
+                                selected + '>' + tab.name + '</option>');
+                        });
+                    },
+                    error: function() {
+                        alert('Error fetching placements. Please try again.');
+                    }
+                });
+            }
         });
     </script>
 @endsection

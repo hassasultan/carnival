@@ -292,6 +292,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // API Route for getting cities by country
     Route::get('api/cities/{country_id}', [EventsCountryTabController::class, 'getCitiesByCountry'])->name('get.cities.by.country');
+    Route::get('/get-placements/{carnival_id}', [EventsCountryTabController::class, 'getPlacementByCarnival'])->name('get.placements');
 
     // banner
     Route::resource('banners', BannerController::class);
