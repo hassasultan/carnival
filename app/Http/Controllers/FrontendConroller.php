@@ -143,6 +143,7 @@ class FrontendConroller extends Controller
                 $query->where('title', 'like', '%' . 'Party' . '%');
             })
             ->where('start_date', '>', Carbon::now())->orderBy('id', 'DESC')->get()->take(8);
+        $ads = Advertisement::where('type', 'event')->get();
         // dd($carnival_events->toArray());
         return view('front.events', compact('products', 'upcoming_events', 'all_events', 'carnival_events', 'popular_events'));
     }
