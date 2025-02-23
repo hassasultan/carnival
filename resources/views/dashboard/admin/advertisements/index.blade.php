@@ -33,7 +33,7 @@
                                     <tr>
                                         <td>{{ $advertisement->id }}</td>
                                         <td>{{ $advertisement->title }}</td>
-                                        <td>{{ $advertisement->type }}</td>
+                                        <td>{{ ucfirst($advertisement->type) }}</td>
                                         <td><img src="{{ asset('images/' . $advertisement->image) }}" alt="{{ $advertisement->title }}" width="50"></td>
                                         <td>{{ $advertisement->description }}</td>
                                         <td>{{ $advertisement->index }}</td>
