@@ -67,7 +67,7 @@
                                 @foreach ($placements as $placement)
                                     <option value="{{ $placement->id }}"
                                         {{ $eventsCountryTab->placement == $placement->id ? 'selected' : '' }}>
-                                        {{ $placement->name }}
+                                        {{ $placement->tab }}
                                     </option>
                                 @endforeach
                             </select>
