@@ -11,6 +11,19 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
+                            <label for="type">Type</label>
+                            <select name="type" class="form-control">
+                                <option value="home" @if ($advertisement->type == 'home') selected @endif>Home</option>
+                                <option value="shop" @if ($advertisement->type == 'shop') selected @endif>Shop</option>
+                                <option value="mascamps" @if ($advertisement->type == 'mascamps') selected @endif>Mascamps</option>
+                                <option value="section_leader" @if ($advertisement->type == 'section_leader') selected @endif>Section Leader</option>
+                                <option value="event" @if ($advertisement->type == 'event') selected @endif>Event</option>
+                                <option value="flight" @if ($advertisement->type == 'flight') selected @endif>Flight</option>
+                                <option value="about" @if ($advertisement->type == 'about') selected @endif>About</option>
+                                <option value="aboutus" @if ($advertisement->type == 'aboutus') selected @endif>Aboutus</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="title">Title:</label>
                             <input type="text" class="form-control" id="title" name="title"
                                 value="{{ old('title', $advertisement->title) }}" required>

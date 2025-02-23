@@ -14,6 +14,19 @@
                                 value="{{ old('title') }}" required>
                         </div>
                         <div class="form-group">
+                            <label for="type">Type</label>
+                            <select name="type" class="form-control">
+                                <option value="home">Home</option>
+                                <option value="shop">Shop</option>
+                                <option value="mascamps">Mascamps</option>
+                                <option value="section_leader">Section Leader</option>
+                                <option value="event">Event</option>
+                                <option value="flight">Flight</option>
+                                <option value="about">About</option>
+                                <option value="aboutus">Aboutus</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="image">Image:</label>
                             <input type="file" class="form-control" id="image" name="image" required>
                         </div>

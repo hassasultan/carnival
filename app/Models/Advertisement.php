@@ -10,5 +10,5 @@ class Advertisement extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['title', 'description', 'image', 'status', 'index'];
+    protected $fillable = ['type', 'title', 'description', 'image', 'status', 'index'];
 }

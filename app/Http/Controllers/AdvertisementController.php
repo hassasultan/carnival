@@ -22,6 +22,7 @@ class AdvertisementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'type' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required|string',
@@ -44,6 +45,7 @@ class AdvertisementController extends Controller
         $request->image->move(public_path('images'), $imageName);
 
         Advertisement::create([
+            'type' => $request->type,
             'title' => $request->title,
             'image' => $imageName,
             'description' => $request->description,
@@ -67,6 +69,7 @@ class AdvertisementController extends Controller
     public function update(Request $request, Advertisement $advertisement)
     {
         $request->validate([
+            'type' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required|string',
@@ -89,6 +92,7 @@ class AdvertisementController extends Controller
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $imageName);
             $advertisement->update([
+                'type' => $request->type,
                 'title' => $request->title,
                 'image' => $imageName,
                 'description' => $request->description,

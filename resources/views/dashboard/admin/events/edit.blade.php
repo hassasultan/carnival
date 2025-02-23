@@ -146,7 +146,7 @@
                                     <label for="promotional_image">Promotional Image</label>
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input"
-                                            id="promotional_image" name="promotional_image[]">
+                                            id="promotional_image" name="promotional_image">
                                         <label class="custom-file-label" for="promotional_image"
                                             id="promotional_image_label">Choose file</label>
                                     </div>
