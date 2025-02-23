@@ -100,7 +100,7 @@ class AdvertisementController extends Controller
                 'status' => $request->status,
             ]);
         } else {
-            $advertisement->update($request->only(['title', 'description', 'status', 'index']));
+            $advertisement->update($request->only(['type', 'title', 'description', 'status', 'index']));
         }
 
         return redirect()->route('advertisements.index')->with('success', 'Advertisement updated successfully.');
