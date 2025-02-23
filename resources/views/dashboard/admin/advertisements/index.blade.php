@@ -22,6 +22,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Title</th>
+                                    <th>Type</th>
                                     <th>Image</th>
                                     <th>Description</th>
                                     <th>index</th>
@@ -32,6 +33,7 @@
                                     <tr>
                                         <td>{{ $advertisement->id }}</td>
                                         <td>{{ $advertisement->title }}</td>
+                                        <td>{{ $advertisement->type }}</td>
                                         <td><img src="{{ asset('images/' . $advertisement->image) }}" alt="{{ $advertisement->title }}" width="50"></td>
                                         <td>{{ $advertisement->description }}</td>
                                         <td>{{ $advertisement->index }}</td>
