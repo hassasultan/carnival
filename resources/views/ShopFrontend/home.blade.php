@@ -495,13 +495,13 @@
                                             alt="blog"></a>
                                 </div>
                                 <div class="blog-detail">
-                                    <strong class="blog-name"><a href="#">{{ $blog->title }} </a></strong>
+                                    <strong class="blog-name"><a href="{{ route('front.blog.detail',$blog->id) }}">{{ $blog->title }} </a></strong>
                                     <div class="blog-info">
                                         <div class="blog-date"><span>{{ $blog->created_at->format('d/m/Y') }}</span></div>
                                         <div class="blog-comment"><span>27 comments</span></div>
                                     </div>
                                     <div class="blog-actions">
-                                        <a href="#" class="action">Read more</a>
+                                        <a href="{{ route('front.blog.detail',$blog->id) }}" class="action">Read more</a>
                                     </div>
                                 </div>
                             </div>
