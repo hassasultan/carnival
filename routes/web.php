@@ -112,9 +112,9 @@ Route::get('/get-subvendors', [FrontendConroller::class, 'get_subVendors'])->nam
 Route::get('/shop/section-leader/{slug}', [FrontendConroller::class, 'sub_vendor_detail'])->name('front.subVendor.detail');
 Route::get('/get-events', [FrontendConroller::class, 'get_events'])->name('get.events');
 Route::get('/{event_slug}/event-detail', [FrontendConroller::class, 'myEventDetail'])->name('get.myEvent.detail');
-Route::get('/model-listing', [FrontendConroller::class, 'modelListing'])->name('model.listing');
+Route::get('/shop/model-listing', [FrontendConroller::class, 'modelListing'])->name('model.listing');
 Route::get('/model/{slug}', [FrontendConroller::class, 'modelDetail'])->name('model.detail');
-Route::get('/artist-listing', [FrontendConroller::class, 'artistListing'])->name('artist.listing');
+Route::get('/shop/artist-listing', [FrontendConroller::class, 'artistListing'])->name('artist.listing');
 Route::get('/artist/{slug}', [FrontendConroller::class, 'artistDetail'])->name('artist.detail');
 // Route::get('/music-detail/{slug}', [FrontendConroller::class, 'musicDetail'])->name('music.detail');
 Route::get('/get-music', [FrontendConroller::class, 'get_music'])->name('get.musics.home');
