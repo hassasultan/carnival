@@ -63,7 +63,7 @@
                         <div class="form-group">
                             <label for="placement">Placement Order Number:</label>
                             <select class="form-control" id="placeWhere" name="placeWhere" required>
-                                <option value="" selected disabled>-- Select Direction --</option>
+                                {{-- <option value="" selected disabled>-- Select Direction --</option> --}}
                                 <option value="Place Before">Place Before</option>
                                 <option value="Place After">Place After</option>
                             </select>
