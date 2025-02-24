@@ -29,7 +29,7 @@
                                 value="{{ old('title', $advertisement->title) }}" required>
                         </div>
                         <div class="form-group">
-                            <label for="image">Image:</label>
+                            <label for="image">File:</label>
                             <input type="file" class="form-control" id="image" name="image">
                             <img src="{{ asset('images/' . $advertisement->image) }}" alt="{{ $advertisement->title }}"
                                 width="100" class="mt-2">
