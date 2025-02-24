@@ -354,7 +354,7 @@
                     @foreach ($brands as $brand)
                         <div class="col-sm-6">
                             <a class="box-img" href="#">
-                                <img alt="{{ $brand->title }}" src="{{ asset('images/' . $brand->logo) }}">
+                                <img alt="{{ $brand->title }}" src="{{ asset('images/' . $brand->logo) }}" style="height: 120px;">
                             </a>
                         </div>
                     @endforeach
