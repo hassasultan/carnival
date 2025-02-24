@@ -13,7 +13,7 @@
             <img src="{{ asset($banner->banner_image) }}" width="100">
         </div>
 
-            <div class="form-group" id="poster_wrapper" @if ($banner->poster != null) style="display: block;" @endif>
+            <div class="form-group" id="poster_wrapper" @if ($banner->poster != null) style="display: block;" @else style="display:none;" @endif>
                 <label for="banner_image">Poster</label>
                 <input type="file" name="poster" id="poster" class="form-control">
             </div>
