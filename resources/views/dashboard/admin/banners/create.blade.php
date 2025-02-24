@@ -64,5 +64,20 @@
                 }
             }
         });
+        document.getElementById('poster').addEventListener('change', function(event) {
+            let file = event.target.files[0];
+            let posterImg = document.getElementById('poster-img');
+
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    posterImg.src = e.target.result;
+                    posterImg.style.display = 'block'; // Show preview
+                }
+                reader.readAsDataURL(file);
+            } else {
+                posterImg.style.display = 'none'; // Hide if no file is selected
+            }
+        });
     </script>
 @endsection

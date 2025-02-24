@@ -13,10 +13,11 @@
             <img src="{{ asset($banner->banner_image) }}" width="100">
         </div>
 
-        <div class="form-group" id="poster_wrapper" @if ($banner->poster != null) style="display: block;" @else style="display:none;" @endif>
+        <div class="form-group" id="poster_wrapper"
+            @if ($banner->poster != null) style="display: block;" @else style="display:none;" @endif>
             <label for="banner_image">Poster</label>
             <input type="file" name="poster" id="poster" class="form-control">
-            <img src="{{ asset($banner->poster) }}" width="150" height="100" id="poster-img"/>
+            <img src="{{ asset($banner->poster) }}" width="150" height="100" id="poster-img" />
         </div>
 
         <div class="form-group">
@@ -66,6 +67,21 @@
                     posterWrapper.style.display = 'none';
                     posterInput.removeAttribute('required'); // Remove required if not video
                 }
+            }
+        });
+        document.getElementById('poster').addEventListener('change', function(event) {
+            let file = event.target.files[0];
+            let posterImg = document.getElementById('poster-img');
+
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    posterImg.src = e.target.result;
+                    posterImg.style.display = 'block'; // Show preview
+                }
+                reader.readAsDataURL(file);
+            } else {
+                posterImg.style.display = 'none'; // Hide if no file is selected
             }
         });
     </script>
