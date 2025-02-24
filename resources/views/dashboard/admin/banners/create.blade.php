@@ -13,6 +13,7 @@
         <div class="form-group" id="poster_wrapper" style="display: none;">
             <label for="banner_image">Poster</label>
             <input type="file" name="poster" id="poster" class="form-control">
+            <img src="" width="150" height="100" id="poster-img" />
         </div>
 
         <div class="form-group">
