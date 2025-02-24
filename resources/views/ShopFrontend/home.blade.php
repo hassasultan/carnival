@@ -25,7 +25,7 @@
                             @foreach ($banners as $banner)
                                 @php
                                     $extension = pathinfo($banner->banner_image, PATHINFO_EXTENSION);
-                                    $bannerUrl = asset('shopAssets/images/media/' . $banner->banner_image);
+                                    $bannerUrl = asset( $banner->banner_image);
                                 @endphp
 
                                 <div class="item">
