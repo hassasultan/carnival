@@ -146,13 +146,13 @@
                             $isVideo = in_array($fileExtension, ['mp4', 'avi', 'mov']);
                         @endphp
 
-                        <div class="hero" style="background-image: url('{{ !$isVideo ? asset('images/',$ad->image) : '' }}');">
+                        <div class="hero" style="background-image: url('{{ !$isVideo ? asset('images/'.$ad->image) : '' }}');">
                             <h4>{{ strtoupper($ad->type) }}</h4>
                             <h1>{{ $ad->title }}</h1>
                             <p class="text-orange">{{ $ad->description }}</p>
 
                             @if ($isVideo)
-                                <div class="play-button" onclick="openVideoPopup('{{ asset('images/',$ad->image) }}')">
+                                <div class="play-button" onclick="openVideoPopup('{{ asset('images/'. $ad->image) }}')">
                                     <i class="fa fa-play"></i>
                                 </div>
                             @endif
