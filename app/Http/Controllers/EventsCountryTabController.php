@@ -27,14 +27,23 @@ class EventsCountryTabController extends Controller
 
     public function store(Request $request)
     {
-        // Get all existing placements for the selected carnival
-        $existingPlacements = EventsCountryTab::where('carnival_id', $request->carnival_id)
-            ->pluck('placement')
-            ->toArray();
 
-        $placement = $request->placement;
-        while (in_array($placement, $existingPlacements)) {
-            $placement++;
+        // Get all existing placements for the selected carnival
+        $existingPlacements = EventsCountryTab::where('carnival_id', $request->carnival_id);
+        if ($request->placeWhere == "Place Before") {
+            $existingPlacements = $existingPlacements->where('placement', '>=', $request->placement)->get();
+            $placement = $request->placement;
+            foreach ($existingPlacements as $row) {
+                $row->placement = (int)$row->placement + 1;
+                $row->save();
+            }
+        } else {
+            $placement = (int)$request->placement + 1;
+            $existingPlacements = $existingPlacements->where('placement', '>', $request->placement)->get();
+            foreach ($existingPlacements as $row) {
+                $row->placement = (int)$row->placement + 1;
+                $row->save();
+            }
         }
 
         $request->merge(['placement' => $placement]);
@@ -92,19 +101,7 @@ class EventsCountryTabController extends Controller
 
     public function update(Request $request, EventsCountryTab $eventsCountryTab)
     {
-        // Get all existing placements for the selected carnival, excluding the current record
-        $existingPlacements = EventsCountryTab::where('carnival_id', $request->carnival_id)
-            ->where('id', '!=', $eventsCountryTab->id)
-            ->pluck('placement')
-            ->toArray();
 
-        // Ensure unique placement
-        $placement = $request->placement;
-        while (in_array($placement, $existingPlacements)) {
-            $placement++; // Increment until a unique placement is found
-        }
-
-        $request->merge(['placement' => $placement]); // Update request with unique placement
 
         $request->validate([
             'carnival_id' => 'required|exists:carnivals,id',
@@ -118,6 +115,26 @@ class EventsCountryTabController extends Controller
         ]);
 
         try {
+            if ($eventsCountryTab->placement != $request->placement) {
+                $existingPlacements = EventsCountryTab::where('carnival_id', $request->carnival_id);
+                if ($request->placeWhere == "Place Before") {
+                    $existingPlacements = $existingPlacements->where('placement', '>=', $request->placement)->get();
+                    $placement = $request->placement;
+                    foreach ($existingPlacements as $row) {
+                        $row->placement = (int)$row->placement + 1;
+                        $row->save();
+                    }
+                } else {
+                    $placement = (int)$request->placement + 1;
+                    $existingPlacements = $existingPlacements->where('placement', '>', $request->placement)->get();
+                    foreach ($existingPlacements as $row) {
+                        $row->placement = (int)$row->placement + 1;
+                        $row->save();
+                    }
+                }
+                $request->merge(['placement' => $placement]); // Update request with unique placement
+            }
+
             $data = $request->except('file');
             $eventsCountryTab->update($data);
 
