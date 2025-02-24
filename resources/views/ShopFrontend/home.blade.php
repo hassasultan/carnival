@@ -463,7 +463,7 @@
                     @foreach ($ads as $item)
                         <div class="col-sm-6">
                             <a href="" class="box-img"><img src="{{ asset('images/' . $item->image) }}"
-                                    alt="banner"></a>
+                                    alt="banner" style="height: 120px;"></a>
                         </div>
                     @endforeach
                     {{-- <div class="col-sm-6">
