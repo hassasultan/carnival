@@ -684,28 +684,42 @@
         <div class="swiper-container main-slider-5" data-autoplay="0" data-loop="1" data-speed="900" data-center="0"
             data-slides-per-view="1">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" data-val="0">
-                    <div class="video-container">
+                @foreach ($banners as $key => $row)
+                    <div class="swiper-slide" data-val="{{ $key }}">
                         @php
-                            $videoUrl = asset('videos/sample-video.mp4'); // Use local or hosted video
+                            $videoUrl = null;
+                            $imgUrl = null;
+                            $extension = pathinfo($row->banner_image, PATHINFO_EXTENSION);
+                            $video_extensions = ['mp4', 'mov', 'avi', 'wmv', 'flv', 'webm', 'mkv'];
+                            if (in_array(strtolower($extension), $video_extensions)) {
+                                $videoUrl = asset($row->banner_image); // Use local or hosted video
+                            } else {
+                                $imgUrl = asset($row->banner_image); // Use local or hosted video
+                            }
                         @endphp
-                        <div class="hero">
-                            <h4>NORWAY TOURS</h4>
-                            <h1>ROMANTIC HOLIDAYS IN NORWAY</h1>
-                            <p class="text-orange">FROM <span>$400</span> PER PERSON</p>
-                            <div class="play-button" onclick="openVideoPopup('{{ asset('files/1721143691.mp4') }}')">
-                                <i class="fa fa-play"></i>
-                            </div>
-                            <p>JULY <span>19TH</span> TO JULY <span>26TH</span></p>
-                            <p class="color-white-light">Curabitur nunc erat, consequat in erat ut, congue bibendum nulla.
-                            </p>
-                            <div class="buttons">
-                                <a href="#" class="c-button b-60 bg-red hv-red-o delay-2"><span>view more</span></a>
-                                <a href="#" class="c-button b-60 bg-tr-1 hv-red delay-2"><span>book now</span></a>
+                        <div class="video-container" @if($imgUrl != null) style="background-image: url({{ $imgUrl }}) !important; background-repeat:no-repeat !important;" @endif>
+                            <div class="hero">
+                                {{-- <h4>NORWAY TOURS</h4>
+                                <h1>ROMANTIC HOLIDAYS IN NORWAY</h1>
+                                <p class="text-orange">FROM <span>$400</span> PER PERSON</p> --}}
+                                @if ($videoUrl != null)
+                                    <div class="play-button" onclick="openVideoPopup('{{ $videoUrl }}')">
+                                        <i class="fa fa-play"></i>
+                                    </div>
+                                @endif
+                                {{-- <p>JULY <span>19TH</span> TO JULY <span>26TH</span></p>
+                                <p class="color-white-light">Curabitur nunc erat, consequat in erat ut, congue bibendum
+                                    nulla.
+                                </p> --}}
+                                <div class="buttons">
+                                    {{-- <a href="#" class="c-button b-60 bg-red hv-red-o delay-2"><span>view
+                                            more</span></a> --}}
+                                    <a href="#" class="c-button b-60 bg-tr-1 hv-red delay-2"><span>book now</span></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
             <div class="pagination pagination-hidden poin-style-1"></div>
             <div class="arrow-wrapp arr-s-2">

@@ -125,6 +125,7 @@ class FrontendConroller extends Controller
     }
     public function event_listing()
     {
+        $banners = Banner::where('type', 'event')->get();
         $products = Product::with('brand')->get();
         $upcoming_events = Event::with('tickets')
             ->where('status', 'active')
@@ -145,7 +146,7 @@ class FrontendConroller extends Controller
             ->where('start_date', '>', Carbon::now())->orderBy('id', 'DESC')->get()->take(8);
         $ads = Advertisement::where('type', 'event')->get();
         // dd($carnival_events->toArray());
-        return view('front.events', compact('products', 'upcoming_events', 'all_events', 'carnival_events', 'popular_events', 'ads'));
+        return view('front.events', compact('products','banners', 'upcoming_events', 'all_events', 'carnival_events', 'popular_events', 'ads'));
     }
     public function category_tour_listing()
     {
