@@ -699,8 +699,10 @@
                         @endphp
                         <div class="video-container">
                             <div class="hero"  @if($imgUrl != null) style="background-image: url({{ $imgUrl }}) !important; background-repeat:no-repeat !important; background-position:center;" @else style="background-image: url({{ asset($row->poster) }}) !important; background-repeat:no-repeat !important; background-position:center;"  @endif>
-                                {{-- <h4>NORWAY TOURS</h4>
-                                <h1>ROMANTIC HOLIDAYS IN NORWAY</h1>
+                                @if ($row->description != null)
+                                    <h4>{{ $row->description }}</h4>
+                                @endif
+                                {{-- <h1>ROMANTIC HOLIDAYS IN NORWAY</h1>
                                 <p class="text-orange">FROM <span>$400</span> PER PERSON</p> --}}
                                 @if ($videoUrl != null)
                                     <div class="play-button" onclick="openVideoPopup('{{ $videoUrl }}')">
