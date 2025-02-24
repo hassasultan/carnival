@@ -1142,7 +1142,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row"> --}}
                 {{-- <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="hotel-small style-2 clearfix">
                         <a class="hotel-img black-hover" href="#">
@@ -1299,7 +1299,7 @@
                         </div>
                     @endif
                 </div>
-            </div>
+            {{-- </div> --}}
         </div>
     </div>
 
