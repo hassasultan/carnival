@@ -158,8 +158,8 @@
                             @endif
 
                             <div class="buttons">
-                                <a href="#" class="c-button b-60 bg-red hv-red-o delay-2"><span>view
-                                        more</span></a>
+                                {{-- <a href="#" class="c-button b-60 bg-red hv-red-o delay-2"><span>view
+                                        more</span></a> --}}
                                 <a href="#" class="c-button b-60 bg-tr-1 hv-red delay-2"><span>book now</span></a>
                             </div>
                         </div>
