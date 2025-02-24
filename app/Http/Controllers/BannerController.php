@@ -30,9 +30,16 @@ class BannerController extends Controller
 
         $banner_image = 'banner_image/' . time() . '.' . $request->banner_image->extension();
         $request->banner_image->move(public_path('banner_image'), $banner_image);
+        $poster = null;
+        if($request->has('poster') && $request->poster != null && $request->poster != '')
+        {
+            $poster = 'poster_image/' . time() . '.' . $request->poster->extension();
+            $request->poster->move(public_path('poster_image'), $poster);
+        }
 
         Banner::create([
             'banner_image' => $banner_image,
+            'poster' => $poster,
             'type' => $request->type,
             'description' => $request->description,
             'status' => $request->status ?? 1,
@@ -64,6 +71,13 @@ class BannerController extends Controller
             $request->banner_image->move(public_path('banner_image'), $imageName);
 
             $banner->banner_image = 'banner_image/' . $imageName;
+        }
+        $poster = null;
+        if($request->has('poster') && $request->poster != null && $request->poster != '')
+        {
+            $poster = 'poster_image/' . time() . '.' . $request->poster->extension();
+            $request->poster->move(public_path('poster_image'), $poster);
+            $banner->poster = $poster;
         }
 
         $banner->description = $request->description;
