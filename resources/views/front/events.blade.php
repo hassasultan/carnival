@@ -698,7 +698,8 @@
                             }
                         @endphp
                         <div class="video-container">
-                            <div class="hero"  @if($imgUrl != null) style="background-image: url({{ $imgUrl }}) !important; background-repeat:no-repeat !important; background-position:center;" @else style="background-image: url({{ asset($row->poster) }}) !important; background-repeat:no-repeat !important; background-position:center;"  @endif>
+                            <div class="hero"
+                                @if ($imgUrl != null) style="background-image: url({{ $imgUrl }}) !important; background-repeat:no-repeat !important; background-position:center;" @else style="background-image: url({{ asset($row->poster) }}) !important; background-repeat:no-repeat !important; background-position:center;" @endif>
                                 @if ($row->description != null)
                                     <h4>{{ $row->description }}</h4>
                                 @endif
@@ -1242,59 +1243,62 @@
                         </div>
                     </div>
                 </div> --}}
-                @if ($popular_events->isNotEmpty())
-                    @foreach ($popular_events->chunk(4) as $chunk)
-                        <div class="row">
-                            @foreach ($chunk as $event)
-                                <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <div class="hotel-small style-2 clearfix">
-                                        <a class="hotel-img black-hover"
-                                            href="{{ route('get.myEvent.detail', $event->slug) }}">
-                                            <img class="img-responsive radius-0"
-                                                src="{{ asset('eventBanner/' . $event->banner) }}"
-                                                alt="{{ $event->name }}">
-                                            <div class="tour-layer delay-1"></div>
-                                        </a>
-                                        <div class="hotel-desc">
-                                            <h5>
-                                                <span class="color-dark-2">
-                                                    {{-- <strong>${{ number_format($event->tickets->min('price'), 2) }}</strong> --}}
-                                                    @if (count($event->tickets) > 0)
-                                                        <h4 class="world-price color-white">from
-                                                            <b>${{ $event->tickets[0]->price }}/ person</b>
-                                                        </h4>
-                                                    @else
-                                                        <h4><strong>FREE</strong></h4>
-                                                    @endif
-                                                </span>
-                                            </h5>
-                                            <h4>{{ $event->name }}</h4>
-                                            <div class="hotel-loc tt">
-                                                <strong>{{ \Carbon\Carbon::parse($event->start_date)->format('d.m') }} -
-                                                    {{ \Carbon\Carbon::parse($event->end_date)->format('d.m') }} /
-                                                    {{ \Carbon\Carbon::parse($event->start_date)->diffInDays($event->end_date) }}
-                                                    nights</strong>
+                <div class="row">
+                    @if ($popular_events->isNotEmpty())
+                        <div class="col-xs-12 col-sm-12 col-md-8">
+                            @foreach ($popular_events->chunk(4) as $chunk)
+                                @foreach ($chunk as $event)
+                                    <div class="col-xs-12 col-sm-6 col-md-4">
+                                        <div class="hotel-small style-2 clearfix">
+                                            <a class="hotel-img black-hover"
+                                                href="{{ route('get.myEvent.detail', $event->slug) }}">
+                                                <img class="img-responsive radius-0"
+                                                    src="{{ asset('eventBanner/' . $event->banner) }}"
+                                                    alt="{{ $event->name }}">
+                                                <div class="tour-layer delay-1"></div>
+                                            </a>
+                                            <div class="hotel-desc">
+                                                <h5>
+                                                    <span class="color-dark-2">
+                                                        {{-- <strong>${{ number_format($event->tickets->min('price'), 2) }}</strong> --}}
+                                                        @if (count($event->tickets) > 0)
+                                                            <h4 class="world-price color-white">from
+                                                                <b>${{ $event->tickets[0]->price }}/ person</b>
+                                                            </h4>
+                                                        @else
+                                                            <h4><strong>FREE</strong></h4>
+                                                        @endif
+                                                    </span>
+                                                </h5>
+                                                <h4>{{ $event->name }}</h4>
+                                                <div class="hotel-loc tt">
+                                                    <strong>{{ \Carbon\Carbon::parse($event->start_date)->format('d.m') }}
+                                                        -
+                                                        {{ \Carbon\Carbon::parse($event->end_date)->format('d.m') }} /
+                                                        {{ \Carbon\Carbon::parse($event->start_date)->diffInDays($event->end_date) }}
+                                                        nights</strong>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
                             @endforeach
                         </div>
-                    @endforeach
-                    {{-- @else
-                    <p class="text-center">No popular events available.</p>
-                @endif --}}
-                    <div class="col-xs-12 col-sm-12 col-md-4">
-                        <div class="item-block style-5 hover-blue-3">
-                            <img class="center-image"
-                                src="{{ asset('eventpromotional_image/' . $popular_events[0]->promotional_image) }}"
-                                alt="">
-                            <div class="tour-layer delay-1"></div>
-                            <div class="vertical-align">
+                        {{-- @else
+                        <p class="text-center">No popular events available.</p>
+                    @endif --}}
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="item-block style-5 hover-blue-3">
+                                <img class="center-image"
+                                    src="{{ asset('eventpromotional_image/' . $popular_events[0]->promotional_image) }}"
+                                    alt="">
+                                <div class="tour-layer delay-1"></div>
+                                <div class="vertical-align">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endif
+                    @endif
+                </div>
             </div>
         </div>
     </div>
