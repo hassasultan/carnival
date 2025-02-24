@@ -8,7 +8,11 @@
 
         <div class="form-group">
             <label for="banner_image">Banner Image (870x328)</label>
-            <input type="file" name="banner_image" class="form-control">
+            <input type="file" name="banner_image" id="banner_image" class="form-control">
+        </div>
+        <div class="form-group" id="poster_wrapper" style="display: none;">
+            <label for="banner_image">Poster</label>
+            <input type="file" name="poster" id="poster" class="form-control">
         </div>
 
         <div class="form-group">
@@ -40,4 +44,25 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <script>
+        document.getElementById('banner_image').addEventListener('change', function(event) {
+            let file = event.target.files[0];
+            let posterInput = document.getElementById('poster');
+            let posterWrapper = document.getElementById('poster_wrapper');
+
+            if (file) {
+                let videoTypes = ['video/mp4', 'video/mov', 'video/avi', 'video/wmv', 'video/flv', 'video/webm',
+                    'video/mkv'
+                ];
+
+                if (videoTypes.includes(file.type)) {
+                    posterWrapper.style.display = 'block';
+                    posterInput.setAttribute('required', 'required'); // Make it required
+                } else {
+                    posterWrapper.style.display = 'none';
+                    posterInput.removeAttribute('required'); // Remove required if not video
+                }
+            }
+        });
+    </script>
 @endsection
