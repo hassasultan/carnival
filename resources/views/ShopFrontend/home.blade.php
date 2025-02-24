@@ -31,10 +31,10 @@
                                 <div class="item">
                                     @if (in_array($extension, ['mp4', 'webm', 'ogg']))
                                         <video src="{{ $bannerUrl }}" autoplay loop muted
-                                            style="width: 100%; height: auto; min-height: 600px;"></video>
+                                            style="width: 100%; height: auto; min-height: 283px;"></video>
                                     @else
                                         <img src="{{ $bannerUrl }}" alt="banner image" class="img-slide"
-                                            style="height: 100%; min-height: 600px;">
+                                            style="height: 100%; min-height: 283px;">
                                     @endif
 
                                     <div class="description" style="top: 30%;">
