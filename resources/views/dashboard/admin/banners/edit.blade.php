@@ -9,7 +9,7 @@
 
         <div class="form-group">
             <label for="banner_image">Banner Image (870x328)</label>
-            <input type="file" name="banner_image" class="form-control">
+            <input type="file" name="banner_image" id="banner_image" class="form-control">
             <img src="{{ asset($banner->banner_image) }}" width="100">
         </div>
         @if ($banner->poster != null)
