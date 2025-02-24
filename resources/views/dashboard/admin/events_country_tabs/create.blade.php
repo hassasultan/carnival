@@ -58,7 +58,11 @@
                             <div id="file-preview"></div>
                         </div> --}}
                         <div class="form-group">
-                            <label for="placement">Placement After:</label>
+                            <label for="placement">Placement Index:</label>
+                            <select class="form-control" id="placeWhere" name="placeWhere" required>
+                                <option value="Place Before">Place Before</option>
+                                <option value="Place After">Place After</option>
+                            </select>
                             <select class="form-control" id="placement" name="placement" required>
                                 <option value="">Select</option>
                             </select>
