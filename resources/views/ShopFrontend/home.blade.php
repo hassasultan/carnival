@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div style="margin-top: 5rem;z-index: 9999999;position: relative;">
+        <div style="margin-top: 5rem;z-index: 999;position: relative;">
             {{-- <div>
                 <div class="block-banner-main-opt8 Links_data">
                     <div class="container">
