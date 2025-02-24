@@ -697,7 +697,7 @@
                                 $imgUrl = asset($row->banner_image); // Use local or hosted video
                             }
                         @endphp
-                        <div class="video-container" @if($imgUrl != null) style="background-image: url({{ $imgUrl }}) !important; background-repeat:no-repeat !important;" @endif>
+                        <div class="video-container" @if($imgUrl != null) style="background-image: url({{ $imgUrl }}) !important; background-repeat:no-repeat !important;" @else style="background-image: url({{ asset($row->poster) }}) !important; background-repeat:no-repeat !important;"  @endif>
                             <div class="hero">
                                 {{-- <h4>NORWAY TOURS</h4>
                                 <h1>ROMANTIC HOLIDAYS IN NORWAY</h1>
