@@ -30,24 +30,37 @@ class EventsCountryTabController extends Controller
 
         // Get all existing placements for the selected carnival
         $existingPlacements = EventsCountryTab::where('carnival_id', $request->carnival_id);
-        if ($request->placeWhere == "Place Before") {
-            $existingPlacements = $existingPlacements->where('placement', '>=', $request->placement)->get();
-            $placement = $request->placement;
-            foreach ($existingPlacements as $row) {
-                $row->placement = (int)$row->placement + 1;
-                $row->save();
+        if ($request->has('placement') && $request->placement != null) {
+            if ($request->placeWhere == "Place Before") {
+                $existingPlacements = $existingPlacements->where('placement', '>=', $request->placement)->get();
+                $placement = $request->placement;
+                foreach ($existingPlacements as $row) {
+                    $row->placement = (int)$row->placement + 1;
+                    $row->save();
+                }
+            } else {
+                $placement = (int)$request->placement + 1;
+                $existingPlacements = $existingPlacements->where('placement', '>', $request->placement)->get();
+                foreach ($existingPlacements as $row) {
+                    $row->placement = (int)$row->placement + 1;
+                    $row->save();
+                }
             }
-        } else {
-            $placement = (int)$request->placement + 1;
-            $existingPlacements = $existingPlacements->where('placement', '>', $request->placement)->get();
-            foreach ($existingPlacements as $row) {
-                $row->placement = (int)$row->placement + 1;
-                $row->save();
-            }
+            $request->merge(['placement' => $placement]);
+        }
+        else
+        {
+            $placement = 0;
+            $request->merge(['placement' => $placement]);
+
         }
 
-        $request->merge(['placement' => $placement]);
-
+        if($existingPlacements != null)
+        {
+            $request->validate([
+                'placement' => 'required',
+            ]);
+        }
         $request->validate([
             'carnival_id' => 'required|exists:carnivals,id',
             'country_id' => 'required|exists:country,id',
@@ -56,7 +69,7 @@ class EventsCountryTabController extends Controller
             'file.*' => 'nullable|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi',
             'content' => 'nullable|string',
             'status' => 'required|boolean',
-            'placement' => 'required',
+
             // 'placement' => 'required|integer|unique:events_country_tabs,placement',
         ]);
 
