@@ -353,7 +353,7 @@
                                                                             {{ $month }}{{ $day }}<sup>{{ $suffix }}</sup> - {{ $endmonth }}{{ $endday }}<sup>{{ $endsuffix }}</sup>
                                                                         </strong>
                                                                     </div> --}}
-                                                                    <div class="sb-text">{!! $row->description !!}
+                                                                    <div class="sb-text">{!! Str::limit($row->description, 250, ' rest ...') !!}
                                                                     </div>
                                                                     <a href="{{ route('events.view.more', $row->id) }}"
                                                                         class="c-button b-50 bg-green hv-green-o ">view
