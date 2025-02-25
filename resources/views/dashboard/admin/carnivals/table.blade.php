@@ -30,8 +30,7 @@
                 </td>
                 <td>{{ $carnival->name }}</td>
                 <td>{{ $carnival->regions->name }}</td>
-                <td><a href="{{ $carnival->link }}" target="_blank" class="text-white text-decoration-underline">Open
-                        Link</a></td>
+                <td><a href="{{ $carnival->link }}" target="_blank" class="text-decoration-underline">{{ $carnival->link }}</a></td>
                 <td>
                     {{-- <button class="btn btn-sm btn-primary assignMasscamp" data-id="{{ $carnival->id }}" data-model="no">Assign Mascamp</button> --}}
                     <button class="btn btn-primary assignMember edit-carnival" data-id="{{ $carnival->id }}">
