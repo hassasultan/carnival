@@ -14,7 +14,7 @@ class EventsCountryTabController extends Controller
 {
     public function index()
     {
-        $eventsCountryTabs = EventsCountryTab::with('carnival', 'country', 'city')->orderBy('placement')->get();
+        $eventsCountryTabs = EventsCountryTab::with('carnival', 'country', 'city')->orderBy('carnival_id')->get();
         return view('dashboard.admin.events_country_tabs.index', compact('eventsCountryTabs'));
     }
 
