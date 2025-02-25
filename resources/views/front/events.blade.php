@@ -684,28 +684,45 @@
         <div class="swiper-container main-slider-5" data-autoplay="0" data-loop="1" data-speed="900" data-center="0"
             data-slides-per-view="1">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" data-val="0">
-                    <div class="video-container">
+                @foreach ($banners as $key => $row)
+                    <div class="swiper-slide" data-val="{{ $key }}">
                         @php
-                            $videoUrl = asset('videos/sample-video.mp4'); // Use local or hosted video
+                            $videoUrl = null;
+                            $imgUrl = null;
+                            $extension = pathinfo($row->banner_image, PATHINFO_EXTENSION);
+                            $video_extensions = ['mp4', 'mov', 'avi', 'wmv', 'flv', 'webm', 'mkv'];
+                            if (in_array(strtolower($extension), $video_extensions)) {
+                                $videoUrl = asset($row->banner_image); // Use local or hosted video
+                            } else {
+                                $imgUrl = asset($row->banner_image); // Use local or hosted video
+                            }
                         @endphp
-                        <div class="hero">
-                            <h4>NORWAY TOURS</h4>
-                            <h1>ROMANTIC HOLIDAYS IN NORWAY</h1>
-                            <p class="text-orange">FROM <span>$400</span> PER PERSON</p>
-                            <div class="play-button" onclick="openVideoPopup('{{ asset('files/1721143691.mp4') }}')">
-                                <i class="fa fa-play"></i>
-                            </div>
-                            <p>JULY <span>19TH</span> TO JULY <span>26TH</span></p>
-                            <p class="color-white-light">Curabitur nunc erat, consequat in erat ut, congue bibendum nulla.
-                            </p>
-                            <div class="buttons">
-                                <a href="#" class="c-button b-60 bg-red hv-red-o delay-2"><span>view more</span></a>
-                                <a href="#" class="c-button b-60 bg-tr-1 hv-red delay-2"><span>book now</span></a>
+                        <div class="video-container">
+                            <div class="hero"
+                                @if ($imgUrl != null) style="background-image: url({{ $imgUrl }}) !important; background-repeat:no-repeat !important; background-position:center;" @else style="background-image: url({{ asset($row->poster) }}) !important; background-repeat:no-repeat !important; background-position:center;" @endif>
+                                @if ($row->description != null)
+                                    <h4>{{ $row->description }}</h4>
+                                @endif
+                                {{-- <h1>ROMANTIC HOLIDAYS IN NORWAY</h1>
+                                <p class="text-orange">FROM <span>$400</span> PER PERSON</p> --}}
+                                @if ($videoUrl != null)
+                                    <div class="play-button" onclick="openVideoPopup('{{ $videoUrl }}')">
+                                        <i class="fa fa-play"></i>
+                                    </div>
+                                @endif
+                                {{-- <p>JULY <span>19TH</span> TO JULY <span>26TH</span></p>
+                                <p class="color-white-light">Curabitur nunc erat, consequat in erat ut, congue bibendum
+                                    nulla.
+                                </p> --}}
+                                <div class="buttons">
+                                    {{-- <a href="#" class="c-button b-60 bg-red hv-red-o delay-2"><span>view
+                                            more</span></a> --}}
+                                    <a href="#" class="c-button b-60 bg-tr-1 hv-red delay-2"><span>book now</span></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
             <div class="pagination pagination-hidden poin-style-1"></div>
             <div class="arrow-wrapp arr-s-2">
@@ -1125,7 +1142,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row"> --}}
                 {{-- <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="hotel-small style-2 clearfix">
                         <a class="hotel-img black-hover" href="#">
@@ -1226,60 +1243,63 @@
                         </div>
                     </div>
                 </div> --}}
-                @if ($popular_events->isNotEmpty())
-                    @foreach ($popular_events->chunk(4) as $chunk)
-                        <div class="row">
-                            @foreach ($chunk as $event)
-                                <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <div class="hotel-small style-2 clearfix">
-                                        <a class="hotel-img black-hover"
-                                            href="{{ route('get.myEvent.detail', $event->slug) }}">
-                                            <img class="img-responsive radius-0"
-                                                src="{{ asset('eventBanner/' . $event->banner) }}"
-                                                alt="{{ $event->name }}">
-                                            <div class="tour-layer delay-1"></div>
-                                        </a>
-                                        <div class="hotel-desc">
-                                            <h5>
-                                                <span class="color-dark-2">
-                                                    {{-- <strong>${{ number_format($event->tickets->min('price'), 2) }}</strong> --}}
-                                                    @if (count($event->tickets) > 0)
-                                                        <h4 class="world-price color-white">from
-                                                            <b>${{ $event->tickets[0]->price }}/ person</b>
-                                                        </h4>
-                                                    @else
-                                                        <h4><strong>FREE</strong></h4>
-                                                    @endif
-                                                </span>
-                                            </h5>
-                                            <h4>{{ $event->name }}</h4>
-                                            <div class="hotel-loc tt">
-                                                <strong>{{ \Carbon\Carbon::parse($event->start_date)->format('d.m') }} -
-                                                    {{ \Carbon\Carbon::parse($event->end_date)->format('d.m') }} /
-                                                    {{ \Carbon\Carbon::parse($event->start_date)->diffInDays($event->end_date) }}
-                                                    nights</strong>
+                <div class="row">
+                    @if ($popular_events->isNotEmpty())
+                        <div class="col-xs-12 col-sm-12 col-md-8">
+                            @foreach ($popular_events->chunk(4) as $chunk)
+                                @foreach ($chunk as $event)
+                                    <div class="col-xs-12 col-sm-6 col-md-4">
+                                        <div class="hotel-small style-2 clearfix">
+                                            <a class="hotel-img black-hover"
+                                                href="{{ route('get.myEvent.detail', $event->slug) }}">
+                                                <img class="img-responsive radius-0"
+                                                    src="{{ asset('eventBanner/' . $event->banner) }}"
+                                                    alt="{{ $event->name }}">
+                                                <div class="tour-layer delay-1"></div>
+                                            </a>
+                                            <div class="hotel-desc">
+                                                <h5>
+                                                    <span class="color-dark-2">
+                                                        {{-- <strong>${{ number_format($event->tickets->min('price'), 2) }}</strong> --}}
+                                                        @if (count($event->tickets) > 0)
+                                                            <h4 class="world-price color-white">from
+                                                                <b>${{ $event->tickets[0]->price }}/ person</b>
+                                                            </h4>
+                                                        @else
+                                                            <h4><strong>FREE</strong></h4>
+                                                        @endif
+                                                    </span>
+                                                </h5>
+                                                <h4>{{ $event->name }}</h4>
+                                                <div class="hotel-loc tt">
+                                                    <strong>{{ \Carbon\Carbon::parse($event->start_date)->format('d.m') }}
+                                                        -
+                                                        {{ \Carbon\Carbon::parse($event->end_date)->format('d.m') }} /
+                                                        {{ \Carbon\Carbon::parse($event->start_date)->diffInDays($event->end_date) }}
+                                                        nights</strong>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
                             @endforeach
                         </div>
-                    @endforeach
-                    {{-- @else
-                    <p class="text-center">No popular events available.</p>
-                @endif --}}
-                    <div class="col-xs-12 col-sm-12 col-md-4">
-                        <div class="item-block style-5 hover-blue-3">
-                            <img class="center-image"
-                                src="{{ asset('eventpromotional_image/' . $popular_events[0]->promotional_image) }}"
-                                alt="">
-                            <div class="tour-layer delay-1"></div>
-                            <div class="vertical-align">
+                        {{-- @else
+                        <p class="text-center">No popular events available.</p>
+                    @endif --}}
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="item-block style-5 hover-blue-3">
+                                <img class="center-image"
+                                    src="{{ asset('eventpromotional_image/' . $popular_events[0]->promotional_image) }}"
+                                    alt="">
+                                <div class="tour-layer delay-1"></div>
+                                <div class="vertical-align">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endif
-            </div>
+                    @endif
+                </div>
+            {{-- </div> --}}
         </div>
     </div>
 

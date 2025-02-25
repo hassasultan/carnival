@@ -24,7 +24,7 @@ class AdvertisementController extends Controller
         $request->validate([
             'type' => 'required|string|max:255',
             'title' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|mimes:jpeg,png,jpg,gif,mp4,avi,mov,wmv|max:101200',
             'description' => 'required|string',
             'status' => 'required|integer|in:0,1',
             'index' => [
@@ -71,7 +71,7 @@ class AdvertisementController extends Controller
         $request->validate([
             'type' => 'required|string|max:255',
             'title' => 'required|string|max:255',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|mimes:jpeg,png,jpg,gif,mp4,avi,mov,wmv|max:101200',
             'description' => 'required|string',
             'status' => 'required|integer|in:0,1',
             'index' => [

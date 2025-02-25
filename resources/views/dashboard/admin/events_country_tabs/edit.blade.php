@@ -63,14 +63,15 @@
                         <div class="form-group">
                             <label for="placement">Placement Order Number:</label>
                             <select class="form-control" id="placeWhere" name="placeWhere" required>
+                                {{-- <option value="" selected disabled>-- Select Direction --</option> --}}
                                 <option value="Place Before">Place Before</option>
                                 <option value="Place After">Place After</option>
                             </select>
                             <select class="form-control" id="placement" name="placement" required>
                                 <option value="">Select</option>
                                 @foreach ($placements as $placement)
-                                    <option value="{{ $placement->id }}"
-                                        {{ $eventsCountryTab->placement == $placement->id ? 'selected' : '' }}>
+                                    <option value="{{ $placement->placement }}"
+                                        {{ $eventsCountryTab->placement == $placement->placement ? 'selected' : '' }}>
                                         {{ $placement->tab }}
                                     </option>
                                 @endforeach

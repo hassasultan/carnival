@@ -87,7 +87,7 @@ Route::get('/shop/event-listing', [FrontendConroller::class, 'shop_event_listing
 Route::get('/package/detail', [FrontendConroller::class, 'package_detail'])->name('front.package.detail');
 Route::get('/shop', [FrontendConroller::class, 'shop_home'])->name('front.shop');
 Route::get('/get-discounted', [FrontendConroller::class, 'getDiscounted'])->name('front.get_discounted');
-Route::get('/mascamps', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
+Route::get('/mascamps-listing', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
 Route::get('/about-us/{slug}', [FrontendConroller::class, 'about_us'])->name('details.aboutUs');
 Route::get('/shop/{slug}/event-listing', [FrontendConroller::class, 'myEvents'])->name('myEevent.listing');
 Route::get('/{slug}/gallery', [FrontendConroller::class, 'myGallery'])->name('front.myGallery');
@@ -101,7 +101,7 @@ Route::get('/track-order', [FrontendConroller::class, 'track_order'])->name('fro
 Route::get('/blog-list', [FrontendConroller::class, 'blog_list'])->name('front.blog.list');
 Route::get('/blog-detail/{id}', [FrontendConroller::class, 'blog_detail'])->name('front.blog.detail');
 Route::get('/get-section-leaders', [FrontendConroller::class, 'sub_vendor_listing'])->name('get.subvendors.front');
-Route::get('/shop/{slug}', [FrontendConroller::class, 'vendor_detail'])->name('front.vendor.detail');
+Route::get('/shop/{slug}/detail', [FrontendConroller::class, 'vendor_detail'])->name('front.vendor.detail');
 Route::get('/carnival/{slug}', [FrontendConroller::class, 'carnival_detail'])->name('front.carnival.detail');
 Route::get('/get/shop/products/{slug}', [FrontendConroller::class, 'get_vendor_products'])->name('front.vendor.products');
 Route::get('/get-products', [FrontendConroller::class, 'get_product'])->name('get.products.home');
@@ -112,9 +112,9 @@ Route::get('/get-subvendors', [FrontendConroller::class, 'get_subVendors'])->nam
 Route::get('/shop/section-leader/{slug}', [FrontendConroller::class, 'sub_vendor_detail'])->name('front.subVendor.detail');
 Route::get('/get-events', [FrontendConroller::class, 'get_events'])->name('get.events');
 Route::get('/{event_slug}/event-detail', [FrontendConroller::class, 'myEventDetail'])->name('get.myEvent.detail');
-Route::get('/model-listing', [FrontendConroller::class, 'modelListing'])->name('model.listing');
+Route::get('/shop/model-listing', [FrontendConroller::class, 'modelListing'])->name('model.listing');
 Route::get('/model/{slug}', [FrontendConroller::class, 'modelDetail'])->name('model.detail');
-Route::get('/artist-listing', [FrontendConroller::class, 'artistListing'])->name('artist.listing');
+Route::get('/shop/artist-listing', [FrontendConroller::class, 'artistListing'])->name('artist.listing');
 Route::get('/artist/{slug}', [FrontendConroller::class, 'artistDetail'])->name('artist.detail');
 // Route::get('/music-detail/{slug}', [FrontendConroller::class, 'musicDetail'])->name('music.detail');
 Route::get('/get-music', [FrontendConroller::class, 'get_music'])->name('get.musics.home');

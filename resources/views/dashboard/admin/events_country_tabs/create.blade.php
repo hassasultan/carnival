@@ -135,10 +135,21 @@
                     type: 'GET',
                     dataType: 'json',
                     success: function(data) {
-                        $.each(data, function(index, tab) {
-                            placementDropdown.append('<option value="' + tab.placement + '">' + tab
-                                .tab + '</option>');
-                        });
+                        console.log(data.length);
+                        if (data.length > 0)
+                        {
+                            $.each(data, function(index, tab) {
+                                placementDropdown.append('<option value="' + tab.placement + '">' +
+                                    tab
+                                    .tab + '</option>');
+                            });
+                            placementDropdown.attr('required','required');
+
+                        }
+                        else
+                        {
+                            placementDropdown.attr('required',false);
+                        }
                     },
                     error: function() {
                         alert('Error fetching placements. Please try again.');
