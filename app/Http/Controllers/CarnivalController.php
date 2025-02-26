@@ -9,6 +9,7 @@ use App\Models\Vendor;
 use App\Models\CarnivalMembers;
 use App\Models\Country;
 use App\Models\CarnivalImages;
+use App\Models\Banner;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -70,6 +71,24 @@ class CarnivalController extends Controller
                     ]);
                 }
             }
+
+            if ($request->hasFile('banner_image')) {
+                $banner_image = 'banner_image/' . time() . '.' . $request->banner_image->extension();
+                $request->banner_image->move(public_path('banner_image'), $banner_image);
+                $poster = null;
+                if ($request->has('poster') && $request->poster != null && $request->poster != '') {
+                    $poster = 'poster_image/' . time() . '.' . $request->poster->extension();
+                    $request->poster->move(public_path('poster_image'), $poster);
+                }
+
+                Banner::create([
+                    'banner_image' => $banner_image,
+                    'poster' => $poster,
+                    'type' => $request->type,
+                    'description' => $request->description,
+                    'status' => $request->status ?? 1,
+                ]);
+            }
             if ($carnivals) {
                 $carnivals = Carnival::all();
                 $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
@@ -95,8 +114,7 @@ class CarnivalController extends Controller
     public function update(Request $request, Carnival $carnival)
     {
         $this->validation($request);
-        try
-        {
+        try {
             $uniqueId = $this->generateUniqueId();
 
             $carnivals = $carnival->update([

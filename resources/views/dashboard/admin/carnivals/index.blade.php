@@ -89,6 +89,17 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="banner_images">Banner Images</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="banner_images" name="banner_image" multiple
+                                    accept="image/*">
+                                <label class="custom-file-label" for="banner_images">Choose files</label>
+                            </div>
+                            <div id="bannerImagesPreviewContainer" class="mt-2 d-flex flex-wrap">
+                                <!-- Image previews will be added here -->
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="description">description</label>
                             <textarea name="description" class="form-control" id="description" cols="30" rows="10">Add description here</textarea>
                         </div>
@@ -161,6 +172,17 @@
                             </div>
                             <div id="editImagePreviewContainer" class="mt-2 d-flex flex-wrap">
                                 <!-- New image previews will be added here -->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_banner_images">Banner Images</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="edit_banner_images" name="banner_image" multiple
+                                    accept="image/*">
+                                <label class="custom-file-label" for="edit_banner_images">Choose files</label>
+                            </div>
+                            <div id="bannerImagesEditPreviewContainer" class="mt-2 d-flex flex-wrap">
+                                <!-- Image previews will be added here -->
                             </div>
                         </div>
                         <div class="form-group">
@@ -899,6 +921,18 @@
                 const label = $(input).next('.custom-file-label');
                 label.html(fileCount > 0 ? `${fileCount} files selected` : 'Choose files');
             }
+
+            // Create form image handling
+            $('#banner_images').on('change', function() {
+                handleImagePreview(this, '#bannerImagesPreviewContainer');
+                updateFileLabel(this);
+            });
+
+            // Create form image handling
+            $('#edit_banner_images').on('change', function() {
+                handleImagePreview(this, '#bannerImagesEditPreviewContainer');
+                updateFileLabel(this);
+            });
 
             // Create form image handling
             $('#create_images').on('change', function() {
