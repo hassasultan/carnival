@@ -30,6 +30,8 @@ class CarnivalController extends Controller
     }
     public function index()
     {
+        // $carnivals = Carnival::with('mascamps.user', 'user', 'regions')->find(53);
+        // dd($carnivals->toArray());
         $carnivals = Carnival::with('mascamps.user', 'user', 'regions')->get();
         $mascamps = Vendor::with('user')->get();
         $region = Region::all();
@@ -112,7 +114,7 @@ class CarnivalController extends Controller
 
     public function edit(Carnival $carnival)
     {
-        $carnival = Carnival::with('images')->find($carnival->id);
+        $carnival = Carnival::with('images', 'banners', 'flyers')->find($carnival->id);
         return response()->json(['carnival' => $carnival]);
     }
 
@@ -121,7 +123,7 @@ class CarnivalController extends Controller
         $this->validation($request);
         try {
             $uniqueId = $this->generateUniqueId();
-
+            
             $carnivals = $carnival->update([
                 'unique_id' => $uniqueId,
                 'name' => $request->name,
@@ -132,7 +134,7 @@ class CarnivalController extends Controller
                 'description' => $request->description,
                 'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
             ]);
-
+            
             if ($carnivals) {
                 if ($request->hasFile('images')) {
                     foreach ($request->file('images') as $image) {
@@ -149,18 +151,18 @@ class CarnivalController extends Controller
                         $imageName = time() . '.' . $image->extension();
                         $image->move(public_path('images/carnivalBannerImages'), $imageName);
                         CarnivalBannerImages::create([
-                            'carnival_id' => $carnivals->id,
+                            'carnival_id' => $carnival->id,
                             'image' => $imageName
                         ]);
                     }
                 }
-    
+                
                 if ($request->hasFile('flyer_images')) {
                     foreach ($request->file('flyer_images') as $image) {
                         $imageName = time() . '.' . $image->extension();
                         $image->move(public_path('images/carnivalFlyerImages'), $imageName);
                         CarnivalFlyerImages::create([
-                            'carnival_id' => $carnivals->id,
+                            'carnival_id' => $carnival->id,
                             'image' => $imageName
                         ]);
                     }
@@ -178,6 +180,54 @@ class CarnivalController extends Controller
         try {
             // Find the image
             $image = CarnivalImages::findOrFail($imageId);
+
+            // Check if image belongs to this carnival
+            if ($image->carnival_id !== $carnival->id) {
+                return response()->json(['error' => 'Image does not belong to this carnival'], 403);
+            }
+
+            // Delete the file from storage
+            if (Storage::exists($image->image)) {
+                Storage::delete($image->image);
+            }
+
+            // Delete the database record
+            $image->delete();
+
+            return response()->json(['message' => 'Image deleted successfully']);
+        } catch (Exception $e) {
+            return response()->json(['error' => 'Failed to delete image: ' . $e->getMessage()], 500);
+        }
+    }
+    public function deleteBanner(Carnival $carnival, $imageId)
+    {
+        try {
+            // Find the image
+            $image = CarnivalBannerImages::findOrFail($imageId);
+
+            // Check if image belongs to this carnival
+            if ($image->carnival_id !== $carnival->id) {
+                return response()->json(['error' => 'Image does not belong to this carnival'], 403);
+            }
+
+            // Delete the file from storage
+            if (Storage::exists($image->image)) {
+                Storage::delete($image->image);
+            }
+
+            // Delete the database record
+            $image->delete();
+
+            return response()->json(['message' => 'Image deleted successfully']);
+        } catch (Exception $e) {
+            return response()->json(['error' => 'Failed to delete image: ' . $e->getMessage()], 500);
+        }
+    }
+    public function deleteFlyer(Carnival $carnival, $imageId)
+    {
+        try {
+            // Find the image
+            $image = CarnivalFlyerImages::findOrFail($imageId);
 
             // Check if image belongs to this carnival
             if ($image->carnival_id !== $carnival->id) {
