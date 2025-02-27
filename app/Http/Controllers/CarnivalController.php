@@ -9,7 +9,8 @@ use App\Models\Vendor;
 use App\Models\CarnivalMembers;
 use App\Models\Country;
 use App\Models\CarnivalImages;
-use App\Models\Banner;
+use App\Models\CarnivalBannerImages;
+use App\Models\CarnivalFlyerImages;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -72,22 +73,26 @@ class CarnivalController extends Controller
                 }
             }
 
-            if ($request->hasFile('banner_image')) {
-                $banner_image = 'banner_image/' . time() . '.' . $request->banner_image->extension();
-                $request->banner_image->move(public_path('banner_image'), $banner_image);
-                $poster = null;
-                if ($request->has('poster') && $request->poster != null && $request->poster != '') {
-                    $poster = 'poster_image/' . time() . '.' . $request->poster->extension();
-                    $request->poster->move(public_path('poster_image'), $poster);
+            if ($request->hasFile('banner_images')) {
+                foreach ($request->file('banner_images') as $image) {
+                    $imageName = time() . '.' . $image->extension();
+                    $image->move(public_path('images/carnivalBannerImages'), $imageName);
+                    CarnivalBannerImages::create([
+                        'carnival_id' => $carnivals->id,
+                        'image' => $imageName
+                    ]);
                 }
+            }
 
-                Banner::create([
-                    'banner_image' => $banner_image,
-                    'poster' => $poster,
-                    'type' => $request->type,
-                    'description' => $request->description,
-                    'status' => $request->status ?? 1,
-                ]);
+            if ($request->hasFile('flyer_images')) {
+                foreach ($request->file('flyer_images') as $image) {
+                    $imageName = time() . '.' . $image->extension();
+                    $image->move(public_path('images/carnivalFlyerImages'), $imageName);
+                    CarnivalFlyerImages::create([
+                        'carnival_id' => $carnivals->id,
+                        'image' => $imageName
+                    ]);
+                }
             }
             if ($carnivals) {
                 $carnivals = Carnival::all();
@@ -135,6 +140,27 @@ class CarnivalController extends Controller
                         $image->move(public_path('images/carnivalImages'), $imageName);
                         CarnivalImages::create([
                             'carnival_id' => $carnival->id,
+                            'image' => $imageName
+                        ]);
+                    }
+                }
+                if ($request->hasFile('banner_images')) {
+                    foreach ($request->file('banner_images') as $image) {
+                        $imageName = time() . '.' . $image->extension();
+                        $image->move(public_path('images/carnivalBannerImages'), $imageName);
+                        CarnivalBannerImages::create([
+                            'carnival_id' => $carnivals->id,
+                            'image' => $imageName
+                        ]);
+                    }
+                }
+    
+                if ($request->hasFile('flyer_images')) {
+                    foreach ($request->file('flyer_images') as $image) {
+                        $imageName = time() . '.' . $image->extension();
+                        $image->move(public_path('images/carnivalFlyerImages'), $imageName);
+                        CarnivalFlyerImages::create([
+                            'carnival_id' => $carnivals->id,
                             'image' => $imageName
                         ]);
                     }

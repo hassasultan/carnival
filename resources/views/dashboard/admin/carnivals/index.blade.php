@@ -78,24 +78,35 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="create_images">Images</label>
+                            <label for="create_image">Images</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="create_images" name="images[]" multiple
+                                <input type="file" class="custom-file-input" id="create_image" name="images[]" multiple
                                     accept="image/*">
-                                <label class="custom-file-label" for="create_images">Choose files</label>
+                                <label class="custom-file-label" for="create_image">Choose files</label>
                             </div>
                             <div id="createImagePreviewContainer" class="mt-2 d-flex flex-wrap">
                                 <!-- Image previews will be added here -->
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="banner_images">Banner Images</label>
+                            <label for="banner_image">Banner Images</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="banner_images" name="banner_image" multiple
+                                <input type="file" class="custom-file-input" id="banner_image" name="banner_images[]" multiple
                                     accept="image/*">
-                                <label class="custom-file-label" for="banner_images">Choose files</label>
+                                <label class="custom-file-label" for="banner_image">Choose files</label>
                             </div>
                             <div id="bannerImagesPreviewContainer" class="mt-2 d-flex flex-wrap">
+                                <!-- Image previews will be added here -->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="flyer_image">Flyer Images</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="flyer_image" name="flyer_images[]" multiple
+                                    accept="image/*">
+                                <label class="custom-file-label" for="flyer_image">Choose files</label>
+                            </div>
+                            <div id="flyerImagesPreviewContainer" class="mt-2 d-flex flex-wrap">
                                 <!-- Image previews will be added here -->
                             </div>
                         </div>
@@ -161,11 +172,11 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="edit_images">Images</label>
+                            <label for="edit_image">Images</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="edit_images" name="images[]"
+                                <input type="file" class="custom-file-input" id="edit_image" name="images[]"
                                     multiple accept="image/*">
-                                <label class="custom-file-label" for="edit_images">Choose files</label>
+                                <label class="custom-file-label" for="edit_image">Choose files</label>
                             </div>
                             <div id="existingImagesContainer" class="mt-2 d-flex flex-wrap">
                                 <!-- Existing images will be loaded here -->
@@ -175,13 +186,24 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="edit_banner_images">Banner Images</label>
+                            <label for="edit_banner_image">Banner Images</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="edit_banner_images" name="banner_image" multiple
+                                <input type="file" class="custom-file-input" id="edit_banner_image" name="banner_images[]" multiple
                                     accept="image/*">
-                                <label class="custom-file-label" for="edit_banner_images">Choose files</label>
+                                <label class="custom-file-label" for="edit_banner_image">Choose files</label>
                             </div>
                             <div id="bannerImagesEditPreviewContainer" class="mt-2 d-flex flex-wrap">
+                                <!-- Image previews will be added here -->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_flyer_image">Flyer Images</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="edit_flyer_image" name="flyer_images[]" multiple
+                                    accept="image/*">
+                                <label class="custom-file-label" for="edit_flyer_image">Choose files</label>
+                            </div>
+                            <div id="flyerImagesEditPreviewContainer" class="mt-2 d-flex flex-wrap">
                                 <!-- Image previews will be added here -->
                             </div>
                         </div>
@@ -923,25 +945,37 @@
             }
 
             // Create form image handling
-            $('#banner_images').on('change', function() {
+            $('#flyer_image').on('change', function() {
+                handleImagePreview(this, '#flyerImagesPreviewContainer');
+                updateFileLabel(this);
+            });
+
+            // Create form image handling
+            $('#edit_flyer_image').on('change', function() {
+                handleImagePreview(this, '#flyerImagesEditPreviewContainer');
+                updateFileLabel(this);
+            });
+
+            // Create form image handling
+            $('#banner_image').on('change', function() {
                 handleImagePreview(this, '#bannerImagesPreviewContainer');
                 updateFileLabel(this);
             });
 
             // Create form image handling
-            $('#edit_banner_images').on('change', function() {
+            $('#edit_banner_image').on('change', function() {
                 handleImagePreview(this, '#bannerImagesEditPreviewContainer');
                 updateFileLabel(this);
             });
 
             // Create form image handling
-            $('#create_images').on('change', function() {
+            $('#create_image').on('change', function() {
                 handleImagePreview(this, '#createImagePreviewContainer');
                 updateFileLabel(this);
             });
 
             // Edit form image handling
-            $('#edit_images').on('change', function() {
+            $('#edit_image').on('change', function() {
                 handleImagePreview(this, '#editImagePreviewContainer');
                 updateFileLabel(this);
             });
