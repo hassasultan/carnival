@@ -29,6 +29,16 @@
                                 value="{{ old('title', $advertisement->title) }}" required>
                         </div>
                         <div class="form-group">
+                            <label for="btn_text">Button Text:</label>
+                            <input type="text" class="form-control" id="btn_text" name="btn_text"
+                                value="{{ old('btn_text', $advertisement->btn_text) }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="btn_url">Button Url:</label>
+                            <input type="text" class="form-control" id="btn_url" name="btn_url"
+                                value="{{ old('btn_url', $advertisement->btn_url) }}">
+                        </div>
+                        <div class="form-group">
                             <label for="image">File:</label>
                             <input type="file" class="form-control" id="image" name="image">
                             <img src="{{ asset('images/' . $advertisement->image) }}" alt="{{ $advertisement->title }}"
