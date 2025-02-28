@@ -75,14 +75,14 @@ class CarnivalController extends Controller
                 }
             }
 
-            if ($request->hasFile('image')) {
-                foreach ($request->file('image') as $index => $image) {
+            if ($request->hasFile('banner_image')) {
+                foreach ($request->file('banner_image') as $index => $image) {
                     $imagePath = url('public/uploads/' . time() . '_' . $image->getClientOriginalName());
                     $image->move('public/uploads', basename($imagePath));
 
                     $posterPath = null;
-                    if ($request->hasFile('poster') && isset($request->file('poster')[$index])) {
-                        $poster = $request->file('poster')[$index];
+                    if ($request->hasFile('flyer_image') && isset($request->file('flyer_image')[$index])) {
+                        $poster = $request->file('flyer_image')[$index];
                         $posterPath = url('public/uploads/' . time() . '_' . $poster->getClientOriginalName());
                         $poster->move('public/uploads', basename($posterPath));
                     }
