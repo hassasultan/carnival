@@ -88,6 +88,7 @@ class CarnivalController extends Controller
                     }
 
                     CarnivalBannerImages::create([
+                        'carnival_id' => $carnivals->id,
                         'image' => $imagePath,
                         'poster' => $posterPath,
                         'btn_text' => $request->btn_text[$index] ?? null,
