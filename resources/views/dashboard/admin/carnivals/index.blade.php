@@ -46,10 +46,10 @@
                     <form id="createCarnivalForm" enctype="multipart/form-data">
                         <div class="error"></div>
                         @csrf
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label for="head">Head</label>
                             <input type="number" class="form-control" id="head" name="head" required>
-                        </div> --}}
+                        </div>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -88,11 +88,53 @@
                                 <!-- Image previews will be added here -->
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div id="file-upload-container">
+                            <div class="mb-2 p-3 border rounded file-upload-row">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="custom-file border p-2 rounded">
+                                            <input type="file" id="banner_image" name="banner_image[]"
+                                                class="custom-file-input form-control file-input banner_image"
+                                                accept="image/*,video/*">
+                                            <label class="custom-file-label" for="banner_image">Banner Image</label>
+                                        </div>
+                                        {{-- <div id="bannerImagesPreviewContainer" class="mt-2 d-flex flex-wrap bannerImagesPreviewContainer">
+                                            <!-- Image previews will be added here -->
+                                        </div> --}}
+                                    </div>
+                                    <div class="col-6 poster-input d-none">
+                                        <div class="custom-file border p-2 rounded">
+                                            <input type="file" id="flyer_image" name="flyer_image[]"
+                                                class="custom-file-input form-control flyer_image" accept="image/*">
+                                            <label class="custom-file-label" for="flyer_image">Poster Image</label>
+                                        </div>
+                                        {{-- <div id="flyerImagesPreviewContainer" class="mt-2 d-flex flex-wrap flyerImagesPreviewContainer">
+                                            <!-- Image previews will be added here -->
+                                        </div> --}}
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-4">
+                                        <div class="border p-2 rounded">
+                                            <input type="text" name="btn_text[]" class="form-control"
+                                                placeholder="Button text">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border p-2 rounded">
+                                            <input type="url" name="btn_url[]" class="form-control"
+                                                placeholder="Button url">
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-success mt-2 add-more-btn">Add More</button>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="form-group">
                             <label for="banner_image">Banner Images</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="banner_image" name="banner_images[]" multiple
-                                    accept="image/*">
+                                <input type="file" class="custom-file-input" id="banner_image" name="banner_images[]"
+                                    multiple accept="image/*">
                                 <label class="custom-file-label" for="banner_image">Choose files</label>
                             </div>
                             <div id="bannerImagesPreviewContainer" class="mt-2 d-flex flex-wrap">
@@ -102,17 +144,17 @@
                         <div class="form-group">
                             <label for="flyer_image">Flyer Images</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="flyer_image" name="flyer_images[]" multiple
-                                    accept="image/*">
+                                <input type="file" class="custom-file-input" id="flyer_image" name="flyer_images[]"
+                                    multiple accept="image/*">
                                 <label class="custom-file-label" for="flyer_image">Choose files</label>
                             </div>
                             <div id="flyerImagesPreviewContainer" class="mt-2 d-flex flex-wrap">
                                 <!-- Image previews will be added here -->
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="description">description</label>
-                            <textarea name="description" class="form-control" id="description" cols="30" rows="10">Add description here</textarea>
+                            <textarea name="description" class="form-control" id="description" cols="40" rows="10">Add description here</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" id="saveCarnivalBtn">Save Carnival</button>
                     </form>
@@ -122,8 +164,8 @@
     </div>
 
     <!-- Edit Carnival modal -->
-    <div class="modal fade" id="editCarnivalModal" tabindex="-1" role="dialog" aria-labelledby="editCarnivalModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="editCarnivalModal" tabindex="-1" role="dialog"
+        aria-labelledby="editCarnivalModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -174,8 +216,8 @@
                         <div class="form-group">
                             <label for="edit_image">Images</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="edit_image" name="images[]"
-                                    multiple accept="image/*">
+                                <input type="file" class="custom-file-input" id="edit_image" name="images[]" multiple
+                                    accept="image/*">
                                 <label class="custom-file-label" for="edit_image">Choose files</label>
                             </div>
                             <div id="existingImagesContainer" class="mt-2 d-flex flex-wrap">
@@ -188,8 +230,8 @@
                         <div class="form-group">
                             <label for="edit_banner_image">Banner Images</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="edit_banner_image" name="banner_images[]" multiple
-                                    accept="image/*">
+                                <input type="file" class="custom-file-input" id="edit_banner_image"
+                                    name="banner_images[]" multiple accept="image/*">
                                 <label class="custom-file-label" for="edit_banner_image">Choose files</label>
                             </div>
                             <div id="existingBannerImagesContainer" class="mt-2 d-flex flex-wrap">
@@ -202,8 +244,8 @@
                         <div class="form-group">
                             <label for="edit_flyer_image">Flyer Images</label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="edit_flyer_image" name="flyer_images[]" multiple
-                                    accept="image/*">
+                                <input type="file" class="custom-file-input" id="edit_flyer_image"
+                                    name="flyer_images[]" multiple accept="image/*">
                                 <label class="custom-file-label" for="edit_flyer_image">Choose files</label>
                             </div>
                             <div id="existingFlyerImagesContainer" class="mt-2 d-flex flex-wrap">
@@ -474,7 +516,8 @@
 
                                 // Ensure the image path is correct
                                 const imageUrl = image.full_url ? image.full_url :
-                                    '{{ asset('images/carnivalBannerImages/') }}/' + image
+                                    '{{ asset('images/carnivalBannerImages/') }}/' +
+                                    image
                                     .image;
 
                                 const imageWrapper = $('<div>').addClass(
@@ -529,7 +572,8 @@
                                     });
 
                                 imageWrapper.append(img, removeBtn);
-                                $('#existingBannerImagesContainer').append(imageWrapper);
+                                $('#existingBannerImagesContainer').append(
+                                    imageWrapper);
                             });
                         }
                         if (response.carnival.flyers && response.carnival.flyers.length > 0) {
@@ -538,7 +582,8 @@
 
                                 // Ensure the image path is correct
                                 const imageUrl = image.full_url ? image.full_url :
-                                    '{{ asset('images/carnivalFlyerImages/') }}/' + image
+                                    '{{ asset('images/carnivalFlyerImages/') }}/' +
+                                    image
                                     .image;
 
                                 const imageWrapper = $('<div>').addClass(
@@ -1079,26 +1124,26 @@
             }
 
             // Create form image handling
-            $('#flyer_image').on('change', function() {
-                handleImagePreview(this, '#flyerImagesPreviewContainer');
+            $('.flyer_image').on('change', function() {
+                handleImagePreview(this, '.flyerImagesPreviewContainer');
                 updateFileLabel(this);
             });
 
             // Create form image handling
             $('#edit_flyer_image').on('change', function() {
-                handleImagePreview(this, '#flyerImagesEditPreviewContainer');
+                handleImagePreview(this, '.flyerImagesEditPreviewContainer');
                 updateFileLabel(this);
             });
 
             // Create form image handling
-            $('#banner_image').on('change', function() {
-                handleImagePreview(this, '#bannerImagesPreviewContainer');
+            $('.banner_image').on('change', function() {
+                handleImagePreview(this, '.bannerImagesPreviewContainer');
                 updateFileLabel(this);
             });
 
             // Create form image handling
             $('#edit_banner_image').on('change', function() {
-                handleImagePreview(this, '#bannerImagesEditPreviewContainer');
+                handleImagePreview(this, '.bannerImagesEditPreviewContainer');
                 updateFileLabel(this);
             });
 
@@ -1187,81 +1232,71 @@
             });
             // $('#assignMemberModal').modal('show');
         });
-    </script>
-    <script>
-        // let members = []; // Define globally
 
-        // $(document).on('click', '.edit-carnival', function() {
-        //     var carnivalId = $(this).data('id'); // Get the carnival ID
-        //     console.log('carnivalId', carnivalId);
-        //     $('#carnival_id').val(carnivalId);
+        $(document).ready(function() {
+            $(".add-more-btn").click(function() {
+                let newRow = `<div class="mb-2 p-3 border rounded file-upload-row">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="custom-file border p-2 rounded">
+                                            <input type="file" id="banner_image" name="banner_image[]"
+                                                class="custom-file-input form-control file-input banner_image"
+                                                accept="image/*,video/*">
+                                            <label class="custom-file-label" for="banner_image">Banner Image</label>
+                                        </div>
+                                        {{-- <div id="bannerImagesPreviewContainer" class="mt-2 d-flex flex-wrap bannerImagesPreviewContainer">
+                                            <!-- Image previews will be added here -->
+                                        </div> --}}
+                                    </div>
+                                    <div class="col-6 poster-input d-none">
+                                        <div class="custom-file border p-2 rounded">
+                                            <input type="file" id="flyer_image" name="flyer_image[]"
+                                                class="custom-file-input form-control flyer_image" accept="image/*">
+                                            <label class="custom-file-label" for="flyer_image">Poster Image</label>
+                                        </div>
+                                        {{-- <div id="flyerImagesPreviewContainer" class="mt-2 d-flex flex-wrap flyerImagesPreviewContainer">
+                                            <!-- Image previews will be added here -->
+                                        </div> --}}
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-4">
+                                        <div class="border p-2 rounded">
+                                            <input type="text" name="btn_text[]" class="form-control" placeholder="Button text">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border p-2 rounded">
+                                            <input type="url" name="btn_url[]" class="form-control" placeholder="Button url">
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-danger remove-btn">Remove</button>
+                                </div>
+                            </div>`;
+                $("#file-upload-container").append(newRow);
+            });
 
-        //     // Fetch assigned members for the selected carnival
-        //     $.ajax({
-        //         url: '{{ route('get.carnivals.members', ':id') }}'.replace(':id', carnivalId),
-        //         type: 'GET',
-        //         success: function(response) {
-        //             if (response.members) {
-        //                 members = response.members; // Assign globally
-        //                 loadMembers(members);
-        //             } else {
-        //                 alert('No members found for this carnival.');
-        //             }
+            $(document).on("change", ".file-input", function() {
+                let file = this.files[0];
+                let parentRow = $(this).closest(".file-upload-row");
 
-        //             $('#assignMasscampModal').modal('show');
-        //         },
-        //         error: function(xhr, status, error) {
-        //             console.error(xhr.responseText);
-        //             alert('Failed to fetch carnival members.');
-        //         }
-        //     });
-        // });
+                if (file) {
+                    let fileType = file.type.split('/')[0];
+                    if (fileType === "video") {
+                        parentRow.find(".poster-input").removeClass("d-none");
+                    } else {
+                        parentRow.find(".poster-input").addClass("d-none");
+                    }
+                }
+            });
 
-        // function loadMembers(members) {
-        //     const tableBody = document.getElementById("membersTableBody");
-        //     tableBody.innerHTML = ""; // Clear existing rows
+            $(document).on("click", ".remove-btn", function() {
+                $(this).closest(".file-upload-row").remove();
+            });
 
-        //     members.forEach(member => {
-        //         const row = `
-    //     <tr>
-    //         <td>${member.first_name} ${member.last_name}</td>
-    //         <td>${member.email}</td>
-    //         <td>${member.phone}</td>
-    //         <td>
-    //             <button class="btn btn-sm btn-primary" onclick="editMember(${member.id})">Edit</button>
-    //         </td>
-    //     </tr>
-    // `;
-        //         tableBody.insertAdjacentHTML("beforeend", row);
-        //     });
-
-        //     // Save members globally for editing
-        //     window.membersList = members; // Store members globally in a safe place
-        // }
-
-        // function editMember(memberId) {
-        //     // Retrieve the specific member from the global list
-        //     const member = window.membersList.find(m => m.id === memberId);
-
-        //     if (member) {
-        //         // Populate the form with member details
-        //         document.getElementById("member_id").value = memberId;
-        //         document.getElementById("firstname").value = member.first_name;
-        //         document.getElementById("lastname").value = member.last_name;
-        //         document.getElementById("email").value = member.email;
-        //         document.getElementById("phone").value = member.phone;
-        //         document.getElementById("address").value = member.address;
-        //         document.getElementById("city").value = member.city;
-        //         document.getElementById("state").value = member.state;
-        //         document.getElementById("country").value = member.country;
-
-        //         // Scroll to the form
-        //         document.getElementById("assignMasscampForm").scrollIntoView({
-        //             behavior: "smooth"
-        //         });
-        //     } else {
-        //         alert("Member not found!");
-        //     }
-        // }
+            $(document).on("click", ".remove-btn", function() {
+                $(this).closest(".file-upload-row").remove();
+            });
+        });
     </script>
 @endsection

@@ -11,7 +11,10 @@ class CarnivalBannerImages extends Model
 
     protected $fillable = [
         'carnival_id',
-        'image'
+        'image',
+        'poster',
+        'btn_text',
+        'btn_url',
     ];
 
     /**

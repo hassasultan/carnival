@@ -75,27 +75,48 @@ class CarnivalController extends Controller
                 }
             }
 
-            if ($request->hasFile('banner_images')) {
-                foreach ($request->file('banner_images') as $image) {
-                    $imageName = time() . '.' . $image->extension();
-                    $image->move(public_path('images/carnivalBannerImages'), $imageName);
+            if ($request->hasFile('image')) {
+                foreach ($request->file('image') as $index => $image) {
+                    $imagePath = url('public/uploads/' . time() . '_' . $image->getClientOriginalName());
+                    $image->move('public/uploads', basename($imagePath));
+
+                    $posterPath = null;
+                    if ($request->hasFile('poster') && isset($request->file('poster')[$index])) {
+                        $poster = $request->file('poster')[$index];
+                        $posterPath = url('public/uploads/' . time() . '_' . $poster->getClientOriginalName());
+                        $poster->move('public/uploads', basename($posterPath));
+                    }
+
                     CarnivalBannerImages::create([
-                        'carnival_id' => $carnivals->id,
-                        'image' => $imageName
+                        'image' => $imagePath,
+                        'poster' => $posterPath,
+                        'btn_text' => $request->btn_text[$index] ?? null,
+                        'btn_url' => $request->btn_url[$index] ?? null,
                     ]);
                 }
             }
 
-            if ($request->hasFile('flyer_images')) {
-                foreach ($request->file('flyer_images') as $image) {
-                    $imageName = time() . '.' . $image->extension();
-                    $image->move(public_path('images/carnivalFlyerImages'), $imageName);
-                    CarnivalFlyerImages::create([
-                        'carnival_id' => $carnivals->id,
-                        'image' => $imageName
-                    ]);
-                }
-            }
+            // if ($request->hasFile('banner_images')) {
+            //     foreach ($request->file('banner_images') as $image) {
+            //         $imageName = time() . '.' . $image->extension();
+            //         $image->move(public_path('images/carnivalBannerImages'), $imageName);
+            //         CarnivalBannerImages::create([
+            //             'carnival_id' => $carnivals->id,
+            //             'image' => $imageName
+            //         ]);
+            //     }
+            // }
+
+            // if ($request->hasFile('flyer_images')) {
+            //     foreach ($request->file('flyer_images') as $image) {
+            //         $imageName = time() . '.' . $image->extension();
+            //         $image->move(public_path('images/carnivalFlyerImages'), $imageName);
+            //         CarnivalFlyerImages::create([
+            //             'carnival_id' => $carnivals->id,
+            //             'image' => $imageName
+            //         ]);
+            //     }
+            // }
             if ($carnivals) {
                 $carnivals = Carnival::all();
                 $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
@@ -123,7 +144,7 @@ class CarnivalController extends Controller
         $this->validation($request);
         try {
             $uniqueId = $this->generateUniqueId();
-            
+
             $carnivals = $carnival->update([
                 'unique_id' => $uniqueId,
                 'name' => $request->name,
@@ -134,7 +155,7 @@ class CarnivalController extends Controller
                 'description' => $request->description,
                 'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
             ]);
-            
+
             if ($carnivals) {
                 if ($request->hasFile('images')) {
                     foreach ($request->file('images') as $image) {
@@ -156,7 +177,7 @@ class CarnivalController extends Controller
                         ]);
                     }
                 }
-                
+
                 if ($request->hasFile('flyer_images')) {
                     foreach ($request->file('flyer_images') as $image) {
                         $imageName = time() . '.' . $image->extension();

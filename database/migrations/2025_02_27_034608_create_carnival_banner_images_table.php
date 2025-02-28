@@ -11,6 +11,9 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('carnival_id')->constrained()->onDelete('cascade');
             $table->string('image');
+            $table->string('poster');
+            $table->string('btn_text');
+            $table->string('btn_url');
             $table->timestamps();
         });
     }
