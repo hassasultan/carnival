@@ -92,8 +92,14 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="city">City <span class="text-danger">*</span></label>
-                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror"
-                        name="city" value="{{ old('city') }}" autocomplete="city">
+                    {{-- <input id="city" type="text" class="form-control @error('city') is-invalid @enderror"
+                        name="city" value="{{ old('city') }}" autocomplete="city"> --}}
+                    <select class="form-control @error('city') is-invalid @enderror" name="city" id="">
+                        <option value="">Select</option>
+                        @foreach ($city as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
                     @error('city')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -102,8 +108,14 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="state">State <span class="text-danger">*</span></label>
-                    <input id="state" type="text" class="form-control @error('state') is-invalid @enderror"
-                        name="state" value="{{ old('state') }}" autocomplete="state">
+                    {{-- <input id="state" type="text" class="form-control @error('state') is-invalid @enderror"
+                        name="state" value="{{ old('state') }}" autocomplete="state"> --}}
+                    <select class="form-control @error('state') is-invalid @enderror" name="state" id="">
+                        <option value="">Select</option>
+                        @foreach ($state as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
                     @error('state')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -112,8 +124,14 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="country">Country <span class="text-danger">*</span></label>
-                    <input id="country" type="text" class="form-control @error('country') is-invalid @enderror"
-                        name="country" value="{{ old('country') }}" autocomplete="country">
+                    {{-- <input id="country" type="text" class="form-control @error('country') is-invalid @enderror"
+                        name="country" value="{{ old('country') }}" autocomplete="country"> --}}
+                    <select class="form-control @error('country') is-invalid @enderror" name="country" id="">
+                        <option value="">Select</option>
+                        @foreach ($country as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
                     @error('country')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

@@ -78,7 +78,8 @@
                                     </div>
                                     <div class="text-center">
                                         <a href="#details" class="nav-tab btn mb-2 btn-primary">Previous</a>
-                                        <a href="#settings" class="nav-tab btn mb-2 btn-primary">Next</a>
+                                        <button type="button" data-current="tickets" data-next="settings"
+                                            class="nav-tab btn mb-2 btn-primary">Next</button>
                                     </div>
                                 </section>
                                 <section id="details" class="tab-content active">
@@ -133,12 +134,6 @@
                                         <input type="text" id="address" value="{{ old('address') }}" name="address"
                                             class="form-control" placeholder="Enter Venue Address" required>
                                     </div>
-                                    {{-- <div id="dress_code_tags" class="mb-3">
-                                        <label for="dress_code">Dress Code</label><br>
-                                        <div id="tag-container"></div>
-                                        <input type="text" id="tag-input" class="form-control" placeholder="Type and press Enter to add tag" required>
-                                        <input type="hidden" id="tag-values" name="dress_code[]" value="">
-                                    </div> --}}
                                     <div id="hash_dress_code" class="mb-3">
                                         <label for="dress_code">Dress Code</label><br>
                                         <input type="hidden" name="dress_code[]" value="{{ $row->title }}">
@@ -259,14 +254,15 @@
                                     <div class="form-group mb-3">
                                         <label for="promotional_image">Promotional Image</label>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input"
-                                                id="promotional_image" name="promotional_image">
+                                            <input type="file" class="custom-file-input" id="promotional_image"
+                                                name="promotional_image">
                                             <label class="custom-file-label" for="promotional_image"
                                                 id="promotional_image_label">Choose file</label>
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <a href="#tickets" class="nav-tab btn mb-2 btn-primary">Next</a>
+                                        <button type="button" data-current="details" data-next="tickets"
+                                            class="nav-tab btn mb-2 btn-primary">Next</button>
                                     </div>
                                 </section>
                                 <section id="settings" class="tab-content">
@@ -600,6 +596,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
+                                        {{-- <button type="button" data-prev="tickets" class="nav-tab btn mb-2 btn-primary">Previous</button> --}}
                                         <a href="#tickets" class="nav-tab btn mb-2 btn-primary">Previous</a>
                                         {{-- <button type="submit" class="btn mb-2 btn-primary" id="">Save
                                             Event</button> --}}
@@ -1184,6 +1181,35 @@
                     $('.tags-holder').hide();
                 } else {
                     $('.tags-holder').show();
+                }
+            });
+        });
+
+        // validation
+        $(document).ready(function() {
+            $(".nav-tab").click(function(e) {
+                // e.preventDefault(); // Stop default tab switch behavior
+
+                let currentTab = $(this).closest(".tab-content"); // Get current tab section
+                let targetTab = $(this).attr("href"); // Get target tab ID
+                let isValid = true;
+                var currentTabId = $(this).data("current");
+                var nextTab = $(this).data("next");
+
+                // Validate required fields in the current tab
+                currentTab.find("[required]").each(function() {
+                    if (!$(this).val().trim()) {
+                        isValid = false;
+                        $(this).addClass("is-invalid"); // Highlight empty fields
+                    } else {
+                        $(this).removeClass("is-invalid"); // Remove highlight if valid
+                    }
+                });
+                console.log('okok', currentTabId, nextTab);
+
+                if (isValid) {
+                    $("#" + currentTabId).removeClass("active");
+                    $("#" + nextTab).addClass("active");
                 }
             });
         });

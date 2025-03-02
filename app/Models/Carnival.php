@@ -54,4 +54,12 @@ class Carnival extends Model
     {
         return $this->hasMany(CarnivalImages::class);
     }
+    public function banners()
+    {
+        return $this->hasMany(CarnivalBannerImages::class);
+    }
+    public function flyers()
+    {
+        return $this->hasMany(CarnivalFlyerImages::class);
+    }
 }

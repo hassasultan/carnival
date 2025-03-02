@@ -23,6 +23,8 @@ class AdvertisementController extends Controller
     {
         $request->validate([
             'type' => 'required|string|max:255',
+            'btn_text' => 'required|string|max:255',
+            'btn_url' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'image' => 'required|mimes:jpeg,png,jpg,gif,mp4,avi,mov,wmv|max:101200',
             'description' => 'required|string',
@@ -46,6 +48,8 @@ class AdvertisementController extends Controller
 
         Advertisement::create([
             'type' => $request->type,
+            'btn_text' => $request->btn_text,
+            'btn_url' => $request->btn_url,
             'title' => $request->title,
             'image' => $imageName,
             'description' => $request->description,
@@ -70,6 +74,8 @@ class AdvertisementController extends Controller
     {
         $request->validate([
             'type' => 'required|string|max:255',
+            'btn_text' => 'required|string|max:255',
+            'btn_url' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'image' => 'required|mimes:jpeg,png,jpg,gif,mp4,avi,mov,wmv|max:101200',
             'description' => 'required|string',
@@ -93,6 +99,8 @@ class AdvertisementController extends Controller
             $request->image->move(public_path('images'), $imageName);
             $advertisement->update([
                 'type' => $request->type,
+                'btn_text' => $request->btn_text,
+                'btn_url' => $request->btn_url,
                 'title' => $request->title,
                 'image' => $imageName,
                 'description' => $request->description,
@@ -100,7 +108,7 @@ class AdvertisementController extends Controller
                 'status' => $request->status,
             ]);
         } else {
-            $advertisement->update($request->only(['type', 'title', 'description', 'status', 'index']));
+            $advertisement->update($request->only(['type', 'btn_text', 'btn_url', 'title', 'description', 'status', 'index']));
         }
 
         return redirect()->route('advertisements.index')->with('success', 'Advertisement updated successfully.');

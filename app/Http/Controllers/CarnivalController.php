@@ -9,6 +9,8 @@ use App\Models\Vendor;
 use App\Models\CarnivalMembers;
 use App\Models\Country;
 use App\Models\CarnivalImages;
+use App\Models\CarnivalBannerImages;
+use App\Models\CarnivalFlyerImages;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -28,6 +30,8 @@ class CarnivalController extends Controller
     }
     public function index()
     {
+        // $carnivals = Carnival::with('mascamps.user', 'user', 'regions')->find(53);
+        // dd($carnivals->toArray());
         $carnivals = Carnival::with('mascamps.user', 'user', 'regions')->get();
         $mascamps = Vendor::with('user')->get();
         $region = Region::all();
@@ -70,6 +74,50 @@ class CarnivalController extends Controller
                     ]);
                 }
             }
+
+            if ($request->hasFile('banner_image')) {
+                foreach ($request->file('banner_image') as $index => $image) {
+                    $imagePath = url('public/uploads/' . time() . '_' . $image->getClientOriginalName());
+                    $image->move('public/uploads', basename($imagePath));
+
+                    $posterPath = null;
+                    if ($request->hasFile('flyer_image') && isset($request->file('flyer_image')[$index])) {
+                        $poster = $request->file('flyer_image')[$index];
+                        $posterPath = url('public/uploads/' . time() . '_' . $poster->getClientOriginalName());
+                        $poster->move('public/uploads', basename($posterPath));
+                    }
+
+                    CarnivalBannerImages::create([
+                        'carnival_id' => $carnivals->id,
+                        'image' => $imagePath,
+                        'poster' => $posterPath,
+                        'btn_text' => $request->btn_text[$index] ?? null,
+                        'btn_url' => $request->btn_url[$index] ?? null,
+                    ]);
+                }
+            }
+
+            // if ($request->hasFile('banner_images')) {
+            //     foreach ($request->file('banner_images') as $image) {
+            //         $imageName = time() . '.' . $image->extension();
+            //         $image->move(public_path('images/carnivalBannerImages'), $imageName);
+            //         CarnivalBannerImages::create([
+            //             'carnival_id' => $carnivals->id,
+            //             'image' => $imageName
+            //         ]);
+            //     }
+            // }
+
+            // if ($request->hasFile('flyer_images')) {
+            //     foreach ($request->file('flyer_images') as $image) {
+            //         $imageName = time() . '.' . $image->extension();
+            //         $image->move(public_path('images/carnivalFlyerImages'), $imageName);
+            //         CarnivalFlyerImages::create([
+            //             'carnival_id' => $carnivals->id,
+            //             'image' => $imageName
+            //         ]);
+            //     }
+            // }
             if ($carnivals) {
                 $carnivals = Carnival::all();
                 $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
@@ -88,15 +136,14 @@ class CarnivalController extends Controller
 
     public function edit(Carnival $carnival)
     {
-        $carnival = Carnival::with('images')->find($carnival->id);
+        $carnival = Carnival::with('images', 'banners', 'flyers')->find($carnival->id);
         return response()->json(['carnival' => $carnival]);
     }
 
     public function update(Request $request, Carnival $carnival)
     {
         $this->validation($request);
-        try
-        {
+        try {
             $uniqueId = $this->generateUniqueId();
 
             $carnivals = $carnival->update([
@@ -121,6 +168,27 @@ class CarnivalController extends Controller
                         ]);
                     }
                 }
+                if ($request->hasFile('banner_images')) {
+                    foreach ($request->file('banner_images') as $image) {
+                        $imageName = time() . '.' . $image->extension();
+                        $image->move(public_path('images/carnivalBannerImages'), $imageName);
+                        CarnivalBannerImages::create([
+                            'carnival_id' => $carnival->id,
+                            'image' => $imageName
+                        ]);
+                    }
+                }
+
+                if ($request->hasFile('flyer_images')) {
+                    foreach ($request->file('flyer_images') as $image) {
+                        $imageName = time() . '.' . $image->extension();
+                        $image->move(public_path('images/carnivalFlyerImages'), $imageName);
+                        CarnivalFlyerImages::create([
+                            'carnival_id' => $carnival->id,
+                            'image' => $imageName
+                        ]);
+                    }
+                }
                 $carnivals = Carnival::all();
                 $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
                 return response()->json(['carnival' => $carnival, 'message' => 'Carnival updated successfully', 'table_html' => $view], 200);
@@ -134,6 +202,54 @@ class CarnivalController extends Controller
         try {
             // Find the image
             $image = CarnivalImages::findOrFail($imageId);
+
+            // Check if image belongs to this carnival
+            if ($image->carnival_id !== $carnival->id) {
+                return response()->json(['error' => 'Image does not belong to this carnival'], 403);
+            }
+
+            // Delete the file from storage
+            if (Storage::exists($image->image)) {
+                Storage::delete($image->image);
+            }
+
+            // Delete the database record
+            $image->delete();
+
+            return response()->json(['message' => 'Image deleted successfully']);
+        } catch (Exception $e) {
+            return response()->json(['error' => 'Failed to delete image: ' . $e->getMessage()], 500);
+        }
+    }
+    public function deleteBanner(Carnival $carnival, $imageId)
+    {
+        try {
+            // Find the image
+            $image = CarnivalBannerImages::findOrFail($imageId);
+
+            // Check if image belongs to this carnival
+            if ($image->carnival_id !== $carnival->id) {
+                return response()->json(['error' => 'Image does not belong to this carnival'], 403);
+            }
+
+            // Delete the file from storage
+            if (Storage::exists($image->image)) {
+                Storage::delete($image->image);
+            }
+
+            // Delete the database record
+            $image->delete();
+
+            return response()->json(['message' => 'Image deleted successfully']);
+        } catch (Exception $e) {
+            return response()->json(['error' => 'Failed to delete image: ' . $e->getMessage()], 500);
+        }
+    }
+    public function deleteFlyer(Carnival $carnival, $imageId)
+    {
+        try {
+            // Find the image
+            $image = CarnivalFlyerImages::findOrFail($imageId);
 
             // Check if image belongs to this carnival
             if ($image->carnival_id !== $carnival->id) {
