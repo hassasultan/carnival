@@ -91,7 +91,7 @@
                                             @foreach ($vendors as $vendor)
                                                 <option value="{{ $vendor->id }}">
                                                     {{-- {{ $vendor->name }} --}}
-                                                    {{ $vendor->name ?? $vendor->user->name }}
+                                                    {{ $vendor->name ?? $vendor->user->first_name . ' ' . $vendor->user->last_name }}
                                                 </option>
                                             @endforeach
                                         </select>
