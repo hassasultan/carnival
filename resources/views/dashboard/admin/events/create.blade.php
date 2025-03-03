@@ -89,7 +89,10 @@
                                             class="form-control" required>
                                             <option value="">Select Vendor</option>
                                             @foreach ($vendors as $vendor)
-                                                <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
+                                                <option value="{{ $vendor->id }}">
+                                                    {{-- {{ $vendor->name }} --}}
+                                                    {{ $vendor->name ?? $vendor->user->first_name . ' ' . $vendor->user->last_name }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -1188,11 +1191,10 @@
         // validation
         $(document).ready(function() {
             $(".nav-tab").click(function(e) {
-                // e.preventDefault(); // Stop default tab switch behavior
-
                 let currentTab = $(this).closest(".tab-content"); // Get current tab section
                 let targetTab = $(this).attr("href"); // Get target tab ID
                 let isValid = true;
+                let firstInvalidField = null;
                 var currentTabId = $(this).data("current");
                 var nextTab = $(this).data("next");
 
@@ -1201,17 +1203,56 @@
                     if (!$(this).val().trim()) {
                         isValid = false;
                         $(this).addClass("is-invalid"); // Highlight empty fields
+
+                        // Store the first invalid field to scroll to
+                        if (!firstInvalidField) {
+                            firstInvalidField = $(this);
+                        }
                     } else {
                         $(this).removeClass("is-invalid"); // Remove highlight if valid
                     }
                 });
+
                 console.log('okok', currentTabId, nextTab);
 
                 if (isValid) {
                     $("#" + currentTabId).removeClass("active");
                     $("#" + nextTab).addClass("active");
+                } else if (firstInvalidField) {
+                    // Scroll to the first invalid field
+                    $("html, body").animate({
+                        scrollTop: firstInvalidField.offset().top -
+                            100 // Adjust offset for better visibility
+                    }, 500);
                 }
             });
         });
+        // $(document).ready(function() {
+        //     $(".nav-tab").click(function(e) {
+        //         // e.preventDefault(); // Stop default tab switch behavior
+
+        //         let currentTab = $(this).closest(".tab-content"); // Get current tab section
+        //         let targetTab = $(this).attr("href"); // Get target tab ID
+        //         let isValid = true;
+        //         var currentTabId = $(this).data("current");
+        //         var nextTab = $(this).data("next");
+
+        //         // Validate required fields in the current tab
+        //         currentTab.find("[required]").each(function() {
+        //             if (!$(this).val().trim()) {
+        //                 isValid = false;
+        //                 $(this).addClass("is-invalid"); // Highlight empty fields
+        //             } else {
+        //                 $(this).removeClass("is-invalid"); // Remove highlight if valid
+        //             }
+        //         });
+        //         console.log('okok', currentTabId, nextTab);
+
+        //         if (isValid) {
+        //             $("#" + currentTabId).removeClass("active");
+        //             $("#" + nextTab).addClass("active");
+        //         }
+        //     });
+        // });
     </script>
 @endsection
