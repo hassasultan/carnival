@@ -31,6 +31,7 @@ use Illuminate\Support\Str;
 use App\Services\ProductService;
 use DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Route;
 
 
 class FrontendConroller extends Controller
