@@ -257,7 +257,7 @@ class FrontendConroller extends Controller
         $regionId = $request->get('getRegion');
 
         $query = Vendor::query()
-            ->whereHas('user.costumes')
+            // ->whereHas('user.costumes')
             ->with([
                 'user' => function ($query) {
                     $query->select('id', 'first_name', 'last_name', 'slug', 'image');
