@@ -340,7 +340,7 @@
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
                                                 <div class="product-item-photo">
-                                                    <a href="`${vendorDetailUrl}`" class="product-item-img">
+                                                    <a href="${vendorDetailUrl}" class="product-item-img">
                                                         <img style="width:200px;height:200px" src="${logo}"
                                                     alt="product name"></a>
                                                 </div>
