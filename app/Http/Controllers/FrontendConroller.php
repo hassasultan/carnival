@@ -258,6 +258,7 @@ class FrontendConroller extends Controller
             'current_route_name' => Route::currentRouteName(),
             'current_url' => url()->current(),
             'previous_url' => url()->previous(),
+            'previous_route' => url()->previousRouteName(),
         ]);
         $vendor_type = $request->get('vendor_type', null);
         $regionId = $request->get('getRegion');
