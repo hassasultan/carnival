@@ -46,7 +46,7 @@ class FrontendConroller extends Controller
         $products = Product::with('brand')->get();
         $investors = Investor::all();
         $testimonials = Testimonials::where('status', 1)->get();
-        $blogs = Blogs::with('user')->get()->take('3');
+        $blogs = Blogs::with('user')->orderBy('id', 'DESC')->get()->take('3');
         $carnivals = Carnival::with('user')->get()->take('6');
         // dd($events->toArray());
         $carnival_com = Carnival::has('user')->pluck('head');
