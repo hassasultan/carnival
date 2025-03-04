@@ -324,6 +324,7 @@
                         $('#product-listing').removeClass('blur-effect');
                         $.each(response.data, function(index, vendor) {
                             var logo = null;
+                            var vendorDetailUrl = "{{ route('front.vendor.detail', ':slug') }}".replace(':slug', vendor.user.slug);
                             if (vendor.logo != null) {
                                 logo = "{{ asset('images/') }}/" + vendor.logo;
                             } else if (vendor.user.image != null) {
@@ -339,13 +340,13 @@
                                         <div class="product-item-info">
                                             <div class="product-item-photo">
                                                 <div class="product-item-photo">
-                                                    <a href="{{ route('front.vendor.detail', '') }}/${vendor.user.slug}" class="product-item-img">
+                                                    <a href="`${vendorDetailUrl}`" class="product-item-img">
                                                         <img style="width:200px;height:200px" src="${logo}"
                                                     alt="product name"></a>
                                                 </div>
                                             </div>
                                             <div class="product-item-detail">
-                                                <strong class="product-item-name"><a href="">${vendor.user.first_name} ${vendor.user.last_name}</a></strong>`;
+                                                <strong class="product-item-name"><a href="${vendorDetailUrl}">${vendor.user.first_name} ${vendor.user.last_name}</a></strong>`;
                             if (vendor.user.products.length > 0) {
                                 vendorHtml += `
                                                     <div class="clearfix">
