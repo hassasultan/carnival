@@ -147,7 +147,7 @@ class FrontendConroller extends Controller
             ->where('start_date', '>', Carbon::now())->orderBy('id', 'DESC')->get()->take(8);
         $ads = Advertisement::where('type', 'event')->get();
         // dd($carnival_events->toArray());
-        return view('front.events', compact('products','banners', 'upcoming_events', 'all_events', 'carnival_events', 'popular_events', 'ads'));
+        return view('front.events', compact('products', 'banners', 'upcoming_events', 'all_events', 'carnival_events', 'popular_events', 'ads'));
     }
     public function category_tour_listing()
     {
@@ -254,26 +254,29 @@ class FrontendConroller extends Controller
     // }
     public function get_vendors(Request $request)
     {
-        dd([
-            'current_route_name' => Route::currentRouteName(),
-            'current_url' => url()->current(),
-            'previous_url' => url()->previous(),
-            'previous_route' => app('router')->getRoutes()->match(Request::create(url()->previous()))->getName() ?? 'N/A'
-        ]);
+        // dd([
+        //     'current_route_name' => Route::currentRouteName(),
+        //     'current_url' => url()->current(),
+        //     'previous_url' => url()->previous(),
+        //     'previous_route' => app('router')->getRoutes()->match(Request::create(url()->previous()))->getName() ?? 'N/A'
+        // ]);
+        $previous_route = app('router')->getRoutes()->match(Request::create(url()->previous()))->getName() ?? 'N/A';
         $vendor_type = $request->get('vendor_type', null);
         $regionId = $request->get('getRegion');
 
-        $query = Vendor::query()
-            // ->whereHas('user.costumes')
-            ->with([
-                'user' => function ($query) {
-                    $query->select('id', 'first_name', 'last_name', 'slug', 'image');
-                },
-                'user.products' => function ($query) {
-                    $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
-                        ->groupBy('user_id');
-                },
-            ]);
+        $query = Vendor::query();
+        if ($previous_route == 'front.vendors') {
+            $query->whereHas('user.costumes'); // ✅ FIXED
+        }
+        $query->with([
+            'user' => function ($query) {
+                $query->select('id', 'first_name', 'last_name', 'slug', 'image');
+            },
+            'user.products' => function ($query) {
+                $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
+                    ->groupBy('user_id');
+            },
+        ]);
 
         if ($vendor_type) {
             $query->whereHas('package', function ($query) use ($vendor_type) {
