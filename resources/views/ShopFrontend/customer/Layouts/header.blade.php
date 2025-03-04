@@ -220,17 +220,21 @@
                                                 <div class="minicart-items-wrapper">
                                                     <ol class="minicart-items" id="minicart-items">
                                                         @foreach ($cartItems as $cartItem)
-                                                        @php
-                                                            $image = null;
-                                                            if($cartItem->product->image != null && $cartItem->product->image != '')
-                                                            {
-                                                                $image = asset('productImage/')."/".$cartItem->product->image;
-                                                            }
-                                                            else
-                                                            {
-                                                                $image = 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                                                            }
-                                                        @endphp     
+                                                            @php
+                                                                $image = null;
+                                                                if (
+                                                                    $cartItem->product->image != null &&
+                                                                    $cartItem->product->image != ''
+                                                                ) {
+                                                                    $image =
+                                                                        asset('productImage/') .
+                                                                        '/' .
+                                                                        $cartItem->product->image;
+                                                                } else {
+                                                                    $image =
+                                                                        'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                                                }
+                                                            @endphp
                                                             <li class="product-item cart-row-{{ $cartItem->id }}">
                                                                 <a class="product-item-photo" href="#"
                                                                     title="{{ $cartItem->product->title }}">
@@ -252,7 +256,9 @@
                                                                             class="number">{{ $cartItem->quantity }}</span>
                                                                     </div>
                                                                     <div class="product-item-actions">
-                                                                        <a class="action delete delete-cart" data-id="{{ $cartItem->id }}" href="javascript:void(0);"
+                                                                        <a class="action delete delete-cart"
+                                                                            data-id="{{ $cartItem->id }}"
+                                                                            href="javascript:void(0);"
                                                                             title="Remove item">
                                                                             <span>Remove</span>
                                                                         </a>
@@ -270,7 +276,7 @@
                                                     <a href="{{ route('check.out') }}" class="btn btn-checkout"
                                                         title="Check Out">
                                                         <span>Checkout</span>
-                                                    </button>
+                                                        </button>
                                                 </div>
                                             </div>
                                         </form>
@@ -727,14 +733,30 @@
                             <div class="clearfix"><span data-action="close-nav"
                                     class="close-nav"><span>close</span></span></div>
                             <ul class="ui-menu">
-                                <li class="active">
-                                    <a>Home</a>
+                                {{-- <li class="active">
+                                    <a >Home</a>
                                 </li>
                                 <li><a href="#"> MAS CAMPS </a></li>
                                 <li><a href="#"> CG GEAR </a></li>
                                 <li><a href="#">MODELS</a></li>
                                 <li><a href="#">ARTISTES</a></li>
                                 <li><a href="#">EVENTS</a></li>
+                                <li><a href="#">CONTACT US</a></li> --}}
+                                <li class="{{ request()->is('/') ? 'active' : '' }}">
+                                    <a href="/">HOME</a>
+                                </li>
+                                <li class="{{ Request::routeIs('front.vendors') ? 'active' : '' }}"><a
+                                        href="{{ route('front.vendors') }}"> MAS CAMPS </a></li>
+                                <li class="{{ Request::routeIs('front.cgGear.listing') ? 'active' : '' }}"><a
+                                        href="{{ route('front.cgGear.listing') }}"> CG GEAR </a></li>
+                                {{-- <li class="{{ Request::routeIs('front.marketplace') ? 'active' : '' }}"><a
+                                        href="{{ route('front.marketplace') }}"> MARKET PLACE </a></li> --}}
+                                <li class="{{ Request::routeIs('model.listing') ? 'active' : '' }}"><a
+                                        href="{{ route('model.listing') }}"> MODELS </a></li>
+                                <li class="{{ Request::routeIs('artist.listing') ? 'active' : '' }}"><a
+                                        href="{{ route('artist.listing') }}"> ARTISTES </a></li>
+                                <li class="{{ Request::routeIs('front.shop_listing') ? 'active' : '' }}"><a
+                                        href="{{ route('front.shop_listing') }}"> EVENTS </a></li>
                                 <li><a href="#">CONTACT US</a></li>
                             </ul>
 
