@@ -288,7 +288,7 @@
                                                                     </h4>
                                                                     <div
                                                                         style="color: #222;opacity: 0.6; font-size: 10px; font-family: 'Open Sans', sans-serif;">
-                                                                        {{ $row->country?->name ?? 'Country Not Set' }}
+                                                                        @if($row->city != null) {{ $row->city->name }}, @endif {{ $row->country?->name ?? 'Country Not Set' }}
                                                                     </div>
                                                                     @php
                                                                         $getDaySuffix = function ($day) {
