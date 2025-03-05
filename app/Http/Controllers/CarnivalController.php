@@ -61,6 +61,7 @@ class CarnivalController extends Controller
                 'end_date' => $request->end_date,
                 'region_id' => $request->region_id,
                 'country_id' => $request->country_id,
+                'city_id' => $request->city_id,
                 'description' => $request->description,
                 'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
             ]);
@@ -154,6 +155,7 @@ class CarnivalController extends Controller
                 'end_date' => $request->end_date,
                 'region_id' => $request->region_id,
                 'country_id' => $request->country_id,
+                'city_id' => $request->city_id,
                 'description' => $request->description,
                 'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
             ]);

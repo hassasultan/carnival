@@ -19,6 +19,7 @@ class Carnival extends Model
         'region',
         'region_id',
         'country_id',
+        'city_id',
         'description',
         'slug',
     ];
