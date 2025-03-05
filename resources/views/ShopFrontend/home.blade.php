@@ -259,8 +259,19 @@
                             </a>
                         </div>
                         <div class="col-products tab-content new_arrival2" style="width: 80%;">
-                            <button type="button" class="slick-arrow slick-prev">Previous</button>
-                            <div class="deals-slider">
+                            {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
+                            <div class="owl-carousel"
+                                            data-nav="true"
+                                            data-dots="false"
+                                            data-margin="30"
+                                            data-responsive='{
+                                            "0":{"items":1},
+                                            "480":{"items":2},
+                                            "480":{"items":2},
+                                            "768":{"items":3},
+                                            "992":{"items":3},
+                                            "1200":{"items":4}
+                                        }'>
                                 @foreach ($new_arrivals as $new)
                                     <div>
                                         <div class="product-item product-item-opt-1">
@@ -307,7 +318,7 @@
                                 @endforeach
                                 <!-- More slides here -->
                             </div>
-                            <button type="button" class="slick-arrow slick-next">Next</button>
+                            {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                         </div>
                     </div>
                 </div>
@@ -349,8 +360,19 @@
                             </a>
                         </div>
                         <div class="col-products tab-content new_arrival2" style="width: 80%;">
-                            <button type="button" class="slick-arrow slick-prev">Previous</button>
-                            <div class="deals-slider">
+                            {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
+                            <div class="owl-carousel"
+                                            data-nav="true"
+                                            data-dots="false"
+                                            data-margin="30"
+                                            data-responsive='{
+                                            "0":{"items":1},
+                                            "480":{"items":2},
+                                            "480":{"items":2},
+                                            "768":{"items":3},
+                                            "992":{"items":3},
+                                            "1200":{"items":4}
+                                        }'>
                                 @foreach ($top_sellers as $product)
                                     <div>
                                         <div class="product-item product-item-opt-1">
@@ -399,7 +421,7 @@
                                 @endforeach
                                 <!-- More slides here -->
                             </div>
-                            <button type="button" class="slick-arrow slick-next">Next</button>
+                            {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                         </div>
                     </div>
                 </div>
@@ -460,8 +482,19 @@
                             </a>
                         </div>
                         <div class="col-products tab-content new_arrival2" style="width: 80%;">
-                            <button type="button" class="slick-arrow slick-prev">Previous</button>
-                            <div class="deals-slider">
+                            {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
+                            <div class="owl-carousel"
+                                            data-nav="true"
+                                            data-dots="false"
+                                            data-margin="30"
+                                            data-responsive='{
+                                            "0":{"items":1},
+                                            "480":{"items":2},
+                                            "480":{"items":2},
+                                            "768":{"items":3},
+                                            "992":{"items":3},
+                                            "1200":{"items":4}
+                                        }'>
                                 @foreach ($products as $product)
                                     <div>
                                         <div class="product-item product-item-opt-1">
@@ -510,7 +543,7 @@
                                 @endforeach
                                 <!-- More slides here -->
                             </div>
-                            <button type="button" class="slick-arrow slick-next">Next</button>
+                            {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                         </div>
                     </div>
                 </div>
