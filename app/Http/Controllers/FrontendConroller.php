@@ -65,7 +65,7 @@ class FrontendConroller extends Controller
         $investors = Investor::all();
         $testimonials = Testimonials::where('status', 1)->get();
         $siteGallery = SiteGallery::get();
-        $blogs = Blogs::with('user')->get()->take('3');
+        $blogs = Blogs::with('user')->get()->orderBy('id', 'DESC')->take('3');
         $products = Product::with('brand')->get();
         $carnival_com = Carnival::has('user')->pluck('head');
         $ourTeam = OurTeam::take(3)->get();
@@ -85,7 +85,7 @@ class FrontendConroller extends Controller
         $regions = Region::with('countries')->get();
         $carnivals = Carnival::with('user')->get();
         $investors = Investor::all();
-        $blogs = Blogs::with('user')->get()->take('3');
+        $blogs = Blogs::with('user')->get()->orderBy('id', 'DESC')->take('3');
         $products = Product::with('brand')->get();
         $carnival_com = Carnival::has('user')->pluck('head');
         $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
@@ -155,7 +155,7 @@ class FrontendConroller extends Controller
     }
     public function tour_listing()
     {
-        $blogs = Blogs::with('user')->get()->take('3');
+        $blogs = Blogs::with('user')->orderBy('id', 'DESC')->get()->take('3');
         $products = Product::with('brand')->get();
         return view('front.tours', compact('blogs', 'products'));
     }
@@ -165,12 +165,12 @@ class FrontendConroller extends Controller
     }
     public function flight_listing()
     {
-        $blogs = Blogs::with('user')->get()->take('3');
+        $blogs = Blogs::with('user')->orderBy('id', 'DESC')->get()->take('3');
         return view('front.flight-isting', compact('blogs'));
     }
     public function hotel_listing()
     {
-        $blogs = Blogs::with('user')->get()->take('3');
+        $blogs = Blogs::with('user')->get()->orderBy('id', 'DESC')->take('3');
         $products = Product::with('brand')->get();
         return view('front.hotel-isting', compact('blogs', 'products'));
     }
@@ -317,7 +317,7 @@ class FrontendConroller extends Controller
         // dd($top_sellers->toArray());
         $investors = Investor::all();
         $ads = Advertisement::all()->take('2');
-        $blogs = Blogs::with('user')->get()->take('6');
+        $blogs = Blogs::with('user')->get()->orderBy('id', 'DESC')->take('6');
         // dd($products->toArray());
         return view('ShopFrontend.home', compact('products', 'investors', 'blogs', 'categories', 'oackages', 'new_arrivals', 'top_sellers', 'brands', 'discounted_products', 'banners', 'ads'));
     }
@@ -506,8 +506,8 @@ class FrontendConroller extends Controller
         $carnivals = Carnival::with('country_tabs', 'images')->find($slug);
         // dd($event->toArray());
         $products = Product::with('brand')->get();
-        $blogs = Blogs::with('user')->get()->take('3');
-        $all_blogs = Blogs::with('user')->paginate(12);
+        $blogs = Blogs::with('user')->get()->orderBy('id', 'DESC')->take('3');
+        $all_blogs = Blogs::with('user')->orderBy('id', 'DESC')->paginate(12);
 
         return view('front.view_more', compact('carnivals', 'products', 'blogs', 'all_blogs'));
     }
@@ -895,7 +895,7 @@ class FrontendConroller extends Controller
         $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user_id)->first();
         $user = User::with('banners')->where('id', $user_id)->first();
         // dd($user, $user_id, $carnival->toArray());
-        $blogs = Blogs::where('user_id', $user_id)->with('user')->get()->take('6');
+        $blogs = Blogs::where('user_id', $user_id)->with('user')->get()->orderBy('id', 'DESC')->take('6');
         $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
         // dd($subvendors->toArray());
         $categories = $vendor->products->pluck('category')->unique('id');
