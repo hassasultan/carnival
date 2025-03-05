@@ -1,6 +1,6 @@
-<div class="full-height">
-    <div class="video-wrapper">
-        <div class="full-height">
+{{-- <div class="full-height">
+    <div class="video-wrapper"> --}}
+        <div class="full-height" style="height: auto !important;">
             <div class="video-wrapper">
                 {{-- @foreach ($siteGallery as $key => $row)
                     <div class="col-md-3 album-cnt" data-id="{{ $row->id }}">
@@ -229,7 +229,7 @@
                                                                                         $extension = pathinfo($image->image, PATHINFO_EXTENSION);
                                                                                         $imageUrl = asset('images/carnivalImages/' . $image->image);
                                                                                     @endphp
-                                                                        
+
                                                                                     @if(in_array($extension, ['mp4', 'webm', 'ogg']))
                                                                                         <video src="{{ $imageUrl }}" controls loop autoplay muted></video>
                                                                                     @else
@@ -334,7 +334,7 @@
                                                                                 3 => $day == 13 ? 'th' : 'rd',
                                                                                 default => 'th',
                                                                             };
-                                                                            
+
                                                                             $enddate = \Carbon\Carbon::parse(
                                                                                 $row->end_date,
                                                                             );
@@ -486,5 +486,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    {{-- </div>
+</div> --}}
