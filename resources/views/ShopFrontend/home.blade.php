@@ -110,7 +110,8 @@
                         <div class="nav-links dropdown"><button class="dropdown-toggle" type="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"
                                     aria-hidden="true"></i></button>
-                            <div class="dropdown-menu">
+                            <div>
+                            {{-- <div class="dropdown-menu"> --}}
                                 <ul>
                                     <li role="presentation" class="active"><a href="#hot-1" role="tab"
                                             data-toggle="tab" class="get_discounted">up to 40% off</a></li>
@@ -233,7 +234,8 @@
                     <div class="links dropdown"><button class="dropdown-toggle" type="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"
                                 aria-hidden="true"></i></button>
-                        <div class="dropdown-menu">
+                        {{-- <div class="dropdown-menu"> --}}
+                        <div>
                             <ul>
                                 <li role="presentation" class=""><a href="#" role="tab"
                                         data-toggle="tab">All </a></li>
@@ -334,7 +336,8 @@
                     <div class="links dropdown"><button class="dropdown-toggle" type="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"
                                 aria-hidden="true"></i></button>
-                        <div class="dropdown-menu">
+                        {{-- <div class="dropdown-menu"> --}}
+                        <div>
                             <ul>
                                 <li role="presentation" class=""><a href="#" role="tab"
                                         data-toggle="tab">All </a></li>
@@ -456,7 +459,8 @@
                     <div class="links dropdown"><button class="dropdown-toggle" type="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"
                                 aria-hidden="true"></i></button>
-                        <div class="dropdown-menu">
+                        {{-- <div class="dropdown-menu"> --}}
+                        <div>
                             <ul>
                                 <li role="presentation" class=""><a href="#" role="tab"
                                         data-toggle="tab">All </a></li>
