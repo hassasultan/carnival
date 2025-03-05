@@ -13894,6 +13894,10 @@ footer.type-2 .copyright {
 }
 
 @media screen and (max-width: 767px) {
+    .main-slider-5 .swiper-slide
+    {
+        min-height: 1200px;
+    }
   header.type-2 .nav-menu-icon {
     border-left: none;
   }
@@ -13986,11 +13990,11 @@ footer.type-2 .copyright {
   }
   .slider-block-right .sb-title
   {
-    display: none;
+    display: block;
   }
   .slider-block-right .sb-price
   {
-    display: none;
+    display: block;
   }
   .slider-block-right .sb-text
   {
