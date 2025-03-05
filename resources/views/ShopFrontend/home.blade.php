@@ -317,42 +317,43 @@
             </div>
         </div>
 
-        <div class="block-floor-products block-floor-products-opt3 floor-products2">
-            <div class="container">
-                <div class="block-title"><span class="title">TOP SELLERS IN</span>
-                    <div class="links dropdown"><button class="dropdown-toggle" type="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"
-                                aria-hidden="true"></i></button>
-                        {{-- <div class="dropdown-menu"> --}}
-                        <div>
-                            <ul>
-                                <li role="presentation" class=""><a href="#" role="tab"
-                                        data-toggle="tab">All </a></li>
-                                <li role="presentation" class=""><a href="#" role="tab"
-                                        data-toggle="tab">Women Fashion </a>
-                                </li>
-                                <li role="presentation" class=""><a href="#" role="tab"
-                                        data-toggle="tab"> Bags </a></li>
-                                <li role="presentation" class=""><a href="#" role="tab"
-                                        data-toggle="tab">SHOES </a></li>
-                                <li role="presentation" class=""><a href="#" role="tab"
-                                        data-toggle="tab">GLASSES</a></li>
-                            </ul>
+        @if (count($top_sellers) > 0)
+            <div class="block-floor-products block-floor-products-opt3 floor-products2">
+                <div class="container">
+                    <div class="block-title"><span class="title">TOP SELLERS IN</span>
+                        <div class="links dropdown"><button class="dropdown-toggle" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"
+                                    aria-hidden="true"></i></button>
+                            {{-- <div class="dropdown-menu"> --}}
+                            <div>
+                                <ul>
+                                    <li role="presentation" class=""><a href="#" role="tab"
+                                            data-toggle="tab">All </a></li>
+                                    <li role="presentation" class=""><a href="#" role="tab"
+                                            data-toggle="tab">Women Fashion </a>
+                                    </li>
+                                    <li role="presentation" class=""><a href="#" role="tab"
+                                            data-toggle="tab"> Bags </a></li>
+                                    <li role="presentation" class=""><a href="#" role="tab"
+                                            data-toggle="tab">SHOES </a></li>
+                                    <li role="presentation" class=""><a href="#" role="tab"
+                                            data-toggle="tab">GLASSES</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="slider-container">
-                    <div class="block-content new_arrival">
-                        <div class="col-banner new_arrival1">
-                            <a href="#" class="box-img">
-                                <img src="https://carnivalguide.co/shop/images/topsellersbnr3.jpg" alt="baner-floor">
-                                <div class="des"><span>TRENDING STYLE</span></div>
-                            </a>
-                        </div>
-                        <div class="col-products tab-content new_arrival2" style="width: 80%;">
-                            {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
-                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                data-responsive='{
+                    <div class="slider-container">
+                        <div class="block-content new_arrival">
+                            <div class="col-banner new_arrival1">
+                                <a href="#" class="box-img">
+                                    <img src="https://carnivalguide.co/shop/images/topsellersbnr3.jpg" alt="baner-floor">
+                                    <div class="des"><span>TRENDING STYLE</span></div>
+                                </a>
+                            </div>
+                            <div class="col-products tab-content new_arrival2" style="width: 80%;">
+                                {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
+                                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                    data-responsive='{
                                             "0":{"items":1},
                                             "480":{"items":2},
                                             "480":{"items":2},
@@ -360,43 +361,45 @@
                                             "992":{"items":3},
                                             "1200":{"items":4}
                                         }'>
-                                @foreach ($top_sellers as $product)
-                                    <div>
-                                        <div class="product-item product-item-opt-1">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img" href="#">
-                                                        <img alt="{{ $product->title }}"
-                                                            src="{{ asset('productImage/' . ($product->image ?? 'default_image_path.jpg')) }}">
-                                                    </a>
-                                                    <button type="button" class="btn btn-cart">
-                                                        <span>Add to Cart</span>
-                                                    </button>
-                                                </div>
-                                                @if ($product->discount > 0)
-                                                    <span
-                                                        class="product-item-label label-sale-off">{{ $product->discount }}%
-                                                        <span>off</span></span>
-                                                @endif
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name">
-                                                        <a href="#">{{ $product->title }}</a>
-                                                    </strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span
-                                                                class="price">${{ number_format($product->new_price, 2) }}</span>
-                                                            @if ($product->old_price)
+                                    @foreach ($top_sellers as $product)
+                                        <div>
+                                            <div class="product-item product-item-opt-1">
+                                                <div class="product-item-info">
+                                                    <div class="product-item-photo">
+                                                        <a class="product-item-img" href="#">
+                                                            <img alt="{{ $product->title }}"
+                                                                src="{{ asset('productImage/' . ($product->image ?? 'default_image_path.jpg')) }}">
+                                                        </a>
+                                                        <button type="button" class="btn btn-cart">
+                                                            <span>Add to Cart</span>
+                                                        </button>
+                                                    </div>
+                                                    @if ($product->discount > 0)
+                                                        <span
+                                                            class="product-item-label label-sale-off">{{ $product->discount }}%
+                                                            <span>off</span></span>
+                                                    @endif
+                                                    <div class="product-item-detail">
+                                                        <strong class="product-item-name">
+                                                            <a href="#">{{ $product->title }}</a>
+                                                        </strong>
+                                                        <div class="clearfix">
+                                                            <div class="product-item-price">
                                                                 <span
-                                                                    class="old-price">${{ number_format($product->old_price, 2) }}</span>
-                                                            @endif
-                                                        </div>
-                                                        <div class="product-reviews-summary">
-                                                            <div class="rating-summary">
-                                                                <div title="{{ $product->reviews }}%"
-                                                                    class="rating-result">
-                                                                    <span><span><span>{{ $product->reviews }}</span>% of
-                                                                            <span>100</span></span></span>
+                                                                    class="price">${{ number_format($product->new_price, 2) }}</span>
+                                                                @if ($product->old_price)
+                                                                    <span
+                                                                        class="old-price">${{ number_format($product->old_price, 2) }}</span>
+                                                                @endif
+                                                            </div>
+                                                            <div class="product-reviews-summary">
+                                                                <div class="rating-summary">
+                                                                    <div title="{{ $product->reviews }}%"
+                                                                        class="rating-result">
+                                                                        <span><span><span>{{ $product->reviews }}</span>%
+                                                                                of
+                                                                                <span>100</span></span></span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -404,20 +407,19 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
-                                <!-- More slides here -->
+                                    @endforeach
+                                    <!-- More slides here -->
+                                </div>
+                                {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                             </div>
-                            {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                         </div>
                     </div>
+
+                    <!-- Repeat .slider-container for multiple sliders -->
+
                 </div>
-
-                <!-- Repeat .slider-container for multiple sliders -->
-
             </div>
-        </div>
-
+        @endif
 
         <div class="block-banner-lag-opt3  effect-banner1">
             <div class="container">

@@ -95,8 +95,10 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
-                                                                    <img alt="product image"
-                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
+                                                                    <img alt="product name"
+                                                                        src="{{ asset('productImage/' . $product->image) }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -175,7 +177,9 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
+                                                                        src="{{ asset('productImage/' . $product->image) }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -253,7 +257,9 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
+                                                                        src="{{ asset('productImage/' . $product->image) }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -331,7 +337,9 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
+                                                                        src="{{ asset('productImage/' . $product->image) }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -409,7 +417,9 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
+                                                                        src="{{ asset('productImage/' . $product->image) }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -488,7 +498,9 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
+                                                                        src="{{ asset('productImage/' . $product->image) }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -566,7 +578,9 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
+                                                                        src="{{ asset('productImage/' . $product->image) }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -644,7 +658,9 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
+                                                                        src="{{ asset('productImage/' . $product->image) }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -722,7 +738,9 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
+                                                                        src="{{ asset('productImage/' . $product->image) }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
