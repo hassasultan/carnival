@@ -11,6 +11,7 @@ class CityController extends Controller
     public function index()
     {
         $cities = City::with('country')->get();
+        dd($cities->toArray());
         return view('dashboard.admin.cities.index', compact('cities'));
     }
 
