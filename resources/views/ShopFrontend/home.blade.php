@@ -132,39 +132,94 @@
                     <div class="block-content ">
                         <div class="tab-content">
                             <div class="tab-pane active in fade" id="hot-1" role="tabpanel">
-                                <button type="button" class="slick-arrow slick-prev">Previous</button>
-                                <div class="deals-slider" id="shopDiscount">
+                                {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
+                                <div class="owl-carousel"
+                                            data-nav="true"
+                                            data-dots="false"
+                                            data-margin="30"
+                                            data-responsive='{
+                                            "0":{"items":1},
+                                            "480":{"items":2},
+                                            "480":{"items":2},
+                                            "768":{"items":3},
+                                            "992":{"items":3},
+                                            "1200":{"items":4}
+                                        }' id="shopDiscount">
                                     @include('partials.shop_discount')
                                 </div>
-                                <button type="button" class="slick-arrow slick-next">Next</button>
+                                {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                             </div>
                             <div class="tab-pane fade" id="hot-2" role="tabpanel">
-                                <button type="button" class="slick-arrow slick-prev">Previous</button>
-                                <div class="deals-slider" id="shopDiscount">
+                                {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
+                                <div class="owl-carousel"
+                                            data-nav="true"
+                                            data-dots="false"
+                                            data-margin="30"
+                                            data-responsive='{
+                                            "0":{"items":1},
+                                            "480":{"items":2},
+                                            "480":{"items":2},
+                                            "768":{"items":3},
+                                            "992":{"items":3},
+                                            "1200":{"items":4}
+                                        }' id="shopDiscount">
                                     @include('partials.shop_discount')
                                 </div>
-                                <button type="button" class="slick-arrow slick-next">Next</button>
+                                {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                             </div>
                             <div class="tab-pane fade" id="hot-3" role="tabpanel">
-                                <button type="button" class="slick-arrow slick-prev">Previous</button>
-                                <div class="deals-slider" id="shopDiscount">
+                                {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
+                                <div class="owl-carousel"
+                                            data-nav="true"
+                                            data-dots="false"
+                                            data-margin="30"
+                                            data-responsive='{
+                                            "0":{"items":1},
+                                            "480":{"items":2},
+                                            "480":{"items":2},
+                                            "768":{"items":3},
+                                            "992":{"items":3},
+                                            "1200":{"items":4}
+                                        }' id="shopDiscount">
                                     @include('partials.shop_discount')
                                 </div>
-                                <button type="button" class="slick-arrow slick-next">Next</button>
+                                {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                             </div>
                             <div class="tab-pane fade" id="hot-4" role="tabpanel">
-                                <button type="button" class="slick-arrow slick-prev">Previous</button>
-                                <div class="deals-slider" id="shopDiscount">
+                                {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
+                                <div class="owl-carousel"
+                                            data-nav="true"
+                                            data-dots="false"
+                                            data-margin="30"
+                                            data-responsive='{
+                                            "0":{"items":1},
+                                            "480":{"items":2},
+                                            "480":{"items":2},
+                                            "768":{"items":3},
+                                            "992":{"items":3},
+                                            "1200":{"items":4}
+                                        }' id="shopDiscount">
                                     @include('partials.shop_discount')
                                 </div>
-                                <button type="button" class="slick-arrow slick-next">Next</button>
+                                {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                             </div>
                             <div class="tab-pane fade" id="hot-5" role="tabpanel">
-                                <button type="button" class="slick-arrow slick-prev">Previous</button>
-                                <div class="deals-slider" id="shopDiscount">
+                                {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
+                                <div class="owl-carousel"
+                                            data-nav="true"
+                                            data-dots="false"
+                                            data-margin="30"
+                                            data-responsive='{
+                                            "0":{"items":1},
+                                            "480":{"items":2},
+                                            "480":{"items":2},
+                                            "768":{"items":3},
+                                            "992":{"items":3},
+                                            "1200":{"items":4}
+                                        }' id="shopDiscount">
                                     @include('partials.shop_discount')
                                 </div>
-                                <button type="button" class="slick-arrow slick-next">Next</button>
+                                {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                             </div>
                         </div>
                     </div>
