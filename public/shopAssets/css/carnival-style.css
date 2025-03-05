@@ -12721,7 +12721,7 @@ footer.type-2 .copyright {
 }
 .content-area-start
 {
-    padding:160px 0px 0px 0px;
+    padding:60px 0px 0px 0px;
 }
 .home-top-banner
   {
@@ -13901,10 +13901,10 @@ footer.type-2 .copyright {
   header.type-2 .nav-menu-icon {
     border-left: none;
   }
-  .content-area-start
+  /* .content-area-start
   {
       padding:200px 0px 0px 0px;
-  }
+  } */
   .home-top-banner
   {
     margin: 60px auto !important;
