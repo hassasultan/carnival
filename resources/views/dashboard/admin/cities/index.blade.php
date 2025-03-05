@@ -29,7 +29,7 @@
                                     <tr>
                                         <td>{{ $city->id }}</td>
                                         <td>{{ $city->name }}</td>
-                                        <td>{{ $city->country ?? $city->country->name }}</td>
+                                        <td>{{ $city->country->name ?? '-' }}</td>
                                         <td>
                                             <a href="{{ route('cities.show', $city->id) }}" class="btn btn-info">Show</a>
                                             <a href="{{ route('cities.edit', $city->id) }}" class="btn btn-primary">Edit</a>
