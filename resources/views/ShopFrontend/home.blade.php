@@ -111,7 +111,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"
                                     aria-hidden="true"></i></button>
                             <div>
-                            {{-- <div class="dropdown-menu"> --}}
+                                {{-- <div class="dropdown-menu"> --}}
                                 <ul>
                                     <li role="presentation" class="active"><a href="#hot-1" role="tab"
                                             data-toggle="tab" class="get_discounted">up to 40% off</a></li>
@@ -134,90 +134,80 @@
                         <div class="tab-content">
                             <div class="tab-pane active in fade" id="hot-1" role="tabpanel">
                                 {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
-                                <div class="owl-carousel"
-                                            data-nav="true"
-                                            data-dots="false"
-                                            data-margin="30"
-                                            data-responsive='{
+                                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                    data-responsive='{
                                             "0":{"items":1},
                                             "480":{"items":2},
                                             "480":{"items":2},
                                             "768":{"items":3},
                                             "992":{"items":3},
                                             "1200":{"items":4}
-                                        }' id="shopDiscount">
+                                        }'
+                                    id="shopDiscount">
                                     @include('partials.shop_discount')
                                 </div>
                                 {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                             </div>
                             <div class="tab-pane fade" id="hot-2" role="tabpanel">
                                 {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
-                                <div class="owl-carousel"
-                                            data-nav="true"
-                                            data-dots="false"
-                                            data-margin="30"
-                                            data-responsive='{
+                                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                    data-responsive='{
                                             "0":{"items":1},
                                             "480":{"items":2},
                                             "480":{"items":2},
                                             "768":{"items":3},
                                             "992":{"items":3},
                                             "1200":{"items":4}
-                                        }' id="shopDiscount">
+                                        }'
+                                    id="shopDiscount">
                                     @include('partials.shop_discount')
                                 </div>
                                 {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                             </div>
                             <div class="tab-pane fade" id="hot-3" role="tabpanel">
                                 {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
-                                <div class="owl-carousel"
-                                            data-nav="true"
-                                            data-dots="false"
-                                            data-margin="30"
-                                            data-responsive='{
+                                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                    data-responsive='{
                                             "0":{"items":1},
                                             "480":{"items":2},
                                             "480":{"items":2},
                                             "768":{"items":3},
                                             "992":{"items":3},
                                             "1200":{"items":4}
-                                        }' id="shopDiscount">
+                                        }'
+                                    id="shopDiscount">
                                     @include('partials.shop_discount')
                                 </div>
                                 {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                             </div>
                             <div class="tab-pane fade" id="hot-4" role="tabpanel">
                                 {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
-                                <div class="owl-carousel"
-                                            data-nav="true"
-                                            data-dots="false"
-                                            data-margin="30"
-                                            data-responsive='{
+                                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                    data-responsive='{
                                             "0":{"items":1},
                                             "480":{"items":2},
                                             "480":{"items":2},
                                             "768":{"items":3},
                                             "992":{"items":3},
                                             "1200":{"items":4}
-                                        }' id="shopDiscount">
+                                        }'
+                                    id="shopDiscount">
                                     @include('partials.shop_discount')
                                 </div>
                                 {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
                             </div>
                             <div class="tab-pane fade" id="hot-5" role="tabpanel">
                                 {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
-                                <div class="owl-carousel"
-                                            data-nav="true"
-                                            data-dots="false"
-                                            data-margin="30"
-                                            data-responsive='{
+                                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                    data-responsive='{
                                             "0":{"items":1},
                                             "480":{"items":2},
                                             "480":{"items":2},
                                             "768":{"items":3},
                                             "992":{"items":3},
                                             "1200":{"items":4}
-                                        }' id="shopDiscount">
+                                        }'
+                                    id="shopDiscount">
                                     @include('partials.shop_discount')
                                 </div>
                                 {{-- <button type="button" class="slick-arrow slick-next">Next</button> --}}
@@ -262,11 +252,8 @@
                         </div>
                         <div class="col-products tab-content new_arrival2" style="width: 80%;">
                             {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
-                            <div class="owl-carousel"
-                                            data-nav="true"
-                                            data-dots="false"
-                                            data-margin="30"
-                                            data-responsive='{
+                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                data-responsive='{
                                             "0":{"items":1},
                                             "480":{"items":2},
                                             "480":{"items":2},
@@ -364,11 +351,8 @@
                         </div>
                         <div class="col-products tab-content new_arrival2" style="width: 80%;">
                             {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
-                            <div class="owl-carousel"
-                                            data-nav="true"
-                                            data-dots="false"
-                                            data-margin="30"
-                                            data-responsive='{
+                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                data-responsive='{
                                             "0":{"items":1},
                                             "480":{"items":2},
                                             "480":{"items":2},
@@ -487,11 +471,8 @@
                         </div>
                         <div class="col-products tab-content new_arrival2" style="width: 80%;">
                             {{-- <button type="button" class="slick-arrow slick-prev">Previous</button> --}}
-                            <div class="owl-carousel"
-                                            data-nav="true"
-                                            data-dots="false"
-                                            data-margin="30"
-                                            data-responsive='{
+                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                data-responsive='{
                                             "0":{"items":1},
                                             "480":{"items":2},
                                             "480":{"items":2},
@@ -591,13 +572,15 @@
                         @foreach ($blogs as $blog)
                             <div class="blog-item">
                                 <div class="blog-photo">
-                                    <a href="#"><img src="{{ asset('blog_images/' . $blog->image) }}"
-                                            alt="blog"></a>
+                                    <a href="#">
+                                        <img src="{{ asset('blog_images/' . $blog->image) }}" alt="blog"
+                                            class="img-fluid w-100" style="height: 200px; object-fit: cover;">
+                                    </a>
                                 </div>
                                 <div class="blog-detail">
-                                    <strong class="blog-name"><a
-                                            href="{{ route('front.blog.detail', $blog->id) }}">{{ $blog->title }}
-                                        </a></strong>
+                                    <strong class="blog-name">
+                                        <a href="{{ route('front.blog.detail', $blog->id) }}">{{ $blog->title }}</a>
+                                    </strong>
                                     <div class="blog-info">
                                         <div class="blog-date"><span>{{ $blog->created_at->format('d/m/Y') }}</span></div>
                                         <div class="blog-comment"><span>27 comments</span></div>
