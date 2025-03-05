@@ -96,7 +96,7 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product image"
-                                                                        src="{{ $product->image_url }}">
+                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -175,7 +175,7 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image_url }}">
+                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -253,7 +253,7 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image_url }}">
+                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -331,7 +331,7 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image_url }}">
+                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -409,7 +409,7 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image_url }}">
+                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -488,7 +488,7 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image_url }}">
+                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -566,7 +566,7 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image_url }}">
+                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -644,7 +644,7 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image_url }}">
+                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -722,7 +722,7 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image_url }}">
+                                                                        src="{{ asset('productImage/' . ($product->image)) }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
