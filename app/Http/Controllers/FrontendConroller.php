@@ -297,7 +297,7 @@ class FrontendConroller extends Controller
         $categories = Category::where('status', 1)->take(3)->get();
         $oackages = Package::where('status', 1)->get();
         $brands = Brand::where('status', 1)->take(2)->get();
-        $products = Product::with('brand')->take(10)->get();
+        $products = Product::with('brand')->orderBy('id', 'DESC')->take(10)->get();
         $new_arrivals = Product::orderBy('id', 'DESC')->take(10)->get();
         $discounted_products = Product::orderBy('id', 'DESC')->take(10)->get();
         $topVendors = Vendor::with('products')
