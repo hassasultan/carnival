@@ -268,6 +268,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     // Regions CRUD
     Route::resource('regions', RegionController::class);
     Route::get('/get-countries', [CarnivalController::class, 'getCountriesByRegion'])->name('get.countries');
+    Route::get('/get-cities', [CarnivalController::class, 'getCitiesByCountry'])->name('get.cities');
 
     //Our Service CRUD
     Route::resource('our_services', OurServiceController::class);

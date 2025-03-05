@@ -78,6 +78,12 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="city">City</label>
+                            <select class="form-control" id="city_id" name="city_id" required>
+                                <option value="">Select City</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="create_image">Images</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="create_image" name="images[]" multiple
@@ -1036,6 +1042,35 @@
                     });
                 } else {
                     $('#country_id').empty().append('<option value="">Select Country</option>');
+                }
+            });
+
+            $('#country_id').change(function() {
+                var countryId = $(this).val();
+                if (countryId) {
+                    $.ajax({
+                        url: '{{ route('get.cities') }}',
+                        type: 'GET',
+                        data: {
+                            country_id: countryId
+                        },
+                        success: function(response) {
+                            var citySelect = $('#city_id');
+                            citySelect.empty();
+                            citySelect.append('<option value="">Select City</option>');
+
+                            $.each(response.cities, function(key, value) {
+                                citySelect.append('<option value="' + value.id +
+                                    '">' + value.name + '</option>');
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching cities:', error);
+                            toastr.error('Failed to fetch cities');
+                        }
+                    });
+                } else {
+                    $('#city_id').empty().append('<option value="">Select City</option>');
                 }
             });
 

@@ -10,6 +10,7 @@ use App\Models\CarnivalMembers;
 use App\Models\Country;
 use App\Models\CarnivalImages;
 use App\Models\CarnivalBannerImages;
+use App\Models\City;
 use App\Models\CarnivalFlyerImages;
 use Exception;
 use Illuminate\Http\Request;
@@ -389,5 +390,12 @@ class CarnivalController extends Controller
         $regionId = $request->region_id;
         $countries = Country::where('region_id', $regionId)->get();
         return response()->json(['countries' => $countries]);
+    }
+
+    public function getCitiesByCountry(Request $request)
+    {
+        $countryId = $request->country_id;
+        $cities = City::where('country_id', $countryId)->get();
+        return response()->json(['cities' => $cities]);
     }
 }
