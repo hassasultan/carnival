@@ -591,7 +591,7 @@
                         @foreach ($blogs as $blog)
                             <div class="blog-item">
                                 <div class="blog-photo">
-                                    <a href="#"><img src="https://carnivalguide.co/travel/images/blog1.jpg"
+                                    <a href="#"><img src="{{ asset('blog_images/' . $blog->image) }}"
                                             alt="blog"></a>
                                 </div>
                                 <div class="blog-detail">
