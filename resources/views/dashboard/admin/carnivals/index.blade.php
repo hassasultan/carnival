@@ -217,12 +217,18 @@
                             <label for="country">Country</label>
                             <select class="form-control" id="edit_country_id" name="country_id" required>
                                 <option value="">Select Country</option>
+                                @foreach ($countries as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="city">City</label>
                             <select class="form-control" id="edit_city_id" name="city_id" required>
                                 <option value="">Select City</option>
+                                @foreach ($cities as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">

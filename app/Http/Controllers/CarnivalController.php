@@ -36,6 +36,8 @@ class CarnivalController extends Controller
         $carnivals = Carnival::with('mascamps.user', 'user', 'regions')->get();
         $mascamps = Vendor::with('user')->get();
         $region = Region::all();
+        $countries = Country::all();
+        $cities = City::all();
         return view('dashboard.admin.carnivals.index', compact('region', 'carnivals', 'mascamps'));
     }
 
