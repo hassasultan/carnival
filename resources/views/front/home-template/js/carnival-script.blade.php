@@ -6,8 +6,8 @@
 
             // Get the region ID from the clicked item
             let regionId = $(this).data('region');
-            let url  = `/get-carnivals-by-region/${regionId}`;
-            @if(Route::is('front.home'))
+            let url = `/get-carnivals-by-region/${regionId}`;
+            @if (Route::is('front.home'))
                 url = `/get-carnivals-by-region-for-home/${regionId}`;
             @endif
 
@@ -28,6 +28,11 @@
 
                         $.each(data, function(index, carnival) {
                             // Append each item to the listing
+
+                            let carnivalId = carnival.id;
+                            let url = "{{ route('events.view.more', ':id') }}"
+                                .replace(':id', carnivalId);
+                            window.location.href = url;
                             listingContainer.append(`
                             <div class="carnival-item">
                                 <div class="city-entry bg-grey-2">
@@ -270,6 +275,9 @@
                                                                 <div class="hotel-line-price">from $273</div>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="discover-more">
+                                                        <a href="${url}">View More</a>
                                                     </div>
                                                 </div>
                                             </div>
