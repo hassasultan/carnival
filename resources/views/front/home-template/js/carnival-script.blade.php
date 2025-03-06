@@ -30,8 +30,8 @@
                             // Append each item to the listing
 
                             let carnivalId = carnival.id;
-                            let url = "{{ route('events.view.more', ':id') }}"
-                                .replace(':id', carnivalId);
+                            let url = "{{ route('events.view.more', ':slud') }}"
+                                .replace(':slud', carnivalId);
                             window.location.href = url;
                             listingContainer.append(`
                             <div class="carnival-item">
