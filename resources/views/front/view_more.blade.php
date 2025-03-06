@@ -169,7 +169,7 @@
                                                         @endforeach
                                                         {{-- <div class="slide">
                                                             <img class="img-responsive img-full"
-                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="Slide 2">
+                                                                src="{{ asset('files/' . $row->file) }}" alt="Slide 2">
                                                         </div>
                                                         <div class="slide">
                                                             <img class="img-responsive img-full"
@@ -260,14 +260,41 @@
                                     <div class="carousel">
                                         <div class="carousel-wrapper">
                                             <button class="carousel-control prev">&#10094;</button>
-                                            <div class="carousel-slides">
+                                            {{-- <div class="carousel-slides">
                                                 <div class="slide active">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="Slide 1">
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg"
+                                                        alt="Slide 1">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="Slide 2">
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg"
+                                                        alt="Slide 2">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
+                                                        alt="Slide 3">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
+                                                        alt="Slide 4">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
+                                                        alt="Slide 5">
+                                                </div>
+                                            </div> --}}
+                                            <div class="carousel-slides">
+                                                <div class="slide active">
+                                                    <img class="img-responsive img-full"
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 1">
+                                                </div>
+                                                <div class="slide">
+                                                    <img class="img-responsive img-full"
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 2">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
@@ -705,11 +732,11 @@
                                             <div class="carousel-slides">
                                                 <div class="slide active">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="Slide 1">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 1">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="Slide 2">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 2">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
@@ -1431,11 +1458,11 @@
                                             <div class="carousel-slides">
                                                 <div class="slide active">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="Slide 1">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 1">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="Slide 2">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 2">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
@@ -1871,11 +1898,11 @@
                                             <div class="carousel-slides">
                                                 <div class="slide active">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="Slide 1">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 1">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="Slide 2">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 2">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
@@ -3003,11 +3030,11 @@
                                             <div class="carousel-slides">
                                                 <div class="slide active">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="Slide 1">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 1">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="Slide 2">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 2">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
@@ -3683,11 +3710,11 @@
                                             <div class="carousel-slides">
                                                 <div class="slide active">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="Slide 1">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 1">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="Slide 2">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 2">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
@@ -4455,11 +4482,11 @@
                                             <div class="carousel-slides">
                                                 <div class="slide active">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="Slide 1">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 1">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="Slide 2">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 2">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
@@ -5134,11 +5161,11 @@
                                             <div class="carousel-slides">
                                                 <div class="slide active">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_1.jpg" alt="Slide 1">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 1">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
-                                                        src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="Slide 2">
+                                                        src="{{ asset('files/' . $row->file) }}" alt="Slide 2">
                                                 </div>
                                                 <div class="slide">
                                                     <img class="img-responsive img-full"
