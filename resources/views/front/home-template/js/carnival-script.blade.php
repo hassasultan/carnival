@@ -27,6 +27,7 @@
                         carnivalWrapper.append(listingContainer);
 
                         $.each(data, function(index, carnival) {
+                            console.log('carnival', carnival);
                             // Append each item to the listing
 
                             let carnivalId = carnival.id;
