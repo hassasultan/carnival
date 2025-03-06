@@ -167,7 +167,7 @@
                         <div class="hero"
                             style="background-image: url('{{ asset('images/carnivalImages/' . $image->image) }}')">
                             {{-- <h4>NORWAY TOURS</h4> --}}
-                            <h4>{{ optional($image->carnival->city)->name . 'TOURS' ?? 'TOURS' }}</h4>
+                            <h4>{{ optional($image->carnival->city)->name . ' TOURS' ?? 'TOURS' }}</h4>
                             <h1>ROMANTIC HOLIDAYS IN
                                 {{ optional($image->carnival->city)->name ?? 'a Beautiful Destination' }}</h1>
                             <p class="text-orange">FROM <span>$440</span> PER PERSON</p>
@@ -182,7 +182,6 @@
                                     <i class="fa fa-play"></i>
                                 </div>
                             @endif
-
                             <p>
                                 {{ strtoupper(\Carbon\Carbon::parse($image->carnival->start_date)->format('F')) }}
                                 <span>{{ \Carbon\Carbon::parse($image->carnival->start_date)->format('jS') }}</span>
@@ -193,8 +192,10 @@
                             <p class="color-white-light">Curabitur nunc erat, consequat in erat ut, congue bibendum
                                 nulla.</p>
                             <div class="buttons">
-                                <a href="#" class="c-button b-60 bg-red hv-red-o delay-2"><span>view
-                                        more</span></a>
+                                <a href="{{ route('events.view.more', ['id' => $image->carnival->id, 'query' => 'latestByCity']) }}"
+                                    class="c-button b-60 bg-red hv-red-o delay-2">
+                                    <span>Search</span>
+                                </a>
                                 <a href="#" class="c-button b-60 bg-tr-1 hv-red delay-2"><span>book now</span></a>
                             </div>
                         </div>

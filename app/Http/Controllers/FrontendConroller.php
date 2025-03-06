@@ -501,8 +501,11 @@ class FrontendConroller extends Controller
         return view('ShopFrontend.subvendor-detail', compact('user', 'subvendor', 'categories', 'products', 'brands', 'ads'));
     }
 
-    public function eventViewMore($slug)
+    public function eventViewMore(Request $request, $slug)
     {
+        if ($request->has('query') && $request->query == 'latestByCity') {
+            dd('yes yesss');
+        }
         $carnivals = Carnival::with('country_tabs', 'images')->find($slug);
         // dd($event->toArray());
         $products = Product::with('brand')->get();
