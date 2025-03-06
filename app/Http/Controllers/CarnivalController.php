@@ -38,7 +38,7 @@ class CarnivalController extends Controller
         $region = Region::all();
         $countries = Country::all();
         $cities = City::all();
-        return view('dashboard.admin.carnivals.index', compact('region', 'carnivals', 'mascamps'));
+        return view('dashboard.admin.carnivals.index', compact('region', 'carnivals', 'mascamps', 'countries', 'cities'));
     }
 
     public function create()
