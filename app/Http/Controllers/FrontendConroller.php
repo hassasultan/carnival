@@ -54,7 +54,7 @@ class FrontendConroller extends Controller
 
         $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
 
-        // dd($carnival_commitee, $carnival_com);
+        dd($carnivals, $carnival_com, $carnival_commitee);
 
         return view('front.home', compact('carnivals', 'events', 'regions', 'services', 'siteGallery', 'products', 'investors', 'blogs', 'testimonials', 'carnival_commitee', 'banners'));
     }
@@ -116,6 +116,7 @@ class FrontendConroller extends Controller
         // Format the data to send as JSON
         $data = $carnivals->map(function ($carnival) {
             return [
+                'id' => $carnival->id,
                 'name' => $carnival->name,
                 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
                 // 'image_url' => asset('images/carnivals/' . $carnival->image),
