@@ -167,7 +167,7 @@
                         <div class="hero"
                             style="background-image: url('{{ asset('images/carnivalImages/' . $image->image) }}')">
                             {{-- <h4>NORWAY TOURS</h4> --}}
-                            <h4>{{ optional($image->carnival->city)->name ?? 'TOURS' }}</h4>
+                            <h4>{{ optional($image->carnival->city)->name . 'TOURS' ?? 'TOURS' }}</h4>
                             <h1>ROMANTIC HOLIDAYS IN
                                 {{ optional($image->carnival->city)->name ?? 'a Beautiful Destination' }}</h1>
                             <p class="text-orange">FROM <span>$440</span> PER PERSON</p>
