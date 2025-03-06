@@ -220,6 +220,12 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="city">City</label>
+                            <select class="form-control" id="edit_city_id" name="city_id" required>
+                                <option value="">Select City</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="edit_image">Images</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="edit_image" name="images[]" multiple
@@ -451,6 +457,8 @@
                         $('#edit_start_date').val(response.carnival.start_date);
                         $('#edit_end_date').val(response.carnival.end_date);
                         $('#edit_region').val(response.carnival.region_id);
+                        $('#edit_country_id').val(response.carnival.country_id);
+                        $('#edit_city_id').val(response.carnival.city_id);
                         $('#edit_description').val(response.carnival.description);
                         if (response.carnival.images && response.carnival.images.length > 0) {
                             response.carnival.images.forEach((image, index) => {
@@ -1100,6 +1108,35 @@
                     });
                 } else {
                     $('#edit_country_id').empty().append('<option value="">Select Country</option>');
+                }
+            });
+
+            $('#edit_country').change(function() {
+                var countryId = $(this).val();
+                if (countryId) {
+                    $.ajax({
+                        url: '{{ route('get.cities') }}',
+                        type: 'GET',
+                        data: {
+                            country_id: countryId
+                        },
+                        success: function(response) {
+                            var citySelect = $('#edit_city_id');
+                            citySelect.empty();
+                            citySelect.append('<option value="">Select City</option>');
+
+                            $.each(response.cities, function(key, value) {
+                                citySelect.append('<option value="' + value.id +
+                                    '">' + value.name + '</option>');
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching cities:', error);
+                            toastr.error('Failed to fetch cities');
+                        }
+                    });
+                } else {
+                    $('#edit_city_id').empty().append('<option value="">Select City</option>');
                 }
             });
 
