@@ -1111,7 +1111,7 @@
                 }
             });
 
-            $('#edit_country').change(function() {
+            $('#edit_country_id').change(function() {
                 var countryId = $(this).val();
                 if (countryId) {
                     $.ajax({
