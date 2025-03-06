@@ -99,6 +99,7 @@ class FrontendConroller extends Controller
         // Format the data to send as JSON
         $data = $carnivals->map(function ($carnival) {
             return [
+                'id' => $carnival->id,
                 'name' => $carnival->name,
                 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
                 // 'image_url' => asset('images/carnivals/' . $carnival->image),
