@@ -183,7 +183,13 @@
                                 </div>
                             @endif
 
-                            <p>JULY <span>19TH</span> TO JULY <span>26TH</span></p>
+                            <p>
+                                {{ strtoupper(\Carbon\Carbon::parse($image->carnival->start_date)->format('F')) }}
+                                <span>{{ \Carbon\Carbon::parse($image->carnival->start_date)->format('jS') }}</span>
+                                TO
+                                {{ strtoupper(\Carbon\Carbon::parse($image->carnival->end_date)->format('F')) }}
+                                <span>{{ \Carbon\Carbon::parse($image->carnival->end_date)->format('jS') }}</span>
+                            </p>
                             <p class="color-white-light">Curabitur nunc erat, consequat in erat ut, congue bibendum
                                 nulla.</p>
                             <div class="buttons">
