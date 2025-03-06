@@ -505,12 +505,14 @@ class FrontendConroller extends Controller
     {
         $carnivals = Carnival::with('country_tabs', 'images')->find($slug);
         // dd($event->toArray());
-        $latestUpcoming = Carnival::where('city_id', $carnivals->city_id)
+        $latestUpcoming = Carnival::where('id', != $carnivals->id)
+        ->where('city_id', $carnivals->city_id)
             ->orderBy('start_date', 'desc')
             ->first();
 
         if (!$latestUpcoming) {
-            $latestUpcoming = Carnival::where('country_id', $carnivals->country_id)
+            $latestUpcoming = Carnival::where('id', != $carnivals->id)
+            ->where('country_id', $carnivals->country_id)
                 ->orderBy('start_date', 'desc')
                 ->first();
         }
