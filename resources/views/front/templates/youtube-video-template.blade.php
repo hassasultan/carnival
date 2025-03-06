@@ -161,6 +161,7 @@
                 </div>
             </div> --}}
             @foreach ($carnivals->images as $image)
+            {{ dd($image->toArray()) }}
                 <div class="swiper-slide adjust-height">
                     <div class="video-container">
                         <div class="hero"
