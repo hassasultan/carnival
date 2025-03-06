@@ -503,16 +503,22 @@ class FrontendConroller extends Controller
 
     public function eventViewMore(Request $request, $slug)
     {
-        if ($request->has('query') && $request->query == 'latestByCity') {
-            dd('yes yesss');
-        }
         $carnivals = Carnival::with('country_tabs', 'images')->find($slug);
         // dd($event->toArray());
+        $latestUpcoming = Carnival::where('city', $carnivals->city)
+            ->orderBy('start_date', 'desc')
+            ->first();
+
+        if (!$latestUpcoming) {
+            $latestUpcoming = Carnival::where('country', $carnivals->country)
+                ->orderBy('start_date', 'desc')
+                ->first();
+        }
         $products = Product::with('brand')->get();
         $blogs = Blogs::with('user')->orderBy('id', 'DESC')->get()->take('3');
         $all_blogs = Blogs::with('user')->orderBy('id', 'DESC')->paginate(12);
 
-        return view('front.view_more', compact('carnivals', 'products', 'blogs', 'all_blogs'));
+        return view('front.view_more', compact('carnivals', 'products', 'blogs', 'all_blogs', 'latestUpcoming'));
     }
 
     public function getDiscounted(Request $request)

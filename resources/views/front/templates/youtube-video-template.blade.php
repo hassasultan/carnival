@@ -192,10 +192,10 @@
                             <p class="color-white-light">Curabitur nunc erat, consequat in erat ut, congue bibendum
                                 nulla.</p>
                             <div class="buttons">
-                                <a href="{{ route('events.view.more', ['slug' => $image->carnival->id, 'query' => 'latestByCity']) }}"
-                                    class="c-button b-60 bg-red hv-red-o delay-2">
-                                    <span>Search</span>
-                                </a>
+                                @php
+                                    
+                                @endphp
+                                <a href="{{ route('events.view.more', $latestUpcoming->id) }}" class="c-button b-60 bg-red hv-red-o delay-2"><span>Search</span></a>
                                 <a href="#" class="c-button b-60 bg-tr-1 hv-red delay-2"><span>book now</span></a>
                             </div>
                         </div>
