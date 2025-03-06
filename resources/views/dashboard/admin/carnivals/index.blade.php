@@ -94,7 +94,7 @@
                                 <!-- Image previews will be added here -->
                             </div>
                         </div>
-                        <div id="file-upload-container">
+                        <div id="edit-file-upload-container">
                             <div class="mb-2 p-3 border rounded file-upload-row">
                                 <div class="row">
                                     <div class="col-6">
@@ -283,7 +283,7 @@
                                                 placeholder="Button url">
                                         </div>
                                     </div>
-                                    <button class="btn btn-success mt-2 add-more-btn">Add More</button>
+                                    <button type="button" class="btn btn-success mt-2 add-more-btn">Add More</button>
                                 </div>
                             </div>
                         </div>
@@ -1394,6 +1394,47 @@
                                 </div>
                             </div>`;
                 $("#file-upload-container").append(newRow);
+            });
+            $(".add-more-btn").click(function() {
+                let newRow = `<div class="mb-2 p-3 border rounded file-upload-row">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="custom-file border p-2 rounded">
+                                            <input type="file" id="banner_image" name="banner_image[]"
+                                                class="custom-file-input form-control file-input banner_image"
+                                                accept="image/*,video/*">
+                                            <label class="custom-file-label" for="banner_image">Banner Image</label>
+                                        </div>
+                                        {{-- <div id="bannerImagesPreviewContainer" class="mt-2 d-flex flex-wrap bannerImagesPreviewContainer">
+                                            <!-- Image previews will be added here -->
+                                        </div> --}}
+                                    </div>
+                                    <div class="col-6 poster-input d-none">
+                                        <div class="custom-file border p-2 rounded">
+                                            <input type="file" id="flyer_image" name="flyer_image[]"
+                                                class="custom-file-input form-control flyer_image" accept="image/*">
+                                            <label class="custom-file-label" for="flyer_image">Poster Image</label>
+                                        </div>
+                                        {{-- <div id="flyerImagesPreviewContainer" class="mt-2 d-flex flex-wrap flyerImagesPreviewContainer">
+                                            <!-- Image previews will be added here -->
+                                        </div> --}}
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-4">
+                                        <div class="border p-2 rounded">
+                                            <input type="text" name="btn_text[]" class="form-control" placeholder="Button text">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border p-2 rounded">
+                                            <input type="url" name="btn_url[]" class="form-control" placeholder="Button url">
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-danger remove-btn">Remove</button>
+                                </div>
+                            </div>`;
+                $("#edit-file-upload-container").append(newRow);
             });
 
             $(document).on("change", ".file-input", function() {
