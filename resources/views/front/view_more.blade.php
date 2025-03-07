@@ -5291,7 +5291,7 @@
                             <div class="form-block type-2 clearfix">
                                 <div class="form-label color-dark-2">Country</div>
                                 <div class="drop-wrap drop-wrap-s-4 color-4">
-                                    <select class="form-control" name="city" id="">
+                                    <select class="form-control" name="city" id="country_id">
                         <option value="">Select</option>
                         @foreach ($countries as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -5312,7 +5312,7 @@
                             <div class="form-block type-2 clearfix">
                                 <div class="form-label color-dark-2">City</div>
                                 <div class="drop-wrap drop-wrap-s-4 color-4">
-                                    <select class="form-control" name="state" id="">
+                                    <select class="form-control" name="state" id="city_id">
                         <option value="">Select</option>
                         @foreach ($cities as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -6012,4 +6012,36 @@
     <!-- block  showcase-->
     {{-- @include('front.home-template.brand-showcase') --}}
     <!-- block  showcase-->
+@endsection
+@section('bottom_script')
+<script>
+    $('#country_id').change(function() {
+                var countryId = $(this).val();
+                if (countryId) {
+                    $.ajax({
+                        url: '{{ route('get.cities') }}',
+                        type: 'GET',
+                        data: {
+                            country_id: countryId
+                        },
+                        success: function(response) {
+                            var citySelect = $('#city_id');
+                            citySelect.empty();
+                            citySelect.append('<option value="">Select City</option>');
+
+                            $.each(response.cities, function(key, value) {
+                                citySelect.append('<option value="' + value.id +
+                                    '">' + value.name + '</option>');
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching cities:', error);
+                            toastr.error('Failed to fetch cities');
+                        }
+                    });
+                } else {
+                    $('#city_id').empty().append('<option value="">Select City</option>');
+                }
+            });
+</script>
 @endsection
