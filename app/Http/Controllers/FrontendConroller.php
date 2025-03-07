@@ -508,7 +508,26 @@ class FrontendConroller extends Controller
     public function eventViewMore(Request $request, $slug)
     {
         $query = $request->query ? $request->query : '';
-        dd($query, $request->toArray());
+        if ($query && $query != null) {
+            $latestUpcoming = Carnival::where('id', '!=', $request->id)
+            ->where('city_id', $request->city_id)
+                ->orderBy('start_date', 'desc')
+                ->first();
+    
+            if (!$latestUpcoming) {
+                $latestUpcoming = Carnival::where('id', '!=', $request->id)
+                ->where('country_id', $request->country_id)
+                    ->orderBy('start_date', 'desc')
+                    ->first();
+            }
+
+            if ($latestUpcoming) {
+                return redirect()->route('events.view.more', ['slug' => $latestUpcoming->slug]);
+            }
+            else {
+                return redirect()->route('front.carnival.listing');
+            }
+        }
         $carnivals = Carnival::with('country_tabs', 'images')->find($slug);
         $latestUpcoming = Carnival::where('id', '!=', $carnivals->id)
         ->where('city_id', $carnivals->city_id)
