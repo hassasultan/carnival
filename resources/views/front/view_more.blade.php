@@ -5287,7 +5287,7 @@
                         <div class="sidebar-filter bg-grey-2">
                             <h4 class="color-dark-2">search</h4>
                             {{-- <form action="{{ route('events.view.more', $latestUpcoming->id) }}" method="GET"> --}}
-                            <form action="{{ route('events.view.more', $carnival->id) }}" method="GET">
+                            <form action="{{ route('events.view.more', $carnivals->id) }}" method="GET">
                                 @csrf
                                 <input type="hidden" name="query" value="city">
                             <div class="form-block type-2 clearfix">
