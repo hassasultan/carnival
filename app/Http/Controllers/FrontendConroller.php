@@ -504,7 +504,29 @@ class FrontendConroller extends Controller
 
         return view('ShopFrontend.subvendor-detail', compact('user', 'subvendor', 'categories', 'products', 'brands', 'ads'));
     }
+    public function carnivalViewMoreSearch(Request $request)
+    {
+        $query = $request->query ? $request->query : '';
+        if ($query && $query != null) {
+            $latestUpcoming = Carnival::where('city_id', $request->city_id)
+                ->orderBy('start_date', 'desc')
+                ->first();
 
+            if (!$latestUpcoming) {
+                $latestUpcoming = Carnival::where('country_id', $request->country_id)
+                    ->orderBy('start_date', 'desc')
+                    ->first();
+            }
+
+            if ($latestUpcoming) {
+                return redirect()->route('events.view.more', ['slug' => $latestUpcoming->slug]);
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+    }
     public function eventViewMore(Request $request, $slug)
     {
         $query = $request->query ? $request->query : '';
@@ -957,9 +979,9 @@ class FrontendConroller extends Controller
                 $data = Event::where('user_id', $carnival->head)->with('images', 'tickets', 'country_tabs')->orderBy('id', 'desc')->get()->take('10');
                 break;
 
-            // default:
-            //     // Optional: code for cases not matching 'costumes' or 'events'
-            //     break;
+                // default:
+                //     // Optional: code for cases not matching 'costumes' or 'events'
+                //     break;
         }
 
         return view('partials.banner_details', compact('type', 'data'));
