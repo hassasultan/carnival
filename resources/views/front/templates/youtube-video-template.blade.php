@@ -195,7 +195,7 @@
                                 @php
                                     
                                 @endphp
-                                <a href="{{ route('events.view.more', $latestUpcoming->id) }}" class="c-button b-60 bg-red hv-red-o delay-2"><span>Search</span></a>
+                                <a href="#" class="c-button b-60 bg-red hv-red-o delay-2"><span>View More</span></a>
                                 <a href="#" class="c-button b-60 bg-tr-1 hv-red delay-2"><span>book now</span></a>
                             </div>
                         </div>

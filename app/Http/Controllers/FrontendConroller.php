@@ -25,6 +25,8 @@ use App\Models\Costume;
 use App\Models\FAQPage;
 use App\Models\Carnival;
 use App\Models\OurTeam;
+use App\Models\City;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -521,8 +523,10 @@ class FrontendConroller extends Controller
         $products = Product::with('brand')->get();
         $blogs = Blogs::with('user')->orderBy('id', 'DESC')->get()->take('3');
         $all_blogs = Blogs::with('user')->orderBy('id', 'DESC')->paginate(12);
+        $cities = City::all();
+        $countries = Country::all();
 
-        return view('front.view_more', compact('carnivals', 'products', 'blogs', 'all_blogs', 'latestUpcoming'));
+        return view('front.view_more', compact('carnivals', 'products', 'blogs', 'all_blogs', 'latestUpcoming', 'cities', 'countries'));
     }
 
     public function getDiscounted(Request $request)

@@ -5286,10 +5286,18 @@
                     <div class="right-sidebar">
                         <div class="sidebar-filter bg-grey-2">
                             <h4 class="color-dark-2">search</h4>
+                            <form action="{{ route('events.view.more', $latestUpcoming->id) }}" method="GET">
+                                @csrf
                             <div class="form-block type-2 clearfix">
                                 <div class="form-label color-dark-2">Country</div>
                                 <div class="drop-wrap drop-wrap-s-4 color-4">
-                                    <div class="drop">
+                                    <select class="form-control" name="city" id="">
+                        <option value="">Select</option>
+                        @foreach ($countries as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                                    {{-- <div class="drop">
                                         <b>France</b>
                                         <a href="#" class="drop-list"><i class="fa fa-angle-down"></i></a>
                                         <span>
@@ -5298,13 +5306,19 @@
                                             <a href="#">Italy</a>
                                             <a href="#">Canada</a>
                                         </span>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="form-block type-2 clearfix">
                                 <div class="form-label color-dark-2">City</div>
                                 <div class="drop-wrap drop-wrap-s-4 color-4">
-                                    <div class="drop">
+                                    <select class="form-control" name="state" id="">
+                        <option value="">Select</option>
+                        @foreach ($cities as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                                    {{-- <div class="drop">
                                         <b>Grenada</b>
                                         <a href="#" class="drop-list"><i class="fa fa-angle-down"></i></a>
                                         <span>
@@ -5313,7 +5327,7 @@
                                             <a href="#">Grenada</a>
                                             <a href="#">New Yourk</a>
                                         </span>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="form-block type-2 clearfix">
@@ -5324,6 +5338,7 @@
                             </div>
                             <input type="submit" class="c-button b-40 bg-dr-blue-2 hv-dr-blue-2-o"
                                 value="confirm booking">
+                            </form>
                         </div>
                         {{-- <div class="sidebar-text-label bg-dr-blue-2 color-white">useful information</div> --}}
 
