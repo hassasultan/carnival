@@ -5291,7 +5291,7 @@
                             <div class="form-block type-2 clearfix">
                                 <div class="form-label color-dark-2">Country</div>
                                 <div class="drop-wrap drop-wrap-s-4 color-4">
-                                    <select class="form-control" name="city" id="country_id">
+                                    <select class="form-control" id="country_id" name="country_id">
                         <option value="">Select</option>
                         @foreach ($countries as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -5312,7 +5312,7 @@
                             <div class="form-block type-2 clearfix">
                                 <div class="form-label color-dark-2">City</div>
                                 <div class="drop-wrap drop-wrap-s-4 color-4">
-                                    <select class="form-control" name="state" id="city_id">
+                                    <select class="form-control" name="city_id" id="city_id">
                         <option value="">Select</option>
                         @foreach ($cities as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
