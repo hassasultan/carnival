@@ -14,7 +14,7 @@
                     <div class="s_news-entry ">
                         <a href="{{ route('front.blog.detail', $blog->slug) }}" class="blogs-hover">
                             <img class="s_news-img img-full img-responsive"
-                                src="{{ asset($blog->image) }}" alt="">
+                                src="{{ asset('blog_images/' . $blog->image) }}" alt="blog" style="height: 200px; object-fit: cover;">
                             <h4 class="s_news-title">{{ $blog->title }}</h4>
                             <div class="tour-info-line clearfix">
                                 <div class="tour-info fl">
