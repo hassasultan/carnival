@@ -6013,7 +6013,7 @@
     {{-- @include('front.home-template.brand-showcase') --}}
     <!-- block  showcase-->
 @endsection
-@section('bottom_script')
+@section('front-script')
 <script>
     $('#country_id').change(function() {
                 var countryId = $(this).val();
