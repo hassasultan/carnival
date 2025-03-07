@@ -5288,15 +5288,16 @@
                             <h4 class="color-dark-2">search</h4>
                             <form action="{{ route('events.view.more', $latestUpcoming->id) }}" method="GET">
                                 @csrf
+                                <input type="hidden" name="query" value="city">
                             <div class="form-block type-2 clearfix">
                                 <div class="form-label color-dark-2">Country</div>
                                 <div class="drop-wrap drop-wrap-s-4 color-4">
                                     <select class="form-control" id="country_id" name="country_id">
-                        <option value="">Select</option>
-                        @foreach ($countries as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                        @endforeach
-                    </select>
+                                    <option value="">Select</option>
+                                    @foreach ($countries as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
                                     {{-- <div class="drop">
                                         <b>France</b>
                                         <a href="#" class="drop-list"><i class="fa fa-angle-down"></i></a>
