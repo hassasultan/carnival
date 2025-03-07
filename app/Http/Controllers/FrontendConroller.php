@@ -509,14 +509,12 @@ class FrontendConroller extends Controller
     {
         $query = $request->query ? $request->query : '';
         if ($query && $query != null) {
-            $latestUpcoming = Carnival::where('id', '!=', $request->id)
-            ->where('city_id', $request->city_id)
+            $latestUpcoming = Carnival::where('city_id', $request->city_id)
                 ->orderBy('start_date', 'desc')
                 ->first();
     
             if (!$latestUpcoming) {
-                $latestUpcoming = Carnival::where('id', '!=', $request->id)
-                ->where('country_id', $request->country_id)
+                $latestUpcoming = Carnival::where('country_id', $request->country_id)
                     ->orderBy('start_date', 'desc')
                     ->first();
             }
