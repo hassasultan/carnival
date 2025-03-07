@@ -517,7 +517,7 @@ class FrontendConroller extends Controller
                     ->orderBy('start_date', 'desc')
                     ->first();
             }
-
+            dd($latestUpcoming->toArray());
             if ($latestUpcoming) {
                 return redirect()->route('events.view.more', ['slug' => $latestUpcoming->slug]);
             } else {
