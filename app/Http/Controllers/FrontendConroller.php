@@ -508,43 +508,43 @@ class FrontendConroller extends Controller
     public function eventViewMore(Request $request, $slug)
     {
         $query = $request->query ? $request->query : '';
-        if ($query && $query != null) {
-            $latestUpcoming = Carnival::where('city_id', $request->city_id)
-                ->orderBy('start_date', 'desc')
-                ->first();
-    
-            if (!$latestUpcoming) {
-                $latestUpcoming = Carnival::where('country_id', $request->country_id)
-                    ->orderBy('start_date', 'desc')
-                    ->first();
-            }
+        // if ($query && $query != null) {
+        //     $latestUpcoming = Carnival::where('city_id', $request->city_id)
+        //         ->orderBy('start_date', 'desc')
+        //         ->first();
 
-            if ($latestUpcoming) {
-                return redirect()->route('events.view.more', ['slug' => $latestUpcoming->slug]);
-            }
-            else {
-                return redirect()->route('front.carnival.listing');
-            }
-        }
+        //     if (!$latestUpcoming) {
+        //         $latestUpcoming = Carnival::where('country_id', $request->country_id)
+        //             ->orderBy('start_date', 'desc')
+        //             ->first();
+        //     }
+
+        //     if ($latestUpcoming) {
+        //         return redirect()->route('events.view.more', ['slug' => $latestUpcoming->slug]);
+        //     }
+        //     else {
+        //         return redirect()->route('front.carnival.listing');
+        //     }
+        // }
         $carnivals = Carnival::with('country_tabs', 'images')->find($slug);
-        $latestUpcoming = Carnival::where('id', '!=', $carnivals->id)
-        ->where('city_id', $carnivals->city_id)
-            ->orderBy('start_date', 'desc')
-            ->first();
+        // $latestUpcoming = Carnival::where('id', '!=', $carnivals->id)
+        // ->where('city_id', $carnivals->city_id)
+        //     ->orderBy('start_date', 'desc')
+        //     ->first();
 
-        if (!$latestUpcoming) {
-            $latestUpcoming = Carnival::where('id', '!=', $carnivals->id)
-            ->where('country_id', $carnivals->country_id)
-                ->orderBy('start_date', 'desc')
-                ->first();
-        }
+        // if (!$latestUpcoming) {
+        //     $latestUpcoming = Carnival::where('id', '!=', $carnivals->id)
+        //     ->where('country_id', $carnivals->country_id)
+        //         ->orderBy('start_date', 'desc')
+        //         ->first();
+        // }
         $products = Product::with('brand')->get();
         $blogs = Blogs::with('user')->orderBy('id', 'DESC')->get()->take('3');
         $all_blogs = Blogs::with('user')->orderBy('id', 'DESC')->paginate(12);
         $cities = City::all();
         $countries = Country::all();
 
-        return view('front.view_more', compact('carnivals', 'products', 'blogs', 'all_blogs', 'latestUpcoming', 'cities', 'countries'));
+        return view('front.view_more', compact('carnivals', 'products', 'blogs', 'all_blogs', 'cities', 'countries'));
     }
 
     public function getDiscounted(Request $request)
