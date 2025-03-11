@@ -189,7 +189,6 @@ class FrontendConroller extends Controller
     public function get_product(Request $request)
     {
         $query = Product::with('product_images', 'media', 'category', 'brand', 'product_variant', 'user');
-        $getSearchVal = $request->get('getSearchVal', null);
 
         if ($request->has('categories') && !empty($request->categories)) {
             $query->whereIn('category_id', $request->categories);
@@ -224,10 +223,6 @@ class FrontendConroller extends Controller
             $query->where('sale', 'true');
         }
 
-        if (!empty($getSearchVal)) {
-            $query->where('title', 'like', '%' . $getSearchVal . '%');
-        }
-
         $products = $query->orderBy('id', 'DESC')->paginate(18);
         return $products;
     }
@@ -253,13 +248,14 @@ class FrontendConroller extends Controller
         $regionId = $request->get('getRegion');
         $getSearchVal = $request->get('getSearchVal');
 
-
+        
         $carnival_com = Carnival::has('user')->pluck('head');
-
+        
         // $query = Vendor::query();
         if ($previous_route == 'front.vendors') {
             $query = Vendor::with('user')->whereIn('user_id', $carnival_com);
-        } else {
+        }
+        else {
             $query = Vendor::with('user');
         }
         $query->with([
@@ -284,10 +280,10 @@ class FrontendConroller extends Controller
 
         if ($getSearchVal) {
             $query->where('name', 'like', '%' . $getSearchVal . '%')
-                ->orWhereHas('user', function ($query) use ($getSearchVal) {
-                    $query->where('first_name', 'like', "%$getSearchVal%")
-                        ->orWhere('last_name', 'like', "%$getSearchVal%");
-                });
+                  ->orWhereHas('user', function ($query) use ($getSearchVal) {
+                      $query->where('first_name', 'like', "%$getSearchVal%")
+                            ->orWhere('last_name', 'like', "%$getSearchVal%");
+                  });
         }
         // dd($previous_route);
 
@@ -457,7 +453,6 @@ class FrontendConroller extends Controller
     public function get_vendor_products($slug, Request $request)
     {
         $products = Product::where('user_id', $slug);
-        $getSearchVal = $request->get('getSearchVal', null);
         if ($request->has('cat') && $request->cat != 0) {
             $products = $products->where('category_id', $request->cat);
         }
@@ -470,10 +465,6 @@ class FrontendConroller extends Controller
             $products = $products->where('sale', true);
         }
         if ($request->has('attribute') && $request->attribute == 'new') {
-        }
-
-        if (!empty($getSearchVal)) {
-            $products->where('title', 'like', '%' . $getSearchVal . '%');
         }
         $products = $products->orderBy('id', 'DESC')->take(5)->get();
 
@@ -983,9 +974,9 @@ class FrontendConroller extends Controller
                 $data = Event::where('user_id', $carnival->head)->with('images', 'tickets', 'country_tabs')->orderBy('id', 'desc')->get()->take('10');
                 break;
 
-            // default:
-            //     // Optional: code for cases not matching 'costumes' or 'events'
-            //     break;
+                // default:
+                //     // Optional: code for cases not matching 'costumes' or 'events'
+                //     break;
         }
 
         return view('partials.banner_details', compact('type', 'data'));
