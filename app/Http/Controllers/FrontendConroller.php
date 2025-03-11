@@ -279,10 +279,13 @@ class FrontendConroller extends Controller
         }
 
         if ($getSearchVal) {
-            dd('$getSearchVal', $getSearchVal);
-            $query->where('name', 'like', '%' . $getSearchVal . '%');
+            $query->where('name', 'like', '%' . $getSearchVal . '%')
+                  ->orWhereHas('user', function ($query) use ($getSearchVal) {
+                      $query->where('first_name', 'like', "%$getSearchVal%")
+                            ->orWhere('last_name', 'like', "%$getSearchVal%");
+                  });
         }
-        dd($previous_route);
+        // dd($previous_route);
 
 
         $vendors = $query->orderBy('id', 'DESC')->paginate(18);
