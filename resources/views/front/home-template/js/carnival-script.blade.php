@@ -302,20 +302,25 @@
         });
 
 
-        $(document).on('click', '.carnival-cover', function(e) {
-            let selectedTab = $(this).text().trim(); // Get clicked tab text
-            let imageSrc = '';
-            console.log("check");
+        let imageMap = {
+            'Flights': "{{ asset('shopAssets/images/carnival/flight.jpeg') }}",
+            'Hotels': "{{ asset('shopAssets/images/carnival/hotel.jpeg') }}",
+            'Events': "{{ asset('shopAssets/images/carnival/event2.jpeg') }}"
+        };
 
-            if (selectedTab === 'Flights') {
-                imageSrc = "{{ asset('shopAssets/images/carnival/flight.jpeg') }}";
-            } else if (selectedTab === 'Hotels') {
-                imageSrc = "{{ asset('shopAssets/images/carnival/hotel.jpeg') }}";
-            } else if (selectedTab === 'Events') {
-                imageSrc = "{{ asset('shopAssets/images/carnival/event2.jpeg') }}";
+        $(document).on('click', '.carnival-cover', function() {
+            let selectedTab = $(this).text().trim();
+            console.log("Selected Tab:", selectedTab);
+
+            let parentContainer = $(this).closest('.city-desc').siblings('.tour-block');
+            let imageElement = parentContainer.find('.res-img');
+
+            if (imageMap[selectedTab]) {
+                imageElement.attr('src', imageMap[selectedTab]);
+                console.log("Updated Image:", imageMap[selectedTab]);
+            } else {
+                console.log("No matching image found for:", selectedTab);
             }
-
-            $(this).closest('.tour-block').find('.res-img').attr('src', imageSrc);
         });
     });
 </script>
