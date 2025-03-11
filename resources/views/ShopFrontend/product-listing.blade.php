@@ -111,7 +111,7 @@
                         </ul>
 
                     </div> --}}
-                    <div class=" toolbar-products toolbar-top">
+                    {{-- <div class=" toolbar-products toolbar-top">
 
                         <div class="btn-filter-products">
                             <span>Filter</span>
@@ -184,7 +184,7 @@
                             </li>
                         </ul>
 
-                    </div>
+                    </div> --}}
                     <!-- Toolbar -->
 
                     <!-- List Products -->
