@@ -76,6 +76,7 @@
                     <!-- link categori -->
 
                     <!-- Toolbar -->
+                    <div class="catalog-view_op1">
                     <div class=" toolbar-products toolbar-top">
 
                         <div class="btn-filter-products">
@@ -90,7 +91,7 @@
                             @endif
                         </h1>
 
-                        {{-- <div class="modes">
+                        <div class="modes">
                             <strong class="label">View as:</strong>
                             <strong class="modes-mode active mode-grid" title="Grid">
                                 <span>grid</span>
@@ -98,9 +99,11 @@
                             <a href="Category2.html" title="List" class="modes-mode mode-list">
                                 <span>list</span>
                             </a>
-                        </div><!-- View as --> --}}
+                        </div><!-- View as -->
 
-                    </div><!-- Toolbar -->
+                    </div>
+                    </div>
+                    <!-- Toolbar -->
 
                     <!-- List Products -->
                     <div class="products  products-grid">
@@ -137,6 +140,7 @@
                     </div> <!-- List Products -->
 
                     <!-- Toolbar -->
+                    <div class="catalog-view_op1">
                     <div class=" toolbar-products toolbar-bottom">
 
                         <div class="modes">
@@ -201,7 +205,9 @@
                             </li>
                         </ul>
 
-                    </div><!-- Toolbar -->
+                    </div>
+                    </div>
+                    <!-- Toolbar -->
 
                 </div><!-- Main Content -->
 
