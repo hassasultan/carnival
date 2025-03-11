@@ -1359,6 +1359,12 @@
                 fetchMusic(1, selectedCategories, priceRanges, selectedBrands,
                     musicCondition, stockCondition, sale);
             });
+            
+            $(document).on('click', '.pagination a', function(e) {
+                e.preventDefault();
+                var page = $(this).data('page');
+                fetchMusic(page);
+            });
 
             // Initial fetch
             fetchMusic();

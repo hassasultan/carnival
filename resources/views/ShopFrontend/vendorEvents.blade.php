@@ -423,6 +423,12 @@
 
                 fetchEvents(1, selectedCategories, eventType, priceRanges);
             });
+            
+            $(document).on('click', '.pagination a', function(e) {
+                e.preventDefault();
+                var page = $(this).data('page');
+                fetchEvents(page);
+            });
 
             // Initial fetch
             fetchEvents();
