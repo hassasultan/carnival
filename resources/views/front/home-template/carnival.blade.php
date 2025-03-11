@@ -87,9 +87,9 @@
                                                 alt="">
                                             <b>+32<sup>o</sup>C</b>
                                         </div> --}}
-                                        <div class="weth-icon d-flex align-items-center">
-                                            <img src="https://carnivalguide.co/travel/img/weather_icon_small.png" alt="" class="img-fluid" style="width: 40px; height: 40px;">
-                                            <b class="ms-2">+32<sup>o</sup>C</b>
+                                        <div class="weth-icon">
+                                            <img src="https://carnivalguide.co/travel/img/weather_icon_small.png" alt="" style="width: 50px; height: 50px;">
+                                            <b>+32<sup>o</sup>C</b>
                                         </div>
                                     </div>
                                 </div>
