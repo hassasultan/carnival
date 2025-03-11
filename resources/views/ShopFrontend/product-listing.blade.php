@@ -122,7 +122,7 @@
                     <!-- Toolbar -->
                     <div class=" toolbar-products toolbar-bottom">
 
-                        <div class="modes">
+                        {{-- <div class="modes">
                             <strong class="label">View as:</strong>
                             <strong class="modes-mode active mode-grid" title="Grid">
                                 <span>grid</span>
@@ -157,7 +157,7 @@
 
                             </div><!-- Show per page -->
 
-                        </div>
+                        </div> --}}
 
                         <ul class="pagination">
 
