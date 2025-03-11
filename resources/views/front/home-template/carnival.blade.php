@@ -82,10 +82,14 @@
                                 <div class="tour-caption">
                                     <div class="vertical-align">
                                         <h3 class="underline hover-it">{{ $row->name }}</h3>
-                                        <div class="weth-icon">
+                                        {{-- <div class="weth-icon">
                                             <img src="https://carnivalguide.co/travel/img/weather_icon_small.png"
                                                 alt="">
                                             <b>+32<sup>o</sup>C</b>
+                                        </div> --}}
+                                        <div class="weth-icon d-flex align-items-center">
+                                            <img src="https://carnivalguide.co/travel/img/weather_icon_small.png" alt="" class="img-fluid" style="width: 40px; height: 40px;">
+                                            <b class="ms-2">+32<sup>o</sup>C</b>
                                         </div>
                                     </div>
                                 </div>
