@@ -46,7 +46,7 @@
 
                     if (id == "flight") {
                         $('.city-entry-new > .tour-block > img').attr('src',
-                            'https://carnivalguide.co/travel/img/home/city_1.jpg');
+                            '{{ asset('shopAssets/images/carnival/flight.jpeg') }}');
                         $('.flight').removeClass('d-none');
                         $('.flight-tab').removeClass('d-none');
                         $('.flight-tab').html(response);

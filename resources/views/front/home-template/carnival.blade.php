@@ -77,7 +77,7 @@
                         <div class="city-entry bg-grey-2">
                             <div class="tour-block tour-block-s-9 hover-green radius-5 underline-block">
                                 <div class="tour-layer delay-1"></div>
-                                <img src="https://carnivalguide.co/travel/img/home/city_1.jpg" class="res-img"
+                                <img src="{{ asset('shopAssets/images/carnival/flight.jpeg') }}" class="res-img"
                                     alt="">
                                 <div class="tour-caption">
                                     <div class="vertical-align">
