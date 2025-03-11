@@ -35,8 +35,15 @@
         color: #ff6600;
         border-color: #ff6600;
     }
+
+    .res-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
 </style>
-<div class="main-wraper content-area-start" >
+<div class="main-wraper content-area-start">
     <div class="container clearfix contry-wrapp">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-3">
@@ -82,13 +89,9 @@
                                 <div class="tour-caption">
                                     <div class="vertical-align">
                                         <h3 class="underline hover-it">{{ $row->name }}</h3>
-                                        {{-- <div class="weth-icon">
+                                        <div class="weth-icon">
                                             <img src="https://carnivalguide.co/travel/img/weather_icon_small.png"
                                                 alt="">
-                                            <b>+32<sup>o</sup>C</b>
-                                        </div> --}}
-                                        <div class="weth-icon">
-                                            <img src="https://carnivalguide.co/travel/img/weather_icon_small.png" alt="" style="width: 50px; height: 50px;">
                                             <b>+32<sup>o</sup>C</b>
                                         </div>
                                     </div>
