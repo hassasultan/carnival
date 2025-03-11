@@ -42,7 +42,7 @@
                     </ul><!-- link categori -->
 
                     <!-- Toolbar -->
-                    <div class=" toolbar-products toolbar-top">
+                    {{-- <div class=" toolbar-products toolbar-top">
 
                         <div class="btn-filter-products">
                             <span>Filter</span>
@@ -110,7 +110,82 @@
                             </li>
                         </ul>
 
-                    </div><!-- Toolbar -->
+                    </div> --}}
+                    <div class=" toolbar-products toolbar-top">
+
+                        <div class="btn-filter-products">
+                            <span>Filter</span>
+                        </div>
+
+                       
+
+                        <h1 class="cate-title">Events</h1>
+
+                       
+                        <div class="modes">
+                            <strong class="label">View as:</strong>
+                            <strong class="modes-mode active mode-grid" title="Grid">
+                                <span>grid</span>
+                            </strong>
+                            <a href="Category2.html" title="List" class="modes-mode mode-list">
+                                <span>list</span>
+                            </a>
+                        </div><!-- View as --> 
+                        
+                        
+                       
+                        <div class="toolbar-option">
+
+                            <div class="toolbar-sorter ">
+                                <label class="label">Short by:</label>
+                                <select class="sorter-options form-control">
+                                    <option selected="selected" value="position">Position</option>
+                                    <option value="name">Name</option>
+                                    <option value="price">Price</option>
+                                </select>
+                                <a href="" class="sorter-action"></a>
+                            </div><!-- Short by -->
+
+                            <div class="toolbar-limiter">
+                                <label class="label">
+                                    <span>Show:</span>
+                                </label>
+                               
+                                <select class="limiter-options form-control">
+                                    <option selected="selected" value="9">Show 18</option>
+                                    <option value="15">Show 15</option>
+                                    <option value="30">Show 30</option>
+                                </select>
+                                
+                            </div><!-- Show per page -->
+
+                        </div>
+
+                        <ul class="pagination">
+                            <li class="action">
+                                <a href="#">
+                                    <span><i aria-hidden="true" class="fa fa-angle-left"></i></span>
+                                </a>
+                            </li>
+                            
+                            <li class="active">
+                                <a href="#">1</a>
+                            </li>
+                            <li>
+                                <a href="#">2</a>
+                            </li>
+                            <li>
+                                <a href="#">3</a>
+                            </li>
+                            <li class="action">
+                                <a href="#">
+                                    <span><i aria-hidden="true" class="fa fa-angle-right"></i></span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- Toolbar -->
 
                     <!-- List Products -->
                     <div class="products  products-grid">
