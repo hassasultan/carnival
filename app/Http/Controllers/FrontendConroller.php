@@ -438,7 +438,7 @@ class FrontendConroller extends Controller
         if ($user->carnivals) {
             $carnival = Carnival::with('mascamps', 'members')->where('head', $user->id)->first();
         } else {
-            $carnival = '';
+            $carnival = null;
         }
         $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user->id)->first();
         $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
