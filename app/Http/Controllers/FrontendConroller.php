@@ -244,6 +244,7 @@ class FrontendConroller extends Controller
         //     'previous_route' => app('router')->getRoutes()->match(Request::create(url()->previous()))->getName() ?? 'N/A'
         // ]);
         $previous_route = app('router')->getRoutes()->match(Request::create(url()->previous()))->getName() ?? 'N/A';
+        dd($previous_route);
         $vendor_type = $request->get('vendor_type', null);
         $regionId = $request->get('getRegion');
         $getSearchVal = $request->get('getSearchVal');
