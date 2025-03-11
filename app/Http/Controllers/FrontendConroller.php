@@ -276,10 +276,10 @@ class FrontendConroller extends Controller
             'user' => function ($query) {
                 $query->select('id', 'first_name', 'last_name', 'slug', 'image');
             },
-            'user.products' => function ($query) {
-                $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
-                    ->groupBy('user_id');
-            },
+            // 'user.products' => function ($query) {
+            //     $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
+            //         ->groupBy('user_id');
+            // },
         ]);
 
         if ($vendor_type) {
