@@ -1,6 +1,5 @@
 <script>
     $(document).ready(function() {
-        console.log("check");
         $(document).on('click', '.contry-item', function(e) {
             e.preventDefault();
 
@@ -306,6 +305,7 @@
         $(document).on('click', '.carnival-cover', function(e) {
             let selectedTab = $(this).text().trim(); // Get clicked tab text
             let imageSrc = '';
+            console.log("check");
 
             if (selectedTab === 'Flights') {
                 imageSrc = "{{ asset('shopAssets/images/carnival/flight.jpeg') }}";
@@ -315,7 +315,7 @@
                 imageSrc = "{{ asset('shopAssets/images/carnival/event2.jpeg') }}";
             }
 
-            $('.res-img').attr('src', imageSrc);
+            $(this).closest('.tour-block').find('.res-img').attr('src', imageSrc);
         });
     });
 </script>
