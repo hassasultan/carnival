@@ -234,28 +234,7 @@ class FrontendConroller extends Controller
         $same_cat = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->orderBy('id', 'DESC')->take(9)->get();
         return view('ShopFrontend.product-detail', compact('product', 'related', 'same_cat'));
     }
-    // public function get_vendors(Request $request)
-    // {
-    //     // dd($request->all());
-    //     $regionId = $request->get('getRegion');
 
-    //     $vendors = Vendor::with([
-    //         'user' => function ($query) {
-    //             $query->select('id', 'first_name', 'last_name', 'slug', 'image');
-    //         },
-    //         'user.products' => function ($query) {
-    //             $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
-    //                 ->groupBy('user_id');
-    //         }
-    //     ])
-    //         ->when($regionId, function ($query) use ($regionId) {
-    //             return $query->where('continent', $regionId);
-    //         })
-    //         ->where('package_id', 8)
-    //         ->orderBy('id', 'DESC')
-    //         ->paginate(18);
-    //     return $vendors;
-    // }
     public function get_vendors(Request $request)
     {
         // dd([
@@ -270,11 +249,13 @@ class FrontendConroller extends Controller
 
         
         $carnival_com = Carnival::has('user')->pluck('head');
-        $query = Vendor::with('user')->whereIn('user_id', $carnival_com);
-
+        
         // $query = Vendor::query();
         if ($previous_route == 'front.vendors') {
-            // $query->whereHas('user.costumes'); // ✅ FIXED
+            $query = Vendor::with('user')->whereIn('user_id', $carnival_com);
+        }
+        else {
+            $query = Vendor::with('user');
         }
         $query->with([
             'user' => function ($query) {
