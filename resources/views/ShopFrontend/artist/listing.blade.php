@@ -321,7 +321,7 @@
                         page: page,
                         vendor_type: 'Artistes',
                         getRegion: getRegion,
-                        searchVal: searchVal // Include search value in the request
+                        getSearchVal: searchVal // Include search value in the request
                     },
                     success: function(response) {
                         console.log(response);

@@ -256,7 +256,7 @@
                     type: "GET",
                     data: {
                         page: page,
-                        search: searchVal // Pass search value in the request
+                        getSearchVal: searchVal // Pass search value in the request
                     },
                     success: function(response) {
                         console.log(response);

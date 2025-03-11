@@ -334,7 +334,7 @@
                     data: {
                         page: page,
                         getRegion: getRegion,
-                        searchVal: searchVal // Send search value along with region
+                        getSearchVal: searchVal // Send search value along with region
                     },
                     success: function(response) {
                         console.log(response);

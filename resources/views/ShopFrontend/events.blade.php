@@ -326,7 +326,7 @@
                             categories: selectedCategories,
                             event_type: eventType,
                             price_ranges: priceRanges,
-                            searchVal: searchVal
+                            getSearchVal: searchVal
                         },
                         success: function(response) {
                             $('#event-listing').empty();
