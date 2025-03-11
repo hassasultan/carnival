@@ -114,11 +114,11 @@
 
                     <div>
                         <form>
-                            <input type="text" name="searchVal" fdprocessedid="3rmjh">
-                            <button fdprocessedid="l2xg94" id="getSearchVal">Search</button>
+                            <input type="text" fdprocessedid="3rmjh">
+                            <button fdprocessedid="l2xg94">Search</button>
                         </form>
                     </div>
-
+                    
                     <div class="catalog-view_op1">
                         <div class=" toolbar-products toolbar-top">
 
@@ -1728,7 +1728,7 @@
     <script>
         $(document).ready(function() {
             function fetchProducts(page = 1, selectedCategories = [], priceRanges = [],
-                selectedBrands = [], productCondition = [], stockCondition = [], sale = null, searchVal = '') {
+                selectedBrands = [], productCondition = [], stockCondition = [], sale = null) {
                 $('#product-listing').html('');
 
                 // Apply skeleton loading structure
@@ -1757,8 +1757,7 @@
                         brands: selectedBrands,
                         product_condition: productCondition,
                         stock_condition: stockCondition,
-                        sale: sale,
-                        getSearchVal: getSearchVal
+                        sale: sale
                     },
                     success: function(response) {
                         console.log(response);
@@ -1917,6 +1916,20 @@
                     productCondition, stockCondition, sale);
             });
 
+            // Product type filter
+            // $(document).on('click', '.product_type', function() {
+            //     let selectedCategories = getSelectedCategories();
+            //     let productType = $(this).is(':checked') ? 1 : null;
+            //     let priceRanges = getSelectedPriceRanges();
+            //     let selectedBrands = getSelectedBrands();
+            //     let productCondition = getSelectedProductCondition();
+            //     let stockCondition = getSelectedStockCondition();
+            //     let sale = getSaleStatus();
+
+            //     fetchProducts(1, selectedCategories, priceRanges, selectedBrands,
+            //         productCondition, stockCondition, sale);
+            // });
+
             // Price filter
             $(document).on('click', '.price-checkbox', function() {
                 let selectedCategories = getSelectedCategories();
@@ -2006,22 +2019,6 @@
                 // Initial fetch
                 fetchProducts();
             }
-
-            $('#getSearchVal').on('click', function(e) {
-                e.preventDefault(); // Prevent form submission
-
-                let searchVal = $('input[name="searchVal"]').val(); // Get search input value
-
-                let selectedCategories = getSelectedCategories();
-                let priceRanges = getSelectedPriceRanges();
-                let selectedBrands = getSelectedBrands();
-                let productCondition = getSelectedProductCondition();
-                let stockCondition = getSelectedStockCondition();
-                let sale = getSaleStatus();
-
-                fetchProducts(1, selectedCategories, priceRanges, selectedBrands, productCondition,
-                    stockCondition, sale, searchVal);
-            });
 
         });
     </script>
