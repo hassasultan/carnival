@@ -94,13 +94,13 @@
                                 <div class="tab-wrapper">
                                     <div class="tab-nav-wrapper">
                                         <div class="nav-tab  clearfix">
-                                            <div class="nav-tab-item active">
+                                            <div class="nav-tab-item active carnival-cover">
                                                 Flights
                                             </div>
-                                            <div class="nav-tab-item ">
+                                            <div class="nav-tab-item carnival-cover">
                                                 Hotels
                                             </div>
-                                            <div class="nav-tab-item ">
+                                            <div class="nav-tab-item carnival-cover">
                                                 Events
                                             </div>
                                         </div>

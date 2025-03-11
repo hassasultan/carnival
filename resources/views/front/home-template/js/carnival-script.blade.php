@@ -302,5 +302,20 @@
             });
         });
 
+
+        $(document).on('click', '.carnival-cover', function(e) {
+            let selectedTab = $(this).text().trim(); // Get clicked tab text
+            let imageSrc = '';
+
+            if (selectedTab === 'Flights') {
+                imageSrc = "{{ asset('shopAssets/images/carnival/flight.jpeg') }}";
+            } else if (selectedTab === 'Hotels') {
+                imageSrc = "{{ asset('shopAssets/images/carnival/hotel.jpeg') }}";
+            } else if (selectedTab === 'Events') {
+                imageSrc = "{{ asset('shopAssets/images/carnival/event2.jpeg') }}";
+            }
+
+            $('.res-img').attr('src', imageSrc);
+        });
     });
 </script>
