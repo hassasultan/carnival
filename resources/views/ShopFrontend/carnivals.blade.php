@@ -79,7 +79,7 @@
 
                         <h1 class="cate-title">Carnivals</h1>
 
-                        {{-- <div class="modes">
+                        <div class="modes">
                             <strong class="label">View as:</strong>
                             <strong class="modes-mode active mode-grid" title="Grid">
                                 <span>grid</span>
@@ -87,7 +87,7 @@
                             <a href="Category2.html" title="List" class="modes-mode mode-list">
                                 <span>list</span>
                             </a>
-                        </div><!-- View as --> --}}
+                        </div><!-- View as -->
 
                     </div>
                     </div>
