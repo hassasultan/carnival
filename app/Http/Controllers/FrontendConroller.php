@@ -246,6 +246,7 @@ class FrontendConroller extends Controller
         $previous_route = app('router')->getRoutes()->match(Request::create(url()->previous()))->getName() ?? 'N/A';
         $vendor_type = $request->get('vendor_type', null);
         $regionId = $request->get('getRegion');
+        $getSearchVal = $request->get('getSearchVal');
 
         
         $carnival_com = Carnival::has('user')->pluck('head');
@@ -275,6 +276,10 @@ class FrontendConroller extends Controller
 
         if ($regionId) {
             $query->where('continent', $regionId);
+        }
+
+        if ($getSearchVal) {
+            $query->where('name', 'like', '%' . $getSearchVal . '%');
         }
 
         $vendors = $query->orderBy('id', 'DESC')->paginate(18);

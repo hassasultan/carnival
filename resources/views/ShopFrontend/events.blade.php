@@ -77,38 +77,38 @@
 
                     <div>
                         <form>
-                            <input type="text" fdprocessedid="3rmjh">
-                            <button fdprocessedid="l2xg94">Search</button>
+                            <input type="text" name="searchVal" fdprocessedid="3rmjh">
+                            <button fdprocessedid="l2xg94" id="getSearchVal">Search</button>
                         </form>
                     </div>
 
                     <!-- Toolbar -->
                     <div class="catalog-view_op1">
-                    <div class=" toolbar-products toolbar-top">
+                        <div class=" toolbar-products toolbar-top">
 
-                        <div class="btn-filter-products">
-                            <span>Filter</span>
+                            <div class="btn-filter-products">
+                                <span>Filter</span>
+                            </div>
+
+                            <h1 class="cate-title">
+                                @if (Route::is('front.shop_listing'))
+                                    Events
+                                @else
+                                    Carnivals
+                                @endif
+                            </h1>
+
+                            <div class="modes">
+                                <strong class="label">View as:</strong>
+                                <strong class="modes-mode active mode-grid" title="Grid">
+                                    <span>grid</span>
+                                </strong>
+                                <a href="Category2.html" title="List" class="modes-mode mode-list">
+                                    <span>list</span>
+                                </a>
+                            </div><!-- View as -->
+
                         </div>
-
-                        <h1 class="cate-title">
-                            @if (Route::is('front.shop_listing'))
-                                Events
-                            @else
-                                Carnivals
-                            @endif
-                        </h1>
-
-                        <div class="modes">
-                            <strong class="label">View as:</strong>
-                            <strong class="modes-mode active mode-grid" title="Grid">
-                                <span>grid</span>
-                            </strong>
-                            <a href="Category2.html" title="List" class="modes-mode mode-list">
-                                <span>list</span>
-                            </a>
-                        </div><!-- View as -->
-
-                    </div>
                     </div>
                     <!-- Toolbar -->
 
@@ -148,71 +148,71 @@
 
                     <!-- Toolbar -->
                     <div class="catalog-view_op1">
-                    <div class=" toolbar-products toolbar-bottom">
+                        <div class=" toolbar-products toolbar-bottom">
 
-                        <div class="modes">
-                            <strong class="label">View as:</strong>
-                            <strong class="modes-mode active mode-grid" title="Grid">
-                                <span>grid</span>
-                            </strong>
-                            <a href="Category2.html" title="List" class="modes-mode mode-list">
-                                <span>list</span>
-                            </a>
-                        </div><!-- View as -->
+                            <div class="modes">
+                                <strong class="label">View as:</strong>
+                                <strong class="modes-mode active mode-grid" title="Grid">
+                                    <span>grid</span>
+                                </strong>
+                                <a href="Category2.html" title="List" class="modes-mode mode-list">
+                                    <span>list</span>
+                                </a>
+                            </div><!-- View as -->
 
-                        <div class="toolbar-option">
+                            <div class="toolbar-option">
 
-                            <div class="toolbar-sorter ">
-                                <label class="label">Short by:</label>
-                                <select class="sorter-options form-control">
-                                    <option selected="selected" value="position">Product name</option>
-                                    <option value="name">Name</option>
-                                    <option value="price">Price</option>
-                                </select>
-                                <a href="" class="sorter-action"></a>
-                            </div><!-- Short by -->
+                                <div class="toolbar-sorter ">
+                                    <label class="label">Short by:</label>
+                                    <select class="sorter-options form-control">
+                                        <option selected="selected" value="position">Product name</option>
+                                        <option value="name">Name</option>
+                                        <option value="price">Price</option>
+                                    </select>
+                                    <a href="" class="sorter-action"></a>
+                                </div><!-- Short by -->
 
-                            <div class="toolbar-limiter">
-                                <label class="label">
-                                    <span>Show:</span>
-                                </label>
+                                <div class="toolbar-limiter">
+                                    <label class="label">
+                                        <span>Show:</span>
+                                    </label>
 
-                                <select class="limiter-options form-control">
-                                    <option selected="selected" value="9"> Show 18</option>
-                                    <option value="15">Show 15</option>
-                                    <option value="30">Show 30</option>
-                                </select>
+                                    <select class="limiter-options form-control">
+                                        <option selected="selected" value="9"> Show 18</option>
+                                        <option value="15">Show 15</option>
+                                        <option value="30">Show 30</option>
+                                    </select>
 
-                            </div><!-- Show per page -->
+                                </div><!-- Show per page -->
+
+                            </div>
+
+                            <ul class="pagination">
+
+
+                                <li class="active">
+                                    <a href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">2</a>
+                                </li>
+                                <li>
+                                    <a href="#">3</a>
+                                </li>
+                                <li>
+                                    <a href="#">4</a>
+                                </li>
+                                <li>
+                                    <a href="#">5</a>
+                                </li>
+                                <li class="action action-next">
+                                    <a href="#">
+                                        Next <span><i aria-hidden="true" class="fa fa-angle-double-right"></i></span>
+                                    </a>
+                                </li>
+                            </ul>
 
                         </div>
-
-                        <ul class="pagination">
-
-
-                            <li class="active">
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">5</a>
-                            </li>
-                            <li class="action action-next">
-                                <a href="#">
-                                    Next <span><i aria-hidden="true" class="fa fa-angle-double-right"></i></span>
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
                     </div>
                     <!-- Toolbar -->
 
@@ -297,149 +297,322 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            function fetchEvents(page = 1, selectedCategories = [], eventType = null, priceRanges = []) {
-                $('#event-listing').html('');
+            $(document).ready(function() {
+                function fetchEvents(page = 1, selectedCategories = [], eventType = null, priceRanges = [],
+                    searchVal = '') {
+                    $('#event-listing').html('');
 
-                // Display skeleton loaders
-                for (let i = 0; i < 18; i++) {
-                    var skeletonHtml = `
-            <li class="col-sm-4 event-item">
-                <div class="skeleton-item">
-                    <div class="skeleton-content">
-                        <div class="skeleton-line" style="width: 80%;"></div>
-                        <div class="skeleton-line" style="width: 60%;"></div>
-                        <div class="skeleton-line" style="width: 70%;"></div>
+                    // Display skeleton loaders
+                    for (let i = 0; i < 18; i++) {
+                        var skeletonHtml = `
+                <li class="col-sm-4 event-item">
+                    <div class="skeleton-item">
+                        <div class="skeleton-content">
+                            <div class="skeleton-line" style="width: 80%;"></div>
+                            <div class="skeleton-line" style="width: 60%;"></div>
+                            <div class="skeleton-line" style="width: 70%;"></div>
+                        </div>
                     </div>
-                </div>
-            </li>`;
-                    $('#event-listing').append(skeletonHtml);
-                }
+                </li>`;
+                        $('#event-listing').append(skeletonHtml);
+                    }
 
-                // AJAX call to fetch events
-                $.ajax({
-                    url: "{{ route('get.events') }}",
-                    type: "GET",
-                    data: {
-                        page: page,
-                        categories: selectedCategories,
-                        event_type: eventType,
-                        price_ranges: priceRanges
-                    },
-                    success: function(response) {
-                        $('#event-listing').empty();
-                        $.each(response.data, function(index, event) {
-                            var image = event.banner ? "{{ asset('eventBanner/') }}/" + event
-                                .banner :
-                                'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                            var href =
-                                "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}"
-                                .replace('event_slug_placeholder', event.slug);
-                            var eventHtml = `
-                    <li class="col-sm-4 event-item">
-                        <div class="event-item-opt-1">
-                            <div class="event-item-info">
-                                <div class="event-item-photo">
-                                    <a href="${href}" class="event-item-img">
-                                        <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
-                                    </a>
-                                    <span class="event-item-label label-date">${event.start_date}</span>
-                                </div>
-                                <div class="event-item-detail">
-                                    <strong class="event-item-name"><a href="${href}">${event.name}</a></strong>
-                                    <div class="clearfix">
-                                        <div class="event-item-description">
-                                            <p>${event.description.substring(0, 100)}...</p>
+                    // AJAX call to fetch events
+                    $.ajax({
+                        url: "{{ route('get.events') }}",
+                        type: "GET",
+                        data: {
+                            page: page,
+                            categories: selectedCategories,
+                            event_type: eventType,
+                            price_ranges: priceRanges,
+                            searchVal: searchVal
+                        },
+                        success: function(response) {
+                            $('#event-listing').empty();
+                            $.each(response.data, function(index, event) {
+                                var image = event.banner ?
+                                    "{{ asset('eventBanner/') }}/" + event.banner :
+                                    'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                var href =
+                                    "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}"
+                                    .replace('event_slug_placeholder', event.slug);
+                                var eventHtml = `
+                        <li class="col-sm-4 event-item">
+                            <div class="event-item-opt-1">
+                                <div class="event-item-info">
+                                    <div class="event-item-photo">
+                                        <a href="${href}" class="event-item-img">
+                                            <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
+                                        </a>
+                                        <span class="event-item-label label-date">${event.start_date}</span>
+                                    </div>
+                                    <div class="event-item-detail">
+                                        <strong class="event-item-name"><a href="${href}">${event.name}</a></strong>
+                                        <div class="clearfix">
+                                            <div class="event-item-description">
+                                                <p>${event.description.substring(0, 100)}...</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>`;
-                            $('#event-listing').append(eventHtml);
-                        });
+                        </li>`;
+                                $('#event-listing').append(eventHtml);
+                            });
 
-                        // Pagination logic
-                        $('.pagination').empty();
-                        if (response.current_page > 1) {
-                            $('.pagination').append(
-                                `<li class="action"><a href="#" data-page="${response.current_page - 1}"><i class="fa fa-angle-left"></i></a></li>`
-                            );
+                            // Pagination logic
+                            $('.pagination').empty();
+                            if (response.current_page > 1) {
+                                $('.pagination').append(
+                                    `<li class="action"><a href="#" data-page="${response.current_page - 1}"><i class="fa fa-angle-left"></i></a></li>`
+                                );
+                            }
+                            for (let i = 1; i <= response.last_page; i++) {
+                                let activeClass = i === response.current_page ? 'active' : '';
+                                $('.pagination').append(
+                                    `<li class="${activeClass}"><a href="#" data-page="${i}">${i}</a></li>`
+                                );
+                            }
+                            if (response.current_page < response.last_page) {
+                                $('.pagination').append(
+                                    `<li class="action"><a href="#" data-page="${response.current_page + 1}"><i class="fa fa-angle-right"></i></a></li>`
+                                );
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
                         }
-                        for (let i = 1; i <= response.last_page; i++) {
-                            let activeClass = i === response.current_page ? 'active' : '';
-                            $('.pagination').append(
-                                `<li class="${activeClass}"><a href="#" data-page="${i}">${i}</a></li>`
-                            );
-                        }
-                        if (response.current_page < response.last_page) {
-                            $('.pagination').append(
-                                `<li class="action"><a href="#" data-page="${response.current_page + 1}"><i class="fa fa-angle-right"></i></a></li>`
-                            );
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                    }
-                });
-            }
-
-            function getSelectedCategories() {
-                let selectedCategories = [];
-                $('.category-checkbox:checked').each(function() {
-                    selectedCategories.push($(this).val());
-                });
-                return selectedCategories;
-            }
-
-            function getSelectedPriceRanges() {
-                let priceRanges = [];
-                $('.price-checkbox:checked').each(function() {
-                    let min = $(this).data('min');
-                    let max = $(this).data('max');
-                    priceRanges.push({
-                        min: min,
-                        max: max
                     });
+                }
+
+                function getSelectedCategories() {
+                    let selectedCategories = [];
+                    $('.category-checkbox:checked').each(function() {
+                        selectedCategories.push($(this).val());
+                    });
+                    return selectedCategories;
+                }
+
+                function getSelectedPriceRanges() {
+                    let priceRanges = [];
+                    $('.price-checkbox:checked').each(function() {
+                        let min = $(this).data('min');
+                        let max = $(this).data('max');
+                        priceRanges.push({
+                            min: min,
+                            max: max
+                        });
+                    });
+                    return priceRanges;
+                }
+
+                // Search button click event
+                $(document).on('click', '#getSearchVal', function(e) {
+                    e.preventDefault(); // Prevent form submission
+
+                    let searchVal = $('input[name="searchVal"]').val();
+                    let selectedCategories = getSelectedCategories();
+                    let eventType = $('#event_type').is(':checked') ? 1 : null;
+                    let priceRanges = getSelectedPriceRanges();
+
+                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal);
                 });
-                return priceRanges;
-            }
 
-            $(document).on('click', '.category', function() {
-                $(this).siblings('.category-checkbox').prop('checked', function(i, value) {
-                    return !value;
+                // Category filter
+                $(document).on('click', '.category', function() {
+                    $(this).siblings('.category-checkbox').prop('checked', function(i, value) {
+                        return !value;
+                    });
+
+                    let selectedCategories = getSelectedCategories();
+                    let eventType = $('#event_type').is(':checked') ? 1 : null;
+                    let priceRanges = getSelectedPriceRanges();
+                    let searchVal = $('input[name="searchVal"]').val();
+
+                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal);
                 });
 
-                let selectedCategories = getSelectedCategories();
-                let eventType = $('#event_type').is(':checked') ? 1 : null;
-                let priceRanges = getSelectedPriceRanges();
+                // Event type filter
+                $(document).on('click', '#event_type', function() {
+                    let eventType = $(this).is(':checked') ? 1 : null;
+                    let selectedCategories = getSelectedCategories();
+                    let priceRanges = getSelectedPriceRanges();
+                    let searchVal = $('input[name="searchVal"]').val();
 
-                fetchEvents(1, selectedCategories, eventType, priceRanges);
+                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal);
+                });
+
+                // Price filter
+                $(document).on('click', '.price-checkbox', function() {
+                    let eventType = $('#event_type').is(':checked') ? 1 : null;
+                    let selectedCategories = getSelectedCategories();
+                    let priceRanges = getSelectedPriceRanges();
+                    let searchVal = $('input[name="searchVal"]').val();
+
+                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal);
+                });
+
+                // Pagination click
+                $(document).on('click', '.pagination a', function(e) {
+                    e.preventDefault();
+                    let page = $(this).data('page');
+                    let selectedCategories = getSelectedCategories();
+                    let eventType = $('#event_type').is(':checked') ? 1 : null;
+                    let priceRanges = getSelectedPriceRanges();
+                    let searchVal = $('input[name="searchVal"]').val();
+
+                    fetchEvents(page, selectedCategories, eventType, priceRanges, searchVal);
+                });
+
+                // Initial fetch
+                fetchEvents();
             });
 
-            // Event type filter
-            $(document).on('click', '#event_type', function() {
-                let eventType = $(this).is(':checked') ? 1 : null;
-                let selectedCategories = getSelectedCategories();
-                let priceRanges = getSelectedPriceRanges();
+            // function fetchEvents(page = 1, selectedCategories = [], eventType = null, priceRanges = []) {
+            //     $('#event-listing').html('');
 
-                fetchEvents(1, selectedCategories, eventType, priceRanges);
-            });
+            //     // Display skeleton loaders
+            //     for (let i = 0; i < 18; i++) {
+            //         var skeletonHtml = `
+        // <li class="col-sm-4 event-item">
+        //     <div class="skeleton-item">
+        //         <div class="skeleton-content">
+        //             <div class="skeleton-line" style="width: 80%;"></div>
+        //             <div class="skeleton-line" style="width: 60%;"></div>
+        //             <div class="skeleton-line" style="width: 70%;"></div>
+        //         </div>
+        //     </div>
+        // </li>`;
+            //         $('#event-listing').append(skeletonHtml);
+            //     }
 
-            // Price filter
-            $(document).on('click', '.price-checkbox', function() {
-                let eventType = $('#event_type').is(':checked') ? 1 : null;
-                let selectedCategories = getSelectedCategories();
-                let priceRanges = getSelectedPriceRanges();
+            //     // AJAX call to fetch events
+            //     $.ajax({
+            //         url: "{{ route('get.events') }}",
+            //         type: "GET",
+            //         data: {
+            //             page: page,
+            //             categories: selectedCategories,
+            //             event_type: eventType,
+            //             price_ranges: priceRanges,
+            //             getSearchVal: getSearchVal
+            //         },
+            //         success: function(response) {
+            //             $('#event-listing').empty();
+            //             $.each(response.data, function(index, event) {
+            //                 var image = event.banner ? "{{ asset('eventBanner/') }}/" + event
+            //                     .banner :
+            //                     'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+            //                 var href =
+            //                     "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}"
+            //                     .replace('event_slug_placeholder', event.slug);
+            //                 var eventHtml = `
+        //         <li class="col-sm-4 event-item">
+        //             <div class="event-item-opt-1">
+        //                 <div class="event-item-info">
+        //                     <div class="event-item-photo">
+        //                         <a href="${href}" class="event-item-img">
+        //                             <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
+        //                         </a>
+        //                         <span class="event-item-label label-date">${event.start_date}</span>
+        //                     </div>
+        //                     <div class="event-item-detail">
+        //                         <strong class="event-item-name"><a href="${href}">${event.name}</a></strong>
+        //                         <div class="clearfix">
+        //                             <div class="event-item-description">
+        //                                 <p>${event.description.substring(0, 100)}...</p>
+        //                             </div>
+        //                         </div>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </li>`;
+            //                 $('#event-listing').append(eventHtml);
+            //             });
 
-                fetchEvents(1, selectedCategories, eventType, priceRanges);
-            });
-            $(document).on('click', '.pagination a', function(e) {
-                e.preventDefault();
-                var page = $(this).data('page');
-                fetchEvents(page);
-            });
-            // Initial fetch
-            fetchEvents();
+            //             // Pagination logic
+            //             $('.pagination').empty();
+            //             if (response.current_page > 1) {
+            //                 $('.pagination').append(
+            //                     `<li class="action"><a href="#" data-page="${response.current_page - 1}"><i class="fa fa-angle-left"></i></a></li>`
+            //                 );
+            //             }
+            //             for (let i = 1; i <= response.last_page; i++) {
+            //                 let activeClass = i === response.current_page ? 'active' : '';
+            //                 $('.pagination').append(
+            //                     `<li class="${activeClass}"><a href="#" data-page="${i}">${i}</a></li>`
+            //                 );
+            //             }
+            //             if (response.current_page < response.last_page) {
+            //                 $('.pagination').append(
+            //                     `<li class="action"><a href="#" data-page="${response.current_page + 1}"><i class="fa fa-angle-right"></i></a></li>`
+            //                 );
+            //             }
+            //         },
+            //         error: function(xhr, status, error) {
+            //             console.error(error);
+            //         }
+            //     });
+            // }
+
+            // function getSelectedCategories() {
+            //     let selectedCategories = [];
+            //     $('.category-checkbox:checked').each(function() {
+            //         selectedCategories.push($(this).val());
+            //     });
+            //     return selectedCategories;
+            // }
+
+            // function getSelectedPriceRanges() {
+            //     let priceRanges = [];
+            //     $('.price-checkbox:checked').each(function() {
+            //         let min = $(this).data('min');
+            //         let max = $(this).data('max');
+            //         priceRanges.push({
+            //             min: min,
+            //             max: max
+            //         });
+            //     });
+            //     return priceRanges;
+            // }
+
+            // $(document).on('click', '.category', function() {
+            //     $(this).siblings('.category-checkbox').prop('checked', function(i, value) {
+            //         return !value;
+            //     });
+
+            //     let selectedCategories = getSelectedCategories();
+            //     let eventType = $('#event_type').is(':checked') ? 1 : null;
+            //     let priceRanges = getSelectedPriceRanges();
+
+            //     fetchEvents(1, selectedCategories, eventType, priceRanges);
+            // });
+
+            // // Event type filter
+            // $(document).on('click', '#event_type', function() {
+            //     let eventType = $(this).is(':checked') ? 1 : null;
+            //     let selectedCategories = getSelectedCategories();
+            //     let priceRanges = getSelectedPriceRanges();
+
+            //     fetchEvents(1, selectedCategories, eventType, priceRanges);
+            // });
+
+            // // Price filter
+            // $(document).on('click', '.price-checkbox', function() {
+            //     let eventType = $('#event_type').is(':checked') ? 1 : null;
+            //     let selectedCategories = getSelectedCategories();
+            //     let priceRanges = getSelectedPriceRanges();
+
+            //     fetchEvents(1, selectedCategories, eventType, priceRanges);
+            // });
+            // $(document).on('click', '.pagination a', function(e) {
+            //     e.preventDefault();
+            //     var page = $(this).data('page');
+            //     fetchEvents(page);
+            // });
+            // // Initial fetch
+            // fetchEvents();
         });
     </script>
 

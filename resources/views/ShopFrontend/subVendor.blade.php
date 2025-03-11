@@ -50,11 +50,11 @@
 
                     <div>
                         <form>
-                            <input type="text" fdprocessedid="3rmjh">
-                            <button fdprocessedid="l2xg94">Search</button>
+                            <input type="text" name="searchVal" fdprocessedid="3rmjh">
+                            <button fdprocessedid="l2xg94" id="getSearchVal">Search</button>
                         </form>
                     </div>
-                    
+
                     <!-- Toolbar -->
                     <div class="catalog-view_op1">
                     <div class=" toolbar-products toolbar-top">
@@ -232,6 +232,110 @@
         $(document).ready(function() {
             // Function to fetch and display products
             function fetchProducts(page = 1) {
+                let searchVal = $('input[name="searchVal"]').val(); // Get the search input value
+    
+                $('#product-listing').empty().addClass('blur-effect');
+    
+                // Apply skeleton loading structure
+                for (let i = 0; i < 9; i++) { 
+                    var skeletonHtml = `
+                    <li class="col-sm-4 product-item">
+                        <div class="skeleton-item">
+                            <div class="skeleton-content">
+                                <div class="skeleton-line" style="width: 80%;"></div>
+                                <div class="skeleton-line" style="width: 60%;"></div>
+                                <div class="skeleton-line" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                    </li>`;
+                    $('#product-listing').append(skeletonHtml);
+                }
+    
+                $.ajax({
+                    url: "{{ route('get.subVvendors.front') }}",
+                    type: "GET",
+                    data: {
+                        page: page,
+                        search: searchVal // Pass search value in the request
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        $('#product-listing').empty().removeClass('blur-effect');
+    
+                        $.each(response.data, function(index, vendor) {
+                            var vendorHtml = `
+                            <li class="col-sm-4 product-item">
+                                <div class="product-item-opt-1">
+                                    <div class="product-item-info">
+                                        <div class="product-item-photo">
+                                            <a href="{{ route('front.subVendor.detail', '') }}/${vendor.user.slug}" class="product-item-img">
+                                                <img src="{{ asset('shopAssets/images/media/product9.jpg') }}" alt="product name">
+                                            </a>
+                                        </div>
+                                        <div class="product-item-detail">
+                                            <strong class="product-item-name">
+                                                <a href="#">${vendor.user.first_name} ${vendor.user.last_name}</a>
+                                            </strong>`;
+    
+                            if (vendor.user.products.length > 0) {
+                                vendorHtml += `
+                                            <div class="clearfix">
+                                                <div class="product-item-price">
+                                                    <span class="price">$${vendor.user.products[0].min_price}-$${vendor.user.products[0].max_price}</span>
+                                                </div>
+                                            </div>`;
+                            }
+    
+                            vendorHtml += `</div></div></div></li>`;
+                            $('#product-listing').append(vendorHtml);
+                        });
+    
+                        // Pagination handling
+                        $('.pagination').empty();
+                        let pre = response.current_page - 1;
+                        let nxt = response.current_page + 1;
+    
+                        if (pre > 0) {
+                            $('.pagination').append(`<li class="action"><a href="#" data-page="${pre}"><span><i aria-hidden="true" class="fa fa-angle-left"></i></span></a></li>`);
+                        }
+    
+                        for (let i = 1; i <= response.last_page; i++) {
+                            let activeClass = i === response.current_page ? 'active' : '';
+                            $('.pagination').append(`<li class="${activeClass}"><a href="#" data-page="${i}">${i}</a></li>`);
+                        }
+    
+                        if (nxt <= response.last_page) {
+                            $('.pagination').append(`<li class="action"><a href="#" data-page="${nxt}"><span><i aria-hidden="true" class="fa fa-angle-right"></i></span></a></li>`);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+    
+            // Initial call to fetch products
+            fetchProducts();
+    
+            // Pagination click event handler
+            $(document).on('click', '.pagination a', function(e) {
+                e.preventDefault();
+                let page = $(this).data('page'); // Get the page number from the clicked link
+                fetchProducts(page);
+            });
+    
+            // Search button click event
+            $('#getSearchVal').on('click', function(e) {
+                e.preventDefault();
+                fetchProducts(1); // Fetch with search input value
+            });
+        });
+    </script>
+    
+    {{-- <script>
+        $(document).ready(function() {
+            // Function to fetch and display products
+            function fetchProducts(page = 1) {
 
                 // Apply skeleton loading structure
                 for (let i = 0; i < 9; i++) { // Assuming 9 products per page
@@ -337,7 +441,7 @@
                 fetchProducts(page);
             });
         });
-    </script>
+    </script> --}}
 
     <script>
         (function($) {

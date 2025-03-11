@@ -71,32 +71,32 @@
 
                     <div>
                         <form>
-                            <input type="text" fdprocessedid="3rmjh">
-                            <button fdprocessedid="l2xg94">Search</button>
+                            <input type="text" name="searchVal" fdprocessedid="3rmjh">
+                            <button fdprocessedid="l2xg94" id="getSearchVal">Search</button>
                         </form>
                     </div>
-                    
+
                     <!-- Toolbar -->
                     <div class="catalog-view_op1">
-                    <div class=" toolbar-products toolbar-top">
+                        <div class=" toolbar-products toolbar-top">
 
-                        <div class="btn-filter-products">
-                            <span>Filter</span>
+                            <div class="btn-filter-products">
+                                <span>Filter</span>
+                            </div>
+
+                            <h1 class="cate-title">Artists</h1>
+
+                            <div class="modes">
+                                <strong class="label">View as:</strong>
+                                <strong class="modes-mode active mode-grid" title="Grid">
+                                    <span>grid</span>
+                                </strong>
+                                <a href="Category2.html" title="List" class="modes-mode mode-list">
+                                    <span>list</span>
+                                </a>
+                            </div><!-- View as -->
+
                         </div>
-
-                        <h1 class="cate-title">Artists</h1>
-
-                        <div class="modes">
-                            <strong class="label">View as:</strong>
-                            <strong class="modes-mode active mode-grid" title="Grid">
-                                <span>grid</span>
-                            </strong>
-                            <a href="Category2.html" title="List" class="modes-mode mode-list">
-                                <span>list</span>
-                            </a>
-                        </div><!-- View as -->
-
-                    </div>
                     </div>
                     <!-- Toolbar -->
 
@@ -136,71 +136,71 @@
 
                     <!-- Toolbar -->
                     <div class="catalog-view_op1">
-                    <div class=" toolbar-products toolbar-bottom">
+                        <div class=" toolbar-products toolbar-bottom">
 
-                        <div class="modes">
-                            <strong class="label">View as:</strong>
-                            <strong class="modes-mode active mode-grid" title="Grid">
-                                <span>grid</span>
-                            </strong>
-                            <a href="Category2.html" title="List" class="modes-mode mode-list">
-                                <span>list</span>
-                            </a>
-                        </div><!-- View as -->
+                            <div class="modes">
+                                <strong class="label">View as:</strong>
+                                <strong class="modes-mode active mode-grid" title="Grid">
+                                    <span>grid</span>
+                                </strong>
+                                <a href="Category2.html" title="List" class="modes-mode mode-list">
+                                    <span>list</span>
+                                </a>
+                            </div><!-- View as -->
 
-                        <div class="toolbar-option">
+                            <div class="toolbar-option">
 
-                            <div class="toolbar-sorter ">
-                                <label class="label">Short by:</label>
-                                <select class="sorter-options form-control">
-                                    <option selected="selected" value="position">Product name</option>
-                                    <option value="name">Name</option>
-                                    <option value="price">Price</option>
-                                </select>
-                                <a href="" class="sorter-action"></a>
-                            </div><!-- Short by -->
+                                <div class="toolbar-sorter ">
+                                    <label class="label">Short by:</label>
+                                    <select class="sorter-options form-control">
+                                        <option selected="selected" value="position">Product name</option>
+                                        <option value="name">Name</option>
+                                        <option value="price">Price</option>
+                                    </select>
+                                    <a href="" class="sorter-action"></a>
+                                </div><!-- Short by -->
 
-                            <div class="toolbar-limiter">
-                                <label class="label">
-                                    <span>Show:</span>
-                                </label>
+                                <div class="toolbar-limiter">
+                                    <label class="label">
+                                        <span>Show:</span>
+                                    </label>
 
-                                <select class="limiter-options form-control">
-                                    <option selected="selected" value="9"> Show 18</option>
-                                    <option value="15">Show 15</option>
-                                    <option value="30">Show 30</option>
-                                </select>
+                                    <select class="limiter-options form-control">
+                                        <option selected="selected" value="9"> Show 18</option>
+                                        <option value="15">Show 15</option>
+                                        <option value="30">Show 30</option>
+                                    </select>
 
-                            </div><!-- Show per page -->
+                                </div><!-- Show per page -->
+
+                            </div>
+
+                            <ul class="pagination">
+
+
+                                <li class="active">
+                                    <a href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">2</a>
+                                </li>
+                                <li>
+                                    <a href="#">3</a>
+                                </li>
+                                <li>
+                                    <a href="#">4</a>
+                                </li>
+                                <li>
+                                    <a href="#">5</a>
+                                </li>
+                                <li class="action action-next">
+                                    <a href="#">
+                                        Next <span><i aria-hidden="true" class="fa fa-angle-double-right"></i></span>
+                                    </a>
+                                </li>
+                            </ul>
 
                         </div>
-
-                        <ul class="pagination">
-
-
-                            <li class="active">
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">5</a>
-                            </li>
-                            <li class="action action-next">
-                                <a href="#">
-                                    Next <span><i aria-hidden="true" class="fa fa-angle-double-right"></i></span>
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
                     </div>
                     <!-- Toolbar -->
 
@@ -284,6 +284,127 @@
 
 @section('script')
     <script>
+        $(document).ready(function() {
+
+            var getRegion = '';
+
+            // Handle region selection
+            $(document).on('click', '.getWithRegion', function() {
+                var region = $(this).find($('.region_name')).val();
+                getRegion = region;
+                console.log('Selected Region:', getRegion);
+                fetchProducts();
+            });
+
+            function fetchProducts(page = 1) {
+                var searchVal = $('input[name="searchVal"]').val(); // Get search input value
+
+                $('#product-listing').html('');
+                for (let i = 0; i < 9; i++) {
+                    var skeletonHtml = `
+        <li class="col-sm-4 product-item">
+            <div class="skeleton-item">
+                <div class="skeleton-content">
+                    <div class="skeleton-line" style="width: 80%;"></div>
+                    <div class="skeleton-line" style="width: 60%;"></div>
+                    <div class="skeleton-line" style="width: 70%;"></div>
+                </div>
+            </div>
+        </li>`;
+                    $('#product-listing').append(skeletonHtml);
+                }
+
+                $.ajax({
+                    url: "{{ route('get.vendors.front') }}",
+                    type: "GET",
+                    data: {
+                        page: page,
+                        vendor_type: 'Artistes',
+                        getRegion: getRegion,
+                        searchVal: searchVal // Include search value in the request
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        $('#product-listing').empty().removeClass('blur-effect');
+
+                        $.each(response.data, function(index, vendor) {
+                            var logo = vendor.logo ? "{{ asset('images/') }}/" + vendor.logo :
+                                vendor.user.image ? "{{ asset('images/') }}/" + vendor.user
+                                .image :
+                                "{{ asset('shopAssets/images/media/product9.jpg') }}";
+
+                            var vendorDetailUrl = "{{ route('front.vendor.detail', ':slug') }}"
+                                .replace(':slug', vendor.user.slug);
+
+                            var vendorHtml = `
+                    <li class="col-sm-4 product-item">
+                        <div class="product-item-opt-1">
+                            <div class="product-item-info">
+                                <div class="product-item-photo">
+                                    <a href="${vendorDetailUrl}" class="product-item-img">
+                                        <img style="width:200px;height:200px" src="${logo}" alt="product name">
+                                    </a>
+                                </div>
+                                <div class="product-item-detail">
+                                    <strong class="product-item-name">
+                                        <a href="${vendorDetailUrl}">${vendor.user.first_name} ${vendor.user.last_name}</a>
+                                    </strong>`;
+
+                            if (vendor.user.products.length > 0) {
+                                vendorHtml += `
+                        <div class="clearfix">
+                            <div class="product-item-price">
+                                <span class="price">$${vendor.user.products[0].min_price}-$${vendor.user.products[0].max_price}</span>
+                            </div>
+                        </div>`;
+                            }
+
+                            vendorHtml += `</div></div></div></li>`;
+
+                            $('#product-listing').append(vendorHtml);
+                        });
+
+                        // Pagination
+                        $('.pagination').empty();
+                        var pre = response.current_page - 1;
+                        var nxt = response.current_page + 1;
+                        $('.pagination').append(
+                            `<li class="action"><a href="#" data-page="${pre}"><i class="fa fa-angle-left"></i></a></li>`
+                            );
+
+                        for (let i = 1; i <= response.last_page; i++) {
+                            $('.pagination').append(
+                                `<li class="${i === response.current_page ? 'active' : ''}"><a href="#" data-page="${i}">${i}</a></li>`
+                                );
+                        }
+
+                        $('.pagination').append(
+                            `<li class="action"><a href="#" data-page="${nxt}"><i class="fa fa-angle-right"></i></a></li>`
+                            );
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+
+            fetchProducts();
+
+            // Pagination Click Event
+            $(document).on('click', '.pagination a', function(e) {
+                e.preventDefault();
+                fetchProducts($(this).data('page'));
+            });
+
+            // Search Button Click Event
+            $('#getSearchVal').on('click', function(e) {
+                e.preventDefault();
+                fetchProducts(); // Call fetchProducts to include search value
+            });
+
+        });
+    </script>
+    {{-- <script>
         $(document).ready(function() {
 
             var getRegion = '';
@@ -413,7 +534,7 @@
                 fetchProducts(page);
             });
         });
-    </script>
+    </script> --}}
 
     <script>
         (function($) {
