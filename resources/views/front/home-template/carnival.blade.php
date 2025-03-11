@@ -35,8 +35,15 @@
         color: #ff6600;
         border-color: #ff6600;
     }
+
+    .res-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
 </style>
-<div class="main-wraper content-area-start" >
+<div class="main-wraper content-area-start">
     <div class="container clearfix contry-wrapp">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-3">
@@ -77,7 +84,7 @@
                         <div class="city-entry bg-grey-2">
                             <div class="tour-block tour-block-s-9 hover-green radius-5 underline-block">
                                 <div class="tour-layer delay-1"></div>
-                                <img src="https://carnivalguide.co/travel/img/home/city_1.jpg" class="res-img"
+                                <img src="{{ asset('shopAssets/images/carnival/flight.jpeg') }}" class="res-img"
                                     alt="">
                                 <div class="tour-caption">
                                     <div class="vertical-align">
@@ -94,13 +101,13 @@
                                 <div class="tab-wrapper">
                                     <div class="tab-nav-wrapper">
                                         <div class="nav-tab  clearfix">
-                                            <div class="nav-tab-item active">
+                                            <div class="nav-tab-item active carnival-cover">
                                                 Flights
                                             </div>
-                                            <div class="nav-tab-item ">
+                                            <div class="nav-tab-item carnival-cover">
                                                 Hotels
                                             </div>
-                                            <div class="nav-tab-item ">
+                                            <div class="nav-tab-item carnival-cover">
                                                 Events
                                             </div>
                                         </div>

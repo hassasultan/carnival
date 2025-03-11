@@ -1,6 +1,5 @@
 <script>
     $(document).ready(function() {
-        console.log("check");
         $(document).on('click', '.contry-item', function(e) {
             e.preventDefault();
 
@@ -302,5 +301,26 @@
             });
         });
 
+
+        let imageMap = {
+            'Flights': "{{ asset('shopAssets/images/carnival/flight.jpeg') }}",
+            'Hotels': "{{ asset('shopAssets/images/carnival/hotel.jpeg') }}",
+            'Events': "{{ asset('shopAssets/images/carnival/event2.jpeg') }}"
+        };
+
+        $(document).on('click', '.carnival-cover', function() {
+            let selectedTab = $(this).text().trim();
+            console.log("Selected Tab:", selectedTab);
+
+            let parentContainer = $(this).closest('.city-desc').siblings('.tour-block');
+            let imageElement = parentContainer.find('.res-img');
+
+            if (imageMap[selectedTab]) {
+                imageElement.attr('src', imageMap[selectedTab]);
+                console.log("Updated Image:", imageMap[selectedTab]);
+            } else {
+                console.log("No matching image found for:", selectedTab);
+            }
+        });
     });
 </script>
