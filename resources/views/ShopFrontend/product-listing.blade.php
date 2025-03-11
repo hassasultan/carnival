@@ -185,6 +185,82 @@
                         </ul>
 
                     </div> --}}
+                    <div class="catalog-view_op1">
+                        <div class=" toolbar-products toolbar-top">
+
+                            <div class="btn-filter-products">
+                                <span>Filter</span>
+                            </div>
+
+
+
+                            <h1 class="cate-title">Events</h1>
+
+
+                            <div class="modes">
+                                <strong class="label">View as:</strong>
+                                <strong class="modes-mode active mode-grid" title="Grid">
+                                    <span>grid</span>
+                                </strong>
+                                <a href="Category2.html" title="List" class="modes-mode mode-list">
+                                    <span>list</span>
+                                </a>
+                            </div><!-- View as -->
+
+
+
+                            <div class="toolbar-option">
+
+                                <div class="toolbar-sorter ">
+                                    <label class="label">Short by:</label>
+                                    <select class="sorter-options form-control">
+                                        <option selected="selected" value="position">Position</option>
+                                        <option value="name">Name</option>
+                                        <option value="price">Price</option>
+                                    </select>
+                                    <a href="" class="sorter-action"></a>
+                                </div><!-- Short by -->
+
+                                <div class="toolbar-limiter">
+                                    <label class="label">
+                                        <span>Show:</span>
+                                    </label>
+
+                                    <select class="limiter-options form-control">
+                                        <option selected="selected" value="9">Show 18</option>
+                                        <option value="15">Show 15</option>
+                                        <option value="30">Show 30</option>
+                                    </select>
+
+                                </div><!-- Show per page -->
+
+                            </div>
+
+                            <ul class="pagination">
+                                <li class="action">
+                                    <a href="#">
+                                        <span><i aria-hidden="true" class="fa fa-angle-left"></i></span>
+                                    </a>
+                                </li>
+
+                                <li class="active">
+                                    <a href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">2</a>
+                                </li>
+                                <li>
+                                    <a href="#">3</a>
+                                </li>
+                                <li class="action">
+                                    <a href="#">
+                                        <span><i aria-hidden="true" class="fa fa-angle-right"></i></span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
                     <!-- Toolbar -->
 
                     <!-- List Products -->
@@ -260,70 +336,75 @@
                         </ul>
 
                     </div> --}}
-                    <div class=" toolbar-products toolbar-bottom">
+                    <div class="catalog-view_op1">
+                        <div class=" toolbar-products toolbar-bottom">
 
-                        <div class="modes">
-                            <strong class="label">View as:</strong>
-                            <strong class="modes-mode active mode-grid" title="Grid">
-                                <span>grid</span>
-                            </strong>
-                            <a href="Category2.html" title="List" class="modes-mode mode-list">
-                                <span>list</span>
-                            </a>
-                        </div><!-- View as -->
-                       
-                        <div class="toolbar-option">
+                            <div class="modes">
+                                <strong class="label">View as:</strong>
+                                <strong class="modes-mode active mode-grid" title="Grid">
+                                    <span>grid</span>
+                                </strong>
+                                <a href="Category2.html" title="List" class="modes-mode mode-list">
+                                    <span>list</span>
+                                </a>
+                            </div><!-- View as -->
 
-                            <div class="toolbar-sorter ">
-                                <label class="label">Short by:</label>
-                                <select class="sorter-options form-control" fdprocessedid="snu5j">
-                                    <option selected="selected" value="position">Product name</option>
-                                    <option value="name">Name</option>
-                                    <option value="price">Price</option>
-                                </select>
-                                <a href="" class="sorter-action"></a>
-                            </div><!-- Short by -->
+                            <div class="toolbar-option">
 
-                            <div class="toolbar-limiter">
-                                <label class="label">
-                                    <span>Show:</span>
-                                </label>
-                               
-                                <select class="limiter-options form-control" fdprocessedid="xex3ho">
-                                    <option selected="selected" value="9"> Show 18</option>
-                                    <option value="15">Show 15</option>
-                                    <option value="30">Show 30</option>
-                                </select>
-                                
-                            </div><!-- Show per page -->
+                                <div class="toolbar-sorter ">
+                                    <label class="label">Short by:</label>
+                                    <select class="sorter-options form-control" fdprocessedid="snu5j">
+                                        <option selected="selected" value="position">Product name</option>
+                                        <option value="name">Name</option>
+                                        <option value="price">Price</option>
+                                    </select>
+                                    <a href="" class="sorter-action"></a>
+                                </div><!-- Short by -->
+
+                                <div class="toolbar-limiter">
+                                    <label class="label">
+                                        <span>Show:</span>
+                                    </label>
+
+                                    <select class="limiter-options form-control" fdprocessedid="xex3ho">
+                                        <option selected="selected" value="9"> Show 18</option>
+                                        <option value="15">Show 15</option>
+                                        <option value="30">Show 30</option>
+                                    </select>
+
+                                </div><!-- Show per page -->
+
+                            </div>
+
+                            <ul class="pagination">
+                                <li class="action">
+                                    <a href="#" data-page="0"><span><i aria-hidden="true"
+                                                class="fa fa-angle-left"></i></span></a>
+                                </li>
+
+                                <li class="active">
+                                    <a href="#" data-page="1">1</a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#" data-page="2">2</a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#" data-page="3">3</a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#" data-page="4">4</a>
+                                </li>
+
+                                <li class="action">
+                                    <a href="#" data-page="2"><span><i aria-hidden="true"
+                                                class="fa fa-angle-right"></i></span></a>
+                                </li>
+                            </ul>
 
                         </div>
-
-                        <ul class="pagination">
-                           
-                            
-                            <li class="active">
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">5</a>
-                            </li>
-                            <li class="action action-next"> 
-                                <a href="#">
-                                    Next <span><i aria-hidden="true" class="fa fa-angle-double-right"></i></span>
-                                </a>
-                            </li>
-                        </ul>
-
                     </div>
                     <!-- Toolbar -->
 
@@ -427,7 +508,8 @@
                                         @foreach ($brands as $brand)
                                             <li class="item">
                                                 <label>
-                                                    <input type="checkbox" class="brand-checkbox" @if($brand->title == $selected_brand) checked @endif
+                                                    <input type="checkbox" class="brand-checkbox"
+                                                        @if ($brand->title == $selected_brand) checked @endif
                                                         value="{{ $brand->id }}">
                                                     <span>{{ $brand->title }} <span
                                                             class="count">({{ $brand->products_count }})</span></span>
@@ -1031,7 +1113,7 @@
         </div>
 
         @include('partials.brand_showcase')
-        
+
         {{-- <!-- block  showcase-->
         <div class="block-showcase block-showcase-opt1 block-brand-tabs">
             <div class="container">
@@ -2046,7 +2128,7 @@
                 fetchProducts(1, selectedCategories, priceRanges, selectedBrands,
                     productCondition, stockCondition, sale);
             });
-            
+
             $(document).on('click', '.pagination a', function(e) {
                 e.preventDefault();
                 var page = $(this).data('page');
@@ -2064,8 +2146,7 @@
                 let sale = getSaleStatus();
                 fetchProducts(1, selectedCategories, priceRanges, selectedBrands,
                     productCondition, stockCondition, sale);
-            }
-            else {
+            } else {
                 // Initial fetch
                 fetchProducts();
             }
