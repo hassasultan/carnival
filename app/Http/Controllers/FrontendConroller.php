@@ -268,7 +268,11 @@ class FrontendConroller extends Controller
         $vendor_type = $request->get('vendor_type', null);
         $regionId = $request->get('getRegion');
 
-        $query = Vendor::query();
+        
+        $carnival_com = Carnival::has('user')->pluck('head');
+        $query = Vendor::with('user')->whereIn('user_id', $carnival_com);
+
+        // $query = Vendor::query();
         if ($previous_route == 'front.vendors') {
             // $query->whereHas('user.costumes'); // ✅ FIXED
         }
