@@ -1905,6 +1905,12 @@
                 fetchProducts(1, selectedCategories, priceRanges, selectedBrands,
                     productCondition, stockCondition, sale);
             });
+            
+            $(document).on('click', '.pagination a', function(e) {
+                e.preventDefault();
+                var page = $(this).data('page');
+                fetchProducts(page);
+            });
 
             var checkBrand = '{{ $selected_brand }}';
 
