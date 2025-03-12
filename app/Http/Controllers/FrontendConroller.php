@@ -661,6 +661,7 @@ class FrontendConroller extends Controller
     {
         $regionId = $request->get('getRegion');
         $event_type = $request->get('event_type');
+        $getSearchVal = $request->get('getSearchVal', null);
 
         $query = Event::with('images', 'tickets', 'User');
         if ($request->has('categories') && !empty($request->categories)) {
@@ -668,6 +669,10 @@ class FrontendConroller extends Controller
         }
         if (!is_null($event_type)) {
             $query->where('all_day', 1);
+        }
+
+        if (!empty($getSearchVal)) {
+            $query->where('name', 'like', '%' . $getSearchVal . '%');
         }
 
         if ($request->filled('price_ranges')) {
