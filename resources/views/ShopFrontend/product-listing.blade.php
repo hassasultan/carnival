@@ -1,6 +1,4 @@
-product listing?
-
-extends('ShopFrontend.Layouts.layout')
+@extends('ShopFrontend.Layouts.layout')
 
 @section('main')
     <!-- MAIN -->
