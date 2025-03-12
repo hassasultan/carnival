@@ -289,7 +289,7 @@ class FrontendConroller extends Controller
                         ->orWhere('last_name', 'like', "%$getSearchVal%");
                 });
         }
-        dd($previous_route, $request->toArray());
+        // dd($previous_route, $request->toArray());
 
 
         $vendors = $query->orderBy('id', 'DESC')->paginate(18);
