@@ -403,7 +403,7 @@
 
             $(document).on('click', '#getSearchVal', function(e) {
                 e.preventDefault();
-                getSearchVal = $('input[name="searchVal"]').val(); // Get value from input field
+                getSearchVal = $('input[name="searchValName"]').val(); // Get value from input field
                 fetchProducts();
             });
         });
