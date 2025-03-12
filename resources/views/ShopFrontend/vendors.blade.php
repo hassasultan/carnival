@@ -259,7 +259,7 @@
                         <div class="swiper-slide text-center">
                             <div class="partner-entry">
                                 <a href="{{ route('front.vendor.detail', $row->user->slug) }}"><img class="img-responsive"
-                                        src="{{ asset('images/' . $row->logo) }}" alt="" width="115px" height="91px"></a>
+                                        src="{{ asset('images/' . $row->logo) }}" alt="" style="width:115px !important; height: 91px !important;"></a>
                             </div>
                         </div>
                     @endforeach
