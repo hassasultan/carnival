@@ -810,9 +810,17 @@ class FrontendConroller extends Controller
     public function get_music(Request $request)
     {
         $query = Music::with('imagesRelation');
+        $getSearchVal = $request->get('getSearchVal', null);
 
         if ($request->has('artiste_name') && !empty($request->artiste_name)) {
             $query->where('artiste_name', 'like', '%' . $request->artiste_name . '%');
+        }
+
+        if (!empty($getSearchVal)) {
+            $query->where('real_name', 'like', '%' . $getSearchVal . '%')
+                ->orWhere('producer', 'like', '%' . $getSearchVal . '%')
+                ->orWhere('writer', 'like', '%' . $getSearchVal . '%')
+                ->orWhere('song_title', 'like', '%' . $getSearchVal . '%');
         }
 
         if ($request->has('real_name') && !empty($request->real_name)) {
