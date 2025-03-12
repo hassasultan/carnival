@@ -8,6 +8,24 @@
     cms-index-index index-opt-3
 @endsection
 @section('main')
+    <style>
+        @media (max-width: 374px) {
+            .owl-item {
+                width: 276px;
+                margin-left: 30px;
+                margin-right: 30px;
+            }
+        }
+
+        /* For screens between 375px - 480px */
+        @media (max-width: 480px) {
+            .owl-item {
+                width: 276px;
+                margin-left: 30px;
+                margin-right: 30px;
+            }
+        }
+    </style>
     <!-- MAIN -->
     <main class="site-main">
 
