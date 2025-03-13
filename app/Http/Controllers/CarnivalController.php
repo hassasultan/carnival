@@ -85,16 +85,23 @@ class CarnivalController extends Controller
                     $image->move('public/uploads', basename($imagePath));
 
                     $posterPath = null;
+                    $flyerNewPath = null;
                     if ($request->hasFile('flyer_image') && isset($request->file('flyer_image')[$index])) {
                         $poster = $request->file('flyer_image')[$index];
                         $posterPath = url('public/uploads/' . time() . '_' . $poster->getClientOriginalName());
                         $poster->move('public/uploads', basename($posterPath));
+                    }
+                    if ($request->hasFile('flyerNew') && isset($request->file('flyerNew')[$index])) {
+                        $flyerNew = $request->file('flyerNew')[$index];
+                        $flyerNewPath = url('public/uploads/' . time() . '_' . $flyerNew->getClientOriginalName());
+                        $flyerNew->move('public/uploads', basename($flyerNewPath));
                     }
 
                     CarnivalBannerImages::create([
                         'carnival_id' => $carnivals->id,
                         'image' => $imagePath,
                         'poster' => $posterPath,
+                        'flyerNew' => $flyerNewPath,
                         'btn_text' => $request->btn_text[$index] ?? null,
                         'btn_url' => $request->btn_url[$index] ?? null,
                     ]);
@@ -179,16 +186,23 @@ class CarnivalController extends Controller
                         $image->move('public/uploads', basename($imagePath));
     
                         $posterPath = null;
+                        $flyerNewPath = null;
                         if ($request->hasFile('flyer_image') && isset($request->file('flyer_image')[$index])) {
                             $poster = $request->file('flyer_image')[$index];
                             $posterPath = url('public/uploads/' . time() . '_' . $poster->getClientOriginalName());
                             $poster->move('public/uploads', basename($posterPath));
+                        }
+                        if ($request->hasFile('flyerNew') && isset($request->file('flyerNew')[$index])) {
+                            $flyerNew = $request->file('flyerNew')[$index];
+                            $flyerNewPath = url('public/uploads/' . time() . '_' . $flyerNew->getClientOriginalName());
+                            $flyerNew->move('public/uploads', basename($flyerNewPath));
                         }
     
                         CarnivalBannerImages::create([
                             'carnival_id' => $carnival->id,
                             'image' => $imagePath,
                             'poster' => $posterPath,
+                            'flyerNew' => $flyerNewPath,
                             'btn_text' => $request->btn_text[$index] ?? null,
                             'btn_url' => $request->btn_url[$index] ?? null,
                         ]);

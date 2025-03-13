@@ -99,6 +99,17 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="custom-file border p-2 rounded">
+                                            <input type="file" id="flyerNew" name="flyerNew[]"
+                                                class="custom-file-input form-control file-input flyerNew"
+                                                accept="image/*,video/*">
+                                            <label class="custom-file-label" for="flyerNew">Flyer Image</label>
+                                        </div>
+                                        {{-- <div id="bannerImagesPreviewContainer" class="mt-2 d-flex flex-wrap bannerImagesPreviewContainer">
+                                            <!-- Image previews will be added here -->
+                                        </div> --}}
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="custom-file border p-2 rounded">
                                             <input type="file" id="banner_image" name="banner_image[]"
                                                 class="custom-file-input form-control file-input banner_image"
                                                 accept="image/*,video/*">
@@ -248,6 +259,17 @@
                         <div class="file-upload-container">
                             <div class="mb-2 p-3 border rounded file-upload-row">
                                 <div class="row">
+                                    <div class="col-6">
+                                        <div class="custom-file border p-2 rounded">
+                                            <input type="file" id="flyerNew" name="flyerNew[]"
+                                                class="custom-file-input form-control file-input flyerNew"
+                                                accept="image/*,video/*">
+                                            <label class="custom-file-label" for="flyerNew">Flyer Image</label>
+                                        </div>
+                                        {{-- <div id="bannerImagesPreviewContainer" class="mt-2 d-flex flex-wrap bannerImagesPreviewContainer">
+                                            <!-- Image previews will be added here -->
+                                        </div> --}}
+                                    </div>
                                     <div class="col-6">
                                         <div class="custom-file border p-2 rounded">
                                             <input type="file" id="banner_image" name="banner_image[]"
@@ -1357,6 +1379,17 @@
             $(".add-more-btn").click(function() {
                 let newRow = `<div class="mb-2 p-3 border rounded file-upload-row">
                                 <div class="row">
+                                    <div class="col-6">
+                                        <div class="custom-file border p-2 rounded">
+                                            <input type="file" id="flyerNew" name="flyerNew[]"
+                                                class="custom-file-input form-control file-input flyerNew"
+                                                accept="image/*,video/*">
+                                            <label class="custom-file-label" for="flyerNew">Flyer Image</label>
+                                        </div>
+                                        {{-- <div id="bannerImagesPreviewContainer" class="mt-2 d-flex flex-wrap bannerImagesPreviewContainer">
+                                            <!-- Image previews will be added here -->
+                                        </div> --}}
+                                    </div>
                                     <div class="col-6">
                                         <div class="custom-file border p-2 rounded">
                                             <input type="file" id="banner_image" name="banner_image[]"
