@@ -13,6 +13,7 @@ class CarnivalBannerImages extends Model
         'carnival_id',
         'image',
         'poster',
+        'flyerNew',
         'btn_text',
         'btn_url',
     ];
