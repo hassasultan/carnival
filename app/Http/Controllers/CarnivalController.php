@@ -173,27 +173,48 @@ class CarnivalController extends Controller
                         ]);
                     }
                 }
-                if ($request->hasFile('banner_images')) {
-                    foreach ($request->file('banner_images') as $image) {
-                        $imageName = time() . '.' . $image->extension();
-                        $image->move(public_path('images/carnivalBannerImages'), $imageName);
+                if ($request->hasFile('banner_image')) {
+                    foreach ($request->file('banner_image') as $index => $image) {
+                        $imagePath = url('public/uploads/' . time() . '_' . $image->getClientOriginalName());
+                        $image->move('public/uploads', basename($imagePath));
+    
+                        $posterPath = null;
+                        if ($request->hasFile('flyer_image') && isset($request->file('flyer_image')[$index])) {
+                            $poster = $request->file('flyer_image')[$index];
+                            $posterPath = url('public/uploads/' . time() . '_' . $poster->getClientOriginalName());
+                            $poster->move('public/uploads', basename($posterPath));
+                        }
+    
                         CarnivalBannerImages::create([
-                            'carnival_id' => $carnival->id,
-                            'image' => $imageName
+                            'carnival_id' => $carnivals->id,
+                            'image' => $imagePath,
+                            'poster' => $posterPath,
+                            'btn_text' => $request->btn_text[$index] ?? null,
+                            'btn_url' => $request->btn_url[$index] ?? null,
                         ]);
                     }
                 }
+                // if ($request->hasFile('banner_images')) {
+                //     foreach ($request->file('banner_images') as $image) {
+                //         $imageName = time() . '.' . $image->extension();
+                //         $image->move(public_path('images/carnivalBannerImages'), $imageName);
+                //         CarnivalBannerImages::create([
+                //             'carnival_id' => $carnival->id,
+                //             'image' => $imageName
+                //         ]);
+                //     }
+                // }
 
-                if ($request->hasFile('flyer_images')) {
-                    foreach ($request->file('flyer_images') as $image) {
-                        $imageName = time() . '.' . $image->extension();
-                        $image->move(public_path('images/carnivalFlyerImages'), $imageName);
-                        CarnivalFlyerImages::create([
-                            'carnival_id' => $carnival->id,
-                            'image' => $imageName
-                        ]);
-                    }
-                }
+                // if ($request->hasFile('flyer_images')) {
+                //     foreach ($request->file('flyer_images') as $image) {
+                //         $imageName = time() . '.' . $image->extension();
+                //         $image->move(public_path('images/carnivalFlyerImages'), $imageName);
+                //         CarnivalFlyerImages::create([
+                //             'carnival_id' => $carnival->id,
+                //             'image' => $imageName
+                //         ]);
+                //     }
+                // }
                 $carnivals = Carnival::all();
                 $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
                 return response()->json(['carnival' => $carnival, 'message' => 'Carnival updated successfully', 'table_html' => $view], 200);
