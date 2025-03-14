@@ -259,7 +259,8 @@
                         <div class="swiper-slide text-center">
                             <div class="partner-entry">
                                 <a href="{{ route('front.vendor.detail', $row->user->slug) }}"><img class="img-responsive"
-                                        src="{{ asset('images/' . $row->logo) }}" alt="" style="width:115px !important; height: 91px !important;"></a>
+                                        src="{{ asset('images/' . $row->logo) }}" alt=""
+                                        style="width:115px !important; height: 91px !important;"></a>
                             </div>
                         </div>
                     @endforeach
@@ -361,7 +362,7 @@
                                 <div class="product-item-detail">
                                     <strong class="product-item-name">
                                         <a href="${vendorDetailUrl}">${vendor.user.first_name} ${vendor.user.last_name}</a>
-                                        <p>${vendor.user.city},${vendor.user.country},${vendor.continent.name}</p>
+                                        <p>${vendor.user?.city ?? ''}, ${vendor.user?.country ?? ''}, ${vendor.continent?.name ?? ''}</p>
                                     </strong>`;
 
                             if (vendor.user.products.length > 0) {
@@ -389,19 +390,19 @@
                         if (pre > 0) {
                             $('.pagination').append(
                                 `<li class="action"><a href="#" data-page="${pre}"><i class="fa fa-angle-left"></i></a></li>`
-                                );
+                            );
                         }
 
                         for (let i = 1; i <= response.last_page; i++) {
                             $('.pagination').append(
                                 `<li class="${i === response.current_page ? 'active' : ''}"><a href="#" data-page="${i}">${i}</a></li>`
-                                );
+                            );
                         }
 
                         if (nxt <= response.last_page) {
                             $('.pagination').append(
                                 `<li class="action"><a href="#" data-page="${nxt}"><i class="fa fa-angle-right"></i></a></li>`
-                                );
+                            );
                         }
                     },
                     error: function(xhr, status, error) {
