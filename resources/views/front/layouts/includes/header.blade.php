@@ -191,7 +191,7 @@
                                 </ul>
                             </li>
 
-                            <li class="type-1"><a href="#">Carnivals<span class="fa fa-angle-down"></span></a>
+                            <li class="type-1"><a href="#">Carnivals<span class="fa fa-chevron-right"></span></a>
                                 <ul class="dropmenu">
                                     <li><a href="{{ route('front.vendors') }}">Mascamps</a></li>
                                     <li><a href="">Carnival Commitees</a></li>
