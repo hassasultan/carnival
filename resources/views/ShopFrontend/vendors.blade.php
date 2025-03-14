@@ -362,7 +362,7 @@
                                 <div class="product-item-detail">
                                     <strong class="product-item-name">
                                         <a href="${vendorDetailUrl}">${vendor.user.first_name} ${vendor.user.last_name}</a>
-                                        <p>${vendor.user?.city ?? ''}, ${vendor.user?.country ?? ''}, ${vendor.continent?.name ?? ''}</p>
+                                        <p>${vendor.user?.city ?? ''} ${vendor.user?.country ?? ''} ${vendor.continent?.name ?? ''}</p>
                                     </strong>`;
 
                             if (vendor.user.products.length > 0) {

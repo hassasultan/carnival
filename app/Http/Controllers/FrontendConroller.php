@@ -258,7 +258,7 @@ class FrontendConroller extends Controller
         }
         $query->with([
             'user' => function ($query) {
-                $query->select('id', 'first_name', 'last_name', 'slug', 'image');
+                $query->select('id', 'first_name', 'last_name', 'slug', 'image', 'city', 'country');
             },
             'user.products' => function ($query) {
                 $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))
