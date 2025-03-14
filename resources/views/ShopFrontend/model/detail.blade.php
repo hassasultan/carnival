@@ -298,7 +298,7 @@
 
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-6">
-                            <div class="product-gallery">
+                            <div class="product-gallery d-flex flex-column-reverse flex-sm-row">
                                 <div class="col-sm-2">
                                     <div class="product-thumbnails">
                                         @php
