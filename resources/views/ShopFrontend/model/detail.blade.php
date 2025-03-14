@@ -297,7 +297,7 @@
                 <div class="col-md-12 col-main">
 
                     <div class="row">
-                        <div class="col-sm-6 col-md-6 col-lg-6">
+                        {{-- <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="product-gallery d-flex flex-column-reverse flex-sm-row">
                                 <!-- Thumbnails (col-sm-2) -->
                                 <div class="col-sm-2">
@@ -334,6 +334,74 @@
                                             <i class="fas fa-expand"></i>
                                         </button>
                                     </div>
+                                </div>
+                            </div>
+                        </div> --}}
+                        <style>
+                            .product-gallery {
+                                display: flex;
+                                flex-direction: column-reverse; /* By default, show main image first */
+                            }
+                        
+                            @media (min-width: 576px) {
+                                .product-gallery {
+                                    flex-direction: row; /* On larger screens, show thumbnails first */
+                                }
+                            }
+                        
+                            .col-sm-10 {
+                                width: 100%;
+                            }
+                        
+                            .col-sm-2 {
+                                width: 100%;
+                            }
+                        
+                            @media (min-width: 576px) {
+                                .col-sm-10 {
+                                    width: 83.33%; /* 10/12 */
+                                }
+                        
+                                .col-sm-2 {
+                                    width: 16.66%; /* 2/12 */
+                                }
+                            }
+                        </style>
+                        
+                        <div class="product-gallery">
+                            <!-- Thumbnails (Appears After Main Image on Mobile) -->
+                            <div class="col-sm-2">
+                                <div class="product-thumbnails">
+                                    @php
+                                        $image = null;
+                                        if ($user->vendor && $user->vendor->logo) {
+                                            $image = asset('images/' . $user->vendor->logo);
+                                        } elseif ($user->image) {
+                                            $image = asset('images/' . $user->image);
+                                        } else {
+                                            $image = asset('shopAssets/images/media/product9.jpg');
+                                        }
+                                    @endphp
+                                    <img class="thumbnail" src="{{ $image }}" data-full="{{ $image }}" alt="Thumbnail 0"
+                                        onclick="changeMainImage(0)" />
+                                    @foreach ($user->gallery as $key => $row)
+                                        <img class="thumbnail" src="{{ asset('images/' . $row->images[0]->image) }}"
+                                            data-full="{{ asset('images/' . $row->images[0]->image) }}"
+                                            alt="Thumbnail {{ $key + 1 }}"
+                                            onclick="changeMainImage({{ $key + 1 }})" />
+                                    @endforeach
+                                </div>
+                            </div>
+                        
+                            <!-- Main Image (Appears First on Mobile) -->
+                            <div class="col-sm-10">
+                                <div class="product-preview position-relative">
+                                    <div class="zoom-container">
+                                        <img id="mainImage" src="{{ $image }}" alt="Main Image" class="main-image" />
+                                    </div>
+                                    <button class="view-larger-btn bg-transparent" onclick="openModal(0)">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
