@@ -431,11 +431,11 @@
                                     <div class="contact-item">
                                         <span class="icon fas fa-globe"></span>
                                         <span class="text">Region:</span>
-                                        <p>{{ $user->vendor->continent->name }}</p>
-                                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode(optional($user->vendor)->address ?? optional($user->subvendor)->address) }}"
+                                        <p>{{ optional(optional($user->vendor)->continent)->name ?? optional(optional($user->subvendor)->continent)->name ?? 'N/A' }}</p>
+                                        {{-- <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode(optional($user->vendor)->address ?? optional($user->subvendor)->address) }}"
                                             target="_blank" class="text">
                                             {{ optional($user->vendor)->address ?? (optional($user->subvendor)->address ?? 'N/A') }}
-                                        </a>
+                                        </a> --}}
                                     </div>
                                 </div>
                             </div>
