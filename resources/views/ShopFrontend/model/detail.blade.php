@@ -409,26 +409,29 @@
 
                                 <div class="contact-details">
                                     <div class="contact-item">
-                                        <span class="icon fas fa-envelope"></span>
-                                        <span class="text">Email:</span>
-                                        <a href="mailto:{{ optional($user->vendor)->email ?? optional($user->subvendor)->email }}"
+                                        <span class="icon fas fa-city"></span>
+                                        <span class="text">City:</span>
+                                        <p>{{ $user->city }}</p>
+                                        {{-- <a href="mailto:{{ optional($user->vendor)->email ?? optional($user->subvendor)->email }}"
                                             class="text">
                                             {{ optional($user->vendor)->email ?? (optional($user->subvendor)->email ?? 'N/A') }}
-                                        </a>
+                                        </a> --}}
                                     </div>
 
                                     <div class="contact-item">
-                                        <span class="icon fas fa-phone"></span>
-                                        <span class="text">Phone:</span>
-                                        <a href="tel:{{ optional($user->vendor)->phone ?? optional($user->subvendor)->phone }}"
+                                        <span class="icon fas fa-flag"></span>
+                                        <span class="text">Country:</span>
+                                        <p>{{ $user->country }}</p>
+                                        {{-- <a href="tel:{{ optional($user->vendor)->phone ?? optional($user->subvendor)->phone }}"
                                             class="text">
                                             {{ optional($user->vendor)->phone ?? (optional($user->subvendor)->phone ?? 'N/A') }}
-                                        </a>
+                                        </a> --}}
                                     </div>
 
                                     <div class="contact-item">
-                                        <span class="icon fas fa-map-marker-alt"></span>
-                                        <span class="text">Address:</span>
+                                        <span class="icon fas fa-globe"></span>
+                                        <span class="text">Region:</span>
+                                        <p>{{ $user->vendor->continent->nameS }}</p>
                                         <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode(optional($user->vendor)->address ?? optional($user->subvendor)->address) }}"
                                             target="_blank" class="text">
                                             {{ optional($user->vendor)->address ?? (optional($user->subvendor)->address ?? 'N/A') }}
