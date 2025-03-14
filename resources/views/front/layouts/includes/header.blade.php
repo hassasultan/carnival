@@ -4,8 +4,8 @@
             <span class="fa fa-cog"></span>
             <h6>Theme options</h6>
         </div>
-        <a href="{{ route('front.home') }}" class="site-logo"><img src="https://carnivalguide.co/travel/img/theme-1/logo_dark.png"
-                alt=""></a>
+        <a href="{{ route('front.home') }}" class="site-logo"><img
+                src="https://carnivalguide.co/travel/img/theme-1/logo_dark.png" alt=""></a>
         <div class="color-block">
             <h5>change color</h5>
             <div class="entry bg-1" data-color="theme-1"></div>
@@ -99,8 +99,7 @@
                     <div class="drop-wrap-wrap">
                         <div class="drop-wrap">
                             <div class="drop drop-lg">
-                                <b><img src="https://carnivalguide.co/travel/img/en.png"
-                                        alt="">English</b>
+                                <b><img src="https://carnivalguide.co/travel/img/en.png" alt="">English</b>
                                 <a href="#" class="drop-list"><i class="fa fa-angle-down"></i></a>
                                 <span class="lg">
                                     <a href="#"><img src="https://carnivalguide.co/travel/img/en.png"
@@ -167,8 +166,7 @@
 
                             </li>
 
-                            <li class="type-1"><a href="#">Services<span
-                                        class="fa fa-angle-down"></span></a>
+                            <li class="type-1"><a href="#">Services<span class="fa fa-angle-down"></span></a>
                                 <ul class="dropmenu">
                                     <li><a href="{{ route('front.flight.listing') }}">Flights</a></li>
                                     <li><a href="{{ route('front.hotel.listing') }}">Hotels</a></li>
@@ -178,20 +176,12 @@
                                 </ul>
                             </li>
 
-
-
-
                             <li class="type-1"><a href="{{ route('front.event.listing') }}">Events & Tickets<span
                                         class="fa fa-angle-down"></span></a>
 
                             </li>
-                            <li><a href="video_bar.html">Travel Packages <span
-                                        class="fa fa-chevron-right"></span></a>
-
+                            <li><a href="video_bar.html">Travel Packages <span class="fa fa-chevron-right"></span></a>
                             </li>
-
-
-
 
                             <li class="type-1"><a href="{{ route('front.shop') }}">Shop <span
                                         class="fa fa-chevron-right"></span></a>
@@ -200,10 +190,20 @@
                                     <li><a href="{{ route('front.vendors') }}">Mas Camps</a></li>
                                 </ul>
                             </li>
+
+                            <li class="type-1"><a href="#">Carnivals<span class="fa fa-angle-down"></span></a>
+                                <ul class="dropmenu">
+                                    <li><a href="{{ route('front.vendors') }}">Mascamps</a></li>
+                                    <li><a href="">Carnival Commitees</a></li>
+
+                                </ul>
+                            </li>
+
                             <li><a href="{{ route('front.carnival.listing') }}">Carnival Listing <span
                                         class="fa fa-chevron-right"></span></a>
 
                             </li>
+
                             <li class="type-1"><a href="">Gallery/Media <span
                                         class="fa fa-chevron-right"></span></a>
                                 <ul class="dropmenu">

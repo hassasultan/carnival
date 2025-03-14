@@ -411,7 +411,7 @@
                                     <div class="contact-item">
                                         <span class="icon fas fa-city"></span>
                                         <span class="text">City:</span>
-                                        <a href="javascript:void(0);">{{ $user->city }}</a>
+                                        <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
                                         {{-- <a href="mailto:{{ optional($user->vendor)->email ?? optional($user->subvendor)->email }}"
                                             class="text">
                                             {{ optional($user->vendor)->email ?? (optional($user->subvendor)->email ?? 'N/A') }}
@@ -421,7 +421,7 @@
                                     <div class="contact-item">
                                         <span class="icon fas fa-flag"></span>
                                         <span class="text">Country:</span>
-                                        <a href="javascript:void(0);">{{ $user->country }}</a>
+                                        <a href="javascript:void(0);">{{ $user->country ?? 'N/A' }}</a>
                                         {{-- <a href="tel:{{ optional($user->vendor)->phone ?? optional($user->subvendor)->phone }}"
                                             class="text">
                                             {{ optional($user->vendor)->phone ?? (optional($user->subvendor)->phone ?? 'N/A') }}
