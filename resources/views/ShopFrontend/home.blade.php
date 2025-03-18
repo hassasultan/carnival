@@ -124,24 +124,25 @@
         <div class="block-hot-deals-opt3">
             <div class="container">
                 <div class="box-content">
-                    <div class="block-title"><span
-                            class="title"><span>H<br>o<br>t</span><span>d<br>e<br>a<br>l<br>s</span></span>
-                        <div class="nav-links dropdown"><button class="dropdown-toggle" type="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"
-                                    aria-hidden="true"></i></button>
-                            <div>
-                                {{-- <div class="dropdown-menu"> --}}
+                    <div class="block-title">
+                        <span class="title"><span>H<br>o<br>t</span><span>d<br>e<br>a<br>l<br>s</span></span>
+                        <div class="nav-links dropdown">
+                            <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="fa fa-bars" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu" style="right: 0px; left: auto; margin-right: -90px;">
                                 <ul>
                                     <li role="presentation" class="active"><a href="#hot-1" role="tab"
-                                            data-toggle="tab" class="get_discounted">up to 40% off</a></li>
+                                            data-toggle="tab">up to 40% off</a></li>
                                     <li role="presentation" class=""><a href="#hot-2" role="tab"
-                                            data-toggle="tab" class="get_discounted">up to 40% off</a></li>
+                                            data-toggle="tab">up to 40% off</a></li>
                                     <li role="presentation" class=""><a href="#hot-3" role="tab"
-                                            data-toggle="tab" class="get_discounted">up to 50% off</a></li>
+                                            data-toggle="tab">up to 50% off</a></li>
                                     <li role="presentation" class=""><a href="#hot-4" role="tab"
-                                            data-toggle="tab" class="get_discounted">up to 60% off</a></li>
+                                            data-toggle="tab">up to 60% off</a></li>
                                     <li role="presentation" class=""><a href="#hot-5" role="tab"
-                                            data-toggle="tab" class="get_discounted">up to 70% off</a></li>
+                                            data-toggle="tab">up to 70% off</a></li>
                                 </ul>
                             </div>
                         </div>
