@@ -454,12 +454,12 @@
                                         <div class="submenu drop-menu">
                                             <ul>
                                                 <li><a href="{{ route('front.vendors') }}">Mascamps</a></li>
-                                                <li><a href="">Carnival Commitees</a></li>
+                                                <li><a href="{{ route('front.carnival_listing') }}">Carnival Commitees</a></li>
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="{{ Request::routeIs('front.carnival_listing') ? 'active' : '' }}"><a
-                                            href="{{ route('front.carnival_listing') }}"> Carnival Listing </a></li>
+                                    {{-- <li class="{{ Request::routeIs('front.carnival_listing') ? 'active' : '' }}"><a
+                                            href="{{ route('front.carnival_listing') }}"> Carnival Listing </a></li> --}}
                                     <li class="{{ Request::routeIs('front.shop_listing') ? 'active' : '' }}"><a
                                             href="{{ route('front.shop_listing') }}"> EVENTS </a></li>
                                     @if (Auth::check())
