@@ -85,16 +85,23 @@ class CarnivalController extends Controller
                     $image->move('public/uploads', basename($imagePath));
 
                     $posterPath = null;
+                    $flyerNewPath = null;
                     if ($request->hasFile('flyer_image') && isset($request->file('flyer_image')[$index])) {
                         $poster = $request->file('flyer_image')[$index];
                         $posterPath = url('public/uploads/' . time() . '_' . $poster->getClientOriginalName());
                         $poster->move('public/uploads', basename($posterPath));
+                    }
+                    if ($request->hasFile('flyerNew') && isset($request->file('flyerNew')[$index])) {
+                        $flyerNew = $request->file('flyerNew')[$index];
+                        $flyerNewPath = url('public/uploads/' . time() . '_' . $flyerNew->getClientOriginalName());
+                        $flyerNew->move('public/uploads', basename($flyerNewPath));
                     }
 
                     CarnivalBannerImages::create([
                         'carnival_id' => $carnivals->id,
                         'image' => $imagePath,
                         'poster' => $posterPath,
+                        'flyerNew' => $flyerNewPath,
                         'btn_text' => $request->btn_text[$index] ?? null,
                         'btn_url' => $request->btn_url[$index] ?? null,
                     ]);
@@ -147,10 +154,11 @@ class CarnivalController extends Controller
     public function update(Request $request, Carnival $carnival)
     {
         $this->validation($request);
+
         try {
             $uniqueId = $this->generateUniqueId();
 
-            $carnivals = $carnival->update([
+            $updated = $carnival->update([
                 'unique_id' => $uniqueId,
                 'name' => $request->name,
                 'start_date' => $request->start_date,
@@ -162,46 +170,142 @@ class CarnivalController extends Controller
                 'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
             ]);
 
-            if ($carnivals) {
+            if ($updated) {
+                // Process Carnival Images
                 if ($request->hasFile('images')) {
+                    $images = [];
                     foreach ($request->file('images') as $image) {
-                        $imageName = time() . '.' . $image->extension();
+                        $imageName = uniqid() . '.' . $image->extension();
                         $image->move(public_path('images/carnivalImages'), $imageName);
-                        CarnivalImages::create([
+                        $images[] = [
                             'carnival_id' => $carnival->id,
-                            'image' => $imageName
-                        ]);
+                            'image' => $imageName,
+                            'created_at' => now(),
+                            'updated_at' => now(),
+                        ];
                     }
-                }
-                if ($request->hasFile('banner_images')) {
-                    foreach ($request->file('banner_images') as $image) {
-                        $imageName = time() . '.' . $image->extension();
-                        $image->move(public_path('images/carnivalBannerImages'), $imageName);
-                        CarnivalBannerImages::create([
-                            'carnival_id' => $carnival->id,
-                            'image' => $imageName
-                        ]);
-                    }
+                    CarnivalImages::insert($images); // Batch insert for efficiency
                 }
 
-                if ($request->hasFile('flyer_images')) {
-                    foreach ($request->file('flyer_images') as $image) {
-                        $imageName = time() . '.' . $image->extension();
-                        $image->move(public_path('images/carnivalFlyerImages'), $imageName);
-                        CarnivalFlyerImages::create([
+                // Process Banner Images
+                if ($request->hasFile('banner_image')) {
+                    $bannerImages = [];
+                    $hasFlyerImage = $request->hasFile('flyer_image');
+                    $hasFlyerNew = $request->hasFile('flyerNew');
+
+                    foreach ($request->file('banner_image') as $index => $image) {
+                        $imagePath = 'public/uploads/' . uniqid() . '_' . $image->getClientOriginalName();
+                        $image->move(public_path('uploads'), basename($imagePath));
+
+                        $posterPath = null;
+                        if ($hasFlyerImage && isset($request->file('flyer_image')[$index])) {
+                            $poster = $request->file('flyer_image')[$index];
+                            $posterPath = 'public/uploads/' . uniqid() . '_' . $poster->getClientOriginalName();
+                            $poster->move(public_path('uploads'), basename($posterPath));
+                        }
+
+                        $flyerNewPath = null;
+                        if ($hasFlyerNew && isset($request->file('flyerNew')[$index])) {
+                            $flyerNew = $request->file('flyerNew')[$index];
+                            $flyerNewPath = 'public/uploads/' . uniqid() . '_' . $flyerNew->getClientOriginalName();
+                            $flyerNew->move(public_path('uploads'), basename($flyerNewPath));
+                        }
+
+                        $bannerImages[] = [
                             'carnival_id' => $carnival->id,
-                            'image' => $imageName
-                        ]);
+                            'image' => url($imagePath),
+                            'poster' => $posterPath ? url($posterPath) : null,
+                            'flyerNew' => $flyerNewPath ? url($flyerNewPath) : null,
+                            'btn_text' => $request->btn_text[$index] ?? null,
+                            'btn_url' => $request->btn_url[$index] ?? null,
+                            'created_at' => now(),
+                            'updated_at' => now(),
+                        ];
                     }
+
+                    CarnivalBannerImages::insert($bannerImages); // Batch insert
                 }
-                $carnivals = Carnival::all();
-                $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
-                return response()->json(['carnival' => $carnival, 'message' => 'Carnival updated successfully', 'table_html' => $view], 200);
+
+                // Fetch only the updated carnival
+                $updatedCarnival = Carnival::find($carnival->id);
+                $view = view('dashboard.admin.carnivals.table', compact('updatedCarnival'))->render();
+
+                return response()->json([
+                    'carnival' => $updatedCarnival,
+                    'message' => 'Carnival updated successfully',
+                    'table_html' => $view
+                ], 200);
             }
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             return response()->json(['error' => $exception->getMessage()], 500);
         }
     }
+
+    // public function update(Request $request, Carnival $carnival)
+    // {
+    //     $this->validation($request);
+    //     try {
+    //         $uniqueId = $this->generateUniqueId();
+
+    //         $carnivals = $carnival->update([
+    //             'unique_id' => $uniqueId,
+    //             'name' => $request->name,
+    //             'start_date' => $request->start_date,
+    //             'end_date' => $request->end_date,
+    //             'region_id' => $request->region_id,
+    //             'country_id' => $request->country_id,
+    //             'city_id' => $request->city_id,
+    //             'description' => $request->description,
+    //             'link' => 'https://carnival.ms-hostingladz.com/register/new/user/' . $uniqueId,
+    //         ]);
+
+    //         if ($carnivals) {
+    //             if ($request->hasFile('images')) {
+    //                 foreach ($request->file('images') as $image) {
+    //                     $imageName = time() . '.' . $image->extension();
+    //                     $image->move(public_path('images/carnivalImages'), $imageName);
+    //                     CarnivalImages::create([
+    //                         'carnival_id' => $carnival->id,
+    //                         'image' => $imageName
+    //                     ]);
+    //                 }
+    //             }
+    //             if ($request->hasFile('banner_image')) {
+    //                 foreach ($request->file('banner_image') as $index => $image) {
+    //                     $imagePath = url('public/uploads/' . time() . '_' . $image->getClientOriginalName());
+    //                     $image->move('public/uploads', basename($imagePath));
+
+    //                     $posterPath = null;
+    //                     $flyerNewPath = null;
+    //                     if ($request->hasFile('flyer_image') && isset($request->file('flyer_image')[$index])) {
+    //                         $poster = $request->file('flyer_image')[$index];
+    //                         $posterPath = url('public/uploads/' . time() . '_' . $poster->getClientOriginalName());
+    //                         $poster->move('public/uploads', basename($posterPath));
+    //                     }
+    //                     if ($request->hasFile('flyerNew') && isset($request->file('flyerNew')[$index])) {
+    //                         $flyerNew = $request->file('flyerNew')[$index];
+    //                         $flyerNewPath = url('public/uploads/' . time() . '_' . $flyerNew->getClientOriginalName());
+    //                         $flyerNew->move('public/uploads', basename($flyerNewPath));
+    //                     }
+
+    //                     CarnivalBannerImages::create([
+    //                         'carnival_id' => $carnival->id,
+    //                         'image' => $imagePath,
+    //                         'poster' => $posterPath,
+    //                         'flyerNew' => $flyerNewPath,
+    //                         'btn_text' => $request->btn_text[$index] ?? null,
+    //                         'btn_url' => $request->btn_url[$index] ?? null,
+    //                     ]);
+    //                 }
+    //             }
+    //             $carnivals = Carnival::all();
+    //             $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
+    //             return response()->json(['carnival' => $carnival, 'message' => 'Carnival updated successfully', 'table_html' => $view], 200);
+    //         }
+    //     } catch (Exception $exception) {
+    //         return response()->json(['error' => $exception->getMessage()], 500);
+    //     }
+    // }
     public function deleteImage(Carnival $carnival, $imageId)
     {
         try {

@@ -361,7 +361,8 @@
                                                                 } elseif ($cartItem->type === 'music') {
                                                                     $image = $cartItem->event->banner
                                                                         ? asset(
-                                                                            'cover_image/' . $cartItem->music->cover_image,
+                                                                            'cover_image/' .
+                                                                                $cartItem->music->cover_image,
                                                                         )
                                                                         : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                                                                 }
@@ -447,6 +448,16 @@
                                             href="{{ route('model.listing') }}"> MODELS </a></li>
                                     <li class="{{ Request::routeIs('artist.listing') ? 'active' : '' }}"><a
                                             href="{{ route('artist.listing') }}"> ARTISTES </a></li>
+                                    <li class="parent parent-submenu">
+                                        <a> Carnivals </a>
+                                        <span class="toggle-submenu"></span>
+                                        <div class="submenu drop-menu">
+                                            <ul>
+                                                <li><a href="{{ route('front.vendors') }}">Mascamps</a></li>
+                                                <li><a href="">Carnival Commitees</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
                                     <li class="{{ Request::routeIs('front.carnival_listing') ? 'active' : '' }}"><a
                                             href="{{ route('front.carnival_listing') }}"> Carnival Listing </a></li>
                                     <li class="{{ Request::routeIs('front.shop_listing') ? 'active' : '' }}"><a

@@ -242,12 +242,6 @@ class FrontendConroller extends Controller
 
     public function get_vendors(Request $request)
     {
-        // dd([
-        //     'current_route_name' => Route::currentRouteName(),
-        //     'current_url' => url()->current(),
-        //     'previous_url' => url()->previous(),
-        //     'previous_route' => app('router')->getRoutes()->match(Request::create(url()->previous()))->getName() ?? 'N/A'
-        // ]);
         $previous_route = app('router')->getRoutes()->match(Request::create(url()->previous()))->getName() ?? 'N/A';
         $vendor_type = $request->get('vendor_type', null);
         $regionId = $request->get('getRegion');
@@ -264,7 +258,10 @@ class FrontendConroller extends Controller
         }
         $query->with([
             'user' => function ($query) {
-                $query->select('id', 'first_name', 'last_name', 'slug', 'image');
+                $query->select('id', 'first_name', 'last_name', 'slug', 'image', 'city', 'country');
+            },
+            'continent' => function ($query) {
+                $query->select('id', 'name');
             },
             'user.products' => function ($query) {
                 $query->select('user_id', DB::raw('MIN(new_price) as min_price'), DB::raw('MAX(new_price) as max_price'))

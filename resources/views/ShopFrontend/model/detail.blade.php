@@ -274,6 +274,40 @@
             font-weight: bold;
             color: #333;
         }
+
+        /* picture view swap */
+        .product-gallery {
+            display: flex;
+            flex-direction: column-reverse;
+            /* By default, show main image first */
+        }
+
+        @media (min-width: 576px) {
+            .product-gallery {
+                flex-direction: row;
+                /* On larger screens, show thumbnails first */
+            }
+        }
+
+        .col-sm-10 {
+            width: 100%;
+        }
+
+        .col-sm-2 {
+            width: 100%;
+        }
+
+        @media (min-width: 576px) {
+            .col-sm-10 {
+                width: 83.33%;
+                /* 10/12 */
+            }
+
+            .col-sm-2 {
+                width: 16.66%;
+                /* 2/12 */
+            }
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -297,6 +331,7 @@
                 <div class="col-md-12 col-main">
 
                     <div class="row">
+                        <div class="product-gallery">
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="product-gallery">
                                 <div class="col-sm-2">
@@ -409,30 +444,34 @@
 
                                 <div class="contact-details">
                                     <div class="contact-item">
-                                        <span class="icon fas fa-envelope"></span>
-                                        <span class="text">Email:</span>
-                                        <a href="mailto:{{ optional($user->vendor)->email ?? optional($user->subvendor)->email }}"
+                                        <span class="icon fas fa-city"></span>
+                                        <span class="text">City:</span>
+                                        <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
+                                        {{-- <a href="mailto:{{ optional($user->vendor)->email ?? optional($user->subvendor)->email }}"
                                             class="text">
                                             {{ optional($user->vendor)->email ?? (optional($user->subvendor)->email ?? 'N/A') }}
-                                        </a>
+                                        </a> --}}
                                     </div>
 
                                     <div class="contact-item">
-                                        <span class="icon fas fa-phone"></span>
-                                        <span class="text">Phone:</span>
-                                        <a href="tel:{{ optional($user->vendor)->phone ?? optional($user->subvendor)->phone }}"
+                                        <span class="icon fas fa-flag"></span>
+                                        <span class="text">Country:</span>
+                                        <a href="javascript:void(0);">{{ $user->country ?? 'N/A' }}</a>
+                                        {{-- <a href="tel:{{ optional($user->vendor)->phone ?? optional($user->subvendor)->phone }}"
                                             class="text">
                                             {{ optional($user->vendor)->phone ?? (optional($user->subvendor)->phone ?? 'N/A') }}
-                                        </a>
+                                        </a> --}}
                                     </div>
 
                                     <div class="contact-item">
-                                        <span class="icon fas fa-map-marker-alt"></span>
-                                        <span class="text">Address:</span>
-                                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode(optional($user->vendor)->address ?? optional($user->subvendor)->address) }}"
+                                        <span class="icon fas fa-globe"></span>
+                                        <span class="text">Region:</span>
+                                        <a
+                                            href="javascript:void(0);">{{ optional(optional($user->vendor)->continent)->name ?? (optional(optional($user->subvendor)->continent)->name ?? 'N/A') }}</a>
+                                        {{-- <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode(optional($user->vendor)->address ?? optional($user->subvendor)->address) }}"
                                             target="_blank" class="text">
                                             {{ optional($user->vendor)->address ?? (optional($user->subvendor)->address ?? 'N/A') }}
-                                        </a>
+                                        </a> --}}
                                     </div>
                                 </div>
                             </div>
@@ -970,8 +1009,7 @@
         });
     </script>
     <script>
-        let images = [
-            {
+        let images = [{
                 full: "{{ asset('images/' . $user->vendor->logo) }}",
                 thumbnail: "{{ asset('images/' . $user->vendor->logo) }}"
             },
