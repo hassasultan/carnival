@@ -348,7 +348,7 @@
                             vendorHtml += `
                                                     <div class="clearfix">
                                                         <div class="product-item-price">
-                                                            <span class="price">${vendor.user.first_name} ${vendor.user.last_name}</span>
+                                                            <span class="price">${vendor.name}</span>
                                                         </div>
 
                                                     </div>`;
