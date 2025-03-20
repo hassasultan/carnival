@@ -251,11 +251,11 @@ class FrontendConroller extends Controller
         $carnival_com = Carnival::has('user')->pluck('head');
 
         // $query = Vendor::query();
-        if ($previous_route == 'front.vendors') {
-            $query = Vendor::with('user')->whereIn('user_id', $carnival_com);
-        } else {
+        // if ($previous_route == 'front.vendors') {
+        //     $query = Vendor::with('user')->whereIn('user_id', $carnival_com);
+        // } else {
             $query = Vendor::with('user');
-        }
+        // }
         $query->with([
             'user' => function ($query) {
                 $query->select('id', 'first_name', 'last_name', 'slug', 'image', 'city', 'country');
