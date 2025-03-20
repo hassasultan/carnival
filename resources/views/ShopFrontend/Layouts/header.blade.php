@@ -440,14 +440,6 @@
                                     </li>
                                     {{-- <li class="{{ Request::routeIs('front.vendors') ? 'active' : '' }}"><a
                                             href="{{ route('front.vendors') }}"> MAS CAMPS </a></li> --}}
-                                    <li class="{{ Request::routeIs('front.cgGear.listing') ? 'active' : '' }}"><a
-                                            href="{{ route('front.cgGear.listing') }}"> CG GEAR </a></li>
-                                    <li class="{{ Request::routeIs('front.marketplace') ? 'active' : '' }}"><a
-                                            href="{{ route('front.marketplace') }}"> MARKET PLACE </a></li>
-                                    <li class="{{ Request::routeIs('model.listing') ? 'active' : '' }}"><a
-                                            href="{{ route('model.listing') }}"> MODELS </a></li>
-                                    <li class="{{ Request::routeIs('artist.listing') ? 'active' : '' }}"><a
-                                            href="{{ route('artist.listing') }}"> ARTISTES </a></li>
                                     <li class="parent parent-submenu">
                                         <a> Carnivals </a>
                                         <span class="toggle-submenu"></span>
@@ -458,6 +450,15 @@
                                             </ul>
                                         </div>
                                     </li>
+                                    <li class="{{ Request::routeIs('front.cgGear.listing') ? 'active' : '' }}"><a
+                                            href="{{ route('front.cgGear.listing') }}"> CG GEAR </a></li>
+                                    <li class="{{ Request::routeIs('front.marketplace') ? 'active' : '' }}"><a
+                                            href="{{ route('front.marketplace') }}"> MARKET PLACE </a></li>
+                                    <li class="{{ Request::routeIs('model.listing') ? 'active' : '' }}"><a
+                                            href="{{ route('model.listing') }}"> MODELS </a></li>
+                                    <li class="{{ Request::routeIs('artist.listing') ? 'active' : '' }}"><a
+                                            href="{{ route('artist.listing') }}"> ARTISTES </a></li>
+
                                     {{-- <li class="{{ Request::routeIs('front.carnival_listing') ? 'active' : '' }}"><a
                                             href="{{ route('front.carnival_listing') }}"> Carnival Listing </a></li> --}}
                                     <li class="{{ Request::routeIs('front.shop_listing') ? 'active' : '' }}"><a
