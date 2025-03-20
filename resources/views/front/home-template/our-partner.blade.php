@@ -49,7 +49,7 @@
             @foreach ($carnival_commitee as $row)
                 <div class="swiper-slide text-center">
                     <div class="partner-entry">
-                        <a href="{{ route('front.vendor.detail', $row->user->slug) }}"><img class="img-responsive" src="{{ asset("images/" . $row->logo) }}"
+                        <a href="{{ route('front.vendor.detail', $row->user->slug) }}"><img class="img-responsive" style="height: 91px; width:115px;"  src="{{ asset("images/" . $row->logo) }}"
                                 alt=""></a>
                     </div>
                 </div>
