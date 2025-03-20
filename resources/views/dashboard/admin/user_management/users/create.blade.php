@@ -144,9 +144,9 @@
                             name="package_id" required>
                             <option value="">Select Package</option>
                             @foreach ($packages as $package)
-                                @if ($package->title != 'Carnival Committees')
+                                {{-- @if ($package->title != 'Carnival Committees') --}}
                                     <option value="{{ $package->id }}">{{ $package->title }}</option>
-                                @endif
+                                {{-- @endif --}}
                             @endforeach
                             <option value="section_leader">Section Leader</option>
                         </select>
