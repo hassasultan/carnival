@@ -438,8 +438,8 @@
                                     <li class="{{ request()->is('/') ? 'active' : '' }}">
                                         <a href="/">HOME</a>
                                     </li>
-                                    <li class="{{ Request::routeIs('front.vendors') ? 'active' : '' }}"><a
-                                            href="{{ route('front.vendors') }}"> MAS CAMPS </a></li>
+                                    {{-- <li class="{{ Request::routeIs('front.vendors') ? 'active' : '' }}"><a
+                                            href="{{ route('front.vendors') }}"> MAS CAMPS </a></li> --}}
                                     <li class="{{ Request::routeIs('front.cgGear.listing') ? 'active' : '' }}"><a
                                             href="{{ route('front.cgGear.listing') }}"> CG GEAR </a></li>
                                     <li class="{{ Request::routeIs('front.marketplace') ? 'active' : '' }}"><a
