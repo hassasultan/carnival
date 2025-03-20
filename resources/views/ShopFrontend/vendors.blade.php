@@ -335,6 +335,7 @@
                     data: {
                         page: page,
                         getRegion: getRegion,
+                        vendor_type: "MasBands - Leader",
                         getSearchVal: searchVal // Send search value along with region
                     },
                     success: function(response) {
