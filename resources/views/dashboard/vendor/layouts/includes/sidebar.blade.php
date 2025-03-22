@@ -135,12 +135,12 @@
                     {{-- <span class="badge badge-pill badge-primary">New</span> --}}
                 </a>
             </li>
-            {{-- <li class="nav-item w-100">
+            <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('vendor_site_gallery.index') }}">
                     <i class="fe fe-layers fe-16"></i>
                     <span class="ml-3 item-text">Gallery</span>
                 </a>
-            </li> --}}
+            </li>
         </ul>
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Artiste (Music)</span>
