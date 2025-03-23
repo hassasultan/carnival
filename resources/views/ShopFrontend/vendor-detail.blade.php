@@ -45,7 +45,7 @@
                     <div class="block-nav-categori">
 
                         <div class="block-title">
-                            <span>Events</span>
+                            <span>Categories</span>
                         </div>
 
                         <div class="block-content">
@@ -85,7 +85,7 @@
                                         </ul>
                                     </div>
                                 </li> --}}
-                                {{-- <li class="">
+                                <li class="">
                                     <a href="">
                                         <span class="icon"><img
                                                 src="{{ asset('shopAssets/images/icon/index1/nav-cat10.png') }}"
@@ -108,8 +108,8 @@
                                                 alt="nav-cat"></span>
                                         Flashlights & Lamps
                                     </a>
-                                </li> --}}
-                                @foreach ($vendor->user->events as $row)
+                                </li>
+                                {{-- @foreach ($vendor->user->events as $row)
                                     <li class="">
                                         <a href="{{ route('get.myEvent.detail', $row->slug) }}">
                                             <span class="icon"><img
@@ -118,7 +118,7 @@
                                             {{ $row->name }}
                                         </a>
                                     </li>
-                                @endforeach
+                                @endforeach --}}
                                 {{-- @foreach ($vendor->subvendor as $row)
                                     <li class="">
                                         <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
