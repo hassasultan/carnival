@@ -85,7 +85,7 @@
                                         </ul>
                                     </div>
                                 </li> --}}
-                                <li class="">
+                                {{-- <li class="">
                                     <a href="">
                                         <span class="icon"><img
                                                 src="{{ asset('shopAssets/images/icon/index1/nav-cat10.png') }}"
@@ -108,7 +108,17 @@
                                                 alt="nav-cat"></span>
                                         Flashlights & Lamps
                                     </a>
-                                </li>
+                                </li> --}}
+                                @foreach ($vendor->user->events as $row)
+                                    <li class="">
+                                        <a href="{{ route('get.myEvent.detail', $row->slug) }}">
+                                            <span class="icon"><img
+                                                    src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
+                                                    alt="nav-cat"></span>
+                                            {{ $row->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
                                 {{-- @foreach ($vendor->subvendor as $row)
                                     <li class="">
                                         <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
