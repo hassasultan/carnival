@@ -332,34 +332,10 @@
 
                     <div class="row">
                         <div class="product-gallery">
-                        <div class="col-sm-6 col-md-6 col-lg-6">
-                            <div class="product-gallery">
-                                <div class="col-sm-2">
-                                    <div class="product-thumbnails">
-                                        @php
-                                            $image = null;
-
-                                            if ($user->vendor && $user->vendor->logo) {
-                                                $image = asset('images/' . $user->vendor->logo);
-                                            } elseif ($user->image) {
-                                                $image = asset('images/' . $user->image);
-                                            } else {
-                                                $image = asset('shopAssets/images/media/product9.jpg');
-                                            }
-                                        @endphp
-                                        <img class="thumbnail" src="{{ $image }}" data-full="{{ $image }}"
-                                            alt="Thumbnail 0" onclick="changeMainImage(0)" />
-                                        @foreach ($user->gallery as $key => $row)
-                                            <img class="thumbnail" src="{{ asset('images/' . $row->images[0]->image) }}"
-                                                data-full="{{ asset('images/' . $row->images[0]->image) }}"
-                                                alt="Thumbnail {{ $key + 1 }}"
-                                                onclick="changeMainImage({{ $key + 1 }})" />
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="product-preview position-relative">
-                                        <div class="zoom-container">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="product-gallery">
+                                    <div class="col-sm-2">
+                                        <div class="product-thumbnails">
                                             @php
                                                 $image = null;
 
@@ -371,145 +347,176 @@
                                                     $image = asset('shopAssets/images/media/product9.jpg');
                                                 }
                                             @endphp
-                                            <img id="mainImage" src="{{ $image }}" alt="Main Image"
-                                                class="main-image" />
+                                            <img class="thumbnail" src="{{ $image }}" data-full="{{ $image }}"
+                                                alt="Thumbnail 0" onclick="changeMainImage(0)" />
+                                            @foreach ($user->gallery as $key => $row)
+                                                @if ($row->images[0] != null)
+                                                    <img class="thumbnail"
+                                                        src="{{ asset('images/' . $row->images[0]->image) }}"
+                                                        data-full="{{ asset('images/' . $row->images[0]->image) }}"
+                                                        alt="Thumbnail {{ $key + 1 }}"
+                                                        onclick="changeMainImage({{ $key + 1 }})" />
+                                                @endif
+                                            @endforeach
                                         </div>
-                                        <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i
-                                                class="fas fa-expand"></i></button>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <div class="product-preview position-relative">
+                                            <div class="zoom-container">
+                                                @php
+                                                    $image = null;
+
+                                                    if ($user->vendor && $user->vendor->logo) {
+                                                        $image = asset('images/' . $user->vendor->logo);
+                                                    } elseif ($user->image) {
+                                                        $image = asset('images/' . $user->image);
+                                                    } else {
+                                                        $image = asset('shopAssets/images/media/product9.jpg');
+                                                    }
+                                                @endphp
+                                                <img id="mainImage" src="{{ $image }}" alt="Main Image"
+                                                    class="main-image" />
+                                            </div>
+                                            <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i
+                                                    class="fas fa-expand"></i></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div id="imageModal" class="modal">
-                            <span class="close" onclick="closeModal()">&times;</span>
-                            <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
-                            <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
-                            <button onclick="viewFullScreen()" class="fun-btn full-screen"><i
-                                    class="fas fa-expand"></i></button>
-                            <div class="modal-content">
-                                <img id="modalImage" alt="Modal Image" class="modal-image">
+                            <div id="imageModal" class="modal">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                <button onclick="zoomIn()" class="fun-btn zoomIn"><i
+                                        class="fas fa-search-plus"></i></button>
+                                <button onclick="zoomOut()" class="fun-btn zoomOut"><i
+                                        class="fas fa-search-minus"></i></button>
+                                <button onclick="viewFullScreen()" class="fun-btn full-screen"><i
+                                        class="fas fa-expand"></i></button>
+                                <div class="modal-content">
+                                    <img id="modalImage" alt="Modal Image" class="modal-image">
 
-                            </div>
-                            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-                            <button class="next" onclick="changeSlide(1)">&#10095;</button>
-                        </div>
-
-                        <div class="col-sm-6 col-md-6 col-lg-6">
-
-                            <div class="product-info-main">
-                                <h1 class="page-title">
-                                    {{ optional($user->vendor)->name ?? (optional($user->subvendor)->name ?? 'N/A') }}
-                                </h1>
-
-                                <div class="ovic-share-socials">
-                                    <div class="inner">
-                                        <a class="social-btn facebook"
-                                            href="{{ optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook }}">
-                                            <span class="icon fab fa-facebook"></span>
-                                            <span class="text">Facebook</span>
-                                        </a>
-                                        <a class="social-btn twitter"
-                                            href="{{ optional($user->vendor)->twitter ?? optional($user->subvendor)->twitter }}">
-                                            <span class="icon fab fa-twitter"></span>
-                                            <span class="text">Twitter</span>
-                                        </a>
-                                        <a class="social-btn instagram"
-                                            href="{{ optional($user->vendor)->insta ?? optional($user->subvendor)->insta }}">
-                                            <span class="icon fab fa-instagram"></span>
-                                            <span class="text">Instagram</span>
-                                        </a>
-                                        <a class="social-btn linkedin"
-                                            href="{{ optional($user->vendor)->linkedin ?? optional($user->subvendor)->linkedin }}">
-                                            <span class="icon fab fa-linkedin"></span>
-                                            <span class="text">LinkedIn</span>
-                                        </a>
-                                        <a class="social-btn youtube"
-                                            href="{{ optional($user->vendor)->youtube ?? optional($user->subvendor)->youtube }}">
-                                            <span class="icon fab fa-youtube"></span>
-                                            <span class="text">YouTube</span>
-                                        </a>
-                                        <a class="social-btn tiktok"
-                                            href="{{ optional($user->vendor)->tiktok ?? optional($user->subvendor)->tiktok }}">
-                                            <span class="icon fab fa-tiktok"></span>
-                                            <span class="text">TikTok</span>
-                                        </a>
-                                        <a class="social-btn whatsapp"
-                                            href="{{ optional($user->vendor)->wa_business_page ?? optional($user->subvendor)->wa_business_page }}">
-                                            <span class="icon fab fa-whatsapp"></span>
-                                            <span class="text">WhatsApp</span>
-                                        </a>
-                                    </div>
                                 </div>
+                                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                            </div>
 
-                                <div class="contact-details">
-                                    <div class="contact-item">
-                                        <span class="icon fas fa-city"></span>
-                                        <span class="text">City:</span>
-                                        <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
-                                        {{-- <a href="mailto:{{ optional($user->vendor)->email ?? optional($user->subvendor)->email }}"
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+
+                                <div class="product-info-main">
+                                    <h1 class="page-title">
+                                        {{ optional($user->vendor)->name ?? (optional($user->subvendor)->name ?? 'N/A') }}
+                                    </h1>
+
+                                    <div class="ovic-share-socials">
+                                        <div class="inner">
+                                            <a class="social-btn facebook"
+                                                href="{{ optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook }}">
+                                                <span class="icon fab fa-facebook"></span>
+                                                <span class="text">Facebook</span>
+                                            </a>
+                                            <a class="social-btn twitter"
+                                                href="{{ optional($user->vendor)->twitter ?? optional($user->subvendor)->twitter }}">
+                                                <span class="icon fab fa-twitter"></span>
+                                                <span class="text">Twitter</span>
+                                            </a>
+                                            <a class="social-btn instagram"
+                                                href="{{ optional($user->vendor)->insta ?? optional($user->subvendor)->insta }}">
+                                                <span class="icon fab fa-instagram"></span>
+                                                <span class="text">Instagram</span>
+                                            </a>
+                                            <a class="social-btn linkedin"
+                                                href="{{ optional($user->vendor)->linkedin ?? optional($user->subvendor)->linkedin }}">
+                                                <span class="icon fab fa-linkedin"></span>
+                                                <span class="text">LinkedIn</span>
+                                            </a>
+                                            <a class="social-btn youtube"
+                                                href="{{ optional($user->vendor)->youtube ?? optional($user->subvendor)->youtube }}">
+                                                <span class="icon fab fa-youtube"></span>
+                                                <span class="text">YouTube</span>
+                                            </a>
+                                            <a class="social-btn tiktok"
+                                                href="{{ optional($user->vendor)->tiktok ?? optional($user->subvendor)->tiktok }}">
+                                                <span class="icon fab fa-tiktok"></span>
+                                                <span class="text">TikTok</span>
+                                            </a>
+                                            <a class="social-btn whatsapp"
+                                                href="{{ optional($user->vendor)->wa_business_page ?? optional($user->subvendor)->wa_business_page }}">
+                                                <span class="icon fab fa-whatsapp"></span>
+                                                <span class="text">WhatsApp</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="contact-details">
+                                        <div class="contact-item">
+                                            <span class="icon fas fa-city"></span>
+                                            <span class="text">City:</span>
+                                            <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
+                                            {{-- <a href="mailto:{{ optional($user->vendor)->email ?? optional($user->subvendor)->email }}"
                                             class="text">
                                             {{ optional($user->vendor)->email ?? (optional($user->subvendor)->email ?? 'N/A') }}
                                         </a> --}}
-                                    </div>
+                                        </div>
 
-                                    <div class="contact-item">
-                                        <span class="icon fas fa-flag"></span>
-                                        <span class="text">Country:</span>
-                                        <a href="javascript:void(0);">{{ $user->country ?? 'N/A' }}</a>
-                                        {{-- <a href="tel:{{ optional($user->vendor)->phone ?? optional($user->subvendor)->phone }}"
+                                        <div class="contact-item">
+                                            <span class="icon fas fa-flag"></span>
+                                            <span class="text">Country:</span>
+                                            <a href="javascript:void(0);">{{ $user->country ?? 'N/A' }}</a>
+                                            {{-- <a href="tel:{{ optional($user->vendor)->phone ?? optional($user->subvendor)->phone }}"
                                             class="text">
                                             {{ optional($user->vendor)->phone ?? (optional($user->subvendor)->phone ?? 'N/A') }}
                                         </a> --}}
-                                    </div>
+                                        </div>
 
-                                    <div class="contact-item">
-                                        <span class="icon fas fa-globe"></span>
-                                        <span class="text">Region:</span>
-                                        <a
-                                            href="javascript:void(0);">{{ optional(optional($user->vendor)->continent)->name ?? (optional(optional($user->subvendor)->continent)->name ?? 'N/A') }}</a>
-                                        {{-- <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode(optional($user->vendor)->address ?? optional($user->subvendor)->address) }}"
+                                        <div class="contact-item">
+                                            <span class="icon fas fa-globe"></span>
+                                            <span class="text">Region:</span>
+                                            <a
+                                                href="javascript:void(0);">{{ optional(optional($user->vendor)->continent)->name ?? (optional(optional($user->subvendor)->continent)->name ?? 'N/A') }}</a>
+                                            {{-- <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode(optional($user->vendor)->address ?? optional($user->subvendor)->address) }}"
                                             target="_blank" class="text">
                                             {{ optional($user->vendor)->address ?? (optional($user->subvendor)->address ?? 'N/A') }}
                                         </a> --}}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                        </div><!-- Main detail -->
+                            </div><!-- Main detail -->
 
-                    </div>
+                        </div>
 
-                    <!-- product tab info -->
+                        <!-- product tab info -->
 
-                    <div class="product-info-detailed ">
+                        <div class="product-info-detailed ">
 
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-pills" role="tablist">
-                            <li role="presentation" class="active"><a href="#description" role="tab"
-                                    data-toggle="tab">Product Details </a></li>
-                            <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">Section Details
-                                </a>
-                            </li>
-                            <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">reviews</a></li>
-                            <li role="presentation"><a href="#additional" role="tab" data-toggle="tab">Payment
-                                    Plan</a></li>
-                            <li role="presentation"><a href="#tab-cust" role="tab" data-toggle="tab">Additional
-                                    Info</a>
-                            </li>
-                        </ul>
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-pills" role="tablist">
+                                <li role="presentation" class="active"><a href="#description" role="tab"
+                                        data-toggle="tab">Product Details </a></li>
+                                <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">Section
+                                        Details
+                                    </a>
+                                </li>
+                                <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">reviews</a>
+                                </li>
+                                <li role="presentation"><a href="#additional" role="tab" data-toggle="tab">Payment
+                                        Plan</a></li>
+                                <li role="presentation"><a href="#tab-cust" role="tab" data-toggle="tab">Additional
+                                        Info</a>
+                                </li>
+                            </ul>
 
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="description">
-                                <div class="block-title">Product Details</div>
-                                <div class="block-content">
-                                    {!! $event->description !!}
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="description">
+                                    <div class="block-title">Product Details</div>
+                                    <div class="block-content">
+                                        {!! $event->description !!}
 
+                                    </div>
                                 </div>
-                            </div>
-                            {{-- <div role="tabpanel" class="tab-pane" id="tags">
+                                {{-- <div role="tabpanel" class="tab-pane" id="tags">
                                 <div class="block-title">information</div>
                                 <div class="block-content">
                                     @if ($event->information != null)
@@ -541,12 +548,12 @@
                                     @endif
                                 </div>
                             </div> --}}
+                            </div>
                         </div>
-                    </div>
-                    <!-- product tab info -->
+                        <!-- product tab info -->
 
-                    <!-- block-related product -->
-                    {{-- <div class="block-related ">
+                        <!-- block-related product -->
+                        {{-- <div class="block-related ">
                         <div class="block-title">
                             <strong class="title">RELATED Events</strong>
                         </div>
@@ -598,14 +605,14 @@
                         </div>
                     </div><!-- block-related product --> --}}
 
-                </div><!-- Main Content -->
+                    </div><!-- Main Content -->
 
+                </div>
             </div>
-        </div>
 
-        <!-- block  showcase-->
-        @include('partials.brand_showcase')
-        <!-- block  showcase-->
+            <!-- block  showcase-->
+            @include('partials.brand_showcase')
+            <!-- block  showcase-->
     </main><!-- end MAIN -->
 @endsection
 
