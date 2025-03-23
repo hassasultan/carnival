@@ -1021,10 +1021,13 @@
                 thumbnail: "{{ asset('images/' . $user->vendor->logo) }}"
             },
             @foreach ($user->gallery as $key => $row)
-                {
-                    full: "{{ asset('images/' . $row->images[0]->image) }}",
-                    thumbnail: "{{ asset('images/' . $row->images[0]->image) }}"
-                },
+                @if (isset($row->images[0]))
+                    {
+                        full: "{{ asset('images/' . $row->images[0]->image) }}",
+                        thumbnail: "{{ asset('images/' . $row->images[0]->image) }}"
+                    },
+
+                @endif
             @endforeach
         ];
         let currentIndex = 0;
