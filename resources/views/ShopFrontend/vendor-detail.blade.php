@@ -85,7 +85,7 @@
                                         </ul>
                                     </div>
                                 </li> --}}
-                                <li class="col-sm-3">
+                                <li class="">
                                     <a href="">
                                         <span class="icon"><img
                                                 src="{{ asset('shopAssets/images/icon/index1/nav-cat10.png') }}"
@@ -93,7 +93,7 @@
                                         Sport & Outdoors
                                     </a>
                                 </li>
-                                <li class="cat-link-orther">
+                                <li class="">
                                     <a href="">
                                         <span class="icon"><img
                                                 src="{{ asset('shopAssets/images/icon/index1/nav-cat9.png') }}"
@@ -101,7 +101,7 @@
                                         Watch & Jewellry
                                     </a>
                                 </li>
-                                <li class="cat-link-orther">
+                                <li class="">
                                     <a href="">
                                         <span class="icon"><img
                                                 src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
