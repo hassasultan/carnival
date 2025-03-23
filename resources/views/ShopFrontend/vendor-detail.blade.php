@@ -50,7 +50,7 @@
 
                         <div class="block-content">
                             <ul class="ui-categori">
-                                <li class="parent">
+                                {{-- <li class="parent">
                                     <a href="">
                                         <span class="icon"><img
                                                 src="{{ asset('shopAssets/images/icon/index1/nav-cat1.png') }}"
@@ -84,7 +84,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </li>
+                                </li> --}}
                                 <li class="cat-link-orther">
                                     <a href="">
                                         <span class="icon"><img
