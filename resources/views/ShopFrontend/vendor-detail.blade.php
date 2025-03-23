@@ -109,7 +109,7 @@
                                         Flashlights & Lamps
                                     </a>
                                 </li> --}}
-                                {{ dd($vendor->user->events, $vendor->id, $vendor->user->id, \App\Models\Event::all()->pluck('id', 'user_id')) }}
+                                {{ dd($vendor->user->events, $vendor->id, $vendor->user->id, \App\Models\Event::select('id', 'user_id')->get()) }}
                                 @foreach ($vendor->user->events as $row)
                                     <li class="">
                                         <a href="{{ route('get.myEvent.detail', $row->slug) }}">
