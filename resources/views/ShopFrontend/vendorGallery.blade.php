@@ -113,8 +113,8 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+            /* gap: 10px; */
         }
 
         /* .gallery img {
