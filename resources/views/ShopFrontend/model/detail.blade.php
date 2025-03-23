@@ -350,7 +350,7 @@
                                             <img class="thumbnail" src="{{ $image }}" data-full="{{ $image }}"
                                                 alt="Thumbnail 0" onclick="changeMainImage(0)" />
                                             @foreach ($user->gallery as $key => $row)
-                                                @if ($row->images[0] != null)
+                                                @if (isset($row->images[0]))
                                                     <img class="thumbnail"
                                                         src="{{ asset('images/' . $row->images[0]->image) }}"
                                                         data-full="{{ asset('images/' . $row->images[0]->image) }}"
