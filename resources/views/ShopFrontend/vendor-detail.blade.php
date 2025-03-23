@@ -45,7 +45,7 @@
                     <div class="block-nav-categori">
 
                         <div class="block-title">
-                            <span>Categoriess</span>
+                            <span>Events</span>
                         </div>
 
                         <div class="block-content">
