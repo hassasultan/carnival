@@ -117,11 +117,11 @@
             gap: 10px;
         }
 
-        .gallery img {
+        /* .gallery img {
             width: 100%;
             height: 216px;
             display: block;
-        }
+        } */
 
         .columns {
             box-sizing: border-box;
@@ -294,9 +294,29 @@
             margin-top: 15px;
             margin-bottom: 15px;
         }
-        .album-wrp h2
-        {
+
+        .album-wrp h2 {
             padding: 10px 0px;
+        }
+
+        .image-container {
+            width: 200px;
+            /* Set fixed width */
+            height: 200px;
+            /* Set fixed height */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* border: 1px solid #ddd; */
+            /* Optional: for styling */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensures image covers the box without distortion */
         }
     </style>
     <main class="site-main">
@@ -320,8 +340,10 @@
             <div class="gallery">
                 @if (count($siteGallery) > 0)
                     @foreach ($siteGallery[0]->images as $key => $row)
-                        <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}"
-                            onclick="openModal({{ $key }})">
+                        <div class="image-container">
+                            <img src="{{ asset('images/' . $row->image) }}" alt="Image {{ $key }}"
+                                onclick="openModal({{ $key }})">
+                        </div>
                     @endforeach
                 @endif
             </div>
@@ -392,7 +414,7 @@
                     var html = '';
                     $('.gallery').html('');
                     $.each(data.images, function(index, row) {
-                        html += setImgs(row.image,index)
+                        html += setImgs(row.image, index)
                     });
                     $('.gallery').html(html);
                     images = document.querySelectorAll('.gallery img');
@@ -404,10 +426,10 @@
                 }
             });
         });
-        function setImgs(img,index)
-        {
-            return response = `<img src="{{ asset('images') }}/`+img+`" alt="Image `+index+`"
-                        onclick="openModal(`+index+`)">`;
+
+        function setImgs(img, index) {
+            return response = `<img src="{{ asset('images') }}/` + img + `" alt="Image ` + index + `"
+                        onclick="openModal(` + index + `)">`;
         }
 
         // JavaScript to handle modal and image navigation
