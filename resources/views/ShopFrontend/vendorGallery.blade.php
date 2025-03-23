@@ -430,8 +430,8 @@
         });
 
         function setImgs(img, index) {
-            return response = `<img src="{{ asset('images') }}/` + img + `" alt="Image ` + index + `"
-                        onclick="openModal(` + index + `)">`;
+            return response = `<div class="image-container"><img src="{{ asset('images') }}/` + img + `" alt="Image ` + index + `"
+                        onclick="openModal(` + index + `)"></div>`;
         }
 
         // JavaScript to handle modal and image navigation
