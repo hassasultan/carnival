@@ -45,12 +45,12 @@
                     <div class="block-nav-categori">
 
                         <div class="block-title">
-                            <span>Categories</span>
+                            <span>Categoriess</span>
                         </div>
 
                         <div class="block-content">
                             <ul class="ui-categori">
-                                {{-- <li class="parent">
+                                <li class="parent">
                                     <a href="">
                                         <span class="icon"><img
                                                 src="{{ asset('shopAssets/images/icon/index1/nav-cat1.png') }}"
@@ -108,7 +108,7 @@
                                                 alt="nav-cat"></span>
                                         Flashlights & Lamps
                                     </a>
-                                </li> --}}
+                                </li>
                                 @foreach ($vendor->subvendor as $row)
                                     <li class="">
                                         <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
