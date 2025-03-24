@@ -118,10 +118,10 @@
         }
 
         /* .gallery img {
-            width: 100%;
-            height: 216px;
-            display: block;
-        } */
+                width: 100%;
+                height: 216px;
+                display: block;
+            } */
 
         .columns {
             box-sizing: border-box;
@@ -318,29 +318,13 @@
             object-fit: cover;
             /* Ensures image covers the box without distortion */
         }
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center; /* Centers items horizontally */
-            gap: 10px;
-        }
-    
-        .image-container {
-            display: flex;
-            justify-content: center; /* Centers image inside the container */
-            align-items: center;
-            width: 100%; /* Full width for better centering */
-        }
-    
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-    
-        @media (min-width: 768px) {
-            .gallery {
-                justify-content: flex-start; /* Align left on larger screens */
+
+        @media (max-width: 768px) {
+            .mobile-centered {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
             }
         }
     </style>
@@ -455,7 +439,8 @@
         });
 
         function setImgs(img, index) {
-            return response = `<div class="image-container"><img src="{{ asset('images') }}/` + img + `" alt="Image ` + index + `"
+            return response = `<div class="image-container"><img src="{{ asset('images') }}/` + img + `" alt="Image ` +
+                index + `"
                         onclick="openModal(` + index + `)"></div>`;
         }
 
