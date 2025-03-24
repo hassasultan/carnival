@@ -171,34 +171,32 @@
                                                     <button class="carousel-control next">&#10095;</button>
                                                 </div>
                                                 <div class="carousel-thumbnails">
-                                                    <div class="carousel-wrapper">
-                                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                                            data-responsive='{
-                                                                        "0":{"items":1},
-                                                                        "480":{"items":2},
-                                                                        "480":{"items":2},
-                                                                        "768":{"items":3},
-                                                                        "992":{"items":3},
-                                                                        "1200":{"items":6}
-                                                                    }'>
-                                                            @foreach ($row->images as $index => $image)
-                                                                <div class="thumbnail" data-index="{{ $index }}">
-                                                                    @if ($image->file_type == 'image')
-                                                                        <img class="img-responsive img-thumb"
-                                                                            src="{{ asset('file/' . $image->file) }}"
-                                                                            alt="Thumbnail {{ $index }}">
-                                                                    @elseif($image->file_type == 'video')
-                                                                        <video class="img-responsive img-full img-thumb"
-                                                                            style="width: 100%; height: 100%; object-fit: cover;"
-                                                                            alt="Thumbnail {{ $index }}">
-                                                                            <source src="{{ asset('file/' . $image->file) }}"
-                                                                                type="video/mp4">
-                                                                            Your browser does not support the video tag.
-                                                                        </video>
-                                                                    @endif
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
+                                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                                        data-responsive='{
+                                                                    "0":{"items":1},
+                                                                    "480":{"items":2},
+                                                                    "480":{"items":2},
+                                                                    "768":{"items":3},
+                                                                    "992":{"items":3},
+                                                                    "1200":{"items":6}
+                                                                }'>
+                                                        @foreach ($row->images as $index => $image)
+                                                            <div class="thumbnail" data-index="{{ $index }}">
+                                                                @if ($image->file_type == 'image')
+                                                                    <img class="img-responsive img-thumb"
+                                                                        src="{{ asset('file/' . $image->file) }}"
+                                                                        alt="Thumbnail {{ $index }}">
+                                                                @elseif($image->file_type == 'video')
+                                                                    <video class="img-responsive img-full img-thumb"
+                                                                        style="width: 100%; height: 100%; object-fit: cover;"
+                                                                        alt="Thumbnail {{ $index }}">
+                                                                        <source src="{{ asset('file/' . $image->file) }}"
+                                                                            type="video/mp4">
+                                                                        Your browser does not support the video tag.
+                                                                    </video>
+                                                                @endif
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
