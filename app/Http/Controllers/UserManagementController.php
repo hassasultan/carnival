@@ -220,113 +220,6 @@ class UserManagementController extends Controller
         }
     }
 
-    // protected function create(array $data)
-    // {
-    //     // dd($data);
-    //     $slug = $this->generateUniqueSlug($data['first_name'] . ' ' . $data['last_name']);
-
-    //     if ($data['package_id'] == 'section_leader') {
-    //         $data['package_id'] = '123';
-    //         $data['role_id'] = '3';
-    //     } else {
-    //         $data['role_id'] = '2';
-    //     }
-
-    //     if ($data['logo']) {
-    //         $imageName = $this->uploadImage($data['logo'], 'images');
-    //         $logo = $imageName;
-    //     }
-
-    //     $user = User::create([
-    //         'first_name' => $data['first_name'],
-    //         'last_name' => $data['last_name'],
-    //         'full_name' => $data['first_name'] . ' ' . $data['last_name'],
-    //         'email' => $data['email'],
-    //         'password' => Hash::make($data['password']),
-    //         'phone' => $data['phone'],
-    //         'address' => $data['address'],
-    //         'city' => $data['city'],
-    //         'state' => $data['state'],
-    //         'country' => $data['country'],
-    //         'zipcode' => $data['zipcode'],
-    //         'role_id' => $data['role_id'],
-    //         'slug' => $slug,
-    //     ]);
-
-    //     if (isset($data['banner']) && is_array($data['banner'])) {
-    //         foreach ($data['banner'] as $index => $banner) {
-    //             $imageName = $this->uploadImage($banner, 'userBanners');
-
-    //             UserDetailBanner::create([
-    //                 'user_id' => $user->id,
-    //                 'banner' => 'userBanners/'.$imageName,
-    //                 'title' => $data['banner_title'][$index] ?? null,
-    //                 'subtitle' => $data['banner_subtitle'][$index] ?? null,
-    //                 'description' => $data['banner_description'][$index] ?? null,
-    //                 'button_text' => $data['banner_button'][$index] ?? null,
-    //             ]);
-    //         }
-    //     }
-
-    //     if ($data['role_id'] == 2) {
-    //         Vendor::create([
-    //             'user_id' => $user->id,
-    //             'package_id' => $data['package_id'],
-    //             'name' => $data['shop_name'],
-    //             'email' => $data['shop_email'],
-    //             'address' => $data['shop_address'],
-    //             'phone' => $data['shop_phone'],
-    //             'continent' => $data['continent'],
-    //             'insta' => isset($data['shop_insta']) ? $data['shop_insta'] : null,
-    //             'facebook' => isset($data['shop_facebook']) ? $data['shop_facebook'] : null,
-    //             'youtube' => isset($data['shop_youtube']) ? $data['shop_youtube'] : null,
-    //             'twitter' => isset($data['shop_twitter']) ? $data['shop_twitter'] : null,
-    //             'tiktok' => isset($data['shop_tiktok']) ? $data['shop_tiktok'] : null,
-    //             'wa_business_page' => isset($data['shop_wa_business_page']) ? $data['shop_wa_business_page'] : null,
-    //             'linkedin' => isset($data['shop_linkedin']) ? $data['shop_linkedin'] : null,
-    //             'status' => 1,
-    //             'logo' => $logo,
-    //         ]);
-    //     }
-
-    //     if ($data['role_id'] == 3) {
-    //         SubVendor::create([
-    //             'user_id' => $user->id,
-    //             'vendor_id' => $data['vendor_id'],
-    //             'name' => $data['shop_name'],
-    //             'email' => $data['shop_email'],
-    //             'address' => $data['shop_address'],
-    //             'phone' => $data['shop_phone'],
-    //             'continent' => $data['continent'],
-    //             'insta' => isset($data['shop_insta']) ? $data['shop_insta'] : null,
-    //             'facebook' => isset($data['shop_facebook']) ? $data['shop_facebook'] : null,
-    //             'youtube' => isset($data['shop_youtube']) ? $data['shop_youtube'] : null,
-    //             'twitter' => isset($data['shop_twitter']) ? $data['shop_twitter'] : null,
-    //             'tiktok' => isset($data['shop_tiktok']) ? $data['shop_tiktok'] : null,
-    //             'wa_business_page' => isset($data['shop_wa_business_page']) ? $data['shop_wa_business_page'] : null,
-    //             'linkedin' => isset($data['shop_linkedin']) ? $data['shop_linkedin'] : null,
-    //             'ecommerce' => isset($data['ecommerce']) ? $data['ecommerce'] : 0,
-    //             'events' => isset($data['events']) ? $data['events'] : 0,
-    //             'music' => isset($data['music']) ? $data['music'] : 0,
-    //             'appointment' => isset($data['appointment']) ? $data['appointment'] : 0,
-    //             'ad_space' => isset($data['ad_space']) ? $data['ad_space'] : 0,
-    //             'blogging' => isset($data['blogging']) ? $data['blogging'] : 0,
-    //             'status' => 1,
-    //             'logo' => $logo,
-    //         ]);
-    //     }
-
-    //     if ($data['role_id'] == 4) {
-    //         Customer::create([
-    //             'user_id' => $user->id,
-    //             'package_id' => $data['package_id'],
-    //             'status' => 1,
-    //         ]);
-    //     }
-
-    //     return $user;
-    // }
-
     public function edit($id)
     {
         $continents = Region::all();
@@ -350,7 +243,7 @@ class UserManagementController extends Controller
                 'ad_space' => $request->input('ad_space'),
                 'blogging' => $request->input('blogging'),
                 // 'continent' => $request->input('continent'),
-                
+
                 'package_id' => $request->input('package_id'),
                 'name' => $request->input('shop_name'),
                 'email' => $request->input('shop_email'),
@@ -378,7 +271,7 @@ class UserManagementController extends Controller
                 // 'ad_space' => $request->input('ad_space'),
                 // 'blogging' => $request->input('blogging'),
                 // 'continent' => $request->input('continent'),
-                
+
                 'vendor_id' => $request->input('vendor_id'),
                 'name' => $request->input('shop_name'),
                 'email' => $request->input('shop_email'),
@@ -401,6 +294,11 @@ class UserManagementController extends Controller
                 'status' => 1,
                 'logo' => $logo ?? null,
             ]);
+        }
+
+        if ($request->hasFile('logo')) {
+            $imageName = $this->uploadImage($request->logo, 'images');
+            $logo = $imageName;
         }
 
         $validator = $this->validator($request->all(), $id);
