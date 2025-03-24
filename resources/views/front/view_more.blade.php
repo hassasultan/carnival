@@ -140,6 +140,55 @@
                                     height: 100%;
                                     object-fit: cover;
                                 }
+
+                                .carousel-thumbnails-wrapper {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    position: relative;
+                                    width: 100%;
+                                    overflow: hidden;
+                                }
+
+                                .carousel-thumbnails {
+                                    display: flex;
+                                    overflow: hidden;
+                                    width: 80%;
+                                    scroll-behavior: smooth;
+                                    white-space: nowrap;
+                                }
+
+                                .thumbnail {
+                                    display: inline-block;
+                                    width: calc(100% / 6); /* Show only 6 thumbnails */
+                                    margin: 5px;
+                                    cursor: pointer;
+                                }
+
+                                .thumbnail img, .thumbnail video {
+                                    width: 100%;
+                                    height: auto;
+                                    object-fit: cover;
+                                }
+
+                                .thumbnail-control {
+                                    background: rgba(0, 0, 0, 0.5);
+                                    color: white;
+                                    border: none;
+                                    cursor: pointer;
+                                    font-size: 18px;
+                                    padding: 10px;
+                                    position: absolute;
+                                    z-index: 10;
+                                }
+
+                                .thumbnail-control.prev {
+                                    left: 0;
+                                }
+
+                                .thumbnail-control.next {
+                                    right: 0;
+                                }
                             </style>
                             <div class="tabs-content clearfix">
                                 @if ($carnivals?->country_tabs != null)
@@ -170,31 +219,48 @@
                                                     </div>
                                                     <button class="carousel-control next">&#10095;</button>
                                                 </div>
-                                                <div class="carousel-thumbnails">
-                                                    <div class="carousel-wrapper">
-                                                        <button class="carousel-control prev">&#10094;</button>
-                                                        <div class="carousel-slides ">
-                                                            @foreach ($row->images as $index => $image)
-                                                                <div class="thumbnail" data-index="{{ $index }}">
-                                                                    @if ($image->file_type == 'image')
-                                                                        <img class="img-responsive img-thumb"
-                                                                            src="{{ asset('file/' . $image->file) }}"
-                                                                            alt="Thumbnail {{ $index }}">
-                                                                    @elseif($image->file_type == 'video')
-                                                                        <video class="img-responsive img-full img-thumb"
-                                                                            style="width: 100%; height: 100%; object-fit: cover;"
-                                                                            alt="Thumbnail {{ $index }}">
-                                                                            <source src="{{ asset('file/' . $image->file) }}"
-                                                                                type="video/mp4">
-                                                                            Your browser does not support the video tag.
-                                                                        </video>
-                                                                    @endif
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                        <button class="carousel-control next">&#10095;</button>
+                                                <div class="carousel-thumbnails-wrapper">
+                                                    <button class="thumbnail-control prev">&#10094;</button>
+                                                    <div class="carousel-thumbnails">
+                                                        @foreach ($row->images as $index => $image)
+                                                            <div class="thumbnail" data-index="{{ $index }}">
+                                                                @if ($image->file_type == 'image')
+                                                                    <img class="img-responsive img-thumb"
+                                                                        src="{{ asset('file/' . $image->file) }}"
+                                                                        alt="Thumbnail {{ $index }}">
+                                                                @elseif($image->file_type == 'video')
+                                                                    <video class="img-responsive img-full img-thumb"
+                                                                        style="width: 100%; height: 100%; object-fit: cover;"
+                                                                        alt="Thumbnail {{ $index }}">
+                                                                        <source src="{{ asset('file/' . $image->file) }}"
+                                                                            type="video/mp4">
+                                                                        Your browser does not support the video tag.
+                                                                    </video>
+                                                                @endif
+                                                            </div>
+                                                        @endforeach
                                                     </div>
+                                                    <button class="thumbnail-control next">&#10095;</button>
                                                 </div>
+                                                {{-- <div class="carousel-thumbnails">
+                                                    @foreach ($row->images as $index => $image)
+                                                        <div class="thumbnail" data-index="{{ $index }}">
+                                                            @if ($image->file_type == 'image')
+                                                                <img class="img-responsive img-thumb"
+                                                                    src="{{ asset('file/' . $image->file) }}"
+                                                                    alt="Thumbnail {{ $index }}">
+                                                            @elseif($image->file_type == 'video')
+                                                                <video class="img-responsive img-full img-thumb"
+                                                                    style="width: 100%; height: 100%; object-fit: cover;"
+                                                                    alt="Thumbnail {{ $index }}">
+                                                                    <source src="{{ asset('file/' . $image->file) }}"
+                                                                        type="video/mp4">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                            @endif
+                                                        </div>
+                                                    @endforeach
+                                                </div> --}}
                                             </div>
                                             <div class="col-md-12">
                                                 @if ($row->placement == 0)
@@ -6025,5 +6091,27 @@
                     $('#city_id').empty().append('<option value="">Select City</option>');
                 }
             });
+
+            $(document).ready(function () {
+    $(".thumbnail-control").click(function () {
+        var $thumbnails = $(this).siblings(".carousel-thumbnails");
+        var scrollAmount = $(".thumbnail").outerWidth(true) * 3; // Scroll by 3 thumbnails
+
+        if ($(this).hasClass("prev")) {
+            $thumbnails.animate({ scrollLeft: "-=" + scrollAmount }, 300);
+        } else {
+            $thumbnails.animate({ scrollLeft: "+=" + scrollAmount }, 300);
+        }
+    });
+
+    $(".thumbnail").click(function () {
+        var index = $(this).data("index");
+        var $slides = $(this).closest(".carousel").find(".carousel-slides .slide");
+
+        $slides.removeClass("active");
+        $slides.eq(index).addClass("active");
+    });
+});
+
 </script>
 @endsection
