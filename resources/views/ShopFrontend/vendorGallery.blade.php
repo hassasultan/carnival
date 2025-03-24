@@ -112,10 +112,10 @@
         }
 
         /* .gallery img {
-                    width: 100%;
-                    height: 216px;
-                    display: block;
-                } */
+                        width: 100%;
+                        height: 216px;
+                        display: block;
+                    } */
 
         .columns {
             box-sizing: border-box;
@@ -334,6 +334,11 @@
                 /* Make containers full-width */
                 max-width: 250px;
                 /* Optional: Limit max width */
+            }
+
+            .cate-title {
+                text-align: center;
+                width: 100%;
             }
         }
     </style>
