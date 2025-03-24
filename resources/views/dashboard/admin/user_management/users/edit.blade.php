@@ -135,25 +135,6 @@
                         @enderror
                     </div>
                 @endif
-                <div class="form-group">
-                    <label for="continent">Region <span class="text-danger">*</span></label>
-                    <select id="continent" class="form-control @error('continent') is-invalid @enderror" name="continent"
-                        required>
-                        <option value="" disabled selected>Select Region</option>
-                        @foreach ($continents as $continent)
-                            <option value="{{ $continent->id }}" @if (
-                                ($user->vendor && $user->vendor->continent == $continent->id) ||
-                                    ($user->subvendor && $user->subvendor->continent == $continent->id)) selected @endif>
-                                {{ $continent->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('continent')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
                 <!-- End of Role Specific Fields -->
 
                 <!-- Status Field -->
@@ -356,7 +337,7 @@
                         <label for="shop_name">Name <span class="text-danger">*</span></label>
                         <input id="shop_name" type="text"
                             class="form-control @error('shop_name') is-invalid @enderror" val name="shop_name"
-                            value="{{ $user->vendor->shop_name }}" required autocomplete="shop_name">
+                            value="{{ $user->vendor->name }}" required autocomplete="shop_name">
                         @error('shop_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -367,7 +348,7 @@
                         <label for="shop_email">Email <span class="text-danger">*</span></label>
                         <input id="shop_email" type="shop_email"
                             class="form-control @error('shop_email') is-invalid @enderror" name="shop_email"
-                            value="{{ old('shop_email') }}" required autocomplete="shop_email">
+                            value="{{ $user->vendor->email }}" required autocomplete="shop_email">
                         @error('shop_email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -380,7 +361,7 @@
                         <label for="shop_address">Address <span class="text-danger">*</span></label>
                         <input id="shop_address" type="text"
                             class="form-control @error('shop_address') is-invalid @enderror" name="shop_address"
-                            value="{{ old('shop_address') }}" required autocomplete="shop_address">
+                            value="{{ $user->vendor->address }}" required autocomplete="shop_address">
                         @error('shop_address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -391,7 +372,7 @@
                         <label for="shop_phone">Phone <span class="text-danger">*</span></label>
                         <input id="shop_phone" type="text"
                             class="form-control @error('shop_phone') is-invalid @enderror" name="shop_phone"
-                            value="{{ old('shop_phone') }}" required autocomplete="shop_phone">
+                            value="{{ $user->vendor->phone }}" required autocomplete="shop_phone">
                         @error('shop_phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -411,7 +392,7 @@
                         <label for="shop_insta">Instagram</label>
                         <input id="shop_insta" type="text"
                             class="form-control @error('shop_insta') is-invalid @enderror" name="shop_insta"
-                            value="{{ old('shop_insta') }}" autocomplete="shop_insta">
+                            value="{{ $user->vendor->insta }}" autocomplete="shop_insta">
                         @error('shop_insta')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -424,7 +405,7 @@
                         <label for="shop_facebook">Facebook</label>
                         <input id="shop_facebook" type="text"
                             class="form-control @error('shop_facebook') is-invalid @enderror" name="shop_facebook"
-                            value="{{ old('shop_facebook') }}" autocomplete="shop_facebook">
+                            value="{{ $user->vendor->facebook }}" autocomplete="shop_facebook">
                         @error('shop_facebook')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -435,7 +416,7 @@
                         <label for="shop_youtube">Youtube</label>
                         <input id="shop_youtube" type="text"
                             class="form-control @error('shop_youtube') is-invalid @enderror" name="shop_youtube"
-                            value="{{ old('shop_youtube') }}" autocomplete="shop_youtube">
+                            value="{{ $user->vendor->youtube }}" autocomplete="shop_youtube">
                         @error('shop_youtube')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -448,7 +429,7 @@
                         <label for="shop_twitter">Twitter</label>
                         <input id="shop_twitter" type="text"
                             class="form-control @error('shop_twitter') is-invalid @enderror" name="shop_twitter"
-                            value="{{ old('shop_twitter') }}" autocomplete="shop_twitter">
+                            value="{{ $user->vendor->twitter }}" autocomplete="shop_twitter">
                         @error('shop_twitter')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -459,7 +440,7 @@
                         <label for="shop_tiktok">Tiktok</label>
                         <input id="shop_tiktok" type="text"
                             class="form-control @error('shop_tiktok') is-invalid @enderror" name="shop_tiktok"
-                            value="{{ old('shop_tiktok') }}" autocomplete="shop_tiktok">
+                            value="{{ $user->vendor->tiktok }}" autocomplete="shop_tiktok">
                         @error('shop_tiktok')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -472,7 +453,7 @@
                         <label for="shop_wa_business_page">WS Business Page</label>
                         <input id="shop_wa_business_page" type="text"
                             class="form-control @error('shop_wa_business_page') is-invalid @enderror"
-                            name="shop_wa_business_page" value="{{ old('shop_wa_business_page') }}"
+                            name="shop_wa_business_page" value="{{ $user->vendor->wa_business_page }}"
                             autocomplete="shop_wa_business_page">
                         @error('shop_wa_business_page')
                             <span class="invalid-feedback" role="alert">
@@ -484,28 +465,33 @@
                         <label for="shop_linkedin">LinkedIn</label>
                         <input id="shop_linkedin" type="text"
                             class="form-control @error('shop_linkedin') is-invalid @enderror" name="shop_linkedin"
-                            value="{{ old('shop_linkedin') }}" autocomplete="shop_linkedin">
+                            value="{{ $user->vendor->linkedin }}" autocomplete="shop_linkedin">
                         @error('shop_linkedin')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="continent">Region <span class="text-danger">*</span></label>
-                        <select id="continent" class="form-control @error('continent') is-invalid @enderror"
-                            name="continent" required>
-                            <option value="" disabled selected>Select Region</option>
-                            @foreach ($continents as $continent)
-                                <option value="{{ $continent->id }}">{{ $continent->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('continent')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="continent">Region <span class="text-danger">*</span></label>
+                    <select id="continent" class="form-control @error('continent') is-invalid @enderror" name="continent"
+                        required>
+                        <option value="" disabled selected>Select Region</option>
+                        @foreach ($continents as $continent)
+                            <option value="{{ $continent->id }}" @if (
+                                ($user->vendor && $user->vendor->continent == $continent->id) ||
+                                    ($user->subvendor && $user->subvendor->continent == $continent->id)) selected @endif>
+                                {{ $continent->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('continent')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Update') }}</button>
