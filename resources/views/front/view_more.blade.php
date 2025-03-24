@@ -179,7 +179,7 @@
                                                                         "480":{"items":2},
                                                                         "768":{"items":3},
                                                                         "992":{"items":3},
-                                                                        "1200":{"items":4}
+                                                                        "1200":{"items":6}
                                                                     }'>
                                                             @foreach ($row->images as $index => $image)
                                                                 <div class="thumbnail" data-index="{{ $index }}">
