@@ -44,14 +44,23 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
-                        name="phone" value="{{ $user->phone }}" required autocomplete="phone">
-                    @error('phone')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <div class="form-group col-md-6">
+                        <label for="image">Image <span class="text-danger">*</span></label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="image" name="image" required>
+                            <label class="custom-file-label" for="image" id="image_label">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="phone">Phone</label>
+                        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
+                            name="phone" value="{{ $user->phone }}" required autocomplete="phone">
+                        @error('phone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
@@ -82,8 +91,8 @@
                 </div>
                 <div class="form-group">
                     <label for="zipcode">Zipcode</label>
-                    <input id="zipcode" type="text" class="form-control" name="zipcode" value="{{ $user->zipcode }}"
-                        autocomplete="zipcode">
+                    <input id="zipcode" type="text" class="form-control" name="zipcode"
+                        value="{{ $user->zipcode }}" autocomplete="zipcode">
                 </div>
 
                 <!-- Role Specific Fields -->
@@ -172,7 +181,8 @@
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" value="1"
-                                                id="e_com" name="ecommerce" @if(($user->vendor && $user->vendor->ecommerce == 1) || ($user->subVendor && $user->subVendor->ecommerce == 1)) checked @endif>
+                                                id="e_com" name="ecommerce"
+                                                @if (($user->vendor && $user->vendor->ecommerce == 1) || ($user->subVendor && $user->subVendor->ecommerce == 1)) checked @endif>
                                             <label class="custom-control-label" for="e_com"></label>
                                         </div>
                                     </div>
@@ -188,7 +198,8 @@
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" value="1"
-                                                id="music" name="music" @if(($user->vendor && $user->vendor->music == 1) || ($user->subVendor && $user->subVendor->music == 1)) checked @endif>
+                                                id="music" name="music"
+                                                @if (($user->vendor && $user->vendor->music == 1) || ($user->subVendor && $user->subVendor->music == 1)) checked @endif>
                                             <label class="custom-control-label" for="music"></label>
                                         </div>
                                     </div>
@@ -204,7 +215,8 @@
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" value="1"
-                                                id="appointments" name="appointment" @if(($user->vendor && $user->vendor->appointment == 1) || ($user->subVendor && $user->subVendor->appointment == 1)) checked @endif>
+                                                id="appointments" name="appointment"
+                                                @if (($user->vendor && $user->vendor->appointment == 1) || ($user->subVendor && $user->subVendor->appointment == 1)) checked @endif>
                                             <label class="custom-control-label" for="appointments"></label>
                                         </div>
                                     </div>
@@ -222,7 +234,8 @@
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" value="1"
-                                                id="events" name="events" @if(($user->vendor && $user->vendor->events == 1) || ($user->subVendor && $user->subVendor->events == 1)) checked @endif>
+                                                id="events" name="events"
+                                                @if (($user->vendor && $user->vendor->events == 1) || ($user->subVendor && $user->subVendor->events == 1)) checked @endif>
                                             <label class="custom-control-label" for="events"></label>
                                         </div>
                                     </div>
@@ -238,7 +251,8 @@
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" value="1"
-                                                id="ads" name="ad_space" @if(($user->vendor && $user->vendor->ad_space == 1) || ($user->subVendor && $user->subVendor->ad_space == 1)) checked @endif>
+                                                id="ads" name="ad_space"
+                                                @if (($user->vendor && $user->vendor->ad_space == 1) || ($user->subVendor && $user->subVendor->ad_space == 1)) checked @endif>
                                             <label class="custom-control-label" for="ads"></label>
                                         </div>
                                     </div>
@@ -254,7 +268,8 @@
                                     <div class="col-auto">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" value="1"
-                                                id="blogs" name="blogging" @if(($user->vendor && $user->vendor->blogging == 1) || ($user->subVendor && $user->subVendor->blogging == 1)) checked @endif>
+                                                id="blogs" name="blogging"
+                                                @if (($user->vendor && $user->vendor->blogging == 1) || ($user->subVendor && $user->subVendor->blogging == 1)) checked @endif>
                                             <label class="custom-control-label" for="blogs"></label>
                                         </div>
                                     </div>
@@ -333,6 +348,164 @@
                 <!-- Button to add more banners -->
                 <div class="form-group col-md-12">
                     <button type="button" id="addBannerBtn" class="btn btn-success">+ Add Another Banner</button>
+                </div>
+
+                <h2 class="mt-5 mb-3">Shop Details</h2>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="shop_name">Name <span class="text-danger">*</span></label>
+                        <input id="shop_name" type="text"
+                            class="form-control @error('shop_name') is-invalid @enderror" name="shop_name"
+                            value="{{ old('shop_name') }}" required autocomplete="shop_name">
+                        @error('shop_name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="shop_email">Email <span class="text-danger">*</span></label>
+                        <input id="shop_email" type="shop_email"
+                            class="form-control @error('shop_email') is-invalid @enderror" name="shop_email"
+                            value="{{ old('shop_email') }}" required autocomplete="shop_email">
+                        @error('shop_email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="shop_address">Address <span class="text-danger">*</span></label>
+                        <input id="shop_address" type="text"
+                            class="form-control @error('shop_address') is-invalid @enderror" name="shop_address"
+                            value="{{ old('shop_address') }}" required autocomplete="shop_address">
+                        @error('shop_address')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="shop_phone">Phone <span class="text-danger">*</span></label>
+                        <input id="shop_phone" type="text"
+                            class="form-control @error('shop_phone') is-invalid @enderror" name="shop_phone"
+                            value="{{ old('shop_phone') }}" required autocomplete="shop_phone">
+                        @error('shop_phone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="logo">Logo</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="logo" name="logo">
+                            <label class="custom-file-label" for="logo" id="logo_label">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="shop_insta">Instagram</label>
+                        <input id="shop_insta" type="text"
+                            class="form-control @error('shop_insta') is-invalid @enderror" name="shop_insta"
+                            value="{{ old('shop_insta') }}" autocomplete="shop_insta">
+                        @error('shop_insta')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="shop_facebook">Facebook</label>
+                        <input id="shop_facebook" type="text"
+                            class="form-control @error('shop_facebook') is-invalid @enderror" name="shop_facebook"
+                            value="{{ old('shop_facebook') }}" autocomplete="shop_facebook">
+                        @error('shop_facebook')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="shop_youtube">Youtube</label>
+                        <input id="shop_youtube" type="text"
+                            class="form-control @error('shop_youtube') is-invalid @enderror" name="shop_youtube"
+                            value="{{ old('shop_youtube') }}" autocomplete="shop_youtube">
+                        @error('shop_youtube')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="shop_twitter">Twitter</label>
+                        <input id="shop_twitter" type="text"
+                            class="form-control @error('shop_twitter') is-invalid @enderror" name="shop_twitter"
+                            value="{{ old('shop_twitter') }}" autocomplete="shop_twitter">
+                        @error('shop_twitter')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="shop_tiktok">Tiktok</label>
+                        <input id="shop_tiktok" type="text"
+                            class="form-control @error('shop_tiktok') is-invalid @enderror" name="shop_tiktok"
+                            value="{{ old('shop_tiktok') }}" autocomplete="shop_tiktok">
+                        @error('shop_tiktok')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="shop_wa_business_page">WS Business Page</label>
+                        <input id="shop_wa_business_page" type="text"
+                            class="form-control @error('shop_wa_business_page') is-invalid @enderror"
+                            name="shop_wa_business_page" value="{{ old('shop_wa_business_page') }}"
+                            autocomplete="shop_wa_business_page">
+                        @error('shop_wa_business_page')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="shop_linkedin">LinkedIn</label>
+                        <input id="shop_linkedin" type="text"
+                            class="form-control @error('shop_linkedin') is-invalid @enderror" name="shop_linkedin"
+                            value="{{ old('shop_linkedin') }}" autocomplete="shop_linkedin">
+                        @error('shop_linkedin')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="continent">Region <span class="text-danger">*</span></label>
+                        <select id="continent" class="form-control @error('continent') is-invalid @enderror"
+                            name="continent" required>
+                            <option value="" disabled selected>Select Region</option>
+                            @foreach ($continents as $continent)
+                                <option value="{{ $continent->id }}">{{ $continent->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('continent')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Update') }}</button>
