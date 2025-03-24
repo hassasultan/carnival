@@ -449,34 +449,67 @@
 
                                     <div class="contact-details">
                                         <div class="contact-item">
-                                            <span class="icon fas fa-city"></span>
-                                            <span class="text">City:</span>
-                                            <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
-                                            {{-- <a href="mailto:{{ optional($user->vendor)->email ?? optional($user->subvendor)->email }}"
-                                            class="text">
-                                            {{ optional($user->vendor)->email ?? (optional($user->subvendor)->email ?? 'N/A') }}
-                                        </a> --}}
+                                            <span class="icon fas fa-globe"></span>
+                                            <span class="text">Region:</span>
+                                            <a
+                                                href="javascript:void(0);">{{ optional(optional($user->vendor)->continent)->name ?? (optional(optional($user->subvendor)->continent)->name ?? 'N/A') }}</a>
                                         </div>
 
                                         <div class="contact-item">
                                             <span class="icon fas fa-flag"></span>
                                             <span class="text">Country:</span>
                                             <a href="javascript:void(0);">{{ $user->country ?? 'N/A' }}</a>
-                                            {{-- <a href="tel:{{ optional($user->vendor)->phone ?? optional($user->subvendor)->phone }}"
-                                            class="text">
-                                            {{ optional($user->vendor)->phone ?? (optional($user->subvendor)->phone ?? 'N/A') }}
-                                        </a> --}}
                                         </div>
 
                                         <div class="contact-item">
-                                            <span class="icon fas fa-globe"></span>
-                                            <span class="text">Region:</span>
-                                            <a
-                                                href="javascript:void(0);">{{ optional(optional($user->vendor)->continent)->name ?? (optional(optional($user->subvendor)->continent)->name ?? 'N/A') }}</a>
-                                            {{-- <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode(optional($user->vendor)->address ?? optional($user->subvendor)->address) }}"
-                                            target="_blank" class="text">
-                                            {{ optional($user->vendor)->address ?? (optional($user->subvendor)->address ?? 'N/A') }}
-                                        </a> --}}
+                                            <span class="icon fas fa-city"></span>
+                                            <span class="text">City:</span>
+                                            <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
+                                        </div>
+
+                                        <div class="contact-item">
+                                            <span class="text">Age:</span>
+                                            <a href="javascript:void(0);">28</a>
+                                        </div>
+
+                                        <div class="contact-item">
+                                            <span class="text">Nationality:</span>
+                                            <a href="javascript:void(0);">-</a>
+                                        </div>
+
+                                        <div class="contact-item">
+                                            <span class="text">Height:</span>
+                                            <a href="javascript:void(0);">5'7</a>
+                                        </div>
+
+                                        <div class="contact-item">
+                                            <span class="text">Weight:</span>
+                                            <a href="javascript:void(0);">78</a>
+                                        </div>
+
+                                        <div class="contact-item">
+                                            <span class="text">Bust:</span>
+                                            <a href="javascript:void(0);">32 B</a>
+                                        </div>
+
+                                        <div class="contact-item">
+                                            <span class="text">Hips:</span>
+                                            <a href="javascript:void(0);">42 inches</a>
+                                        </div>
+
+                                        <div class="contact-item">
+                                            <span class="text">Waist:</span>
+                                            <a href="javascript:void(0);">31 inches</a>
+                                        </div>
+
+                                        <div class="contact-item">
+                                            <span class="text">About:</span>
+                                            <a href="javascript:void(0);">
+                                                @php
+                                                    use Illuminate\Support\Str;
+                                                @endphp
+                                                {!! Str::limit(strip_tags($event->description), 200) !!}
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -493,15 +526,15 @@
                             <!-- Nav tabs -->
                             <ul class="nav nav-pills" role="tablist">
                                 <li role="presentation" class="active"><a href="#description" role="tab"
-                                        data-toggle="tab">Product Details </a></li>
+                                        data-toggle="tab">About </a></li>
                                 <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">Section
                                         Details
                                     </a>
                                 </li>
                                 <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">reviews</a>
                                 </li>
-                                <li role="presentation"><a href="#additional" role="tab" data-toggle="tab">Payment
-                                        Plan</a></li>
+                                <li role="presentation"><a href="#additional" role="tab"
+                                        data-toggle="tab">Experience</a></li>
                                 <li role="presentation"><a href="#tab-cust" role="tab" data-toggle="tab">Additional
                                         Info</a>
                                 </li>
@@ -1026,7 +1059,6 @@
                         full: "{{ asset('images/' . $row->images[0]->image) }}",
                         thumbnail: "{{ asset('images/' . $row->images[0]->image) }}"
                     },
-
                 @endif
             @endforeach
         ];
