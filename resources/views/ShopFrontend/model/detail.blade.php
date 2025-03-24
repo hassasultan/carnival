@@ -308,6 +308,34 @@
                 /* 2/12 */
             }
         }
+
+        @media (max-width: 768px) {
+            .product-thumbnails {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                gap: 10px;
+                scrollbar-width: thin;
+                /* For Firefox */
+                -ms-overflow-style: none;
+                /* For Internet Explorer/Edge */
+            }
+
+            .product-thumbnails::-webkit-scrollbar {
+                display: none;
+                /* Hide scrollbar in WebKit browsers */
+            }
+
+            .thumbnail {
+                flex: 0 0 auto;
+                /* Prevents shrinking */
+                width: 80px;
+                /* Adjust as needed */
+                height: 80px;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
