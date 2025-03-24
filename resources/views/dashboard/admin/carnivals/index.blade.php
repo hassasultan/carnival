@@ -410,6 +410,14 @@
                                 <label for="country">Country</label>
                                 <input id="country" type="text" class="form-control" name="country">
                             </div>
+                            <div class="form-group col-md-4">
+                                <label for="designation">Designation</label>
+                                <input id="designation" type="text" class="form-control" name="designation">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="country">Bio Description</label>
+                                <textarea name="bio_description" class="form-control" id="bio_description" cols="40" rows="4">Add bio description here</textarea>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary" id="assignMasscampBtn">Update Carnival</button>
                     </form>
@@ -1340,6 +1348,8 @@
                 document.getElementById("city").value = member.city;
                 document.getElementById("state").value = member.state;
                 document.getElementById("country").value = member.country;
+                document.getElementById("designation").value = member.designation;
+                document.getElementById("bio_description").value = member.bio_description;
 
                 // Scroll to the form
                 document.getElementById("assignMemberForm").scrollIntoView({
