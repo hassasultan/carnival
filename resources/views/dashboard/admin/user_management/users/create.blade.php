@@ -296,24 +296,24 @@
                                     <div class="form-group">
                                         <label for="banner_title">Title</label>
                                         <input type="text" class="form-control" name="banner_title[]"
-                                            placeholder="Banner Title" required>
+                                            placeholder="Banner Title">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="banner_subtitle">Subtitle</label>
                                         <input type="text" class="form-control" name="banner_subtitle[]"
-                                            placeholder="Banner Subtitle" required>
+                                            placeholder="Banner Subtitle">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="banner_description">Description</label>
-                                        <textarea class="form-control" name="banner_description[]" rows="3" placeholder="Banner Description" required></textarea>
+                                        <textarea class="form-control" name="banner_description[]" rows="3" placeholder="Banner Description"></textarea>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="banner_button">Button Text</label>
                                         <input type="text" class="form-control" name="banner_button[]"
-                                            placeholder="Button Text" required>
+                                            placeholder="Button Text">
                                     </div>
                                 </div>
                             </div>
@@ -691,22 +691,22 @@
                         <div class="banner-details">
                             <div class="form-group">
                                 <label for="banner_title">Title</label>
-                                <input type="text" class="form-control" name="banner_title[]" placeholder="Banner Title" required>
+                                <input type="text" class="form-control" name="banner_title[]" placeholder="Banner Title">
                             </div>
 
                             <div class="form-group">
                                 <label for="banner_subtitle">Subtitle</label>
-                                <input type="text" class="form-control" name="banner_subtitle[]" placeholder="Banner Subtitle" required>
+                                <input type="text" class="form-control" name="banner_subtitle[]" placeholder="Banner Subtitle">
                             </div>
 
                             <div class="form-group">
                                 <label for="banner_description">Description</label>
-                                <textarea class="form-control" name="banner_description[]" rows="3" placeholder="Banner Description" required></textarea>
+                                <textarea class="form-control" name="banner_description[]" rows="3" placeholder="Banner Description"></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="banner_button">Button Text</label>
-                                <input type="text" class="form-control" name="banner_button[]" placeholder="Button Text" required>
+                                <input type="text" class="form-control" name="banner_button[]" placeholder="Button Text">
                             </div>
                         </div>
 
