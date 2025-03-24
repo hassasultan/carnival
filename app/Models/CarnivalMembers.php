@@ -20,6 +20,8 @@ class CarnivalMembers extends Model
         'city',
         'state',
         'country',
+        'designation',
+        'bio_description',
     ];
 
     public function carnival()
