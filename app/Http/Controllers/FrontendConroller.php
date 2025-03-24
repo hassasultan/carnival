@@ -254,7 +254,7 @@ class FrontendConroller extends Controller
         // if ($previous_route == 'front.vendors') {
         //     $query = Vendor::with('user')->whereIn('user_id', $carnival_com);
         // } else {
-            $query = Vendor::with('user');
+        $query = Vendor::with('user');
         // }
         $query->with([
             'user' => function ($query) {
@@ -598,7 +598,7 @@ class FrontendConroller extends Controller
         $brands = Brand::where('status', 1)
             ->withCount('products')
             ->get();
-        if ($vendorPackageName === 'Artistes' || $subVendorPackageName === 'Models') {
+        if ($vendorPackageName === 'Models' || $subVendorPackageName === 'Models' || $vendorPackageName === 'Artistes' || $subVendorPackageName === 'Artistes') {
             return view('ShopFrontend.model.detail', compact('event', 'user', 'products', 'brands'));
         } else {
             return view('ShopFrontend.vendorAboutUs', compact('user'));
