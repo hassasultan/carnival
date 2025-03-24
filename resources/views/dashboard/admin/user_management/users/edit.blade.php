@@ -43,24 +43,22 @@
                         </span>
                     @enderror
                 </div>
-                <div class="form-group">
-                    <div class="form-group col-md-6">
-                        <label for="image">Image <span class="text-danger">*</span></label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="image" name="image" required>
-                            <label class="custom-file-label" for="image" id="image_label">Choose file</label>
-                        </div>
+                <div class="form-group col-md-6">
+                    <label for="image">Image <span class="text-danger">*</span></label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="image" name="image" required>
+                        <label class="custom-file-label" for="image" id="image_label">Choose file</label>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="phone">Phone</label>
-                        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
-                            name="phone" value="{{ $user->phone }}" required autocomplete="phone">
-                        @error('phone')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
+                        name="phone" value="{{ $user->phone }}" required autocomplete="phone">
+                    @error('phone')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
@@ -473,11 +471,11 @@
                         @enderror
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="continent">Region <span class="text-danger">*</span></label>
-                    <select id="continent" class="form-control @error('continent') is-invalid @enderror" name="continent"
-                        required>
+                    <select id="continent" class="form-control @error('continent') is-invalid @enderror"
+                        name="continent" required>
                         <option value="" disabled selected>Select Region</option>
                         @foreach ($continents as $continent)
                             <option value="{{ $continent->id }}" @if (
