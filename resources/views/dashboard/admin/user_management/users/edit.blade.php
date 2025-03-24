@@ -380,7 +380,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="logo">Logo</label>
+                        <label for="logo">Logo/Profile Picture</label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="logo" name="logo">
                             <label class="custom-file-label" for="logo" id="logo_label">Choose file</label>
@@ -614,8 +614,14 @@
                 }
             });
 
+            if (('#package').val() == '1') {
+                $('#bannerSection').hide();
+            }
             $('#package').on('change', function() {
                 var packageId = $(this).val();
+                if (packageId == '1') {
+                    $('#bannerSection').hide();
+                }
                 $('#category_id').empty().append($('<option>', {
                     value: '',
                     text: 'Select Category'
