@@ -35,13 +35,13 @@ class User extends Authenticatable
         'deleted_at',
         'image',
         'slug',
-        'Age',
-        'Nationality',
-        'Height',
-        'Weight',
-        'Bust',
-        'Hips',
-        'Waist',
+        'age',
+        'nationality',
+        'height',
+        'weight',
+        'bust',
+        'hips',
+        'waist',
     ];
 
     /**

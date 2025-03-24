@@ -497,37 +497,37 @@
 
                                         <div class="contact-item">
                                             <span class="text">Age:</span>
-                                            <a href="javascript:void(0);">{{ $user->Age }}</a>
+                                            <a href="javascript:void(0);">{{ $user->age }}</a>
                                         </div>
 
                                         <div class="contact-item">
                                             <span class="text">Nationality:</span>
-                                            <a href="javascript:void(0);">{{$user->Nationality}}</a>
+                                            <a href="javascript:void(0);">{{$user->nationality}}</a>
                                         </div>
 
                                         <div class="contact-item">
                                             <span class="text">Height:</span>
-                                            <a href="javascript:void(0);">{{ $user->Height }}</a>
+                                            <a href="javascript:void(0);">{{ $user->height }}</a>
                                         </div>
 
                                         <div class="contact-item">
                                             <span class="text">Weight:</span>
-                                            <a href="javascript:void(0);">{{ $user->Weight }}</a>
+                                            <a href="javascript:void(0);">{{ $user->weight }}</a>
                                         </div>
 
                                         <div class="contact-item">
                                             <span class="text">Bust:</span>
-                                            <a href="javascript:void(0);">{{ $user->Bust }}</a>
+                                            <a href="javascript:void(0);">{{ $user->bust }}</a>
                                         </div>
 
                                         <div class="contact-item">
                                             <span class="text">Hips:</span>
-                                            <a href="javascript:void(0);">{{ $user->Hips }}</a>
+                                            <a href="javascript:void(0);">{{ $user->hips }}</a>
                                         </div>
 
                                         <div class="contact-item">
                                             <span class="text">Waist:</span>
-                                            <a href="javascript:void(0);">{{ $user->Waist }}</a>
+                                            <a href="javascript:void(0);">{{ $user->waist }}</a>
                                         </div>
 
                                         <div class="contact-item">
