@@ -44,9 +44,9 @@
                     @enderror
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="image">Image <span class="text-danger">*</span></label>
+                    <label for="image">Image</label>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="image" name="image" required>
+                        <input type="file" class="custom-file-input" id="image" name="image">
                         <label class="custom-file-label" for="image" id="image_label">Choose file</label>
                     </div>
                 </div>
