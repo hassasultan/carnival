@@ -582,7 +582,7 @@ class FrontendConroller extends Controller
     public function about_us($slug)
     {
         $user = User::with('vendor', 'subVendor', 'products')->whereSlug($slug)->first();
-
+        dd($user->toArray());
         // for model
         $event = Event::with('category', 'images')
             ->first();

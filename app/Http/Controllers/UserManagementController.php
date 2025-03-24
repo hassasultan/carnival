@@ -143,6 +143,13 @@ class UserManagementController extends Controller
                 'zipcode' => $data['zipcode'],
                 'role_id' => $data['role_id'],
                 'slug' => $slug,
+                'Age' => $data['Age'] ? $data['Age'] : null,
+                'Nationality' => $data['Nationality'] ? $data['Nationality'] : null,
+                'Height' => $data['Height'] ? $data['Height'] : null,
+                'Weight' => $data['Weight'] ? $data['Weight'] : null,
+                'Bust' => $data['Bust'] ? $data['Bust'] : null,
+                'Hips' => $data['Hips'] ? $data['Hips'] : null,
+                'Waist' => $data['Waist'] ? $data['Waist'] : null,
             ]);
 
             if (isset($data['banner']) && is_array($data['banner'])) {
@@ -241,6 +248,11 @@ class UserManagementController extends Controller
     {
         $user = User::findOrFail($id);
 
+        if ($request->hasFile('logo')) {
+            $imageName = $this->uploadImage($request->logo, 'images');
+            $logo = $imageName;
+        }
+
         if ($user->vendor) {
             $user->vendor->update([
                 'ecommerce' => $request->input('ecommerce'),
@@ -301,11 +313,6 @@ class UserManagementController extends Controller
                 'status' => 1,
                 'logo' => $logo ?? null,
             ]);
-        }
-
-        if ($request->hasFile('logo')) {
-            $imageName = $this->uploadImage($request->logo, 'images');
-            $logo = $imageName;
         }
 
         $validator = $this->validator($request->all(), $id);
