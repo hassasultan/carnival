@@ -167,47 +167,32 @@
                                                                 @endif
                                                             </div>
                                                         @endforeach
-                                                        {{-- <div class="slide">
-                                                            <img class="img-responsive img-full"
-                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_2.jpg" alt="Slide 2">
-                                                        </div>
-                                                        <div class="slide">
-                                                            <img class="img-responsive img-full"
-                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_3.jpg"
-                                                                alt="Slide 3">
-                                                        </div>
-                                                        <div class="slide">
-                                                            <img class="img-responsive img-full"
-                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_4.jpg"
-                                                                alt="Slide 4">
-                                                        </div>
-                                                        <div class="slide">
-                                                            <img class="img-responsive img-full"
-                                                                src="https://carnivalguide.co/travel/img/detail/s_slide_5.jpg"
-                                                                alt="Slide 5">
-                                                        </div> --}}
                                                     </div>
                                                     <button class="carousel-control next">&#10095;</button>
                                                 </div>
-                                                {{-- <div class="carousel-thumbnails">
-                                                    @foreach ($row->images as $index => $image)
-                                                        <div class="thumbnail" data-index="{{ $index }}">
-                                                            @if ($image->file_type == 'image')
-                                                                <img class="img-responsive img-thumb"
-                                                                    src="{{ asset('file/' . $image->file) }}"
-                                                                    alt="Thumbnail {{ $index }}">
-                                                            @elseif($image->file_type == 'video')
-                                                                <video class="img-responsive img-full img-thumb"
-                                                                    style="width: 100%; height: 100%; object-fit: cover;"
-                                                                    alt="Thumbnail {{ $index }}">
-                                                                    <source src="{{ asset('file/' . $image->file) }}"
-                                                                        type="video/mp4">
-                                                                    Your browser does not support the video tag.
-                                                                </video>
-                                                            @endif
-                                                        </div>
-                                                    @endforeach
-                                                </div> --}}
+                                                <div class="carousel-thumbnails">
+                                                    <button class="carousel-control prev">&#10094;</button>
+                                                    <div class="carousel-slides ">
+                                                        @foreach ($row->images as $index => $image)
+                                                            <div class="thumbnail" data-index="{{ $index }}">
+                                                                @if ($image->file_type == 'image')
+                                                                    <img class="img-responsive img-thumb"
+                                                                        src="{{ asset('file/' . $image->file) }}"
+                                                                        alt="Thumbnail {{ $index }}">
+                                                                @elseif($image->file_type == 'video')
+                                                                    <video class="img-responsive img-full img-thumb"
+                                                                        style="width: 100%; height: 100%; object-fit: cover;"
+                                                                        alt="Thumbnail {{ $index }}">
+                                                                        <source src="{{ asset('file/' . $image->file) }}"
+                                                                            type="video/mp4">
+                                                                        Your browser does not support the video tag.
+                                                                    </video>
+                                                                @endif
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <button class="carousel-control next">&#10095;</button>
+                                                </div>
                                             </div>
                                             <div class="col-md-12">
                                                 @if ($row->placement == 0)
