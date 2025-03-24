@@ -492,6 +492,93 @@
                     @enderror
                 </div>
 
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Age">Age</label>
+                        <input id="Age" type="text"
+                            class="form-control @error('Age') is-invalid @enderror"
+                            name="Age" value="{{ $user->Age }}"
+                            autocomplete="Age">
+                        @error('Age')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Nationality">Nationality</label>
+                        <input id="Nationality" type="text"
+                            class="form-control @error('Nationality') is-invalid @enderror"
+                            name="Nationality" value="{{ $user->Nationality }}"
+                            autocomplete="Nationality">
+                        @error('Nationality')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Height">Height</label>
+                        <input id="Height" type="text"
+                            class="form-control @error('Height') is-invalid @enderror"
+                            name="Height" value="{{ $user->Height }}"
+                            autocomplete="Height">
+                        @error('Height')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Weight">Weight</label>
+                        <input id="Weight" type="text"
+                            class="form-control @error('Weight') is-invalid @enderror"
+                            name="Weight" value="{{ $user->Weight }}"
+                            autocomplete="Weight">
+                        @error('Weight')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Bust">Bust</label>
+                        <input id="Bust" type="text"
+                            class="form-control @error('Bust') is-invalid @enderror"
+                            name="Bust" value="{{ $user->Bust }}"
+                            autocomplete="Bust">
+                        @error('Bust')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Hips">Hips</label>
+                        <input id="Hips" type="text"
+                            class="form-control @error('Hips') is-invalid @enderror"
+                            name="Hips" value="{{ $user->Hips }}"
+                            autocomplete="Hips">
+                        @error('Hips')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Waist">Waist</label>
+                        <input id="Waist" type="text"
+                            class="form-control @error('Waist') is-invalid @enderror"
+                            name="Waist" value="{{ $user->Waist }}"
+                            autocomplete="Waist">
+                        @error('Waist')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Update') }}</button>
         </form>
     </div>

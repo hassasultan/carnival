@@ -93,6 +93,13 @@ class UserManagementController extends Controller
             'zipcode' => ['required', 'string', 'max:255'],
             'vendor_id' => 'required_without_all:package_id|nullable|numeric',
             'package_id' => ['nullable'],
+            'Age' => ['nullable'],
+            'Nationality' => ['nullable'],
+            'Height' => ['nullable'],
+            'Weight' => ['nullable'],
+            'Bust' => ['nullable'],
+            'Hips' => ['nullable'],
+            'Waist' => ['nullable'],
             // 'image' => 'required|image|max:2048',
         ];
 

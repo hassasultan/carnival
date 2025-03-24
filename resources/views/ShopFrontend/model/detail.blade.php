@@ -497,37 +497,37 @@
 
                                         <div class="contact-item">
                                             <span class="text">Age:</span>
-                                            <a href="javascript:void(0);">28</a>
+                                            <a href="javascript:void(0);">{{ $user->Age }}</a>
                                         </div>
 
                                         <div class="contact-item">
                                             <span class="text">Nationality:</span>
-                                            <a href="javascript:void(0);">-</a>
+                                            <a href="javascript:void(0);">{{$user->Nationality}}</a>
                                         </div>
 
                                         <div class="contact-item">
                                             <span class="text">Height:</span>
-                                            <a href="javascript:void(0);">5'7</a>
+                                            <a href="javascript:void(0);">{{ $user->Height }}</a>
                                         </div>
 
                                         <div class="contact-item">
                                             <span class="text">Weight:</span>
-                                            <a href="javascript:void(0);">78</a>
+                                            <a href="javascript:void(0);">{{ $user->Weight }}</a>
                                         </div>
 
                                         <div class="contact-item">
                                             <span class="text">Bust:</span>
-                                            <a href="javascript:void(0);">32 B</a>
+                                            <a href="javascript:void(0);">{{ $user->Bust }}</a>
                                         </div>
 
                                         <div class="contact-item">
                                             <span class="text">Hips:</span>
-                                            <a href="javascript:void(0);">42 inches</a>
+                                            <a href="javascript:void(0);">{{ $user->Hips }}</a>
                                         </div>
 
                                         <div class="contact-item">
                                             <span class="text">Waist:</span>
-                                            <a href="javascript:void(0);">31 inches</a>
+                                            <a href="javascript:void(0);">{{ $user->Waist }}</a>
                                         </div>
 
                                         <div class="contact-item">
