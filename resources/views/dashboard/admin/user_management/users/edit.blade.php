@@ -355,8 +355,8 @@
                     <div class="form-group col-md-6">
                         <label for="shop_name">Name <span class="text-danger">*</span></label>
                         <input id="shop_name" type="text"
-                            class="form-control @error('shop_name') is-invalid @enderror" name="shop_name"
-                            value="{{ old('shop_name') }}" required autocomplete="shop_name">
+                            class="form-control @error('shop_name') is-invalid @enderror" val name="shop_name"
+                            value="{{ $user->vendor->shop_name }}" required autocomplete="shop_name">
                         @error('shop_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
