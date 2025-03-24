@@ -336,35 +336,6 @@
                 border-radius: 5px;
             }
         }
-
-        @media (max-width: 768px) {
-            .profile-details {
-                text-align: center;
-                padding: 15px;
-            }
-
-            .user-images img {
-                width: 100%;
-                max-width: 300px;
-                display: block;
-                margin: 10px auto;
-            }
-
-            .social-icons {
-                display: flex;
-                justify-content: center;
-                gap: 10px;
-            }
-
-            .social-icons a {
-                font-size: 24px;
-                text-decoration: none;
-            }
-
-            .message-btn {
-                margin-top: 20px;
-            }
-        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -459,51 +430,6 @@
 
                             <div class="col-sm-6 col-md-6 col-lg-6">
 
-                                <div class="profile-details">
-                                    <!-- Name -->
-                                    <h2 class="user-name">{{ $user->name }}</h2>
-                                
-                                    <!-- Images -->
-                                    <div class="user-images">
-                                        <img src="{{ $image }}" class="main-image" alt="Main Image">
-                                        @foreach ($user->gallery as $key => $row)
-                                            @if (isset($row->images[0]))
-                                                <img class="thumbnail" src="{{ asset('images/' . $row->images[0]) }}" alt="Gallery Image">
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                
-                                    <!-- Location Details -->
-                                    <div class="user-location">
-                                        <p><strong>City:</strong> {{ $user->city }}</p>
-                                        <p><strong>Country:</strong> {{ $user->country }}</p>
-                                        <p><strong>Region:</strong> {{ $user->region }}</p>
-                                    </div>
-                                
-                                    <!-- Bio -->
-                                    <div class="user-bio">
-                                        <p>{{ $user->bio }}</p>
-                                    </div>
-                                
-                                    <!-- Social Media Icons -->
-                                    <div class="social-icons">
-                                        @if($user->facebook)
-                                            <a href="{{ $user->facebook }}" class="social-btn facebook"><i class="fa fa-facebook"></i></a>
-                                        @endif
-                                        @if($user->twitter)
-                                            <a href="{{ $user->twitter }}" class="social-btn twitter"><i class="fa fa-twitter"></i></a>
-                                        @endif
-                                        @if($user->instagram)
-                                            <a href="{{ $user->instagram }}" class="social-btn instagram"><i class="fa fa-instagram"></i></a>
-                                        @endif
-                                    </div>
-                                
-                                    <!-- Send Us Message Button -->
-                                    <div class="message-btn">
-                                        <button class="btn btn-primary">Send Us Message</button>
-                                    </div>
-                                </div>
-                                
                                 <div class="product-info-main">
                                     <h1 class="page-title">
                                         {{ optional($user->vendor)->name ?? (optional($user->subvendor)->name ?? 'N/A') }}
