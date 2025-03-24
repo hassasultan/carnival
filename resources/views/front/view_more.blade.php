@@ -189,7 +189,7 @@
                                                     </div>
                                                     <button class="carousel-control next">&#10095;</button>
                                                 </div>
-                                                <div class="carousel-thumbnails">
+                                                {{-- <div class="carousel-thumbnails">
                                                     @foreach ($row->images as $index => $image)
                                                         <div class="thumbnail" data-index="{{ $index }}">
                                                             @if ($image->file_type == 'image')
@@ -204,14 +204,10 @@
                                                                         type="video/mp4">
                                                                     Your browser does not support the video tag.
                                                                 </video>
-                                                                {{-- <img class="img-responsive img-thumb" src="{{ asset('file/'.$image->file) }}" alt="Video Thumbnail {{ $index + 1 }}"> --}}
                                                             @endif
                                                         </div>
                                                     @endforeach
-                                                    {{-- <div class="thumbnail">
-                                                        <img class="img-responsive img-thumb" src="{{ asset('files/' . $row->file) }}" alt="Additional Thumbnail">
-                                                    </div> --}}
-                                                </div>
+                                                </div> --}}
                                             </div>
                                             <div class="col-md-12">
                                                 @if ($row->placement == 0)

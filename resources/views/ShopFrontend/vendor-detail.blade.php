@@ -109,7 +109,7 @@
                                         Flashlights & Lamps
                                     </a>
                                 </li> --}}
-                                {{-- {{ dd($vendor->user->events, $vendor->id, $vendor->user->id, \App\Models\Event::all()->pluck('user_id')) }} --}}
+                                {{-- {{ dd($vendor->user->events, $vendor->id, $vendor->user->id, \App\Models\Event::all()->pluck('user_id')) }}
                                 @foreach ($vendor->user->events as $row)
                                     <li class="">
                                         <a href="{{ route('get.myEvent.detail', $row->slug) }}">
@@ -119,8 +119,8 @@
                                             {{ $row->name }}
                                         </a>
                                     </li>
-                                @endforeach
-                                {{-- @foreach ($vendor->subvendor as $row)
+                                @endforeach --}}
+                                @foreach ($vendor->subvendor as $row)
                                     <li class="">
                                         <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
                                             <span class="icon"><img
@@ -129,7 +129,7 @@
                                             {{ $row->user->first_name . ' ' . $row->user->last_name }}
                                         </a>
                                     </li>
-                                @endforeach --}}
+                                @endforeach
                             </ul>
 
                             {{-- <div class="view-all-categori">
