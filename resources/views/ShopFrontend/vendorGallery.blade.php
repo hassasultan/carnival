@@ -318,6 +318,31 @@
             object-fit: cover;
             /* Ensures image covers the box without distortion */
         }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centers items horizontally */
+            gap: 10px;
+        }
+    
+        .image-container {
+            display: flex;
+            justify-content: center; /* Centers image inside the container */
+            align-items: center;
+            width: 100%; /* Full width for better centering */
+        }
+    
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+    
+        @media (min-width: 768px) {
+            .gallery {
+                justify-content: flex-start; /* Align left on larger screens */
+            }
+        }
     </style>
     <main class="site-main">
         <div class="columns container">
