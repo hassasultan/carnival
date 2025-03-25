@@ -277,7 +277,7 @@
                     </div>
                 </div>
 
-                <div id="bannerSection">
+                <div id="bannerSection" class="bannerSection">
                     <div class="form-group col-md-12 banner-item">
                         <div class="card mb-3">
                             <div class="card-header">
@@ -322,7 +322,7 @@
                 </div>
 
                 <!-- Button to add more banners -->
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-12 bannerSection">
                     <button type="button" id="addBannerBtn" class="btn btn-success">+ Add Another Banner</button>
                 </div>
 
@@ -569,9 +569,9 @@
                 var packageId = $(this).val();
 
                 if (packageId == '1' || packageId == 1) {
-                    $('#bannerSection').hide().find('input, textarea').removeAttr('required');
+                    $('.bannerSection').hide().find('input, textarea').removeAttr('required');
                 } else {
-                    $('#bannerSection').show().find('input[type="file"]').attr('required', 'required');
+                    $('.bannerSection').show().find('input[type="file"]').attr('required', 'required');
                 }
 
                 if (packageId == 'section_leader') {

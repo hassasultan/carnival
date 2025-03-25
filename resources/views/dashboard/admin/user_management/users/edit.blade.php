@@ -302,7 +302,7 @@
                     </div>
                 </div> --}}
 
-                <div id="bannerSection">
+                <div id="bannerSection" class="bannerSection">
                     <!-- Show previously uploaded banners -->
                     <div class="form-group col-md-12">
                         <h5>Uploaded Banners</h5>
@@ -602,20 +602,20 @@
             });
 
             if (('#package').val() == '1') {
-                $('#bannerSection').hide();
-                $('#bannerSection').find('input, textarea').removeAttr('required');
+                $('.bannerSection').hide();
+                $('.bannerSection').find('input, textarea').removeAttr('required');
             } else {
-                $('#bannerSection').show();
-                $('#bannerSection').find('input[type="file"]').attr('required', 'required');
+                $('.bannerSection').show();
+                $('.bannerSection').find('input[type="file"]').attr('required', 'required');
             }
             $('#package').on('change', function() {
                 var packageId = $(this).val();
                 if (packageId == '1') {
-                    $('#bannerSection').hide();
-                    $('#bannerSection').find('input, textarea').removeAttr('required');
+                    $('.bannerSection').hide();
+                    $('.bannerSection').find('input, textarea').removeAttr('required');
                 } else {
-                    $('#bannerSection').show();
-                    $('#bannerSection').find('input[type="file"]').attr('required', 'required');
+                    $('.bannerSection').show();
+                    $('.bannerSection').find('input[type="file"]').attr('required', 'required');
                 }
                 $('#category_id').empty().append($('<option>', {
                     value: '',
