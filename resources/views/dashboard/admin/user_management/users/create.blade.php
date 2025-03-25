@@ -569,6 +569,7 @@
                 var packageId = $(this).val();
                 if (packageId == '1') {
                     $('#bannerSection').hide();
+                    $('#bannerSection').find('input, textarea').removeAttr('required');
                 } else if (packageId == 'section_leader') {
                     $('#vendors_input').show();
 
@@ -578,6 +579,8 @@
                     $('#events-box').hide();
                     $('#ad_space-box').hide();
                     $('#blogging-box').hide();
+                    $('#bannerSection').show();
+                    $('#bannerSection').find('input[type="file"]').attr('required', 'required');
                 } else {
 
                     $('#vendors_input').hide();
@@ -587,6 +590,8 @@
                     $('#events-box').hide();
                     $('#ad_space-box').hide();
                     $('#blogging-box').hide();
+                    $('#bannerSection').show();
+                    $('#bannerSection').find('input[type="file"]').attr('required', 'required');
                 }
             });
 

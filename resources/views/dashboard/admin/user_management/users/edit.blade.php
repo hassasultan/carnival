@@ -495,10 +495,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="Age">Age</label>
-                        <input id="Age" type="text"
-                            class="form-control @error('Age') is-invalid @enderror"
-                            name="Age" value="{{ $user->Age }}"
-                            autocomplete="Age">
+                        <input id="Age" type="text" class="form-control @error('Age') is-invalid @enderror"
+                            name="Age" value="{{ $user->Age }}" autocomplete="Age">
                         @error('Age')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -508,9 +506,8 @@
                     <div class="form-group col-md-6">
                         <label for="Nationality">Nationality</label>
                         <input id="Nationality" type="text"
-                            class="form-control @error('Nationality') is-invalid @enderror"
-                            name="Nationality" value="{{ $user->Nationality }}"
-                            autocomplete="Nationality">
+                            class="form-control @error('Nationality') is-invalid @enderror" name="Nationality"
+                            value="{{ $user->Nationality }}" autocomplete="Nationality">
                         @error('Nationality')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -519,10 +516,8 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="Height">Height</label>
-                        <input id="Height" type="text"
-                            class="form-control @error('Height') is-invalid @enderror"
-                            name="Height" value="{{ $user->Height }}"
-                            autocomplete="Height">
+                        <input id="Height" type="text" class="form-control @error('Height') is-invalid @enderror"
+                            name="Height" value="{{ $user->Height }}" autocomplete="Height">
                         @error('Height')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -531,10 +526,8 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="Weight">Weight</label>
-                        <input id="Weight" type="text"
-                            class="form-control @error('Weight') is-invalid @enderror"
-                            name="Weight" value="{{ $user->Weight }}"
-                            autocomplete="Weight">
+                        <input id="Weight" type="text" class="form-control @error('Weight') is-invalid @enderror"
+                            name="Weight" value="{{ $user->Weight }}" autocomplete="Weight">
                         @error('Weight')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -543,10 +536,8 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="Bust">Bust</label>
-                        <input id="Bust" type="text"
-                            class="form-control @error('Bust') is-invalid @enderror"
-                            name="Bust" value="{{ $user->Bust }}"
-                            autocomplete="Bust">
+                        <input id="Bust" type="text" class="form-control @error('Bust') is-invalid @enderror"
+                            name="Bust" value="{{ $user->Bust }}" autocomplete="Bust">
                         @error('Bust')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -555,10 +546,8 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="Hips">Hips</label>
-                        <input id="Hips" type="text"
-                            class="form-control @error('Hips') is-invalid @enderror"
-                            name="Hips" value="{{ $user->Hips }}"
-                            autocomplete="Hips">
+                        <input id="Hips" type="text" class="form-control @error('Hips') is-invalid @enderror"
+                            name="Hips" value="{{ $user->Hips }}" autocomplete="Hips">
                         @error('Hips')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -567,10 +556,8 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="Waist">Waist</label>
-                        <input id="Waist" type="text"
-                            class="form-control @error('Waist') is-invalid @enderror"
-                            name="Waist" value="{{ $user->Waist }}"
-                            autocomplete="Waist">
+                        <input id="Waist" type="text" class="form-control @error('Waist') is-invalid @enderror"
+                            name="Waist" value="{{ $user->Waist }}" autocomplete="Waist">
                         @error('Waist')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -616,11 +603,19 @@
 
             if (('#package').val() == '1') {
                 $('#bannerSection').hide();
+                $('#bannerSection').find('input, textarea').removeAttr('required');
+            } else {
+                $('#bannerSection').show();
+                $('#bannerSection').find('input[type="file"]').attr('required', 'required');
             }
             $('#package').on('change', function() {
                 var packageId = $(this).val();
                 if (packageId == '1') {
                     $('#bannerSection').hide();
+                    $('#bannerSection').find('input, textarea').removeAttr('required');
+                } else {
+                    $('#bannerSection').show();
+                    $('#bannerSection').find('input[type="file"]').attr('required', 'required');
                 }
                 $('#category_id').empty().append($('<option>', {
                     value: '',
