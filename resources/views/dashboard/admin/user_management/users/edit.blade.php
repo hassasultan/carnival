@@ -325,7 +325,7 @@
 
 
                 <!-- Button to add more banners -->
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-12 bannerSection">
                     <button type="button" id="addBannerBtn" class="btn btn-success">+ Add Another Banner</button>
                 </div>
 
