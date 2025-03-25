@@ -341,7 +341,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="shop_email">Email <span class="text-danger">*</span></label>
-                        <input id="shop_email" type="shop_email"
+                        <input id="shop_email" type="email"
                             class="form-control @error('shop_email') is-invalid @enderror" name="shop_email"
                             value="{{ old('shop_email') }}" required autocomplete="shop_email">
                         @error('shop_email')
