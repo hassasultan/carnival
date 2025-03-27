@@ -84,8 +84,12 @@
                         <div class="city-entry bg-grey-2">
                             <div class="tour-block tour-block-s-9 hover-green radius-5 underline-block">
                                 <div class="tour-layer delay-1"></div>
-                                <img src="{{ asset('shopAssets/images/carnival/flight.jpeg') }}" class="res-img"
-                                    alt="">
+                                @if ($row->city->airport != null)
+                                    <img src="{{ asset($row->city->airport) }}" class="res-img" alt="">
+                                @else
+                                    <img src="{{ asset('shopAssets/images/carnival/flight.jpeg') }}" class="res-img"
+                                        alt="">
+                                @endif
                                 <div class="tour-caption">
                                     <div class="vertical-align">
                                         <h3 class="underline hover-it">{{ $row->name }}</h3>
@@ -116,9 +120,15 @@
                                         <div class="tab-info active">
                                             <div class="hotel-line clearfix">
                                                 <a class="hotel-img black-hover" href="#">
-                                                    <img class="img-responsive"
-                                                        src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                                        alt="">
+                                                    @if ($row->city->hotel != null)
+                                                        <img class="img-responsive" src="{{ asset($row->city->hotel) }}"
+                                                            alt="">
+                                                    @else
+                                                        <img class="img-responsive"
+                                                            src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
+                                                            alt="">
+                                                    @endif
+
                                                     <div class="tour-layer delay-1"></div>
                                                 </a>
                                                 <div class="hotel-line-content">
@@ -162,9 +172,16 @@
                                             </div>
                                             <div class="hotel-line clearfix">
                                                 <a class="hotel-img black-hover" href="#">
-                                                    <img class="img-responsive"
-                                                        src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                                        alt="">
+                                                    @if ($row->city->hotel != null)
+                                                        <img class="img-responsive"
+                                                            src="{{ asset($row->city->hotel) }}"
+                                                            alt="">
+                                                    @else
+                                                        <img class="img-responsive"
+                                                            src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
+                                                            alt="">
+                                                    @endif
+
                                                     <div class="tour-layer delay-1"></div>
                                                 </a>
                                                 <div class="hotel-line-content">
