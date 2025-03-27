@@ -106,35 +106,24 @@
                                     <div class="tab-nav-wrapper">
                                         <div class="nav-tab  clearfix">
                                             @php
-                                            if($row->city->airport != null)
-                                            {
-                                                $airport = asset($row->city->airport);
-                                            }
-                                            else
-                                            {
-                                                $airport = asset('shopAssets/images/carnival/flight.jpeg')
-                                            }
-                                            if($row->city->hotel != null)
-                                            {
-                                                $hotel = asset($row->city->hotel);
-
-                                            }
-                                            else
-                                            {
-                                                $hotel = asset('shopAssets/images/carnival/hotel.jpeg');
-                                            }
-                                            if($row->city->event != null)
-                                            {
-                                                $event = asset($row->city->event);
-
-                                            }
-                                            else
-                                            {
-                                                $event = asset('shopAssets/images/carnival/event2.jpeg');
-                                            }
-
+                                                if ($row->city->airport != null) {
+                                                    $airport = asset($row->city->airport);
+                                                } else {
+                                                    $airport = asset('shopAssets/images/carnival/flight.jpeg');
+                                                }
+                                                if ($row->city->hotel != null) {
+                                                    $hotel = asset($row->city->hotel);
+                                                } else {
+                                                    $hotel = asset('shopAssets/images/carnival/hotel.jpeg');
+                                                }
+                                                if ($row->city->event != null) {
+                                                    $event = asset($row->city->event);
+                                                } else {
+                                                    $event = asset('shopAssets/images/carnival/event2.jpeg');
+                                                }
                                             @endphp
-                                            <div class="nav-tab-item active carnival-cover" data-img="{{ $airport }}">
+                                            <div class="nav-tab-item active carnival-cover"
+                                                data-img="{{ $airport }}">
                                                 Flights
                                             </div>
                                             <div class="nav-tab-item carnival-cover" data-img="{{ $hotel }}">
@@ -153,9 +142,9 @@
                                                         <img class="img-responsive" src="{{ asset($row->city->airport) }}"
                                                             alt="">
                                                     @else --}}
-                                                        <img class="img-responsive"
-                                                            src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                                            alt="">
+                                                    <img class="img-responsive"
+                                                        src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
+                                                        alt="">
                                                     {{-- @endif --}}
 
                                                     <div class="tour-layer delay-1"></div>
@@ -202,8 +191,7 @@
                                             <div class="hotel-line clearfix">
                                                 <a class="hotel-img black-hover" href="#">
                                                     @if ($row->city->hotel != null)
-                                                        <img class="img-responsive"
-                                                            src="{{ asset($row->city->hotel) }}"
+                                                        <img class="img-responsive" src="{{ asset($row->city->hotel) }}"
                                                             alt="">
                                                     @else
                                                         <img class="img-responsive"
