@@ -311,13 +311,13 @@
         $(document).on('click', '.carnival-cover', function() {
             let selectedTab = $(this).text().trim();
             console.log("Selected Tab:", selectedTab);
-
+            let selectedTabImage = $(this).attr('data-img');
             let parentContainer = $(this).closest('.city-desc').siblings('.tour-block');
             let imageElement = parentContainer.find('.res-img');
 
-            if (imageMap[selectedTab]) {
-                imageElement.attr('src', imageMap[selectedTab]);
-                console.log("Updated Image:", imageMap[selectedTab]);
+            if (selectedTabImage) {
+                imageElement.attr('src', selectedTabImage);
+                console.log("Updated Image:", selectedTabImage);
             } else {
                 console.log("No matching image found for:", selectedTab);
             }

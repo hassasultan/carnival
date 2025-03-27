@@ -105,13 +105,13 @@
                                 <div class="tab-wrapper">
                                     <div class="tab-nav-wrapper">
                                         <div class="nav-tab  clearfix">
-                                            <div class="nav-tab-item active carnival-cover">
+                                            <div class="nav-tab-item active carnival-cover" data-img="{{ asset($row->city->airport) }}">
                                                 Flights
                                             </div>
-                                            <div class="nav-tab-item carnival-cover">
+                                            <div class="nav-tab-item carnival-cover" data-img="{{ asset($row->city->hotel) }}">
                                                 Hotels
                                             </div>
-                                            <div class="nav-tab-item carnival-cover">
+                                            <div class="nav-tab-item carnival-cover" data-img="{{ asset($row->city->event) }}">
                                                 Events
                                             </div>
                                         </div>
