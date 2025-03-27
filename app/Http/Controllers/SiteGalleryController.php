@@ -11,7 +11,7 @@ class SiteGalleryController extends Controller
 {
     public function index()
     {
-        $siteGalleries = GalleryAlbum::all();
+        $siteGalleries = GalleryAlbum::orderBy('DESC','id')->paginate(10);
         // $siteGalleries = SiteGallery::all();
         return view('dashboard.admin.site_gallery.index', compact('siteGalleries'));
     }
