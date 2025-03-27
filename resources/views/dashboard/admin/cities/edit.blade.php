@@ -24,14 +24,17 @@
                         <div class="form-group">
                             <label for="airport">Airport Image:</label>
                             <input type="file" class="form-control" id="airport" name="airport">
+                            <img src="{{ asset($city->airport) }}" style="height: auto; width: 200px;"/>
                         </div>
                         <div class="form-group">
                             <label for="hotel">Hotel Image:</label>
                             <input type="file" class="form-control" id="hotel" name="hotel">
+                            <img src="{{ asset($city->hotel) }}" style="height: auto; width: 200px;"/>
                         </div>
                         <div class="form-group">
                             <label for="event">Event Image:</label>
                             <input type="file" class="form-control" id="event" name="event">
+                            <img src="{{ asset($city->event) }}" style="height: auto; width: 200px;"/>
                         </div>
                         <button type="submit" class="btn btn-primary mt-3">Save</button>
                     </form>
