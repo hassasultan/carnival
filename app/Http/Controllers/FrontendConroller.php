@@ -45,7 +45,7 @@ class FrontendConroller extends Controller
         $banners = Banner::where('type', 'home')->get();
         $regions = Region::with('countries')->OrderBy('placement', 'ASC')->get();
         $services = OurService::get()->take('4');
-        $siteGallery = SiteGallery::get();
+        $siteGallery = SiteGallery::where('user_id',1)->get();
         $products = Product::with('brand')->get();
         $investors = Investor::all();
         $testimonials = Testimonials::where('status', 1)->get();
