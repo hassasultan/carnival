@@ -120,14 +120,14 @@
                                         <div class="tab-info active">
                                             <div class="hotel-line clearfix">
                                                 <a class="hotel-img black-hover" href="#">
-                                                    @if ($row->city->hotel != null)
-                                                        <img class="img-responsive" src="{{ asset($row->city->hotel) }}"
+                                                    {{-- @if ($row->city->airport != null)
+                                                        <img class="img-responsive" src="{{ asset($row->city->airport) }}"
                                                             alt="">
-                                                    @else
+                                                    @else --}}
                                                         <img class="img-responsive"
                                                             src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
                                                             alt="">
-                                                    @endif
+                                                    {{-- @endif --}}
 
                                                     <div class="tour-layer delay-1"></div>
                                                 </a>
