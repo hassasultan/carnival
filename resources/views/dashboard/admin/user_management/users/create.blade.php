@@ -569,10 +569,10 @@
                 var packageId = $(this).val();
 
                 if (packageId == '1') {
-                    $('#bannerSection').hide()
+                    $('.bannerSection').hide()
                         .find('input, textarea').prop('required', false).removeAttr('required');
                 } else {
-                    $('#bannerSection').show()
+                    $('.bannerSection').show()
                         .find('input[type="file"]').prop('required', true).attr('required', 'required');
                 }
 
