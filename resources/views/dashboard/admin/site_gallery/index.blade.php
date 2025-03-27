@@ -21,16 +21,16 @@
                             <table class="table table-bordered mt-3">
                                 <tr>
                                     <th>ID</th>
-                                    {{-- <th>Image</th> --}}
-                                    {{-- <th>Status</th> --}}
+                                    <th>Image</th>
+                                    <th>Status</th>
                                     <th>Title</th>
                                     <th>Actions</th>
                                 </tr>
                                 @foreach ($siteGalleries as $siteGallery)
                                     <tr>
                                         <td>{{ $siteGallery->id }}</td>
-                                        {{-- <td><img src="{{ asset('images/' . $siteGallery->image) }}" alt="Image" width="50"></td> --}}
-                                        {{-- <td>{{ $siteGallery->status == 1 ? 'Enabled' : 'Disabled' }}</td> --}}
+                                        <td><img src="{{ asset('images/' . $siteGallery->image) }}" alt="Image" width="50"></td>
+                                        <td>{{ $siteGallery->status == 1 ? 'Enabled' : 'Disabled' }}</td>
                                         <td>{{ $siteGallery->title }}</td>
                                         <td>
                                             <a href="{{ route('site_gallery.show', $siteGallery->id) }}" class="btn btn-info">Show</a>
