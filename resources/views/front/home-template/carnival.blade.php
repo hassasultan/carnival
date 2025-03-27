@@ -105,13 +105,42 @@
                                 <div class="tab-wrapper">
                                     <div class="tab-nav-wrapper">
                                         <div class="nav-tab  clearfix">
-                                            <div class="nav-tab-item active carnival-cover" data-img="{{ asset($row->city->airport) }}">
+                                            @php
+                                            if($row->city->airport != null)
+                                            {
+                                                $airport = asset($row->city->airport);
+                                            }
+                                            else
+                                            {
+                                                $airport = asset('shopAssets/images/carnival/flight.jpeg')
+                                            }
+                                            if($row->city->hotel != null)
+                                            {
+                                                $hotel = asset($row->city->hotel);
+
+                                            }
+                                            else
+                                            {
+                                                $hotel = asset('shopAssets/images/carnival/hotel.jpeg');
+                                            }
+                                            if($row->city->event != null)
+                                            {
+                                                $event = asset($row->city->event);
+
+                                            }
+                                            else
+                                            {
+                                                $event = asset('shopAssets/images/carnival/event2.jpeg');
+                                            }
+
+                                            @endphp
+                                            <div class="nav-tab-item active carnival-cover" data-img="{{ $airport }}">
                                                 Flights
                                             </div>
-                                            <div class="nav-tab-item carnival-cover" data-img="{{ asset($row->city->hotel) }}">
+                                            <div class="nav-tab-item carnival-cover" data-img="{{ $hotel }}">
                                                 Hotels
                                             </div>
-                                            <div class="nav-tab-item carnival-cover" data-img="{{ asset($row->city->event) }}">
+                                            <div class="nav-tab-item carnival-cover" data-img="{{ $event }}">
                                                 Events
                                             </div>
                                         </div>
