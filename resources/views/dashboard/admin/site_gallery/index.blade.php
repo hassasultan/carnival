@@ -29,13 +29,19 @@
                                 @foreach ($siteGalleries as $siteGallery)
                                     <tr>
                                         <td>{{ $siteGallery->id }}</td>
-                                        <td><img src="{{ asset('images/' . $siteGallery->image) }}" alt="Image" width="50"></td>
+                                        <td><img src="{{ asset('images/' . $siteGallery->image) }}" alt="Image"
+                                                width="50"></td>
                                         <td>{{ $siteGallery->status == 1 ? 'Enabled' : 'Disabled' }}</td>
                                         {{-- <td>{{ $siteGallery->title }}</td> --}}
                                         <td>
-                                            <a href="{{ route('site_gallery.show', $siteGallery->album->id) }}" class="btn btn-info">Show</a>
-                                            <a href="{{ route('site_gallery.edit', $siteGallery->album->id) }}" class="btn btn-primary">Edit</a>
-                                            <form action="{{ route('site_gallery.destroy', $siteGallery->id) }}" method="POST" style="display:inline-block;">
+                                            @if ($siteGallery->album != null)
+                                                <a href="{{ route('site_gallery.show', $siteGallery->album->id) }}"
+                                                    class="btn btn-info">Show</a>
+                                                <a href="{{ route('site_gallery.edit', $siteGallery->album->id) }}"
+                                                    class="btn btn-primary">Edit</a>
+                                            @endif
+                                            <form action="{{ route('site_gallery.destroy', $siteGallery->id) }}"
+                                                method="POST" style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>

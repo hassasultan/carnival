@@ -13,7 +13,7 @@ class SiteGalleryController extends Controller
     {
         // $siteGalleries = GalleryAlbum::orderBy('id','DESC')->paginate(10);
         $siteGalleries = SiteGallery::with('album')->get();
-        dd($siteGalleries->toArray());
+        // dd($siteGalleries->toArray());
         return view('dashboard.admin.site_gallery.index', compact('siteGalleries'));
     }
 
