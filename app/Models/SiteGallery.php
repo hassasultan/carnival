@@ -17,7 +17,7 @@ class SiteGallery extends Model
         'status',
     ];
 
-    public function album()
+    public function gellary_album()
     {
         return $this->belongsTo(GalleryAlbum::class, 'album', 'id');
     }

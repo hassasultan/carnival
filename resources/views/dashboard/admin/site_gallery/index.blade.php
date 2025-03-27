@@ -34,10 +34,10 @@
                                         <td>{{ $siteGallery->status == 1 ? 'Enabled' : 'Disabled' }}</td>
                                         {{-- <td>{{ $siteGallery->title }}</td> --}}
                                         <td>
-                                            @if ($siteGallery->album != null)
-                                                <a href="{{ route('site_gallery.show', $siteGallery->album->id) }}"
+                                            @if ($siteGallery->gellary_album != null)
+                                                <a href="{{ route('site_gallery.show', $siteGallery->gellary_album->id) }}"
                                                     class="btn btn-info">Show</a>
-                                                <a href="{{ route('site_gallery.edit', $siteGallery->album->id) }}"
+                                                <a href="{{ route('site_gallery.edit', $siteGallery->gellary_album->id) }}"
                                                     class="btn btn-primary">Edit</a>
                                             @endif
                                             <form action="{{ route('site_gallery.destroy', $siteGallery->id) }}"
