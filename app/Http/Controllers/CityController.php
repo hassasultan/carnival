@@ -25,12 +25,30 @@ class CityController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'country_id' => 'required|exists:country,id',
+            'airport' => 'required|mimes:jpeg,png,jpg,gif,mp4,avi,mov,wmv|max:101200',
+            'hotel' => 'required|mimes:jpeg,png,jpg,gif,mp4,avi,mov,wmv|max:101200',
+            'event' => 'required|mimes:jpeg,png,jpg,gif,mp4,avi,mov,wmv|max:101200',
         ]);
+        $data = $request->except(['_token']);;
+        $airport = $request->airport;
+        $airportImageName = time() . '.' . $airport->extension();
+        $airport->move(public_path('images/carnivalImages'), $airportImageName);
+        $data['airport'] = $airportImageName;
 
-        City::create($request->all());
+        $hotel = $request->hotel;
+        $hotelImageName = time() . '.' . $hotel->extension();
+        $hotel->move(public_path('images/carnivalImages'), $hotelImageName);
+        $data['hotel'] = $hotelImageName;
+
+        $event = $request->event;
+        $eventImageName = time() . '.' . $event->extension();
+        $event->move(public_path('images/carnivalImages'), $eventImageName);
+        $data['event'] = $eventImageName;
+
+        City::create($data);
 
         return redirect()->route('cities.index')
-                         ->with('success', 'City created successfully.');
+            ->with('success', 'City created successfully.');
     }
 
     public function show(City $city)
@@ -49,12 +67,36 @@ class CityController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'country_id' => 'required|exists:country,id',
+            // 'airport' => 'required|mimes:jpeg,png,jpg,gif,mp4,avi,mov,wmv|max:101200',
+            // 'hotel' => 'required|mimes:jpeg,png,jpg,gif,mp4,avi,mov,wmv|max:101200',
+            // 'event' => 'required|mimes:jpeg,png,jpg,gif,mp4,avi,mov,wmv|max:101200',
         ]);
-
-        $city->update($request->all());
+        $data = $request->except(['_token','_method']);
+        if($request->hasFile('airport'))
+        {
+            $airport = $request->airport;
+            $airportImageName = time() . '.' . $airport->extension();
+            $airport->move(public_path('images/carnivalImages'), $airportImageName);
+            $data['airport'] = $airportImageName;
+        }
+        if($request->hasFile('hotel'))
+        {
+            $hotel = $request->hotel;
+            $hotelImageName = time() . '.' . $hotel->extension();
+            $hotel->move(public_path('images/carnivalImages'), $hotelImageName);
+            $data['hotel'] = $hotelImageName;
+        }
+        if($request->hasFile('event'))
+        {
+            $event = $request->event;
+            $eventImageName = time() . '.' . $event->extension();
+            $event->move(public_path('images/carnivalImages'), $eventImageName);
+            $data['event'] = $eventImageName;
+        }
+        $city->update($data);
 
         return redirect()->route('cities.index')
-                         ->with('success', 'City updated successfully.');
+            ->with('success', 'City updated successfully.');
     }
 
     public function destroy(City $city)
@@ -62,6 +104,6 @@ class CityController extends Controller
         $city->delete();
 
         return redirect()->route('cities.index')
-                         ->with('success', 'City deleted successfully.');
+            ->with('success', 'City deleted successfully.');
     }
 }
