@@ -69,6 +69,12 @@ class UserManagementController extends Controller
             $user->save();
         }
 
+        if ($request->hasFile('logo')) {
+            $imageName = $this->uploadImage($request->file('logo'), 'images');
+            $user->logo = $imageName;
+            $user->save();
+        }
+
         return redirect()->route('users.index')
             ->with('success', 'User registered successfully.');
     }
@@ -124,10 +130,10 @@ class UserManagementController extends Controller
                 $data['role_id'] = '2';
             }
 
-            if ($data['logo']) {
-                $imageName = $this->uploadImage($data['logo'], 'images');
-                $logo = $imageName;
-            }
+            // if ($data['logo']) {
+            //     $imageName = $this->uploadImage($data['logo'], 'images');
+            //     $logo = $imageName;
+            // }
 
             $user = User::create([
                 'first_name' => $data['first_name'],
