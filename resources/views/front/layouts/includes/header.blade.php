@@ -191,7 +191,8 @@
                                 </ul>
                             </li>
 
-                            <li class="type-1"><a href="#">Carnivals<span class="fa fa-chevron-right"></span></a>
+                            <li class="type-1"><a href="#">Carnivals<span
+                                        class="fa fa-chevron-right"></span></a>
                                 <ul class="dropmenu">
                                     <li><a href="{{ route('front.vendors') }}">Mascamps</a></li>
                                     <li><a href="">Carnival Commitees</a></li>
@@ -199,10 +200,18 @@
                                 </ul>
                             </li>
 
-                            <li><a href="{{ route('front.carnival.listing') }}">Carnival Listing <span
+                            <li class="type-1"><a href="{{ route('front.carnival.listing') }}">Carnival Listing<span
+                                        class="fa fa-chevron-right"></span></a>
+                                <ul class="dropmenu">
+                                    <li><a href="">Carnival Commitees</a></li>
+                                    <li><a href="{{ route('front.vendors') }}">Mascamps</a></li>
+                                </ul>
+                            </li>
+
+                            {{-- <li><a href="{{ route('front.carnival.listing') }}">Carnival Listing <span
                                         class="fa fa-chevron-right"></span></a>
 
-                            </li>
+                            </li> --}}
 
                             <li class="type-1"><a href="">Gallery/Media <span
                                         class="fa fa-chevron-right"></span></a>
