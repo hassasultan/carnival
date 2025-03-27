@@ -227,11 +227,12 @@ class CarnivalController extends Controller
                 }
 
                 // Fetch only the updated carnival
-                $carnivals = Carnival::find($carnival->id);
+                $updatedCarnival = Carnival::find($carnival->id);
+                $carnivals = Carnival::all();
                 $view = view('dashboard.admin.carnivals.table', compact('carnivals'))->render();
 
                 return response()->json([
-                    'carnival' => $carnivals,
+                    'carnival' => $updatedCarnival,
                     'message' => 'Carnival updated successfully',
                     'table_html' => $view
                 ], 200);
