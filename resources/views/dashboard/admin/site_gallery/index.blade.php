@@ -44,6 +44,11 @@
                                     </tr>
                                 @endforeach
                             </table>
+                            <div class="d-felx justify-content-center">
+
+                                {{ $siteGalleries->links() }}
+
+                            </div>
                         </div>
                     </div>
                 </div>
