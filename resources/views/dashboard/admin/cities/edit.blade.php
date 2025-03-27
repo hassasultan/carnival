@@ -6,7 +6,7 @@
             <h2 class="mb-2 page-title">Edit City</h2>
             <div class="card shadow">
                 <div class="card-body">
-                    <form action="{{ route('cities.update', $city->id) }}" method="POST">
+                    <form action="{{ route('cities.update', $city->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
