@@ -21,6 +21,18 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="airport">Airport Image:</label>
+                            <input type="file" class="form-control" id="airport" name="airport">
+                        </div>
+                        <div class="form-group">
+                            <label for="hotel">Hotel Image:</label>
+                            <input type="file" class="form-control" id="hotel" name="hotel">
+                        </div>
+                        <div class="form-group">
+                            <label for="event">Event Image:</label>
+                            <input type="file" class="form-control" id="event" name="event">
+                        </div>
                         <button type="submit" class="btn btn-primary mt-3">Save</button>
                     </form>
                 </div>
