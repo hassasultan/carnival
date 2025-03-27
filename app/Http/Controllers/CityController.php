@@ -32,17 +32,17 @@ class CityController extends Controller
         $data = $request->except(['_token']);;
         $airport = $request->airport;
         $airportImageName = time() . '.' . $airport->extension();
-        $airport->move(public_path('images/carnivalImages'), $airportImageName);
+        $airport->move(public_path('images/airport/carnivalImages'), $airportImageName);
         $data['airport'] = $airportImageName;
 
         $hotel = $request->hotel;
         $hotelImageName = time() . '.' . $hotel->extension();
-        $hotel->move(public_path('images/carnivalImages'), $hotelImageName);
+        $hotel->move(public_path('images/hotel/carnivalImages'), $hotelImageName);
         $data['hotel'] = $hotelImageName;
 
         $event = $request->event;
         $eventImageName = time() . '.' . $event->extension();
-        $event->move(public_path('images/carnivalImages'), $eventImageName);
+        $event->move(public_path('images/event/carnivalImages'), $eventImageName);
         $data['event'] = $eventImageName;
 
         City::create($data);
@@ -76,21 +76,21 @@ class CityController extends Controller
         {
             $airport = $request->airport;
             $airportImageName = time() . '.' . $airport->extension();
-            $airport->move(public_path('images/carnivalImages'), $airportImageName);
+            $airport->move(public_path('images/airport/carnivalImages'), $airportImageName);
             $data['airport'] = $airportImageName;
         }
         if($request->hasFile('hotel'))
         {
             $hotel = $request->hotel;
             $hotelImageName = time() . '.' . $hotel->extension();
-            $hotel->move(public_path('images/carnivalImages'), $hotelImageName);
+            $hotel->move(public_path('images/hotel/carnivalImages'), $hotelImageName);
             $data['hotel'] = $hotelImageName;
         }
         if($request->hasFile('event'))
         {
             $event = $request->event;
             $eventImageName = time() . '.' . $event->extension();
-            $event->move(public_path('images/carnivalImages'), $eventImageName);
+            $event->move(public_path('images/event/carnivalImages'), $eventImageName);
             $data['event'] = $eventImageName;
         }
         $city->update($data);
