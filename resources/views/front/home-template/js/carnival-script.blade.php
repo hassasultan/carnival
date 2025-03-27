@@ -319,6 +319,7 @@
                 imageElement.attr('src', selectedTabImage);
                 console.log("Updated Image:", selectedTabImage);
             } else {
+                imageElement.attr('src', imageMap[selectedTab]);
                 console.log("No matching image found for:", selectedTab);
             }
         });
