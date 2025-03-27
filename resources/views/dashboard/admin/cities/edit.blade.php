@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label for="airport">Airport Image:</label>
                             <input type="file" class="form-control" id="airport" name="airport">
-                            <img src="{{ asset('images/airport/carnivalImages/'.$city->airport) }}" style="height: auto; width: 200px;"/>
+                            <img src="{{ asset($city->airport) }}" style="height: auto; width: 200px;"/>
                         </div>
                         <div class="form-group">
                             <label for="hotel">Hotel Image:</label>
