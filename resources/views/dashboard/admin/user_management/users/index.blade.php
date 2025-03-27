@@ -88,6 +88,11 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="d-felx justify-content-center">
+
+                                {{ $users->links() }}
+
+                            </div>
                         </div>
                     </div>
                 </div> <!-- data table -->
