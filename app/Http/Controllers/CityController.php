@@ -33,13 +33,13 @@ class CityController extends Controller
         ]);
         $data = $request->except(['_token']);;
         $airportImageName = $this->uploadImage($request->file('airport'), 'images/airport/carnivalImages');
-        $data['airport'] = 'images/airport/carnivalImages' . $airportImageName;
+        $data['airport'] = 'images/airport/carnivalImages/' . $airportImageName;
 
         $hotelImageName = $this->uploadImage($request->file('hotel'), 'images/hotel/carnivalImages');
-        $data['hotel'] = 'images/hotel/carnivalImages' . $hotelImageName;
+        $data['hotel'] = 'images/hotel/carnivalImages/' . $hotelImageName;
 
         $eventImageName = $this->uploadImage($request->file('event'), 'images/event/carnivalImages');
-        $data['event'] = 'images/event/carnivalImages' . $eventImageName;
+        $data['event'] = 'images/event/carnivalImages/' . $eventImageName;
 
         City::create($data);
 
@@ -70,15 +70,15 @@ class CityController extends Controller
         $data = $request->except(['_token', '_method']);
         if ($request->hasFile('airport')) {
             $airportImageName = $this->uploadImage($request->file('airport'), 'images/airport/carnivalImages');
-            $data['airport'] = 'images/airport/carnivalImages' . $airportImageName;
+            $data['airport'] = 'images/airport/carnivalImages/' . $airportImageName;
         }
         if ($request->hasFile('hotel')) {
             $hotelImageName = $this->uploadImage($request->file('hotel'), 'images/hotel/carnivalImages');
-            $data['hotel'] = 'images/hotel/carnivalImages' . $hotelImageName;
+            $data['hotel'] = 'images/hotel/carnivalImages/' . $hotelImageName;
         }
         if ($request->hasFile('event')) {
             $eventImageName = $this->uploadImage($request->file('event'), 'images/event/carnivalImages');
-            $data['event'] = 'images/event/carnivalImages' . $eventImageName;
+            $data['event'] = 'images/event/carnivalImages/' . $eventImageName;
         }
         $city->update($data);
 
