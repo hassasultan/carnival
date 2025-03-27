@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                <div class="second-title" style="padding-top: 0px;">
+                <div class="second-title">
                     <h4 class="subtitle color-blue-2 underline">our gallery</h4>
                     <h2>photos our customers</h2>
                 </div>
