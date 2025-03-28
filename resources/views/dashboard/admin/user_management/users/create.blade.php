@@ -485,71 +485,71 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="Age">Age</label>
-                        <input id="Age" type="text" class="form-control @error('Age') is-invalid @enderror"
-                            name="Age" value="{{ old('Age') }}" autocomplete="Age">
-                        @error('Age')
+                        <label for="age">Age</label>
+                        <input id="age" type="text" class="form-control @error('age') is-invalid @enderror"
+                            name="age" value="{{ old('age') }}" autocomplete="age">
+                        @error('age')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="Nationality">Nationality</label>
-                        <input id="Nationality" type="text"
-                            class="form-control @error('Nationality') is-invalid @enderror" name="Nationality"
-                            value="{{ old('Nationality') }}" autocomplete="Nationality">
-                        @error('Nationality')
+                        <label for="nationality">Nationality</label>
+                        <input id="nationality" type="text"
+                            class="form-control @error('nationality') is-invalid @enderror" name="nationality"
+                            value="{{ old('nationality') }}" autocomplete="nationality">
+                        @error('nationality')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="Height">Height</label>
-                        <input id="Height" type="text" class="form-control @error('Height') is-invalid @enderror"
-                            name="Height" value="{{ old('Height') }}" autocomplete="Height">
-                        @error('Height')
+                        <label for="height">Height</label>
+                        <input id="height" type="text" class="form-control @error('height') is-invalid @enderror"
+                            name="height" value="{{ old('height') }}" autocomplete="height">
+                        @error('height')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="Weight">Weight</label>
-                        <input id="Weight" type="text" class="form-control @error('Weight') is-invalid @enderror"
-                            name="Weight" value="{{ old('Weight') }}" autocomplete="Weight">
-                        @error('Weight')
+                        <label for="weight">Weight</label>
+                        <input id="weight" type="text" class="form-control @error('weight') is-invalid @enderror"
+                            name="weight" value="{{ old('weight') }}" autocomplete="weight">
+                        @error('weight')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="Bust">Bust</label>
-                        <input id="Bust" type="text" class="form-control @error('Bust') is-invalid @enderror"
-                            name="Bust" value="{{ old('Bust') }}" autocomplete="Bust">
-                        @error('Bust')
+                        <label for="bust">Bust</label>
+                        <input id="bust" type="text" class="form-control @error('bust') is-invalid @enderror"
+                            name="bust" value="{{ old('bust') }}" autocomplete="bust">
+                        @error('bust')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="Hips">Hips</label>
-                        <input id="Hips" type="text" class="form-control @error('Hips') is-invalid @enderror"
-                            name="Hips" value="{{ old('Hips') }}" autocomplete="Hips">
-                        @error('Hips')
+                        <label for="hips">Hips</label>
+                        <input id="hips" type="text" class="form-control @error('hips') is-invalid @enderror"
+                            name="hips" value="{{ old('hips') }}" autocomplete="hips">
+                        @error('hips')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="Waist">Waist</label>
-                        <input id="Waist" type="text" class="form-control @error('Waist') is-invalid @enderror"
-                            name="Waist" value="{{ old('Waist') }}" autocomplete="Waist">
-                        @error('Waist')
+                        <label for="waist">Waist</label>
+                        <input id="waist" type="text" class="form-control @error('waist') is-invalid @enderror"
+                            name="waist" value="{{ old('waist') }}" autocomplete="waist">
+                        @error('waist')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
