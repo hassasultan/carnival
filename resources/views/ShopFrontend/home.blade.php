@@ -107,6 +107,9 @@
                                                 @if ($oackage->slug == 'DJs')
                                                     <a href="{{ url('shop/artist-listing') }}"
                                                         class="btn btn-shop-now">Discover Now</a>
+                                                @elseif ($oackage->slug == 'models')
+                                                    <a href="{{ url('shop/model-listing') }}"
+                                                        class="btn btn-shop-now">Discover Now</a>
                                                 @else
                                                     <a href="{{ url('shop/' . $oackage->slug . '-listing') }}"
                                                         class="btn btn-shop-now">Discover Now</a>
