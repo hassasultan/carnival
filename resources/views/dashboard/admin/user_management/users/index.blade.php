@@ -39,7 +39,7 @@
                                                     </div>
                                                 </td>
                                                 <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
-                                                <td>{{ $user->first_name . ' ' . $user->last_name }} {{ $user->vendor ? $user->vendor->name : ($user->subvendor ? $user->subvendor->name : '') }}</td>
+                                                <td>{{ $user->first_name . ' ' . $user->last_name }} - {{ $user->vendor ? $user->vendor->name : ($user->subvendor ? $user->subvendor->name : '') }}</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>
                                                     @if ($user->role && $user->role_id != '4')
