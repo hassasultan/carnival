@@ -446,7 +446,8 @@
                                         <div class="submenu drop-menu">
                                             <ul>
                                                 <li><a href="{{ route('front.vendors') }}">Mascamps</a></li>
-                                                <li><a href="{{ route('front.carnival_listing') }}">Carnival Commitees</a></li>
+                                                <li><a href="{{ route('front.carnival_listing') }}">Carnival
+                                                        Commitees</a></li>
                                             </ul>
                                         </div>
                                     </li>
@@ -707,18 +708,18 @@
                                     Route::is('model.detail'))
                                 <ul class="category-links">
                                     {{-- @if ($user->packageName != 'Artistes') --}}
-                                        <li><a href="{{ route('details.aboutUs', $user->slug) }}">About us</a>
-                                        </li>
+                                    <li><a href="{{ route('details.aboutUs', $user->slug) }}">About us</a>
+                                    </li>
                                     {{-- @endif --}}
                                     <li>
-                                        @if ($user->packageName == 'Models')
-                                            <a href="{{ route('model.booking.create', $user->slug) }}">Send
-                                                a message</a>
-                                        @else
+                                        {{-- @if ($user->packageName == 'Models') --}}
+                                        <a href="{{ route('model.booking.create', $user->slug) }}">Send
+                                            a message</a>
+                                        {{-- @else
                                             <a
                                                 href="mailto:{{ $user->vendor?->email ?? ($user->subVendor?->email ?? ($user->email ?? 'Email not available')) }}?subject=Inquiry&body=Hello {{ $user->name }},">Send
                                                 a message</a>
-                                        @endif
+                                        @endif --}}
                                     </li>
                                     <li><a href="{{ route('myEevent.listing', $user->slug) }}">Events</a></li>
                                     <li><a href="{{ route('front.myGallery', $user->slug) }}">Gallery</a></li>
