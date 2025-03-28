@@ -495,50 +495,52 @@
                                             <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
                                         </div>
 
-                                        <div class="contact-item">
-                                            <span class="text">Age:</span>
-                                            <a href="javascript:void(0);">{{ $user->age }}</a>
-                                        </div>
+                                        @if ($user->packageName == 'Models')
+                                            <div class="contact-item">
+                                                <span class="text">Age:</span>
+                                                <a href="javascript:void(0);">{{ $user->age }}</a>
+                                            </div>
 
-                                        <div class="contact-item">
-                                            <span class="text">Nationality:</span>
-                                            <a href="javascript:void(0);">{{ $user->nationality }}</a>
-                                        </div>
+                                            <div class="contact-item">
+                                                <span class="text">Nationality:</span>
+                                                <a href="javascript:void(0);">{{ $user->nationality }}</a>
+                                            </div>
 
-                                        <div class="contact-item">
-                                            <span class="text">Height:</span>
-                                            <a href="javascript:void(0);">{{ $user->height }}</a>
-                                        </div>
+                                            <div class="contact-item">
+                                                <span class="text">Height:</span>
+                                                <a href="javascript:void(0);">{{ $user->height }}</a>
+                                            </div>
 
-                                        <div class="contact-item">
-                                            <span class="text">Weight:</span>
-                                            <a href="javascript:void(0);">{{ $user->weight }}</a>
-                                        </div>
+                                            <div class="contact-item">
+                                                <span class="text">Weight:</span>
+                                                <a href="javascript:void(0);">{{ $user->weight }}</a>
+                                            </div>
 
-                                        <div class="contact-item">
-                                            <span class="text">Bust:</span>
-                                            <a href="javascript:void(0);">{{ $user->bust }}</a>
-                                        </div>
+                                            <div class="contact-item">
+                                                <span class="text">Bust:</span>
+                                                <a href="javascript:void(0);">{{ $user->bust }}</a>
+                                            </div>
 
-                                        <div class="contact-item">
-                                            <span class="text">Hips:</span>
-                                            <a href="javascript:void(0);">{{ $user->hips }}</a>
-                                        </div>
+                                            <div class="contact-item">
+                                                <span class="text">Hips:</span>
+                                                <a href="javascript:void(0);">{{ $user->hips }}</a>
+                                            </div>
 
-                                        <div class="contact-item">
-                                            <span class="text">Waist:</span>
-                                            <a href="javascript:void(0);">{{ $user->waist }}</a>
-                                        </div>
+                                            <div class="contact-item">
+                                                <span class="text">Waist:</span>
+                                                <a href="javascript:void(0);">{{ $user->waist }}</a>
+                                            </div>
 
-                                        <div class="contact-item">
-                                            <span class="text">About:</span>
-                                            <a href="javascript:void(0);">
-                                                @php
-                                                    use Illuminate\Support\Str;
-                                                @endphp
-                                                {!! Str::limit(strip_tags($event->description), 200) !!}
-                                            </a>
-                                        </div>
+                                            <div class="contact-item">
+                                                <span class="text">About:</span>
+                                                <a href="javascript:void(0);">
+                                                    @php
+                                                        use Illuminate\Support\Str;
+                                                    @endphp
+                                                    {!! Str::limit(strip_tags($event->description), 200) !!}
+                                                </a>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
 
