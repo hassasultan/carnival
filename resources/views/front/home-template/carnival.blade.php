@@ -190,7 +190,7 @@
                                             </div>
                                             <div class="hotel-line clearfix">
                                                 <a class="hotel-img black-hover" href="#">
-                                                    @if ($row->city->hotel != null)
+                                                    @if ($row->city && $row->city->hotel != null)
                                                         <img class="img-responsive" src="{{ asset($row->city->hotel) }}"
                                                             alt="">
                                                     @else
