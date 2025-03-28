@@ -106,17 +106,17 @@
                                     <div class="tab-nav-wrapper">
                                         <div class="nav-tab  clearfix">
                                             @php
-                                                if ($row->city->airport != null) {
+                                                if ($row->city && $row->city->airport != null) {
                                                     $airport = asset($row->city->airport);
                                                 } else {
                                                     $airport = asset('shopAssets/images/carnival/flight.jpeg');
                                                 }
-                                                if ($row->city->hotel != null) {
+                                                if ($row->city && $row->city->hotel != null) {
                                                     $hotel = asset($row->city->hotel);
                                                 } else {
                                                     $hotel = asset('shopAssets/images/carnival/hotel.jpeg');
                                                 }
-                                                if ($row->city->event != null) {
+                                                if ($row->city && $row->city->event != null) {
                                                     $event = asset($row->city->event);
                                                 } else {
                                                     $event = asset('shopAssets/images/carnival/event2.jpeg');
