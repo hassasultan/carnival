@@ -507,7 +507,7 @@
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" href=""><img
                                                                     alt="product name"
-                                                                    src="{{ asset('uploads/carnival_members/' . $item->image) }}"></a>
+                                                                    src="{{ asset($item->image) }}"></a>
                                                             {{-- <div class="product-item-actions">
                                                     <a class="btn btn-wishlist"
                                                         href=""><span>wishlist</span></a>
