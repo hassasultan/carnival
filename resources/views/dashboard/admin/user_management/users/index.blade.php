@@ -60,12 +60,12 @@
   </style>
 <div class="row justify-content-center">
     <div class="col-12">
-        <h2 class="mb-2 page-title">Blogs</h2>
-        <p class="card-text">Blogs table</p>
+        <h2 class="mb-2 page-title">Users</h2>
+        <p class="card-text">Users table</p>
         <div class="row my-4">
             <!-- data table -->
             <div class="col-md-12">
-                <a href="{{ route('vendor.blogs.create') }}" class="btn btn-primary mb-2">Add New Blog</a>
+                <a href="{{ route('users.add') }}" class="btn btn-primary mb-2">Add New User</a>
                 <div class="card shadow">
                     <div class="card-body skeleton-container">
                         <!-- table -->
@@ -172,23 +172,22 @@
         let i = 1;
         $.each(response, function(index, row) {
             html += '<tr>';
-            html += '<td></td>';
             html += '<td>' + i + '</td>';
-            html += '<td>' + row.title + '</td>';
             html += '<td>' + row.user.first_name + ' '+ row.user.last_name +'</td>';
-            html += '<td>' + row.category.title + '</td>';
-            html += '<td>';
-            html += row.status == 1 ? '<span class="badge bg-success">Acrive</span>' : '<span class="badge bg-danger">InActive</span>';
-            html += '</td>';
+            html += '<td>' + row.user.first_name + ' '+ row.user.last_name +'</td>';
+            html += '<td>' + row.user.first_name + ' '+ row.user.last_name +'</td>';
+            html += '<td>' + row.user.first_name + ' '+ row.user.last_name +'</td>';
+            html += '<td>' + row.user.first_name + ' '+ row.user.last_name +'</td>';
+            html += '<td>' + row.user.first_name + ' '+ row.user.last_name +'</td>';
             html += '<td class="text-center">' + moment(row.created_at).format('DD/MM/YYYY hh:mm:ss') + '</td>';
-            html += '<td>';
-            html +=
-                '  <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-            html += '<span class="text-muted sr-only">Action</span>';
-            html += '</button>';
-            html += '<div class="dropdown-menu dropdown-menu-right shadow">';
-            html += '<a class="dropdown-item" href="' + currentUrl + '/' + row.id +
-                '/edit"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
+            // html += '<td>';
+            // html +=
+            //     '  <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+            // html += '<span class="text-muted sr-only">Action</span>';
+            // html += '</button>';
+            // html += '<div class="dropdown-menu dropdown-menu-right shadow">';
+            // html += '<a class="dropdown-item" href="' + currentUrl + '/' + row.id +
+            //     '/edit"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
             // html += '<a class="dropdown-item" href="#"><i class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove</a>';
             // html += '<a class="dropdown-item" href="#"><i class="fe fe-flag fe-12 mr-3 text-muted"></i>Assign</a>';
             html += '</div></td>';
