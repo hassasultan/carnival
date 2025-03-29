@@ -123,7 +123,9 @@
         fetchDataOnReady();
     });
     $(document).ready(function() {
+        console.log('hone wala ha');
         fetchDataOnReady();
+        console.log('hgya ha');
     });
 
     function fetchDataOnClick(page) {
