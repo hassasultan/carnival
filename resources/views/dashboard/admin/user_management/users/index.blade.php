@@ -224,103 +224,145 @@
 @endsection --}}
 
 
-
-
-
 @extends('dashboard.admin.layouts.app')
 
 @section('content')
+    <style>
+        .skeleton-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .skeleton-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .skeleton-table th,
+        .skeleton-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .skeleton-item {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skeleton-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+    </style>
     <div class="row justify-content-center">
         <div class="col-12">
             <h2 class="mb-2 page-title">Users</h2>
-            <p class="card-text">Users table.</p>
+            <p class="card-text">Users table</p>
             <div class="row my-4">
-                <!-- data table -->
                 <div class="col-md-12">
-                    <a href="{{ route('users.add') }}" class="btn btn-primary mb-2">Add New User</a>
+                    <a href="{{ route('users.create') }}" class="btn btn-primary mb-2">Add New User</a>
                     <div class="card shadow">
-                        <div class="card-body">
-                            <!-- table -->
-                            <table class="table table-striped" id="dataTable-1">
+                        <div class="card-body skeleton-container">
+                            <table class="skeleton-table table table-hover">
                                 <thead>
                                     <tr>
                                         <th>Sr#</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Role</th>
-                                        <th>Vendor Package</th>
                                         <th>Status</th>
                                         <th>Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @php $counter = 1 @endphp <!-- Initialize counter -->
-                                    @foreach ($users as $user)
-                                        {{-- {{ dd($users->toArray()) }} --}}
-                                        @if ($user->role_id != 1)
-                                            <tr>
-                                                <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
-                                                <td>{{ $user->first_name . ' ' . $user->last_name }} -
-                                                    {{ $user->vendor ? $user->vendor->name : ($user->subvendor ? $user->subvendor->name : '') }}
-                                                </td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>
-                                                    @if ($user->role && $user->role_id != '4')
-                                                        {{ $user->role->name }}
-                                                    @else
-                                                        Customer
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($user->role_id == 2)
-                                                        {{ $user->vendor?->package?->title }}
-                                                    @else
-                                                        Not A Vendor
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($user->status == 1)
-                                                        <span class="badge badge-success">Active</span>
-                                                    @else
-                                                        <span class="badge badge-danger">InActive</span>
-                                                    @endif
-                                                </td>
-                                                <td>{{ $user->created_at }}</td>
-                                                <td>
-                                                    <button
-                                                        class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted"
-                                                        type="button" data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <span class="text-muted sr-only">Action</span>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-right shadow">
-                                                        <a class="dropdown-item"
-                                                            href="{{ route('users.edit', $user->id) }}"><i
-                                                                class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>
-                                                        <form action="{{ route('users.destroy', $user->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="dropdown-item"><i
-                                                                    class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove</button>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endif
-                                    @endforeach
-                                </tbody>
+                                <tbody id="user-table-body"></tbody>
                             </table>
-                            <div class="d-felx justify-content-center">
-
-                                {{ $users->links() }}
-
-                            </div>
+                            <nav aria-label="Table Paging" class="mb-0 text-muted">
+                                <ul class="pagination justify-content-center mb-0" id="user-pagination"></ul>
+                            </nav>
                         </div>
                     </div>
-                </div> <!-- data table -->
-            </div> <!-- end section -->
-        </div> <!-- .col-12 -->
+                </div>
+            </div>
+        </div>
     </div>
+@endsection
+
+@section('bottom_script')
+    <script>
+        $(document).ready(function() {
+            fetchUsers();
+        });
+
+        function fetchUsers(page = 1) {
+            $.ajax({
+                url: "{{ route('users.index') }}",
+                type: "GET",
+                data: { type: 'ajax', page: page },
+                success: function(response) {
+                    $('#user-table-body').empty();
+                    generateUserRows(response.data);
+                    generatePagination(response);
+                },
+                error: function(xhr) {
+                    console.error("Error fetching users:", xhr);
+                }
+            });
+        }
+
+        function generateUserRows(users) {
+            let html = '';
+            let i = 1;
+            users.forEach(user => {
+                let editUrl = "{{ route('users.edit', ':id') }}".replace(':id', user.id);
+                html += `<tr>
+                            <td>\${i}</td>
+                            <td>\${user.name}</td>
+                            <td>\${user.email}</td>
+                            <td>\${user.role}</td>
+                            <td>\${user.status == 1 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-danger">Inactive</span>'}</td>
+                            <td class="text-center">\${moment(user.created_at).format('DD/MM/YYYY hh:mm:ss')}</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" href="\${editUrl}">Edit</a>
+                            </td>
+                        </tr>`;
+                i++;
+            });
+            $('#user-table-body').html(html);
+        }
+
+        function generatePagination(response) {
+            let html = '';
+            if (response.prev_page_url) {
+                html += `<li class="page-item"><a onclick="fetchUsers(${response.current_page - 1})" href="#" class="page-link">Previous</a></li>`;
+            }
+            for (let i = 1; i <= response.last_page; i++) {
+                html += `<li class="page-item ${i == response.current_page ? 'active' : ''}"><a onclick="fetchUsers(${i})" href="#" class="page-link">\${i}</a></li>`;
+            }
+            if (response.next_page_url) {
+                html += `<li class="page-item"><a onclick="fetchUsers(${response.current_page + 1})" href="#" class="page-link">Next</a></li>`;
+            }
+            $('#user-pagination').html(html);
+        }
+    </script>
 @endsection
