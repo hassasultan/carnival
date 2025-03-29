@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Customer;
 use App\Models\Region;
+use App\Models\Blogs;
 use App\Models\UserDetailBanner;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -26,7 +27,8 @@ class UserManagementController extends Controller
     public function indexUser()
     {
         $users = User::with('role')->paginate(20);
-        return view('dashboard.admin.user_management.users.index', compact('users'));
+        $blogs = Blogs::with("category", "user","regions")->paginate(10);
+        return view('dashboard.admin.user_management.users.index', compact('users', 'blogs'));
     }
 
     public function createUser()
