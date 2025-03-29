@@ -19,8 +19,9 @@
                             <div class="col-md-3">
                                 <select id="role_filter" class="form-control">
                                     <option value="">Select Role</option>
-                                    <option value="2">Vendor</option>
-                                    <option value="3">Customer</option>
+                                    @foreach ($packages as $item)
+                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3">

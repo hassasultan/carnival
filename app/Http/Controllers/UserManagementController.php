@@ -27,6 +27,7 @@ class UserManagementController extends Controller
     public function indexUser(Request $request)
     {
         // $users = User::with('role')->paginate(20);
+        $packages = Package::where('status', 1)->get();
         $query = User::with(['role', 'vendor.package', 'subvendor'])->where('role_id', '!=', 1);
 
         if ($request->filled('search')) {
@@ -58,7 +59,7 @@ class UserManagementController extends Controller
         if ($request->ajax()) {
             return view('dashboard.admin.users.partials.user_table', compact('users'))->render();
         }
-        return view('dashboard.admin.user_management.users.index', compact('users'));
+        return view('dashboard.admin.user_management.users.index', compact('users', 'packages'));
     }
 
     public function createUser()
