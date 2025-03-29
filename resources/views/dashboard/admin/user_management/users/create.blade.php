@@ -717,7 +717,7 @@
 
             $(document).on('change', '#age_range', function() {
                 var age_range = $(this).val();
-                if (age_range == ) {
+                if (age_range == 'kid') {
                     $('#vendors_input').show();
                 } else {
                     $('#vendors_input').hide();
