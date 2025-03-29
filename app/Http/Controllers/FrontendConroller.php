@@ -45,8 +45,8 @@ class FrontendConroller extends Controller
         $banners = Banner::where('type', 'home')->get();
         $regions = Region::with('countries')->OrderBy('placement', 'ASC')->get();
         $services = OurService::get()->take('4');
-        $siteGallery = SiteGallery::with('user')->whereHas('user',function($query){
-            $query->where('role_id',1);
+        $siteGallery = SiteGallery::with('user')->whereHas('user', function ($query) {
+            $query->where('role_id', 1);
         })->get();
         $products = Product::with('brand')->get();
         $investors = Investor::all();
@@ -1008,6 +1008,7 @@ class FrontendConroller extends Controller
         // dd($request->toArray());
         $selectedTab = $request->selectedTab;
         $carnivalId = $request->carnivalId;
+        $things = '';
 
         if ($selectedTab == 'Events') {
             $things = Event::get();

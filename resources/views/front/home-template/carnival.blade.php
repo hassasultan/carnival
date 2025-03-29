@@ -289,7 +289,7 @@
                                             </div>
                                         </div>
                                         <div class="tab-info">
-                                            <div class="hotel-line clearfix">
+                                            {{-- <div class="hotel-line clearfix">
                                                 <a class="hotel-img black-hover" href="#">
                                                     <img class="img-responsive"
                                                         src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
@@ -356,7 +356,7 @@
                                                     </div>
                                                     <div class="hotel-line-price">from $273</div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="discover-more">
                                             <a href="{{ route('events.view.more', $row->id) }}">View More</a>
