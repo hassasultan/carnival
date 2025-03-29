@@ -275,7 +275,8 @@
                     <div class="card shadow mb-3 p-3">
                         <div class="row">
                             <div class="col-md-3">
-                                <input type="text" id="search" class="form-control" placeholder="Search by name or email">
+                                <input type="text" id="search" class="form-control"
+                                    placeholder="Search by name or email">
                             </div>
                             <div class="col-md-3">
                                 <select id="role_filter" class="form-control">
@@ -306,12 +307,13 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
-
+@endsection
+@section('bottom_script')
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             function fetchUsers(page = 1) {
                 let search = $('#search').val();
                 let role = $('#role_filter').val();
@@ -320,30 +322,42 @@
                 $.ajax({
                     url: "{{ route('users.index') }}?page=" + page,
                     method: "GET",
-                    data: { search: search, role: role, status: status },
-                    beforeSend: function () {
+                    data: {
+                        search: search,
+                        role: role,
+                        status: status
+                    },
+                    beforeSend: function() {
                         $('#usersTable').html('<div class="text-center">Loading...</div>');
                     },
-                    success: function (response) {
+                    success: function(response) {
                         $('#usersTable').html(response);
                     }
                 });
             }
 
-            $(document).on('click', '.pagination a', function (event) {
+            // Handle pagination click with filters preserved
+            $(document).on('click', '.pagination a', function(event) {
                 event.preventDefault();
                 let page = $(this).attr('href').split('page=')[1];
                 fetchUsers(page);
             });
 
-            $('#filterBtn').on('click', function () {
+            // Trigger filtering
+            $('#filterBtn').on('click', function() {
                 fetchUsers();
             });
 
-            $('#resetBtn').on('click', function () {
+            // Reset filters and fetch default data
+            $('#resetBtn').on('click', function() {
                 $('#search').val('');
                 $('#role_filter').val('');
                 $('#status_filter').val('');
+                fetchUsers();
+            });
+
+            // Trigger search as user types (optional, for live search)
+            $('#search').on('keyup', function() {
                 fetchUsers();
             });
         });
