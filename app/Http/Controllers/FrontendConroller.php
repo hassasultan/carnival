@@ -1005,7 +1005,15 @@ class FrontendConroller extends Controller
 
     public function getCarnivalThings(Request $request)
     {
-        dd($request->toArray());
+        // dd($request->toArray());
+        $selectedTab = $request->selectedTab;
+        $carnivalId = $request->carnivalId;
+
+        if ($selectedTab == 'Events') {
+            $things = Event::get();
+        }
+
+        return $things;
     }
 
     public function cgGear_listing(Request $request)

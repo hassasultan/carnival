@@ -122,14 +122,14 @@
                                                     $event = asset('shopAssets/images/carnival/event2.jpeg');
                                                 }
                                             @endphp
-                                            <div class="nav-tab-item active carnival-cover"
+                                            <div class="nav-tab-item active carnival-cover" data-id="{{ $row->id }}"
                                                 data-img="{{ $airport }}">
                                                 Flights
                                             </div>
-                                            <div class="nav-tab-item carnival-cover" data-img="{{ $hotel }}">
+                                            <div class="nav-tab-item carnival-cover" data-id="{{ $row->id }}" data-img="{{ $hotel }}">
                                                 Hotels
                                             </div>
-                                            <div class="nav-tab-item carnival-cover" data-img="{{ $event }}">
+                                            <div class="nav-tab-item carnival-cover" data-id="{{ $row->id }}" data-img="{{ $event }}">
                                                 Events
                                             </div>
                                         </div>

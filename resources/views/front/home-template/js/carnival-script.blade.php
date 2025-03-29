@@ -310,6 +310,7 @@
 
         $(document).on('click', '.carnival-cover', function() {
             let selectedTab = $(this).text().trim();
+            let carnivalId = $(this).data('id');
             console.log("Selected Tab:", selectedTab);
             let selectedTabImage = $(this).attr('data-img');
             let parentContainer = $(this).closest('.city-desc').siblings('.tour-block');
@@ -328,9 +329,11 @@
                 method: "GET",
                 data: {
                     _token: "{{ csrf_token() }}",
-                    selectedTab: selectedTab
+                    selectedTab: selectedTab,
+                    carnivalId: carnivalId,
                 },
                 success: function(response) {
+                    console.log('responseThings', response.things);
                     // alert(response.success);
                 },
                 error: function(xhr) {
