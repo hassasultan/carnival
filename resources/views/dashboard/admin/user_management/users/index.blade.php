@@ -129,7 +129,7 @@
     function fetchDataOnClick(page) {
         console.log(page);
         $.ajax({
-            url: "{{ route('vendor.blogs.index') }}",
+            url: "{{ route('users.index') }}",
             type: "GET",
             data: {
                 type: 'ajax',
@@ -148,7 +148,7 @@
 
     function fetchDataOnReady() {
         $.ajax({
-            url: "{{ route('vendor.blogs.index') }}",
+            url: "{{ route('users.index') }}",
             type: "GET",
             data: {
                 type: 'ajax',
