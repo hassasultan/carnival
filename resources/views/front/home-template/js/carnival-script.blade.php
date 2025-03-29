@@ -312,16 +312,17 @@
             let selectedTab = $(this).text().trim();
             let carnivalId = $(this).data('id');
             console.log("Selected Tab:", selectedTab);
+
             let selectedTabImage = $(this).attr('data-img');
             let parentContainer = $(this).closest('.city-desc').siblings('.tour-block');
             let imageElement = parentContainer.find('.res-img');
 
             if (selectedTabImage) {
                 imageElement.attr('src', selectedTabImage);
-                // console.log("Updated Image:", selectedTabImage);
-            } else {
+            } else if (typeof imageMap !== "undefined" && imageMap[selectedTab]) {
                 imageElement.attr('src', imageMap[selectedTab]);
-                // console.log("No matching image found for:", selectedTab);
+            } else {
+                console.log("No matching image found for:", selectedTab);
             }
 
             $.ajax({
@@ -334,34 +335,43 @@
                 },
                 success: function(response) {
                     console.log('responseThings', response.things);
-                    var html = `
-                        <div class="hotel-line clearfix">
-                            <a class="hotel-img black-hover" href="#">
-                                <img class="img-responsive"
-                                    src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                    alt="">
-                                <div class="tour-layer delay-1"></div>
-                            </a>
-                            <div class="hotel-line-content">
-                                <a class="hotel-line-title" href="#">1. ${things.name}</a>
-                                <div class="rate-wrap">
-                                    <div class="rate">
-                                        <span class="fa fa-star color-yellow"></span>
-                                        <span class="fa fa-star color-yellow"></span>
-                                        <span class="fa fa-star color-yellow"></span>
-                                        <span class="fa fa-star color-yellow"></span>
-                                        <span class="fa fa-star color-yellow"></span>
+
+                    let container = $(
+                        '#someContainer'
+                        ); // Replace with actual container where data should be displayed
+                    container.empty(); // Clear previous results
+
+                    $.each(response.things, function(index, things) {
+                        let html = `
+                            <div class="hotel-line clearfix">
+                                <a class="hotel-img black-hover" href="#">
+                                    <img class="img-responsive"
+                                        src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
+                                        alt="">
+                                    <div class="tour-layer delay-1"></div>
+                                </a>
+                                <div class="hotel-line-content">
+                                    <a class="hotel-line-title" href="#">${index + 1}. ${things.name}</a>
+                                    <div class="rate-wrap">
+                                        <div class="rate">
+                                            <span class="fa fa-star color-yellow"></span>
+                                            <span class="fa fa-star color-yellow"></span>
+                                            <span class="fa fa-star color-yellow"></span>
+                                            <span class="fa fa-star color-yellow"></span>
+                                            <span class="fa fa-star color-yellow"></span>
+                                        </div>
+                                        <i>485 Reviews</i>
                                     </div>
-                                    <i>485 Rewies</i>
+                                    <div class="hotel-line-price">from $273</div>
                                 </div>
-                                <div class="hotel-line-price">from $273</div>
                             </div>
-                        </div>
-                    `;
-                    // alert(response.success);
+                        `;
+                        container.append(html);
+                    });
                 },
                 error: function(xhr) {
-                    alert(xhr.responseJSON.errors.email[0]);
+                    console.error("Error:", xhr.responseText);
+                    alert("An error occurred. Please try again.");
                 }
             });
         });
