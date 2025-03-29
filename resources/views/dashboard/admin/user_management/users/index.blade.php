@@ -175,12 +175,12 @@
         $.each(response, function(index, row) {
             html += '<tr>';
             html += '<td>' + i + '</td>';
-            html += '<td>' + row.user.first_name + ' '+ row.user.last_name +'</td>';
-            html += '<td>' + row.user.first_name + ' '+ row.user.last_name +'</td>';
-            html += '<td>' + row.user.first_name + ' '+ row.user.last_name +'</td>';
-            html += '<td>' + row.user.first_name + ' '+ row.user.last_name +'</td>';
-            html += '<td>' + row.user.first_name + ' '+ row.user.last_name +'</td>';
-            html += '<td>' + row.user.first_name + ' '+ row.user.last_name +'</td>';
+            html += '<td>' + row.first_name + ' '+ row.last_name +'</td>';
+            html += '<td>' + row.first_name + ' '+ row.last_name +'</td>';
+            html += '<td>' + row.first_name + ' '+ row.last_name +'</td>';
+            html += '<td>' + row.first_name + ' '+ row.last_name +'</td>';
+            html += '<td>' + row.first_name + ' '+ row.last_name +'</td>';
+            html += '<td>' + row.first_name + ' '+ row.last_name +'</td>';
             html += '<td class="text-center">' + moment(row.created_at).format('DD/MM/YYYY hh:mm:ss') + '</td>';
             // html += '<td>';
             // html +=
