@@ -715,7 +715,7 @@
                 $(this).siblings('.custom-file-label').text(fileNames);
             });
 
-            $(document).on('change', '.age_range', function() {
+            $(document).on('change', '#age_range', function() {
                 var age_range = $(this).val();
                 if (age_range == ) {
                     $('#vendors_input').show();
