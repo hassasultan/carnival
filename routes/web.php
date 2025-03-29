@@ -213,6 +213,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // user management
     Route::get('/users', [UserManagementController::class, 'indexUser'])->name('users.index');
+    Route::get('/get-users', [UserManagementController::class, 'getUsers'])->name('admin.users.index');
     Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');
     Route::post('/users/register', [UserManagementController::class, 'register'])->name('users.register');
     Route::get('/users/edit/{id}', [UserManagementController::class, 'edit'])->name('users.edit');
