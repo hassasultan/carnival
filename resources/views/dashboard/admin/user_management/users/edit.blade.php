@@ -33,6 +33,20 @@
                         @enderror
                     </div>
                 </div>
+                <div class="form-group" id="">
+                    <label for="age_range">Age Range</label>
+                    <select id="age_range" class="form-control @error('age_range') is-invalid @enderror"
+                        name="age_range">
+                        <option value="">Select Age Range</option>
+                        <option value="adult" @if($user->age_range == 'adult') selected @endif>Adult</option>
+                        <option value="kid" @if($user->age_range == 'kid') selected @endif>Kid</option>
+                    </select>
+                    @error('age_range')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -493,6 +507,21 @@
                 </div>
 
                 <div class="form-row">
+                    <div class="form-group" id="">
+                        <label for="gender">Gender</label>
+                        <select id="gender" class="form-control @error('gender') is-invalid @enderror"
+                            name="gender">
+                            <option value="">Select Gender</option>
+                            <option value="male" @if($user->gender == 'male') selected @endif>Male</option>
+                            <option value="female" @if($user->gender == 'female') selected @endif>Female</option>
+                            <option value="others" @if($user->gender == 'others') selected @endif>Others</option>
+                        </select>
+                        @error('gender')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                     <div class="form-group col-md-6">
                         <label for="age">Age</label>
                         <input id="age" type="text" class="form-control @error('age') is-invalid @enderror"

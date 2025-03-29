@@ -42,6 +42,8 @@ class User extends Authenticatable
         'bust',
         'hips',
         'waist',
+        'age_range',
+        'gender',
     ];
 
     /**

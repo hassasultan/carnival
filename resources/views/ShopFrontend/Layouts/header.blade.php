@@ -60,6 +60,13 @@
             animation: loading 1.5s infinite;
         }
 
+        .main-image-fix {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
         @keyframes loading {
             0% {
                 left: -100%;

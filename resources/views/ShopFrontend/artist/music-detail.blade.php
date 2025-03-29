@@ -330,7 +330,7 @@
                                                 }
                                             @endphp
                                             <img id="mainImage" src="{{ $image }}" alt="Main Image"
-                                                class="main-image" />
+                                                class="main-image main-image-fix" />
                                         </div>
                                         <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i
                                                 class="fas fa-expand"></i></button>

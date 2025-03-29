@@ -243,7 +243,7 @@
                                         <div class="zoom-container">
                                             <img id="mainImage"
                                                 src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
-                                                alt="Main Image" class="main-image" />
+                                                alt="Main Image" class="main-image main-image-fix" />
                                         </div>
                                         <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i
                                                 class="fas fa-expand"></i></button>

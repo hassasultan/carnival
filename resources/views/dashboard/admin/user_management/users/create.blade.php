@@ -32,6 +32,20 @@
                         @enderror
                     </div>
                 </div>
+                <div class="form-group" id="">
+                    <label for="age_range">Age Range</label>
+                    <select id="age_range" class="form-control @error('age_range') is-invalid @enderror"
+                        name="age_range">
+                        <option value="">Select Age Range</option>
+                        <option value="adult">Adult</option>
+                        <option value="kid">Kid</option>
+                    </select>
+                    @error('age_range')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
                 <div class="form-group">
                     <label for="email">Email Address <span class="text-danger">*</span></label>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -484,6 +498,21 @@
                     </div>
                 </div>
                 <div class="form-row">
+                    <div class="form-group" id="">
+                        <label for="gender">Gender</label>
+                        <select id="gender" class="form-control @error('gender') is-invalid @enderror"
+                            name="gender">
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="others">Others</option>
+                        </select>
+                        @error('gender')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                     <div class="form-group col-md-6">
                         <label for="age">Age</label>
                         <input id="age" type="text" class="form-control @error('age') is-invalid @enderror"
@@ -684,6 +713,15 @@
                 }
                 // Update the label text
                 $(this).siblings('.custom-file-label').text(fileNames);
+            });
+
+            $(document).on('change', '.age_range', function() {
+                var age_range = $(this).val();
+                if (age_range == ) {
+                    $('#vendors_input').show();
+                } else {
+                    $('#vendors_input').hide();
+                }
             });
         });
 
