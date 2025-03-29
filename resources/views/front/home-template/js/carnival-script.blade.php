@@ -358,7 +358,7 @@
                             "FREE";
 
                         let html = `
-                            <div class="hotel-line clearfix">
+                            <div class="hotel-line clearfix mb-2">
                                 <a class="hotel-img black-hover" href="${eventDetailUrl}">
                                     <img class="img-responsive" src="${bannerUrl}" alt="">
                                     <div class="tour-layer delay-1"></div>
