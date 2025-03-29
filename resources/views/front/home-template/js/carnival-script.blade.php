@@ -351,9 +351,11 @@
 
                     $.each(response.things, function(index, things) {
                         let eventDetailUrl =
-                        `/my-event/${things.slug}`;
+                            `/my-event/${things.slug}`;
                         let bannerUrl =
-                        `/eventBanner/${things.banner}`;
+                            `/eventBanner/${things.banner}`;
+                        let priceText = things.price ? `from ${things.price}` :
+                            "FREE";
 
                         let html = `
                             <div class="hotel-line clearfix">
@@ -363,17 +365,7 @@
                                 </a>
                                 <div class="hotel-line-content">
                                     <a class="hotel-line-title" href="${eventDetailUrl}">${index + 1}. ${things.name}</a>
-                                    <div class="rate-wrap">
-                                        <div class="rate">
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                            <span class="fa fa-star color-yellow"></span>
-                                        </div>
-                                        <i>485 Reviews</i>
-                                    </div>
-                                    <div class="hotel-line-price">from $273</div>
+                                    <div class="hotel-line-price">${priceText}</div>
                                 </div>
                             </div>
                         `;
