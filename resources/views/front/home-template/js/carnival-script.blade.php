@@ -358,11 +358,21 @@
                             "FREE";
 
                         let html = `
-                            <div class="hotel-line clearfix mb-2">
+                            <div class="hotel-line clearfix">
                                 <a class="hotel-img black-hover" href="${eventDetailUrl}">
                                     <img class="img-responsive" src="${bannerUrl}" alt="">
                                     <div class="tour-layer delay-1"></div>
                                 </a>
+                                <div class="rate-wrap">
+                                    <div class="rate">
+                                        <span class="fa fa-star color-yellow"></span>
+                                        <span class="fa fa-star color-yellow"></span>
+                                        <span class="fa fa-star color-yellow"></span>
+                                        <span class="fa fa-star color-yellow"></span>
+                                        <span class="fa fa-star color-yellow"></span>
+                                    </div>
+                                    <i>485 Rewies</i>
+                                </div>
                                 <div class="hotel-line-content">
                                     <a class="hotel-line-title" href="${eventDetailUrl}">${index + 1}. ${things.name}</a>
                                     <div class="hotel-line-price">${priceText}</div>
