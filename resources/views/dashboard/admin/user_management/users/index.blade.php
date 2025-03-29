@@ -66,7 +66,7 @@
             <div class="row my-4">
                 <!-- data table -->
                 <div class="col-md-12">
-                    <a href="{{ route('blogs.create') }}" class="btn btn-primary mb-2">Add New Blog</a>
+                    <a href="{{ route('users.create') }}" class="btn btn-primary mb-2">Add New Blog</a>
                     <div class="card shadow">
                         <div class="card-body skeleton-container">
                             <!-- table -->
@@ -167,7 +167,7 @@
         function fetchDataOnClick(page) {
             console.log(page);
             $.ajax({
-                url: "{{ route('blogs.index') }}",
+                url: "{{ route('users.index') }}",
                 type: "GET",
                 data: {
                     type: 'ajax',
@@ -186,7 +186,7 @@
 
         function fetchDataOnReady() {
             $.ajax({
-                url: "{{ route('blogs.index') }}",
+                url: "{{ route('users.index') }}",
                 type: "GET",
                 data: {
                     type: 'ajax',
@@ -209,7 +209,7 @@
             // const currentUrl = window.location.href;
             let i = 1;
             $.each(response, function(index, row) {
-                const currentUrl = "{{ route('blogs.edit', ':id') }}".replace(':id', row.id);
+                const currentUrl = "{{ route('users.edit', ':id') }}".replace(':id', row.id);
                 html += '<tr>';
                 html += '<td></td>';
                 html += '<td>' + i + '</td>';
