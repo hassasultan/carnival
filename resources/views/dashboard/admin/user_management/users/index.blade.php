@@ -19,9 +19,8 @@
                             <div class="col-md-3">
                                 <select id="role_filter" class="form-control">
                                     <option value="">Select Role</option>
-                                    @foreach ($packages as $item)
-                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
-                                    @endforeach
+                                    <option value="2">Vendor</option>
+                                    <option value="3">Customer</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -34,8 +33,9 @@
                             <div class="col-md-3">
                                 <select id="package_filter" class="form-control">
                                     <option value="">Select Package</option>
-                                    <option value="1">Active</option>
-                                    <option value="0">Inactive</option>
+                                    @foreach ($packages as $item)
+                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3">
