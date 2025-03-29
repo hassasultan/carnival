@@ -317,11 +317,27 @@
 
             if (selectedTabImage) {
                 imageElement.attr('src', selectedTabImage);
-                console.log("Updated Image:", selectedTabImage);
+                // console.log("Updated Image:", selectedTabImage);
             } else {
                 imageElement.attr('src', imageMap[selectedTab]);
-                console.log("No matching image found for:", selectedTab);
+                // console.log("No matching image found for:", selectedTab);
             }
+
+            $.ajax({
+                url: "{{ route('get.carnival.events') }}",
+                method: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    email: email
+                },
+                success: function(response) {
+                    // alert(response.success);
+                    $('.subscribe-form')[0].reset();
+                },
+                error: function(xhr) {
+                    alert(xhr.responseJSON.errors.email[0]);
+                }
+            });
         });
     });
 </script>

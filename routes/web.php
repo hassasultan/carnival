@@ -67,6 +67,7 @@ use App\Http\Controllers\StateController;
 
 Route::get('/', [FrontendConroller::class, 'home'])->name('front.home');
 Route::get('/aboutus', [FrontendConroller::class, 'aboutus'])->name('front.aboutus');
+Route::get('/get-carnival-things', [FrontendConroller::class, 'getCarnivalThings'])->name('get.carnival.things');
 Route::get('/travel', [FrontendConroller::class, 'travel'])->name('front.travel');
 Route::get('/get-carnivals-by-region/{id}', [FrontendConroller::class, 'get_carnivals_by_region'])->name('front.getCarnivalsbyRegion');
 Route::get('/get-carnivals-by-region-for-home/{id}', [FrontendConroller::class, 'get_carnivals_by_region_for_home'])->name('front.getCarnivalsbyRegionForHome');

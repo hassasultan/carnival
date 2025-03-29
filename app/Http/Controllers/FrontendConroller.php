@@ -1003,6 +1003,11 @@ class FrontendConroller extends Controller
         return view('partials.banner_details', compact('type', 'data'));
     }
 
+    public function getCarnivalThings(Request $request)
+    {
+        dd($request->toArray());
+    }
+
     public function cgGear_listing(Request $request)
     {
         // Retrieve products by admin users
