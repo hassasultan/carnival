@@ -25,6 +25,13 @@
                 margin-right: 30px;
             }
         }
+        
+        @media (max-width: 768px) {
+            .owl-item {
+                width: 100x;
+                margin: auto;
+            }
+        }
     </style>
     <!-- MAIN -->
     <main class="site-main">

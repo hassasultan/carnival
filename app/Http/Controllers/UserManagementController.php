@@ -149,13 +149,13 @@ class UserManagementController extends Controller
                 'zipcode' => $data['zipcode'],
                 'role_id' => $data['role_id'],
                 'slug' => $slug,
-                'age' => $data['Age'] ? $data['Age'] : null,
-                'nationality' => $data['Nationality'] ? $data['Nationality'] : null,
-                'height' => $data['Height'] ? $data['Height'] : null,
-                'weight' => $data['Weight'] ? $data['Weight'] : null,
-                'bust' => $data['Bust'] ? $data['Bust'] : null,
-                'hips' => $data['Hips'] ? $data['Hips'] : null,
-                'waist' => $data['Waist'] ? $data['Waist'] : null,
+                'age' => $data['age'] ? $data['age'] : null,
+                'nationality' => $data['nationality'] ? $data['nationality'] : null,
+                'height' => $data['height'] ? $data['height'] : null,
+                'weight' => $data['weight'] ? $data['weight'] : null,
+                'bust' => $data['bust'] ? $data['bust'] : null,
+                'hips' => $data['hips'] ? $data['hips'] : null,
+                'waist' => $data['waist'] ? $data['waist'] : null,
             ]);
 
             if (isset($data['banner']) && is_array($data['banner'])) {

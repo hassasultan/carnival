@@ -15,7 +15,6 @@
                             <table class="table table-striped" id="dataTable-1">
                                 <thead>
                                     <tr>
-                                        <th></th>
                                         <th>Sr#</th>
                                         <th>Name</th>
                                         <th>Email</th>
@@ -32,12 +31,6 @@
                                         {{-- {{ dd($users->toArray()) }} --}}
                                         @if ($user->role_id != 1)
                                             <tr>
-                                                <td>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <label class="custom-control-label"></label>
-                                                    </div>
-                                                </td>
                                                 <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
                                                 <td>{{ $user->first_name . ' ' . $user->last_name }} -
                                                     {{ $user->vendor ? $user->vendor->name : ($user->subvendor ? $user->subvendor->name : '') }}
