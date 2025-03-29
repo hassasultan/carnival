@@ -27,7 +27,7 @@ class UserManagementController extends Controller
     public function indexUser()
     {
         $users = User::with('role')->paginate(20);
-        $blogs = Blogs::with("category", "user","regions")->paginate(10);
+        $blogs = Blogs::with("category", "user","region")->paginate(10);
         return view('dashboard.admin.user_management.users.index', compact('users', 'blogs'));
     }
 
