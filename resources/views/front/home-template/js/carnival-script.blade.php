@@ -328,11 +328,10 @@
                 method: "POST",
                 data: {
                     _token: "{{ csrf_token() }}",
-                    email: email
+                    selectedTab: selectedTab
                 },
                 success: function(response) {
                     // alert(response.success);
-                    $('.subscribe-form')[0].reset();
                 },
                 error: function(xhr) {
                     alert(xhr.responseJSON.errors.email[0]);
