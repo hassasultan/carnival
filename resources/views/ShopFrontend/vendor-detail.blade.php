@@ -506,7 +506,7 @@
                                 "992":{"items":3}
                             }'
                                             id="best-sell-div">
-
+                                            {{ dd($carnival->members->toArray()) }}
                                             @foreach ($carnival->members as $item)
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
