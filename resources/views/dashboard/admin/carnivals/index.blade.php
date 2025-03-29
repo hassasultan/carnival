@@ -983,6 +983,8 @@
                         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
                     },
                     data: formData,
+                    processData: false,
+                    contentType: false,
                     success: function(response) {
                         $('#assignMasscampModal').modal('hide');
                         toastr.success(response.success);
