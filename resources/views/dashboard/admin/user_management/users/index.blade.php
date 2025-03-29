@@ -280,7 +280,7 @@
             <p class="card-text">Users table</p>
             <div class="row my-4">
                 <div class="col-md-12">
-                    <a href="{{ route('users.create') }}" class="btn btn-primary mb-2">Add New User</a>
+                    <a href="{{ route('users.add') }}" class="btn btn-primary mb-2">Add New User</a>
                     <div class="card shadow">
                         <div class="card-body skeleton-container">
                             <table class="skeleton-table table table-hover">
