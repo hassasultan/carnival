@@ -1011,7 +1011,7 @@ class FrontendConroller extends Controller
         $things = '';
 
         if ($selectedTab == 'Events') {
-            $things = Event::sortByDesc('created_at')->take(3)->get();
+            $things = Event::orderBy('id', 'DESC')->take(3)->get();
         }
 
         return $things;
