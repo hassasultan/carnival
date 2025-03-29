@@ -324,7 +324,7 @@
             }
 
             $.ajax({
-                url: "{{ route('get.carnival.events') }}",
+                url: "{{ route('get.carnival.things') }}",
                 method: "POST",
                 data: {
                     _token: "{{ csrf_token() }}",
