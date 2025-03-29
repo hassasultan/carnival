@@ -61,12 +61,12 @@
     </style>
     <div class="row justify-content-center">
         <div class="col-12">
-            <h2 class="mb-2 page-title">Blogs</h2>
-            <p class="card-text">Blogs table</p>
+            <h2 class="mb-2 page-title">Users</h2>
+            <p class="card-text">Users table</p>
             <div class="row my-4">
                 <!-- data table -->
                 <div class="col-md-12">
-                    <a href="{{ route('users.create') }}" class="btn btn-primary mb-2">Add New Blog</a>
+                    <a href="{{ route('users.add') }}" class="btn btn-primary mb-2">Add New Blog</a>
                     <div class="card shadow">
                         <div class="card-body skeleton-container">
                             <!-- table -->
