@@ -430,8 +430,11 @@ class CarnivalController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('uploads/carnival_members', 'public');
-            $validatedData['image'] = url('storage/' . $imagePath);
+            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+
+            $request->image->move(public_path('uploads/carnival_members'), $imageName);
+
+            $validatedData['image']  = 'uploads/carnival_members/' . $imageName;
         }
 
         try {
