@@ -43,11 +43,12 @@ class UserManagementController extends Controller
         }
 
         if ($request->filled('package')) {
-            dd($query->get()->toArray());
-            $query->whereHas('vendor', function ($q) use ($request) {
-                $q->where('package_id', $request->package);
-            })->orWhereHas('subVendor', function ($q) use ($request) {
-                $q->where('package_id', $request->package);
+            $query->where(function ($q) use ($request) {
+                $q->whereHas('vendor', function ($q) use ($request) {
+                    $q->where('package_id', $request->package);
+                })->orWhereHas('subVendor', function ($q) use ($request) {
+                    $q->where('package_id', $request->package);
+                });
             });
         }
 
