@@ -316,9 +316,9 @@
                                                 "992":{"items":3}
                                             }'
                                         id="best-sell-div">
-                                        {{ dd($carnival->mascamps->toArray(), $carnival->members->toArray(), $carnival->user->products->toArray()) }}
+                                        {{-- {{ dd($carnival->mascamps->toArray(), $carnival->members->toArray(), $carnival->user->products->toArray()) }} --}}
                                         @foreach ($carnival->mascamps as $item)
-                                            <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-opt-1 ">
                                                 <div class="product-item-info">
                                                     <div class="product-item-photo">
                                                         <a class="product-item-img" href=""><img
@@ -508,7 +508,7 @@
                                             id="best-sell-div">
 
                                             @foreach ($carnival->members as $item)
-                                                <div class="product-item  product-item-opt-1 ">
+                                                <div class="product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" href=""><img
