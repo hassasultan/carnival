@@ -289,42 +289,42 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                    @if (count($carnival->mascamps) > 0)
-                        <!-- block tab products -->
-                        <div class="block-tab-products-opt1">
+                        @if (count($carnival->mascamps) > 0)
+                            <!-- block tab products -->
+                            <div class="block-tab-products-opt1">
 
-                            <div class="block-title">
-                                <ul class="nav" role="tablist">
-                                    <li role="presentation" class="active">
-                                        <a href="#tabproduct1" role="tab" id="best-sell" data-toggle="tab">Queen
-                                            Show
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                                <div class="block-title">
+                                    <ul class="nav" role="tablist">
+                                        <li role="presentation" class="active">
+                                            <a href="#tabproduct1" role="tab" id="best-sell" data-toggle="tab">Queen
+                                                Show
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                            <div class="block-content tab-content">
+                                <div class="block-content tab-content">
 
-                                <!-- tab 1 -->
-                                <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
-                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                        data-responsive='{
+                                    <!-- tab 1 -->
+                                    <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
+                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                            data-responsive='{
                                                 "0":{"items":1},
                                                 "480":{"items":2},
                                                 "480":{"items":2},
                                                 "768":{"items":3},
                                                 "992":{"items":3}
                                             }'
-                                        id="best-sell-div">
-                                        {{-- {{ dd($carnival->mascamps->toArray(), $carnival->members->toArray(), $carnival->user->products->toArray()) }} --}}
-                                        @foreach ($carnival->mascamps as $item)
-                                            <div class="product-item  product-item-opt-1 ">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href=""><img
-                                                                alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
-                                                        {{-- <div class="product-item-actions">
+                                            id="best-sell-div">
+                                            {{-- {{ dd($carnival->mascamps->toArray(), $carnival->members->toArray(), $carnival->user->products->toArray()) }} --}}
+                                            @foreach ($carnival->mascamps as $item)
+                                                <div class="product-item  product-item-opt-1 ">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href=""><img
+                                                                    alt="product name"
+                                                                    src="{{ asset('images/' . $item->logo) }}"></a>
+                                                            {{-- <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
                                                             href=""><span>wishlist</span></a>
                                                         <a class="btn btn-compare" href=""><span>compare</span></a>
@@ -335,26 +335,26 @@
                                                             Cart</span></button>
                                                     <span class="product-item-label label-price">30%
                                                         <span>off</span></span> --}}
-                                                    </div>
-                                                    <div class="product-item-detail">
-                                                        {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
-                                                        <div class="clearfix">
-                                                            <div class="product-item-price">
-                                                                <span class="price">{{ $item->name }}</span>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
+                                                            <div class="clearfix">
+                                                                <div class="product-item-price">
+                                                                    <span class="price">{{ $item->name }}</span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
 
-                                    </div>
-                                </div><!-- tab 1 -->
+                                        </div>
+                                    </div><!-- tab 1 -->
 
-                            </div>
+                                </div>
 
-                        </div><!-- block tab products -->
-                    @endif
+                            </div><!-- block tab products -->
+                        @endif
                     </div>
                     <div class="col-md-3">
 
@@ -385,11 +385,9 @@
                                                 <a class="product-item-img" href=""><img alt="product name"
                                                         src="{{ asset('shopAssets/images/media/index1/deals-of1.jpg') }}"></a>
                                                 <div class="product-item-actions">
-                                                    <a class="btn btn-wishlist"
-                                                        href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
                                                     <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview"
-                                                        href=""><span>quickview</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
                                                 </div>
                                                 <button type="button" class="btn btn-cart"><span>Add to
                                                         Cart</span></button>
@@ -416,11 +414,9 @@
                                                 <a class="product-item-img" href=""><img alt="product name"
                                                         src="{{ asset('shopAssets/images/media/index1/deals-of2.jpg') }}"></a>
                                                 <div class="product-item-actions">
-                                                    <a class="btn btn-wishlist"
-                                                        href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
                                                     <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview"
-                                                        href=""><span>quickview</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
                                                 </div>
                                                 <button type="button" class="btn btn-cart"><span>Add to
                                                         Cart</span></button>
@@ -447,11 +443,9 @@
                                                 <a class="product-item-img" href=""><img alt="product name"
                                                         src="{{ asset('shopAssets/images/media/index1/deals-of3.jpg') }}"></a>
                                                 <div class="product-item-actions">
-                                                    <a class="btn btn-wishlist"
-                                                        href=""><span>wishlist</span></a>
+                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
                                                     <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview"
-                                                        href=""><span>quickview</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
                                                 </div>
                                                 <button type="button" class="btn btn-cart"><span>Add to
                                                         Cart</span></button>
@@ -499,12 +493,12 @@
                                     <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
                                         <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
                                             data-responsive='{
-                                "0":{"items":1},
-                                "480":{"items":2},
-                                "480":{"items":2},
-                                "768":{"items":3},
-                                "992":{"items":3}
-                            }'
+                                                    "0":{"items":1},
+                                                    "480":{"items":2},
+                                                    "480":{"items":2},
+                                                    "768":{"items":3},
+                                                    "992":{"items":3}
+                                                }'
                                             id="best-sell-div">
 
                                             @foreach ($carnival->members as $item)
@@ -513,7 +507,7 @@
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" href=""><img
                                                                     alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
+                                                                    src="{{ asset('images/' . $item->logo) }}"></a>
                                                             {{-- <div class="product-item-actions">
                                                     <a class="btn btn-wishlist"
                                                         href=""><span>wishlist</span></a>
@@ -571,12 +565,12 @@
                                     <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
                                         <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
                                             data-responsive='{
-                                "0":{"items":1},
-                                "480":{"items":2},
-                                "480":{"items":2},
-                                "768":{"items":3},
-                                "992":{"items":3}
-                            }'
+                                                    "0":{"items":1},
+                                                    "480":{"items":2},
+                                                    "480":{"items":2},
+                                                    "768":{"items":3},
+                                                    "992":{"items":3}
+                                                }'
                                             id="best-sell-div">
 
                                             @foreach ($carnival->user->products as $item)
@@ -585,7 +579,7 @@
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" href=""><img
                                                                     alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
+                                                                    src="{{ asset('productImage/' . $item->image) }}"></a>
                                                             <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
                                                                     href=""><span>wishlist</span></a>
@@ -1362,8 +1356,7 @@
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
                                                             href=""><span>wishlist</span></a>
-                                                        <a class="btn btn-compare"
-                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
                                                         <a class="btn btn-quickview"
                                                             href=""><span>quickview</span></a>
                                                     </div>
@@ -1399,8 +1392,7 @@
                                                     <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
                                                             href=""><span>wishlist</span></a>
-                                                        <a class="btn btn-compare"
-                                                            href=""><span>compare</span></a>
+                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
                                                         <a class="btn btn-quickview"
                                                             href=""><span>quickview</span></a>
                                                     </div>
@@ -1470,8 +1462,7 @@
                                                 <div class="product-item-actions">
                                                     <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
                                                     <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview"
-                                                        href=""><span>quickview</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
                                                 </div>
                                                 <button type="button" class="btn btn-cart"><span>Add to
                                                         Cart</span></button>
@@ -1500,8 +1491,7 @@
                                                 <div class="product-item-actions">
                                                     <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
                                                     <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview"
-                                                        href=""><span>quickview</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
                                                 </div>
                                                 <button type="button" class="btn btn-cart"><span>Add to
                                                         Cart</span></button>
@@ -1530,8 +1520,7 @@
                                                 <div class="product-item-actions">
                                                     <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
                                                     <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview"
-                                                        href=""><span>quickview</span></a>
+                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
                                                 </div>
                                                 <button type="button" class="btn btn-cart"><span>Add to
                                                         Cart</span></button>
@@ -1572,8 +1561,8 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li role="presentation" class="active"><a href="#floor1-1"
-                                                id="best-seller-tab" role="tab" data-toggle="tab">Best Seller </a>
+                                        <li role="presentation" class="active"><a href="#floor1-1" id="best-seller-tab"
+                                                role="tab" data-toggle="tab">Best Seller </a>
                                         </li>
                                         <li role="presentation"><a href="#floor1-2" role="tab"
                                                 data-toggle="tab">Most
@@ -5278,6 +5267,81 @@
         $("#new-arr-tab").click(function() {
             getProducts('new', 'new-arrival-products');
         });
+
+        // function printTiles(id, response) {
+        //     // console.log(response);
+        //     $.each(response, function(index, product) {
+        //         var percentageDiscount = Math.round(((product.old_price - product
+        //             .new_price) / product.old_price) * 100);
+        //         var productHtml = `
+    //                 <div class="product-item product-item-opt-1">
+    //                     <div class="product-item-info">
+    //                         <div class="product-item-photo">`;
+        //         if (product.image != null && product.image != '') {
+        //             productHtml +=
+        //                 `
+    //                                 <a href="{{ route('get.products.detail', '') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="{{ asset('productImage/${product.image}') }}" alt="${product.title}"></a>`;
+        //         } else {
+        //             productHtml +=
+        //                 `
+    //                                 <a href="{{ route('get.products.detail', '') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg" alt="${product.title}"></a>`;
+        //         }
+        //         productHtml += `
+    //                             <div class="product-item-actions">
+    //                                 <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
+    //                                 <a href="#" class="btn btn-compare"><span>compare</span></a>
+    //                                 <a href="#" class="btn btn-quickview"><span>quickview</span></a>
+    //                             </div>
+    //                             <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+    //                             <span class="product-item-label label-price">${percentageDiscount}% <span>off</span></span>
+    //                         </div>
+    //                         <div class="product-item-detail">
+    //                             <strong class="product-item-name"><a href="${product.slug}">${product.title}</a></strong>
+    //                             <div class="clearfix">
+    //                                 <div class="product-item-price">
+    //                                     <span class="price">$${product.new_price}</span>
+    //                                     <span class="old-price">$${product.old_price}</span>
+    //                                 </div>
+    //                                 <div class="product-reviews-summary">
+    //                                     <div class="rating-summary">
+    //                                         <div class="rating-result" title="${percentageDiscount}%">
+    //                                             <span style="width:${percentageDiscount}%">
+    //                                                 <span><span>${percentageDiscount}</span>% of <span>100</span></span>
+    //                                             </span>
+    //                                         </div>
+    //                                     </div>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             `;
+
+        //         $('#' + id + ' .owl-item').html(productHtml);
+
+        //     });
+        //     $('#slider-range').slider({
+        //         range: true,
+
+        //         min: 0,
+
+        //         max: 500,
+
+        //         values: [0, 300],
+
+        //         slide: function(event, ui) {
+
+        //             $('#amount-left').text(ui.values[0]);
+        //             $('#amount-right').text(ui.values[1]);
+
+        //         }
+
+        //     });
+
+        //     $('#amount-left').text($('#slider-range').slider('values', 0));
+
+        //     $('#amount-right').text($('#slider-range').slider('values', 1));
+        // }
 
         function getProducts(attribute, id) {
             $.ajax({
