@@ -325,7 +325,7 @@
 
             $.ajax({
                 url: "{{ route('get.carnival.things') }}",
-                method: "POST",
+                method: "GET",
                 data: {
                     _token: "{{ csrf_token() }}",
                     selectedTab: selectedTab
