@@ -61,8 +61,8 @@
     </style>
     <div class="row justify-content-center">
         <div class="col-12">
-            <h2 class="mb-2 page-title">Blogs</h2>
-            <p class="card-text">Blogs table</p>
+            <h2 class="mb-2 page-title">Users</h2>
+            <p class="card-text">Users table</p>
             <div class="row my-4">
                 <!-- data table -->
                 <div class="col-md-12">
@@ -73,7 +73,7 @@
                             <table class="skeleton-table table table-hover">
                                 <thead>
                                     <tr>
-                                        <th></th>
+                                        {{-- <th></th> --}}
                                         <th>Sr#</th>
                                         <th>Title</th>
                                         <th>Author</th>
@@ -87,10 +87,10 @@
                                 <tbody id="user-table-body">
                                     @for ($i = 1; $i <= 10; $i++)
                                         <tr>
-                                            <td class="skeleton-item">
+                                            {{-- <td class="skeleton-item">
                                                 <div class="skeleton-content">
                                                     <div class="skeleton-line" style="width: 100%;"></div>
-                                                </div>
+                                                </div> --}}
                                             </td>
                                             <td class="skeleton-item">
                                                 <div class="skeleton-content">
@@ -211,7 +211,7 @@
             $.each(response, function(index, row) {
                 const currentUrl = "{{ route('blogs.edit', ':id') }}".replace(':id', row.id);
                 html += '<tr>';
-                html += '<td></td>';
+                // html += '<td></td>';
                 html += '<td>' + i + '</td>';
                 html += '<td>' + row.title + '</td>';
                 html += '<td>' + row.user.first_name + ' ' + row.user.last_name + '</td>';
