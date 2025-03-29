@@ -350,16 +350,19 @@
                     }
 
                     $.each(response.things, function(index, things) {
+                        let eventDetailUrl =
+                        `/my-event/${things.slug}`;
+                        let bannerUrl =
+                        `/eventBanner/${things.banner}`;
+
                         let html = `
                             <div class="hotel-line clearfix">
-                                <a class="hotel-img black-hover" href="#">
-                                    <img class="img-responsive"
-                                        src="https://carnivalguide.co/travel/images/hotelroomt.jpg"
-                                        alt="">
+                                <a class="hotel-img black-hover" href="${eventDetailUrl}">
+                                    <img class="img-responsive" src="${bannerUrl}" alt="">
                                     <div class="tour-layer delay-1"></div>
                                 </a>
                                 <div class="hotel-line-content">
-                                    <a class="hotel-line-title" href="#">${index + 1}. ${things.name}</a>
+                                    <a class="hotel-line-title" href="${eventDetailUrl}">${index + 1}. ${things.name}</a>
                                     <div class="rate-wrap">
                                         <div class="rate">
                                             <span class="fa fa-star color-yellow"></span>
@@ -374,6 +377,7 @@
                                 </div>
                             </div>
                         `;
+
                         container.append(html);
                     });
                 },
