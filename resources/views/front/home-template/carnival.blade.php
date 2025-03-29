@@ -135,7 +135,7 @@
                                         </div>
                                     </div>
                                     <div class="tabs-content clearfix">
-                                        <div class="tab-info active">
+                                        <div class="tab-info active" id="flight-container{{ $row->id }}">
                                             <div class="hotel-line clearfix">
                                                 <a class="hotel-img black-hover" href="#">
                                                     {{-- @if ($row->city->airport != null)
@@ -218,7 +218,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-info">
+                                        <div class="tab-info" id="hotel-container{{ $row->id }}">
                                             <div class="hotel-line clearfix">
                                                 <a class="hotel-img black-hover" href="#">
                                                     <img class="img-responsive"
@@ -288,7 +288,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-info">
+                                        <div class="tab-info" id="event-container{{ $row->id }}">
                                             {{-- <div class="hotel-line clearfix">
                                                 <a class="hotel-img black-hover" href="#">
                                                     <img class="img-responsive"
