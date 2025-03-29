@@ -318,7 +318,7 @@
                                         id="best-sell-div">
                                         {{-- {{ dd($carnival->mascamps->toArray(), $carnival->members->toArray(), $carnival->user->products->toArray()) }} --}}
                                         @foreach ($carnival->mascamps as $item)
-                                            <div class="product-item-opt-1 ">
+                                            <div class="product-item  product-item-opt-1 ">
                                                 <div class="product-item-info">
                                                     <div class="product-item-photo">
                                                         <a class="product-item-img" href=""><img
@@ -508,7 +508,7 @@
                                             id="best-sell-div">
 
                                             @foreach ($carnival->members as $item)
-                                                <div class="product-item-opt-1 ">
+                                                <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" href=""><img
@@ -5278,81 +5278,6 @@
         $("#new-arr-tab").click(function() {
             getProducts('new', 'new-arrival-products');
         });
-
-        function printTiles(id, response) {
-            // console.log(response);
-            $.each(response, function(index, product) {
-                var percentageDiscount = Math.round(((product.old_price - product
-                    .new_price) / product.old_price) * 100);
-                var productHtml = `
-                        <div class="product-item product-item-opt-1">
-                            <div class="product-item-info">
-                                <div class="product-item-photo">`;
-                if (product.image != null && product.image != '') {
-                    productHtml +=
-                        `
-                                        <a href="{{ route('get.products.detail', '') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="{{ asset('productImage/${product.image}') }}" alt="${product.title}"></a>`;
-                } else {
-                    productHtml +=
-                        `
-                                        <a href="{{ route('get.products.detail', '') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg" alt="${product.title}"></a>`;
-                }
-                productHtml += `
-                                    <div class="product-item-actions">
-                                        <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
-                                        <a href="#" class="btn btn-compare"><span>compare</span></a>
-                                        <a href="#" class="btn btn-quickview"><span>quickview</span></a>
-                                    </div>
-                                    <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
-                                    <span class="product-item-label label-price">${percentageDiscount}% <span>off</span></span>
-                                </div>
-                                <div class="product-item-detail">
-                                    <strong class="product-item-name"><a href="${product.slug}">${product.title}</a></strong>
-                                    <div class="clearfix">
-                                        <div class="product-item-price">
-                                            <span class="price">$${product.new_price}</span>
-                                            <span class="old-price">$${product.old_price}</span>
-                                        </div>
-                                        <div class="product-reviews-summary">
-                                            <div class="rating-summary">
-                                                <div class="rating-result" title="${percentageDiscount}%">
-                                                    <span style="width:${percentageDiscount}%">
-                                                        <span><span>${percentageDiscount}</span>% of <span>100</span></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-
-                $('#' + id + ' .owl-item').html(productHtml);
-
-            });
-            $('#slider-range').slider({
-                range: true,
-
-                min: 0,
-
-                max: 500,
-
-                values: [0, 300],
-
-                slide: function(event, ui) {
-
-                    $('#amount-left').text(ui.values[0]);
-                    $('#amount-right').text(ui.values[1]);
-
-                }
-
-            });
-
-            $('#amount-left').text($('#slider-range').slider('values', 0));
-
-            $('#amount-right').text($('#slider-range').slider('values', 1));
-        }
 
         function getProducts(attribute, id) {
             $.ajax({
