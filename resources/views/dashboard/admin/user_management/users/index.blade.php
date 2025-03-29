@@ -61,8 +61,8 @@
     </style>
     <div class="row justify-content-center">
         <div class="col-12">
-            <h2 class="mb-2 page-title">Users</h2>
-            <p class="card-text">Users table</p>
+            <h2 class="mb-2 page-title">Blogs</h2>
+            <p class="card-text">Blogs table</p>
             <div class="row my-4">
                 <!-- data table -->
                 <div class="col-md-12">
@@ -167,7 +167,7 @@
         function fetchDataOnClick(page) {
             console.log(page);
             $.ajax({
-                url: "{{ route('users.index') }}",
+                url: "{{ route('blogs.index') }}",
                 type: "GET",
                 data: {
                     type: 'ajax',
@@ -186,7 +186,7 @@
 
         function fetchDataOnReady() {
             $.ajax({
-                url: "{{ route('users.index') }}",
+                url: "{{ route('blogs.index') }}",
                 type: "GET",
                 data: {
                     type: 'ajax',
@@ -209,7 +209,7 @@
             // const currentUrl = window.location.href;
             let i = 1;
             $.each(response, function(index, row) {
-                const currentUrl = "{{ route('users.edit', ':id') }}".replace(':id', row.id);
+                const currentUrl = "{{ route('blogs.edit', ':id') }}".replace(':id', row.id);
                 html += '<tr>';
                 html += '<td></td>';
                 html += '<td>' + i + '</td>';
