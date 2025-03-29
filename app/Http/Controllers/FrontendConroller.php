@@ -1012,6 +1012,11 @@ class FrontendConroller extends Controller
 
         if ($selectedTab == 'Events') {
             $things = Event::with('tickets')->orderBy('id', 'DESC')->take(3)->get();
+
+            $things->map(function ($event) {
+                $event->price = count($event->tickets) > 0 ? '$' . $event->tickets[0]->price . ' / person' : 'FREE';
+                return $event;
+            });
         }
 
         return response()->json(['things' => $things]);
