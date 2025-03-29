@@ -334,20 +334,21 @@
                     carnivalId: carnivalId,
                 },
                 success: function(response) {
-                    console.log('responseThings', response.things);
+                    console.log('responseThings', response);
 
                     if (selectedTab == 'Flights') {
                         let container = $('#flight-container' + carnivalId);
                         container.empty();
+                        console.log('containerrr', container);
                     } else if (selectedTab == 'Hotels') {
                         let container = $('#hotel-container' + carnivalId);
                         container.empty();
+                        console.log('containerrr', container);
                     } else if (selectedTab == 'Events') {
                         let container = $('#event-container' + carnivalId);
                         container.empty();
+                        console.log('containerrr', container);
                     }
-
-                    console.log('containerrr', container);
 
                     $.each(response.things, function(index, things) {
                         let html = `
