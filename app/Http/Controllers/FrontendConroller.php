@@ -1014,7 +1014,7 @@ class FrontendConroller extends Controller
             $things = Event::orderBy('id', 'DESC')->take(3)->get();
         }
 
-        return $things;
+        return response()->json(['things' => $things]);
     }
 
     public function cgGear_listing(Request $request)
