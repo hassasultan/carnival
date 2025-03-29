@@ -429,6 +429,7 @@ class CarnivalController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+        dd($request->toArray());
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->getClientOriginalExtension();
 
