@@ -350,8 +350,9 @@
                     }
 
                     $.each(response.things, function(index, things) {
-                        let eventDetailUrl =
-                            `/my-event/${things.slug}`;
+                        let eventDetailRoute = "{{ route('get.myEvent.detail', ':slug') }}";
+                        let eventDetailUrl = eventDetailRoute.replace(':slug',
+                            things.slug);
                         let bannerUrl =
                             `/eventBanner/${things.banner}`;
                         let priceText = things.price ? `from ${things.price}` :
