@@ -17,7 +17,7 @@
             @if ($user->role_id != 1)
                 <tr>
                     <td>{{ $counter++ }}</td>
-                    <td>{{ $user->first_name . ' ' . $user->last_name }} -
+                    <td>{{ $user->first_name . ' ' . $user->last_name }} - 
                         {{ $user->vendor ? $user->vendor->name : ($user->subvendor ? $user->subvendor->name : '') }}
                     </td>
                     <td>{{ $user->email }}</td>
@@ -32,8 +32,8 @@
                     </td>
                     <td>{{ $user->created_at }}</td>
                     <td>
-                        <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted" type="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted"
+                            type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="text-muted sr-only">Action</span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right shadow">
@@ -54,6 +54,6 @@
         @endforeach
     </tbody>
 </table>
-<div class="mt-3">
-    {{ $users->links() }}
+<div class="d-flex justify-content-center">
+    {!! $users->links() !!}
 </div>

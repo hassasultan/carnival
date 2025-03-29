@@ -74,12 +74,10 @@
                 });
             }
 
-            // Handle pagination click with filters preserved
-            $(document).on('click', '.pagination a', function(event) {
+            // Handle pagination click with AJAX
+            $(document).on('click', '.pagination-link', function(event) {
                 event.preventDefault();
-
-                let page = $(this).attr('href').split('page=')[1];
-
+                let page = $(this).data('page');
                 if (page) {
                     fetchUsers(page);
                 }
@@ -90,7 +88,7 @@
                 fetchUsers();
             });
 
-            // Reset filters and fetch default data
+            // Reset filters
             $('#resetBtn').on('click', function() {
                 $('#search').val('');
                 $('#role_filter').val('');
@@ -98,7 +96,7 @@
                 fetchUsers();
             });
 
-            // Trigger search as user types (optional, for live search)
+            // Live search
             $('#search').on('keyup', function() {
                 fetchUsers();
             });
