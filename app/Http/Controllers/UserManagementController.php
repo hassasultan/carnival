@@ -41,6 +41,14 @@ class UserManagementController extends Controller
             $query->where('role_id', $request->role);
         }
 
+        if ($request->filled('package')) {
+            $query->whereHas('vendor', function ($q) use ($request) {
+                $q->where('package_id', $request->package);
+            })->orWhereHas('subVendor', function ($q) use ($request) {
+                $q->where('package_id', $request->package);
+            });
+        }
+
         if ($request->filled('status')) {
             $query->where('status', $request->status);
         }

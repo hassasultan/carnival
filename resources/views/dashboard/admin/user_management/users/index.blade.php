@@ -31,6 +31,13 @@
                                 </select>
                             </div>
                             <div class="col-md-3">
+                                <select id="package_filter" class="form-control">
+                                    <option value="">Select Package</option>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
                                 <button class="btn btn-primary" id="filterBtn">Filter</button>
                                 <button class="btn btn-secondary" id="resetBtn">Reset</button>
                             </div>
@@ -55,6 +62,7 @@
             function fetchUsers(page = 1) {
                 let search = $('#search').val();
                 let role = $('#role_filter').val();
+                let package = $('#package_filter').val();
                 let status = $('#status_filter').val();
 
                 $.ajax({
@@ -63,6 +71,7 @@
                     data: {
                         search: search,
                         role: role,
+                        package: package,
                         status: status
                     },
                     beforeSend: function() {
@@ -92,6 +101,7 @@
             $('#resetBtn').on('click', function() {
                 $('#search').val('');
                 $('#role_filter').val('');
+                $('#package_filter').val('');
                 $('#status_filter').val('');
                 fetchUsers();
             });
