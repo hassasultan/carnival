@@ -334,7 +334,7 @@
                     carnivalId: carnivalId,
                 },
                 success: function(response) {
-                    console.log('responseThings', response);
+                    console.log('responseThings', response.things);
 
                     if (selectedTab == 'Flights') {
                         let container = $('#flight-container' + carnivalId);
