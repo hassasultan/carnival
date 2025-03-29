@@ -325,16 +325,16 @@
                                                                 alt="product name"
                                                                 src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
                                                         {{-- <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button>
-                                                        <span class="product-item-label label-price">30%
-                                                            <span>off</span></span> --}}
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                    <span class="product-item-label label-price">30%
+                                                        <span>off</span></span> --}}
                                                     </div>
                                                     <div class="product-item-detail">
                                                         {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
@@ -506,7 +506,7 @@
                                 "992":{"items":3}
                             }'
                                             id="best-sell-div">
-                                            {{ dd($carnival->members->toArray()) }}
+
                                             @foreach ($carnival->members as $item)
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
