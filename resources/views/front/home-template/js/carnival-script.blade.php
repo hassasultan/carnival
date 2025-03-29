@@ -336,16 +336,7 @@
                 success: function(response) {
                     console.log('responseThings', response.things);
 
-                    if (selectedTab == 'Flights') {
-                        let container = $('#flight-container' + carnivalId);
-                        container.empty();
-                    } else if (selectedTab == 'Hotels') {
-                        let container = $('#hotel-container' + carnivalId);
-                        container.empty();
-                    } else if (selectedTab == 'Events') {
-                        let container = $('#event-container' + carnivalId);
-                        container.empty();
-                    }
+                    
 
                     $.each(response.things, function(index, things) {
                         let html = `
