@@ -24,10 +24,32 @@ class UserManagementController extends Controller
 {
     use ImageTrait;
 
-    public function indexUser()
+    public function indexUser(Request $request)
     {
-        $users = User::with('role')->paginate(20);
-        // $blogs = Blogs::with("category", "user","region")->paginate(10);
+        // $users = User::with('role')->paginate(20);
+        $query = User::with(['role', 'vendor.package', 'subvendor'])->where('role_id', '!=', 1);
+
+        if ($request->filled('search')) {
+            $query->where(function ($q) use ($request) {
+                $q->where('first_name', 'like', '%' . $request->search . '%')
+                    ->orWhere('last_name', 'like', '%' . $request->search . '%')
+                    ->orWhere('email', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        if ($request->filled('role')) {
+            $query->where('role_id', $request->role);
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        $users = $query->paginate(10);
+
+        if ($request->ajax()) {
+            return view('dashboard.admin.users.partials.user_table', compact('users'))->render();
+        }
         return view('dashboard.admin.user_management.users.index', compact('users'));
     }
 
