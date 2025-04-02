@@ -121,6 +121,7 @@
                                     {{ $user->vendor->package_id == $package->id ? 'selected' : '' }}>
                                     {{ $package->title }}</option>
                             @endforeach
+                            <option value="section_leader">Section Leader</option>
                         </select>
                         @error('package_id')
                             <span class="invalid-feedback" role="alert">
@@ -129,7 +130,7 @@
                         @enderror
                     </div>
                 @elseif ($user->isSubVendor())
-                    <div class="form-group">
+                    <div class="form-group" id="vendors_input">
                         <label for="vendor">Vendor</label>
                         <select id="vendor" class="form-control @error('vendor_id') is-invalid @enderror"
                             name="vendor_id">
@@ -645,6 +646,11 @@
                 } else {
                     $('.bannerSection').show();
                     $('.bannerSection').find('input[type="file"]').attr('required', 'required');
+                }
+                if (packageId == 'section_leader') {
+                    $('#vendors_input').show();
+                } else {
+                    $('#vendors_input').hide();
                 }
                 $('#category_id').empty().append($('<option>', {
                     value: '',
