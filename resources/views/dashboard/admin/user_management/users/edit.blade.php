@@ -648,6 +648,7 @@
                 }
             });
 
+            console.log(`{{ $user->isVendor() }}`, 'isVendor');
             if (('#package').val() == '1') {
                 $('.bannerSection').hide();
                 $('.bannerSection').find('input, textarea').removeAttr('required');
