@@ -462,7 +462,7 @@ class CarnivalController extends Controller
 
     public function assignModels(Request $request)
     {
-        // dd($request->toArray());
+        dd($request->toArray());
 
         $carnival = Carnival::findOrFail($request->carnival_id);
         if ($request->has('is_model')) {
