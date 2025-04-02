@@ -462,8 +462,7 @@ class CarnivalController extends Controller
 
     public function assignModels(Request $request)
     {
-        dd($request->toArray());
-
+        
         $carnival = Carnival::findOrFail($request->carnival_id);
         if ($request->has('is_model')) {
             $mascampsWithData = [];
@@ -474,6 +473,7 @@ class CarnivalController extends Controller
             return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
         }
         $carnival->mascamps()->sync($request->mascamps); // Sync mascamps
+        dd($request->toArray(), $carnival->mascamps->toArray());
         return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
     }
 
