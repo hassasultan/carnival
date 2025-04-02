@@ -470,10 +470,10 @@ class CarnivalController extends Controller
                 $mascampsWithData[$mascampId] = ['is_model' => 1];
             }
             $carnival->mascamps()->sync($mascampsWithData);
+            dd($request->toArray(), $carnival->mascamps->toArray());
             return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
         }
         $carnival->mascamps()->sync($request->mascamps); // Sync mascamps
-        dd($request->toArray(), $carnival->mascamps->toArray());
         return response()->json(['success' => 'Mascamp(s) assigned successfully', 'message' => 'Mascamps updated successfully.']);
     }
 
