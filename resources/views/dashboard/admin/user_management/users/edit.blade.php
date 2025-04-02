@@ -35,11 +35,10 @@
                 </div>
                 <div class="form-group" id="">
                     <label for="age_range">Age Range</label>
-                    <select id="age_range" class="form-control @error('age_range') is-invalid @enderror"
-                        name="age_range">
+                    <select id="age_range" class="form-control @error('age_range') is-invalid @enderror" name="age_range">
                         <option value="">Select Age Range</option>
-                        <option value="adult" @if($user->age_range == 'adult') selected @endif>Adult</option>
-                        <option value="kid" @if($user->age_range == 'kid') selected @endif>Kid</option>
+                        <option value="adult" @if ($user->age_range == 'adult') selected @endif>Adult</option>
+                        <option value="kid" @if ($user->age_range == 'kid') selected @endif>Kid</option>
                     </select>
                     @error('age_range')
                         <span class="invalid-feedback" role="alert">
@@ -130,7 +129,7 @@
                         @enderror
                     </div>
                 @elseif ($user->isSubVendor())
-                    <div class="form-group" id="vendors_input">
+                    <div class="form-group">
                         <label for="vendor">Vendor</label>
                         <select id="vendor" class="form-control @error('vendor_id') is-invalid @enderror"
                             name="vendor_id">
@@ -148,6 +147,24 @@
                         @enderror
                     </div>
                 @endif
+
+                <div class="form-group" id="vendors_input" style="display: none;">
+                    <label for="vendor">Vendors</label>
+                    <select id="vendor" class="form-control @error('vendor_id') is-invalid @enderror"
+                        name="vendor_id">
+                        <option value="">Select vendor</option>
+                        @foreach ($vendors as $vendor)
+                            <option value="{{ $vendor->id }}">
+                                {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('vendor_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
                 <!-- End of Role Specific Fields -->
 
                 <!-- Status Field -->
@@ -513,9 +530,9 @@
                         <select id="gender" class="form-control @error('gender') is-invalid @enderror"
                             name="gender">
                             <option value="">Select Gender</option>
-                            <option value="male" @if($user->gender == 'male') selected @endif>Male</option>
-                            <option value="female" @if($user->gender == 'female') selected @endif>Female</option>
-                            <option value="others" @if($user->gender == 'others') selected @endif>Others</option>
+                            <option value="male" @if ($user->gender == 'male') selected @endif>Male</option>
+                            <option value="female" @if ($user->gender == 'female') selected @endif>Female</option>
+                            <option value="others" @if ($user->gender == 'others') selected @endif>Others</option>
                         </select>
                         @error('gender')
                             <span class="invalid-feedback" role="alert">
