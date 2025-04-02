@@ -294,10 +294,10 @@ class UserManagementController extends Controller
         $user = User::findOrFail($id);
 
         if ($user->package_id == 'section_leader') {
-            $user->package_id = '123';
-            $user->role_id = '3';
+            $package_id = '123';
+            $role_id = '3';
         } else {
-            $user->role_id = '2';
+            $role_id = '2';
         }
 
         if ($request->hasFile('logo')) {
@@ -315,7 +315,7 @@ class UserManagementController extends Controller
                 'blogging' => $request->input('blogging'),
                 // 'continent' => $request->input('continent'),
 
-                'package_id' => $request->input('package_id'),
+                'package_id' => $package_id,
                 'name' => $request->input('shop_name'),
                 'email' => $request->input('shop_email'),
                 'address' => $request->input('shop_address'),
