@@ -300,6 +300,7 @@ class UserManagementController extends Controller
             $role_id = '2';
         }
 
+        dd($package_id);
         if ($request->hasFile('logo')) {
             $imageName = $this->uploadImage($request->logo, 'images');
             $logo = $imageName;
