@@ -403,7 +403,7 @@
                                                     }
                                                 @endphp
                                                 <img id="mainImage" src="{{ $image }}" alt="Main Image"
-                                                    class="main-image" />
+                                                    class="main-image main-image-fix" />
                                             </div>
                                             <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i
                                                     class="fas fa-expand"></i></button>
@@ -534,10 +534,7 @@
                                             <div class="contact-item">
                                                 <span class="text">About:</span>
                                                 <a href="javascript:void(0);">
-                                                    @php
-                                                        use Illuminate\Support\Str;
-                                                    @endphp
-                                                    {!! Str::limit(strip_tags($event->description), 200) !!}
+                                                    {!! \Illuminate\Support\Str::limit(strip_tags($event->description), 200) !!}
                                                 </a>
                                             </div>
                                         @endif
