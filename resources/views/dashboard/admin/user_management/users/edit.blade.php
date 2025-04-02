@@ -648,14 +648,14 @@
                 }
             });
 
-            console.log(`{{ $user->isVendor() }}`, 'isVendor');
-            if (('#package').val() == '1') {
-                $('.bannerSection').hide();
-                $('.bannerSection').find('input, textarea').removeAttr('required');
-            } else {
-                $('.bannerSection').show();
-                $('.bannerSection').find('input[type="file"]').attr('required', 'required');
-            }
+            // console.log(`{{ $user->isVendor() }}`, 'isVendor');
+            // if (('#package').val() == '1') {
+            //     $('.bannerSection').hide();
+            //     $('.bannerSection').find('input, textarea').removeAttr('required');
+            // } else {
+            //     $('.bannerSection').show();
+            //     $('.bannerSection').find('input[type="file"]').attr('required', 'required');
+            // }
             $('#package').on('change', function() {
                 var packageId = $(this).val();
                 console.log('1');
