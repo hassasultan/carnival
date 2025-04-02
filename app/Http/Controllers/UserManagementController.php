@@ -292,7 +292,7 @@ class UserManagementController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-
+        $package_id = '';
         if ($user->package_id == 'section_leader') {
             $package_id = '123';
             $role_id = '3';
