@@ -293,6 +293,13 @@ class UserManagementController extends Controller
     {
         $user = User::findOrFail($id);
 
+        if ($user->package_id == 'section_leader') {
+            $user->package_id = '123';
+            $user->role_id = '3';
+        } else {
+            $user->role_id = '2';
+        }
+
         if ($request->hasFile('logo')) {
             $imageName = $this->uploadImage($request->logo, 'images');
             $logo = $imageName;
