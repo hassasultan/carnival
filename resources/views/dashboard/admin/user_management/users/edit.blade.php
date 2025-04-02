@@ -120,7 +120,8 @@
                                     {{ $user->vendor->package_id == $package->id ? 'selected' : '' }}>
                                     {{ $package->title }}</option>
                             @endforeach
-                            <option value="section_leader">Section Leader</option>
+                            <option value="section_leader" @if ($user->vendor->package_id == '123') selected @endif>Section Leader
+                            </option>
                         </select>
                         @error('package_id')
                             <span class="invalid-feedback" role="alert">
