@@ -657,6 +657,7 @@
             }
             $('#package').on('change', function() {
                 var packageId = $(this).val();
+                console.log('1');
                 if (packageId == '1') {
                     $('.bannerSection').hide();
                     $('.bannerSection').find('input, textarea').removeAttr('required');
@@ -665,8 +666,10 @@
                     $('.bannerSection').find('input[type="file"]').attr('required', 'required');
                 }
                 if (packageId == 'section_leader') {
+                    console.log('2');
                     $('#vendors_input').show();
                 } else {
+                    console.log('3');
                     $('#vendors_input').hide();
                 }
                 $('#category_id').empty().append($('<option>', {
