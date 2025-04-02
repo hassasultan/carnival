@@ -295,9 +295,9 @@ class UserManagementController extends Controller
         $package_id = '';
         if ($request->package_id == 'section_leader') {
             $package_id = '123';
-            $role_id = '3';
+            $user->role_id = '3';
         } else {
-            $role_id = '2';
+            $user->role_id = '2';
         }
 
         if ($request->hasFile('logo')) {
