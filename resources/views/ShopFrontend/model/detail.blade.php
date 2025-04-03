@@ -534,7 +534,7 @@
                                             <div class="contact-item">
                                                 <span class="text">About:</span>
                                                 <a href="javascript:void(0);">
-                                                    {!! \Illuminate\Support\Str::limit(strip_tags($user->description), 200) !!}
+                                                    {!! \Illuminate\Support\Str::limit(strip_tags($event->description), 200) !!}
                                                 </a>
                                             </div>
                                         @endif
@@ -548,7 +548,10 @@
 
                         <!-- product tab info -->
 
-                        @include('shop-frontend.partials.detail-section')
+                        <div class="product-info-detailed">
+
+                            @include('shop-frontend.carnival-member')
+                        </div>
                         <!-- product tab info -->
 
                         <!-- block-related product -->
