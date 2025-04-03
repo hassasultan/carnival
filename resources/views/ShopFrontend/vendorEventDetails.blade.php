@@ -745,9 +745,11 @@
         function showMore() {
             if (viewMore) {
                 $('.detail-desc').css('height','30px');
+                viewMore = false;
             }
             else{
                 $('.detail-desc').css('height','auto');
+                viewMore = true;
             }
         }
         $(document).ready(function() {
