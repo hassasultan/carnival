@@ -756,6 +756,41 @@
             }
         });
 
+        $('#addTabBtn').click(function() {
+                let newTab = `
+                    <div class="form-group col-md-12 tab-item">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5>Tabs</h5>
+                            </div>
+                            <div class="card-body" >
+
+
+                                <!-- Details for the tabs -->
+                                <div class="banner-details">
+                                    <div class="form-group">
+                                        <label for="tab_name">Title (Tab Name)</label>
+                                        <input type="text" class="form-control" name="tab_name[]"
+                                            placeholder="Tab Title Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tab_description">Description</label>
+                                        <textarea class="form-control summernote" name="tab_description[]" rows="3" placeholder="Banner Description"></textarea>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-danger remove-tab-btn">Remove Banner</button>
+                            </div>
+                        </div>
+                    </div>`;
+
+                $('#tabSection').append(newTab);
+                $('.summernote').summernote({
+                    placeholder: 'Add Your Description Here...',
+                    tabsize: 2,
+                    height: 100
+                });
+            });
+            
         $(document).on('change', '.custom-file-input', function() {
             var files = $(this)[0].files;
             var fileNames = '';
