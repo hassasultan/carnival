@@ -369,6 +369,11 @@
                                                             <span>Add to Cart</span>
                                                         </a>
                                                     @endif
+                                                    @if (count($event->tickets) > 0)
+                                                        <span class="price">from <strong>${{ $event->tickets[0]->price }}</strong> / person</span>
+                                                    @else
+                                                        <span class="price" <strong>FREE</strong></span>
+                                                    @endif
                                                     <div class="product-addto-links">
 
                                                         <a href="#" class="action btn-wishlist" title="Wish List">
