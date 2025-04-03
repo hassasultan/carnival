@@ -546,11 +546,11 @@
                     <div class="col-md-3">
                         <h2>Location</h2>
                         <div class="map-div col-lg-12 col-sm-12 col-md-12 col-xs-12 eventview-no-padding map-setting">
-                            <a href="https://www.ticketgateway.com/venues/mystic-lounge" target="_blank"
+                            <a href="javascript:void(0);"
                                 class="hidden-xs">
-                                Mystic Lounge,<br> 50 Kennedy Road S, Canada</a>
+                                {{ $event->address }}</a>
                             <iframe id="gmap_canvas"
-                                src="https://maps.google.com/maps?q=50%2BKennedy%2BRoad%2BS%2C%2BCanada&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                                src="https://maps.google.com/maps?q={{ $event->address }}&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
                                 frameborder="0" scrolling="no" marginheight="0" marginwidth="0" height="400px"
                                 width="100%"></iframe>
 
