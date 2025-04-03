@@ -628,8 +628,8 @@
                                     <div class="banner-details">
                                         <div class="form-group">
                                             <label for="tab_name">Title (Tab Name)</label>
-                                            <input type="text" value="{{ $tab->name }}" class="form-control" name="tab_name[]"
-                                                placeholder="Tab Title Name">
+                                            <input type="text" value="{{ $tab->name }}" class="form-control"
+                                                name="tab_name[]" placeholder="Tab Title Name">
                                         </div>
                                         <div class="form-group">
                                             <label for="tab_description">Description</label>
@@ -757,7 +757,7 @@
         });
 
         $('#addTabBtn').click(function() {
-                let newTab = `
+            let newTab = `
                     <div class="form-group col-md-12 tab-item">
                         <div class="card mb-3">
                             <div class="card-header">
@@ -783,14 +783,14 @@
                         </div>
                     </div>`;
 
-                $('#tabSection').append(newTab);
-                $('.summernote').summernote({
-                    placeholder: 'Add Your Description Here...',
-                    tabsize: 2,
-                    height: 100
-                });
+            $('#tabSection').append(newTab);
+            $('.summernote').summernote({
+                placeholder: 'Add Your Description Here...',
+                tabsize: 2,
+                height: 100
             });
-            
+        });
+
         $(document).on('change', '.custom-file-input', function() {
             var files = $(this)[0].files;
             var fileNames = '';
