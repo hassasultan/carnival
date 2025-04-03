@@ -89,7 +89,6 @@ class UserManagementController extends Controller
 
     public function register(Request $request)
     {
-        dd($request->toArray());
         $validator = $this->validator($request->all());
 
         if ($validator->fails()) {
