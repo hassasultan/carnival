@@ -307,7 +307,21 @@
 <!-- Main -->
 <script type="text/javascript" src="{{asset('shopAssets/js/main.js')}}"></script>
 <script>
+let viewMore = false;
 
+function showMore() {
+    if (viewMore) {
+        $('.detail-desc').css('height','30px');
+        viewMore = false;
+        $('#view-btn').html('See More');
+    }
+    else{
+        $('.detail-desc').css('height','auto');
+        viewMore = true;
+        $('#view-btn').html('See Less');
+
+    }
+}
     (function($) {
 
         "use strict";

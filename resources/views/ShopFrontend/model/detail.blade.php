@@ -81,7 +81,7 @@
             max-height: 90%;
             margin: auto;
             text-align: center;
-            /* overflow-y: scroll; */
+            overflow-y: scroll;
 
         }
 
@@ -440,37 +440,37 @@
                                             <a class="social-btn facebook"
                                                 href="{{ optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook }}">
                                                 <span class="icon fab fa-facebook"></span>
-                                                <span class="text">Facebook</span>
+                                                {{-- <span class="text">Facebook</span> --}}
                                             </a>
                                             <a class="social-btn twitter"
                                                 href="{{ optional($user->vendor)->twitter ?? optional($user->subvendor)->twitter }}">
                                                 <span class="icon fab fa-twitter"></span>
-                                                <span class="text">Twitter</span>
+                                                {{-- <span class="text">Twitter</span> --}}
                                             </a>
                                             <a class="social-btn instagram"
                                                 href="{{ optional($user->vendor)->insta ?? optional($user->subvendor)->insta }}">
                                                 <span class="icon fab fa-instagram"></span>
-                                                <span class="text">Instagram</span>
+                                                {{-- <span class="text">Instagram</span> --}}
                                             </a>
                                             <a class="social-btn linkedin"
                                                 href="{{ optional($user->vendor)->linkedin ?? optional($user->subvendor)->linkedin }}">
                                                 <span class="icon fab fa-linkedin"></span>
-                                                <span class="text">LinkedIn</span>
+                                                {{-- <span class="text">LinkedIn</span> --}}
                                             </a>
                                             <a class="social-btn youtube"
                                                 href="{{ optional($user->vendor)->youtube ?? optional($user->subvendor)->youtube }}">
                                                 <span class="icon fab fa-youtube"></span>
-                                                <span class="text">YouTube</span>
+                                                {{-- <span class="text">YouTube</span> --}}
                                             </a>
                                             <a class="social-btn tiktok"
                                                 href="{{ optional($user->vendor)->tiktok ?? optional($user->subvendor)->tiktok }}">
                                                 <span class="icon fab fa-tiktok"></span>
-                                                <span class="text">TikTok</span>
+                                                {{-- <span class="text">TikTok</span> --}}
                                             </a>
                                             <a class="social-btn whatsapp"
                                                 href="{{ optional($user->vendor)->wa_business_page ?? optional($user->subvendor)->wa_business_page }}">
                                                 <span class="icon fab fa-whatsapp"></span>
-                                                <span class="text">WhatsApp</span>
+                                                {{-- <span class="text">WhatsApp</span> --}}
                                             </a>
                                         </div>
                                     </div>
@@ -1076,9 +1076,20 @@
         });
     </script>
     <script>
+        @php
+            $image = null;
+
+            if ($user->vendor && $user->vendor->logo) {
+                $image = asset('images/' . $user->vendor->logo);
+            } elseif ($user->image) {
+                $image = asset('images/' . $user->image);
+            } else {
+                $image = asset('shopAssets/images/media/product9.jpg');
+            }
+        @endphp
         let images = [{
-                full: "{{ asset('images/' . $user->vendor->logo) }}",
-                thumbnail: "{{ asset('images/' . $user->vendor->logo) }}"
+                full: "{{ $image }}",
+                thumbnail: "{{ $image }}"
             },
             @foreach ($user->gallery as $key => $row)
                 @if (isset($row->images[0]))

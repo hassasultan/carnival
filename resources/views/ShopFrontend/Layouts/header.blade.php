@@ -62,11 +62,15 @@
 
         .main-image-fix {
             width: 100%;
-            height: 300px;
+            height: auto;
             object-fit: cover;
             border-radius: 10px;
         }
-
+        .detail-desc
+        {
+            height: 30px;
+            overflow: hidden;
+        }
         @keyframes loading {
             0% {
                 left: -100%;

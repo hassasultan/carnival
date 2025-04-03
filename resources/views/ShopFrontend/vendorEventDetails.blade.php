@@ -229,7 +229,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="product-gallery">
-                                <div class="col-sm-4">
+                                <div class="col-sm-2">
                                     <div class="product-thumbnails">
                                         @foreach ($event->images as $key => $row)
                                             <img class="thumbnail" src="{{ asset($row->image_url) }}"
@@ -238,7 +238,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-10">
                                     <div class="product-preview position-relative">
                                         <div class="zoom-container">
                                             <img id="mainImage"
@@ -252,19 +252,6 @@
                             </div>
                         </div>
 
-                        <div id="imageModal" class="modal">
-                            <span class="close" onclick="closeModal()">&times;</span>
-                            <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
-                            <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
-                            <button onclick="viewFullScreen()" class="fun-btn full-screen"><i
-                                    class="fas fa-expand"></i></button>
-                            <div class="modal-content">
-                                <img id="modalImage" alt="Modal Image" class="modal-image">
-
-                            </div>
-                            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-                            <button class="next" onclick="changeSlide(1)">&#10095;</button>
-                        </div>
 
                         <div class="col-sm-6 col-md-6 col-lg-6">
 
@@ -292,7 +279,8 @@
                                 <div class="product-info-price">
                                     <div class="price-box">
                                         @if (count($event->tickets) > 0)
-                                            <span class="price"> <strong>${{ $event->tickets[0]->price }}</strong> / person</span>
+                                            <span class="price"> <strong>${{ $event->tickets[0]->price }}</strong> /
+                                                person</span>
                                         @else
                                             <span class="price"> <strong>FREE</strong></span>
                                         @endif
@@ -329,11 +317,14 @@
                                             <br>
                                             <span class="label">Address: </span>{{ $event->address }}
                                             <br>
-                                            <span class="label">Description: </span>{!! $event->description !!}
+                                            <span class="label">Description: </span>
+                                        <div class="detail-desc">
+                                            {!! $event->description !!}
+                                        </div>
+                                        <a href="javascrip:void(0);" onclick="showMore(this)" id="view-btn">See More</a>
                                         </p>
                                     </div>
                                 </div>
-                                <hr />
                                 {{-- <div class="product-info-stock">
                                     <div class="stock available">
                                         <span class="label">Availability: </span>In Stock
@@ -462,6 +453,21 @@
                             </div><!-- detail- product -->
 
                         </div>
+
+                        <div id="imageModal" class="modal">
+                            <span class="close" onclick="closeModal()">&times;</span>
+                            <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
+                            <button onclick="zoomOut()" class="fun-btn zoomOut"><i
+                                    class="fas fa-search-minus"></i></button>
+                            <button onclick="viewFullScreen()" class="fun-btn full-screen"><i
+                                    class="fas fa-expand"></i></button>
+                            <div class="modal-content">
+                                <img id="modalImage" alt="Modal Image" class="modal-image">
+
+                            </div>
+                            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                        </div>
                         {{-- <div class="col-sm-6 col-md-6 col-lg-6">
 
                             <div class="product-info-main">
@@ -552,11 +558,10 @@
                     <div class="col-md-3">
                         <h2>Location</h2>
                         <div class="map-div col-lg-12 col-sm-12 col-md-12 col-xs-12 eventview-no-padding map-setting">
-                            <a href="https://www.ticketgateway.com/venues/mystic-lounge" target="_blank"
-                                class="hidden-xs">
-                                Mystic Lounge,<br> 50 Kennedy Road S, Canada</a>
+                            <a href="javascript:void(0);" class="hidden-xs">
+                                {{ $event->address }}</a>
                             <iframe id="gmap_canvas"
-                                src="https://maps.google.com/maps?q=50%2BKennedy%2BRoad%2BS%2C%2BCanada&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                                src="https://maps.google.com/maps?q={{ $event->address }}&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
                                 frameborder="0" scrolling="no" marginheight="0" marginwidth="0" height="400px"
                                 width="100%"></iframe>
 
@@ -734,6 +739,7 @@
 
     <!-- Custom scripts -->
     <script>
+
         $(document).ready(function() {
             // Function to fetch and display products
             function fetchProducts(page = 1) {
