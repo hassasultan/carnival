@@ -534,7 +534,7 @@
                                             <div class="contact-item">
                                                 <span class="text">About:</span>
                                                 <a href="javascript:void(0);">
-                                                    {!! \Illuminate\Support\Str::limit(strip_tags($event->description), 200) !!}
+                                                    {!! \Illuminate\Support\Str::limit(strip_tags($user->description), 200) !!}
                                                 </a>
                                             </div>
                                         @endif
@@ -548,68 +548,7 @@
 
                         <!-- product tab info -->
 
-                        <div class="product-info-detailed ">
-
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-pills" role="tablist">
-                                <li role="presentation" class="active"><a href="#description" role="tab"
-                                        data-toggle="tab">About </a></li>
-                                <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">Section
-                                        Details
-                                    </a>
-                                </li>
-                                <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">reviews</a>
-                                </li>
-                                <li role="presentation"><a href="#additional" role="tab"
-                                        data-toggle="tab">Experience</a></li>
-                                <li role="presentation"><a href="#tab-cust" role="tab" data-toggle="tab">Additional
-                                        Info</a>
-                                </li>
-                            </ul>
-
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="description">
-                                    <div class="block-title">Product Details</div>
-                                    <div class="block-content">
-                                        {!! $event->description !!}
-
-                                    </div>
-                                </div>
-                                {{-- <div role="tabpanel" class="tab-pane" id="tags">
-                                <div class="block-title">information</div>
-                                <div class="block-content">
-                                    @if ($event->information != null)
-                                        {!! $event->information !!}
-                                    @endif
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="reviews">
-                                <div class="block-title">reviews</div>
-                                <div class="block-content">
-                                    @if ($event->reviews != null)
-                                        {!! $event->reviews !!}
-                                    @endif
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="additional">
-                                <div class="block-title">Extra Tabs</div>
-                                <div class="block-content">
-                                    @if ($event->extra != null)
-                                        {!! $event->extra !!}
-                                    @endif
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="tab-cust">
-                                <div class="block-title">Guarantees</div>
-                                <div class="block-content">
-                                    @if ($event->guarantee != null)
-                                        {!! $event->guarantee !!}
-                                    @endif
-                                </div>
-                            </div> --}}
-                            </div>
-                        </div>
+                        {{-- @include('shop-frontend.partials.detail-section') --}}
                         <!-- product tab info -->
 
                         <!-- block-related product -->
