@@ -451,10 +451,6 @@
 
                             </div>
 
-                            <!-- product tab info -->
-
-                           
-
                         </div><!-- Main Content -->
 
                     </div>
