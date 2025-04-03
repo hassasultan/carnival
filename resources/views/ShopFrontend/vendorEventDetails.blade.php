@@ -598,24 +598,19 @@
                                             <div class="product-item-detail">
                                                 <strong class="product-item-name"><a
                                                         href="">{{ $row->name }}</a></strong>
-                                                {{-- <div class="clearfix">
+                                                <div class="clearfix">
                                                     <div class="product-item-price">
 
-                                                        @php
-                                                            $oldPrice = $row->old_price;
-                                                            $newPrice = $row->new_price;
-                                                            if ($oldPrice > 0) {
-                                                                $percentageDiscount = round(
-                                                                    (($oldPrice - $newPrice) / $oldPrice) * 100,
-                                                                );
-                                                            } else {
-                                                                $percentageDiscount = 0;
-                                                            }
-                                                        @endphp
-                                                        <span class="price">${{ $row->new_price }}</span>
-                                                        <span class="old-price">${{ $row->old_price }}</span>
+                                                        @if (count($event->tickets) > 0)
+                                                            <h5>from <strong>${{ $event->tickets[0]->price }}</strong> /
+                                                                person</h5>
+                                                        @else
+                                                            <h5>from <strong>FREE</strong></h5>
+                                                        @endif
+                                                        {{-- <span class="price">${{ $row->new_price }}</span>
+                                                        <span class="old-price">${{ $row->old_price }}</span> --}}
                                                     </div>
-                                                    <div class="product-reviews-summary">
+                                                    {{-- <div class="product-reviews-summary">
                                                         <div class="rating-summary">
                                                             <div class="rating-result"
                                                                 title="{{ $percentageDiscount }}%">
@@ -625,8 +620,8 @@
                                                                 </span>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div> --}}
+                                                    </div> --}}
+                                                </div>
                                             </div>
                                         </div>
                                     </li>
