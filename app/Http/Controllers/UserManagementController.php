@@ -417,6 +417,7 @@ class UserManagementController extends Controller
             isset($request->tab_name) && is_array($request->tab_name) &&
             isset($request->tab_description) && is_array($request->tab_description)
         ) {
+            UserDetailTabs::where('id', $user->id)->delete();
             foreach ($request->tab_name as $index => $tab) {
                 UserDetailTabs::create([
                     'user_id' => $user->id,
