@@ -370,10 +370,13 @@
                                                         </a>
                                                     @endif
                                                     @if (count($event->tickets) > 0)
-                                                        <h5>from <strong>${{ $event->tickets[0]->price }}</strong> /
-                                                            person</h5>
+                                                        <span class="price">from <strong>${{ $event->tickets[0]->price }}</strong> / person</span>
+                                                        <span class="old-price">from <strong>${{ $event->tickets[0]->price }}</strong> / person</span>
+                                                        {{-- <h5>from <strong>${{ $event->tickets[0]->price }}</strong> / person</h5> --}}
                                                     @else
-                                                        <h5>from <strong>FREE</strong></h5>
+                                                        <span class="price">from <strong>FREE</strong></span>
+                                                        <span class="old-price">from <strong>FREE</strong></span>
+                                                        {{-- <h5>from <strong>FREE</strong></h5> --}}
                                                     @endif
                                                     <div class="product-addto-links">
 
