@@ -89,6 +89,7 @@ class UserManagementController extends Controller
 
     public function register(Request $request)
     {
+        // dd($request->toArray());
         $validator = $this->validator($request->all());
 
         if ($validator->fails()) {
@@ -211,8 +212,8 @@ class UserManagementController extends Controller
                     ]);
                 }
             }
-            if (isset($data['tabs']) && is_array($data['tabs'])) {
-                foreach ($data['tabs'] as $index => $tab) {
+            if (isset($data['tab_name']) && is_array($data['tab_name'])) {
+                foreach ($data['tab_name'] as $index => $tab) {
                     UserDetailTabs::create([
                         'user_id' => $user->id,
                         'name' => $data['tab_name'][$index] ?? null,
@@ -308,6 +309,7 @@ class UserManagementController extends Controller
             $user->role_id = '3';
         } else {
             $user->role_id = '2';
+            $package_id = $request->package_id;
         }
 
         if ($request->hasFile('logo')) {
@@ -408,6 +410,20 @@ class UserManagementController extends Controller
                     'subtitle' => $request->input('banner_subtitle')[$index] ?? null,
                     'description' => $request->input('banner_description')[$index] ?? null,
                     'button_text' => $request->input('banner_button')[$index] ?? null,
+                ]);
+            }
+        }
+
+        if (
+            isset($request->tab_name) && is_array($request->tab_name) &&
+            isset($request->tab_description) && is_array($request->tab_description)
+        ) {
+            UserDetailTabs::where('user_id', $user->id)->delete();
+            foreach ($request->tab_name as $index => $tab) {
+                UserDetailTabs::create([
+                    'user_id' => $user->id,
+                    'name' => $tab,
+                    'description' => $request->tab_description[$index] ?? '',
                 ]);
             }
         }
