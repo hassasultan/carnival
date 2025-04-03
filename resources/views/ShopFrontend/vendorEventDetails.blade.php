@@ -252,19 +252,6 @@
                             </div>
                         </div>
 
-                        <div id="imageModal" class="modal">
-                            <span class="close" onclick="closeModal()">&times;</span>
-                            <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
-                            <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
-                            <button onclick="viewFullScreen()" class="fun-btn full-screen"><i
-                                    class="fas fa-expand"></i></button>
-                            <div class="modal-content">
-                                <img id="modalImage" alt="Modal Image" class="modal-image">
-
-                            </div>
-                            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-                            <button class="next" onclick="changeSlide(1)">&#10095;</button>
-                        </div>
 
                         <div class="col-sm-6 col-md-6 col-lg-6">
 
@@ -461,6 +448,20 @@
                                 </div>
                             </div><!-- detail- product -->
 
+                        </div>
+
+                        <div id="imageModal" class="modal">
+                            <span class="close" onclick="closeModal()">&times;</span>
+                            <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
+                            <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
+                            <button onclick="viewFullScreen()" class="fun-btn full-screen"><i
+                                    class="fas fa-expand"></i></button>
+                            <div class="modal-content">
+                                <img id="modalImage" alt="Modal Image" class="modal-image">
+
+                            </div>
+                            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                            <button class="next" onclick="changeSlide(1)">&#10095;</button>
                         </div>
                         {{-- <div class="col-sm-6 col-md-6 col-lg-6">
 
