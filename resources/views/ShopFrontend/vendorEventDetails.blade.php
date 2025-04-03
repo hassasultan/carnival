@@ -292,7 +292,7 @@
                                 <div class="product-info-price">
                                     <div class="price-box">
                                         @if (count($event->tickets) > 0)
-                                            <span class="price">from <strong>${{ $event->tickets[0]->price }}</strong> / person</span>
+                                            <span class="price"> <strong>${{ $event->tickets[0]->price }}</strong> / person</span>
                                         @else
                                             <span class="price"> <strong>FREE</strong></span>
                                         @endif
