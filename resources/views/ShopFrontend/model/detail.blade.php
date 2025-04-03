@@ -550,7 +550,7 @@
 
                         <div class="product-info-detailed">
 
-                            @include('shop-frontend.carnival-member')
+                            @include('shop-frontend.partials.detail-section')
                         </div>
                         <!-- product tab info -->
 
