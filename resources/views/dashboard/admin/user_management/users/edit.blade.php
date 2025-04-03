@@ -615,7 +615,7 @@
                 </div>
 
                 <div id="tabSection">
-                    @foreach ($user->tabs as $tabs)
+                    @foreach ($user->tabs as $tab)
                         <div class="form-group col-md-12 banner-item">
                             <div class="card mb-3">
                                 <div class="card-header">
