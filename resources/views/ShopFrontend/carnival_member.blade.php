@@ -892,17 +892,9 @@
     </script>
     <script>
         let images = [{
-                full: "{{ asset('images/' . $user->vendor->logo) }}",
-                thumbnail: "{{ asset('images/' . $user->vendor->logo) }}"
+                full: "{{ asset($user->image) }}",
+                thumbnail: "{{ asset($user->image) }}"
             },
-            @foreach ($user->gallery as $key => $row)
-                @if (isset($row->images[0]))
-                    {
-                        full: "{{ asset('images/' . $row->images[0]->image) }}",
-                        thumbnail: "{{ asset('images/' . $row->images[0]->image) }}"
-                    },
-                @endif
-            @endforeach
         ];
         let currentIndex = 0;
 
