@@ -372,7 +372,7 @@
                                                     @if (count($event->tickets) > 0)
                                                         <span class="price">from <strong>${{ $event->tickets[0]->price }}</strong> / person</span>
                                                     @else
-                                                        <span class="price">from <strong>FREE</strong></span>
+                                                        <span class="price" <strong>FREE</strong></span>
                                                     @endif
                                                     <div class="product-addto-links">
 
