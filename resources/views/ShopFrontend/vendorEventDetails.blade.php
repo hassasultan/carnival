@@ -204,7 +204,6 @@
             font-size: 12px;
             margin-top: 4px;
         }
-
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -280,7 +279,8 @@
                                 <div class="product-info-price">
                                     <div class="price-box">
                                         @if (count($event->tickets) > 0)
-                                            <span class="price"> <strong>${{ $event->tickets[0]->price }}</strong> / person</span>
+                                            <span class="price"> <strong>${{ $event->tickets[0]->price }}</strong> /
+                                                person</span>
                                         @else
                                             <span class="price"> <strong>FREE</strong></span>
                                         @endif
@@ -318,10 +318,10 @@
                                             <span class="label">Address: </span>{{ $event->address }}
                                             <br>
                                             <span class="label">Description: </span>
-                                            <div class="detail-desc">
-                                                {!! $event->description !!}
-                                            </div>
-                                            <a href="javascrip:void(0);">See More</a>
+                                        <div class="detail-desc">
+                                            {!! $event->description !!}
+                                        </div>
+                                        <a href="javascrip:void(0);" onclick="showMore()">See More</a>
                                         </p>
                                     </div>
                                 </div>
@@ -458,7 +458,8 @@
                         <div id="imageModal" class="modal">
                             <span class="close" onclick="closeModal()">&times;</span>
                             <button onclick="zoomIn()" class="fun-btn zoomIn"><i class="fas fa-search-plus"></i></button>
-                            <button onclick="zoomOut()" class="fun-btn zoomOut"><i class="fas fa-search-minus"></i></button>
+                            <button onclick="zoomOut()" class="fun-btn zoomOut"><i
+                                    class="fas fa-search-minus"></i></button>
                             <button onclick="viewFullScreen()" class="fun-btn full-screen"><i
                                     class="fas fa-expand"></i></button>
                             <div class="modal-content">
@@ -558,8 +559,7 @@
                     <div class="col-md-3">
                         <h2>Location</h2>
                         <div class="map-div col-lg-12 col-sm-12 col-md-12 col-xs-12 eventview-no-padding map-setting">
-                            <a href="javascript:void(0);"
-                                class="hidden-xs">
+                            <a href="javascript:void(0);" class="hidden-xs">
                                 {{ $event->address }}</a>
                             <iframe id="gmap_canvas"
                                 src="https://maps.google.com/maps?q={{ $event->address }}&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
@@ -740,6 +740,16 @@
 
     <!-- Custom scripts -->
     <script>
+        let viewMore = false;
+
+        function showMore() {
+            if (viewMore) {
+                $('.detail-desc').css('height','30px');
+            }
+            else{
+                $('.detail-desc').css('height','auto');
+            }
+        }
         $(document).ready(function() {
             // Function to fetch and display products
             function fetchProducts(page = 1) {
