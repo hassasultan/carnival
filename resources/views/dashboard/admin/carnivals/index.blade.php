@@ -229,7 +229,7 @@
                             <select class="form-control" id="edit_country_id" name="country_id" required>
                                 <option value="">Select Country</option>
                                 @foreach ($countries as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -238,7 +238,7 @@
                             <select class="form-control" id="edit_city_id" name="city_id" required>
                                 <option value="">Select City</option>
                                 @foreach ($cities as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -1326,8 +1326,8 @@
                             <td>${member.email}</td>
                             <td>${member.phone}</td>
                             <td>
-                                <a href="${viewMember}" class="btn btn-sm btn-primary">Edit</a>
-                                <button class="btn btn-sm btn-primary" onclick="">View</button>
+                                <button class="btn btn-sm btn-primary" onclick="editMember(${member.id})">Edit</button>
+                                <a href="${viewMember}" class="btn btn-sm btn-primary">View</a>
                             </td>
                         </tr>
                     `;
