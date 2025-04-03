@@ -585,7 +585,7 @@
                         @enderror
                     </div>
                 </div>
-                <div id="tabSection" class="bannerSection">
+                <div id="tabSection">
                     <div class="form-group col-md-12 banner-item">
                         <div class="card mb-3">
                             <div class="card-header">
@@ -610,7 +610,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group col-md-12 bannerSection">
+                <div class="form-group col-md-12">
                     <button type="button" id="addTabBtn" class="btn btn-success">+ Add Another Tab</button>
                 </div>
                 <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Register') }}</button>
