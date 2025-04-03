@@ -13,6 +13,7 @@ use App\Models\Customer;
 use App\Models\Region;
 use App\Models\Blogs;
 use App\Models\UserDetailBanner;
+use App\Models\UserDetailTabs;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -207,6 +208,15 @@ class UserManagementController extends Controller
                         'subtitle' => $data['banner_subtitle'][$index] ?? null,
                         'description' => $data['banner_description'][$index] ?? null,
                         'button_text' => $data['banner_button'][$index] ?? null,
+                    ]);
+                }
+            }
+            if (isset($data['tabs']) && is_array($data['tabs'])) {
+                foreach ($data['tabs'] as $index => $tab) {
+                    UserDetailTabs::create([
+                        'user_id' => $user->id,
+                        'name' => $data['tab_name'][$index] ?? null,
+                        'description' => $data['tab_description'][$index] ?? null,
                     ]);
                 }
             }
