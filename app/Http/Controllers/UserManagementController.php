@@ -89,7 +89,7 @@ class UserManagementController extends Controller
 
     public function register(Request $request)
     {
-        dd($request->toArray());
+        // dd($request->toArray());
         $validator = $this->validator($request->all());
 
         if ($validator->fails()) {
@@ -212,8 +212,8 @@ class UserManagementController extends Controller
                     ]);
                 }
             }
-            if (isset($data['tabs']) && is_array($data['tabs'])) {
-                foreach ($data['tabs'] as $index => $tab) {
+            if (isset($data['tab_name']) && is_array($data['tab_name'])) {
+                foreach ($data['tab_name'] as $index => $tab) {
                     UserDetailTabs::create([
                         'user_id' => $user->id,
                         'name' => $data['tab_name'][$index] ?? null,
