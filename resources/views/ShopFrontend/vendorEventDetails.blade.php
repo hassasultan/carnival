@@ -325,7 +325,6 @@
                                         </p>
                                     </div>
                                 </div>
-                                <hr />
                                 {{-- <div class="product-info-stock">
                                     <div class="stock available">
                                         <span class="label">Availability: </span>In Stock
