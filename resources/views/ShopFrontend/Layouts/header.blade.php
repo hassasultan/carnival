@@ -66,7 +66,11 @@
             object-fit: cover;
             border-radius: 10px;
         }
-
+        .detail-desc
+        {
+            height: 30px;
+            overflow: hidden;
+        }
         @keyframes loading {
             0% {
                 left: -100%;

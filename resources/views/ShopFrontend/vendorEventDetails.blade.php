@@ -204,6 +204,7 @@
             font-size: 12px;
             margin-top: 4px;
         }
+
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -319,6 +320,7 @@
                                             <span class="label">Description: </span>
                                             <div class="detail-desc">
                                                 {!! $event->description !!}
+                                                <a href="javascrip:void(0);">See More</a>
                                             </div>
                                         </p>
                                     </div>
