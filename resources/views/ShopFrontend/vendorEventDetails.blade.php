@@ -320,8 +320,8 @@
                                             <span class="label">Description: </span>
                                             <div class="detail-desc">
                                                 {!! $event->description !!}
-                                                <a href="javascrip:void(0);">See More</a>
                                             </div>
+                                            <a href="javascrip:void(0);">See More</a>
                                         </p>
                                     </div>
                                 </div>
