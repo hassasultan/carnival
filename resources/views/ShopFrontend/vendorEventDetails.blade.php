@@ -740,21 +740,7 @@
 
     <!-- Custom scripts -->
     <script>
-        let viewMore = false;
 
-        function showMore() {
-            if (viewMore) {
-                $('.detail-desc').css('height','30px');
-                viewMore = false;
-                $('#view-btn').html('See More');
-            }
-            else{
-                $('.detail-desc').css('height','auto');
-                viewMore = true;
-                $('#view-btn').html('See Less');
-
-            }
-        }
         $(document).ready(function() {
             // Function to fetch and display products
             function fetchProducts(page = 1) {
