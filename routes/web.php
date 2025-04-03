@@ -90,6 +90,7 @@ Route::get('/shop', [FrontendConroller::class, 'shop_home'])->name('front.shop')
 Route::get('/get-discounted', [FrontendConroller::class, 'getDiscounted'])->name('front.get_discounted');
 Route::get('/mascamps-listing', [FrontendConroller::class, 'vendor_listing'])->name('front.vendors');
 Route::get('/about-us/{slug}', [FrontendConroller::class, 'about_us'])->name('details.aboutUs');
+Route::get('/carnival_member/{id}', [FrontendConroller::class, 'carnival_member'])->name('carnivalMember.detail');
 Route::get('/shop/{slug}/event-listing', [FrontendConroller::class, 'myEvents'])->name('myEevent.listing');
 Route::get('/{slug}/gallery', [FrontendConroller::class, 'myGallery'])->name('front.myGallery');
 Route::get('/{slug}/music-gallery', [FrontendConroller::class, 'myMusicGallery'])->name('front.myMusicGallery');

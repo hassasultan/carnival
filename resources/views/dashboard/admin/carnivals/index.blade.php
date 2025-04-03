@@ -1319,13 +1319,15 @@
             tableBody.innerHTML = ""; // Clear existing rows
 
             members.forEach(member => {
+                const member = `/carnival_member/${member.id}`;
                 const row = `
                         <tr>
                             <td>${member.first_name} ${member.last_name}</td>
                             <td>${member.email}</td>
                             <td>${member.phone}</td>
                             <td>
-                                <button class="btn btn-sm btn-primary" onclick="editMember(${member.id})">Edit</button>
+                                <a href="${editUrl}" class="btn btn-sm btn-primary">Edit</a>
+                                <button class="btn btn-sm btn-primary" onclick="">View</button>
                             </td>
                         </tr>
                     `;

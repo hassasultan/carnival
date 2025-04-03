@@ -27,6 +27,7 @@ use App\Models\Carnival;
 use App\Models\OurTeam;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\CarnivalMembers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -1068,4 +1069,11 @@ class FrontendConroller extends Controller
 
     //     return view('front.cgGear-isting', compact('products', 'bestSeller', 'newArrivals', 'mostReviews'));
     // }
+
+    public function carnival_member($id)
+    {
+        $user = CarnivalMembers::with('vendor', 'subVendor', 'products')->whereSlug($slug)->first();
+
+        return view('ShopFrontend.carnival_member', compact('user'));
+    }
 }
