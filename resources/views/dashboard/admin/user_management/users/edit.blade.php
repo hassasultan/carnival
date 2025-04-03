@@ -616,6 +616,37 @@
 
                 <div id="tabSection">
                     @foreach ($user->tabs as $tab)
+                        <div class="form-group col-md-12 tab-item">
+                            <div class="card mb-3">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5>Tabs</h5>
+                                    <button type="button" class="btn btn-danger remove-tab-btn-two"
+                                        data-id="{{ $tab->id }}">Delete</button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="tab-details">
+                                        <div class="form-group">
+                                            <label for="tab_name">Title (Tab Name)</label>
+                                            <input type="text" value="{{ $tab->name }}" class="form-control"
+                                                name="tab_name[]" placeholder="Tab Title Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tab_description">Description</label>
+                                            <textarea class="form-control summernote" name="tab_description[]" rows="3" placeholder="Banner Description">{!! $tab->description !!}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="form-group col-md-12">
+                    <button type="button" id="addTabBtn" class="btn btn-success">+ Add Another Tab</button>
+                </div>
+
+                {{-- <div id="tabSection">
+                    @foreach ($user->tabs as $tab)
                         <div class="form-group col-md-12 banner-item">
                             <div class="card mb-3">
                                 <div class="card-header">
@@ -643,7 +674,7 @@
                 </div>
                 <div class="form-group col-md-12">
                     <button type="button" id="addTabBtn" class="btn btn-success">+ Add Another Tab</button>
-                </div>
+                </div> --}}
 
                 <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Update') }}</button>
         </form>
@@ -789,6 +820,10 @@
                 tabsize: 2,
                 height: 100
             });
+        });
+
+        $(document).on('click', '.remove-tab-btn-two', function() {
+            $(this).closest('.tab-item').remove();
         });
 
         $(document).on('change', '.custom-file-input', function() {
