@@ -614,6 +614,37 @@
                     </div>
                 </div>
 
+                <div id="tabSection">
+                    @foreach ($user->tabs as $tabs)
+                        <div class="form-group col-md-12 banner-item">
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h5>Tabs</h5>
+                                </div>
+                                <div class="card-body">
+
+
+                                    <!-- Details for the tabs -->
+                                    <div class="banner-details">
+                                        <div class="form-group">
+                                            <label for="tab_name">Title (Tab Name)</label>
+                                            <input type="text" value="{{ $tab->name }}" class="form-control" name="tab_name[]"
+                                                placeholder="Tab Title Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tab_description">Description</label>
+                                            <textarea class="form-control summernote" name="tab_description[]" rows="3" placeholder="Banner Description">{{ $tab->description }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="form-group col-md-12">
+                    <button type="button" id="addTabBtn" class="btn btn-success">+ Add Another Tab</button>
+                </div>
+
                 <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Update') }}</button>
         </form>
     </div>
