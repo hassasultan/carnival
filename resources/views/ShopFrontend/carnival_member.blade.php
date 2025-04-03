@@ -414,7 +414,7 @@
 
                                 <div class="product-info-main">
                                     <h1 class="page-title">
-                                        {{ optional($user->fillname ?? 'N/A') }}
+                                        {{ $user->fillname }}
                                     </h1>
 
                                     <div class="contact-details">
