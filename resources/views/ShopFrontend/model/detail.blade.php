@@ -1076,9 +1076,20 @@
         });
     </script>
     <script>
+        @php
+            $image = null;
+
+            if ($user->vendor && $user->vendor->logo) {
+                $image = asset('images/' . $user->vendor->logo);
+            } elseif ($user->image) {
+                $image = asset('images/' . $user->image);
+            } else {
+                $image = asset('shopAssets/images/media/product9.jpg');
+            }
+        @endphp
         let images = [{
-                full: "{{ asset('images/' . $user->vendor->logo) }}",
-                thumbnail: "{{ asset('images/' . $user->vendor->logo) }}"
+                full: "{{ $image }}",
+                thumbnail: "{{ $image }}"
             },
             @foreach ($user->gallery as $key => $row)
                 @if (isset($row->images[0]))
