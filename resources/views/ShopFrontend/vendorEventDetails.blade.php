@@ -316,7 +316,7 @@
                                             <br>
                                             <span class="label">Address: </span>{{ $event->address }}
                                             <br>
-                                            <span class="label">Description: </span>{!! $event->description !!}
+                                            <span class="label">Description: </span class="detail-desc">{!! $event->description !!}<span>
                                         </p>
                                     </div>
                                 </div>
