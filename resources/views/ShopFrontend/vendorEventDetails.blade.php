@@ -321,7 +321,7 @@
                                         <div class="detail-desc">
                                             {!! $event->description !!}
                                         </div>
-                                        <a href="javascrip:void(0);" onclick="showMore()">See More</a>
+                                        <a href="javascrip:void(0);" onclick="showMore(this)" id="view-btn">See More</a>
                                         </p>
                                     </div>
                                 </div>
@@ -746,10 +746,13 @@
             if (viewMore) {
                 $('.detail-desc').css('height','30px');
                 viewMore = false;
+                $('#view-btn').html('See More');
             }
             else{
                 $('.detail-desc').css('height','auto');
                 viewMore = true;
+                $('#view-btn').html('See Less');
+
             }
         }
         $(document).ready(function() {
