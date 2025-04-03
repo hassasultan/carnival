@@ -548,7 +548,7 @@
 
                         <!-- product tab info -->
 
-                        {{-- @include('shop-frontend.partials.detail-section') --}}
+                        @include('shop-frontend.partials.detail-section')
                         <!-- product tab info -->
 
                         <!-- block-related product -->
