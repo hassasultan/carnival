@@ -633,7 +633,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="tab_description">Description</label>
-                                            <textarea class="form-control summernote" name="tab_description[]" rows="3" placeholder="Banner Description">{{ $tab->description }}</textarea>
+                                            <textarea class="form-control summernote" name="tab_description[]" rows="3" placeholder="Banner Description">{!! $tab->description !!}</textarea>
                                         </div>
                                     </div>
                                 </div>

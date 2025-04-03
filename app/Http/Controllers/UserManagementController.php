@@ -413,6 +413,19 @@ class UserManagementController extends Controller
             }
         }
 
+        if (
+            isset($request->tab_name) && is_array($request->tab_name) &&
+            isset($request->tab_description) && is_array($request->tab_description)
+        ) {
+            foreach ($request->tab_name as $index => $tab) {
+                UserDetailTabs::create([
+                    'user_id' => $user->id,
+                    'name' => $tab,
+                    'description' => $request->tab_description[$index] ?? '',
+                ]);
+            }
+        }
+
         return redirect()->route('users.index')
             ->with('success', 'User updated successfully.');
     }
