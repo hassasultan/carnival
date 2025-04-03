@@ -137,6 +137,11 @@
                                         <input type="text" id="address" value="{{ old('address') }}" name="address"
                                             class="form-control" placeholder="Enter Venue Address" required>
                                     </div>
+                                    <div class="form-group mb-3">
+                                        <label for="location">Location (please add the embeded iframe from google map)</label>
+                                        <textarea id="location" value="{{ old('location') }}" name="location" class="form-control"
+                                            placeholder="Enter event location"></textarea>
+                                    </div>
                                     <div id="hash_dress_code" class="mb-3">
                                         <label for="dress_code">Dress Code</label><br>
                                         <input type="hidden" name="dress_code[]" value="{{ $row->title }}">
@@ -1085,6 +1090,7 @@
                     $('#edit_total_no_of_tickets').val(response.event.total_no_of_tickets);
                     $('#edit_venue').val(response.event.venue);
                     $('#edit_address').val(response.event.address);
+                    $('#edit_location').val(response.event.location);
                     $('#edit_description').val(response.event.description);
                     $('#edit_eventType').val(response.event.eventType);
                     $('#edit_all_day').prop('checked', response.event.all_day);

@@ -73,6 +73,7 @@ class EventController extends Controller
             'total_no_of_tickets' => 'required|integer|min:1',
             'venue' => 'required|string|max:255',
             'address' => 'required|string|max:255',
+            'location' => 'required|string',
             'dress_code' => 'nullable|array',
             'dress_code.*' => 'nullable|string|max:255',
             'ticket_id' => 'required|array',
