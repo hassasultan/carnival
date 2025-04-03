@@ -1072,7 +1072,7 @@ class FrontendConroller extends Controller
 
     public function carnival_member($id)
     {
-        $user = CarnivalMembers::with('vendor', 'subVendor', 'products')->whereSlug($slug)->first();
+        $user = CarnivalMembers::with('vendor', 'subVendor', 'products')->whereSlug($id)->first();
 
         return view('ShopFrontend.carnival_member', compact('user'));
     }
