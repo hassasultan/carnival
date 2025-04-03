@@ -229,7 +229,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="product-gallery">
-                                <div class="col-sm-4">
+                                <div class="col-sm-2">
                                     <div class="product-thumbnails">
                                         @foreach ($event->images as $key => $row)
                                             <img class="thumbnail" src="{{ asset($row->image_url) }}"
@@ -238,7 +238,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-10">
                                     <div class="product-preview position-relative">
                                         <div class="zoom-container">
                                             <img id="mainImage"
