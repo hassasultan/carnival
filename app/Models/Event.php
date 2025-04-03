@@ -31,6 +31,7 @@ class Event extends Model
         'additional_images',
         'venue',
         'address',
+        'location',
         'booking_start_time_btn',
         'booking_starts_on_date',
         'booking_starts_on_time',
