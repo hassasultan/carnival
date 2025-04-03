@@ -831,6 +831,11 @@
                     </div>`;
 
                 $('#tabSection').append(newTab);
+                $('.summernote').summernote({
+                    placeholder: 'Add Your Description Here...',
+                    tabsize: 2,
+                    height: 100
+                });
             });
 
             // Remove a banner row
