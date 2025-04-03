@@ -289,6 +289,17 @@
                                     </div>
                                 </div>
 
+                                <div class="product-info-price">
+                                    <div class="price-box">
+                                        @if (count($event->tickets) > 0)
+                                            <span class="price">from <strong>${{ $event->tickets[0]->price }}</strong> / person</span>
+                                        @else
+                                            <span class="price"> <strong>FREE</strong></span>
+                                        @endif
+                                        {{-- <span class="price">${{ $product->new_price }} </span>
+                                        <span class="old-price">${{ $product->old_price }}</span> --}}
+                                    </div>
+                                </div>
 
                                 <div class="product-overview">
                                     <div class="overview-content">
@@ -368,11 +379,6 @@
                                                             class="action btn-cart btn">
                                                             <span>Add to Cart</span>
                                                         </a>
-                                                    @endif
-                                                    @if (count($event->tickets) > 0)
-                                                        <span class="price">from <strong>${{ $event->tickets[0]->price }}</strong> / person</span>
-                                                    @else
-                                                        <span class="price" <strong>FREE</strong></span>
                                                     @endif
                                                     <div class="product-addto-links">
 
