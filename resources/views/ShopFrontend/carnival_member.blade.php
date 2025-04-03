@@ -488,10 +488,6 @@
 
                     </div>
                 </div>
-
-                <!-- block  showcase-->
-                @include('partials.brand_showcase')
-                <!-- block  showcase-->
     </main><!-- end MAIN -->
 @endsection
 
