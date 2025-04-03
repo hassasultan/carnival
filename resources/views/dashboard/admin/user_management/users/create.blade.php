@@ -790,7 +790,7 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-danger remove-banner-btn">Remove Banner</button>
+                        <button type="button" class="btn btn-danger remove-banner-btn">Remove Tab</button>
                     </div>
                 </div>
             </div>`;
