@@ -504,8 +504,9 @@
                     let selectedCategories = getSelectedCategories();
                     let eventType = $('#event_type').is(':checked') ? 1 : null;
                     let priceRanges = getSelectedPriceRanges();
+                    let selectedBrands = getSelectedBrands();
 
-                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal);
+                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal, selectedBrands);
                 });
 
                 // Category filter
@@ -518,8 +519,9 @@
                     let eventType = $('#event_type').is(':checked') ? 1 : null;
                     let priceRanges = getSelectedPriceRanges();
                     let searchVal = $('input[name="searchVal"]').val();
+                    let selectedBrands = getSelectedBrands();
 
-                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal);
+                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal, selectedBrands);
                 });
 
                 // Event type filter
@@ -528,8 +530,9 @@
                     let selectedCategories = getSelectedCategories();
                     let priceRanges = getSelectedPriceRanges();
                     let searchVal = $('input[name="searchVal"]').val();
+                    let selectedBrands = getSelectedBrands();
 
-                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal);
+                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal, selectedBrands);
                 });
 
                 // Price filter
