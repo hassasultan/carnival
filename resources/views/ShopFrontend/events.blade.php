@@ -397,7 +397,7 @@
                             categories: selectedCategories,
                             event_type: eventType,
                             price_ranges: priceRanges,
-                            getSearchVal: searchVal
+                            getSearchVal: searchVal,
                             brands: selectedBrands
                         },
                         success: function(response) {
