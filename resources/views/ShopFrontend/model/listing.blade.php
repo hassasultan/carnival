@@ -348,6 +348,7 @@
                                             <a href="{{ route('details.aboutUs', '') }}/${vendor.user.slug}">
                                                 ${vendor.user.first_name} ${vendor.user.last_name}
                                             </a>
+                                            <span class="price">$${vendor.user.city} ${vendor.user.state} ${vendor.user.country}</span>
                                         </strong>`;
                             if (vendor.user.products.length > 0) {
                                 vendorHtml += `
