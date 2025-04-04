@@ -338,11 +338,11 @@
                                     "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}"
                                     .replace('event_slug_placeholder', event.slug);
                                 var eventHtml = `
-                        <li class="col-sm-4 event-item">
-                            <div class="event-item-opt-1">
-                                <div class="event-item-info">
-                                    <div class="event-item-photo">
-                                        <a href="${href}" class="event-item-img">
+                        <li class="col-sm-4 product-item">
+                            <div class="product-item-opt-1">
+                                <div class="product-item-info">
+                                    <div class="product-item-photo">
+                                        <a href="${href}" class="product-item-img">
                                             <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
                                         </a>
                                         <div class="product-item-actions">
@@ -351,12 +351,12 @@
                                             <a href="#" class="btn btn-quickview"><span>quickview</span></a>
                                         </div>
                                         <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
-                                        <span class="event-item-label label-date">${event.start_date}</span>
+                                        <span class="product-item-label label-date">${event.start_date}</span>
                                     </div>
-                                    <div class="event-item-detail">
-                                        <strong class="event-item-name"><a href="${href}">${event.name}</a></strong>
+                                    <div class="product-item-detail">
+                                        <strong class="product-item-name"><a href="${href}">${event.name}</a></strong>
                                         <div class="clearfix">
-                                            <div class="event-item-description">
+                                            <div class="product-item-description">
                                                 <p>${event.description.substring(0, 100)}...</p>
                                             </div>
                                         </div>
