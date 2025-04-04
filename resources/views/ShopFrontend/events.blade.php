@@ -311,7 +311,6 @@
                                             <li class="item">
                                                 <label>
                                                     <input type="checkbox" class="brand-checkbox"
-                                                        @if ($country->name == $selected_country) checked @endif
                                                         value="{{ $country->id }}">
                                                     <span>{{ $country->name }} <span
                                                             class="count">({{ $country->products_count }})</span></span>

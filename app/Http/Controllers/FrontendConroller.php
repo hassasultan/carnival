@@ -952,14 +952,7 @@ class FrontendConroller extends Controller
             ->take(3)
             ->get();
 
-
-        $selected_country = '';
-
-        if ($request->country && $request->country != null) {
-            $selected_country = $request->country;
-        }
-
-        return view('ShopFrontend.events', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3', 'selected_country', 'countries'));
+        return view('ShopFrontend.events', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3', 'countries'));
     }
     public function get_carnivals(Request $request)
     {
