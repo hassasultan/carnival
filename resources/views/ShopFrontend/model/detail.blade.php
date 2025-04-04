@@ -496,6 +496,7 @@
                                         </div>
 
                                         @if ($user->packageName == 'Models')
+                                        <h3 class="stats-heading">Stats</h3> 
                                             <div class="contact-item">
                                                 <span class="text">Age:</span>
                                                 <a href="javascript:void(0);">{{ $user->age }}</a>
@@ -533,10 +534,24 @@
 
                                             <div class="contact-item">
                                                 <span class="text">About:</span>
+                                                <a href="javascript:void(0);" class="about-text">
+                                                    {!! \Illuminate\Support\Str::limit(strip_tags($event->description), 200) !!}
+                                                </a>
+                                                @if (strlen(strip_tags($event->description)) > 200)
+                                                    <a href="javascript:void(0);" class="see-more">See More</a>
+                                                    <span class="full-text" style="display: none;">
+                                                        {!! strip_tags($event->description) !!}
+                                                        <a href="javascript:void(0);" class="see-less">See Less</a>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                            
+                                            {{-- <div class="contact-item">
+                                                <span class="text">About:</span>
                                                 <a href="javascript:void(0);">
                                                     {!! \Illuminate\Support\Str::limit(strip_tags($event->description), 200) !!}
                                                 </a>
-                                            </div>
+                                            </div> --}}
                                         @endif
                                     </div>
                                 </div>
@@ -1169,5 +1184,20 @@
 
             setInterval(updateCountdown, 1000);
         }); --}}
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".see-more").click(function () {
+                $(this).hide();
+                $(this).siblings(".about-text").hide();
+                $(this).siblings(".full-text").show();
+            });
+    
+            $(".see-less").click(function () {
+                $(this).parent(".full-text").hide();
+                $(this).parent().siblings(".about-text").show();
+                $(this).parent().siblings(".see-more").show();
+            });
+        });
     </script>
 @endsection
