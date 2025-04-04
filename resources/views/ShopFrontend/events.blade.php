@@ -544,7 +544,7 @@
                     let searchVal = $('input[name="searchVal"]').val();
                     let eventType = $('#event_type').is(':checked') ? 1 : null;
 
-                    fetchProducts(1, selectedCategories, priceRanges, selectedBrands, searchVal, eventType);
+                    fetchEvents(1, selectedCategories, priceRanges, selectedBrands, searchVal, eventType);
                 });
 
                 // Pagination click
