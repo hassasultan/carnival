@@ -702,19 +702,6 @@ class FrontendConroller extends Controller
             }
         }
 
-        if ($request->filled('price_ranges')) {
-            $price_ranges = $request->price_ranges;
-            $query->whereHas('tickets', function ($q) use ($price_ranges) {
-                $q->where(function ($query) use ($price_ranges) {
-                    foreach ($price_ranges as $range) {
-                        $min = (float) $range['min'];
-                        $max = (float) $range['max'];
-                        $query->orWhereBetween('price', [$min, $max]);
-                    }
-                });
-            });
-        }
-
         // dd($request->toArray(), $query->get()->count());
 
         $events = $query->orderBy('id', 'DESC')->paginate(18);
