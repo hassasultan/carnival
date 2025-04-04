@@ -356,8 +356,11 @@
                                     <div class="product-item-detail">
                                         <strong class="product-item-name"><a href="${href}">${event.name}</a></strong>
                                         <div class="clearfix">
+                                             <div class="product-item-price">
+                                                <span class="price">$${event.tickets[0].price}</span>
+                                            </div>
                                             <div class="product-item-description">
-                                                <p>${event.description.substring(0, 100)}...</p>
+                                                <p>${event.address}</p>
                                             </div>
                                         </div>
                                     </div>
