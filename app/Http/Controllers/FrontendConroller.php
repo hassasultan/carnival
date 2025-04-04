@@ -677,6 +677,27 @@ class FrontendConroller extends Controller
 
         if ($request->filled('price_ranges')) {
             $price_ranges = $request->price_ranges;
+    
+            $query->whereHas('tickets', function ($q) use ($price_ranges) {
+                $q->whereIn('id', function ($subQuery) {
+                    $subQuery->selectRaw('MIN(id)')
+                             ->from('event_tickets')
+                             ->whereColumn('event_tickets.event_id', 'events.id')
+                             ->groupBy('event_tickets.event_id');
+                });
+    
+                $q->where(function ($priceQuery) use ($price_ranges) {
+                    foreach ($price_ranges as $range) {
+                        $min = (float) $range['min'];
+                        $max = (float) $range['max'];
+                        $priceQuery->orWhereBetween('price', [$min, $max]);
+                    }
+                });
+            });
+        }
+
+        if ($request->filled('price_ranges')) {
+            $price_ranges = $request->price_ranges;
             $query->whereHas('tickets', function ($q) use ($price_ranges) {
                 $q->where(function ($query) use ($price_ranges) {
                     foreach ($price_ranges as $range) {

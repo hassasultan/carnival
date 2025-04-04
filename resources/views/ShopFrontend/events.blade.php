@@ -252,6 +252,58 @@
                             @endforeach
                         </div>
                     </div><!-- block slide top -->
+
+                     <!-- block filter events -->
+                     <div id="layered-filter-block" class="block-sidebar block-filter no-hide">
+                        <div class="block-title">
+                            <strong>FILTER SELECTION</strong>
+                        </div>
+                        <div class="block-content">
+                            <!-- filter price -->
+                            <div class="filter-options-item filter-options-price">
+                                <div class="filter-options-title">Price</div>
+                                <div class="filter-options-content">
+                                    {{-- <div class="slider-range">
+
+                                        <div id="slider-range"></div>
+
+                                        <div class="action">
+                                            <span class="price">
+                                                <span>Range:</span>
+                                                $<span id="amount-left"></span>
+                                                -
+                                                $<span id="amount-right"></span>
+                                            </span>
+                                        </div>
+                                    </div> --}}
+                                    <ol class="items">
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox" class="price-checkbox" data-min="20"
+                                                    data-max="50">
+                                                <span>$20 - $50 <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox" class="price-checkbox" data-min="50"
+                                                    data-max="100">
+                                                <span>$50 - $100 <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                        <li class="item">
+                                            <label>
+                                                <input type="checkbox" class="price-checkbox" data-min="100"
+                                                    data-max="250">
+                                                <span>$100 - $250 <span class="count">(20)</span></span>
+                                            </label>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div><!-- filter price -->
+                        </div>
+                    </div><!-- Filter -->
+
                 </div>
                 <!-- Sidebar -->
             </div>
