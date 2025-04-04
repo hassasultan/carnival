@@ -66,7 +66,8 @@ class Event extends Model
 
     public function country()
     {
-        return $this->belongsTo(Country::class, 'venue', 'id');
+        // return $this->belongsTo(Country::class, 'venue', 'id');
+        return $this->belongsTo(Country::class, 'venue', 'id')->withDefault();
     }
     public function images()
     {

@@ -923,7 +923,7 @@ class FrontendConroller extends Controller
     {
         $mascamp_banners = Banner::where('type', 'mascamps')->get();
         $regions = Region::all();
-        $countries = Country::with('events')->OrderBy('name', 'ASC')->get();
+        $countries = Country::withCount('events')->with('events')->OrderBy('name', 'ASC')->get();
         $adv1 = Advertisement::where('status', 1)
             ->inRandomOrder()
             ->take(3)
