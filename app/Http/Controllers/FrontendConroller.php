@@ -679,7 +679,7 @@ class FrontendConroller extends Controller
             $query->whereIn('venue', $request->brands);
         }
 
-        if ($request->filled('price_ranges')) {
+        if ($request->filled('price_ranges') && is_array($request->price_ranges)) {
             $price_ranges = $request->price_ranges;
 
             $query->whereHas('tickets', function ($q) use ($price_ranges) {
@@ -692,8 +692,8 @@ class FrontendConroller extends Controller
 
                 $q->where(function ($priceQuery) use ($price_ranges) {
                     foreach ($price_ranges as $range) {
-                        $min = (float) $range['min'];
-                        $max = (float) $range['max'];
+                        $min = (float) ($range['min'] ?? 0);
+                        $max = (float) ($range['max'] ?? PHP_INT_MAX);
                         $priceQuery->orWhereBetween('price', [$min, $max]);
                     }
                 });
