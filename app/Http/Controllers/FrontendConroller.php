@@ -679,25 +679,27 @@ class FrontendConroller extends Controller
             $query->whereIn('venue', $request->brands);
         }
 
-        if ($request->filled('price_ranges') && is_array($request->price_ranges)) {
-            $price_ranges = $request->price_ranges;
+        if ($request->filled('price_ranges')) {
+            $price_ranges = is_array($request->price_ranges) ? $request->price_ranges : json_decode($request->price_ranges, true);
 
-            $query->whereHas('tickets', function ($q) use ($price_ranges) {
-                $q->whereIn('id', function ($subQuery) {
-                    $subQuery->selectRaw('MIN(id)')
-                        ->from('event_tickets')
-                        ->whereColumn('event_tickets.event_id', 'events.id')
-                        ->groupBy('event_tickets.event_id');
-                });
+            if (is_array($price_ranges)) {  // Ensure it's an array before looping
+                $query->whereHas('tickets', function ($q) use ($price_ranges) {
+                    $q->whereIn('id', function ($subQuery) {
+                        $subQuery->selectRaw('MIN(id)')
+                            ->from('event_tickets')
+                            ->whereColumn('event_tickets.event_id', 'events.id')
+                            ->groupBy('event_tickets.event_id');
+                    });
 
-                $q->where(function ($priceQuery) use ($price_ranges) {
-                    foreach ($price_ranges as $range) {
-                        $min = (float) ($range['min'] ?? 0);
-                        $max = (float) ($range['max'] ?? PHP_INT_MAX);
-                        $priceQuery->orWhereBetween('price', [$min, $max]);
-                    }
+                    $q->where(function ($priceQuery) use ($price_ranges) {
+                        foreach ($price_ranges as $range) {
+                            $min = (float) ($range['min'] ?? 0);
+                            $max = (float) ($range['max'] ?? PHP_INT_MAX);
+                            $priceQuery->orWhereBetween('price', [$min, $max]);
+                        }
+                    });
                 });
-            });
+            }
         }
 
         if ($request->filled('price_ranges')) {
