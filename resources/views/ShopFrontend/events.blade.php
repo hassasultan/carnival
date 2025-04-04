@@ -369,7 +369,7 @@
     <script>
         $(document).ready(function() {
             $(document).ready(function() {
-                function fetchEvents(page = 1, selectedCategories = [], eventType = null, priceRanges = [],
+                function fetchEvents(page = 1, selectedCategories = [], eventType = null, priceRanges = [], selectedBrands = [],
                     searchVal = '') {
                     $('#event-listing').html('');
 
@@ -398,6 +398,7 @@
                             event_type: eventType,
                             price_ranges: priceRanges,
                             getSearchVal: searchVal
+                            brands: selectedBrands
                         },
                         success: function(response) {
                             $('#event-listing').empty();
