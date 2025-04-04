@@ -663,7 +663,7 @@ class FrontendConroller extends Controller
         $event_type = $request->get('event_type');
         $getSearchVal = $request->get('getSearchVal', null);
 
-        $query = Event::with('images', 'tickets', 'User');
+        $query = Event::with('images', 'tickets', 'User', 'country');
         if ($request->has('categories') && !empty($request->categories)) {
             $query->whereIn('category_id', $request->categories);
         }
@@ -675,17 +675,21 @@ class FrontendConroller extends Controller
             $query->where('name', 'like', '%' . $getSearchVal . '%');
         }
 
+        if ($request->filled('brands')) {
+            $query->whereIn('venue', $request->brands);
+        }
+
         if ($request->filled('price_ranges')) {
             $price_ranges = $request->price_ranges;
-    
+
             $query->whereHas('tickets', function ($q) use ($price_ranges) {
                 $q->whereIn('id', function ($subQuery) {
                     $subQuery->selectRaw('MIN(id)')
-                             ->from('event_tickets')
-                             ->whereColumn('event_tickets.event_id', 'events.id')
-                             ->groupBy('event_tickets.event_id');
+                        ->from('event_tickets')
+                        ->whereColumn('event_tickets.event_id', 'events.id')
+                        ->groupBy('event_tickets.event_id');
                 });
-    
+
                 $q->where(function ($priceQuery) use ($price_ranges) {
                     foreach ($price_ranges as $range) {
                         $min = (float) $range['min'];
@@ -926,10 +930,11 @@ class FrontendConroller extends Controller
         return view('ShopFrontend.carnivals', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3'));
     }
 
-    public function shop_event_listing()
+    public function shop_event_listing(Request $request)
     {
         $mascamp_banners = Banner::where('type', 'mascamps')->get();
         $regions = Region::all();
+        $countries = Country::OrderBy('name', 'ASC')->get();
         $adv1 = Advertisement::where('status', 1)
             ->inRandomOrder()
             ->take(3)
@@ -947,7 +952,14 @@ class FrontendConroller extends Controller
             ->take(3)
             ->get();
 
-        return view('ShopFrontend.events', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3'));
+
+        $selected_country = '';
+
+        if ($request->country && $request->country != null) {
+            $selected_country = $request->country;
+        }
+
+        return view('ShopFrontend.events', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3', 'selected_country', 'countries'));
     }
     public function get_carnivals(Request $request)
     {

@@ -63,6 +63,11 @@ class Event extends Model
     {
         return $this->belongsTo(Package::class);
     }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'venue', 'id');
+    }
     public function images()
     {
         return $this->hasMany(EventImage::class);

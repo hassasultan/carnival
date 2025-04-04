@@ -253,8 +253,8 @@
                         </div>
                     </div><!-- block slide top -->
 
-                     <!-- block filter events -->
-                     <div id="layered-filter-block" class="block-sidebar block-filter no-hide">
+                    <!-- block filter events -->
+                    <div id="layered-filter-block" class="block-sidebar block-filter no-hide">
                         <div class="block-title">
                             <strong>FILTER SELECTION</strong>
                         </div>
@@ -301,6 +301,26 @@
                                     </ol>
                                 </div>
                             </div><!-- filter price -->
+
+                            <!-- filter brad-->
+                            <div class="filter-options-item filter-options-brand">
+                                <div class="filter-options-title">BRAND</div>
+                                <div class="filter-options-content">
+                                    <ol class="items">
+                                        @foreach ($countries as $country)
+                                            <li class="item">
+                                                <label>
+                                                    <input type="checkbox" class="brand-checkbox"
+                                                        @if ($country->name == $selected_country) checked @endif
+                                                        value="{{ $country->id }}">
+                                                    <span>{{ $country->name }} <span
+                                                            class="count">({{ $country->products_count }})</span></span>
+                                                </label>
+                                            </li>
+                                        @endforeach
+                                    </ol>
+                                </div>
+                            </div><!-- Filter Item -->
                         </div>
                     </div><!-- Filter -->
 
@@ -412,6 +432,7 @@
                                                 <span class="price">$${event.tickets[0].price}</span>
                                             </div>
                                             <div class="product-item-description">
+                                                <p>${event.country.name}</p>
                                                 <p>${event.address}</p>
                                             </div>
                                         </div>
@@ -509,9 +530,21 @@
                     let eventType = $('#event_type').is(':checked') ? 1 : null;
                     let selectedCategories = getSelectedCategories();
                     let priceRanges = getSelectedPriceRanges();
+                    let selectedBrands = getSelectedBrands();
                     let searchVal = $('input[name="searchVal"]').val();
 
-                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal);
+                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal, selectedBrands);
+                });
+
+                $(document).on('click', '.brand-checkbox', function() {
+                    let selectedCategories = getSelectedCategories();
+                    // let productType = $('.product_type').is(':checked') ? 1 : null;
+                    let priceRanges = getSelectedPriceRanges();
+                    let selectedBrands = getSelectedBrands();
+                    let searchVal = $('input[name="searchVal"]').val();
+                    let eventType = $('#event_type').is(':checked') ? 1 : null;
+
+                    fetchProducts(1, selectedCategories, priceRanges, selectedBrands, searchVal, eventType);
                 });
 
                 // Pagination click
@@ -522,8 +555,9 @@
                     let eventType = $('#event_type').is(':checked') ? 1 : null;
                     let priceRanges = getSelectedPriceRanges();
                     let searchVal = $('input[name="searchVal"]').val();
+                    let selectedBrands = getSelectedBrands();
 
-                    fetchEvents(page, selectedCategories, eventType, priceRanges, searchVal);
+                    fetchEvents(page, selectedCategories, eventType, priceRanges, searchVal, selectedBrands);
                 });
 
                 // Initial fetch
