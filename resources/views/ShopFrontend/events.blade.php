@@ -345,6 +345,12 @@
                                         <a href="${href}" class="event-item-img">
                                             <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
                                         </a>
+                                        <div class="product-item-actions">
+                                            <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
+                                            <a href="#" class="btn btn-compare"><span>compare</span></a>
+                                            <a href="#" class="btn btn-quickview"><span>quickview</span></a>
+                                        </div>
+                                        <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
                                         <span class="event-item-label label-date">${event.start_date}</span>
                                     </div>
                                     <div class="event-item-detail">
