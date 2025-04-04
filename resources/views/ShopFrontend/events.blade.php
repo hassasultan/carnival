@@ -476,6 +476,14 @@
                     return selectedCategories;
                 }
 
+                function getSelectedBrands() {
+                    let selectedBrands = [];
+                    $('.brand-checkbox:checked').each(function() {
+                        selectedBrands.push($(this).val());
+                    });
+                    return selectedBrands;
+                }
+
                 function getSelectedPriceRanges() {
                     let priceRanges = [];
                     $('.price-checkbox:checked').each(function() {
@@ -533,7 +541,8 @@
                     let selectedBrands = getSelectedBrands();
                     let searchVal = $('input[name="searchVal"]').val();
 
-                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal, selectedBrands);
+                    fetchEvents(1, selectedCategories, eventType, priceRanges, searchVal,
+                        selectedBrands);
                 });
 
                 $(document).on('click', '.brand-checkbox', function() {
@@ -544,7 +553,8 @@
                     let searchVal = $('input[name="searchVal"]').val();
                     let eventType = $('#event_type').is(':checked') ? 1 : null;
 
-                    fetchEvents(1, selectedCategories, priceRanges, selectedBrands, searchVal, eventType);
+                    fetchEvents(1, selectedCategories, priceRanges, selectedBrands, searchVal,
+                        eventType);
                 });
 
                 // Pagination click
@@ -557,7 +567,8 @@
                     let searchVal = $('input[name="searchVal"]').val();
                     let selectedBrands = getSelectedBrands();
 
-                    fetchEvents(page, selectedCategories, eventType, priceRanges, searchVal, selectedBrands);
+                    fetchEvents(page, selectedCategories, eventType, priceRanges, searchVal,
+                        selectedBrands);
                 });
 
                 // Initial fetch
