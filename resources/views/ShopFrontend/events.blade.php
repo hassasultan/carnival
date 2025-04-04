@@ -313,7 +313,7 @@
                                                     <input type="checkbox" class="brand-checkbox"
                                                         value="{{ $country->id }}">
                                                     <span>{{ $country->name }} <span
-                                                            class="count">({{ $country->products_count }})</span></span>
+                                                            class="count">({{ $country->events_count }})</span></span>
                                                 </label>
                                             </li>
                                         @endforeach

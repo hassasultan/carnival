@@ -20,4 +20,8 @@ class Country extends Model
     {
         return $this->hasMany(City::class, 'country_id');
     }
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'venue');
+    }
 }
