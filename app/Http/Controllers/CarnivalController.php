@@ -40,8 +40,30 @@ class CarnivalController extends Controller
         $countries = Country::all();
         $cities = City::all();
         $packages = Package::all();
+        $Models = Vendor::where('name', 'Models')->get();
+        $DJs = Vendor::where('name', 'DJs')->get();
+        $Artistes = Vendor::where('name', 'Artistes')->get();
+        $Blogger = Vendor::where('name', 'Blogger')->get();
+        $CarnivalCommittees = Vendor::where('name', 'Carnival Committees')->get();
+        $EventPromoters = Vendor::where('name', 'Event Promoters')->get();
+        $MasBandsLeader = Vendor::where('name', 'MasBands - Leader')->get();
 
-        return view('dashboard.admin.carnivals.index', compact('region', 'carnivals', 'mascamps', 'countries', 'cities', 'packages'));
+        return view('dashboard.admin.carnivals.index', compact(
+            'region',
+            'carnivals',
+            'mascamps',
+            'countries',
+            'cities',
+            'packages',
+            'Models',
+            'DJs',
+            'Artistes',
+            'Events',
+            'Blogger',
+            'CarnivalCommittees',
+            'EventPromoters',
+            'MasBandsLeader',
+        ));
     }
 
     public function create()
@@ -437,7 +459,7 @@ class CarnivalController extends Controller
 
             $request->image->move(public_path('uploads/carnival_members'), $imageName);
 
-            $validatedData['image']  = 'uploads/carnival_members/' . $imageName;
+            $validatedData['image'] = 'uploads/carnival_members/' . $imageName;
         }
 
         try {
@@ -465,7 +487,7 @@ class CarnivalController extends Controller
 
     public function assignModels(Request $request)
     {
-        
+
         $carnival = Carnival::findOrFail($request->carnival_id);
         if ($request->has('is_model')) {
             $mascampsWithData = [];

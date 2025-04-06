@@ -472,11 +472,31 @@
                             <div class="form-group">
                                 <label for="{{ $package->id }}">{{ $package->title }}</label><br>
                                 <select id="{{ $package->id }}" name="" class="form-control select2" multiple>
-                                    @foreach ($mascamps as $row)
-                                        <option value="{{ $row->id }}">
-                                            {{ $row->user->first_name . ' ' . $row->user->last_name }}
-                                        </option>
-                                    @endforeach
+                                    @if ($package->title == 'Carnival Committees')
+                                        @foreach ($CarnivalCommittees as $row)
+                                            <option value="{{ $row->id }}">
+                                                {{ $row->user->first_name . ' ' . $row->user->last_name }}
+                                            </option>
+                                        @endforeach
+                                    @elseif ($package->title == 'Event Promoters')
+                                        @foreach ($EventPromoters as $row)
+                                            <option value="{{ $row->id }}">
+                                                {{ $row->user->first_name . ' ' . $row->user->last_name }}
+                                            </option>
+                                        @endforeach
+                                    @elseif ($package->title == 'MasBands - Leader')
+                                        @foreach ($MasBandsLeader as $row)
+                                            <option value="{{ $row->id }}">
+                                                {{ $row->user->first_name . ' ' . $row->user->last_name }}
+                                            </option>
+                                        @endforeach
+                                    @else
+                                        @foreach ($package->title as $row)
+                                            <option value="{{ $row->id }}">
+                                                {{ $row->user->first_name . ' ' . $row->user->last_name }}
+                                            </option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                         @endforeach
