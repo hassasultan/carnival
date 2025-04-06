@@ -87,7 +87,7 @@ class FrontendConroller extends Controller
     public function carnival_listing()
     {
 
-        $regions = Region::with('countries')->get();
+        $regions = Region::with('countries')->OrderBy('placement', 'ASC')->get();
         $carnivals = Carnival::with('user')->get();
         $investors = Investor::all();
         $blogs = Blogs::with('user')->orderBy('id', 'DESC')->get()->take('3');
@@ -365,7 +365,7 @@ class FrontendConroller extends Controller
     public function vendor_listing()
     {
         $mascamp_banners = Banner::where('type', 'mascamps')->get();
-        $regions = Region::all();
+        $regions = Region::OrderBy('placement', 'ASC')->get();
         $adv1 = Advertisement::where('status', 1)
             ->inRandomOrder()
             ->take(3)
@@ -696,7 +696,7 @@ class FrontendConroller extends Controller
         $banners = Banner::where('type', 'mascamps')->get();
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
         $events = Event::with('category')->where('user_id', $user->id)->get();
-        $regions = Region::with('countries')->get();
+        $regions = Region::with('countries')->OrderBy('placement', 'ASC')->get();
         $cat1 = Category::where('status', 1)
             ->inRandomOrder()
             ->take(3)
@@ -815,7 +815,7 @@ class FrontendConroller extends Controller
     public function modelListing()
     {
         $mascamp_banners = Banner::where('type', 'mascamps')->get();
-        $regions = Region::all();
+        $regions = Region::OrderBy('placement', 'ASC')->get();
         $adv1 = Advertisement::where('status', 1)
             ->inRandomOrder()
             ->take(3)
@@ -856,7 +856,7 @@ class FrontendConroller extends Controller
     public function artistListing()
     {
         $mascamp_banners = Banner::where('type', 'mascamps')->get();
-        $regions = Region::all();
+        $regions = Region::OrderBy('placement', 'ASC')->get();
         $adv1 = Advertisement::where('status', 1)
             ->inRandomOrder()
             ->take(3)
@@ -983,7 +983,7 @@ class FrontendConroller extends Controller
     public function carnival_listing_all()
     {
         $mascamp_banners = Banner::where('type', 'mascamps')->get();
-        $regions = Region::all();
+        $regions = Region::OrderBy('placement', 'ASC')->get();
         $adv1 = Advertisement::where('status', 1)
             ->inRandomOrder()
             ->take(3)
@@ -1007,7 +1007,7 @@ class FrontendConroller extends Controller
     public function shop_event_listing(Request $request)
     {
         $mascamp_banners = Banner::where('type', 'mascamps')->get();
-        $regions = Region::all();
+        $regions = Region::OrderBy('placement', 'ASC')->get();
         $countries = Country::withCount('events')->with('events')->OrderBy('name', 'ASC')->get();
         $adv1 = Advertisement::where('status', 1)
             ->inRandomOrder()
