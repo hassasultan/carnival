@@ -298,8 +298,8 @@
                                         <ul class="nav" role="tablist">
                                             <li role="presentation" class="active">
                                                 <a href="#tabproduct1" role="tab" id="best-sell"
-                                                    data-toggle="tab">Queen
-                                                    Show
+                                                    data-toggle="tab">
+                                                    Events
                                                 </a>
                                             </li>
                                         </ul>
@@ -614,8 +614,8 @@
                                         <ul class="nav" role="tablist">
                                             <li role="presentation" class="active">
                                                 <a href="#tabproduct1" role="tab" id="best-sell"
-                                                    data-toggle="tab">Queen
-                                                    Show
+                                                    data-toggle="tab">
+                                                    Mascamps
                                                 </a>
                                             </li>
                                         </ul>
@@ -687,8 +687,8 @@
                                         <ul class="nav" role="tablist">
                                             <li role="presentation" class="active">
                                                 <a href="#tabproduct1" role="tab" id="best-sell"
-                                                    data-toggle="tab">Queen
-                                                    Show
+                                                    data-toggle="tab">
+                                                    Artistes
                                                 </a>
                                             </li>
                                         </ul>
