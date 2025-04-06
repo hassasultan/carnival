@@ -44,7 +44,14 @@ class Carnival extends Model
     public function mascamps()
     {
         return $this->belongsToMany(Vendor::class, 'pivot_carnival_mascamps', 'carnival_id', 'mascamp_id')
-                    ->withTimestamps();
+            ->withTimestamps();
+    }
+
+    public function packageVendors($packageTitle)
+    {
+        return $this->mascamps()->whereHas('package', function ($q) use ($packageTitle) {
+            $q->where('title', $packageTitle);
+        });
     }
 
     public function members()
