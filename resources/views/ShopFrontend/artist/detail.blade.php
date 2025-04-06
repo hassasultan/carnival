@@ -109,18 +109,16 @@
                                         Flashlights & Lamps
                                     </a>
                                 </li> --}}
-                                @if ($vendor->user->isVendor)
-                                    @foreach ($vendor->subvendor as $row)
-                                        <li class="">
-                                            <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
-                                                <span class="icon"><img
-                                                        src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
-                                                        alt="nav-cat"></span>
-                                                {{ $row->user->first_name . ' ' . $row->user->last_name }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                @endif
+                                @foreach ($vendor->subvendor as $row)
+                                    <li class="">
+                                        <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
+                                            <span class="icon"><img
+                                                    src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
+                                                    alt="nav-cat"></span>
+                                            {{ $row->user->first_name . ' ' . $row->user->last_name }}
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
 
                             {{-- <div class="view-all-categori">
@@ -942,9 +940,9 @@
 
         </div>
 
-        <!-- block  showcase-->
-        @include('partials.brand_showcase')
-        <!-- block  showcase-->
+      <!-- block  showcase-->
+      @include('partials.brand_showcase')
+      <!-- block  showcase-->
 
         <!-- block  hot categories-->
         <div class="block-hot-categories-opt1">
@@ -1351,7 +1349,7 @@
                 fetchMusic(1, selectedCategories, priceRanges, selectedBrands,
                     musicCondition, stockCondition, sale);
             });
-
+            
             $(document).on('click', '.pagination a', function(e) {
                 e.preventDefault();
                 var page = $(this).data('page');
