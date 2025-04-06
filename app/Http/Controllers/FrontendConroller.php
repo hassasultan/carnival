@@ -429,116 +429,122 @@ class FrontendConroller extends Controller
         return view('ShopFrontend.blog-detail', compact('products', 'blog', 'related_blogs', 'recent_blogs'));
     }
 
-    public function vendor_detail($slug)
-    {
-        // Find the user and eager load banners and nested vendor & subvendor packages
-        $user = User::with('banners', 'vendor.package', 'subVendor.package')->whereSlug($slug)->first();
-
-        // If user not found, return a 404
-        if (!$user) {
-            abort(404, 'Vendor not found');
-        }
-
-        // Try to get carnival if this user is a carnival head
-        $carnival = Carnival::with('mascamps', 'members')
-            ->where('head', $user->id)
-            ->first();
-
-        // Get the main vendor record
-        $vendor = Vendor::with('user', 'products.category', 'gallery')
-            ->where('user_id', $user->id)
-            ->first();
-
-        // Get subvendors linked to the vendor
-        $subvendors = SubVendor::with('products.category')
-            ->where('vendor_id', $user->id)
-            ->get();
-
-        // Initialize categories and products safely
-        $categories = collect();
-        $products = collect();
-
-        if ($vendor) {
-            $categories = $vendor->products->pluck('category')->filter()->unique('id');
-            $products = Product::where('user_id', $user->id)->with('brand')->get();
-        }
-
-        // Fetch ads (limit to 2)
-        $ads = Advertisement::where('status', 1)->take(2)->get();
-
-        // Check package title from vendor or subvendor
-        $vendorPackageName = optional($user->vendor?->package)->title;
-        $subVendorPackageName = optional($user->subVendor?->package)->title;
-
-        if ($vendorPackageName === 'Artistes' || $subVendorPackageName === 'Artistes') {
-            // Get events, musics, costumes for artistes
-            $events = Event::with('category', 'images')
-                ->where('user_id', $user->id)
-                ->orderByDesc('start_date')
-                ->take(3)
-                ->get();
-
-            $musics = Music::with('imagesRelation')
-                ->where('user_id', $user->id)
-                ->orderByDesc('id')
-                ->get();
-
-            $costumes = Costume::with('category')
-                ->where('user_id', $user->id)
-                ->orderByDesc('id')
-                ->get();
-
-            return view('ShopFrontend.artist.detail', compact(
-                'events',
-                'vendor',
-                'categories',
-                'products',
-                'ads',
-                'subvendors',
-                'user',
-                'musics',
-                'costumes'
-            ));
-        }
-
-        // Default vendor view
-        return view('ShopFrontend.vendor-detail', compact(
-            'vendor',
-            'categories',
-            'products',
-            'ads',
-            'subvendors',
-            'user',
-            'carnival'
-        ));
-    }
-
     // public function vendor_detail($slug)
     // {
-    //     $user = User::with('banners')->whereSlug($slug)->first();
-    //     if ($user->carnivals) {
-    //         $carnival = Carnival::with('mascamps', 'members')->where('head', $user->id)->first();
-    //     } else {
-    //         $carnival = null;
+    //     // Find the user and eager load banners and nested vendor & subvendor packages
+    //     $user = User::with('banners', 'vendor.package', 'subVendor.package')->whereSlug($slug)->first();
+
+    //     // If user not found, return a 404
+    //     if (!$user) {
+    //         abort(404, 'Vendor not found');
     //     }
-    //     $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user->id)->first();
-    //     $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
-    //     // dd($subvendors->toArray());
-    //     $categories = $vendor->products->pluck('category')->unique('id');
-    //     $products = Product::where('user_id', $user->id)->with('brand')->get();
+
+    //     // Try to get carnival if this user is a carnival head
+    //     $carnival = Carnival::with('mascamps', 'members')
+    //         ->where('head', $user->id)
+    //         ->first();
+
+    //     // Get the main vendor record
+    //     $vendor = Vendor::with('user', 'products.category', 'gallery')
+    //         ->where('user_id', $user->id)
+    //         ->first();
+
+    //     // Get subvendors linked to the vendor
+    //     $subvendors = SubVendor::with('products.category')
+    //         ->where('vendor_id', $user->id)
+    //         ->get();
+
+    //     // Initialize categories and products safely
+    //     $categories = collect();
+    //     $products = collect();
+
+    //     if ($vendor) {
+    //         $categories = $vendor->products->pluck('category')->filter()->unique('id');
+    //         $products = Product::where('user_id', $user->id)->with('brand')->get();
+    //     }
+
+    //     // Fetch ads (limit to 2)
     //     $ads = Advertisement::where('status', 1)->take(2)->get();
+
+    //     // Check package title from vendor or subvendor
     //     $vendorPackageName = optional($user->vendor?->package)->title;
     //     $subVendorPackageName = optional($user->subVendor?->package)->title;
 
     //     if ($vendorPackageName === 'Artistes' || $subVendorPackageName === 'Artistes') {
-    //         $events = Event::with('category', 'images')->where('user_id', $user->id)->orderBy('start_date', 'DESC')->take(3)->get();
-    //         $musics = Music::with('imagesRelation')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
-    //         $costumes = Costume::with('category')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
-    //         return view('ShopFrontend.artist.detail', compact('events', 'vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'musics', 'costumes'));
-    //     } else {
-    //         return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'carnival'));
+    //         // Get events, musics, costumes for artistes
+    //         $events = Event::with('category', 'images')
+    //             ->where('user_id', $user->id)
+    //             ->orderByDesc('start_date')
+    //             ->take(3)
+    //             ->get();
+
+    //         $musics = Music::with('imagesRelation')
+    //             ->where('user_id', $user->id)
+    //             ->orderByDesc('id')
+    //             ->get();
+
+    //         $costumes = Costume::with('category')
+    //             ->where('user_id', $user->id)
+    //             ->orderByDesc('id')
+    //             ->get();
+
+    //         return view('ShopFrontend.artist.detail', compact(
+    //             'events',
+    //             'vendor',
+    //             'categories',
+    //             'products',
+    //             'ads',
+    //             'subvendors',
+    //             'user',
+    //             'musics',
+    //             'costumes'
+    //         ));
     //     }
+
+    //     // Default vendor view
+    //     return view('ShopFrontend.vendor-detail', compact(
+    //         'vendor',
+    //         'categories',
+    //         'products',
+    //         'ads',
+    //         'subvendors',
+    //         'user',
+    //         'carnival'
+    //     ));
     // }
+
+    public function vendor_detail($slug)
+    {
+        $user = User::with('banners')->whereSlug($slug)->first();
+        if ($user->carnivals) {
+            $carnival = Carnival::with('mascamps', 'members')->where('head', $user->id)->first();
+        } else {
+            $carnival = null;
+        }
+        $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user->id)->first();
+        $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
+        // dd($subvendors->toArray());
+        if ($vendor) {
+            $categories = $vendor->products->pluck('category')->unique('id');
+            $products = Product::where('user_id', $user->id)->with('brand')->get();
+        }
+        else {
+            $categories = [];
+            $products = [];
+        }
+        $ads = Advertisement::where('status', 1)->take(2)->get();
+        $vendorPackageName = optional($user->vendor?->package)->title;
+        $subVendorPackageName = optional($user->subVendor?->package)->title;
+
+        if ($vendorPackageName === 'Artistes' || $subVendorPackageName === 'Artistes') {
+            $events = Event::with('category', 'images')->where('user_id', $user->id)->orderBy('start_date', 'DESC')->take(3)->get();
+            $musics = Music::with('imagesRelation')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
+            $costumes = Costume::with('category')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
+            return view('ShopFrontend.artist.detail', compact('events', 'vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'musics', 'costumes'));
+        } else {
+            return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'carnival'));
+        }
+    }
 
     public function get_vendor_products($slug, Request $request)
     {
