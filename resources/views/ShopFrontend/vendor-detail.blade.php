@@ -290,72 +290,73 @@
                 @if ($carnival->packageVendors('Events')->exists())
                     <div class="row">
                         <div class="col-md-9">
+                            @if (count($carnival->mascamps) > 0)
+                                <!-- block tab products -->
+                                <div class="block-tab-products-opt1">
 
-                            <!-- block tab products -->
-                            <div class="block-tab-products-opt1">
+                                    <div class="block-title">
+                                        <ul class="nav" role="tablist">
+                                            <li role="presentation" class="active">
+                                                <a href="#tabproduct1" role="tab" id="best-sell"
+                                                    data-toggle="tab">Queen
+                                                    Show
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                                <div class="block-title">
-                                    <ul class="nav" role="tablist">
-                                        <li role="presentation" class="active">
-                                            <a href="#tabproduct1" role="tab" id="best-sell"
-                                                data-toggle="tab">Carnival Members
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    <div class="block-content tab-content">
 
-                                <div class="block-content tab-content">
-
-                                    <!-- tab 1 -->
-                                    <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                            data-responsive='{
-                                                    "0":{"items":1},
-                                                    "480":{"items":2},
-                                                    "480":{"items":2},
-                                                    "768":{"items":3},
-                                                    "992":{"items":3}
-                                                }'
-                                            id="best-sell-div">
-
-                                            @foreach ($carnival->packageVendors('Events') as $item)
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset($item->image) }}"></a>
-                                                            {{-- <div class="product-item-actions">
-                                                    <a class="btn btn-wishlist"
-                                                        href=""><span>wishlist</span></a>
-                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview"
-                                                        href=""><span>quickview</span></a>
-                                                </div>
-                                                <button type="button" class="btn btn-cart"><span>Add to
-                                                        Cart</span></button>
-                                                <span class="product-item-label label-price">30%
-                                                    <span>off</span></span> --}}
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">{{ $item->fullname }}</span>
+                                        <!-- tab 1 -->
+                                        <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
+                                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                                data-responsive='{
+                                                "0":{"items":1},
+                                                "480":{"items":2},
+                                                "480":{"items":2},
+                                                "768":{"items":3},
+                                                "992":{"items":3}
+                                            }'
+                                                id="best-sell-div">
+                                                {{-- {{ dd($carnival->mascamps->toArray(), $carnival->members->toArray(), $carnival->user->products->toArray()) }} --}}
+                                                @foreach ($carnival->packageVendors('Events') as $item)
+                                                    <div class="product-item  product-item-opt-1 ">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href=""><img
+                                                                        alt="product name"
+                                                                        src="{{ asset('images/' . $item->logo) }}"></a>
+                                                                {{-- <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                    <span class="product-item-label label-price">30%
+                                                        <span>off</span></span> --}}
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">{{ $item->name }}</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            @endforeach
+                                                @endforeach
 
-                                        </div>
-                                    </div><!-- tab 1 -->
+                                            </div>
+                                        </div><!-- tab 1 -->
 
-                                </div>
+                                    </div>
 
-                            </div><!-- block tab products -->
-
+                                </div><!-- block tab products -->
+                            @endif
                         </div>
                     </div>
                 @endif
@@ -617,144 +618,146 @@
                 @if ($carnival->packageVendors('MasBands - Leader')->exists())
                     <div class="row">
                         <div class="col-md-9">
+                            @if (count($carnival->mascamps) > 0)
+                                <!-- block tab products -->
+                                <div class="block-tab-products-opt1">
 
-                            <!-- block tab products -->
-                            <div class="block-tab-products-opt1">
+                                    <div class="block-title">
+                                        <ul class="nav" role="tablist">
+                                            <li role="presentation" class="active">
+                                                <a href="#tabproduct1" role="tab" id="best-sell"
+                                                    data-toggle="tab">Queen
+                                                    Show
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                                <div class="block-title">
-                                    <ul class="nav" role="tablist">
-                                        <li role="presentation" class="active">
-                                            <a href="#tabproduct1" role="tab" id="best-sell"
-                                                data-toggle="tab">Carnival Members
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    <div class="block-content tab-content">
 
-                                <div class="block-content tab-content">
-
-                                    <!-- tab 1 -->
-                                    <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                            data-responsive='{
-                                                    "0":{"items":1},
-                                                    "480":{"items":2},
-                                                    "480":{"items":2},
-                                                    "768":{"items":3},
-                                                    "992":{"items":3}
-                                                }'
-                                            id="best-sell-div">
-
-                                            @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset($item->image) }}"></a>
-                                                            {{-- <div class="product-item-actions">
-                                                    <a class="btn btn-wishlist"
-                                                        href=""><span>wishlist</span></a>
-                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview"
-                                                        href=""><span>quickview</span></a>
-                                                </div>
-                                                <button type="button" class="btn btn-cart"><span>Add to
-                                                        Cart</span></button>
-                                                <span class="product-item-label label-price">30%
-                                                    <span>off</span></span> --}}
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">{{ $item->fullname }}</span>
+                                        <!-- tab 1 -->
+                                        <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
+                                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                                data-responsive='{
+                                                "0":{"items":1},
+                                                "480":{"items":2},
+                                                "480":{"items":2},
+                                                "768":{"items":3},
+                                                "992":{"items":3}
+                                            }'
+                                                id="best-sell-div">
+                                                {{-- {{ dd($carnival->mascamps->toArray(), $carnival->members->toArray(), $carnival->user->products->toArray()) }} --}}
+                                                @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
+                                                    <div class="product-item  product-item-opt-1 ">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href=""><img
+                                                                        alt="product name"
+                                                                        src="{{ asset('images/' . $item->logo) }}"></a>
+                                                                {{-- <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                    <span class="product-item-label label-price">30%
+                                                        <span>off</span></span> --}}
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">{{ $item->name }}</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            @endforeach
+                                                @endforeach
 
-                                        </div>
-                                    </div><!-- tab 1 -->
+                                            </div>
+                                        </div><!-- tab 1 -->
 
-                                </div>
+                                    </div>
 
-                            </div><!-- block tab products -->
-
+                                </div><!-- block tab products -->
+                            @endif
                         </div>
                     </div>
                 @endif
                 @if ($carnival->packageVendors('Artistes')->exists())
                     <div class="row">
                         <div class="col-md-9">
+                            @if (count($carnival->mascamps) > 0)
+                                <!-- block tab products -->
+                                <div class="block-tab-products-opt1">
 
-                            <!-- block tab products -->
-                            <div class="block-tab-products-opt1">
+                                    <div class="block-title">
+                                        <ul class="nav" role="tablist">
+                                            <li role="presentation" class="active">
+                                                <a href="#tabproduct1" role="tab" id="best-sell"
+                                                    data-toggle="tab">Queen
+                                                    Show
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                                <div class="block-title">
-                                    <ul class="nav" role="tablist">
-                                        <li role="presentation" class="active">
-                                            <a href="#tabproduct1" role="tab" id="best-sell"
-                                                data-toggle="tab">Carnival Members
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    <div class="block-content tab-content">
 
-                                <div class="block-content tab-content">
-
-                                    <!-- tab 1 -->
-                                    <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                            data-responsive='{
-                                                    "0":{"items":1},
-                                                    "480":{"items":2},
-                                                    "480":{"items":2},
-                                                    "768":{"items":3},
-                                                    "992":{"items":3}
-                                                }'
-                                            id="best-sell-div">
-
-                                            @foreach ($carnival->packageVendors('Artistes') as $item)
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
-                                                                    alt="product name"
-                                                                    src="{{ asset($item->image) }}"></a>
-                                                            {{-- <div class="product-item-actions">
-                                                    <a class="btn btn-wishlist"
-                                                        href=""><span>wishlist</span></a>
-                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview"
-                                                        href=""><span>quickview</span></a>
-                                                </div>
-                                                <button type="button" class="btn btn-cart"><span>Add to
-                                                        Cart</span></button>
-                                                <span class="product-item-label label-price">30%
-                                                    <span>off</span></span> --}}
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">{{ $item->fullname }}</span>
+                                        <!-- tab 1 -->
+                                        <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
+                                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                                data-responsive='{
+                                                "0":{"items":1},
+                                                "480":{"items":2},
+                                                "480":{"items":2},
+                                                "768":{"items":3},
+                                                "992":{"items":3}
+                                            }'
+                                                id="best-sell-div">
+                                                {{-- {{ dd($carnival->mascamps->toArray(), $carnival->members->toArray(), $carnival->user->products->toArray()) }} --}}
+                                                @foreach ($carnival->packageVendors('Artistes') as $item)
+                                                    <div class="product-item  product-item-opt-1 ">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href=""><img
+                                                                        alt="product name"
+                                                                        src="{{ asset('images/' . $item->logo) }}"></a>
+                                                                {{-- <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                    <span class="product-item-label label-price">30%
+                                                        <span>off</span></span> --}}
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">{{ $item->name }}</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            @endforeach
+                                                @endforeach
 
-                                        </div>
-                                    </div><!-- tab 1 -->
+                                            </div>
+                                        </div><!-- tab 1 -->
 
-                                </div>
+                                    </div>
 
-                            </div><!-- block tab products -->
-
+                                </div><!-- block tab products -->
+                            @endif
                         </div>
                     </div>
                 @endif
@@ -1707,7 +1710,8 @@
                                                 <div class="product-item-actions">
                                                     <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
                                                     <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                    <a class="btn btn-quickview"
+                                                        href=""><span>quickview</span></a>
                                                 </div>
                                                 <button type="button" class="btn btn-cart"><span>Add to
                                                         Cart</span></button>
@@ -1736,7 +1740,8 @@
                                                 <div class="product-item-actions">
                                                     <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
                                                     <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                    <a class="btn btn-quickview"
+                                                        href=""><span>quickview</span></a>
                                                 </div>
                                                 <button type="button" class="btn btn-cart"><span>Add to
                                                         Cart</span></button>
@@ -1777,8 +1782,8 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li role="presentation" class="active"><a href="#floor1-1" id="best-seller-tab"
-                                                role="tab" data-toggle="tab">Best Seller </a>
+                                        <li role="presentation" class="active"><a href="#floor1-1"
+                                                id="best-seller-tab" role="tab" data-toggle="tab">Best Seller </a>
                                         </li>
                                         <li role="presentation"><a href="#floor1-2" role="tab"
                                                 data-toggle="tab">Most
