@@ -336,8 +336,9 @@
                             var vendorDetailUrl = "{{ route('front.vendor.detail', ':slug') }}"
                                 .replace(':slug', vendor.user.slug);
 
-                            var vendorName = vendor.name ? vendor.name : vendor.user
-                                .first_name + vendor.user.last_name
+                            var vendorName = vendor.name || (vendor.user.first_name && vendor
+                                .user.last_name ? vendor.user.first_name + ' ' + vendor.user
+                                .last_name : 'Unknown');
 
                             var vendorHtml = `+
                                 <li class="col-sm-4 product-item">
