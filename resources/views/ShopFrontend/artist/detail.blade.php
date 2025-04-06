@@ -446,7 +446,11 @@
                 <div class="container">
                     <div class="block-title ">
                         <span class="title"><img alt="img"
-                                src="{{ asset('shopAssets/images/media/index1/floor1.png') }}">{{ $vendor->name }}</span>
+                                src="{{ asset('shopAssets/images/media/index1/floor1.png') }}">
+                            @if ($user->role_id == 2)
+                                {{ $vendor->name }}
+                            @endif
+                        </span>
                         <div class="links dropdown">
                             <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
