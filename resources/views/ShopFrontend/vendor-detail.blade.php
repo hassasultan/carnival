@@ -287,7 +287,7 @@
 
         @if (!is_null($carnival))
             <div class="container">
-                @if ($carnival->packageVendors('Events')->exists())
+                @if (count($carnival->packageVendors('Events')) > 0)
                     <div class="row">
                         <div class="col-md-9">
                             @if (count($carnival->mascamps) > 0)
@@ -603,7 +603,7 @@
                     </div>
 
                 </div>
-                @if ($carnival->packageVendors('MasBands - Leader')->exists())
+                @if (count($carnival->packageVendors('MasBands - Leader')) > 0)
                     <div class="row">
                         <div class="col-md-9">
                             @if (count($carnival->mascamps) > 0)
@@ -676,7 +676,7 @@
                         </div>
                     </div>
                 @endif
-                @if ($carnival->packageVendors('Artistes')->exists())
+                @if (count($carnival->packageVendors('Artistes')) > 0)
                     <div class="row">
                         <div class="col-md-9">
                             @if (count($carnival->mascamps) > 0)
