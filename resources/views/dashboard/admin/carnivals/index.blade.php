@@ -472,6 +472,24 @@
                             <div class="form-group">
                                 <label for="{{ $package->id }}">{{ $package->title }}</label><br>
                                 <select id="{{ $package->id }}" name="" class="form-control select2" multiple>
+                                    @php
+                                        $variableName = str_replace(' ', '', str_replace('-', '', $package->title)); // removes spaces and dashes
+                                    @endphp
+
+                                    @if (isset($$variableName))
+                                        @foreach ($$variableName as $row)
+                                            <option value="{{ $row->id }}">
+                                                {{ $row->user->first_name . ' ' . $row->user->last_name }}
+                                            </option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        @endforeach
+                        {{-- @foreach ($packages as $package)
+                            <div class="form-group">
+                                <label for="{{ $package->id }}">{{ $package->title }}</label><br>
+                                <select id="{{ $package->id }}" name="" class="form-control select2" multiple>
                                     @if ($package->title == 'Carnival Committees')
                                         @foreach ($CarnivalCommittees as $row)
                                             <option value="{{ $row->id }}">
@@ -499,7 +517,7 @@
                                     @endif
                                 </select>
                             </div>
-                        @endforeach
+                        @endforeach --}}
                         <button type="submit" class="btn btn-primary" id="assignMasscampBtn">Update Carnival</button>
                     </form>
                 </div>
