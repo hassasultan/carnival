@@ -43,6 +43,7 @@ class CarnivalController extends Controller
         $Models = Vendor::where('name', 'Models')->get();
         $DJs = Vendor::where('name', 'DJs')->get();
         $Artistes = Vendor::where('name', 'Artistes')->get();
+        $Events = Vendor::where('name', 'Events')->get();
         $Blogger = Vendor::where('name', 'Blogger')->get();
         $CarnivalCommittees = Vendor::where('name', 'Carnival Committees')->get();
         $EventPromoters = Vendor::where('name', 'Event Promoters')->get();
