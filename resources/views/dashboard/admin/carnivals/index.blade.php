@@ -470,8 +470,8 @@
                         </div>
                         @foreach ($packages as $package)
                             <div class="form-group">
-                                <label for="package">{{ $package->title }}</label><br>
-                                <select id="package" name="" class="form-control select2" multiple>
+                                <label for="{{ $package->id }}">{{ $package->title }}</label><br>
+                                <select id="{{ $package->id }}" name="" class="form-control select2" multiple>
                                     @foreach ($mascamps as $row)
                                         <option value="{{ $row->id }}">
                                             {{ $row->user->first_name . ' ' . $row->user->last_name }}
