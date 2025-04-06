@@ -49,7 +49,7 @@ class Carnival extends Model
 
     public function packageVendors($packageTitle)
     {
-        return $this->mascamps()->whereHas('package', function ($q) use ($packageTitle) {
+        return $this->mascamps()->with('user')->whereHas('package', function ($q) use ($packageTitle) {
             $q->where('title', $packageTitle);
         })->get();
     }
