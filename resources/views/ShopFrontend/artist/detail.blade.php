@@ -109,8 +109,7 @@
                                         Flashlights & Lamps
                                     </a>
                                 </li> --}}
-                                {{ dd($vendor->toArray()) }}
-                                @if ($vendor->subvendor)
+                                @if ($vendor->user->role_id == 2)
                                     @foreach ($vendor->subvendor as $row)
                                         <li class="">
                                             <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">

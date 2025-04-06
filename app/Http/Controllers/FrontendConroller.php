@@ -441,7 +441,7 @@ class FrontendConroller extends Controller
             ->where('head', $user->id)
             ->first();
 
-        dd($user->toArray());
+        // dd($user->toArray());
         $vendor = Vendor::with('user', 'products.category', 'gallery', 'subvendor')
             ->where('user_id', $user->id)
             ->first();
