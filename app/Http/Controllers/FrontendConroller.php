@@ -437,6 +437,7 @@ class FrontendConroller extends Controller
             $carnival = null;
         }
         $vendor = Vendor::with('user', 'products', 'products.category', 'gallery')->where('user_id', $user->id)->first();
+        $package = Package::all();
         $subvendors = SubVendor::with('products', 'products.category')->where('vendor_id', $user->id)->get();
         // dd($subvendors->toArray());
         $categories = $vendor->products->pluck('category')->unique('id');
@@ -451,7 +452,7 @@ class FrontendConroller extends Controller
             $costumes = Costume::with('category')->where('user_id', $user->id)->orderBy('id', 'DESC')->get();
             return view('ShopFrontend.artist.detail', compact('events', 'vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'musics', 'costumes'));
         } else {
-            return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'carnival'));
+            return view('ShopFrontend.vendor-detail', compact('vendor', 'categories', 'products', 'ads', 'subvendors', 'user', 'carnival', 'package'));
         }
     }
     public function get_vendor_products($slug, Request $request)
