@@ -458,7 +458,7 @@
                         @csrf
                         @method('POST')
                         <input type="hidden" id="carnival_id" name="carnival_id">
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="mascamp">Mascamps</label><br>
                             <select id="mascamp" name="mascamps[]" class="form-control select2" multiple>
                                 @foreach ($mascamps as $row)
@@ -467,7 +467,7 @@
                                     </option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
 
                         @foreach ($packages as $package)
                             @php
@@ -475,7 +475,7 @@
                             @endphp
                             <div class="form-group">
                                 <label for="{{ $package->id }}">{{ $package->title }}</label><br>
-                                <select id="{{ $package->id }}" name="vendors[{{ $package->id }}][]"
+                                <select id="{{ $package->id }}" name="mascamps[]"
                                     class="form-control select2" multiple>
                                     @foreach ($vendorsByPackage[$packageKey] ?? [] as $row)
                                         <option value="{{ $row->id }}">
