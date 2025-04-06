@@ -320,27 +320,14 @@
                                                 id="best-sell-div">
                                                 {{-- {{ dd($carnival->mascamps->toArray(), $carnival->members->toArray(), $carnival->user->products->toArray()) }} --}}
                                                 @foreach ($carnival->packageVendors('Events') as $item)
-                                                {{ dd($item) }}
                                                     <div class="product-item  product-item-opt-1 ">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href=""><img
                                                                         alt="product name"
                                                                         src="{{ asset('images/' . $item->logo) }}"></a>
-                                                                {{-- <div class="product-item-actions">
-                                                        <a class="btn btn-wishlist"
-                                                            href=""><span>wishlist</span></a>
-                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                        <a class="btn btn-quickview"
-                                                            href=""><span>quickview</span></a>
-                                                    </div>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
-                                                    <span class="product-item-label label-price">30%
-                                                        <span>off</span></span> --}}
                                                             </div>
                                                             <div class="product-item-detail">
-                                                                {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
                                                                         <span class="price">{{ $item->name }}</span>
