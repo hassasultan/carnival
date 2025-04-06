@@ -351,7 +351,7 @@
                                             </div>
                                             <div class="product-item-detail">
                                                 <strong class="product-item-name">
-                                                    <a href="${vendorDetailUrl}">${name}</a>
+                                                    <a href="${vendorDetailUrl}">${vendorName}</a>
                                                 </strong>`;
 
                             if (vendor.user.products.length > 0) {
