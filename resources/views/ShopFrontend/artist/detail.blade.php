@@ -109,7 +109,7 @@
                                         Flashlights & Lamps
                                     </a>
                                 </li> --}}
-                                @if ($vendor->subvendor)
+                                @if ($vendor->user->isVendor)
                                     @foreach ($vendor->subvendor as $row)
                                         <li class="">
                                             <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
