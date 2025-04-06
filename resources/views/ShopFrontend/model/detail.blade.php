@@ -495,7 +495,7 @@
                                             <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
                                         </div>
 
-                                        @if ($user->packageName == 'Models')
+                                        @if ($user->packageName == 'Models' && $user->carnival_id != 0)
                                         <h3 class="stats-heading">Stats</h3> 
                                             <div class="contact-item">
                                                 <span class="text">Age:</span>
