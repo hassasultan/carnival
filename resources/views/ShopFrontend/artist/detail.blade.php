@@ -195,19 +195,21 @@
                         <div class="owl-carousel dotsData" data-nav="true" data-dots="true" data-margin="0" data-items='1'
                             data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
 
-                            @foreach ($vendor->user->banners as $key => $banner)
-                                <div class="item item{{ ++$key }}"
-                                    style="background-image: url('{{ asset($banner->banner) }}');"
-                                    data-dot="{{ $loop->iteration }}">
-                                    <div class="description">
-                                        <span class="title">{{ $banner->title }}</span>
-                                        <span class="subtitle">{{ $banner->subtitle }}</span>
-                                        <span class="des">{{ $banner->description }}</span>
-                                        <a href="{{ $banner->button_link ?? '#' }}"
-                                            class="btn">{{ $banner->button_text ?? 'Shop Now' }}</a>
+                            @if ($user->role_id == 2)
+                                @foreach ($vendor->user->banners as $key => $banner)
+                                    <div class="item item{{ ++$key }}"
+                                        style="background-image: url('{{ asset($banner->banner) }}');"
+                                        data-dot="{{ $loop->iteration }}">
+                                        <div class="description">
+                                            <span class="title">{{ $banner->title }}</span>
+                                            <span class="subtitle">{{ $banner->subtitle }}</span>
+                                            <span class="des">{{ $banner->description }}</span>
+                                            <a href="{{ $banner->button_link ?? '#' }}"
+                                                class="btn">{{ $banner->button_text ?? 'Shop Now' }}</a>
+                                        </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @endif
 
                         </div> <!-- slide -->
 
@@ -745,105 +747,106 @@
 
                 </div>
             </div>
-            @foreach ($vendor->subvendor as $key => $row)
-                <div class="block-floor-products block-floor-products-opt1 floor-products2"
-                    id="floor0-{{ ++$key }}">
-                    <div class="container">
-                        <div class="block-title">
-                            <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
-                                <span class="title"><img alt="img"
-                                        src="{{ asset('shopAssets/images/media/index1/floor2.png') }}">{{ $row->user->first_name }}
-                                    {{ $row->user->last_name }}</span>
+            @if ($user->role_id == 2)
+                @foreach ($vendor->subvendor as $key => $row)
+                    <div class="block-floor-products block-floor-products-opt1 floor-products2"
+                        id="floor0-{{ ++$key }}">
+                        <div class="container">
+                            <div class="block-title">
+                                <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
+                                    <span class="title"><img alt="img"
+                                            src="{{ asset('shopAssets/images/media/index1/floor2.png') }}">{{ $row->user->first_name }}
+                                        {{ $row->user->last_name }}</span>
 
-                            </a>
-                            <div class="links dropdown">
-                                <button class="dropdown-toggle" type="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-bars" aria-hidden="true"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li role="presentation" class="active"><a
-                                                href="#floor-seller-{{ $row->id }}"
-                                                onclick="subvendorProduct('bestSale','{{ $row->user->id }}','best-seller-subvendor-{{ $row->id }}')"
-                                                role="tab" data-toggle="tab">Best Seller </a></li>
-                                        <li role="presentation"><a href="#floor-most-{{ $row->id }}" role="tab"
-                                                data-toggle="tab">Most Viewed </a></li>
-                                        <li role="presentation"><a href="#floor-new-{{ $row->id }}"
-                                                onclick="subvendorProduct('new','{{ $row->user->id }}','new-arrival-subvendor-{{ $row->id }}')"
-                                                role="tab" data-toggle="tab">New Arrivals <span
-                                                    class="label-cat">12</span></a></li>
-                                        @php
-                                            $subCategories = collect();
-                                        @endphp
-                                        @foreach ($row->products as $product)
-                                            @if ($product->subcategory)
-                                                @php
-                                                    $subCategoryTitle = $product->subcategory->title;
-                                                    $subCategoryId = $product->subcategory->id;
-                                                    $subCategories->push([
-                                                        'id' => $subCategoryId,
-                                                        'title' => $subCategoryTitle,
-                                                    ]);
-                                                @endphp
-                                            @endif
-                                        @endforeach
-                                        @foreach ($subCategories->unique() as $subCategory)
-                                            <li role="presentation"><a href="#floor2-subcat-{{ $subCategory['id'] }}"
-                                                    role="tab"
-                                                    onclick="subcatProduct({{ $subCategory['id'] }},'vendors-subcat-div-{{ $subCategory['id'] }}')"
-                                                    data-toggle="tab">{{ $subCategory['title'] }}</a></li>
-                                        @endforeach
-                                        <li role="presentation"><a href="#floor2-7" role="tab"
-                                                data-toggle="tab">Climbing</a></li>
-                                    </ul>
+                                </a>
+                                <div class="links dropdown">
+                                    <button class="dropdown-toggle" type="button" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-bars" aria-hidden="true"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <ul>
+                                            <li role="presentation" class="active"><a
+                                                    href="#floor-seller-{{ $row->id }}"
+                                                    onclick="subvendorProduct('bestSale','{{ $row->user->id }}','best-seller-subvendor-{{ $row->id }}')"
+                                                    role="tab" data-toggle="tab">Best Seller </a></li>
+                                            <li role="presentation"><a href="#floor-most-{{ $row->id }}"
+                                                    role="tab" data-toggle="tab">Most Viewed </a></li>
+                                            <li role="presentation"><a href="#floor-new-{{ $row->id }}"
+                                                    onclick="subvendorProduct('new','{{ $row->user->id }}','new-arrival-subvendor-{{ $row->id }}')"
+                                                    role="tab" data-toggle="tab">New Arrivals <span
+                                                        class="label-cat">12</span></a></li>
+                                            @php
+                                                $subCategories = collect();
+                                            @endphp
+                                            @foreach ($row->products as $product)
+                                                @if ($product->subcategory)
+                                                    @php
+                                                        $subCategoryTitle = $product->subcategory->title;
+                                                        $subCategoryId = $product->subcategory->id;
+                                                        $subCategories->push([
+                                                            'id' => $subCategoryId,
+                                                            'title' => $subCategoryTitle,
+                                                        ]);
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+                                            @foreach ($subCategories->unique() as $subCategory)
+                                                <li role="presentation"><a href="#floor2-subcat-{{ $subCategory['id'] }}"
+                                                        role="tab"
+                                                        onclick="subcatProduct({{ $subCategory['id'] }},'vendors-subcat-div-{{ $subCategory['id'] }}')"
+                                                        data-toggle="tab">{{ $subCategory['title'] }}</a></li>
+                                            @endforeach
+                                            <li role="presentation"><a href="#floor2-7" role="tab"
+                                                    data-toggle="tab">Climbing</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                @php
+                                    $pre = $key - 1;
+                                    $nxt = $key + 1;
+                                @endphp
+                                <div class="actions">
+                                    <a href="#floor0-{{ $pre }}" class="action action-up"><i
+                                            class="fa fa-angle-up" aria-hidden="true"></i></a>
+                                    <a href="#floor0-{{ $nxt }}" class="action action-down"><i
+                                            class="fa fa-angle-down" aria-hidden="true"></i></a>
                                 </div>
                             </div>
-                            @php
-                                $pre = $key - 1;
-                                $nxt = $key + 1;
-                            @endphp
-                            <div class="actions">
-                                <a href="#floor0-{{ $pre }}" class="action action-up"><i class="fa fa-angle-up"
-                                        aria-hidden="true"></i></a>
-                                <a href="#floor0-{{ $nxt }}" class="action action-down"><i
-                                        class="fa fa-angle-down" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
 
-                        <!-- Banner -->
-                        <div class="block-banner-floor">
+                            <!-- Banner -->
+                            <div class="block-banner-floor">
 
-                            <div class="col-sm-6">
-                                <a href="" class="box-img"><img
-                                        src="{{ asset('shopAssets/images/media/index1/banner2-1.jpg') }}"
-                                        alt="banner"></a>
-                            </div>
-                            <div class="col-sm-6">
-                                <a href="" class="box-img"><img
-                                        src="{{ asset('shopAssets/images/media/index1/banner2-2.jpg') }}"
-                                        alt="banner"></a>
-                            </div>
+                                <div class="col-sm-6">
+                                    <a href="" class="box-img"><img
+                                            src="{{ asset('shopAssets/images/media/index1/banner2-1.jpg') }}"
+                                            alt="banner"></a>
+                                </div>
+                                <div class="col-sm-6">
+                                    <a href="" class="box-img"><img
+                                            src="{{ asset('shopAssets/images/media/index1/banner2-2.jpg') }}"
+                                            alt="banner"></a>
+                                </div>
 
-                        </div><!-- Banner -->
+                            </div><!-- Banner -->
 
-                        <div class="block-content">
+                            <div class="block-content">
 
-                            <div class="col-banner">
-                                <span class="label-featured"><img
-                                        src="{{ asset('shopAssets/images/icon/index1/label-featured.png') }}"
-                                        alt="label-featured"></span>
-                                <a href="" class="box-img"><img
-                                        src="{{ asset('shopAssets/images/media/index1/baner-floor2.jpg') }}"
-                                        alt="baner-floor"></a>
-                            </div>
+                                <div class="col-banner">
+                                    <span class="label-featured"><img
+                                            src="{{ asset('shopAssets/images/icon/index1/label-featured.png') }}"
+                                            alt="label-featured"></span>
+                                    <a href="" class="box-img"><img
+                                            src="{{ asset('shopAssets/images/media/index1/baner-floor2.jpg') }}"
+                                            alt="baner-floor"></a>
+                                </div>
 
-                            <div class="col-products tab-content">
-                                <!-- tab 1 -->
-                                <div class="tab-pane active in  fade " id="floor-seller-{{ $row->id }}"
-                                    role="tabpanel">
-                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
-                                        data-responsive='{
+                                <div class="col-products tab-content">
+                                    <!-- tab 1 -->
+                                    <div class="tab-pane active in  fade " id="floor-seller-{{ $row->id }}"
+                                        role="tabpanel">
+                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                            data-responsive='{
                                         "0":{"items":1},
                                         "420":{"items":2},
                                         "600":{"items":3},
@@ -851,78 +854,79 @@
                                         "992":{"items":3},
                                         "1200":{"items":4}
                                     }'
-                                        id="best-seller-subvendor-{{ $row->id }}">
-                                        @php
-                                            $combined = collect();
+                                            id="best-seller-subvendor-{{ $row->id }}">
+                                            @php
+                                                $combined = collect();
 
-                                            foreach ($vendor->subvendor as $subVendor) {
-                                                if ($subVendor->user) {
-                                                    $events = $subVendor->user->events ?? collect();
-                                                    $costumes = $subVendor->user->costumes ?? collect();
+                                                foreach ($vendor->subvendor as $subVendor) {
+                                                    if ($subVendor->user) {
+                                                        $events = $subVendor->user->events ?? collect();
+                                                        $costumes = $subVendor->user->costumes ?? collect();
 
-                                                    // Merge events and costumes by interleaving items
-                                                    $merged = $events->zip($costumes)->flatten()->filter();
+                                                        // Merge events and costumes by interleaving items
+                                                        $merged = $events->zip($costumes)->flatten()->filter();
 
-                                                    $combined = $combined->merge($merged);
+                                                        $combined = $combined->merge($merged);
+                                                    }
                                                 }
-                                            }
-                                        @endphp
+                                            @endphp
 
-                                        @foreach ($combined as $item)
-                                            <div class="product-item product-item-opt-1">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" href="">
-                                                            <img alt="product name"
-                                                                src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}">
-                                                        </a>
-                                                        <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist" href="">
-                                                                <span>wishlist</span>
+                                            @foreach ($combined as $item)
+                                                <div class="product-item product-item-opt-1">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href="">
+                                                                <img alt="product name"
+                                                                    src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}">
                                                             </a>
-                                                            <a class="btn btn-compare" href="">
-                                                                <span>compare</span>
-                                                            </a>
-                                                            <a class="btn btn-quickview" href="">
-                                                                <span>quickview</span>
-                                                            </a>
-                                                        </div>
-                                                        <button type="button" class="btn btn-cart">
-                                                            <span>Add to Cart</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name">
-                                                            <a href="">{{ $item->name ?? 'Product Name' }}</a>
-                                                        </strong>
-                                                        <div class="clearfix">
-                                                            <div class="product-item-price">
-                                                                <span class="price">$45.00</span>
-                                                                <span class="old-price">$52.00</span>
+                                                            <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist" href="">
+                                                                    <span>wishlist</span>
+                                                                </a>
+                                                                <a class="btn btn-compare" href="">
+                                                                    <span>compare</span>
+                                                                </a>
+                                                                <a class="btn btn-quickview" href="">
+                                                                    <span>quickview</span>
+                                                                </a>
                                                             </div>
-                                                            <div class="product-reviews-summary">
-                                                                <div class="rating-summary">
-                                                                    <div title="80%" class="rating-result">
-                                                                        <span style="width:80%">
-                                                                            <span><span>80</span>% of
-                                                                                <span>100</span></span>
-                                                                        </span>
+                                                            <button type="button" class="btn btn-cart">
+                                                                <span>Add to Cart</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name">
+                                                                <a href="">{{ $item->name ?? 'Product Name' }}</a>
+                                                            </strong>
+                                                            <div class="clearfix">
+                                                                <div class="product-item-price">
+                                                                    <span class="price">$45.00</span>
+                                                                    <span class="old-price">$52.00</span>
+                                                                </div>
+                                                                <div class="product-reviews-summary">
+                                                                    <div class="rating-summary">
+                                                                        <div title="80%" class="rating-result">
+                                                                            <span style="width:80%">
+                                                                                <span><span>80</span>% of
+                                                                                    <span>100</span></span>
+                                                                            </span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @endif
 
             <!-- Banner -->
             <div class="block-banner-opt1 effect-banner3">
