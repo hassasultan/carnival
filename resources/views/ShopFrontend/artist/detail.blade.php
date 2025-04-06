@@ -109,6 +109,7 @@
                                         Flashlights & Lamps
                                     </a>
                                 </li> --}}
+                                {{ dd($vendor->toArray()) }}
                                 @if ($vendor->subvendor)
                                     @foreach ($vendor->subvendor as $row)
                                         <li class="">
