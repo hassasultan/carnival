@@ -336,27 +336,30 @@
                             var vendorDetailUrl = "{{ route('front.vendor.detail', ':slug') }}"
                                 .replace(':slug', vendor.user.slug);
 
-                            var vendorHtml = `
-                    <li class="col-sm-4 product-item">
-                        <div class="product-item-opt-1">
-                            <div class="product-item-info">
-                                <div class="product-item-photo">
-                                    <a href="${vendorDetailUrl}" class="product-item-img">
-                                        <img style="width:200px;height:200px" src="${logo}" alt="product name">
-                                    </a>
-                                </div>
-                                <div class="product-item-detail">
-                                    <strong class="product-item-name">
-                                        <a href="${vendorDetailUrl}">${vendor.user.first_name} ${vendor.user.last_name}</a>
-                                    </strong>`;
+                            var vendorName = vendor.name ? vendor.name : vendor.user
+                                .first_name + vendor.user.last_name
+
+                            var vendorHtml = `+
+                                <li class="col-sm-4 product-item">
+                                    <div class="product-item-opt-1">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a href="${vendorDetailUrl}" class="product-item-img">
+                                                    <img style="width:200px;height:200px" src="${logo}" alt="product name">
+                                                </a>
+                                            </div>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name">
+                                                    <a href="${vendorDetailUrl}">${name}</a>
+                                                </strong>`;
 
                             if (vendor.user.products.length > 0) {
                                 vendorHtml += `
-                        <div class="clearfix">
-                            <div class="product-item-price">
-                                <span class="price">$${vendor.user.products[0].min_price}-$${vendor.user.products[0].max_price}</span>
-                            </div>
-                        </div>`;
+                                    <div class="clearfix">
+                                        <div class="product-item-price">
+                                            <span class="price">$${vendor.user.products[0].min_price}-$${vendor.user.products[0].max_price}</span>
+                                        </div>
+                                    </div>`;
                             }
 
                             vendorHtml += `</div></div></div></li>`;
@@ -370,17 +373,17 @@
                         var nxt = response.current_page + 1;
                         $('.pagination').append(
                             `<li class="action"><a href="#" data-page="${pre}"><i class="fa fa-angle-left"></i></a></li>`
-                            );
+                        );
 
                         for (let i = 1; i <= response.last_page; i++) {
                             $('.pagination').append(
                                 `<li class="${i === response.current_page ? 'active' : ''}"><a href="#" data-page="${i}">${i}</a></li>`
-                                );
+                            );
                         }
 
                         $('.pagination').append(
                             `<li class="action"><a href="#" data-page="${nxt}"><i class="fa fa-angle-right"></i></a></li>`
-                            );
+                        );
                     },
                     error: function(xhr, status, error) {
                         console.error(error);
