@@ -318,7 +318,7 @@
                                                 }'
                                             id="best-sell-div">
 
-                                            @foreach ($carnival->members as $item)
+                                            @foreach ($carnival->packageVendors('Events') as $item)
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -645,7 +645,7 @@
                                                 }'
                                             id="best-sell-div">
 
-                                            @foreach ($carnival->members as $item)
+                                            @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -717,7 +717,7 @@
                                                 }'
                                             id="best-sell-div">
 
-                                            @foreach ($carnival->members as $item)
+                                            @foreach ($carnival->packageVendors('Artistes') as $item)
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
