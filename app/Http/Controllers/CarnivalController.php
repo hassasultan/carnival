@@ -32,22 +32,21 @@ class CarnivalController extends Controller
     }
     public function index()
     {
-        // $carnivals = Carnival::with('mascamps.user', 'user', 'regions')->find(53);
-        // dd($carnivals->toArray());
         $carnivals = Carnival::with('mascamps.user', 'user', 'regions')->get();
         $mascamps = Vendor::with('user')->get();
         $region = Region::all();
         $countries = Country::all();
         $cities = City::all();
         $packages = Package::all();
-        $Models = Vendor::where('name', 'Models')->get();
-        $DJs = Vendor::where('name', 'DJs')->get();
-        $Artistes = Vendor::where('name', 'Artistes')->get();
-        $Events = Vendor::where('name', 'Events')->get();
-        $Blogger = Vendor::where('name', 'Blogger')->get();
-        $CarnivalCommittees = Vendor::where('name', 'Carnival Committees')->get();
-        $EventPromoters = Vendor::where('name', 'Event Promoters')->get();
-        $MasBandsLeader = Vendor::where('name', 'MasBands - Leader')->get();
+
+        $vendorsByPackage = [];
+
+        foreach ($packages as $package) {
+            $key = str_replace([' ', '-'], '', $package->title); // Clean key
+            $vendorsByPackage[$key] = Vendor::whereHas('package', function ($query) use ($package) {
+                $query->where('title', $package->title);
+            })->with('user')->get();
+        }
 
         return view('dashboard.admin.carnivals.index', compact(
             'region',
@@ -56,16 +55,69 @@ class CarnivalController extends Controller
             'countries',
             'cities',
             'packages',
-            'Models',
-            'DJs',
-            'Artistes',
-            'Events',
-            'Blogger',
-            'CarnivalCommittees',
-            'EventPromoters',
-            'MasBandsLeader',
+            'vendorsByPackage'
         ));
     }
+
+    // public function index()
+    // {
+    //     // $carnivals = Carnival::with('mascamps.user', 'user', 'regions')->find(53);
+    //     // dd($carnivals->toArray());
+    //     $carnivals = Carnival::with('mascamps.user', 'user', 'regions')->get();
+    //     $mascamps = Vendor::with('user')->get();
+    //     $region = Region::all();
+    //     $countries = Country::all();
+    //     $cities = City::all();
+    //     $packages = Package::all();
+    //     $Models = Vendor::whereHas('package', function ($query) {
+    //         $query->where('title', 'Models');
+    //     })->with('user')->get();
+
+    //     $DJs = Vendor::whereHas('package', function ($query) {
+    //         $query->where('title', 'DJs');
+    //     })->with('user')->get();
+
+    //     $Artistes = Vendor::whereHas('package', function ($query) {
+    //         $query->where('title', 'Artistes');
+    //     })->with('user')->get();
+
+    //     $Events = Vendor::whereHas('package', function ($query) {
+    //         $query->where('title', 'Events');
+    //     })->with('user')->get();
+
+    //     $Blogger = Vendor::whereHas('package', function ($query) {
+    //         $query->where('title', 'Blogger');
+    //     })->with('user')->get();
+
+    //     $CarnivalCommittees = Vendor::whereHas('package', function ($query) {
+    //         $query->where('title', 'Carnival Committees');
+    //     })->with('user')->get();
+
+    //     $EventPromoters = Vendor::whereHas('package', function ($query) {
+    //         $query->where('title', 'Event Promoters');
+    //     })->with('user')->get();
+
+    //     $MasBandsLeader = Vendor::whereHas('package', function ($query) {
+    //         $query->where('title', 'MasBands - Leader');
+    //     })->with('user')->get();
+
+    //     return view('dashboard.admin.carnivals.index', compact(
+    //         'region',
+    //         'carnivals',
+    //         'mascamps',
+    //         'countries',
+    //         'cities',
+    //         'packages',
+    //         'Models',
+    //         'DJs',
+    //         'Artistes',
+    //         'Events',
+    //         'Blogger',
+    //         'CarnivalCommittees',
+    //         'EventPromoters',
+    //         'MasBandsLeader',
+    //     ));
+    // }
 
     public function create()
     {

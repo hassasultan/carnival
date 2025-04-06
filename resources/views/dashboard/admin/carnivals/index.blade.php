@@ -468,6 +468,33 @@
                                 @endforeach
                             </select>
                         </div>
+
+                        @foreach ($packages as $package)
+                            @php
+                                $packageKey = str_replace([' ', '-'], '', $package->title);
+                            @endphp
+                            <div class="form-group">
+                                <label for="{{ $package->id }}">{{ $package->title }}</label><br>
+                                <select id="{{ $package->id }}" name="vendors[{{ $package->id }}][]"
+                                    class="form-control select2" multiple>
+                                    @foreach ($vendorsByPackage[$packageKey] ?? [] as $row)
+                                        <option value="{{ $row->id }}">
+                                            {{ $row->user->first_name . ' ' . $row->user->last_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endforeach
+                        {{-- <div class="form-group">
+                            <label for="mascamp">Mascamps</label><br>
+                            <select id="mascamp" name="mascamps[]" class="form-control select2" multiple>
+                                @foreach ($mascamps as $row)
+                                    <option value="{{ $row->id }}">
+                                        {{ $row->user->first_name . ' ' . $row->user->last_name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                         @foreach ($packages as $package)
                             <div class="form-group">
                                 <label for="{{ $package->id }}">{{ $package->title }}</label><br>
@@ -485,7 +512,7 @@
                                     @endif
                                 </select>
                             </div>
-                        @endforeach
+                        @endforeach --}}
                         {{-- @foreach ($packages as $package)
                             <div class="form-group">
                                 <label for="{{ $package->id }}">{{ $package->title }}</label><br>
