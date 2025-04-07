@@ -1738,8 +1738,21 @@ select.input-sm {
 .site-header .switcher .dropdown-toggle i {
     margin-right: 0
 }
+.name-mb-view {
+    display: none !important;
+}
 
+.dsk-view {
+    display: block !important;
+}
 @media (min-width:768px) {
+    .name-mb-view {
+        display: block !important;
+    }
+
+    .dsk-view {
+        display: none !important;
+    }
     .site-header .switcher:hover .dropdown-menu {
         display: block;
         opacity: 1;
