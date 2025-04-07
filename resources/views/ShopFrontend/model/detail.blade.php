@@ -309,13 +309,7 @@
             }
         }
 
-        .name-mb-view {
-            display: none !important;
-        }
 
-        .dsk-view {
-            display: block !important;
-        }
 
         @media (max-width: 768px) {
             .product-thumbnails {
@@ -334,13 +328,7 @@
                 margin-top: 15px;
             }
 
-            .name-mb-view {
-                display: block !important;
-            }
 
-            .dsk-view {
-                display: none !important;
-            }
 
             .product-thumbnails::-webkit-scrollbar {
                 display: none;
