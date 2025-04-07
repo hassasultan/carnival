@@ -1746,13 +1746,7 @@ select.input-sm {
     display: block ;
 }
 @media (min-width:768px) {
-    .name-mb-view {
-        display: block !important;
-    }
 
-    .dsk-view {
-        display: none !important;
-    }
     .site-header .switcher:hover .dropdown-menu {
         display: block;
         opacity: 1;
@@ -24659,6 +24653,13 @@ img.alignright {
 @media (min-width:768px) and (max-width:1199px) {
     .block-floor-products-opt1 .block-title .links a {
         padding: 0 12px
+    }
+    .name-mb-view {
+        display: block !important;
+    }
+
+    .dsk-view {
+        display: none !important;
     }
 }
 
