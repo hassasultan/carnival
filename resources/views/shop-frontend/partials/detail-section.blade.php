@@ -12,7 +12,7 @@
     <div class="tab-content">
         @foreach ($user->tabs as $index => $tab)
             <div role="tabpanel" class="tab-pane {{ $index === 0 ? 'active' : '' }}" id="{{ Str::slug($tab->name, '-') }}">
-                <div class="block-title">Product Details</div>
+                <div class="block-title">{{ $tab->name }}</div>
                 <div class="block-content">
                     {!! $tab->description !!}
                 </div>
