@@ -501,7 +501,7 @@
                         <ul class="nav nav-pills" role="tablist">
                             <li role="presentation" class="active"><a href="#description" role="tab"
                                     data-toggle="tab">Product Details </a></li>
-                            <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">Section Details
+                            {{-- <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">Section Details
                                 </a>
                             </li>
                             <li role="presentation"><a href="#reviews" role="tab" data-toggle="tab">reviews</a></li>
@@ -509,13 +509,13 @@
                                     Plan</a></li>
                             <li role="presentation"><a href="#tab-cust" role="tab" data-toggle="tab">Additional
                                     Info</a>
-                            </li>
+                            </li> --}}
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="description">
-                                <div class="block-title">Product Details</div>
+                                <div class="block-title">Note</div>
                                 <div class="block-content">
                                     {!! $event->description !!}
 
