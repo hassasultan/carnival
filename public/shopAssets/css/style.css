@@ -1745,6 +1745,15 @@ select.input-sm {
 .dsk-view {
     display: block ;
 }
+@media (max-width:768px) {
+    .name-mb-view {
+        display: block !important;
+    }
+
+    .dsk-view {
+        display: none !important;
+    }
+}
 @media (min-width:768px) {
 
     .site-header .switcher:hover .dropdown-menu {
@@ -24654,13 +24663,7 @@ img.alignright {
     .block-floor-products-opt1 .block-title .links a {
         padding: 0 12px
     }
-    .name-mb-view {
-        display: block !important;
-    }
 
-    .dsk-view {
-        display: none !important;
-    }
 }
 
 .block-floor-products-opt1 .block-title .links .label-cat {
