@@ -25076,10 +25076,23 @@ img.alignright {
     margin-top: -11px;
     right: -1px
 }
+.name-mb-view {
+    display: none !important;
+}
 
+.dsk-view {
+    display: block !important;
+}
 @media (min-width:768px) and (max-width:1199px) {
     .block-floor-products-opt1 .block-title .links a {
         padding: 0 12px
+    }
+    .name-mb-view {
+        display: block !important;
+    }
+
+    .dsk-view {
+        display: none !important;
     }
 }
 
