@@ -500,7 +500,7 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-pills" role="tablist">
                             <li role="presentation" class="active"><a href="#description" role="tab"
-                                    data-toggle="tab">Product Details </a></li>
+                                    data-toggle="tab">Note </a></li>
                             {{-- <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">Section Details
                                 </a>
                             </li>
