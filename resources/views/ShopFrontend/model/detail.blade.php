@@ -278,7 +278,7 @@
         /* picture view swap */
         .product-gallery {
             display: flex;
-            flex-direction: column-reverse;
+            flex-direction: column;
             /* By default, show main image first */
         }
 
@@ -310,11 +310,11 @@
         }
 
         .name-mb-view {
-            display: none;
+            display: none !important;
         }
 
         .dsk-view {
-            display: block;
+            display: block !important;
         }
 
         @media (max-width: 768px) {
@@ -331,11 +331,11 @@
             }
 
             .name-mb-view {
-                display: block;
+                display: block !important;
             }
 
             .dsk-view {
-                display: none;
+                display: none !important;
             }
 
             .product-thumbnails::-webkit-scrollbar {
@@ -384,7 +384,7 @@
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="product-gallery">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-2 dsk-view">
                                         <div class="product-thumbnails">
                                             @php
                                                 $image = null;
@@ -429,6 +429,32 @@
                                             </div>
                                             <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i
                                                     class="fas fa-expand"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 name-mb-view">
+                                        <div class="product-thumbnails">
+                                            @php
+                                                $image = null;
+
+                                                if ($user->vendor && $user->vendor->logo) {
+                                                    $image = asset('images/' . $user->vendor->logo);
+                                                } elseif ($user->image) {
+                                                    $image = asset('images/' . $user->image);
+                                                } else {
+                                                    $image = asset('shopAssets/images/media/product9.jpg');
+                                                }
+                                            @endphp
+                                            <img class="thumbnail" src="{{ $image }}" data-full="{{ $image }}"
+                                                alt="Thumbnail 0" onclick="changeMainImage(0)" />
+                                            @foreach ($user->gallery as $key => $row)
+                                                @if (isset($row->images[0]))
+                                                    <img class="thumbnail"
+                                                        src="{{ asset('images/' . $row->images[0]->image) }}"
+                                                        data-full="{{ asset('images/' . $row->images[0]->image) }}"
+                                                        alt="Thumbnail {{ $key + 1 }}"
+                                                        onclick="changeMainImage({{ $key + 1 }})" />
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
