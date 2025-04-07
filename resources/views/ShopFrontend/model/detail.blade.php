@@ -330,6 +330,10 @@
                 /* For Internet Explorer/Edge */
             }
 
+            .product-info-main {
+                margin-top: 15px;
+            }
+
             .name-mb-view {
                 display: block !important;
             }
