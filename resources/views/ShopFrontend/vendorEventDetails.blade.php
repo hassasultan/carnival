@@ -227,9 +227,14 @@
                 <div class="col-md-12 col-main">
 
                     <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 name-mb-view">
+                            <h1 class="page-title">
+                                {{ $event->name }}
+                            </h1>
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="product-gallery">
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 dsk-view">
                                     <div class="product-thumbnails">
                                         @foreach ($event->images as $key => $row)
                                             <img class="thumbnail" src="{{ asset($row->image_url) }}"
@@ -249,6 +254,15 @@
                                                 class="fas fa-expand"></i></button>
                                     </div>
                                 </div>
+                                <div class="col-sm-2 name-mb-view">
+                                    <div class="product-thumbnails">
+                                        @foreach ($event->images as $key => $row)
+                                            <img class="thumbnail" src="{{ asset($row->image_url) }}"
+                                                data-full="{{ asset($row->image_url) }}" alt="Thumbnail {{ $key + 1 }}"
+                                                onclick="changeMainImage({{ $key }})" />
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -257,7 +271,7 @@
 
                             <div class="product-info-main">
 
-                                <h1 class="page-title">
+                                <h1 class="page-title dsk-view">
                                     {{ $event->name }}
                                 </h1>
                                 <div class="product-reviews-summary">
