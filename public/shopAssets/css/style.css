@@ -1739,11 +1739,11 @@ select.input-sm {
     margin-right: 0
 }
 .name-mb-view {
-    display: none !important;
+    display: none ;
 }
 
 .dsk-view {
-    display: block !important;
+    display: block ;
 }
 @media (min-width:768px) {
     .name-mb-view {
