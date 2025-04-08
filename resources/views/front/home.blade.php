@@ -30,7 +30,7 @@
         });
 
         function showActionBox(id, carnival_id) {
-            $('.city-entry-new-'+id).css('display', 'block');
+            $('.city-entry-new').css('display', 'block');
             $('.new-slider').css('display', 'none');
             console.log('carrr', id, carnival_id);
             $.ajax({
@@ -45,7 +45,7 @@
                     // $('.tabs-content').html(response);
 
                     if (id == "flight") {
-                        $('.city-entry-new'+id+' > .tour-block > img').attr('src',
+                        $('.city-entry-new > .tour-block > img').attr('src',
                             'https://carnivalguide.co/travel/img/home/city_1.jpg');
                         $('.flight').removeClass('d-none');
                         $('.flight-tab').removeClass('d-none');
@@ -57,7 +57,7 @@
                         $('.costume').addClass('d-none');
                         $('.costume-tab').addClass('d-none');
                     } else if (id == "hotel") {
-                        $('.city-entry-new'+id+' > .tour-block > img').attr('src',
+                        $('.city-entry-new > .tour-block > img').attr('src',
                             'https://carnivalguide.co/travel/img/home/city_2.jpg');
                         $('.hotel').removeClass('d-none');
                         $('.hotel-tab').removeClass('d-none');
@@ -69,7 +69,7 @@
                         $('.costume').addClass('d-none');
                         $('.costume-tab').addClass('d-none');
                     } else if (id == "events") {
-                        $('.city-entry-new'+id+' > .tour-block > img').attr('src',
+                        $('.city-entry-new > .tour-block > img').attr('src',
                             'https://carnivalguide.co/travel/img/home/city_2.jpg');
                         $('.hotel').addClass('d-none');
                         $('.hotel-tab').addClass('d-none');
@@ -81,7 +81,7 @@
                         $('.costume').addClass('d-none');
                         $('.costume-tab').addClass('d-none');
                     } else if (id == "costume") {
-                        $('.city-entry-new'+id+' > .tour-block > img').attr('src',
+                        $('.city-entry-new > .tour-block > img').attr('src',
                             'https://carnivalguide.co/travel/img/home/city_2.jpg');
                         $('.hotel').addClass('d-none');
                         $('.hotel-tab').addClass('d-none');
@@ -93,7 +93,7 @@
                         $('.costume-tab').removeClass('d-none');
                         $('.costume-tab').html(response);
                     } else {
-                        $('.city-entry-new'+id+' > .tour-block > img').attr('src',
+                        $('.city-entry-new > .tour-block > img').attr('src',
                             'https://carnivalguide.co/travel/img/home/city_3.jpg');
                         $('.events').removeClass('d-none');
                         $('.events-tab').removeClass('d-none');
