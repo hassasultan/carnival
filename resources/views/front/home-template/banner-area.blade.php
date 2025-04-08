@@ -136,7 +136,7 @@
                                                                 <div class="slider-block-left slider-extra">
                                                                     {{-- <img class="center-image" src="{{ asset($row->banner) }}"
                                                                 alt=""> --}}
-                                                                    <div class="city-entry bg-grey-2 city-entry-new"
+                                                                    <div class="city-entry bg-grey-2 city-entry-new city-entry-new-{{ $row->id }}"
                                                                         id="city-entry-{{ $key }}">
                                                                         <div
                                                                             class="tour-block tour-block-s-9 hover-green radius-5 underline-block">

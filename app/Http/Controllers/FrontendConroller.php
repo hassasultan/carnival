@@ -116,7 +116,7 @@ class FrontendConroller extends Controller
     }
     public function get_carnivals_by_region_for_home($id)
     {
-        $carnivals = Carnival::with('user')->where('region_id', $id)->take(6)->get();
+        $carnivals = Carnival::with('user','city')->where('region_id', $id)->take(6)->get();
 
         // Format the data to send as JSON
         $data = $carnivals->map(function ($carnival) {
