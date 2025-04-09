@@ -106,7 +106,7 @@ class FrontendConroller extends Controller
             return [
                 'id' => $carnival->id,
                 'name' => $carnival->name,
-                'image_url' => $carnival->city->airport ? asset($carnival->city->airport) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                'image_url' => $carnival->city && $carnival->city->airport ? asset($carnival->city->airport) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
                 // 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
                 // 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
 
@@ -124,7 +124,7 @@ class FrontendConroller extends Controller
             return [
                 'id' => $carnival->id,
                 'name' => $carnival->name,
-                'image_url' => $carnival->city->airport ? asset($carnival->city->airport) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                'image_url' => $carnival->city && $carnival->city->airport ? asset($carnival->city->airport) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
                 // 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
                 // 'image_url' => asset('images/carnivals/' . $carnival->image),
 
