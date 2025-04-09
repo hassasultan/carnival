@@ -107,6 +107,8 @@ class FrontendConroller extends Controller
                 'id' => $carnival->id,
                 'name' => $carnival->name,
                 'image_url' => $carnival->city && $carnival->city->airport ? asset($carnival->city->airport) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                'imageUrl_hotel' => $carnival->city && $carnival->city->hotel ? asset($carnival->city->hotel) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                'imageUrl_event' => $carnival->city && $carnival->city->event ? asset($carnival->city->event) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
                 // 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
                 // 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
 
@@ -125,6 +127,8 @@ class FrontendConroller extends Controller
                 'id' => $carnival->id,
                 'name' => $carnival->name,
                 'image_url' => $carnival->city && $carnival->city->airport ? asset($carnival->city->airport) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                'imageUrl_hotel' => $carnival->city && $carnival->city->hotel ? asset($carnival->city->hotel) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                'imageUrl_event' => $carnival->city && $carnival->city->event ? asset($carnival->city->event) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
                 // 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
                 // 'image_url' => asset('images/carnivals/' . $carnival->image),
 

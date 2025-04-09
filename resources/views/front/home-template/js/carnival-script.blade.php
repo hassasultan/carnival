@@ -52,13 +52,13 @@
                                                 <div class="tab-wrapper">
                                                 <div class="tab-nav-wrapper">
                                                     <div class="nav-tab  clearfix">
-                                                        <div class="nav-tab-item active carnival-cover" data-id="${carnival.id}">
+                                                        <div class="nav-tab-item active carnival-cover" data-id="${carnival.id}" data-img="${}">
                                                             Flights
                                                         </div>
-                                                        <div class="nav-tab-item carnival-cover" data-id="${carnival.id}">
+                                                        <div class="nav-tab-item carnival-cover" data-id="${carnival.id}" data-img="${}">
                                                             Hotels
                                                         </div>
-                                                        <div class="nav-tab-item carnival-cover" data-id="${carnival.id}">
+                                                        <div class="nav-tab-item carnival-cover" data-id="${carnival.id}" data-img="${}">
                                                             Events
                                                         </div>
                                                     </div>
