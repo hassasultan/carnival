@@ -106,8 +106,8 @@ class FrontendConroller extends Controller
             return [
                 'id' => $carnival->id,
                 'name' => $carnival->name,
-                'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
                 'image_url' => asset($carnival->city->airport),
+                // 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
                 // 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
 
             ];
