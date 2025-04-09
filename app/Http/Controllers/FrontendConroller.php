@@ -99,7 +99,7 @@ class FrontendConroller extends Controller
     }
     public function get_carnivals_by_region($id)
     {
-        $carnivals = Carnival::with('user')->where('region_id', $id)->get();
+        $carnivals = Carnival::with('user', 'city')->where('region_id', $id)->get();
 
         // Format the data to send as JSON
         $data = $carnivals->map(function ($carnival) {
@@ -107,7 +107,8 @@ class FrontendConroller extends Controller
                 'id' => $carnival->id,
                 'name' => $carnival->name,
                 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
-                // 'image_url' => asset('images/carnivals/' . $carnival->image),
+                'image_url' => asset($carnival->city->airport),
+                // 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
 
             ];
         });
