@@ -447,7 +447,7 @@
 
                                 function prevSlide() {
                                     currentIndex--;
-                                    console.log('yhi haa');
+
                                     // Ensure index wraps around
                                     const slides = getActiveSlides();
                                     if (currentIndex < 0) {
@@ -471,14 +471,20 @@
 
                                 // Show the first slide initially
                                 showSlide(currentIndex);
+
+                                function resetBanner() {
+                                    console.log('yhi yhii haa');
+                                }
                             </script>
                         </div>
                         <div class="pagination pagination-hidden poin-style-1"></div>
                         <div class="arrow-wrapp arr-s-2">
                             <div class="cont-1170">
-                                <div class="swiper-arrow-left sw-arrow"><span class="fa fa-angle-left"></span>
+                                <div class="swiper-arrow-left sw-arrow" onclick="resetBanner()"><span
+                                        class="fa fa-angle-left"></span>
                                 </div>
-                                <div class="swiper-arrow-right sw-arrow"><span class="fa fa-angle-right"></span>
+                                <div class="swiper-arrow-right sw-arrow" onclick="resetBanner()"><span
+                                        class="fa fa-angle-right"></span>
                                 </div>
                             </div>
                         </div>
