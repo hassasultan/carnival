@@ -1,17 +1,88 @@
-{{-- <div class="full-height">
-    <div class="video-wrapper"> --}}
+<style>
+    .slider-extra {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: auto;
+        background-color: #f3f3f3;
+    }
+
+    .slider {
+        position: relative;
+        width: 500px;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 0px;
+    }
+
+    .slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .slide-new {
+        min-width: 100%;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .slide-new img {
+        width: 100%;
+        height: auto;
+        border-radius: 0px;
+        /* margin-top: 46px; */
+    }
+
+    .slide-new video {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+        object-fit: cover;
+    }
+
+    button.prev,
+    button.next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+
+    button.prev {
+        left: 10px;
+    }
+
+    button.next {
+        right: 10px;
+    }
+
+    button:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .d-none {
+        display: none !important;
+    }
+
+    @media screen and (max-width: 480px) {
+        .slider-extra {
+            min-height: auto;
+        }
+
+        .slide-new img {
+            margin-top: 0px;
+        }
+    }
+</style>
 <div class="full-height" style="height: auto !important;">
     <div class="video-wrapper">
-        {{-- @foreach ($siteGallery as $key => $row)
-                    <div class="col-md-3 album-cnt" data-id="{{ $row->id }}">
-                        <div class="album bg-brown"
-                            style="background-image: url('{{ asset('images/' . $row->images[0]->image) }}');">
-                        </div>
-                        <div class="album-title">
-                            <span>{{ $row->title }}</span>
-                        </div>
-                    </div>
-                    @endforeach --}}
         @foreach ($banners as $banner)
             @php
                 $filePath = asset($banner->banner_image);
@@ -29,12 +100,6 @@
                 <img src="{{ $filePath }}" alt="Banner Image" class="banner-image">
             @endif
         @endforeach
-        {{-- <video loop autoplay muted poster="https://carnivalguide.co/travel/img/poster.jpg" class="bgvid"
-                    id="bgvid">
-                    <source type="video/mp4" src="https://carnivalguide.co/travel/video/soca.mp4" />
-                    <source type="video/ogv" src="https://carnivalguide.co/travel/video/soca.ogv" />
-                    <source type="video/webm" src="https://carnivalguide.co/travel/video/soca.webm" />
-                </video> --}}
         <div class="vertical-align">
             <div class="container" style="margin-top:30px">
 
@@ -42,89 +107,6 @@
                     <div class="swiper-container main-slider-5 home-top-banner" data-autoplay="0" data-loop="1"
                         data-speed="900" data-center="0" data-slides-per-view="1">
                         <div class="swiper-wrapper">
-                            <style>
-                                .slider-extra {
-                                    display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                    min-height: auto;
-                                    background-color: #f3f3f3;
-                                }
-
-                                .slider {
-                                    position: relative;
-                                    width: 500px;
-                                    height: 100%;
-                                    overflow: hidden;
-                                    border-radius: 0px;
-                                }
-
-                                .slides {
-                                    display: flex;
-                                    transition: transform 0.5s ease-in-out;
-                                    width: 100%;
-                                    height: 100%;
-
-                                }
-
-                                .slide-new {
-                                    min-width: 100%;
-                                    transition: opacity 0.5s ease-in-out;
-                                }
-
-                                .slide-new img {
-                                    width: 100%;
-                                    height: auto;
-                                    border-radius: 0px;
-                                    /* margin-top: 46px; */
-                                }
-
-                                .slide-new video {
-                                    width: 100%;
-                                    height: 100%;
-                                    border-radius: 0px;
-                                    object-fit: cover;
-                                }
-
-                                button.prev,
-                                button.next {
-                                    position: absolute;
-                                    top: 50%;
-                                    transform: translateY(-50%);
-                                    background-color: rgba(0, 0, 0, 0.5);
-                                    color: white;
-                                    border: none;
-                                    padding: 10px;
-                                    cursor: pointer;
-                                    border-radius: 50%;
-                                }
-
-                                button.prev {
-                                    left: 10px;
-                                }
-
-                                button.next {
-                                    right: 10px;
-                                }
-
-                                button:hover {
-                                    background-color: rgba(0, 0, 0, 0.8);
-                                }
-
-                                .d-none {
-                                    display: none !important;
-                                }
-
-                                @media screen and (max-width: 480px) {
-                                    .slider-extra {
-                                        min-height: auto;
-                                    }
-
-                                    .slide-new img {
-                                        margin-top: 0px;
-                                    }
-                                }
-                            </style>
                             @foreach ($carnivals as $key => $row)
                                 <div class="swiper-slide @if ($key == 0) active @endif {{ $key }}"
                                     data-val="{{ $key }}">
@@ -134,8 +116,6 @@
                                                 <div class="col-xs-12 col-sm-10 col-sm-offset-1">
                                                     <div class="slider-block clearfix">
                                                         <div class="slider-block-left slider-extra">
-                                                            {{-- <img class="center-image" src="{{ asset($row->banner) }}"
-                                                                alt=""> --}}
                                                             <div class="city-entry bg-grey-2 city-entry-new"
                                                                 id="city-entry-{{ $key }}">
                                                                 <div
@@ -192,31 +172,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            {{-- <div class="slider-container new-slider"
-                                                                id="new-slider-{{ $key }}">
-                                                                <div class="slider">
-                                                                    <div class="slide">
-                                                                        <img src="https://carnivalguide.co/new/img/home/vincymas-2024.jpg"
-                                                                            alt="Image 1">
-                                                                    </div>
-                                                                    <div class="slide">
-                                                                        <video
-                                                                            src="https://carnivalguide.co/travel/video/soca.mp4"
-                                                                            controls loop autoplay muted></video>
-                                                                    </div>
-                                                                    <div class="slide">
-                                                                        <img src="http://127.0.0.1:8000/testimonial/cover/1721141270_testimonal_1.jpg"
-                                                                            alt="Image 2">
-                                                                    </div>
-                                                                    <div class="slide">
-                                                                        <video
-                                                                            src="https://carnivalguide.co/travel/video/soca.mp4"
-                                                                            controls loop autoplay muted></video>
-                                                                    </div>
-                                                                </div>
-                                                                <button class="prev">❮</button>
-                                                                <button class="next">❯</button>
-                                                            </div> --}}
 
                                                             <div class="slider new-slider">
                                                                 <div class="slides">
@@ -245,26 +200,6 @@
                                                                         </div>
                                                                     @endforeach
                                                                 </div>
-                                                                {{-- <div class="slides">
-                                                                            <div class="slide-new active">
-                                                                                <img src="https://carnivalguide.co/new/img/home/vincymas-2024.jpg"
-                                                                                    alt="Image 1">
-                                                                            </div>
-                                                                            <div class="slide-new">
-                                                                                <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg"
-                                                                                    alt="Image 2">
-                                                                            </div>
-                                                                            <div class="slide-new">
-                                                                                <video
-                                                                                    src="https://carnivalguide.co/travel/video/soca.mp4"
-                                                                                    controls loop autoplay
-                                                                                    muted></video>
-                                                                            </div>
-                                                                            <div class="slide-new">
-                                                                                <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg"
-                                                                                    alt="Image 4">
-                                                                            </div>
-                                                                        </div> --}}
 
                                                                 <!-- Navigation buttons -->
                                                                 <button class="prev"
@@ -324,40 +259,6 @@
                                                                     {{ $endMonth }}{{ $endDay }}<sup>{{ $endSuffix }}</sup>
                                                                 </strong>
                                                             </div>
-                                                            {{-- <div class="sb-price color-dark-2">
-                                                                        @php
-                                                                            $date = \Carbon\Carbon::parse(
-                                                                                $row->start_date,
-                                                                            );
-                                                                            $day = $date->day;
-                                                                            $month = $date->format('M');
-
-                                                                            // Add suffix to day
-                                                                            $suffix = match ($day % 10) {
-                                                                                1 => $day == 11 ? 'th' : 'st',
-                                                                                2 => $day == 12 ? 'th' : 'nd',
-                                                                                3 => $day == 13 ? 'th' : 'rd',
-                                                                                default => 'th',
-                                                                            };
-
-                                                                            $enddate = \Carbon\Carbon::parse(
-                                                                                $row->end_date,
-                                                                            );
-                                                                            $endday = $enddate->day;
-                                                                            $endmonth = $enddate->format('M');
-
-                                                                            // Add suffix to day
-                                                                            $endsuffix = match ($endday % 10) {
-                                                                                1 => $endday == 11 ? 'th' : 'st',
-                                                                                2 => $endday == 12 ? 'th' : 'nd',
-                                                                                3 => $endday == 13 ? 'th' : 'rd',
-                                                                                default => 'th',
-                                                                            };
-                                                                        @endphp
-                                                                        <strong>
-                                                                            {{ $month }}{{ $day }}<sup>{{ $suffix }}</sup> - {{ $endmonth }}{{ $endday }}<sup>{{ $endsuffix }}</sup>
-                                                                        </strong>
-                                                                    </div> --}}
                                                             <div class="sb-text">{!! Str::limit($row->description, 250, ' rest ...') !!}
                                                             </div>
                                                             <a href="{{ route('events.view.more', $row->id) }}"
@@ -412,70 +313,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                            <script>
-                                let currentIndex = 0;
-
-                                function getActiveSlides() {
-                                    // Select all elements with the class 'slide-new'
-                                    const slides = document.querySelectorAll('.slide-new');
-
-                                    // Filter slides to only include those with an ancestor that has both '.swiper-slide' and '.active'
-                                    return Array.from(slides).filter(slide => {
-                                        return slide.closest('.swiper-slide-visible') !== null;
-                                    });
-                                }
-
-                                function showSlide(index) {
-                                    const slides = getActiveSlides(); // Get only the active slides
-                                    console.log(slides);
-                                    const totalSlides = slides.length;
-
-                                    if (totalSlides === 0) return; // If there are no active slides, do nothing
-
-                                    // Hide all slides
-                                    slides.forEach((slide) => {
-                                        slide.style.display = 'none';
-                                    });
-
-                                    // Ensure index is within bounds
-                                    if (index >= totalSlides) index = 0;
-                                    if (index < 0) index = totalSlides - 1;
-
-                                    // Show the current slide
-                                    slides[index].style.display = 'block';
-                                }
-
-                                function prevSlide() {
-                                    currentIndex--;
-
-                                    // Ensure index wraps around
-                                    const slides = getActiveSlides();
-                                    if (currentIndex < 0) {
-                                        currentIndex = slides.length - 1;
-                                    }
-
-                                    showSlide(currentIndex);
-                                }
-
-                                function nextSlide() {
-                                    currentIndex++;
-
-                                    // Ensure index wraps around
-                                    const slides = getActiveSlides();
-                                    if (currentIndex >= slides.length) {
-                                        currentIndex = 0;
-                                    }
-
-                                    showSlide(currentIndex);
-                                }
-
-                                // Show the first slide initially
-                                showSlide(currentIndex);
-
-                                function resetBanner() {
-                                    console.log('yhi yhii haa');
-                                }
-                            </script>
                         </div>
                         <div class="pagination pagination-hidden poin-style-1"></div>
                         <div class="arrow-wrapp arr-s-2">
@@ -494,5 +331,96 @@
         </div>
     </div>
 </div>
-{{-- </div>
-</div> --}}
+
+<script>
+    let currentIndex = 0;
+
+    function getActiveSlides() {
+        // Select all elements with the class 'slide-new'
+        const slides = document.querySelectorAll('.slide-new');
+
+        // Filter slides to only include those with an ancestor that has both '.swiper-slide' and '.active'
+        return Array.from(slides).filter(slide => {
+            return slide.closest('.swiper-slide-visible') !== null;
+        });
+    }
+
+    function showSlide(index) {
+        const slides = getActiveSlides(); // Get only the active slides
+        console.log(slides);
+        const totalSlides = slides.length;
+
+        if (totalSlides === 0) return; // If there are no active slides, do nothing
+
+        // Hide all slides
+        slides.forEach((slide) => {
+            slide.style.display = 'none';
+        });
+
+        // Ensure index is within bounds
+        if (index >= totalSlides) index = 0;
+        if (index < 0) index = totalSlides - 1;
+
+        // Show the current slide
+        slides[index].style.display = 'block';
+    }
+
+    function prevSlide() {
+        currentIndex--;
+
+        // Ensure index wraps around
+        const slides = getActiveSlides();
+        if (currentIndex < 0) {
+            currentIndex = slides.length - 1;
+        }
+
+        showSlide(currentIndex);
+    }
+
+    function nextSlide() {
+        currentIndex++;
+
+        // Ensure index wraps around
+        const slides = getActiveSlides();
+        if (currentIndex >= slides.length) {
+            currentIndex = 0;
+        }
+
+        showSlide(currentIndex);
+    }
+
+    // Show the first slide initially
+    showSlide(currentIndex);
+
+    function resetBanner() {
+        console.log('yhi yhii haa');
+    }
+
+    // Initialize Swiper
+    const swiper = new Swiper('.home-top-banner', {
+        loop: true, // enable looping
+        speed: 900, // slide transition speed
+        slidesPerView: 1,
+        on: {
+            slideChange: function() {
+                // When the slide changes (either via drag or button click)
+                resetBanner();
+            },
+        },
+    });
+
+    function resetBanner() {
+        console.log('Carousel slide has changed');
+        // Your existing resetBanner functionality
+    }
+
+    document.querySelector('.swiper-arrow-left').addEventListener('click', () => {
+        swiper.slidePrev(); // Go to previous slide
+        resetBanner(); // Trigger reset
+    });
+
+    document.querySelector('.swiper-arrow-right').addEventListener('click', () => {
+        swiper.slideNext(); // Go to next slide
+        resetBanner(); // Trigger reset
+    });
+</script>
