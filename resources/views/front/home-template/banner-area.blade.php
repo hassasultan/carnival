@@ -332,11 +332,11 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     let currentIndex = 0;
 
     function getActiveSlides() {
+        console.log('yhi to haiii');
         // Select all elements with the class 'slide-new'
         const slides = document.querySelectorAll('.slide-new');
 
@@ -393,37 +393,25 @@
     // Show the first slide initially
     showSlide(currentIndex);
 
-    // Initialize Owl Carousel
-    var owl = $('.home-top-banner').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: false,
-        dots: true,
-        autoplay: false, // You can enable autoplay if needed
-        items: 1,
-        smartSpeed: 900, // Slide transition speed
-    });
-
-    // Listen for slide change (either by dragging or by buttons)
-    owl.on('changed.owl.carousel', function(event) {
-        // This is triggered when the slide changes, either by dragging or by clicking the arrows
-        resetBanner();
-    });
-
-    // Custom function when carousel changes
     function resetBanner() {
-        console.log('Carousel slide has changed');
-        // Your existing resetBanner logic
+        console.log('yhi yhii haa');
     }
 
-    // If you want to manually trigger the carousel change from buttons
-    $('.swiper-arrow-left').click(function() {
-        owl.trigger('prev.owl.carousel'); // Move to previous slide
-        resetBanner(); // Trigger reset
+    // Initialize Swiper
+    const swiper = new Swiper('.home-top-banner', {
+        loop: true, // enable looping
+        speed: 900, // slide transition speed
+        slidesPerView: 1,
+        on: {
+            slideChange: function() {
+                // When the slide changes (either via drag or button click)
+                resetBanner();
+            },
+        },
     });
 
-    $('.swiper-arrow-right').click(function() {
-        owl.trigger('next.owl.carousel'); // Move to next slide
-        resetBanner(); // Trigger reset
-    });
+    function resetBanner() {
+        console.log('Carousel slide has changed');
+        // Your existing resetBanner functionality
+    }
 </script>
