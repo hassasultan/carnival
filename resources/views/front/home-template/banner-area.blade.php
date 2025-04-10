@@ -396,22 +396,4 @@
     function resetBanner() {
         console.log('yhi yhii haa');
     }
-
-    // Initialize Swiper
-    const swiper = new Swiper('.home-top-banner', {
-        loop: true, // enable looping
-        speed: 900, // slide transition speed
-        slidesPerView: 1,
-        on: {
-            slideChange: function() {
-                // When the slide changes (either via drag or button click)
-                resetBanner();
-            },
-        },
-    });
-
-    function resetBanner() {
-        console.log('Carousel slide has changed');
-        // Your existing resetBanner functionality
-    }
 </script>
