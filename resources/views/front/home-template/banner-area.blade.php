@@ -336,7 +336,14 @@
     let currentIndex = 0;
 
     function getActiveSlides() {
-        console.log('yhi to haiii');
+        $('.flight').addClass('d-none');
+        $('.flight-tab').addClass('d-none');
+        $('.hotel').addClass('d-none');
+        $('.hotel-tab').addClass('d-none');
+        $('.events').addClass('d-none');
+        $('.events-tab').addClass('d-none');
+        $('.costume').addClass('d-none');
+        $('.costume-tab').addClass('d-none');
         // Select all elements with the class 'slide-new'
         const slides = document.querySelectorAll('.slide-new');
 
