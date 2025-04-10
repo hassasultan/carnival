@@ -398,8 +398,8 @@
                     <!-- product tab info -->
 
                     <div class="product-info-detailed ">
-
-                        <!-- Nav tabs -->
+                        @include('shop-frontend.partials.detail-section')
+                        {{-- <!-- Nav tabs -->
                         <ul class="nav nav-pills" role="tablist">
                             <li role="presentation" class="active"><a href="#description" role="tab"
                                     data-toggle="tab">Description </a></li>
@@ -422,7 +422,7 @@
                                 <div class="block-content">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <!-- product tab info -->
 

@@ -56,7 +56,7 @@
 
         .product-thumbnails img {
             width: 80px;
-            height: auto;
+            height: 80px;
             margin-right: 5px;
             cursor: pointer;
         }
@@ -278,7 +278,7 @@
         /* picture view swap */
         .product-gallery {
             display: flex;
-            flex-direction: column-reverse;
+            flex-direction: column;
             /* By default, show main image first */
         }
 
@@ -309,9 +309,12 @@
             }
         }
 
+
+
         @media (max-width: 768px) {
             .product-thumbnails {
                 display: flex;
+                margin-top: 15px;
                 flex-wrap: nowrap;
                 overflow-x: auto;
                 gap: 10px;
@@ -320,6 +323,12 @@
                 -ms-overflow-style: none;
                 /* For Internet Explorer/Edge */
             }
+
+            .product-info-main {
+                margin-top: 15px;
+            }
+
+
 
             .product-thumbnails::-webkit-scrollbar {
                 display: none;
@@ -360,9 +369,14 @@
 
                     <div class="row">
                         <div class="product-gallery">
+                            <div class="col-sm-12 col-md-12 col-lg-12 name-mb-view">
+                                <h1 class="page-title">
+                                    {{ optional($user->vendor)->name ?? (optional($user->subvendor)->name ?? 'N/A') }}
+                                </h1>
+                            </div>
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="product-gallery">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-2 dsk-view">
                                         <div class="product-thumbnails">
                                             @php
                                                 $image = null;
@@ -409,6 +423,32 @@
                                                     class="fas fa-expand"></i></button>
                                         </div>
                                     </div>
+                                    <div class="col-sm-2 name-mb-view">
+                                        <div class="product-thumbnails">
+                                            @php
+                                                $image = null;
+
+                                                if ($user->vendor && $user->vendor->logo) {
+                                                    $image = asset('images/' . $user->vendor->logo);
+                                                } elseif ($user->image) {
+                                                    $image = asset('images/' . $user->image);
+                                                } else {
+                                                    $image = asset('shopAssets/images/media/product9.jpg');
+                                                }
+                                            @endphp
+                                            <img class="thumbnail" src="{{ $image }}" data-full="{{ $image }}"
+                                                alt="Thumbnail 0" onclick="changeMainImage(0)" />
+                                            @foreach ($user->gallery as $key => $row)
+                                                @if (isset($row->images[0]))
+                                                    <img class="thumbnail"
+                                                        src="{{ asset('images/' . $row->images[0]->image) }}"
+                                                        data-full="{{ asset('images/' . $row->images[0]->image) }}"
+                                                        alt="Thumbnail {{ $key + 1 }}"
+                                                        onclick="changeMainImage({{ $key + 1 }})" />
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -431,7 +471,7 @@
                             <div class="col-sm-6 col-md-6 col-lg-6">
 
                                 <div class="product-info-main">
-                                    <h1 class="page-title">
+                                    <h1 class="page-title dsk-view">
                                         {{ optional($user->vendor)->name ?? (optional($user->subvendor)->name ?? 'N/A') }}
                                     </h1>
 
@@ -496,7 +536,7 @@
                                         </div>
 
                                         @if ($user->packageName == 'Models' && $user->carnival_id != 0)
-                                        <h3 class="stats-heading">Stats</h3> 
+                                            <h3 class="stats-heading">Stats</h3>
                                             <div class="contact-item">
                                                 <span class="text">Age:</span>
                                                 <a href="javascript:void(0);">{{ $user->age }}</a>
@@ -545,7 +585,7 @@
                                                     </span>
                                                 @endif
                                             </div>
-                                            
+
                                             {{-- <div class="contact-item">
                                                 <span class="text">About:</span>
                                                 <a href="javascript:void(0);">
@@ -568,7 +608,7 @@
 
                             @include('shop-frontend.partials.detail-section')
                         </div>
-                        
+
                         <!-- product tab info -->
 
                         <!-- block-related product -->
@@ -1186,14 +1226,14 @@
         }); --}}
     </script>
     <script>
-        $(document).ready(function () {
-            $(".see-more").click(function () {
+        $(document).ready(function() {
+            $(".see-more").click(function() {
                 $(this).hide();
                 $(this).siblings(".about-text").hide();
                 $(this).siblings(".full-text").show();
             });
-    
-            $(".see-less").click(function () {
+
+            $(".see-less").click(function() {
                 $(this).parent(".full-text").hide();
                 $(this).parent().siblings(".about-text").show();
                 $(this).parent().siblings(".see-more").show();

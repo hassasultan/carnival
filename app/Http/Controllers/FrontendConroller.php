@@ -99,15 +99,18 @@ class FrontendConroller extends Controller
     }
     public function get_carnivals_by_region($id)
     {
-        $carnivals = Carnival::with('user')->where('region_id', $id)->get();
+        $carnivals = Carnival::with('user', 'city')->where('region_id', $id)->get();
 
         // Format the data to send as JSON
         $data = $carnivals->map(function ($carnival) {
             return [
                 'id' => $carnival->id,
                 'name' => $carnival->name,
-                'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
-                // 'image_url' => asset('images/carnivals/' . $carnival->image),
+                'image_url' => $carnival->city && $carnival->city->airport ? asset($carnival->city->airport) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                'imageUrl_hotel' => $carnival->city && $carnival->city->hotel ? asset($carnival->city->hotel) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                'imageUrl_event' => $carnival->city && $carnival->city->event ? asset($carnival->city->event) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                // 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                // 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
 
             ];
         });
@@ -116,14 +119,17 @@ class FrontendConroller extends Controller
     }
     public function get_carnivals_by_region_for_home($id)
     {
-        $carnivals = Carnival::with('user')->where('region_id', $id)->take(6)->get();
+        $carnivals = Carnival::with('user','city')->where('region_id', $id)->take(6)->get();
 
         // Format the data to send as JSON
         $data = $carnivals->map(function ($carnival) {
             return [
                 'id' => $carnival->id,
                 'name' => $carnival->name,
-                'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                'image_url' => $carnival->city && $carnival->city->airport ? asset($carnival->city->airport) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                'imageUrl_hotel' => $carnival->city && $carnival->city->hotel ? asset($carnival->city->hotel) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                'imageUrl_event' => $carnival->city && $carnival->city->event ? asset($carnival->city->event) : 'https://carnivalguide.co/travel/img/home/city_1.jpg',
+                // 'image_url' => 'https://carnivalguide.co/travel/img/home/city_1.jpg',
                 // 'image_url' => asset('images/carnivals/' . $carnival->image),
 
             ];
