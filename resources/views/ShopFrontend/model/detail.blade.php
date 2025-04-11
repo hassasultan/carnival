@@ -576,12 +576,12 @@
                                             <div class="contact-item">
                                                 <span class="text">About:</span>
                                                 <a href="javascript:void(0);" class="about-text">
-                                                    {{$event->short_description}}
+                                                    {{$user->vendor->short_description}}
                                                 </a>
-                                                @if (strlen($event->short_description) > 200)
+                                                @if (strlen($user->vendor->short_description) > 200)
                                                     <a href="javascript:void(0);" class="see-more">See More</a>
                                                     <span class="full-text" style="display: none;">
-                                                        {{$event->short_description}}
+                                                        {{$user->vendor->short_description}}
                                                         <a href="javascript:void(0);" class="see-less">See Less</a>
                                                     </span>
                                                 @endif
