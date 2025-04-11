@@ -482,7 +482,7 @@
                                             <span class="icon fas fa-globe"></span>
                                             <span class="text">Region:</span>
                                             <a
-                                                href="javascript:void(0);">{{ optional(optional($user->vendor)->continent)->name ?? (optional(optional($user->subvendor)->continent)->name ?? 'N/A') }}</a>
+                                                href="javascript:void(0);">{{ $user->vendor->continent->name ?? 'N/A' }}</a>
                                         </div>
 
                                         <div class="contact-item">
