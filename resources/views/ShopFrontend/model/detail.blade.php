@@ -475,45 +475,7 @@
                                         {{ optional($user->vendor)->name ?? (optional($user->subvendor)->name ?? 'N/A') }}
                                     </h1>
 
-                                    <div class="ovic-share-socials">
-                                        <div class="inner">
-                                            <a class="social-btn facebook"
-                                                href="{{ optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook }}">
-                                                <span class="icon fab fa-facebook"></span>
-                                                {{-- <span class="text">Facebook</span> --}}
-                                            </a>
-                                            <a class="social-btn twitter"
-                                                href="{{ optional($user->vendor)->twitter ?? optional($user->subvendor)->twitter }}">
-                                                <span class="icon fab fa-twitter"></span>
-                                                {{-- <span class="text">Twitter</span> --}}
-                                            </a>
-                                            <a class="social-btn instagram"
-                                                href="{{ optional($user->vendor)->insta ?? optional($user->subvendor)->insta }}">
-                                                <span class="icon fab fa-instagram"></span>
-                                                {{-- <span class="text">Instagram</span> --}}
-                                            </a>
-                                            <a class="social-btn linkedin"
-                                                href="{{ optional($user->vendor)->linkedin ?? optional($user->subvendor)->linkedin }}">
-                                                <span class="icon fab fa-linkedin"></span>
-                                                {{-- <span class="text">LinkedIn</span> --}}
-                                            </a>
-                                            <a class="social-btn youtube"
-                                                href="{{ optional($user->vendor)->youtube ?? optional($user->subvendor)->youtube }}">
-                                                <span class="icon fab fa-youtube"></span>
-                                                {{-- <span class="text">YouTube</span> --}}
-                                            </a>
-                                            <a class="social-btn tiktok"
-                                                href="{{ optional($user->vendor)->tiktok ?? optional($user->subvendor)->tiktok }}">
-                                                <span class="icon fab fa-tiktok"></span>
-                                                {{-- <span class="text">TikTok</span> --}}
-                                            </a>
-                                            <a class="social-btn whatsapp"
-                                                href="{{ optional($user->vendor)->wa_business_page ?? optional($user->subvendor)->wa_business_page }}">
-                                                <span class="icon fab fa-whatsapp"></span>
-                                                {{-- <span class="text">WhatsApp</span> --}}
-                                            </a>
-                                        </div>
-                                    </div>
+
 
                                     <div class="contact-details">
                                         <div class="contact-item">
@@ -534,7 +496,10 @@
                                             <span class="text">City:</span>
                                             <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
                                         </div>
-
+                                        <div class="contact-item">
+                                            <span class="text">Nationality:</span>
+                                            <a href="javascript:void(0);">{{ $user->nationality }}</a>
+                                        </div>
                                         @if ($user->packageName == 'Models')
                                             <h3 class="stats-heading">Stats :</h3>
                                             <div class="contact-item">
@@ -542,10 +507,7 @@
                                                 <a href="javascript:void(0);">{{ $user->age }}</a>
                                             </div>
 
-                                            <div class="contact-item">
-                                                <span class="text">Nationality:</span>
-                                                <a href="javascript:void(0);">{{ $user->nationality }}</a>
-                                            </div>
+
 
                                             <div class="contact-item">
                                                 <span class="text">Height:</span>
@@ -594,6 +556,45 @@
                                                 </a>
                                             </div> --}}
                                         @endif
+                                    </div>
+                                    <div class="ovic-share-socials">
+                                        <div class="inner">
+                                            <a class="social-btn facebook"
+                                                href="{{ optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook }}">
+                                                <span class="icon fab fa-facebook"></span>
+                                                {{-- <span class="text">Facebook</span> --}}
+                                            </a>
+                                            <a class="social-btn twitter"
+                                                href="{{ optional($user->vendor)->twitter ?? optional($user->subvendor)->twitter }}">
+                                                <span class="icon fab fa-twitter"></span>
+                                                {{-- <span class="text">Twitter</span> --}}
+                                            </a>
+                                            <a class="social-btn instagram"
+                                                href="{{ optional($user->vendor)->insta ?? optional($user->subvendor)->insta }}">
+                                                <span class="icon fab fa-instagram"></span>
+                                                {{-- <span class="text">Instagram</span> --}}
+                                            </a>
+                                            <a class="social-btn linkedin"
+                                                href="{{ optional($user->vendor)->linkedin ?? optional($user->subvendor)->linkedin }}">
+                                                <span class="icon fab fa-linkedin"></span>
+                                                {{-- <span class="text">LinkedIn</span> --}}
+                                            </a>
+                                            <a class="social-btn youtube"
+                                                href="{{ optional($user->vendor)->youtube ?? optional($user->subvendor)->youtube }}">
+                                                <span class="icon fab fa-youtube"></span>
+                                                {{-- <span class="text">YouTube</span> --}}
+                                            </a>
+                                            <a class="social-btn tiktok"
+                                                href="{{ optional($user->vendor)->tiktok ?? optional($user->subvendor)->tiktok }}">
+                                                <span class="icon fab fa-tiktok"></span>
+                                                {{-- <span class="text">TikTok</span> --}}
+                                            </a>
+                                            <a class="social-btn whatsapp"
+                                                href="{{ optional($user->vendor)->wa_business_page ?? optional($user->subvendor)->wa_business_page }}">
+                                                <span class="icon fab fa-whatsapp"></span>
+                                                {{-- <span class="text">WhatsApp</span> --}}
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
 
