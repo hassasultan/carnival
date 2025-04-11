@@ -27,6 +27,7 @@ class Vendor extends Model
         'wa_business_page',
         'linkedin',
         'continent',
+        'short_description',
     ];
 
     protected $dates = [

@@ -481,6 +481,18 @@
                             </span>
                         @enderror
                     </div>
+                    <div class="form-group col-md-12">
+                        <label for="short_description">Short Description</label>
+                        <textarea id="short_description"
+                            class="form-control @error('short_description') is-invalid @enderror" name="short_description"
+                             autocomplete="short_description">
+                        </textarea>
+                        @error('short_description')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                     <div class="form-group col-md-6">
                         <label for="continent">Region <span class="text-danger">*</span></label>
                         <select id="continent" class="form-control @error('continent') is-invalid @enderror"

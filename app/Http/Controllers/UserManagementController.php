@@ -238,6 +238,7 @@ class UserManagementController extends Controller
                     'tiktok' => $data['shop_tiktok'] ?? null,
                     'wa_business_page' => $data['shop_wa_business_page'] ?? null,
                     'linkedin' => $data['shop_linkedin'] ?? null,
+                    'short_description' => $data['short_description'] ?? null,
                     'status' => 1,
                     'logo' => $logo ?? null,
                 ]);
@@ -340,6 +341,7 @@ class UserManagementController extends Controller
                 'tiktok' => $request->input('shop_tiktok') ?? null,
                 'wa_business_page' => $request->input('shop_wa_business_page') ?? null,
                 'linkedin' => $request->input('shop_linkedin') ?? null,
+                'short_description' => $data['short_description'] ?? null,
                 'status' => 1,
                 'logo' => $logo ?? null,
             ]);
