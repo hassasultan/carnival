@@ -303,7 +303,7 @@ class UserManagementController extends Controller
 
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        // dd($request->all());
         $user = User::findOrFail($id);
         $package_id = '';
         if ($request->package_id == 'section_leader') {
@@ -342,7 +342,7 @@ class UserManagementController extends Controller
                 'tiktok' => $request->input('shop_tiktok') ?? null,
                 'wa_business_page' => $request->input('shop_wa_business_page') ?? null,
                 'linkedin' => $request->input('shop_linkedin') ?? null,
-                'short_description' => $data['short_description'] ?? null,
+                'short_description' => $request->input('short_description') ?? null,
                 'status' => 1,
                 'logo' => $logo ?? null,
             ]);
