@@ -369,11 +369,11 @@
 
                     <div class="row">
                         <div class="product-gallery">
-                            <div class="col-sm-12 col-md-12 col-lg-12 name-mb-view">
+                            {{-- <div class="col-sm-12 col-md-12 col-lg-12 name-mb-view">
                                 <h1 class="page-title">
                                     {{ optional($user->vendor)->name ?? (optional($user->subvendor)->name ?? 'N/A') }}
                                 </h1>
-                            </div>
+                            </div> --}}
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="product-gallery">
                                     <div class="col-sm-2 dsk-view">
@@ -471,7 +471,7 @@
                             <div class="col-sm-6 col-md-6 col-lg-6">
 
                                 <div class="product-info-main">
-                                    <h1 class="page-title dsk-view">
+                                    <h1 class="page-title">
                                         {{ optional($user->vendor)->name ?? (optional($user->subvendor)->name ?? 'N/A') }}
                                     </h1>
 
