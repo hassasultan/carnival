@@ -557,7 +557,7 @@
                                             </div> --}}
                                         @endif
                                     </div>
-                                    <div class="ovic-share-socials">
+                                    <div class="ovic-share-socials" style="margin-top: 15px;">
                                         <div class="inner">
                                             <a class="social-btn facebook"
                                                 href="{{ optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook }}">
