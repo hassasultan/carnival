@@ -535,8 +535,8 @@
                                             <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
                                         </div>
 
-                                        @if ($user->packageName == 'Models' && $user->carnival_id != 0)
-                                            <h3 class="stats-heading">Stats</h3>
+                                        @if ($user->packageName == 'Models')
+                                            <h3 class="stats-heading">Stats :</h3>
                                             <div class="contact-item">
                                                 <span class="text">Age:</span>
                                                 <a href="javascript:void(0);">{{ $user->age }}</a>
@@ -556,31 +556,32 @@
                                                 <span class="text">Weight:</span>
                                                 <a href="javascript:void(0);">{{ $user->weight }}</a>
                                             </div>
+                                            @if ( $user->carnival_id != 0)
+                                                <div class="contact-item">
+                                                    <span class="text">Bust:</span>
+                                                    <a href="javascript:void(0);">{{ $user->bust }}</a>
+                                                </div>
 
-                                            <div class="contact-item">
-                                                <span class="text">Bust:</span>
-                                                <a href="javascript:void(0);">{{ $user->bust }}</a>
-                                            </div>
+                                                <div class="contact-item">
+                                                    <span class="text">Hips:</span>
+                                                    <a href="javascript:void(0);">{{ $user->hips }}</a>
+                                                </div>
 
-                                            <div class="contact-item">
-                                                <span class="text">Hips:</span>
-                                                <a href="javascript:void(0);">{{ $user->hips }}</a>
-                                            </div>
-
-                                            <div class="contact-item">
-                                                <span class="text">Waist:</span>
-                                                <a href="javascript:void(0);">{{ $user->waist }}</a>
-                                            </div>
+                                                <div class="contact-item">
+                                                    <span class="text">Waist:</span>
+                                                    <a href="javascript:void(0);">{{ $user->waist }}</a>
+                                                </div>
+                                            @endif
 
                                             <div class="contact-item">
                                                 <span class="text">About:</span>
                                                 <a href="javascript:void(0);" class="about-text">
-                                                    {!! \Illuminate\Support\Str::limit(strip_tags($event->description), 200) !!}
+                                                    {{$event->short_description}}
                                                 </a>
-                                                @if (strlen(strip_tags($event->description)) > 200)
+                                                @if (strlen($event->short_description) > 200)
                                                     <a href="javascript:void(0);" class="see-more">See More</a>
                                                     <span class="full-text" style="display: none;">
-                                                        {!! strip_tags($event->description) !!}
+                                                        {{$event->short_description}}
                                                         <a href="javascript:void(0);" class="see-less">See Less</a>
                                                     </span>
                                                 @endif
