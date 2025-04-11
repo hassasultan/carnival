@@ -481,8 +481,11 @@
                                         <div class="contact-item">
                                             <span class="icon fas fa-globe"></span>
                                             <span class="text">Region:</span>
-                                            <a
-                                                href="javascript:void(0);">{{ $user->vendor->continent->name ?? 'N/A' }}</a>
+                                            @if ($user->vendor->continent != null)
+                                            <a href="javascript:void(0);">{{ $user->vendor->continent->name}}</a>
+                                            @else
+                                            N/A
+                                            @endif
                                         </div>
 
                                         <div class="contact-item">
