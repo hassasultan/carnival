@@ -13,6 +13,7 @@ use App\Models\Ticket;
 use App\Models\Package;
 use App\Models\Region;
 use App\Models\Vendor;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Services\ProductService;
 use App\Services\EventService;
