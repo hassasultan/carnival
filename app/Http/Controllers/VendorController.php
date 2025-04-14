@@ -203,13 +203,18 @@ class VendorController extends Controller
 
     public function editProfile($id)
     {
-        $user = User::find($id);
-
+        $continents = Region::all();
+        $user = User::with('banners')->findOrFail($id);
+        $roles = Role::where('status', 1)->get();
+        $packages = Package::where('status', 1)->get();
+        $vendors = Vendor::with('user')->where('status', 1)->get();
+        
         $layout = match (Auth::user()->role->name) {
             // 'Admin' => 'dashboard.admin.layouts.app',
             'Vendor' => 'dashboard.vendor.layouts.app',
             'SubVendor' => 'dashboard.subvendor.layouts.app',
         };
-        return view('dashboard.profile.edit', compact('user'));
+
+        return view('dashboard.profile.edit', compact('user', 'roles', 'packages', 'vendors', 'continents'));
     }
 }
