@@ -27,6 +27,7 @@ class Vendor extends Model
         'wa_business_page',
         'linkedin',
         'continent',
+        'short_description',
     ];
 
     protected $dates = [
@@ -56,6 +57,10 @@ class Vendor extends Model
     }
 
     public function continent()
+    {
+        return $this->belongsTo(Region::class, 'continent');
+    }
+    public function region()
     {
         return $this->belongsTo(Region::class, 'continent');
     }

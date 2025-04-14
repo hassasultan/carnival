@@ -369,11 +369,11 @@
 
                     <div class="row">
                         <div class="product-gallery">
-                            <div class="col-sm-12 col-md-12 col-lg-12 name-mb-view">
+                            {{-- <div class="col-sm-12 col-md-12 col-lg-12 name-mb-view">
                                 <h1 class="page-title">
                                     {{ optional($user->vendor)->name ?? (optional($user->subvendor)->name ?? 'N/A') }}
                                 </h1>
-                            </div>
+                            </div> --}}
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="product-gallery">
                                     <div class="col-sm-2 dsk-view">
@@ -471,11 +471,96 @@
                             <div class="col-sm-6 col-md-6 col-lg-6">
 
                                 <div class="product-info-main">
-                                    <h1 class="page-title dsk-view">
+                                    <h1 class="page-title">
                                         {{ optional($user->vendor)->name ?? (optional($user->subvendor)->name ?? 'N/A') }}
                                     </h1>
 
-                                    <div class="ovic-share-socials">
+
+
+                                    <div class="contact-details">
+                                        <div class="contact-item">
+                                            <span class="icon fas fa-globe"></span>
+                                            <span class="text">Region:</span>
+                                            @if ($user->vendor->region != null)
+                                            <a href="javascript:void(0);">{{ $user->vendor->region->name}}</a>
+                                            @else
+                                            N/A
+                                            @endif
+                                        </div>
+
+                                        <div class="contact-item">
+                                            <span class="icon fas fa-flag"></span>
+                                            <span class="text">Country:</span>
+                                            <a href="javascript:void(0);">{{ $user->country ?? 'N/A' }}</a>
+                                        </div>
+
+                                        <div class="contact-item">
+                                            <span class="icon fas fa-city"></span>
+                                            <span class="text">City:</span>
+                                            <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
+                                        </div>
+                                        <div class="contact-item">
+                                            <span class="text">Nationality:</span>
+                                            <a href="javascript:void(0);">{{ $user->nationality }}</a>
+                                        </div>
+                                        @if ($user->packageName == 'Models')
+                                            <h3 class="stats-heading">Stats :</h3>
+                                            <div class="contact-item">
+                                                <span class="text">Age:</span>
+                                                <a href="javascript:void(0);">{{ $user->age }}</a>
+                                            </div>
+
+
+
+                                            <div class="contact-item">
+                                                <span class="text">Height:</span>
+                                                <a href="javascript:void(0);">{{ $user->height }}</a>
+                                            </div>
+
+                                            <div class="contact-item">
+                                                <span class="text">Weight:</span>
+                                                <a href="javascript:void(0);">{{ $user->weight }}</a>
+                                            </div>
+                                            @if ( $user->carnival_id != 0)
+                                                <div class="contact-item">
+                                                    <span class="text">Bust:</span>
+                                                    <a href="javascript:void(0);">{{ $user->bust }}</a>
+                                                </div>
+
+                                                <div class="contact-item">
+                                                    <span class="text">Hips:</span>
+                                                    <a href="javascript:void(0);">{{ $user->hips }}</a>
+                                                </div>
+
+                                                <div class="contact-item">
+                                                    <span class="text">Waist:</span>
+                                                    <a href="javascript:void(0);">{{ $user->waist }}</a>
+                                                </div>
+                                            @endif
+
+                                            <div class="contact-item">
+                                                <span class="text">About:</span>
+                                                <a href="javascript:void(0);" class="about-text">
+                                                    {{$user->vendor->short_description}}
+                                                </a>
+                                                @if (strlen($user->vendor->short_description) > 200)
+                                                    <a href="javascript:void(0);" class="see-more">See More</a>
+                                                    <span class="full-text" style="display: none;">
+                                                        {{$user->vendor->short_description}}
+                                                        <a href="javascript:void(0);" class="see-less">See Less</a>
+                                                    </span>
+                                                @endif
+                                            </div>
+
+                                            {{-- <div class="contact-item">
+                                                <span class="text">About:</span>
+                                                <a href="javascript:void(0);">
+                                                    {!! \Illuminate\Support\Str::limit(strip_tags($event->description), 200) !!}
+                                                </a>
+                                            </div> --}}
+                                        @endif
+                                    </div>
+                                    <div class="ovic-share-socials" style="margin-top: 15px;">
                                         <div class="inner">
                                             <a class="social-btn facebook"
                                                 href="{{ optional($user->vendor)->facebook ?? optional($user->subvendor)->facebook }}">
@@ -513,86 +598,6 @@
                                                 {{-- <span class="text">WhatsApp</span> --}}
                                             </a>
                                         </div>
-                                    </div>
-
-                                    <div class="contact-details">
-                                        <div class="contact-item">
-                                            <span class="icon fas fa-globe"></span>
-                                            <span class="text">Region:</span>
-                                            <a
-                                                href="javascript:void(0);">{{ optional(optional($user->vendor)->continent)->name ?? (optional(optional($user->subvendor)->continent)->name ?? 'N/A') }}</a>
-                                        </div>
-
-                                        <div class="contact-item">
-                                            <span class="icon fas fa-flag"></span>
-                                            <span class="text">Country:</span>
-                                            <a href="javascript:void(0);">{{ $user->country ?? 'N/A' }}</a>
-                                        </div>
-
-                                        <div class="contact-item">
-                                            <span class="icon fas fa-city"></span>
-                                            <span class="text">City:</span>
-                                            <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
-                                        </div>
-
-                                        @if ($user->packageName == 'Models' && $user->carnival_id != 0)
-                                            <h3 class="stats-heading">Stats</h3>
-                                            <div class="contact-item">
-                                                <span class="text">Age:</span>
-                                                <a href="javascript:void(0);">{{ $user->age }}</a>
-                                            </div>
-
-                                            <div class="contact-item">
-                                                <span class="text">Nationality:</span>
-                                                <a href="javascript:void(0);">{{ $user->nationality }}</a>
-                                            </div>
-
-                                            <div class="contact-item">
-                                                <span class="text">Height:</span>
-                                                <a href="javascript:void(0);">{{ $user->height }}</a>
-                                            </div>
-
-                                            <div class="contact-item">
-                                                <span class="text">Weight:</span>
-                                                <a href="javascript:void(0);">{{ $user->weight }}</a>
-                                            </div>
-
-                                            <div class="contact-item">
-                                                <span class="text">Bust:</span>
-                                                <a href="javascript:void(0);">{{ $user->bust }}</a>
-                                            </div>
-
-                                            <div class="contact-item">
-                                                <span class="text">Hips:</span>
-                                                <a href="javascript:void(0);">{{ $user->hips }}</a>
-                                            </div>
-
-                                            <div class="contact-item">
-                                                <span class="text">Waist:</span>
-                                                <a href="javascript:void(0);">{{ $user->waist }}</a>
-                                            </div>
-
-                                            <div class="contact-item">
-                                                <span class="text">About:</span>
-                                                <a href="javascript:void(0);" class="about-text">
-                                                    {!! \Illuminate\Support\Str::limit(strip_tags($event->description), 200) !!}
-                                                </a>
-                                                @if (strlen(strip_tags($event->description)) > 200)
-                                                    <a href="javascript:void(0);" class="see-more">See More</a>
-                                                    <span class="full-text" style="display: none;">
-                                                        {!! strip_tags($event->description) !!}
-                                                        <a href="javascript:void(0);" class="see-less">See Less</a>
-                                                    </span>
-                                                @endif
-                                            </div>
-
-                                            {{-- <div class="contact-item">
-                                                <span class="text">About:</span>
-                                                <a href="javascript:void(0);">
-                                                    {!! \Illuminate\Support\Str::limit(strip_tags($event->description), 200) !!}
-                                                </a>
-                                            </div> --}}
-                                        @endif
                                     </div>
                                 </div>
 
