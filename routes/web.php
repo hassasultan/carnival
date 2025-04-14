@@ -159,6 +159,7 @@ Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscri
 
 Route::middleware('auth')->group(function () {
     Route::get('/edit-Profile/{id}', [VendorController::class, 'editProfile'])->name('dashboard.edit.profile');
+    Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
 
 });
 // Admin Routes
@@ -222,7 +223,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');
     Route::post('/users/register', [UserManagementController::class, 'register'])->name('users.register');
     Route::get('/users/edit/{id}', [UserManagementController::class, 'edit'])->name('users.edit');
-    Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
+    // Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [UserManagementController::class, 'destroyUser'])->name('users.destroy');
     Route::delete('banners/delete', [UserManagementController::class, 'delete'])->name('banners.delete');
 
