@@ -208,13 +208,13 @@ class VendorController extends Controller
         $roles = Role::where('status', 1)->get();
         $packages = Package::where('status', 1)->get();
         $vendors = Vendor::with('user')->where('status', 1)->get();
-        
+
         $layout = match (Auth::user()->role->name) {
             // 'Admin' => 'dashboard.admin.layouts.app',
             'Vendor' => 'dashboard.vendor.layouts.app',
             'SubVendor' => 'dashboard.subvendor.layouts.app',
         };
 
-        return view('dashboard.profile.edit', compact('user', 'roles', 'packages', 'vendors', 'continents'));
+        return view('dashboard.profile.edit', compact('user', 'roles', 'packages', 'vendors', 'continents', 'layout'));
     }
 }
