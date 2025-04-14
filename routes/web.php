@@ -157,6 +157,10 @@ Route::get('/carnival-banner_details', [FrontendConroller::class, 'loadBannerDet
 Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe.store');
 
 
+Route::middleware('admin')->prefix('admin')->group(function () {
+    Route::get('/edit-Profile', [FrontendConroller::class, 'editProfile'])->name('dashboard.edit.profile');
+
+});
 // Admin Routes
 Route::middleware('admin')->prefix('admin')->group(function () {
 

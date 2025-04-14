@@ -199,4 +199,16 @@ class VendorController extends Controller
 
         return view('dashboard.vendor.pages.queen_show', compact('models'));
     }
+
+    public function editProfile($id)
+    {
+        $user = User::find($id);
+
+        $layout = match (Auth::user()->role->name) {
+            // 'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subvendor.layouts.app',
+        };
+        return view('dashboard.profile.edit', compact('user'));
+    }
 }
