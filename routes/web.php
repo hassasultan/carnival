@@ -158,7 +158,7 @@ Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscri
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/edit-Profile', [FrontendConroller::class, 'editProfile'])->name('dashboard.edit.profile');
+    Route::get('/edit-Profile', [VendorConroller::class, 'editProfile'])->name('dashboard.edit.profile');
 
 });
 // Admin Routes
