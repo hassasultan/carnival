@@ -142,18 +142,20 @@
                 </a>
             </li>
         </ul>
-        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
-            <span>Artiste (Music)</span>
-        </p>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <a class="nav-link" href="{{ route('vendor.musics.index') }}">
-                    <i class="fe fe-layers fe-16"></i>
-                    <span class="ml-3 item-text">Artiste</span>
-                    {{-- <span class="badge badge-pill badge-primary">New</span> --}}
-                </a>
-            </li>
-        </ul>
+        @if (auth()->user()->getPackageNameAttribute == 'Artistes')
+            <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+                <span>Artiste (Music)</span>
+            </p>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="{{ route('vendor.musics.index') }}">
+                        <i class="fe fe-layers fe-16"></i>
+                        <span class="ml-3 item-text">Artiste</span>
+                        {{-- <span class="badge badge-pill badge-primary">New</span> --}}
+                    </a>
+                </li>
+            </ul>
+        @endif
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>My Masbands</span>
         </p>
@@ -166,18 +168,20 @@
                 </a>
             </li>
         </ul>
-        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
-            <span>Contestants</span>
-        </p>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <a class="nav-link" href="{{ route('vendor.queen.show') }}">
-                    <i class="fe fe-layers fe-16"></i>
-                    <span class="ml-3 item-text">Queen Show</span>
-                    {{-- <span class="badge badge-pill badge-primary">New</span> --}}
-                </a>
-            </li>
-        </ul>
+        @if (auth()->user()->getPackageNameAttribute == 'Carnival Committees')
+            <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+                <span>Contestants</span>
+            </p>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="{{ route('vendor.queen.show') }}">
+                        <i class="fe fe-layers fe-16"></i>
+                        <span class="ml-3 item-text">Queen Show</span>
+                        {{-- <span class="badge badge-pill badge-primary">New</span> --}}
+                    </a>
+                </li>
+            </ul>
+        @endif
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Blogs</span>
         </p>
