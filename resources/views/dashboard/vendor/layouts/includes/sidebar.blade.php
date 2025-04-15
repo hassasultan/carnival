@@ -87,7 +87,7 @@
             <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('vendor.carnival.committee') }}">
                     <i class="fe fe-layers fe-16"></i>
-                    <span class="ml-3 item-text">Carnival Commitee</span>
+                    <span class="ml-3 item-text">Carnivals</span>
                     {{-- <span class="badge badge-pill badge-primary">New</span> --}}
                 </a>
             </li>
