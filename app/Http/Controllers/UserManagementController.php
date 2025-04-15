@@ -431,7 +431,7 @@ class UserManagementController extends Controller
             }
         }
 
-        return redirect()->route('users.index')
+        return redirect()->back()
             ->with('success', 'User updated successfully.');
     }
 
