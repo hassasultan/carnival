@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror"
-                        name="email" disabled value="{{ $user->email }}" required autocomplete="email">
+                        name="email" readonly value="{{ $user->email }}" required autocomplete="email">
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
