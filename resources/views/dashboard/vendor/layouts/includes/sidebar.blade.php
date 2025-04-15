@@ -142,7 +142,7 @@
                 </a>
             </li>
         </ul>
-        {{ auth()->user()->package_title }}
+        {{ dd(auth()->user()->package_title) }}
         @if (auth()->user()->package_title == 'Artistes')
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Artiste (Music)</span>
