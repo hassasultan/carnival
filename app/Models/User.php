@@ -105,7 +105,7 @@ class User extends Authenticatable
 
     public function vendor()
     {
-        return $this->belongsTo(Vendor::class);
+        return $this->hasOne(Vendor::class);
     }
 
     public function subVendor()
