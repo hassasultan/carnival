@@ -143,7 +143,7 @@
             </li>
         </ul>
         @php
-            $user = auth()->user()->load('vendor.package')->toArray();
+            $user = auth()->user()->load('vendor.package');
         @endphp
         {{ dd($user->vendor->package->title) }}
         @if (auth()->user()->package_title == 'Artistes')
