@@ -143,7 +143,7 @@
             </li>
         </ul>
         {{ auth()->user()->package_title }}
-        @if (auth()->user()->getPackageNameAttribute == 'Artistes')
+        @if (auth()->user()->package_title == 'Artistes')
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Artiste (Music)</span>
             </p>
@@ -169,7 +169,7 @@
                 </a>
             </li>
         </ul>
-        @if (auth()->user()->getPackageNameAttribute == 'Carnival Committees')
+        @if (auth()->user()->package_title == 'Carnival Committees')
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Contestants</span>
             </p>
