@@ -145,7 +145,7 @@
         @php
             $user = auth()->user()->load('vendor.package')->toArray();
         @endphp
-        {{ dd($user) }}
+        {{ dd($user->vendor->package->title) }}
         @if (auth()->user()->package_title == 'Artistes')
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Artiste (Music)</span>
