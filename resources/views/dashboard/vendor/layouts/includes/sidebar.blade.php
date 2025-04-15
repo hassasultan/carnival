@@ -142,7 +142,10 @@
                 </a>
             </li>
         </ul>
-        {{ dd(auth()->user()->vendor->toArray()) }}
+        @php
+            $user = auth()->user()->load('vendor.package');
+        @endphp
+        {{ dd($user) }}
         @if (auth()->user()->package_title == 'Artistes')
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Artiste (Music)</span>
