@@ -181,7 +181,6 @@ class VendorController extends Controller
         // $masbands = Auth::user()->vendor->subvendor;
         $carnivals = Carnival::where('head', auth()->user()->id)->pluck('id');
         $masbands = CarnivalMascamps::with('carnival', 'mascamp')->whereIn('carnival_id', $carnivals)->get();
-        // dd($masbands->toArray());
 
         return view('dashboard.vendor.pages.my_masbands', compact('masbands'));
     }
