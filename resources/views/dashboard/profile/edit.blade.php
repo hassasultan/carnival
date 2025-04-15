@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group" id="">
                     <label for="age_range">Age Range</label>
-                    <select id="age_range" class="form-control @error('age_range') is-invalid @enderror" name="age_range">
+                    <select id="age_range" class="form-control @error('age_range') is-invalid @enderror" name="age_range" disabled>
                         <option value="">Select Age Range</option>
                         <option value="adult" @if ($user->age_range == 'adult') selected @endif>Adult</option>
                         <option value="kid" @if ($user->age_range == 'kid') selected @endif>Kid</option>
@@ -48,8 +48,8 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                        name="email" value="{{ $user->email }}" required autocomplete="email">
+                    <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror"
+                        name="email" disabled value="{{ $user->email }}" required autocomplete="email">
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
