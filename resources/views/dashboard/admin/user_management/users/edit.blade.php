@@ -362,7 +362,7 @@
                     <button type="button" id="addBannerBtn" class="btn btn-success">+ Add Another Banner</button>
                 </div>
 
-                <h2 class="mt-5 mb-3">Shop Details</h2>
+                <h2 class="mt-5 mb-3">Shop/Profile Details</h2>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="shop_name">Name <span class="text-danger">*</span></label>
