@@ -34,8 +34,7 @@
                 </div>
                 <div class="form-group" id="">
                     <label for="age_range">Age Range</label>
-                    <select id="age_range" class="form-control @error('age_range') is-invalid @enderror"
-                        name="age_range">
+                    <select id="age_range" class="form-control @error('age_range') is-invalid @enderror" name="age_range">
                         <option value="">Select Age Range</option>
                         <option value="adult">Adult</option>
                         <option value="kid">Kid</option>
@@ -154,7 +153,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="package">Package <span class="text-danger">*</span></label>
-                        <select id="package" class="form-control @error('package_id') is-invalid @enderror"
+                        <select id="package" class="form-control select2 @error('package_id') is-invalid @enderror"
                             name="package_id" required>
                             <option value="">Select Package</option>
                             @foreach ($packages as $package)
@@ -171,22 +170,26 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-group" id="vendors_input" style="display: none;">
-                    <label for="vendor">Vendors</label>
-                    <select id="vendor" class="form-control @error('vendor_id') is-invalid @enderror"
-                        name="vendor_id">
-                        <option value="">Select vendor</option>
-                        @foreach ($vendors as $vendor)
-                            <option value="{{ $vendor->id }}">
-                                {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('vendor_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                <div class="form-row">
+                    <div class="form-group col-md-9" id="vendors_input" style="display: none;">
+                        <div>
+                            <label for="vendor">Vendors</label>
+                        </div>
+                        <select id="vendor" class="form-control select2 @error('vendor_id') is-invalid @enderror"
+                            name="vendor_id">
+                            <option value="">Select vendor</option>
+                            @foreach ($vendors as $vendor)
+                                <option value="{{ $vendor->id }}">
+                                    {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('vendor_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 packages-div">
@@ -483,9 +486,8 @@
                     </div>
                     <div class="form-group col-md-12">
                         <label for="short_description">Short Description</label>
-                        <textarea id="short_description"
-                            class="form-control @error('short_description') is-invalid @enderror" name="short_description"
-                             autocomplete="short_description">
+                        <textarea id="short_description" class="form-control @error('short_description') is-invalid @enderror"
+                            name="short_description" autocomplete="short_description">
                         </textarea>
                         @error('short_description')
                             <span class="invalid-feedback" role="alert">
@@ -495,7 +497,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="continent">Region <span class="text-danger">*</span></label>
-                        <select id="continent" class="form-control @error('continent') is-invalid @enderror"
+                        <select id="continent" class="form-control select2 @error('continent') is-invalid @enderror"
                             name="continent" required>
                             <option value="" disabled selected>Select Region</option>
                             @foreach ($continents as $continent)
@@ -603,7 +605,7 @@
                             <div class="card-header">
                                 <h5>Tabs</h5>
                             </div>
-                            <div class="card-body" >
+                            <div class="card-body">
 
 
                                 <!-- Details for the tabs -->
@@ -624,6 +626,40 @@
                 </div>
                 <div class="form-group col-md-12">
                     <button type="button" id="addTabBtn" class="btn btn-success">+ Add Another Tab</button>
+                </div>
+                <div id="sponserSection">
+                    <div class="form-group col-md-12 tab-item">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5>Sponsor</h5>
+                            </div>
+                            <div class="card-body">
+
+
+                                <!-- Details for the tabs -->
+                                <div class="banner-details">
+                                    <div class="form-group">
+                                        <label for="tab_name">Title (Sponsor Name)</label>
+                                        <input type="text" class="form-control" name="sponser_title[]"
+                                            placeholder="Tab Title Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tab_name">Logo (Sponsor Logo)</label>
+                                        <input type="file" class="form-control" name="sponser_logo[]" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tab_description">Description</label>
+                                        <textarea class="form-control summernote" name="sponser_description[]" rows="3"
+                                            placeholder="Banner Description"></textarea>
+                                    </div>
+                                </div>
+                                {{-- <button type="button" class="btn btn-danger remove-sponsor-btn">Remove Sponsor</button> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <button type="button" id="addSponserBtn" class="btn btn-success">+ Add Another Sponser</button>
                 </div>
                 <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Register') }}</button>
         </form>
@@ -852,6 +888,50 @@
 
             // Remove a banner row
             $(document).on('click', '.remove-tab-btn', function() {
+                $(this).closest('.tab-item').remove();
+            });
+            $('#addSponserBtn').click(function() {
+                let newTab = `
+                    <div class="form-group col-md-12 tab-item">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5>Sponsor</h5>
+                            </div>
+                            <div class="card-body" >
+
+
+                                <!-- Details for the tabs -->
+                                <div class="banner-details">
+                                    <div class="form-group">
+                                        <label for="tab_name">Title (Sponsor Name)</label>
+                                        <input type="text" class="form-control" name="sponser_title[]"
+                                            placeholder="Tab Title Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tab_name">Logo (Sponsor Logo)</label>
+                                        <input type="file" class="form-control" name="sponser_logo[]" required
+                                            >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tab_description">Description</label>
+                                        <textarea class="form-control summernote" name="sponser_description[]" rows="3" placeholder="Banner Description"></textarea>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-danger remove-sponsor-btn">Remove Sponsor</button>
+                            </div>
+                        </div>
+                    </div>`;
+
+                $('#sponserSection').append(newTab);
+                $('.summernote').summernote({
+                    placeholder: 'Add Your Description Here...',
+                    tabsize: 2,
+                    height: 100
+                });
+            });
+
+            // Remove a banner row
+            $(document).on('click', '.remove-sponsor-btn', function() {
                 $(this).closest('.tab-item').remove();
             });
         });

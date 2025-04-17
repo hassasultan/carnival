@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group" id="">
                     <label for="age_range">Age Range</label>
-                    <select id="age_range" class="form-control @error('age_range') is-invalid @enderror" name="age_range">
+                    <select id="age_range" class="form-control @error('age_range') is-invalid @enderror" name="age_range" disabled>
                         <option value="">Select Age Range</option>
                         <option value="adult" @if ($user->age_range == 'adult') selected @endif>Adult</option>
                         <option value="kid" @if ($user->age_range == 'kid') selected @endif>Kid</option>
@@ -48,8 +48,8 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                        name="email" value="{{ $user->email }}" required autocomplete="email">
+                    <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror"
+                        name="email" readonly value="{{ $user->email }}" required autocomplete="email">
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -362,7 +362,7 @@
                     <button type="button" id="addBannerBtn" class="btn btn-success">+ Add Another Banner</button>
                 </div>
 
-                <h2 class="mt-5 mb-3">Shop Details</h2>
+                <h2 class="mt-5 mb-3">Shop/Profile Details</h2>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="shop_name">Name <span class="text-danger">*</span></label>
@@ -563,7 +563,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="height">Height</label>
+                        <label for="height">Height (Inches)</label>
                         <input id="height" type="text" class="form-control @error('height') is-invalid @enderror"
                             name="height" value="{{ $user->height }}" autocomplete="height">
                         @error('height')
@@ -573,7 +573,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="weight">Weight</label>
+                        <label for="weight">Weight (Pounds)</label>
                         <input id="weight" type="text" class="form-control @error('weight') is-invalid @enderror"
                             name="weight" value="{{ $user->weight }}" autocomplete="weight">
                         @error('weight')
@@ -583,7 +583,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="bust">Bust</label>
+                        <label for="bust">Bust (Inches)</label>
                         <input id="bust" type="text" class="form-control @error('bust') is-invalid @enderror"
                             name="bust" value="{{ $user->bust }}" autocomplete="bust">
                         @error('bust')
@@ -593,7 +593,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="hips">Hips</label>
+                        <label for="hips">Hips (Inches)</label>
                         <input id="hips" type="text" class="form-control @error('hips') is-invalid @enderror"
                             name="hips" value="{{ $user->hips }}" autocomplete="hips">
                         @error('hips')
@@ -603,7 +603,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="waist">Waist</label>
+                        <label for="waist">Waist (Inches)</label>
                         <input id="waist" type="text" class="form-control @error('waist') is-invalid @enderror"
                             name="waist" value="{{ $user->waist }}" autocomplete="waist">
                         @error('waist')

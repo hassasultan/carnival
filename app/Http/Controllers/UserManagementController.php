@@ -14,6 +14,7 @@ use App\Models\Region;
 use App\Models\Blogs;
 use App\Models\UserDetailBanner;
 use App\Models\UserDetailTabs;
+use App\Models\Sponsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -222,6 +223,24 @@ class UserManagementController extends Controller
                 }
             }
 
+            if(isset($data['sponser_logo']) && is_array($data['sponser_logo']))
+            {
+                foreach($data['sponser_logo'] as $key => $row)
+                {
+                    $sponser = new Sponsers;
+                    $sponser->user_id = $user->id;
+                    $sponser->logo = $this->uploadImage($row, 'sponser_images');
+                    if(isset($data['sponser_title'][$key]))
+                    {
+                        $sponser->title = $data['sponser_title'][$key];
+                    }
+                    if(isset($data['sponser_description'][$key]))
+                    {
+                        $sponser->title = $data['sponser_description'][$key];
+                    }
+                    $sponser->save();
+                }
+            }
             if ($data['role_id'] == 2) {
                 Vendor::create([
                     'user_id' => $user->id,
@@ -431,7 +450,7 @@ class UserManagementController extends Controller
             }
         }
 
-        return redirect()->route('users.index')
+        return redirect()->back()
             ->with('success', 'User updated successfully.');
     }
 
