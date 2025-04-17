@@ -171,8 +171,10 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-12" id="vendors_input" style="display: none;">
-                        <label for="vendor">Vendors</label>
+                    <div class="form-group col-md-9" id="vendors_input" style="display: none;">
+                        <div>
+                            <label for="vendor">Vendors</label>
+                        </div>
                         <select id="vendor" class="form-control select2 @error('vendor_id') is-invalid @enderror"
                             name="vendor_id">
                             <option value="">Select vendor</option>
