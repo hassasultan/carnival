@@ -112,7 +112,7 @@
                 @elseif ($user->isVendor())
                     <div class="form-group">
                         <label for="package">Package</label>
-                        <select id="package" class="form-control @error('package_id') is-invalid @enderror"
+                        <select id="package" class="form-control select2 @error('package_id') is-invalid @enderror"
                             name="package_id">
                             <option value="">Select Package</option>
                             @foreach ($packages as $package)
@@ -132,7 +132,7 @@
                 @elseif ($user->isSubVendor())
                     <div class="form-group">
                         <label for="vendor">Vendor</label>
-                        <select id="vendor" class="form-control @error('vendor_id') is-invalid @enderror"
+                        <select id="vendor" class="form-control select2 @error('vendor_id') is-invalid @enderror"
                             name="vendor_id">
                             <option value="">Select Vendor</option>
                             @foreach ($vendors as $vendor)
@@ -151,7 +151,7 @@
 
                 <div class="form-group" id="vendors_input" style="display: none;">
                     <label for="vendor">Vendors</label>
-                    <select id="vendor" class="form-control @error('vendor_id') is-invalid @enderror"
+                    <select id="vendor" class="form-control select2 @error('vendor_id') is-invalid @enderror"
                         name="vendor_id">
                         <option value="">Select vendor</option>
                         @foreach ($vendors as $vendor)
@@ -520,7 +520,7 @@
 
                 <div class="form-group">
                     <label for="continent">Region <span class="text-danger">*</span></label>
-                    <select id="continent" class="form-control @error('continent') is-invalid @enderror"
+                    <select id="continent" class="form-control select2 @error('continent') is-invalid @enderror"
                         name="continent" required>
                         <option value="" disabled selected>Select Region</option>
                         @foreach ($continents as $continent)
