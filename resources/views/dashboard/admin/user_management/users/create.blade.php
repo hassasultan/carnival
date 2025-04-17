@@ -655,7 +655,7 @@
                     </div>
                 </div>
                 <div class="form-group col-md-12">
-                    <button type="button" id="addTabBtn" class="btn btn-success">+ Add Another Sponser</button>
+                    <button type="button" id="addSponserBtn" class="btn btn-success">+ Add Another Sponser</button>
                 </div>
                 <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Register') }}</button>
         </form>
