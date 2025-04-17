@@ -649,7 +649,7 @@
                                             placeholder="Banner Description"></textarea>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-danger remove-sponsor-btn">Remove Sponsor</button>
+                                {{-- <button type="button" class="btn btn-danger remove-sponsor-btn">Remove Sponsor</button> --}}
                             </div>
                         </div>
                     </div>
