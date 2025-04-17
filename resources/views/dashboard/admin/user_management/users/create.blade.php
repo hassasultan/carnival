@@ -170,22 +170,24 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-group col-md-12" id="vendors_input" style="display: none;">
-                    <label for="vendor">Vendors</label>
-                    <select id="vendor" class="form-control select2 @error('vendor_id') is-invalid @enderror"
-                        name="vendor_id">
-                        <option value="">Select vendor</option>
-                        @foreach ($vendors as $vendor)
-                            <option value="{{ $vendor->id }}">
-                                {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('vendor_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                <div class="form-row">
+                    <div class="form-group col-md-12" id="vendors_input" style="display: none;">
+                        <label for="vendor">Vendors</label>
+                        <select id="vendor" class="form-control select2 @error('vendor_id') is-invalid @enderror"
+                            name="vendor_id">
+                            <option value="">Select vendor</option>
+                            @foreach ($vendors as $vendor)
+                                <option value="{{ $vendor->id }}">
+                                    {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('vendor_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 packages-div">
