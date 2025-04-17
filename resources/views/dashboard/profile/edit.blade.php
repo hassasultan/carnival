@@ -110,7 +110,7 @@
                 @if ($user->isAdmin())
                     <!-- Admin specific fields can be added here if any -->
                 @elseif ($user->isVendor())
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label for="package">Package</label>
                         <select id="package" class="form-control @error('package_id') is-invalid @enderror"
                             name="package_id">
@@ -130,7 +130,7 @@
                         @enderror
                     </div>
                 @elseif ($user->isSubVendor())
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label for="vendor">Vendor</label>
                         <select id="vendor" class="form-control @error('vendor_id') is-invalid @enderror"
                             name="vendor_id">
@@ -182,7 +182,7 @@
                     @enderror
                 </div>
 
-                <div class="form-row">
+                <div class="form-row d-none">
                     <div class="col-md-6">
                         <div class="form-group list-group mb-3 mt-3 shadow" id="ecommerce-box">
                             <div class="list-group-item">
