@@ -1,6 +1,9 @@
 <!-- block-brand -->
 <div class="block-brand-op6">
     <div class="container">
+        <div class="block-title">
+            <span class="title">Sponsers</span>
+        </div>
         <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="2" data-loop="true"
             data-responsive='{
             "0":{"items":3},
