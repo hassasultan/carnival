@@ -665,23 +665,24 @@
                                     <button type="button" class="btn btn-danger remove-sponsor-btn"
                                         data-id="{{ $row->id }}">Delete</button>
                                 </div>
+                                <input type="hidden" name="sponser_id[]" value="{{ $row->id }}"/>
                                 <div class="card-body">
                                     <div class="tab-details">
                                         <div class="form-group">
-                                            <label for="sponser_title">Title (Sponser Name)</label>
+                                            <label for="update_sponser_title">Title (Sponser Name)</label>
                                             <input type="text" value="{{ $row->title }}" class="form-control"
-                                                name="sponser_title[]" placeholder="Tab Title Name">
+                                                name="update_sponser_title[]" placeholder="Tab Title Name">
                                         </div>
                                         <div class="form-group">
                                             <label for="sponser_logo">Logo (Sponser Logo)</label>
                                             <input type="file" class="form-control"
-                                                name="sponser_logo[]">
+                                                name="update_sponser_logo[]">
                                                 <img src="{{ asset($row->logo) }}" class="card-img-top" alt="Sponser logo"
                                             style="height: 150px; object-fit: cover;">
                                         </div>
                                         <div class="form-group">
                                             <label for="sponser_description">Description</label>
-                                            <textarea class="form-control summernote" name="sponser_description[]" rows="3" placeholder="Sponser Description">{!! $row->description !!}</textarea>
+                                            <textarea class="form-control summernote" name="update_sponser_description[]" rows="3" placeholder="Sponser Description">{!! $row->description !!}</textarea>
                                         </div>
                                     </div>
                                 </div>
