@@ -653,10 +653,47 @@
                         </div>
                     @endforeach
                 </div>
-
                 <div class="form-group col-md-12">
                     <button type="button" id="addTabBtn" class="btn btn-success">+ Add Another Tab</button>
                 </div>
+                <div id="sponsorSection">
+                    @foreach ($user->sponsors as $row)
+                        <div class="form-group col-md-12 tab-item">
+                            <div class="card mb-3">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5>Sponsers</h5>
+                                    <button type="button" class="btn btn-danger remove-sponsor-btn"
+                                        data-id="{{ $row->id }}">Delete</button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="tab-details">
+                                        <div class="form-group">
+                                            <label for="sponser_title">Title (Sponser Name)</label>
+                                            <input type="text" value="{{ $row->title }}" class="form-control"
+                                                name="sponser_title[]" placeholder="Tab Title Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sponser_logo">Logo (Sponser Logo)</label>
+                                            <input type="file" class="form-control"
+                                                name="sponser_logo[]">
+                                                <img src="{{ asset($row->logo) }}" class="card-img-top" alt="Sponser logo"
+                                            style="height: 150px; object-fit: cover;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sponser_description">Description</label>
+                                            <textarea class="form-control summernote" name="sponser_description[]" rows="3" placeholder="Sponser Description">{!! $row->description !!}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="form-group col-md-12">
+                    <button type="button" id="addSponserBtn" class="btn btn-success">+ Add Another Sponser</button>
+                </div>
+
 
                 {{-- <div id="tabSection">
                     @foreach ($user->tabs as $tab)
@@ -838,6 +875,51 @@
         $(document).on('click', '.remove-tab-btn-two', function() {
             $(this).closest('.tab-item').remove();
         });
+
+        // Sponser
+        $('#addSponserBtn').click(function() {
+            let newTab = `
+                    <div class="form-group col-md-12 tab-item">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5>Sponsor</h5>
+                            </div>
+                            <div class="card-body" >
+
+
+                                <!-- Details for the tabs -->
+                                <div class="banner-details">
+                                    <div class="form-group">
+                                        <label for="tab_name">Title (Sponsor Name)</label>
+                                        <input type="text" class="form-control" name="sponser_title[]"
+                                            placeholder="Tab Title Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tab_name">Logo (Sponsor Logo)</label>
+                                        <input type="file" class="form-control" name="sponser_logo[]" required
+                                            >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tab_description">Description</label>
+                                        <textarea class="form-control summernote" name="sponser_description[]" rows="3" placeholder="Banner Description"></textarea>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-danger remove-sponsor-btn">Remove Sponsor</button>
+                            </div>
+                        </div>
+                    </div>`;
+
+                $('#sponserSection').append(newTab);
+            $('.summernote').summernote({
+                placeholder: 'Add Your Description Here...',
+                tabsize: 2,
+                height: 100
+            });
+        });
+        $(document).on('click', '.remove-sponsor-btn', function() {
+            $(this).closest('.tab-item').remove();
+        });
+// Sponser
 
         $(document).on('change', '.custom-file-input', function() {
             var files = $(this)[0].files;
