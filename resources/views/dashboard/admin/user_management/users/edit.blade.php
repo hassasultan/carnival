@@ -656,7 +656,7 @@
                 <div class="form-group col-md-12">
                     <button type="button" id="addTabBtn" class="btn btn-success">+ Add Another Tab</button>
                 </div>
-                <div id="sponsorSection">
+                <div id="sponserSection">
                     @foreach ($user->sponsors as $row)
                         <div class="form-group col-md-12 tab-item">
                             <div class="card mb-3">
