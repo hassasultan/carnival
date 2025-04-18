@@ -2,7 +2,7 @@
 <div class="block-brand-op6">
     <div class="container">
         <div class="block-title">
-            <span class="title">Sponsers</span>
+            <span class="title" style="border-bottom: 3px solid #f36"><h2>Sponsers</h2></span>
         </div>
         <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="2" data-loop="true"
             data-responsive='{
