@@ -674,7 +674,7 @@
                 </div>
             </div>
             {{-- Sponsers --}}
-            @include('shop-frontend.components.sponsers')
+            @include('ShopFrontend.components.sponsers')
             {{-- Sponsers --}}
 
             <!-- block  showcase-->
