@@ -8,7 +8,7 @@
             "600":{"items":5},
             "992":{"items":7}
         }'>
-            @foreach ($$user->sponsors as $row)
+            @foreach ($user->sponsors as $row)
                 <div class="item">
                     <a href=""><img src="{{ asset('sponser_images/' . $row->logo) }}" alt="brand"></a>
                 </div>
