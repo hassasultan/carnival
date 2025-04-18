@@ -677,7 +677,7 @@
                                             <label for="sponser_logo">Logo (Sponser Logo)</label>
                                             <input type="file" class="form-control"
                                                 name="update_sponser_logo[]">
-                                                <img src="{{ asset('sponser_images/',$row->logo) }}" class="card-img-top" alt="Sponser logo"
+                                                <img src="{{ asset('sponser_images/'.$row->logo) }}" class="card-img-top" alt="Sponser logo"
                                             style="height: 150px; object-fit: cover;">
                                         </div>
                                         <div class="form-group">
