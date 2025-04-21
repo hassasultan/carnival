@@ -1210,15 +1210,17 @@ class FrontendConroller extends Controller
     
     public function get_brands(Request $request)
     {
-        $query = Brand::where('status', 1)->get();
         $getSearchVal = $request->get('getSearchVal', null);
-
+    
+        $query = Brand::where('status', 1);
+    
         if (!empty($getSearchVal)) {
             $query->where('title', 'like', '%' . $getSearchVal . '%');
         }
-
-        $events = $query->orderBy('id', 'DESC')->paginate(18);
-
-        return $events;
+    
+        $brands = $query->orderBy('id', 'DESC')->paginate(18);
+    
+        return $brands;
     }
+    
 }
