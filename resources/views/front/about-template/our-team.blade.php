@@ -12,7 +12,7 @@
 			@foreach ($ourTeam as $team)
 			<div class="col-xs-12 col-sm-4">
 				<div class="team-entry">
-				  <div class="image">
+				  <div class="image" style="height:250px;">
 				  	<img class="team-img img-responsive" src="{{ asset('ourTeam/' . $team->image) }}" alt="">
 					  <div class="team-layer bg-blue">
 						<div class="team-share vertical-align">
