@@ -356,8 +356,8 @@
                                 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
 
                             var href =
-                                "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}"
-                                .replace('event_slug_placeholder', event.slug);
+                                "{{ route('front.product_listing', ['brands' => 'event_slug_placeholder']) }}"
+                                .replace('event_slug_placeholder', event.id);
 
                             var eventHtml = `
                             <li class="col-sm-4 product-item">
@@ -367,7 +367,9 @@
                                             <a href="${href}" class="product-item-img">
                                                 <img style="width:200px;height:200px;" src="${image}" alt="${event.title}">
                                             </a>
-                                            <span class="product-item-label label-date">${event.start_date}</span>
+                                        </div>
+                                        <div class="product-item-detail">
+                                            <strong class="product-item-name"><a href="${href}">${event.title}</a></strong>
                                         </div>
                                     </div>
                                 </div>
