@@ -1182,4 +1182,45 @@ class FrontendConroller extends Controller
 
         return view('ShopFrontend.carnival_member', compact('user'));
     }
+
+    public function brand_listing(Request $request)
+    {
+        $mascamp_banners = Banner::where('type', 'mascamps')->get();
+        $regions = Region::OrderBy('placement', 'ASC')->get();
+        $countries = Country::withCount('events')->with('events')->OrderBy('name', 'ASC')->get();
+        $adv1 = Advertisement::where('status', 1)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $adv2 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id'))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        $adv3 = Advertisement::where('status', 1)
+            ->whereNotIn('id', $adv1->pluck('id')->merge($adv2->pluck('id')))
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
+        return view('ShopFrontend.brands', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3', 'countries'));
+    }
+    
+    public function get_brands(Request $request)
+    {
+        $getSearchVal = $request->get('getSearchVal', null);
+    
+        $query = Brand::where('status', 1);
+    
+        if (!empty($getSearchVal)) {
+            $query->where('title', 'like', '%' . $getSearchVal . '%');
+        }
+    
+        $brands = $query->orderBy('id', 'DESC')->paginate(18);
+    
+        return $brands;
+    }
+    
 }

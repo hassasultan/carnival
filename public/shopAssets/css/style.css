@@ -30650,14 +30650,14 @@ img.alignright {
     display: block;
     width: 100%;
     text-align: center;
-    border: 1px solid #eee;
+    /* border: 1px solid #eee; */
     background-color: #fff
 }
 
 .block-brand-op6 .item:hover a {
     background-color: #fff;
-    transition: transform .3s;
-    height: 100px;
+    /* transition: transform .3s; */
+    /* height: 100px; */
 }
 
 .index-opt-6 .back-to-top {

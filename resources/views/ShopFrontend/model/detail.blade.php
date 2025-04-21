@@ -673,6 +673,9 @@
 
                 </div>
             </div>
+            {{-- Sponsers --}}
+            @include('ShopFrontend.components.sponsers')
+            {{-- Sponsers --}}
 
             <!-- block  showcase-->
             @include('partials.brand_showcase')

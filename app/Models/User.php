@@ -144,6 +144,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserDetailTabs::class);
     }
+    public function sponsors()
+    {
+        return $this->hasMany(Sponsers::class);
+    }
     public function events()
     {
         return $this->hasMany(Event::class);

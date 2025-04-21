@@ -223,19 +223,15 @@ class UserManagementController extends Controller
                 }
             }
 
-            if(isset($data['sponser_logo']) && is_array($data['sponser_logo']))
-            {
-                foreach($data['sponser_logo'] as $key => $row)
-                {
+            if (isset($data['sponser_logo']) && is_array($data['sponser_logo'])) {
+                foreach ($data['sponser_logo'] as $key => $row) {
                     $sponser = new Sponsers;
                     $sponser->user_id = $user->id;
                     $sponser->logo = $this->uploadImage($row, 'sponser_images');
-                    if(isset($data['sponser_title'][$key]))
-                    {
+                    if (isset($data['sponser_title'][$key])) {
                         $sponser->title = $data['sponser_title'][$key];
                     }
-                    if(isset($data['sponser_description'][$key]))
-                    {
+                    if (isset($data['sponser_description'][$key])) {
                         $sponser->title = $data['sponser_description'][$key];
                     }
                     $sponser->save();
@@ -447,6 +443,41 @@ class UserManagementController extends Controller
                     'name' => $tab,
                     'description' => $request->tab_description[$index] ?? '',
                 ]);
+            }
+        }
+        if(isset($request->sponser_id) && is_array($request->sponser_id))
+        {
+            foreach($request->sponser_id as $key => $row)
+            {
+                $sponsers = Sponsers::find($row);
+                if(isset($request->update_sponser_title) && is_array($request->update_sponser_title))
+                {
+                    $sponsers->title = $request->update_sponser_title[$key];
+                }
+                if(isset($request->update_sponser_logo) && is_array($request->update_sponser_logo))
+                {
+                    $sponsers->logo = $this->uploadImage($$request->update_sponser_logo, 'sponser_images');
+                }
+                if(isset($request->update_sponser_description) && is_array($request->update_sponser_description))
+                {
+                    $sponsers->title = $request->update_sponser_description[$key];
+                }
+                $sponsers->save();
+            }
+        }
+        if (isset($request->sponser_logo) && is_array($request->sponser_logo))
+        {
+            foreach ($request->sponser_logo as $key => $row) {
+                $sponser = new Sponsers;
+                $sponser->user_id = $user->id;
+                $sponser->logo = $this->uploadImage($row, 'sponser_images');
+                if (isset($$request->sponser_title[$key])) {
+                    $sponser->title = $$request->sponser_title[$key];
+                }
+                if (isset($$request->sponser_description[$key])) {
+                    $sponser->title = $$request->sponser_description[$key];
+                }
+                $sponser->save();
             }
         }
 

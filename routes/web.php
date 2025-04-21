@@ -122,6 +122,10 @@ Route::get('/artist/{slug}', [FrontendConroller::class, 'artistDetail'])->name('
 Route::get('/get-music', [FrontendConroller::class, 'get_music'])->name('get.musics.home');
 Route::get('/shop/music/{slug}', [FrontendConroller::class, 'musicDetail'])->name('get.musics.detail');
 
+// brand listing
+Route::get('/shop/all-brands', [FrontendConroller::class, 'brand_listing'])->name('brand.listing');
+Route::get('/get-brands', [FrontendConroller::class, 'get_brands'])->name('get.brands');
+
 // models appointment
 Route::get('{slug}/contact-us', [ModelBookingController::class, 'create'])->name('model.booking.create');
 Route::post('contact-us/store', [ModelBookingController::class, 'store'])->name('model.booking.store');
