@@ -330,7 +330,7 @@
 
                 // AJAX call to fetch events
                 $.ajax({
-                    url: "{{ route('get.events') }}",
+                    url: "{{ route('get.brands') }}",
                     type: "GET",
                     data: {
                         page: page,
