@@ -1183,7 +1183,7 @@ class FrontendConroller extends Controller
         return view('ShopFrontend.carnival_member', compact('user'));
     }
 
-    public function brand_listing($id)
+    public function brand_listing(Request $request)
     {
         $mascamp_banners = Banner::where('type', 'mascamps')->get();
         $regions = Region::OrderBy('placement', 'ASC')->get();
