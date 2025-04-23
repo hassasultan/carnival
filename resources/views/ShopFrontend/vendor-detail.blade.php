@@ -462,7 +462,7 @@
                                                 if ($item->logo) {
                                                     $image = asset('images/' . $item->logo);
                                                 } elseif ($item->user->image) {
-                                                    $image = asset('images/' . $item->user->image);
+                                                    $image = asset($item->user->image);
                                                 } else {
                                                     $image = asset('shopAssets/images/media/product9.jpg');
                                                 }
