@@ -79,11 +79,11 @@
                 </ul>
             </li>
         </ul> --}}
-        {{-- @if (auth()->user()->hasPermission('products')) --}}
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Members</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
+            @if (auth()->user()->hasPermission('carnivals'))
             <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('vendor.carnival.committee') }}">
                     <i class="fe fe-layers fe-16"></i>
@@ -91,6 +91,7 @@
                     {{-- <span class="badge badge-pill badge-primary">New</span> --}}
                 </a>
             </li>
+            @endif
             {{-- <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('vendor_site_gallery.index') }}">
                     <i class="fe fe-layers fe-16"></i>
@@ -128,6 +129,7 @@
             <span>Products</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
+            @if (auth()->user()->hasPermission('products'))
             <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('vendor.products') }}">
                     <i class="fe fe-layers fe-16"></i>
@@ -135,6 +137,7 @@
                     {{-- <span class="badge badge-pill badge-primary">New</span> --}}
                 </a>
             </li>
+            @endif
             <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('vendor_site_gallery.index') }}">
                     <i class="fe fe-layers fe-16"></i>
@@ -145,7 +148,7 @@
         @php
             $user = auth()->user()->load('vendor.package');
         @endphp
-        @if ($user->vendor->package->title == 'Artistes')
+        @if ($user->vendor->package->title == 'Artistes' && auth()->user()->hasPermission('artiste-music'))
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Artiste (Music)</span>
             </p>
@@ -185,6 +188,7 @@
                 </li>
             </ul>
         @endif
+        @if (auth()->user()->hasPermission('blogs'))
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Blogs</span>
         </p>
@@ -196,6 +200,8 @@
                 </a>
             </li>
         </ul>
+        @endif
+        @if (auth()->user()->hasPermission('inquiries'))
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Inquiries</span>
         </p>
@@ -207,6 +213,7 @@
                 </a>
             </li>
         </ul>
+        @endif
         {{-- <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Costumes</span>
         </p>
