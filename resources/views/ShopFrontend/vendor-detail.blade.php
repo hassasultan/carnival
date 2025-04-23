@@ -460,7 +460,7 @@
                                                 $image = null;
 
                                                 if ($item->logo) {
-                                                    $image = asset($item->logo);
+                                                    $image = asset('images/' . $item->logo);
                                                 } elseif ($item->user->image) {
                                                     $image = asset('images/' . $item->user->image);
                                                 } else {
@@ -469,7 +469,7 @@
                                             @endphp
                                                             <a class="product-item-img" href=""><img
                                                                     alt="product name"
-                                                                    src="{{ asset('images/' . $image) }}"></a>
+                                                                    src="{{ $image }}"></a>
                                                             {{-- <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
                                                             href=""><span>wishlist</span></a>
