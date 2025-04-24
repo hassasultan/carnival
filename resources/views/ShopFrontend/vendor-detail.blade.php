@@ -456,9 +456,20 @@
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
+                                                            @php
+                                                $image = null;
+
+                                                if ($item->logo) {
+                                                    $image = asset('images/' . $item->logo);
+                                                } elseif ($item->user->image) {
+                                                    $image = asset('images/' . $item->user->image);
+                                                } else {
+                                                    $image = asset('shopAssets/images/media/product9.jpg');
+                                                }
+                                            @endphp
                                                             <a class="product-item-img" href=""><img
                                                                     alt="product name"
-                                                                    src="{{ asset('images/' . $item->logo) }}"></a>
+                                                                    src="{{ $image }}"></a>
                                                             {{-- <div class="product-item-actions">
                                                         <a class="btn btn-wishlist"
                                                             href=""><span>wishlist</span></a>
