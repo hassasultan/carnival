@@ -129,7 +129,7 @@
             <span>Products</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            @if (auth()->user()->hasPermission('products'))
+            @if (auth()->user()->vendor->package->products == 1)
             <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('vendor.products') }}">
                     <i class="fe fe-layers fe-16"></i>
