@@ -17,8 +17,6 @@
                 </a>
             </li>
         </ul>
-        {{ dd(auth()->user()->packageName, auth()->user()->load('vendor.package', 'subVendor.vendor.package')->userPackage) }}
-        {{ dd(auth()->user()->packageName, auth()->user()->userPackage->toArray()) }}
         {{-- @if (auth()->user()->hasPermission('products')) --}}
         {{-- @if (Auth::user()->subVendor->package->events == 1) --}}
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
