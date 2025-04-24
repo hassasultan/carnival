@@ -83,7 +83,6 @@
             <span>Members</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            {{ dd(auth()->user()->userPackage->toArray()) }}
             @if (auth()->user()->hasPermission('carnivals'))
             <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('vendor.carnival.committee') }}">
@@ -110,7 +109,7 @@
                     <span class="ml-3 item-text">Events</span>
                 </a>
                 <ul class="collapse list-unstyled w-100" id="ui-events">
-                    @if (auth()->user()->hasPermission('events'))
+                    @if (auth()->user()->vendor->package->events == 1)
                         <li class="nav-item @if (Route::is('vendor.events')) active @endif">
                             <a class="nav-link" href="{{ route('vendor.events') }}"><span
                                     class="ml-1 item-text">Events</span></a>
