@@ -148,7 +148,7 @@
         @php
             $user = auth()->user()->load('vendor.package');
         @endphp
-        @if ($user->vendor->package->title == 'Artistes' && auth()->user()->hasPermission('artiste-music'))
+        @if ($user->vendor->package->title == 'Artistes' && auth()->user()->vendor->package->music == 1)
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Artiste (Music)</span>
             </p>
@@ -188,7 +188,7 @@
                 </li>
             </ul>
         @endif
-        @if (auth()->user()->hasPermission('blogs'))
+        @if (auth()->user()->vendor->package->costume == 1)
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Blogs</span>
         </p>
@@ -214,7 +214,8 @@
             </li>
         </ul>
         @endif
-        {{-- <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+        @if (auth()->user()->vendor->package->costume == 1)
+        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Costumes</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
@@ -224,7 +225,8 @@
                     <span class="ml-3 item-text">Costumes</span>
                 </a>
             </li>
-        </ul> --}}
+        </ul>
+        @endif
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Subvendors</span>
         </p>
