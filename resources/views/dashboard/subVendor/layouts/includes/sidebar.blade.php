@@ -17,68 +17,7 @@
                 </a>
             </li>
         </ul>
-        {{-- <p class="text-muted nav-heading mt-4 mb-2 pl-4">
-            <span>System Settings</span>
-        </p>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-box fe-16"></i>
-                    <span class="ml-3 item-text">Roles & Permissions</span>
-                </a>
-                <ul class="collapse list-unstyled w-100" id="ui-elements">
-                    @if (auth()->user()->hasPermission('roles'))
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('roles.index') }}"><span
-                                    class="ml-1 item-text">Roles</span></a>
-                        </li>
-                    @endif
-                    @if (auth()->user()->hasPermission('permissions'))
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('permissions.index') }}"><span
-                                    class="ml-1 item-text">Permissions</span></a>
-                        </li>
-                    @endif
-                    @if (auth()->user()->hasPermission('role_permissions'))
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('role_permissions.index') }}"><span
-                                    class="ml-1 item-text">RolesPermissions</span></a>
-                        </li>
-                    @endif
-                </ul>
-            </li>
-        </ul> --}}
-        {{-- <p class="text-muted nav-heading mt-4 mb-2 pl-4">
-            <span>Category/Package</span>
-        </p>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="#ui-category" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-box fe-16"></i>
-                    <span class="ml-3 item-text">Categories</span>
-                </a>
-                <ul class="collapse list-unstyled w-100" id="ui-category">
-                    @if (auth()->user()->hasPermission('categories'))
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('categories.index') }}"><span
-                                    class="ml-1 item-text">Categories</span></a>
-                        </li>
-                    @endif
-                    @if (auth()->user()->hasPermission('subcategories'))
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('subcategories.index') }}"><span
-                                    class="ml-1 item-text">Subcategories</span></a>
-                        </li>
-                    @endif
-                    @if (auth()->user()->hasPermission('packages'))
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('packages.index') }}"><span
-                                    class="ml-1 item-text">Packages</span></a>
-                        </li>
-                    @endif
-                </ul>
-            </li>
-        </ul> --}}
+        {{ dd(auth()->user()->packageName) }}
         {{-- @if (auth()->user()->hasPermission('products')) --}}
         {{-- @if (Auth::user()->subVendor->package->events == 1) --}}
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
