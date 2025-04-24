@@ -163,7 +163,7 @@ class User extends Authenticatable
             ?? optional($this->subVendor?->package)->title;
     }
 
-    public function getUserPackage()
+    public function getUserPackageAttribute()
     {
         return optional($this->vendor?->package)
             ?? optional($this->subVendor?->package);
