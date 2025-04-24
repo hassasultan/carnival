@@ -83,7 +83,7 @@
             <span>Members</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            {{ dd(auth()->user()->userPackage) }}
+            {{ dd(auth()->user()->userPackage->toArray()) }}
             @if (auth()->user()->hasPermission('carnivals'))
             <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('vendor.carnival.committee') }}">
