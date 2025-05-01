@@ -469,6 +469,10 @@ class FrontendConroller extends Controller
         $vendorPackageName = optional($user->vendor?->package)->title;
         $subVendorPackageName = optional($user->subVendor?->package)->title;
         $investors = Investor::all();
+        
+        $carnival_com = Carnival::has('user')->pluck('head');
+
+        $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
 
         if ($vendorPackageName === 'Artistes' || $subVendorPackageName === 'Artistes') {
             $events = Event::with('category', 'images')
@@ -508,6 +512,7 @@ class FrontendConroller extends Controller
             'subvendors',
             'user',
             'investors',
+            'carnival_commitee',
             'carnival'
         ));
     }
