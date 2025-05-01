@@ -22,6 +22,13 @@ class CarnivalMembers extends Model
         'country',
         'designation',
         'bio_description',
+        'insta',
+        'facebook',
+        'youtube',
+        'twitter',
+        'tiktok',
+        'wa_business_page',
+        'linkedin',
     ];
 
     public function carnival()

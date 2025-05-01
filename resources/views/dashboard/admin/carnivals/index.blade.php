@@ -415,6 +415,34 @@
                                 <input id="designation" type="text" class="form-control" name="designation">
                             </div>
                             <div class="form-group col-md-4">
+                                <label for="insta">Insta</label>
+                                <input id="insta" type="text" class="form-control" name="insta">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="facebook">Facebook</label>
+                                <input id="facebook" type="text" class="form-control" name="facebook">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="youtube">Youtube</label>
+                                <input id="youtube" type="text" class="form-control" name="youtube">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="twitter">Twitter</label>
+                                <input id="twitter" type="text" class="form-control" name="twitter">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="tiktok">Tiktok</label>
+                                <input id="tiktok" type="text" class="form-control" name="tiktok">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="wa_business_page">Whatsapp Business Page</label>
+                                <input id="wa_business_page" type="text" class="form-control" name="wa_business_page">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="linkedin">Linkedin</label>
+                                <input id="linkedin" type="text" class="form-control" name="linkedin">
+                            </div>
+                            <div class="form-group col-md-4">
                                 <label for="country">Bio Description</label>
                                 <textarea name="bio_description" class="form-control" id="bio_description" cols="40" rows="4">Add bio description here</textarea>
                             </div>
@@ -1432,6 +1460,13 @@
                 document.getElementById("country").value = member.country;
                 document.getElementById("designation").value = member.designation;
                 document.getElementById("bio_description").value = member.bio_description;
+                document.getElementById("insta").value = member.insta;
+                document.getElementById("facebook").value = member.facebook;
+                document.getElementById("youtube").value = member.youtube;
+                document.getElementById("twitter").value = member.twitter;
+                document.getElementById("tiktok").value = member.tiktok;
+                document.getElementById("wa_business_page").value = member.wa_business_page;
+                document.getElementById("linkedin").value = member.linkedin;
 
                 // Scroll to the form
                 document.getElementById("assignMemberForm").scrollIntoView({
