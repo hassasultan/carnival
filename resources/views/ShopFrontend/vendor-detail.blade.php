@@ -506,7 +506,8 @@
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href="{{ route('carnivalMember.detail', $item->id) }}"><img
+                                                            <a class="product-item-img"
+                                                                href="{{ route('carnivalMember.detail', $item->id) }}"><img
                                                                     alt="product name"
                                                                     src="{{ asset($item->image) }}"></a>
                                                             {{-- <div class="product-item-actions">
@@ -5302,6 +5303,8 @@
 
             </div>
         @endif
+
+        @include('front.home-template.our-partner')
 
         <!-- block  showcase-->
         @include('partials.brand_showcase')

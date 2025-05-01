@@ -468,6 +468,7 @@ class FrontendConroller extends Controller
 
         $vendorPackageName = optional($user->vendor?->package)->title;
         $subVendorPackageName = optional($user->subVendor?->package)->title;
+        $investors = Investor::all();
 
         if ($vendorPackageName === 'Artistes' || $subVendorPackageName === 'Artistes') {
             $events = Event::with('category', 'images')
@@ -506,6 +507,7 @@ class FrontendConroller extends Controller
             'ads',
             'subvendors',
             'user',
+            'investors',
             'carnival'
         ));
     }
