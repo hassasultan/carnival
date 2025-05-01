@@ -336,7 +336,7 @@
                                                             <div class="product-item-detail">
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <span class="price">{{ $item->name }}</span>
+                                                                        <span class="price">{{ $vendorName }}</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
