@@ -358,38 +358,17 @@
                         <div class="product-gallery">
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="product-gallery">
-                                    <div class="col-sm-2">
-                                        <div class="product-thumbnails">
+                                    <div class="product-preview position-relative">
+                                        <div class="zoom-container">
                                             @php
                                                 $image = null;
                                                 $image = asset($user->image);
                                             @endphp
-                                            <img class="thumbnail" src="{{ $image }}" data-full="{{ $image }}"
-                                                alt="Thumbnail 0" onclick="changeMainImage(0)" />
-                                            {{-- @foreach ($user->gallery as $key => $row)
-                                                @if (isset($row->images[0]))
-                                                    <img class="thumbnail"
-                                                        src="{{ asset('images/' . $row->images[0]->image) }}"
-                                                        data-full="{{ asset('images/' . $row->images[0]->image) }}"
-                                                        alt="Thumbnail {{ $key + 1 }}"
-                                                        onclick="changeMainImage({{ $key + 1 }})" />
-                                                @endif
-                                            @endforeach --}}
+                                            <img id="mainImage" src="{{ $image }}" alt="Main Image"
+                                                class="main-image main-image-fix" />
                                         </div>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <div class="product-preview position-relative">
-                                            <div class="zoom-container">
-                                                @php
-                                                    $image = null;
-                                                    $image = asset($user->image);
-                                                @endphp
-                                                <img id="mainImage" src="{{ $image }}" alt="Main Image"
-                                                    class="main-image main-image-fix" />
-                                            </div>
-                                            <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i
-                                                    class="fas fa-expand"></i></button>
-                                        </div>
+                                        <button class="view-larger-btn bg-transparent" onclick="openModal(0)"><i
+                                                class="fas fa-expand"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -859,10 +838,9 @@
     </script>
     <script>
         let images = [{
-                full: "{{ asset($user->image) }}",
-                thumbnail: "{{ asset($user->image) }}"
-            },
-        ];
+            full: "{{ asset($user->image) }}",
+            thumbnail: "{{ asset($user->image) }}"
+        }, ];
         let currentIndex = 0;
 
         function changeMainImage(index) {
