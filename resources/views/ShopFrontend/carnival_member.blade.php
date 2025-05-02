@@ -373,7 +373,7 @@
                                 </div>
                             </div>
 
-                            <div id="imageModal" class="modal">
+                            {{-- <div id="imageModal" class="modal">
                                 <span class="close" onclick="closeModal()">&times;</span>
                                 <button onclick="zoomIn()" class="fun-btn zoomIn"><i
                                         class="fas fa-search-plus"></i></button>
@@ -387,53 +387,98 @@
                                 </div>
                                 <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
                                 <button class="next" onclick="changeSlide(1)">&#10095;</button>
-                            </div>
+                            </div> --}}
 
                             <div class="col-sm-6 col-md-6 col-lg-6">
 
                                 <div class="product-info-main">
                                     <h1 class="page-title">
-                                        {{ $user->fillname }}
+                                        {{ $user->fullname }}
                                     </h1>
 
                                     <div class="contact-details">
-                                        <div class="contact-item">
-                                            <span class="icon fas fa-flag"></span>
-                                            <span class="text">Country:</span>
-                                            <a href="javascript:void(0);">{{ $user->country ?? 'N/A' }}</a>
-                                        </div>
-
-                                        <div class="contact-item">
-                                            <span class="icon fas fa-city"></span>
-                                            <span class="text">City:</span>
-                                            <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
-                                        </div>
-
-                                        <div class="contact-item">
-
+                                        @if (!empty($user->country))
                                             <div class="contact-item">
-                                                <span class="text">Designation:</span>
-                                                <a href="javascript:void(0);">{{ $user->designation }}</a>
+                                                <span class="icon fas fa-flag"></span>
+                                                <span class="text">Country:</span>
+                                                <a href="javascript:void(0);">{{ $user->country ?? 'N/A' }}</a>
                                             </div>
+                                        @endif
 
+                                        @if (!empty($user->city))
                                             <div class="contact-item">
-                                                <span class="text">About:</span>
-                                                <a href="javascript:void(0);">
-                                                    {!! \Illuminate\Support\Str::limit(strip_tags($user->bio_description), 200) !!}
+                                                <span class="icon fas fa-city"></span>
+                                                <span class="text">City:</span>
+                                                <a href="javascript:void(0);">{{ $user->city ?? 'N/A' }}</a>
+                                            </div>
+                                        @endif
+
+                                        @if (!empty($user->designation) || !empty($user->bio_description))
+                                            <div class="contact-item">
+                                                @if (!empty($user->designation))
+                                                    <div class="contact-item">
+                                                        <span class="text">Designation:</span>
+                                                        <a href="javascript:void(0);">{{ $user->designation }}</a>
+                                                    </div>
+                                                @endif
+
+                                                @if (!empty($user->bio_description))
+                                                    <div class="contact-item">
+                                                        <span class="text">About:</span>
+                                                        <a href="javascript:void(0);">
+                                                            {!! \Illuminate\Support\Str::limit(strip_tags($user->bio_description), 200) !!}
+                                                        </a>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="ovic-share-socials" style="margin-top: 15px;">
+                                        <div class="inner">
+                                            @if (!empty($user->facebook))
+                                                <a class="social-btn facebook" href="{{ $user->facebook }}">
+                                                    <span class="icon fab fa-facebook"></span>
                                                 </a>
-                                            </div>
+                                            @endif
+                                            @if (!empty($user->twitter))
+                                                <a class="social-btn twitter" href="{{ $user->twitter }}">
+                                                    <span class="icon fab fa-twitter"></span>
+                                                </a>
+                                            @endif
+                                            @if (!empty($user->insta))
+                                                <a class="social-btn instagram" href="{{ $user->insta }}">
+                                                    <span class="icon fab fa-instagram"></span>
+                                                </a>
+                                            @endif
+                                            @if (!empty($user->linkedin))
+                                                <a class="social-btn linkedin" href="{{ $user->linkedin }}">
+                                                    <span class="icon fab fa-linkedin"></span>
+                                                </a>
+                                            @endif
+                                            @if (!empty($user->youtube))
+                                                <a class="social-btn youtube" href="{{ $user->youtube }}">
+                                                    <span class="icon fab fa-youtube"></span>
+                                                </a>
+                                            @endif
+                                            @if (!empty($user->tiktok))
+                                                <a class="social-btn tiktok" href="{{ $user->tiktok }}">
+                                                    <span class="icon fab fa-tiktok"></span>
+                                                </a>
+                                            @endif
+                                            @if (!empty($user->wa_business_page))
+                                                <a class="social-btn whatsapp" href="{{ $user->wa_business_page }}">
+                                                    <span class="icon fab fa-whatsapp"></span>
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
-
-
                                 </div><!-- Main detail -->
-
                             </div>
-
                         </div><!-- Main Content -->
-
                     </div>
                 </div>
+            </div>
+        </div>
     </main><!-- end MAIN -->
 @endsection
 
