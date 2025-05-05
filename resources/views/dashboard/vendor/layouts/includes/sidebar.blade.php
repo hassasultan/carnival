@@ -129,7 +129,7 @@
             <span>Products</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            @if (auth()->user()->hasPermission('products'))
+            {{-- @if (auth()->user()->hasPermission('products')) --}}
             <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('vendor.products') }}">
                     <i class="fe fe-layers fe-16"></i>
@@ -137,7 +137,7 @@
                     {{-- <span class="badge badge-pill badge-primary">New</span> --}}
                 </a>
             </li>
-            @endif
+            {{-- @endif --}}
             <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('vendor_site_gallery.index') }}">
                     <i class="fe fe-layers fe-16"></i>
