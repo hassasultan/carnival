@@ -504,6 +504,13 @@ class CarnivalController extends Controller
             'country' => 'nullable|string|max:255',
             'designation' => 'nullable|string|max:255',
             'bio_description' => 'nullable',
+            'insta' => 'nullable',
+            'facebook' => 'nullable',
+            'youtube' => 'nullable',
+            'twitter' => 'nullable',
+            'tiktok' => 'nullable',
+            'wa_business_page' => 'nullable',
+            'linkedin' => 'nullable',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 

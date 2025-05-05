@@ -17,73 +17,11 @@
                 </a>
             </li>
         </ul>
-        {{-- <p class="text-muted nav-heading mt-4 mb-2 pl-4">
-            <span>System Settings</span>
-        </p>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-box fe-16"></i>
-                    <span class="ml-3 item-text">Roles & Permissions</span>
-                </a>
-                <ul class="collapse list-unstyled w-100" id="ui-elements">
-                    @if (auth()->user()->hasPermission('roles'))
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('roles.index') }}"><span
-                                    class="ml-1 item-text">Roles</span></a>
-                        </li>
-                    @endif
-                    @if (auth()->user()->hasPermission('permissions'))
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('permissions.index') }}"><span
-                                    class="ml-1 item-text">Permissions</span></a>
-                        </li>
-                    @endif
-                    @if (auth()->user()->hasPermission('role_permissions'))
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('role_permissions.index') }}"><span
-                                    class="ml-1 item-text">RolesPermissions</span></a>
-                        </li>
-                    @endif
-                </ul>
-            </li>
-        </ul> --}}
-        {{-- <p class="text-muted nav-heading mt-4 mb-2 pl-4">
-            <span>Category/Package</span>
-        </p>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="#ui-category" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-box fe-16"></i>
-                    <span class="ml-3 item-text">Categories</span>
-                </a>
-                <ul class="collapse list-unstyled w-100" id="ui-category">
-                    @if (auth()->user()->hasPermission('categories'))
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('categories.index') }}"><span
-                                    class="ml-1 item-text">Categories</span></a>
-                        </li>
-                    @endif
-                    @if (auth()->user()->hasPermission('subcategories'))
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('subcategories.index') }}"><span
-                                    class="ml-1 item-text">Subcategories</span></a>
-                        </li>
-                    @endif
-                    @if (auth()->user()->hasPermission('packages'))
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('packages.index') }}"><span
-                                    class="ml-1 item-text">Packages</span></a>
-                        </li>
-                    @endif
-                </ul>
-            </li>
-        </ul> --}}
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Members</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            @if (auth()->user()->hasPermission('carnivals'))
+            {{-- @if (auth()->user()->hasPermission('carnivals')) --}}
             <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('vendor.carnival.committee') }}">
                     <i class="fe fe-layers fe-16"></i>
@@ -91,7 +29,7 @@
                     {{-- <span class="badge badge-pill badge-primary">New</span> --}}
                 </a>
             </li>
-            @endif
+            {{-- @endif --}}
             {{-- <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('vendor_site_gallery.index') }}">
                     <i class="fe fe-layers fe-16"></i>
@@ -109,7 +47,7 @@
                     <span class="ml-3 item-text">Events</span>
                 </a>
                 <ul class="collapse list-unstyled w-100" id="ui-events">
-                    @if (auth()->user()->hasPermission('events'))
+                    @if (auth()->user()->vendor->package->events == 1)
                         <li class="nav-item @if (Route::is('vendor.events')) active @endif">
                             <a class="nav-link" href="{{ route('vendor.events') }}"><span
                                     class="ml-1 item-text">Events</span></a>
@@ -148,7 +86,7 @@
         @php
             $user = auth()->user()->load('vendor.package');
         @endphp
-        @if ($user->vendor->package->title == 'Artistes' && auth()->user()->hasPermission('artiste-music'))
+        @if ($user->vendor->package->title == 'Artistes' && auth()->user()->vendor->package->music == 1)
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Artiste (Music)</span>
             </p>
@@ -188,7 +126,7 @@
                 </li>
             </ul>
         @endif
-        @if (auth()->user()->hasPermission('blogs'))
+        @if (auth()->user()->vendor->package->costume == 1)
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Blogs</span>
         </p>
@@ -201,7 +139,7 @@
             </li>
         </ul>
         @endif
-        @if (auth()->user()->hasPermission('inquiries'))
+        {{-- @if (auth()->user()->hasPermission('inquiries')) --}}
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Inquiries</span>
         </p>
@@ -213,8 +151,9 @@
                 </a>
             </li>
         </ul>
-        @endif
-        {{-- <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+        {{-- @endif --}}
+        @if (auth()->user()->vendor->package->costume == 1)
+        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Costumes</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
@@ -224,7 +163,8 @@
                     <span class="ml-3 item-text">Costumes</span>
                 </a>
             </li>
-        </ul> --}}
+        </ul>
+        @endif
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Subvendors</span>
         </p>
