@@ -119,7 +119,7 @@ class FrontendConroller extends Controller
     }
     public function get_carnivals_by_region_for_home($id)
     {
-        $carnivals = Carnival::with('user','city')->where('region_id', $id)->take(6)->get();
+        $carnivals = Carnival::with('user', 'city')->where('region_id', $id)->take(6)->get();
 
         // Format the data to send as JSON
         $data = $carnivals->map(function ($carnival) {
@@ -469,7 +469,7 @@ class FrontendConroller extends Controller
         $vendorPackageName = optional($user->vendor?->package)->title;
         $subVendorPackageName = optional($user->subVendor?->package)->title;
         $investors = Investor::all();
-        
+
         $carnival_com = Carnival::has('user')->pluck('head');
 
         $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
@@ -776,14 +776,25 @@ class FrontendConroller extends Controller
             $query->whereIn('venue', $request->brands);
         }
 
+        // if ($request->filled('carnivalEvents')) {
+        //     $carnival = Carnival::where('slug', $carnivalEvents)->first();
+        //     // $carnival = $carnival->packageVendors('Events')->pluck('id');
+        //     $carnival = $carnival->packageVendors('Events');
+        //     dd($carnival->toArray(), $query->get()->pluck('id')->toArray());
+        //     $query->whereIn('id', $carnival);
+        // }
+
         if ($request->filled('carnivalEvents')) {
             $carnival = Carnival::where('slug', $carnivalEvents)->first();
-            // $carnival = $carnival->packageVendors('Events')->pluck('id');
-            $carnival = $carnival->packageVendors('Events');
-            dd($carnival->toArray(), $query->get()->pluck('id')->toArray());
-            $query->whereIn('id', $carnival);
-        }
 
+            if ($carnival) {
+                $vendors = $carnival->packageVendors('Events');
+
+                $vendorUserIds = $vendors->pluck('user_id')->unique();
+
+                $query->whereIn('user_id', $vendorUserIds);
+            }
+        }
 
         if ($request->filled('price_ranges')) {
             $price_ranges = is_array($request->price_ranges) ? $request->price_ranges : json_decode($request->price_ranges, true);
@@ -1118,9 +1129,9 @@ class FrontendConroller extends Controller
                 $data = Event::where('user_id', $carnival->head)->with('images', 'tickets', 'country_tabs')->orderBy('id', 'desc')->get()->take('10');
                 break;
 
-            // default:
-            //     // Optional: code for cases not matching 'costumes' or 'events'
-            //     break;
+                // default:
+                //     // Optional: code for cases not matching 'costumes' or 'events'
+                //     break;
         }
 
         return view('partials.banner_details', compact('type', 'data'));
@@ -1223,20 +1234,19 @@ class FrontendConroller extends Controller
 
         return view('ShopFrontend.brands', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3', 'countries'));
     }
-    
+
     public function get_brands(Request $request)
     {
         $getSearchVal = $request->get('getSearchVal', null);
-    
+
         $query = Brand::where('status', 1);
-    
+
         if (!empty($getSearchVal)) {
             $query->where('title', 'like', '%' . $getSearchVal . '%');
         }
-    
+
         $brands = $query->orderBy('id', 'DESC')->paginate(18);
-    
+
         return $brands;
     }
-    
 }
