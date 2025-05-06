@@ -161,7 +161,7 @@ class FrontendConroller extends Controller
             ->where('start_date', '>', Carbon::now())->orderBy('id', 'DESC')->get()->take(8);
         $ads = Advertisement::where('type', 'event')->get();
         // dd($carnival_events->toArray());
-        return view('front.events', compact('products', 'banners', 'upcoming_events', 'all_events', 'carnival_events', 'popular_events', 'ads'));
+        return view('front.events', compact('products', 'banners', 'upcoming_events', 'all_events', 'carnival_events', 'popular_events', 'ads', 'carnival'));
     }
     public function category_tour_listing()
     {
