@@ -139,7 +139,6 @@ class FrontendConroller extends Controller
     }
     public function event_listing(Request $request)
     {
-        $carnival = $request->carnival ?? null;
         $banners = Banner::where('type', 'event')->get();
         $products = Product::with('brand')->get();
         $upcoming_events = Event::with('tickets')
@@ -161,7 +160,7 @@ class FrontendConroller extends Controller
             ->where('start_date', '>', Carbon::now())->orderBy('id', 'DESC')->get()->take(8);
         $ads = Advertisement::where('type', 'event')->get();
         // dd($carnival_events->toArray());
-        return view('front.events', compact('products', 'banners', 'upcoming_events', 'all_events', 'carnival_events', 'popular_events', 'ads', 'carnival'));
+        return view('front.events', compact('products', 'banners', 'upcoming_events', 'all_events', 'carnival_events', 'popular_events', 'ads'));
     }
     public function category_tour_listing()
     {
@@ -1020,6 +1019,7 @@ class FrontendConroller extends Controller
 
     public function shop_event_listing(Request $request)
     {
+        $carnival = $request->carnival ?? null;
         $mascamp_banners = Banner::where('type', 'mascamps')->get();
         $regions = Region::OrderBy('placement', 'ASC')->get();
         $countries = Country::withCount('events')->with('events')->OrderBy('name', 'ASC')->get();
@@ -1040,7 +1040,7 @@ class FrontendConroller extends Controller
             ->take(3)
             ->get();
 
-        return view('ShopFrontend.events', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3', 'countries'));
+        return view('ShopFrontend.events', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3', 'countries', 'carnival'));
     }
     public function get_carnivals(Request $request)
     {
