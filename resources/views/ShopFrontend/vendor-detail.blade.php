@@ -329,14 +329,16 @@
                                                     <div class="product-item product-item-opt-1">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
-                                                                <a class="product-item-img" href="">
+                                                                <a class="product-item-img" href="{{ route('front.shop_listing', ['carnival_id' => $carnival->id]) }}">
                                                                     <img alt="product name" src="{{ $vendorLogo }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <span class="price">{{ $vendorName }}</span>
+                                                                        <a class="product-item-img" href="{{ route('front.shop_listing', ['carnival_id' => $carnival->id]) }}">
+                                                                            <span class="price">{{ $vendorName }}</span>
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
