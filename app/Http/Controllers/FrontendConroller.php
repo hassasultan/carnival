@@ -137,8 +137,9 @@ class FrontendConroller extends Controller
 
         return response()->json($data);
     }
-    public function event_listing()
+    public function event_listing(Request $request)
     {
+        $carnival = $request->carnival ?? null;
         $banners = Banner::where('type', 'event')->get();
         $products = Product::with('brand')->get();
         $upcoming_events = Event::with('tickets')
