@@ -758,6 +758,7 @@ class FrontendConroller extends Controller
         $regionId = $request->get('getRegion');
         $event_type = $request->get('event_type');
         $getSearchVal = $request->get('getSearchVal', null);
+        $carnivalEvents = $request->get('carnivalEvents');
 
         $query = Event::with('images', 'tickets', 'User', 'country');
         if ($request->has('categories') && !empty($request->categories)) {
@@ -772,6 +773,13 @@ class FrontendConroller extends Controller
         }
 
         if ($request->filled('brands')) {
+            $query->whereIn('venue', $request->brands);
+        }
+
+        if ($request->filled('carnivalEvents')) {
+            $carnival = Carnival::where('slug', $carnivalEvents)->first();
+            $carnival = $carnival->packageVendors('Events');
+            dd($carnival->toArray());
             $query->whereIn('venue', $request->brands);
         }
 
