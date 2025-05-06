@@ -365,14 +365,30 @@
     </main><!-- end MAIN -->
 @endsection
 @section('script')
-<script>
-    $(document).ready(function() {
-        function fetchEvents(page = 1, selectedCategories = [], eventType = null, priceRanges = [], selectedBrands = [], searchVal = '') {
-            $('#event-listing').html('');
+    <script>
+        $(document).ready(function() {
+            let carnival = @json($carnival);
 
-            // Display skeleton loaders
-            for (let i = 0; i < 18; i++) {
-                var skeletonHtml = `
+            if (carnival !== null) {
+                // Run your code here
+                console.log("Carnival is not null:", carnival);
+                
+            }
+            else{
+                console.log("hahah null:", carnival);
+
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            function fetchEvents(page = 1, selectedCategories = [], eventType = null, priceRanges = [],
+                selectedBrands = [], searchVal = '') {
+                $('#event-listing').html('');
+
+                // Display skeleton loaders
+                for (let i = 0; i < 18; i++) {
+                    var skeletonHtml = `
                     <li class="col-sm-4 event-item">
                         <div class="skeleton-item">
                             <div class="skeleton-content">
@@ -382,37 +398,38 @@
                             </div>
                         </div>
                     </li>`;
-                $('#event-listing').append(skeletonHtml);
-            }
+                    $('#event-listing').append(skeletonHtml);
+                }
 
-            // AJAX call to fetch events
-            $.ajax({
-                url: "{{ route('get.events') }}",
-                type: "GET",
-                data: {
-                    page: page,
-                    categories: selectedCategories,
-                    event_type: eventType,
-                    price_ranges: priceRanges,
-                    brands: selectedBrands,
-                    getSearchVal: searchVal
-                },
-                success: function(response) {
-                    $('#event-listing').empty();
-                    if (response.data.length === 0) {
-                        $('#event-listing').append('<p>No events found.</p>');
-                        return;
-                    }
+                // AJAX call to fetch events
+                $.ajax({
+                    url: "{{ route('get.events') }}",
+                    type: "GET",
+                    data: {
+                        page: page,
+                        categories: selectedCategories,
+                        event_type: eventType,
+                        price_ranges: priceRanges,
+                        brands: selectedBrands,
+                        getSearchVal: searchVal
+                    },
+                    success: function(response) {
+                        $('#event-listing').empty();
+                        if (response.data.length === 0) {
+                            $('#event-listing').append('<p>No events found.</p>');
+                            return;
+                        }
 
-                    $.each(response.data, function(index, event) {
-                        var image = event.banner 
-                            ? "{{ asset('eventBanner/') }}/" + event.banner 
-                            : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                        $.each(response.data, function(index, event) {
+                            var image = event.banner ?
+                                "{{ asset('eventBanner/') }}/" + event.banner :
+                                'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
 
-                        var href = "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}"
-                            .replace('event_slug_placeholder', event.slug);
+                            var href =
+                                "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}"
+                                .replace('event_slug_placeholder', event.slug);
 
-                        var eventHtml = `
+                            var eventHtml = `
                             <li class="col-sm-4 product-item">
                                 <div class="product-item-opt-1">
                                     <div class="product-item-info">
@@ -437,116 +454,119 @@
                                     </div>
                                 </div>
                             </li>`;
-                        $('#event-listing').append(eventHtml);
+                            $('#event-listing').append(eventHtml);
+                        });
+
+                        // Pagination logic
+                        $('.pagination').empty();
+                        if (response.current_page > 1) {
+                            $('.pagination').append(
+                                `<li class="action"><a href="#" data-page="${response.current_page - 1}"><i class="fa fa-angle-left"></i></a></li>`
+                            );
+                        }
+                        for (let i = 1; i <= response.last_page; i++) {
+                            let activeClass = i === response.current_page ? 'active' : '';
+                            $('.pagination').append(
+                                `<li class="${activeClass}"><a href="#" data-page="${i}">${i}</a></li>`
+                            );
+                        }
+                        if (response.current_page < response.last_page) {
+                            $('.pagination').append(
+                                `<li class="action"><a href="#" data-page="${response.current_page + 1}"><i class="fa fa-angle-right"></i></a></li>`
+                            );
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+
+            function getSelectedCategories() {
+                let selectedCategories = [];
+                $('.category-checkbox:checked').each(function() {
+                    selectedCategories.push($(this).val());
+                });
+                return selectedCategories;
+            }
+
+            function getSelectedBrands() {
+                let selectedBrands = [];
+                $('.brand-checkbox:checked').each(function() {
+                    selectedBrands.push($(this).val());
+                });
+                return selectedBrands;
+            }
+
+            function getSelectedPriceRanges() {
+                let priceRanges = [];
+                $('.price-checkbox:checked').each(function() {
+                    let min = $(this).data('min');
+                    let max = $(this).data('max');
+                    priceRanges.push({
+                        min: min,
+                        max: max
                     });
+                });
+                return priceRanges;
+            }
 
-                    // Pagination logic
-                    $('.pagination').empty();
-                    if (response.current_page > 1) {
-                        $('.pagination').append(
-                            `<li class="action"><a href="#" data-page="${response.current_page - 1}"><i class="fa fa-angle-left"></i></a></li>`
-                        );
-                    }
-                    for (let i = 1; i <= response.last_page; i++) {
-                        let activeClass = i === response.current_page ? 'active' : '';
-                        $('.pagination').append(
-                            `<li class="${activeClass}"><a href="#" data-page="${i}">${i}</a></li>`
-                        );
-                    }
-                    if (response.current_page < response.last_page) {
-                        $('.pagination').append(
-                            `<li class="action"><a href="#" data-page="${response.current_page + 1}"><i class="fa fa-angle-right"></i></a></li>`
-                        );
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
+            function applyFilters() {
+                let selectedCategories = getSelectedCategories();
+                let eventType = $('#event_type').is(':checked') ? 1 : null;
+                let priceRanges = getSelectedPriceRanges();
+                let searchVal = $('input[name="searchVal"]').val();
+                let selectedBrands = getSelectedBrands();
+
+                fetchEvents(1, selectedCategories, eventType, priceRanges, selectedBrands, searchVal);
+            }
+
+            // Search event
+            $(document).on('click', '#getSearchVal', function(e) {
+                e.preventDefault();
+                applyFilters();
             });
-        }
 
-        function getSelectedCategories() {
-            let selectedCategories = [];
-            $('.category-checkbox:checked').each(function() {
-                selectedCategories.push($(this).val());
+            // Category filter
+            $(document).on('click', '.category', function() {
+                $(this).siblings('.category-checkbox').prop('checked', function(i, value) {
+                    return !value;
+                });
+                applyFilters();
             });
-            return selectedCategories;
-        }
 
-        function getSelectedBrands() {
-            let selectedBrands = [];
-            $('.brand-checkbox:checked').each(function() {
-                selectedBrands.push($(this).val());
+            // Event type filter
+            $(document).on('click', '#event_type', function() {
+                applyFilters();
             });
-            return selectedBrands;
-        }
 
-        function getSelectedPriceRanges() {
-            let priceRanges = [];
-            $('.price-checkbox:checked').each(function() {
-                let min = $(this).data('min');
-                let max = $(this).data('max');
-                priceRanges.push({ min: min, max: max });
+            // Price filter
+            $(document).on('click', '.price-checkbox', function() {
+                applyFilters();
             });
-            return priceRanges;
-        }
 
-        function applyFilters() {
-            let selectedCategories = getSelectedCategories();
-            let eventType = $('#event_type').is(':checked') ? 1 : null;
-            let priceRanges = getSelectedPriceRanges();
-            let searchVal = $('input[name="searchVal"]').val();
-            let selectedBrands = getSelectedBrands();
-
-            fetchEvents(1, selectedCategories, eventType, priceRanges, selectedBrands, searchVal);
-        }
-
-        // Search event
-        $(document).on('click', '#getSearchVal', function(e) {
-            e.preventDefault();
-            applyFilters();
-        });
-
-        // Category filter
-        $(document).on('click', '.category', function() {
-            $(this).siblings('.category-checkbox').prop('checked', function(i, value) {
-                return !value;
+            // Brand filter
+            $(document).on('click', '.brand-checkbox', function() {
+                applyFilters();
             });
-            applyFilters();
+
+            // Pagination click
+            $(document).on('click', '.pagination a', function(e) {
+                e.preventDefault();
+                let page = $(this).data('page');
+                let selectedCategories = getSelectedCategories();
+                let eventType = $('#event_type').is(':checked') ? 1 : null;
+                let priceRanges = getSelectedPriceRanges();
+                let searchVal = $('input[name="searchVal"]').val();
+                let selectedBrands = getSelectedBrands();
+
+                fetchEvents(page, selectedCategories, eventType, priceRanges, selectedBrands, searchVal);
+            });
+
+            // Initial fetch
+            fetchEvents();
         });
-
-        // Event type filter
-        $(document).on('click', '#event_type', function() {
-            applyFilters();
-        });
-
-        // Price filter
-        $(document).on('click', '.price-checkbox', function() {
-            applyFilters();
-        });
-
-        // Brand filter
-        $(document).on('click', '.brand-checkbox', function() {
-            applyFilters();
-        });
-
-        // Pagination click
-        $(document).on('click', '.pagination a', function(e) {
-            e.preventDefault();
-            let page = $(this).data('page');
-            let selectedCategories = getSelectedCategories();
-            let eventType = $('#event_type').is(':checked') ? 1 : null;
-            let priceRanges = getSelectedPriceRanges();
-            let searchVal = $('input[name="searchVal"]').val();
-            let selectedBrands = getSelectedBrands();
-
-            fetchEvents(page, selectedCategories, eventType, priceRanges, selectedBrands, searchVal);
-        });
-
-        // Initial fetch
-        fetchEvents();
-    });
-</script>
+    </script>
 @endsection
 
 {{-- @section('script')

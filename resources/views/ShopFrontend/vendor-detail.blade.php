@@ -329,14 +329,14 @@
                                                     <div class="product-item product-item-opt-1">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
-                                                                <a class="product-item-img" href="{{ route('front.shop_listing', ['carnival_id' => $carnival->id]) }}">
+                                                                <a class="product-item-img" href="{{ route('front.shop_listing', ['carnival' => $carnival->slug]) }}">
                                                                     <img alt="product name" src="{{ $vendorLogo }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <a class="product-item-img" href="{{ route('front.shop_listing', ['carnival_id' => $carnival->id]) }}">
+                                                                        <a class="product-item-img" href="{{ route('front.shop_listing', ['carnival' => $carnival->slug]) }}">
                                                                             <span class="price">{{ $vendorName }}</span>
                                                                         </a>
                                                                     </div>
@@ -5445,6 +5445,20 @@
 @endsection
 
 @section('script')
+    <script>
+        $(document).ready(function() {
+            let carnival = @json($carnival);
+
+            if (carnival !== null) {
+                // Run your code here
+                console.log("Carnival is not null:", carnival);
+
+                // Example: show a modal
+                $('#myModal').modal('show');
+            }
+        });
+    </script>
+
     <!-- Custom scripts -->
     <script>
         var slug = '{{ $vendor->user_id }}';
@@ -5493,81 +5507,6 @@
             getProducts('new', 'new-arrival-products');
         });
 
-        // function printTiles(id, response) {
-        //     // console.log(response);
-        //     $.each(response, function(index, product) {
-        //         var percentageDiscount = Math.round(((product.old_price - product
-        //             .new_price) / product.old_price) * 100);
-        //         var productHtml = `
-    //                 <div class="product-item product-item-opt-1">
-    //                     <div class="product-item-info">
-    //                         <div class="product-item-photo">`;
-        //         if (product.image != null && product.image != '') {
-        //             productHtml +=
-        //                 `
-    //                                 <a href="{{ route('get.products.detail', '') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="{{ asset('productImage/${product.image}') }}" alt="${product.title}"></a>`;
-        //         } else {
-        //             productHtml +=
-        //                 `
-    //                                 <a href="{{ route('get.products.detail', '') }}/${product.slug}" class="product-item-img"><img style="height:266px;" src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg" alt="${product.title}"></a>`;
-        //         }
-        //         productHtml += `
-    //                             <div class="product-item-actions">
-    //                                 <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
-    //                                 <a href="#" class="btn btn-compare"><span>compare</span></a>
-    //                                 <a href="#" class="btn btn-quickview"><span>quickview</span></a>
-    //                             </div>
-    //                             <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
-    //                             <span class="product-item-label label-price">${percentageDiscount}% <span>off</span></span>
-    //                         </div>
-    //                         <div class="product-item-detail">
-    //                             <strong class="product-item-name"><a href="${product.slug}">${product.title}</a></strong>
-    //                             <div class="clearfix">
-    //                                 <div class="product-item-price">
-    //                                     <span class="price">$${product.new_price}</span>
-    //                                     <span class="old-price">$${product.old_price}</span>
-    //                                 </div>
-    //                                 <div class="product-reviews-summary">
-    //                                     <div class="rating-summary">
-    //                                         <div class="rating-result" title="${percentageDiscount}%">
-    //                                             <span style="width:${percentageDiscount}%">
-    //                                                 <span><span>${percentageDiscount}</span>% of <span>100</span></span>
-    //                                             </span>
-    //                                         </div>
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             `;
-
-        //         $('#' + id + ' .owl-item').html(productHtml);
-
-        //     });
-        //     $('#slider-range').slider({
-        //         range: true,
-
-        //         min: 0,
-
-        //         max: 500,
-
-        //         values: [0, 300],
-
-        //         slide: function(event, ui) {
-
-        //             $('#amount-left').text(ui.values[0]);
-        //             $('#amount-right').text(ui.values[1]);
-
-        //         }
-
-        //     });
-
-        //     $('#amount-left').text($('#slider-range').slider('values', 0));
-
-        //     $('#amount-right').text($('#slider-range').slider('values', 1));
-        // }
-
         function getProducts(attribute, id) {
             $.ajax({
                 url: "{{ route('front.vendor.products', '') }}/" + slug,
@@ -5583,129 +5522,12 @@
                     $('#product-listing').removeClass('blur-effect');
 
                     printTiles(id, response);
-
-                    // $.each(response.data, function(index, product) {
-                    //     // var percentageDiscount = Math.round(((product.old_price - product
-                    //     //     .new_price) / product.old_price) * 100);
-                    //     var productHtml = ``;
-                    //     // $('#product-listing').append(productHtml);
-                    // });
-
                 },
                 error: function(xhr, status, error) {
                     console.error(error);
                 }
             });
         }
-
-        // Function to fetch and display products
-        // function fetchProducts(page = 1) {
-
-        //     // Apply skeleton loading structure
-        //     for (let i = 0; i < 9; i++) { // Assuming 9 products per page
-        //         var skeletonHtml = `
-    //             <li class="col-sm-4 product-item">
-    //                 <div class="skeleton-item">
-    //                     <div class="skeleton-content">
-    //                         <div class="skeleton-line" style="width: 80%;"></div>
-    //                         <div class="skeleton-line" style="width: 60%;"></div>
-    //                         <div class="skeleton-line" style="width: 70%;"></div>
-    //                     </div>
-    //                 </div>
-    //             </li>
-    //         `;
-        //         $('#product-listing').append(skeletonHtml);
-        //     }
-        //     $.ajax({
-        //         url: "{{ route('get.products.home') }}",
-        //         type: "GET",
-        //         data: {
-        //             page: page
-        //         },
-        //         success: function(response) {
-        //             console.log(response);
-        //             $('#product-listing').empty();
-        //             $('#product-listing').removeClass('blur-effect');
-        //             $.each(response.data, function(index, product) {
-        //                 var percentageDiscount = Math.round(((product.old_price - product
-        //                     .new_price) / product.old_price) * 100);
-        //                 var productHtml = `
-    //             <li class="col-sm-4 product-item">
-    //                 <div class="product-item-opt-1">
-    //                     <div class="product-item-info">
-    //                         <div class="product-item-photo">
-    //                             <a href="${product.slug}" class="product-item-img"><img src="https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg')}}"
-    //                                     alt="${product.title}"></a>
-    //                             <div class="product-item-actions">
-    //                                 <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
-    //                                 <a href="#" class="btn btn-compare"><span>compare</span></a>
-    //                                 <a href="#" class="btn btn-quickview"><span>quickview</span></a>
-    //                             </div>
-    //                             <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
-    //                             <span class="product-item-label label-price">${percentageDiscount}% <span>off</span></span>
-    //                         </div>
-    //                         <div class="product-item-detail">
-    //                             <strong class="product-item-name"><a href="${product.slug}">${product.title}</a></strong>
-    //                             <div class="clearfix">
-    //                                 <div class="product-item-price">
-    //                                     <span class="price">$${product.new_price}</span>
-    //                                     <span class="old-price">$${product.old_price}</span>
-    //                                 </div>
-    //                                 <div class="product-reviews-summary">
-    //                                     <div class="rating-summary">
-    //                                         <div class="rating-result" title="${percentageDiscount}%">
-    //                                             <span style="width:${percentageDiscount}%">
-    //                                                 <span><span>${percentageDiscount}</span>% of <span>100</span></span>
-    //                                             </span>
-    //                                         </div>
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             </li>
-    //         `;
-        //                 $('#product-listing').append(productHtml);
-        //             });
-
-        //             // Display pagination links
-        //             $('.pagination').empty();
-        //             pre = 0;
-        //             nxt = 0;
-        //             pre = response.current_page - 1;
-        //             var previousPageHtml = `
-    //                 <li class="action">
-    //                     <a href="#" data-page="${pre}"><span><i aria-hidden="true" class="fa fa-angle-left"></i></span></a>
-    //                 </li>
-    //             `;
-        //             $('.pagination').append(previousPageHtml);
-        //             for (let i = 1; i <= response.last_page; i++) {
-        //                 var activeClass = i === response.current_page ? 'active' : '';
-        //                 var paginationHtml = `
-    //                 <li class="${activeClass}">
-    //                     <a href="#" data-page="${i}">${i}</a>
-    //                 </li>
-    //             `;
-        //                 $('.pagination').append(paginationHtml);
-        //             }
-        //             nxt = response.current_page + 1;
-        //             var nextPageHtml = `
-    //                 <li class="action">
-    //                     <a href="#" data-page="${nxt}"><span><i aria-hidden="true" class="fa fa-angle-right"></i></span></a>
-    //                 </li>
-    //             `;
-        //             $('.pagination').append(nextPageHtml);
-
-        //         },
-        //         error: function(xhr, status, error) {
-        //             console.error(error);
-        //         }
-        //     });
-        // }
-
-        // Initial call to fetch products
-        // fetchProducts();
 
         // Pagination click event handler
         $(document).on('click', '.pagination a', function(e) {
