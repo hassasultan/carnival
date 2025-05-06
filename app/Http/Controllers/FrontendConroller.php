@@ -789,8 +789,8 @@ class FrontendConroller extends Controller
 
             if ($carnival) {
                 $vendors = $carnival->packageVendors('Events');
-
                 $vendorUserIds = $vendors->pluck('user_id')->unique();
+                dd($vendors, $vendorUserIds);
 
                 $query->whereIn('user_id', $vendorUserIds);
             }
