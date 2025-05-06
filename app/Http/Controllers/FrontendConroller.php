@@ -778,8 +778,8 @@ class FrontendConroller extends Controller
 
         if ($request->filled('carnivalEvents')) {
             $carnival = Carnival::where('slug', $carnivalEvents)->first();
-            $carnival = $carnival->packageVendors('Events');
-            dd($carnival->toArray());
+            $carnival = $carnival->packageVendors('Events')->pluck('id');
+            dd($carnival);
             $query->whereIn('venue', $request->brands);
         }
 
