@@ -780,8 +780,7 @@ class FrontendConroller extends Controller
             $carnival = Carnival::where('slug', $carnivalEvents)->first();
         
             if ($carnival) {
-                $eventIds = $carnival->packageVendors()
-                    ->where('type', 'Events')
+                $eventIds = $carnival->packageVendors('Events')
                     ->pluck('event_id');
         
                 $query->whereIn('id', $eventIds);
