@@ -785,9 +785,9 @@ class FrontendConroller extends Controller
         
                 $query->whereIn('id', $eventIds);
             }
+            dd($eventIds);
         }
 
-        // dd($request->toArray());
 
         if ($request->filled('price_ranges')) {
             $price_ranges = is_array($request->price_ranges) ? $request->price_ranges : json_decode($request->price_ranges, true);
