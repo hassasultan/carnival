@@ -317,6 +317,7 @@
                                                 "992":{"items":3}
                                             }'
                                                 id="best-sell-div">
+                                                {{ dd($carnival->packageVendors('Events')->toArray()) }}
                                                 @foreach ($carnival->packageVendors('Events') as $item)
                                                     @php
                                                         $vendorLogo = $item->logo
