@@ -51,82 +51,14 @@
                         <div class="block-content">
                             <ul class="ui-categori">
                                 <li class="parent">
-                                    <a href="">
+                                    <a href="{{ route('front.vendor.detail', $subvendor->user->slug) }}">
                                         <span class="icon"><img
                                                 src="{{ asset('shopAssets/images/icon/index1/nav-cat1.png') }}"
                                                 alt="nav-cat"></span>
-                                        Electronics
+                                        {{ $subvendor->vendor->name ?? $subvendor->user->full_name }}
                                     </a>
-                                    <span class="toggle-submenu"></span>
-                                    <div class="submenu"
-                                        style="background-image: url({{ asset('shopAssets/images/media/index1/bgmenu.jpg') }});">
-                                        <ul class="categori-list clearfix">
-                                            <li class="col-sm-3">
-                                                <strong class="title"><a href="">Smartphone</a></strong>
-                                                <ul>
-                                                    <li><a href="">Skirts </a></li>
-                                                    <li><a href="">Jackets</a></li>
-                                                    <li><a href="">Jumpusuits</a></li>
-                                                    <li><a href="">Scarvest</a></li>
-                                                    <li><a href="">T-Shirts</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-sm-3">
-                                                <strong class="title"><a href="">TElevision</a></strong>
-                                                <ul>
-                                                    <li><a href="">Skirts </a></li>
-                                                    <li><a href="">Jackets</a></li>
-                                                    <li><a href="">Jumpusuits</a></li>
-                                                    <li><a href="">Scarvest</a></li>
-                                                    <li><a href="">T-Shirts</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-sm-3">
-                                                <strong class="title"><a href="">Camera</a></strong>
-                                                <ul>
-                                                    <li><a href="">Skirts </a></li>
-                                                    <li><a href="">Jackets</a></li>
-                                                    <li><a href="">Jumpusuits</a></li>
-                                                    <li><a href="">Scarvest</a></li>
-                                                    <li><a href="">T-Shirts</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <ul class="categori-list clearfix">
-                                            <li class="col-sm-3">
-                                                <strong class="title"><a href="">Smartphone</a></strong>
-                                                <ul>
-                                                    <li><a href="">Skirts </a></li>
-                                                    <li><a href="">Jackets</a></li>
-                                                    <li><a href="">Jumpusuits</a></li>
-                                                    <li><a href="">Scarvest</a></li>
-                                                    <li><a href="">T-Shirts</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-sm-3">
-                                                <strong class="title"><a href="">TElevision</a></strong>
-                                                <ul>
-                                                    <li><a href="">Skirts </a></li>
-                                                    <li><a href="">Jackets</a></li>
-                                                    <li><a href="">Jumpusuits</a></li>
-                                                    <li><a href="">Scarvest</a></li>
-                                                    <li><a href="">T-Shirts</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-sm-3">
-                                                <strong class="title"><a href="">Camera</a></strong>
-                                                <ul>
-                                                    <li><a href="">Skirts </a></li>
-                                                    <li><a href="">Jackets</a></li>
-                                                    <li><a href="">Jumpusuits</a></li>
-                                                    <li><a href="">Scarvest</a></li>
-                                                    <li><a href="">T-Shirts</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </li>
-                                <li class="parent">
+                                {{-- <li class="parent">
                                     <a href="">
                                         <span class="icon"><img
                                                 src="{{ asset('shopAssets/images/icon/index1/nav-cat2.png') }}"
@@ -378,7 +310,7 @@
                                                 alt="nav-cat"></span>
                                         Flashlights & Lamps
                                     </a>
-                                </li>
+                                </li> --}}
 
                             </ul>
 
