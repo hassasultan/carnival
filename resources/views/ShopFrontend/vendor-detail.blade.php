@@ -579,6 +579,7 @@
                                             id="best-sell-div">
                                             {{-- {{ dd($carnival->mascamps->toArray(), $carnival->members->toArray(), $carnival->user->products->toArray()) }} --}}
                                             @foreach ($carnival->mascamps as $item)
+                                                {{ dd($carnival->mascamps->toArray(), $item->toArray()) }}
                                                 @if ($item->package->title == 'Models')
                                                     <div class="product-item  product-item-opt-1 ">
                                                         <div class="product-item-info">
