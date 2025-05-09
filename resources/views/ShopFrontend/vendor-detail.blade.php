@@ -744,7 +744,7 @@
                                                     <div class="product-item product-item-opt-1">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
-                                                                <a class="product-item-img" href="{{ route('artist.detail', $item->user->slug) }}">
+                                                                <a class="product-item-img" href="{{ route('front.vendor.detail', $item->user->slug) }}">
                                                                     <img alt="product name" src="{{ $vendorLogo }}">
                                                                 </a>
                                                             </div>
