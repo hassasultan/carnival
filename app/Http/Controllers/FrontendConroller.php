@@ -500,6 +500,7 @@ class FrontendConroller extends Controller
                 'subvendors',
                 'user',
                 'musics',
+                'user',
                 'costumes'
             ));
         }
@@ -513,6 +514,7 @@ class FrontendConroller extends Controller
             'user',
             'investors',
             'carnival_commitee',
+            'user',
             'carnival'
         ));
     }

@@ -5308,7 +5308,7 @@
             </div>
         @endif
 
-        @include('front.home-template.our-partner')
+        @include('ShopFrontend.components.sponsers')
 
         <!-- block  showcase-->
         @include('partials.brand_showcase')
