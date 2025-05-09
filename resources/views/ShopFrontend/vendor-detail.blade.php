@@ -317,11 +317,12 @@
                                                 "992":{"items":3}
                                             }'
                                                 id="best-sell-div">
-                                                @foreach ($carnival->packageVendors('Events') as $item)
-                                                {{ dd($item->user->events->toArray()) }}
+                                                {{-- @foreach ($carnival->packageVendors('Events') as $item) --}}
+                                                @foreach ($carnival->user->events as $item)
+                                                {{-- {{ dd($item->user->events->toArray()) }} --}}
                                                     @php
                                                         $vendorLogo = $item->logo
-                                                            ? asset('images/' . $item->logo)
+                                                            ? asset('images/' . $item->banner)
                                                             : asset('images/' . $item->user->image);
                                                         $vendorName =
                                                             $item->name ?:
