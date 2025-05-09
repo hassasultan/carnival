@@ -472,6 +472,8 @@ class FrontendConroller extends Controller
 
         $carnival_com = Carnival::has('user')->pluck('head');
 
+        $all_categories = Category::with('subcategories')->where('status', 1)->get();
+
         $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
 
         if ($vendorPackageName === 'Artistes' || $subVendorPackageName === 'Artistes') {
