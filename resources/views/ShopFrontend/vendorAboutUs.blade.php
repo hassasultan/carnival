@@ -511,7 +511,9 @@
 
             </div>
         </div>
-
+        {{-- Sponsers --}}
+        @include('ShopFrontend.components.sponsers')
+        {{-- Sponsers --}}
 
     </main><!-- end MAIN -->
 @endsection
