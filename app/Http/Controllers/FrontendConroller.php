@@ -517,6 +517,7 @@ class FrontendConroller extends Controller
             'investors',
             'carnival_commitee',
             'user',
+            'all_categories',
             'carnival'
         ));
     }
