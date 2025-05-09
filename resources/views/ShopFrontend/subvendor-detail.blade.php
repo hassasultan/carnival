@@ -52,9 +52,6 @@
                             <ul class="ui-categori">
                                 <li class="parent">
                                     <a href="{{ route('front.vendor.detail', $subvendor->user->slug) }}">
-                                        <span class="icon"><img
-                                                src="{{ asset('shopAssets/images/icon/index1/nav-cat1.png') }}"
-                                                alt="nav-cat"></span>
                                         {{ $subvendor->vendor->name ?? $subvendor->user->full_name }}
                                     </a>
                                 </li>
@@ -314,9 +311,9 @@
 
                             </ul>
 
-                            <div class="view-all-categori">
+                            {{-- <div class="view-all-categori">
                                 <a class="open-cate btn-view-all">All Categories</a>
-                            </div>
+                            </div> --}}
                         </div>
 
                     </div><!-- categori -->
