@@ -596,6 +596,9 @@
                                                                             'shopAssets/images/media/product9.jpg',
                                                                         );
                                                                     }
+
+                                                                    $vendorName = $item->name ?:
+                                                                    $item->user->first_name . ' ' . $item->user->last_name;
                                                                 @endphp
                                                                 <a class="product-item-img" href=""><img
                                                                         alt="product name" src="{{ $image }}"></a>
@@ -615,7 +618,7 @@
                                                                 {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <span class="price">{{ $item->name }}</span>
+                                                                        <span class="price">{{ $vendorName }}</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
