@@ -5213,11 +5213,11 @@
                                         <div class="description"
                                             style="background-image: url({{ $category->icon ? asset($category->icon) : asset('shopAssets/images/media/index1/default-category.png') }})">
                                             <div class="title"><span>{{ $category->title }}</span></div>
-                                            <a href="{{ route('shop.category', $category->slug) }}" class="btn">shop now</a>
+                                            <a href="" class="btn">shop now</a>
                                         </div>
                                         <ul>
                                             @foreach ($category->subcategories as $subcategory)
-                                                <li><a href="{{ route('shop.subcategory', $subcategory->slug) }}">{{ $subcategory->title }}</a></li>
+                                                <li><a href="">{{ $subcategory->title }}</a></li>
                                             @endforeach
                                         </ul>
                                     </div>
