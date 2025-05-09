@@ -59,6 +59,10 @@ class SubVendor extends Model
     {
         return $this->belongsTo(Role::class, 'continent');
     }
+    public function region()
+    {
+        return $this->belongsTo(Region::class, 'continent');
+    }
 
     public function package()
     {

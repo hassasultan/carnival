@@ -387,6 +387,15 @@
                                             {{ optional($user->vendor)->address ?? (optional($user->subvendor)->address ?? 'N/A') }}
                                         </a>
                                     </div>
+
+                                    <div class="contact-item">
+                                        <span class="icon fas fa-map-marker-alt"></span>
+                                        <span class="text">Region:</span>
+                                        <a href=""
+                                            target="_blank" class="text">
+                                            {{ optional($user->vendor)->region->name ?? (optional($user->subvendor)->region->name ?? 'N/A') }}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
 
