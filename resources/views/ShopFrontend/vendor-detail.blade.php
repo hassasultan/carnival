@@ -599,7 +599,7 @@
                                                                     $vendorName = $item->name ?:
                                                                     $item->user->first_name . ' ' . $item->user->last_name;
                                                                 @endphp
-                                                                <a class="product-item-img" href=""><img
+                                                                <a class="product-item-img" href="{{ route('front.vendor.detail', $item->slug) }}"><img
                                                                         alt="product name" src="{{ $image }}"></a>
                                                                 {{-- <div class="product-item-actions">
                                                                     <a class="btn btn-wishlist"
@@ -678,7 +678,7 @@
                                                     <div class="product-item product-item-opt-1">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
-                                                                <a class="product-item-img" href="">
+                                                                <a class="product-item-img" href="{{ route('front.vendor.detail', $item->slug) }}">
                                                                     <img alt="product name" src="{{ $vendorLogo }}">
                                                                 </a>
                                                             </div>
@@ -744,7 +744,7 @@
                                                     <div class="product-item product-item-opt-1">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
-                                                                <a class="product-item-img" href="">
+                                                                <a class="product-item-img" href="{{ route('artist.detail', $item->slug) }}">
                                                                     <img alt="product name" src="{{ $vendorLogo }}">
                                                                 </a>
                                                             </div>
@@ -821,7 +821,7 @@
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $item->title }}</a></strong>
+                                                                    href="{{ route('get.products.detail', $item->slug) }}">{{ $item->title }}</a></strong>
                                                             <div class="clearfix">
                                                                 <div class="product-item-price">
                                                                     <span class="price">{{ $item->new_price }}</span>
@@ -877,7 +877,7 @@
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img
+                                                            <a class="product-item-img" href="{{ route('front.blog.detail', $item->id) }}"><img
                                                                     alt="product name"
                                                                     src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
                                                             {{-- <div class="product-item-actions">
