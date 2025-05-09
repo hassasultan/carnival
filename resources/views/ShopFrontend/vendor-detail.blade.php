@@ -580,7 +580,6 @@
                                             {{-- {{ dd($carnival->mascamps->toArray(), $carnival->members->toArray(), $carnival->user->products->toArray()) }} --}}
                                             @foreach ($carnival->mascamps as $item)
                                                 @if ($item->package->title == 'Models')
-                                                    {{ dd($item->toArray()) }}
                                                     <div class="product-item  product-item-opt-1 ">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
