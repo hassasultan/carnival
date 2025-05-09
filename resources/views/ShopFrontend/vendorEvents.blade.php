@@ -287,6 +287,8 @@
     <!-- Custom scripts -->
     <script>
         $(document).ready(function() {
+            var authUser = `{{ $user->id }}`;
+
             function fetchEvents(page = 1, selectedCategories = [], eventType = null, priceRanges = []) {
                 $('#event-listing').html('');
 
@@ -318,33 +320,36 @@
                     success: function(response) {
                         $('#event-listing').empty();
                         $.each(response.data, function(index, event) {
-                            var image = event.banner ? "{{ asset('eventBanner/') }}/" + event
-                                .banner :
-                                'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                            var href =
-                                "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}"
-                                .replace('event_slug_placeholder', event.slug);
-                            var eventHtml = `
-                        <li class="col-sm-4 event-item">
-                            <div class="event-item-opt-1">
-                                <div class="event-item-info">
-                                    <div class="event-item-photo">
-                                        <a href="${href}" class="event-item-img">
-                                            <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
-                                        </a>
-                                        <span class="event-item-label label-date">${event.start_date}</span>
-                                    </div>
-                                    <div class="event-item-detail">
-                                        <strong class="event-item-name"><a href="${href}">${event.name}</a></strong>
-                                        <div class="clearfix">
-                                            <div class="event-item-description">
-                                                <p>${event.description.substring(0, 100)}...</p>
+                            if (authUser == event.user_id) {
+                                var image = event.banner ? "{{ asset('eventBanner/') }}/" +
+                                    event
+                                    .banner :
+                                    'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                var href =
+                                    "{{ route('get.myEvent.detail', ['event_slug' => 'event_slug_placeholder']) }}"
+                                    .replace('event_slug_placeholder', event.slug);
+                                var eventHtml = `
+                                    <li class="col-sm-4 event-item">
+                                        <div class="event-item-opt-1">
+                                            <div class="event-item-info">
+                                                <div class="event-item-photo">
+                                                    <a href="${href}" class="event-item-img">
+                                                        <img style="width:200px;height:200px;" src="${image}" alt="${event.name}">
+                                                    </a>
+                                                    <span class="event-item-label label-date">${event.start_date}</span>
+                                                </div>
+                                                <div class="event-item-detail">
+                                                    <strong class="event-item-name"><a href="${href}">${event.name}</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="event-item-description">
+                                                            <p>${event.description.substring(0, 100)}...</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>`;
+                                    </li>`;
+                            }
                             $('#event-listing').append(eventHtml);
                         });
 
@@ -353,18 +358,18 @@
                         if (response.current_page > 1) {
                             $('.pagination').append(
                                 `<li class="action"><a href="#" data-page="${response.current_page - 1}"><i class="fa fa-angle-left"></i></a></li>`
-                                );
+                            );
                         }
                         for (let i = 1; i <= response.last_page; i++) {
                             let activeClass = i === response.current_page ? 'active' : '';
                             $('.pagination').append(
                                 `<li class="${activeClass}"><a href="#" data-page="${i}">${i}</a></li>`
-                                );
+                            );
                         }
                         if (response.current_page < response.last_page) {
                             $('.pagination').append(
                                 `<li class="action"><a href="#" data-page="${response.current_page + 1}"><i class="fa fa-angle-right"></i></a></li>`
-                                );
+                            );
                         }
                     },
                     error: function(xhr, status, error) {
@@ -423,7 +428,7 @@
 
                 fetchEvents(1, selectedCategories, eventType, priceRanges);
             });
-            
+
             $(document).on('click', '.pagination a', function(e) {
                 e.preventDefault();
                 var page = $(this).data('page');
