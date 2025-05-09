@@ -599,7 +599,7 @@
                                                                     $vendorName = $item->name ?:
                                                                     $item->user->first_name . ' ' . $item->user->last_name;
                                                                 @endphp
-                                                                <a class="product-item-img" href="{{ route('front.vendor.detail', $item->slug) }}"><img
+                                                                <a class="product-item-img" href="{{ route('front.vendor.detail', $item->user->slug) }}"><img
                                                                         alt="product name" src="{{ $image }}"></a>
                                                                 {{-- <div class="product-item-actions">
                                                                     <a class="btn btn-wishlist"
@@ -678,7 +678,7 @@
                                                     <div class="product-item product-item-opt-1">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
-                                                                <a class="product-item-img" href="{{ route('front.vendor.detail', $item->slug) }}">
+                                                                <a class="product-item-img" href="{{ route('front.vendor.detail', $item->user->slug) }}">
                                                                     <img alt="product name" src="{{ $vendorLogo }}">
                                                                 </a>
                                                             </div>
