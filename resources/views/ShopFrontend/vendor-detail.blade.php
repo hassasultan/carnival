@@ -877,7 +877,7 @@
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href="{{ route('front.blog.detail', $item->id) }}"><img
+                                                            <a class="product-item-img" href="{{ route('front.blog.detail', $item->slug) }}"><img
                                                                     alt="product name"
                                                                     src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
                                                             {{-- <div class="product-item-actions">
