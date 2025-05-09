@@ -5204,7 +5204,8 @@
                     <span class="title">Hot categories</span>
                 </div>
 
-                {{-- <div class="block-content">
+                {{ dd($categories->toArray()) }}
+                <div class="block-content">
                     <div class="row">
                         @foreach ($categories->chunk(2) as $categoryChunk)
                             <div class="col-md-3 col-sm-6">
@@ -5225,9 +5226,9 @@
                             </div>
                         @endforeach
                     </div>
-                </div> --}}
+                </div>
                 
-                <div class="block-content">
+                {{-- <div class="block-content">
                     <div class="row">
                         <div class="col-md-3 col-sm-6">
                             <div class="item">
@@ -5343,7 +5344,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div><!--block  hot categories-->
