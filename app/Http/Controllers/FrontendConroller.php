@@ -73,7 +73,7 @@ class FrontendConroller extends Controller
         $blogs = Blogs::with('user')->orderBy('id', 'DESC')->get()->take('3');
         $products = Product::with('brand')->get();
         $carnival_com = Carnival::has('user')->pluck('head');
-        $ourTeam = OurTeam::orderBy('id', 'DESC')->take(3)->get();
+        $ourTeam = OurTeam::orderBy('id', 'DESC')->take(6)->get();
         $faqs = FAQPage::where('status', 1)->where('page', 'AboutUs')->get();
         $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
 
