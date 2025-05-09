@@ -126,7 +126,7 @@
                                             <span class="icon"><img
                                                     src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
                                                     alt="nav-cat"></span>
-                                            {{ $row->user->first_name . ' ' . $row->user->last_name }}
+                                            {{ $row->name ?? $row->user->first_name . ' ' . $row->user->last_name }}
                                         </a>
                                     </li>
                                 @endforeach
