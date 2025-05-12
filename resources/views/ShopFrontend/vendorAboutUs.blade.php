@@ -396,6 +396,14 @@
                                             {{ optional($user->vendor)->region->name ?? (optional($user->subvendor)->region->name ?? 'N/A') }}
                                         </a>
                                     </div>
+                                    <div class="contact-item">
+                                        {{-- <span class="icon fas fa-map-marker-alt"></span> --}}
+                                        <span class="text">Bio:</span>
+                                        <a href=""
+                                            target="_blank" class="text">
+                                            {{ optional($user->vendor)->short_description ?? (optional($user->subvendor)->short_description ?? 'N/A') }}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
 
