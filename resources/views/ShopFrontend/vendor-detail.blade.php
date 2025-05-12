@@ -599,7 +599,7 @@
                                                                     $vendorName = $item->name ?:
                                                                     $item->user->first_name . ' ' . $item->user->last_name;
                                                                 @endphp
-                                                                <a class="product-item-img" href="{{ route('front.vendor.detail', $item->user->slug) }}"><img
+                                                                <a class="product-item-img" href="{{ route('details.aboutUs', $item->user->slug) }}"><img
                                                                         alt="product name" src="{{ $image }}"></a>
                                                                 {{-- <div class="product-item-actions">
                                                                     <a class="btn btn-wishlist"
@@ -5227,7 +5227,7 @@
                         @endforeach
                     </div>
                 </div>
-                
+
                 {{-- <div class="block-content">
                     <div class="row">
                         <div class="col-md-3 col-sm-6">
