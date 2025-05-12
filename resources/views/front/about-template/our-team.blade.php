@@ -10,7 +10,7 @@
 		</div>
 		<div class="row">
 			@foreach ($ourTeam as $team)
-			<div class="col-xs-12 col-sm-2">
+			<div class="col-xs-12 col-sm-4">
 				<div class="team-entry">
 				  <div class="image" style="height:250px;">
 				  	<img class="team-img img-responsive" src="{{ asset('ourTeam/' . $team->image) }}" alt="">
