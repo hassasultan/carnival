@@ -43,7 +43,7 @@
         border-radius: 5px;
     }
 </style>
-<div class="main-wraper content-area-start">
+<div class="main-wraper content-area-start" style="margin-top: 8rem;">
     <div class="container clearfix contry-wrapp">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-3">
