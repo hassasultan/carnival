@@ -47,6 +47,7 @@
         data-lg-slides="5" data-add-slides="6">
         <div class="swiper-wrapper">
             @foreach ($carnival_commitee as $row)
+                {{ dd($carnival_commitee->toArray(), $row->toArray()) }}
                 <div class="swiper-slide text-center">
                     <div class="partner-entry">
                         <a href="{{ route('front.vendor.detail', $row->user->slug) }}"><img class="img-responsive" style="height: 91px; width:115px;"  src="{{ asset("images/" . $row->logo) }}"
