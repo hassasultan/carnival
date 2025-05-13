@@ -484,7 +484,7 @@ class CarnivalController extends Controller
             ->whereIn('id', $userIds)
             ->get();
 
-        dd($head_team->toArray());
+        // dd($head_team->toArray());
 
         return response()->json(['head_team' => $head_team]);
     }
