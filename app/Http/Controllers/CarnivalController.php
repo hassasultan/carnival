@@ -12,6 +12,7 @@ use App\Models\CarnivalImages;
 use App\Models\CarnivalBannerImages;
 use App\Models\City;
 use App\Models\Package;
+use App\Models\SubVendor;
 use App\Models\CarnivalFlyerImages;
 use Exception;
 use Illuminate\Http\Request;
@@ -470,10 +471,19 @@ class CarnivalController extends Controller
 
     public function head_team($id)
     {
-        $head_team = User::where('carnival_id', 0)
-            ->where('packageName', 'Carnival Committees')
+        $vendors = Vendor::where('package_id', 6)
+            ->pluck('user_id');
+        $subvendors = SubVendor::whereHas('vendor', function ($query) {
+            $query->where('package_id', 6);
+        })->pluck('user_id');
+
+        $userIds = array_unique(array_merge($vendorIds, $subvendorIds));
+
+        $head_team = User::whereIn('id', $userIds)
+            ->where('carnival_id', 0)
             ->doesntHave('isCustomer')
             ->get();
+
         dd($head_team->toArray());
 
         return response()->json(['head_team' => $head_team]);
