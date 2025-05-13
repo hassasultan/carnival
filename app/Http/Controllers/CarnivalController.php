@@ -477,7 +477,7 @@ class CarnivalController extends Controller
             $query->where('package_id', 6);
         })->pluck('user_id');
 
-        $userIds = array_unique(array_merge($vendorIds, $subvendorIds));
+        $userIds = array_unique(array_merge($vendors, $subvendors));
 
         $head_team = User::whereIn('id', $userIds)
             ->where('carnival_id', 0)
