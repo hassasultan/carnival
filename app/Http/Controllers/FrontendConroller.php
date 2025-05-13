@@ -1070,8 +1070,9 @@ class FrontendConroller extends Controller
     {
         $vendor_type = $request->get('vendor_type', null);
         $regionId = $request->get('getRegion');
+        $carnival_commitee2 = Carnival::has('user')->get();
         $carnival_commitee = Carnival::has('user')->pluck('head');
-        dd($carnival_commitee->toArray());
+        dd($carnival_commitee->toArray(), $carnival_commitee2->toArray());
 
         $query = Vendor::query()
             ->whereIn('user_id', $carnival_commitee)
