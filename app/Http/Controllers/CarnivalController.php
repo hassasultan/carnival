@@ -471,7 +471,7 @@ class CarnivalController extends Controller
     public function head_team($id)
     {
         $head_team = User::where('carnival_id', 0)
-            ->where('packageName', 3)
+            ->where('packageName', 'Carnival Committees')
             ->doesntHave('isCustomer')
             ->get();
         dd($head_team->toArray());
