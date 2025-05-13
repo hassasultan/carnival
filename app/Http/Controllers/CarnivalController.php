@@ -474,7 +474,7 @@ class CarnivalController extends Controller
             ->where('packageName', 3)
             ->doesntHave('isCustomer')
             ->get();
-        // dd($head_team->count());
+        dd($head_team->toArray());
 
         return response()->json(['head_team' => $head_team]);
     }
