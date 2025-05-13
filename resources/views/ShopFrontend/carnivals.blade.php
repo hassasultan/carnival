@@ -392,7 +392,6 @@
                             </li>
                         `;
                         $('.pagination').append(nextPageHtml);
-
                     },
                     error: function(xhr, status, error) {
                         console.error(error);
@@ -404,11 +403,8 @@
 
             $(document).on('click', '#getSearchVal', function(e) {
                 e.preventDefault();
-
                 var val = $('input[name="searchVal"]').val();
-
                 getSearchVal = val;
-
                 fetchProducts();
             });
 
@@ -432,33 +428,20 @@
                 - - - - - - - - - - - - - - - - - - - - */
 
                 $('#slider-range').slider({
-
                     range: true,
-
                     min: 0,
-
                     max: 500,
-
                     values: [0, 300],
-
                     slide: function(event, ui) {
-
                         $('#amount-left').text(ui.values[0]);
                         $('#amount-right').text(ui.values[1]);
-
                     }
-
                 });
 
                 $('#amount-left').text($('#slider-range').slider('values', 0));
-
                 $('#amount-right').text($('#slider-range').slider('values', 1));
             });
 
         })(jQuery);
-    </script>
-
-    <script>
-        $(document).ready(function() {});
     </script>
 @endsection
