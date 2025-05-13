@@ -469,22 +469,40 @@ class CarnivalController extends Controller
         return Str::random(16);
     }
 
+    // public function head_team($id)
+    // {
+    //     $vendors = Vendor::where('package_id', 6)
+    //         ->pluck('user_id')->toArray();
+    //     $subvendors = SubVendor::whereHas('vendor', function ($query) {
+    //         $query->where('package_id', 6);
+    //     })->pluck('user_id')->toArray();
+
+    //     $userIds = array_unique(array_merge($vendors, $subvendors));
+
+    //     $head_team = User::where('carnival_id', 0)
+    //         ->doesntHave('isCustomer')
+    //         ->whereIn('id', $userIds)
+    //         ->get();
+
+    //     // dd($head_team->toArray());
+
+    //     return response()->json(['head_team' => $head_team]);
+    // }
+
     public function head_team($id)
     {
-        $vendors = Vendor::where('package_id', 6)
-            ->pluck('user_id')->toArray();
+        $vendors = Vendor::where('package_id', 6)->pluck('user_id')->toArray();
+
         $subvendors = SubVendor::whereHas('vendor', function ($query) {
             $query->where('package_id', 6);
         })->pluck('user_id')->toArray();
 
         $userIds = array_unique(array_merge($vendors, $subvendors));
 
-        $head_team = User::where('carnival_id', 0)
+        $head_team = User::whereIn('id', $userIds)
+            ->where('carnival_id', 0)
             ->doesntHave('isCustomer')
-            ->whereIn('id', $userIds)
             ->get();
-
-        // dd($head_team->toArray());
 
         return response()->json(['head_team' => $head_team]);
     }
