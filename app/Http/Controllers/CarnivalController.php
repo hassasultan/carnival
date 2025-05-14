@@ -500,6 +500,7 @@ class CarnivalController extends Controller
         $userIds = array_unique(array_merge($vendors, $subvendors));
 
         $head_team = User::whereIn('id', $userIds)
+            ->with('vendor', 'subVendor')
             ->where('carnival_id', 0)
             ->doesntHave('isCustomer')
             ->get();
