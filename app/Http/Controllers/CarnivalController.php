@@ -499,10 +499,7 @@ class CarnivalController extends Controller
 
         // $userIds = array_unique(array_merge($vendors, $subvendors));
 
-        $head_team = User::whereIn('id', $vendors)
-            ->where('carnival_id', 0)
-            ->doesntHave('isCustomer')
-            ->get();
+        $head_team = "";
 
         return response()->json(['head_team' => $head_team]);
     }
