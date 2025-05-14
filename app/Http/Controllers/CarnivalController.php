@@ -493,13 +493,13 @@ class CarnivalController extends Controller
     {
         $vendors = Vendor::where('package_id', 6)->pluck('user_id')->toArray();
 
-        $subvendors = SubVendor::whereHas('vendor', function ($query) {
-            $query->where('package_id', 6);
-        })->pluck('user_id')->toArray();
+        // $subvendors = SubVendor::whereHas('vendor', function ($query) {
+        //     $query->where('package_id', 6);
+        // })->pluck('user_id')->toArray();
 
-        $userIds = array_unique(array_merge($vendors, $subvendors));
+        // $userIds = array_unique(array_merge($vendors, $subvendors));
 
-        $head_team = User::whereIn('id', $userIds)
+        $head_team = User::whereIn('id', $vendors)
             ->where('carnival_id', 0)
             ->doesntHave('isCustomer')
             ->get();
