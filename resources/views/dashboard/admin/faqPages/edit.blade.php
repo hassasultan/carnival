@@ -9,7 +9,7 @@
                     <strong class="card-title">FAQ Information</strong>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('faqs_page.update') }}">
+                    <form method="POST" action="{{ route('faqs_page.update', $faq->id) }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
