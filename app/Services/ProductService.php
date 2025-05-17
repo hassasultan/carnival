@@ -140,6 +140,7 @@ class ProductService
             'extra' => $data['extra'] ?? null,
             'guarantee' => $data['guarantee'] ?? null,
             'image' => $data['image'] ?? null,
+            'brand_id' => $data['brand_id'] ?? null,
         ];
 
         return $productData;

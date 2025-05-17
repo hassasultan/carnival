@@ -36,7 +36,8 @@ class ProductController extends Controller
     {
         $variants = Variant::all();
         $categories = Category::all();
-        return view('dashboard.admin.products.create', compact('categories', 'variants'));
+        $brands = Category::all();
+        return view('dashboard.admin.products.create', compact('categories', 'variants', 'brands'));
     }
 
     public function store(Request $request)

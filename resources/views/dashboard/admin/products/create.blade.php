@@ -28,6 +28,15 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="brand">Brand</label>
+                            <select class="form-control brand" id="brand" name="brand_id" required>
+                                <option value="">Select brand</option>
+                                @foreach ($brands as $brand)
+                                    <option value="{{ $brand->id }}">{{ $brand->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group" style="display: none;">
                             <label for="subcategory">Subcategory</label>
                             <select class="form-control" id="subcategory" name="subcategory_id" required>

@@ -55,9 +55,9 @@
                                             <span class="text-muted sr-only">Action</span>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right shadow">
-                                            <a class="dropdown-item" href="{{ route('faqs.edit', $faq->id) }}"><i
+                                            <a class="dropdown-item" href="{{ route('faqs_page.edit', $faq->id) }}"><i
                                                     class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>
-                                            <form action="{{ route('faqs.destroy', $faq->id) }}" method="POST">
+                                            <form action="{{ route('faqs_page.destroy', $faq->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="dropdown-item"><i
