@@ -11,6 +11,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('faqs_page.update', $faq->id) }}">
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
