@@ -413,7 +413,6 @@
                                             </div>
                                         @endif
 
-                                        @if (!empty($user->designation) || !empty($user->bio_description))
                                             <div class="contact-item">
                                                 @if (!empty($user->designation))
                                                     <div class="contact-item">
@@ -431,7 +430,6 @@
                                                     </div>
                                                 @endif
                                             </div>
-                                        @endif
                                     </div>
                                     <div class="ovic-share-socials" style="margin-top: 15px;">
                                         <div class="inner">
