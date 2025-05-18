@@ -1023,4 +1023,20 @@
             setInterval(updateCountdown, 1000);
         }); --}}
     </script>
+    
+    <script>
+        $(document).ready(function() {
+            $(".see-more").click(function() {
+                $(this).hide();
+                $(this).siblings(".about-text").hide();
+                $(this).siblings(".full-text").show();
+            });
+
+            $(".see-less").click(function() {
+                $(this).parent(".full-text").hide();
+                $(this).parent().siblings(".about-text").show();
+                $(this).parent().siblings(".see-more").show();
+            });
+        });
+    </script>
 @endsection
