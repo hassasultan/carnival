@@ -323,7 +323,7 @@
                                                 "480":{"items":2},
                                                 "480":{"items":2},
                                                 "768":{"items":3},
-                                                "992":{"items":3}
+                                                "992":{"items":4}
                                             }'
                                                 id="best-sell-div">
                                                 {{-- @foreach ($carnival->packageVendors('Events') as $item) --}}
@@ -511,7 +511,7 @@
                                                     "480":{"items":2},
                                                     "480":{"items":2},
                                                     "768":{"items":3},
-                                                    "992":{"items":3}
+                                                    "992":{"items":4}
                                                 }'
                                             id="best-sell-div">
 
@@ -583,7 +583,7 @@
                                                 "480":{"items":2},
                                                 "480":{"items":2},
                                                 "768":{"items":3},
-                                                "992":{"items":3}
+                                                "992":{"items":4}
                                             }'
                                             id="best-sell-div">
                                             {{-- {{ dd($carnival->mascamps->toArray(), $carnival->members->toArray(), $carnival->user->products->toArray()) }} --}}
@@ -672,7 +672,7 @@
                                                 "480":{"items":2},
                                                 "480":{"items":2},
                                                 "768":{"items":3},
-                                                "992":{"items":3}
+                                                "992":{"items":4}
                                             }'
                                                 id="best-sell-div">
                                                 @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
@@ -738,7 +738,7 @@
                                                 "480":{"items":2},
                                                 "480":{"items":2},
                                                 "768":{"items":3},
-                                                "992":{"items":3}
+                                                "992":{"items":4}
                                             }'
                                                 id="best-sell-div">
                                                 @foreach ($carnival->packageVendors('Artistes') as $item)
@@ -804,7 +804,7 @@
                                                     "480":{"items":2},
                                                     "480":{"items":2},
                                                     "768":{"items":3},
-                                                    "992":{"items":3}
+                                                    "992":{"items":4}
                                                 }'
                                             id="best-sell-div">
 
@@ -877,7 +877,7 @@
                                                     "480":{"items":2},
                                                     "480":{"items":2},
                                                     "768":{"items":3},
-                                                    "992":{"items":3}
+                                                    "992":{"items":4}
                                                 }'
                                             id="best-sell-div">
 
@@ -960,7 +960,7 @@
                             "480":{"items":2},
                             "480":{"items":2},
                             "768":{"items":3},
-                            "992":{"items":3}
+                            "992":{"items":4}
                         }'
                                         id="best-sell-div">
 
@@ -1157,7 +1157,7 @@
                             "480":{"items":2},
                             "480":{"items":2},
                             "768":{"items":3},
-                            "992":{"items":3}
+                            "992":{"items":4}
                         }'
                                         id="on-sell-div">
 
@@ -1351,7 +1351,7 @@
                             "480":{"items":2},
                             "480":{"items":2},
                             "768":{"items":3},
-                            "992":{"items":3}
+                            "992":{"items":4}
                         }'
                                         id="new-product-div">
 
@@ -1742,7 +1742,7 @@
                             "420":{"items":2},
                             "600":{"items":3},
                             "768":{"items":3},
-                            "992":{"items":3},
+                            "992":{"items":4},
                             "1200":{"items":4}
                         }'
                                         id="best-seller-floor">
@@ -1946,7 +1946,7 @@
                             "420":{"items":2},
                             "600":{"items":3},
                             "768":{"items":3},
-                            "992":{"items":3},
+                            "992":{"items":4},
                             "1200":{"items":4}
                         }'>
                                         <div class=" product-item  product-item-opt-1 ">
@@ -2149,7 +2149,7 @@
                             "420":{"items":2},
                             "600":{"items":3},
                             "768":{"items":3},
-                            "992":{"items":3},
+                            "992":{"items":4},
                             "1200":{"items":4}
                         }'
                                         id="new-arrival-products">
@@ -2354,7 +2354,7 @@
                                 "420":{"items":2},
                                 "600":{"items":3},
                                 "768":{"items":3},
-                                "992":{"items":3},
+                                "992":{"items":4},
                                 "1200":{"items":4}
                             }'
                                             id="vendors-cat-div-{{ $row->id }}">
@@ -2668,7 +2668,7 @@
                                 "420":{"items":2},
                                 "600":{"items":3},
                                 "768":{"items":3},
-                                "992":{"items":3},
+                                "992":{"items":4},
                                 "1200":{"items":4}
                             }'
                                             id="best-seller-subvendor-{{ $row->id }}">
@@ -2875,7 +2875,7 @@
                                 "420":{"items":2},
                                 "600":{"items":3},
                                 "768":{"items":3},
-                                "992":{"items":3},
+                                "992":{"items":4},
                                 "1200":{"items":4}
                             }'
                                             id="most-viwed-subvendor-{{ $row->id }}">
@@ -3082,7 +3082,7 @@
                                 "420":{"items":2},
                                 "600":{"items":3},
                                 "768":{"items":3},
-                                "992":{"items":3},
+                                "992":{"items":4},
                                 "1200":{"items":4}
                             }'
                                             id="new-arrival-subvendor-{{ $row->id }}">
@@ -3292,7 +3292,7 @@
                                 "420":{"items":2},
                                 "600":{"items":3},
                                 "768":{"items":3},
-                                "992":{"items":3},
+                                "992":{"items":4},
                                 "1200":{"items":4}
                             }'id="vendors-subcat-div-{{ $subCategory['id'] }}">
                                                 <div class="product-item  product-item-opt-1 ">
@@ -3499,7 +3499,7 @@
                                 "420":{"items":2},
                                 "600":{"items":3},
                                 "768":{"items":3},
-                                "992":{"items":3},
+                                "992":{"items":4},
                                 "1200":{"items":4}
                             }'>
                                             <div class="product-item  product-item-opt-1 ">
@@ -3705,7 +3705,7 @@
                                 "420":{"items":2},
                                 "600":{"items":3},
                                 "768":{"items":3},
-                                "992":{"items":3},
+                                "992":{"items":4},
                                 "1200":{"items":4}
                             }'>
                                             <div class="product-item  product-item-opt-1 ">
@@ -3911,7 +3911,7 @@
                                 "420":{"items":2},
                                 "600":{"items":3},
                                 "768":{"items":3},
-                                "992":{"items":3},
+                                "992":{"items":4},
                                 "1200":{"items":4}
                             }'>
                                             <div class="product-item  product-item-opt-1 ">
@@ -4174,7 +4174,7 @@
                             "420":{"items":2},
                             "600":{"items":3},
                             "768":{"items":3},
-                            "992":{"items":3},
+                            "992":{"items":4},
                             "1200":{"items":4}
                         }'>
                             <div class=" product-item  product-item-opt-1 ">
@@ -4342,7 +4342,7 @@
                             "420":{"items":2},
                             "600":{"items":3},
                             "768":{"items":3},
-                            "992":{"items":3},
+                            "992":{"items":4},
                             "1200":{"items":4}
                         }'>
                             <div class=" product-item  product-item-opt-1 ">
@@ -4510,7 +4510,7 @@
                             "420":{"items":2},
                             "600":{"items":3},
                             "768":{"items":3},
-                            "992":{"items":3},
+                            "992":{"items":4},
                             "1200":{"items":4}
                         }'>
                             <div class=" product-item  product-item-opt-1 ">
@@ -4678,7 +4678,7 @@
                             "420":{"items":2},
                             "600":{"items":3},
                             "768":{"items":3},
-                            "992":{"items":3},
+                            "992":{"items":4},
                             "1200":{"items":4}
                         }'>
                             <div class=" product-item  product-item-opt-1 ">
@@ -4846,7 +4846,7 @@
                             "420":{"items":2},
                             "600":{"items":3},
                             "768":{"items":3},
-                            "992":{"items":3},
+                            "992":{"items":4},
                             "1200":{"items":4}
                         }'>
                             <div class=" product-item  product-item-opt-1 ">
@@ -5014,7 +5014,7 @@
                             "420":{"items":2},
                             "600":{"items":3},
                             "768":{"items":3},
-                            "992":{"items":3},
+                            "992":{"items":4},
                             "1200":{"items":4}
                         }'>
                             <div class=" product-item  product-item-opt-1 ">
