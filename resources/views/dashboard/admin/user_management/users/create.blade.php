@@ -346,7 +346,7 @@
                 <h2 class="mt-5 mb-3">Shop Details</h2>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="shop_name">Name <span class="text-danger">*</span></label>
+                        <label for="shop_name">Shop Name <span class="text-danger">*</span></label>
                         <input id="shop_name" type="text"
                             class="form-control @error('shop_name') is-invalid @enderror" name="shop_name"
                             value="{{ old('shop_name') }}" required autocomplete="shop_name">

@@ -255,6 +255,7 @@ class FrontendConroller extends Controller
         $vendor_type = $request->get('vendor_type', null);
         $regionId = $request->get('getRegion');
         $getSearchVal = $request->get('getSearchVal');
+        $getGender = $request->get('getGender');
 
 
         $carnival_com = Carnival::has('user')->pluck('head');
@@ -294,6 +295,12 @@ class FrontendConroller extends Controller
                     $query->where('first_name', 'like', "%$getSearchVal%")
                         ->orWhere('last_name', 'like', "%$getSearchVal%");
                 });
+        }
+
+        if ($getGender) {
+            $query->WhereHas('user', function ($query) use ($getGender) {
+                $query->where('gender', $getGender);
+            });
         }
         // dd($previous_route, $request->toArray());
 

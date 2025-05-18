@@ -20,22 +20,6 @@
 
                 <!-- Main Content -->
                 <div class="col-md-9 col-md-push-3  col-main">
-
-                    <!-- images categori -->
-                    {{-- <div class="category-view">
-                        <div class="owl-carousel " data-nav="true" data-dots="false" data-margin="0" data-items='1'
-                            data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
-                            <div class="item ">
-                                <a href=""><img src="{{ asset('shopAssets/images/media/category-images1.jpg') }}"
-                                        alt="category-images"></a>
-                            </div>
-                            <div class="item ">
-                                <a href=""><img src="{{ asset('shopAssets/images/media/category-images2.jpg') }}"
-                                        alt="category-images"></a>
-                            </div>
-                        </div>
-                    </div><!-- images categori --> --}}
-
                     <div class="category-view">
                         <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0" data-items='1'
                             data-autoplayTimeout="700" data-autoplay="true" data-loop="true">
@@ -51,13 +35,6 @@
 
                     <!-- link categori -->
                     <ul class="category-links">
-                        {{-- <li class="current-cate"><a href="">Caribbean</a></li>
-                        <li><a href="">North America</a></li>
-                        <li><a href="">South America</a></li>
-                        <li><a href="">Europe</a></li>
-                        <li><a href="">Africa</a></li>
-                        <li><a href="">Asia</a></li>
-                        <li><a href="">Australia</a></li> --}}
                         @foreach ($regions as $region)
                             <li>
                                 <a class="getWithRegion" href="javascript:void(0)">
@@ -72,6 +49,12 @@
                     <div>
                         <form>
                             <input type="text" name="searchValName" fdprocessedid="3rmjh">
+                            <select name="gender" id="genderFilter">
+                                <option value="">-- Select Gender --</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="others">Other</option>
+                            </select>
                             <button fdprocessedid="l2xg94" id="getSearchVal">Search</button>
                         </form>
                     </div>
@@ -103,34 +86,6 @@
                     <!-- List Products -->
                     <div class="products  products-grid">
                         <ol class="product-items row product-listing" id="product-listing">
-                            {{-- <li class="col-sm-4 product-item ">
-                                <div class="product-item-opt-1">
-                                    <div class="product-item-info">
-                                        <div class="product-item-photo">
-                                            <a href="" class="product-item-img"><img
-                                                    src="{{ asset('shopAssets/images/media/product9.jpg') }}"
-                                                    alt="product name"></a>
-                                        </div>
-                                        <div class="product-item-detail">
-                                            <strong class="product-item-name"><a href="">Vendor Name</a></strong>
-                                            <div class="clearfix">
-                                                <div class="product-item-price">
-                                                    <span class="price">$45.00-$500</span>
-                                                </div>
-                                                <div class="product-reviews-summary">
-                                                    <div class="rating-summary">
-                                                        <div class="rating-result" title="80%">
-                                                            <span style="width:80%">
-                                                                <span><span>80</span>% of <span>100</span></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> --}}
                         </ol><!-- list product -->
                     </div> <!-- List Products -->
 
@@ -277,8 +232,6 @@
                 </div>
             </div>
         </div><!-- block-brand -->
-
-
     </main><!-- end MAIN -->
 @endsection
 
@@ -287,6 +240,7 @@
         $(document).ready(function() {
             var getRegion = '';
             var getSearchVal = '';
+            var getGender = '';
 
             $(document).on('click', '.getWithRegion', function() {
                 var region = $(this).find($('.region_name')).val();
@@ -319,7 +273,8 @@
                         page: page,
                         vendor_type: 'Models',
                         getRegion: getRegion,
-                        getSearchVal: getSearchVal // Added searchVal to the request
+                        getSearchVal: getSearchVal,
+                        getGender: getGender,
                     },
                     success: function(response) {
                         console.log(response);
@@ -404,7 +359,8 @@
 
             $(document).on('click', '#getSearchVal', function(e) {
                 e.preventDefault();
-                getSearchVal = $('input[name="searchValName"]').val(); // Get value from input field
+                getGender = $('#genderFilter"]').val();
+                getSearchVal = $('input[name="searchValName"]').val();
                 fetchProducts();
             });
         });
@@ -412,43 +368,23 @@
 
     <script>
         (function($) {
-
             "use strict";
-
             $(document).ready(function() {
-
-                /*  [ Filter by price ]
-
-                - - - - - - - - - - - - - - - - - - - - */
-
                 $('#slider-range').slider({
-
                     range: true,
-
                     min: 0,
-
                     max: 500,
-
                     values: [0, 300],
 
                     slide: function(event, ui) {
-
                         $('#amount-left').text(ui.values[0]);
                         $('#amount-right').text(ui.values[1]);
-
                     }
-
                 });
 
                 $('#amount-left').text($('#slider-range').slider('values', 0));
-
                 $('#amount-right').text($('#slider-range').slider('values', 1));
             });
-
         })(jQuery);
-    </script>
-
-    <script>
-        $(document).ready(function() {});
     </script>
 @endsection
