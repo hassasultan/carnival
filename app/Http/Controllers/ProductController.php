@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Variant;
+use App\Models\Brand;
 use App\Traits\ImageTrait;
 use App\Models\ProductVariantImage;
 use App\Models\ProductVariant;
@@ -36,7 +37,7 @@ class ProductController extends Controller
     {
         $variants = Variant::all();
         $categories = Category::all();
-        $brands = Category::all();
+        $brands = Brand::all();
         return view('dashboard.admin.products.create', compact('categories', 'variants', 'brands'));
     }
 
@@ -90,7 +91,8 @@ class ProductController extends Controller
         $variants = Variant::where('category_id', $product->category_id)->get();
         $selectedVariants = $product->variants->pluck('id')->toArray();
         $subcat = Subcategory::where('category_id', $product->category_id)->get();
-        return view('dashboard.admin.products.edit', compact('product', 'categories', 'variants', 'subcat', 'selectedVariants'));
+        $brands = Brand::all();
+        return view('dashboard.admin.products.edit', compact('product', 'categories', 'variants', 'subcat', 'selectedVariants', 'brands'));
     }
     
     public function update(Request $request, $id)
