@@ -486,7 +486,7 @@
                 @endif
                 @if (count($carnival->members) > 0)
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-12">
 
                             <!-- block tab products -->
                             <div class="block-tab-products-opt1">
@@ -558,7 +558,7 @@
                     </div>
                 @endif
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         @if (count($carnival->mascamps) > 0)
                             <!-- block tab products -->
                             <div class="block-tab-products-opt1">
@@ -647,7 +647,7 @@
                 </div>
                 @if (count($carnival->packageVendors('MasBands - Leader')) > 0)
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             @if (count($carnival->mascamps) > 0)
                                 <!-- block tab products -->
                                 <div class="block-tab-products-opt1">
@@ -713,7 +713,7 @@
                 @endif
                 @if (count($carnival->packageVendors('Artistes')) > 0)
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             @if (count($carnival->mascamps) > 0)
                                 <!-- block tab products -->
                                 <div class="block-tab-products-opt1">
@@ -779,7 +779,7 @@
                 @endif
                 @if (count($carnival->user->products) > 0)
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-12">
 
                             <!-- block tab products -->
                             <div class="block-tab-products-opt1">
@@ -853,7 +853,7 @@
                 @endif
                 @if (count($carnival->user->blogs) > 0)
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-12">
 
                             <!-- block tab products -->
                             <div class="block-tab-products-opt1">
