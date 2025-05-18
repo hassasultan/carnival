@@ -34,21 +34,21 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="brand">Brand</label>
-                            <select class="form-control brand" id="brand" name="brand_id" required>
-                                <option value="">Select brand</option>
-                                @foreach ($brands as $brand)
-                                    <option value="{{ $brand->id }}" @if ($brand->id == $product->brand_id) selected @endif>{{ $brand->title }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="subcategory">Subcategory</label>
                             <select class="form-control" id="subcategory" name="subcategory_id" required>
                                 <option value="">Select Subcategory</option>
                                 @foreach ($subcat as $row)
                                     <option value="{{ $row->id }}" @if ($row->id == $product->subcategory_id) selected @endif>
                                         {{ $row->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="brand">Brand</label>
+                            <select class="form-control brand" id="brand" name="brand_id" required>
+                                <option value="">Select brand</option>
+                                @foreach ($brands as $brand)
+                                    <option value="{{ $brand->id }}" @if ($brand->id == $product->brand_id) selected @endif>{{ $brand->title }}</option>
                                 @endforeach
                             </select>
                         </div>
