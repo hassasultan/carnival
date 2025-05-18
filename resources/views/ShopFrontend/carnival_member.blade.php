@@ -425,7 +425,8 @@
                                                     <div class="contact-item">
                                                         <span class="text">About:</span>
                                                         <a href="javascript:void(0);">
-                                                            {!! \Illuminate\Support\Str::limit(strip_tags($user->bio_description), 200) !!}
+                                                            {{-- {!! \Illuminate\Support\Str::limit(strip_tags($user->bio_description), 200) !!} --}}
+                                                            {!! $user->bio_description !!}
                                                         </a>
                                                     </div>
                                                 @endif
