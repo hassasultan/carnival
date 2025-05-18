@@ -413,24 +413,30 @@
                                             </div>
                                         @endif
 
-                                            <div class="contact-item">
-                                                @if (!empty($user->designation))
-                                                    <div class="contact-item">
-                                                        <span class="text">Designation:</span>
-                                                        <a href="javascript:void(0);">{{ $user->designation }}</a>
-                                                    </div>
-                                                @endif
+                                        <div class="contact-item">
+                                            @if (!empty($user->designation))
+                                                <div class="contact-item">
+                                                    <span class="text">Designation:</span>
+                                                    <a href="javascript:void(0);">{{ $user->designation }}</a>
+                                                </div>
+                                            @endif
 
-                                                @if (!empty($user->bio_description))
-                                                    <div class="contact-item">
-                                                        <span class="text">About:</span>
-                                                        <a href="javascript:void(0);">
-                                                            {{-- {!! \Illuminate\Support\Str::limit(strip_tags($user->bio_description), 200) !!} --}}
-                                                            {!! $user->bio_description !!}
-                                                        </a>
-                                                    </div>
-                                                @endif
-                                            </div>
+                                            {{-- @if (!empty($user->bio_description))
+                                                <div class="contact-item">
+                                                    <span class="text">About:</span>
+                                                    <a href="javascript:void(0);">
+                                                        {!! \Illuminate\Support\Str::limit(strip_tags($user->bio_description), 200) !!}
+                                                    </a>
+                                                </div>
+                                            @endif --}}
+                                            @if (strlen($user->bio_description) > 200)
+                                                <a href="javascript:void(0);" class="see-more">See More</a>
+                                                <span class="full-text" style="display: none;">
+                                                    {{ $user->bio_description }}
+                                                    <a href="javascript:void(0);" class="see-less">See Less</a>
+                                                </span>
+                                            @endif
+                                        </div>
                                     </div>
                                     <div class="ovic-share-socials" style="margin-top: 15px;">
                                         <div class="inner">
