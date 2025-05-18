@@ -359,7 +359,7 @@
 
             $(document).on('click', '#getSearchVal', function(e) {
                 e.preventDefault();
-                getGender = $('#genderFilter"]').val();
+                getGender = $('#genderFilter').val();
                 getSearchVal = $('input[name="searchValName"]').val();
                 fetchProducts();
             });
