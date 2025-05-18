@@ -431,14 +431,24 @@
                                             @endif --}}
                                             <div class="contact-item">
                                                 <span class="text">About:</span>
-                                                <a href="javascript:void(0);" class="about-text">
-                                                    {{$user->bio_description}}
-                                                </a>
-                                                @if (strlen($user->bio_description) > 200)
+
+                                                @php
+                                                    $bio = $user->bio_description;
+                                                @endphp
+
+                                                @if (strlen($bio) > 200)
+                                                    <span class="about-text">
+                                                        {{ Str::limit($bio, 200) }}
+                                                    </span>
                                                     <a href="javascript:void(0);" class="see-more">See More</a>
+
                                                     <span class="full-text" style="display: none;">
-                                                        {{$user->bio_description}}
+                                                        {{ $bio }}
                                                         <a href="javascript:void(0);" class="see-less">See Less</a>
+                                                    </span>
+                                                @else
+                                                    <span class="about-text">
+                                                        {{ $bio }}
                                                     </span>
                                                 @endif
                                             </div>
@@ -1023,19 +1033,19 @@
             setInterval(updateCountdown, 1000);
         }); --}}
     </script>
-    
     <script>
         $(document).ready(function() {
-            $(".see-more").click(function() {
+            $('.see-more').on('click', function() {
                 $(this).hide();
-                $(this).siblings(".about-text").hide();
-                $(this).siblings(".full-text").show();
+                $(this).siblings('.about-text').hide();
+                $(this).siblings('.full-text').show();
             });
 
-            $(".see-less").click(function() {
-                $(this).parent(".full-text").hide();
-                $(this).parent().siblings(".about-text").show();
-                $(this).parent().siblings(".see-more").show();
+            $('.see-less').on('click', function() {
+                var container = $(this).closest('.contact-item');
+                container.find('.full-text').hide();
+                container.find('.about-text').show();
+                container.find('.see-more').show();
             });
         });
     </script>
