@@ -1,6 +1,15 @@
 @extends('ShopFrontend.Layouts.layout')
 
 @section('main')
+
+<style>
+    img[alt="product name"] {
+        width: 230px !important;
+        height: 236px !important;
+        object-fit: cover !important;
+    }
+</style>
+
     <main class="site-main">
 
         <!--  Popup Newsletter-->
