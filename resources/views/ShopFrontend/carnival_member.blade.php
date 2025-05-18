@@ -429,13 +429,19 @@
                                                     </a>
                                                 </div>
                                             @endif --}}
-                                            @if (strlen($user->bio_description) > 200)
-                                                <a href="javascript:void(0);" class="see-more">See More</a>
-                                                <span class="full-text" style="display: none;">
-                                                    {{ $user->bio_description }}
-                                                    <a href="javascript:void(0);" class="see-less">See Less</a>
-                                                </span>
-                                            @endif
+                                            <div class="contact-item">
+                                                <span class="text">About:</span>
+                                                <a href="javascript:void(0);" class="about-text">
+                                                    {{$user->bio_description}}
+                                                </a>
+                                                @if (strlen($user->bio_description) > 200)
+                                                    <a href="javascript:void(0);" class="see-more">See More</a>
+                                                    <span class="full-text" style="display: none;">
+                                                        {{$user->bio_description}}
+                                                        <a href="javascript:void(0);" class="see-less">See Less</a>
+                                                    </span>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="ovic-share-socials" style="margin-top: 15px;">
