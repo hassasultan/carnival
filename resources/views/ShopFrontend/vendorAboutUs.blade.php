@@ -618,9 +618,9 @@
             });
 
             $(".see-less").click(function() {
-                $(this).parent(".full-text").hide();
-                $(this).parent().siblings(".about-text").show();
-                $(this).parent().siblings(".see-more").show();
+                $(this).closest(".full-text").hide();
+                $(this).closest(".full-text").siblings(".about-text").show();
+                $(this).closest(".full-text").siblings(".see-more").show();
             });
         });
     </script>
