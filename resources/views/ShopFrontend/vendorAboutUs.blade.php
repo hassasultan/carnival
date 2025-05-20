@@ -391,18 +391,28 @@
                                     <div class="contact-item">
                                         <span class="icon fas fa-map-marker-alt"></span>
                                         <span class="text">Region:</span>
-                                        <a href=""
-                                            target="_blank" class="text">
+                                        <a href="" target="_blank" class="text">
                                             {{ optional($user->vendor)->region->name ?? (optional($user->subvendor)->region->name ?? 'N/A') }}
                                         </a>
                                     </div>
-                                    <div class="contact-item">
-                                        {{-- <span class="icon fas fa-map-marker-alt"></span> --}}
+                                    {{-- <div class="contact-item">
                                         <span class="text">Bio:</span>
-                                        <a href=""
-                                            target="_blank" class="text">
+                                        <a href="" target="_blank" class="text">
                                             {{ optional($user->vendor)->short_description ?? (optional($user->subvendor)->short_description ?? 'N/A') }}
                                         </a>
+                                    </div> --}}
+                                    <div class="contact-item">
+                                        <span class="text">Bio:</span>
+                                        <a href="javascript:void(0);" class="about-text">
+                                            {{ $user->vendor->short_description }}
+                                        </a>
+                                        @if (strlen($user->vendor->short_description) > 200)
+                                            <a href="javascript:void(0);" class="see-more">See More</a>
+                                            <span class="full-text" style="display: none;">
+                                                {{ $user->vendor->short_description }}
+                                                <a href="javascript:void(0);" class="see-less">See Less</a>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -597,6 +607,21 @@
                 if (event.key === "ArrowLeft") changeSlide(-1);
                 if (event.key === "Escape") closeModal();
             }
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".see-more").click(function() {
+                $(this).hide();
+                $(this).siblings(".about-text").hide();
+                $(this).siblings(".full-text").show();
+            });
+
+            $(".see-less").click(function() {
+                $(this).parent(".full-text").hide();
+                $(this).parent().siblings(".about-text").show();
+                $(this).parent().siblings(".see-more").show();
+            });
         });
     </script>
 @endsection
