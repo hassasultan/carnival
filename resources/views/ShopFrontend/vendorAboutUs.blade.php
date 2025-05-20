@@ -406,24 +406,19 @@
 
                                         <div class="about-text">
                                             {{ Illuminate\Support\Str::limit($user->vendor->short_description, 200) }}
-
-                                            @if (strlen($user->vendor->short_description) > 200)
-                                                <a href="javascript:void(0);" class="see-more">See More</a>
-                                                <div class="full-text" style="display: none;">
-                                                    {{ $user->vendor->short_description }}
-                                                    <a href="javascript:void(0);" class="see-less">See Less</a>
-                                                </div>
-                                            @endif
                                         </div>
+
+                                        @if (strlen($user->vendor->short_description) > 200)
+                                            <a href="javascript:void(0);" class="see-more">See More</a>
+                                            <div class="full-text" style="display: none;">
+                                                {{ $user->vendor->short_description }}
+                                                <a href="javascript:void(0);" class="see-less">See Less</a>
+                                            </div>
+                                        @endif
                                     </div>
-
-
                                 </div>
                             </div>
-
-
                         </div><!-- Main detail -->
-
                     </div>
 
                     <!-- product tab info -->

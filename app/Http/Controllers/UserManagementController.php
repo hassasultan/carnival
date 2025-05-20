@@ -99,17 +99,19 @@ class UserManagementController extends Controller
                 ->withInput();
         }
 
-        $user = $this->create($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('logo')) {
+            $imageName = $this->uploadImage($request->file('logo'), 'images');
+            $data['logo'] = $imageName; // Add logo path to data array
+        }
+
+        $user = $this->create($data);
+        // $user = $this->create($request->all());
 
         if ($request->hasFile('image')) {
             $imageName = $this->uploadImage($request->file('image'), 'images');
             $user->image = $imageName;
-            $user->save();
-        }
-
-        if ($request->hasFile('logo')) {
-            $imageName = $this->uploadImage($request->file('logo'), 'images');
-            $user->logo = $imageName;
             $user->save();
         }
 
@@ -445,28 +447,22 @@ class UserManagementController extends Controller
                 ]);
             }
         }
-        if(isset($request->sponser_id) && is_array($request->sponser_id))
-        {
-            foreach($request->sponser_id as $key => $row)
-            {
+        if (isset($request->sponser_id) && is_array($request->sponser_id)) {
+            foreach ($request->sponser_id as $key => $row) {
                 $sponsers = Sponsers::find($row);
-                if(isset($request->update_sponser_title) && is_array($request->update_sponser_title))
-                {
+                if (isset($request->update_sponser_title) && is_array($request->update_sponser_title)) {
                     $sponsers->title = $request->update_sponser_title[$key];
                 }
-                if(isset($request->update_sponser_logo) && is_array($request->update_sponser_logo))
-                {
+                if (isset($request->update_sponser_logo) && is_array($request->update_sponser_logo)) {
                     $sponsers->logo = $this->uploadImage($$request->update_sponser_logo, 'sponser_images');
                 }
-                if(isset($request->update_sponser_description) && is_array($request->update_sponser_description))
-                {
+                if (isset($request->update_sponser_description) && is_array($request->update_sponser_description)) {
                     $sponsers->title = $request->update_sponser_description[$key];
                 }
                 $sponsers->save();
             }
         }
-        if (isset($request->sponser_logo) && is_array($request->sponser_logo))
-        {
+        if (isset($request->sponser_logo) && is_array($request->sponser_logo)) {
             foreach ($request->sponser_logo as $key => $row) {
                 $sponser = new Sponsers;
                 $sponser->user_id = $user->id;
