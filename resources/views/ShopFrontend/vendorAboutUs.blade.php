@@ -403,17 +403,21 @@
                                     </div> --}}
                                     <div class="contact-item">
                                         <span class="text">Bio:</span>
-                                        <a href="javascript:void(0);" class="about-text">
-                                            {{ $user->vendor->short_description }}
-                                        </a>
+
+                                        <div class="about-text">
+                                            {{ Illuminate\Support\Str::limit($user->vendor->short_description, 200) }}
+                                        </div>
+
                                         @if (strlen($user->vendor->short_description) > 200)
                                             <a href="javascript:void(0);" class="see-more">See More</a>
-                                            <span class="full-text" style="display: none;">
+                                            <div class="full-text" style="display: none;">
                                                 {{ $user->vendor->short_description }}
                                                 <a href="javascript:void(0);" class="see-less">See Less</a>
-                                            </span>
+                                            </div>
                                         @endif
                                     </div>
+
+
                                 </div>
                             </div>
 
@@ -426,30 +430,6 @@
 
                     <div class="product-info-detailed ">
                         @include('shop-frontend.partials.detail-section')
-                        {{-- <!-- Nav tabs -->
-                        <ul class="nav nav-pills" role="tablist">
-                            <li role="presentation" class="active"><a href="#description" role="tab"
-                                    data-toggle="tab">Description </a></li>
-                            <li role="presentation"><a href="#gallery" role="tab" data-toggle="tab">Gallery
-                                </a>
-                            </li>
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="description">
-                                <div class="block-title">Description</div>
-                                <div class="block-content">
-                                    Description
-
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="gallery">
-                                <div class="block-title">Gallery</div>
-                                <div class="block-content">
-                                </div>
-                            </div>
-                        </div> --}}
                     </div>
                     <!-- product tab info -->
 
@@ -480,17 +460,6 @@
                                                     <a href="" class="btn btn-compare"><span>compare</span></a>
                                                     <a href="" class="btn btn-quickview"><span>quickview</span></a>
                                                 </div>
-                                                {{-- @if (Auth::check())
-                                                    <button type="submit" title="Add to Cart" class="action btn-cart"
-                                                        data-product_id="{{ $row->id }}">
-                                                        <span>Add to Cart</span>
-                                                    </button>
-                                                @else
-                                                    <a href="{{ route('customer.login') }}" title="Add to Cart"
-                                                        class="action btn-cart btn">
-                                                        <span>Add to Cart</span>
-                                                    </a>
-                                                @endif --}}
 
                                             </div>
                                             <div class="product-item-detail">
