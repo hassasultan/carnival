@@ -394,9 +394,9 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="logo">Logo/Profile Picture</label>
+                        <label for="logo">Logo/Profile Picture <span class="text-danger">*</span></label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="logo" name="logo">
+                            <input type="file" class="custom-file-input" id="logo" name="logo" required>
                             <label class="custom-file-label" for="logo" id="logo_label">Choose file</label>
                         </div>
                     </div>
