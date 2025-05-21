@@ -157,7 +157,7 @@
                 @if (count($carnival->packageVendors('Events')) > 0)
                     <div class="row">
                         <div class="col-md-9">
-                            {{ dd($carnival->mascamps->toArray(), $carnival->events->toArray()) }}
+                            {{-- {{ dd($carnival->mascamps->toArray(), $carnival->events->toArray()) }} --}}
                             @if (count($carnival->events) > 0)
                                 <!-- block tab products -->
                                 <div class="block-tab-products-opt1">
