@@ -453,6 +453,7 @@ class UserManagementController extends Controller
                 if (isset($request->update_sponser_title) && is_array($request->update_sponser_title)) {
                     $sponsers->title = $request->update_sponser_title[$key];
                 }
+                dd($request->toArray());
                 if (isset($request->update_sponser_logo) && is_array($request->update_sponser_logo)) {
                     $sponsers->logo = $this->uploadImage($request->update_sponser_logo, 'sponser_images');
                 }
