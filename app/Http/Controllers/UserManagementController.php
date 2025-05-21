@@ -454,7 +454,7 @@ class UserManagementController extends Controller
                     $sponsers->title = $request->update_sponser_title[$key];
                 }
                 if (isset($request->update_sponser_logo) && is_array($request->update_sponser_logo)) {
-                    $sponsers->logo = $this->uploadImage($$request->update_sponser_logo, 'sponser_images');
+                    $sponsers->logo = $this->uploadImage($request->update_sponser_logo, 'sponser_images');
                 }
                 if (isset($request->update_sponser_description) && is_array($request->update_sponser_description)) {
                     $sponsers->title = $request->update_sponser_description[$key];
@@ -467,11 +467,11 @@ class UserManagementController extends Controller
                 $sponser = new Sponsers;
                 $sponser->user_id = $user->id;
                 $sponser->logo = $this->uploadImage($row, 'sponser_images');
-                if (isset($$request->sponser_title[$key])) {
-                    $sponser->title = $$request->sponser_title[$key];
+                if (isset($request->sponser_title[$key])) {
+                    $sponser->title = $request->sponser_title[$key];
                 }
-                if (isset($$request->sponser_description[$key])) {
-                    $sponser->title = $$request->sponser_description[$key];
+                if (isset($request->sponser_description[$key])) {
+                    $sponser->title = $request->sponser_description[$key];
                 }
                 $sponser->save();
             }
