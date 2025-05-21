@@ -190,27 +190,27 @@
                                                 "992":{"items":4}
                                             }'
                                                 id="best-sell-div">
-                                                @foreach ($carnival->events as $item)
+                                                @foreach ($carnival->events as $event)
                                                     @php
-                                                        $vendorLogo = $item->logo
-                                                            ? asset('images/' . $item->banner)
-                                                            : asset('images/' . $item->user->image);
+                                                        $vendorLogo = $event->logo
+                                                            ? asset('images/' . $event->banner)
+                                                            : asset('images/' . $event->user->image);
                                                         $vendorName =
-                                                            $item->name ?:
-                                                            $item->user->first_name . ' ' . $item->user->last_name;
+                                                            $event->name ?:
+                                                            $event->user->first_name . ' ' . $item->user->last_name;
                                                     @endphp
                                                     <div class="product-item product-item-opt-1">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
-                                                                {{ dd($item->slug,$item->toArray()) }}
-                                                                <a class="product-item-img" href="{{ route('get.myEvent.detail', $item->slug) }}">
+                                                                {{ dd($event->slug,$event->toArray()) }}
+                                                                <a class="product-item-img" href="{{ route('get.myEvent.detail', $event->slug) }}">
                                                                     <img alt="product name" src="{{ $vendorLogo }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <a class="product-item-img" href="{{ route('get.myEvent.detail', $item->slug) }}">
+                                                                        <a class="product-item-img" href="{{ route('get.myEvent.detail', $event->slug) }}">
                                                                             <span class="price">{{ $vendorName }}</span>
                                                                         </a>
                                                                     </div>
