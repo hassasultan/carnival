@@ -47,9 +47,17 @@ class Carnival extends Model
             ->withTimestamps();
     }
 
+    public function events()
+    {
+        return $this->mascamps()->whereHas('package', function ($query) {
+            $query->where('name', 'Events');
+        });
+    }
+
     public function packageVendors($packageTitle)
     {
-        return $this->mascamps()->with('user'
+        return $this->mascamps()->with(
+            'user'
         )->whereHas('package', function ($q) use ($packageTitle) {
             $q->where('title', $packageTitle);
         })->get();
