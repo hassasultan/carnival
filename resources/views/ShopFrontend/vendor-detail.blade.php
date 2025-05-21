@@ -191,6 +191,7 @@
                                             }'
                                                 id="best-sell-div">
                                                 @foreach ($carnival->events as $item)
+                                                    {{ $item->toArray() }}
                                                     @php
                                                         $vendorLogo = $item->logo
                                                             ? asset('images/' . $item->banner)
@@ -276,7 +277,6 @@
                                             }'
                                                 id="new-arrival-products">
                                                  @foreach ($carnival->events as $item)
-                                                    {{ $item->toArray() }}
                                                     @php
                                                         $vendorLogo = $item->logo
                                                             ? asset('images/' . $item->banner)
