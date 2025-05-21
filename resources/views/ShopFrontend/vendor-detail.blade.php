@@ -379,17 +379,6 @@
                                                                 href="{{ route('carnivalMember.detail', $item->id) }}"><img
                                                                     alt="product name"
                                                                     src="{{ asset($item->image) }}"></a>
-                                                            {{-- <div class="product-item-actions">
-                                                    <a class="btn btn-wishlist"
-                                                        href=""><span>wishlist</span></a>
-                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                    <a class="btn btn-quickview"
-                                                        href=""><span>quickview</span></a>
-                                                </div>
-                                                <button type="button" class="btn btn-cart"><span>Add to
-                                                        Cart</span></button>
-                                                <span class="product-item-label label-price">30%
-                                                    <span>off</span></span> --}}
                                                         </div>
                                                         <div class="product-item-detail">
                                                             {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
@@ -439,9 +428,6 @@
                                                         onclick="catProduct({{ $row->id }},'vendors-cat-div-{{ $row->id }}')"
                                                         role="tab" data-toggle="tab">{{ $row->title }} </a></li>
                                             @endforeach
-                                            {{-- <li role="presentation"><a href="#floor1-5"  role="tab" data-toggle="tab">Men</a></li>
-                                            <li role="presentation"><a href="#floor1-6"  role="tab" data-toggle="tab">Kids </a></li>
-                                            <li role="presentation"><a href="#floor1-7"  role="tab" data-toggle="tab">Accessories</a></li> --}}
                                         </ul>
                                     </div>
                                 </div>
@@ -492,14 +478,14 @@
                                             "1200":{"items":4}
                                         }'
                                             id="best-seller-floor">
-                                            @foreach ($costumes as $costume)
+                                            @foreach ($carnival->members as $member)
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
                                                                 href=""><img alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
-                                                            <div class="product-item-actions">
+                                                                    src="{{ asset($item->image) }}"></a>
+                                                            {{-- <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
                                                                     href=""><span>wishlist</span></a>
                                                                 <a class="btn btn-compare" href=""><span>compare</span></a>
@@ -507,30 +493,11 @@
                                                                     href=""><span>quickview</span></a>
                                                             </div>
                                                             <button type="button" class="btn btn-cart"><span>Add to
-                                                                    Cart</span></button>
+                                                                    Cart</span></button> --}}
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $costume->title }}</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">${{ $costume->new_price }}</span>
-                                                                    @if ($costume->old_price)
-                                                                        <span class="old-price">${{ $costume->old_price }}</span>
-                                                                    @endif
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="{{ $costume->discount }}%"
-                                                                            class="rating-result">
-                                                                            <span style="width:{{ $costume->discount }}%">
-                                                                                <span><span>{{ $costume->discount }}</span>%
-                                                                                    of <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                                    href="">{{ $item->fullname }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -549,45 +516,17 @@
                                             "992":{"items":3},
                                             "1200":{"items":4}
                                         }'>
-                                            @foreach ($costumes as $costume)
+                                             @foreach ($carnival->members as $member)
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
                                                                 href=""><img alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
-                                                            <div class="product-item-actions">
-                                                                <a class="btn btn-wishlist"
-                                                                    href=""><span>wishlist</span></a>
-                                                                <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                                <a class="btn btn-quickview"
-                                                                    href=""><span>quickview</span></a>
-                                                            </div>
-                                                            <button type="button" class="btn btn-cart"><span>Add to
-                                                                    Cart</span></button>
+                                                                    src="{{ asset($item->image) }}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $costume->title }}</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">${{ $costume->new_price }}</span>
-                                                                    @if ($costume->old_price)
-                                                                        <span class="old-price">${{ $costume->old_price }}</span>
-                                                                    @endif
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="{{ $costume->discount }}%"
-                                                                            class="rating-result">
-                                                                            <span style="width:{{ $costume->discount }}%">
-                                                                                <span><span>{{ $costume->discount }}</span>%
-                                                                                    of <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                                    href="">{{ $item->fullname }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -607,45 +546,17 @@
                                             "1200":{"items":4}
                                         }'
                                             id="new-arrival-products">
-                                            @foreach ($costumes as $costume)
+                                         @foreach ($carnival->members as $member)
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
                                                                 href=""><img alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
-                                                            <div class="product-item-actions">
-                                                                <a class="btn btn-wishlist"
-                                                                    href=""><span>wishlist</span></a>
-                                                                <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                                <a class="btn btn-quickview"
-                                                                    href=""><span>quickview</span></a>
-                                                            </div>
-                                                            <button type="button" class="btn btn-cart"><span>Add to
-                                                                    Cart</span></button>
+                                                                    src="{{ asset($item->image) }}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $costume->title }}</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">${{ $costume->new_price }}</span>
-                                                                    @if ($costume->old_price)
-                                                                        <span class="old-price">${{ $costume->old_price }}</span>
-                                                                    @endif
-                                                                </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="{{ $costume->discount }}%"
-                                                                            class="rating-result">
-                                                                            <span style="width:{{ $costume->discount }}%">
-                                                                                <span><span>{{ $costume->discount }}</span>%
-                                                                                    of <span>100</span></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                                    href="">{{ $item->fullname }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -666,51 +577,21 @@
                                                 "1200":{"items":4}
                                             }'
                                                 id="vendors-cat-div-{{ $row->id }}">
-                                                @foreach ($costumes as $costume)
-                                                    <div class="product-item  product-item-opt-1 ">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                    href=""><img alt="product name"
-                                                                        src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
-                                                                <div class="product-item-actions">
-                                                                    <a class="btn btn-wishlist"
-                                                                        href=""><span>wishlist</span></a>
-                                                                    <a class="btn btn-compare"
-                                                                        href=""><span>compare</span></a>
-                                                                    <a class="btn btn-quickview"
-                                                                        href=""><span>quickview</span></a>
-                                                                </div>
-                                                                <button type="button" class="btn btn-cart"><span>Add to
-                                                                        Cart</span></button>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <strong class="product-item-name"><a
-                                                                        href="">{{ $costume->title }}</a></strong>
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span class="price">${{ $costume->new_price }}</span>
-                                                                        @if ($costume->old_price)
-                                                                            <span
-                                                                                class="old-price">${{ $costume->old_price }}</span>
-                                                                        @endif
-                                                                    </div>
-                                                                    <div class="product-reviews-summary">
-                                                                        <div class="rating-summary">
-                                                                            <div title="{{ $costume->discount }}%"
-                                                                                class="rating-result">
-                                                                                <span style="width:{{ $costume->discount }}%">
-                                                                                    <span><span>{{ $costume->discount }}</span>%
-                                                                                        of <span>100</span></span>
-                                                                                </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                 @foreach ($carnival->members as $member)
+                                                <div class="product-item  product-item-opt-1 ">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" style="height: 266px; width: 186px;"
+                                                                href=""><img alt="product name"
+                                                                    src="{{ asset($item->image) }}"></a>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name"><a
+                                                                    href="">{{ $item->fullname }}</a></strong>
                                                         </div>
                                                     </div>
-                                                @endforeach
+                                                </div>
+                                            @endforeach
                                             </div>
                                         </div>
                                     @endforeach
