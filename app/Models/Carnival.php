@@ -49,8 +49,8 @@ class Carnival extends Model
 
     public function events()
     {
-        return $this->mascamps()->whereHas('package', function ($query) {
-            $query->where('name', 'Events');
+        return $this->mascamps()->with('package')->get()->filter(function ($mascamp) {
+            return $mascamp->package && $mascamp->package->name === 'Events';
         });
     }
 
