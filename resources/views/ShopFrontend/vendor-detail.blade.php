@@ -202,7 +202,7 @@
                                                     <div class="product-item product-item-opt-1">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
-                                                                <a class="product-item-img" href="{{ route('get.myEvent.detail', $item->slug) }}">
+                                                                <a class="product-item-img" href="{{ route('get.myEvent.detail', ['event_slug' => $item->slug]) }}">
                                                                     <img alt="product name" src="{{ $vendorLogo }}">
                                                                 </a>
                                                             </div>
