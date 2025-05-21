@@ -199,7 +199,7 @@
                                                     $item->name ?:
                                                     $item->user->first_name . ' ' . $item->user->last_name;
                                                 @endphp
-                                                {{ $item->toArray() }}
+                                                {{ $item }}
                                                     <div class="product-item product-item-opt-1">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
