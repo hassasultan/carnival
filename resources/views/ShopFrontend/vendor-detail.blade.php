@@ -406,9 +406,7 @@
                             <div class="block-title ">
                                 <span class="title"><img alt="img"
                                         src="{{ asset('shopAssets/images/media/index1/floor1.png') }}">
-                                    @if ($user->role_id == 2)
-                                        {{ $vendor->name }}
-                                    @endif
+                                Carnival Members
                                 </span>
                                 <div class="links dropdown">
                                     <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
@@ -484,7 +482,7 @@
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
                                                                 href=""><img alt="product name"
-                                                                    src="{{ asset($item->image) }}"></a>
+                                                                    src="{{ asset($member->image) }}"></a>
                                                             {{-- <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
                                                                     href=""><span>wishlist</span></a>
@@ -497,7 +495,7 @@
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $item->fullname }}</a></strong>
+                                                                    href="">{{ $member->fullname }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -522,11 +520,11 @@
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
                                                                 href=""><img alt="product name"
-                                                                    src="{{ asset($item->image) }}"></a>
+                                                                    src="{{ asset($member->image) }}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $item->fullname }}</a></strong>
+                                                                    href="">{{ $member->fullname }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -552,11 +550,11 @@
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
                                                                 href=""><img alt="product name"
-                                                                    src="{{ asset($item->image) }}"></a>
+                                                                    src="{{ asset($member->image) }}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $item->fullname }}</a></strong>
+                                                                    href="">{{ $member->fullname }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -583,11 +581,11 @@
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
                                                                 href=""><img alt="product name"
-                                                                    src="{{ asset($item->image) }}"></a>
+                                                                    src="{{ asset($member->image) }}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $item->fullname }}</a></strong>
+                                                                    href="">{{ $member->fullname }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
