@@ -157,7 +157,7 @@
                 @if (count($carnival->packageVendors('Events')) > 0)
                     <div class="row">
                         <div class="col-md-9">
-                            {{-- {{ dd($carnival->mascamps->toArray(), $carnival->events->toArray()) }} --}}
+                            {{-- {{ dd($carnival->mascamps->toArray(), $carnival->event_mascamps->toArray()) }} --}}
                             @if (count($carnival->events) > 0)
                                 <!-- block tab products -->
                                 <div class="block-tab-products-opt1">
@@ -190,27 +190,26 @@
                                                 "992":{"items":4}
                                             }'
                                                 id="best-sell-div">
-                                                @foreach ($carnival->events as $event)
+                                                @foreach ($carnival->events as $item)
                                                     @php
-                                                        $vendorLogo = $event->logo
-                                                            ? asset('images/' . $event->banner)
-                                                            : asset('images/' . $event->user->image);
+                                                        $vendorLogo = $item->logo
+                                                            ? asset('images/' . $item->banner)
+                                                            : asset('images/' . $item->user->image);
                                                         $vendorName =
-                                                            $event->name ?:
-                                                            $event->user->first_name . ' ' . $item->user->last_name;
+                                                            $item->name ?:
+                                                            $item->user->first_name . ' ' . $item->user->last_name;
                                                     @endphp
                                                     <div class="product-item product-item-opt-1">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
-                                                                {{ dd($event->slug,$event->toArray()) }}
-                                                                <a class="product-item-img" href="{{ route('get.myEvent.detail', $event->slug) }}">
+                                                                <a class="product-item-img" href="{{ route('get.myEvent.detail', $item->slug) }}">
                                                                     <img alt="product name" src="{{ $vendorLogo }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
-                                                                        <a class="product-item-img" href="{{ route('get.myEvent.detail', $event->slug) }}">
+                                                                        <a class="product-item-img" href="{{ route('get.myEvent.detail', $item->slug) }}">
                                                                             <span class="price">{{ $vendorName }}</span>
                                                                         </a>
                                                                     </div>
