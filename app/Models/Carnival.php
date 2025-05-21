@@ -47,11 +47,11 @@ class Carnival extends Model
             ->withTimestamps();
     }
 
-    public function events()
+    public function getEventMascampsAttribute()
     {
-        return $this->mascamps()->with('package')->get()->filter(function ($mascamp) {
-            return $mascamp->package && $mascamp->package->name === 'Events';
-        });
+        return $this->mascamps()->whereHas('package', function ($query) {
+            $query->where('name', 'Events');
+        })->get();
     }
 
     public function packageVendors($packageTitle)
