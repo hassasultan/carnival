@@ -47,7 +47,7 @@ class Carnival extends Model
             ->withTimestamps();
     }
 
-    public function getEventMascampsAttribute()
+    public function events()
     {
         return $this->mascamps()->where('package_id', 4)->get();
     }

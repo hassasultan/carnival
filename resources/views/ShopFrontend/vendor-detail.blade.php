@@ -157,8 +157,8 @@
                 @if (count($carnival->packageVendors('Events')) > 0)
                     <div class="row">
                         <div class="col-md-9">
-                            {{ dd($carnival->mascamps->toArray(), $carnival->event_mascamps->toArray()) }}
-                            @if (count($carnival->mascamps) > 0)
+                            {{-- {{ dd($carnival->mascamps->toArray(), $carnival->event_mascamps->toArray()) }} --}}
+                            @if (count($carnival->events) > 0)
                                 <!-- block tab products -->
                                 <div class="block-tab-products-opt1">
 
@@ -185,7 +185,7 @@
                                                 "992":{"items":4}
                                             }'
                                                 id="best-sell-div">
-                                                @foreach ($carnival->user->events as $item)
+                                                @foreach ($carnival->events as $item)
                                                     @php
                                                         $vendorLogo = $item->logo
                                                             ? asset('images/' . $item->banner)
