@@ -164,13 +164,18 @@
 
                                     <div class="block-title">
                                         <ul class="nav" role="tablist">
-                                            <li role="presentation" class="active">
+                                            {{-- <li role="presentation" class="active">
                                                 <a href="#tabproduct1" role="tab" id="best-sell" data-toggle="tab">
                                                     Events
                                                 </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                            </li> --}}
+                                             <li role="presentation" class="active"><a href="#floor1-1" id="best-seller-tab"
+                                                    role="tab" data-toggle="tab">Event, On Trending </a></li>
+                                            <li role="presentation"><a href="#floor1-2" role="tab" data-toggle="tab">New Events </a></li>
+                                            <li role="presentation"><a href="#floor1-3" id="new-arr-tab" role="tab"
+                                                    data-toggle="tab">Best Seller <span class="label-cat">12</span></a></li>
+                                                </ul>
+                                            </div>
 
                                     <div class="block-content tab-content">
 
@@ -215,6 +220,91 @@
                                                 @endforeach
                                             </div>
                                         </div><!-- tab 1 -->
+
+                                        <!-- tab 2-->
+                                        <div class="tab-pane  fade" id="floor1-2" role="tabpanel">
+                                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                                data-responsive='{
+                                                "0":{"items":1},
+                                                "420":{"items":2},
+                                                "600":{"items":3},
+                                                "768":{"items":3},
+                                                "992":{"items":3},
+                                                "1200":{"items":4}
+                                            }'>
+                                                 @foreach ($carnival->events as $item)
+                                                    @php
+                                                        $vendorLogo = $item->logo
+                                                            ? asset('images/' . $item->banner)
+                                                            : asset('images/' . $item->user->image);
+                                                        $vendorName =
+                                                            $item->name ?:
+                                                            $item->user->first_name . ' ' . $item->user->last_name;
+                                                    @endphp
+                                                    <div class="product-item product-item-opt-1">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href="{{ route('get.myEvent.detail', $item->slug) }}">
+                                                                    <img alt="product name" src="{{ $vendorLogo }}">
+                                                                </a>
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <a class="product-item-img" href="{{ route('get.myEvent.detail', $item->slug) }}">
+                                                                            <span class="price">{{ $vendorName }}</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        <!-- tab 3 -->
+                                        <div class="tab-pane  fade" id="floor1-3" role="tabpanel">
+                                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                                data-responsive='{
+                                                "0":{"items":1},
+                                                "420":{"items":2},
+                                                "600":{"items":3},
+                                                "768":{"items":3},
+                                                "992":{"items":3},
+                                                "1200":{"items":4}
+                                            }'
+                                                id="new-arrival-products">
+                                                 @foreach ($carnival->events as $item)
+                                                    @php
+                                                        $vendorLogo = $item->logo
+                                                            ? asset('images/' . $item->banner)
+                                                            : asset('images/' . $item->user->image);
+                                                        $vendorName =
+                                                            $item->name ?:
+                                                            $item->user->first_name . ' ' . $item->user->last_name;
+                                                    @endphp
+                                                    <div class="product-item product-item-opt-1">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href="{{ route('get.myEvent.detail', $item->slug) }}">
+                                                                    <img alt="product name" src="{{ $vendorLogo }}">
+                                                                </a>
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <a class="product-item-img" href="{{ route('get.myEvent.detail', $item->slug) }}">
+                                                                            <span class="price">{{ $vendorName }}</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
 
                                     </div>
 
