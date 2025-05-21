@@ -191,15 +191,15 @@
                                             }'
                                                 id="best-sell-div">
                                                 @foreach ($carnival->events as $item)
-                                                    {{ $item->toArray() }}
-                                                    @php
-                                                        $vendorLogo = $item->logo
-                                                            ? asset('images/' . $item->banner)
-                                                            : asset('images/' . $item->user->image);
-                                                        $vendorName =
-                                                            $item->name ?:
-                                                            $item->user->first_name . ' ' . $item->user->last_name;
-                                                    @endphp
+                                                @php
+                                                $vendorLogo = $item->logo
+                                                    ? asset('images/' . $item->banner)
+                                                    : asset('images/' . $item->user->image);
+                                                    $vendorName =
+                                                    $item->name ?:
+                                                    $item->user->first_name . ' ' . $item->user->last_name;
+                                                @endphp
+                                                {{ $item->toArray() }}
                                                     <div class="product-item product-item-opt-1">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
