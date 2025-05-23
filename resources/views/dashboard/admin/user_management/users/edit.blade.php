@@ -149,7 +149,7 @@
                     </div>
                 @endif
 
-                <div class="form-group" id="vendors_input" style="display: none;">
+                {{-- <div class="form-group" id="vendors_input" style="display: none;">
                     <label for="vendor">Vendors</label>
                     <select id="vendor" class="form-control select2 @error('vendor_id') is-invalid @enderror"
                         name="vendor_id">
@@ -165,7 +165,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                </div>
+                </div> --}}
                 <!-- End of Role Specific Fields -->
 
                 <!-- Status Field -->
