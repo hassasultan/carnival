@@ -505,6 +505,8 @@ class CarnivalController extends Controller
             ->doesntHave('isCustomer')
             ->get();
 
+        dd($vendors, $head_team->toArray());
+
         return response()->json(['head_team' => $head_team]);
     }
 
