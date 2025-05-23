@@ -492,7 +492,7 @@ class CarnivalController extends Controller
     public function head_team($id)
     {
         // $vendors = Vendor::where('package_id', 6)->pluck('user_id')->toArray();
-        $vendors = Vendor::whereRelation('package', 'title', 'carnival')->pluck('user_id')->toArray();
+        $vendors = Vendor::whereRelation('package', 'slug', 'carnival')->pluck('user_id')->toArray();
 
         // $subvendors = SubVendor::whereHas('vendor', function ($query) {
         //     $query->where('package_id', 6);
