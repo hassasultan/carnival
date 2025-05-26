@@ -431,7 +431,6 @@
                         </div>
                     </div>
                 @endif
-                
                 @if (count($carnival->members) > 0)
                     {{-- <div class="row">
                         <div class="col-md-12">
