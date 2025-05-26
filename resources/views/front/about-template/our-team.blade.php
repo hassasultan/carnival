@@ -46,7 +46,10 @@
 					</div>
 					<h3 class="team-name color-dark-2">{{ $team->name }}</h3>
 					<h5 class="team-position color-dark-2-light">{{ $team->title }}</h5>
-					<p class="color-dark-2-light">{!! $team->description !!}</p>
+					<div class="team-description-wrapper">
+						<p class="team-description color-dark-2-light">{!! $team->description !!}</p>
+						<a href="javascript:void(0);" class="see-more-link" style="display:none;">See more</a>
+					</div>
 				</div>
 			</div>
 			@endforeach
