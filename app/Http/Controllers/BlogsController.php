@@ -168,6 +168,7 @@ class BlogsController extends Controller
             // dd($blog, 'ok');
 
             $blog->save();
+            dd($blog, 'ok');
 
             return redirect()->route('blogs.index')->with('success', 'Blog updated successfully.');
         } catch (\Exception $e) {

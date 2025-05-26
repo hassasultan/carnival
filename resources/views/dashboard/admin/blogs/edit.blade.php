@@ -65,7 +65,8 @@
                                     <select class="form-control" id="edit_region" name="region_id" required>
                                         <option value="" disabled>Select Region</option>
                                         @foreach ($regions as $row)
-                                            <option value="{{ $row->id }}" {{ $blog->region_id == $row->id ? 'selected' : '' }}>
+                                            <option value="{{ $row->id }}"
+                                                {{ $blog->region_id == $row->id ? 'selected' : '' }}>
                                                 {{ $row->name }}
                                             </option>
                                         @endforeach
