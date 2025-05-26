@@ -97,6 +97,7 @@ class BlogsController extends Controller
             }
             $blogs->description = $request->description;
             $blogs->status = $request->status;
+            dd($blogs);
             $blogs->save();
             return redirect()->route('blogs.index')->with('success', 'Blog created successfully...');
         } catch (\Exception $e) {
