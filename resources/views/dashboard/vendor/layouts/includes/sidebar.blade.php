@@ -126,7 +126,7 @@
                 </li>
             </ul>
         @endif
-        @if (auth()->user()->vendor->package->costume == 1)
+        @if (auth()->user()->vendor->package->blogging == 1)
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Blogs</span>
         </p>

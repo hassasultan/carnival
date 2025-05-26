@@ -17,29 +17,32 @@
                 </a>
             </li>
         </ul>
+        @php
+            $package = auth()->user()->subVendor->vendor->package;
+        @endphp
         {{-- @if (auth()->user()->hasPermission('products')) --}}
         {{-- @if (Auth::user()->subVendor->package->events == 1) --}}
-            <p class="text-muted nav-heading mt-4 mb-2 pl-4">
-                <span>Products</span>
-            </p>
-            <ul class="navbar-nav flex-fill w-100 mb-2">
-                <li class="nav-item w-100">
-                    <a class="nav-link" href="{{ route('subVendor.products') }}">
-                        <i class="fe fe-layers fe-16"></i>
-                        <span class="ml-3 item-text">Products</span>
-                        {{-- <span class="badge badge-pill badge-primary">New</span> --}}
-                    </a>
-                </li>
-                <li class="nav-item w-100">
-                    <a class="nav-link" href="{{ route('subvendor_site_gallery.index') }}">
-                        <i class="fe fe-layers fe-16"></i>
-                        <span class="ml-3 item-text">Gallery</span>
-                    </a>
-                </li>
-            </ul>
+        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+            <span>Products</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('subVendor.products') }}">
+                    <i class="fe fe-layers fe-16"></i>
+                    <span class="ml-3 item-text">Products</span>
+                    {{-- <span class="badge badge-pill badge-primary">New</span> --}}
+                </a>
+            </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('subvendor_site_gallery.index') }}">
+                    <i class="fe fe-layers fe-16"></i>
+                    <span class="ml-3 item-text">Gallery</span>
+                </a>
+            </li>
+        </ul>
         {{-- @endif --}}
-        {{-- @if (auth()->user()->hasPermission('blogs')) --}}
         {{-- @if (Auth::user()->subVendor->package->blogging == 1) --}}
+        @if ($package->blogging == 1)
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Blogs</span>
             </p>
@@ -51,7 +54,7 @@
                     </a>
                 </li>
             </ul>
-        {{-- @endif --}}
+        @endif
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
             <span>Inquiries</span>
         </p>
@@ -63,20 +66,20 @@
                 </a>
             </li>
         </ul>
-        {{-- @if (auth()->user()->hasPermission('costumes')) --}}
-        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
-            <span>Costumes</span>
-        </p>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <a class="nav-link" href="{{ route('subVendor.costumes.index') }}">
-                    <i class="fe fe-layers fe-16"></i>
-                    <span class="ml-3 item-text">Costumes</span>
-                </a>
-            </li>
-        </ul>
-        {{-- @endif --}}
-        {{-- @if (Auth::user()->subVendor->package->events == 1) --}}
+        @if ($package->costume == 1)
+            <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+                <span>Costumes</span>
+            </p>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="{{ route('subVendor.costumes.index') }}">
+                        <i class="fe fe-layers fe-16"></i>
+                        <span class="ml-3 item-text">Costumes</span>
+                    </a>
+                </li>
+            </ul>
+        @endif
+        @if ($package->events == 1)
             <p class="text-muted nav-heading mt-4 mb-2 pl-4">
                 <span>Events</span>
             </p>
@@ -103,6 +106,6 @@
                     </ul>
                 </li>
             </ul>
-        {{-- @endif --}}
+        @endif
     </nav>
 </aside>
