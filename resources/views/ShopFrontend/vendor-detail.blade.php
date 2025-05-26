@@ -432,65 +432,6 @@
                     </div>
                 @endif
                 @if (count($carnival->members) > 0)
-                    {{-- <div class="row">
-                        <div class="col-md-12">
-
-                            <!-- block tab products -->
-                            <div class="block-tab-products-opt1">
-
-                                <div class="block-title">
-                                    <ul class="nav" role="tablist">
-                                        <li role="presentation" class="active">
-                                            <a href="#tabproduct1" role="tab" id="best-sell"
-                                                data-toggle="tab">Carnival Members
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="block-content tab-content">
-
-                                    <!-- tab 1 -->
-                                    <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                            data-responsive='{
-                                                    "0":{"items":1},
-                                                    "480":{"items":2},
-                                                    "480":{"items":2},
-                                                    "768":{"items":3},
-                                                    "992":{"items":4}
-                                                }'
-                                            id="best-sell-div">
-
-                                            @foreach ($carnival->members as $item)
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img"
-                                                                href="{{ route('carnivalMember.detail', $item->id) }}"><img
-                                                                    alt="product name"
-                                                                    src="{{ asset($item->image) }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">{{ $item->fullname }}</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-
-                                        </div>
-                                    </div><!-- tab 1 -->
-
-                                </div>
-
-                            </div><!-- block tab products -->
-
-                        </div>
-                    </div> --}}
                     <div class="block-floor-products block-floor-products-opt1 floor-products1" id="floor0-0">
                         <div class="container">
                             <div class="block-title ">
@@ -691,81 +632,6 @@
                         </div>
                     </div>
                 @endif
-                {{-- <div class="row">
-                    <div class="col-md-12">
-                        @if (count($carnival->mascamps) > 0)
-                            <!-- block tab products -->
-                            <div class="block-tab-products-opt1">
-
-                                <div class="block-title">
-                                    <ul class="nav" role="tablist">
-                                        <li role="presentation" class="active">
-                                            <a href="#tabproduct1" role="tab" id="best-sell" data-toggle="tab">Queen
-                                                Show
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="block-content tab-content">
-
-                                    <!-- tab 1 -->
-                                    <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                            data-responsive='{
-                                                "0":{"items":1},
-                                                "480":{"items":2},
-                                                "480":{"items":2},
-                                                "768":{"items":3},
-                                                "992":{"items":4}
-                                            }'
-                                            id="best-sell-div">
-                                            @foreach ($carnival->mascamps as $item)
-                                                @if ($item->package->title == 'Models')
-                                                    <div class="product-item  product-item-opt-1 ">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                @php
-                                                                    $image = null;
-
-                                                                    if ($item->logo) {
-                                                                        $image = asset('images/' . $item->logo);
-                                                                    } elseif ($item->user->image) {
-                                                                        $image = asset('images/' . $item->user->image);
-                                                                    } else {
-                                                                        $image = asset(
-                                                                            'shopAssets/images/media/product9.jpg',
-                                                                        );
-                                                                    }
-
-                                                                    $vendorName = $item->name ?:
-                                                                    $item->user->first_name . ' ' . $item->user->last_name;
-                                                                @endphp
-                                                                <a class="product-item-img" href="{{ route('details.aboutUs', $item->user->slug) }}"><img
-                                                                        alt="product name" src="{{ $image }}"></a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span class="price">{{ $vendorName }}</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-
-                                        </div>
-                                    </div><!-- tab 1 -->
-
-                                </div>
-
-                            </div><!-- block tab products -->
-                        @endif
-                    </div>
-
-                </div> --}}
                 <div class="block-floor-products block-floor-products-opt1 floor-products1" id="floor0-0">
                     <div class="container">
                         <div class="block-title ">
@@ -966,70 +832,6 @@
                     </div>
                 </div>
                 @if (count($carnival->packageVendors('MasBands - Leader')) > 0)
-                    {{-- <div class="row">
-                        <div class="col-md-12">
-                            @if (count($carnival->mascamps) > 0)
-                                <!-- block tab products -->
-                                <div class="block-tab-products-opt1">
-
-                                    <div class="block-title">
-                                        <ul class="nav" role="tablist">
-                                            <li role="presentation" class="active">
-                                                <a href="#tabproduct1" role="tab" id="best-sell" data-toggle="tab">
-                                                    Mascamps
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="block-content tab-content">
-
-                                        <!-- tab 1 -->
-                                        <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
-                                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                                data-responsive='{
-                                                "0":{"items":1},
-                                                "480":{"items":2},
-                                                "480":{"items":2},
-                                                "768":{"items":3},
-                                                "992":{"items":4}
-                                            }'
-                                                id="best-sell-div">
-                                                @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
-                                                    @php
-                                                        $vendorLogo = $item->logo
-                                                            ? asset('images/' . $item->logo)
-                                                            : asset('images/' . $item->user->image);
-                                                        $vendorName =
-                                                            $item->name ?:
-                                                            $item->user->first_name . ' ' . $item->user->last_name;
-                                                    @endphp
-                                                    <div class="product-item product-item-opt-1">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" href="{{ route('front.vendor.detail', $item->user->slug) }}">
-                                                                    <img alt="product name" src="{{ $vendorLogo }}">
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span class="price">{{ $vendorName }}</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div><!-- tab 1 -->
-
-                                    </div>
-
-                                </div><!-- block tab products -->
-                            @endif
-                        </div>
-                    </div> --}}
                     <div class="block-floor-products block-floor-products-opt1 floor-products1" id="floor0-0">
                         <div class="container">
                             <div class="block-title ">
@@ -1222,69 +1024,6 @@
                     </div>
                 @endif
                 @if (count($carnival->packageVendors('Artistes')) > 0)
-                    {{-- <div class="row">
-                        <div class="col-md-12">
-                            @if (count($carnival->mascamps) > 0)
-                                <div class="block-tab-products-opt1">
-
-                                    <div class="block-title">
-                                        <ul class="nav" role="tablist">
-                                            <li role="presentation" class="active">
-                                                <a href="#tabproduct1" role="tab" id="best-sell" data-toggle="tab">
-                                                    Artistes
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="block-content tab-content">
-
-                                        <!-- tab 1 -->
-                                        <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
-                                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                                data-responsive='{
-                                                "0":{"items":1},
-                                                "480":{"items":2},
-                                                "480":{"items":2},
-                                                "768":{"items":3},
-                                                "992":{"items":4}
-                                            }'
-                                                id="best-sell-div">
-                                                @foreach ($carnival->packageVendors('Artistes') as $item)
-                                                    @php
-                                                        $vendorLogo = $item->logo
-                                                            ? asset('images/' . $item->logo)
-                                                            : asset('images/' . $item->user->image);
-                                                        $vendorName =
-                                                            $item->name ?:
-                                                            $item->user->first_name . ' ' . $item->user->last_name;
-                                                    @endphp
-                                                    <div class="product-item product-item-opt-1">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" href="{{ route('front.vendor.detail', $item->user->slug) }}">
-                                                                    <img alt="product name" src="{{ $vendorLogo }}">
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span class="price">{{ $vendorName }}</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div><!-- tab 1 -->
-
-                                    </div>
-
-                                </div><!-- block tab products -->
-                            @endif
-                        </div>
-                    </div> --}}
                     <div class="block-floor-products block-floor-products-opt1 floor-products1" id="floor0-0">
                         <div class="container">
                             <div class="block-title ">
@@ -1477,78 +1216,6 @@
                     </div>
                 @endif
                 @if (count($carnival->user->products) > 0)
-                    {{-- <div class="row">
-                        <div class="col-md-12">
-
-                            <!-- block tab products -->
-                            <div class="block-tab-products-opt1">
-
-                                <div class="block-title">
-                                    <ul class="nav" role="tablist">
-                                        <li role="presentation" class="active">
-                                            <a href="#tabproduct1" role="tab" id="best-sell"
-                                                data-toggle="tab">Products
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="block-content tab-content">
-
-                                    <!-- tab 1 -->
-                                    <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                            data-responsive='{
-                                                    "0":{"items":1},
-                                                    "480":{"items":2},
-                                                    "480":{"items":2},
-                                                    "768":{"items":3},
-                                                    "992":{"items":4}
-                                                }'
-                                            id="best-sell-div">
-
-                                            @foreach ($carnival->user->products as $item)
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href="{{ route('get.products.detail',$item->slug) }}"><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('productImage/' . $item->image) }}"></a>
-                                                            <div class="product-item-actions">
-                                                                <a class="btn btn-wishlist"
-                                                                    href=""><span>wishlist</span></a>
-                                                                <a class="btn btn-compare"
-                                                                    href=""><span>compare</span></a>
-                                                                <a class="btn btn-quickview"
-                                                                    href=""><span>quickview</span></a>
-                                                            </div>
-                                                            <button type="button" class="btn btn-cart"><span>Add to
-                                                                    Cart</span></button>
-                                                            <span class="product-item-label label-price">30%
-                                                                <span>off</span></span>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a
-                                                                    href="{{ route('get.products.detail', $item->slug) }}">{{ $item->title }}</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">{{ $item->new_price }}</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-
-                                        </div>
-                                    </div><!-- tab 1 -->
-
-                                </div>
-
-                            </div><!-- block tab products -->
-
-                        </div>
-                    </div> --}}
                     <div class="block-floor-products block-floor-products-opt1 floor-products1" id="floor0-0">
                         <div class="container">
                             <div class="block-title ">
@@ -1562,13 +1229,12 @@
                                     <div class="dropdown-menu">
                                         <ul>
                                             <li role="presentation" class="active"><a href="#floor1-1"
-                                                    id="best-seller-tab" role="tab" data-toggle="tab">Best Seller </a>
+                                                    id="best-seller-tab" role="tab" data-toggle="tab">On Sale </a>
                                             </li>
                                             <li role="presentation"><a href="#floor1-2" role="tab"
-                                                    data-toggle="tab">Most
-                                                    Viewed </a></li>
+                                                    data-toggle="tab">New Product </a></li>
                                             <li role="presentation"><a href="#floor1-3" id="new-arr-tab" role="tab"
-                                                    data-toggle="tab">New Arrivals <span class="label-cat">12</span></a>
+                                                    data-toggle="tab">Best Seller <span class="label-cat">12</span></a>
                                             </li>
                                             @foreach ($categories as $row)
                                                 <li role="presentation"><a href="#floor1-4-{{ $row->id }}"
@@ -1630,7 +1296,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" href=""><img alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/floor1-1.jpg') }}"></a>
+                                                                    src="{{ asset($item->image) }}"></a>
                                                             <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
                                                                     href=""><span>wishlist</span></a>
@@ -1688,7 +1354,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" href=""><img alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/floor1-1.jpg') }}"></a>
+                                                                    src="{{ asset($item->image) }}"></a>
                                                             <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
                                                                     href=""><span>wishlist</span></a>
@@ -1747,7 +1413,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" href=""><img alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/floor1-1.jpg') }}"></a>
+                                                                    src="{{ asset($item->image) }}"></a>
                                                             <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
                                                                     href=""><span>wishlist</span></a>
@@ -2005,63 +1671,6 @@
                     </div>
                 @endif
                 @if (count($carnival->user->blogs) > 0)
-                    {{-- <div class="row">
-                        <div class="col-md-12">
-
-                            <!-- block tab products -->
-                            <div class="block-tab-products-opt1">
-
-                                <div class="block-title">
-                                    <ul class="nav" role="tablist">
-                                        <li role="presentation" class="active">
-                                            <a href="#tabproduct1" role="tab" id="best-sell" data-toggle="tab">Blogs
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="block-content tab-content">
-
-                                    <!-- tab 1 -->
-                                    <div role="tabpanel" class="tab-pane active fade in " id="tabproduct1">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                            data-responsive='{
-                                                    "0":{"items":1},
-                                                    "480":{"items":2},
-                                                    "480":{"items":2},
-                                                    "768":{"items":3},
-                                                    "992":{"items":4}
-                                                }'
-                                            id="best-sell-div">
-
-                                            @foreach ($carnival->user->blogs as $item)
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" href="{{ route('front.blog.detail', $item->slug) }}"><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">{{ $item->title }}</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-
-                                        </div>
-                                    </div><!-- tab 1 -->
-
-                                </div>
-
-                            </div><!-- block tab products -->
-
-                        </div>
-                    </div> --}}
                     <div class="block-floor-products block-floor-products-opt1 floor-products1" id="floor0-0">
                         <div class="container">
                             <div class="block-title ">
