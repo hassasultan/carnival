@@ -669,8 +669,21 @@
 @section('bottom_script')
     <script>
         $(document).ready(function() {
-            $('#package').prob('disabled', true);
-            
+            $('#package').prop('disabled', true);
+
+            $('#phone').on('input', function() {
+                const phoneVal = $(this).val().trim();
+                if (phoneVal === '') {
+                    $('#phone-error').text('Please enter phone');
+                    $('#package').prop('disabled', true);
+                } else {
+                    $('#phone-error').text('');
+                    $('#package').prop('disabled', false);
+                }
+            });
+
+            $('#phone').trigger('input');
+
             $('#package').on('change', function() {
                 var packageId = $(this).val();
 
