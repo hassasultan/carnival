@@ -37,7 +37,13 @@ class ProductController extends Controller
             $products = $products->where('user_id', Auth::id())->get();
         }
 
-        return view('dashboard.admin.products.index', compact('products', 'variants', 'categories'));
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subVendor.layouts.app',
+        };
+
+        return view('dashboard.admin.products.index', compact('products', 'variants', 'categories', 'layout'));
     }
 
     public function create()
