@@ -178,6 +178,10 @@ Route::middleware('auth')->group(function () {
 
     // Events Crud
     Route::resource('events', EventController::class);
+
+    //blogs
+    Route::resource('blogs', BlogsController::class)->except(['update']);
+    Route::put('/blogs/{blog}', [BlogsController::class, 'update'])->name('blogs.update');
 });
 
 // Admin Routes
@@ -235,10 +239,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::delete('banners/delete', [UserManagementController::class, 'delete'])->name('banners.delete');
 
     Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.categories');
-
-    //blogs
-    Route::resource('blogs', BlogsController::class)->except(['update']);
-    Route::put('/blogs/{blog}', [BlogsController::class, 'update'])->name('blogs.update');
 
     //musics
     Route::resource('musics', MusicController::class);
