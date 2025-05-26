@@ -29,7 +29,14 @@ class ProductController extends Controller
     {
         $categories = Category::where('type', 'ecommerce')->get();
         $variants = Variant::all();
-        $products = Product::orderBy('id', 'DESC')->get();
+        $products = Product::orderBy('id', 'DESC');
+
+        if (Auth::user()->isAdmin()) {
+            $products = $products->get();
+        } else {
+            $products = $products->where('user_id', Auth::id())->get();
+        }
+
         return view('dashboard.admin.products.index', compact('products', 'variants', 'categories'));
     }
 
@@ -38,7 +45,7 @@ class ProductController extends Controller
         $variants = Variant::all();
         $categories = Category::all();
         $brands = Brand::all();
-        
+
         $layout = match (Auth::user()->role->name) {
             'Admin' => 'dashboard.admin.layouts.app',
             'Vendor' => 'dashboard.vendor.layouts.app',
@@ -99,9 +106,16 @@ class ProductController extends Controller
         $selectedVariants = $product->variants->pluck('id')->toArray();
         $subcat = Subcategory::where('category_id', $product->category_id)->get();
         $brands = Brand::all();
-        return view('dashboard.admin.products.edit', compact('product', 'categories', 'variants', 'subcat', 'selectedVariants', 'brands'));
+
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subvendor.layouts.app',
+        };
+
+        return view('dashboard.admin.products.edit', compact('product', 'categories', 'variants', 'subcat', 'selectedVariants', 'brands', 'layout'));
     }
-    
+
     public function update(Request $request, $id)
     {
         $request->validate([
