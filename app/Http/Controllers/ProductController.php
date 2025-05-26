@@ -49,7 +49,7 @@ class ProductController extends Controller
         $layout = match (Auth::user()->role->name) {
             'Admin' => 'dashboard.admin.layouts.app',
             'Vendor' => 'dashboard.vendor.layouts.app',
-            'SubVendor' => 'dashboard.subvendor.layouts.app',
+            'SubVendor' => 'dashboard.subVendor.layouts.app',
         };
 
         return view('dashboard.admin.products.create', compact('categories', 'variants', 'brands', 'layout'));
@@ -110,7 +110,7 @@ class ProductController extends Controller
         $layout = match (Auth::user()->role->name) {
             'Admin' => 'dashboard.admin.layouts.app',
             'Vendor' => 'dashboard.vendor.layouts.app',
-            'SubVendor' => 'dashboard.subvendor.layouts.app',
+            'SubVendor' => 'dashboard.subVendor.layouts.app',
         };
 
         return view('dashboard.admin.products.edit', compact('product', 'categories', 'variants', 'subcat', 'selectedVariants', 'brands', 'layout'));
