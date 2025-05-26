@@ -92,8 +92,8 @@
                     </a>
                     <ul class="collapse list-unstyled w-100" id="ui-events">
                         @if (auth()->user()->hasPermission('events'))
-                            <li class="nav-item @if (Route::is('subVendor.events')) active @endif">
-                                <a class="nav-link" href="{{ route('subVendor.events') }}"><span
+                            <li class="nav-item @if (Route::is('events.index')) active @endif">
+                                <a class="nav-link" href="{{ route('events.index') }}"><span
                                         class="ml-1 item-text">Events</span></a>
                             </li>
                         @endif
