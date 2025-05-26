@@ -695,7 +695,7 @@
                         .find('input[type="file"]').prop('required', true).attr('required', 'required');
                 }
 
-                if (packageId == 'section_leader') {
+                if (packageId == 'section_leader' || $('#age_range').val() == 'kid') {
                     $('#vendors_input').show();
                 } else {
                     $('#vendors_input').hide();
