@@ -23,14 +23,14 @@ class SubVendorBlogController extends Controller
         if ($request->has("type")) {
             return $blogs;
         }
-        return view('dashboard.subvendor.blogs.index', compact('blogs'));
+        return view('dashboard.subVendor.blogs.index', compact('blogs'));
     }
 
     public function create()
     {
         $user = User::where('role_id', '!=', 1)->get();
         $categories = Category::where('type', 'blogging')->get();
-        return view('dashboard.subvendor.blogs.create', compact('categories', 'user'));
+        return view('dashboard.subVendor.blogs.create', compact('categories', 'user'));
     }
     public function store(Request $request)
     {
@@ -75,7 +75,7 @@ class SubVendorBlogController extends Controller
     {
         $user = User::where('role_id', '!=', 1)->get();
         $categories = Category::where('type', 'blogging')->get();
-        return view('dashboard.subvendor.blogs.edit', compact('blog', 'categories', 'user'));
+        return view('dashboard.subVendor.blogs.edit', compact('blog', 'categories', 'user'));
     }
 
     public function update(Request $request, Blogs $blog)

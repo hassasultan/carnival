@@ -1,4 +1,4 @@
-@extends('dashboard.subvendor.layouts.app')
+@extends('dashboard.subVendor.layouts.app')
 
 @section('content')
 <style>
