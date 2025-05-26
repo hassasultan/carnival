@@ -149,7 +149,6 @@ class BlogsController extends Controller
             $blog->user_id = $request->user_id ?? auth()->user()->id;
             $blog->title = $request->title;
             $blog->slug = Str::slug($request->title, '-');
-            $blog->user_id = $request->user_id;
             $blog->category_id = $request->category_id;
             $blog->region_id = $request->region_id;
 
@@ -167,7 +166,7 @@ class BlogsController extends Controller
             $blog->status = $request->status;
             // dd($blog, 'ok');
 
-            dd($blog, 'oks');
+            // dd($blog, 'oks');
             $blog->save();
 
             return redirect()->route('blogs.index')->with('success', 'Blog updated successfully.');
