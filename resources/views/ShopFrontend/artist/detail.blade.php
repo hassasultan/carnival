@@ -959,7 +959,7 @@
             <div class="container">
 
                 <div class="block-title ">
-                    <span class="title">Hot categories</span>
+                    <span class="title">Hot categoriessss</span>
                 </div>
 
                 <div class="block-content">
