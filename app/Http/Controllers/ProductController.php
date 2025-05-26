@@ -132,6 +132,13 @@ class ProductController extends Controller
 
         $data = $request->all();
 
+        if ($request->hasFile('media')) {
+            $data['image'] = $this->uploadImage($request->file('image'), 'productImage');
+        }
+        else {
+            $data['image'] = $product->image;
+        }
+
         if ($request->hasFile('variant_images')) {
             $data['variant_images'] = $request->file('variant_images');
         } else {
