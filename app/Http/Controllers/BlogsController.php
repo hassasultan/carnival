@@ -146,6 +146,7 @@ class BlogsController extends Controller
                 ]);
             }
 
+            $blog->user_id = $blog->user_id;
             $blog->title = $request->title;
             $blog->slug = Str::slug($request->title, '-');
             $blog->user_id = $request->user_id;
@@ -164,7 +165,7 @@ class BlogsController extends Controller
 
             $blog->description = $request->description;
             $blog->status = $request->status;
-            dd($blog, 'ok');
+            // dd($blog, 'ok');
 
             $blog->save();
 
