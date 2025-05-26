@@ -51,7 +51,7 @@
 						</div>
 					</div>
 				</div>
-			@if ($key % 3 == 0)
+			@if ($key % 2 == 0)
 			</div>
 			<div class="row">
 			@endif
