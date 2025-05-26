@@ -58,8 +58,6 @@ class EventController extends Controller
             'SubVendor' => 'dashboard.subVendor.layouts.app',
         };
 
-        dd($layout);
-
         return view('dashboard.admin.events.index', compact('packages', 'categories', 'events', 'ticktes', 'layout'));
     }
 

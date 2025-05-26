@@ -91,12 +91,12 @@
                         <span class="ml-3 item-text">Events</span>
                     </a>
                     <ul class="collapse list-unstyled w-100" id="ui-events">
-                        @if (auth()->user()->hasPermission('events'))
+                        {{-- @if (auth()->user()->hasPermission('events')) --}}
                             <li class="nav-item @if (Route::is('events.index')) active @endif">
                                 <a class="nav-link" href="{{ route('events.index') }}"><span
                                         class="ml-1 item-text">Events</span></a>
                             </li>
-                        @endif
+                        {{-- @endif --}}
                         {{-- @if (auth()->user()->hasPermission('tickets'))
                         <li class="nav-item @if (Route::is('tickets.index')) active @endif">
                             <a class="nav-link" href="{{ route('tickets.index') }}">
