@@ -93,6 +93,7 @@ class ProductService
                     'status' => 1,
                     'name' => $data['variant_name'][$index] ?? null,
                     'type' => $data['type'][$index] ?? null,
+                    'price' => $data['variant_price'][$index] ?? null,
                 ]);
 
                 if (isset($data['variant_images'][$index])) {

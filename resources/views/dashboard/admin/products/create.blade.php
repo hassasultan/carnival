@@ -224,14 +224,13 @@
 
                         // Populate the subcategory dropdown if available
                         var subcategoryDropdown = $('#edit_subcategory');
-                        subcategoryDropdown.empty(); // Clear existing options
+                        subcategoryDropdown.empty();
                         subcategoryDropdown.append($('<option>', {
                             value: '',
                             text: 'Select Subcategory'
                         }));
                         if (response.product.subcategory) {
                             if (Array.isArray(response.product.subcategory)) {
-                                // If the subcategory data is an array
                                 response.product.subcategory.forEach(subcategory => {
                                     subcategoryDropdown.append($('<option>', {
                                         value: subcategory.id,
@@ -239,7 +238,6 @@
                                     }));
                                 });
                             } else {
-                                // If the subcategory data is an object
                                 subcategoryDropdown.append($('<option>', {
                                     value: response.product.subcategory.id,
                                     text: response.product.subcategory.title
@@ -252,7 +250,7 @@
                         // Autopopulate tags if available
                         if (response.product.tags) {
                             var tags = response.product.tags.split(
-                                ','); // Convert tags string to an array
+                                ',');
                             $('#edit_hash_tags').empty();
                             tags.forEach(tag => {
                                 var tagElement = $(
@@ -299,7 +297,6 @@
                     processData: false,
                     success: function(response) {
 
-                        // Reinitialize DataTables after updating table content
                         $('#dataTable-1').DataTable({
                             autoWidth: true,
                             "lengthMenu": [
@@ -377,12 +374,10 @@
                         data: formData,
                         success: function(response) {
                             $('#deleteConfirmationModal').modal('hide');
-                            // Show success message on the page
                             $('#productMessage').html(
                                 '<div class="alert alert-success" role="alert">' +
                                 response.message + '</div>');
 
-                            // Optionally, you can remove the deleted product row from the table
                             deleteForm.closest('tr').remove();
                         },
                         error: function(xhr, status, error) {
@@ -400,15 +395,12 @@
                 var tagId = $(this).data('id');
                 var isSelected = $(this).hasClass('badge-primary');
                 if (isSelected) {
-                    // Remove the hidden input field for the unselected tag
                     $(this).next('input[name="tags[]"]').remove();
                     $(this).removeClass('badge-primary').addClass('badge-secondary');
                 } else {
-                    // Create a hidden input field for the selected tag
                     var tagName = $(this).text().trim().replace('#', '');
                     var newInput = $('<input type="hidden" name="tags[]" value="#' + tagName +
                         '">');
-                    // Append the new input field to the form
                     $('#hash_tags').append(newInput);
                     $(this).removeClass('badge-secondary').addClass('badge-primary');
                 }
@@ -419,10 +411,9 @@
                 var tagId = $(this).data('id');
                 var tagInput = $(this).next('input[name="tags[]"]');
                 if (tagInput.length) {
-                    // Remove the hidden input field for the tag
                     tagInput.remove();
                 }
-                $(this).remove(); // Remove the tag from the UI
+                $(this).remove();
             });
 
             // Functionality to add a new tag when pressing Enter in the input field
@@ -430,22 +421,16 @@
                 if (event.which === 13) {
                     var newTagName = $(this).val().trim();
                     if (newTagName) {
-                        // Generate a unique ID for the new tag
                         var newTagId = 'random_' + Math.floor(Math.random() * 1000000);
-                        // Create the new tag
                         var newTag = $('<span class="badge badge-primary tag badge-lg" data-id="' +
                             newTagId +
                             '" style="font-size: 1.25em;">#' + newTagName + '</span>');
-                        // Append the new tag after the input field
                         $('#tagInput').before(newTag);
 
-                        // Create a hidden input field for the new tag code name
                         var newInput = $('<input type="hidden" name="tags[]" value="#' + newTagName +
                             '">');
-                        // Append the new input field to the form
                         $('#hash_tags').append(newInput);
 
-                        // Clear the input field
                         $(this).val('');
                     }
                 }
@@ -453,7 +438,6 @@
 
             // Update label text when files are selected for additional images
             $('#media').on('change', function() {
-                // Get the file names
                 var files = $(this)[0].files;
                 var fileNames = '';
                 for (var i = 0; i < files.length; i++) {
@@ -462,13 +446,11 @@
                         fileNames += ', ';
                     }
                 }
-                // Update the label text
                 $('#media_label').text(fileNames);
             });
 
             // Update label text when files are selected for additional images
             $('#image').on('change', function() {
-                // Get the file names
                 var files = $(this)[0].files;
                 var fileNames = '';
                 for (var i = 0; i < files.length; i++) {
@@ -477,7 +459,6 @@
                         fileNames += ', ';
                     }
                 }
-                // Update the label text
                 $('#image_label').text(fileNames);
             });
         });
@@ -486,27 +467,7 @@
         $('#editproductModal').on('shown.bs.modal', function() {
             $('#edit_variant_id').select2();
         });
-
-        // Functionality to add a new tag when clicking on the "Add New" text in edit modal
-        // $('#edit_addNewTagText').click(function() {
-        //     var newTagName = prompt('Enter the name for the new tag:');
-        //     if (newTagName) {
-        //         // Generate a unique ID for the new tag
-        //         var newTagId = 'random_' + Math.floor(Math.random() * 1000000);
-        //         // Create the new tag
-        //         var newTag = $('<span class="badge badge-primary tag badge-lg" data-id="' + newTagId +
-        //             '" style="font-size: 1.25em;">#' + newTagName + '</span>');
-        //         // Append the new tag after the last tag in the container
-        //         $('#edit_hash_tags').append(newTag);
-
-        //         // Create a hidden input field for the new tag code name
-        //         var newInput = $('<input type="hidden" name="tags[]" value="#' + newTagName +
-        //             '">');
-        //         // Append the new input field to the form
-        //         $('#edit_hash_tags').append(newInput);
-        //     }
-        // });
-
+        
         $('.category').on('change', function() {
             $('#variant_id').addClass('d-none');
             var category = $(this).val();
@@ -515,10 +476,10 @@
             url = url.replace(':category', category);
             $.ajax({
                 type: 'GET',
-                url: url, // Manually construct the URL
+                url: url, 
                 success: function(response) {
                     console.log(response);
-                    subcategoryDropdown.empty(); // Clear existing options
+                    subcategoryDropdown.empty(); 
                     subcategoryDropdown.append($('<option>', {
                         value: '',
                         text: 'Select Subcategory'
@@ -529,7 +490,7 @@
                             text: subcategory.title
                         }));
                     });
-                    subcategoryDropdown.closest('.form-group').show(); // Show the subcategory dropdown
+                    subcategoryDropdown.closest('.form-group').show(); 
                     var html = '';
                     $.each(response.varients, function(index, row) {
                         html += '<option value="' + row.id + '" data-type="' + row.type + '">' +
@@ -549,33 +510,26 @@
             var tagId = $(this).data('id');
             var tagInput = $(this).next('input[name="tags[]"]');
             if (tagInput.length) {
-                // Remove the hidden input field for the tag
                 tagInput.remove();
             }
-            $(this).remove(); // Remove the tag from the UI
+            $(this).remove();
         });
 
         // Functionality to add a new tag in edit modal when pressing Enter in the input field
         $('#editproductModal #edit_tagInput').keypress(function(event) {
-            if (event.which === 13) { // Check if Enter key is pressed
+            if (event.which === 13) {
                 var newTagName = $(this).val().trim();
                 if (newTagName) {
-                    // Generate a unique ID for the new tag
                     var newTagId = 'random_' + Math.floor(Math.random() * 1000000);
-                    // Create the new tag
                     var newTag = $('<span class="badge badge-primary tag badge-lg" data-id="' +
                         newTagId +
                         '" style="font-size: 1.25em;">#' + newTagName + '</span>');
-                    // Append the new tag after the input field
                     $('#editproductModal #edit_tagInput').before(newTag);
 
-                    // Create a hidden input field for the new tag code name
                     var newInput = $('<input type="hidden" name="tags[]" value="' + newTagName +
-                        '">'); // Do not include '#' symbol here
-                    // Append the new input field to the form
+                        '">');
                     $('#editproductModal #edit_hash_tags').append(newInput);
 
-                    // Clear the input field
                     $(this).val('');
                 }
             }
@@ -711,7 +665,7 @@
         }
 
         function removeForm(element) {
-            element.closest('.parent').remove(); // Remove the closest parent form group
+            element.closest('.parent').remove();
         }
 
         function plusBTN() {
@@ -720,16 +674,14 @@
             var type = $("#plus-btn").attr('data-type');
             cloneForm(id, type);
         }
-        // document.getElementById('plus-btn').addEventListener('click', function() {
-        //     cloneForm(); // Call the function to clone the form elements
-        // });
+        
         document.addEventListener('click', function(event) {
             if (event.target && event.target.classList.contains('minus-btn')) {
-                removeForm(event.target); // Call the function to remove the form elements
+                removeForm(event.target);
             }
         });
         $("#variant_id").change(function() {
-            $("#embed-div").html(''); // Clear previous content
+            $("#embed-div").html('');
             allTickets = $(this).val();
             var html = '';
             $.each(allTickets, function(index, val) {
@@ -864,14 +816,14 @@
         // Adjusted code for handling file inputs and image previews
         $(document).on('change', '.custom-file-input', function() {
             var input = this;
-            var id = $(this).attr('id').split('-').pop(); // Extract variant ID from input ID
+            var id = $(this).attr('id').split('-').pop();
             var previewDiv = $('#image-preview-' + id);
-            var existingPreviews = previewDiv.find('.row'); // Find existing rows of previews
-            var newFileCount = input.files.length; // Get the number of newly selected files
-            var totalFileCount = existingPreviews.find('.col-md-3').length + newFileCount; // Calculate total count
+            var existingPreviews = previewDiv.find('.row');
+            var newFileCount = input.files.length;
+            var totalFileCount = existingPreviews.find('.col-md-3').length + newFileCount;
             var labelText = totalFileCount + ' file' + (totalFileCount !== 1 ? 's' : '') +
-                ' selected'; // Update label text based on total file count
-            $(this).next('.custom-file-label').text(labelText); // Update label text
+                ' selected';
+            $(this).next('.custom-file-label').text(labelText);
             if (input.files && input.files.length > 0) {
                 $.each(input.files, function(index, file) {
                     var reader = new FileReader();
@@ -880,26 +832,26 @@
                             .css({
                                 'width': '100px',
                                 'height': '100px',
-                                'margin': '5px', // Add margin around images
-                                'object-fit': 'cover' // Make sure images fill the space
+                                'margin': '5px',
+                                'object-fit': 'cover'
                             });
                         var deleteButton = $('<button>').addClass('btn btn-danger btn-sm delete-image')
-                            .html('&times;') // Use HTML entity for cross symbol
+                            .html('&times;')
                             .css({
-                                'font-size': '12px', // Make cross symbol smaller
-                                'padding': '2px 5px' // Add padding to make it look nicer
+                                'font-size': '12px',
+                                'padding': '2px 5px'
                             });
                         var previewWrapper = $('<div>').addClass('col-md-3').append(preview,
-                            deleteButton); // Each image will take 3 columns in a row
+                            deleteButton);
                         if (existingPreviews.length === 0 || (index + 1) % 4 === 0) {
                             var row = $(
                                 '<div class="row"></div>'
-                            ); // Create a row container if no existing previews or if it's the fourth image
+                            );
                             row.append(previewWrapper);
                             previewDiv.append(row);
                         } else {
                             existingPreviews.last().append(
-                                previewWrapper); // Append to the last existing row
+                                previewWrapper);
                         }
                     };
                     reader.readAsDataURL(file);
@@ -909,23 +861,23 @@
 
         // Adjusted code for deleting images
         $(document).on('click', '.delete-image', function(event) {
-            event.preventDefault(); // Prevent default behavior
+            event.preventDefault();
             console.log('Delete image button clicked');
             var inputId = $(this).closest('.form-group').find('.custom-file-input').attr('id');
-            var id = inputId ? inputId.split('-').pop() : null; // Extract variant ID from input ID
-            $(this).closest('.col-md-3').remove(); // Remove the image preview container
+            var id = inputId ? inputId.split('-').pop() : null;
+            $(this).closest('.col-md-3').remove();
             if (id) {
-                var totalFileCount = $('#image-preview-' + id + ' .col-md-3').length; // Get updated file count
+                var totalFileCount = $('#image-preview-' + id + ' .col-md-3').length;
                 var labelText = totalFileCount + ' file' + (totalFileCount !== 1 ? 's' : '') + ' selected';
-                $('#variant_images_label-' + id).text(labelText); // Update file count label
+                $('#variant_images_label-' + id).text(labelText);
             }
-            $('#' + inputId).val(''); // Clear the file input value
+            $('#' + inputId).val('');
         });
 
         // Function to display variant images preview
         function displayVariantImages(images) {
             var previewContainer = $('#variant-images-preview');
-            previewContainer.empty(); // Clear previous previews
+            previewContainer.empty();
             if (images && images.length > 0) {
                 images.forEach(function(imageUrl) {
                     var imgElement = $('<img>').attr('src', imageUrl).addClass('img-thumbnail').css('max-width',
@@ -939,14 +891,13 @@
         function preventFormSubmissionOnEnter(formId) {
             $(formId).on('keyup keypress', function(e) {
                 var keyCode = e.keyCode || e.which;
-                if (keyCode === 13) { // If Enter key is pressed
-                    e.preventDefault(); // Prevent default form submission
+                if (keyCode === 13) {
+                    e.preventDefault();
                     return false;
                 }
             });
         }
 
-        // Call the function for both create and edit forms
         preventFormSubmissionOnEnter('#createProductForm');
         preventFormSubmissionOnEnter('#editProductForm');
     </script>
