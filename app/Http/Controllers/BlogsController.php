@@ -167,8 +167,8 @@ class BlogsController extends Controller
             $blog->status = $request->status;
             // dd($blog, 'ok');
 
+            dd($blog, 'oks');
             $blog->save();
-            dd($blog, 'ok');
 
             return redirect()->route('blogs.index')->with('success', 'Blog updated successfully.');
         } catch (\Exception $e) {
