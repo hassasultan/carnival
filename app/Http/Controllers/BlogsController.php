@@ -19,14 +19,15 @@ class BlogsController extends Controller
         if ($request->has('search') && $request->search != null && $request->search != '') {
             $blogs = $blogs->where('title', 'LIKE', '%' . $request->search . '%');
         }
-        if ($request->has("type")) {
-            return $blogs;
-        }
         
         if (Auth::user()->isAdmin()) {
             $blogs = $blogs->paginate(10);
         } else {
             $blogs = $blogs->where('user_id', Auth::id())->paginate(10);
+        }
+        
+        if ($request->has("type")) {
+            return $blogs;
         }
 
         $layout = match (Auth::user()->role->name) {
