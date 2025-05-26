@@ -81,7 +81,7 @@ class BlogsController extends Controller
             }
 
             $blogs = new Blogs();
-            $blogs->user_id = $request->user_id ?? auth()->id;
+            $blogs->user_id = $request->user_id ?? auth()->user()->id;
             $blogs->category_id = $request->category_id;
             $blogs->region_id = $request->region_id;
             $blogs->title = $request->title;
@@ -97,6 +97,7 @@ class BlogsController extends Controller
             }
             $blogs->description = $request->description;
             $blogs->status = $request->status;
+            dd($blogs);
             $blogs->save();
             return redirect()->route('blogs.index')->with('success', 'Blog created successfully...');
         } catch (\Exception $e) {
