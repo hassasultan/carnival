@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Region;
+use Illuminate\Support\Facades\Auth;
 
 class BlogsController extends Controller
 {
