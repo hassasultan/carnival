@@ -841,13 +841,13 @@
                                             "1200":{"items":4}
                                         }'
                                             id="best-seller-floor">
-                                            @foreach ($carnival->mascamps as $member)
+                                            @foreach ($carnival->mascamps as $mascamp)
                                                 <div class="product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
                                                                 href=""><img alt="product name"
-                                                                    src="{{ asset($member->logo) }}"></a>
+                                                                    src="{{ asset('images/' . $mascamp->logo) }}"></a>
                                                             {{-- <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
                                                                     href=""><span>wishlist</span></a>
@@ -860,7 +860,7 @@
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $member->name }}</a></strong>
+                                                                    href="">{{ $mascamp->name }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -964,7 +964,7 @@
                             </div>
 
                         </div>
-                    </div>
+                </div>
                 @if (count($carnival->packageVendors('MasBands - Leader')) > 0)
                     <div class="row">
                         <div class="col-md-12">
