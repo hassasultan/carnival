@@ -1296,7 +1296,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" href=""><img alt="product name"
-                                                                    src="{{ asset('productImage/' . ($product->image ?? 'shopAssets/images/media/index1/floor1-1.jpg')) }}"></a>
+                                                                    src="{{ asset('productImage/' . ($product->image)) }}"></a>
                                                             <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
                                                                     href=""><span>wishlist</span></a>
@@ -1354,7 +1354,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" href=""><img alt="product name"
-                                                                    src="{{ asset('productImage/' . ($product->image ?? 'shopAssets/images/media/index1/floor1-1.jpg')) }}"></a>
+                                                                    src="{{ asset('productImage/' . ($product->image)) }}"></a>
                                                             <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
                                                                     href=""><span>wishlist</span></a>
@@ -1413,7 +1413,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" href=""><img alt="product name"
-                                                                    src="{{ asset('productImage/' . ($product->image ?? 'shopAssets/images/media/index1/floor1-1.jpg')) }}"></a>
+                                                                    src="{{ asset('productImage/' . ($product->image)) }}"></a>
                                                             <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
                                                                     href=""><span>wishlist</span></a>
