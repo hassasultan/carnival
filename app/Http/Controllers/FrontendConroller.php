@@ -1262,4 +1262,15 @@ class FrontendConroller extends Controller
 
         return $brands;
     }
+
+    public function vendorByPhone($phone)
+    {
+        $vendor = Vendor::where('phone', $phone)
+            ->orWhereHas('user', function ($query) use ($phone) {
+                $query->where('phone', $phone);
+            })
+            ->first();
+
+        return response()->json(['vendor' => $vendor]);
+    }
 }

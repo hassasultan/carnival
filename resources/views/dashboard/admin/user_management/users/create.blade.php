@@ -35,7 +35,7 @@
                 <div class="form-group" id="">
                     <label for="age_range">Age Range</label>
                     <select id="age_range" class="form-control @error('age_range') is-invalid @enderror" name="age_range">
-                        <option value="">Select Age Range</option>
+                        {{-- <option value="">Select Age Range</option> --}}
                         <option value="adult">Adult</option>
                         <option value="kid">Kid</option>
                     </select>
@@ -699,6 +699,32 @@
                     $('#vendors_input').show();
                 } else {
                     $('#vendors_input').hide();
+                }
+
+                if (packageId == 'section_leader' || $('#age_range').val() == 'kid') {
+
+                    var phone = $('#phone').val();
+                    $.ajax({
+                        type: 'GET',
+                        url: '{{ route('get.vendor.by.phone', ':id') }}'.replace(':id', phone),
+                        data: {
+                            phone: phone,
+                        },
+                        success: function(response) {
+                            if (response.vendor != null) {
+                                console.log('yes');
+                                var vendorId = response.vendor.id;
+                                
+                                $('#vendor').val(vendorId).trigger('change');
+                            } else {
+                                console.log('no');
+                                $('#vendor').val('').trigger('change');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+                    });
                 }
 
                 $('#ecommerce-box, #music-box, #appointment-box, #events-box, #ad_space-box, #blogging-box')
