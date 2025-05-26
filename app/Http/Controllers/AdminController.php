@@ -18,7 +18,7 @@ class AdminController extends Controller
         $layout = match (Auth::user()->role->name) {
             'Admin' => 'dashboard.admin.layouts.app',
             'Vendor' => 'dashboard.vendor.layouts.app',
-            'SubVendor' => 'dashboard.subvendor.layouts.app',
+            'SubVendor' => 'dashboard.subVendor.layouts.app',
         };
 
         $bookings = ModelBooking::where('model_id', Auth::id())->get();
