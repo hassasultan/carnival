@@ -8,8 +8,7 @@
 	}
 
 	.team-description.expanded {
-		max-height: 1000px;
-		/* Large enough to show all content */
+		max-height: none;
 	}
 
 	.see-more-link {
