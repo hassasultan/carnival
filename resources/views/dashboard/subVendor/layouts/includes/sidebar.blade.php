@@ -27,7 +27,8 @@
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-                <a class="nav-link" href="{{ route('subVendor.products') }}">
+                {{-- <a class="nav-link" href="{{ route('subVendor.products') }}"> --}}
+                <a class="nav-link" href="{{ route('products.index') }}">
                     <i class="fe fe-layers fe-16"></i>
                     <span class="ml-3 item-text">Products</span>
                     {{-- <span class="badge badge-pill badge-primary">New</span> --}}

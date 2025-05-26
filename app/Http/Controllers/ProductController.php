@@ -38,7 +38,14 @@ class ProductController extends Controller
         $variants = Variant::all();
         $categories = Category::all();
         $brands = Brand::all();
-        return view('dashboard.admin.products.create', compact('categories', 'variants', 'brands'));
+        
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subvendor.layouts.app',
+        };
+
+        return view('dashboard.admin.products.create', compact('categories', 'variants', 'brands', 'layout'));
     }
 
     public function store(Request $request)

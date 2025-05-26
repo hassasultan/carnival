@@ -165,8 +165,15 @@ Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscri
 Route::middleware('auth')->group(function () {
     Route::get('/edit-Profile/{id}', [VendorController::class, 'editProfile'])->name('dashboard.edit.profile');
     Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
-
 });
+
+// auth routes
+Route::middleware('auth')->group(function () {
+    // Products Crud
+    Route::resource('products', ProductController::class)->except(['update']);
+    Route::post('/product/{product}', [ProductController::class, 'update'])->name('products.update');
+});
+
 // Admin Routes
 Route::middleware('admin')->prefix('admin')->group(function () {
 
@@ -187,10 +194,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // Categories Crud
     Route::resource('categories', CategoryController::class);
-
-    // Products Crud
-    Route::resource('products', ProductController::class)->except(['update']);
-    Route::post('/product/{product}', [ProductController::class, 'update'])->name('products.update');
 
 
     // Costumes Crud
@@ -269,11 +272,11 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     // assign carnivals to mascamp
     Route::post('/assign/mascamps', [CarnivalController::class, 'assignModels'])->name('assign.models');
     Route::delete('carnivals/{carnival}/images/{image}', [CarnivalController::class, 'deleteImage'])
-    ->name('carnivals.delete.image');
+        ->name('carnivals.delete.image');
     Route::delete('carnivals/{carnival}/banners/{image}', [CarnivalController::class, 'deleteBanner'])
-    ->name('carnivals.delete.banner');
+        ->name('carnivals.delete.banner');
     Route::delete('carnivals/{carnival}/flyers/{image}', [CarnivalController::class, 'deleteFlyer'])
-    ->name('carnivals.delete.flyer');
+        ->name('carnivals.delete.flyer');
     // assign carnivals to mascamp
     Route::post('/assign/carnival-member', [CarnivalController::class, 'assignCarnivalMember'])->name('assign.CarnivalMember');
 
@@ -490,7 +493,6 @@ Route::middleware('auth')->prefix('user')->group(function () {
     // Route::get('/profile', [CustomerController::class, 'profile'])->name('users.profile');
 
     Route::post('/profile/update', [CustomerController::class, 'profileUpdate'])->name('users.profile.update');
-
 });
 
 
