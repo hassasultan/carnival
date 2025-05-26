@@ -146,7 +146,7 @@ class BlogsController extends Controller
                 ]);
             }
 
-            $blog->user_id = $blog->user_id;
+            $blog->user_id = $request->user_id ?? auth()->user()->id;
             $blog->title = $request->title;
             $blog->slug = Str::slug($request->title, '-');
             $blog->user_id = $request->user_id;
