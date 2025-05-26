@@ -50,7 +50,7 @@ class EventController extends Controller
             $show_events = $show_events->orderBy('id', 'DESC')->paginate(10);
             $events = Event::all(['id', 'name', 'start_date', 'end_date']);
         } else {
-            $show_events = $show_events->:where('user_id', Auth::id())->orderBy('id', 'DESC')->paginate(10);
+            $show_events = $show_events->where('user_id', Auth::id())->orderBy('id', 'DESC')->paginate(10);
             $events = Event::where('user_id', Auth::id())->get(['id', 'name', 'start_date', 'end_date']);
         }
 
