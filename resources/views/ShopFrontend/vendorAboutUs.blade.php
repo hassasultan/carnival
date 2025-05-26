@@ -503,7 +503,10 @@
             </div>
         </div>
         {{-- Sponsers --}}
-        @include('ShopFrontend.components.sponsers')
+        
+        @if (count($user->sponsors) > 1)
+            @include('ShopFrontend.components.sponsers')
+        @endif
         {{-- Sponsers --}}
 
     </main><!-- end MAIN -->

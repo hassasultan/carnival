@@ -4267,7 +4267,9 @@
             </div>
         @endif
 
-        @include('ShopFrontend.components.sponsers')
+        @if (count($user->sponsors) > 1)
+            @include('ShopFrontend.components.sponsers')
+        @endif
 
         <!-- block  showcase-->
         @include('partials.brand_showcase')

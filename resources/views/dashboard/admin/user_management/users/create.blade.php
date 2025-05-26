@@ -669,6 +669,8 @@
 @section('bottom_script')
     <script>
         $(document).ready(function() {
+            $('#package').prob('disabled', true);
+            
             $('#package').on('change', function() {
                 var packageId = $(this).val();
 
@@ -689,36 +691,6 @@
                 $('#ecommerce-box, #music-box, #appointment-box, #events-box, #ad_space-box, #blogging-box')
                     .hide();
             });
-
-            // $('#package').on('change', function() {
-            //     var packageId = $(this).val();
-            //     if (packageId == '1') {
-            //         $('#bannerSection').hide();
-            //         $('#bannerSection').find('input, textarea').removeAttr('required');
-            //     } else if (packageId == 'section_leader') {
-            //         $('#vendors_input').show();
-
-            //         $('#ecommerce-box').hide();
-            //         $('#music-box').hide();
-            //         $('#appointment-box').hide();
-            //         $('#events-box').hide();
-            //         $('#ad_space-box').hide();
-            //         $('#blogging-box').hide();
-            //         $('#bannerSection').show();
-            //         $('#bannerSection').find('input[type="file"]').attr('required', 'required');
-            //     } else {
-
-            //         $('#vendors_input').hide();
-            //         $('#ecommerce-box').hide();
-            //         $('#music-box').hide();
-            //         $('#appointment-box').hide();
-            //         $('#events-box').hide();
-            //         $('#ad_space-box').hide();
-            //         $('#blogging-box').hide();
-            //         $('#bannerSection').show();
-            //         $('#bannerSection').find('input[type="file"]').attr('required', 'required');
-            //     }
-            // });
 
             $('#vendor').on('change', function() {
                 var vendor = $(this).val();
