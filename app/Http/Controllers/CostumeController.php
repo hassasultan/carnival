@@ -28,8 +28,21 @@ class CostumeController extends Controller
         $events = Event::get();
         $categories = Category::where('type', 'ecommerce')->get();
         $variants = Variant::all();
-        $costumes = Costume::all();
-        return view('dashboard.admin.costumes.index', compact('events', 'costumes', 'variants', 'categories'));
+        $costumes = Costume::query();
+
+        if (Auth::user()->isAdmin()) {
+            $costumes = $costumes->get();
+        } else {
+            $costumes = $costumes->where('user_id', Auth::id())->get();
+        }
+
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subVendor.layouts.app',
+        };
+
+        return view('dashboard.admin.costumes.index', compact('events', 'costumes', 'variants', 'categories', 'layout'));
     }
 
     public function store(Request $request)
@@ -78,7 +91,7 @@ class CostumeController extends Controller
         $categories = Category::all();
         return response()->json(['costume' => $costume]);
     }
-    
+
     public function update(Request $request, $id)
     {
         $request->validate([

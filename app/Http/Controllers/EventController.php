@@ -41,12 +41,24 @@ class EventController extends Controller
                     $query->where('title', 'LIKE', '%' . $request->search . '%');
                 });
         }
-        $show_events = $show_events->orderBy('id','DESC')->paginate(10);
+        $show_events = $show_events->orderBy('id', 'DESC')->paginate(10);
         if ($request->has("type")) {
             return $show_events;
         }
-        $events = Event::all(['id', 'name', 'start_date', 'end_date']);
-        return view('dashboard.admin.events.index', compact('packages', 'categories', 'events', 'ticktes'));
+
+        if (Auth::user()->isAdmin()) {
+            $events = Event::all(['id', 'name', 'start_date', 'end_date']);
+        } else {
+            $events = Event::where('user_id', Auth::id())->get(['id', 'name', 'start_date', 'end_date']);
+        }
+
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subVendor.layouts.app',
+        };
+
+        return view('dashboard.admin.events.index', compact('packages', 'categories', 'events', 'ticktes', 'layout'));
     }
 
     public function create()
@@ -60,8 +72,14 @@ class EventController extends Controller
         $vendors = Vendor::WhereHas('user', function ($query) {
             $query->where('status', 1);
         })->get();
+        
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subVendor.layouts.app',
+        };
 
-        return view('dashboard.admin.events.create', compact('packages', 'categories', 'ticktes', 'show_events', 'events', 'vendors', 'countries'));
+        return view('dashboard.admin.events.create', compact('packages', 'categories', 'ticktes', 'show_events', 'events', 'vendors', 'countries', 'layout'));
     }
 
     public function store(Request $request)
@@ -114,6 +132,7 @@ class EventController extends Controller
         $packages = Package::all();
         $categories = Category::all();
         $countries = Country::all();
+        
         return response()->json(['event' => $event, 'packages' => $packages, 'categories' => $categories, 'countries' => $countries]);
     }
 

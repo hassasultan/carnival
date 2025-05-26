@@ -172,6 +172,12 @@ Route::middleware('auth')->group(function () {
     // Products Crud
     Route::resource('products', ProductController::class)->except(['update']);
     Route::post('/product/{product}', [ProductController::class, 'update'])->name('products.update');
+    
+    // Costumes Crud
+    Route::resource('costumes', CostumeController::class);
+
+    // Events Crud
+    Route::resource('events', EventController::class);
 });
 
 // Admin Routes
@@ -194,13 +200,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // Categories Crud
     Route::resource('categories', CategoryController::class);
-
-
-    // Costumes Crud
-    Route::resource('costumes', CostumeController::class);
-
-    // Events Crud
-    Route::resource('events', EventController::class);
 
     // Subcategories Crud
     Route::resource('subcategories', SubcategoryController::class);
