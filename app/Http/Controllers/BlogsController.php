@@ -18,12 +18,23 @@ class BlogsController extends Controller
         if ($request->has('search') && $request->search != null && $request->search != '') {
             $blogs = $blogs->where('title', 'LIKE', '%' . $request->search . '%');
         }
-        $blogs = $blogs->paginate(10);
         if ($request->has("type")) {
             return $blogs;
         }
+        
+        if (Auth::user()->isAdmin()) {
+            $blogs = $blogs->paginate(10);
+        } else {
+            $blogs = $blogs->where('user_id', Auth::id())->paginate(10);
+        }
 
-        return view('dashboard.admin.blogs.index', compact('blogs'));
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subVendor.layouts.app',
+        };
+
+        return view('dashboard.admin.blogs.index', compact('blogs', 'layout'));
     }
 
     public function create()
@@ -31,7 +42,14 @@ class BlogsController extends Controller
         $user = User::where('role_id', '!=', 1)->get();
         $categories = Category::where('type', 'blogging')->get();
         $regions = Region::all();
-        return view('dashboard.admin.blogs.create', compact('categories', 'user', 'regions'));
+
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subVendor.layouts.app',
+        };
+
+        return view('dashboard.admin.blogs.create', compact('categories', 'user', 'regions', 'layout'));
     }
 
     public function store(Request $request)
@@ -89,7 +107,14 @@ class BlogsController extends Controller
         $user = User::where('role_id', '!=', 1)->get();
         $categories = Category::where('type', 'blogging')->get();
         $regions = Region::all();
-        return view('dashboard.admin.blogs.edit', compact('blog', 'categories', 'user', 'regions'));
+
+        $layout = match (Auth::user()->role->name) {
+            'Admin' => 'dashboard.admin.layouts.app',
+            'Vendor' => 'dashboard.vendor.layouts.app',
+            'SubVendor' => 'dashboard.subVendor.layouts.app',
+        };
+
+        return view('dashboard.admin.blogs.edit', compact('blog', 'categories', 'user', 'regions', 'layout'));
     }
 
     public function update(Request $request, Blogs $blog)
