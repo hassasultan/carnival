@@ -51,10 +51,10 @@
 						</div>
 					</div>
 				</div>
-			@if ($key % 2 == 0)
-			</div>
-			<div class="row">
-			@endif
+				@if (($key + 1) % 3 == 0)
+				</div>
+				<div class="row">
+				@endif
 			@endforeach
 		</div>
 	</div>
