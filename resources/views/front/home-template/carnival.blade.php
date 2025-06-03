@@ -80,7 +80,7 @@
         <div class="row" id="carnival-wrapper">
             <div class="carnival-listing row">
                 @foreach ($carnivals as $key => $row)
-                    <div class="carnival-item col-md-4">
+                    <div class="carnival-item col-md-4" style="flex: none !important;">
                         <div class="city-entry bg-grey-2">
                             <div class="tour-block tour-block-s-9 hover-green radius-5 underline-block">
                                 <div class="tour-layer delay-1"></div>
