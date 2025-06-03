@@ -221,7 +221,7 @@
                                                                 <button class="next">❯</button>
                                                             </div> --}}
 
-                                                                    <div class="slider new-slider">
+                                                                    <div class="slider new-slider" id="new-slider-{{ $row->id }}">
                                                                         <div class="slides">
                                                                             @foreach($row->images as $image)
                                                                                 <div class="slide-new {{ $loop->first ? 'active' : '' }}">
