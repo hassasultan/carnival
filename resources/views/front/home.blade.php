@@ -31,11 +31,9 @@
 
         function showActionBox(id, carnival_id) {
             console.log('id' +  id);
-            console.log('carnival_id', carnival_id);
             $('.city-entry-new').css('display', 'block');
             $('.new-slider').css('display', 'none');
-            $('.city-entry-' + id).css('display', 'none');
-            console.log('carrr', id, carnival_id);
+            $('.city-entry-' + carnival_id).css('display', 'none');
             $.ajax({
                 url: "{{ route('front.carnival.banner_details') }}",
                 type: "GET",
