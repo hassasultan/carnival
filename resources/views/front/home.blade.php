@@ -30,7 +30,7 @@
         });
 
         function showActionBox(id, carnival_id) {
-            console.log('id' +  id);
+            console.log('id' +  carnival_id);
             $('.city-entry-new').css('display', 'block');
             $('.new-slider').css('display', 'none');
             $('.city-entry-' + carnival_id).css('display', 'none');
