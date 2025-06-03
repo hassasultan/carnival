@@ -112,8 +112,8 @@ class UserManagementController extends Controller
         if ($request->hasFile('image')) {
             $imageName = $this->uploadImage($request->file('image'), 'images');
             $user->image = $imageName;
-            $user->save();
         }
+        $user->save();
 
         return redirect()->route('users.index')
             ->with('success', 'User registered successfully.');

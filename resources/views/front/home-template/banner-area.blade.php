@@ -137,7 +137,7 @@
                                                                     {{-- <img class="center-image" src="{{ asset($row->banner) }}"
                                                                 alt=""> --}}
                                                                     <div class="city-entry bg-grey-2 city-entry-new"
-                                                                        id="city-entry-{{ $key }}">
+                                                                        id="city-entry-{{ $row->id }}">
                                                                         <div
                                                                             class="tour-block tour-block-s-9 hover-green radius-5 underline-block">
                                                                             <div class="tour-layer delay-1"></div>
