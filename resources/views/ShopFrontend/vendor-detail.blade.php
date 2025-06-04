@@ -5089,11 +5089,11 @@
                 </div>
 
                 {{-- {{ dd($all_categories->toArray()) }} --}}
-                <div class="block-content">
+               <div class="block-content">
                     <div class="row">
-                        @foreach ($all_categories->chunk(2) as $categoryChunk)
-                            <div class="col-md-3 col-sm-6">
-                                @foreach ($categoryChunk as $category)
+                        @foreach ($all_categories->chunk(4) as $categoryChunk)
+                            @foreach ($categoryChunk as $category)
+                                <div class="col-md-3 col-sm-6">
                                     <div class="item">
                                         <div class="description"
                                             style="background-image: url({{ $category->icon ? asset($category->icon) : asset('shopAssets/images/media/index1/default-category.png') }})">
@@ -5106,11 +5106,12 @@
                                             @endforeach
                                         </ul>
                                     </div>
-                                @endforeach
-                            </div>
+                                </div>
+                            @endforeach
                         @endforeach
                     </div>
                 </div>
+
 
             </div>
         </div><!--block  hot categories-->
