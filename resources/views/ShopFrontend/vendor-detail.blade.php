@@ -5089,6 +5089,28 @@
                 </div>
 
                 {{-- {{ dd($all_categories->toArray()) }} --}}
+                {{-- <div class="block-content">
+                    <div class="row">
+                        @foreach ($all_categories->chunk(2) as $categoryChunk)
+                            <div class="col-md-3 col-sm-6">
+                                @foreach ($categoryChunk as $category)
+                                    <div class="item">
+                                        <div class="description"
+                                            style="background-image: url({{ $category->icon ? asset($category->icon) : asset('shopAssets/images/media/index1/default-category.png') }})">
+                                            <div class="title"><span>{{ $category->title }}</span></div>
+                                            <a href="" class="btn">shop now</a>
+                                        </div>
+                                        <ul>
+                                            @foreach ($category->subcategories as $subcategory)
+                                                <li><a href="">{{ $subcategory->title }}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endforeach
+                    </div>
+                </div> --}}
                <div class="block-content">
                     <div class="row">
                         @foreach ($all_categories->chunk(4) as $categoryChunk)
