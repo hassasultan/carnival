@@ -5091,8 +5091,8 @@
                 {{-- {{ dd($all_categories->toArray()) }} --}}
                 <div class="block-content">
                     <div class="row">
-                        @foreach ($all_categories as $categoryChunk)
-                            <div class="col-md-3 col-sm-3">
+                        @foreach ($all_categories->chunk(2) as $categoryChunk)
+                            <div class="col-md-3 col-sm-6">
                                 @foreach ($categoryChunk as $category)
                                     <div class="item">
                                         <div class="description"
