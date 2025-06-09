@@ -71,7 +71,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -232,7 +232,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -312,7 +312,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -392,7 +392,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -473,7 +473,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -553,7 +553,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -633,7 +633,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -713,7 +713,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
