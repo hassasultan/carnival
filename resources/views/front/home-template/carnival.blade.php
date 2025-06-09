@@ -84,12 +84,12 @@
                         <div class="city-entry bg-grey-2">
                             <div class="tour-block tour-block-s-9 hover-green radius-5 underline-block">
                                 <div class="tour-layer delay-1"></div>
-                                {{-- @if ($row->city && $row->city->airport != null)
+                                @if ($row->city && $row->city->airport != null)
                                     <img src="{{ asset($row->city->airport) }}" class="res-img" alt="">
                                 @else
                                     <img src="{{ asset('shopAssets/images/carnival/flight.jpeg') }}" class="res-img"
                                         alt="">
-                                @endif --}}
+                                @endif
                                 <div class="tour-caption">
                                     <div class="vertical-align">
                                         <h3 class="underline hover-it">{{ $row->name }}</h3>
