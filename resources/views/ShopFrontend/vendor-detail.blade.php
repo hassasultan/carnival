@@ -547,7 +547,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                href=""><img alt="product name"
+                                                                href="{{ route('carnivalMember.detail', $member->id) }}"><img alt="product name"
                                                                     src="{{ asset($member->image) }}"></a>
                                                             {{-- <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
@@ -585,7 +585,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                href=""><img alt="product name"
+                                                                href="{{ route('carnivalMember.detail', $member->id) }}"><img alt="product name"
                                                                     src="{{ asset($member->image) }}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
@@ -615,7 +615,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                href=""><img alt="product name"
+                                                                href="{{ route('carnivalMember.detail', $member->id) }}"><img alt="product name"
                                                                     src="{{ asset($member->image) }}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
@@ -748,7 +748,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                href=""><img alt="product name"
+                                                                href="{{ route('front.vendor.detail', $mascamp->user->slug) }}"><img alt="product name"
                                                                     src="{{ asset('images/' . $mascamp->logo) }}"></a>
                                                             {{-- <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
@@ -788,7 +788,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                href=""><img alt="product name"
+                                                                href="{{ route('front.vendor.detail', $mascamp->user->slug) }}"><img alt="product name"
                                                                     src="{{ asset('images/' . $mascamp->logo) }}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
@@ -820,7 +820,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                href=""><img alt="product name"
+                                                                href="{{ route('front.vendor.detail', $mascamp->user->slug) }}"><img alt="product name"
                                                                     src="{{ asset('images/' . $mascamp->logo) }}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
@@ -982,7 +982,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                href=""><img alt="product name"
+                                                                href="{{ route('front.vendor.detail', $mascamp->user->slug) }}"><img alt="product name"
                                                                     src="{{ asset('images/' . $mascamp->logo) }}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
@@ -1012,7 +1012,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                href=""><img alt="product name"
+                                                                href="{{ route('front.vendor.detail', $mascamp->user->slug) }}"><img alt="product name"
                                                                     src="{{ asset('images/' . $mascamp->logo) }}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
@@ -1145,7 +1145,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                href=""><img alt="product name"
+                                                                href="{{ route('artist.detail', $mascamp->user->slug) }}"><img alt="product name"
                                                                     src="{{ asset('images/' . $mascamp->logo) }}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
@@ -1175,7 +1175,7 @@
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                    href=""><img alt="product name"
+                                                                    href="{{ route('artist.detail', $mascamp->user->slug) }}"><img alt="product name"
                                                                         src="{{ asset('images/' . $mascamp->logo) }}"></a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -1207,7 +1207,7 @@
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                    href=""><img alt="product name"
+                                                                    href="{{ route('artist.detail', $mascamp->user->slug) }}"><img alt="product name"
                                                                         src="{{ asset('images/' . $mascamp->logo) }}"></a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -1342,7 +1342,7 @@
                                                 <div class=" product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img alt="product name"
+                                                            <a class="product-item-img" href="{{ route('get.products.detail',$item->slug) }}"><img alt="product name"
                                                                     src="{{ asset('productImage/' . $item->image) }}"></a>
                                                             <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
@@ -1400,7 +1400,7 @@
                                                 <div class=" product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img alt="product name"
+                                                            <a class="product-item-img" href="{{ route('get.products.detail',$item->slug) }}"><img alt="product name"
                                                                     src="{{ asset('productImage/' . $item->image) }}"></a>
                                                             <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
@@ -1459,7 +1459,7 @@
                                                 <div class=" product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img alt="product name"
+                                                            <a class="product-item-img" href="{{ route('get.products.detail',$item->slug) }}"><img alt="product name"
                                                                     src="{{ asset('productImage/' . $item->image) }}"></a>
                                                             <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
@@ -1803,7 +1803,7 @@
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $blog->title }}</a></strong>
+                                                                    href="{{ route('front.blog.detail', $blog->slug) }}">{{ $blog->title }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1832,7 +1832,7 @@
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $blog->title }}</a></strong>
+                                                                    href="{{ route('front.blog.detail', $blog->slug) }}">{{ $blog->title }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1862,7 +1862,7 @@
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $blog->title }}</a></strong>
+                                                                    href="{{ route('front.blog.detail', $blog->slug) }}">{{ $blog->title }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
