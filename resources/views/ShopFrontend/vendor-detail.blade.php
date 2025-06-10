@@ -1170,19 +1170,21 @@
                                             "1200":{"items":4}
                                         }'>
                                             @foreach ($carnival->packageVendors('Artistes') as $mascamp)
-                                                <div class="product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                href=""><img alt="product name"
-                                                                    src="{{ asset('images/' . $mascamp->logo) }}"></a>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a
-                                                                    href="{{ route('artist.detail', $mascamp->slug) }}">{{ $mascamp->name }}</a></strong>
+                                                @if ($mascamp->slug != null)
+                                                    <div class="product-item  product-item-opt-1 ">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" style="height: 266px; width: 186px;"
+                                                                    href=""><img alt="product name"
+                                                                        src="{{ asset('images/' . $mascamp->logo) }}"></a>
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                <strong class="product-item-name"><a
+                                                                        href="{{ route('artist.detail', $mascamp->slug) }}">{{ $mascamp->name }}</a></strong>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                @endif
                                             @endforeach
                                         </div>
                                     </div>
