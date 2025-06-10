@@ -8,6 +8,84 @@
         height: 236px !important;
         object-fit: cover !important;
     }
+    .block-title .title {
+        font-size: 24px;
+        font-weight: bold;
+        border-bottom: 3px solid #f8485e;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+
+    .category-item {
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease;
+    }
+
+    .category-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .category-image {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        height: 180px;
+        display: flex;
+        align-items: flex-end;
+        padding: 15px;
+        color: #fff;
+    }
+
+    .overlay {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 10px;
+        width: 100%;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .category-title {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .btn-shop {
+        display: inline-block;
+        margin-top: 5px;
+        padding: 6px 12px;
+        background-color: #f8485e;
+        color: white;
+        font-size: 14px;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background 0.3s;
+    }
+
+    .btn-shop:hover {
+        background-color: #d63041;
+    }
+
+    .subcategory-list {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .subcategory-list li {
+        font-size: 14px;
+        margin: 3px 0;
+    }
+
+    .subcategory-list a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .subcategory-list a:hover {
+        text-decoration: underline;
+    }
 </style>
 
     <main class="site-main">
@@ -5081,12 +5159,6 @@
         <!-- block  showcase-->
 
         <!-- block  hot categories-->
-        <div class="block-hot-categories-opt1">
-            <div class="container">
-
-                <div class="block-title ">
-                    <span class="title">Hot categories</span>
-                </div>
 
                 {{-- {{ dd($all_categories->toArray()) }} --}}
                 {{-- <div class="block-content">
@@ -5111,6 +5183,12 @@
                         @endforeach
                     </div>
                 </div> --}}
+        {{-- <div class="block-hot-categories-opt1">
+            <div class="container">
+
+                <div class="block-title ">
+                    <span class="title">Hot categories</span>
+                </div>
                <div class="block-content">
                     <div class="row">
                         @foreach ($all_categories->chunk(4) as $categoryChunk)
@@ -5136,7 +5214,40 @@
 
 
             </div>
-        </div><!--block  hot categories-->
+        </div> #floor1-1--}}
+        <div class="block-hot-categories-opt1 py-5">
+            <div class="container">
+                <div class="block-title mb-4">
+                    <span class="title">Hot Categories</span>
+                </div>
+                <div class="block-content">
+                    <div class="row g-4">
+                        @foreach ($all_categories->chunk(4) as $categoryChunk)
+                            @foreach ($categoryChunk as $category)
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="category-item">
+                                        <div class="category-image" style="background-image: url('{{ $category->icon ? asset($category->icon) : asset('shopAssets/images/media/index1/default-category.png') }}');">
+                                            <div class="overlay">
+                                                <div class="category-title">{{ $category->title }}</div>
+                                                <a href="#" class="btn-shop">Shop Now ▸</a>
+                                            </div>
+                                        </div>
+                                        @if($category->subcategories->count())
+                                            <ul class="subcategory-list mt-2">
+                                                @foreach ($category->subcategories as $subcategory)
+                                                    <li><a href="#">{{ $subcategory->title }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--block  hot categories--> 
 
     </main><!-- end MAIN -->
 @endsection
