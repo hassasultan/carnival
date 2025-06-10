@@ -8,6 +8,27 @@
         height: 236px !important;
         object-fit: cover !important;
     }
+
+    .subcategory-list {
+        list-style: none;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .subcategory-list li {
+        margin-bottom: 5px;
+    }
+
+    .subcategory-list a {
+        color: #333;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .subcategory-list a:hover {
+        text-decoration: underline;
+    }
+
 </style>
 
     <main class="site-main">
@@ -5116,17 +5137,39 @@
                         @foreach ($all_categories->chunk(4) as $categoryChunk)
                             @foreach ($categoryChunk as $category)
                                 <div class="col-md-3 col-sm-6">
-                                    <div class="item">
+                                    {{-- <div class="item">
                                         <div class="description"
                                             style="background-image: url({{ $category->icon ? asset($category->icon) : asset('shopAssets/images/media/index1/default-category.png') }})">
                                             <div class="title"><span>{{ $category->title }}</span></div>
                                             <a href="" class="btn">shop now</a>
                                         </div>
-                                        {{-- <ul>
+                                        <ul>
                                             @foreach ($category->subcategories as $subcategory)
                                                 <li><a href="">{{ $subcategory->title }}</a></li>
                                             @endforeach
-                                        </ul> --}}
+                                        </ul>
+                                    </div> --}}
+                                    <div class="item">
+                                        <div class="description"
+                                            style="background-image: url({{ $category->icon ? asset($category->icon) : asset('shopAssets/images/media/index1/default-category.png') }});
+                                                background-size: cover;
+                                                background-position: center;
+                                                background-repeat: no-repeat;
+                                                min-height: 200px;
+                                                position: relative;
+                                                padding: 15px;
+                                                color: #fff;">
+                                            <div class="title"><span>{{ $category->title }}</span></div>
+                                            <a href="" class="btn">shop now</a>
+                                        </div>
+
+                                        @if($category->subcategories->count())
+                                            <ul class="subcategory-list">
+                                                @foreach ($category->subcategories as $subcategory)
+                                                    <li><a href="">{{ $subcategory->title }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
                                     </div>
                                 </div>
                             @endforeach
