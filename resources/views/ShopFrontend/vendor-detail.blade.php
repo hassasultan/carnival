@@ -743,28 +743,30 @@
                                     }'
                                         id="best-seller-floor">
                                         @foreach ($carnival->mascamps as $mascamp)
-                                            <div class="product-item  product-item-opt-1 ">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                            href=""><img alt="product name"
-                                                                src="{{ asset('images/' . $mascamp->logo) }}"></a>
-                                                        {{-- <div class="product-item-actions">
-                                                            <a class="btn btn-wishlist"
-                                                                href=""><span>wishlist</span></a>
-                                                            <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                            <a class="btn btn-quickview"
-                                                                href=""><span>quickview</span></a>
+                                            @if ($mascamp->package->title == "Models")
+                                                <div class="product-item  product-item-opt-1 ">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" style="height: 266px; width: 186px;"
+                                                                href=""><img alt="product name"
+                                                                    src="{{ asset('images/' . $mascamp->logo) }}"></a>
+                                                            {{-- <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist"
+                                                                    href=""><span>wishlist</span></a>
+                                                                <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                                <a class="btn btn-quickview"
+                                                                    href=""><span>quickview</span></a>
+                                                            </div>
+                                                            <button type="button" class="btn btn-cart"><span>Add to
+                                                                    Cart</span></button> --}}
                                                         </div>
-                                                        <button type="button" class="btn btn-cart"><span>Add to
-                                                                Cart</span></button> --}}
-                                                    </div>
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a
-                                                                href="{{ route('front.vendor.detail', $mascamp->user->slug) }}">{{ $mascamp->name }}</a></strong>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name"><a
+                                                                    href="{{ route('front.vendor.detail', $mascamp->user->slug) }}">{{ $mascamp->name }}</a></strong>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                         @endforeach
                                     </div>
                                 </div>
@@ -781,19 +783,21 @@
                                         "1200":{"items":4}
                                     }'>
                                         @foreach ($carnival->mascamps as $mascamp)
-                                            <div class="product-item  product-item-opt-1 ">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                            href=""><img alt="product name"
-                                                                src="{{ asset('images/' . $mascamp->logo) }}"></a>
-                                                    </div>
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a
-                                                                href="{{ route('front.vendor.detail', $mascamp->user->slug) }}">{{ $mascamp->name }}</a></strong>
+                                            @if ($mascamp->package->title == "Models")
+                                                <div class="product-item  product-item-opt-1 ">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" style="height: 266px; width: 186px;"
+                                                                href=""><img alt="product name"
+                                                                    src="{{ asset('images/' . $mascamp->logo) }}"></a>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name"><a
+                                                                    href="{{ route('front.vendor.detail', $mascamp->user->slug) }}">{{ $mascamp->name }}</a></strong>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                         @endforeach
                                     </div>
                                 </div>
@@ -811,19 +815,21 @@
                                     }'
                                         id="new-arrival-products">
                                         @foreach ($carnival->mascamps as $mascamp)
-                                            <div class="product-item  product-item-opt-1 ">
-                                                <div class="product-item-info">
-                                                    <div class="product-item-photo">
-                                                        <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                            href=""><img alt="product name"
-                                                                src="{{ asset('images/' . $mascamp->logo) }}"></a>
-                                                    </div>
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a
-                                                                href="">{{ $mascamp->name }}</a></strong>
+                                            @if ($mascamp->package->title == "Models")
+                                                <div class="product-item  product-item-opt-1 ">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" style="height: 266px; width: 186px;"
+                                                                href=""><img alt="product name"
+                                                                    src="{{ asset('images/' . $mascamp->logo) }}"></a>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name"><a
+                                                                    href="">{{ $mascamp->name }}</a></strong>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                         @endforeach
                                     </div>
                                 </div>
