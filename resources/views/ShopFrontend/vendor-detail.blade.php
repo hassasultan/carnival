@@ -590,7 +590,7 @@
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $member->fullname }}</a></strong>
+                                                                    href="{{ route('carnivalMember.detail', $member->id) }}">{{ $member->fullname }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -620,7 +620,7 @@
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $member->fullname }}</a></strong>
+                                                                    href="{{ route('carnivalMember.detail', $member->id) }}">{{ $member->fullname }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -825,7 +825,7 @@
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $mascamp->name }}</a></strong>
+                                                                    href="{{ route('front.vendor.detail', $mascamp->user->slug) }}">{{ $mascamp->name }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -958,7 +958,7 @@
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $mascamp->name }}</a></strong>
+                                                                    href="{{ route('front.vendor.detail', $mascamp->user->slug) }}">{{ $mascamp->name }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -987,7 +987,7 @@
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $mascamp->name }}</a></strong>
+                                                                    href="{{ route('front.vendor.detail', $mascamp->user->slug) }}">{{ $mascamp->name }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1017,7 +1017,7 @@
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $mascamp->name }}</a></strong>
+                                                                    href="{{ route('front.vendor.detail', $mascamp->user->slug) }}">{{ $mascamp->name }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1150,7 +1150,7 @@
                                                         </div>
                                                         <div class="product-item-detail">
                                                             <strong class="product-item-name"><a
-                                                                    href="">{{ $mascamp->name }}</a></strong>
+                                                                    href="{{ route('artist.detail', $mascamp->user->slug) }}">{{ $mascamp->name }}</a></strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1180,7 +1180,7 @@
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <strong class="product-item-name"><a
-                                                                        href="{{ route('artist.detail', $mascamp->slug) }}">{{ $mascamp->name }}</a></strong>
+                                                                        href="{{ route('artist.detail', $mascamp->user->slug) }}">{{ $mascamp->name }}</a></strong>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1212,7 +1212,7 @@
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <strong class="product-item-name"><a
-                                                                        href="{{ route('artist.detail', $mascamp->slug) }}">{{ $mascamp->name }}</a></strong>
+                                                                        href="{{ route('artist.detail', $mascamp->user->slug) }}">{{ $mascamp->name }}</a></strong>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1245,7 +1245,7 @@
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <strong class="product-item-name"><a
-                                                                        href="{{ route('artist.detail', $mascamp->slug) }}">{{ $member->fullname }}</a></strong>
+                                                                        href="">{{ $member->fullname }}</a></strong>
                                                             </div>
                                                         </div>
                                                     </div>
