@@ -264,7 +264,9 @@ class FrontendConroller extends Controller
         // if ($previous_route == 'front.vendors') {
         //     $query = Vendor::with('user')->whereIn('user_id', $carnival_com);
         // } else {
-        $query = Vendor::with('user');
+        $query = Vendor::with('user', 'package')->whereHas('package', function ($query) {
+            $query->where('title', '!=', 'Carnival Committee');
+        });
         // }
         $query->with([
             'user' => function ($query) {
@@ -397,7 +399,10 @@ class FrontendConroller extends Controller
             ->get();
 
         $carnival_com = Carnival::has('user')->pluck('head');
-        $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
+        // $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
+        $carnival_commitee = Vendor::with('user', 'package')->whereHas('package', function ($query) {
+            $query->where('title', 'Carnival Committee');
+        })->orderBy('id', 'DESC')->get();
 
         return view('ShopFrontend.vendors', compact('regions', 'mascamp_banners', 'adv1', 'adv2', 'adv3', 'carnival_commitee'));
     }
@@ -1081,7 +1086,10 @@ class FrontendConroller extends Controller
         $carnival_commitee = Carnival::has('user')->pluck('head');
 
         $query = Vendor::query()
-            ->whereIn('user_id', $carnival_commitee)
+            // ->whereIn('user_id', $carnival_commitee)
+            ->whereHas('package', function ($query) {
+                $query->where('title', 'Carnival Committee');
+            })
             ->with([
                 'user' => function ($query) {
                     $query->select('id', 'first_name', 'last_name', 'slug', 'image');
