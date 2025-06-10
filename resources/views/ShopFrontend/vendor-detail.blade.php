@@ -5152,11 +5152,11 @@
                                             <div class="title"><span>{{ $category->title }}</span></div>
                                             <a href="" class="btn">shop now</a>
                                         </div>
-                                        <ul>
+                                        {{-- <ul>
                                             @foreach ($category->subcategories as $subcategory)
                                                 <li><a href="">{{ $subcategory->title }}</a></li>
                                             @endforeach
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
                             @endforeach
