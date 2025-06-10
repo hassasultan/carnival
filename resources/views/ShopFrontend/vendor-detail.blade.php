@@ -36,7 +36,12 @@
             height: auto; /* Let height adapt to screen if needed */
             aspect-ratio: 27 / 11; /* optional, preserves aspect ratio */
         }
+        .block-hot-categories-opt1 .item {
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
+
 
 </style>
 
@@ -5135,7 +5140,35 @@
                         @endforeach
                     </div>
                 </div> --}}
-        <div class="block-hot-categories-opt1">
+                <div class="block-hot-categories-opt1">
+                    <div class="container">
+
+                        <div class="block-title text-center">
+                            <span class="title">Hot categories</span>
+                        </div>
+
+                        <div class="block-content">
+                            <div class="row justify-content-center">
+                                @foreach ($all_categories->chunk(4) as $categoryChunk)
+                                    @foreach ($categoryChunk as $category)
+                                        <div class="col-md-3 col-sm-6 col-10 mx-auto mb-4">
+                                            <div class="item text-center">
+                                                <div class="description"
+                                                    style="background-image: url({{ $category->icon ? asset($category->icon) : asset('shopAssets/images/media/index1/default-category.png') }}); background-size: cover; background-position: center;">
+                                                    <div class="title"><span>{{ $category->title }}</span></div>
+                                                    <a href="" class="btn btn-primary mt-2">shop now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endforeach
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+        {{-- <div class="block-hot-categories-opt1">
             <div class="container">
 
                 <div class="block-title ">
@@ -5152,21 +5185,14 @@
                                             <div class="title"><span>{{ $category->title }}</span></div>
                                             <a href="" class="btn">shop now</a>
                                         </div>
-                                        {{-- <ul>
-                                            @foreach ($category->subcategories as $subcategory)
-                                                <li><a href="">{{ $subcategory->title }}</a></li>
-                                            @endforeach
-                                        </ul> --}}
                                     </div>
                                 </div>
                             @endforeach
                         @endforeach
                     </div>
                 </div>
-
-
             </div>
-        </div><!--block  hot categories-->
+        </div><!--block  hot categories--> --}}
 
     </main><!-- end MAIN -->
 @endsection
