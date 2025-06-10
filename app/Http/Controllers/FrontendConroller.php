@@ -1091,6 +1091,7 @@ class FrontendConroller extends Controller
                 $query->where('title', 'Carnival Committee');
             })
             ->with([
+                'package',
                 'user' => function ($query) {
                     $query->select('id', 'first_name', 'last_name', 'slug', 'image');
                 },
