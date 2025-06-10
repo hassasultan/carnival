@@ -8,89 +8,6 @@
         height: 236px !important;
         object-fit: cover !important;
     }
-    .r2cat-section {
-        background-color: #f9f9f9;
-    }
-
-    .r2cat-heading {
-        font-size: 28px;
-        font-weight: bold;
-        border-bottom: 3px solid #e53935;
-        display: inline-block;
-        padding-bottom: 5px;
-        color: #333;
-    }
-
-    .r2cat-card {
-        background: #fff;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        transition: transform 0.3s ease;
-    }
-    .r2cat-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .r2cat-img {
-        position: relative;
-        height: 200px;
-        background-size: cover;
-        background-position: center;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-    }
-
-    .r2cat-overlay {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        background: rgba(0,0,0,0.6);
-        padding: 10px 12px;
-        color: #fff;
-    }
-
-    .r2cat-title {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 4px;
-    }
-
-    .r2cat-btn {
-        font-size: 14px;
-        background-color: #e53935;
-        color: white;
-        padding: 5px 12px;
-        border-radius: 4px;
-        text-decoration: none;
-    }
-
-    .r2cat-btn:hover {
-        background-color: #c62828;
-        color: #fff;
-    }
-
-    .r2cat-sublist {
-        list-style: none;
-        padding-left: 0;
-        margin: 0;
-    }
-
-    .r2cat-sublist li {
-        font-size: 14px;
-        margin-bottom: 5px;
-    }
-
-    .r2cat-sublist li a {
-        text-decoration: none;
-        color: #555;
-        transition: color 0.2s;
-    }
-
-    .r2cat-sublist li a:hover {
-        color: #e53935;
-    }
-
 </style>
 
     <main class="site-main">
@@ -5188,7 +5105,7 @@
                         @endforeach
                     </div>
                 </div> --}}
-        {{-- <div class="block-hot-categories-opt1">
+        <div class="block-hot-categories-opt1">
             <div class="container">
 
                 <div class="block-title ">
@@ -5205,11 +5122,11 @@
                                             <div class="title"><span>{{ $category->title }}</span></div>
                                             <a href="" class="btn">shop now</a>
                                         </div>
-                                        <ul>
+                                        {{-- <ul>
                                             @foreach ($category->subcategories as $subcategory)
                                                 <li><a href="">{{ $subcategory->title }}</a></li>
                                             @endforeach
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
                             @endforeach
@@ -5219,38 +5136,7 @@
 
 
             </div>
-        </div> #floor1-1--}}<div class="r2cat-section py-5">
-                                <div class="r2cat-container container">
-                                    <div class="r2cat-header mb-4">
-                                        <span class="r2cat-heading">Hot Categories</span>
-                                    </div>
-                                    <div class="r2cat-body">
-                                        <div class="row g-4">
-                                            @foreach ($all_categories->chunk(4) as $categoryChunk)
-                                                @foreach ($categoryChunk as $category)
-                                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="r2cat-card">
-                                                            <div class="r2cat-img" style="background-image: url('{{ $category->icon ? asset($category->icon) : asset('shopAssets/images/media/index1/default-category.png') }}');">
-                                                                <div class="r2cat-overlay">
-                                                                    <div class="r2cat-title">{{ $category->title }}</div>
-                                                                    <a href="#" class="r2cat-btn">Shop Now ▸</a>
-                                                                </div>
-                                                            </div>
-                                                            @if($category->subcategories->count())
-                                                                <ul class="r2cat-sublist mt-2">
-                                                                    @foreach ($category->subcategories as $subcategory)
-                                                                        <li><a href="#">{{ $subcategory->title }}</a></li>
-                                                                    @endforeach
-                                                                </ul>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        </div><!--block  hot categories-->
 
     </main><!-- end MAIN -->
 @endsection
