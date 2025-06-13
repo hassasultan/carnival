@@ -49,7 +49,8 @@ class Carnival extends Model
 
     public function events()
     {
-        return $this->mascamps()->where('package_id', 4);
+        // return $this->mascamps()->where('package_id', 4);
+        return $this->hasMany(Event::class, 'head','user_id');
     }
 
     public function packageVendors($packageTitle)

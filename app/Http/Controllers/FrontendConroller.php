@@ -455,11 +455,11 @@ class FrontendConroller extends Controller
             abort(404, 'Vendor not found');
         }
 
-        $carnival = Carnival::with('mascamps', 'members')
+        $carnival = Carnival::with('mascamps', 'members', 'events')
             ->where('head', $user->id)
             ->first();
 
-        // dd($user->toArray());
+        dd($carnival->toArray());
         $vendor = Vendor::with('user', 'products.category', 'gallery', 'subvendor')
             ->where('user_id', $user->id)
             ->first();
