@@ -106,14 +106,12 @@ class UserManagementController extends Controller
             $data['logo'] = $imageName; // Add logo path to data array
         }
 
-        $user = $this->create($data);
-        // $user = $this->create($request->all());
-
         if ($request->hasFile('image')) {
             $imageName = $this->uploadImage($request->file('image'), 'images');
-            $user->image = $imageName;
+            $data['image'] = $imageName;
         }
-        $user->save();
+
+        $user = $this->create($data);
 
         return redirect()->route('users.index')
             ->with('success', 'User registered successfully.');
@@ -172,11 +170,6 @@ class UserManagementController extends Controller
                 $data['role_id'] = '2';
             }
 
-            // if ($data['logo']) {
-            //     $imageName = $this->uploadImage($data['logo'], 'images');
-            //     $logo = $imageName;
-            // }
-
             $user = User::create([
                 'first_name' => $data['first_name'],
                 'last_name' => $data['last_name'],
@@ -200,6 +193,8 @@ class UserManagementController extends Controller
                 'bust' => $data['bust'] ? $data['bust'] : null,
                 'hips' => $data['hips'] ? $data['hips'] : null,
                 'waist' => $data['waist'] ? $data['waist'] : null,
+                'logo' => $data['logo'] ?? null,
+                'image' => $data['image'] ?? null,
             ]);
 
             if (isset($data['banner']) && is_array($data['banner'])) {
@@ -257,7 +252,7 @@ class UserManagementController extends Controller
                     'linkedin' => $data['shop_linkedin'] ?? null,
                     'short_description' => $data['short_description'] ?? null,
                     'status' => 1,
-                    'logo' => $logo ?? null,
+                    'logo' => $data['logo'] ?? null,
                 ]);
             }
 
@@ -284,7 +279,7 @@ class UserManagementController extends Controller
                     'ad_space' => $data['ad_space'] ?? 0,
                     'blogging' => $data['blogging'] ?? 0,
                     'status' => 1,
-                    'logo' => $logo ?? null,
+                    'logo' => $data['logo'] ?? null,
                 ]);
             }
 
