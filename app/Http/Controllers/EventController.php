@@ -42,9 +42,7 @@ class EventController extends Controller
                 });
         }
         // $show_events = $show_events->orderBy('id', 'DESC')->paginate(10);
-        if ($request->has("type")) {
-            return $show_events;
-        }
+        
         
         if (Auth::user()->isAdmin()) {
             $show_events = $show_events->orderBy('id', 'DESC')->paginate(10);
@@ -52,6 +50,9 @@ class EventController extends Controller
         } else {
             $show_events = $show_events->where('user_id', Auth::id())->orderBy('id', 'DESC')->paginate(10);
             $events = Event::where('user_id', Auth::id())->get(['id', 'name', 'start_date', 'end_date']);
+        }
+        if ($request->has("type")) {
+            return $show_events;
         }
 
         $layout = match (Auth::user()->role->name) {
