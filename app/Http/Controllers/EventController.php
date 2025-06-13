@@ -41,7 +41,7 @@ class EventController extends Controller
                     $query->where('title', 'LIKE', '%' . $request->search . '%');
                 });
         }
-        // $show_events = $show_events->orderBy('id', 'DESC')->paginate(10);
+        $show_events = $show_events->orderBy('id', 'DESC')->paginate(10);
         if ($request->has("type")) {
             return $show_events;
         }
