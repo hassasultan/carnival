@@ -245,7 +245,7 @@
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
                                                                         <a class="product-item-img" href="{{ route('get.myEvent.detail', $item->user->slug) }}">
-                                                                            <span class="price">{{ $vendorName }} {{ $item->id }}</span>
+                                                                            <span class="price">{{ $vendorName }}</span>
                                                                         </a>
                                                                     </div>
                                                                 </div>
