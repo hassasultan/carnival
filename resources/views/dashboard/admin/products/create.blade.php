@@ -12,121 +12,129 @@
                 <div class="card-body">
                     <form id="createProductForm">
                         @csrf
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" required>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" id="title" name="title" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="brand">Brand</label>
+                                <select class="form-control brand" id="brand" name="brand_id" required>
+                                    <option value="">Select brand</option>
+                                    @foreach ($brands as $brand)
+                                        <option value="{{ $brand->id }}">{{ $brand->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="category">Category</label>
+                                <select class="form-control category" id="category" name="category_id" required>
+                                    <option value="">Select Category</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6" style="display: none;">
+                                <label for="subcategory">Subcategory</label>
+                                <select class="form-control" id="subcategory" name="subcategory_id" required>
+                                    <option value="">Select Subcategory</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea id="summernote" name="description" class="form-control description" placeholder="Enter description"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="category">Category</label>
-                            <select class="form-control category" id="category" name="category_id" required>
-                                <option value="">Select Category</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group" style="display: none;">
-                            <label for="subcategory">Subcategory</label>
-                            <select class="form-control" id="subcategory" name="subcategory_id" required>
-                                <option value="">Select Subcategory</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="brand">Brand</label>
-                            <select class="form-control brand" id="brand" name="brand_id" required>
-                                <option value="">Select brand</option>
-                                @foreach ($brands as $brand)
-                                    <option value="{{ $brand->id }}">{{ $brand->title }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group mb-3">
-                            <div>
-                                <label for="variant_id">Variants</label>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="old_price">Regular Price</label>
+                                <input type="text" class="form-control" id="old_price" name="old_price">
                             </div>
-                            @foreach ($variants as $row)
-                                <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->title }}" />
-                            @endforeach
-                            <select id="variant_id" class="form-control select2 d-none" multiple>
-                            </select>
+                            <div class="form-group col-md-6">
+                                <label for="new_price">Discounted Price</label>
+                                <input type="text" class="form-control" id="new_price" name="new_price">
+                            </div>
                         </div>
-                        <div id="embed-div">
-
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="sale">On Sale</label>
+                                <select class="form-control" id="sale" name="sale" required>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="status">Status</label>
+                                <select class="form-control" id="status" name="status" required>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="old_price">Regular Price</label>
-                            <input type="text" class="form-control" id="old_price" name="old_price">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="condition">Condition</label>
+                                <select class="form-control" id="condition" name="condition" required>
+                                    <option value="Old">Old</option>
+                                    <option value="New">New</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="stock_condition">Stock Condition</label>
+                                <select class="form-control" id="stock_condition" name="stock_condition" required>
+                                    <option value="Low">Low</option>
+                                    <option value="In Stock">In Stock</option>
+                                    <option value="Out of Stock">Out of Stock</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="new_price">Discounted Price</label>
-                            <input type="text" class="form-control" id="new_price" name="new_price">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="discount">Discount</label>
+                                <input type="number" class="form-control" id="discount" name="discount">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="variant_id">Variants</label>
+                                @foreach ($variants as $row)
+                                    <input type="hidden" id="div-{{ $row->id }}" value="{{ $row->title }}" />
+                                @endforeach
+                                <select id="variant_id" class="form-control select2 d-none" multiple></select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="sale">On Sale</label>
-                            <select class="form-control" id="sale" name="sale" required>
-                                <option value="true">Yes</option>
-                                <option value="false">No</option>
-                            </select>
+                        <div id="embed-div"></div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="facebook">Facebook</label>
+                                <input type="text" class="form-control" id="facebook" name="facebook">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="instagram">Instagram</label>
+                                <input type="text" class="form-control" id="instagram" name="instagram">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            <select class="form-control" id="status" name="status" required>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
-                            </select>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="youtube">Youtube</label>
+                                <input type="text" class="form-control" id="youtube" name="youtube">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="twitter">Twitter(X)</label>
+                                <input type="text" class="form-control" id="twitter" name="twitter">
+                            </div>
                         </div>
-                        <div id="hash_tags" class="mb-3">
-                            <label for="tags">Tags</label><br>
-                            <input type="hidden" name="tags[]" value="{{ $row->title }}">
-                            <input type="text" id="tagInput" class="form-control" placeholder="Add a new tag...">
-                        </div>
-                        <div class="form-group">
-                            <label for="condition">Condition</label>
-                            <select class="form-control" id="condition" name="condition" required>
-                                <option value="Old">Old</option>
-                                <option value="New">New</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="stock_condition">Stock Condition</label>
-                            <select class="form-control" id="stock_condition" name="stock_condition" required>
-                                <option value="Low">Low</option>
-                                <option value="In Stock">In Stock</option>
-                                <option value="Out of Stock">Out of Stock</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="discount">Discount</label>
-                            <input type="number" class="form-control" id="discount" name="discount">
-                        </div>
-                        <div class="form-group">
-                            <label for="facebook">Facebook</label>
-                            <input type="text" class="form-control" id="facebook" name="facebook">
-                        </div>
-                        <div class="form-group">
-                            <label for="instagram">Instagram</label>
-                            <input type="text" class="form-control" id="instagram" name="instagram">
-                        </div>
-                        <div class="form-group">
-                            <label for="youtube">Youtube</label>
-                            <input type="text" class="form-control" id="youtube" name="youtube">
-                        </div>
-                        <div class="form-group">
-                            <label for="twitter">Twitter(X)</label>
-                            <input type="text" class="form-control" id="twitter" name="twitter">
-                        </div>
-                        <div class="form-group">
-                            <label for="tiktok">Tiktok</label>
-                            <input type="text" class="form-control" id="tiktok" name="tiktok">
-                        </div>
-                        <div class="form-group">
-                            <label for="pinterest">Pinterest</label>
-                            <input type="text" class="form-control" id="pinterest" name="pinterest">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="tiktok">Tiktok</label>
+                                <input type="text" class="form-control" id="tiktok" name="tiktok">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="pinterest">Pinterest</label>
+                                <input type="text" class="form-control" id="pinterest" name="pinterest">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="linkedin">LinkedIn</label>
@@ -140,13 +148,15 @@
                             <label for="reviews">Reviews</label>
                             <textarea id="reviews" name="reviews" class="form-control reviews summernote" placeholder=""></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="extra">Extra</label>
-                            <textarea id="extra" name="extra" class="form-control extra summernote" placeholder=""></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="guarantee">Guarantee</label>
-                            <textarea id="guarantee" name="guarantee" class="form-control guarantee summernote" placeholder=""></textarea>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="extra">Extra</label>
+                                <textarea id="extra" name="extra" class="form-control extra summernote" placeholder=""></textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="guarantee">Guarantee</label>
+                                <textarea id="guarantee" name="guarantee" class="form-control guarantee summernote" placeholder=""></textarea>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Product Features</label><br>
@@ -171,20 +181,26 @@
                                 <label class="form-check-label" for="accessories">Accessories</label>
                             </div>
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="image">Image</label>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="image" name="image">
-                                <label class="custom-file-label" for="image" id="image_label">Choose file</label>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="image">Image</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="image" name="image">
+                                    <label class="custom-file-label" for="image" id="image_label">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="media">Media</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input select2" id="media" name="media[]" multiple>
+                                    <label class="custom-file-label" for="media" id="media_label">Choose file</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="media">Media</label>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input select2" id="media" name="media[]"
-                                    multiple>
-                                <label class="custom-file-label" for="media" id="media_label">Choose file</label>
-                            </div>
+                        <div id="hash_tags" class="mb-3">
+                            <label for="tags">Tags</label><br>
+                            <input type="hidden" name="tags[]" value="{{ $row->title }}">
+                            <input type="text" id="tagInput" class="form-control" placeholder="Add a new tag...">
                         </div>
                         <button type="submit" class="btn btn-primary" id="saveProductBtn">Save Product</button>
                     </form>
