@@ -748,7 +748,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img" style="height: 266px; width: 186px;"
-                                                                href="{{ route('front.vendor.detail', $mascamp->user->slug) }}"><img alt="product name"
+                                                                href="{{ route('details.aboutUs', $mascamp->user->slug) }}"><img alt="product name"
                                                                     src="{{ asset('images/' . $mascamp->logo) }}"></a>
                                                             {{-- <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
