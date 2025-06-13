@@ -38,6 +38,11 @@ class Product extends Model
         'reviews',
         'extra',
         'guarantee',
+        'feature',
+        'women',
+        'men',
+        'kids',
+        'accessories',
     ];
 
     protected $dates = [
@@ -60,23 +65,32 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     public function brand()
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function subvendor()
+    {
+        return $this->belongsTo(Subvendor::class);
     }
 
     public function variants()
     {
         return $this->belongsToMany(Variant::class)->withPivot('id', 'name', 'type', 'value', 'status');
     }
+
     public function product_variant()
     {
         return $this->hasMany(ProductVariant::class, 'product_id');
     }
+
     public function product_images()
     {
         return $this->hasMany(ProductVariantImage::class, 'product_id');
     }
+
     public function isAvailable()
     {
         return $this->stock_condition === 'In Stock';
@@ -85,5 +99,25 @@ class Product extends Model
     public function media()
     {
         return $this->hasMany(ProductMedia::class);
+    }
+
+    public function scopeFeatured($query)
+    {
+        return $query->where('is_featured', true);
+    }
+
+    public function scopeMostViewed($query)
+    {
+        return $query->orderBy('views_count', 'desc');
+    }
+
+    public function scopeBestSeller($query)
+    {
+        return $query->orderBy('sales_count', 'desc');
+    }
+
+    public function scopeNewArrivals($query)
+    {
+        return $query->where('is_new', true);
     }
 }
