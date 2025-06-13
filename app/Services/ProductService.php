@@ -142,6 +142,11 @@ class ProductService
             'guarantee' => $data['guarantee'] ?? null,
             'image' => $data['image'] ?? null,
             'brand_id' => $data['brand_id'] ?? null,
+            'feature' => isset($data['feature']) ? 1 : 0,
+            'women' => isset($data['women']) ? 1 : 0,
+            'men' => isset($data['men']) ? 1 : 0,
+            'kids' => isset($data['kids']) ? 1 : 0,
+            'accessories' => isset($data['accessories']) ? 1 : 0,
         ];
 
         return $productData;
