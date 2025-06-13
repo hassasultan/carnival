@@ -70,7 +70,7 @@
                         </div>
                         <div class="checkbox btn-checkbox">
                             <label>
-                                <input type="checkbox"><span>Dont’s show this popup again!</span>
+                                <input type="checkbox"><span>Dont's show this popup again!</span>
                             </label>
                         </div>
                     </div>
@@ -3520,19 +3520,19 @@
                                                         </div>
                                                         <button type="button" class="btn btn-cart"><span>Add to
                                                                 Cart</span></button>
-                                                    </div>
-                                                    <div class="product-item-detail">
-                                                        <strong class="product-item-name"><a href="">Maecenas
-                                                                consequat mauris</a></strong>
-                                                        <div class="clearfix">
-                                                            <div class="product-item-price">
-                                                                <span class="price">$45.00</span>
-                                                            </div>
-                                                            <div class="product-reviews-summary">
-                                                                <div class="rating-summary">
-                                                                    <div title="80%" class="rating-result">
-                                                                        <span style="width:80%">
-                                                                            <span><span>80</span>% of
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a href="">Maecenas
+                                                            consequat mauris</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">$45.00</span>
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="80%" class="rating-result">
+                                                                    <span style="width:80%">
+                                                                        <span><span>80</span>% of
                                                                                 <span>100</span></span>
                                                                         </span>
                                                                     </div>
