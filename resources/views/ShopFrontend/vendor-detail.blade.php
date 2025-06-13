@@ -754,7 +754,7 @@
                                                                         src="{{ asset('images/' . $mascamp->logo) }}"></a>
                                                                 @else
                                                                     <img alt="product name"
-                                                                        src="{{ asset('images/' . $mascamp->user->logo) }}"></a>
+                                                                        src="{{ asset('images/' . $mascamp->user->image) }}"></a>
                                                                 @endif
                                                             {{-- <div class="product-item-actions">
                                                                 <a class="btn btn-wishlist"
