@@ -84,7 +84,7 @@ class Carnival extends Model
 
     public function carnivalEvents()
     {
-        return $this->belongsToMany(Event::class, 'carnival_events', 'carnival_id', 'event_id')
+        return $this->belongsToMany(Event::class, 'pivot_carnival_events', 'carnival_id', 'event_id')
             ->withTimestamps();
     }
 }

@@ -64,35 +64,3 @@
         @endforeach
     </tbody>
 </table>
-
-<!-- Add Events Modal -->
-<div class="modal fade" id="addEventsModal" tabindex="-1" role="dialog" aria-labelledby="addEventsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addEventsModalLabel">Add Events to Carnival</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="addEventsForm">
-                    @csrf
-                    <input type="hidden" id="carnival_id" name="carnival_id">
-                    <div class="form-group">
-                        <label for="events">Select Events</label>
-                        <select class="form-control select2" id="events" name="events[]" multiple="multiple" style="width: 100%;">
-                            @foreach($events as $event)
-                                <option value="{{ $event->id }}">{{ $event->name }} ({{ $event->start_date }})</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="saveEventsBtn">Save Events</button>
-            </div>
-        </div>
-    </div>
-</div>

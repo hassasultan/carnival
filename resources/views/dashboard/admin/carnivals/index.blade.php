@@ -602,6 +602,38 @@
             </div>
         </div>
     </div>
+
+    <!-- Add Events Modal -->
+    <div class="modal fade" id="addEventsModal" tabindex="-1" role="dialog" aria-labelledby="addEventsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addEventsModalLabel">Add Events to Carnival</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addEventsForm">
+                        @csrf
+                        <input type="hidden" id="carnival_id" name="carnival_id">
+                        <div class="form-group">
+                            <label for="events">Select Events</label>
+                            <select class="form-control select2" id="events" name="events[]" multiple="multiple" style="width: 100%;">
+                                @foreach($events as $event)
+                                    <option value="{{ $event->id }}">{{ $event->name }} ({{ $event->start_date }})</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveEventsBtn">Save Events</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('bottom_script')
@@ -1576,6 +1608,58 @@
 
             $(document).on("click", ".remove-btn", function() {
                 $(this).closest(".file-upload-row").remove();
+            });
+        });
+
+        $(document).ready(function() {
+            // Initialize Select2
+            $('.select2').select2({
+                placeholder: "Select events",
+                allowClear: true,
+                width: '100%'
+            });
+
+            // Handle Add Events button click
+            $('.addEventsBtn').on('click', function() {
+                const carnivalId = $(this).data('id');
+                $('#carnival_id').val(carnivalId);
+                
+                // Fetch current events for this carnival
+                $.ajax({
+                    url: `/carnivals/${carnivalId}/events`,
+                    method: 'GET',
+                    success: function(response) {
+                        // Pre-select current events
+                        $('#events').val(response.events).trigger('change');
+                    },
+                    error: function(xhr) {
+                        console.error('Error fetching events:', xhr);
+                        toastr.error('Error loading events');
+                    }
+                });
+            });
+
+            // Handle Save Events button click
+            $('#saveEventsBtn').on('click', function() {
+                const carnivalId = $('#carnival_id').val();
+                const selectedEvents = $('#events').val();
+
+                $.ajax({
+                    url: `/carnivals/${carnivalId}/events`,
+                    method: 'POST',
+                    data: {
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                        events: selectedEvents
+                    },
+                    success: function(response) {
+                        toastr.success('Events updated successfully');
+                        $('#addEventsModal').modal('hide');
+                    },
+                    error: function(xhr) {
+                        console.error('Error saving events:', xhr);
+                        toastr.error('Error updating events');
+                    }
+                });
             });
         });
     </script>

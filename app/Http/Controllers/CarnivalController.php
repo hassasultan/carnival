@@ -14,6 +14,7 @@ use App\Models\City;
 use App\Models\Package;
 use App\Models\SubVendor;
 use App\Models\CarnivalFlyerImages;
+use App\Models\Event;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -33,11 +34,12 @@ class CarnivalController extends Controller
     }
     public function index()
     {
-        $carnivals = Carnival::with('mascamps.user', 'user', 'regions')->get();
-        $mascamps = Vendor::with('user')->get();
+        $carnivals = Carnival::with(['user', 'regions'])->get();
         $region = Region::all();
         $countries = Country::all();
         $cities = City::all();
+        $events = Event::select('id', 'name', 'start_date')->get();
+        $mascamps = Vendor::with('user')->get();
         $packages = Package::all();
 
         $vendorsByPackage = [];
@@ -56,7 +58,8 @@ class CarnivalController extends Controller
             'countries',
             'cities',
             'packages',
-            'vendorsByPackage'
+            'vendorsByPackage',
+            'events'
         ));
     }
 
