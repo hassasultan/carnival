@@ -325,7 +325,7 @@
                                         id="trending-events-carousel">
                                         @foreach ($carnival->carnivalEvents as $event)
                                             @php
-                                                $eventImage = $event->banner ? asset('images/' . $event->banner) : asset('images/default-event.jpg');
+                                                $eventImage = asset('eventBanner/' . $event->banner);
                                                 $eventDate = \Carbon\Carbon::parse($event->start_date)->format('M d, Y');
                                                 $eventTime = \Carbon\Carbon::parse($event->start_time)->format('h:i A');
                                             @endphp
