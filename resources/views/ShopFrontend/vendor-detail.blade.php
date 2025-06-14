@@ -188,147 +188,45 @@
         </div><!-- block  service-->
 
         @if (!is_null($carnival))
+        @if (count($carnival->carnivalEvents) > 0)
             <div class="container">
-                @if (count($carnival->carnivalEvents) > 0)
-                    <div class="row">
-                        <div class="col-md-9">
-                            <!-- block tab products -->
-                            <div class="block-tab-products-opt1">
-                                <div class="block-title">
-                                    <ul class="nav" role="tablist">
-                                        <li role="presentation" class="active">
-                                            <a href="#upcoming-events" id="upcoming-events-tab" role="tab" data-toggle="tab">Upcoming Events</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a href="#past-events" id="past-events-tab" role="tab" data-toggle="tab">Past Events</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a href="#trending-events" id="trending-events-tab" role="tab" data-toggle="tab">Trending Events</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <!-- block tab products -->
+                        <div class="block-tab-products-opt1">
+                            <div class="block-title">
+                                <ul class="nav" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#upcoming-events" id="upcoming-events-tab" role="tab" data-toggle="tab">Upcoming Events</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#past-events" id="past-events-tab" role="tab" data-toggle="tab">Past Events</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#trending-events" id="trending-events-tab" role="tab" data-toggle="tab">Trending Events</a>
+                                    </li>
+                                </ul>
+                            </div>
 
-                                <div class="block-content tab-content">
-                                    <!-- tab 1 -->
-                                    <div role="tabpanel" class="tab-pane active fade in" id="upcoming-events">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                            data-responsive='{
-                                            "0":{"items":1},
-                                            "480":{"items":2},
-                                            "768":{"items":3},
-                                            "992":{"items":4}
-                                        }'
-                                            id="upcoming-events-carousel">
-                                            @foreach ($carnival->carnivalEvents as $event)
-                                                @php
-                                                    $eventImage = $event->banner ? asset('images/' . $event->banner) : asset('images/default-event.jpg');
-                                                    $eventDate = \Carbon\Carbon::parse($event->start_date)->format('M d, Y');
-                                                    $eventTime = \Carbon\Carbon::parse($event->start_time)->format('h:i A');
-                                                    $isUpcoming = \Carbon\Carbon::parse($event->start_date)->isFuture();
-                                                @endphp
-                                                @if($isUpcoming)
-                                                    <div class="product-item product-item-opt-1">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" href="{{ route('get.myEvent.detail', $event->slug) }}">
-                                                                    <img alt="{{ $event->name }}" src="{{ $eventImage }}" style="height: 200px; object-fit: cover;">
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <strong class="product-item-name">
-                                                                    <a href="{{ route('get.myEvent.detail', $event->slug) }}">{{ $event->name }}</a>
-                                                                </strong>
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span class="price"><i class="fa fa-calendar"></i> {{ $eventDate }}</span>
-                                                                        <span class="price"><i class="fa fa-clock-o"></i> {{ $eventTime }}</span>
-                                                                    </div>
-                                                                    <div class="product-item-description">
-                                                                        <p>{{ Str::limit($event->description, 100) }}</p>
-                                                                    </div>
-                                                                    <div class="product-item-location">
-                                                                        <p><i class="fa fa-map-marker"></i> {{ $event->venue ? $event->country->name : 'Location TBA' }}</p>
-                                                                    </div>
-                                                                    <div class="product-item-actions">
-                                                                        <a href="{{ route('get.myEvent.detail', $event->slug) }}" class="btn btn-primary">View Details</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
-
-                                    <!-- tab 2-->
-                                    <div class="tab-pane fade" id="past-events" role="tabpanel">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                            data-responsive='{
-                                            "0":{"items":1},
-                                            "480":{"items":2},
-                                            "768":{"items":3},
-                                            "992":{"items":4}
-                                        }'
-                                            id="past-events-carousel">
-                                            @foreach ($carnival->carnivalEvents as $event)
-                                                @php
-                                                    $eventImage = $event->banner ? asset('images/' . $event->banner) : asset('images/default-event.jpg');
-                                                    $eventDate = \Carbon\Carbon::parse($event->start_date)->format('M d, Y');
-                                                    $eventTime = \Carbon\Carbon::parse($event->start_time)->format('h:i A');
-                                                    $isPast = \Carbon\Carbon::parse($event->start_date)->isPast();
-                                                @endphp
-                                                @if($isPast)
-                                                    <div class="product-item product-item-opt-1">
-                                                        <div class="product-item-info">
-                                                            <div class="product-item-photo">
-                                                                <a class="product-item-img" href="{{ route('get.myEvent.detail', $event->slug) }}">
-                                                                    <img alt="{{ $event->name }}" src="{{ $eventImage }}" style="height: 200px; object-fit: cover;">
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-item-detail">
-                                                                <strong class="product-item-name">
-                                                                    <a href="{{ route('get.myEvent.detail', $event->slug) }}">{{ $event->name }}</a>
-                                                                </strong>
-                                                                <div class="clearfix">
-                                                                    <div class="product-item-price">
-                                                                        <span class="price"><i class="fa fa-calendar"></i> {{ $eventDate }}</span>
-                                                                        <span class="price"><i class="fa fa-clock-o"></i> {{ $eventTime }}</span>
-                                                                    </div>
-                                                                    <div class="product-item-description">
-                                                                        <p>{{ Str::limit($event->description, 100) }}</p>
-                                                                    </div>
-                                                                    <div class="product-item-location">
-                                                                        <p><i class="fa fa-map-marker"></i> {{ $event->venue ? $event->country->name : 'Location TBA' }}</p>
-                                                                    </div>
-                                                                    <div class="product-item-actions">
-                                                                        <a href="{{ route('get.myEvent.detail', $event->slug) }}" class="btn btn-primary">View Details</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
-
-                                    <!-- tab 3 -->
-                                    <div role="tabpanel" class="tab-pane active fade in" id="trending-events">
-                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
-                                            data-responsive='{
-                                            "0":{"items":1},
-                                            "480":{"items":2},
-                                            "768":{"items":3},
-                                            "992":{"items":4}
-                                        }'
-                                            id="trending-events-carousel">
-                                            @foreach ($carnival->carnivalEvents as $event)
-                                                @php
-                                                    $eventImage = $event->banner ? asset('images/' . $event->banner) : asset('images/default-event.jpg');
-                                                    $eventDate = \Carbon\Carbon::parse($event->start_date)->format('M d, Y');
-                                                    $eventTime = \Carbon\Carbon::parse($event->start_time)->format('h:i A');
-                                                @endphp
+                            <div class="block-content tab-content">
+                                <!-- tab 1 -->
+                                <div role="tabpanel" class="tab-pane active fade in" id="upcoming-events">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                        data-responsive='{
+                                        "0":{"items":1},
+                                        "480":{"items":2},
+                                        "768":{"items":3},
+                                        "992":{"items":4}
+                                    }'
+                                        id="upcoming-events-carousel">
+                                        @foreach ($carnival->carnivalEvents as $event)
+                                            @php
+                                                $eventImage = $event->banner ? asset('images/' . $event->banner) : asset('images/default-event.jpg');
+                                                $eventDate = \Carbon\Carbon::parse($event->start_date)->format('M d, Y');
+                                                $eventTime = \Carbon\Carbon::parse($event->start_time)->format('h:i A');
+                                                $isUpcoming = \Carbon\Carbon::parse($event->start_date)->isFuture();
+                                            @endphp
+                                            @if($isUpcoming)
                                                 <div class="product-item product-item-opt-1">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -358,35 +256,132 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endforeach
-                                        </div>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <!-- block deals  of -->
-                            <div class="block-deals-of block-deals-of-opt1">
-                                <div class="block-title">
-                                    <span class="icon"></span>
-                                    <div class="heading-title">Carnival Info</div>
+
+                                <!-- tab 2-->
+                                <div class="tab-pane fade" id="past-events" role="tabpanel">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                        data-responsive='{
+                                        "0":{"items":1},
+                                        "480":{"items":2},
+                                        "768":{"items":3},
+                                        "992":{"items":4}
+                                    }'
+                                        id="past-events-carousel">
+                                        @foreach ($carnival->carnivalEvents as $event)
+                                            @php
+                                                $eventImage = $event->banner ? asset('images/' . $event->banner) : asset('images/default-event.jpg');
+                                                $eventDate = \Carbon\Carbon::parse($event->start_date)->format('M d, Y');
+                                                $eventTime = \Carbon\Carbon::parse($event->start_time)->format('h:i A');
+                                                $isPast = \Carbon\Carbon::parse($event->start_date)->isPast();
+                                            @endphp
+                                            @if($isPast)
+                                                <div class="product-item product-item-opt-1">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href="{{ route('get.myEvent.detail', $event->slug) }}">
+                                                                <img alt="{{ $event->name }}" src="{{ $eventImage }}" style="height: 200px; object-fit: cover;">
+                                                            </a>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name">
+                                                                <a href="{{ route('get.myEvent.detail', $event->slug) }}">{{ $event->name }}</a>
+                                                            </strong>
+                                                            <div class="clearfix">
+                                                                <div class="product-item-price">
+                                                                    <span class="price"><i class="fa fa-calendar"></i> {{ $eventDate }}</span>
+                                                                    <span class="price"><i class="fa fa-clock-o"></i> {{ $eventTime }}</span>
+                                                                </div>
+                                                                <div class="product-item-description">
+                                                                    <p>{{ Str::limit($event->description, 100) }}</p>
+                                                                </div>
+                                                                <div class="product-item-location">
+                                                                    <p><i class="fa fa-map-marker"></i> {{ $event->venue ? $event->country->name : 'Location TBA' }}</p>
+                                                                </div>
+                                                                <div class="product-item-actions">
+                                                                    <a href="{{ route('get.myEvent.detail', $event->slug) }}" class="btn btn-primary">View Details</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
                                 </div>
-                                <div class="block-content">
-                                    <div class="carnival-info">
-                                        <p><strong>Start Date:</strong> {{ \Carbon\Carbon::parse($carnival->start_date)->format('M d, Y') }}</p>
-                                        <p><strong>End Date:</strong> {{ \Carbon\Carbon::parse($carnival->end_date)->format('M d, Y') }}</p>
-                                        <p><strong>Location:</strong> {{ $carnival->city->name ?? '' }}, {{ $carnival->country->name ?? '' }}</p>
-                                        <p><strong>Region:</strong> {{ $carnival->regions->name ?? '' }}</p>
+
+                                <!-- tab 3 -->
+                                <div role="tabpanel" class="tab-pane active fade in" id="trending-events">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                        data-responsive='{
+                                        "0":{"items":1},
+                                        "480":{"items":2},
+                                        "768":{"items":3},
+                                        "992":{"items":4}
+                                    }'
+                                        id="trending-events-carousel">
+                                        @foreach ($carnival->carnivalEvents as $event)
+                                            @php
+                                                $eventImage = $event->banner ? asset('images/' . $event->banner) : asset('images/default-event.jpg');
+                                                $eventDate = \Carbon\Carbon::parse($event->start_date)->format('M d, Y');
+                                                $eventTime = \Carbon\Carbon::parse($event->start_time)->format('h:i A');
+                                            @endphp
+                                            <div class="product-item product-item-opt-1">
+                                                <div class="product-item-info">
+                                                    <div class="product-item-photo">
+                                                        <a class="product-item-img" href="{{ route('get.myEvent.detail', $event->slug) }}">
+                                                            <img alt="{{ $event->name }}" src="{{ $eventImage }}" style="height: 200px; object-fit: cover;">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-item-detail">
+                                                        <strong class="product-item-name">
+                                                            <a href="{{ route('get.myEvent.detail', $event->slug) }}">{{ $event->name }}</a>
+                                                        </strong>
+                                                        <div class="clearfix">
+                                                            <div class="product-item-price">
+                                                                <span class="price"><i class="fa fa-calendar"></i> {{ $eventDate }}</span>
+                                                                <span class="price"><i class="fa fa-clock-o"></i> {{ $eventTime }}</span>
+                                                            </div>
+                                                            <div class="product-item-description">
+                                                                <p>{{ Str::limit($event->description, 100) }}</p>
+                                                            </div>
+                                                            <div class="product-item-location">
+                                                                <p><i class="fa fa-map-marker"></i> {{ $event->venue ? $event->country->name : 'Location TBA' }}</p>
+                                                            </div>
+                                                            <div class="product-item-actions">
+                                                                <a href="{{ route('get.myEvent.detail', $event->slug) }}" class="btn btn-primary">View Details</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @else
-                    <div class="alert alert-info">
-                        No events have been added to this carnival yet.
+                    <div class="col-md-3">
+                        <!-- block deals  of -->
+                        <div class="block-deals-of block-deals-of-opt1">
+                            <div class="block-title">
+                                <span class="icon"></span>
+                                <div class="heading-title">Carnival Info</div>
+                            </div>
+                            <div class="block-content">
+                                <div class="carnival-info">
+                                    <p><strong>Start Date:</strong> {{ \Carbon\Carbon::parse($carnival->start_date)->format('M d, Y') }}</p>
+                                    <p><strong>End Date:</strong> {{ \Carbon\Carbon::parse($carnival->end_date)->format('M d, Y') }}</p>
+                                    <p><strong>Location:</strong> {{ $carnival->city->name ?? '' }}, {{ $carnival->country->name ?? '' }}</p>
+                                    <p><strong>Region:</strong> {{ $carnival->regions->name ?? '' }}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                @endif
+                </div>
             </div>
         @endif
 
