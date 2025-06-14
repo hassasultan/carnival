@@ -518,3 +518,6 @@ Route::get('/add_to_cart', [AddToCartController::class, 'addCart'])->name('add.t
 Route::get('/check-out', [AddToCartController::class, 'checkout'])->name('check.out');
 Route::get('/remove/to/cart/{id}', [AddToCartController::class, 'delete_cart_item'])->name('remove.to.cart');
 Route::get('/get-carnivals/members/{id}', [CarnivalController::class, 'getCarnivalsMembers'])->name('get.carnivals.members');
+
+Route::get('/carnivals/{carnival}/events', [CarnivalController::class, 'getEvents'])->name('carnivals.events.get');
+Route::post('/carnivals/{carnival}/events', [CarnivalController::class, 'updateEvents'])->name('carnivals.events.update');

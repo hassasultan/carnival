@@ -629,4 +629,22 @@ class CarnivalController extends Controller
         $cities = City::where('country_id', $countryId)->get();
         return response()->json(['cities' => $cities]);
     }
+
+    public function getEvents(Carnival $carnival)
+    {
+        $events = $carnival->carnivalEvents()->pluck('event_id')->toArray();
+        return response()->json(['events' => $events]);
+    }
+
+    public function updateEvents(Request $request, Carnival $carnival)
+    {
+        $request->validate([
+            'events' => 'array',
+            'events.*' => 'exists:events,id'
+        ]);
+
+        $carnival->carnivalEvents()->sync($request->events);
+
+        return response()->json(['message' => 'Events updated successfully']);
+    }
 }
