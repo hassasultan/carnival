@@ -337,11 +337,11 @@
                                                         </a>
                                                     </div>
                                                     <div class="product-item-detail">
-                                                        <strong class="product-item-name">
+                                                        <strong class="product-item-price">
                                                             <a href="{{ route('get.myEvent.detail', $event->slug) }}" class="price">{{ $event->name }}</a>
                                                         </strong>
                                                         <div class="clearfix">
-                                                            <div class="product-item-price">
+                                                            <div class="product-item-name">
                                                                 <span class=""><i class="fa fa-calendar"></i> {{ $eventDate }}</span>
                                                                 <span class=""><i class="fa fa-clock-o"></i> {{ $eventTime }}</span>
                                                             </div>
