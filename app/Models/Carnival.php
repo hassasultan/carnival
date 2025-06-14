@@ -81,4 +81,10 @@ class Carnival extends Model
     {
         return $this->hasMany(CarnivalFlyerImages::class);
     }
+
+    public function carnivalEvents()
+    {
+        return $this->belongsToMany(Event::class, 'carnival_events', 'carnival_id', 'event_id')
+            ->withTimestamps();
+    }
 }

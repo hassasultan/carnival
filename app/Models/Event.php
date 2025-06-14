@@ -92,4 +92,10 @@ class Event extends Model
     {
         return $this->hasMany(Event::class, 'venue', 'venue')->where('id', '!=', $this->id);
     }
+
+    public function carnivals()
+    {
+        return $this->belongsToMany(Carnival::class, 'carnival_events', 'event_id', 'carnival_id')
+            ->withTimestamps();
+    }
 }

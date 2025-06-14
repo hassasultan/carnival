@@ -32,18 +32,27 @@
                 <td>{{ $carnival->regions->name }}</td>
                 <td><a href="{{ $carnival->link }}" target="_blank" class="text-decoration-underline">{{ $carnival->link }}</a></td>
                 <td>
-                    {{-- <button class="btn btn-sm btn-primary assignMasscamp" data-id="{{ $carnival->id }}" data-model="no">Assign Mascamp</button> --}}
-                    <button class="btn btn-primary assignMember edit-carnival" data-id="{{ $carnival->id }}">
-                        Assign Members
-                    </button>
-                    <button class="btn btn-sm btn-primary assignMasscamp" data-id="{{ $carnival->id }}" data-model="yes" >Assign Models</button>
-                    <button class="btn btn-sm btn-warning editCarnivalBtn" data-id="{{ $carnival->id }}">Edit</button>
-                    <form action="{{ route('carnivals.destroy', $carnival->id) }}" method="POST"
-                        style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="button" class="btn btn-sm btn-danger deleteCarnivalBtn">Delete</button>
-                    </form>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-sm btn-primary editCarnivalBtn" data-id="{{ $carnival->id }}">
+                            <i class="fe fe-edit-2 fe-16 mr-1"></i>Edit
+                        </button>
+                        <button class="btn btn-sm btn-success assignMember" data-id="{{ $carnival->id }}">
+                            <i class="fe fe-users fe-16 mr-1"></i>Members
+                        </button>
+                        <button class="btn btn-sm btn-info assignMasscamp" data-id="{{ $carnival->id }}" data-model="yes">
+                            <i class="fe fe-user-plus fe-16 mr-1"></i>Models
+                        </button>
+                        <button class="btn btn-sm btn-secondary addEventsBtn" data-id="{{ $carnival->id }}">
+                            <i class="fe fe-calendar fe-16 mr-1"></i>Events
+                        </button>
+                        <form action="{{ route('carnivals.destroy', $carnival->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" class="btn btn-sm btn-danger deleteCarnivalBtn">
+                                <i class="fe fe-trash-2 fe-16 mr-1"></i>Delete
+                            </button>
+                        </form>
+                    </div>
                 </td>
             </tr>
         @endforeach
