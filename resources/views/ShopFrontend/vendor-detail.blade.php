@@ -338,16 +338,16 @@
                                                     </div>
                                                     <div class="product-item-detail">
                                                         <strong class="product-item-name">
-                                                            <a href="{{ route('get.myEvent.detail', $event->slug) }}">{{ $event->name }}</a>
+                                                            <a href="{{ route('get.myEvent.detail', $event->slug) }}" class="price">{{ $event->name }}</a>
                                                         </strong>
                                                         <div class="clearfix">
                                                             <div class="product-item-price">
-                                                                <span class="price"><i class="fa fa-calendar"></i> {{ $eventDate }}</span>
-                                                                <span class="price"><i class="fa fa-clock-o"></i> {{ $eventTime }}</span>
+                                                                <span class=""><i class="fa fa-calendar"></i> {{ $eventDate }}</span>
+                                                                <span class=""><i class="fa fa-clock-o"></i> {{ $eventTime }}</span>
                                                             </div>
-                                                            <div class="product-item-description">
+                                                            <!-- <div class="product-item-description">
                                                                 <p>{{ Str::limit($event->description, 100) }}</p>
-                                                            </div>
+                                                            </div> -->
                                                             <div class="product-item-location">
                                                                 <p><i class="fa fa-map-marker"></i> {{ $event->venue ? $event->country->name : 'Location TBA' }}</p>
                                                             </div>
