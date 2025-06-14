@@ -6,6 +6,33 @@
             max-width: 90%;
             /* Increase modal width */
         }
+        .select2-container--default .select2-selection--multiple {
+            background-color: #000 !important;
+            border-color: #444 !important;
+        }
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #333 !important;
+            border-color: #444 !important;
+            color: #fff !important;
+        }
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            color: #fff !important;
+        }
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #333 !important;
+        }
+        .select2-dropdown {
+            background-color: #000 !important;
+            border-color: #444 !important;
+        }
+        .select2-container--default .select2-search--dropdown .select2-search__field {
+            background-color: #000 !important;
+            color: #fff !important;
+            border-color: #444 !important;
+        }
+        .select2-container--default .select2-results__option {
+            color: #fff !important;
+        }
     </style>
     <div class="row justify-content-center">
         <div class="col-12">
