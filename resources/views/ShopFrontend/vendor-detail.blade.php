@@ -326,7 +326,6 @@
                     </div>
                 @endif
             </div>
-        @endif
 
         @if (count($carnival->members) > 0)
             <div class="block-floor-products block-floor-products-opt1 floor-products1" id="floor0-0">
