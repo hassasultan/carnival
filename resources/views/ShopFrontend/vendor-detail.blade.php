@@ -235,7 +235,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img"
-                                                                href="{{ route('get.myEvent.detail', $item->user->slug) }}">
+                                                                href="{{ route('get.myEvent.detail', $item->slug) }}">
                                                                 <img alt="product name" src="{{ $vendorLogo }}">
                                                             </a>
                                                         </div>
@@ -243,7 +243,7 @@
                                                             <div class="clearfix">
                                                                 <div class="product-item-price">
                                                                     <a class="product-item-img"
-                                                                        href="{{ route('get.myEvent.detail', $item->user->slug) }}">
+                                                                        href="{{ route('get.myEvent.detail', $item->slug) }}">
                                                                         <span class="price">{{ $vendorName }}</span>
                                                                     </a>
                                                                 </div>
@@ -274,7 +274,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img"
-                                                                href="{{ route('get.myEvent.detail', $item->user->slug) }}">
+                                                                href="{{ route('get.myEvent.detail', $item->slug) }}">
                                                                 <img alt="product name" src="{{ $vendorLogo }}">
                                                             </a>
                                                         </div>
@@ -282,7 +282,7 @@
                                                             <div class="clearfix">
                                                                 <div class="product-item-price">
                                                                     <a class="product-item-img"
-                                                                        href="{{ route('get.myEvent.detail', $item->user->slug) }}">
+                                                                        href="{{ route('get.myEvent.detail', $item->slug) }}">
                                                                         <span class="price">{{ $vendorName }}</span>
                                                                     </a>
                                                                 </div>
@@ -313,7 +313,7 @@
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
                                                             <a class="product-item-img"
-                                                                href="{{ route('get.myEvent.detail', $item->user->slug) }}">
+                                                                href="{{ route('get.myEvent.detail', $item->slug) }}">
                                                                 <img alt="product name" src="{{ $vendorLogo }}">
                                                             </a>
                                                         </div>
@@ -321,7 +321,7 @@
                                                             <div class="clearfix">
                                                                 <div class="product-item-price">
                                                                     <a class="product-item-img"
-                                                                        href="{{ route('get.myEvent.detail', $item->user->slug) }}">
+                                                                        href="{{ route('get.myEvent.detail', $item->slug) }}">
                                                                         <span class="price">{{ $vendorName }}</span>
                                                                     </a>
                                                                 </div>
