@@ -77,12 +77,21 @@ class SubcategoryController extends Controller
 
     public function destroy(Subcategory $subcategory)
     {
-        $deleted = $subcategory->delete();
+        try {
+            // Delete related products and costumes first
+            $subcategory->products()->delete();
+            $subcategory->costumes()->delete();
+            
+            // Then delete the subcategory
+            $deleted = $subcategory->delete();
 
-        if ($deleted) {
-            return response()->json(['success' => 'Subcategory deleted successfully'], 200);
-        } else {
-            return response()->json(['error' => 'Failed to delete subcategory'], 500);
+            if ($deleted) {
+                return response()->json(['success' => 'Subcategory and all related items deleted successfully'], 200);
+            } else {
+                return response()->json(['error' => 'Failed to delete subcategory'], 500);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error deleting subcategory: ' . $e->getMessage()], 500);
         }
     }
 }

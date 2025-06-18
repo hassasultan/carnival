@@ -42,4 +42,16 @@ class Category extends Model
     {
         return $this->hasMany(Subcategory::class);
     }
+
+    // All products of this category through subcategories
+    public function products()
+    {
+        return $this->hasManyThrough(Product::class, Subcategory::class);
+    }
+
+    // All costumes of this category through subcategories
+    public function costumes()
+    {
+        return $this->hasManyThrough(Costume::class, Subcategory::class);
+    }
 }

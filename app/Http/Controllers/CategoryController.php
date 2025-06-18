@@ -92,9 +92,18 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
+        try {
+            $category = Category::findOrFail($id);
+            
+            // Delete related subcategories first (this will also cascade to products and costumes)
+            $category->subcategories()->delete();
+            
+            // Then delete the category
+            $category->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+            return redirect()->route('categories.index')->with('success', 'Category and all related subcategories deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error deleting category: ' . $e->getMessage());
+        }
     }
 }

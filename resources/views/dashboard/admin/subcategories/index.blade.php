@@ -36,7 +36,7 @@
                                         </div>
                                     </td>
                                     <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
-                                    <td>{{ $subcategory->category->title }}</td>
+                                    <td>{{ $subcategory->category ? $subcategory->category->title : 'Category Deleted' }}</td>
                                     <td>{{ $subcategory->title }}</td>
                                     <td>{{ ucfirst($subcategory->status) }}</td>
                                     <td>{{ $subcategory->created_at }}</td>

@@ -34,4 +34,14 @@ class Subcategory extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function costumes()
+    {
+        return $this->hasMany(Costume::class);
+    }
 }
