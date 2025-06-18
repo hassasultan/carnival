@@ -225,12 +225,14 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Product Features</label><br>
-                                @foreach($features as $feature)
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="feature_{{ $feature->id }}" name="features[]" value="{{ $feature->id }}" {{ in_array($feature->id, $selectedFeatures) ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="feature_{{ $feature->id }}">{{ $feature->name }}</label>
-                                    </div>
-                                @endforeach
+                                <div id="features-container">
+                                    @foreach($features as $feature)
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="feature_{{ $feature->id }}" name="features[]" value="{{ $feature->id }}" {{ in_array($feature->id, $selectedFeatures) ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="feature_{{ $feature->id }}">{{ $feature->name }}</label>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
@@ -265,45 +267,40 @@
 @section('bottom_script')
     <script>
         $(document).ready(function() {
+            // Handle category change to update features
+            $('#category').on('change', function() {
+                var categoryId = $(this).val();
+                if (categoryId) {
+                    $.ajax({
+                        url: '{{ route('get.features.by.category', ':id') }}'.replace(':id', categoryId),
+                        type: 'GET',
+                        success: function(response) {
+                            var featuresContainer = $('#features-container');
+                            featuresContainer.empty();
+                            
+                            if (response.length > 0) {
+                                response.forEach(function(feature) {
+                                    var featureHtml = '<div class="form-check form-check-inline">' +
+                                        '<input class="form-check-input" type="checkbox" id="feature_' + feature.id + '" name="features[]" value="' + feature.id + '">' +
+                                        '<label class="form-check-label" for="feature_' + feature.id + '">' + feature.name + '</label>' +
+                                        '</div>';
+                                    featuresContainer.append(featureHtml);
+                                });
+                            } else {
+                                featuresContainer.html('<p class="text-muted">No features available for this category.</p>');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching features:', error);
+                            $('#features-container').html('<p class="text-danger">Error loading features.</p>');
+                        }
+                    });
+                } else {
+                    $('#features-container').empty();
+                }
+            });
 
             // Handle form submission via AJAX for updating a product
-            // $('#editProductForm').submit(function(event) {
-            //     var productId = $(this).find('#edit_id').val();
-            //     event.preventDefault();
-            //     var formData = new FormData($(this)[0]);
-            //     console.log('formDataformData', formData);
-            //     var url = '{{ route('products.update', ':id') }}'.replace(':id', productId);
-
-            //     $.ajax({
-            //         url: url,
-            //         type: 'PUT',
-            //         data: formData,
-            //         headers: {
-            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //         },
-            //         contentType: false,
-            //         processData: false,
-            //         success: function(response) {
-            //             $('#editproductModal').modal('hide');
-            //             $(this).trigger('reset');
-            //             $('#tableData').html(response.table_html);
-
-            //             $('#productMessage').html(
-            //                 '<div class="alert alert-success" role="alert">Product updated successfully</div>'
-            //             );
-            //             setTimeout(function() {
-            //                 $('#productMessage').html('');
-            //             }, 3000);
-            //         },
-            //         error: function(xhr, status, error) {
-            //             console.error(xhr.responseText);
-            //             $('#productMessage').html(
-            //                 '<div class="alert alert-danger" role="alert">Failed to update product</div>'
-            //             );
-            //         }
-            //     });
-            // });
-
             $('#editProductForm').submit(function(event) {
                 var productId = $(this).find('#edit_id').val();
                 event.preventDefault();
@@ -471,34 +468,6 @@
                 }
             });
         });
-
-        // Allow selecting or deselecting options by clicking on tags in edit modal
-        // $(document).on('click', '#editproductModal .tag', function() {
-        //     var tagId = $(this).data('id');
-        //     var tagInput = $(this).next('input[name="tags[]"]');
-        //     if (tagInput.length) {
-        //         tagInput.remove();
-        //     }
-        //     $(this).remove();
-        // });
-
-        // // Functionality to add a new tag in edit modal when pressing Enter in the input field
-        // $('#editproductModal #edit_tagInput').keypress(function(event) {
-        //     if (event.which === 13) { // Check if Enter key is pressed
-        //         var newTagName = $(this).val().trim();
-        //         if (newTagName) {
-        //             var newTagId = 'random_' + Math.floor(Math.random() * 1000000);
-        //             var newTag = $('<span class="badge badge-primary tag badge-lg" data-id="' +
-        //                 newTagId +
-        //                 '" style="font-size: 1.25em;">#' + newTagName + '</span>');
-        //             $('#editproductModal #edit_tagInput').before(newTag);
-        //             var newInput = $('<input type="hidden" name="tags[]" value="' + newTagName +
-        //                 '">'); 
-        //             $('#editproductModal #edit_hash_tags').append(newInput);
-        //             $(this).val('');
-        //         }
-        //     }
-        // });
 
         var new_index = 0;
 

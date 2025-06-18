@@ -155,12 +155,14 @@
                         </div>
                         <div class="form-group">
                             <label>Product Features</label><br>
-                            @foreach($features as $feature)
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="feature_{{ $feature->id }}" name="features[]" value="{{ $feature->id }}">
-                                    <label class="form-check-label" for="feature_{{ $feature->id }}">{{ $feature->name }}</label>
-                                </div>
-                            @endforeach
+                            <div id="features-container">
+                                @foreach($features as $feature)
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="feature_{{ $feature->id }}" name="features[]" value="{{ $feature->id }}">
+                                        <label class="form-check-label" for="feature_{{ $feature->id }}">{{ $feature->name }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary" id="saveProductBtn">Save Product</button>
                     </form>
@@ -182,6 +184,39 @@
         }
 
         $(document).ready(function() {
+            // Handle category change to update features
+            $('#category').on('change', function() {
+                var categoryId = $(this).val();
+                if (categoryId) {
+                    $.ajax({
+                        url: '{{ route('get.features.by.category', ':id') }}'.replace(':id', categoryId),
+                        type: 'GET',
+                        success: function(response) {
+                            var featuresContainer = $('#features-container');
+                            featuresContainer.empty();
+                            
+                            if (response.length > 0) {
+                                response.forEach(function(feature) {
+                                    var featureHtml = '<div class="form-check form-check-inline">' +
+                                        '<input class="form-check-input" type="checkbox" id="feature_' + feature.id + '" name="features[]" value="' + feature.id + '">' +
+                                        '<label class="form-check-label" for="feature_' + feature.id + '">' + feature.name + '</label>' +
+                                        '</div>';
+                                    featuresContainer.append(featureHtml);
+                                });
+                            } else {
+                                featuresContainer.html('<p class="text-muted">No features available for this category.</p>');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching features:', error);
+                            $('#features-container').html('<p class="text-danger">Error loading features.</p>');
+                        }
+                    });
+                } else {
+                    $('#features-container').empty();
+                }
+            });
+
             $('#openProductModal').click(function() {
                 $('#productModal').modal('show');
             });

@@ -38,7 +38,9 @@ class VendorProductController extends Controller
     {
         $variants = Variant::all();
         $categories = Category::all();
-        $features = Feature::where('status', 1)->get();
+        // Get features for the first category or all features if no category selected
+        $firstCategory = $categories->first();
+        $features = $firstCategory ? Feature::where('category_id', $firstCategory->id)->where('status', 1)->get() : collect();
         return view('dashboard.vendor.products.create', compact('categories', 'variants', 'features'));
     }
 
@@ -131,7 +133,8 @@ class VendorProductController extends Controller
         $variants = Variant::where('category_id', $product->category_id)->get();
         $selectedVariants = $product->variants->pluck('id')->toArray();
         $subcat = Subcategory::where('category_id', $product->category_id)->get();
-        $features = Feature::where('status', 1)->get();
+        // Get features for the product's category
+        $features = Feature::where('category_id', $product->category_id)->where('status', 1)->get();
         $selectedFeatures = $product->features->pluck('id')->toArray();
         return view('dashboard.vendor.products.edit', compact('product', 'categories', 'variants', 'subcat', 'selectedVariants', 'features', 'selectedFeatures'));
     }
@@ -201,5 +204,11 @@ class VendorProductController extends Controller
         $data['varients'] = Variant::where('category_id', $categoryId)->get();
         // Return subcategories as JSON response
         return response()->json($data);
+    }
+
+    public function getFeaturesByCategory($categoryId)
+    {
+        $features = Feature::where('category_id', $categoryId)->where('status', 1)->get();
+        return response()->json($features);
     }
 }

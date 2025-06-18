@@ -52,7 +52,9 @@ class ProductController extends Controller
         $variants = Variant::all();
         $categories = Category::all();
         $brands = Brand::all();
-        $features = Feature::where('status', 1)->get();
+        // Get features for the first category or all features if no category selected
+        $firstCategory = $categories->first();
+        $features = $firstCategory ? Feature::where('category_id', $firstCategory->id)->where('status', 1)->get() : collect();
 
         $layout = match (Auth::user()->role->name) {
             'Admin' => 'dashboard.admin.layouts.app',
@@ -122,7 +124,8 @@ class ProductController extends Controller
         $selectedVariants = $product->variants->pluck('id')->toArray();
         $subcat = Subcategory::where('category_id', $product->category_id)->get();
         $brands = Brand::all();
-        $features = Feature::where('status', 1)->get();
+        // Get features for the product's category
+        $features = Feature::where('category_id', $product->category_id)->where('status', 1)->get();
         $selectedFeatures = $product->features->pluck('id')->toArray();
 
         $layout = match (Auth::user()->role->name) {
@@ -199,5 +202,11 @@ class ProductController extends Controller
         $data['subcategories'] = Subcategory::where('category_id', $categoryId)->get();
         $data['varients'] = Variant::where('category_id', $categoryId)->get();
         return response()->json($data);
+    }
+
+    public function getFeaturesByCategory($categoryId)
+    {
+        $features = Feature::where('category_id', $categoryId)->where('status', 1)->get();
+        return response()->json($features);
     }
 }

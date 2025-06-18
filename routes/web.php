@@ -234,6 +234,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     // get categories
     Route::get('/get-categories/{packageId}', [EventController::class, 'getCategories'])->name('get.categories');
 
+    // get features by category
+    Route::get('/get-features/{categoryId}', [ProductController::class, 'getFeaturesByCategory'])->name('get.features.by.category');
+
     // user management
     Route::get('/users', [UserManagementController::class, 'indexUser'])->name('users.index');
     Route::get('/get-users', [UserManagementController::class, 'getUsers'])->name('admin.users.index');
