@@ -71,8 +71,52 @@
     $(document).ready(function() {
         $('.delete-subcategory').click(function() {
             var subcategoryId = $(this).data('id');
-
-            if (confirm('Are you sure you want to delete this subcategory?')) {
+            var button = $(this);
+            
+            // Get deletion details first
+            $.ajax({
+                type: 'GET',
+                url: "{{ route('subcategories.deletion-details', '__subcategory_id__') }}".replace('__subcategory_id__', subcategoryId),
+                success: function(response) {
+                    showDeletionConfirmation(response, subcategoryId, button);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert('Failed to get deletion details.');
+                }
+            });
+        });
+        
+        function showDeletionConfirmation(details, subcategoryId, button) {
+            var message = `
+                <div class="text-left">
+                    <h5 class="text-danger mb-3">⚠️ Delete Subcategory Confirmation</h5>
+                    <p><strong>Subcategory:</strong> ${details.subcategory.title}</p>
+                    <p><strong>Category:</strong> ${details.subcategory.category}</p>
+                    <hr>
+                    <p class="text-danger"><strong>This will permanently delete:</strong></p>
+                    <ul class="list-unstyled">
+                        <li>• <strong>${details.products_count}</strong> Products</li>
+                        <li>• <strong>${details.costumes_count}</strong> Costumes</li>
+                        <li>• <strong>${details.product_variants_count}</strong> Product Variants</li>
+                        <li>• <strong>${details.product_images_count}</strong> Product Images</li>
+                        <li>• <strong>${details.product_media_count}</strong> Product Media Files</li>
+                        <li>• <strong>${details.costume_variants_count}</strong> Costume Variants</li>
+                        <li>• <strong>${details.costume_images_count}</strong> Costume Images</li>
+                        <li>• <strong>${details.cart_items_count}</strong> Cart Items</li>
+                        <li>• <strong>${details.order_items_count}</strong> Order Items</li>
+                    </ul>
+                    <hr>
+                    <p class="text-danger"><strong>Total Items to Delete: ${details.total_items}</strong></p>
+                    <p class="text-muted small">This action cannot be undone!</p>
+                </div>
+            `;
+            
+            if (confirm(message)) {
+                // Disable button to prevent double-click
+                button.prop('disabled', true);
+                button.html('<i class="fe fe-trash fe-12 mr-3 text-muted"></i>Deleting...');
+                
                 $.ajax({
                     type: 'POST',
                     url: "{{ route('subcategories.destroy', '__subcategory_id__') }}".replace('__subcategory_id__', subcategoryId),
@@ -81,16 +125,21 @@
                         "_method": "DELETE"
                     },
                     success: function(response) {
-                        $('#row_' + subcategoryId).remove();
-                        alert('Subcategory deleted successfully.');
+                        $('#row_' + subcategoryId).fadeOut(300, function() {
+                            $(this).remove();
+                        });
+                        alert('Subcategory and all related items deleted successfully.');
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);
                         alert('Failed to delete subcategory.');
+                        // Re-enable button
+                        button.prop('disabled', false);
+                        button.html('<i class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove');
                     }
                 });
             }
-        });
+        }
     });
 </script>
 @endsection

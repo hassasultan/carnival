@@ -204,9 +204,11 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // Categories Crud
     Route::resource('categories', CategoryController::class);
+    Route::get('/categories/{id}/deletion-details', [CategoryController::class, 'getDeletionDetails'])->name('categories.deletion-details');
 
     // Subcategories Crud
     Route::resource('subcategories', SubcategoryController::class);
+    Route::get('/subcategories/{subcategory}/deletion-details', [SubcategoryController::class, 'getDeletionDetails'])->name('subcategories.deletion-details');
 
     // States Crud
     Route::resource('states', StateController::class);
