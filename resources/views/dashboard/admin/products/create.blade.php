@@ -160,26 +160,12 @@
                         </div>
                         <div class="form-group">
                             <label>Product Features</label><br>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="feature" name="feature" value="1">
-                                <label class="form-check-label" for="feature">Feature</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="women" name="women" value="1">
-                                <label class="form-check-label" for="women">Women</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="men" name="men" value="1">
-                                <label class="form-check-label" for="men">Men</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="kids" name="kids" value="1">
-                                <label class="form-check-label" for="kids">Kids</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="accessories" name="accessories" value="1">
-                                <label class="form-check-label" for="accessories">Accessories</label>
-                            </div>
+                            @foreach($features as $feature)
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="feature_{{ $feature->id }}" name="features[]" value="{{ $feature->id }}">
+                                    <label class="form-check-label" for="feature_{{ $feature->id }}">{{ $feature->name }}</label>
+                                </div>
+                            @endforeach
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6 mb-3">

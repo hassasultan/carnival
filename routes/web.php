@@ -53,6 +53,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\OurTeamController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\StateController;
+use App\Http\Controllers\FeatureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -209,6 +210,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     // Subcategories Crud
     Route::resource('subcategories', SubcategoryController::class);
     Route::get('/subcategories/{subcategory}/deletion-details', [SubcategoryController::class, 'getDeletionDetails'])->name('subcategories.deletion-details');
+
+    // Features Crud
+    Route::resource('features', FeatureController::class);
 
     // States Crud
     Route::resource('states', StateController::class);

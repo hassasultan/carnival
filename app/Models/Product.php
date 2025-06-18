@@ -101,6 +101,11 @@ class Product extends Model
         return $this->hasMany(ProductMedia::class);
     }
 
+    public function features()
+    {
+        return $this->belongsToMany(Feature::class, 'product_features');
+    }
+
     public function scopeFeatured($query)
     {
         return $query->where('is_featured', true);

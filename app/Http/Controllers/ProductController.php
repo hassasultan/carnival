@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Variant;
 use App\Models\Brand;
+use App\Models\Feature;
 use App\Traits\ImageTrait;
 use App\Models\ProductVariantImage;
 use App\Models\ProductVariant;
@@ -51,6 +52,7 @@ class ProductController extends Controller
         $variants = Variant::all();
         $categories = Category::all();
         $brands = Brand::all();
+        $features = Feature::where('status', 1)->get();
 
         $layout = match (Auth::user()->role->name) {
             'Admin' => 'dashboard.admin.layouts.app',
@@ -58,7 +60,7 @@ class ProductController extends Controller
             'SubVendor' => 'dashboard.subVendor.layouts.app',
         };
 
-        return view('dashboard.admin.products.create', compact('categories', 'variants', 'brands', 'layout'));
+        return view('dashboard.admin.products.create', compact('categories', 'variants', 'brands', 'features', 'layout'));
     }
 
     public function store(Request $request)
@@ -73,6 +75,8 @@ class ProductController extends Controller
             'variant_id' => 'required|array',
             'variant_id.*' => 'exists:variants,id',
             'media.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'features' => 'nullable|array',
+            'features.*' => 'exists:features,id',
         ]);
 
         $data = $request->all();
@@ -88,6 +92,11 @@ class ProductController extends Controller
         $product = $this->productService->createProduct($data);
 
         if ($product) {
+            // Attach features to the product
+            if ($request->has('features')) {
+                $product->features()->attach($request->features);
+            }
+
             $products = Product::all();
             $view = view('dashboard.admin.products.table', compact('products'))->render();
 
@@ -105,7 +114,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $product = Product::with('category', 'product_variant', 'subcategory')->findOrFail($id);
+        $product = Product::with('category', 'product_variant', 'subcategory', 'features')->findOrFail($id);
         // $categories = Category::where('type', 'ecommerce')->get();
         $categories = Category::get();
         // $variants = Variant::all();
@@ -113,6 +122,8 @@ class ProductController extends Controller
         $selectedVariants = $product->variants->pluck('id')->toArray();
         $subcat = Subcategory::where('category_id', $product->category_id)->get();
         $brands = Brand::all();
+        $features = Feature::where('status', 1)->get();
+        $selectedFeatures = $product->features->pluck('id')->toArray();
 
         $layout = match (Auth::user()->role->name) {
             'Admin' => 'dashboard.admin.layouts.app',
@@ -120,7 +131,7 @@ class ProductController extends Controller
             'SubVendor' => 'dashboard.subVendor.layouts.app',
         };
 
-        return view('dashboard.admin.products.edit', compact('product', 'categories', 'variants', 'subcat', 'selectedVariants', 'brands', 'layout'));
+        return view('dashboard.admin.products.edit', compact('product', 'categories', 'variants', 'subcat', 'selectedVariants', 'brands', 'features', 'selectedFeatures', 'layout'));
     }
 
     public function update(Request $request, $id)
@@ -132,6 +143,8 @@ class ProductController extends Controller
             'old_price' => 'required',
             'new_price' => 'required',
             'status' => 'required',
+            'features' => 'nullable|array',
+            'features.*' => 'exists:features,id',
         ]);
 
         $product = Product::findOrFail($id);
@@ -154,6 +167,13 @@ class ProductController extends Controller
         $updatedProduct = $this->productService->updateProduct($product, $data);
 
         if ($updatedProduct) {
+            // Sync features with the product
+            if ($request->has('features')) {
+                $product->features()->sync($request->features);
+            } else {
+                $product->features()->detach();
+            }
+
             $products = Product::all();
             $view = view('dashboard.admin.products.table', compact('products'))->render();
 

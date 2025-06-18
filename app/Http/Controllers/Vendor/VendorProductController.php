@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Variant;
+use App\Models\Feature;
 use App\Models\ProductVariantImage;
 use App\Models\ProductVariant;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,8 @@ class VendorProductController extends Controller
     {
         $variants = Variant::all();
         $categories = Category::all();
-        return view('dashboard.vendor.products.create', compact('categories', 'variants'));
+        $features = Feature::where('status', 1)->get();
+        return view('dashboard.vendor.products.create', compact('categories', 'variants', 'features'));
     }
 
     // public function store(Request $request)
@@ -88,6 +90,8 @@ class VendorProductController extends Controller
             'status' => 'required',
             'variant_id' => 'required|array',
             'variant_id.*' => 'exists:variants,id',
+            'features' => 'nullable|array',
+            'features.*' => 'exists:features,id',
         ]);
 
         $data = $request->all();
@@ -99,6 +103,11 @@ class VendorProductController extends Controller
         $product = $this->productService->createProduct($data);
 
         if ($product) {
+            // Attach features to the product
+            if ($request->has('features')) {
+                $product->features()->attach($request->features);
+            }
+
             $products = Product::where('user_id', Auth::id())->get();
             $view = view('dashboard.vendor.products.table', compact('products'))->render();
 
@@ -116,13 +125,15 @@ class VendorProductController extends Controller
 
     public function edit($id)
     {
-        $product = Product::with('category', 'product_variant', 'subcategory')->findOrFail($id);
+        $product = Product::with('category', 'product_variant', 'subcategory', 'features')->findOrFail($id);
         $categories = Category::where('type', 'ecommerce')->get();
         // $variants = Variant::all();
         $variants = Variant::where('category_id', $product->category_id)->get();
         $selectedVariants = $product->variants->pluck('id')->toArray();
         $subcat = Subcategory::where('category_id', $product->category_id)->get();
-        return view('dashboard.vendor.products.edit', compact('product', 'categories', 'variants', 'subcat', 'selectedVariants'));
+        $features = Feature::where('status', 1)->get();
+        $selectedFeatures = $product->features->pluck('id')->toArray();
+        return view('dashboard.vendor.products.edit', compact('product', 'categories', 'variants', 'subcat', 'selectedVariants', 'features', 'selectedFeatures'));
     }
 
     public function update(Request $request, $id)
@@ -134,6 +145,8 @@ class VendorProductController extends Controller
             'old_price' => 'required',
             'new_price' => 'required',
             'status' => 'required',
+            'features' => 'nullable|array',
+            'features.*' => 'exists:features,id',
             // 'variant_id' => 'required|array',
             // 'variant_id.*' => 'exists:variants,id',
         ]);
@@ -155,6 +168,13 @@ class VendorProductController extends Controller
         $updatedProduct = $this->productService->updateProduct($product, $data);
 
         if ($updatedProduct) {
+            // Sync features with the product
+            if ($request->has('features')) {
+                $product->features()->sync($request->features);
+            } else {
+                $product->features()->detach();
+            }
+
             $products = Product::where('user_id', Auth::id())->get();
             $view = view('dashboard.vendor.products.table', compact('products'))->render();
 

@@ -43,6 +43,12 @@ class Category extends Model
         return $this->hasMany(Subcategory::class);
     }
 
+    // All features of single category
+    public function features()
+    {
+        return $this->hasMany(Feature::class);
+    }
+
     // All products of this category through subcategories
     public function products()
     {
