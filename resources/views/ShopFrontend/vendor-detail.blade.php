@@ -1213,7 +1213,7 @@
         @endif
 
         @if (count($user->sponsors) > 1)
-            @include('ShopFrontend.components.sponsors')
+            @include('ShopFrontend.components.sponsers')
         @endif
 
         <!-- block  showcase-->
