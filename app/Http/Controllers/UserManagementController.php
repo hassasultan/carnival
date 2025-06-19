@@ -285,6 +285,8 @@ class UserManagementController extends Controller
                                 'user_id' => $user->id,
                                 'title' => $banner['title'],
                                 'subtitle' => $banner['link_url'] ?? '',
+                                'description' => $banner['description'] ?? '',
+                                'button_text' => $banner['button_text'] ?? '',
                                 'banner' => 'userBanners/' . $fileName,
                             ];
                             
@@ -539,6 +541,8 @@ class UserManagementController extends Controller
                                 'user_id' => $user->id,
                                 'title' => $banner['title'],
                                 'subtitle' => $banner['link_url'] ?? '',
+                                'description' => $banner['description'] ?? '',
+                                'button_text' => $banner['button_text'] ?? '',
                                 'banner' => 'userBanners/' . $fileName,
                             ];
                             
