@@ -171,10 +171,10 @@ class UserManagementController extends Controller
             'tabs.*.content' => ['nullable', 'string'],
             'sponsors.*.name' => ['nullable', 'string', 'max:255'],
             'sponsors.*.website' => ['nullable', 'url', 'max:255'],
-            'sponsor_logos.*' => ['nullable', 'image', 'max:2048'],
+            'sponsor_logos.*' => ['required_with:sponsors.*.name', 'image', 'max:2048'],
             'banners.*.title' => ['nullable', 'string', 'max:255'],
             'banners.*.link_url' => ['nullable', 'url', 'max:255'],
-            'banner_files.*' => ['nullable', 'file', 'max:10240'], // 10MB for videos
+            'banner_files.*' => ['required_with:banners.*.title', 'file', 'max:10240'], // 10MB for videos
         ];
 
         if (!$userId) {
@@ -255,20 +255,19 @@ class UserManagementController extends Controller
             if (isset($data['sponsors']) && is_array($data['sponsors'])) {
                 foreach ($data['sponsors'] as $index => $sponsor) {
                     if (!empty($sponsor['name'])) {
-                        $sponsorData = [
-                            'user_id' => $user->id,
-                            'title' => $sponsor['name'],
-                            'description' => $sponsor['website'] ?? '',
-                            'logo' => null, // Set default value
-                        ];
-                        
-                        // Handle sponsor logo upload
+                        // Only create sponsor if logo is provided
                         if (isset($data['sponsor_logos'][$index]) && $data['sponsor_logos'][$index]) {
                             $logoName = $this->uploadImage($data['sponsor_logos'][$index], 'sponser_images');
-                            $sponsorData['logo'] = 'sponser_images/' . $logoName;
+                            
+                            $sponsorData = [
+                        'user_id' => $user->id,
+                                'title' => $sponsor['name'],
+                                'description' => $sponsor['website'] ?? '',
+                                'logo' => 'sponser_images/' . $logoName,
+                            ];
+                            
+                            Sponsers::create($sponsorData);
                         }
-                        
-                        Sponsers::create($sponsorData);
                     }
                 }
             }
@@ -277,20 +276,20 @@ class UserManagementController extends Controller
             if (isset($data['banners']) && is_array($data['banners'])) {
                 foreach ($data['banners'] as $index => $banner) {
                     if (!empty($banner['title'])) {
-                        $bannerData = [
-                            'user_id' => $user->id,
-                            'title' => $banner['title'],
-                            'subtitle' => $banner['link_url'] ?? '',
-                        ];
-                        
-                        // Handle banner file upload
-                        if (isset($data['banner_files'][$index])) {
+                        // Only create banner if file is provided
+                        if (isset($data['banner_files'][$index]) && $data['banner_files'][$index]) {
                             $file = $data['banner_files'][$index];
                             $fileName = $this->uploadImage($file, 'userBanners');
-                            $bannerData['banner'] = 'userBanners/' . $fileName;
+                            
+                            $bannerData = [
+                                'user_id' => $user->id,
+                                'title' => $banner['title'],
+                                'subtitle' => $banner['link_url'] ?? '',
+                                'banner' => 'userBanners/' . $fileName,
+                            ];
+                            
+                            UserDetailBanner::create($bannerData);
                         }
-                        
-                        UserDetailBanner::create($bannerData);
                     }
                 }
             }
@@ -506,19 +505,19 @@ class UserManagementController extends Controller
                 // Create new sponsors
                 foreach ($request->sponsors as $index => $sponsor) {
                     if (!empty($sponsor['name'])) {
-                        $sponsorData = [
-                            'user_id' => $user->id,
-                            'title' => $sponsor['name'],
-                            'description' => $sponsor['website'] ?? '',
-                        ];
-                        
-                        // Handle sponsor logo upload
+                        // Only create sponsor if logo is provided
                         if (isset($request->file('sponsor_logos')[$index])) {
                             $logoName = $this->uploadImage($request->file('sponsor_logos')[$index], 'sponser_images');
-                            $sponsorData['logo'] = 'sponser_images/' . $logoName;
+                            
+                            $sponsorData = [
+                                'user_id' => $user->id,
+                                'title' => $sponsor['name'],
+                                'description' => $sponsor['website'] ?? '',
+                                'logo' => 'sponser_images/' . $logoName,
+                            ];
+                            
+                            Sponsers::create($sponsorData);
                         }
-                        
-                        Sponsers::create($sponsorData);
                     }
                 }
             }
@@ -531,20 +530,20 @@ class UserManagementController extends Controller
                 // Create new banners
                 foreach ($request->banners as $index => $banner) {
                     if (!empty($banner['title'])) {
-                        $bannerData = [
-                            'user_id' => $user->id,
-                            'title' => $banner['title'],
-                            'subtitle' => $banner['link_url'] ?? '',
-                        ];
-                        
-                        // Handle banner file upload
-                        if (isset($request->file('banner_files')[$index])) {
+                        // Only create banner if file is provided
+                        if (isset($request->file('banner_files')[$index]) && $request->file('banner_files')[$index]) {
                             $file = $request->file('banner_files')[$index];
                             $fileName = $this->uploadImage($file, 'userBanners');
-                            $bannerData['banner'] = 'userBanners/' . $fileName;
+                            
+                            $bannerData = [
+                                'user_id' => $user->id,
+                                'title' => $banner['title'],
+                                'subtitle' => $banner['link_url'] ?? '',
+                                'banner' => 'userBanners/' . $fileName,
+                            ];
+                            
+                            UserDetailBanner::create($bannerData);
                         }
-                        
-                        UserDetailBanner::create($bannerData);
                     }
                 }
             }

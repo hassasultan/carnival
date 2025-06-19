@@ -667,35 +667,35 @@
                                                 <div class="form-group">
                                                     <label for="banner">Banner Image <span class="text-danger">*</span></label>
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="banner" name="banner[]" required accept="image/*">
-                                                        <label class="custom-file-label" for="banner">Choose file</label>
+                                                        <input type="file" class="custom-file-input" id="banner_${bannerIndex}" name="banner_files[${bannerIndex}]" required accept="image/*,video/*">
+                                                        <label class="custom-file-label" for="banner_${bannerIndex}">Choose file</label>
                     </div>
-                                                    <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
+                                                    <small class="form-text text-muted">Supported formats: JPG, PNG, GIF, MP4 (Max: 10MB)</small>
                     </div>
 
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="banner_title">Banner Title</label>
-                                                            <input type="text" class="form-control" name="banner_title[]" placeholder="Enter banner title">
+                                                            <input type="text" class="form-control" name="banners[${bannerIndex}][title]" placeholder="Enter banner title">
                     </div>
                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="banner_subtitle">Banner Subtitle</label>
-                                                            <input type="text" class="form-control" name="banner_subtitle[]" placeholder="Enter banner subtitle">
+                                                            <input type="text" class="form-control" name="banners[${bannerIndex}][subtitle]" placeholder="Enter banner subtitle">
                     </div>
                     </div>
                     </div>
 
                                                 <div class="form-group">
                                                     <label for="banner_description">Banner Description</label>
-                                                    <textarea class="form-control" name="banner_description[]" rows="3" placeholder="Enter banner description"></textarea>
+                                                    <textarea class="form-control" name="banners[${bannerIndex}][description]" rows="3" placeholder="Enter banner description"></textarea>
                 </div>
 
                                                 <div class="form-group">
                                                     <label for="banner_button">Button Text</label>
-                                                    <input type="text" class="form-control" name="banner_button[]" placeholder="Enter button text">
+                                                    <input type="text" class="form-control" name="banners[${bannerIndex}][button_text]" placeholder="Enter button text">
                             </div>
                                             </div>
                                         </div>
@@ -723,10 +723,10 @@
                                             </div>
                                             <div class="card-body">
                                     <div class="form-group">
-                                                    <label for="sponser_logo">Sponsor Logo <span class="text-danger">*</span></label>
+                                                    <label for="sponsor_logo">Sponsor Logo <span class="text-danger">*</span></label>
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="sponser_logo" name="sponser_logo[]" required accept="image/*">
-                                                        <label class="custom-file-label" for="sponser_logo">Choose file</label>
+                                                        <input type="file" class="custom-file-input" id="sponsor_logo_${sponsorIndex}" name="sponsor_logos[${sponsorIndex}]" required accept="image/*">
+                                                        <label class="custom-file-label" for="sponsor_logo_${sponsorIndex}">Choose file</label>
                                     </div>
                                                     <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
                                                 </div>
@@ -734,14 +734,14 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                     <div class="form-group">
-                                                            <label for="sponser_title">Sponsor Title</label>
-                                                            <input type="text" class="form-control" name="sponser_title[]" placeholder="Enter sponsor title">
+                                                            <label for="sponsor_name_${sponsorIndex}">Sponsor Name</label>
+                                                            <input type="text" class="form-control" name="sponsors[${sponsorIndex}][name]" placeholder="Enter sponsor name">
                                     </div>
                                 </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="sponser_description">Sponsor Description</label>
-                                                            <input type="text" class="form-control" name="sponser_description[]" placeholder="Enter sponsor description">
+                                                            <label for="sponsor_website_${sponsorIndex}">Website URL</label>
+                                                            <input type="url" class="form-control" name="sponsors[${sponsorIndex}][website]" placeholder="https://example.com">
                             </div>
                         </div>
                     </div>
@@ -895,7 +895,7 @@
                             <div class="form-group">
                         <label for="banner_${bannerIndex}">Banner Image <span class="text-danger">*</span></label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="banner_${bannerIndex}" name="banner_files[]" required accept="image/*,video/*">
+                            <input type="file" class="custom-file-input" id="banner_${bannerIndex}" name="banner_files[${bannerIndex}]" required accept="image/*,video/*">
                             <label class="custom-file-label" for="banner_${bannerIndex}">Choose file</label>
                             </div>
                         <small class="form-text text-muted">Supported formats: JPG, PNG, GIF, MP4 (Max: 10MB)</small>
@@ -942,6 +942,7 @@
             
             fileInput.attr('id', 'banner_' + newIndex);
             fileInput.next('label').attr('for', 'banner_' + newIndex);
+            fileInput.attr('name', 'banner_files[' + newIndex + ']');
             
             titleInput.attr('name', 'banners[' + newIndex + '][title]');
             titleInput.attr('id', 'banner_title_' + newIndex);
@@ -970,7 +971,7 @@
                                     <div class="form-group">
                         <label for="sponsor_logo_${sponsorIndex}">Sponsor Logo <span class="text-danger">*</span></label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="sponsor_logo_${sponsorIndex}" name="sponsor_logos[]" required accept="image/*">
+                            <input type="file" class="custom-file-input" id="sponsor_logo_${sponsorIndex}" name="sponsor_logos[${sponsorIndex}]" required accept="image/*">
                             <label class="custom-file-label" for="sponsor_logo_${sponsorIndex}">Choose file</label>
                                     </div>
                         <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
@@ -1017,7 +1018,7 @@
             
             fileInput.attr('id', 'sponsor_logo_' + newIndex);
             fileInput.next('label').attr('for', 'sponsor_logo_' + newIndex);
-            fileInput.attr('name', 'sponsor_logos[]');
+            fileInput.attr('name', 'sponsor_logos[' + newIndex + ']');
             
             nameInput.attr('name', 'sponsors[' + newIndex + '][name]');
             nameInput.attr('id', 'sponsor_name_' + newIndex);
@@ -1129,7 +1130,7 @@
     $('.custom-file-input').on('change', function() {
         var fileName = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').html(fileName || 'Choose file');
-    });
+            });
         });
     </script>
 @endsection
