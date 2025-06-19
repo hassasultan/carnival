@@ -706,7 +706,7 @@
     // File input labels
     $('.custom-file-input').on('change', function() {
         var fileName = $(this).val().split('\\').pop();
-        $(this).next('.custom-file-label').html(fileName);
+        $(this).next('.custom-file-label').html(fileName || 'Choose file');
     });
 
     // Form validation
@@ -909,8 +909,14 @@
     // Handle file input labels for dynamic elements
     $(document).on('change', '.custom-file-input', function() {
         var fileName = $(this).val().split('\\').pop();
-        $(this).next('.custom-file-label').html(fileName);
-            });
+        $(this).next('.custom-file-label').html(fileName || 'Choose file');
+    });
+
+    // Handle file input labels for existing file inputs
+    $('.custom-file-input').on('change', function() {
+        var fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').html(fileName || 'Choose file');
+    });
         });
     </script>
 @endsection
