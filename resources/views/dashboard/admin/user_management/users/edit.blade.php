@@ -204,8 +204,8 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="short_description">Short Description</label>
-                                        <textarea id="short_description" class="form-control @error('short_description') is-invalid @enderror" 
-                                            name="short_description" rows="3" placeholder="Enter a brief description about the user...">{{ $user->short_description }}</textarea>
+                                        <textarea id="short_description" class="form-control @error('short_description') is-invalid @enderror"
+                                            name="short_description" rows="3" placeholder="Enter a brief description about the user...">{{ $user->vendor ? $user->vendor->short_description : ($user->subVendor ? $user->subVendor->short_description : $user->short_description) }}</textarea>
                                         @error('short_description')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -227,90 +227,16 @@
                                         <label for="continent">Continent</label>
                                         <select id="continent" class="form-control @error('continent') is-invalid @enderror" name="continent">
                                             <option value="">Select Continent</option>
-                                            <option value="Africa" @if ($user->continent == 'Africa') selected @endif>Africa</option>
-                                            <option value="Asia" @if ($user->continent == 'Asia') selected @endif>Asia</option>
-                                            <option value="Europe" @if ($user->continent == 'Europe') selected @endif>Europe</option>
-                                            <option value="North America" @if ($user->continent == 'North America') selected @endif>North America</option>
-                                            <option value="South America" @if ($user->continent == 'South America') selected @endif>South America</option>
-                                            <option value="Australia" @if ($user->continent == 'Australia') selected @endif>Australia</option>
-                                            <option value="Antarctica" @if ($user->continent == 'Antarctica') selected @endif>Antarctica</option>
+                                            @foreach ($continents as $continent)
+                                                <option value="{{ $continent->id }}" 
+                                                    @if (($user->vendor && $user->vendor->continent == $continent->id) || 
+                                                         ($user->subVendor && $user->subVendor->continent == $continent->id) ||
+                                                         ($user->continent == $continent->id)) selected @endif>
+                                                    {{ $continent->name }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                         @error('continent')
-                                            <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Social Media Links -->
-                            <div class="row mb-4">
-                                <div class="col-12">
-                                    <h5 class="text-primary mb-3">
-                                        <i class="fe fe-share-2 mr-2"></i>Social Media Links
-                                    </h5>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="facebook">Facebook URL</label>
-                                        <input id="facebook" type="url" class="form-control @error('facebook') is-invalid @enderror"
-                                            name="facebook" value="{{ $user->facebook }}" placeholder="https://facebook.com/username">
-                                        @error('facebook')
-                                            <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="twitter">Twitter/X URL</label>
-                                        <input id="twitter" type="url" class="form-control @error('twitter') is-invalid @enderror"
-                                            name="twitter" value="{{ $user->twitter }}" placeholder="https://twitter.com/username">
-                                        @error('twitter')
-                                            <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="instagram">Instagram URL</label>
-                                        <input id="instagram" type="url" class="form-control @error('instagram') is-invalid @enderror"
-                                            name="instagram" value="{{ $user->instagram }}" placeholder="https://instagram.com/username">
-                                        @error('instagram')
-                                            <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="linkedin">LinkedIn URL</label>
-                                        <input id="linkedin" type="url" class="form-control @error('linkedin') is-invalid @enderror"
-                                            name="linkedin" value="{{ $user->linkedin }}" placeholder="https://linkedin.com/in/username">
-                                        @error('linkedin')
-                                            <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="youtube">YouTube URL</label>
-                                        <input id="youtube" type="url" class="form-control @error('youtube') is-invalid @enderror"
-                                            name="youtube" value="{{ $user->youtube }}" placeholder="https://youtube.com/@username">
-                                        @error('youtube')
-                                            <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="website">Website URL</label>
-                                        <input id="website" type="url" class="form-control @error('website') is-invalid @enderror"
-                                            name="website" value="{{ $user->website }}" placeholder="https://example.com">
-                                        @error('website')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -633,11 +559,11 @@
                                                 <option value="">Select Package</option>
                                                 @foreach ($packages as $package)
                                                     <option value="{{ $package->id }}"
-                                                        {{ $user->vendor->package_id == $package->id ? 'selected' : '' }}>
+                                                        {{ ($user->vendor && $user->vendor->package_id == $package->id) ? 'selected' : '' }}>
                                                         {{ $package->title }}
                                                     </option>
                                                 @endforeach
-                                                <option value="section_leader" @if ($user->vendor->package_id == '123') selected @endif>
+                                                <option value="section_leader" @if ($user->vendor && $user->vendor->package_id == '123') selected @endif>
                                                     Section Leader
                                                 </option>
                                             </select>
