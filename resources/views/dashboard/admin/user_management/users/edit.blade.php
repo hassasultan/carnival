@@ -589,7 +589,7 @@
                                                 <option value="">Select Parent Vendor</option>
                                                 @foreach ($vendors as $vendor)
                                                     <option value="{{ $vendor->id }}"
-                                                        {{ $user->subVendor->vendor_id == $vendor->id ? 'selected' : '' }}>
+                                                        {{ ($user->subVendor && $user->subVendor->vendor_id == $vendor->id) ? 'selected' : '' }}>
                                                         {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }} 
                                                         @if($vendor->name)
                                                             ({{ $vendor->name }})
