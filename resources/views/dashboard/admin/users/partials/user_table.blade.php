@@ -40,13 +40,9 @@
                             <a class="dropdown-item" href="{{ route('users.edit', $user->id) }}">
                                 <i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit
                             </a>
-                            <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="dropdown-item">
-                                    <i class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove
-                                </button>
-                            </form>
+                            <button type="button" class="dropdown-item delete-user" data-id="{{ $user->id }}">
+                                <i class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove
+                            </button>
                         </div>
                     </td>
                 </tr>

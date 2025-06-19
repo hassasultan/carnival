@@ -97,6 +97,98 @@
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label for="age">Age</label>
+                                        <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" 
+                                            name="age" value="{{ old('age') }}" min="1" max="120">
+                                        @error('age')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="nationality">Nationality</label>
+                                        <input id="nationality" type="text" class="form-control @error('nationality') is-invalid @enderror" 
+                                            name="nationality" value="{{ old('nationality') }}">
+                                        @error('nationality')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="gender">Gender</label>
+                                        <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender">
+                                            <option value="">Select Gender</option>
+                                            <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
+                                            <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
+                                            <option value="other" {{ old('gender') == 'other' ? 'selected' : '' }}>Other</option>
+                                        </select>
+                                        @error('gender')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="height">Height (cm)</label>
+                                        <input id="height" type="number" class="form-control @error('height') is-invalid @enderror" 
+                                            name="height" value="{{ old('height') }}" min="50" max="250">
+                                        @error('height')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="weight">Weight (kg)</label>
+                                        <input id="weight" type="number" class="form-control @error('weight') is-invalid @enderror" 
+                                            name="weight" value="{{ old('weight') }}" min="20" max="200">
+                                        @error('weight')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="bust">Bust (cm)</label>
+                                        <input id="bust" type="number" class="form-control @error('bust') is-invalid @enderror" 
+                                            name="bust" value="{{ old('bust') }}" min="50" max="150">
+                                        @error('bust')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="waist">Waist (cm)</label>
+                                        <input id="waist" type="number" class="form-control @error('waist') is-invalid @enderror" 
+                                            name="waist" value="{{ old('waist') }}" min="40" max="150">
+                                        @error('waist')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="hips">Hips (cm)</label>
+                                        <input id="hips" type="number" class="form-control @error('hips') is-invalid @enderror" 
+                                            name="hips" value="{{ old('hips') }}" min="50" max="200">
+                                        @error('hips')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label for="image">Profile Image <span class="text-danger">*</span></label>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input @error('image') is-invalid @enderror" 
@@ -428,6 +520,35 @@
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label for="continent">Continent <span class="text-danger">*</span></label>
+                                        <select id="continent" class="form-control select2 @error('continent') is-invalid @enderror" 
+                                            name="continent" required>
+                                            <option value="">Select Continent</option>
+                                            @foreach ($continents as $continent)
+                                                <option value="{{ $continent->id }}" {{ old('continent') == $continent->id ? 'selected' : '' }}>
+                                                    {{ $continent->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('continent')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="short_description">Short Description</label>
+                                        <textarea id="short_description" class="form-control @error('short_description') is-invalid @enderror" 
+                                            name="short_description" rows="3" placeholder="Enter a brief description about your business">{{ old('short_description') }}</textarea>
+                                        @error('short_description')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label for="logo">Shop Logo <span class="text-danger">*</span></label>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input @error('logo') is-invalid @enderror" 
@@ -438,6 +559,92 @@
                                             <span class="invalid-feedback d-block">{{ $message }}</span>
                                         @enderror
                                         <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Social Media Information -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary mb-3">
+                                        <i class="fe fe-share-2 mr-2"></i>Social Media Links
+                                    </h5>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="shop_insta">Instagram</label>
+                                        <input id="shop_insta" type="url" class="form-control @error('shop_insta') is-invalid @enderror" 
+                                            name="shop_insta" value="{{ old('shop_insta') }}" placeholder="https://instagram.com/yourhandle">
+                                        @error('shop_insta')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="shop_facebook">Facebook</label>
+                                        <input id="shop_facebook" type="url" class="form-control @error('shop_facebook') is-invalid @enderror" 
+                                            name="shop_facebook" value="{{ old('shop_facebook') }}" placeholder="https://facebook.com/yourpage">
+                                        @error('shop_facebook')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="shop_youtube">YouTube</label>
+                                        <input id="shop_youtube" type="url" class="form-control @error('shop_youtube') is-invalid @enderror" 
+                                            name="shop_youtube" value="{{ old('shop_youtube') }}" placeholder="https://youtube.com/yourchannel">
+                                        @error('shop_youtube')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="shop_twitter">Twitter</label>
+                                        <input id="shop_twitter" type="url" class="form-control @error('shop_twitter') is-invalid @enderror" 
+                                            name="shop_twitter" value="{{ old('shop_twitter') }}" placeholder="https://twitter.com/yourhandle">
+                                        @error('shop_twitter')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="shop_tiktok">TikTok</label>
+                                        <input id="shop_tiktok" type="url" class="form-control @error('shop_tiktok') is-invalid @enderror" 
+                                            name="shop_tiktok" value="{{ old('shop_tiktok') }}" placeholder="https://tiktok.com/@yourhandle">
+                                        @error('shop_tiktok')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="shop_wa_business_page">WhatsApp Business</label>
+                                        <input id="shop_wa_business_page" type="url" class="form-control @error('shop_wa_business_page') is-invalid @enderror" 
+                                            name="shop_wa_business_page" value="{{ old('shop_wa_business_page') }}" placeholder="https://wa.me/yournumber">
+                                        @error('shop_wa_business_page')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="shop_linkedin">LinkedIn</label>
+                                        <input id="shop_linkedin" type="url" class="form-control @error('shop_linkedin') is-invalid @enderror" 
+                                            name="shop_linkedin" value="{{ old('shop_linkedin') }}" placeholder="https://linkedin.com/in/yourprofile">
+                                        @error('shop_linkedin')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -496,6 +703,93 @@
                                     
                                     <button type="button" id="addBannerBtn" class="btn btn-outline-success">
                                         <i class="fe fe-plus mr-1"></i>Add Another Banner
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Sponsors Section -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary mb-3">
+                                        <i class="fe fe-award mr-2"></i>Sponsors Information
+                                    </h5>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <div id="sponsorsSection">
+                                        <div class="sponsor-item card mb-3">
+                                            <div class="card-header bg-light">
+                                                <h6 class="mb-0">Sponsor #1</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="sponser_logo">Sponsor Logo <span class="text-danger">*</span></label>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="sponser_logo" name="sponser_logo[]" required accept="image/*">
+                                                        <label class="custom-file-label" for="sponser_logo">Choose file</label>
+                                                    </div>
+                                                    <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="sponser_title">Sponsor Title</label>
+                                                            <input type="text" class="form-control" name="sponser_title[]" placeholder="Enter sponsor title">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="sponser_description">Sponsor Description</label>
+                                                            <input type="text" class="form-control" name="sponser_description[]" placeholder="Enter sponsor description">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="button" id="addSponsorBtn" class="btn btn-outline-success">
+                                        <i class="fe fe-plus mr-1"></i>Add Another Sponsor
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Tabs Section -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary mb-3">
+                                        <i class="fe fe-layers mr-2"></i>Content Tabs
+                                    </h5>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <div id="tabsSection">
+                                        <div class="tab-item card mb-3">
+                                            <div class="card-header bg-light">
+                                                <h6 class="mb-0">Tab #1</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="tab_name">Tab Name <span class="text-danger">*</span></label>
+                                                            <input type="text" class="form-control" name="tab_name[]" placeholder="Enter tab name" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="tab_description">Tab Description</label>
+                                                            <textarea class="form-control" name="tab_description[]" rows="3" placeholder="Enter tab description"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="button" id="addTabBtn" class="btn btn-outline-success">
+                                        <i class="fe fe-plus mr-1"></i>Add Another Tab
                                     </button>
                                 </div>
                             </div>
@@ -636,6 +930,95 @@ $(document).ready(function() {
         $(this).closest('.banner-item').remove();
     });
 
+    // Sponsors management
+    let sponsorCount = 1;
+    
+    $('#addSponsorBtn').click(function() {
+        sponsorCount++;
+        var newSponsor = `
+            <div class="sponsor-item card mb-3">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">Sponsor #${sponsorCount}</h6>
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-sponsor">
+                        <i class="fe fe-trash"></i>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="sponser_logo_${sponsorCount}">Sponsor Logo <span class="text-danger">*</span></label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="sponser_logo_${sponsorCount}" name="sponser_logo[]" required accept="image/*">
+                            <label class="custom-file-label" for="sponser_logo_${sponsorCount}">Choose file</label>
+                        </div>
+                        <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="sponser_title_${sponsorCount}">Sponsor Title</label>
+                                <input type="text" class="form-control" name="sponser_title[]" placeholder="Enter sponsor title">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="sponser_description_${sponsorCount}">Sponsor Description</label>
+                                <input type="text" class="form-control" name="sponser_description[]" placeholder="Enter sponsor description">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        $('#sponsorsSection').append(newSponsor);
+    });
+
+    // Remove sponsor
+    $(document).on('click', '.remove-sponsor', function() {
+        $(this).closest('.sponsor-item').remove();
+    });
+
+    // Tabs management
+    let tabCount = 1;
+    
+    $('#addTabBtn').click(function() {
+        tabCount++;
+        var newTab = `
+            <div class="tab-item card mb-3">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">Tab #${tabCount}</h6>
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-tab">
+                        <i class="fe fe-trash"></i>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tab_name_${tabCount}">Tab Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="tab_name[]" placeholder="Enter tab name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tab_description_${tabCount}">Tab Description</label>
+                                <textarea class="form-control" name="tab_description[]" rows="3" placeholder="Enter tab description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        $('#tabsSection').append(newTab);
+    });
+
+    // Remove tab
+    $(document).on('click', '.remove-tab', function() {
+        $(this).closest('.tab-item').remove();
+    });
+
     // Form validation
     $('form').on('submit', function() {
         var isValid = true;
@@ -666,3 +1049,4 @@ $(document).ready(function() {
 });
 </script>
 @endsection
+

@@ -15,6 +15,8 @@ use App\Models\Blogs;
 use App\Models\UserDetailBanner;
 use App\Models\UserDetailTabs;
 use App\Models\Sponsers;
+use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -509,5 +511,274 @@ class UserManagementController extends Controller
         }
 
         return response()->json(['success' => false, 'message' => 'Banner not found']);
+    }
+
+    public function getDeletionDetails($id)
+    {
+        $user = User::with(['role', 'vendor', 'subVendor', 'banners', 'tabs', 'sponsors'])->findOrFail($id);
+        
+        // Count related data
+        $banners_count = $user->banners()->count();
+        $tabs_count = $user->tabs()->count();
+        $sponsors_count = $user->sponsors()->count();
+        $vendor_count = ($user->vendor || $user->subVendor) ? 1 : 0;
+        
+        // Count products, costumes, events, blogs, appointments
+        $products_count = 0;
+        $costumes_count = 0;
+        $events_count = 0;
+        $blogs_count = 0;
+        $appointments_count = 0;
+        $cart_items_count = 0;
+        $orders_count = 0;
+        
+        if ($user->vendor) {
+            $products_count = $user->vendor->products()->count();
+            $costumes_count = $user->vendor->costumes()->count();
+            $events_count = $user->vendor->events()->count();
+            $blogs_count = $user->vendor->blogs()->count();
+            $appointments_count = $user->vendor->appointments()->count();
+        }
+        
+        if ($user->subVendor) {
+            $products_count = $user->subVendor->products()->count();
+            $costumes_count = $user->subVendor->costumes()->count();
+            $events_count = $user->subVendor->events()->count();
+            $blogs_count = $user->subVendor->blogs()->count();
+            $appointments_count = $user->subVendor->appointments()->count();
+        }
+        
+        // Count cart items and orders
+        $cart_items_count = Cart::where('user_id', $user->id)->count();
+        $orders_count = Order::where('user_id', $user->id)->count();
+        
+        $total_items = 1 + $banners_count + $tabs_count + $sponsors_count + $vendor_count + 
+                      $products_count + $costumes_count + $events_count + $blogs_count + 
+                      $appointments_count + $cart_items_count + $orders_count;
+        
+        return response()->json([
+            'user' => [
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
+                'email' => $user->email,
+                'role_name' => $user->role ? $user->role->name : 'Unknown',
+                'created_at' => $user->created_at->format('M d, Y')
+            ],
+            'banners_count' => $banners_count,
+            'tabs_count' => $tabs_count,
+            'sponsors_count' => $sponsors_count,
+            'vendor_count' => $vendor_count,
+            'products_count' => $products_count,
+            'costumes_count' => $costumes_count,
+            'events_count' => $events_count,
+            'blogs_count' => $blogs_count,
+            'appointments_count' => $appointments_count,
+            'cart_items_count' => $cart_items_count,
+            'orders_count' => $orders_count,
+            'total_items' => $total_items
+        ]);
+    }
+
+    public function destroyUser($id)
+    {
+        DB::beginTransaction();
+        
+        try {
+            $user = User::findOrFail($id);
+            
+            // Delete user banners and their files
+            $banners = $user->banners;
+            foreach ($banners as $banner) {
+                if (file_exists(public_path($banner->banner))) {
+                    unlink(public_path($banner->banner));
+                }
+            }
+            $user->banners()->delete();
+            
+            // Delete user tabs
+            $user->tabs()->delete();
+            
+            // Delete user sponsors and their files
+            $sponsors = $user->sponsors;
+            foreach ($sponsors as $sponsor) {
+                if (file_exists(public_path('sponser_images/' . $sponsor->logo))) {
+                    unlink(public_path('sponser_images/' . $sponsor->logo));
+                }
+            }
+            $user->sponsors()->delete();
+            
+            // Delete vendor/subvendor related data
+            if ($user->vendor) {
+                // Delete products and their files
+                $products = $user->vendor->products;
+                foreach ($products as $product) {
+                    // Delete product images
+                    $productImages = $product->images;
+                    foreach ($productImages as $image) {
+                        if (file_exists(public_path($image->image))) {
+                            unlink(public_path($image->image));
+                        }
+                    }
+                    $product->images()->delete();
+                    
+                    // Delete product variants and their images
+                    $variants = $product->variants;
+                    foreach ($variants as $variant) {
+                        $variantImages = $variant->images;
+                        foreach ($variantImages as $image) {
+                            if (file_exists(public_path($image->image))) {
+                                unlink(public_path($image->image));
+                            }
+                        }
+                        $variant->images()->delete();
+                    }
+                    $product->variants()->delete();
+                    
+                    // Delete product media
+                    $productMedia = $product->media;
+                    foreach ($productMedia as $media) {
+                        if (file_exists(public_path($media->file))) {
+                            unlink(public_path($media->file));
+                        }
+                    }
+                    $product->media()->delete();
+                }
+                $user->vendor->products()->delete();
+                
+                // Delete costumes and their files
+                $costumes = $user->vendor->costumes;
+                foreach ($costumes as $costume) {
+                    // Delete costume images
+                    $costumeImages = $costume->images;
+                    foreach ($costumeImages as $image) {
+                        if (file_exists(public_path($image->image))) {
+                            unlink(public_path($image->image));
+                        }
+                    }
+                    $costume->images()->delete();
+                    
+                    // Delete costume variants and their images
+                    $variants = $costume->variants;
+                    foreach ($variants as $variant) {
+                        $variantImages = $variant->images;
+                        foreach ($variantImages as $image) {
+                            if (file_exists(public_path($image->image))) {
+                                unlink(public_path($image->image));
+                            }
+                        }
+                        $variant->images()->delete();
+                    }
+                    $costume->variants()->delete();
+                }
+                $user->vendor->costumes()->delete();
+                
+                // Delete events
+                $user->vendor->events()->delete();
+                
+                // Delete blogs
+                $user->vendor->blogs()->delete();
+                
+                // Delete appointments
+                $user->vendor->appointments()->delete();
+                
+                // Delete vendor record
+                $user->vendor()->delete();
+            }
+            
+            if ($user->subVendor) {
+                // Delete products and their files (same as vendor)
+                $products = $user->subVendor->products;
+                foreach ($products as $product) {
+                    $productImages = $product->images;
+                    foreach ($productImages as $image) {
+                        if (file_exists(public_path($image->image))) {
+                            unlink(public_path($image->image));
+                        }
+                    }
+                    $product->images()->delete();
+                    
+                    $variants = $product->variants;
+                    foreach ($variants as $variant) {
+                        $variantImages = $variant->images;
+                        foreach ($variantImages as $image) {
+                            if (file_exists(public_path($image->image))) {
+                                unlink(public_path($image->image));
+                            }
+                        }
+                        $variant->images()->delete();
+                    }
+                    $product->variants()->delete();
+                    
+                    $productMedia = $product->media;
+                    foreach ($productMedia as $media) {
+                        if (file_exists(public_path($media->file))) {
+                            unlink(public_path($media->file));
+                        }
+                    }
+                    $product->media()->delete();
+                }
+                $user->subVendor->products()->delete();
+                
+                // Delete costumes and their files
+                $costumes = $user->subVendor->costumes;
+                foreach ($costumes as $costume) {
+                    $costumeImages = $costume->images;
+                    foreach ($costumeImages as $image) {
+                        if (file_exists(public_path($image->image))) {
+                            unlink(public_path($image->image));
+                        }
+                    }
+                    $costume->images()->delete();
+                    
+                    $variants = $costume->variants;
+                    foreach ($variants as $variant) {
+                        $variantImages = $variant->images;
+                        foreach ($variantImages as $image) {
+                            if (file_exists(public_path($image->image))) {
+                                unlink(public_path($image->image));
+                            }
+                        }
+                        $variant->images()->delete();
+                    }
+                    $costume->variants()->delete();
+                }
+                $user->subVendor->costumes()->delete();
+                
+                // Delete events, blogs, appointments
+                $user->subVendor->events()->delete();
+                $user->subVendor->blogs()->delete();
+                $user->subVendor->appointments()->delete();
+                
+                // Delete subvendor record
+                $user->subVendor()->delete();
+            }
+            
+            // Delete cart items
+            Cart::where('user_id', $user->id)->delete();
+            
+            // Delete orders
+            Order::where('user_id', $user->id)->delete();
+            
+            // Delete user profile image
+            if ($user->image && file_exists(public_path($user->image))) {
+                unlink(public_path($user->image));
+            }
+            
+            // Delete user logo
+            if ($user->logo && file_exists(public_path($user->logo))) {
+                unlink(public_path($user->logo));
+            }
+            
+            // Finally delete the user
+            $user->delete();
+            
+            DB::commit();
+            
+            return response()->json(['success' => true, 'message' => 'User and all related data deleted successfully']);
+            
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['success' => false, 'message' => 'Failed to delete user: ' . $e->getMessage()], 500);
+        }
     }
 }
