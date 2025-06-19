@@ -389,34 +389,33 @@
                                                                         name="sponsor_logos[{{ $index }}]" accept="image/*">
                                                                     <label class="custom-file-label">Choose file</label>
                                                                 </div>
-                                                                        @if(($user->vendor && $user->vendor->logo) || ($user->subVendor && $user->subVendor->logo))
-                                                                            <div class="mt-2">
-                                                                                <small class="text-muted">Current logo:</small>
-                                                                                @php
-                                                                                    $logoPath = $user->vendor ? $user->vendor->logo : $user->subVendor->logo;
-                                                                                    // If the path doesn't start with 'images/', add it
-                                                                                    if (!str_starts_with($logoPath, 'images/') && !str_starts_with($logoPath, '/images/')) {
-                                                                                        $logoPath = 'images/' . $logoPath;
-                                                                                    }
-                                                                                    $fullLogoPath = asset($logoPath);
-                                                                                @endphp
-                                                                                <!-- Debug info: {{ $user->vendor ? $user->vendor->logo : $user->subVendor->logo }} -> {{ $logoPath }} -> {{ $fullLogoPath }} -->
-                                                                                <img src="{{ $fullLogoPath }}" alt="Current Logo" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                                                                <div style="display: none; color: #dc3545; font-size: 12px;">Image not found: {{ basename($logoPath) }} (Path: {{ $logoPath }})</div>
-                                                                            </div>
-                                                                        @endif
+                                                                @if($sponsor->logo)
+                                                                    <div class="mt-2">
+                                                                        <small class="text-muted">Current logo:</small>
+                                                                        @php
+                                                                            $sponsorLogoPath = $sponsor->logo;
+                                                                            // If the path doesn't start with 'sponser_images/', add it
+                                                                            if (!str_starts_with($sponsorLogoPath, 'sponser_images/') && !str_starts_with($sponsorLogoPath, '/sponser_images/')) {
+                                                                                $sponsorLogoPath = 'sponser_images/' . $sponsorLogoPath;
+                                                                            }
+                                                                            $fullSponsorLogoPath = asset($sponsorLogoPath);
+                                                                        @endphp
+                                                                        <!-- Debug info: {{ $sponsor->logo }} -> {{ $sponsorLogoPath }} -> {{ $fullSponsorLogoPath }} -->
+                                                                        <img src="{{ $fullSponsorLogoPath }}" alt="Current Logo" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                                                        <div style="display: none; color: #dc3545; font-size: 12px;">Image not found: {{ basename($sponsorLogoPath) }} (Path: {{ $sponsorLogoPath }})</div>
                                                                     </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Website URL</label>
-                                                                    <input type="url" class="form-control" name="sponsors[{{ $index }}][website]" 
-                                                                        value="{{ $sponsor->description }}" placeholder="https://example.com">
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <label>&nbsp;</label>
-                                                                    <button type="button" class="btn btn-danger btn-sm btn-block remove-sponsor">
-                                                                        <i class="fe fe-trash-2"></i> Remove
-                                                                    </button>
-                                                                </div>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label>Website URL</label>
+                                                                <input type="url" class="form-control" name="sponsors[{{ $index }}][website]" 
+                                                                    value="{{ $sponsor->description }}" placeholder="https://example.com">
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label>&nbsp;</label>
+                                                                <button type="button" class="btn btn-danger btn-sm btn-block remove-sponsor">
+                                                                    <i class="fe fe-trash-2"></i> Remove
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -461,13 +460,23 @@
                                                                         @if($banner->banner)
                                                                             <div class="mt-2">
                                                                                 <small class="text-muted">Current banner:</small>
-                                                                                @if(pathinfo($banner->banner, PATHINFO_EXTENSION) == 'mp4')
+                                                                                @php
+                                                                                    $bannerPath = $banner->banner;
+                                                                                    // If the path doesn't start with 'userBanners/', add it
+                                                                                    if (!str_starts_with($bannerPath, 'userBanners/') && !str_starts_with($bannerPath, '/userBanners/')) {
+                                                                                        $bannerPath = 'userBanners/' . $bannerPath;
+                                                                                    }
+                                                                                    $fullBannerPath = asset($bannerPath);
+                                                                                @endphp
+                                                                                <!-- Debug info: {{ $banner->banner }} -> {{ $bannerPath }} -> {{ $fullBannerPath }} -->
+                                                                                @if(pathinfo($bannerPath, PATHINFO_EXTENSION) == 'mp4')
                                                                                     <video width="150" height="100" controls style="border: 1px solid #ddd; border-radius: 4px;">
-                                                                                        <source src="{{ asset($banner->banner) }}" type="video/mp4">
+                                                                                        <source src="{{ $fullBannerPath }}" type="video/mp4">
                                                                                         Your browser does not support the video tag.
                                                                                     </video>
                                                                                 @else
-                                                                                    <img src="{{ asset($banner->banner) }}" alt="Current Banner" width="150" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+                                                                                    <img src="{{ $fullBannerPath }}" alt="Current Banner" width="150" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                                                                    <div style="display: none; color: #dc3545; font-size: 12px;">Image not found: {{ basename($bannerPath) }} (Path: {{ $bannerPath }})</div>
                                                                                 @endif
                                                                             </div>
                                                                         @endif
@@ -578,9 +587,13 @@
                                                     <small class="text-muted">Current logo:</small>
                                                     @php
                                                         $logoPath = $user->vendor ? $user->vendor->logo : $user->subVendor->logo;
+                                                        // If the path doesn't start with 'images/', add it
+                                                        if (!str_starts_with($logoPath, 'images/') && !str_starts_with($logoPath, '/images/')) {
+                                                            $logoPath = 'images/' . $logoPath;
+                                                        }
                                                         $fullLogoPath = asset($logoPath);
                                                     @endphp
-                                                    <!-- Debug info: {{ $logoPath }} -> {{ $fullLogoPath }} -->
+                                                    <!-- Debug info: {{ $user->vendor ? $user->vendor->logo : $user->subVendor->logo }} -> {{ $logoPath }} -> {{ $fullLogoPath }} -->
                                                     <img src="{{ $fullLogoPath }}" alt="Current Logo" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                                     <div style="display: none; color: #dc3545; font-size: 12px;">Image not found: {{ basename($logoPath) }} (Path: {{ $logoPath }})</div>
                                                 </div>
