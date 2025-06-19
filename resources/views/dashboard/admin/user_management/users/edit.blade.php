@@ -730,6 +730,7 @@
     let tabIndex = {{ $user->tabs ? count($user->tabs) : 0 }};
     
     $('#add-tab').click(function() {
+        tabIndex++;
         const tabHtml = `
             <div class="tab-item mb-3 p-3 border rounded bg-light">
                 <div class="row">
@@ -753,17 +754,34 @@
             </div>
         `;
         $('.tabs-container').append(tabHtml);
-        tabIndex++;
     });
 
     $(document).on('click', '.remove-tab', function() {
         $(this).closest('.tab-item').remove();
+        // Renumber remaining tabs
+        renumberTabs();
     });
+
+    // Function to renumber tabs
+    function renumberTabs() {
+        $('.tab-item').each(function(index) {
+            var newIndex = index;
+            // Update input names
+            var titleInput = $(this).find('input[name*="[title]"]');
+            var contentInput = $(this).find('textarea[name*="[content]"]');
+            
+            titleInput.attr('name', 'tabs[' + newIndex + '][title]');
+            contentInput.attr('name', 'tabs[' + newIndex + '][content]');
+        });
+        // Update the counter
+        tabIndex = $('.tab-item').length;
+    }
 
     // Dynamic Sponsors Management
     let sponsorIndex = {{ $user->sponsors ? count($user->sponsors) : 0 }};
     
     $('#add-sponsor').click(function() {
+        sponsorIndex++;
         const sponsorHtml = `
             <div class="sponsor-item mb-3 p-3 border rounded bg-light">
                 <div class="row">
@@ -795,17 +813,36 @@
             </div>
         `;
         $('.sponsors-container').append(sponsorHtml);
-        sponsorIndex++;
     });
 
     $(document).on('click', '.remove-sponsor', function() {
         $(this).closest('.sponsor-item').remove();
+        // Renumber remaining sponsors
+        renumberSponsors();
     });
+
+    // Function to renumber sponsors
+    function renumberSponsors() {
+        $('.sponsor-item').each(function(index) {
+            var newIndex = index;
+            // Update input names
+            var nameInput = $(this).find('input[name*="[name]"]');
+            var websiteInput = $(this).find('input[name*="[website]"]');
+            var fileInput = $(this).find('input[type="file"]');
+            
+            nameInput.attr('name', 'sponsors[' + newIndex + '][name]');
+            websiteInput.attr('name', 'sponsors[' + newIndex + '][website]');
+            fileInput.attr('name', 'sponsor_logos[' + newIndex + ']');
+        });
+        // Update the counter
+        sponsorIndex = $('.sponsor-item').length;
+    }
 
     // Dynamic Banners Management
     let bannerIndex = {{ $user->banners ? count($user->banners) : 0 }};
     
     $('#add-banner').click(function() {
+        bannerIndex++;
         const bannerHtml = `
             <div class="banner-item mb-3 p-3 border rounded bg-light">
                 <div class="row">
@@ -837,12 +874,30 @@
             </div>
         `;
         $('.banners-container').append(bannerHtml);
-        bannerIndex++;
     });
 
     $(document).on('click', '.remove-banner', function() {
         $(this).closest('.banner-item').remove();
+        // Renumber remaining banners
+        renumberBanners();
     });
+
+    // Function to renumber banners
+    function renumberBanners() {
+        $('.banner-item').each(function(index) {
+            var newIndex = index;
+            // Update input names
+            var titleInput = $(this).find('input[name*="[title]"]');
+            var linkInput = $(this).find('input[name*="[link_url]"]');
+            var fileInput = $(this).find('input[type="file"]');
+            
+            titleInput.attr('name', 'banners[' + newIndex + '][title]');
+            linkInput.attr('name', 'banners[' + newIndex + '][link_url]');
+            fileInput.attr('name', 'banner_files[' + newIndex + ']');
+        });
+        // Update the counter
+        bannerIndex = $('.banner-item').length;
+    }
 
     // Handle file input labels for dynamic elements
     $(document).on('change', '.custom-file-input', function() {

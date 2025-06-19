@@ -872,98 +872,114 @@
         });
 
     // Banner management
-    let bannerCount = 1;
+    let bannerIndex = 0;
     
-            $('#addBannerBtn').click(function() {
-        bannerCount++;
+    $('#addBannerBtn').click(function() {
+        bannerIndex++;
         var newBanner = `
             <div class="banner-item card mb-3">
                 <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                    <h6 class="mb-0">Banner #${bannerCount}</h6>
+                    <h6 class="mb-0">Banner #${bannerIndex}</h6>
                     <button type="button" class="btn btn-sm btn-outline-danger remove-banner">
                         <i class="fe fe-trash"></i>
                     </button>
-                    </div>
+                </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="banner_${bannerCount}">Banner Image <span class="text-danger">*</span></label>
+                        <label for="banner_${bannerIndex}">Banner Image <span class="text-danger">*</span></label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="banner_${bannerCount}" name="banner[]" required accept="image/*">
-                            <label class="custom-file-label" for="banner_${bannerCount}">Choose file</label>
+                            <input type="file" class="custom-file-input" id="banner_${bannerIndex}" name="banner_files[]" required accept="image/*,video/*">
+                            <label class="custom-file-label" for="banner_${bannerIndex}">Choose file</label>
                         </div>
-                        <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
-                        </div>
+                        <small class="form-text text-muted">Supported formats: JPG, PNG, GIF, MP4 (Max: 10MB)</small>
+                    </div>
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="banner_title_${bannerCount}">Banner Title</label>
-                                <input type="text" class="form-control" name="banner_title[]" placeholder="Enter banner title">
+                                <label for="banner_title_${bannerIndex}">Banner Title</label>
+                                <input type="text" class="form-control" name="banners[${bannerIndex}][title]" placeholder="Enter banner title">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="banner_subtitle_${bannerCount}">Banner Subtitle</label>
-                                <input type="text" class="form-control" name="banner_subtitle[]" placeholder="Enter banner subtitle">
-                            </div>
-                        </div>
-                            </div>
-
-                            <div class="form-group">
-                        <label for="banner_description_${bannerCount}">Banner Description</label>
-                        <textarea class="form-control" name="banner_description[]" rows="3" placeholder="Enter banner description"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                        <label for="banner_button_${bannerCount}">Button Text</label>
-                        <input type="text" class="form-control" name="banner_button[]" placeholder="Enter button text">
+                                <label for="banner_link_${bannerIndex}">Link URL</label>
+                                <input type="url" class="form-control" name="banners[${bannerIndex}][link_url]" placeholder="https://example.com">
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
         `;
 
-                $('#bannerSection').append(newBanner);
-            });
+        $('#bannerSection').append(newBanner);
+    });
 
     // Remove banner
     $(document).on('click', '.remove-banner', function() {
-                $(this).closest('.banner-item').remove();
-            });
+        $(this).closest('.banner-item').remove();
+        // Renumber remaining banners
+        renumberBanners();
+    });
+
+    // Function to renumber banners
+    function renumberBanners() {
+        $('.banner-item').each(function(index) {
+            var newIndex = index + 1;
+            $(this).find('.card-header h6').text('Banner #' + newIndex);
+            
+            // Update input names and IDs
+            var fileInput = $(this).find('input[type="file"]');
+            var titleInput = $(this).find('input[name*="[title]"]');
+            var linkInput = $(this).find('input[name*="[link_url]"]');
+            
+            fileInput.attr('id', 'banner_' + newIndex);
+            fileInput.next('label').attr('for', 'banner_' + newIndex);
+            
+            titleInput.attr('name', 'banners[' + newIndex + '][title]');
+            titleInput.attr('id', 'banner_title_' + newIndex);
+            
+            linkInput.attr('name', 'banners[' + newIndex + '][link_url]');
+            linkInput.attr('id', 'banner_link_' + newIndex);
+        });
+        // Update the counter
+        bannerIndex = $('.banner-item').length;
+    }
 
     // Sponsors management
-    let sponsorCount = 1;
+    let sponsorIndex = 0;
     
     $('#addSponsorBtn').click(function() {
-        sponsorCount++;
+        sponsorIndex++;
         var newSponsor = `
             <div class="sponsor-item card mb-3">
                 <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                    <h6 class="mb-0">Sponsor #${sponsorCount}</h6>
+                    <h6 class="mb-0">Sponsor #${sponsorIndex}</h6>
                     <button type="button" class="btn btn-sm btn-outline-danger remove-sponsor">
                         <i class="fe fe-trash"></i>
                     </button>
                 </div>
                 <div class="card-body">
-                                    <div class="form-group">
-                        <label for="sponser_logo_${sponsorCount}">Sponsor Logo <span class="text-danger">*</span></label>
+                    <div class="form-group">
+                        <label for="sponsor_logo_${sponsorIndex}">Sponsor Logo <span class="text-danger">*</span></label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="sponser_logo_${sponsorCount}" name="sponser_logo[]" required accept="image/*">
-                            <label class="custom-file-label" for="sponser_logo_${sponsorCount}">Choose file</label>
-                                    </div>
+                            <input type="file" class="custom-file-input" id="sponsor_logo_${sponsorIndex}" name="sponsor_logos[]" required accept="image/*">
+                            <label class="custom-file-label" for="sponsor_logo_${sponsorIndex}">Choose file</label>
+                        </div>
                         <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                                    <div class="form-group">
-                                <label for="sponser_title_${sponsorCount}">Sponsor Title</label>
-                                <input type="text" class="form-control" name="sponser_title[]" placeholder="Enter sponsor title">
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label for="sponsor_name_${sponsorIndex}">Sponsor Name</label>
+                                <input type="text" class="form-control" name="sponsors[${sponsorIndex}][name]" placeholder="Enter sponsor name">
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="sponser_description_${sponsorCount}">Sponsor Description</label>
-                                <input type="text" class="form-control" name="sponser_description[]" placeholder="Enter sponsor description">
+                                <label for="sponsor_website_${sponsorIndex}">Website URL</label>
+                                <input type="url" class="form-control" name="sponsors[${sponsorIndex}][website]" placeholder="https://example.com">
                             </div>
                         </div>
                     </div>
@@ -977,37 +993,64 @@
     // Remove sponsor
     $(document).on('click', '.remove-sponsor', function() {
         $(this).closest('.sponsor-item').remove();
+        // Renumber remaining sponsors
+        renumberSponsors();
     });
 
+    // Function to renumber sponsors
+    function renumberSponsors() {
+        $('.sponsor-item').each(function(index) {
+            var newIndex = index + 1;
+            $(this).find('.card-header h6').text('Sponsor #' + newIndex);
+            
+            // Update input names and IDs
+            var fileInput = $(this).find('input[type="file"]');
+            var nameInput = $(this).find('input[name*="[name]"]');
+            var websiteInput = $(this).find('input[name*="[website]"]');
+            
+            fileInput.attr('id', 'sponsor_logo_' + newIndex);
+            fileInput.next('label').attr('for', 'sponsor_logo_' + newIndex);
+            fileInput.attr('name', 'sponsor_logos[]');
+            
+            nameInput.attr('name', 'sponsors[' + newIndex + '][name]');
+            nameInput.attr('id', 'sponsor_name_' + newIndex);
+            
+            websiteInput.attr('name', 'sponsors[' + newIndex + '][website]');
+            websiteInput.attr('id', 'sponsor_website_' + newIndex);
+        });
+        // Update the counter
+        sponsorIndex = $('.sponsor-item').length;
+    }
+
     // Tabs management
-    let tabCount = 1;
+    let tabIndex = 0;
     
     $('#addTabBtn').click(function() {
-        tabCount++;
+        tabIndex++;
         var newTab = `
             <div class="tab-item card mb-3">
                 <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                    <h6 class="mb-0">Tab #${tabCount}</h6>
+                    <h6 class="mb-0">Tab #${tabIndex}</h6>
                     <button type="button" class="btn btn-sm btn-outline-danger remove-tab">
                         <i class="fe fe-trash"></i>
                     </button>
-                                    </div>
+                </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                                    <div class="form-group">
-                                <label for="tab_name_${tabCount}">Tab Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="tab_name[]" placeholder="Enter tab name" required>
-                                    </div>
-                        </div>
-                        <div class="col-md-6">
-                                    <div class="form-group">
-                                <label for="tab_description_${tabCount}">Tab Description</label>
-                                <textarea class="form-control" name="tab_description[]" rows="3" placeholder="Enter tab description"></textarea>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label for="tab_title_${tabIndex}">Tab Title <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="tabs[${tabIndex}][title]" placeholder="Enter tab title" required>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tab_content_${tabIndex}">Tab Content</label>
+                                <textarea class="form-control" name="tabs[${tabIndex}][content]" rows="3" placeholder="Enter tab content"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         `;
         
@@ -1016,8 +1059,30 @@
 
     // Remove tab
     $(document).on('click', '.remove-tab', function() {
-                $(this).closest('.tab-item').remove();
-            });
+        $(this).closest('.tab-item').remove();
+        // Renumber remaining tabs
+        renumberTabs();
+    });
+
+    // Function to renumber tabs
+    function renumberTabs() {
+        $('.tab-item').each(function(index) {
+            var newIndex = index + 1;
+            $(this).find('.card-header h6').text('Tab #' + newIndex);
+            
+            // Update input names and IDs
+            var titleInput = $(this).find('input[name*="[title]"]');
+            var contentInput = $(this).find('textarea[name*="[content]"]');
+            
+            titleInput.attr('name', 'tabs[' + newIndex + '][title]');
+            titleInput.attr('id', 'tab_title_' + newIndex);
+            
+            contentInput.attr('name', 'tabs[' + newIndex + '][content]');
+            contentInput.attr('id', 'tab_content_' + newIndex);
+        });
+        // Update the counter
+        tabIndex = $('.tab-item').length;
+    }
 
     // Form validation
     $('form').on('submit', function() {
@@ -1049,4 +1114,5 @@
         });
     </script>
 @endsection
+
 
