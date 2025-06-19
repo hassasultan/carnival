@@ -10,8 +10,8 @@
                 <div class="card shadow">
                     <div class="card-header">
                         <strong class="card-title">User Registration Form</strong>
-                    </div>
-                    <div class="card-body">
+            </div>
+            <div class="card-body">
                         @if(session('success'))
                             <div class="alert alert-success alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -40,24 +40,24 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="firstname">First Name <span class="text-danger">*</span></label>
-                                        <input id="firstname" type="text" class="form-control @error('first_name') is-invalid @enderror"
-                                            name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
-                                        @error('first_name')
+                        <input id="firstname" type="text" class="form-control @error('first_name') is-invalid @enderror"
+                            name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
+                        @error('first_name')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @enderror
+                    </div>
                                 </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="lastname">Last Name <span class="text-danger">*</span></label>
-                                        <input id="lastname" type="text" class="form-control @error('last_name') is-invalid @enderror"
-                                            name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name">
-                                        @error('last_name')
+                        <input id="lastname" type="text" class="form-control @error('last_name') is-invalid @enderror"
+                            name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name">
+                        @error('last_name')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
+                        @enderror
+                    </div>
+                </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -83,27 +83,27 @@
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="age_range">Age Range</label>
-                                        <select id="age_range" class="form-control @error('age_range') is-invalid @enderror" name="age_range">
+                    <label for="age_range">Age Range</label>
+                    <select id="age_range" class="form-control @error('age_range') is-invalid @enderror" name="age_range">
                                             <option value="">Select Age Range</option>
                                             <option value="adult" {{ old('age_range') == 'adult' ? 'selected' : '' }}>Adult</option>
                                             <option value="kid" {{ old('age_range') == 'kid' ? 'selected' : '' }}>Kid</option>
-                                        </select>
-                                        @error('age_range')
+                    </select>
+                    @error('age_range')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                    @enderror
+                </div>
                                 </div>
                                 
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                <div class="form-group">
                                         <label for="age">Age</label>
                                         <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" 
                                             name="age" value="{{ old('age') }}" min="1" max="120">
                                         @error('age')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                    @enderror
+                </div>
                                 </div>
                                 
                                 <div class="col-md-6">
@@ -113,9 +113,9 @@
                                             name="nationality" value="{{ old('nationality') }}">
                                         @error('nationality')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
+                        @enderror
+                    </div>
+                    </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -129,8 +129,8 @@
                                         @error('gender')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
-                                    </div>
-                                </div>
+                </div>
+                        </div>
                                 
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -140,7 +140,7 @@
                                         @error('height')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
-                                    </div>
+                    </div>
                                 </div>
                                 
                                 <div class="col-md-4">
@@ -150,8 +150,8 @@
                                             name="weight" value="{{ old('weight') }}" min="20" max="200">
                                         @error('weight')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @enderror
+                    </div>
                                 </div>
                                 
                                 <div class="col-md-4">
@@ -190,16 +190,16 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="image">Profile Image <span class="text-danger">*</span></label>
-                                        <div class="custom-file">
+                        <div class="custom-file">
                                             <input type="file" class="custom-file-input @error('image') is-invalid @enderror" 
                                                 id="image" name="image" required accept="image/*">
                                             <label class="custom-file-label" for="image" id="image_label">Choose file</label>
-                                        </div>
+                        </div>
                                         @error('image')
                                             <span class="invalid-feedback d-block">{{ $message }}</span>
                                         @enderror
                                         <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
-                                    </div>
+                </div>
                                 </div>
                             </div>
 
@@ -212,58 +212,58 @@
                                 </div>
                                 
                                 <div class="col-12">
-                                    <div class="form-group">
+                <div class="form-group">
                                         <label for="address">Street Address <span class="text-danger">*</span></label>
-                                        <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
+                    <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
                                             name="address" value="{{ old('address') }}" required autocomplete="address">
-                                        @error('address')
+                    @error('address')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                    @enderror
+                </div>
                                 </div>
                                 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="city">City <span class="text-danger">*</span></label>
-                                        <input id="city" type="text" class="form-control @error('city') is-invalid @enderror"
+                        <label for="city">City <span class="text-danger">*</span></label>
+                        <input id="city" type="text" class="form-control @error('city') is-invalid @enderror"
                                             name="city" value="{{ old('city') }}" required autocomplete="city">
-                                        @error('city')
+                        @error('city')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @enderror
+                    </div>
                                 </div>
                                 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="state">State/Province <span class="text-danger">*</span></label>
-                                        <input id="state" type="text" class="form-control @error('state') is-invalid @enderror"
+                        <input id="state" type="text" class="form-control @error('state') is-invalid @enderror"
                                             name="state" value="{{ old('state') }}" required autocomplete="state">
-                                        @error('state')
+                        @error('state')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @enderror
+                    </div>
                                 </div>
                                 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="country">Country <span class="text-danger">*</span></label>
-                                        <input id="country" type="text" class="form-control @error('country') is-invalid @enderror"
+                        <label for="country">Country <span class="text-danger">*</span></label>
+                        <input id="country" type="text" class="form-control @error('country') is-invalid @enderror"
                                             name="country" value="{{ old('country') }}" required autocomplete="country">
-                                        @error('country')
+                        @error('country')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
+                        @enderror
+                    </div>
+                </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="zipcode">ZIP/Postal Code <span class="text-danger">*</span></label>
-                                        <input id="zipcode" type="text" class="form-control @error('zipcode') is-invalid @enderror"
+                        <input id="zipcode" type="text" class="form-control @error('zipcode') is-invalid @enderror"
                                             name="zipcode" value="{{ old('zipcode') }}" required autocomplete="zipcode">
-                                        @error('zipcode')
+                        @error('zipcode')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @enderror
+                    </div>
                                 </div>
                             </div>
 
@@ -306,42 +306,42 @@
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="package">Package <span class="text-danger">*</span></label>
-                                        <select id="package" class="form-control select2 @error('package_id') is-invalid @enderror"
-                                            name="package_id" required>
-                                            <option value="">Select Package</option>
-                                            @foreach ($packages as $package)
+                        <label for="package">Package <span class="text-danger">*</span></label>
+                        <select id="package" class="form-control select2 @error('package_id') is-invalid @enderror"
+                            name="package_id" required>
+                            <option value="">Select Package</option>
+                            @foreach ($packages as $package)
                                                 <option value="{{ $package->id }}" {{ old('package_id') == $package->id ? 'selected' : '' }}>
                                                     {{ $package->title }}
                                                 </option>
-                                            @endforeach
+                            @endforeach
                                             <option value="section_leader" {{ old('package_id') == 'section_leader' ? 'selected' : '' }}>
                                                 Section Leader
                                             </option>
-                                        </select>
-                                        @error('package_id')
+                        </select>
+                        @error('package_id')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
+                        @enderror
+                    </div>
+                </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group" id="vendors_input" style="display: none;">
                                         <label for="vendor">Parent Vendor</label>
-                                        <select id="vendor" class="form-control select2 @error('vendor_id') is-invalid @enderror"
-                                            name="vendor_id">
+                        <select id="vendor" class="form-control select2 @error('vendor_id') is-invalid @enderror"
+                            name="vendor_id">
                                             <option value="">Select Vendor</option>
-                                            @foreach ($vendors as $vendor)
+                            @foreach ($vendors as $vendor)
                                                 <option value="{{ $vendor->id }}" {{ old('vendor_id') == $vendor->id ? 'selected' : '' }}>
-                                                    {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('vendor_id')
+                                    {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('vendor_id')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
+                        @enderror
+                    </div>
+                </div>
                             </div>
 
                             <!-- Package Features (Dynamic) -->
@@ -353,118 +353,118 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group list-group mb-3 shadow" id="ecommerce-box" style="display: none;">
-                                                <div class="list-group-item">
-                                                    <div class="row align-items-center">
-                                                        <div class="col">
-                                                            <strong class="mb-2">E-Commerce</strong>
+                            <div class="list-group-item">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <strong class="mb-2">E-Commerce</strong>
                                                             <small class="text-muted d-block">Sell products online</small>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <div class="custom-control custom-switch">
-                                                                <input type="checkbox" class="custom-control-input" value="1"
-                                                                    id="e_com" name="ecommerce">
-                                                                <label class="custom-control-label" for="e_com"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-group list-group mb-3 shadow" id="music-box" style="display: none;">
-                                                <div class="list-group-item">
-                                                    <div class="row align-items-center">
-                                                        <div class="col">
-                                                            <strong class="mb-2">Music Upload</strong>
-                                                            <small class="text-muted d-block">Upload and manage music</small>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <div class="custom-control custom-switch">
-                                                                <input type="checkbox" class="custom-control-input" value="1"
-                                                                    id="music" name="music">
-                                                                <label class="custom-control-label" for="music"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-group list-group mb-3 shadow" id="appointment-box" style="display: none;">
-                                                <div class="list-group-item">
-                                                    <div class="row align-items-center">
-                                                        <div class="col">
-                                                            <strong class="mb-2">Appointments</strong>
-                                                            <small class="text-muted d-block">Manage appointments</small>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <div class="custom-control custom-switch">
-                                                                <input type="checkbox" class="custom-control-input" value="1"
-                                                                    id="appointments" name="appointment">
-                                                                <label class="custom-control-label" for="appointments"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-6">
-                                            <div class="form-group list-group mb-3 shadow" id="events-box" style="display: none;">
-                                                <div class="list-group-item">
-                                                    <div class="row align-items-center">
-                                                        <div class="col">
-                                                            <strong class="mb-2">Events</strong>
-                                                            <small class="text-muted d-block">Create and manage events</small>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <div class="custom-control custom-switch">
-                                                                <input type="checkbox" class="custom-control-input" value="1"
-                                                                    id="events" name="events">
-                                                                <label class="custom-control-label" for="events"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-group list-group mb-3 shadow" id="ad_space-box" style="display: none;">
-                                                <div class="list-group-item">
-                                                    <div class="row align-items-center">
-                                                        <div class="col">
-                                                            <strong class="mb-2">Advertisement Space</strong>
-                                                            <small class="text-muted d-block">Display advertisements</small>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <div class="custom-control custom-switch">
-                                                                <input type="checkbox" class="custom-control-input" value="1"
-                                                                    id="ads" name="ad_space">
-                                                                <label class="custom-control-label" for="ads"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-group list-group mb-3 shadow" id="blogging-box" style="display: none;">
-                                                <div class="list-group-item">
-                                                    <div class="row align-items-center">
-                                                        <div class="col">
-                                                            <strong class="mb-2">Blogging</strong>
-                                                            <small class="text-muted d-block">Create and manage blogs</small>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <div class="custom-control custom-switch">
-                                                                <input type="checkbox" class="custom-control-input" value="1"
-                                                                    id="blogs" name="blogging">
-                                                                <label class="custom-control-label" for="blogs"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="e_com" name="ecommerce">
+                                            <label class="custom-control-label" for="e_com"></label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                                            
+                                            <div class="form-group list-group mb-3 shadow" id="music-box" style="display: none;">
+                            <div class="list-group-item">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <strong class="mb-2">Music Upload</strong>
+                                                            <small class="text-muted d-block">Upload and manage music</small>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="music" name="music">
+                                            <label class="custom-control-label" for="music"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            
+                                            <div class="form-group list-group mb-3 shadow" id="appointment-box" style="display: none;">
+                            <div class="list-group-item">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <strong class="mb-2">Appointments</strong>
+                                                            <small class="text-muted d-block">Manage appointments</small>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="appointments" name="appointment">
+                                            <label class="custom-control-label" for="appointments"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        
+                                        <div class="col-md-6">
+                                            <div class="form-group list-group mb-3 shadow" id="events-box" style="display: none;">
+                            <div class="list-group-item">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <strong class="mb-2">Events</strong>
+                                                            <small class="text-muted d-block">Create and manage events</small>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="events" name="events">
+                                            <label class="custom-control-label" for="events"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            
+                                            <div class="form-group list-group mb-3 shadow" id="ad_space-box" style="display: none;">
+                            <div class="list-group-item">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                                            <strong class="mb-2">Advertisement Space</strong>
+                                                            <small class="text-muted d-block">Display advertisements</small>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="ads" name="ad_space">
+                                            <label class="custom-control-label" for="ads"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            
+                                            <div class="form-group list-group mb-3 shadow" id="blogging-box" style="display: none;">
+                            <div class="list-group-item">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                                            <strong class="mb-2">Blogging</strong>
+                                                            <small class="text-muted d-block">Create and manage blogs</small>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" value="1"
+                                                id="blogs" name="blogging">
+                                            <label class="custom-control-label" for="blogs"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+                                </div>
 
                             <!-- Shop Information -->
                             <div class="row mb-4">
@@ -472,8 +472,8 @@
                                     <h5 class="text-primary mb-3">
                                         <i class="fe fe-shopping-bag mr-2"></i>Shop Information
                                     </h5>
-                                </div>
-                                
+                                    </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="shop_name">Shop Name <span class="text-danger">*</span></label>
@@ -483,8 +483,8 @@
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                </div>
-                                
+                                    </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="shop_email">Shop Email <span class="text-danger">*</span></label>
@@ -494,8 +494,8 @@
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                </div>
-                                
+                                    </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="shop_address">Shop Address <span class="text-danger">*</span></label>
@@ -515,8 +515,8 @@
                                         @error('shop_phone')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -533,9 +533,9 @@
                                         @error('continent')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
-                                    </div>
-                                </div>
-                                
+                    </div>
+                </div>
+
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="short_description">Short Description</label>
@@ -543,9 +543,9 @@
                                             name="short_description" rows="3" placeholder="Enter a brief description about your business">{{ old('short_description') }}</textarea>
                                         @error('short_description')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
+                        @enderror
+                    </div>
+                    </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -554,14 +554,14 @@
                                             <input type="file" class="custom-file-input @error('logo') is-invalid @enderror" 
                                                 id="logo" name="logo" required accept="image/*">
                                             <label class="custom-file-label" for="logo" id="logo_label">Choose file</label>
-                                        </div>
+                </div>
                                         @error('logo')
                                             <span class="invalid-feedback d-block">{{ $message }}</span>
-                                        @enderror
+                        @enderror
                                         <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    </div>
+                </div>
 
                             <!-- Social Media Information -->
                             <div class="row mb-4">
@@ -569,28 +569,28 @@
                                     <h5 class="text-primary mb-3">
                                         <i class="fe fe-share-2 mr-2"></i>Social Media Links
                                     </h5>
-                                </div>
+                        </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="shop_insta">Instagram</label>
+                        <label for="shop_insta">Instagram</label>
                                         <input id="shop_insta" type="url" class="form-control @error('shop_insta') is-invalid @enderror" 
                                             name="shop_insta" value="{{ old('shop_insta') }}" placeholder="https://instagram.com/yourhandle">
-                                        @error('shop_insta')
+                        @error('shop_insta')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
+                        @enderror
+                    </div>
+                </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="shop_facebook">Facebook</label>
+                        <label for="shop_facebook">Facebook</label>
                                         <input id="shop_facebook" type="url" class="form-control @error('shop_facebook') is-invalid @enderror" 
                                             name="shop_facebook" value="{{ old('shop_facebook') }}" placeholder="https://facebook.com/yourpage">
-                                        @error('shop_facebook')
+                        @error('shop_facebook')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @enderror
+                    </div>
                                 </div>
                                 
                                 <div class="col-md-6">
@@ -598,21 +598,21 @@
                                         <label for="shop_youtube">YouTube</label>
                                         <input id="shop_youtube" type="url" class="form-control @error('shop_youtube') is-invalid @enderror" 
                                             name="shop_youtube" value="{{ old('shop_youtube') }}" placeholder="https://youtube.com/yourchannel">
-                                        @error('shop_youtube')
+                        @error('shop_youtube')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
+                        @enderror
+                    </div>
+                </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="shop_twitter">Twitter</label>
+                        <label for="shop_twitter">Twitter</label>
                                         <input id="shop_twitter" type="url" class="form-control @error('shop_twitter') is-invalid @enderror" 
                                             name="shop_twitter" value="{{ old('shop_twitter') }}" placeholder="https://twitter.com/yourhandle">
-                                        @error('shop_twitter')
+                        @error('shop_twitter')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @enderror
+                    </div>
                                 </div>
                                 
                                 <div class="col-md-6">
@@ -620,34 +620,34 @@
                                         <label for="shop_tiktok">TikTok</label>
                                         <input id="shop_tiktok" type="url" class="form-control @error('shop_tiktok') is-invalid @enderror" 
                                             name="shop_tiktok" value="{{ old('shop_tiktok') }}" placeholder="https://tiktok.com/@yourhandle">
-                                        @error('shop_tiktok')
+                        @error('shop_tiktok')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
+                        @enderror
+                    </div>
+                </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="shop_wa_business_page">WhatsApp Business</label>
                                         <input id="shop_wa_business_page" type="url" class="form-control @error('shop_wa_business_page') is-invalid @enderror" 
                                             name="shop_wa_business_page" value="{{ old('shop_wa_business_page') }}" placeholder="https://wa.me/yournumber">
-                                        @error('shop_wa_business_page')
+                        @error('shop_wa_business_page')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @enderror
+                    </div>
                                 </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="shop_linkedin">LinkedIn</label>
+                        <label for="shop_linkedin">LinkedIn</label>
                                         <input id="shop_linkedin" type="url" class="form-control @error('shop_linkedin') is-invalid @enderror" 
                                             name="shop_linkedin" value="{{ old('shop_linkedin') }}" placeholder="https://linkedin.com/in/yourprofile">
-                                        @error('shop_linkedin')
+                        @error('shop_linkedin')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
+                        @enderror
+                    </div>
+                    </div>
+                    </div>
 
                             <!-- Banner Section -->
                             <div class="row mb-4">
@@ -655,48 +655,48 @@
                                     <h5 class="text-primary mb-3">
                                         <i class="fe fe-image mr-2"></i>Banner Information
                                     </h5>
-                                </div>
+                </div>
                                 
                                 <div class="col-12">
                                     <div id="bannerSection">
                                         <div class="banner-item card mb-3">
                                             <div class="card-header bg-light">
                                                 <h6 class="mb-0">Banner #1</h6>
-                                            </div>
+                    </div>
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label for="banner">Banner Image <span class="text-danger">*</span></label>
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="banner" name="banner[]" required accept="image/*">
                                                         <label class="custom-file-label" for="banner">Choose file</label>
-                                                    </div>
+                    </div>
                                                     <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
-                                                </div>
+                    </div>
 
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="banner_title">Banner Title</label>
                                                             <input type="text" class="form-control" name="banner_title[]" placeholder="Enter banner title">
-                                                        </div>
-                                                    </div>
+                    </div>
+                    </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="banner_subtitle">Banner Subtitle</label>
                                                             <input type="text" class="form-control" name="banner_subtitle[]" placeholder="Enter banner subtitle">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                    </div>
+                    </div>
+                    </div>
 
                                                 <div class="form-group">
                                                     <label for="banner_description">Banner Description</label>
                                                     <textarea class="form-control" name="banner_description[]" rows="3" placeholder="Enter banner description"></textarea>
-                                                </div>
+                </div>
 
                                                 <div class="form-group">
                                                     <label for="banner_button">Button Text</label>
                                                     <input type="text" class="form-control" name="banner_button[]" placeholder="Enter button text">
-                                                </div>
+                            </div>
                                             </div>
                                         </div>
                                     </div>
@@ -722,32 +722,32 @@
                                                 <h6 class="mb-0">Sponsor #1</h6>
                                             </div>
                                             <div class="card-body">
-                                                <div class="form-group">
+                                    <div class="form-group">
                                                     <label for="sponser_logo">Sponsor Logo <span class="text-danger">*</span></label>
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="sponser_logo" name="sponser_logo[]" required accept="image/*">
                                                         <label class="custom-file-label" for="sponser_logo">Choose file</label>
-                                                    </div>
+                                    </div>
                                                     <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
                                                 </div>
 
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                    <div class="form-group">
                                                             <label for="sponser_title">Sponsor Title</label>
                                                             <input type="text" class="form-control" name="sponser_title[]" placeholder="Enter sponsor title">
-                                                        </div>
-                                                    </div>
+                                    </div>
+                                </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="sponser_description">Sponsor Description</label>
                                                             <input type="text" class="form-control" name="sponser_description[]" placeholder="Enter sponsor description">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                            </div>
                                     
                                     <button type="button" id="addSponsorBtn" class="btn btn-outline-success">
                                         <i class="fe fe-plus mr-1"></i>Add Another Sponsor
@@ -761,7 +761,7 @@
                                     <h5 class="text-primary mb-3">
                                         <i class="fe fe-layers mr-2"></i>Content Tabs
                                     </h5>
-                                </div>
+                                    </div>
                                 
                                 <div class="col-12">
                                     <div id="tabsSection">
@@ -772,26 +772,26 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                    <div class="form-group">
                                                             <label for="tab_name">Tab Name <span class="text-danger">*</span></label>
                                                             <input type="text" class="form-control" name="tab_name[]" placeholder="Enter tab name" required>
-                                                        </div>
+                                    </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                    <div class="form-group">
                                                             <label for="tab_description">Tab Description</label>
                                                             <textarea class="form-control" name="tab_description[]" rows="3" placeholder="Enter tab description"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                                     
                                     <button type="button" id="addTabBtn" class="btn btn-outline-success">
                                         <i class="fe fe-plus mr-1"></i>Add Another Tab
                                     </button>
-                                </div>
+                </div>
                             </div>
 
                             <!-- Form Actions -->
@@ -807,18 +807,18 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
 @endsection
 
 @section('bottom_script')
-<script>
-$(document).ready(function() {
+    <script>
+        $(document).ready(function() {
     // Initialize Select2
     $('.select2').select2({
         theme: 'bootstrap4',
@@ -832,8 +832,8 @@ $(document).ready(function() {
     });
 
     // Package selection logic
-    $('#package').on('change', function() {
-        var packageId = $(this).val();
+            $('#package').on('change', function() {
+                var packageId = $(this).val();
         var vendorInput = $('#vendors_input');
         var packageFeatures = $('#package-features');
         
@@ -849,7 +849,7 @@ $(document).ready(function() {
                 $('#events-box').show();
                 $('#ad_space-box').show();
                 $('#blogging-box').show();
-            } else {
+                } else {
                 // Show all features for other packages
                 $('#ecommerce-box').show();
                 $('#music-box').show();
@@ -862,19 +862,19 @@ $(document).ready(function() {
             // Show vendor selection for sub-vendors
             if (packageId !== 'section_leader') {
                 vendorInput.show();
-            } else {
+                            } else {
                 vendorInput.hide();
             }
-        } else {
+                } else {
             packageFeatures.hide();
             vendorInput.hide();
-        }
-    });
+                }
+        });
 
     // Banner management
     let bannerCount = 1;
     
-    $('#addBannerBtn').click(function() {
+            $('#addBannerBtn').click(function() {
         bannerCount++;
         var newBanner = `
             <div class="banner-item card mb-3">
@@ -883,7 +883,7 @@ $(document).ready(function() {
                     <button type="button" class="btn btn-sm btn-outline-danger remove-banner">
                         <i class="fe fe-trash"></i>
                     </button>
-                </div>
+                    </div>
                 <div class="card-body">
                     <div class="form-group">
                         <label for="banner_${bannerCount}">Banner Image <span class="text-danger">*</span></label>
@@ -892,7 +892,7 @@ $(document).ready(function() {
                             <label class="custom-file-label" for="banner_${bannerCount}">Choose file</label>
                         </div>
                         <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
-                    </div>
+                        </div>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -907,28 +907,28 @@ $(document).ready(function() {
                                 <input type="text" class="form-control" name="banner_subtitle[]" placeholder="Enter banner subtitle">
                             </div>
                         </div>
-                    </div>
+                            </div>
 
-                    <div class="form-group">
+                            <div class="form-group">
                         <label for="banner_description_${bannerCount}">Banner Description</label>
                         <textarea class="form-control" name="banner_description[]" rows="3" placeholder="Enter banner description"></textarea>
-                    </div>
+                            </div>
 
-                    <div class="form-group">
+                            <div class="form-group">
                         <label for="banner_button_${bannerCount}">Button Text</label>
                         <input type="text" class="form-control" name="banner_button[]" placeholder="Enter button text">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
         `;
-        
-        $('#bannerSection').append(newBanner);
-    });
+
+                $('#bannerSection').append(newBanner);
+            });
 
     // Remove banner
     $(document).on('click', '.remove-banner', function() {
-        $(this).closest('.banner-item').remove();
-    });
+                $(this).closest('.banner-item').remove();
+            });
 
     // Sponsors management
     let sponsorCount = 1;
@@ -944,22 +944,22 @@ $(document).ready(function() {
                     </button>
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
+                                    <div class="form-group">
                         <label for="sponser_logo_${sponsorCount}">Sponsor Logo <span class="text-danger">*</span></label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="sponser_logo_${sponsorCount}" name="sponser_logo[]" required accept="image/*">
                             <label class="custom-file-label" for="sponser_logo_${sponsorCount}">Choose file</label>
-                        </div>
+                                    </div>
                         <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
+                                    <div class="form-group">
                                 <label for="sponser_title_${sponsorCount}">Sponsor Title</label>
                                 <input type="text" class="form-control" name="sponser_title[]" placeholder="Enter sponsor title">
-                            </div>
-                        </div>
+                                    </div>
+                                </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="sponser_description_${sponsorCount}">Sponsor Description</label>
@@ -991,23 +991,23 @@ $(document).ready(function() {
                     <button type="button" class="btn btn-sm btn-outline-danger remove-tab">
                         <i class="fe fe-trash"></i>
                     </button>
-                </div>
+                                    </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
+                                    <div class="form-group">
                                 <label for="tab_name_${tabCount}">Tab Name <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="tab_name[]" placeholder="Enter tab name" required>
-                            </div>
+                                    </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                                    <div class="form-group">
                                 <label for="tab_description_${tabCount}">Tab Description</label>
                                 <textarea class="form-control" name="tab_description[]" rows="3" placeholder="Enter tab description"></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
             </div>
         `;
         
@@ -1016,8 +1016,8 @@ $(document).ready(function() {
 
     // Remove tab
     $(document).on('click', '.remove-tab', function() {
-        $(this).closest('.tab-item').remove();
-    });
+                $(this).closest('.tab-item').remove();
+            });
 
     // Form validation
     $('form').on('submit', function() {
@@ -1046,7 +1046,7 @@ $(document).ready(function() {
         
         return isValid;
     });
-});
-</script>
+        });
+    </script>
 @endsection
 

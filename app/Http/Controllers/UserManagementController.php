@@ -17,6 +17,12 @@ use App\Models\UserDetailTabs;
 use App\Models\Sponsers;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Product;
+use App\Models\Costume;
+use App\Models\Event;
+use App\Models\Appointment;
+use App\Models\CostumeVariantImage;
+use App\Models\ProductVariantImage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -523,30 +529,12 @@ class UserManagementController extends Controller
         $sponsors_count = $user->sponsors()->count();
         $vendor_count = ($user->vendor || $user->subVendor) ? 1 : 0;
         
-        // Count products, costumes, events, blogs, appointments
-        $products_count = 0;
-        $costumes_count = 0;
-        $events_count = 0;
-        $blogs_count = 0;
-        $appointments_count = 0;
-        $cart_items_count = 0;
-        $orders_count = 0;
-        
-        if ($user->vendor) {
-            $products_count = $user->vendor->products()->count();
-            $costumes_count = $user->vendor->costumes()->count();
-            $events_count = $user->vendor->events()->count();
-            $blogs_count = $user->vendor->blogs()->count();
-            $appointments_count = $user->vendor->appointments()->count();
-        }
-        
-        if ($user->subVendor) {
-            $products_count = $user->subVendor->products()->count();
-            $costumes_count = $user->subVendor->costumes()->count();
-            $events_count = $user->subVendor->events()->count();
-            $blogs_count = $user->subVendor->blogs()->count();
-            $appointments_count = $user->subVendor->appointments()->count();
-        }
+        // Count products, costumes, events, blogs, appointments through user_id
+        $products_count = \App\Models\Product::where('user_id', $user->id)->count();
+        $costumes_count = \App\Models\Costume::where('user_id', $user->id)->count();
+        $events_count = \App\Models\Event::where('user_id', $user->id)->count();
+        $blogs_count = \App\Models\Blogs::where('user_id', $user->id)->count();
+        $appointments_count = \App\Models\Appointment::where('user_id', $user->id)->count();
         
         // Count cart items and orders
         $cart_items_count = Cart::where('user_id', $user->id)->count();
@@ -610,29 +598,29 @@ class UserManagementController extends Controller
             // Delete vendor/subvendor related data
             if ($user->vendor) {
                 // Delete products and their files
-                $products = $user->vendor->products;
+                $products = \App\Models\Product::where('user_id', $user->id)->get();
                 foreach ($products as $product) {
                     // Delete product images
-                    $productImages = $product->images;
+                    $productImages = $product->product_images;
                     foreach ($productImages as $image) {
                         if (file_exists(public_path($image->image))) {
                             unlink(public_path($image->image));
                         }
                     }
-                    $product->images()->delete();
+                    $product->product_images()->delete();
                     
                     // Delete product variants and their images
                     $variants = $product->variants;
                     foreach ($variants as $variant) {
-                        $variantImages = $variant->images;
+                        $variantImages = \App\Models\ProductVariantImage::where('product_variant_id', $variant->id)->get();
                         foreach ($variantImages as $image) {
                             if (file_exists(public_path($image->image))) {
                                 unlink(public_path($image->image));
                             }
                         }
-                        $variant->images()->delete();
+                        $variantImages->each->delete();
                     }
-                    $product->variants()->delete();
+                    $product->variants()->detach();
                     
                     // Delete product media
                     $productMedia = $product->media;
@@ -643,43 +631,34 @@ class UserManagementController extends Controller
                     }
                     $product->media()->delete();
                 }
-                $user->vendor->products()->delete();
+                \App\Models\Product::where('user_id', $user->id)->delete();
                 
                 // Delete costumes and their files
-                $costumes = $user->vendor->costumes;
+                $costumes = \App\Models\Costume::where('user_id', $user->id)->get();
                 foreach ($costumes as $costume) {
-                    // Delete costume images
-                    $costumeImages = $costume->images;
-                    foreach ($costumeImages as $image) {
-                        if (file_exists(public_path($image->image))) {
-                            unlink(public_path($image->image));
-                        }
-                    }
-                    $costume->images()->delete();
-                    
-                    // Delete costume variants and their images
-                    $variants = $costume->variants;
-                    foreach ($variants as $variant) {
-                        $variantImages = $variant->images;
+                    // Delete costume variant images
+                    $costumeVariants = $costume->variants;
+                    foreach ($costumeVariants as $variant) {
+                        $variantImages = \App\Models\CostumeVariantImage::where('costume_variant_id', $variant->id)->get();
                         foreach ($variantImages as $image) {
                             if (file_exists(public_path($image->image))) {
                                 unlink(public_path($image->image));
                             }
                         }
-                        $variant->images()->delete();
+                        $variantImages->each->delete();
                     }
-                    $costume->variants()->delete();
+                    $costume->variants()->detach();
                 }
-                $user->vendor->costumes()->delete();
+                \App\Models\Costume::where('user_id', $user->id)->delete();
                 
                 // Delete events
-                $user->vendor->events()->delete();
+                \App\Models\Event::where('user_id', $user->id)->delete();
                 
                 // Delete blogs
-                $user->vendor->blogs()->delete();
+                \App\Models\Blogs::where('user_id', $user->id)->delete();
                 
                 // Delete appointments
-                $user->vendor->appointments()->delete();
+                \App\Models\Appointment::where('user_id', $user->id)->delete();
                 
                 // Delete vendor record
                 $user->vendor()->delete();
@@ -687,27 +666,27 @@ class UserManagementController extends Controller
             
             if ($user->subVendor) {
                 // Delete products and their files (same as vendor)
-                $products = $user->subVendor->products;
+                $products = \App\Models\Product::where('user_id', $user->id)->get();
                 foreach ($products as $product) {
-                    $productImages = $product->images;
+                    $productImages = $product->product_images;
                     foreach ($productImages as $image) {
                         if (file_exists(public_path($image->image))) {
                             unlink(public_path($image->image));
                         }
                     }
-                    $product->images()->delete();
+                    $product->product_images()->delete();
                     
                     $variants = $product->variants;
                     foreach ($variants as $variant) {
-                        $variantImages = $variant->images;
+                        $variantImages = \App\Models\ProductVariantImage::where('product_variant_id', $variant->id)->get();
                         foreach ($variantImages as $image) {
                             if (file_exists(public_path($image->image))) {
                                 unlink(public_path($image->image));
                             }
                         }
-                        $variant->images()->delete();
+                        $variantImages->each->delete();
                     }
-                    $product->variants()->delete();
+                    $product->variants()->detach();
                     
                     $productMedia = $product->media;
                     foreach ($productMedia as $media) {
@@ -717,37 +696,30 @@ class UserManagementController extends Controller
                     }
                     $product->media()->delete();
                 }
-                $user->subVendor->products()->delete();
+                \App\Models\Product::where('user_id', $user->id)->delete();
                 
                 // Delete costumes and their files
-                $costumes = $user->subVendor->costumes;
+                $costumes = \App\Models\Costume::where('user_id', $user->id)->get();
                 foreach ($costumes as $costume) {
-                    $costumeImages = $costume->images;
-                    foreach ($costumeImages as $image) {
-                        if (file_exists(public_path($image->image))) {
-                            unlink(public_path($image->image));
-                        }
-                    }
-                    $costume->images()->delete();
-                    
-                    $variants = $costume->variants;
-                    foreach ($variants as $variant) {
-                        $variantImages = $variant->images;
+                    // Delete costume variant images
+                    $costumeVariants = $costume->variants;
+                    foreach ($costumeVariants as $variant) {
+                        $variantImages = \App\Models\CostumeVariantImage::where('costume_variant_id', $variant->id)->get();
                         foreach ($variantImages as $image) {
                             if (file_exists(public_path($image->image))) {
                                 unlink(public_path($image->image));
                             }
                         }
-                        $variant->images()->delete();
+                        $variantImages->each->delete();
                     }
-                    $costume->variants()->delete();
+                    $costume->variants()->detach();
                 }
-                $user->subVendor->costumes()->delete();
+                \App\Models\Costume::where('user_id', $user->id)->delete();
                 
                 // Delete events, blogs, appointments
-                $user->subVendor->events()->delete();
-                $user->subVendor->blogs()->delete();
-                $user->subVendor->appointments()->delete();
+                \App\Models\Event::where('user_id', $user->id)->delete();
+                \App\Models\Blogs::where('user_id', $user->id)->delete();
+                \App\Models\Appointment::where('user_id', $user->id)->delete();
                 
                 // Delete subvendor record
                 $user->subVendor()->delete();
