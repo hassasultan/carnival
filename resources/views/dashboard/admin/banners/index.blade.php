@@ -179,12 +179,6 @@
                         <h6 class="alert-heading"><i class="fe fe-alert-triangle mr-1"></i>Warning!</h6>
                         <p class="mb-0">This action will permanently delete the banner and all associated files. This cannot be undone!</p>
                     </div>
-                    
-                    <div class="alert alert-danger">
-                        <h6 class="alert-heading"><i class="fe fe-alert-circle mr-1"></i>Impact</h6>
-                        <p class="mb-0"><strong>This will permanently remove the banner and all associated files from the server.</strong></p>
-                        <small class="text-muted">The banner will no longer be available on the website.</small>
-                    </div>
                 </div>
             `;
             
