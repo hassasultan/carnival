@@ -183,6 +183,284 @@
                                 </div>
                 </div>
 
+                <!-- Short Description -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5 class="text-primary mb-3">
+                            <i class="fe fe-file-text mr-2"></i>Description
+                        </h5>
+                    </div>
+                    
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="short_description">Short Description</label>
+                            <textarea id="short_description" class="form-control @error('short_description') is-invalid @enderror" 
+                                name="short_description" rows="3" placeholder="Enter a brief description about the user...">{{ $user->short_description }}</textarea>
+                            @error('short_description')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                            <small class="form-text text-muted">Maximum 500 characters</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Continent -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5 class="text-primary mb-3">
+                            <i class="fe fe-globe mr-2"></i>Geographic Information
+                        </h5>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="continent">Continent</label>
+                            <select id="continent" class="form-control @error('continent') is-invalid @enderror" name="continent">
+                                <option value="">Select Continent</option>
+                                <option value="Africa" @if ($user->continent == 'Africa') selected @endif>Africa</option>
+                                <option value="Asia" @if ($user->continent == 'Asia') selected @endif>Asia</option>
+                                <option value="Europe" @if ($user->continent == 'Europe') selected @endif>Europe</option>
+                                <option value="North America" @if ($user->continent == 'North America') selected @endif>North America</option>
+                                <option value="South America" @if ($user->continent == 'South America') selected @endif>South America</option>
+                                <option value="Australia" @if ($user->continent == 'Australia') selected @endif>Australia</option>
+                                <option value="Antarctica" @if ($user->continent == 'Antarctica') selected @endif>Antarctica</option>
+                            </select>
+                            @error('continent')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5 class="text-primary mb-3">
+                            <i class="fe fe-share-2 mr-2"></i>Social Media Links
+                        </h5>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="facebook">Facebook URL</label>
+                            <input id="facebook" type="url" class="form-control @error('facebook') is-invalid @enderror"
+                                name="facebook" value="{{ $user->facebook }}" placeholder="https://facebook.com/username">
+                            @error('facebook')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="twitter">Twitter/X URL</label>
+                            <input id="twitter" type="url" class="form-control @error('twitter') is-invalid @enderror"
+                                name="twitter" value="{{ $user->twitter }}" placeholder="https://twitter.com/username">
+                            @error('twitter')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="instagram">Instagram URL</label>
+                            <input id="instagram" type="url" class="form-control @error('instagram') is-invalid @enderror"
+                                name="instagram" value="{{ $user->instagram }}" placeholder="https://instagram.com/username">
+                            @error('instagram')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn URL</label>
+                            <input id="linkedin" type="url" class="form-control @error('linkedin') is-invalid @enderror"
+                                name="linkedin" value="{{ $user->linkedin }}" placeholder="https://linkedin.com/in/username">
+                            @error('linkedin')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="youtube">YouTube URL</label>
+                            <input id="youtube" type="url" class="form-control @error('youtube') is-invalid @enderror"
+                                name="youtube" value="{{ $user->youtube }}" placeholder="https://youtube.com/@username">
+                            @error('youtube')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="website">Website URL</label>
+                            <input id="website" type="url" class="form-control @error('website') is-invalid @enderror"
+                                name="website" value="{{ $user->website }}" placeholder="https://example.com">
+                            @error('website')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs Section -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5 class="text-primary mb-3">
+                            <i class="fe fe-layers mr-2"></i>User Tabs
+                        </h5>
+                        <p class="text-muted">Manage tabs that will be displayed on the user's profile page.</p>
+                    </div>
+                    
+                    <div class="col-12">
+                        <div class="form-group">
+                            <div class="tabs-container">
+                                @if($user->tabs && count($user->tabs) > 0)
+                                    @foreach($user->tabs as $index => $tab)
+                                        <div class="tab-item mb-3 p-3 border rounded bg-light">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Tab Title</label>
+                                                    <input type="text" class="form-control" name="tabs[{{ $index }}][title]" 
+                                                        value="{{ $tab->title }}" placeholder="Enter tab title">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Tab Content</label>
+                                                    <textarea class="form-control" name="tabs[{{ $index }}][content]" 
+                                                        rows="3" placeholder="Enter tab content">{{ $tab->content }}</textarea>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label>&nbsp;</label>
+                                                    <button type="button" class="btn btn-danger btn-sm btn-block remove-tab">
+                                                        <i class="fe fe-trash-2"></i> Remove
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                            <button type="button" class="btn btn-success btn-sm" id="add-tab">
+                                <i class="fe fe-plus mr-1"></i>Add New Tab
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sponsors Section -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5 class="text-primary mb-3">
+                            <i class="fe fe-award mr-2"></i>Sponsors
+                        </h5>
+                        <p class="text-muted">Manage sponsors associated with this user.</p>
+                    </div>
+                    
+                    <div class="col-12">
+                        <div class="form-group">
+                            <div class="sponsors-container">
+                                @if($user->sponsors && count($user->sponsors) > 0)
+                                    @foreach($user->sponsors as $index => $sponsor)
+                                        <div class="sponsor-item mb-3 p-3 border rounded bg-light">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Sponsor Name</label>
+                                                    <input type="text" class="form-control" name="sponsors[{{ $index }}][name]" 
+                                                        value="{{ $sponsor->name }}" placeholder="Enter sponsor name">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>Logo</label>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" 
+                                                            name="sponsor_logos[{{ $index }}]" accept="image/*">
+                                                        <label class="custom-file-label">Choose file</label>
+                                                    </div>
+                                                    @if($sponsor->logo)
+                                                        <small class="text-muted">Current: {{ basename($sponsor->logo) }}</small>
+                                                    @endif
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Website URL</label>
+                                                    <input type="url" class="form-control" name="sponsors[{{ $index }}][website]" 
+                                                        value="{{ $sponsor->website }}" placeholder="https://example.com">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label>&nbsp;</label>
+                                                    <button type="button" class="btn btn-danger btn-sm btn-block remove-sponsor">
+                                                        <i class="fe fe-trash-2"></i> Remove
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                            <button type="button" class="btn btn-success btn-sm" id="add-sponsor">
+                                <i class="fe fe-plus mr-1"></i>Add New Sponsor
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banners Section -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5 class="text-primary mb-3">
+                            <i class="fe fe-image mr-2"></i>Banners
+                        </h5>
+                        <p class="text-muted">Manage banners for this user's profile.</p>
+                    </div>
+                    
+                    <div class="col-12">
+                        <div class="form-group">
+                            <div class="banners-container">
+                                @if($user->banners && count($user->banners) > 0)
+                                    @foreach($user->banners as $index => $banner)
+                                        <div class="banner-item mb-3 p-3 border rounded bg-light">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Banner Title</label>
+                                                    <input type="text" class="form-control" name="banners[{{ $index }}][title]" 
+                                                        value="{{ $banner->title }}" placeholder="Enter banner title">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>Banner File</label>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" 
+                                                            name="banner_files[{{ $index }}]" accept="image/*,video/*">
+                                                        <label class="custom-file-label">Choose file</label>
+                                                    </div>
+                                                    @if($banner->file_path)
+                                                        <small class="text-muted">Current: {{ basename($banner->file_path) }}</small>
+                                                    @endif
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Link URL</label>
+                                                    <input type="url" class="form-control" name="banners[{{ $index }}][link_url]" 
+                                                        value="{{ $banner->link_url }}" placeholder="https://example.com">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label>&nbsp;</label>
+                                                    <button type="button" class="btn btn-danger btn-sm btn-block remove-banner">
+                                                        <i class="fe fe-trash-2"></i> Remove
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                            <button type="button" class="btn btn-success btn-sm" id="add-banner">
+                                <i class="fe fe-plus mr-1"></i>Add New Banner
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Role Specific Fields -->
                             @if ($user->isVendor())
                                 <div class="row mb-4">
@@ -447,6 +725,130 @@
         
         return isValid;
             });
+
+    // Dynamic Tabs Management
+    let tabIndex = {{ $user->tabs ? count($user->tabs) : 0 }};
+    
+    $('#add-tab').click(function() {
+        const tabHtml = `
+            <div class="tab-item mb-3 p-3 border rounded bg-light">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Tab Title</label>
+                        <input type="text" class="form-control" name="tabs[${tabIndex}][title]" 
+                            placeholder="Enter tab title">
+                    </div>
+                    <div class="col-md-6">
+                        <label>Tab Content</label>
+                        <textarea class="form-control" name="tabs[${tabIndex}][content]" 
+                            rows="3" placeholder="Enter tab content"></textarea>
+                    </div>
+                    <div class="col-md-2">
+                        <label>&nbsp;</label>
+                        <button type="button" class="btn btn-danger btn-sm btn-block remove-tab">
+                            <i class="fe fe-trash-2"></i> Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        $('.tabs-container').append(tabHtml);
+        tabIndex++;
+    });
+
+    $(document).on('click', '.remove-tab', function() {
+        $(this).closest('.tab-item').remove();
+    });
+
+    // Dynamic Sponsors Management
+    let sponsorIndex = {{ $user->sponsors ? count($user->sponsors) : 0 }};
+    
+    $('#add-sponsor').click(function() {
+        const sponsorHtml = `
+            <div class="sponsor-item mb-3 p-3 border rounded bg-light">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Sponsor Name</label>
+                        <input type="text" class="form-control" name="sponsors[${sponsorIndex}][name]" 
+                            placeholder="Enter sponsor name">
+                    </div>
+                    <div class="col-md-3">
+                        <label>Logo</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" 
+                                name="sponsor_logos[${sponsorIndex}]" accept="image/*">
+                            <label class="custom-file-label">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Website URL</label>
+                        <input type="url" class="form-control" name="sponsors[${sponsorIndex}][website]" 
+                            placeholder="https://example.com">
+                    </div>
+                    <div class="col-md-2">
+                        <label>&nbsp;</label>
+                        <button type="button" class="btn btn-danger btn-sm btn-block remove-sponsor">
+                            <i class="fe fe-trash-2"></i> Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        $('.sponsors-container').append(sponsorHtml);
+        sponsorIndex++;
+    });
+
+    $(document).on('click', '.remove-sponsor', function() {
+        $(this).closest('.sponsor-item').remove();
+    });
+
+    // Dynamic Banners Management
+    let bannerIndex = {{ $user->banners ? count($user->banners) : 0 }};
+    
+    $('#add-banner').click(function() {
+        const bannerHtml = `
+            <div class="banner-item mb-3 p-3 border rounded bg-light">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Banner Title</label>
+                        <input type="text" class="form-control" name="banners[${bannerIndex}][title]" 
+                            placeholder="Enter banner title">
+                    </div>
+                    <div class="col-md-3">
+                        <label>Banner File</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" 
+                                name="banner_files[${bannerIndex}]" accept="image/*,video/*">
+                            <label class="custom-file-label">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Link URL</label>
+                        <input type="url" class="form-control" name="banners[${bannerIndex}][link_url]" 
+                            placeholder="https://example.com">
+                    </div>
+                    <div class="col-md-2">
+                        <label>&nbsp;</label>
+                        <button type="button" class="btn btn-danger btn-sm btn-block remove-banner">
+                            <i class="fe fe-trash-2"></i> Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        $('.banners-container').append(bannerHtml);
+        bannerIndex++;
+    });
+
+    $(document).on('click', '.remove-banner', function() {
+        $(this).closest('.banner-item').remove();
+    });
+
+    // Handle file input labels for dynamic elements
+    $(document).on('change', '.custom-file-input', function() {
+        var fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').html(fileName);
+    });
         });
     </script>
 @endsection
