@@ -832,10 +832,11 @@
     });
 
     // Package selection logic
-            $('#package').on('change', function() {
-                var packageId = $(this).val();
+    $('#package').on('change', function() {
+        var packageId = $(this).val();
         var vendorInput = $('#vendors_input');
         var packageFeatures = $('#package-features');
+        var ageRange = $('#age_range').val();
         
         // Hide all feature boxes first
         $('.packages-div .list-group').hide();
@@ -849,7 +850,7 @@
                 $('#events-box').show();
                 $('#ad_space-box').show();
                 $('#blogging-box').show();
-                } else {
+            } else {
                 // Show all features for other packages
                 $('#ecommerce-box').show();
                 $('#music-box').show();
@@ -859,17 +860,31 @@
                 $('#blogging-box').show();
             }
             
-            // Show vendor selection for sub-vendors
-            if (packageId !== 'section_leader') {
+            // Show vendor selection only for section_leader OR when age range is kid
+            if (packageId === 'section_leader' || ageRange === 'kid') {
                 vendorInput.show();
-                } else {
+            } else {
                 vendorInput.hide();
             }
-                            } else {
+        } else {
             packageFeatures.hide();
             vendorInput.hide();
-                }
-        });
+        }
+    });
+
+    // Age range change logic
+    $('#age_range').on('change', function() {
+        var packageId = $('#package').val();
+        var ageRange = $(this).val();
+        var vendorInput = $('#vendors_input');
+        
+        // Show vendor selection only for section_leader OR when age range is kid
+        if (packageId === 'section_leader' || ageRange === 'kid') {
+            vendorInput.show();
+        } else {
+            vendorInput.hide();
+        }
+    });
 
     // Banner management
     let bannerIndex = 0;
