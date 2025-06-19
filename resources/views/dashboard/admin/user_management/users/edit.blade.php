@@ -113,9 +113,13 @@
                                                 <small class="text-muted">Current image:</small>
                                                 @php
                                                     $imagePath = $user->image;
+                                                    // If the path doesn't start with 'images/', add it
+                                                    if (!str_starts_with($imagePath, 'images/') && !str_starts_with($imagePath, '/images/')) {
+                                                        $imagePath = 'images/' . $imagePath;
+                                                    }
                                                     $fullImagePath = asset($imagePath);
                                                 @endphp
-                                                <!-- Debug info: {{ $imagePath }} -> {{ $fullImagePath }} -->
+                                                <!-- Debug info: {{ $user->image }} -> {{ $imagePath }} -> {{ $fullImagePath }} -->
                                                 <img src="{{ $fullImagePath }}" alt="Current Profile" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                                 <div style="display: none; color: #dc3545; font-size: 12px;">Image not found: {{ basename($imagePath) }} (Path: {{ $imagePath }})</div>
                                             </div>
@@ -390,9 +394,13 @@
                                                                                 <small class="text-muted">Current logo:</small>
                                                                                 @php
                                                                                     $logoPath = $user->vendor ? $user->vendor->logo : $user->subVendor->logo;
+                                                                                    // If the path doesn't start with 'images/', add it
+                                                                                    if (!str_starts_with($logoPath, 'images/') && !str_starts_with($logoPath, '/images/')) {
+                                                                                        $logoPath = 'images/' . $logoPath;
+                                                                                    }
                                                                                     $fullLogoPath = asset($logoPath);
                                                                                 @endphp
-                                                                                <!-- Debug info: {{ $logoPath }} -> {{ $fullLogoPath }} -->
+                                                                                <!-- Debug info: {{ $user->vendor ? $user->vendor->logo : $user->subVendor->logo }} -> {{ $logoPath }} -> {{ $fullLogoPath }} -->
                                                                                 <img src="{{ $fullLogoPath }}" alt="Current Logo" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                                                                 <div style="display: none; color: #dc3545; font-size: 12px;">Image not found: {{ basename($logoPath) }} (Path: {{ $logoPath }})</div>
                                                                             </div>
