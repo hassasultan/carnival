@@ -874,6 +874,13 @@
     // Banner management
     let bannerIndex = 0;
     
+    // Initialize counters on document ready
+    $(document).ready(function() {
+        bannerIndex = $('.banner-item').length;
+        sponsorIndex = $('.sponsor-item').length;
+        tabIndex = $('.tab-item').length;
+    });
+    
     $('#addBannerBtn').click(function() {
         bannerIndex++;
         var newBanner = `
