@@ -111,8 +111,14 @@
                                         @if($user->image)
                                             <div class="mt-2">
                                                 <small class="text-muted">Current image:</small>
-                                                <img src="{{ asset($user->image) }}" alt="Current Profile" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
-                                    </div>
+                                                @php
+                                                    $imagePath = $user->image;
+                                                    $fullImagePath = asset($imagePath);
+                                                @endphp
+                                                <!-- Debug info: {{ $imagePath }} -> {{ $fullImagePath }} -->
+                                                <img src="{{ $fullImagePath }}" alt="Current Profile" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                                <div style="display: none; color: #dc3545; font-size: 12px;">Image not found: {{ basename($imagePath) }} (Path: {{ $imagePath }})</div>
+                                            </div>
                                         @endif
                                         <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
                                     </div>
