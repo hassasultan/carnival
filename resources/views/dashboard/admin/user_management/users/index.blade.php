@@ -60,26 +60,38 @@
 @section('bottom_script')
     <script>
         $(document).ready(function() {
+            let currentPage = 1;
+            
             function fetchUsers(page = 1) {
+                currentPage = page;
                 let search = $('#search').val();
                 let role = $('#role_filter').val();
                 let package = $('#package_filter').val();
                 let status = $('#status_filter').val();
 
                 $.ajax({
-                    url: "{{ route('users.index') }}?page=" + page,
+                    url: "{{ route('users.index') }}",
                     method: "GET",
                     data: {
+                        page: page,
                         search: search,
                         role: role,
                         package: package,
                         status: status
                     },
                     beforeSend: function() {
-                        $('#usersTable').html('<div class="text-center">Loading...</div>');
+                        $('#usersTable').html('<div class="text-center py-4"><i class="fe fe-loader fe-spin fe-24 mb-2"></i><p>Loading users...</p></div>');
                     },
                     success: function(response) {
                         $('#usersTable').html(response);
+                        // Update URL without page reload
+                        let url = new URL(window.location);
+                        url.searchParams.set('page', page);
+                        window.history.pushState({}, '', url);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching users:', error);
+                        $('#usersTable').html('<div class="alert alert-danger">Error loading users. Please try again.</div>');
                     }
                 });
             }
@@ -88,14 +100,14 @@
             $(document).on('click', '.pagination-link', function(event) {
                 event.preventDefault();
                 let page = $(this).data('page');
-                if (page) {
+                if (page && page !== currentPage) {
                     fetchUsers(page);
                 }
             });
 
             // Trigger filtering
             $('#filterBtn').on('click', function() {
-                fetchUsers();
+                fetchUsers(1); // Reset to first page when filtering
             });
 
             // Reset filters
@@ -104,12 +116,28 @@
                 $('#role_filter').val('');
                 $('#package_filter').val('');
                 $('#status_filter').val('');
-                fetchUsers();
+                fetchUsers(1); // Reset to first page
             });
 
-            // Live search
+            // Live search with debounce
+            let searchTimeout;
             $('#search').on('keyup', function() {
-                fetchUsers();
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(function() {
+                    fetchUsers(1); // Reset to first page when searching
+                }, 500); // Wait 500ms after user stops typing
+            });
+
+            // Handle filter changes
+            $('#role_filter, #package_filter, #status_filter').on('change', function() {
+                fetchUsers(1); // Reset to first page when filter changes
+            });
+
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', function() {
+                let urlParams = new URLSearchParams(window.location.search);
+                let page = urlParams.get('page') || 1;
+                fetchUsers(parseInt(page));
             });
         });
     </script>

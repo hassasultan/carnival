@@ -54,6 +54,52 @@
         @endforeach
     </tbody>
 </table>
-<div class="d-flex justify-content-center">
-    {!! $users->links() !!}
-</div>
+
+<!-- Custom Pagination -->
+@if($users->hasPages())
+    <div class="d-flex justify-content-center mt-4">
+        <nav aria-label="Users pagination">
+            <ul class="pagination">
+                <!-- Previous Page Link -->
+                @if ($users->onFirstPage())
+                    <li class="page-item disabled">
+                        <span class="page-link">Previous</span>
+                    </li>
+                @else
+                    <li class="page-item">
+                        <a class="page-link pagination-link" href="#" data-page="{{ $users->currentPage() - 1 }}">Previous</a>
+                    </li>
+                @endif
+
+                <!-- Pagination Elements -->
+                @foreach ($users->getUrlRange(1, $users->lastPage()) as $page => $url)
+                    @if ($page == $users->currentPage())
+                        <li class="page-item active">
+                            <span class="page-link">{{ $page }}</span>
+                        </li>
+                    @else
+                        <li class="page-item">
+                            <a class="page-link pagination-link" href="#" data-page="{{ $page }}">{{ $page }}</a>
+                        </li>
+                    @endif
+                @endforeach
+
+                <!-- Next Page Link -->
+                @if ($users->hasMorePages())
+                    <li class="page-item">
+                        <a class="page-link pagination-link" href="#" data-page="{{ $users->currentPage() + 1 }}">Next</a>
+                    </li>
+                @else
+                    <li class="page-item disabled">
+                        <span class="page-link">Next</span>
+                    </li>
+                @endif
+            </ul>
+        </nav>
+    </div>
+    
+    <!-- Pagination Info -->
+    <div class="text-center text-muted mt-2">
+        Showing {{ $users->firstItem() ?? 0 }} to {{ $users->lastItem() ?? 0 }} of {{ $users->total() }} users
+    </div>
+@endif
