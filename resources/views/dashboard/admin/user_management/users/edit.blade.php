@@ -10,8 +10,8 @@
                 <div class="card shadow">
                     <div class="card-header">
                         <strong class="card-title">Edit User Information</strong>
-                    </div>
-                    <div class="card-body">
+            </div>
+            <div class="card-body">
                         @if(session('success'))
                             <div class="alert alert-success alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -29,7 +29,7 @@
                         <form method="POST" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-                            <input type="hidden" name="role_id" value="{{ $user->role_id }}">
+                    <input type="hidden" name="role_id" value="{{ $user->role_id }}">
                             
                             <!-- Basic Information -->
                             <div class="row mb-4">
@@ -57,9 +57,9 @@
                             name="last_name" value="{{ $user->last_name }}" required autocomplete="last_name">
                         @error('last_name')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
+                        @enderror
+                    </div>
+                </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -95,7 +95,7 @@
                                             <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
-                                </div>
+                </div>
                                 
                                 <div class="col-md-6">
                 <div class="form-group">
@@ -104,15 +104,15 @@
                                             <input type="file" class="custom-file-input @error('image') is-invalid @enderror" 
                                                 id="image" name="image" accept="image/*">
                         <label class="custom-file-label" for="image" id="image_label">Choose file</label>
-                                        </div>
+                    </div>
                                         @error('image')
                                             <span class="invalid-feedback d-block">{{ $message }}</span>
-                                        @enderror
+                    @enderror
                                         @if($user->image)
                                             <div class="mt-2">
                                                 <small class="text-muted">Current image:</small>
                                                 <img src="{{ asset($user->image) }}" alt="Current Profile" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
-                                            </div>
+                </div>
                                         @endif
                                         <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
                                     </div>
@@ -146,8 +146,8 @@
                                         @error('city')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
-                                    </div>
-                                </div>
+                    </div>
+                    </div>
                                 
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -511,15 +511,15 @@
                                     {{ $user->subVendor->vendor_id == $vendor->id ? 'selected' : '' }}>
                                 {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}
                             </option>
-                        @endforeach
-                    </select>
-                    @error('vendor_id')
+                            @endforeach
+                        </select>
+                        @error('vendor_id')
                                                 <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
+                        @enderror
                                         </div>
                                     </div>
-                                </div>
-                            @endif
+                    </div>
+                @endif
 
                             <!-- Account Status -->
                             <div class="row mb-4">
@@ -541,7 +541,7 @@
                     @enderror
                 </div>
                                 </div>
-                            </div>
+                </div>
 
                             <!-- Package Features (for Vendors) -->
                             @if ($user->isVendor() || $user->isSubVendor())
@@ -673,24 +673,24 @@
                             @endif
 
                             <!-- Form Actions -->
-                            <div class="row">
+                        <div class="row">
                                 <div class="col-12">
-                                    <div class="form-group">
+                <div class="form-group">
                                         <button type="submit" class="btn btn-primary">
                                             <i class="fe fe-save mr-1"></i>Update User
                                         </button>
                                         <a href="{{ route('users.index') }}" class="btn btn-secondary">
                                             <i class="fe fe-arrow-left mr-1"></i>Back to Users
                                         </a>
-                                    </div>
-                                </div>
-                            </div>
+                </div>
+                    </div>
+                    </div>
                         </form>
                     </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
     </div>
 @endsection
 
@@ -718,7 +718,7 @@
             if (!$(this).val()) {
                 $(this).addClass('is-invalid');
                 isValid = false;
-            } else {
+                } else {
                 $(this).removeClass('is-invalid');
             }
         });
@@ -745,26 +745,26 @@
                         <label>Tab Title</label>
                         <input type="text" class="form-control" name="tabs[${tabIndex}][title]" 
                             placeholder="Enter tab title">
-                    </div>
+                            </div>
                     <div class="col-md-6">
                         <label>Tab Content</label>
                         <textarea class="form-control" name="tabs[${tabIndex}][content]" 
                             rows="3" placeholder="Enter tab content"></textarea>
-                    </div>
+                                    </div>
                     <div class="col-md-2">
                         <label>&nbsp;</label>
                         <button type="button" class="btn btn-danger btn-sm btn-block remove-tab">
                             <i class="fe fe-trash-2"></i> Remove
                         </button>
-                    </div>
-                </div>
-            </div>
+                                    </div>
+                                </div>
+                            </div>
         `;
         $('.tabs-container').append(tabHtml);
     });
 
     $(document).on('click', '.remove-tab', function() {
-        $(this).closest('.tab-item').remove();
+            $(this).closest('.tab-item').remove();
         // Renumber remaining tabs
         renumberTabs();
     });
@@ -796,27 +796,27 @@
                         <label>Sponsor Name</label>
                         <input type="text" class="form-control" name="sponsors[${sponsorIndex}][name]" 
                             placeholder="Enter sponsor name">
-                    </div>
+                                    </div>
                     <div class="col-md-3">
                         <label>Logo</label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" 
                                 name="sponsor_logos[${sponsorIndex}]" accept="image/*">
                             <label class="custom-file-label">Choose file</label>
-                        </div>
-                    </div>
+                                    </div>
+                                    </div>
                     <div class="col-md-4">
                         <label>Website URL</label>
                         <input type="url" class="form-control" name="sponsors[${sponsorIndex}][website]" 
                             placeholder="https://example.com">
-                    </div>
+                                </div>
                     <div class="col-md-2">
                         <label>&nbsp;</label>
                         <button type="button" class="btn btn-danger btn-sm btn-block remove-sponsor">
                             <i class="fe fe-trash-2"></i> Remove
                         </button>
-                    </div>
-                </div>
+                            </div>
+                        </div>
             </div>
         `;
         $('.sponsors-container').append(sponsorHtml);
@@ -865,26 +865,26 @@
                                 name="banner_files[${bannerIndex}]" accept="image/*,video/*">
                             <label class="custom-file-label">Choose file</label>
                         </div>
-                    </div>
+                            </div>
                     <div class="col-md-4">
                         <label>Link URL</label>
                         <input type="url" class="form-control" name="banners[${bannerIndex}][link_url]" 
                             placeholder="https://example.com">
-                    </div>
+                            </div>
                     <div class="col-md-2">
                         <label>&nbsp;</label>
                         <button type="button" class="btn btn-danger btn-sm btn-block remove-banner">
                             <i class="fe fe-trash-2"></i> Remove
                         </button>
-                    </div>
-                </div>
-            </div>
+                            </div>
+                            </div>
+                        </div>
         `;
         $('.banners-container').append(bannerHtml);
     });
 
     $(document).on('click', '.remove-banner', function() {
-        $(this).closest('.banner-item').remove();
+                $(this).closest('.banner-item').remove();
         // Renumber remaining banners
         renumberBanners();
     });
@@ -910,7 +910,7 @@
     $(document).on('change', '.custom-file-input', function() {
         var fileName = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').html(fileName);
-    });
+            });
         });
     </script>
 @endsection
