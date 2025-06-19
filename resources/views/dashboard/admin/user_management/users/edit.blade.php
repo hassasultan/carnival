@@ -379,10 +379,16 @@
                                                                         name="sponsor_logos[{{ $index }}]" accept="image/*">
                                                                     <label class="custom-file-label">Choose file</label>
                                                                 </div>
-                                                                        @if($sponsor->logo)
+                                                                        @if(($user->vendor && $user->vendor->logo) || ($user->subVendor && $user->subVendor->logo))
                                                                             <div class="mt-2">
                                                                                 <small class="text-muted">Current logo:</small>
-                                                                                <img src="{{ asset($sponsor->logo) }}" alt="Current Logo" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+                                                                                @php
+                                                                                    $logoPath = $user->vendor ? $user->vendor->logo : $user->subVendor->logo;
+                                                                                    $fullLogoPath = asset($logoPath);
+                                                                                @endphp
+                                                                                <!-- Debug info: {{ $logoPath }} -> {{ $fullLogoPath }} -->
+                                                                                <img src="{{ $fullLogoPath }}" alt="Current Logo" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                                                                <div style="display: none; color: #dc3545; font-size: 12px;">Image not found: {{ basename($logoPath) }} (Path: {{ $logoPath }})</div>
                                                                             </div>
                                                                         @endif
                                                                     </div>
@@ -556,7 +562,13 @@
                                             @if(($user->vendor && $user->vendor->logo) || ($user->subVendor && $user->subVendor->logo))
                                                 <div class="mt-2">
                                                     <small class="text-muted">Current logo:</small>
-                                                    <img src="{{ asset($user->vendor ? $user->vendor->logo : $user->subVendor->logo) }}" alt="Current Logo" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+                                                    @php
+                                                        $logoPath = $user->vendor ? $user->vendor->logo : $user->subVendor->logo;
+                                                        $fullLogoPath = asset($logoPath);
+                                                    @endphp
+                                                    <!-- Debug info: {{ $logoPath }} -> {{ $fullLogoPath }} -->
+                                                    <img src="{{ $fullLogoPath }}" alt="Current Logo" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                                    <div style="display: none; color: #dc3545; font-size: 12px;">Image not found: {{ basename($logoPath) }} (Path: {{ $logoPath }})</div>
                                                 </div>
                                             @endif
                                             <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
