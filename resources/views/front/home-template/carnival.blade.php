@@ -90,7 +90,7 @@
                                     <img src="{{ asset('shopAssets/images/carnival/flight.jpeg') }}" class="res-img"
                                         alt="">
                                 @endif
-                                <div style="height: 20rem;"></div>
+                                {{-- <div style="height: 20rem;"></div> --}}
                                 <div class="tour-caption">
                                     <div class="vertical-align">
                                         <h3 class="underline hover-it">{{ $row->name }}</h3>
