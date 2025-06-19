@@ -317,202 +317,129 @@
                                 </div>
                             </div>
 
-                            <!-- Tabs Section -->
+                            <!-- Package Features (for Vendors) -->
                             <div class="row mb-4">
                                 <div class="col-12">
                                     <h5 class="text-primary mb-3">
-                                        <i class="fe fe-layers mr-2"></i>User Tabs
+                                        <i class="fe fe-settings mr-2"></i>Package Features
                                     </h5>
-                                    <p class="text-muted">Manage tabs that will be displayed on the user's profile page.</p>
                                 </div>
                                 
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <div class="tabs-container">
-                                            @if($user->tabs && count($user->tabs) > 0)
-                                                @foreach($user->tabs as $index => $tab)
-                                                    <div class="tab-item mb-3 p-3 border rounded bg-light">
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <label>Tab Title</label>
-                                                                <input type="text" class="form-control" name="tabs[{{ $index }}][title]" 
-                                                                    value="{{ $tab->name }}" placeholder="Enter tab title">
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Tab Content</label>
-                                                                <textarea class="form-control" name="tabs[{{ $index }}][content]" 
-                                                                    rows="3" placeholder="Enter tab content">{{ $tab->description }}</textarea>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <label>&nbsp;</label>
-                                                                <button type="button" class="btn btn-danger btn-sm btn-block remove-tab">
-                                                                    <i class="fe fe-trash-2"></i> Remove
-                                                                </button>
-                                                            </div>
-                                                        </div>
+                                <div class="col-md-6">
+                                    <div class="form-group list-group mb-3 shadow">
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <strong class="mb-2">E-Commerce</strong>
+                                                    <small class="text-muted d-block">Sell products online</small>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" value="1"
+                                                            id="e_com" name="ecommerce"
+                                                            @if (($user->vendor && $user->vendor->ecommerce == 1) || ($user->subVendor && $user->subVendor->ecommerce == 1)) checked @endif>
+                                                        <label class="custom-control-label" for="e_com"></label>
                                                     </div>
-                                                @endforeach
-                                            @endif
+                                                </div>
+                                            </div>
                                         </div>
-                                        <button type="button" class="btn btn-success btn-sm" id="add-tab">
-                                            <i class="fe fe-plus mr-1"></i>Add New Tab
-                                        </button>
+                                    </div>
+                                    
+                                    <div class="form-group list-group mb-3 shadow">
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <strong class="mb-2">Music Upload</strong>
+                                                    <small class="text-muted d-block">Upload and manage music</small>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" value="1"
+                                                            id="music" name="music"
+                                                            @if (($user->vendor && $user->vendor->music == 1) || ($user->subVendor && $user->subVendor->music == 1)) checked @endif>
+                                                        <label class="custom-control-label" for="music"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group list-group mb-3 shadow">
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <strong class="mb-2">Appointments</strong>
+                                                    <small class="text-muted d-block">Manage appointments</small>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" value="1"
+                                                            id="appointments" name="appointment"
+                                                            @if (($user->vendor && $user->vendor->appointment == 1) || ($user->subVendor && $user->subVendor->appointment == 1)) checked @endif>
+                                                        <label class="custom-control-label" for="appointments"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- Sponsors Section -->
-                            <div class="row mb-4">
-                                <div class="col-12">
-                                    <h5 class="text-primary mb-3">
-                                        <i class="fe fe-award mr-2"></i>Sponsors
-                                    </h5>
-                                    <p class="text-muted">Manage sponsors associated with this user.</p>
-                                </div>
                                 
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <div class="sponsors-container">
-                                            @if($user->sponsors && count($user->sponsors) > 0)
-                                                @foreach($user->sponsors as $index => $sponsor)
-                                                    <div class="sponsor-item mb-3 p-3 border rounded bg-light">
-                                                        <div class="row">
-                                                            <div class="col-md-3">
-                                                                <label>Sponsor Name</label>
-                                                                <input type="text" class="form-control" name="sponsors[{{ $index }}][name]" 
-                                                                    value="{{ $sponsor->title }}" placeholder="Enter sponsor name">
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <label>Logo</label>
-                                                                <div class="custom-file">
-                                                                    <input type="file" class="custom-file-input" 
-                                                                        name="sponsor_logos[{{ $index }}]" accept="image/*">
-                                                                    <label class="custom-file-label">Choose file</label>
-                                                                </div>
-                                                                @if($sponsor->logo)
-                                                                    <div class="mt-2">
-                                                                        <small class="text-muted">Current logo:</small>
-                                                                        @php
-                                                                            $sponsorLogoPath = $sponsor->logo;
-                                                                            // If the path doesn't start with 'sponser_images/', add it
-                                                                            if (!str_starts_with($sponsorLogoPath, 'sponser_images/') && !str_starts_with($sponsorLogoPath, '/sponser_images/')) {
-                                                                                $sponsorLogoPath = 'sponser_images/' . $sponsorLogoPath;
-                                                                            }
-                                                                            $fullSponsorLogoPath = asset($sponsorLogoPath);
-                                                                        @endphp
-                                                                        <!-- Debug info: {{ $sponsor->logo }} -> {{ $sponsorLogoPath }} -> {{ $fullSponsorLogoPath }} -->
-                                                                        <img src="{{ $fullSponsorLogoPath }}" alt="Current Logo" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                                                        <div style="display: none; color: #dc3545; font-size: 12px;">Image not found: {{ basename($sponsorLogoPath) }} (Path: {{ $sponsorLogoPath }})</div>
-                                                                    </div>
-                                                                @endif
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <label>Website URL</label>
-                                                                <input type="url" class="form-control" name="sponsors[{{ $index }}][website]" 
-                                                                    value="{{ $sponsor->description }}" placeholder="https://example.com">
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <label>&nbsp;</label>
-                                                                <button type="button" class="btn btn-danger btn-sm btn-block remove-sponsor">
-                                                                    <i class="fe fe-trash-2"></i> Remove
-                                                                </button>
-                                                            </div>
-                                                        </div>
+                                <div class="col-md-6">
+                                    <div class="form-group list-group mb-3 shadow">
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <strong class="mb-2">Events</strong>
+                                                    <small class="text-muted d-block">Create and manage events</small>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" value="1"
+                                                            id="events" name="events"
+                                                            @if (($user->vendor && $user->vendor->events == 1) || ($user->subVendor && $user->subVendor->events == 1)) checked @endif>
+                                                        <label class="custom-control-label" for="events"></label>
                                                     </div>
-                                                @endforeach
-                                            @endif
+                                                </div>
+                                            </div>
                                         </div>
-                                        <button type="button" class="btn btn-success btn-sm" id="add-sponsor">
-                                            <i class="fe fe-plus mr-1"></i>Add New Sponsor
-                                        </button>
                                     </div>
-                                </div>
-                            </div>
-
-                            <!-- Banners Section -->
-                            <div class="row mb-4">
-                                <div class="col-12">
-                                    <h5 class="text-primary mb-3">
-                                        <i class="fe fe-image mr-2"></i>Banners
-                                    </h5>
-                                    <p class="text-muted">Manage banners for this user's profile.</p>
-                                </div>
-                                
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <div class="banners-container">
-                                            @if($user->banners && count($user->banners) > 0)
-                                                @foreach($user->banners as $index => $banner)
-                                                    <div class="banner-item mb-3 p-3 border rounded bg-light">
-                                                        <div class="row">
-                                                            <div class="col-md-3">
-                                                                <label>Banner Title</label>
-                                                                <input type="text" class="form-control" name="banners[{{ $index }}][title]" 
-                                                                    value="{{ $banner->title }}" placeholder="Enter banner title">
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <label>Banner File</label>
-                                                                <div class="custom-file">
-                                                                    <input type="file" class="custom-file-input" 
-                                                                        name="banner_files[{{ $index }}]" accept="image/*,video/*">
-                                                                    <label class="custom-file-label">Choose file</label>
-                                                                </div>
-                                                                        @if($banner->banner)
-                                                                            <div class="mt-2">
-                                                                                <small class="text-muted">Current banner:</small>
-                                                                                @php
-                                                                                    $bannerPath = $banner->banner;
-                                                                                    // If the path doesn't start with 'userBanners/', add it
-                                                                                    if (!str_starts_with($bannerPath, 'userBanners/') && !str_starts_with($bannerPath, '/userBanners/')) {
-                                                                                        $bannerPath = 'userBanners/' . $bannerPath;
-                                                                                    }
-                                                                                    $fullBannerPath = asset($bannerPath);
-                                                                                @endphp
-                                                                                <!-- Debug info: {{ $banner->banner }} -> {{ $bannerPath }} -> {{ $fullBannerPath }} -->
-                                                                                @if(pathinfo($bannerPath, PATHINFO_EXTENSION) == 'mp4')
-                                                                                    <video width="150" height="100" controls style="border: 1px solid #ddd; border-radius: 4px;">
-                                                                                        <source src="{{ $fullBannerPath }}" type="video/mp4">
-                                                                                        Your browser does not support the video tag.
-                                                                                    </video>
-                                                                                @else
-                                                                                    <img src="{{ $fullBannerPath }}" alt="Current Banner" width="150" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                                                                    <div style="display: none; color: #dc3545; font-size: 12px;">Image not found: {{ basename($bannerPath) }} (Path: {{ $bannerPath }})</div>
-                                                                                @endif
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-                                                                <div class="col-md-4">
-                                                                    <label>Link URL</label>
-                                                                    <input type="url" class="form-control" name="banners[{{ $index }}][link_url]" 
-                                                                        value="{{ $banner->subtitle }}" placeholder="https://example.com">
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <label>&nbsp;</label>
-                                                                    <button type="button" class="btn btn-danger btn-sm btn-block remove-banner">
-                                                                        <i class="fe fe-trash-2"></i> Remove
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mt-2">
-                                                                <div class="col-md-6">
-                                                                    <label>Description</label>
-                                                                    <textarea class="form-control" name="banners[{{ $index }}][description]" 
-                                                                        rows="2" placeholder="Enter banner description">{{ $banner->description }}</textarea>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label>Button Text</label>
-                                                                    <input type="text" class="form-control" name="banners[{{ $index }}][button_text]" 
-                                                                        value="{{ $banner->button_text }}" placeholder="Enter button text">
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                    
+                                    <div class="form-group list-group mb-3 shadow">
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <strong class="mb-2">Advertisement Space</strong>
+                                                    <small class="text-muted d-block">Display advertisements</small>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" value="1"
+                                                            id="ads" name="ad_space"
+                                                            @if (($user->vendor && $user->vendor->ad_space == 1) || ($user->subVendor && $user->subVendor->ad_space == 1)) checked @endif>
+                                                        <label class="custom-control-label" for="ads"></label>
                                                     </div>
-                                                @endforeach
-                                            @endif
+                                                </div>
+                                            </div>
                                         </div>
-                                        <button type="button" class="btn btn-success btn-sm" id="add-banner">
-                                            <i class="fe fe-plus mr-1"></i>Add New Banner
-                                        </button>
+                                    </div>
+                                    
+                                    <div class="form-group list-group mb-3 shadow">
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <strong class="mb-2">Blogging</strong>
+                                                    <small class="text-muted d-block">Create and manage blogs</small>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" value="1"
+                                                            id="blogs" name="blogging"
+                                                            @if (($user->vendor && $user->vendor->blogging == 1) || ($user->subVendor && $user->subVendor->blogging == 1)) checked @endif>
+                                                        <label class="custom-control-label" for="blogs"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -730,20 +657,24 @@
                                     
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="vendor">Parent Vendor</label>
+                                            <label for="vendor">Parent Vendor <span class="text-danger">*</span></label>
                                             <select id="vendor" class="form-control select2 @error('vendor_id') is-invalid @enderror"
-                                                name="vendor_id">
-                                                <option value="">Select Vendor</option>
+                                                name="vendor_id" required>
+                                                <option value="">Select Parent Vendor</option>
                                                 @foreach ($vendors as $vendor)
                                                     <option value="{{ $vendor->id }}"
                                                         {{ $user->subVendor->vendor_id == $vendor->id ? 'selected' : '' }}>
-                                                        {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}
+                                                        {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }} 
+                                                        @if($vendor->name)
+                                                            ({{ $vendor->name }})
+                                                        @endif
                                                     </option>
                                                 @endforeach
                                             </select>
                                             @error('vendor_id')
                                                 <span class="invalid-feedback">{{ $message }}</span>
                                             @enderror
+                                            <small class="form-text text-muted">Select the parent vendor this sub-vendor will work under</small>
                                         </div>
                                     </div>
                                 </div>
@@ -771,134 +702,205 @@
                                 </div>
                             </div>
 
-                            <!-- Package Features (for Vendors) -->
-                            @if ($user->isVendor() || $user->isSubVendor())
-                                <div class="row mb-4">
-                                    <div class="col-12">
-                                        <h5 class="text-primary mb-3">
-                                            <i class="fe fe-settings mr-2"></i>Package Features
-                                        </h5>
-                                    </div>
-                                    
-                                    <div class="col-md-6">
-                                        <div class="form-group list-group mb-3 shadow">
-                                            <div class="list-group-item">
-                                                <div class="row align-items-center">
-                                                    <div class="col">
-                                                        <strong class="mb-2">E-Commerce</strong>
-                                                        <small class="text-muted d-block">Sell products online</small>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <div class="custom-control custom-switch">
-                                                            <input type="checkbox" class="custom-control-input" value="1"
-                                                                id="e_com" name="ecommerce"
-                                                                @if (($user->vendor && $user->vendor->ecommerce == 1) || ($user->subVendor && $user->subVendor->ecommerce == 1)) checked @endif>
-                                                            <label class="custom-control-label" for="e_com"></label>
+                            <!-- Banners Section -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary mb-3">
+                                        <i class="fe fe-image mr-2"></i>Banners
+                                    </h5>
+                                    <p class="text-muted">Manage banners for this user's profile.</p>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <div class="banners-container">
+                                            @if($user->banners && count($user->banners) > 0)
+                                                @foreach($user->banners as $index => $banner)
+                                                    <div class="banner-item mb-3 p-3 border rounded bg-light">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>Banner Title</label>
+                                                                <input type="text" class="form-control" name="banners[{{ $index }}][title]" 
+                                                                    value="{{ $banner->title }}" placeholder="Enter banner title">
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label>Banner File</label>
+                                                                <div class="custom-file">
+                                                                    <input type="file" class="custom-file-input" 
+                                                                        name="banner_files[{{ $index }}]" accept="image/*,video/*">
+                                                                    <label class="custom-file-label">Choose file</label>
+                                                                </div>
+                                                                        @if($banner->banner)
+                                                                            <div class="mt-2">
+                                                                                <small class="text-muted">Current banner:</small>
+                                                                                @php
+                                                                                    $bannerPath = $banner->banner;
+                                                                                    // If the path doesn't start with 'userBanners/', add it
+                                                                                    if (!str_starts_with($bannerPath, 'userBanners/') && !str_starts_with($bannerPath, '/userBanners/')) {
+                                                                                        $bannerPath = 'userBanners/' . $bannerPath;
+                                                                                    }
+                                                                                    $fullBannerPath = asset($bannerPath);
+                                                                                @endphp
+                                                                                <!-- Debug info: {{ $banner->banner }} -> {{ $bannerPath }} -> {{ $fullBannerPath }} -->
+                                                                                @if(pathinfo($bannerPath, PATHINFO_EXTENSION) == 'mp4')
+                                                                                    <video width="150" height="100" controls style="border: 1px solid #ddd; border-radius: 4px;">
+                                                                                        <source src="{{ $fullBannerPath }}" type="video/mp4">
+                                                                                        Your browser does not support the video tag.
+                                                                                    </video>
+                                                                                @else
+                                                                                    <img src="{{ $fullBannerPath }}" alt="Current Banner" width="150" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                                                                    <div style="display: none; color: #dc3545; font-size: 12px;">Image not found: {{ basename($bannerPath) }} (Path: {{ $bannerPath }})</div>
+                                                                                @endif
+                                                                            </div>
+                                                                        @endif
+                                                                    </div>
+                                                                <div class="col-md-4">
+                                                                    <label>Link URL</label>
+                                                                    <input type="url" class="form-control" name="banners[{{ $index }}][link_url]" 
+                                                                        value="{{ $banner->subtitle }}" placeholder="https://example.com">
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <label>&nbsp;</label>
+                                                                    <button type="button" class="btn btn-danger btn-sm btn-block remove-banner">
+                                                                        <i class="fe fe-trash-2"></i> Remove
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-2">
+                                                                <div class="col-md-6">
+                                                                    <label>Description</label>
+                                                                    <textarea class="form-control" name="banners[{{ $index }}][description]" 
+                                                                        rows="2" placeholder="Enter banner description">{{ $banner->description }}</textarea>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>Button Text</label>
+                                                                    <input type="text" class="form-control" name="banners[{{ $index }}][button_text]" 
+                                                                        value="{{ $banner->button_text }}" placeholder="Enter button text">
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                @endforeach
+                                            @endif
                                         </div>
-                                        
-                                        <div class="form-group list-group mb-3 shadow">
-                                            <div class="list-group-item">
-                                                <div class="row align-items-center">
-                                                    <div class="col">
-                                                        <strong class="mb-2">Music Upload</strong>
-                                                        <small class="text-muted d-block">Upload and manage music</small>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <div class="custom-control custom-switch">
-                                                            <input type="checkbox" class="custom-control-input" value="1"
-                                                                id="music" name="music"
-                                                                @if (($user->vendor && $user->vendor->music == 1) || ($user->subVendor && $user->subVendor->music == 1)) checked @endif>
-                                                            <label class="custom-control-label" for="music"></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group list-group mb-3 shadow">
-                                            <div class="list-group-item">
-                                                <div class="row align-items-center">
-                                                    <div class="col">
-                                                        <strong class="mb-2">Appointments</strong>
-                                                        <small class="text-muted d-block">Manage appointments</small>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <div class="custom-control custom-switch">
-                                                            <input type="checkbox" class="custom-control-input" value="1"
-                                                                id="appointments" name="appointment"
-                                                                @if (($user->vendor && $user->vendor->appointment == 1) || ($user->subVendor && $user->subVendor->appointment == 1)) checked @endif>
-                                                            <label class="custom-control-label" for="appointments"></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-md-6">
-                                        <div class="form-group list-group mb-3 shadow">
-                                            <div class="list-group-item">
-                                                <div class="row align-items-center">
-                                                    <div class="col">
-                                                        <strong class="mb-2">Events</strong>
-                                                        <small class="text-muted d-block">Create and manage events</small>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <div class="custom-control custom-switch">
-                                                            <input type="checkbox" class="custom-control-input" value="1"
-                                                                id="events" name="events"
-                                                                @if (($user->vendor && $user->vendor->events == 1) || ($user->subVendor && $user->subVendor->events == 1)) checked @endif>
-                                                            <label class="custom-control-label" for="events"></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group list-group mb-3 shadow">
-                                            <div class="list-group-item">
-                                                <div class="row align-items-center">
-                                                    <div class="col">
-                                                        <strong class="mb-2">Advertisement Space</strong>
-                                                        <small class="text-muted d-block">Display advertisements</small>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <div class="custom-control custom-switch">
-                                                            <input type="checkbox" class="custom-control-input" value="1"
-                                                                id="ads" name="ad_space"
-                                                                @if (($user->vendor && $user->vendor->ad_space == 1) || ($user->subVendor && $user->subVendor->ad_space == 1)) checked @endif>
-                                                            <label class="custom-control-label" for="ads"></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group list-group mb-3 shadow">
-                                            <div class="list-group-item">
-                                                <div class="row align-items-center">
-                                                    <div class="col">
-                                                        <strong class="mb-2">Blogging</strong>
-                                                        <small class="text-muted d-block">Create and manage blogs</small>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <div class="custom-control custom-switch">
-                                                            <input type="checkbox" class="custom-control-input" value="1"
-                                                                id="blogs" name="blogging"
-                                                                @if (($user->vendor && $user->vendor->blogging == 1) || ($user->subVendor && $user->subVendor->blogging == 1)) checked @endif>
-                                                            <label class="custom-control-label" for="blogs"></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <button type="button" class="btn btn-success btn-sm" id="add-banner">
+                                            <i class="fe fe-plus mr-1"></i>Add New Banner
+                                        </button>
                                     </div>
                                 </div>
-                            @endif
+                            </div>
+
+                            <!-- Tabs Section -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary mb-3">
+                                        <i class="fe fe-layers mr-2"></i>User Tabs
+                                    </h5>
+                                    <p class="text-muted">Manage tabs that will be displayed on the user's profile page.</p>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <div class="tabs-container">
+                                            @if($user->tabs && count($user->tabs) > 0)
+                                                @foreach($user->tabs as $index => $tab)
+                                                    <div class="tab-item mb-3 p-3 border rounded bg-light">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <label>Tab Title</label>
+                                                                <input type="text" class="form-control" name="tabs[{{ $index }}][title]" 
+                                                                    value="{{ $tab->name }}" placeholder="Enter tab title">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>Tab Content</label>
+                                                                <textarea class="form-control" name="tabs[{{ $index }}][content]" 
+                                                                    rows="3" placeholder="Enter tab content">{{ $tab->description }}</textarea>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label>&nbsp;</label>
+                                                                <button type="button" class="btn btn-danger btn-sm btn-block remove-tab">
+                                                                    <i class="fe fe-trash-2"></i> Remove
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                        <button type="button" class="btn btn-success btn-sm" id="add-tab">
+                                            <i class="fe fe-plus mr-1"></i>Add New Tab
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sponsors Section -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary mb-3">
+                                        <i class="fe fe-award mr-2"></i>Sponsors
+                                    </h5>
+                                    <p class="text-muted">Manage sponsors associated with this user.</p>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <div class="sponsors-container">
+                                            @if($user->sponsors && count($user->sponsors) > 0)
+                                                @foreach($user->sponsors as $index => $sponsor)
+                                                    <div class="sponsor-item mb-3 p-3 border rounded bg-light">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label>Sponsor Name</label>
+                                                                <input type="text" class="form-control" name="sponsors[{{ $index }}][name]" 
+                                                                    value="{{ $sponsor->title }}" placeholder="Enter sponsor name">
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label>Logo</label>
+                                                                <div class="custom-file">
+                                                                    <input type="file" class="custom-file-input" 
+                                                                        name="sponsor_logos[{{ $index }}]" accept="image/*">
+                                                                    <label class="custom-file-label">Choose file</label>
+                                                                </div>
+                                                                @if($sponsor->logo)
+                                                                    <div class="mt-2">
+                                                                        <small class="text-muted">Current logo:</small>
+                                                                        @php
+                                                                            $sponsorLogoPath = $sponsor->logo;
+                                                                            // If the path doesn't start with 'sponser_images/', add it
+                                                                            if (!str_starts_with($sponsorLogoPath, 'sponser_images/') && !str_starts_with($sponsorLogoPath, '/sponser_images/')) {
+                                                                                $sponsorLogoPath = 'sponser_images/' . $sponsorLogoPath;
+                                                                            }
+                                                                            $fullSponsorLogoPath = asset($sponsorLogoPath);
+                                                                        @endphp
+                                                                        <!-- Debug info: {{ $sponsor->logo }} -> {{ $sponsorLogoPath }} -> {{ $fullSponsorLogoPath }} -->
+                                                                        <img src="{{ $fullSponsorLogoPath }}" alt="Current Logo" width="100" height="100" style="object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                                                        <div style="display: none; color: #dc3545; font-size: 12px;">Image not found: {{ basename($sponsorLogoPath) }} (Path: {{ $sponsorLogoPath }})</div>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label>Website URL</label>
+                                                                <input type="url" class="form-control" name="sponsors[{{ $index }}][website]" 
+                                                                    value="{{ $sponsor->description }}" placeholder="https://example.com">
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label>&nbsp;</label>
+                                                                <button type="button" class="btn btn-danger btn-sm btn-block remove-sponsor">
+                                                                    <i class="fe fe-trash-2"></i> Remove
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                        <button type="button" class="btn btn-success btn-sm" id="add-sponsor">
+                                            <i class="fe fe-plus mr-1"></i>Add New Sponsor
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
                             <!-- Form Actions -->
                             <div class="row">
@@ -956,6 +958,8 @@
 
             // Dynamic Tabs Management
             let tabIndex = 0;
+            let sponsorIndex = 0;
+            let bannerIndex = 0;
             
             // Initialize counter based on existing items
             $(document).ready(function() {
@@ -1013,7 +1017,6 @@
             }
 
             // Dynamic Sponsors Management
-            let sponsorIndex = 0;
             
             $('#add-sponsor').click(function() {
                 sponsorIndex++;
@@ -1074,7 +1077,6 @@
             }
 
             // Dynamic Banners Management
-            let bannerIndex = 0;
             
             $('#add-banner').click(function() {
                 bannerIndex++;
