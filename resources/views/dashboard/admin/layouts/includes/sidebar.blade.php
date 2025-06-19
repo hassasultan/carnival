@@ -78,32 +78,32 @@
             <span>Location Management</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{ route('regions.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('regions.index') }}" class="nav-link">
                     <i class="fe fe-globe fe-16"></i>
                     <span class="ml-3 item-text">Region Management</span>
                 </a>
             </li>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{ route('countries.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('countries.index') }}" class="nav-link">
                     <i class="fe fe-flag fe-16"></i>
                     <span class="ml-3 item-text">Countries</span>
                 </a>
             </li>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{ route('states.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('states.index') }}" class="nav-link">
                     <i class="fe fe-map fe-16"></i>
                     <span class="ml-3 item-text">States</span>
                 </a>
             </li>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{ route('cities.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('cities.index') }}" class="nav-link">
                     <i class="fe fe-map-pin fe-16"></i>
                     <span class="ml-3 item-text">Cities</span>
                 </a>
@@ -115,48 +115,48 @@
             <span>Content Management</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{ route('banners.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('banners.index') }}" class="nav-link">
                     <i class="fe fe-flag fe-16"></i>
                     <span class="ml-3 item-text">Banners</span>
                 </a>
             </li>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{ route('advertisements.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('advertisements.index') }}" class="nav-link">
                     <i class="fe fe-award fe-16"></i>
                     <span class="ml-3 item-text">Advertisements</span>
                 </a>
             </li>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{ route('testimonials.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('testimonials.index') }}" class="nav-link">
                     <i class="fe fe-message-square fe-16"></i>
                     <span class="ml-3 item-text">Testimonials</span>
                 </a>
             </li>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{ route('our_team.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('our_team.index') }}" class="nav-link">
                     <i class="fe fe-users fe-16"></i>
                     <span class="ml-3 item-text">Our Team</span>
                 </a>
             </li>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{ route('our_services.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('our_services.index') }}" class="nav-link">
                     <i class="fe fe-briefcase fe-16"></i>
                     <span class="ml-3 item-text">Our Services Management</span>
                 </a>
             </li>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{ route('site_gallery.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('site_gallery.index') }}" class="nav-link">
                     <i class="fe fe-image fe-16"></i>
                     <span class="ml-3 item-text">Gallery</span>
                 </a>
@@ -168,16 +168,16 @@
             <span>Business Partners</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{ route('investors.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('investors.index') }}" class="nav-link">
                     <i class="fe fe-dollar-sign fe-16"></i>
                     <span class="ml-3 item-text">Investors</span>
                 </a>
             </li>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{ route('brands.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('brands.index') }}" class="nav-link">
                     <i class="fe fe-award fe-16"></i>
                     <span class="ml-3 item-text">Brands</span>
                 </a>
@@ -189,14 +189,14 @@
             <span>Support & Help</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{ route('faqs.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('faqs.index') }}" class="nav-link">
                     <i class="fe fe-help-circle fe-16"></i>
                     <span class="ml-3 item-text">FAQs</span>
                 </a>
             </li>
-            <li class="nav-item dropdown">
-                <a href="{{ route('faqs_page.index') }}" class="dropdown-toggle nav-link">
+            <li class="nav-item">
+                <a href="{{ route('faqs_page.index') }}" class="nav-link">
                     <i class="fe fe-file-text fe-16"></i>
                     <span class="ml-3 item-text">FAQs Pages</span>
                 </a>
