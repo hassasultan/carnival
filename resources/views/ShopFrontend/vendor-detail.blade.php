@@ -990,7 +990,7 @@
                                                         $vendorLogo = $item->logo
                                                             ? asset('images/' . $item->logo)
                                                             : asset('images/' . $item->user->image);
-                                                        $vendorName =More actions
+                                                        $vendorName =
                                                             $item->name ?:
                                                             $item->user->first_name . ' ' . $item->user->last_name;
                                                     @endphp
@@ -1030,7 +1030,7 @@
                                                 $vendorLogo = $item->logo
                                                     ? asset('images/' . $item->logo)
                                                     : asset('images/' . $item->user->image);
-                                                $vendorName =More actions
+                                                $vendorName =
                                                     $item->name ?:
                                                     $item->user->first_name . ' ' . $item->user->last_name;
                                             @endphp
@@ -1067,7 +1067,7 @@
                                 }'
                                         id="new-arrival-products-mascamp">
                                         @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
-                                            @phpMore actions
+                                            @php
                                                 $vendorLogo = $item->logo
                                                     ? asset('images/' . $item->logo)
                                                     : asset('images/' . $item->user->image);
@@ -1109,7 +1109,7 @@
                                         }'
                                             id="vendors-cat-div-mascamp-{{ $row->id }}">
                                             @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
-                                                @phpMore actions
+                                                @php
                                                     $vendorLogo = $item->logo
                                                         ? asset('images/' . $item->logo)
                                                         : asset('images/' . $item->user->image);
