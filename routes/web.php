@@ -324,6 +324,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // banner
     Route::resource('banners', BannerController::class);
+    Route::get('/banners/{id}/deletion-details', [BannerController::class, 'getDeletionDetails'])->name('banners.deletion-details');
 
     // advertisements
     Route::resource('advertisements', AdvertisementController::class);

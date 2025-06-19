@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Banner;
+use Illuminate\Support\Facades\File;
+use Exception;
 
 class BannerController extends Controller
 {
@@ -66,15 +68,23 @@ class BannerController extends Controller
         $banner = Banner::findOrFail($id);
 
         if ($request->hasFile('banner_image')) {
+            // Delete old banner image file if it exists
+            if ($banner->banner_image && File::exists(public_path($banner->banner_image))) {
+                File::delete(public_path($banner->banner_image));
+            }
+            
             $imageName = time() . '.' . $request->banner_image->getClientOriginalExtension();
-
             $request->banner_image->move(public_path('banner_image'), $imageName);
-
             $banner->banner_image = 'banner_image/' . $imageName;
         }
-        $poster = null;
+        
         if($request->has('poster') && $request->poster != null && $request->poster != '')
         {
+            // Delete old poster image file if it exists
+            if ($banner->poster && File::exists(public_path($banner->poster))) {
+                File::delete(public_path($banner->poster));
+            }
+            
             $poster = 'poster_image/' . time() . '.' . $request->poster->extension();
             $request->poster->move(public_path('poster_image'), $poster);
             $banner->poster = $poster;
@@ -88,11 +98,67 @@ class BannerController extends Controller
         return redirect()->route('banners.index')->with('success', 'Banner updated successfully.');
     }
 
+    public function getDeletionDetails($id)
+    {
+        try {
+            $banner = Banner::findOrFail($id);
+            
+            $deletionDetails = [
+                'banner' => [
+                    'id' => $banner->id,
+                    'type' => $banner->type,
+                    'description' => $banner->description,
+                    'banner_image' => $banner->banner_image,
+                    'poster' => $banner->poster
+                ],
+                'files_to_delete' => []
+            ];
+            
+            // Add banner image to files to delete
+            if ($banner->banner_image) {
+                $deletionDetails['files_to_delete'][] = [
+                    'path' => $banner->banner_image,
+                    'full_path' => public_path($banner->banner_image),
+                    'type' => 'Banner Image'
+                ];
+            }
+            
+            // Add poster image to files to delete
+            if ($banner->poster) {
+                $deletionDetails['files_to_delete'][] = [
+                    'path' => $banner->poster,
+                    'full_path' => public_path($banner->poster),
+                    'type' => 'Poster Image'
+                ];
+            }
+            
+            return response()->json($deletionDetails);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error getting deletion details: ' . $e->getMessage()], 500);
+        }
+    }
+
     public function destroy($id)
     {
-        $banner = Banner::findOrFail($id);
-        $banner->delete();
+        try {
+            $banner = Banner::findOrFail($id);
+            
+            // Delete banner image file
+            if ($banner->banner_image && File::exists(public_path($banner->banner_image))) {
+                File::delete(public_path($banner->banner_image));
+            }
+            
+            // Delete poster image file
+            if ($banner->poster && File::exists(public_path($banner->poster))) {
+                File::delete(public_path($banner->poster));
+            }
+            
+            // Delete the banner record
+            $banner->delete();
 
-        return redirect()->route('banners.index')->with('success', 'Banner deleted successfully.');
+            return redirect()->route('banners.index')->with('success', 'Banner and associated files deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error deleting banner: ' . $e->getMessage());
+        }
     }
 }
