@@ -32,7 +32,8 @@
                                 <tr>
                                     <th></th>
                                     <th>Sr#</th>
-                                    <th>Image</th>
+                                    <th>Poster</th>
+                                    <th>Media Type</th>
                                     <th>Type</th>
                                     <th>Description</th>
                                     <th>Status</th>
@@ -52,10 +53,25 @@
                                     </td>
                                     <td>{{ $counter++ }}</td>
                                     <td>
-                                        @if($banner->banner_image)
+                                        @if($banner->poster)
+                                            <img src="{{ asset($banner->poster) }}" alt="Poster" width="100" height="60" style="object-fit: cover;">
+                                        @elseif($banner->banner_image && !str_contains($banner->banner_image, '.mp4') && !str_contains($banner->banner_image, '.avi') && !str_contains($banner->banner_image, '.mov') && !str_contains($banner->banner_image, '.wmv'))
                                             <img src="{{ asset($banner->banner_image) }}" alt="Banner" width="100" height="60" style="object-fit: cover;">
                                         @else
-                                            <span class="text-muted">No image</span>
+                                            <div class="bg-light d-flex align-items-center justify-content-center" style="width: 100px; height: 60px;">
+                                                <i class="fe fe-image text-muted"></i>
+                                            </div>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($banner->banner_image && (str_contains($banner->banner_image, '.mp4') || str_contains($banner->banner_image, '.avi') || str_contains($banner->banner_image, '.mov') || str_contains($banner->banner_image, '.wmv')))
+                                            <span class="badge badge-info">
+                                                <i class="fe fe-video mr-1"></i>Video
+                                            </span>
+                                        @else
+                                            <span class="badge badge-secondary">
+                                                <i class="fe fe-image mr-1"></i>Image
+                                            </span>
                                         @endif
                                     </td>
                                     <td>{{ $banner->type }}</td>
@@ -129,9 +145,15 @@
     var currentBannerDeleteButton = null;
     
     $(document).ready(function() {
-        $('.delete-banner').click(function() {
+        // Use event delegation for delete buttons (works with DataTable)
+        $(document).on('click', '.delete-banner', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
             var bannerId = $(this).data('id');
             var button = $(this);
+            
+            console.log('Delete button clicked for banner ID:', bannerId); // Debug log
             
             currentBannerId = bannerId;
             currentBannerDeleteButton = button;
@@ -144,8 +166,8 @@
                     showBannerDeletionModal(response);
                 },
                 error: function(xhr, status, error) {
-                    console.error(xhr.responseText);
-                    alert('Failed to get deletion details.');
+                    console.error('Error getting deletion details:', xhr.responseText);
+                    alert('Failed to get deletion details. Please try again.');
                 }
             });
         });
@@ -232,7 +254,7 @@
                         });
                     },
                     error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
+                        console.error('Error deleting banner:', xhr.responseText);
                         
                         // Re-enable button
                         button.prop('disabled', false);
@@ -247,6 +269,9 @@
                 });
             }
         });
+        
+        // Debug: Check if delete buttons exist
+        console.log('Delete buttons found:', $('.delete-banner').length);
     });
 </script>
 @endsection
