@@ -23,6 +23,9 @@ use App\Models\Event;
 use App\Models\Appointment;
 use App\Models\CostumeVariantImage;
 use App\Models\ProductVariantImage;
+use App\Models\GalleryAlbum;
+use App\Models\SiteGallery;
+use App\Models\Music;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -138,11 +141,11 @@ class UserManagementController extends Controller
                 Rule::unique('users')->ignore($userId),
             ],
             'phone' => ['required', 'string', 'max:18'],
-            'address' => ['required', 'string', 'max:255'],
-            'city' => ['required', 'string', 'max:255'],
-            'state' => ['required', 'string', 'max:255'],
-            'country' => ['required', 'string', 'max:255'],
-            'zipcode' => ['required', 'string', 'max:255'],
+            'address' => ['nullable', 'string', 'max:255'],
+            'city' => ['nullable', 'string', 'max:255'],
+            'state' => ['nullable', 'string', 'max:255'],
+            'country' => ['nullable', 'string', 'max:255'],
+            'zipcode' => ['nullable', 'string', 'max:255'],
             'vendor_id' => 'required_without_all:package_id|nullable|numeric',
             'package_id' => ['nullable'],
             'age' => ['nullable'],
@@ -154,11 +157,33 @@ class UserManagementController extends Controller
             'bust' => ['nullable'],
             'hips' => ['nullable'],
             'waist' => ['nullable'],
-            // 'image' => 'required|image|max:2048',
+            'short_description' => ['nullable', 'string', 'max:500'],
+            'continent' => ['nullable', 'string', 'max:255'],
+            'facebook' => ['nullable', 'url', 'max:255'],
+            'twitter' => ['nullable', 'url', 'max:255'],
+            'instagram' => ['nullable', 'url', 'max:255'],
+            'linkedin' => ['nullable', 'url', 'max:255'],
+            'youtube' => ['nullable', 'url', 'max:255'],
+            'website' => ['nullable', 'url', 'max:255'],
+            'image' => ['nullable', 'image', 'max:2048'],
+            'logo' => ['nullable', 'image', 'max:2048'],
+            'tabs.*.title' => ['nullable', 'string', 'max:255'],
+            'tabs.*.content' => ['nullable', 'string'],
+            'sponsors.*.name' => ['nullable', 'string', 'max:255'],
+            'sponsors.*.website' => ['nullable', 'url', 'max:255'],
+            'sponsor_logos.*' => ['nullable', 'image', 'max:2048'],
+            'banners.*.title' => ['nullable', 'string', 'max:255'],
+            'banners.*.link_url' => ['nullable', 'url', 'max:255'],
+            'banner_files.*' => ['nullable', 'file', 'max:10240'], // 10MB for videos
         ];
 
         if (!$userId) {
             $rules['password'] = ['required', 'string', 'min:8', 'confirmed'];
+            $rules['address'] = ['required', 'string', 'max:255'];
+            $rules['city'] = ['required', 'string', 'max:255'];
+            $rules['state'] = ['required', 'string', 'max:255'];
+            $rules['country'] = ['required', 'string', 'max:255'];
+            $rules['zipcode'] = ['required', 'string', 'max:255'];
         }
 
         return Validator::make($data, $rules);
@@ -192,56 +217,83 @@ class UserManagementController extends Controller
                 'zipcode' => $data['zipcode'],
                 'role_id' => $data['role_id'],
                 'slug' => $slug,
-                'age' => $data['age'] ? $data['age'] : null,
-                'nationality' => $data['nationality'] ? $data['nationality'] : null,
-                'age_range' => $data['age_range'] ? $data['age_range'] : null,
-                'gender' => $data['gender'] ? $data['gender'] : null,
-                'height' => $data['height'] ? $data['height'] : null,
-                'weight' => $data['weight'] ? $data['weight'] : null,
-                'bust' => $data['bust'] ? $data['bust'] : null,
-                'hips' => $data['hips'] ? $data['hips'] : null,
-                'waist' => $data['waist'] ? $data['waist'] : null,
+                'age' => $data['age'] ?? null,
+                'nationality' => $data['nationality'] ?? null,
+                'age_range' => $data['age_range'] ?? null,
+                'gender' => $data['gender'] ?? null,
+                'height' => $data['height'] ?? null,
+                'weight' => $data['weight'] ?? null,
+                'bust' => $data['bust'] ?? null,
+                'hips' => $data['hips'] ?? null,
+                'waist' => $data['waist'] ?? null,
+                'short_description' => $data['short_description'] ?? null,
+                'continent' => $data['continent'] ?? null,
+                'facebook' => $data['facebook'] ?? null,
+                'twitter' => $data['twitter'] ?? null,
+                'instagram' => $data['instagram'] ?? null,
+                'linkedin' => $data['linkedin'] ?? null,
+                'youtube' => $data['youtube'] ?? null,
+                'website' => $data['website'] ?? null,
                 'logo' => $data['logo'] ?? null,
                 'image' => $data['image'] ?? null,
             ]);
 
-            if (isset($data['banner']) && is_array($data['banner'])) {
-                foreach ($data['banner'] as $index => $banner) {
-                    $imageName = $this->uploadImage($banner, 'userBanners');
-                    UserDetailBanner::create([
-                        'user_id' => $user->id,
-                        'banner' => 'userBanners/' . $imageName,
-                        'title' => $data['banner_title'][$index] ?? null,
-                        'subtitle' => $data['banner_subtitle'][$index] ?? null,
-                        'description' => $data['banner_description'][$index] ?? null,
-                        'button_text' => $data['banner_button'][$index] ?? null,
-                    ]);
-                }
-            }
-            if (isset($data['tab_name']) && is_array($data['tab_name'])) {
-                foreach ($data['tab_name'] as $index => $tab) {
-                    UserDetailTabs::create([
-                        'user_id' => $user->id,
-                        'name' => $data['tab_name'][$index] ?? null,
-                        'description' => $data['tab_description'][$index] ?? null,
-                    ]);
+            // Handle tabs
+            if (isset($data['tabs']) && is_array($data['tabs'])) {
+                foreach ($data['tabs'] as $tab) {
+                    if (!empty($tab['title']) && !empty($tab['content'])) {
+                        UserDetailTabs::create([
+                            'user_id' => $user->id,
+                            'name' => $tab['title'],
+                            'description' => $tab['content'],
+                        ]);
+                    }
                 }
             }
 
-            if (isset($data['sponser_logo']) && is_array($data['sponser_logo'])) {
-                foreach ($data['sponser_logo'] as $key => $row) {
-                    $sponser = new Sponsers;
-                    $sponser->user_id = $user->id;
-                    $sponser->logo = $this->uploadImage($row, 'sponser_images');
-                    if (isset($data['sponser_title'][$key])) {
-                        $sponser->title = $data['sponser_title'][$key];
+            // Handle sponsors
+            if (isset($data['sponsors']) && is_array($data['sponsors'])) {
+                foreach ($data['sponsors'] as $index => $sponsor) {
+                    if (!empty($sponsor['name'])) {
+                        $sponsorData = [
+                            'user_id' => $user->id,
+                            'title' => $sponsor['name'],
+                            'description' => $sponsor['website'] ?? '',
+                        ];
+                        
+                        // Handle sponsor logo upload
+                        if (isset($data['sponsor_logos'][$index])) {
+                            $logoName = $this->uploadImage($data['sponsor_logos'][$index], 'sponser_images');
+                            $sponsorData['logo'] = 'sponser_images/' . $logoName;
+                        }
+                        
+                        Sponsers::create($sponsorData);
                     }
-                    if (isset($data['sponser_description'][$key])) {
-                        $sponser->title = $data['sponser_description'][$key];
-                    }
-                    $sponser->save();
                 }
             }
+
+            // Handle banners
+            if (isset($data['banners']) && is_array($data['banners'])) {
+                foreach ($data['banners'] as $index => $banner) {
+                    if (!empty($banner['title'])) {
+                        $bannerData = [
+                            'user_id' => $user->id,
+                            'title' => $banner['title'],
+                            'subtitle' => $banner['link_url'] ?? '',
+                        ];
+                        
+                        // Handle banner file upload
+                        if (isset($data['banner_files'][$index])) {
+                            $file = $data['banner_files'][$index];
+                            $fileName = $this->uploadImage($file, 'userBanners');
+                            $bannerData['banner'] = 'userBanners/' . $fileName;
+                        }
+                        
+                        UserDetailBanner::create($bannerData);
+                    }
+                }
+            }
+
             if ($data['role_id'] == 2) {
                 Vendor::create([
                     'user_id' => $user->id,
@@ -314,7 +366,7 @@ class UserManagementController extends Controller
     public function edit($id)
     {
         $continents = Region::all();
-        $user = User::with('banners')->findOrFail($id);
+        $user = User::with(['banners', 'tabs', 'sponsors'])->findOrFail($id);
         $roles = Role::where('status', 1)->get();
         $packages = Package::where('status', 1)->get();
         $vendors = Vendor::with('user')->where('status', 1)->get();
@@ -323,165 +375,190 @@ class UserManagementController extends Controller
 
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         $user = User::findOrFail($id);
-        $package_id = '';
-        if ($request->package_id == 'section_leader') {
-            $package_id = '123';
-            $user->role_id = '3';
-        } else {
-            $user->role_id = '2';
-            $package_id = $request->package_id;
-        }
-
-        if ($request->hasFile('logo')) {
-            $imageName = $this->uploadImage($request->logo, 'images');
-            $logo = $imageName;
-        }
-
-        if ($user->vendor) {
-            $user->vendor->update([
-                'ecommerce' => $request->input('ecommerce'),
-                'events' => $request->input('events'),
-                'music' => $request->input('music'),
-                'appointment' => $request->input('appointment'),
-                'ad_space' => $request->input('ad_space'),
-                'blogging' => $request->input('blogging'),
-                // 'continent' => $request->input('continent'),
-
-                'package_id' => $package_id,
-                'name' => $request->input('shop_name'),
-                'email' => $request->input('shop_email'),
-                'address' => $request->input('shop_address'),
-                'phone' => $request->input('shop_phone'),
-                'continent' => $request->input('continent'),
-                'insta' => $request->input('shop_insta') ?? null,
-                'facebook' => $request->input('shop_facebook') ?? null,
-                'youtube' => $request->input('shop_youtube') ?? null,
-                'twitter' => $request->input('shop_twitter') ?? null,
-                'tiktok' => $request->input('shop_tiktok') ?? null,
-                'wa_business_page' => $request->input('shop_wa_business_page') ?? null,
-                'linkedin' => $request->input('shop_linkedin') ?? null,
-                'short_description' => $request->input('short_description') ?? null,
-                'status' => 1,
-                'logo' => $logo ?? null,
-            ]);
-        }
-
-        if ($user->subVendor) {
-            $user->subVendor->update([
-                // 'ecommerce' => $request->input('ecommerce'),
-                // 'events' => $request->input('events'),
-                // 'music' => $request->input('music'),
-                // 'appointment' => $request->input('appointment'),
-                // 'ad_space' => $request->input('ad_space'),
-                // 'blogging' => $request->input('blogging'),
-                // 'continent' => $request->input('continent'),
-
-                'vendor_id' => $request->input('vendor_id'),
-                'name' => $request->input('shop_name'),
-                'email' => $request->input('shop_email'),
-                'address' => $request->input('shop_address'),
-                'phone' => $request->input('shop_phone'),
-                'continent' => $request->input('continent'),
-                'insta' => $request->input('shop_insta') ?? null,
-                'facebook' => $request->input('shop_facebook') ?? null,
-                'youtube' => $request->input('shop_youtube') ?? null,
-                'twitter' => $request->input('shop_twitter') ?? null,
-                'tiktok' => $request->input('shop_tiktok') ?? null,
-                'wa_business_page' => $request->input('shop_wa_business_page') ?? null,
-                'linkedin' => $request->input('shop_linkedin') ?? null,
-                'ecommerce' => $request->input('ecommerce') ?? 0,
-                'events' => $request->input('events') ?? 0,
-                'music' => $request->input('music') ?? 0,
-                'appointment' => $request->input('appointment') ?? 0,
-                'ad_space' => $request->input('ad_space') ?? 0,
-                'blogging' => $request->input('blogging') ?? 0,
-                'status' => 1,
-                'logo' => $logo ?? null,
-            ]);
-        }
-
+        
+        // Validate the request
         $validator = $this->validator($request->all(), $id);
-
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        $user->update($request->all());
-
-        if ($request->hasFile('image')) {
-            if ($user->image) {
-                $this->deleteImage('images/' . $user->image);
+        DB::beginTransaction();
+        
+        try {
+            // Handle package and role logic
+            $package_id = '';
+            if ($request->package_id == 'section_leader') {
+                $package_id = '123';
+                $user->role_id = '3';
+            } else {
+                $user->role_id = '2';
+                $package_id = $request->package_id;
             }
-            $imageName = $this->uploadImage($request->file('image'), 'images');
-            $user->image = $imageName;
-            $user->save();
-        }
 
-        if ($request->hasFile('banner')) {
+            // Handle logo upload
+            $logo = null;
+            if ($request->hasFile('logo')) {
+                $imageName = $this->uploadImage($request->logo, 'images');
+                $logo = $imageName;
+            }
 
-            foreach ($request->file('banner') as $index => $banner) {
-                $imageName = $this->uploadImage($banner, 'userBanners');
-
-                UserDetailBanner::create([
-                    'user_id' => $user->id,
-                    'banner' => 'userBanners/' . $imageName,
-                    'title' => $request->input('banner_title')[$index] ?? null,
-                    'subtitle' => $request->input('banner_subtitle')[$index] ?? null,
-                    'description' => $request->input('banner_description')[$index] ?? null,
-                    'button_text' => $request->input('banner_button')[$index] ?? null,
+            // Update vendor data
+            if ($user->vendor) {
+                $user->vendor->update([
+                    'ecommerce' => $request->input('ecommerce', 0),
+                    'events' => $request->input('events', 0),
+                    'music' => $request->input('music', 0),
+                    'appointment' => $request->input('appointment', 0),
+                    'ad_space' => $request->input('ad_space', 0),
+                    'blogging' => $request->input('blogging', 0),
+                    'package_id' => $package_id,
+                    'name' => $request->input('shop_name'),
+                    'email' => $request->input('shop_email'),
+                    'address' => $request->input('shop_address'),
+                    'phone' => $request->input('shop_phone'),
+                    'continent' => $request->input('continent'),
+                    'insta' => $request->input('shop_insta'),
+                    'facebook' => $request->input('shop_facebook'),
+                    'youtube' => $request->input('shop_youtube'),
+                    'twitter' => $request->input('shop_twitter'),
+                    'tiktok' => $request->input('shop_tiktok'),
+                    'wa_business_page' => $request->input('shop_wa_business_page'),
+                    'linkedin' => $request->input('shop_linkedin'),
+                    'short_description' => $request->input('short_description'),
+                    'status' => 1,
+                    'logo' => $logo ?? $user->vendor->logo,
                 ]);
             }
-        }
 
-        if (
-            isset($request->tab_name) && is_array($request->tab_name) &&
-            isset($request->tab_description) && is_array($request->tab_description)
-        ) {
-            UserDetailTabs::where('user_id', $user->id)->delete();
-            foreach ($request->tab_name as $index => $tab) {
-                UserDetailTabs::create([
-                    'user_id' => $user->id,
-                    'name' => $tab,
-                    'description' => $request->tab_description[$index] ?? '',
+            // Update sub-vendor data
+            if ($user->subVendor) {
+                $user->subVendor->update([
+                    'vendor_id' => $request->input('vendor_id'),
+                    'name' => $request->input('shop_name'),
+                    'email' => $request->input('shop_email'),
+                    'address' => $request->input('shop_address'),
+                    'phone' => $request->input('shop_phone'),
+                    'continent' => $request->input('continent'),
+                    'insta' => $request->input('shop_insta'),
+                    'facebook' => $request->input('shop_facebook'),
+                    'youtube' => $request->input('shop_youtube'),
+                    'twitter' => $request->input('shop_twitter'),
+                    'tiktok' => $request->input('shop_tiktok'),
+                    'wa_business_page' => $request->input('shop_wa_business_page'),
+                    'linkedin' => $request->input('shop_linkedin'),
+                    'ecommerce' => $request->input('ecommerce', 0),
+                    'events' => $request->input('events', 0),
+                    'music' => $request->input('music', 0),
+                    'appointment' => $request->input('appointment', 0),
+                    'ad_space' => $request->input('ad_space', 0),
+                    'blogging' => $request->input('blogging', 0),
+                    'status' => 1,
+                    'logo' => $logo ?? $user->subVendor->logo,
                 ]);
             }
-        }
-        if (isset($request->sponser_id) && is_array($request->sponser_id)) {
-            foreach ($request->sponser_id as $key => $row) {
-                $sponsers = Sponsers::find($row);
-                if (isset($request->update_sponser_title) && is_array($request->update_sponser_title)) {
-                    $sponsers->title = $request->update_sponser_title[$key];
-                }
-                if (isset($request->update_sponser_logo) && is_array($request->update_sponser_logo)) {
-                    $sponsers->logo = $this->uploadImage($request->update_sponser_logo[$key], 'sponser_images');
-                }
-                if (isset($request->update_sponser_description) && is_array($request->update_sponser_description)) {
-                    $sponsers->title = $request->update_sponser_description[$key];
-                }
-                $sponsers->save();
-            }
-        }
-        if (isset($request->sponser_logo) && is_array($request->sponser_logo)) {
-            foreach ($request->sponser_logo as $key => $row) {
-                $sponser = new Sponsers;
-                $sponser->user_id = $user->id;
-                $sponser->logo = $this->uploadImage($row, 'sponser_images');
-                if (isset($request->sponser_title[$key])) {
-                    $sponser->title = $request->sponser_title[$key];
-                }
-                if (isset($request->sponser_description[$key])) {
-                    $sponser->title = $request->sponser_description[$key];
-                }
-                $sponser->save();
-            }
-        }
 
-        return redirect()->back()
-            ->with('success', 'User updated successfully.');
+            // Update user basic information
+            $userData = $request->only([
+                'first_name', 'last_name', 'email', 'phone', 'address', 'city', 
+                'state', 'country', 'zipcode', 'age_range', 'status',
+                'short_description', 'continent', 'facebook', 'twitter', 
+                'instagram', 'linkedin', 'youtube', 'website'
+            ]);
+            
+            $user->update($userData);
+
+            // Handle profile image upload
+            if ($request->hasFile('image')) {
+                if ($user->image && file_exists(public_path($user->image))) {
+                    $this->deleteImage('images/' . $user->image);
+                }
+                $imageName = $this->uploadImage($request->file('image'), 'images');
+                $user->image = $imageName;
+                $user->save();
+            }
+
+            // Handle tabs
+            if (isset($request->tabs) && is_array($request->tabs)) {
+                // Delete existing tabs
+                UserDetailTabs::where('user_id', $user->id)->delete();
+                
+                // Create new tabs
+                foreach ($request->tabs as $tab) {
+                    if (!empty($tab['title']) && !empty($tab['content'])) {
+                        UserDetailTabs::create([
+                            'user_id' => $user->id,
+                            'name' => $tab['title'],
+                            'description' => $tab['content'],
+                        ]);
+                    }
+                }
+            }
+
+            // Handle sponsors
+            if (isset($request->sponsors) && is_array($request->sponsors)) {
+                // Delete existing sponsors
+                Sponsers::where('user_id', $user->id)->delete();
+                
+                // Create new sponsors
+                foreach ($request->sponsors as $index => $sponsor) {
+                    if (!empty($sponsor['name'])) {
+                        $sponsorData = [
+                            'user_id' => $user->id,
+                            'title' => $sponsor['name'],
+                            'description' => $sponsor['website'] ?? '',
+                        ];
+                        
+                        // Handle sponsor logo upload
+                        if (isset($request->file('sponsor_logos')[$index])) {
+                            $logoName = $this->uploadImage($request->file('sponsor_logos')[$index], 'sponser_images');
+                            $sponsorData['logo'] = 'sponser_images/' . $logoName;
+                        }
+                        
+                        Sponsers::create($sponsorData);
+                    }
+                }
+            }
+
+            // Handle banners
+            if (isset($request->banners) && is_array($request->banners)) {
+                // Delete existing banners
+                UserDetailBanner::where('user_id', $user->id)->delete();
+                
+                // Create new banners
+                foreach ($request->banners as $index => $banner) {
+                    if (!empty($banner['title'])) {
+                        $bannerData = [
+                            'user_id' => $user->id,
+                            'title' => $banner['title'],
+                            'subtitle' => $banner['link_url'] ?? '',
+                        ];
+                        
+                        // Handle banner file upload
+                        if (isset($request->file('banner_files')[$index])) {
+                            $file = $request->file('banner_files')[$index];
+                            $fileName = $this->uploadImage($file, 'userBanners');
+                            $bannerData['banner'] = 'userBanners/' . $fileName;
+                        }
+                        
+                        UserDetailBanner::create($bannerData);
+                    }
+                }
+            }
+
+            DB::commit();
+            
+            return redirect()->back()
+                ->with('success', 'User updated successfully.');
+                
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()
+                ->with('error', 'Error updating user: ' . $e->getMessage())
+                ->withInput();
+        }
     }
 
     public function getSingleUser($id)
@@ -536,13 +613,19 @@ class UserManagementController extends Controller
         $blogs_count = \App\Models\Blogs::where('user_id', $user->id)->count();
         $appointments_count = \App\Models\Appointment::where('user_id', $user->id)->count();
         
+        // Count gallery and music files
+        $gallery_albums_count = \App\Models\GalleryAlbum::where('user_id', $user->id)->count();
+        $site_gallery_count = \App\Models\SiteGallery::where('user_id', $user->id)->count();
+        $music_count = \App\Models\Music::where('user_id', $user->id)->count();
+        
         // Count cart items and orders
         $cart_items_count = Cart::where('user_id', $user->id)->count();
         $orders_count = Order::where('user_id', $user->id)->count();
         
         $total_items = 1 + $banners_count + $tabs_count + $sponsors_count + $vendor_count + 
                       $products_count + $costumes_count + $events_count + $blogs_count + 
-                      $appointments_count + $cart_items_count + $orders_count;
+                      $appointments_count + $gallery_albums_count + $site_gallery_count + 
+                      $music_count + $cart_items_count + $orders_count;
         
         return response()->json([
             'user' => [
@@ -561,6 +644,9 @@ class UserManagementController extends Controller
             'events_count' => $events_count,
             'blogs_count' => $blogs_count,
             'appointments_count' => $appointments_count,
+            'gallery_albums_count' => $gallery_albums_count,
+            'site_gallery_count' => $site_gallery_count,
+            'music_count' => $music_count,
             'cart_items_count' => $cart_items_count,
             'orders_count' => $orders_count,
             'total_items' => $total_items
@@ -651,10 +737,54 @@ class UserManagementController extends Controller
                 }
                 \App\Models\Costume::where('user_id', $user->id)->delete();
                 
-                // Delete events
+                // Delete events and their files
+                $events = \App\Models\Event::where('user_id', $user->id)->get();
+                foreach ($events as $event) {
+                    // Delete event banner
+                    if ($event->banner && file_exists(public_path($event->banner))) {
+                        unlink(public_path($event->banner));
+                    }
+                    
+                    // Delete promotional video
+                    if ($event->promotional_Video && file_exists(public_path($event->promotional_Video))) {
+                        unlink(public_path($event->promotional_Video));
+                    }
+                    
+                    // Delete promotional image
+                    if ($event->promotional_image && file_exists(public_path($event->promotional_image))) {
+                        unlink(public_path($event->promotional_image));
+                    }
+                    
+                    // Delete additional images (if stored as JSON array)
+                    if ($event->additional_images) {
+                        $additionalImages = json_decode($event->additional_images, true);
+                        if (is_array($additionalImages)) {
+                            foreach ($additionalImages as $image) {
+                                if (file_exists(public_path($image))) {
+                                    unlink(public_path($image));
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Delete event images through relationship
+                    $eventImages = $event->images;
+                    foreach ($eventImages as $image) {
+                        if (file_exists(public_path($image->image))) {
+                            unlink(public_path($image->image));
+                        }
+                    }
+                    $event->images()->delete();
+                }
                 \App\Models\Event::where('user_id', $user->id)->delete();
                 
-                // Delete blogs
+                // Delete blogs and their images
+                $blogs = \App\Models\Blogs::where('user_id', $user->id)->get();
+                foreach ($blogs as $blog) {
+                    if ($blog->image && file_exists(public_path($blog->image))) {
+                        unlink(public_path($blog->image));
+                    }
+                }
                 \App\Models\Blogs::where('user_id', $user->id)->delete();
                 
                 // Delete appointments
@@ -716,9 +846,57 @@ class UserManagementController extends Controller
                 }
                 \App\Models\Costume::where('user_id', $user->id)->delete();
                 
-                // Delete events, blogs, appointments
+                // Delete events and their files
+                $events = \App\Models\Event::where('user_id', $user->id)->get();
+                foreach ($events as $event) {
+                    // Delete event banner
+                    if ($event->banner && file_exists(public_path($event->banner))) {
+                        unlink(public_path($event->banner));
+                    }
+                    
+                    // Delete promotional video
+                    if ($event->promotional_Video && file_exists(public_path($event->promotional_Video))) {
+                        unlink(public_path($event->promotional_Video));
+                    }
+                    
+                    // Delete promotional image
+                    if ($event->promotional_image && file_exists(public_path($event->promotional_image))) {
+                        unlink(public_path($event->promotional_image));
+                    }
+                    
+                    // Delete additional images (if stored as JSON array)
+                    if ($event->additional_images) {
+                        $additionalImages = json_decode($event->additional_images, true);
+                        if (is_array($additionalImages)) {
+                            foreach ($additionalImages as $image) {
+                                if (file_exists(public_path($image))) {
+                                    unlink(public_path($image));
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Delete event images through relationship
+                    $eventImages = $event->images;
+                    foreach ($eventImages as $image) {
+                        if (file_exists(public_path($image->image))) {
+                            unlink(public_path($image->image));
+                        }
+                    }
+                    $event->images()->delete();
+                }
                 \App\Models\Event::where('user_id', $user->id)->delete();
+                
+                // Delete blogs and their images
+                $blogs = \App\Models\Blogs::where('user_id', $user->id)->get();
+                foreach ($blogs as $blog) {
+                    if ($blog->image && file_exists(public_path($blog->image))) {
+                        unlink(public_path($blog->image));
+                    }
+                }
                 \App\Models\Blogs::where('user_id', $user->id)->delete();
+                
+                // Delete appointments
                 \App\Models\Appointment::where('user_id', $user->id)->delete();
                 
                 // Delete subvendor record
@@ -730,6 +908,61 @@ class UserManagementController extends Controller
             
             // Delete orders
             Order::where('user_id', $user->id)->delete();
+            
+            // Delete gallery albums and their images
+            $galleryAlbums = \App\Models\GalleryAlbum::where('user_id', $user->id)->get();
+            foreach ($galleryAlbums as $album) {
+                $albumImages = $album->images;
+                foreach ($albumImages as $image) {
+                    if ($image->image && file_exists(public_path($image->image))) {
+                        unlink(public_path($image->image));
+                    }
+                }
+                $album->images()->delete();
+            }
+            \App\Models\GalleryAlbum::where('user_id', $user->id)->delete();
+            
+            // Delete site gallery images
+            $siteGalleryImages = \App\Models\SiteGallery::where('user_id', $user->id)->get();
+            foreach ($siteGalleryImages as $image) {
+                if ($image->image && file_exists(public_path($image->image))) {
+                    unlink(public_path($image->image));
+                }
+            }
+            \App\Models\SiteGallery::where('user_id', $user->id)->delete();
+            
+            // Delete music files and their images
+            $musics = \App\Models\Music::where('user_id', $user->id)->get();
+            foreach ($musics as $music) {
+                // Delete music file
+                if ($music->music && file_exists(public_path($music->music))) {
+                    unlink(public_path($music->music));
+                }
+                
+                // Delete cover image
+                if ($music->cover_image && file_exists(public_path($music->cover_image))) {
+                    unlink(public_path($music->cover_image));
+                }
+                
+                // Delete images array (if stored as JSON)
+                if ($music->images && is_array($music->images)) {
+                    foreach ($music->images as $image) {
+                        if (file_exists(public_path($image))) {
+                            unlink(public_path($image));
+                        }
+                    }
+                }
+                
+                // Delete music images through relationship
+                $musicImages = $music->imagesRelation;
+                foreach ($musicImages as $image) {
+                    if (file_exists(public_path($image->image))) {
+                        unlink(public_path($image->image));
+                    }
+                }
+                $music->imagesRelation()->delete();
+            }
+            \App\Models\Music::where('user_id', $user->id)->delete();
             
             // Delete user profile image
             if ($user->image && file_exists(public_path($user->image))) {

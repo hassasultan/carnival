@@ -189,6 +189,9 @@
                                             <tr><td>Events:</td><td><span class="badge badge-warning">${details.events_count}</span></td></tr>
                                             <tr><td>Blogs:</td><td><span class="badge badge-warning">${details.blogs_count}</span></td></tr>
                                             <tr><td>Appointments:</td><td><span class="badge badge-warning">${details.appointments_count}</span></td></tr>
+                                            <tr><td>Gallery Albums:</td><td><span class="badge badge-info">${details.gallery_albums_count}</span></td></tr>
+                                            <tr><td>Gallery Images:</td><td><span class="badge badge-info">${details.site_gallery_count}</span></td></tr>
+                                            <tr><td>Music Files:</td><td><span class="badge badge-info">${details.music_count}</span></td></tr>
                                             <tr><td>Cart Items:</td><td><span class="badge badge-secondary">${details.cart_items_count}</span></td></tr>
                                             <tr><td>Orders:</td><td><span class="badge badge-secondary">${details.orders_count}</span></td></tr>
                                         </tbody>
