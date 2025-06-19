@@ -368,7 +368,7 @@ class UserManagementController extends Controller
     public function edit($id)
     {
         $continents = Region::all();
-        $user = User::with(['banners', 'tabs', 'sponsors'])->findOrFail($id);
+        $user = User::with(['banners', 'tabs', 'sponsors', 'vendor.package', 'subVendor.vendor.package'])->findOrFail($id);
         $roles = Role::where('status', 1)->get();
         $packages = Package::where('status', 1)->get();
         $vendors = Vendor::with('user')->where('status', 1)->get();

@@ -961,12 +961,10 @@
             let sponsorIndex = 0;
             let bannerIndex = 0;
             
-            // Initialize counter based on existing items
-            $(document).ready(function() {
-                tabIndex = $('.tab-item').length;
-                sponsorIndex = $('.sponsor-item').length;
-                bannerIndex = $('.banner-item').length;
-            });
+            // Initialize counter based on existing items - run immediately
+            tabIndex = $('.tab-item').length;
+            sponsorIndex = $('.sponsor-item').length;
+            bannerIndex = $('.banner-item').length;
             
             $('#add-tab').click(function() {
                 tabIndex++;

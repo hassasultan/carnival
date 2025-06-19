@@ -28,6 +28,12 @@ class Vendor extends Model
         'linkedin',
         'continent',
         'short_description',
+        'ecommerce',
+        'events',
+        'music',
+        'appointment',
+        'ad_space',
+        'blogging',
     ];
 
     protected $dates = [

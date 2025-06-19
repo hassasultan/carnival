@@ -863,6 +863,11 @@
             // Show vendor selection only for section_leader OR when age range is kid
             if (packageId === 'section_leader' || ageRange === 'kid') {
                 vendorInput.show();
+                // Reinitialize Select2 for vendor dropdown to fix styling
+                $('#vendor').select2({
+                    theme: 'bootstrap4',
+                    width: '100%'
+                });
             } else {
                 vendorInput.hide();
             }
@@ -881,6 +886,11 @@
         // Show vendor selection only for section_leader OR when age range is kid
         if (packageId === 'section_leader' || ageRange === 'kid') {
             vendorInput.show();
+            // Reinitialize Select2 for vendor dropdown to fix styling
+            $('#vendor').select2({
+                theme: 'bootstrap4',
+                width: '100%'
+            });
         } else {
             vendorInput.hide();
         }

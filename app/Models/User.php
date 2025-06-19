@@ -44,6 +44,14 @@ class User extends Authenticatable
         'waist',
         'age_range',
         'gender',
+        'short_description',
+        'continent',
+        'facebook',
+        'twitter',
+        'instagram',
+        'linkedin',
+        'youtube',
+        'website',
     ];
 
     /**
