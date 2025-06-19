@@ -189,34 +189,34 @@
                         <p class="mb-0">This action will permanently delete the banner and all associated files. This cannot be undone!</p>
                     </div>
                     
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6 class="text-primary">Banner Information</h6>
-                            <p><strong>Type:</strong> ${details.banner.type}</p>
-                            <p><strong>Description:</strong> ${details.banner.description || 'No description'}</p>
-                            <p><strong>Status:</strong> ${details.banner.status == 1 ? 'Active' : 'Inactive'}</p>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 class="text-danger">Files to be Deleted</h6>
-                            <div class="table-responsive">
-                                <table class="table table-sm table-borderless">
-                                    <tbody>
-                                        <tr><td>Banner Image:</td><td><span class="badge badge-danger">${details.banner.banner_image ? 'Yes' : 'No'}</span></td></tr>
-                                        <tr><td>Poster Image:</td><td><span class="badge badge-danger">${details.banner.poster ? 'Yes' : 'No'}</span></td></tr>
-                                        <tr><td>Total Files:</td><td><span class="badge badge-danger badge-lg">${details.files_to_delete.length}</span></td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                    // <div class="row">
+                    //     <div class="col-md-6">
+                    //         <h6 class="text-primary">Banner Information</h6>
+                    //         <p><strong>Type:</strong> ${details.banner.type}</p>
+                    //         <p><strong>Description:</strong> ${details.banner.description || 'No description'}</p>
+                    //         <p><strong>Status:</strong> ${details.banner.status == 1 ? 'Active' : 'Inactive'}</p>
+                    //     </div>
+                    //     <div class="col-md-6">
+                    //         <h6 class="text-danger">Files to be Deleted</h6>
+                    //         <div class="table-responsive">
+                    //             <table class="table table-sm table-borderless">
+                    //                 <tbody>
+                    //                     <tr><td>Banner Image:</td><td><span class="badge badge-danger">${details.banner.banner_image ? 'Yes' : 'No'}</span></td></tr>
+                    //                     <tr><td>Poster Image:</td><td><span class="badge badge-danger">${details.banner.poster ? 'Yes' : 'No'}</span></td></tr>
+                    //                     <tr><td>Total Files:</td><td><span class="badge badge-danger badge-lg">${details.files_to_delete.length}</span></td></tr>
+                    //                 </tbody>
+                    //             </table>
+                    //         </div>
+                    //     </div>
+                    // </div>
                     
-                    ${filesList}
+                    // ${filesList}
                     
-                    <div class="alert alert-danger">
-                        <h6 class="alert-heading"><i class="fe fe-alert-circle mr-1"></i>Impact</h6>
-                        <p class="mb-0"><strong>This will permanently remove the banner and all associated files from the server.</strong></p>
-                        <small class="text-muted">The banner will no longer be available on the website.</small>
-                    </div>
+                    // <div class="alert alert-danger">
+                    //     <h6 class="alert-heading"><i class="fe fe-alert-circle mr-1"></i>Impact</h6>
+                    //     <p class="mb-0"><strong>This will permanently remove the banner and all associated files from the server.</strong></p>
+                    //     <small class="text-muted">The banner will no longer be available on the website.</small>
+                    // </div>
                 </div>
             `;
             
