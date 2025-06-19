@@ -243,7 +243,7 @@ class UserManagementController extends Controller
                 foreach ($data['tabs'] as $tab) {
                     if (!empty($tab['title']) && !empty($tab['content'])) {
                         UserDetailTabs::create([
-                            'user_id' => $user->id,
+                        'user_id' => $user->id,
                             'name' => $tab['title'],
                             'description' => $tab['content'],
                         ]);
@@ -259,10 +259,11 @@ class UserManagementController extends Controller
                             'user_id' => $user->id,
                             'title' => $sponsor['name'],
                             'description' => $sponsor['website'] ?? '',
+                            'logo' => null, // Set default value
                         ];
                         
                         // Handle sponsor logo upload
-                        if (isset($data['sponsor_logos'][$index])) {
+                        if (isset($data['sponsor_logos'][$index]) && $data['sponsor_logos'][$index]) {
                             $logoName = $this->uploadImage($data['sponsor_logos'][$index], 'sponser_images');
                             $sponsorData['logo'] = 'sponser_images/' . $logoName;
                         }
@@ -389,37 +390,37 @@ class UserManagementController extends Controller
         
         try {
             // Handle package and role logic
-            $package_id = '';
-            if ($request->package_id == 'section_leader') {
-                $package_id = '123';
-                $user->role_id = '3';
-            } else {
-                $user->role_id = '2';
-                $package_id = $request->package_id;
-            }
+        $package_id = '';
+        if ($request->package_id == 'section_leader') {
+            $package_id = '123';
+            $user->role_id = '3';
+        } else {
+            $user->role_id = '2';
+            $package_id = $request->package_id;
+        }
 
             // Handle logo upload
             $logo = null;
-            if ($request->hasFile('logo')) {
-                $imageName = $this->uploadImage($request->logo, 'images');
-                $logo = $imageName;
-            }
+        if ($request->hasFile('logo')) {
+            $imageName = $this->uploadImage($request->logo, 'images');
+            $logo = $imageName;
+        }
 
             // Update vendor data
-            if ($user->vendor) {
-                $user->vendor->update([
+        if ($user->vendor) {
+            $user->vendor->update([
                     'ecommerce' => $request->input('ecommerce', 0),
                     'events' => $request->input('events', 0),
                     'music' => $request->input('music', 0),
                     'appointment' => $request->input('appointment', 0),
                     'ad_space' => $request->input('ad_space', 0),
                     'blogging' => $request->input('blogging', 0),
-                    'package_id' => $package_id,
-                    'name' => $request->input('shop_name'),
-                    'email' => $request->input('shop_email'),
-                    'address' => $request->input('shop_address'),
-                    'phone' => $request->input('shop_phone'),
-                    'continent' => $request->input('continent'),
+                'package_id' => $package_id,
+                'name' => $request->input('shop_name'),
+                'email' => $request->input('shop_email'),
+                'address' => $request->input('shop_address'),
+                'phone' => $request->input('shop_phone'),
+                'continent' => $request->input('continent'),
                     'insta' => $request->input('shop_insta'),
                     'facebook' => $request->input('shop_facebook'),
                     'youtube' => $request->input('shop_youtube'),
@@ -428,20 +429,20 @@ class UserManagementController extends Controller
                     'wa_business_page' => $request->input('shop_wa_business_page'),
                     'linkedin' => $request->input('shop_linkedin'),
                     'short_description' => $request->input('short_description'),
-                    'status' => 1,
+                'status' => 1,
                     'logo' => $logo ?? $user->vendor->logo,
-                ]);
-            }
+            ]);
+        }
 
             // Update sub-vendor data
-            if ($user->subVendor) {
-                $user->subVendor->update([
-                    'vendor_id' => $request->input('vendor_id'),
-                    'name' => $request->input('shop_name'),
-                    'email' => $request->input('shop_email'),
-                    'address' => $request->input('shop_address'),
-                    'phone' => $request->input('shop_phone'),
-                    'continent' => $request->input('continent'),
+        if ($user->subVendor) {
+            $user->subVendor->update([
+                'vendor_id' => $request->input('vendor_id'),
+                'name' => $request->input('shop_name'),
+                'email' => $request->input('shop_email'),
+                'address' => $request->input('shop_address'),
+                'phone' => $request->input('shop_phone'),
+                'continent' => $request->input('continent'),
                     'insta' => $request->input('shop_insta'),
                     'facebook' => $request->input('shop_facebook'),
                     'youtube' => $request->input('shop_youtube'),
@@ -455,7 +456,7 @@ class UserManagementController extends Controller
                     'appointment' => $request->input('appointment', 0),
                     'ad_space' => $request->input('ad_space', 0),
                     'blogging' => $request->input('blogging', 0),
-                    'status' => 1,
+                'status' => 1,
                     'logo' => $logo ?? $user->subVendor->logo,
                 ]);
             }
@@ -471,14 +472,14 @@ class UserManagementController extends Controller
             $user->update($userData);
 
             // Handle profile image upload
-            if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
                 if ($user->image && file_exists(public_path($user->image))) {
-                    $this->deleteImage('images/' . $user->image);
-                }
-                $imageName = $this->uploadImage($request->file('image'), 'images');
-                $user->image = $imageName;
-                $user->save();
+                $this->deleteImage('images/' . $user->image);
             }
+            $imageName = $this->uploadImage($request->file('image'), 'images');
+            $user->image = $imageName;
+            $user->save();
+        }
 
             // Handle tabs
             if (isset($request->tabs) && is_array($request->tabs)) {
@@ -489,12 +490,12 @@ class UserManagementController extends Controller
                 foreach ($request->tabs as $tab) {
                     if (!empty($tab['title']) && !empty($tab['content'])) {
                         UserDetailTabs::create([
-                            'user_id' => $user->id,
+                    'user_id' => $user->id,
                             'name' => $tab['title'],
                             'description' => $tab['content'],
-                        ]);
-                    }
-                }
+                ]);
+            }
+        }
             }
 
             // Handle sponsors
@@ -549,9 +550,9 @@ class UserManagementController extends Controller
             }
 
             DB::commit();
-            
-            return redirect()->back()
-                ->with('success', 'User updated successfully.');
+
+        return redirect()->back()
+            ->with('success', 'User updated successfully.');
                 
         } catch (\Exception $e) {
             DB::rollback();

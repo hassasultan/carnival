@@ -862,10 +862,10 @@
             // Show vendor selection for sub-vendors
             if (packageId !== 'section_leader') {
                 vendorInput.show();
-                            } else {
+                } else {
                 vendorInput.hide();
             }
-                } else {
+                            } else {
             packageFeatures.hide();
             vendorInput.hide();
                 }
@@ -881,7 +881,7 @@
         tabIndex = $('.tab-item').length;
     });
     
-    $('#addBannerBtn').click(function() {
+            $('#addBannerBtn').click(function() {
         bannerIndex++;
         var newBanner = `
             <div class="banner-item card mb-3">
@@ -890,16 +890,16 @@
                     <button type="button" class="btn btn-sm btn-outline-danger remove-banner">
                         <i class="fe fe-trash"></i>
                     </button>
-                </div>
+                    </div>
                 <div class="card-body">
-                    <div class="form-group">
+                            <div class="form-group">
                         <label for="banner_${bannerIndex}">Banner Image <span class="text-danger">*</span></label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="banner_${bannerIndex}" name="banner_files[]" required accept="image/*,video/*">
                             <label class="custom-file-label" for="banner_${bannerIndex}">Choose file</label>
-                        </div>
+                            </div>
                         <small class="form-text text-muted">Supported formats: JPG, PNG, GIF, MP4 (Max: 10MB)</small>
-                    </div>
+                            </div>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -919,12 +919,12 @@
             </div>
         `;
 
-        $('#bannerSection').append(newBanner);
-    });
+                $('#bannerSection').append(newBanner);
+            });
 
     // Remove banner
     $(document).on('click', '.remove-banner', function() {
-        $(this).closest('.banner-item').remove();
+                $(this).closest('.banner-item').remove();
         // Renumber remaining banners
         renumberBanners();
     });
@@ -967,22 +967,22 @@
                     </button>
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
+                                    <div class="form-group">
                         <label for="sponsor_logo_${sponsorIndex}">Sponsor Logo <span class="text-danger">*</span></label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="sponsor_logo_${sponsorIndex}" name="sponsor_logos[]" required accept="image/*">
                             <label class="custom-file-label" for="sponsor_logo_${sponsorIndex}">Choose file</label>
-                        </div>
+                                    </div>
                         <small class="form-text text-muted">Supported formats: JPG, PNG, GIF (Max: 2MB)</small>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
+                                    <div class="form-group">
                                 <label for="sponsor_name_${sponsorIndex}">Sponsor Name</label>
                                 <input type="text" class="form-control" name="sponsors[${sponsorIndex}][name]" placeholder="Enter sponsor name">
-                            </div>
-                        </div>
+                                    </div>
+                                </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="sponsor_website_${sponsorIndex}">Website URL</label>
@@ -1041,23 +1041,23 @@
                     <button type="button" class="btn btn-sm btn-outline-danger remove-tab">
                         <i class="fe fe-trash"></i>
                     </button>
-                </div>
+                                    </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
+                                    <div class="form-group">
                                 <label for="tab_title_${tabIndex}">Tab Title <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="tabs[${tabIndex}][title]" placeholder="Enter tab title" required>
-                            </div>
+                                    </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                                    <div class="form-group">
                                 <label for="tab_content_${tabIndex}">Tab Content</label>
                                 <textarea class="form-control" name="tabs[${tabIndex}][content]" rows="3" placeholder="Enter tab content"></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
             </div>
         `;
         
@@ -1066,7 +1066,7 @@
 
     // Remove tab
     $(document).on('click', '.remove-tab', function() {
-        $(this).closest('.tab-item').remove();
+                $(this).closest('.tab-item').remove();
         // Renumber remaining tabs
         renumberTabs();
     });
@@ -1117,7 +1117,7 @@
         }
         
         return isValid;
-    });
+            });
         });
     </script>
 @endsection
