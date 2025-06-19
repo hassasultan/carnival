@@ -727,7 +727,14 @@
             });
 
     // Dynamic Tabs Management
-    let tabIndex = {{ $user->tabs ? count($user->tabs) : 0 }};
+    let tabIndex = 0;
+    
+    // Initialize counter based on existing items
+    $(document).ready(function() {
+        tabIndex = $('.tab-item').length;
+        sponsorIndex = $('.sponsor-item').length;
+        bannerIndex = $('.banner-item').length;
+    });
     
     $('#add-tab').click(function() {
         tabIndex++;
@@ -778,7 +785,7 @@
     }
 
     // Dynamic Sponsors Management
-    let sponsorIndex = {{ $user->sponsors ? count($user->sponsors) : 0 }};
+    let sponsorIndex = 0;
     
     $('#add-sponsor').click(function() {
         sponsorIndex++;
@@ -839,7 +846,7 @@
     }
 
     // Dynamic Banners Management
-    let bannerIndex = {{ $user->banners ? count($user->banners) : 0 }};
+    let bannerIndex = 0;
     
     $('#add-banner').click(function() {
         bannerIndex++;
