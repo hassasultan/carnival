@@ -905,6 +905,292 @@
                         </div>
                     </div>
                 </div>
+                <div class="block-floor-products block-floor-products-opt1 floor-products1" id="floor0-2">
+                    <div class="container">
+                        <div class="block-title ">
+                            <span class="title"><img alt="img"
+                                    src="{{ asset('shopAssets/images/media/index1/floor1.png') }}">
+                                Mascamps
+                            </span>
+                            <div class="links dropdown">
+                                <button class="dropdown-toggle" type="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-bars" aria-hidden="true"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li role="presentation" class="active"><a href="#floor1-1-queen"
+                                                id="best-seller-tab-queen" role="tab" data-toggle="tab">Best Seller
+                                            </a></li>
+                                        <li role="presentation"><a href="#floor1-2-queen" role="tab"
+                                                data-toggle="tab">Most
+                                                Viewed </a></li>
+                                        <li role="presentation"><a href="#floor1-3-queen" id="new-arr-tab-queen"
+                                                role="tab" data-toggle="tab">New Arrivals <span
+                                                    class="label-cat">12</span></a></li>
+                                        @foreach ($categories as $row)
+                                            <li role="presentation"><a href="#floor1-4-queen-{{ $row->id }}"
+                                                    onclick="catProduct({{ $row->id }},'vendors-cat-div-queen-{{ $row->id }}')"
+                                                    role="tab" data-toggle="tab">{{ $row->title }} </a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <a href="" class="action action-up"><i class="fa fa-angle-up"
+                                        aria-hidden="true"></i></a>
+                                <a href="#floor0-2" class="action action-down"><i class="fa fa-angle-down"
+                                        aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Banner -->
+                        <div class="block-banner-floor">
+
+                            <div class="col-sm-6">
+                                <a href="" class="box-img"><img
+                                        src="{{ asset('shopAssets/images/media/index1/banner1-1.jpg') }}"
+                                        alt="banner"></a>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="" class="box-img"><img
+                                        src="{{ asset('shopAssets/images/media/index1/banner1-2.jpg') }}"
+                                        alt="banner"></a>
+                            </div>
+
+                        </div><!-- Banner -->
+
+                        <div class="block-content">
+
+                            <div class="col-banner">
+                                <span class="label-featured"><img
+                                        src="{{ asset('shopAssets/images/icon/index1/label-featured.png') }}"
+                                        alt="label-featured"></span>
+                                <a href="" class="box-img"><img
+                                        src="{{ asset('shopAssets/images/media/index1/baner-floor1.jpg') }}"
+                                        alt="baner-floor"></a>
+                            </div>
+
+                            <div class="col-products tab-content">
+
+                                <!-- tab 1 -->
+                                <div class="tab-pane active in  fade " id="floor1-1-queen" role="tabpanel">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
+                                    "0":{"items":1},
+                                    "420":{"items":2},
+                                    "600":{"items":3},
+                                    "768":{"items":3},
+                                    "992":{"items":4},
+                                    "1200":{"items":4}
+                                }'
+                                        id="best-seller-floor-mascamp">
+                                        @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
+                                                    @php
+                                                        $vendorLogo = $item->logo
+                                                            ? asset('images/' . $item->logo)
+                                                            : asset('images/' . $item->user->image);
+                                                        $vendorName =More actions
+                                                            $item->name ?:
+                                                            $item->user->first_name . ' ' . $item->user->last_name;
+                                                    @endphp
+                                                    <div class="product-item product-item-opt-1">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href="{{ route('front.vendor.detail', $item->user->slug) }}">
+                                                                    <img alt="product name" src="{{ $vendorLogo }}">
+                                                                </a>
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">{{ $vendorName }}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                    </div>
+                                </div>
+
+                                <!-- tab 2-->
+                                <div class="tab-pane  fade" id="floor1-2-mascamp" role="tabpanel">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
+                                    "0":{"items":1},
+                                    "420":{"items":2},
+                                    "600":{"items":3},
+                                    "768":{"items":3},
+                                    "992":{"items":4},
+                                    "1200":{"items":4}
+                                }'>
+                                        @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
+                                            @php
+                                                $vendorLogo = $item->logo
+                                                    ? asset('images/' . $item->logo)
+                                                    : asset('images/' . $item->user->image);
+                                                $vendorName =More actions
+                                                    $item->name ?:
+                                                    $item->user->first_name . ' ' . $item->user->last_name;
+                                            @endphp
+                                            <div class="product-item product-item-opt-1">
+                                                <div class="product-item-info">
+                                                    <div class="product-item-photo">
+                                                        <a class="product-item-img" href="{{ route('front.vendor.detail', $item->user->slug) }}">
+                                                            <img alt="product name" src="{{ $vendorLogo }}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-item-detail">
+                                                        <div class="clearfix">
+                                                            <div class="product-item-price">
+                                                                <span class="price">{{ $vendorName }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    {{-- </div> --}}
+                                </div>
+
+                                <!-- tab 3 -->
+                                <div class="tab-pane  fade" id="floor1-3-mascamp" role="tabpanel">
+                                    <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                        data-responsive='{
+                                    "0":{"items":1},
+                                    "420":{"items":2},
+                                    "600":{"items":3},
+                                    "768":{"items":3},
+                                    "992":{"items":4},
+                                    "1200":{"items":4}
+                                }'
+                                        id="new-arrival-products-mascamp">
+                                        @foreach ($carnival->mascamps as $item)
+                                            @if ($item->package->title == 'Models')
+                                                <div class="product-item  product-item-opt-1 ">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            @php
+                                                                $image = null;
+
+                                                                if ($item->logo) {
+                                                                    $image = asset('images/' . $item->logo);
+                                                                } elseif ($item->user->image) {
+                                                                    $image = asset('images/' . $item->user->image);
+                                                                } else {
+                                                                    $image = asset(
+                                                                        'shopAssets/images/media/product9.jpg',
+                                                                    );
+                                                                }
+
+                                                                $vendorName =
+                                                                    $item->name ?:
+                                                                    $item->user->first_name .
+                                                                        ' ' .
+                                                                        $item->user->last_name;
+                                                            @endphp
+                                                            <a class="product-item-img"
+                                                                href="{{ route('details.aboutUs', $item->user->slug) }}"><img
+                                                                    alt="product name" src="{{ $image }}"></a>
+                                                            {{-- <div class="product-item-actions">
+                                                                    <a class="btn btn-wishlist"
+                                                                        href=""><span>wishlist</span></a>
+                                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                                    <a class="btn btn-quickview"
+                                                                        href=""><span>quickview</span></a>
+                                                                </div>
+                                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                                        Cart</span></button>
+                                                                <span class="product-item-label label-price">30%
+                                                                    <span>off</span></span> --}}
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
+                                                            <div class="clearfix">
+                                                                <div class="product-item-price">
+                                                                    <span class="price">{{ $vendorName }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <!-- tab 4 -->
+                                @foreach ($categories as $row)
+                                    <div class="tab-pane fade" id="floor1-4-mascamp-{{ $row->id }}" role="tabpanel">
+                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                            data-responsive='{
+                                            "0":{"items":1},
+                                            "420":{"items":2},
+                                            "600":{"items":3},
+                                            "768":{"items":3},
+                                            "992":{"items":3},
+                                            "1200":{"items":4}
+                                        }'
+                                            id="vendors-cat-div-mascamp-{{ $row->id }}">
+                                            @foreach ($carnival->mascamps as $item)
+                                                @if ($item->package->title == 'Models')
+                                                    <div class="product-item  product-item-opt-1 ">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                @php
+                                                                    $image = null;
+
+                                                                    if ($item->logo) {
+                                                                        $image = asset('images/' . $item->logo);
+                                                                    } elseif ($item->user->image) {
+                                                                        $image = asset('images/' . $item->user->image);
+                                                                    } else {
+                                                                        $image = asset(
+                                                                            'shopAssets/images/media/product9.jpg',
+                                                                        );
+                                                                    }
+
+                                                                    $vendorName =
+                                                                        $item->name ?:
+                                                                        $item->user->first_name .
+                                                                            ' ' .
+                                                                            $item->user->last_name;
+                                                                @endphp
+                                                                <a class="product-item-img"
+                                                                    href="{{ route('details.aboutUs', $item->user->slug) }}"><img
+                                                                        alt="product name" src="{{ $image }}"></a>
+                                                                {{-- <div class="product-item-actions">
+                                                                        <a class="btn btn-wishlist"
+                                                                            href=""><span>wishlist</span></a>
+                                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                                        <a class="btn btn-quickview"
+                                                                            href=""><span>quickview</span></a>
+                                                                    </div>
+                                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                                            Cart</span></button>
+                                                                    <span class="product-item-label label-price">30%
+                                                                        <span>off</span></span> --}}
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">{{ $vendorName }}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         @endif
 
