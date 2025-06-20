@@ -440,7 +440,7 @@ class UserManagementController extends Controller
             // Update sub-vendor data
             if ($user->subVendor) {
                 $user->subVendor->update([
-                    'vendor_id' => $request->input('vendor_id'),
+                    'vendor_id' => $request->input('vendor_id') ?? $user->subVendor->vendor_id,
                     'name' => $request->input('shop_name'),
                     'email' => $request->input('shop_email'),
                     'address' => $request->input('shop_address'),
