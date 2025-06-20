@@ -180,16 +180,14 @@ class UserManagementController extends Controller
             $user = User::find($userId);
             if ($user && $user->role_id == 3) {
                 $rules['vendor_id'] = ['required', 'numeric'];
-                $rules['package_id'] = ['prohibited'];
             } else {
-                $rules['vendor_id'] = ['required_without_all:package_id', 'nullable', 'numeric'];
+                $rules['vendor_id'] = ['nullable', 'numeric'];
             }
         } else {
             if (isset($data['role_id']) && $data['role_id'] == 3) {
                 $rules['vendor_id'] = ['required', 'numeric'];
-                $rules['package_id'] = ['prohibited'];
             } else {
-                $rules['vendor_id'] = ['required_without_all:package_id', 'nullable', 'numeric'];
+                $rules['vendor_id'] = ['nullable', 'numeric'];
             }
         }
 
@@ -212,10 +210,12 @@ class UserManagementController extends Controller
         try {
             $slug = $this->generateUniqueSlug($data['first_name'] . ' ' . $data['last_name']);
 
+            $package_id = '';
             if ($data['package_id'] == 'section_leader') {
-                $data['package_id'] = '123';
+                $package_id = '123';
                 $data['role_id'] = '3';
             } else {
+                $package_id = $data['package_id'];
                 $data['role_id'] = '2';
             }
 
@@ -306,7 +306,7 @@ class UserManagementController extends Controller
             if ($data['role_id'] == 2) {
                 Vendor::create([
                     'user_id' => $user->id,
-                    'package_id' => $data['package_id'],
+                    'package_id' => $package_id,
                     'name' => $data['shop_name'],
                     'email' => $data['shop_email'],
                     'address' => $data['shop_address'],
@@ -355,7 +355,7 @@ class UserManagementController extends Controller
             if ($data['role_id'] == 4) {
                 Customer::create([
                     'user_id' => $user->id,
-                    'package_id' => $data['package_id'],
+                    'package_id' => $package_id,
                     'status' => 1,
                 ]);
             }
@@ -397,13 +397,10 @@ class UserManagementController extends Controller
         DB::beginTransaction();
 
         try {
-            // Handle package and role logic
             $package_id = '';
             if ($request->package_id == 'section_leader') {
                 $package_id = '123';
-                $user->role_id = '3';
             } else {
-                $user->role_id = '2';
                 $package_id = $request->package_id;
             }
 
