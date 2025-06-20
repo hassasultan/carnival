@@ -176,24 +176,19 @@ class UserManagementController extends Controller
             'banner_files.*' => ['required_with:banners.*.title', 'file', 'max:10240'], // 10MB for videos
         ];
 
-        // Handle vendor_id validation based on role
         if ($userId) {
-            // For updates, check the existing user's role
             $user = User::find($userId);
             if ($user && $user->role_id == 3) {
-                // SubVendor - vendor_id is always required
                 $rules['vendor_id'] = ['required', 'numeric'];
+                $rules['package_id'] = ['prohibited'];
             } else {
-                // For other roles, use the original logic
                 $rules['vendor_id'] = ['required_without_all:package_id', 'nullable', 'numeric'];
             }
         } else {
-            // For new users, check the role_id in the request
             if (isset($data['role_id']) && $data['role_id'] == 3) {
-                // SubVendor - vendor_id is always required
                 $rules['vendor_id'] = ['required', 'numeric'];
+                $rules['package_id'] = ['prohibited'];
             } else {
-                // For other roles, use the original logic
                 $rules['vendor_id'] = ['required_without_all:package_id', 'nullable', 'numeric'];
             }
         }

@@ -30,6 +30,9 @@
                             @csrf
                             @method('PUT')
                             <input type="hidden" name="role_id" value="{{ $user->role_id }}">
+                            @if ($user->isSubVendor())
+                                <input type="hidden" name="package_id" value="">
+                            @endif
                             
                             <!-- Basic Information -->
                             <div class="row mb-4">
