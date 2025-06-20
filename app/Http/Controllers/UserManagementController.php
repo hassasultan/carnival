@@ -146,7 +146,6 @@ class UserManagementController extends Controller
             'state' => ['nullable', 'string', 'max:255'],
             'country' => ['nullable', 'string', 'max:255'],
             'zipcode' => ['nullable', 'string', 'max:255'],
-            'vendor_id' => 'required_without_all:package_id|nullable|numeric',
             'package_id' => ['nullable'],
             'age' => ['nullable'],
             'nationality' => ['nullable'],
@@ -176,6 +175,28 @@ class UserManagementController extends Controller
             'banners.*.link_url' => ['nullable', 'url', 'max:255'],
             'banner_files.*' => ['required_with:banners.*.title', 'file', 'max:10240'], // 10MB for videos
         ];
+
+        // Handle vendor_id validation based on role
+        if ($userId) {
+            // For updates, check the existing user's role
+            $user = User::find($userId);
+            if ($user && $user->role_id == 3) {
+                // SubVendor - vendor_id is always required
+                $rules['vendor_id'] = ['required', 'numeric'];
+            } else {
+                // For other roles, use the original logic
+                $rules['vendor_id'] = ['required_without_all:package_id', 'nullable', 'numeric'];
+            }
+        } else {
+            // For new users, check the role_id in the request
+            if (isset($data['role_id']) && $data['role_id'] == 3) {
+                // SubVendor - vendor_id is always required
+                $rules['vendor_id'] = ['required', 'numeric'];
+            } else {
+                // For other roles, use the original logic
+                $rules['vendor_id'] = ['required_without_all:package_id', 'nullable', 'numeric'];
+            }
+        }
 
         if (!$userId) {
             $rules['password'] = ['required', 'string', 'min:8', 'confirmed'];
