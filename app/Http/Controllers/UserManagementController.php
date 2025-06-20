@@ -484,7 +484,7 @@ class UserManagementController extends Controller
             }
 
             // Handle tabs
-            if (isset($request->tabs) && is_array($request->tabs)) {
+            if ($request->has('tabs') && is_array($request->tabs)) {
                 // Delete existing tabs
                 UserDetailTabs::where('user_id', $user->id)->delete();
 
@@ -501,7 +501,7 @@ class UserManagementController extends Controller
             }
 
             // Handle sponsors
-            if (isset($request->sponsors) && is_array($request->sponsors)) {
+            if ($request->has('sponsors') && is_array($request->sponsors)) {
                 // Delete existing sponsors
                 Sponsers::where('user_id', $user->id)->delete();
 
@@ -526,7 +526,7 @@ class UserManagementController extends Controller
             }
 
             // Handle banners
-            if (isset($request->banners) && is_array($request->banners)) {
+            if ($request->has('banners') && is_array($request->banners)) {
                 // Delete existing banners
                 UserDetailBanner::where('user_id', $user->id)->delete();
 
