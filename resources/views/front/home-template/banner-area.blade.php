@@ -49,6 +49,7 @@
                                     align-items: center;
                                     min-height: auto;
                                     background-color: #f3f3f3;
+                                    position: relative;
                                 }
 
                                 .slider {
@@ -113,6 +114,16 @@
 
                                 .d-none {
                                     display: none !important;
+                                }
+
+                                /* Make city-entry same size as parent */
+                                .city-entry-new {
+                                    width: 100%;
+                                    height: 100%;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    z-index: 10;
                                 }
 
                                 @media screen and (max-width: 480px) {
