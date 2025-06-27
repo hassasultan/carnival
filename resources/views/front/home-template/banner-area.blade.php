@@ -124,6 +124,15 @@
                                         margin-top: 0px;
                                     }
                                 }
+
+                                .slider-block-left.slider-extra {
+                                    width: 100% !important;
+                                    position: relative !important;
+                                }
+                                .city-entry.city-entry-new {
+                                    width: 100% !important;
+                                    max-width: none !important;
+                                }
                             </style>
                             @foreach ($carnivals as $key => $row)
                                 <div class="swiper-slide @if ($key == 0) active @endif {{ $key }}"
