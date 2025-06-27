@@ -115,75 +115,6 @@
                                     display: none !important;
                                 }
 
-                                /* Custom styles for city-entry tabs */
-                                .city-entry-new {
-                                    width: 100%;
-                                    margin-bottom: 20px;
-                                    border-radius: 8px;
-                                    overflow: hidden;
-                                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                                }
-
-                                .nav-tab {
-                                    display: flex;
-                                    background: #2c3e50;
-                                    border-radius: 8px 8px 0 0;
-                                }
-
-                                .nav-tab-item {
-                                    flex: 1;
-                                    padding: 15px 10px;
-                                    text-align: center;
-                                    color: white;
-                                    cursor: pointer;
-                                    transition: background-color 0.3s ease;
-                                    font-weight: 500;
-                                    font-size: 14px;
-                                }
-
-                                .nav-tab-item:hover {
-                                    background-color: #34495e;
-                                }
-
-                                .nav-tab-item.active {
-                                    background-color: #27ae60;
-                                }
-
-                                .tabs-content {
-                                    background: white;
-                                    padding: 20px;
-                                    border-radius: 0 0 8px 8px;
-                                }
-
-                                .tab-info {
-                                    display: none;
-                                }
-
-                                .tab-info.active {
-                                    display: block;
-                                }
-
-                                .tab-content h4 {
-                                    color: #2c3e50;
-                                    margin-bottom: 10px;
-                                    font-size: 18px;
-                                }
-
-                                .tab-content p {
-                                    color: #7f8c8d;
-                                    margin-bottom: 15px;
-                                    line-height: 1.6;
-                                }
-
-                                .tab-content .c-button {
-                                    display: inline-block;
-                                    padding: 10px 20px;
-                                    text-decoration: none;
-                                    border-radius: 5px;
-                                    font-weight: 500;
-                                    transition: all 0.3s ease;
-                                }
-
                                 @media screen and (max-width: 480px) {
                                     .slider-extra {
                                         min-height: auto;
@@ -191,15 +122,6 @@
 
                                     .slide-new img {
                                         margin-top: 0px;
-                                    }
-
-                                    .nav-tab-item {
-                                        padding: 10px 5px;
-                                        font-size: 12px;
-                                    }
-
-                                    .tabs-content {
-                                        padding: 15px;
                                     }
                                 }
                             </style>
@@ -212,59 +134,89 @@
                                                 <div class="col-xs-12 col-sm-10 col-sm-offset-1">
                                                     <div class="slider-block clearfix">
                                                         <div class="slider-block-left slider-extra">
+                                                            {{-- <img class="center-image" src="{{ asset($row->banner) }}"
+                                                                alt=""> --}}
                                                             <div class="city-entry bg-grey-2 city-entry-new"
                                                                 id="city-entry-{{ $row->id }}">
+                                                                {{-- <div
+                                                                    class="tour-block tour-block-s-9 hover-green radius-5 underline-block">
+                                                                    <div class="tour-layer delay-1"></div>
+                                                                    <img src="https://carnivalguide.co/travel/img/home/city_1.jpg"
+                                                                        class="res-img" alt="">
+                                                                    <div class="tour-caption">
+                                                                        <div class="vertical-align">
+                                                                            <h3 class="underline hover-it">
+                                                                                St.Vincent
+                                                                            </h3>
+                                                                            <div class="weth-icon">
+                                                                                <img src="https://carnivalguide.co/travel/img/weather_icon_small.png"
+                                                                                    alt="">
+                                                                                <b>+32<sup>o</sup>C</b>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div> --}}
                                                                 <div class="city-desc">
                                                                     <div class="tab-wrapper">
                                                                         <div class="tab-nav-wrapper">
-                                                                            <div class="nav-tab clearfix">
-                                                                                <div class="nav-tab-item flight">
+                                                                            <div class="nav-tab  clearfix">
+                                                                                <div class="nav-tab-item d-none flight">
                                                                                     Flights
                                                                                 </div>
-                                                                                <div class="nav-tab-item hotel">
+                                                                                <div class="nav-tab-item d-none hotel">
                                                                                     Hotels
                                                                                 </div>
-                                                                                <div class="nav-tab-item events">
+                                                                                <div class="nav-tab-item d-none events">
                                                                                     Events
                                                                                 </div>
-                                                                                <div class="nav-tab-item costume">
+                                                                                <div
+                                                                                    class="nav-tab-item d-none costume">
                                                                                     Costume
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="tabs-content clearfix">
-                                                                            <div class="tab-info active flight-tab">
-                                                                                <div class="tab-content">
-                                                                                    <h4>Flight Information</h4>
-                                                                                    <p>Find the best flights to {{ $row->name }} carnival.</p>
-                                                                                    <a href="javascript:void(0);" onclick="showActionBox('flight', {{ $row->id }})" class="c-button b-50 bg-green hv-green-o">Book Flights</a>
-                                                                                </div>
+                                                                            <div
+                                                                                class="tab-info active d-none flight-tab">
                                                                             </div>
-                                                                            <div class="tab-info hotel-tab">
-                                                                                <div class="tab-content">
-                                                                                    <h4>Hotel Information</h4>
-                                                                                    <p>Discover amazing hotels near {{ $row->name }} carnival.</p>
-                                                                                    <a href="javascript:void(0);" onclick="showActionBox('hotel', {{ $row->id }})" class="c-button b-50 bg-green hv-green-o">Book Hotels</a>
-                                                                                </div>
+                                                                            <div
+                                                                                class="tab-info active d-none hotel-tab">
                                                                             </div>
-                                                                            <div class="tab-info events-tab">
-                                                                                <div class="tab-content">
-                                                                                    <h4>Event Information</h4>
-                                                                                    <p>Explore exciting events at {{ $row->name }} carnival.</p>
-                                                                                    <a href="javascript:void(0);" onclick="showActionBox('events', {{ $row->id }})" class="c-button b-50 bg-green hv-green-o">View Events</a>
-                                                                                </div>
+                                                                            <div
+                                                                                class="tab-info active d-none events-tab">
                                                                             </div>
-                                                                            <div class="tab-info costume-tab">
-                                                                                <div class="tab-content">
-                                                                                    <h4>Costume Information</h4>
-                                                                                    <p>Get your carnival costumes for {{ $row->name }}.</p>
-                                                                                    <a href="javascript:void(0);" onclick="showActionBox('costume', {{ $row->id }})" class="c-button b-50 bg-green hv-green-o">Shop Costumes</a>
-                                                                                </div>
+                                                                            <div
+                                                                                class="tab-info active d-none costume-tab">
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            {{-- <div class="slider-container new-slider"
+                                                                id="new-slider-{{ $key }}">
+                                                                <div class="slider">
+                                                                    <div class="slide">
+                                                                        <img src="https://carnivalguide.co/new/img/home/vincymas-2024.jpg"
+                                                                            alt="Image 1">
+                                                                    </div>
+                                                                    <div class="slide">
+                                                                        <video
+                                                                            src="https://carnivalguide.co/travel/video/soca.mp4"
+                                                                            controls loop autoplay muted></video>
+                                                                    </div>
+                                                                    <div class="slide">
+                                                                        <img src="http://127.0.0.1:8000/testimonial/cover/1721141270_testimonal_1.jpg"
+                                                                            alt="Image 2">
+                                                                    </div>
+                                                                    <div class="slide">
+                                                                        <video
+                                                                            src="https://carnivalguide.co/travel/video/soca.mp4"
+                                                                            controls loop autoplay muted></video>
+                                                                    </div>
+                                                                </div>
+                                                                <button class="prev">❮</button>
+                                                                <button class="next">❯</button>
+                                                            </div> --}}
 
                                                             <div class="slider new-slider"
                                                                 id="new-slider-{{ $row->id }}">
@@ -294,6 +246,26 @@
                                                                         </div>
                                                                     @endforeach
                                                                 </div>
+                                                                {{-- <div class="slides">
+                                                                            <div class="slide-new active">
+                                                                                <img src="https://carnivalguide.co/new/img/home/vincymas-2024.jpg"
+                                                                                    alt="Image 1">
+                                                                            </div>
+                                                                            <div class="slide-new">
+                                                                                <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg"
+                                                                                    alt="Image 2">
+                                                                            </div>
+                                                                            <div class="slide-new">
+                                                                                <video
+                                                                                    src="https://carnivalguide.co/travel/video/soca.mp4"
+                                                                                    controls loop autoplay
+                                                                                    muted></video>
+                                                                            </div>
+                                                                            <div class="slide-new">
+                                                                                <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg"
+                                                                                    alt="Image 4">
+                                                                            </div>
+                                                                        </div> --}}
 
                                                                 <!-- Navigation buttons -->
                                                                 <button class="prev"
@@ -505,33 +477,6 @@
 
                                 // Show the first slide initially
                                 showSlide(currentIndex);
-
-                                // Tab functionality
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    // Add click event listeners to all tab items
-                                    const tabItems = document.querySelectorAll('.nav-tab-item');
-                                    
-                                    tabItems.forEach(function(tabItem) {
-                                        tabItem.addEventListener('click', function() {
-                                            const tabType = this.classList[1]; // Get the tab type (flight, hotel, events, costume)
-                                            
-                                            // Remove active class from all tab items and tab content
-                                            document.querySelectorAll('.nav-tab-item').forEach(item => {
-                                                item.classList.remove('active');
-                                            });
-                                            document.querySelectorAll('.tab-info').forEach(content => {
-                                                content.classList.remove('active');
-                                            });
-                                            
-                                            // Add active class to clicked tab and corresponding content
-                                            this.classList.add('active');
-                                            const targetContent = document.querySelector('.' + tabType + '-tab');
-                                            if (targetContent) {
-                                                targetContent.classList.add('active');
-                                            }
-                                        });
-                                    });
-                                });
                             </script>
                         </div>
                         <div class="pagination pagination-hidden poin-style-1"></div>
