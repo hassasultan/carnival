@@ -133,13 +133,13 @@
 
                                 /* Fix header overlap issue */
                                 .slider-block {
-                                    margin-top: 80px; /* Adjust this value based on your header height */
-                                    padding-top: 20px;
+                                    margin-top: 50px; /* Reduced from 80px */
+                                    padding-top: 15px;
                                 }
 
                                 /* Alternative: if you need more space */
                                 .full-height {
-                                    padding-top: 100px; /* Adjust based on header height */
+                                    padding-top: 60px; /* Reduced from 100px */
                                 }
 
                                 @media screen and (max-width: 480px) {
@@ -149,6 +149,16 @@
 
                                     .slide-new img {
                                         margin-top: 0px;
+                                    }
+
+                                    /* Mobile adjustments for header spacing */
+                                    .slider-block {
+                                        margin-top: 30px; /* Less space on mobile */
+                                        padding-top: 10px;
+                                    }
+
+                                    .full-height {
+                                        padding-top: 40px; /* Less space on mobile */
                                     }
                                 }
                             </style>
