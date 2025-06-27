@@ -126,6 +126,22 @@
                                     z-index: 10;
                                 }
 
+                                /* Ensure parent has relative positioning */
+                                .slider-extra {
+                                    position: relative;
+                                }
+
+                                /* Fix header overlap issue */
+                                .slider-block {
+                                    margin-top: 80px; /* Adjust this value based on your header height */
+                                    padding-top: 20px;
+                                }
+
+                                /* Alternative: if you need more space */
+                                .full-height {
+                                    padding-top: 100px; /* Adjust based on header height */
+                                }
+
                                 @media screen and (max-width: 480px) {
                                     .slider-extra {
                                         min-height: auto;
