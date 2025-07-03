@@ -98,16 +98,29 @@
 
                         <div class="block-content">
                             <ul class="ui-categori">
-                                @foreach ($vendor->subvendor as $row)
-                                    <li class="">
-                                        <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
-                                            <span class="icon"><img
-                                                    src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
-                                                    alt="nav-cat"></span>
-                                            {{ $row->name ?? $row->user->first_name . ' ' . $row->user->last_name }}
-                                        </a>
-                                    </li>
-                                @endforeach
+                                @if (!is_null($carnival))
+                                    @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
+                                        <li class="">
+                                            <a href="{{ route('front.subVendor.detail', $item->user->slug) }}">
+                                                <span class="icon"><img
+                                                        src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
+                                                        alt="nav-cat"></span>
+                                                {{ $item->name ?? $item->user->first_name . ' ' . $item->user->last_name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @else
+                                    @foreach ($vendor->subvendor as $row)
+                                        <li class="">
+                                            <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
+                                                <span class="icon"><img
+                                                        src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
+                                                        alt="nav-cat"></span>
+                                                {{ $row->name ?? $row->user->first_name . ' ' . $row->user->last_name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
 
