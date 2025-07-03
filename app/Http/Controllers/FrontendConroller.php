@@ -434,7 +434,7 @@ class FrontendConroller extends Controller
     {
         $products = Product::with('brand')->get();
         $blog = Blogs::with('user')->where('slug', $id)->first();
-        
+
         if (!$blog) {
             return redirect()->back()->with('error', 'Blog not found');
         }
@@ -444,13 +444,13 @@ class FrontendConroller extends Controller
             ->where('category_id', $blog->category_id)
             ->orderBy('id', 'desc')
             ->get()->take(3);
-        
+
         $recent_blogs = Blogs::with('user')
             ->where('id', '!=', $blog->id)
             ->where('category_id', $blog->category_id)
             ->orderBy('id', 'desc')
             ->get()->take(7);
-        
+
         return view('ShopFrontend.blog-detail', compact('products', 'blog', 'related_blogs', 'recent_blogs'));
     }
 
@@ -490,7 +490,7 @@ class FrontendConroller extends Controller
         $investors = Investor::all();
 
         $carnival_com = Carnival::has('user')->pluck('head');
-
+        dd($carnival_com->toArray());
         $all_categories = Category::with('subcategories')->where('status', 1)->get();
 
         $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();
@@ -621,17 +621,17 @@ class FrontendConroller extends Controller
     public function sub_vendor_detail($slug)
     {
         $user = User::whereSlug($slug)->first();
-        
+
         if (!$user) {
             return redirect()->back()->with('error', 'User not found');
         }
-        
+
         $subvendor = SubVendor::with('products', 'products.category')->where('user_id', $user->id)->first();
-        
+
         if (!$subvendor) {
             return redirect()->back()->with('error', 'Subvendor not found');
         }
-        
+
         $categories = $subvendor->products->pluck('category')->unique('id');
         $products = Product::where('user_id', $user->id)->with('brand')->get();
         $brands = Brand::where('status', 1)->take(2)->get();
@@ -642,11 +642,11 @@ class FrontendConroller extends Controller
     public function carnivalViewMoreSearch(Request $request)
     {
         $query = $request->query ? $request->query : '';
-        
+
         if (!$query) {
             return redirect()->back();
         }
-        
+
         $latestUpcoming = Carnival::where('city_id', $request->city_id)
             ->orderBy('start_date', 'desc')
             ->first();
@@ -656,21 +656,21 @@ class FrontendConroller extends Controller
                 ->orderBy('start_date', 'desc')
                 ->first();
         }
-        
+
         if ($latestUpcoming) {
             return redirect()->route('events.view.more', ['slug' => $latestUpcoming->id]);
         }
-        
+
         return redirect()->back();
     }
     public function eventViewMore(Request $request, $slug)
     {
         $carnivals = Carnival::with('country_tabs', 'images')->find($slug);
-        
+
         if (!$carnivals) {
             return redirect()->back()->with('error', 'Carnival not found');
         }
-        
+
         $products = Product::with('brand')->get();
         $blogs = Blogs::with('user')->orderBy('id', 'DESC')->get()->take('3');
         $all_blogs = Blogs::with('user')->orderBy('id', 'DESC')->paginate(12);
@@ -685,7 +685,7 @@ class FrontendConroller extends Controller
         if (!$request->has('discount')) {
             return response()->json(['error' => 'Discount parameter is required'], 400);
         }
-        
+
         $discounted_products = Product::where('discount', '<=', $request->discount)->take(10)->get();
         return $discounted_products;
     }
@@ -693,13 +693,13 @@ class FrontendConroller extends Controller
     public function about_us($slug)
     {
         $user = User::with('vendor', 'subVendor', 'products')->whereSlug($slug)->first();
-        
+
         if (!$user) {
             return redirect()->back()->with('error', 'User not found');
         }
 
         $event = Event::with('category', 'images')->first();
-        
+
         if (!$event) {
             return redirect()->back()->with('error', 'No events found');
         }
@@ -717,7 +717,7 @@ class FrontendConroller extends Controller
         $brands = Brand::where('status', 1)
             ->withCount('products')
             ->get();
-        
+
         if ($vendorPackageName === 'Models' || $subVendorPackageName === 'Models' || $vendorPackageName === 'Artistes' || $subVendorPackageName === 'Artistes') {
             return view('ShopFrontend.model.detail', compact('event', 'user', 'products', 'brands'));
         } else {
@@ -729,11 +729,11 @@ class FrontendConroller extends Controller
     {
         $banners = Banner::where('type', 'mascamps')->get();
         $user = User::with('vendor', 'subVendor')->whereSlug($slug)->first();
-        
+
         if (!$user) {
             return redirect()->back()->with('error', 'User not found');
         }
-        
+
         $events = Event::with('category')->where('user_id', $user->id)->get();
         $regions = Region::with('countries')->OrderBy('placement', 'ASC')->get();
         $cat1 = Category::where('status', 1)
