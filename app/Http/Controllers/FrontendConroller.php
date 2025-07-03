@@ -490,8 +490,8 @@ class FrontendConroller extends Controller
         $investors = Investor::all();
 
         $carnival_com = Carnival::has('user')->pluck('head');
-        var_dump($carnival_com->toArray());
-        dd($vendor->toArray());
+        // var_dump($carnival_com->toArray());
+        // dd($vendor->toArray());
         $all_categories = Category::with('subcategories')->where('status', 1)->get();
 
         $carnival_commitee = Vendor::with('user')->whereIn('user_id', $carnival_com)->orderBy('id', 'DESC')->get();

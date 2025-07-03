@@ -93,7 +93,7 @@
                     <div class="block-nav-categori">
 
                         <div class="block-title">
-                            <span>Categories</span>
+                            <span>Bands</span>
                         </div>
 
                         <div class="block-content">
