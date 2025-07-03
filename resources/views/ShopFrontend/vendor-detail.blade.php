@@ -93,18 +93,22 @@
                     <div class="block-nav-categori">
 
                         <div class="block-title">
+                            @if (!is_null($carnival))
                             <span>Mascamps</span>
+                            @else
+                            <span>Section Leader</span>
+                            @endif
                         </div>
 
                         <div class="block-content">
                             <ul class="ui-categori">
+                                @if (!is_null($carnival))
                                 <li class="">
                                     {{-- <span class="icon"><img
                                             src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
                                             alt="nav-cat"></span> --}}
                                             <h3>Mascamps</h2>
                                 </li>
-                                @if (!is_null($carnival))
                                     @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
                                         <li class="">
                                             <a href="{{ route('front.subVendor.detail', $item->user->slug) }}">
@@ -116,6 +120,12 @@
                                         </li>
                                     @endforeach
                                 @else
+                                <li class="">
+                                    {{-- <span class="icon"><img
+                                            src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
+                                            alt="nav-cat"></span> --}}
+                                            <h3>Section Leaders</h2>
+                                </li>
                                     @foreach ($vendor->subvendor as $row)
                                         <li class="">
                                             <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
