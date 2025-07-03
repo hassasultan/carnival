@@ -93,16 +93,16 @@
                     <div class="block-nav-categori">
 
                         <div class="block-title">
-                            <span>MasBands</span>
+                            <span>Mascamps</span>
                         </div>
 
                         <div class="block-content">
                             <ul class="ui-categori">
                                 <li class="">
-                                    <span class="icon"><img
+                                    {{-- <span class="icon"><img
                                             src="{{ asset('shopAssets/images/icon/index1/nav-cat8.png') }}"
-                                            alt="nav-cat"></span>
-                                            <h2>MasBands</h2>
+                                            alt="nav-cat"></span> --}}
+                                            <h3>Mascamps</h2>
                                 </li>
                                 @if (!is_null($carnival))
                                     @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
