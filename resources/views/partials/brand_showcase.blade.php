@@ -14,47 +14,47 @@
                             "992":{"items":8}
                         }'>
                 <li class="active" data-tab="brand1-1">
-                    <a href="{{ route('front.product_listing', ['brand' => 'DIGICEL']) }}">
+                    <a href="javacript:void(0);">
                         <img src="https://carnivalguide.co/travel/images/digicelt.jpg" alt="img">
                     </a>
                 </li>
                 <li data-tab="brand1-2">
-                    <a href="{{ route('front.product_listing', ['brand' => 'FLOW']) }}">
+                    <a href="javacript:void(0);">
                         <img src="https://carnivalguide.co/travel/images/flowt.jpg" alt="img">
                     </a>
                 </li>
                 <li data-tab="brand1-3">
-                    <a href="{{ route('front.product_listing', ['brand' => 'CLARKES COURT']) }}">
+                    <a href="javacript:void(0);">
                         <img src="https://carnivalguide.co/travel/images/clarksct.jpg" alt="img">
                     </a>
                 </li>
                 <li data-tab="brand1-4">
-                    <a href="{{ route('front.product_listing', ['brand' => 'CARIB']) }}">
+                    <a href="javacript:void(0);">
                         <img src="https://carnivalguide.co/travel/images/caribt.jpg" alt="img">
                     </a>
                 </li>
                 <li data-tab="brand1-5">
-                    <a href="{{ route('front.product_listing', ['brand' => 'HUGGINS']) }}">
+                    <a href="javacript:void(0);">
                         <img src="https://carnivalguide.co/travel/images/hugginst.jpg" alt="img">
                     </a>
                 </li>
                 <li data-tab="brand1-6">
-                    <a href="{{ route('front.product_listing', ['brand' => 'GLENELG']) }}">
+                    <a href="javacript:void(0);">
                         <img src="https://carnivalguide.co/travel/images/glenlgt.jpg" alt="img">
                     </a>
                 </li>
                 <li data-tab="brand1-7">
-                    <a href="{{ route('front.product_listing', ['brand' => 'Inter Caribbean']) }}">
+                    <a href="javacript:void(0);">
                         <img src="https://carnivalguide.co/travel/images/intert.jpg" alt="img">
                     </a>
                 </li>
                 <li data-tab="brand1-8">
-                    <a href="{{ route('front.product_listing', ['brand' => 'selected_brand']) }}">
+                    <a href="javacript:void(0);">
                         <img src="https://carnivalguide.co/travel/images/cococolat.jpg" alt="img">
                     </a>
                 </li>
                 <li data-tab="brand1-9">
-                    <a href="{{ route('front.product_listing', ['brand' => 'CLARKES COURT']) }}">
+                    <a href="javacript:void(0);">
                         <img src="https://carnivalguide.co/travel/images/clarksct.jpg" alt="img">
                     </a>
                 </li>
@@ -71,7 +71,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="javacript:void(0);" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="javacript:void(0);" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -232,7 +232,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="javacript:void(0);" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -312,7 +312,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="javacript:void(0);" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -392,7 +392,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="javacript:void(0);" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -473,7 +473,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="javacript:void(0);" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -553,7 +553,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="javacript:void(0);" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -633,7 +633,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="javacript:void(0);" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
@@ -713,7 +713,7 @@
                                     women's bags. Discover our spring collection.
                                 </div>
                                 <div class="actions">
-                                    <a href="javacript:void(0);" class="btn btn-default">shop this brand <i aria-hidden="true"
+                                    <a href="{{ route('front.product_listing') }}" class="btn btn-default">shop this brand <i aria-hidden="true"
                                             class="fa fa-caret-right"></i></a>
                                 </div>
                             </div>
