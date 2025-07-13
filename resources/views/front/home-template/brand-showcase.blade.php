@@ -77,7 +77,9 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product image"
-                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -154,7 +156,9 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -230,7 +234,9 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -306,7 +312,9 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -382,7 +390,9 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -459,7 +469,9 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -535,7 +547,9 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -611,7 +625,9 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -687,7 +703,9 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
+                                                                        class="img-fluid w-100"
+                                                                        style="max-height: 5rem; object-fit: cover;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
