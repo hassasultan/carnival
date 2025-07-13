@@ -588,18 +588,41 @@ class FrontendConroller extends Controller
     {
         $products = Product::where('user_id', $slug);
         $getSearchVal = $request->get('getSearchVal', null);
+        
         if ($request->has('cat') && $request->cat != 0) {
             $products = $products->where('category_id', $request->cat);
         }
         if ($request->has('subcat') && $request->subcat != 0) {
             $products = $products->where('subcategory_id', $request->subcat);
         }
+        
+        // Handle gender-based filtering
+        if ($request->has('gender')) {
+            $gender = $request->gender;
+            switch ($gender) {
+                case 'women':
+                    $products = $products->where('women', 1);
+                    break;
+                case 'men':
+                    $products = $products->where('men', 1);
+                    break;
+                case 'kids':
+                    $products = $products->where('kids', 1);
+                    break;
+                case 'accessories':
+                    $products = $products->where('accessories', 1);
+                    break;
+            }
+        }
+        
         if ($request->has('attribute') && $request->attribute == 'bestSale') {
+            // Best seller logic can be added here
         }
         if ($request->has('attribute') && $request->attribute == 'onsale') {
             $products = $products->where('sale', true);
         }
         if ($request->has('attribute') && $request->attribute == 'new') {
+            // New arrivals logic can be added here
         }
 
         if (!empty($getSearchVal)) {

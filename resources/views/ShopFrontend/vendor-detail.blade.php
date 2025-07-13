@@ -2840,6 +2840,10 @@
                                         <li role="presentation"><a href="#floor1-3" id="new-arr-tab" role="tab"
                                                 data-toggle="tab">New Arrivals <span class="label-cat">12</span></a>
                                         </li>
+                                        <li role="presentation"><a href="#floor1-4-women" onclick="genderProduct('women','vendors-women-div')" role="tab" data-toggle="tab">Women</a></li>
+                                        <li role="presentation"><a href="#floor1-4-men" onclick="genderProduct('men','vendors-men-div')" role="tab" data-toggle="tab">Men</a></li>
+                                        <li role="presentation"><a href="#floor1-4-kids" onclick="genderProduct('kids','vendors-kids-div')" role="tab" data-toggle="tab">Kids</a></li>
+                                        <li role="presentation"><a href="#floor1-4-accessories" onclick="genderProduct('accessories','vendors-accessories-div')" role="tab" data-toggle="tab">Accessories</a></li>
                                         @foreach ($categories as $row)
                                             <li role="presentation"><a href="#floor1-4-{{ $row->id }}"
                                                     onclick="catProduct({{ $row->id }},'vendors-cat-div-{{ $row->id }}')"
@@ -5458,6 +5462,67 @@
                 error: function(xhr, status, error) {
                     console.error(error);
                 }
+            });
+        }
+
+        // Gender-based product filtering function
+        function genderProduct(gender, id) {
+            $.ajax({
+                url: "{{ route('front.vendor.products', '') }}/" + slug,
+                type: "GET",
+                data: {
+                    gender: gender,
+                },
+                success: function(response) {
+                    console.log(response);
+                    printTiles(id, response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        function printTiles(id, products) {
+            $('#' + id).empty();
+            $.each(products, function(index, product) {
+                var image = product.image ? "{{ asset('productImage/') }}/" + product.image : "{{ asset('shopAssets/images/media/index1/floor1-1.jpg') }}";
+                var productHtml = `
+                    <div class="product-item product-item-opt-1">
+                        <div class="product-item-info">
+                            <div class="product-item-photo">
+                                <a class="product-item-img" href="">
+                                    <img alt="product name" src="${image}">
+                                </a>
+                                <div class="product-item-actions">
+                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                </div>
+                                <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
+                            </div>
+                            <div class="product-item-detail">
+                                <strong class="product-item-name"><a href="">${product.title}</a></strong>
+                                <div class="clearfix">
+                                    <div class="product-item-price">
+                                        <span class="price">$${product.new_price}</span>
+                                        ${product.old_price ? `<span class="old-price">$${product.old_price}</span>` : ''}
+                                    </div>
+                                    <div class="product-reviews-summary">
+                                        <div class="rating-summary">
+                                            <div title="${product.discount || 0}%" class="rating-result">
+                                                <span style="width:${product.discount || 0}%">
+                                                    <span><span>${product.discount || 0}</span>% of <span>100</span></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $('#' + id).append(productHtml);
             });
         }
 

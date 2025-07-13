@@ -464,6 +464,10 @@
                                             Viewed </a></li>
                                     <li role="presentation"><a href="#floor1-3" id="new-arr-tab" role="tab"
                                             data-toggle="tab">New Arrivals <span class="label-cat">12</span></a></li>
+                                    <li role="presentation"><a href="#floor1-4-women" onclick="genderProduct('women','vendors-women-div')" role="tab" data-toggle="tab">Women</a></li>
+                                    <li role="presentation"><a href="#floor1-4-men" onclick="genderProduct('men','vendors-men-div')" role="tab" data-toggle="tab">Men</a></li>
+                                    <li role="presentation"><a href="#floor1-4-kids" onclick="genderProduct('kids','vendors-kids-div')" role="tab" data-toggle="tab">Kids</a></li>
+                                    <li role="presentation"><a href="#floor1-4-accessories" onclick="genderProduct('accessories','vendors-accessories-div')" role="tab" data-toggle="tab">Accessories</a></li>
                                     @foreach ($categories as $row)
                                         <li role="presentation"><a href="#floor1-4-{{ $row->id }}"
                                                 onclick="catProduct({{ $row->id }},'vendors-cat-div-{{ $row->id }}')"
@@ -683,7 +687,239 @@
                                 </div>
                             </div>
 
-                            <!-- tab 4 -->
+                            <!-- tab 4 - Women -->
+                            <div class="tab-pane fade" id="floor1-4-women" role="tabpanel">
+                                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                    data-responsive='{
+                                    "0":{"items":1},
+                                    "420":{"items":2},
+                                    "600":{"items":3},
+                                    "768":{"items":3},
+                                    "992":{"items":3},
+                                    "1200":{"items":4}
+                                }'
+                                    id="vendors-women-div">
+                                    @foreach ($costumes as $costume)
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" style="height: 266px; width: 186px;"
+                                                        href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a
+                                                            href="">{{ $costume->title }}</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">${{ $costume->new_price }}</span>
+                                                            @if ($costume->old_price)
+                                                                <span class="old-price">${{ $costume->old_price }}</span>
+                                                            @endif
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="{{ $costume->discount }}%"
+                                                                    class="rating-result">
+                                                                    <span style="width:{{ $costume->discount }}%">
+                                                                        <span><span>{{ $costume->discount }}</span>%
+                                                                            of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <!-- tab 5 - Men -->
+                            <div class="tab-pane fade" id="floor1-4-men" role="tabpanel">
+                                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                    data-responsive='{
+                                    "0":{"items":1},
+                                    "420":{"items":2},
+                                    "600":{"items":3},
+                                    "768":{"items":3},
+                                    "992":{"items":3},
+                                    "1200":{"items":4}
+                                }'
+                                    id="vendors-men-div">
+                                    @foreach ($costumes as $costume)
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" style="height: 266px; width: 186px;"
+                                                        href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a
+                                                            href="">{{ $costume->title }}</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">${{ $costume->new_price }}</span>
+                                                            @if ($costume->old_price)
+                                                                <span class="old-price">${{ $costume->old_price }}</span>
+                                                            @endif
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="{{ $costume->discount }}%"
+                                                                    class="rating-result">
+                                                                    <span style="width:{{ $costume->discount }}%">
+                                                                        <span><span>{{ $costume->discount }}</span>%
+                                                                            of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <!-- tab 6 - Kids -->
+                            <div class="tab-pane fade" id="floor1-4-kids" role="tabpanel">
+                                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                    data-responsive='{
+                                    "0":{"items":1},
+                                    "420":{"items":2},
+                                    "600":{"items":3},
+                                    "768":{"items":3},
+                                    "992":{"items":3},
+                                    "1200":{"items":4}
+                                }'
+                                    id="vendors-kids-div">
+                                    @foreach ($costumes as $costume)
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" style="height: 266px; width: 186px;"
+                                                        href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a
+                                                            href="">{{ $costume->title }}</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">${{ $costume->new_price }}</span>
+                                                            @if ($costume->old_price)
+                                                                <span class="old-price">${{ $costume->old_price }}</span>
+                                                            @endif
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="{{ $costume->discount }}%"
+                                                                    class="rating-result">
+                                                                    <span style="width:{{ $costume->discount }}%">
+                                                                        <span><span>{{ $costume->discount }}</span>%
+                                                                            of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <!-- tab 7 - Accessories -->
+                            <div class="tab-pane fade" id="floor1-4-accessories" role="tabpanel">
+                                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                    data-responsive='{
+                                    "0":{"items":1},
+                                    "420":{"items":2},
+                                    "600":{"items":3},
+                                    "768":{"items":3},
+                                    "992":{"items":3},
+                                    "1200":{"items":4}
+                                }'
+                                    id="vendors-accessories-div">
+                                    @foreach ($costumes as $costume)
+                                        <div class="product-item  product-item-opt-1 ">
+                                            <div class="product-item-info">
+                                                <div class="product-item-photo">
+                                                    <a class="product-item-img" style="height: 266px; width: 186px;"
+                                                        href=""><img alt="product name"
+                                                            src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
+                                                    <div class="product-item-actions">
+                                                        <a class="btn btn-wishlist"
+                                                            href=""><span>wishlist</span></a>
+                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                        <a class="btn btn-quickview"
+                                                            href=""><span>quickview</span></a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-cart"><span>Add to
+                                                            Cart</span></button>
+                                                </div>
+                                                <div class="product-item-detail">
+                                                    <strong class="product-item-name"><a
+                                                            href="">{{ $costume->title }}</a></strong>
+                                                    <div class="clearfix">
+                                                        <div class="product-item-price">
+                                                            <span class="price">${{ $costume->new_price }}</span>
+                                                            @if ($costume->old_price)
+                                                                <span class="old-price">${{ $costume->old_price }}</span>
+                                                            @endif
+                                                        </div>
+                                                        <div class="product-reviews-summary">
+                                                            <div class="rating-summary">
+                                                                <div title="{{ $costume->discount }}%"
+                                                                    class="rating-result">
+                                                                    <span style="width:{{ $costume->discount }}%">
+                                                                        <span><span>{{ $costume->discount }}</span>%
+                                                                            of <span>100</span></span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <!-- tab 8 - Categories -->
                             @foreach ($categories as $row)
                                 <div class="tab-pane  fade" id="floor1-4-{{ $row->id }}" role="tabpanel">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
@@ -780,6 +1016,18 @@
                                                     onclick="subvendorProduct('new','{{ $row->user->id }}','new-arrival-subvendor-{{ $row->id }}')"
                                                     role="tab" data-toggle="tab">New Arrivals <span
                                                         class="label-cat">12</span></a></li>
+                                            <li role="presentation"><a href="#floor-women-{{ $row->id }}"
+                                                    onclick="subvendorGenderProduct('women','{{ $row->user->id }}','women-subvendor-{{ $row->id }}')"
+                                                    role="tab" data-toggle="tab">Women</a></li>
+                                            <li role="presentation"><a href="#floor-men-{{ $row->id }}"
+                                                    onclick="subvendorGenderProduct('men','{{ $row->user->id }}','men-subvendor-{{ $row->id }}')"
+                                                    role="tab" data-toggle="tab">Men</a></li>
+                                            <li role="presentation"><a href="#floor-kids-{{ $row->id }}"
+                                                    onclick="subvendorGenderProduct('kids','{{ $row->user->id }}','kids-subvendor-{{ $row->id }}')"
+                                                    role="tab" data-toggle="tab">Kids</a></li>
+                                            <li role="presentation"><a href="#floor-accessories-{{ $row->id }}"
+                                                    onclick="subvendorGenderProduct('accessories','{{ $row->user->id }}','accessories-subvendor-{{ $row->id }}')"
+                                                    role="tab" data-toggle="tab">Accessories</a></li>
                                             @php
                                                 $subCategories = collect();
                                             @endphp
@@ -923,6 +1171,378 @@
                                                 </div>
                                             @endforeach
 
+                                        </div>
+                                    </div>
+
+                                    <!-- tab 2 - Most Viewed -->
+                                    <div class="tab-pane fade" id="floor-most-{{ $row->id }}" role="tabpanel">
+                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                            data-responsive='{
+                                        "0":{"items":1},
+                                        "420":{"items":2},
+                                        "600":{"items":3},
+                                        "768":{"items":3},
+                                        "992":{"items":3},
+                                        "1200":{"items":4}
+                                    }'
+                                            id="most-viewed-subvendor-{{ $row->id }}">
+                                            @foreach ($combined as $item)
+                                                <div class="product-item product-item-opt-1">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href="">
+                                                                <img alt="product name"
+                                                                    src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}">
+                                                            </a>
+                                                            <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist" href="">
+                                                                    <span>wishlist</span>
+                                                                </a>
+                                                                <a class="btn btn-compare" href="">
+                                                                    <span>compare</span>
+                                                                </a>
+                                                                <a class="btn btn-quickview" href="">
+                                                                    <span>quickview</span>
+                                                                </a>
+                                                            </div>
+                                                            <button type="button" class="btn btn-cart">
+                                                                <span>Add to Cart</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name">
+                                                                <a href="">{{ $item->name ?? 'Product Name' }}</a>
+                                                            </strong>
+                                                            <div class="clearfix">
+                                                                <div class="product-item-price">
+                                                                    <span class="price">$45.00</span>
+                                                                    <span class="old-price">$52.00</span>
+                                                                </div>
+                                                                <div class="product-reviews-summary">
+                                                                    <div class="rating-summary">
+                                                                        <div title="80%" class="rating-result">
+                                                                            <span style="width:80%">
+                                                                                <span><span>80</span>% of
+                                                                                    <span>100</span></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+
+                                    <!-- tab 3 - New Arrivals -->
+                                    <div class="tab-pane fade" id="floor-new-{{ $row->id }}" role="tabpanel">
+                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                            data-responsive='{
+                                        "0":{"items":1},
+                                        "420":{"items":2},
+                                        "600":{"items":3},
+                                        "768":{"items":3},
+                                        "992":{"items":3},
+                                        "1200":{"items":4}
+                                    }'
+                                            id="new-arrival-subvendor-{{ $row->id }}">
+                                            @foreach ($combined as $item)
+                                                <div class="product-item product-item-opt-1">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href="">
+                                                                <img alt="product name"
+                                                                    src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}">
+                                                            </a>
+                                                            <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist" href="">
+                                                                    <span>wishlist</span>
+                                                                </a>
+                                                                <a class="btn btn-compare" href="">
+                                                                    <span>compare</span>
+                                                                </a>
+                                                                <a class="btn btn-quickview" href="">
+                                                                    <span>quickview</span>
+                                                                </a>
+                                                            </div>
+                                                            <button type="button" class="btn btn-cart">
+                                                                <span>Add to Cart</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name">
+                                                                <a href="">{{ $item->name ?? 'Product Name' }}</a>
+                                                            </strong>
+                                                            <div class="clearfix">
+                                                                <div class="product-item-price">
+                                                                    <span class="price">$45.00</span>
+                                                                    <span class="old-price">$52.00</span>
+                                                                </div>
+                                                                <div class="product-reviews-summary">
+                                                                    <div class="rating-summary">
+                                                                        <div title="80%" class="rating-result">
+                                                                            <span style="width:80%">
+                                                                                <span><span>80</span>% of
+                                                                                    <span>100</span></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+
+                                    <!-- tab 4 - Women -->
+                                    <div class="tab-pane fade" id="floor-women-{{ $row->id }}" role="tabpanel">
+                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                            data-responsive='{
+                                        "0":{"items":1},
+                                        "420":{"items":2},
+                                        "600":{"items":3},
+                                        "768":{"items":3},
+                                        "992":{"items":3},
+                                        "1200":{"items":4}
+                                    }'
+                                            id="women-subvendor-{{ $row->id }}">
+                                            @foreach ($combined as $item)
+                                                <div class="product-item product-item-opt-1">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href="">
+                                                                <img alt="product name"
+                                                                    src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}">
+                                                            </a>
+                                                            <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist" href="">
+                                                                    <span>wishlist</span>
+                                                                </a>
+                                                                <a class="btn btn-compare" href="">
+                                                                    <span>compare</span>
+                                                                </a>
+                                                                <a class="btn btn-quickview" href="">
+                                                                    <span>quickview</span>
+                                                                </a>
+                                                            </div>
+                                                            <button type="button" class="btn btn-cart">
+                                                                <span>Add to Cart</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name">
+                                                                <a href="">{{ $item->name ?? 'Product Name' }}</a>
+                                                            </strong>
+                                                            <div class="clearfix">
+                                                                <div class="product-item-price">
+                                                                    <span class="price">$45.00</span>
+                                                                    <span class="old-price">$52.00</span>
+                                                                </div>
+                                                                <div class="product-reviews-summary">
+                                                                    <div class="rating-summary">
+                                                                        <div title="80%" class="rating-result">
+                                                                            <span style="width:80%">
+                                                                                <span><span>80</span>% of
+                                                                                    <span>100</span></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+
+                                    <!-- tab 5 - Men -->
+                                    <div class="tab-pane fade" id="floor-men-{{ $row->id }}" role="tabpanel">
+                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                            data-responsive='{
+                                        "0":{"items":1},
+                                        "420":{"items":2},
+                                        "600":{"items":3},
+                                        "768":{"items":3},
+                                        "992":{"items":3},
+                                        "1200":{"items":4}
+                                    }'
+                                            id="men-subvendor-{{ $row->id }}">
+                                            @foreach ($combined as $item)
+                                                <div class="product-item product-item-opt-1">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href="">
+                                                                <img alt="product name"
+                                                                    src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}">
+                                                            </a>
+                                                            <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist" href="">
+                                                                    <span>wishlist</span>
+                                                                </a>
+                                                                <a class="btn btn-compare" href="">
+                                                                    <span>compare</span>
+                                                                </a>
+                                                                <a class="btn btn-quickview" href="">
+                                                                    <span>quickview</span>
+                                                                </a>
+                                                            </div>
+                                                            <button type="button" class="btn btn-cart">
+                                                                <span>Add to Cart</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name">
+                                                                <a href="">{{ $item->name ?? 'Product Name' }}</a>
+                                                            </strong>
+                                                            <div class="clearfix">
+                                                                <div class="product-item-price">
+                                                                    <span class="price">$45.00</span>
+                                                                    <span class="old-price">$52.00</span>
+                                                                </div>
+                                                                <div class="product-reviews-summary">
+                                                                    <div class="rating-summary">
+                                                                        <div title="80%" class="rating-result">
+                                                                            <span style="width:80%">
+                                                                                <span><span>80</span>% of
+                                                                                    <span>100</span></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+
+                                    <!-- tab 6 - Kids -->
+                                    <div class="tab-pane fade" id="floor-kids-{{ $row->id }}" role="tabpanel">
+                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                            data-responsive='{
+                                        "0":{"items":1},
+                                        "420":{"items":2},
+                                        "600":{"items":3},
+                                        "768":{"items":3},
+                                        "992":{"items":3},
+                                        "1200":{"items":4}
+                                    }'
+                                            id="kids-subvendor-{{ $row->id }}">
+                                            @foreach ($combined as $item)
+                                                <div class="product-item product-item-opt-1">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href="">
+                                                                <img alt="product name"
+                                                                    src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}">
+                                                            </a>
+                                                            <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist" href="">
+                                                                    <span>wishlist</span>
+                                                                </a>
+                                                                <a class="btn btn-compare" href="">
+                                                                    <span>compare</span>
+                                                                </a>
+                                                                <a class="btn btn-quickview" href="">
+                                                                    <span>quickview</span>
+                                                                </a>
+                                                            </div>
+                                                            <button type="button" class="btn btn-cart">
+                                                                <span>Add to Cart</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name">
+                                                                <a href="">{{ $item->name ?? 'Product Name' }}</a>
+                                                            </strong>
+                                                            <div class="clearfix">
+                                                                <div class="product-item-price">
+                                                                    <span class="price">$45.00</span>
+                                                                    <span class="old-price">$52.00</span>
+                                                                </div>
+                                                                <div class="product-reviews-summary">
+                                                                    <div class="rating-summary">
+                                                                        <div title="80%" class="rating-result">
+                                                                            <span style="width:80%">
+                                                                                <span><span>80</span>% of
+                                                                                    <span>100</span></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+
+                                    <!-- tab 7 - Accessories -->
+                                    <div class="tab-pane fade" id="floor-accessories-{{ $row->id }}" role="tabpanel">
+                                        <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                            data-responsive='{
+                                        "0":{"items":1},
+                                        "420":{"items":2},
+                                        "600":{"items":3},
+                                        "768":{"items":3},
+                                        "992":{"items":3},
+                                        "1200":{"items":4}
+                                    }'
+                                            id="accessories-subvendor-{{ $row->id }}">
+                                            @foreach ($combined as $item)
+                                                <div class="product-item product-item-opt-1">
+                                                    <div class="product-item-info">
+                                                        <div class="product-item-photo">
+                                                            <a class="product-item-img" href="">
+                                                                <img alt="product name"
+                                                                    src="{{ asset('shopAssets/images/media/index1/floor2-1.jpg') }}">
+                                                            </a>
+                                                            <div class="product-item-actions">
+                                                                <a class="btn btn-wishlist" href="">
+                                                                    <span>wishlist</span>
+                                                                </a>
+                                                                <a class="btn btn-compare" href="">
+                                                                    <span>compare</span>
+                                                                </a>
+                                                                <a class="btn btn-quickview" href="">
+                                                                    <span>quickview</span>
+                                                                </a>
+                                                            </div>
+                                                            <button type="button" class="btn btn-cart">
+                                                                <span>Add to Cart</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-item-detail">
+                                                            <strong class="product-item-name">
+                                                                <a href="">{{ $item->name ?? 'Product Name' }}</a>
+                                                            </strong>
+                                                            <div class="clearfix">
+                                                                <div class="product-item-price">
+                                                                    <span class="price">$45.00</span>
+                                                                    <span class="old-price">$52.00</span>
+                                                                </div>
+                                                                <div class="product-reviews-summary">
+                                                                    <div class="rating-summary">
+                                                                        <div title="80%" class="rating-result">
+                                                                            <span style="width:80%">
+                                                                                <span><span>80</span>% of
+                                                                                    <span>100</span></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -1369,6 +1989,111 @@
             // Initial fetch
             fetchMusic();
         });
+    </script>
+
+    <script>
+        // Gender-based product filtering functions
+        function genderProduct(gender, id) {
+            $.ajax({
+                url: "{{ route('front.vendor.products', '') }}/{{ $user->id }}",
+                type: "GET",
+                data: {
+                    gender: gender,
+                },
+                success: function(response) {
+                    console.log(response);
+                    printTiles(id, response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        function catProduct(category, id) {
+            var attr = "";
+            var cat = category;
+            getProducts(attr, id, cat);
+        }
+
+        function getProducts(attribute, id, category = 0) {
+            $.ajax({
+                url: "{{ route('front.vendor.products', '') }}/{{ $user->id }}",
+                type: "GET",
+                data: {
+                    attribute: attribute,
+                    cat: category,
+                },
+                success: function(response) {
+                    console.log(response);
+                    printTiles(id, response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        function printTiles(id, products) {
+            $('#' + id).empty();
+            $.each(products, function(index, product) {
+                var image = product.image ? "{{ asset('productImage/') }}/" + product.image : "{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}";
+                var productHtml = `
+                    <div class="product-item product-item-opt-1">
+                        <div class="product-item-info">
+                            <div class="product-item-photo">
+                                <a class="product-item-img" style="height: 266px; width: 186px;" href="">
+                                    <img alt="product name" src="${image}">
+                                </a>
+                                <div class="product-item-actions">
+                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                </div>
+                                <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
+                            </div>
+                            <div class="product-item-detail">
+                                <strong class="product-item-name"><a href="">${product.title}</a></strong>
+                                <div class="clearfix">
+                                    <div class="product-item-price">
+                                        <span class="price">$${product.new_price}</span>
+                                        ${product.old_price ? `<span class="old-price">$${product.old_price}</span>` : ''}
+                                    </div>
+                                    <div class="product-reviews-summary">
+                                        <div class="rating-summary">
+                                            <div title="${product.discount || 0}%" class="rating-result">
+                                                <span style="width:${product.discount || 0}%">
+                                                    <span><span>${product.discount || 0}</span>% of <span>100</span></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $('#' + id).append(productHtml);
+            });
+        }
+
+        // Subvendor gender-based product filtering function
+        function subvendorGenderProduct(gender, subVendorSlug, id) {
+            $.ajax({
+                url: "{{ route('front.vendor.products', '') }}/" + subVendorSlug,
+                type: "GET",
+                data: {
+                    gender: gender,
+                },
+                success: function(response) {
+                    console.log(response);
+                    printTiles(id, response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
     </script>
 
     <script>
