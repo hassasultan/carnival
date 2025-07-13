@@ -182,6 +182,46 @@
                                 .close-btn:hover {
                                     background: rgba(0,0,0,0.9);
                                 }
+
+                                /* Tab navigation styles */
+                                .nav-tab-item {
+                                    transition: all 0.3s ease;
+                                    padding: 8px 16px;
+                                    border-radius: 4px;
+                                    margin: 0 4px;
+                                }
+
+                                .nav-tab-item:hover {
+                                    background-color: rgba(0,0,0,0.1);
+                                }
+
+                                .nav-tab-item:not(.d-none) {
+                                    background-color: rgba(0,0,0,0.2);
+                                    font-weight: bold;
+                                }
+
+                                /* Fix slide preview images */
+                                .slide-preview {
+                                    display: flex;
+                                    gap: 8px;
+                                    margin-top: 10px;
+                                }
+                                .slide-preview a {
+                                    display: inline-block;
+                                    width: 70px;
+                                    height: 70px;
+                                    border-radius: 8px;
+                                    overflow: hidden;
+                                    background: #f3f3f3;
+                                    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+                                }
+                                .slide-preview img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    display: block;
+                                    border-radius: 8px;
+                                }
                             </style>
                             @foreach ($carnivals as $key => $row)
                                 <div class="swiper-slide @if ($key == 0) active @endif {{ $key }}"
@@ -200,17 +240,17 @@
                                                                     <div class="tab-wrapper">
                                                                         <div class="tab-nav-wrapper">
                                                                             <div class="nav-tab  clearfix">
-                                                                                <div class="nav-tab-item d-none flight">
+                                                                                <div class="nav-tab-item d-none flight" onclick="switchTab('flight', {{ $row->id }})" style="cursor: pointer;">
                                                                                     Flights
                                                                                 </div>
-                                                                                <div class="nav-tab-item d-none hotel">
+                                                                                <div class="nav-tab-item d-none hotel" onclick="switchTab('hotel', {{ $row->id }})" style="cursor: pointer;">
                                                                                     Hotels
                                                                                 </div>
-                                                                                <div class="nav-tab-item d-none events">
+                                                                                <div class="nav-tab-item d-none events" onclick="switchTab('events', {{ $row->id }})" style="cursor: pointer;">
                                                                                     Events
                                                                                 </div>
                                                                                 <div
-                                                                                    class="nav-tab-item d-none costume">
+                                                                                    class="nav-tab-item d-none costume" onclick="switchTab('costume', {{ $row->id }})" style="cursor: pointer;">
                                                                                     Costume
                                                                                 </div>
                                                                             </div>
