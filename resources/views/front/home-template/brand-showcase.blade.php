@@ -77,7 +77,7 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product image"
-                                                                        src="{{ asset('productImage/' . $product->image) }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -154,7 +154,7 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -230,7 +230,7 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -306,7 +306,7 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -382,7 +382,7 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -459,7 +459,7 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -535,7 +535,7 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -611,7 +611,7 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -687,7 +687,7 @@
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
                                                                     <img alt="product name"
-                                                                        src="{{ asset('productImage/' . $product->image) }}">
+                                                                        src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
