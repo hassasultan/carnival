@@ -82,7 +82,7 @@
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <strong class="product-item-name">
-                                                                    <a href="">{{ $product->name }}</a>
+                                                                    <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                 </strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
@@ -159,7 +159,7 @@
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <strong class="product-item-name">
-                                                                    <a href="">{{ $product->name }}</a>
+                                                                    <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                 </strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
@@ -235,7 +235,7 @@
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <strong class="product-item-name">
-                                                                    <a href="">{{ $product->name }}</a>
+                                                                    <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                 </strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
@@ -311,7 +311,7 @@
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <strong class="product-item-name">
-                                                                    <a href="">{{ $product->name }}</a>
+                                                                    <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                 </strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
@@ -387,7 +387,7 @@
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <strong class="product-item-name">
-                                                                    <a href="">{{ $product->name }}</a>
+                                                                    <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                 </strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
@@ -464,7 +464,7 @@
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <strong class="product-item-name">
-                                                                    <a href="">{{ $product->name }}</a>
+                                                                    <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                 </strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
@@ -540,7 +540,7 @@
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <strong class="product-item-name">
-                                                                    <a href="">{{ $product->name }}</a>
+                                                                    <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                 </strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
@@ -616,7 +616,7 @@
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <strong class="product-item-name">
-                                                                    <a href="">{{ $product->name }}</a>
+                                                                    <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                 </strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
@@ -692,7 +692,7 @@
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 <strong class="product-item-name">
-                                                                    <a href="">{{ $product->name }}</a>
+                                                                    <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->name }}</a>
                                                                 </strong>
                                                                 <div class="clearfix">
                                                                     <div class="product-item-price">
