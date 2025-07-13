@@ -76,7 +76,7 @@
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
                                                                 <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
-                                                                    <img alt="product image"
+                                                                    <img alt="product name"
                                                                         src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                                         class="img-fluid w-100"
                                                                         style="max-height: 5rem; object-fit: cover;">
