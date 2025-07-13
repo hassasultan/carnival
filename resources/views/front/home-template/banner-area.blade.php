@@ -161,67 +161,6 @@
                                         padding-top: 40px; /* Less space on mobile */
                                     }
                                 }
-
-                                /* Close button styles */
-                                .close-btn {
-                                    position: absolute;
-                                    top: 10px;
-                                    right: 10px;
-                                    background: rgba(0,0,0,0.7);
-                                    color: white;
-                                    border: none;
-                                    border-radius: 50%;
-                                    width: 30px;
-                                    height: 30px;
-                                    font-size: 18px;
-                                    cursor: pointer;
-                                    z-index: 1000;
-                                    transition: background-color 0.3s ease;
-                                }
-
-                                .close-btn:hover {
-                                    background: rgba(0,0,0,0.9);
-                                }
-
-                                /* Tab navigation styles */
-                                .nav-tab-item {
-                                    transition: all 0.3s ease;
-                                    padding: 8px 16px;
-                                    border-radius: 4px;
-                                    margin: 0 4px;
-                                }
-
-                                .nav-tab-item:hover {
-                                    background-color: rgba(0,0,0,0.1);
-                                }
-
-                                .nav-tab-item:not(.d-none) {
-                                    background-color: rgba(0,0,0,0.2);
-                                    font-weight: bold;
-                                }
-
-                                /* Fix slide preview images */
-                                .slide-preview {
-                                    display: flex;
-                                    gap: 8px;
-                                    margin-top: 10px;
-                                }
-                                .slide-preview a {
-                                    display: inline-block;
-                                    width: 70px;
-                                    height: 70px;
-                                    border-radius: 8px;
-                                    overflow: hidden;
-                                    background: #f3f3f3;
-                                    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-                                }
-                                .slide-preview img {
-                                    width: 100%;
-                                    height: 100%;
-                                    object-fit: cover;
-                                    display: block;
-                                    border-radius: 8px;
-                                }
                             </style>
                             @foreach ($carnivals as $key => $row)
                                 <div class="swiper-slide @if ($key == 0) active @endif {{ $key }}"
@@ -236,21 +175,39 @@
                                                                 alt=""> --}}
                                                             <div class="city-entry bg-grey-2 city-entry-new"
                                                                 id="city-entry-{{ $row->id }}">
+                                                                {{-- <div
+                                                                    class="tour-block tour-block-s-9 hover-green radius-5 underline-block">
+                                                                    <div class="tour-layer delay-1"></div>
+                                                                    <img src="https://carnivalguide.co/travel/img/home/city_1.jpg"
+                                                                        class="res-img" alt="">
+                                                                    <div class="tour-caption">
+                                                                        <div class="vertical-align">
+                                                                            <h3 class="underline hover-it">
+                                                                                St.Vincent
+                                                                            </h3>
+                                                                            <div class="weth-icon">
+                                                                                <img src="https://carnivalguide.co/travel/img/weather_icon_small.png"
+                                                                                    alt="">
+                                                                                <b>+32<sup>o</sup>C</b>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div> --}}
                                                                 <div class="city-desc">
                                                                     <div class="tab-wrapper">
                                                                         <div class="tab-nav-wrapper">
                                                                             <div class="nav-tab  clearfix">
-                                                                                <div class="nav-tab-item d-none flight" onclick="switchTab('flight', {{ $row->id }})" style="cursor: pointer;">
+                                                                                <div class="nav-tab-item d-none flight">
                                                                                     Flights
                                                                                 </div>
-                                                                                <div class="nav-tab-item d-none hotel" onclick="switchTab('hotel', {{ $row->id }})" style="cursor: pointer;">
+                                                                                <div class="nav-tab-item d-none hotel">
                                                                                     Hotels
                                                                                 </div>
-                                                                                <div class="nav-tab-item d-none events" onclick="switchTab('events', {{ $row->id }})" style="cursor: pointer;">
+                                                                                <div class="nav-tab-item d-none events">
                                                                                     Events
                                                                                 </div>
                                                                                 <div
-                                                                                    class="nav-tab-item d-none costume" onclick="switchTab('costume', {{ $row->id }})" style="cursor: pointer;">
+                                                                                    class="nav-tab-item d-none costume">
                                                                                     Costume
                                                                                 </div>
                                                                             </div>
@@ -271,8 +228,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <!-- Close button to return to slider -->
-                                                                <button type="button" class="close-btn" onclick="showSlider({{ $row->id }})">×</button>
                                                             </div>
                                                             {{-- <div class="slider-container new-slider"
                                                                 id="new-slider-{{ $key }}">
