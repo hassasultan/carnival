@@ -972,7 +972,7 @@
                             <div class="vertical-align">
                                 <h4>destinations in {{ $event->venue }}</h4>
                                 <ul class="color-grey-3">
-                                    @foreach ($event->relatedEvents as $item)
+                                    @foreach ($event->relatedEvents->take(3) as $item)
                                         <li>{{ $item->name . ', ' . $item->venue }}</li>
                                     @endforeach
                                     {{-- <li>La Spezia, Italy</li>

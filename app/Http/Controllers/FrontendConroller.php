@@ -159,7 +159,16 @@ class FrontendConroller extends Controller
             })
             ->where('start_date', '>', Carbon::now())->orderBy('id', 'DESC')->get()->take(8);
         $ads = Advertisement::where('type', 'event')->get();
-        // dd($carnival_events->toArray());
+        
+        // Debug: Check if events are being loaded
+        \Log::info('Event Listing Debug:', [
+            'upcoming_events_count' => $upcoming_events->count(),
+            'carnival_events_count' => $carnival_events->count(),
+            'all_events_count' => $all_events->count(),
+            'popular_events_count' => $popular_events->count(),
+            'sample_upcoming_event' => $upcoming_events->first() ? $upcoming_events->first()->only(['id', 'name', 'status', 'start_date']) : null,
+        ]);
+        
         return view('front.events', compact('products', 'banners', 'upcoming_events', 'all_events', 'carnival_events', 'popular_events', 'ads'));
     }
     public function category_tour_listing()
