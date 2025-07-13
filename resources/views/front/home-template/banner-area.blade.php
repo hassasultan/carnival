@@ -161,6 +161,27 @@
                                         padding-top: 40px; /* Less space on mobile */
                                     }
                                 }
+
+                                /* Close button styles */
+                                .close-btn {
+                                    position: absolute;
+                                    top: 10px;
+                                    right: 10px;
+                                    background: rgba(0,0,0,0.7);
+                                    color: white;
+                                    border: none;
+                                    border-radius: 50%;
+                                    width: 30px;
+                                    height: 30px;
+                                    font-size: 18px;
+                                    cursor: pointer;
+                                    z-index: 1000;
+                                    transition: background-color 0.3s ease;
+                                }
+
+                                .close-btn:hover {
+                                    background: rgba(0,0,0,0.9);
+                                }
                             </style>
                             @foreach ($carnivals as $key => $row)
                                 <div class="swiper-slide @if ($key == 0) active @endif {{ $key }}"
@@ -175,24 +196,6 @@
                                                                 alt=""> --}}
                                                             <div class="city-entry bg-grey-2 city-entry-new"
                                                                 id="city-entry-{{ $row->id }}">
-                                                                {{-- <div
-                                                                    class="tour-block tour-block-s-9 hover-green radius-5 underline-block">
-                                                                    <div class="tour-layer delay-1"></div>
-                                                                    <img src="https://carnivalguide.co/travel/img/home/city_1.jpg"
-                                                                        class="res-img" alt="">
-                                                                    <div class="tour-caption">
-                                                                        <div class="vertical-align">
-                                                                            <h3 class="underline hover-it">
-                                                                                St.Vincent
-                                                                            </h3>
-                                                                            <div class="weth-icon">
-                                                                                <img src="https://carnivalguide.co/travel/img/weather_icon_small.png"
-                                                                                    alt="">
-                                                                                <b>+32<sup>o</sup>C</b>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> --}}
                                                                 <div class="city-desc">
                                                                     <div class="tab-wrapper">
                                                                         <div class="tab-nav-wrapper">
@@ -228,6 +231,8 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <!-- Close button to return to slider -->
+                                                                <button type="button" class="close-btn" onclick="showSlider({{ $row->id }})">×</button>
                                                             </div>
                                                             {{-- <div class="slider-container new-slider"
                                                                 id="new-slider-{{ $key }}">

@@ -38,13 +38,13 @@
                                     <option value="0" {{ $package->ecommerce == '0' ? 'selected' : '' }}>False</option>
                                 </select>
                             </div>
-                            <div class="form-group mb-3">
+                            {{-- <div class="form-group mb-3">
                                 <label for="product">Products</label>
                                 <select id="product" name="product" class="form-control" required>
                                     <option value="1" {{ $package->product == '1' ? 'selected' : '' }}>True</option>
                                     <option value="0" {{ $package->product == '0' ? 'selected' : '' }}>False</option>
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="form-group mb-3">
                                 <label for="costume">Costumes</label>
                                 <select id="costume" name="costume" class="form-control" required>

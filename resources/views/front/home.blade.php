@@ -33,7 +33,7 @@
             console.log('id' +  carnival_id);
             // $('.city-entry-new').css('display', 'block');
             $('#new-slider-' + carnival_id).css('display', 'none');
-            $('#city-entry-' + carnival_id).css('display', 'block');
+            $('#city-entry-' + carnival_id).attr('style', 'display: block !important');
             $.ajax({
                 url: "{{ route('front.carnival.banner_details') }}",
                 type: "GET",
@@ -45,70 +45,78 @@
                     console.log(response);
                     // $('.tabs-content').html(response);
 
+                    // Get the specific city-entry for this carnival
+                    var cityEntry = $('#city-entry-' + carnival_id);
+
                     if (id == "flight") {
-                        $('.city-entry-new > .tour-block > img').attr('src',
+                        cityEntry.find('.city-entry-new > .tour-block > img').attr('src',
                             'https://carnivalguide.co/travel/img/home/city_1.jpg');
-                        $('.flight').removeClass('d-none');
-                        $('.flight-tab').removeClass('d-none');
-                        $('.flight-tab').html(response);
-                        $('.hotel').addClass('d-none');
-                        $('.hotel-tab').addClass('d-none');
-                        $('.events').addClass('d-none');
-                        $('.events-tab').addClass('d-none');
-                        $('.costume').addClass('d-none');
-                        $('.costume-tab').addClass('d-none');
+                        cityEntry.find('.flight').removeClass('d-none');
+                        cityEntry.find('.flight-tab').removeClass('d-none');
+                        cityEntry.find('.flight-tab').html(response);
+                        cityEntry.find('.hotel').addClass('d-none');
+                        cityEntry.find('.hotel-tab').addClass('d-none');
+                        cityEntry.find('.events').addClass('d-none');
+                        cityEntry.find('.events-tab').addClass('d-none');
+                        cityEntry.find('.costume').addClass('d-none');
+                        cityEntry.find('.costume-tab').addClass('d-none');
                     } else if (id == "hotel") {
-                        $('.city-entry-new > .tour-block > img').attr('src',
+                        cityEntry.find('.city-entry-new > .tour-block > img').attr('src',
                             'https://carnivalguide.co/travel/img/home/city_2.jpg');
-                        $('.hotel').removeClass('d-none');
-                        $('.hotel-tab').removeClass('d-none');
-                        $('.hotel-tab').html(response);
-                        $('.flight').addClass('d-none');
-                        $('.flight-tab').addClass('d-none');
-                        $('.events').addClass('d-none');
-                        $('.events-tab').addClass('d-none');
-                        $('.costume').addClass('d-none');
-                        $('.costume-tab').addClass('d-none');
+                        cityEntry.find('.hotel').removeClass('d-none');
+                        cityEntry.find('.hotel-tab').removeClass('d-none');
+                        cityEntry.find('.hotel-tab').html(response);
+                        cityEntry.find('.flight').addClass('d-none');
+                        cityEntry.find('.flight-tab').addClass('d-none');
+                        cityEntry.find('.events').addClass('d-none');
+                        cityEntry.find('.events-tab').addClass('d-none');
+                        cityEntry.find('.costume').addClass('d-none');
+                        cityEntry.find('.costume-tab').addClass('d-none');
                     } else if (id == "events") {
-                        $('.city-entry-new > .tour-block > img').attr('src',
+                        cityEntry.find('.city-entry-new > .tour-block > img').attr('src',
                             'https://carnivalguide.co/travel/img/home/city_2.jpg');
-                        $('.hotel').addClass('d-none');
-                        $('.hotel-tab').addClass('d-none');
-                        $('.flight').addClass('d-none');
-                        $('.flight-tab').addClass('d-none');
-                        $('.events').removeClass('d-none');
-                        $('.events-tab').removeClass('d-none');
-                        $('.events-tab').html(response);
-                        $('.costume').addClass('d-none');
-                        $('.costume-tab').addClass('d-none');
+                        cityEntry.find('.hotel').addClass('d-none');
+                        cityEntry.find('.hotel-tab').addClass('d-none');
+                        cityEntry.find('.flight').addClass('d-none');
+                        cityEntry.find('.flight-tab').addClass('d-none');
+                        cityEntry.find('.events').removeClass('d-none');
+                        cityEntry.find('.events-tab').removeClass('d-none');
+                        cityEntry.find('.events-tab').html(response);
+                        cityEntry.find('.costume').addClass('d-none');
+                        cityEntry.find('.costume-tab').addClass('d-none');
                     } else if (id == "costume") {
-                        $('.city-entry-new > .tour-block > img').attr('src',
+                        cityEntry.find('.city-entry-new > .tour-block > img').attr('src',
                             'https://carnivalguide.co/travel/img/home/city_2.jpg');
-                        $('.hotel').addClass('d-none');
-                        $('.hotel-tab').addClass('d-none');
-                        $('.flight').addClass('d-none');
-                        $('.flight-tab').addClass('d-none');
-                        $('.events').addClass('d-none');
-                        $('.events-tab').addClass('d-none');
-                        $('.costume').removeClass('d-none');
-                        $('.costume-tab').removeClass('d-none');
-                        $('.costume-tab').html(response);
+                        cityEntry.find('.hotel').addClass('d-none');
+                        cityEntry.find('.hotel-tab').addClass('d-none');
+                        cityEntry.find('.flight').addClass('d-none');
+                        cityEntry.find('.flight-tab').addClass('d-none');
+                        cityEntry.find('.events').addClass('d-none');
+                        cityEntry.find('.events-tab').addClass('d-none');
+                        cityEntry.find('.costume').removeClass('d-none');
+                        cityEntry.find('.costume-tab').removeClass('d-none');
+                        cityEntry.find('.costume-tab').html(response);
                     } else {
-                        $('.city-entry-new > .tour-block > img').attr('src',
+                        cityEntry.find('.city-entry-new > .tour-block > img').attr('src',
                             'https://carnivalguide.co/travel/img/home/city_3.jpg');
-                        $('.events').removeClass('d-none');
-                        $('.events-tab').removeClass('d-none');
-                        $('.events-tab').html(response);
-                        $('.hotel').addClass('d-none');
-                        $('.hotel-tab').addClass('d-none');
-                        $('.flight').addClass('d-none');
-                        $('.flight-tab').addClass('d-none');
+                        cityEntry.find('.events').removeClass('d-none');
+                        cityEntry.find('.events-tab').removeClass('d-none');
+                        cityEntry.find('.events-tab').html(response);
+                        cityEntry.find('.hotel').addClass('d-none');
+                        cityEntry.find('.hotel-tab').addClass('d-none');
+                        cityEntry.find('.flight').addClass('d-none');
+                        cityEntry.find('.flight-tab').addClass('d-none');
                     }
                 },
                 error: function(xhr, status, error) {
                     console.error(error);
                 }
             });
+        }
+
+        function showSlider(carnival_id) {
+            $('#city-entry-' + carnival_id).attr('style', 'display: none !important');
+            $('#new-slider-' + carnival_id).css('display', 'block');
         }
     </script>
 @endsection
