@@ -51,7 +51,7 @@
                         <div class="block-content">
                             <ul class="ui-categori">
                                 <li class="parent">
-                                    <a href="{{ route('front.vendor.detail', $subvendor->user->slug) }}">
+                                    <a href="{{ route('front.vendor.detail', $subvendor->vendor->user->slug) }}">
                                         {{ $subvendor->vendor->name ?? $subvendor->user->full_name }}
                                     </a>
                                 </li>
@@ -1152,10 +1152,8 @@
             <div class="block-floor-products block-floor-products-opt1 floor-products1" id="floor0-1">
                 <div class="container">
                     <div class="block-title ">
-                        <a href="{{ route('front.subVendor.detail', $subvendor->user->slug) }}">
-                            <span class="title"><img alt="img"
-                                    src="{{ asset('shopAssets/images/media/index1/floor1.png') }}">{{ $subvendor->name }}</span>
-                        </a>
+                        <span class="title"><img alt="img"
+                                src="{{ asset('shopAssets/images/media/index1/floor1.png') }}">{{ $subvendor->name }}</span>
                         <div class="links dropdown">
                             <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
