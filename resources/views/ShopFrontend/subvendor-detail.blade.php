@@ -1152,7 +1152,7 @@
             <div class="block-floor-products block-floor-products-opt1 floor-products1" id="floor0-1">
                 <div class="container">
                     <div class="block-title ">
-                        <a href="{{ route('front.subVendor.detail', $row->user->slug) }}">
+                        <a href="{{ route('front.subVendor.detail', $subvendor->user->slug) }}">
                             <span class="title"><img alt="img"
                                     src="{{ asset('shopAssets/images/media/index1/floor1.png') }}">{{ $subvendor->name }}</span>
                         </a>
