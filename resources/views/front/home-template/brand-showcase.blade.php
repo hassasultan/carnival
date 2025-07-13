@@ -79,7 +79,7 @@
                                                                     <img alt="product name"
                                                                         src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                                         class="img-fluid w-100"
-                                                                        style="max-height: 5rem; object-fit: cover;">
+                                                                        style="max-height: 5rem !important; object-fit: cover !important;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -158,7 +158,7 @@
                                                                     <img alt="product name"
                                                                         src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                                         class="img-fluid w-100"
-                                                                        style="max-height: 5rem; object-fit: cover;">
+                                                                        style="max-height: 5rem !important; object-fit: cover !important;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -236,7 +236,7 @@
                                                                     <img alt="product name"
                                                                         src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                                         class="img-fluid w-100"
-                                                                        style="max-height: 5rem; object-fit: cover;">
+                                                                        style="max-height: 5rem !important; object-fit: cover !important;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -314,7 +314,7 @@
                                                                     <img alt="product name"
                                                                         src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                                         class="img-fluid w-100"
-                                                                        style="max-height: 5rem; object-fit: cover;">
+                                                                        style="max-height: 5rem !important; object-fit: cover !important;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -392,7 +392,7 @@
                                                                     <img alt="product name"
                                                                         src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                                         class="img-fluid w-100"
-                                                                        style="max-height: 5rem; object-fit: cover;">
+                                                                        style="max-height: 5rem !important; object-fit: cover !important;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -471,7 +471,7 @@
                                                                     <img alt="product name"
                                                                         src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                                         class="img-fluid w-100"
-                                                                        style="max-height: 5rem; object-fit: cover;">
+                                                                        style="max-height: 5rem !important; object-fit: cover !important;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -549,7 +549,7 @@
                                                                     <img alt="product name"
                                                                         src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                                         class="img-fluid w-100"
-                                                                        style="max-height: 5rem; object-fit: cover;">
+                                                                        style="max-height: 5rem !important; object-fit: cover !important;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -627,7 +627,7 @@
                                                                     <img alt="product name"
                                                                         src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                                         class="img-fluid w-100"
-                                                                        style="max-height: 5rem; object-fit: cover;">
+                                                                        style="max-height: 5rem !important; object-fit: cover !important;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
@@ -705,7 +705,7 @@
                                                                     <img alt="product name"
                                                                         src="{{ $product->image ? asset('productImage/' . $product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}"
                                                                         class="img-fluid w-100"
-                                                                        style="max-height: 5rem; object-fit: cover;">
+                                                                        style="max-height: 5rem !important; object-fit: cover !important;">
                                                                 </a>
                                                             </div>
                                                             <div class="product-item-detail">
