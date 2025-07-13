@@ -75,7 +75,7 @@
                                         "640":{"items":2},
                                         "992":{"items":2}
                                     }'>
-                                    @foreach ($products->chunk(2) as $chunk)
+                                    @foreach ($products->orderBy('id', 'desc')->chunk(2) as $chunk)
                                         <div class="item">
                                             @foreach ($chunk as $product)
                                                 @if ($product->brand_id == 1)
@@ -154,7 +154,7 @@
                                         "640":{"items":2},
                                         "992":{"items":2}
                                     }'>
-                                    @foreach ($products->chunk(2) as $chunk)
+                                    @foreach ($products->orderBy('id', 'desc')->chunk(2) as $chunk)
                                         <div class="item">
                                             @foreach ($chunk as $product)
                                                 @if ($product->brand_id == 2)
@@ -232,7 +232,7 @@
                                         "640":{"items":2},
                                         "992":{"items":2}
                                     }'>
-                                    @foreach ($products->chunk(2) as $chunk)
+                                    @foreach ($products->orderBy('id', 'desc')->chunk(2) as $chunk)
                                         <div class="item">
                                             @foreach ($chunk as $product)
                                                 @if ($product->brand_id == 3)
@@ -310,7 +310,7 @@
                                         "640":{"items":2},
                                         "992":{"items":2}
                                     }'>
-                                    @foreach ($products->chunk(2) as $chunk)
+                                    @foreach ($products->orderBy('id', 'desc')->chunk(2) as $chunk)
                                         <div class="item">
                                             @foreach ($chunk as $product)
                                                 @if ($product->brand_id == 4)
@@ -388,7 +388,7 @@
                                         "640":{"items":2},
                                         "992":{"items":2}
                                     }'>
-                                    @foreach ($products->chunk(2) as $chunk)
+                                    @foreach ($products->orderBy('id', 'desc')->chunk(2) as $chunk)
                                         <div class="item">
                                             @foreach ($chunk as $product)
                                                 @if ($product->brand_id == 5)
@@ -467,7 +467,7 @@
                                         "640":{"items":2},
                                         "992":{"items":2}
                                     }'>
-                                    @foreach ($products->chunk(2) as $chunk)
+                                    @foreach ($products->orderBy('id', 'desc')->chunk(2) as $chunk)
                                         <div class="item">
                                             @foreach ($chunk as $product)
                                                 @if ($product->brand_id == 6)
@@ -545,7 +545,7 @@
                                         "640":{"items":2},
                                         "992":{"items":2}
                                     }'>
-                                    @foreach ($products->chunk(2) as $chunk)
+                                    @foreach ($products->orderBy('id', 'desc')->chunk(2) as $chunk)
                                         <div class="item">
                                             @foreach ($chunk as $product)
                                                 @if ($product->brand_id == 7)
@@ -623,7 +623,7 @@
                                         "640":{"items":2},
                                         "992":{"items":2}
                                     }'>
-                                    @foreach ($products->chunk(2) as $chunk)
+                                    @foreach ($products->orderBy('id', 'desc')->chunk(2) as $chunk)
                                         <div class="item">
                                             @foreach ($chunk as $product)
                                                 @if ($product->brand_id == 8)
@@ -701,7 +701,7 @@
                                         "640":{"items":2},
                                         "992":{"items":2}
                                     }'>
-                                    @foreach ($products->chunk(2) as $chunk)
+                                    @foreach ($products->orderBy('id', 'desc')->chunk(2) as $chunk)
                                         <div class="item">
                                             @foreach ($chunk as $product)
                                                 @if ($product->brand_id == 9)
