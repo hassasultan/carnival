@@ -18,7 +18,8 @@
     @include('front.home-template.our-partner')
     <!-- S_NEWS-ENTRY -->
     @include('front.home-template.news')
-    @include('front.home-template.brand-showcase')
+    {{-- @include('front.home-template.brand-showcase') --}}
+    @include('partials.brand-showcase')
 @endsection
 @section('front-script')
     @include('front.home-template.js.carnival-script')
