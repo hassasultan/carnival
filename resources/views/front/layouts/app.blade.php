@@ -56,6 +56,18 @@
             right: -40px;
             /* Adjust position */
         }
+        
+        /* Force product image height in brand showcase */
+        .block-showcase .product-item .product-item-photo img,
+        .block-showcase .product-item-opt-1 .product-item-info .product-item-photo img,
+        .block-showcase .product-item-photo img,
+        .block-showcase .product-item-info .product-item-photo img,
+        .block-showcase .product-item-img img {
+            max-height: 5rem !important;
+            height: 5rem !important;
+            object-fit: cover !important;
+            width: 100% !important;
+        }
     </style>
 
     <!-- Style CSS -->

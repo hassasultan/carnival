@@ -1,4 +1,11 @@
 <!-- block  showcase-->
+<style>
+.block-showcase .product-item .product-item-photo img {
+    max-height: 5rem !important;
+    object-fit: cover !important;
+    height: 5rem !important;
+}
+</style>
 <div class="block-showcase block-showcase-opt1 block-brand-tabs">
     <div class="container">
         <div class="block-title">
