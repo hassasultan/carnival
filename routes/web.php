@@ -54,6 +54,7 @@ use App\Http\Controllers\OurTeamController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\FeatureController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -532,3 +533,12 @@ Route::get('/get-carnivals/members/{id}', [CarnivalController::class, 'getCarniv
 
 Route::get('/carnivals/{carnival}/events', [CarnivalController::class, 'getEvents'])->name('carnivals.events.get');
 Route::post('/carnivals/{carnival}/events', [CarnivalController::class, 'updateEvents'])->name('carnivals.events.update');
+
+// stripe
+Route::get('/stripe-test', [PaymentController::class, 'testStripe']);
+Route::post('/charge', [PaymentController::class, 'chargeCustomer'])->name('stripe.charge');
+Route::post('/split-payment', [PaymentController::class, 'splitPayment'])->name('stripe.split.payment');
+
+
+// STRIPE_KEY=pk_test_xxxxxxxxxxxxx
+// STRIPE_SECRET=sk_test_xxxxxxxxxxxxx
