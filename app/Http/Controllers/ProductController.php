@@ -71,7 +71,8 @@ class ProductController extends Controller
         $request->validate([
             'title' => 'required',
             'category_id' => 'required',
-            'description' => 'required',
+            // 'description' => 'required',
+            'description' => 'nullable|string',
             'old_price' => 'required',
             'new_price' => 'required',
             'status' => 'required',
@@ -157,8 +158,7 @@ class ProductController extends Controller
 
         if ($request->hasFile('media')) {
             $data['image'] = $this->uploadImage($request->file('image'), 'productImage');
-        }
-        else {
+        } else {
             $data['image'] = $product->image;
         }
 
