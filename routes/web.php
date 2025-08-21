@@ -446,7 +446,7 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
     Route::get('/my_products', [SubVendorProductController::class, 'index'])->name('subVendor.products');
     Route::get('/products/add', [SubVendorProductController::class, 'create'])->name('subVendor.products.create');
     Route::get('/my_products/edit/{id}', [SubVendorProductController::class, 'edit'])->name('subVendor.products.edit');
-    Route::post('/products/store', [ProductController::class, 'store'])->name('subVendor.products.store');
+    // Route::post('/products/store', [ProductController::class, 'store'])->name('subVendor.products.store');
     // Route::post('/my_products/store', [SubVendorProductController::class, 'store'])->name('subVendor.products.store');
     // Route::put('/my_products/update/{id}', [SubVendorProductController::class, 'update'])->name('subVendor.products.update');
     Route::post('/product/{product}', [ProductController::class, 'update'])->name('subVendor.products.update');
