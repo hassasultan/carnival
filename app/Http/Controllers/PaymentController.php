@@ -41,30 +41,49 @@ class PaymentController extends Controller
 
     public function splitPayment(Request $request)
     {
-        $amount = $request->amount;
-        $adminPercentage = $request->admin_percentage;
-        $adminFee = intval($amount * ($adminPercentage / 100));
-        $sellerAmount = $amount - $adminFee;
+        $totalAmount = $request->amount;
+        $vendors = $request->vendors; // Array of vendors with rules
+        $stripeToken = $request->stripeToken;
 
         $charge = Charge::create([
-            'amount' => $amount,
+            'amount' => $totalAmount,
             'currency' => 'usd',
-            'source' => $request->stripeToken,
-            'description' => 'Order with admin cut',
+            'source' => $stripeToken,
+            'description' => 'Order with multiple vendor payouts',
         ]);
 
-        $transfer = Transfer::create([
-            'amount' => $sellerAmount,
-            'currency' => 'usd',
-            'destination' => $request->seller_account_id,
-            'transfer_group' => $charge->id,
-        ]);
+        $transfers = [];
+        foreach ($vendors as $vendor) {
+            $vendorAmount = $vendor['amount'];
+            $serviceFee = intval($vendorAmount * ($vendor['service_fee'] / 100));
+            $override = isset($vendor['override']) ? intval($vendorAmount * ($vendor['override'] / 100)) : 0;
+            $payout = $vendorAmount - $serviceFee - $override;
+
+            $transfers[] = [
+                'vendor' => $vendor['id'],
+                'transfer' => Transfer::create([
+                    'amount' => $payout,
+                    'currency' => 'usd',
+                    'destination' => $vendor['account_id'],
+                    'transfer_group' => $charge->id,
+                ]),
+                'service_fee' => $serviceFee,
+                'override' => $override,
+            ];
+
+            if ($override > 0 && isset($vendor['override_account_id'])) {
+                Transfer::create([
+                    'amount' => $override,
+                    'currency' => 'usd',
+                    'destination' => $vendor['override_account_id'],
+                    'transfer_group' => $charge->id,
+                ]);
+            }
+        }
 
         return response()->json([
             'charge' => $charge,
-            'transfer' => $transfer,
-            'admin_fee' => $adminFee,
-            'admin_percentage' => $adminPercentage,
+            'transfers' => $transfers,
         ]);
     }
 }
