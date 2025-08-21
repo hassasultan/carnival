@@ -3176,6 +3176,237 @@
 
                                     @if(!empty($row->products) && $row->products->count() > 0)
                                         <!-- tab 1 -->
+                                        <div class="tab-pane active in fade" id="floor-seller-{{ $row->id }}" role="tabpanel">
+                                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                                data-responsive='{
+                                                    "0":{"items":1},
+                                                    "420":{"items":2},
+                                                    "600":{"items":3},
+                                                    "768":{"items":3},
+                                                    "992":{"items":4},
+                                                    "1200":{"items":4}
+                                                }'
+                                                id="best-seller-subvendor-{{ $row->id }}">
+                                                @foreach ($row->products as $product)
+                                                    <div class="product-item product-item-opt-1">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
+                                                                    <img alt="product name" src="{{ asset('productImage/' . $product->image) }}">
+                                                                </a>
+                                                                <div class="product-item-actions">
+                                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                                </div>
+                                                                <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
+                                                                <span class="product-item-label label-price">{{ $product->discount }}%
+                                                                    <span>off</span>
+                                                                </span>
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                <strong class="product-item-name">
+                                                                    <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->title }}</a>
+                                                                </strong>
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">{{ $product->new_price }}</span>
+                                                                        <span class="old-price">{{ $product->old_price }}</span>
+                                                                    </div>
+                                                                    <div class="product-reviews-summary">
+                                                                        <div class="rating-summary">
+                                                                            <div title="80%" class="rating-result">
+                                                                                <span style="width:80%">
+                                                                                    <span><span>{{ $product->discount }}</span>% of
+                                                                                        <span>100</span></span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        <!-- tab 2 -->
+                                        <div class="tab-pane fade" id="floor-most-{{ $row->id }}" role="tabpanel">
+                                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                                data-responsive='{
+                                                    "0":{"items":1},
+                                                    "420":{"items":2},
+                                                    "600":{"items":3},
+                                                    "768":{"items":3},
+                                                    "992":{"items":4},
+                                                    "1200":{"items":4}
+                                                }'
+                                                id="most-viewed-subvendor-{{ $row->id }}">
+                                                @foreach ($row->products as $product)
+                                                    <div class="product-item product-item-opt-1">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
+                                                                    <img alt="product name" src="{{ asset('productImage/' . $product->image) }}">
+                                                                </a>
+                                                                <div class="product-item-actions">
+                                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                                </div>
+                                                                <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
+                                                                <span class="product-item-label label-price">{{ $product->discount }}%
+                                                                    <span>off</span>
+                                                                </span>
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                <strong class="product-item-name">
+                                                                    <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->title }}</a>
+                                                                </strong>
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">{{ $product->new_price }}</span>
+                                                                        <span class="old-price">{{ $product->old_price }}</span>
+                                                                    </div>
+                                                                    <div class="product-reviews-summary">
+                                                                        <div class="rating-summary">
+                                                                            <div title="80%" class="rating-result">
+                                                                                <span style="width:80%">
+                                                                                    <span><span>{{ $product->discount }}</span>% of
+                                                                                        <span>100</span></span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        <!-- tab 3 -->
+                                        <div class="tab-pane fade" id="floor-new-{{ $row->id }}" role="tabpanel">
+                                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                                data-responsive='{
+                                                    "0":{"items":1},
+                                                    "420":{"items":2},
+                                                    "600":{"items":3},
+                                                    "768":{"items":3},
+                                                    "992":{"items":4},
+                                                    "1200":{"items":4}
+                                                }'
+                                                id="new-arrival-subvendor-{{ $row->id }}">
+                                                @foreach ($row->products as $product)
+                                                    <div class="product-item product-item-opt-1">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
+                                                                    <img alt="product name" src="{{ asset('productImage/' . $product->image) }}">
+                                                                </a>
+                                                                <div class="product-item-actions">
+                                                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                                </div>
+                                                                <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
+                                                                <span class="product-item-label label-price">{{ $product->discount }}%
+                                                                    <span>off</span>
+                                                                </span>
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                <strong class="product-item-name">
+                                                                    <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->title }}</a>
+                                                                </strong>
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">{{ $product->new_price }}</span>
+                                                                        <span class="old-price">{{ $product->old_price }}</span>
+                                                                    </div>
+                                                                    <div class="product-reviews-summary">
+                                                                        <div class="rating-summary">
+                                                                            <div title="80%" class="rating-result">
+                                                                                <span style="width:80%">
+                                                                                    <span><span>{{ $product->discount }}</span>% of
+                                                                                        <span>100</span></span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        <!-- Dynamic Feature Tabs -->
+                                        @foreach ($row->products->flatMap->features->unique('id') as $feature)
+                                            <div class="tab-pane fade" id="floor1-{{ $loop->iteration + 3 }}" role="tabpanel">
+                                                <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
+                                                    data-responsive='{
+                                                        "0":{"items":1},
+                                                        "420":{"items":2},
+                                                        "600":{"items":3},
+                                                        "768":{"items":3},
+                                                        "992":{"items":3},
+                                                        "1200":{"items":4}
+                                                    }'>
+                                                    @foreach ($feature->products->where('user_id', $row->user_id) as $product)
+                                                        <div class="product-item product-item-opt-1">
+                                                            <div class="product-item-info">
+                                                                <div class="product-item-photo">
+                                                                    <a class="product-item-img" href="{{ route('get.products.detail', $product->slug) }}">
+                                                                        <img alt="product name" src="{{ asset('productImage/' . $product->image) }}">
+                                                                    </a>
+                                                                    <div class="product-item-actions">
+                                                                        <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
+                                                                        <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                                                    </div>
+                                                                    <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
+                                                                    <span class="product-item-label label-price">{{ $product->discount }}%
+                                                                        <span>off</span>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="product-item-detail">
+                                                                    <strong class="product-item-name">
+                                                                        <a href="{{ route('get.products.detail', $product->slug) }}">{{ $product->title }}</a>
+                                                                    </strong>
+                                                                    <div class="clearfix">
+                                                                        <div class="product-item-price">
+                                                                            <span class="price">{{ $product->new_price }}</span>
+                                                                            <span class="old-price">{{ $product->old_price }}</span>
+                                                                        </div>
+                                                                        <div class="product-reviews-summary">
+                                                                            <div class="rating-summary">
+                                                                                <div title="80%" class="rating-result">
+                                                                                    <span style="width:80%">
+                                                                                        <span><span>{{ $product->discount }}</span>% of
+                                                                                            <span>100</span></span>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <div class="text-center">
+                                            <p>No products available for this subvendor.</p>
+                                        </div>
+                                    @endif
+
+                                    {{-- @if(!empty($row->products) && $row->products->count() > 0)
+                                        <!-- tab 1 -->
                                         <div class="tab-pane active in  fade " id="floor-seller-{{ $row->id }}"
                                             role="tabpanel">
                                             <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
@@ -3416,7 +3647,7 @@
                                         <div class="text-center">
                                             <p>No products available for this subvendor.</p>
                                         </div>
-                                    @endif
+                                    @endif --}}
                                 </div>
 
                             </div>
