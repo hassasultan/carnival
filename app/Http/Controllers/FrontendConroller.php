@@ -159,7 +159,7 @@ class FrontendConroller extends Controller
             })
             ->where('start_date', '>', Carbon::now())->orderBy('id', 'DESC')->get()->take(8);
         $ads = Advertisement::where('type', 'event')->get();
-        
+
         // Debug: Check if events are being loaded
         \Log::info('Event Listing Debug:', [
             'upcoming_events_count' => $upcoming_events->count(),
@@ -168,7 +168,7 @@ class FrontendConroller extends Controller
             'popular_events_count' => $popular_events->count(),
             'sample_upcoming_event' => $upcoming_events->first() ? $upcoming_events->first()->only(['id', 'name', 'status', 'start_date']) : null,
         ]);
-        
+
         return view('front.events', compact('products', 'banners', 'upcoming_events', 'all_events', 'carnival_events', 'popular_events', 'ads'));
     }
     public function category_tour_listing()
@@ -588,14 +588,14 @@ class FrontendConroller extends Controller
     {
         $products = Product::where('user_id', $slug);
         $getSearchVal = $request->get('getSearchVal', null);
-        
+
         if ($request->has('cat') && $request->cat != 0) {
             $products = $products->where('category_id', $request->cat);
         }
         if ($request->has('subcat') && $request->subcat != 0) {
             $products = $products->where('subcategory_id', $request->subcat);
         }
-        
+
         // Handle gender-based filtering
         if ($request->has('gender')) {
             $gender = $request->gender;
@@ -614,7 +614,7 @@ class FrontendConroller extends Controller
                     break;
             }
         }
-        
+
         if ($request->has('attribute') && $request->attribute == 'bestSale') {
             // Best seller logic can be added here
         }
@@ -659,7 +659,9 @@ class FrontendConroller extends Controller
             return redirect()->back()->with('error', 'User not found');
         }
 
-        $subvendor = SubVendor::with('products', 'products.category')->where('user_id', $user->id)->first();
+        $subvendor = SubVendor::with('products', 'products.category', 'products.features')
+            ->where('user_id', $user->id)
+            ->first();
 
         if (!$subvendor) {
             return redirect()->back()->with('error', 'Subvendor not found');
