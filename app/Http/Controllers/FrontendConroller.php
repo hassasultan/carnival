@@ -597,23 +597,23 @@ class FrontendConroller extends Controller
         }
 
         // Handle gender-based filtering
-        if ($request->has('gender')) {
-            $gender = $request->gender;
-            switch ($gender) {
-                case 'women':
-                    $products = $products->where('women', 1);
-                    break;
-                case 'men':
-                    $products = $products->where('men', 1);
-                    break;
-                case 'kids':
-                    $products = $products->where('kids', 1);
-                    break;
-                case 'accessories':
-                    $products = $products->where('accessories', 1);
-                    break;
-            }
-        }
+        // if ($request->has('gender')) {
+        //     $gender = $request->gender;
+        //     switch ($gender) {
+        //         case 'women':
+        //             $products = $products->where('women', 1);
+        //             break;
+        //         case 'men':
+        //             $products = $products->where('men', 1);
+        //             break;
+        //         case 'kids':
+        //             $products = $products->where('kids', 1);
+        //             break;
+        //         case 'accessories':
+        //             $products = $products->where('accessories', 1);
+        //             break;
+        //     }
+        // }
 
         if ($request->has('attribute') && $request->attribute == 'bestSale') {
             // Best seller logic can be added here
