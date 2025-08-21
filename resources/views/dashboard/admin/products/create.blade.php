@@ -342,6 +342,7 @@
 
             // Handle form submission via AJAX for creating a new product
             $('#createProductForm').submit(function(event) {
+                console.log('new prod create');
                 event.preventDefault();
                 var formData = new FormData($(this)[0]);
 
