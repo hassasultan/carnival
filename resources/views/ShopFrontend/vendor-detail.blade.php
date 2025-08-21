@@ -3187,50 +3187,56 @@
                                                     "1200":{"items":4}
                                                 }'
                                             id="best-seller-subvendor-{{ $row->id }}">
-                                            @foreach ($row->products as $row)
-                                                <div class=" product-item  product-item-opt-1 ">
-                                                    <div class="product-item-info">
-                                                        <div class="product-item-photo">
-                                                            <a class="product-item-img"
-                                                                href="{{ route('get.products.detail', $row->slug) }}"><img
-                                                                    alt="product name"
-                                                                    src="{{ asset('productImage/' . $row->image) }}"></a>
-                                                            <div class="product-item-actions">
-                                                                <a class="btn btn-wishlist"
-                                                                    href=""><span>wishlist</span></a>
-                                                                <a class="btn btn-compare"
-                                                                    href=""><span>compare</span></a>
-                                                                <a class="btn btn-quickview"
-                                                                    href=""><span>quickview</span></a>
-                                                            </div>
-                                                            <button type="button" class="btn btn-cart"><span>Add to
-                                                                    Cart</span></button>
-                                                            <span class="product-item-label label-price">{{ $row->discount }}%
-                                                                <span>off</span></span>
-                                                        </div>
-                                                        <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a
-                                                                    href="{{ route('get.products.detail', $row->slug) }}">{{ $row->title }}</a></strong>
-                                                            <div class="clearfix">
-                                                                <div class="product-item-price">
-                                                                    <span class="price">{{ $row->new_price }}</span>
-                                                                    <span class="old-price">{{ $row->old_price }}</span>
+                                            @if(!empty($row->products) && $row->products->count() > 0)
+                                                @foreach ($row->products as $row)
+                                                    <div class=" product-item  product-item-opt-1 ">
+                                                        <div class="product-item-info">
+                                                            <div class="product-item-photo">
+                                                                <a class="product-item-img"
+                                                                    href="{{ route('get.products.detail', $row->slug) }}"><img
+                                                                        alt="product name"
+                                                                        src="{{ asset('productImage/' . $row->image) }}"></a>
+                                                                <div class="product-item-actions">
+                                                                    <a class="btn btn-wishlist"
+                                                                        href=""><span>wishlist</span></a>
+                                                                    <a class="btn btn-compare"
+                                                                        href=""><span>compare</span></a>
+                                                                    <a class="btn btn-quickview"
+                                                                        href=""><span>quickview</span></a>
                                                                 </div>
-                                                                <div class="product-reviews-summary">
-                                                                    <div class="rating-summary">
-                                                                        <div title="80%" class="rating-result">
-                                                                            <span style="width:80%">
-                                                                                <span><span>{{ $row->discount }}</span>% of
-                                                                                    <span>100</span></span>
-                                                                            </span>
+                                                                <button type="button" class="btn btn-cart"><span>Add to
+                                                                        Cart</span></button>
+                                                                <span class="product-item-label label-price">{{ $row->discount }}%
+                                                                    <span>off</span></span>
+                                                            </div>
+                                                            <div class="product-item-detail">
+                                                                <strong class="product-item-name"><a
+                                                                        href="{{ route('get.products.detail', $row->slug) }}">{{ $row->title }}</a></strong>
+                                                                <div class="clearfix">
+                                                                    <div class="product-item-price">
+                                                                        <span class="price">{{ $row->new_price }}</span>
+                                                                        <span class="old-price">{{ $row->old_price }}</span>
+                                                                    </div>
+                                                                    <div class="product-reviews-summary">
+                                                                        <div class="rating-summary">
+                                                                            <div title="80%" class="rating-result">
+                                                                                <span style="width:80%">
+                                                                                    <span><span>{{ $row->discount }}</span>% of
+                                                                                        <span>100</span></span>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                @endforeach
+                                            @else
+                                                <div class="text-center">
+                                                    <p>No products available for this subvendor.</p>
                                                 </div>
-                                            @endforeach
+                                            @endif
                                         </div>
                                     </div>
 
