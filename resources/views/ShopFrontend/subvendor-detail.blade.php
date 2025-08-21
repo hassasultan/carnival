@@ -424,9 +424,10 @@
                                             Viewed </a></li>
                                     <li role="presentation"><a href="#floor1-3" role="tab" data-toggle="tab">New
                                             Arrivals <span class="label-cat">12</span></a></li>
-                                    @foreach ($subvendor->products->features as $feature)
+                                    @foreach ($subvendor->products->flatMap->features->unique('id') as $feature)
                                         <li role="presentation">
-                                            <a href="#floor1-{{ $loop->iteration + 3 }}" role="tab" data-toggle="tab">
+                                            <a href="#floor1-{{ $loop->iteration + 3 }}" role="tab"
+                                                data-toggle="tab">
                                                 {{ $feature->name }}
                                             </a>
                                         </li>
@@ -659,7 +660,7 @@
                                         "992":{"items":3},
                                         "1200":{"items":4}
                                     }'>
-                                        @foreach ($subvendor->products as $row)
+                                        @foreach ($feature->products->where('user_id', $subvendor->user_id) as $row)
                                             <div class=" product-item  product-item-opt-1 ">
                                                 <div class="product-item-info">
                                                     <div class="product-item-photo">
