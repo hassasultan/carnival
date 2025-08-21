@@ -13,7 +13,7 @@
         }'>
             @foreach ($user->sponsors as $row)
                 <div class="item">
-                    <a href=""><img src="{{ asset('sponser_images/' . $row->logo) }}" alt="brand"></a>
+                    <a href=""><img src="{{ asset($row->logo) }}" alt="{{ $row->title }}"></a>
                 </div>
             @endforeach
 
