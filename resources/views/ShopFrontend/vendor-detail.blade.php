@@ -3187,7 +3187,7 @@
                                                     "1200":{"items":4}
                                                 }'
                                             id="best-seller-subvendor-{{ $row->id }}">
-                                            @foreach ($subvendor->products as $row)
+                                            @foreach ($row->products as $row)
                                                 <div class=" product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -3246,7 +3246,7 @@
                                                 "1200":{"items":4}
                                             }'
                                             id="most-viwed-subvendor-{{ $row->id }}">
-                                            @foreach ($subvendor->products as $row)
+                                            @foreach ($row->products as $row)
                                                 <div class=" product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
@@ -3305,7 +3305,7 @@
                                                 "1200":{"items":4}
                                             }'
                                             id="new-arrival-subvendor-{{ $row->id }}">
-                                            @foreach ($subvendor->products as $row)
+                                            @foreach ($row->products as $row)
                                                 <div class=" product-item  product-item-opt-1 ">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
