@@ -161,10 +161,12 @@
                         <div class="form-group">
                             <label>Product Features</label><br>
                             <div id="features-container">
-                                @foreach($features as $feature)
+                                @foreach ($features as $feature)
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="feature_{{ $feature->id }}" name="features[]" value="{{ $feature->id }}">
-                                        <label class="form-check-label" for="feature_{{ $feature->id }}">{{ $feature->name }}</label>
+                                        <input class="form-check-input" type="checkbox" id="feature_{{ $feature->id }}"
+                                            name="features[]" value="{{ $feature->id }}">
+                                        <label class="form-check-label"
+                                            for="feature_{{ $feature->id }}">{{ $feature->name }}</label>
                                     </div>
                                 @endforeach
                             </div>
@@ -180,7 +182,8 @@
                             <div class="form-group col-md-6 mb-3">
                                 <label for="media">Media</label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input select2" id="media" name="media[]" multiple>
+                                    <input type="file" class="custom-file-input select2" id="media"
+                                        name="media[]" multiple>
                                     <label class="custom-file-label" for="media" id="media_label">Choose file</label>
                                 </div>
                             </div>
@@ -215,27 +218,35 @@
                 var categoryId = $(this).val();
                 if (categoryId) {
                     $.ajax({
-                        url: '{{ route('get.features.by.category', ':id') }}'.replace(':id', categoryId),
+                        url: '{{ route('get.features.by.category', ':id') }}'.replace(':id',
+                            categoryId),
                         type: 'GET',
                         success: function(response) {
                             var featuresContainer = $('#features-container');
                             featuresContainer.empty();
-                            
+
                             if (response.length > 0) {
                                 response.forEach(function(feature) {
-                                    var featureHtml = '<div class="form-check form-check-inline">' +
-                                        '<input class="form-check-input" type="checkbox" id="feature_' + feature.id + '" name="features[]" value="' + feature.id + '">' +
-                                        '<label class="form-check-label" for="feature_' + feature.id + '">' + feature.name + '</label>' +
+                                    var featureHtml =
+                                        '<div class="form-check form-check-inline">' +
+                                        '<input class="form-check-input" type="checkbox" id="feature_' +
+                                        feature.id + '" name="features[]" value="' +
+                                        feature.id + '">' +
+                                        '<label class="form-check-label" for="feature_' +
+                                        feature.id + '">' + feature.name + '</label>' +
                                         '</div>';
                                     featuresContainer.append(featureHtml);
                                 });
                             } else {
-                                featuresContainer.html('<p class="text-muted">No features available for this category.</p>');
+                                featuresContainer.html(
+                                    '<p class="text-muted">No features available for this category.</p>'
+                                    );
                             }
                         },
                         error: function(xhr, status, error) {
                             console.error('Error fetching features:', error);
-                            $('#features-container').html('<p class="text-danger">Error loading features.</p>');
+                            $('#features-container').html(
+                                '<p class="text-danger">Error loading features.</p>');
                         }
                     });
                 } else {
@@ -345,6 +356,13 @@
                 console.log('new prod create');
                 event.preventDefault();
                 var formData = new FormData($(this)[0]);
+
+                for (var pair of formData.entries()) {
+                    console.log('   ' + pair[0] + ': ' + pair[1]);
+                }
+
+                var hasMedia = formData.has('media[]');
+                console.log('Has media[]:', hasMedia);
 
                 console.log('formDataformData', formData);
                 var hasVariantImages = formData.has('variant_images[]');
@@ -528,7 +546,7 @@
         $('#editproductModal').on('shown.bs.modal', function() {
             $('#edit_variant_id').select2();
         });
-        
+
         $('.category').on('change', function() {
             $('#variant_id').addClass('d-none');
             var category = $(this).val();
@@ -537,10 +555,10 @@
             url = url.replace(':category', category);
             $.ajax({
                 type: 'GET',
-                url: url, 
+                url: url,
                 success: function(response) {
                     console.log(response);
-                    subcategoryDropdown.empty(); 
+                    subcategoryDropdown.empty();
                     subcategoryDropdown.append($('<option>', {
                         value: '',
                         text: 'Select Subcategory'
@@ -551,7 +569,7 @@
                             text: subcategory.title
                         }));
                     });
-                    subcategoryDropdown.closest('.form-group').show(); 
+                    subcategoryDropdown.closest('.form-group').show();
                     var html = '';
                     $.each(response.varients, function(index, row) {
                         html += '<option value="' + row.id + '" data-type="' + row.type + '">' +
@@ -735,7 +753,7 @@
             var type = $("#plus-btn").attr('data-type');
             cloneForm(id, type);
         }
-        
+
         document.addEventListener('click', function(event) {
             if (event.target && event.target.classList.contains('minus-btn')) {
                 removeForm(event.target);
