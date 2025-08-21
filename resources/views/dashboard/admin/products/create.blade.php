@@ -240,7 +240,7 @@
                             } else {
                                 featuresContainer.html(
                                     '<p class="text-muted">No features available for this category.</p>'
-                                    );
+                                );
                             }
                         },
                         error: function(xhr, status, error) {
@@ -364,9 +364,14 @@
                 var hasMedia = formData.has('media[]');
                 console.log('Has media[]:', hasMedia);
 
-                console.log('formDataformData', formData);
-                var hasVariantImages = formData.has('variant_images[]');
-                console.log('Has variant_images[]:', hasVariantImages);
+                let hasVariantImages = false;
+                for (let key of formData.keys()) {
+                    if (key.startsWith('variant_images')) {
+                        hasVariantImages = true;
+                        break;
+                    }
+                }
+                console.log('Has any variant_images:', hasVariantImages);
 
                 $.ajax({
                     url: '{{ route('products.store') }}',
