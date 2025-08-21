@@ -4391,7 +4391,7 @@
                                                 "992":{"items":3},
                                                 "1200":{"items":4}
                                             }'>
-                                                @foreach ($feature->products->where('user_id', $subvendor->user_id) as $row)
+                                                @foreach ($feature->products->where('user_id', $row->user_id) as $row)
                                                     <div class=" product-item  product-item-opt-1 ">
                                                         <div class="product-item-info">
                                                             <div class="product-item-photo">
