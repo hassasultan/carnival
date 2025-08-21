@@ -406,13 +406,6 @@
                                                         href="{{ route('get.myEvent.detail', $item->slug) }}">
                                                         <img alt="product name" src="{{ $vendorLogo }}">
                                                     </a>
-                                                    {{-- <div class="product-item-actions">
-                                                        <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
-                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                        <a class="btn btn-quickview" href=""><span>quickview</span></a>
-                                                    </div>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button> --}}
                                                 </div>
                                                 <div class="product-item-detail">
                                                     <strong class="product-item-name">
@@ -420,12 +413,6 @@
                                                             {{ $vendorName }}
                                                         </a>
                                                     </strong>
-                                                    {{-- <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">$108.00</span>
-                                                            <span class="old-price">(-20%)</span>
-                                                        </div>
-                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -914,17 +901,6 @@
                                                                 <a class="product-item-img"
                                                                     href="{{ route('details.aboutUs', $item->user->slug) }}"><img
                                                                         alt="product name" src="{{ $image }}"></a>
-                                                                {{-- <div class="product-item-actions">
-                                                                    <a class="btn btn-wishlist"
-                                                                        href=""><span>wishlist</span></a>
-                                                                    <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                                    <a class="btn btn-quickview"
-                                                                        href=""><span>quickview</span></a>
-                                                                </div>
-                                                                <button type="button" class="btn btn-cart"><span>Add to
-                                                                        Cart</span></button>
-                                                                <span class="product-item-label label-price">30%
-                                                                    <span>off</span></span> --}}
                                                             </div>
                                                             <div class="product-item-detail">
                                                                 {{-- <strong class="product-item-name"><a href="">{{ $item->name }}</a></strong> --}}
@@ -1102,13 +1078,13 @@
                                         <div class="tab-pane  fade" id="floor1-3-mascamp" role="tabpanel">
                                             <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
                                                 data-responsive='{
-                                    "0":{"items":1},
-                                    "420":{"items":2},
-                                    "600":{"items":3},
-                                    "768":{"items":3},
-                                    "992":{"items":4},
-                                    "1200":{"items":4}
-                                }'
+                                                    "0":{"items":1},
+                                                    "420":{"items":2},
+                                                    "600":{"items":3},
+                                                    "768":{"items":3},
+                                                    "992":{"items":4},
+                                                    "1200":{"items":4}
+                                                }'
                                                 id="new-arrival-products-mascamp">
                                                 @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
                                                     @php
@@ -1147,13 +1123,13 @@
                                                 <div class="owl-carousel" data-nav="true" data-dots="false"
                                                     data-margin="0"
                                                     data-responsive='{
-                                            "0":{"items":1},
-                                            "420":{"items":2},
-                                            "600":{"items":3},
-                                            "768":{"items":3},
-                                            "992":{"items":3},
-                                            "1200":{"items":4}
-                                        }'
+                                                        "0":{"items":1},
+                                                        "420":{"items":2},
+                                                        "600":{"items":3},
+                                                        "768":{"items":3},
+                                                        "992":{"items":3},
+                                                        "1200":{"items":4}
+                                                    }'
                                                     id="vendors-cat-div-mascamp-{{ $row->id }}">
                                                     @foreach ($carnival->packageVendors('MasBands - Leader') as $item)
                                                         @php
@@ -2744,13 +2720,6 @@
                                                         href="{{ route('get.myEvent.detail', $item->slug) }}">
                                                         <img alt="product name" src="{{ $vendorLogo }}">
                                                     </a>
-                                                    {{-- <div class="product-item-actions">
-                                                        <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
-                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                        <a class="btn btn-quickview" href=""><span>quickview</span></a>
-                                                    </div>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button> --}}
                                                 </div>
                                                 <div class="product-item-detail">
                                                     <strong class="product-item-name">
@@ -2758,12 +2727,6 @@
                                                             {{ $vendorName }}
                                                         </a>
                                                     </strong>
-                                                    {{-- <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">$108.00</span>
-                                                            <span class="old-price">(-20%)</span>
-                                                        </div>
-                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -2809,15 +2772,6 @@
                                                 </a>
                                             </li>
                                         @endforeach
-                                        {{-- <li role="presentation"><a href="#floor1-4-women" onclick="genderProduct('women','vendors-women-div')" role="tab" data-toggle="tab">Women</a></li>
-                                        <li role="presentation"><a href="#floor1-4-men" onclick="genderProduct('men','vendors-men-div')" role="tab" data-toggle="tab">Men</a></li>
-                                        <li role="presentation"><a href="#floor1-4-kids" onclick="genderProduct('kids','vendors-kids-div')" role="tab" data-toggle="tab">Kids</a></li>
-                                        <li role="presentation"><a href="#floor1-4-accessories" onclick="genderProduct('accessories','vendors-accessories-div')" role="tab" data-toggle="tab">Accessories</a></li> --}}
-                                        {{-- @foreach ($categories as $row)
-                                            <li role="presentation"><a href="#floor1-4-{{ $row->id }}"
-                                                    onclick="catProduct({{ $row->id }},'vendors-cat-div-{{ $row->id }}')"
-                                                    role="tab" data-toggle="tab">{{ $row->title }} </a></li>
-                                        @endforeach --}}
                                     </ul>
                                 </div>
                             </div>
@@ -3714,32 +3668,6 @@
             </div>
         </div>
 
-        {{-- <div class="block-hot-categories-opt1">
-            <div class="container">
-
-                <div class="block-title ">
-                    <span class="title">Hot categories</span>
-                </div>
-                <div class="block-content">
-                    <div class="row">
-                        @foreach ($all_categories->chunk(4) as $categoryChunk)
-                        @foreach ($categoryChunk as $category)
-                        <div class="col-md-3 col-sm-6">
-                            <div class="item">
-                                <div class="description"
-                                    style="background-image: url({{ $category->icon ? asset($category->icon) : asset('shopAssets/images/media/index1/default-category.png') }})">
-                                    <div class="title"><span>{{ $category->title }}</span></div>
-                                    <a href="" class="btn">shop now</a>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div><!--block  hot categories--> --}}
-
     </main><!-- end MAIN -->
 @endsection
 
@@ -3900,36 +3828,25 @@
 
     <script>
         (function($) {
-
             "use strict";
-
             $(document).ready(function() {
 
                 /*  [ Filter by price ]
-
                 - - - - - - - - - - - - - - - - - - - - */
 
                 $('#slider-range').slider({
-
                     range: true,
-
                     min: 0,
-
                     max: 500,
-
                     values: [0, 300],
 
                     slide: function(event, ui) {
-
                         $('#amount-left').text(ui.values[0]);
                         $('#amount-right').text(ui.values[1]);
-
                     }
-
                 });
 
                 $('#amount-left').text($('#slider-range').slider('values', 0));
-
                 $('#amount-right').text($('#slider-range').slider('values', 1));
             });
 
