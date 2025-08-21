@@ -649,6 +649,7 @@
                             </div>
 
                             <!-- tab 4 -->
+                            {{ dd($subvendor->products->flatMap->features->unique('id')->toArray()) }}
                             @foreach ($subvendor->products->flatMap->features->unique('id') as $feature)
                                 <div class="tab-pane  fade" id="floor1-{{ $loop->iteration + 3 }}" role="tabpanel">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
