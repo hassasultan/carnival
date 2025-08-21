@@ -22,8 +22,8 @@ use App\Http\Controllers\Vendor\BlogController;
 use App\Http\Controllers\SubVendor\SubVendorBlogController;
 use App\Http\Controllers\Vendor\VendorCostumeController;
 use App\Http\Controllers\SubVendor\SubVendorCostumeController;
-use App\Http\Controllers\Vendor\VendorProductController;
-use App\Http\Controllers\SubVendor\SubVendorProductController;
+// use App\Http\Controllers\Vendor\VendorProductController;
+// use App\Http\Controllers\SubVendor\SubVendorProductController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\AppointmentController;
@@ -369,9 +369,9 @@ Route::middleware('vendor')->prefix('vendor')->group(function () {
     Route::get('/', [VendorController::class, 'index'])->name('vendor');
 
     // products
-    Route::get('/products', [VendorProductController::class, 'index'])->name('vendor.products');
-    Route::get('/products/add', [VendorProductController::class, 'create'])->name('vendor.products.create');
-    Route::get('/products/edit/{id}', [VendorProductController::class, 'edit'])->name('vendor.products.edit');
+    // Route::get('/products', [VendorProductController::class, 'index'])->name('vendor.products');
+    // Route::get('/products/add', [VendorProductController::class, 'create'])->name('vendor.products.create');
+    // Route::get('/products/edit/{id}', [VendorProductController::class, 'edit'])->name('vendor.products.edit');
     Route::post('/products/store', [ProductController::class, 'store'])->name('vendor.products.store');
     // Route::put('/products/update/{id}', [VendorProductController::class, 'update'])->name('vendor.products.update');
     Route::post('/product/{product}', [ProductController::class, 'update'])->name('vendor.products.update');
@@ -443,9 +443,9 @@ Route::middleware('subVendor')->prefix('subVendor')->group(function () {
     Route::get('/', [SubVendorController::class, 'index'])->name('subVendor');
 
     // products
-    Route::get('/my_products', [SubVendorProductController::class, 'index'])->name('subVendor.products');
-    Route::get('/products/add', [SubVendorProductController::class, 'create'])->name('subVendor.products.create');
-    Route::get('/my_products/edit/{id}', [SubVendorProductController::class, 'edit'])->name('subVendor.products.edit');
+    // Route::get('/my_products', [SubVendorProductController::class, 'index'])->name('subVendor.products');
+    // Route::get('/products/add', [SubVendorProductController::class, 'create'])->name('subVendor.products.create');
+    // Route::get('/my_products/edit/{id}', [SubVendorProductController::class, 'edit'])->name('subVendor.products.edit');
     // Route::post('/products/store', [ProductController::class, 'store'])->name('subVendor.products.store');
     // Route::post('/my_products/store', [SubVendorProductController::class, 'store'])->name('subVendor.products.store');
     // Route::put('/my_products/update/{id}', [SubVendorProductController::class, 'update'])->name('subVendor.products.update');
