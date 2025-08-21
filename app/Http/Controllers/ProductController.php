@@ -49,6 +49,7 @@ class ProductController extends Controller
 
     public function create()
     {
+        dd('Create Product');
         $variants = Variant::all();
         $categories = Category::all();
         $brands = Brand::all();
