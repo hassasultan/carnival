@@ -36,6 +36,7 @@
                                     @foreach ($packages as $item)
                                         <option value="{{ $item->id }}">{{ $item->title }}</option>
                                     @endforeach
+                                    <option value="123">Section Leader</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -58,7 +59,8 @@
     </div>
 
     <!-- Deletion Confirmation Modal -->
-    <div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-danger text-white">
@@ -92,7 +94,7 @@
             let currentPage = 1;
             var currentUserId = null;
             var currentUserDeleteButton = null;
-            
+
             function fetchUsers(page = 1) {
                 currentPage = page;
                 let search = $('#search').val();
@@ -111,7 +113,9 @@
                         status: status
                     },
                     beforeSend: function() {
-                        $('#usersTable').html('<div class="text-center py-4"><i class="fe fe-loader fe-spin fe-24 mb-2"></i><p>Loading users...</p></div>');
+                        $('#usersTable').html(
+                            '<div class="text-center py-4"><i class="fe fe-loader fe-spin fe-24 mb-2"></i><p>Loading users...</p></div>'
+                        );
                     },
                     success: function(response) {
                         $('#usersTable').html(response);
@@ -122,7 +126,9 @@
                     },
                     error: function(xhr, status, error) {
                         console.error('Error fetching users:', error);
-                        $('#usersTable').html('<div class="alert alert-danger">Error loading users. Please try again.</div>');
+                        $('#usersTable').html(
+                            '<div class="alert alert-danger">Error loading users. Please try again.</div>'
+                        );
                     }
                 });
             }
@@ -140,14 +146,15 @@
             $(document).on('click', '.delete-user', function() {
                 var userId = $(this).data('id');
                 var button = $(this);
-                
+
                 currentUserId = userId;
                 currentUserDeleteButton = button;
-                
+
                 // Get deletion details first
                 $.ajax({
                     type: 'GET',
-                    url: "{{ route('users.deletion-details', '__user_id__') }}".replace('__user_id__', userId),
+                    url: "{{ route('users.deletion-details', '__user_id__') }}".replace(
+                        '__user_id__', userId),
                     success: function(response) {
                         showUserDeletionModal(response);
                     },
@@ -157,7 +164,7 @@
                     }
                 });
             });
-            
+
             function showUserDeletionModal(details) {
                 var content = `
                     <div class="text-left">
@@ -207,32 +214,34 @@
                         </div>
                     </div>
                 `;
-                
+
                 $('#userDeletionDetailsContent').html(content);
                 $('#deleteUserModal').modal('show');
             }
-            
+
             $('#confirmDeleteUser').click(function() {
                 if (currentUserId && currentUserDeleteButton) {
                     var button = currentUserDeleteButton;
-                    
+
                     // Disable button to prevent double-click
                     button.prop('disabled', true);
                     button.html('<i class="fe fe-trash fe-12 mr-3 text-muted"></i>Deleting...');
-                    
+
                     $.ajax({
                         type: 'POST',
-                        url: "{{ route('users.destroy', '__user_id__') }}".replace('__user_id__', currentUserId),
+                        url: "{{ route('users.destroy', '__user_id__') }}".replace('__user_id__',
+                            currentUserId),
                         data: {
                             "_token": "{{ csrf_token() }}",
                             "_method": "DELETE"
                         },
                         success: function(response) {
                             $('#deleteUserModal').modal('hide');
-                            
+
                             // Show success message
-                            showUserSuccessMessage('User and all related items deleted successfully!');
-                            
+                            showUserSuccessMessage(
+                                'User and all related items deleted successfully!');
+
                             // Reload the page to show updated data
                             setTimeout(function() {
                                 location.reload();
@@ -244,12 +253,13 @@
                             alert('Failed to delete user.');
                             // Re-enable button
                             button.prop('disabled', false);
-                            button.html('<i class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove');
+                            button.html(
+                                '<i class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove');
                         }
                     });
                 }
             });
-            
+
             function showUserSuccessMessage(message) {
                 // Create a temporary success alert
                 var alertHtml = `
@@ -261,7 +271,7 @@
                     </div>
                 `;
                 $('body').append(alertHtml);
-                
+
                 // Auto-remove after 5 seconds
                 setTimeout(function() {
                     $('.alert-success').fadeOut(300, function() {
