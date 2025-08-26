@@ -56,13 +56,17 @@ class UserManagementController extends Controller
         }
 
         if ($request->filled('package')) {
-            $query->where(function ($q) use ($request) {
-                $q->whereHas('vendor', function ($q1) use ($request) {
-                    $q1->where('package_id', $request->package);
-                })->orWhereHas('subVendor.vendor', function ($q2) use ($request) {
-                    $q2->where('package_id', $request->package);
+            if ($request->package == '123') {
+                $query->where('role_id', 3);
+            } else {
+                $query->where(function ($q) use ($request) {
+                    $q->whereHas('vendor', function ($q1) use ($request) {
+                        $q1->where('package_id', $request->package);
+                    })->orWhereHas('subVendor.vendor', function ($q2) use ($request) {
+                        $q2->where('package_id', $request->package);
+                    });
                 });
-            });
+            }
         }
 
         if ($request->filled('status')) {
@@ -557,7 +561,6 @@ class UserManagementController extends Controller
 
             return redirect()->back()
                 ->with('success', 'User updated successfully.');
-
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()
@@ -985,7 +988,6 @@ class UserManagementController extends Controller
             DB::commit();
 
             return response()->json(['success' => true, 'message' => 'User and all related data deleted successfully']);
-
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['success' => false, 'message' => 'Failed to delete user: ' . $e->getMessage()], 500);
