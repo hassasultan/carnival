@@ -17,13 +17,21 @@
             @if ($user->role_id != 1)
                 <tr>
                     <td>{{ $counter++ }}</td>
-                    <td>{{ $user->first_name . ' ' . $user->last_name }} - 
+                    <td>{{ $user->first_name . ' ' . $user->last_name }} -
                         {{ $user->vendor ? $user->vendor->name : ($user->subvendor ? $user->subvendor->name : '') }}
                     </td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->role && $user->role_id != '4' ? $user->role->name : 'Customer' }}</td>
                     {{-- <td>{{ $user->role_id == 2 ? $user->vendor?->package?->title : 'Not A Vendor' }}</td> --}}
-                    <td>{{ $user->role_id == 2 ? $user->vendor?->package?->title : 'Section Leader' }}</td>
+                    <td>
+                        @if ($user->role_id == 3)
+                            Section Leader
+                        @elseif($user->role_id == 2)
+                            {{ $user->vendor?->package?->title ?? 'Customer' }}
+                        @else
+                            Customer
+                        @endif
+                    </td>
                     <td>
                         @if ($user->status == 1)
                             <span class="badge badge-success">Active</span>
@@ -33,8 +41,8 @@
                     </td>
                     <td>{{ $user->created_at }}</td>
                     <td>
-                        <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted"
-                            type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted" type="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="text-muted sr-only">Action</span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right shadow">
@@ -53,7 +61,7 @@
 </table>
 
 <!-- Custom Pagination -->
-@if($users->hasPages())
+@if ($users->hasPages())
     <div class="d-flex justify-content-center mt-4">
         <nav aria-label="Users pagination">
             <ul class="pagination">
@@ -64,7 +72,8 @@
                     </li>
                 @else
                     <li class="page-item">
-                        <a class="page-link pagination-link" href="#" data-page="{{ $users->currentPage() - 1 }}">Previous</a>
+                        <a class="page-link pagination-link" href="#"
+                            data-page="{{ $users->currentPage() - 1 }}">Previous</a>
                     </li>
                 @endif
 
@@ -76,7 +85,8 @@
                         </li>
                     @else
                         <li class="page-item">
-                            <a class="page-link pagination-link" href="#" data-page="{{ $page }}">{{ $page }}</a>
+                            <a class="page-link pagination-link" href="#"
+                                data-page="{{ $page }}">{{ $page }}</a>
                         </li>
                     @endif
                 @endforeach
@@ -84,7 +94,8 @@
                 <!-- Next Page Link -->
                 @if ($users->hasMorePages())
                     <li class="page-item">
-                        <a class="page-link pagination-link" href="#" data-page="{{ $users->currentPage() + 1 }}">Next</a>
+                        <a class="page-link pagination-link" href="#"
+                            data-page="{{ $users->currentPage() + 1 }}">Next</a>
                     </li>
                 @else
                     <li class="page-item disabled">
@@ -94,7 +105,7 @@
             </ul>
         </nav>
     </div>
-    
+
     <!-- Pagination Info -->
     <div class="text-center text-muted mt-2">
         Showing {{ $users->firstItem() ?? 0 }} to {{ $users->lastItem() ?? 0 }} of {{ $users->total() }} users
