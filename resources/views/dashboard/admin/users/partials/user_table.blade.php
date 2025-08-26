@@ -22,7 +22,8 @@
                     </td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->role && $user->role_id != '4' ? $user->role->name : 'Customer' }}</td>
-                    <td>{{ $user->role_id == 2 ? $user->vendor?->package?->title : 'Not A Vendor' }}</td>
+                    {{-- <td>{{ $user->role_id == 2 ? $user->vendor?->package?->title : 'Not A Vendor' }}</td> --}}
+                    <td>{{ $user->role_id == 2 ? $user->vendor?->package?->title : 'Section Leader' }}</td>
                     <td>
                         @if ($user->status == 1)
                             <span class="badge badge-success">Active</span>
