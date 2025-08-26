@@ -21,7 +21,7 @@
                         {{ $user->vendor ? $user->vendor->name : ($user->subvendor ? $user->subvendor->name : '') }}
                     </td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->role && $user->role_id != '4' ? $user->role->name : 'Customer' . $user->role }}</td>
+                    <td>{{ $user->role && $user->role_id != '4' ? $user->role->name : 'Customer' }}</td>
                     {{-- <td>{{ $user->role_id == 2 ? $user->vendor?->package?->title : 'Not A Vendor' }}</td> --}}
                     <td>{{ $user->role_id == 2 ? $user->vendor?->package?->title : 'Section Leader' }}</td>
                     <td>
