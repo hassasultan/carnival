@@ -2,16 +2,53 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    HomeController, AdminController, RoleController, PermissionsController, RolePermissionController,
-    VendorController, SubVendorController, PackageController, CategoryController, ProductController,
-    EventController, SubcategoryController, TicketController, VariantController, UserManagementController,
-    BlogsController, CostumeController, MusicController, ServiceController, AppointmentController,
-    FrontendConroller, OrderController, AddToCartController, CustomerController, CarnivalController,
-    CarnivalCommitteeController, RegionController, OurServiceController, SiteGalleryController,
-    InvestorController, BrandController, CountryController, CityController, EventsCountryTabController,
-    TestimonialsController, BannerController, AdvertisementController, VendorGalleryController,
-    SubvendorGalleryController, ModelBookingController, FAQController, FAQPageController,
-    ContactController, OurTeamController, SubscriberController, StateController, FeatureController,
+    HomeController,
+    AdminController,
+    RoleController,
+    PermissionsController,
+    RolePermissionController,
+    VendorController,
+    SubVendorController,
+    PackageController,
+    CategoryController,
+    ProductController,
+    EventController,
+    SubcategoryController,
+    TicketController,
+    VariantController,
+    UserManagementController,
+    BlogsController,
+    CostumeController,
+    MusicController,
+    ServiceController,
+    AppointmentController,
+    FrontendConroller,
+    OrderController,
+    AddToCartController,
+    CustomerController,
+    CarnivalController,
+    CarnivalCommitteeController,
+    RegionController,
+    OurServiceController,
+    SiteGalleryController,
+    InvestorController,
+    BrandController,
+    CountryController,
+    CityController,
+    EventsCountryTabController,
+    TestimonialsController,
+    BannerController,
+    AdvertisementController,
+    VendorGalleryController,
+    SubvendorGalleryController,
+    ModelBookingController,
+    FAQController,
+    FAQPageController,
+    ContactController,
+    OurTeamController,
+    SubscriberController,
+    StateController,
+    FeatureController,
     PaymentController
 };
 
@@ -125,6 +162,8 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::resource('permissions', PermissionsController::class);
     Route::resource('role_permissions', RolePermissionController::class);
     Route::post('/get_permissions', [RolePermissionController::class, 'getPermissions'])->name('get_permissions_by_role');
+    Route::post('/get-permissions-by-package', [RolePermissionController::class, 'getPermissions'])->name('get_permissions_by_package');
+    Route::delete('role-permissions/{package}/{permission}', [RolePermissionController::class, 'detachPermission'])->name('role_permissions.detach');
     Route::resource('packages', PackageController::class);
     Route::resource('products', ProductController::class)->except(['update']);
     Route::post('/product/{product}', [ProductController::class, 'update'])->name('products.update');
@@ -170,4 +209,3 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
     Route::delete('/tickets/{ticket}', [TicketController::class, 'destroy'])->name('tickets.destroy');
 });
-

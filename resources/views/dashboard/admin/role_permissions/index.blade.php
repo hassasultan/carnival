@@ -26,7 +26,7 @@
                             </thead>
                             <tbody>
                                 @php $counter = 1; @endphp <!-- Initialize counter -->
-                                @foreach ($rolePermissions as $role)
+                                @foreach ($packagePermissions as $role)
                                 <tr>
                                     <td>
                                         <div class="custom-control custom-checkbox">

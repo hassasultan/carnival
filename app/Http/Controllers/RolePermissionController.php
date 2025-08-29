@@ -47,12 +47,18 @@ class RolePermissionController extends Controller
     /**
      * Remove a specific permission from a package.
      */
-    public function destroy($package_id, $permission_id)
+    public function destroy($id)
+    {
+        $package = Package::findOrFail($id);
+        $package->permissions()->detach();
+        return redirect()->route('role_permissions.index')->with('success', 'Permissions removed successfully.');
+    }
+
+    public function detachPermission($package_id, $permission_id)
     {
         $package = Package::findOrFail($package_id);
         $package->permissions()->detach($permission_id);
-
-        return redirect()->route('role_permissions.index')->with('success', 'Permission removed successfully.');
+        return back()->with('success', 'Permission removed successfully.');
     }
 
     /**
