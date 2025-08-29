@@ -74,7 +74,7 @@
             </li>
             <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('dashboard') }}">
-                    <i class="fe fe-ticket fe-16"></i>
+                    <i class="fe fe-file fe-16"></i>
                     <span class="ml-3 item-text">Tickets</span><span class="sr-only">(current)</span>
                 </a>
             </li>
