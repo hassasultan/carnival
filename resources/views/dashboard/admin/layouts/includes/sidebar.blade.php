@@ -103,9 +103,13 @@
                     <span class="ml-3 item-text">Roles & Permissions</span>
                 </a>
                 <ul class="collapse list-unstyled w-100" id="ui-elements">
-                    <li class="nav-item active">
+                    {{-- <li class="nav-item active">
                         <a class="nav-link" href="{{ route('roles.index') }}"><span
                                 class="ml-1 item-text">Roles</span></a>
+                    </li> --}}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('packages.index') }}"><span
+                                class="ml-1 item-text">Packages</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ route('permissions.index') }}"><span
@@ -113,7 +117,7 @@
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ route('role_permissions.index') }}"><span
-                                class="ml-1 item-text">RolesPermissions</span></a>
+                                class="ml-1 item-text">Package Permissions</span></a>
                     </li>
                 </ul>
             </li>
@@ -265,7 +269,7 @@
 
         <!-- Category/Package/Features -->
         <p class="text-muted nav-heading mt-4 mb-2 pl-4">
-            <span>Category/Package/Features</span>
+            <span>Category/Features</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
@@ -289,10 +293,6 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ route('variants.index') }}"><span
                                 class="ml-1 item-text">Variants</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('packages.index') }}"><span
-                                class="ml-1 item-text">Packages</span></a>
                     </li>
                 </ul>
             </li>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use App\Models\Permission;
+use App\Models\Package;
 use Illuminate\Http\Request;
 
 class RolePermissionController extends Controller
@@ -27,7 +28,8 @@ class RolePermissionController extends Controller
     public function create()
     {
         $roles = Role::all();
-        $permissions = Permission::all();
+        // $permissions = Permission::all();
+        $permissions = Package::all();
         return view('dashboard.admin.role_permissions.create', compact('roles', 'permissions'));
     }
 
