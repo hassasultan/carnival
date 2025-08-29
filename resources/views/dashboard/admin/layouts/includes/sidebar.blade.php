@@ -17,11 +17,11 @@
                 </svg>
             </a> --}}
             {{-- <strong class="logo"> --}}
-                <a href="/" class="navbar-brand mx-auto mt-2 flex-fill text-center"><img width="120"
-                        src="{{ asset('shopAssets/images/logo.png') }}" alt="logo"></a>
+            <a href="/" class="navbar-brand mx-auto mt-2 flex-fill text-center"><img width="120"
+                    src="{{ asset('shopAssets/images/logo.png') }}" alt="logo"></a>
             {{-- </strong><!-- logo --> --}}
         </div>
-        
+
         <!-- Dashboard -->
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
@@ -30,12 +30,17 @@
                     <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
                 </a>
             </li>
-            <li class="nav-item w-100">
-                <a class="nav-link" href="{{ route('dashboard') }}">
-                    <i class="fe fe-credit-card fe-16"></i>
-                    <span class="ml-3 item-text">Account Details</span><span class="sr-only">(current)</span>
-                </a>
-            </li>
+            @packagePermission('manage_roles')
+                <li><a href="{{ route('roles.index') }}">Manage Roles</a></li>
+            @endPackagePermission
+            @packagePermission('role_permissions')
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="{{ route('dashboard') }}">
+                        <i class="fe fe-credit-card fe-16"></i>
+                        <span class="ml-3 item-text">Account Details</span><span class="sr-only">(current)</span>
+                    </a>
+                </li>
+            @endPackagePermission
             <li class="nav-item w-100">
                 <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fe fe-layers fe-16"></i>
@@ -124,14 +129,15 @@
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
-                <a href="#ui-umanagement" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <a href="#ui-umanagement" data-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle nav-link">
                     <i class="fe fe-users fe-16"></i>
                     <span class="ml-3 item-text">User Management</span>
                 </a>
                 <ul class="collapse list-unstyled w-100" id="ui-umanagement">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('users.index') }}"><span
-                                class="ml-1 item-text">All Users</span></a>
+                        <a class="nav-link" href="{{ route('users.index') }}"><span class="ml-1 item-text">All
+                                Users</span></a>
                     </li>
                 </ul>
             </li>
@@ -273,7 +279,8 @@
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
-                <a href="#ui-category" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <a href="#ui-category" data-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle nav-link">
                     <i class="fe fe-tag fe-16"></i>
                     <span class="ml-3 item-text">Categories & Features</span>
                 </a>
@@ -353,11 +360,11 @@
                     <span class="ml-3 item-text">Events</span>
                 </a>
                 <ul class="collapse list-unstyled w-100" id="ui-events">
-                    <li class="nav-item @if(Route::is('events.index')) active @endif">
+                    <li class="nav-item @if (Route::is('events.index')) active @endif">
                         <a class="nav-link" href="{{ route('events.index') }}"><span
                                 class="ml-1 item-text">Events</span></a>
                     </li>
-                    <li class="nav-item @if(Route::is('tickets.index')) active @endif">
+                    <li class="nav-item @if (Route::is('tickets.index')) active @endif">
                         <a class="nav-link" href="{{ route('tickets.index') }}">
                             <span class="ml-1 item-text">Tickets Types</span>
                         </a>
@@ -377,16 +384,17 @@
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
-                <a href="#ui-appointment" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <a href="#ui-appointment" data-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle nav-link">
                     <i class="fe fe-clock fe-16"></i>
                     <span class="ml-3 item-text">Appointments</span>
                 </a>
                 <ul class="collapse list-unstyled w-100" id="ui-appointment">
-                    <li class="nav-item @if(Route::is('services.index')) active @endif">
+                    <li class="nav-item @if (Route::is('services.index')) active @endif">
                         <a class="nav-link" href="{{ route('services.index') }}"><span
                                 class="ml-1 item-text">Service</span></a>
                     </li>
-                    <li class="nav-item @if(Route::is('appointments.index')) active @endif">
+                    <li class="nav-item @if (Route::is('appointments.index')) active @endif">
                         <a class="nav-link" href="{{ route('appointments.index') }}">
                             <span class="ml-1 item-text">Appointments</span>
                         </a>
