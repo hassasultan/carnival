@@ -42,4 +42,9 @@ class Package extends Model
     {
         return $this->hasMany(Category::class);
     }
+
+   public function permissions()
+    {
+        return $this->belongsToMany(Permission::class, 'role_permissions');
+    }
 }
