@@ -41,7 +41,7 @@ class RolePermissionController extends Controller
         $package = Package::findOrFail($request->package_id);
         $package->permissions()->sync($request->permission_id);
 
-        return redirect()->route('package_permissions.index')->with('success', 'Permissions updated successfully.');
+        return redirect()->route('role_permissions.index')->with('success', 'Permissions updated successfully.');
     }
 
     /**
@@ -52,7 +52,7 @@ class RolePermissionController extends Controller
         $package = Package::findOrFail($package_id);
         $package->permissions()->detach($permission_id);
 
-        return redirect()->route('package_permissions.index')->with('success', 'Permission removed successfully.');
+        return redirect()->route('role_permissions.index')->with('success', 'Permission removed successfully.');
     }
 
     /**
