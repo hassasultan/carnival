@@ -22,7 +22,7 @@ class RolePermissionController extends Controller
      */
     public function create()
     {
-        $roles = Package::all(); // Keeping variable name for Blade compatibility
+        $roles = Package::all(); // Using roles for Blade compatibility
         $permissions = Permission::all();
         return view('dashboard.admin.role_permissions.create', compact('roles', 'permissions'));
     }
@@ -41,20 +41,22 @@ class RolePermissionController extends Controller
         $package = Package::findOrFail($request->role_id);
         $package->permissions()->sync($request->permission_id);
 
-        return redirect()->route('role_permissions.index')->with('success', 'Package permissions updated successfully');
+        return redirect()->route('role_permissions.index')->with('success', 'Permissions updated successfully.');
     }
 
     /**
      * Remove a specific permission from a package.
      */
-    public function destroy(Package $package, Permission $permission)
+    public function destroy($role_id, $permission_id)
     {
-        $package->permissions()->detach($permission->id);
-        return redirect()->route('role_permissions.index')->with('success', 'Permission removed successfully');
+        $package = Package::findOrFail($role_id);
+        $package->permissions()->detach($permission_id);
+
+        return redirect()->route('role_permissions.index')->with('success', 'Permission removed successfully.');
     }
 
     /**
-     * Fetch permissions for a given package (for AJAX).
+     * Fetch permissions for a given package (AJAX).
      */
     public function getPermissions(Request $request)
     {
