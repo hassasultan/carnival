@@ -26,7 +26,7 @@
                     <td>
                         @if ($user->role_id == 3)
                             {{-- Section Leader --}}
-                            {{ $user->subvendor->vendor?->package?->title ?? 'N/A' }}
+                            {{ $user->package_name ?? 'N/A' }}
                         @elseif($user->role_id == 2)
                             {{ $user->vendor?->package?->title ?? 'N/A' }}
                         @else
