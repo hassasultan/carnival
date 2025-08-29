@@ -68,7 +68,9 @@ class RolePermissionController extends Controller
     {
         $package = Package::findOrFail($request->package_id);
         $all_permissions = Permission::all();
-        $permissions = $package->permissions()->get(['id', 'display_name']);
+
+        // Fix ambiguous column issue
+        $permissions = $package->permissions()->get(['permissions.id', 'permissions.display_name']);
 
         $html = '<select id="permission_id" name="permission_id[]" class="form-control select2" multiple required>';
         foreach ($all_permissions as $permission) {
