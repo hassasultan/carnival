@@ -38,8 +38,8 @@
                                     <label for="role_id">Package</label>
                                     <select id="role_id" name="role_id" class="form-control" required>
                                         <option value="">Select Package</option>
-                                        @foreach ($roles as $role)
-                                            <option value="{{ $role->id }}">{{ $role->title }}</option>
+                                        @foreach ($packages as $package)
+                                            <option value="{{ $package->id }}">{{ $package->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
