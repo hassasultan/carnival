@@ -27,9 +27,8 @@ class RolePermissionController extends Controller
      */
     public function create()
     {
-        $roles = Role::all();
-        // $permissions = Permission::all();
-        $permissions = Package::all();
+        $roles = Package::all();
+        $permissions = Permission::all();
         return view('dashboard.admin.role_permissions.create', compact('roles', 'permissions'));
     }
 

@@ -2,9 +2,23 @@
 
 @section('content')
     <style>
-        #permission_id+span.select2.select2-container .select2-selection--multiple .select2-selection__rendered {
+        /* Main container text & background */
+        .select2-container .select2-selection--multiple .select2-selection__rendered {
             background-color: #f8f9fa !important;
-            /* Set your desired grey color here */
+            color: #212529 !important;
+            /* Dark text */
+        }
+
+        /* Selected items (tags) */
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #e9ecef !important;
+            color: #212529 !important;
+            border: 1px solid #ced4da !important;
+        }
+
+        /* Placeholder color */
+        .select2-container--default .select2-selection--multiple .select2-selection__placeholder {
+            color: #6c757d !important;
         }
     </style>
 
@@ -55,6 +69,12 @@
 @section('bottom_script')
     <script>
         $(document).ready(function() {
+            // Initialize Select2 on page load
+            $('.select2').select2({
+                theme: 'bootstrap4',
+                placeholder: 'Select Permissions'
+            });
+
             $('#role_id').change(function() {
                 var roleId = $(this).val();
                 $.ajax({
@@ -68,26 +88,19 @@
                         console.log('response', response);
                         var html = response.html;
 
-                        $('#permission_id').replaceWith(
-                        html); // Replace existing select with new one
+                        $('#permission_id').replaceWith(html); // Replace select
 
-                        // Reinitialize select2 after updating options
-                        $('.select2').select2();
-
-                        // Apply background color after select2 initialization
-                        $('#permission_id').next('.select2-container').find(
-                            '.select2-selection__rendered').css('background-color',
-                            '#f8f9fa');
+                        // Reinitialize select2 after replacing
+                        $('.select2').select2({
+                            theme: 'bootstrap4',
+                            placeholder: 'Select Permissions'
+                        });
                     },
                     error: function(xhr, textStatus, errorThrown) {
                         console.error(xhr.responseText);
-                        // Handle error here
                     }
                 });
             });
-
-            // Trigger change event on page load to populate permissions for the default role
-            // $('#role_id').change();
         });
     </script>
 @endsection
