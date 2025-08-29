@@ -1,4 +1,4 @@
-{{-- @extends('dashboard.vendor.layouts.app')
+{{-- @extends('dashboard.admin.layouts.app')
 
 @section('content')
     <div class="row justify-content-center">
@@ -28,7 +28,7 @@
         </div>
     </div>
 @endsection --}}
-@extends('dashboard.vendor.layouts.app')
+@extends('dashboard.admin.layouts.app')
 
 @section('content')
     <div class="row justify-content-center">

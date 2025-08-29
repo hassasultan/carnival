@@ -169,27 +169,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
 });
 
-// auth routes
-Route::middleware('auth')->group(function () {
-    // Products Crud
-    Route::resource('products', ProductController::class)->except(['update']);
-    Route::post('/product/{product}', [ProductController::class, 'update'])->name('products.update');
-    
-    // Costumes Crud
-    Route::resource('costumes', CostumeController::class);
 
-    // Events Crud
-    Route::resource('events', EventController::class);
-
-    //blogs
-    Route::resource('blogs', BlogsController::class)->except(['update']);
-    Route::put('/blogs/{blog}', [BlogsController::class, 'update'])->name('blogs.update');
-});
 
 // Admin Routes
-Route::middleware('admin')->prefix('admin')->group(function () {
-
-    Route::get('/', [AdminController::class, 'index'])->name('admin');
+Route::middleware('admin')->prefix('dashboard')->group(function () {
 
     // Roles Crud
     Route::resource('roles', RoleController::class);
@@ -203,6 +186,42 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     // Packages Crud
     Route::resource('packages', PackageController::class);
+
+    // user management
+    Route::get('/users', [UserManagementController::class, 'indexUser'])->name('users.index');
+    Route::get('/get-users', [UserManagementController::class, 'getUsers'])->name('admin.users.index');
+    Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');
+    Route::post('/users/register', [UserManagementController::class, 'register'])->name('users.register');
+    Route::get('/users/edit/{id}', [UserManagementController::class, 'edit'])->name('users.edit');
+    // Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [UserManagementController::class, 'destroyUser'])->name('users.destroy');
+    Route::get('/users/{user}/deletion-details', [UserManagementController::class, 'getDeletionDetails'])->name('users.deletion-details');
+    Route::delete('banners/delete', [UserManagementController::class, 'delete'])->name('banners.delete');
+
+    Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.categories');
+});
+
+// auth routes
+Route::middleware('auth')->group(function () {
+    // Products Crud
+    Route::resource('products', ProductController::class)->except(['update']);
+    Route::post('/product/{product}', [ProductController::class, 'update'])->name('products.update');
+
+    // Costumes Crud
+    Route::resource('costumes', CostumeController::class);
+
+    // Events Crud
+    Route::resource('events', EventController::class);
+
+    //blogs
+    Route::resource('blogs', BlogsController::class)->except(['update']);
+    Route::put('/blogs/{blog}', [BlogsController::class, 'update'])->name('blogs.update');
+    // });
+
+    // // Admin Routes
+    // Route::middleware('admin')->prefix('admin')->group(function () {
+
+    // Route::get('/', [AdminController::class, 'index'])->name('admin');
 
     // Categories Crud
     Route::resource('categories', CategoryController::class);
@@ -238,19 +257,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     // get features by category
     Route::get('/get-features/{categoryId}', [ProductController::class, 'getFeaturesByCategory'])->name('get.features.by.category');
 
-    // user management
-    Route::get('/users', [UserManagementController::class, 'indexUser'])->name('users.index');
-    Route::get('/get-users', [UserManagementController::class, 'getUsers'])->name('admin.users.index');
-    Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');
-    Route::post('/users/register', [UserManagementController::class, 'register'])->name('users.register');
-    Route::get('/users/edit/{id}', [UserManagementController::class, 'edit'])->name('users.edit');
-    // Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [UserManagementController::class, 'destroyUser'])->name('users.destroy');
-    Route::get('/users/{user}/deletion-details', [UserManagementController::class, 'getDeletionDetails'])->name('users.deletion-details');
-    Route::delete('banners/delete', [UserManagementController::class, 'delete'])->name('banners.delete');
-
-    Route::get('/vendor-categories', [UserManagementController::class, 'getCategories'])->name('users.get.categories');
-
     //musics
     Route::resource('musics', MusicController::class);
 
@@ -262,7 +268,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
     //carnivals
     Route::resource('carnivals', CarnivalController::class);
-
 
     //appointments
     Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
@@ -308,7 +313,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::resource('brands', BrandController::class);
 
     //Countries CRUD
-
     Route::resource('countries', CountryController::class);
 
     //Cities CRUD

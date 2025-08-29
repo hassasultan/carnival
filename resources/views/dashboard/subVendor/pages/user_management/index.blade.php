@@ -1,4 +1,4 @@
-@extends('dashboard.subVendor.layouts.app')
+@extends('dashboard.admin.layouts.app')
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">

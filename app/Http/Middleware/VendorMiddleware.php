@@ -17,7 +17,7 @@ class VendorMiddleware
     public function handle(Request $request, Closure $next)
     {
         // Check if the user is authenticated and is an admin
-        if ($request->user() && $request->user()->isVendor()) {
+        if ($request->user() && $request->user()->isVendor() || $request->user()->isSubVendor()) {
             return $next($request);
         }
 
