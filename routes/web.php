@@ -221,7 +221,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     // // Admin Routes
     // Route::middleware('admin')->prefix('admin')->group(function () {
 
-    // Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
 
     // Categories Crud
     Route::resource('categories', CategoryController::class);
