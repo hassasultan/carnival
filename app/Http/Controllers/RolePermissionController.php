@@ -2,82 +2,71 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
-use App\Models\Permission;
 use App\Models\Package;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 
 class RolePermissionController extends Controller
 {
     /**
-     * Display a listing of the role permissions.
-     *
-     * @return \Illuminate\Http\Response
+     * Display a listing of the package permissions.
      */
     public function index()
     {
-        $rolePermissions = Role::with('permissions')->get();
-        return view('dashboard.admin.role_permissions.index', compact('rolePermissions'));
+        $packagePermissions = Package::with('permissions')->get();
+        return view('dashboard.admin.role_permissions.index', compact('packagePermissions'));
     }
 
     /**
-     * Show the form for creating a new role permission.
-     *
-     * @return \Illuminate\Http\Response
+     * Show the form for creating a new package permission.
      */
     public function create()
     {
-        $roles = Package::all();
+        $roles = Package::all(); // Keeping variable name for Blade compatibility
         $permissions = Permission::all();
         return view('dashboard.admin.role_permissions.create', compact('roles', 'permissions'));
     }
 
     /**
-     * Store a newly created role permission in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Store a newly created package permission.
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
-            'role_id' => 'required|exists:roles,id',
-            'permission_id' => 'required|exists:permissions,id',
+            'role_id' => 'required|exists:packages,id',
+            'permission_id' => 'required|array',
+            'permission_id.*' => 'exists:permissions,id',
         ]);
 
-        $role = Role::findOrFail($request->role_id);
-        $role->permissions()->sync($request->permission_id);
+        $package = Package::findOrFail($request->role_id);
+        $package->permissions()->sync($request->permission_id);
 
-        return redirect()->route('role_permissions.index')->with('success', 'Role permission created successfully');
+        return redirect()->route('role_permissions.index')->with('success', 'Package permissions updated successfully');
     }
 
     /**
-     * Remove the specified role permission from storage.
-     *
-     * @param  \App\Models\Role  $role
-     * @param  \App\Models\Permission  $permission
-     * @return \Illuminate\Http\Response
+     * Remove a specific permission from a package.
      */
-    public function destroy(Role $role, Permission $permission)
+    public function destroy(Package $package, Permission $permission)
     {
-        dd($role->toArray(), $permission->toArray());
-        $role->permissions()->detach($permission->id);
-        return redirect()->route('role_permissions.index')->with('success', 'Role permission deleted successfully');
+        $package->permissions()->detach($permission->id);
+        return redirect()->route('role_permissions.index')->with('success', 'Permission removed successfully');
     }
+
+    /**
+     * Fetch permissions for a given package (for AJAX).
+     */
     public function getPermissions(Request $request)
     {
-        $role = Role::findOrFail($request->role_id);
+        $package = Package::findOrFail($request->role_id);
         $all_permissions = Permission::all();
-        $permissions = $role->permissions()->get(['id', 'display_name']);
+        $permissions = $package->permissions()->get(['id', 'display_name']);
 
         $html = '<select id="permission_id" name="permission_id[]" class="form-control select2" multiple required>';
-
         foreach ($all_permissions as $permission) {
             $selected = $permissions->contains('id', $permission->id) ? 'selected' : '';
             $html .= '<option value="' . $permission->id . '" ' . $selected . '>' . $permission->display_name . '</option>';
         }
-
         $html .= '</select>';
 
         return response()->json(['html' => $html]);
