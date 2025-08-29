@@ -30,6 +30,66 @@
                     <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
                 </a>
             </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fe fe-credit-card fe-16"></i>
+                    <span class="ml-3 item-text">Account Details</span><span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fe fe-layers fe-16"></i>
+                    <span class="ml-3 item-text">Store front details</span><span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fe fe-users fe-16"></i>
+                    <span class="ml-3 item-text">Section Leaders</span><span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fe fe-file-text fe-16"></i>
+                    <span class="ml-3 item-text">Invoice</span><span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fe fe-shopping-cart fe-16"></i>
+                    <span class="ml-3 item-text">Orders</span><span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fe fe-download fe-16"></i>
+                    <span class="ml-3 item-text">Downloads</span><span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fe fe-heart fe-16"></i>
+                    <span class="ml-3 item-text">My wishlist</span><span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fe fe-ticket fe-16"></i>
+                    <span class="ml-3 item-text">Tickets</span><span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fe fe-log-out fe-16"></i>
+                    <span class="ml-3 item-text">Log Out</span><span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fe fe-credit-card fe-16"></i>
+                    <span class="ml-3 item-text">Bank and Payment:</span><span class="sr-only">(current)</span>
+                </a>
+            </li>
         </ul>
 
         <!-- System Settings -->

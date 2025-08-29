@@ -12,16 +12,18 @@
                             <strong class="card-title">User Registration Form</strong>
                         </div>
                         <div class="card-body">
-                            @if(session('success'))
+                            @if (session('success'))
                                 <div class="alert alert-success alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    <button type="button" class="close" data-dismiss="alert"
+                                        aria-hidden="true">&times;</button>
                                     {{ session('success') }}
                                 </div>
                             @endif
 
-                            @if(session('error'))
+                            @if (session('error'))
                                 <div class="alert alert-danger alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    <button type="button" class="close" data-dismiss="alert"
+                                        aria-hidden="true">&times;</button>
                                     {{ session('error') }}
                                 </div>
                             @endif
@@ -96,7 +98,8 @@
                                                 <option value="">Select Age Range</option>
                                                 <option value="adult" {{ old('age_range') == 'adult' ? 'selected' : '' }}>
                                                     Adult</option>
-                                                <option value="kid" {{ old('age_range') == 'kid' ? 'selected' : '' }}>Kid
+                                                <option value="kid" {{ old('age_range') == 'kid' ? 'selected' : '' }}>
+                                                    Kid
                                                 </option>
                                             </select>
                                             @error('age_range')
@@ -132,14 +135,16 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="gender">Gender</label>
-                                            <select id="gender" class="form-control @error('gender') is-invalid @enderror"
-                                                name="gender">
+                                            <select id="gender"
+                                                class="form-control @error('gender') is-invalid @enderror" name="gender">
                                                 <option value="">Select Gender</option>
-                                                <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male
+                                                <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>
+                                                    Male
                                                 </option>
                                                 <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>
                                                     Female</option>
-                                                <option value="other" {{ old('gender') == 'other' ? 'selected' : '' }}>Other
+                                                <option value="other" {{ old('gender') == 'other' ? 'selected' : '' }}>
+                                                    Other
                                                 </option>
                                             </select>
                                             @error('gender')
@@ -237,10 +242,12 @@
 
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="address">Street Address <span class="text-danger">*</span></label>
+                                            <label for="address">Street Address <span
+                                                    class="text-danger">*</span></label>
                                             <input id="address" type="text"
-                                                class="form-control @error('address') is-invalid @enderror" name="address"
-                                                value="{{ old('address') }}" required autocomplete="address">
+                                                class="form-control @error('address') is-invalid @enderror"
+                                                name="address" value="{{ old('address') }}" required
+                                                autocomplete="address">
                                             @error('address')
                                                 <span class="invalid-feedback">{{ $message }}</span>
                                             @enderror
@@ -261,7 +268,8 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="state">State/Province <span class="text-danger">*</span></label>
+                                            <label for="state">State/Province <span
+                                                    class="text-danger">*</span></label>
                                             <input id="state" type="text"
                                                 class="form-control @error('state') is-invalid @enderror" name="state"
                                                 value="{{ old('state') }}" required autocomplete="state">
@@ -275,8 +283,9 @@
                                         <div class="form-group">
                                             <label for="country">Country <span class="text-danger">*</span></label>
                                             <input id="country" type="text"
-                                                class="form-control @error('country') is-invalid @enderror" name="country"
-                                                value="{{ old('country') }}" required autocomplete="country">
+                                                class="form-control @error('country') is-invalid @enderror"
+                                                name="country" value="{{ old('country') }}" required
+                                                autocomplete="country">
                                             @error('country')
                                                 <span class="invalid-feedback">{{ $message }}</span>
                                             @enderror
@@ -285,10 +294,12 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="zipcode">ZIP/Postal Code <span class="text-danger">*</span></label>
+                                            <label for="zipcode">ZIP/Postal Code <span
+                                                    class="text-danger">*</span></label>
                                             <input id="zipcode" type="text"
-                                                class="form-control @error('zipcode') is-invalid @enderror" name="zipcode"
-                                                value="{{ old('zipcode') }}" required autocomplete="zipcode">
+                                                class="form-control @error('zipcode') is-invalid @enderror"
+                                                name="zipcode" value="{{ old('zipcode') }}" required
+                                                autocomplete="zipcode">
                                             @error('zipcode')
                                                 <span class="invalid-feedback">{{ $message }}</span>
                                             @enderror
@@ -308,8 +319,8 @@
                                         <div class="form-group">
                                             <label for="password">Password <span class="text-danger">*</span></label>
                                             <input id="password" type="password"
-                                                class="form-control @error('password') is-invalid @enderror" name="password"
-                                                required autocomplete="new-password">
+                                                class="form-control @error('password') is-invalid @enderror"
+                                                name="password" required autocomplete="new-password">
                                             @error('password')
                                                 <span class="invalid-feedback">{{ $message }}</span>
                                             @enderror
@@ -343,11 +354,13 @@
                                                 name="package_id" required>
                                                 <option value="">Select Package</option>
                                                 @foreach ($packages as $package)
-                                                    <option value="{{ $package->id }}" {{ old('package_id') == $package->id ? 'selected' : '' }}>
+                                                    <option value="{{ $package->id }}"
+                                                        {{ old('package_id') == $package->id ? 'selected' : '' }}>
                                                         {{ $package->title }}
                                                     </option>
                                                 @endforeach
-                                                <option value="section_leader" {{ old('package_id') == 'section_leader' ? 'selected' : '' }}>
+                                                <option value="section_leader"
+                                                    {{ old('package_id') == 'section_leader' ? 'selected' : '' }}>
                                                     Section Leader
                                                 </option>
                                             </select>
@@ -365,7 +378,8 @@
                                                 name="vendor_id">
                                                 <option value="">Select Vendor</option>
                                                 @foreach ($vendors as $vendor)
-                                                    <option value="{{ $vendor->id }}" {{ old('vendor_id') == $vendor->id ? 'selected' : '' }}>
+                                                    <option value="{{ $vendor->id }}"
+                                                        {{ old('vendor_id') == $vendor->id ? 'selected' : '' }}>
                                                         {{ $vendor->user->first_name . ' ' . $vendor->user->last_name }}
                                                     </option>
                                                 @endforeach
@@ -398,7 +412,8 @@
                                                                 <div class="custom-control custom-switch">
                                                                     <input type="checkbox" class="custom-control-input"
                                                                         value="1" id="e_com" name="ecommerce">
-                                                                    <label class="custom-control-label" for="e_com"></label>
+                                                                    <label class="custom-control-label"
+                                                                        for="e_com"></label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -418,7 +433,8 @@
                                                                 <div class="custom-control custom-switch">
                                                                     <input type="checkbox" class="custom-control-input"
                                                                         value="1" id="music" name="music">
-                                                                    <label class="custom-control-label" for="music"></label>
+                                                                    <label class="custom-control-label"
+                                                                        for="music"></label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -437,7 +453,8 @@
                                                             <div class="col-auto">
                                                                 <div class="custom-control custom-switch">
                                                                     <input type="checkbox" class="custom-control-input"
-                                                                        value="1" id="appointments" name="appointment">
+                                                                        value="1" id="appointments"
+                                                                        name="appointment">
                                                                     <label class="custom-control-label"
                                                                         for="appointments"></label>
                                                                 </div>
@@ -482,7 +499,8 @@
                                                                 <div class="custom-control custom-switch">
                                                                     <input type="checkbox" class="custom-control-input"
                                                                         value="1" id="ads" name="ad_space">
-                                                                    <label class="custom-control-label" for="ads"></label>
+                                                                    <label class="custom-control-label"
+                                                                        for="ads"></label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -502,7 +520,8 @@
                                                                 <div class="custom-control custom-switch">
                                                                     <input type="checkbox" class="custom-control-input"
                                                                         value="1" id="blogs" name="blogging">
-                                                                    <label class="custom-control-label" for="blogs"></label>
+                                                                    <label class="custom-control-label"
+                                                                        for="blogs"></label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -582,7 +601,8 @@
                                                 name="continent" required>
                                                 <option value="">Select Continent</option>
                                                 @foreach ($continents as $continent)
-                                                    <option value="{{ $continent->id }}" {{ old('continent') == $continent->id ? 'selected' : '' }}>
+                                                    <option value="{{ $continent->id }}"
+                                                        {{ old('continent') == $continent->id ? 'selected' : '' }}>
                                                         {{ $continent->name }}
                                                     </option>
                                                 @endforeach
@@ -596,10 +616,8 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="short_description">Short Description</label>
-                                            <textarea id="short_description"
-                                                class="form-control @error('short_description') is-invalid @enderror"
-                                                name="short_description" rows="3"
-                                                placeholder="Enter a brief description about your business">{{ old('short_description') }}</textarea>
+                                            <textarea id="short_description" class="form-control @error('short_description') is-invalid @enderror"
+                                                name="short_description" rows="3" placeholder="Enter a brief description about your business">{{ old('short_description') }}</textarea>
                                             @error('short_description')
                                                 <span class="invalid-feedback">{{ $message }}</span>
                                             @enderror
@@ -611,8 +629,8 @@
                                             <label for="logo">Shop Logo <span class="text-danger">*</span></label>
                                             <div class="custom-file">
                                                 <input type="file"
-                                                    class="custom-file-input @error('logo') is-invalid @enderror" id="logo"
-                                                    name="logo" required accept="image/*">
+                                                    class="custom-file-input @error('logo') is-invalid @enderror"
+                                                    id="logo" name="logo" required accept="image/*">
                                                 <label class="custom-file-label" for="logo" id="logo_label">Choose
                                                     file</label>
                                             </div>
@@ -624,6 +642,9 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Bank Account Information -->
+                                @include('dashboard.admin.users.partials.bankAccount')
 
                                 <!-- Social Media Information -->
                                 <div class="row mb-4">
@@ -776,8 +797,7 @@
 
                                                     <div class="form-group">
                                                         <label for="banner_description">Banner Description</label>
-                                                        <textarea class="form-control"
-                                                            name="banners[${bannerIndex}][description]" rows="3"
+                                                        <textarea class="form-control" name="banners[${bannerIndex}][description]" rows="3"
                                                             placeholder="Enter banner description"></textarea>
                                                     </div>
 
@@ -823,7 +843,8 @@
                                                             <label class="custom-file-label"
                                                                 for="sponsor_logo_${sponsorIndex}">Choose file</label>
                                                         </div>
-                                                        <small class="form-text text-muted">Supported formats: JPG, PNG, GIF
+                                                        <small class="form-text text-muted">Supported formats: JPG, PNG,
+                                                            GIF
                                                             (Max: 2MB)</small>
                                                     </div>
 
@@ -877,15 +898,15 @@
                                                             <div class="form-group">
                                                                 <label for="tab_name">Tab Name <span
                                                                         class="text-danger">*</span></label>
-                                                                <input type="text" class="form-control" name="tab_name[]"
-                                                                    placeholder="Enter tab name" required>
+                                                                <input type="text" class="form-control"
+                                                                    name="tab_name[]" placeholder="Enter tab name"
+                                                                    required>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="tab_description">Tab Description</label>
-                                                                <textarea class="form-control" name="tab_description[]"
-                                                                    rows="3" placeholder="Enter tab description"></textarea>
+                                                                <textarea class="form-control" name="tab_description[]" rows="3" placeholder="Enter tab description"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -923,7 +944,7 @@
 
 @section('bottom_script')
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Initialize Select2
             $('.select2').select2({
                 theme: 'bootstrap4',
@@ -931,13 +952,13 @@
             });
 
             // File input labels
-            $('.custom-file-input').on('change', function () {
+            $('.custom-file-input').on('change', function() {
                 var fileName = $(this).val().split('\\').pop();
                 $(this).next('.custom-file-label').html(fileName || 'Choose file');
             });
 
             // Package selection logic
-            $('#package').on('change', function () {
+            $('#package').on('change', function() {
                 var packageId = $(this).val();
                 var vendorInput = $('#vendors_input');
                 var packageFeatures = $('#package-features');
@@ -983,7 +1004,7 @@
             });
 
             // Age range change logic
-            $('#age_range').on('change', function () {
+            $('#age_range').on('change', function() {
                 var packageId = $('#package').val();
                 var ageRange = $(this).val();
                 var vendorInput = $('#vendors_input');
@@ -1005,13 +1026,13 @@
             let bannerIndex = 0;
 
             // Initialize counters on document ready
-            $(document).ready(function () {
+            $(document).ready(function() {
                 bannerIndex = $('.banner-item').length;
                 sponsorIndex = $('.sponsor-item').length;
                 tabIndex = $('.tab-item').length;
             });
 
-            $('#addBannerBtn').click(function () {
+            $('#addBannerBtn').click(function() {
                 bannerIndex++;
                 var newBanner = `
                 <div class="banner-item card mb-3">
@@ -1053,7 +1074,7 @@
             });
 
             // Remove banner
-            $(document).on('click', '.remove-banner', function () {
+            $(document).on('click', '.remove-banner', function() {
                 $(this).closest('.banner-item').remove();
                 // Renumber remaining banners
                 renumberBanners();
@@ -1061,7 +1082,7 @@
 
             // Function to renumber banners
             function renumberBanners() {
-                $('.banner-item').each(function (index) {
+                $('.banner-item').each(function(index) {
                     var newIndex = index + 1;
                     $(this).find('.card-header h6').text('Banner #' + newIndex);
 
@@ -1087,7 +1108,7 @@
             // Sponsors management
             let sponsorIndex = 0;
 
-            $('#addSponsorBtn').click(function () {
+            $('#addSponsorBtn').click(function() {
                 sponsorIndex++;
                 var newSponsor = `
                 <div class="sponsor-item card mb-3">
@@ -1129,7 +1150,7 @@
             });
 
             // Remove sponsor
-            $(document).on('click', '.remove-sponsor', function () {
+            $(document).on('click', '.remove-sponsor', function() {
                 $(this).closest('.sponsor-item').remove();
                 // Renumber remaining sponsors
                 renumberSponsors();
@@ -1137,7 +1158,7 @@
 
             // Function to renumber sponsors
             function renumberSponsors() {
-                $('.sponsor-item').each(function (index) {
+                $('.sponsor-item').each(function(index) {
                     var newIndex = index + 1;
                     $(this).find('.card-header h6').text('Sponsor #' + newIndex);
 
@@ -1163,7 +1184,7 @@
             // Tabs management
             let tabIndex = 0;
 
-            $('#addTabBtn').click(function () {
+            $('#addTabBtn').click(function() {
                 tabIndex++;
                 var newTab = `
                 <div class="tab-item card mb-3">
@@ -1196,7 +1217,7 @@
             });
 
             // Remove tab
-            $(document).on('click', '.remove-tab', function () {
+            $(document).on('click', '.remove-tab', function() {
                 $(this).closest('.tab-item').remove();
                 // Renumber remaining tabs
                 renumberTabs();
@@ -1204,7 +1225,7 @@
 
             // Function to renumber tabs
             function renumberTabs() {
-                $('.tab-item').each(function (index) {
+                $('.tab-item').each(function(index) {
                     var newIndex = index + 1;
                     $(this).find('.card-header h6').text('Tab #' + newIndex);
 
@@ -1223,11 +1244,11 @@
             }
 
             // Form validation
-            $('form').on('submit', function () {
+            $('form').on('submit', function() {
                 var isValid = true;
 
                 // Check required fields
-                $('input[required], select[required]').each(function () {
+                $('input[required], select[required]').each(function() {
                     if (!$(this).val()) {
                         $(this).addClass('is-invalid');
                         isValid = false;
@@ -1251,13 +1272,13 @@
             });
 
             // Handle file input labels for all file inputs (including dynamic ones)
-            $(document).on('change', '.custom-file-input', function () {
+            $(document).on('change', '.custom-file-input', function() {
                 var fileName = $(this).val().split('\\').pop();
                 $(this).next('.custom-file-label').html(fileName || 'Choose file');
             });
 
             // Handle file input labels for existing file inputs
-            $('.custom-file-input').on('change', function () {
+            $('.custom-file-input').on('change', function() {
                 var fileName = $(this).val().split('\\').pop();
                 $(this).next('.custom-file-label').html(fileName || 'Choose file');
             });
