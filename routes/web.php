@@ -202,7 +202,7 @@ Route::middleware('admin')->prefix('dashboard')->group(function () {
 });
 
 // auth routes
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->prefix('dashboard')->group(function () {
     // Products Crud
     Route::resource('products', ProductController::class)->except(['update']);
     Route::post('/product/{product}', [ProductController::class, 'update'])->name('products.update');
