@@ -1,5 +1,5 @@
 {{-- @extends('dashboard.admin.layouts.app') --}}
-@extends($layout)
+@extends('dashboard.admin.layouts.app')
 
 @section('content')
 

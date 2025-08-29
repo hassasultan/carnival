@@ -368,135 +368,135 @@ Route::get('/get-cities', [CarnivalController::class, 'getCitiesByCountry'])->na
 
 
 // Vendor Routes
-Route::middleware('vendor')->prefix('vendor')->group(function () {
+// Route::middleware('vendor')->prefix('vendor')->group(function () {
 
-    Route::get('/', [VendorController::class, 'index'])->name('vendor');
+//     Route::get('/', [VendorController::class, 'index'])->name('vendor');
 
-    // products
-    // Route::get('/products', [VendorProductController::class, 'index'])->name('vendor.products');
-    // Route::get('/products/add', [VendorProductController::class, 'create'])->name('vendor.products.create');
-    // Route::get('/products/edit/{id}', [VendorProductController::class, 'edit'])->name('vendor.products.edit');
-    Route::post('/products/store', [ProductController::class, 'store'])->name('vendor.products.store');
-    // Route::put('/products/update/{id}', [VendorProductController::class, 'update'])->name('vendor.products.update');
-    Route::post('/product/{product}', [ProductController::class, 'update'])->name('vendor.products.update');
+//     // products
+//     // Route::get('/products', [VendorProductController::class, 'index'])->name('vendor.products');
+//     // Route::get('/products/add', [VendorProductController::class, 'create'])->name('vendor.products.create');
+//     // Route::get('/products/edit/{id}', [VendorProductController::class, 'edit'])->name('vendor.products.edit');
+//     Route::post('/products/store', [ProductController::class, 'store'])->name('vendor.products.store');
+//     // Route::put('/products/update/{id}', [VendorProductController::class, 'update'])->name('vendor.products.update');
+//     Route::post('/product/{product}', [ProductController::class, 'update'])->name('vendor.products.update');
 
-    // events
-    Route::get('/events', [VendorController::class, 'indexEvent'])->name('vendor.events');
-    Route::get('/events/edit/{event}', [VendorController::class, 'editEvent'])->name('vendor.events.edit');
-    Route::post('/events/store', [VendorController::class, 'storeEvent'])->name('vendor.events.store');
-    Route::put('/events/update/{event}', [VendorController::class, 'updateEvent'])->name('vendor.events.update');
+//     // events
+//     Route::get('/events', [VendorController::class, 'indexEvent'])->name('vendor.events');
+//     Route::get('/events/edit/{event}', [VendorController::class, 'editEvent'])->name('vendor.events.edit');
+//     Route::post('/events/store', [VendorController::class, 'storeEvent'])->name('vendor.events.store');
+//     Route::put('/events/update/{event}', [VendorController::class, 'updateEvent'])->name('vendor.events.update');
 
-    // get subcategories
-    Route::get('/get-subcategory/{categoryId}', [ProductController::class, 'getsubCategories'])->name('vendor.get.subcategories');
+//     // get subcategories
+//     Route::get('/get-subcategory/{categoryId}', [ProductController::class, 'getsubCategories'])->name('vendor.get.subcategories');
 
-    //blogs
-    Route::get('/blogs', [BlogController::class, 'index'])->name('vendor.blogs.index');
-    Route::get('/blogs/add', [BlogController::class, 'create'])->name('vendor.blogs.create');
-    Route::post('/blogs', [BlogController::class, 'store'])->name('vendor.blogs.store');
-    Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('vendor.blogs.edit');
-    Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('vendor.blogs.update');
-    Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('vendor.blogs.destroy');
+//     //blogs
+//     Route::get('/blogs', [BlogController::class, 'index'])->name('vendor.blogs.index');
+//     Route::get('/blogs/add', [BlogController::class, 'create'])->name('vendor.blogs.create');
+//     Route::post('/blogs', [BlogController::class, 'store'])->name('vendor.blogs.store');
+//     Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('vendor.blogs.edit');
+//     Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('vendor.blogs.update');
+//     Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('vendor.blogs.destroy');
 
-    // costumes
-    Route::get('/costumes', [VendorCostumeController::class, 'index'])->name('vendor.costumes.index');
-    Route::get('/costumes/edit/{id}', [VendorCostumeController::class, 'edit'])->name('vendor.costumes.edit');
-    Route::post('/costumes/store', [VendorCostumeController::class, 'store'])->name('vendor.costumes.store');
-    Route::put('/costumes/update/{id}', [VendorCostumeController::class, 'update'])->name('vendor.costumes.update');
-    Route::delete('/costumes/{costume}', [VendorCostumeController::class, 'destroy'])->name('vendor.costumes.destroy');
+//     // costumes
+//     Route::get('/costumes', [VendorCostumeController::class, 'index'])->name('vendor.costumes.index');
+//     Route::get('/costumes/edit/{id}', [VendorCostumeController::class, 'edit'])->name('vendor.costumes.edit');
+//     Route::post('/costumes/store', [VendorCostumeController::class, 'store'])->name('vendor.costumes.store');
+//     Route::put('/costumes/update/{id}', [VendorCostumeController::class, 'update'])->name('vendor.costumes.update');
+//     Route::delete('/costumes/{costume}', [VendorCostumeController::class, 'destroy'])->name('vendor.costumes.destroy');
 
-    // Create Vendor
-    Route::post('/users/register', [UserManagementController::class, 'register'])->name('vendor.subvendor.register');
-    Route::get('/subvendor/create', [VendorController::class, 'createSubvendor'])->name('vendor.subvendor.create');
+//     // Create Vendor
+//     Route::post('/users/register', [UserManagementController::class, 'register'])->name('vendor.subvendor.register');
+//     Route::get('/subvendor/create', [VendorController::class, 'createSubvendor'])->name('vendor.subvendor.create');
 
-    //Gallery CRUD
-    // Route::resource('vendor_site_gallery', VendorGalleryController::class);
-    Route::get('/vendor_site_gallery', [VendorGalleryController::class, 'index'])->name('vendor_site_gallery.index');
-    Route::get('/vendor_site_gallery/create', [VendorGalleryController::class, 'create'])->name('vendor_site_gallery.create');
-    Route::post('/vendor_site_gallery', [VendorGalleryController::class, 'store'])->name('vendor_site_gallery.store');
-    Route::get('/vendor_site_gallery/{id}', [VendorGalleryController::class, 'show'])->name('vendor_site_gallery.show');
-    Route::get('/vendor_site_gallery/{id}/edit', [VendorGalleryController::class, 'edit'])->name('vendor_site_gallery.edit');
-    Route::put('/vendor_site_gallery/{id}', [VendorGalleryController::class, 'update'])->name('vendor_site_gallery.update');
-    Route::delete('/vendor_site_gallery/{id}', [VendorGalleryController::class, 'destroy'])->name('vendor_site_gallery.destroy');
+//     //Gallery CRUD
+//     // Route::resource('vendor_site_gallery', VendorGalleryController::class);
+//     Route::get('/vendor_site_gallery', [VendorGalleryController::class, 'index'])->name('vendor_site_gallery.index');
+//     Route::get('/vendor_site_gallery/create', [VendorGalleryController::class, 'create'])->name('vendor_site_gallery.create');
+//     Route::post('/vendor_site_gallery', [VendorGalleryController::class, 'store'])->name('vendor_site_gallery.store');
+//     Route::get('/vendor_site_gallery/{id}', [VendorGalleryController::class, 'show'])->name('vendor_site_gallery.show');
+//     Route::get('/vendor_site_gallery/{id}/edit', [VendorGalleryController::class, 'edit'])->name('vendor_site_gallery.edit');
+//     Route::put('/vendor_site_gallery/{id}', [VendorGalleryController::class, 'update'])->name('vendor_site_gallery.update');
+//     Route::delete('/vendor_site_gallery/{id}', [VendorGalleryController::class, 'destroy'])->name('vendor_site_gallery.destroy');
 
-    // view my bokings
-    Route::get('myBookings/', [AdminController::class, 'model_bookings'])->name('vendor.bookings');
+//     // view my bokings
+//     Route::get('myBookings/', [AdminController::class, 'model_bookings'])->name('vendor.bookings');
 
-    //musics
-    Route::get('/musics', [MusicController::class, 'index'])->name('vendor.musics.index');
-    Route::get('/musics/create', [MusicController::class, 'create'])->name('vendor.musics.create');
-    Route::post('/musics', [MusicController::class, 'store'])->name('vendor.musics.store');
-    Route::get('/musics/{id}', [MusicController::class, 'show'])->name('vendor.musics.show');
-    Route::get('/musics/{id}/edit', [MusicController::class, 'edit'])->name('vendor.musics.edit');
-    Route::put('/musics/{music}', [MusicController::class, 'update'])->name('vendor.musics.update');
-    Route::delete('/musics/{id}', [MusicController::class, 'destroy'])->name('vendor.musics.destroy');
+//     //musics
+//     Route::get('/musics', [MusicController::class, 'index'])->name('vendor.musics.index');
+//     Route::get('/musics/create', [MusicController::class, 'create'])->name('vendor.musics.create');
+//     Route::post('/musics', [MusicController::class, 'store'])->name('vendor.musics.store');
+//     Route::get('/musics/{id}', [MusicController::class, 'show'])->name('vendor.musics.show');
+//     Route::get('/musics/{id}/edit', [MusicController::class, 'edit'])->name('vendor.musics.edit');
+//     Route::put('/musics/{music}', [MusicController::class, 'update'])->name('vendor.musics.update');
+//     Route::delete('/musics/{id}', [MusicController::class, 'destroy'])->name('vendor.musics.destroy');
 
-    // carnival committee
-    Route::get('carnival-committee/', [VendorController::class, 'carnivalCommittee'])->name('vendor.carnival.committee');
+//     // carnival committee
+//     Route::get('carnival-committee/', [VendorController::class, 'carnivalCommittee'])->name('vendor.carnival.committee');
 
-    // my masbands(subvendrs)
-    Route::get('my-masbands/', [VendorController::class, 'myMasbands'])->name('vendor.myMasbands');
+//     // my masbands(subvendrs)
+//     Route::get('my-masbands/', [VendorController::class, 'myMasbands'])->name('vendor.myMasbands');
 
-    // Queen Show
-    Route::get('queen-show/', [VendorController::class, 'queenShow'])->name('vendor.queen.show');
-});
+//     // Queen Show
+//     Route::get('queen-show/', [VendorController::class, 'queenShow'])->name('vendor.queen.show');
+// });
 
 
-// SubVendor Routes
-Route::middleware('subVendor')->prefix('subVendor')->group(function () {
+// // SubVendor Routes
+// Route::middleware('subVendor')->prefix('subVendor')->group(function () {
 
-    Route::get('/', [SubVendorController::class, 'index'])->name('subVendor');
+//     Route::get('/', [SubVendorController::class, 'index'])->name('subVendor');
 
-    // products
-    // Route::get('/my_products', [SubVendorProductController::class, 'index'])->name('subVendor.products');
-    // Route::get('/products/add', [SubVendorProductController::class, 'create'])->name('subVendor.products.create');
-    // Route::get('/my_products/edit/{id}', [SubVendorProductController::class, 'edit'])->name('subVendor.products.edit');
-    // Route::post('/products/store', [ProductController::class, 'store'])->name('subVendor.products.store');
-    // Route::post('/my_products/store', [SubVendorProductController::class, 'store'])->name('subVendor.products.store');
-    // Route::put('/my_products/update/{id}', [SubVendorProductController::class, 'update'])->name('subVendor.products.update');
-    Route::post('/product/{product}', [ProductController::class, 'update'])->name('subVendor.products.update');
+//     // products
+//     // Route::get('/my_products', [SubVendorProductController::class, 'index'])->name('subVendor.products');
+//     // Route::get('/products/add', [SubVendorProductController::class, 'create'])->name('subVendor.products.create');
+//     // Route::get('/my_products/edit/{id}', [SubVendorProductController::class, 'edit'])->name('subVendor.products.edit');
+//     // Route::post('/products/store', [ProductController::class, 'store'])->name('subVendor.products.store');
+//     // Route::post('/my_products/store', [SubVendorProductController::class, 'store'])->name('subVendor.products.store');
+//     // Route::put('/my_products/update/{id}', [SubVendorProductController::class, 'update'])->name('subVendor.products.update');
+//     Route::post('/product/{product}', [ProductController::class, 'update'])->name('subVendor.products.update');
 
-    // events
-    Route::get('/my_events', [SubVendorController::class, 'indexEvents'])->name('subVendor.events');
-    Route::get('/my_events/edit/{event}', [SubVendorController::class, 'editEvents'])->name('subVendor.events.edit');
-    Route::post('/my_events/store', [SubVendorController::class, 'storeEvents'])->name('subVendor.events.store');
-    Route::put('/my_events/update/{event}', [SubVendorController::class, 'updateEvents'])->name('subVendor.events.update');
+//     // events
+//     Route::get('/my_events', [SubVendorController::class, 'indexEvents'])->name('subVendor.events');
+//     Route::get('/my_events/edit/{event}', [SubVendorController::class, 'editEvents'])->name('subVendor.events.edit');
+//     Route::post('/my_events/store', [SubVendorController::class, 'storeEvents'])->name('subVendor.events.store');
+//     Route::put('/my_events/update/{event}', [SubVendorController::class, 'updateEvents'])->name('subVendor.events.update');
 
-    //blogs
-    Route::get('/blogs', [SubVendorBlogController::class, 'index'])->name('subVendor.blogs.index');
-    Route::get('/blogs/add', [SubVendorBlogController::class, 'create'])->name('subVendor.blogs.create');
-    Route::post('/blogs', [SubVendorBlogController::class, 'store'])->name('subVendor.blogs.store');
-    Route::get('/blogs/{blog}/edit', [SubVendorBlogController::class, 'edit'])->name('subVendor.blogs.edit');
-    Route::put('/blogs/{blog}', [SubVendorBlogController::class, 'update'])->name('subVendor.blogs.update');
-    Route::delete('/blogs/{blog}', [SubVendorBlogController::class, 'destroy'])->name('subVendor.blogs.destroy');
+//     //blogs
+//     Route::get('/blogs', [SubVendorBlogController::class, 'index'])->name('subVendor.blogs.index');
+//     Route::get('/blogs/add', [SubVendorBlogController::class, 'create'])->name('subVendor.blogs.create');
+//     Route::post('/blogs', [SubVendorBlogController::class, 'store'])->name('subVendor.blogs.store');
+//     Route::get('/blogs/{blog}/edit', [SubVendorBlogController::class, 'edit'])->name('subVendor.blogs.edit');
+//     Route::put('/blogs/{blog}', [SubVendorBlogController::class, 'update'])->name('subVendor.blogs.update');
+//     Route::delete('/blogs/{blog}', [SubVendorBlogController::class, 'destroy'])->name('subVendor.blogs.destroy');
 
-    // costumes
-    Route::get('/costumes', [SubVendorCostumeController::class, 'index'])->name('subVendor.costumes.index');
-    Route::get('/costumes/edit/{id}', [SubVendorCostumeController::class, 'edit'])->name('subVendor.costumes.edit');
-    Route::post('/costumes/store', [SubVendorCostumeController::class, 'store'])->name('subVendor.costumes.store');
-    Route::put('/costumes/update/{id}', [SubVendorCostumeController::class, 'update'])->name('subVendor.costumes.update');
-    Route::delete('/costumes/{costume}', [SubVendorCostumeController::class, 'destroy'])->name('subVendor.costumes.destroy');
+//     // costumes
+//     Route::get('/costumes', [SubVendorCostumeController::class, 'index'])->name('subVendor.costumes.index');
+//     Route::get('/costumes/edit/{id}', [SubVendorCostumeController::class, 'edit'])->name('subVendor.costumes.edit');
+//     Route::post('/costumes/store', [SubVendorCostumeController::class, 'store'])->name('subVendor.costumes.store');
+//     Route::put('/costumes/update/{id}', [SubVendorCostumeController::class, 'update'])->name('subVendor.costumes.update');
+//     Route::delete('/costumes/{costume}', [SubVendorCostumeController::class, 'destroy'])->name('subVendor.costumes.destroy');
 
-    //Gallery CRUD
-    Route::get('/subvendor_site_gallery', [SubvendorGalleryController::class, 'index'])->name('subvendor_site_gallery.index');
-    Route::get('/subvendor_site_gallery/create', [SubvendorGalleryController::class, 'create'])->name('subvendor_site_gallery.create');
-    Route::post('/subvendor_site_gallery', [SubvendorGalleryController::class, 'store'])->name('subvendor_site_gallery.store');
-    Route::get('/subvendor_site_gallery/{id}', [SubvendorGalleryController::class, 'show'])->name('subvendor_site_gallery.show');
-    Route::get('/subvendor_site_gallery/{id}/edit', [SubvendorGalleryController::class, 'edit'])->name('subvendor_site_gallery.edit');
-    Route::put('/subvendor_site_gallery/{id}', [SubvendorGalleryController::class, 'update'])->name('subvendor_site_gallery.update');
-    Route::delete('/subvendor_site_gallery/{id}', [SubvendorGalleryController::class, 'destroy'])->name('subvendor_site_gallery.destroy');
+//     //Gallery CRUD
+//     Route::get('/subvendor_site_gallery', [SubvendorGalleryController::class, 'index'])->name('subvendor_site_gallery.index');
+//     Route::get('/subvendor_site_gallery/create', [SubvendorGalleryController::class, 'create'])->name('subvendor_site_gallery.create');
+//     Route::post('/subvendor_site_gallery', [SubvendorGalleryController::class, 'store'])->name('subvendor_site_gallery.store');
+//     Route::get('/subvendor_site_gallery/{id}', [SubvendorGalleryController::class, 'show'])->name('subvendor_site_gallery.show');
+//     Route::get('/subvendor_site_gallery/{id}/edit', [SubvendorGalleryController::class, 'edit'])->name('subvendor_site_gallery.edit');
+//     Route::put('/subvendor_site_gallery/{id}', [SubvendorGalleryController::class, 'update'])->name('subvendor_site_gallery.update');
+//     Route::delete('/subvendor_site_gallery/{id}', [SubvendorGalleryController::class, 'destroy'])->name('subvendor_site_gallery.destroy');
 
-    // view my bokings
-    Route::get('myBookings/', [AdminController::class, 'model_bookings'])->name('subvendor.bookings');
+//     // view my bokings
+//     Route::get('myBookings/', [AdminController::class, 'model_bookings'])->name('subvendor.bookings');
 
-    //musics
-    Route::get('/musics', [MusicController::class, 'index'])->name('subvendor.musics.index');
-    Route::get('/musics/create', [MusicController::class, 'create'])->name('subvendor.musics.create');
-    Route::post('/musics', [MusicController::class, 'store'])->name('subvendor.musics.store');
-    Route::get('/musics/{id}', [MusicController::class, 'show'])->name('subvendor.musics.show');
-    Route::get('/musics/{id}/edit', [MusicController::class, 'edit'])->name('subvendor.musics.edit');
-    Route::put('/musics/{music}', [MusicController::class, 'update'])->name('subvendor.musics.update');
-    Route::delete('/musics/{id}', [MusicController::class, 'destroy'])->name('subvendor.musics.destroy');
-});
+//     //musics
+//     Route::get('/musics', [MusicController::class, 'index'])->name('subvendor.musics.index');
+//     Route::get('/musics/create', [MusicController::class, 'create'])->name('subvendor.musics.create');
+//     Route::post('/musics', [MusicController::class, 'store'])->name('subvendor.musics.store');
+//     Route::get('/musics/{id}', [MusicController::class, 'show'])->name('subvendor.musics.show');
+//     Route::get('/musics/{id}/edit', [MusicController::class, 'edit'])->name('subvendor.musics.edit');
+//     Route::put('/musics/{music}', [MusicController::class, 'update'])->name('subvendor.musics.update');
+//     Route::delete('/musics/{id}', [MusicController::class, 'destroy'])->name('subvendor.musics.destroy');
+// });
 
 
 // Customer Routes
