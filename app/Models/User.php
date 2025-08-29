@@ -162,4 +162,15 @@ class User extends Authenticatable
         return optional($this->vendor?->package)->title
             ?? optional($this->subVendor?->package)->title;
     }
+
+    public function hasPackagePermission($permission)
+    {
+        $package = $this->vendor->package ?? $this->subVendor->package ?? null;
+
+        if (!$package || !$package->permissions) {
+            return false;
+        }
+
+        return $package->permissions->pluck('name')->contains($permission);
+    }
 }
