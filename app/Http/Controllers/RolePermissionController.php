@@ -14,7 +14,7 @@ class RolePermissionController extends Controller
     public function index()
     {
         $packagePermissions = Package::with('permissions')->get();
-        return view('dashboard.admin.package_permissions.index', compact('packagePermissions'));
+        return view('dashboard.admin.role_permissions.index', compact('packagePermissions'));
     }
 
     /**
@@ -24,7 +24,7 @@ class RolePermissionController extends Controller
     {
         $packages = Package::all();
         $permissions = Permission::all();
-        return view('dashboard.admin.package_permissions.create', compact('packages', 'permissions'));
+        return view('dashboard.admin.role_permissions.create', compact('packages', 'permissions'));
     }
 
     /**
