@@ -4,12 +4,12 @@
 
 <div class="row justify-content-center">
     <div class="col-12">
-        <h2 class="mb-2 page-title">Role Permissions</h2>
-        <p class="card-text">Role Permissions table.</p>
+        <h2 class="mb-2 page-title">Package Permissions</h2>
+        <p class="card-text">Package Permissions table.</p>
         <div class="row my-4">
             <!-- data table -->
             <div class="col-md-12">
-                <a href="{{ route('role_permissions.create') }}" class="btn btn-primary mb-2">Add New Role Permission</a>
+                <a href="{{ route('role_permissions.create') }}" class="btn btn-primary mb-2">Add New Package Permission</a>
                 <div class="card shadow">
                     <div class="card-body">
                         <!-- table -->
@@ -18,7 +18,7 @@
                                 <tr>
                                     <th></th>
                                     <th>Sr#</th>
-                                    <th>Role</th>
+                                    <th>Package</th>
                                     <th>Permissions</th>
                                     <th>Date</th>
                                     <th>Action</th>

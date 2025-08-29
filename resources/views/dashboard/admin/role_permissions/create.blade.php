@@ -10,10 +10,10 @@
 
     <div class="row justify-content-center">
         <div class="col-12">
-            <h2 class="page-title">Create Role Permission</h2>
+            <h2 class="page-title">Create Package Permission</h2>
             <div class="card shadow mb-4">
                 <div class="card-header">
-                    <strong class="card-title">Role Permission Information</strong>
+                    <strong class="card-title">Package Permission Information</strong>
                 </div>
                 <div class="card-body">
                     <form id="rolePermissionForm" method="POST" action="{{ route('role_permissions.store') }}">
@@ -21,11 +21,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="role_id">Role</label>
+                                    <label for="role_id">Package</label>
                                     <select id="role_id" name="role_id" class="form-control" required>
-                                        <option value="">Select Role</option>
+                                        <option value="">Select Package</option>
                                         @foreach ($roles as $role)
-                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                            <option value="{{ $role->id }}">{{ $role->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -42,7 +42,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Create Role Permission</button>
+                                <button type="submit" class="btn btn-primary">Create Package Permission</button>
                             </div>
                         </div>
                     </form>
