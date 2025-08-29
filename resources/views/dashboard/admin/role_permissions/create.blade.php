@@ -35,8 +35,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label for="role_id">Package</label>
-                                    <select id="role_id" name="role_id" class="form-control" required>
+                                    <label for="package_id">Package</label>
+                                    <select id="package_id" name="package_id" class="form-control" required>
                                         <option value="">Select Package</option>
                                         @foreach ($packages as $package)
                                             <option value="{{ $package->id }}">{{ $package->title }}</option>
@@ -75,14 +75,14 @@
                 placeholder: 'Select Permissions'
             });
 
-            $('#role_id').change(function() {
+            $('#package_id').change(function() {
                 var roleId = $(this).val();
                 $.ajax({
                     url: "{{ route('get_permissions_by_role') }}",
                     type: 'POST',
                     data: {
                         _token: '{{ csrf_token() }}',
-                        role_id: roleId
+                        package_id: roleId
                     },
                     success: function(response) {
                         console.log('response', response);
