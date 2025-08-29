@@ -35,7 +35,7 @@
                                         </div>
                                     </td>
                                     <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
-                                    <td>{{ $role->name }}</td>
+                                    <td>{{ $role->title }}</td>
                                     <td>
                                         @foreach($role->permissions as $permission)
                                             {{ $permission->name }} <br>
