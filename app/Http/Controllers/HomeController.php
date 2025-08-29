@@ -38,7 +38,7 @@ class HomeController extends Controller
 
         return redirect()->route('unauthorized');
         // if (Auth::user()->isAdmin()) {
-        //     return redirect()->route('admin');
+        //     return redirect()->route('dashboard');
         // } elseif (Auth::user()->isVendor()) {
         //     return redirect()->route('vendor');
         // } elseif (Auth::user()->isSubVendor()) {
