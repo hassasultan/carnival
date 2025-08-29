@@ -22,9 +22,9 @@ class Permission extends Model
     //     return $this->belongsToMany(Role::class, 'role_has_permissions');
     // }
 
-    public function roles() 
+    public function packages()
     {
-        return $this->belongsToMany(Package::class, 'role_permissions', 'permission_id', 'role_id');
+        return $this->belongsToMany(Package::class, 'package_permissions', 'permission_id', 'package_id');
     }
 
     public function user()

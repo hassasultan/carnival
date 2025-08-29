@@ -14,7 +14,7 @@ class RolePermissionController extends Controller
     public function index()
     {
         $packagePermissions = Package::with('permissions')->get();
-        return view('dashboard.admin.role_permissions.index', compact('packagePermissions'));
+        return view('dashboard.admin.package_permissions.index', compact('packagePermissions'));
     }
 
     /**
@@ -22,9 +22,9 @@ class RolePermissionController extends Controller
      */
     public function create()
     {
-        $roles = Package::all(); // Using roles for Blade compatibility
+        $packages = Package::all();
         $permissions = Permission::all();
-        return view('dashboard.admin.role_permissions.create', compact('roles', 'permissions'));
+        return view('dashboard.admin.package_permissions.create', compact('packages', 'permissions'));
     }
 
     /**
@@ -33,26 +33,26 @@ class RolePermissionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'role_id' => 'required|exists:packages,id',
+            'package_id' => 'required|exists:packages,id',
             'permission_id' => 'required|array',
             'permission_id.*' => 'exists:permissions,id',
         ]);
 
-        $package = Package::findOrFail($request->role_id);
+        $package = Package::findOrFail($request->package_id);
         $package->permissions()->sync($request->permission_id);
 
-        return redirect()->route('role_permissions.index')->with('success', 'Permissions updated successfully.');
+        return redirect()->route('package_permissions.index')->with('success', 'Permissions updated successfully.');
     }
 
     /**
      * Remove a specific permission from a package.
      */
-    public function destroy($role_id, $permission_id)
+    public function destroy($package_id, $permission_id)
     {
-        $package = Package::findOrFail($role_id);
+        $package = Package::findOrFail($package_id);
         $package->permissions()->detach($permission_id);
 
-        return redirect()->route('role_permissions.index')->with('success', 'Permission removed successfully.');
+        return redirect()->route('package_permissions.index')->with('success', 'Permission removed successfully.');
     }
 
     /**
@@ -60,7 +60,7 @@ class RolePermissionController extends Controller
      */
     public function getPermissions(Request $request)
     {
-        $package = Package::findOrFail($request->role_id);
+        $package = Package::findOrFail($request->package_id);
         $all_permissions = Permission::all();
         $permissions = $package->permissions()->get(['id', 'display_name']);
 
