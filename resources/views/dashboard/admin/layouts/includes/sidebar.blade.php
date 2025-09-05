@@ -228,7 +228,7 @@
                     </li>
                 </ul>
             @endPackagePermission
-            @PackagePermission('testimonials.index')
+            @PackagePermission('testimonials')
                 <ul class="navbar-nav flex-fill w-100 mb-2">
                     <li class="nav-item">
                         <a href="{{ route('testimonials.index') }}" class="nav-link">
@@ -238,7 +238,7 @@
                     </li>
                 </ul>
             @endPackagePermission
-            @PackagePermission('our-team.index')
+            @PackagePermission('our-team')
                 <ul class="navbar-nav flex-fill w-100 mb-2">
                     <li class="nav-item">
                         <a href="{{ route('our_team.index') }}" class="nav-link">
@@ -353,7 +353,7 @@
                                         class="ml-1 item-text">Features</span></a>
                             </li>
                         @endPackagePermission
-                        @PackagePermission('variants.index')
+                        @PackagePermission('variants')
                             <li class="nav-item active">
                                 <a class="nav-link" href="{{ route('variants.index') }}"><span
                                         class="ml-1 item-text">Variants</span></a>
@@ -438,7 +438,7 @@
                             <a class="nav-link" href="{{ route('events.index') }}"><span
                                     class="ml-1 item-text">Events</span></a>
                         </li>
-                        <li class="nav-item @if (Route::is('tickets.index')) active @endif">
+                        <li class="nav-item @if (Route::is('tickets')) active @endif">
                             <a class="nav-link" href="{{ route('tickets.index') }}">
                                 <span class="ml-1 item-text">Tickets Types</span>
                             </a>
@@ -472,7 +472,7 @@
                                         class="ml-1 item-text">Service</span></a>
                             </li>
                         @endPackagePermission
-                        @PackagePermission('appointments.index')
+                        @PackagePermission('appointments')
                             <li class="nav-item @if (Route::is('appointments.index')) active @endif">
                                 <a class="nav-link" href="{{ route('appointments.index') }}">
                                     <span class="ml-1 item-text">Appointments</span>

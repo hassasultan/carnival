@@ -171,7 +171,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::delete('/users/{user}', [UserManagementController::class, 'destroyUser'])->name('users.destroy');
     Route::get('/users/{user}/deletion-details', [UserManagementController::class, 'getDeletionDetails'])->name('users.deletion-details');
     Route::delete('banners/delete', [UserManagementController::class, 'delete'])->name('banners.delete');
-    
+
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionsController::class);
     Route::resource('role_permissions', RolePermissionController::class);
@@ -222,4 +222,20 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('tickets.edit');
     Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
     Route::delete('/tickets/{ticket}', [TicketController::class, 'destroy'])->name('tickets.destroy');
+
+    // Variants Crud
+    Route::get('/variants', [VariantController::class, 'index'])->name('variants.index');
+    Route::post('/variants', [VariantController::class, 'store'])->name('variants.store');
+    Route::get('/variants/{variant}/edit', [VariantController::class, 'edit'])->name('variants.edit');
+    Route::put('/variants/{variant}', [VariantController::class, 'update'])->name('variants.update');
+    Route::delete('/variants/{variant}', [VariantController::class, 'destroy'])->name('variants.destroy');
+
+    //appointments
+    Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+    Route::get('/appointments/add', [AppointmentController::class, 'create'])->name('appointments.create');
+    Route::post('/appointments/check-conflict', [AppointmentController::class, 'checkConflict'])->name('appointments.check-conflict');
+    Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
+    Route::get('/appointments/{variant}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
+    Route::put('/appointments/{variant}', [AppointmentController::class, 'update'])->name('appointments.update');
+    Route::delete('/appointments/{variant}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
 });
