@@ -30,7 +30,7 @@
                     <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
                 </a>
             </li>
-            @PackagePermission('account_details')
+            @PackagePermission('users.account_details')
                 <li class="nav-item w-100">
                     <a class="nav-link" href="{{ route('dashboard') }}">
                         <i class="fe fe-credit-card fe-16"></i>
@@ -44,15 +44,6 @@
                     <a class="nav-link" href="{{ route('dashboard') }}">
                         <i class="fe fe-layers fe-16"></i>
                         <span class="ml-3 item-text">Store Front Details</span>
-                    </a>
-                </li>
-            @endPackagePermission
-
-            @PackagePermission('section_leaders')
-                <li class="nav-item w-100">
-                    <a class="nav-link" href="{{ route('dashboard') }}">
-                        <i class="fe fe-users fe-16"></i>
-                        <span class="ml-3 item-text">Section Leaders</span>
                     </a>
                 </li>
             @endPackagePermission
