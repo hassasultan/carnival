@@ -38,7 +38,7 @@
                                     <td>{{ $role->title }}</td>
                                     <td>
                                         @foreach($role->permissions as $permission)
-                                            {{ $permission->name }} <br>
+                                            {{ $permission->display_name }} <br>
                                         @endforeach
                                     </td>
                                     <td>{{ $role->created_at }}</td>
