@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        $countries = Order::with('region')->get();
+        return view('dashboard.admin.orders.index', compact('countries'));
+    }
+
     public function store(Request $request)
     {
         $user_id = Auth::id();
