@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::with(['user', 'items.product'])->latest()->paginate(10);
-        return view('dashboard.admin.orders.index', compact('countries'));
+        return view('dashboard.admin.orders.index', compact('orders'));
     }
 
     public function store(Request $request)
