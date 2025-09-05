@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-         Blade::if('packagePermission', function ($permission) {
+         Blade::if('PackagePermission', function ($permission) {
             /** @var \App\Models\User $user */
             $user = auth()->user();
 

@@ -165,6 +165,10 @@ class User extends Authenticatable
 
     public function hasPackagePermission($permission)
     {
+        if ($this->isAdmin()) {
+            return true;
+        }
+
         $package = $this->vendor->package ?? $this->subVendor->package ?? null;
 
         if (!$package || !$package->permissions) {

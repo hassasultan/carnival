@@ -30,15 +30,15 @@
                     <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
                 </a>
             </li>
-            @packagePermission('manage_roles')
+            @PackagePermission('manage_roles')
                 <li><a href="{{ route('roles.index') }}">Manage Roles</a></li>
-            @endpackagePermission
+            @endPackagePermission
 
             @if (Auth::check() && Auth::user()->isAdmin())
                 <li><a href="{{ route('roles.index') }}">Manage Roles2</a></li>
             @endif
-            
-            @packagePermission('role_permissions')
+
+            @PackagePermission('role_permissions')
                 <li class="nav-item w-100">
                     <a class="nav-link" href="{{ route('dashboard') }}">
                         <i class="fe fe-credit-card fe-16"></i>
