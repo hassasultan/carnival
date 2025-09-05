@@ -24,12 +24,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::directive('packagePermission', function ($permission) {
+         Blade::if('packagePermission', function ($permission) {
+            /** @var \App\Models\User $user */
+            $user = auth()->user();
+
+            // If user is logged in and is admin OR has the permission
+            return $user && ($user->isAdmin() || $user->hasPackagePermission($permission));
+        });
+        /* Blade::directive('packagePermission', function ($permission) {
             return "<?php if(auth()->check() && auth()->user()->hasPackagePermission($permission)): ?>";
         });
 
         Blade::directive('endPackagePermission', function () {
             return "<?php endif; ?>";
-        });
+        }); */
     }
 }

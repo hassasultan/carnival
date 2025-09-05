@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\{
     HomeController,
     AdminController,
@@ -146,6 +147,7 @@ Route::post('/user-store', [CustomerController::class, 'storeCustomer'])->name('
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::middleware('auth')->group(function () {
     Route::get('/edit-Profile/{id}', [VendorController::class, 'editProfile'])->name('dashboard.edit.profile');
     Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
