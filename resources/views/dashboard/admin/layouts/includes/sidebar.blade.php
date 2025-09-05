@@ -66,15 +66,6 @@
                 </li>
             @endPackagePermission
 
-            @PackagePermission('orders')
-                <li class="nav-item w-100">
-                    <a class="nav-link" href="{{ route('dashboard') }}">
-                        <i class="fe fe-shopping-cart fe-16"></i>
-                        <span class="ml-3 item-text">Orders</span>
-                    </a>
-                </li>
-            @endPackagePermission
-
             @PackagePermission('downloads')
                 <li class="nav-item w-100">
                     <a class="nav-link" href="{{ route('dashboard') }}">
@@ -93,24 +84,6 @@
                 </li>
             @endPackagePermission
 
-            @PackagePermission('tickets')
-                <li class="nav-item w-100">
-                    <a class="nav-link" href="{{ route('dashboard') }}">
-                        <i class="fe fe-file fe-16"></i>
-                        <span class="ml-3 item-text">Tickets</span>
-                    </a>
-                </li>
-            @endPackagePermission
-
-            @PackagePermission('logout')
-                <li class="nav-item w-100">
-                    <a class="nav-link" href="{{ route('dashboard') }}">
-                        <i class="fe fe-log-out fe-16"></i>
-                        <span class="ml-3 item-text">Log Out</span>
-                    </a>
-                </li>
-            @endPackagePermission
-
             @PackagePermission('bank_and_payment')
                 <li class="nav-item w-100">
                     <a class="nav-link" href="{{ route('dashboard') }}">
@@ -122,46 +95,42 @@
         </ul>
 
         <!-- System Settings -->
-        @PackagePermission(
-            'packages.index',
-            'permissions.index',
-            'users.index'
-        )
-        <p class="text-muted nav-heading mt-4 mb-2 pl-4">
-            <span>System Settings</span>
-        </p>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-shield fe-16"></i>
-                    <span class="ml-3 item-text">Roles & Permissions</span>
-                </a>
-                <ul class="collapse list-unstyled w-100" id="ui-elements">
-                    {{-- <li class="nav-item active">
+        @PackagePermission('packages.index', 'permissions.index')
+            <p class="text-muted nav-heading mt-4 mb-2 pl-4">
+                <span>System Settings</span>
+            </p>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item dropdown">
+                    <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-shield fe-16"></i>
+                        <span class="ml-3 item-text">Roles & Permissions</span>
+                    </a>
+                    <ul class="collapse list-unstyled w-100" id="ui-elements">
+                        {{-- <li class="nav-item active">
                         <a class="nav-link" href="{{ route('roles.index') }}"><span
                                 class="ml-1 item-text">Roles</span></a>
                     </li> --}}
-                    @PackagePermission('packages.index')
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('packages.index') }}"><span
-                                    class="ml-1 item-text">Packages</span></a>
-                        </li>
-                    @endPackagePermission
-                    @PackagePermission('permissions.index')
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('permissions.index') }}"><span
-                                    class="ml-1 item-text">Permissions</span></a>
-                        </li>
-                    @endPackagePermission
-                    @PackagePermission('get_permissions_by_package')
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('role_permissions.index') }}"><span
-                                    class="ml-1 item-text">Package Permissions</span></a>
-                        </li>
-                    @endPackagePermission
-                </ul>
-            </li>
-        </ul>
+                        @PackagePermission('packages.index')
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('packages.index') }}"><span
+                                        class="ml-1 item-text">Packages</span></a>
+                            </li>
+                        @endPackagePermission
+                        @PackagePermission('permissions.index')
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('permissions.index') }}"><span
+                                        class="ml-1 item-text">Permissions</span></a>
+                            </li>
+                        @endPackagePermission
+                        @PackagePermission('get_permissions_by_package')
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('role_permissions.index') }}"><span
+                                        class="ml-1 item-text">Package Permissions</span></a>
+                            </li>
+                        @endPackagePermission
+                    </ul>
+                </li>
+            </ul>
         @endPackagePermission
 
         <!-- User Management -->
@@ -174,8 +143,15 @@
                     </a>
                     <ul class="collapse list-unstyled w-100" id="ui-umanagement">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('users.index') }}"><span class="ml-1 item-text">All
-                                    Users</span></a>
+                            <a class="nav-link" href="{{ route('users.index') }}">
+                                <span class="ml-1 item-text">
+                                    @if (Auth::user()->isAdmin())
+                                        All Users
+                                    @else
+                                        Section Leaders
+                                    @endif
+                                </span>
+                            </a>
                         </li>
                     </ul>
                 </li>
