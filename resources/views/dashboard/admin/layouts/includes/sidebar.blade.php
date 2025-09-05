@@ -33,6 +33,9 @@
             @packagePermission('manage_roles')
                 <li><a href="{{ route('roles.index') }}">Manage Roles</a></li>
             @endPackagePermission
+            @if(Auth::user()->isAdmin())
+                <li><a href="{{ route('roles.index') }}">Manage Roles2</a></li>
+            @endif
             @packagePermission('role_permissions')
                 <li class="nav-item w-100">
                     <a class="nav-link" href="{{ route('dashboard') }}">
