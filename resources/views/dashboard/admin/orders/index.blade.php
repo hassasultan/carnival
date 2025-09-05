@@ -42,7 +42,7 @@
                                                     @foreach ($order->items as $item)
                                                         <li>{{ $item->product?->title ?? 'Deleted Product' }}
                                                             (x{{ $item->quantity }})
-                                                            - ${{ number_format($item->price, 2) }}
+                                                            - ${{ number_format((float) $item->price, 2) }}
                                                         </li>
                                                     @endforeach
                                                 </ul>
