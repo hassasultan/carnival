@@ -16,11 +16,10 @@
                         <table class="table datatables" id="dataTable-1">
                             <thead>
                                 <tr>
-                                    <th></th>
                                     <th>Sr#</th>
-                                    <th>Category</th>
-                                    <th>Title</th>
-                                    <th>Status</th>
+                                    <th>Country</th>
+                                    <th>State</th>
+                                    <th>State Code</th>
                                     <th>Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -29,12 +28,6 @@
                                 @php $counter = 1 @endphp <!-- Initialize counter -->
                                 @foreach ($states as $state)
                                 <tr id="row_{{ $state->id }}">
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input">
-                                            <label class="custom-control-label"></label>
-                                        </div>
-                                    </td>
                                     <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
                                     <td>{{ $state->country->name }}</td>
                                     <td>{{ $state->name }}</td>
