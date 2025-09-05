@@ -34,14 +34,15 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $order->order_num }}</td>
                                             <td>{{ $order->user?->name ?? 'Guest' }}</td>
-                                            <td>${{ number_format($order->total_amount, 2) }}</td>
+                                            <td>${{ number_format((float) $order->total_amount, 2) }}</td>
                                             <td>{{ ucfirst($order->payment_method) }}</td>
-                                            <td>${{ number_format($order->shipping_price, 2) }}</td>
+                                            <td>${{ number_format((float) $order->shipping_price, 2) }}</td>
                                             <td>
                                                 <ul style="padding-left: 15px;">
                                                     @foreach ($order->items as $item)
                                                         <li>{{ $item->product?->title ?? 'Deleted Product' }}
-                                                            (x{{ $item->quantity }}) - ${{ number_format($item->price, 2) }}
+                                                            (x{{ $item->quantity }})
+                                                            - ${{ number_format($item->price, 2) }}
                                                         </li>
                                                     @endforeach
                                                 </ul>
