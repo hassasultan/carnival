@@ -24,14 +24,31 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-         Blade::if('PackagePermission', function ($permission) {
-            /** @var \App\Models\User $user */
+        Blade::if('PackagePermission', function (...$permissions) {
+            /** @var \App\Models\User|null $user */
             $user = auth()->user();
 
-            // If user is logged in and is admin OR has the permission
-            return $user && ($user->isAdmin() || $user->hasPackagePermission($permission));
+            if (!$user) {
+                return false;
+            }
+
+            // If user is admin, always allow
+            if ($user->isAdmin()) {
+                return true;
+            }
+
+            // If any of the given permissions exist for the user
+            foreach ($permissions as $permission) {
+                if ($user->hasPackagePermission($permission)) {
+                    return true;
+                }
+            }
+
+            return false;
         });
-        /* Blade::directive('packagePermission', function ($permission) {
+
+        /*
+        Blade::directive('packagePermission', function ($permission) {
             return "<?php if(auth()->check() && auth()->user()->hasPackagePermission($permission)): ?>";
         });
 

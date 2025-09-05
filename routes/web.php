@@ -160,6 +160,18 @@ Route::middleware('auth')->group(function () {
 // ✅ Admin & Dashboard Routes (with middleware)
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+    
+    // user management
+    Route::get('/users', [UserManagementController::class, 'indexUser'])->name('users.index');
+    Route::get('/get-users', [UserManagementController::class, 'getUsers'])->name('admin.users.index');
+    Route::get('/users/new', [UserManagementController::class, 'createUser'])->name('users.add');
+    Route::post('/users/register', [UserManagementController::class, 'register'])->name('users.register');
+    Route::get('/users/edit/{id}', [UserManagementController::class, 'edit'])->name('users.edit');
+    // Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [UserManagementController::class, 'destroyUser'])->name('users.destroy');
+    Route::get('/users/{user}/deletion-details', [UserManagementController::class, 'getDeletionDetails'])->name('users.deletion-details');
+    Route::delete('banners/delete', [UserManagementController::class, 'delete'])->name('banners.delete');
+    
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionsController::class);
     Route::resource('role_permissions', RolePermissionController::class);
