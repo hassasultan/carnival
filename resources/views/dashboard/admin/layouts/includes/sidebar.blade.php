@@ -241,7 +241,7 @@
             @PackagePermission('our-team')
                 <ul class="navbar-nav flex-fill w-100 mb-2">
                     <li class="nav-item">
-                        <a href="{{ route('our_team.index') }}" class="nav-link">
+                        <a href="{{ route('our-team.index') }}" class="nav-link">
                             <i class="fe fe-users fe-16"></i>
                             <span class="ml-3 item-text">Our Team</span>
                         </a>
