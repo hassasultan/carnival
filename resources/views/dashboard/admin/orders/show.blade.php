@@ -154,7 +154,7 @@
                                                 {{ $item->product->title }}
                                                 @if ($item->product->image)
                                                     <br>
-                                                    <img src="{{ asset('storage/' . $item->product->image) }}" width="60"
+                                                    <img src="{{ $item->product->image ? asset('productImage/' . $item->product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}" width="60"
                                                         alt="Product Image">
                                                 @endif
                                             </td>
@@ -175,7 +175,7 @@
                             @foreach ($order->items as $item)
                                 <div class="border p-3 mb-3">
                                     <h5>{{ $item->product->title }}</h5>
-                                    <p><strong>Description:</strong> {{ $item->product->description }}</p>
+                                    <p><strong>Description:</strong> {!! $item->product->description !!}</p>
                                     <p><strong>Condition:</strong> {{ $item->product->condition }}</p>
                                     <p><strong>Stock:</strong> {{ $item->product->stock_condition }}</p>
                                     <p><strong>Discount:</strong> {{ $item->product->discount }}%</p>
@@ -193,7 +193,7 @@
                                     </p>
                                     <p><strong>Images:</strong>
                                         @foreach ($item->product->product_images as $img)
-                                            <img src="{{ asset('storage/' . $img->image) }}" width="50">
+                                            <img src="{{ asset('variant_images/' . $img->image) }}" width="50">
                                         @endforeach
                                     </p>
                                 </div>
