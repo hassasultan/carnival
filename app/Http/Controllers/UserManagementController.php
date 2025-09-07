@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Traits\ImageTrait;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
@@ -42,6 +43,17 @@ class UserManagementController extends Controller
         // $users = User::with('role')->paginate(20);
         $packages = Package::where('status', 1)->get();
         $query = User::with(['role', 'vendor.package', 'subvendor'])->where('role_id', '!=', 1);
+
+        /** @var \App\Models\User|null $user */
+        $user = Auth::user();
+
+        // for vendors - getting subvendors only
+        if ($user->isVendor()) {
+            $query->where('role_id', 3)
+                ->whereHas('subVendor', function ($q1) use ($user) {
+                    $q1->where('vendor_id', $user->vendor->id);
+                });
+        }
 
         if ($request->filled('search')) {
             $query->where(function ($q) use ($request) {

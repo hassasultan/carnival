@@ -138,7 +138,7 @@
                                 <span class="ml-1 item-text">
                                     @if (Auth::user()->isAdmin())
                                         All Users
-                                    @else
+                                    @elseif (Auth::user()->isVendor())
                                         Section Leaders
                                     @endif
                                 </span>

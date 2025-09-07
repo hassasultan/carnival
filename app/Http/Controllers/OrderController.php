@@ -84,6 +84,12 @@ class OrderController extends Controller
         return response()->json(['message' => 'Order created successfully', 'total' => $total]);
     }
 
+    public function show(Order $order)
+    {
+        $order->load(['user', 'items.product', 'billing', 'shipping']);
+        return view('dashboard.admin.orders.show', compact('order'));
+    }
+
     public function generateOrderNumber()
     {
         $timestamp = now()->timestamp;
