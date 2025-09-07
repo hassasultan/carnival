@@ -18,11 +18,11 @@
                                 </tr>
                                 <tr>
                                     <th>Total Amount</th>
-                                    <td>${{ number_format($order->total_amount, 2) }}</td>
+                                    <td>${{ number_format((float) $order->total_amount, 2) }}</td>
                                 </tr>
                                 <tr>
                                     <th>Shipping Price</th>
-                                    <td>${{ number_format($order->shipping_price, 2) }}</td>
+                                    <td>${{ number_format((float) $order->shipping_price, 2) }}</td>
                                 </tr>
                                 <tr>
                                     <th>Payment Method</th>
@@ -161,9 +161,9 @@
                                             <td>{{ $item->product->category->name ?? '-' }}</td>
                                             <td>{{ $item->product->subcategory->name ?? '-' }}</td>
                                             <td>{{ $item->product->brand->name ?? '-' }}</td>
-                                            <td>${{ number_format($item->price, 2) }}</td>
+                                            <td>${{ number_format((float) $item->price, 2) }}</td>
                                             <td>{{ $item->quantity }}</td>
-                                            <td>${{ number_format($item->price * $item->quantity, 2) }}</td>
+                                            <td>${{ number_format((float) $item->price * $item->quantity, 2) }}</td>
                                             <td>{{ $item->product->status }}</td>
                                         </tr>
                                     @endforeach
