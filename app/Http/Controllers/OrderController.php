@@ -86,14 +86,25 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-        $order->load(['user', 'items.product', 'billing', 'shipping']);
+        $order->load([
+            'user',
+            'items.product.category',
+            'items.product.subcategory',
+            'items.product.brand',
+            'items.product.features',
+            'items.product.variants',
+            'items.product.product_images',
+            'billing',
+            'shipping'
+        ]);
+
         return view('dashboard.admin.orders.show', compact('order'));
     }
 
     public function generateOrderNumber()
     {
         $timestamp = now()->timestamp;
-        $randomString = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 6); 
+        $randomString = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 6);
         $orderNumber = 'ORD-' . $timestamp . '-' . $randomString;
         return $orderNumber;
     }
