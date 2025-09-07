@@ -32,7 +32,7 @@
             </li>
             @PackagePermission('users.account_details')
                 <li class="nav-item w-100">
-                    <a class="nav-link" href="{{ route('dashboard') }}">
+                    <a class="nav-link" href="{{ route('account.details') }}">
                         <i class="fe fe-credit-card fe-16"></i>
                         <span class="ml-3 item-text">Account Details</span>
                     </a>
