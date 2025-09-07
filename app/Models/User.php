@@ -157,6 +157,11 @@ class User extends Authenticatable
         return $this->hasMany(Costume::class);
     }
 
+    public function accountDetail()
+    {
+        return $this->hasOne(UserAccountDetail::class);
+    }
+
     public function getPackageNameAttribute()
     {
         return optional($this->vendor?->package)->title

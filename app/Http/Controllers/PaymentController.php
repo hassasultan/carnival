@@ -8,6 +8,7 @@ use Stripe\Stripe;
 use Stripe\PaymentIntent;
 use Stripe\Charge;
 use Stripe\Transfer;
+use App\Models\Order;
 
 class PaymentController extends Controller
 {
@@ -41,41 +42,56 @@ class PaymentController extends Controller
 
     public function splitPayment(Request $request)
     {
-        $totalAmount = $request->amount;
-        $vendors = $request->vendors; // Array of vendors with rules
-        $stripeToken = $request->stripeToken;
+        $order = Order::with(['items.product.user.vendor'])->findOrFail($request->order_id);
 
+        if ($order->payment_method !== 'stripe') {
+            return response()->json(['error' => 'Only Stripe payments can be split'], 400);
+        }
+
+        // Charge full amount first
         $charge = Charge::create([
-            'amount' => $totalAmount,
+            'amount' => intval($order->total_amount * 100), // Stripe works in cents
             'currency' => 'usd',
-            'source' => $stripeToken,
-            'description' => 'Order with multiple vendor payouts',
+            'source' => $request->stripeToken,
+            'description' => 'Order #' . $order->order_num,
         ]);
 
         $transfers = [];
-        foreach ($vendors as $vendor) {
-            $vendorAmount = $vendor['amount'];
-            $serviceFee = intval($vendorAmount * ($vendor['service_fee'] / 100));
-            $override = isset($vendor['override']) ? intval($vendorAmount * ($vendor['override'] / 100)) : 0;
-            $payout = $vendorAmount - $serviceFee - $override;
 
-            $transfers[] = [
-                'vendor' => $vendor['id'],
-                'transfer' => Transfer::create([
-                    'amount' => $payout,
+        foreach ($order->items as $item) {
+            $product = $item->product;
+            $owner = $product->user; // Owner can be Vendor or Subvendor
+            $vendorAccountId = $owner->stripe_account_id ?? null; // Add this in your users table
+            $vendorCommission = 0;
+            $subvendorCommission = 0;
+
+            $itemAmount = $item->price * $item->quantity;
+            $adminCommission = $itemAmount * 0.05; // 5%
+
+            if ($owner->role->slug === 'vendor') {
+                $vendorCommission = $itemAmount - $adminCommission;
+            } elseif ($owner->role->slug === 'subvendor') {
+                $vendor = $owner->vendor; // Get parent vendor
+                $vendorCommission = $itemAmount * 0.10; // 10% to vendor
+                $subvendorCommission = $itemAmount - $adminCommission - $vendorCommission;
+            }
+
+            // Transfer to vendor
+            if ($vendorCommission > 0 && $vendorAccountId) {
+                $transfers[] = Transfer::create([
+                    'amount' => intval($vendorCommission * 100),
                     'currency' => 'usd',
-                    'destination' => $vendor['account_id'],
+                    'destination' => $vendorAccountId,
                     'transfer_group' => $charge->id,
-                ]),
-                'service_fee' => $serviceFee,
-                'override' => $override,
-            ];
+                ]);
+            }
 
-            if ($override > 0 && isset($vendor['override_account_id'])) {
-                Transfer::create([
-                    'amount' => $override,
+            // Transfer to subvendor (if applicable)
+            if ($subvendorCommission > 0 && isset($owner->stripe_account_id)) {
+                $transfers[] = Transfer::create([
+                    'amount' => intval($subvendorCommission * 100),
                     'currency' => 'usd',
-                    'destination' => $vendor['override_account_id'],
+                    'destination' => $owner->stripe_account_id,
                     'transfer_group' => $charge->id,
                 ]);
             }

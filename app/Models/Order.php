@@ -26,4 +26,19 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function billing()
+    {
+        return $this->hasOne(OrdersBilling::class, 'order_id');
+    }
+
+    public function shipping()
+    {
+        return $this->hasOne(OrderShipping::class, 'order_id');
+    }
+
+    public function details()
+    {
+        return $this->hasMany(OrderDetails::class);
+    }
 }

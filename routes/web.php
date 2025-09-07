@@ -9,7 +9,7 @@ use App\Http\Controllers\{
     PermissionsController,
     RolePermissionController,
     VendorController,
-    SubVendorController,
+    UserAccountDetailController,
     PackageController,
     CategoryController,
     ProductController,
@@ -155,12 +155,20 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [CustomerController::class, 'profile'])->name('users.profile');
         Route::post('/profile/update', [CustomerController::class, 'profileUpdate'])->name('users.profile.update');
     });
+
+    // stripe payment
+    Route::get('/stripe-test', [PaymentController::class, 'testStripe']);
+    Route::post('/charge', [PaymentController::class, 'chargeCustomer'])->name('stripe.charge');
+    Route::post('/split-payment', [PaymentController::class, 'splitPayment'])->name('stripe.split.payment');
+
+    Route::get('/account-details', [UserAccountDetailController::class, 'createEdit'])->name('account.details');
+    Route::post('/account-details', [UserAccountDetailController::class, 'storeOrUpdate'])->name('account.details.save');
 });
 
 // ✅ Admin & Dashboard Routes (with middleware)
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
-    
+
     // user management
     Route::get('/users', [UserManagementController::class, 'indexUser'])->name('users.index');
     Route::get('/get-users', [UserManagementController::class, 'getUsers'])->name('admin.users.index');
