@@ -515,25 +515,25 @@
              * 1. Cart Quantity Update
              * ========================================= */
             window.cartQuantity = function(id, perform) {
-                if (perform === 'plus') {
-                    if (parseInt($('#qty-' + id).val()) < parseInt($('#qty-' + id).attr('maxlength'))) {
-                        let newVal = parseInt($('#qty-' + id).val()) + 1;
-                        $('#qty-' + id).val(newVal);
-                        updateCartPrice(id, newVal, 'plus');
-                    }
+                let qtyInput = $('#qty-' + id);
+                let currentVal = parseInt(qtyInput.val());
+                let maxVal = parseInt(qtyInput.attr('maxlength'));
+
+                if (perform === 'plus' && currentVal < maxVal) {
+                    qtyInput.val(currentVal + 1);
+                    updateCartPrice(id, currentVal + 1, 'plus');
                 }
-                if (perform === 'minus') {
-                    if (parseInt($('#qty-' + id).val()) > 1) {
-                        let newVal = parseInt($('#qty-' + id).val()) - 1;
-                        $('#qty-' + id).val(newVal);
-                        updateCartPrice(id, newVal, 'minus');
-                    }
+
+                if (perform === 'minus' && currentVal > 1) {
+                    qtyInput.val(currentVal - 1);
+                    updateCartPrice(id, currentVal - 1, 'minus');
                 }
             };
 
             function updateCartPrice(id, qty, action) {
                 let price = parseInt($('#new-price-' + id).attr('data-val'));
                 $('#ind-total-' + id).html((price * qty) + '$');
+
                 let total = parseInt($('#net-total').attr('data-val'));
                 let net_total = action === 'plus' ? total + price : total - price;
                 $('#net-total').attr('data-val', net_total);
@@ -546,7 +546,7 @@
                     data: {
                         product_id: id,
                         quantity: qty,
-                        type: 'product',
+                        type: 'product'
                     },
                     success: function(response) {
                         updateMiniCart(response);
@@ -560,23 +560,27 @@
             function updateMiniCart(cartItems) {
                 let html = '';
                 let total = 0;
-                $.each(cartItems, function(index, cartItem) {
+                $.each(cartItems, function(_, cartItem) {
                     let image = cartItem.product.image ?
                         "{{ asset('productImage/') }}/" + cartItem.product.image :
                         'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+
                     html += `
-                    <li class="product-item cart-row-${cartItem.id}">
-                        <a class="product-item-photo" href="#" title="${cartItem.product.title}">
-                            <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
+            <li class="product-item cart-row-${cartItem.id}">
+                <a class="product-item-photo" href="#" title="${cartItem.product.title}">
+                    <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
+                </a>
+                <div class="product-item-details">
+                    <strong class="product-item-name"><a href="#">${cartItem.product.title}</a></strong>
+                    <div class="product-item-price"><span class="price">$${cartItem.product.new_price.toFixed(2)}</span></div>
+                    <div class="product-item-qty"><span class="label">Qty: </span><span class="number">${cartItem.quantity}</span></div>
+                    <div class="product-item-actions">
+                        <a class="action delete delete-cart" data-id="${cartItem.id}" href="javascript:void(0);" title="Remove item">
+                            <span>Remove</span>
                         </a>
-                        <div class="product-item-details">
-                            <strong class="product-item-name"><a href="#">${cartItem.product.title}</a></strong>
-                            <div class="product-item-price"><span class="price">$${cartItem.product.new_price.toFixed(2)}</span></div>
-                            <div class="product-item-qty"><span class="label">Qty: </span><span class="number">${cartItem.quantity}</span></div>
-                            <div class="product-item-actions"><a class="action delete delete-cart" data-id="${cartItem.id}" href="javascript:void(0);" title="Remove item"><span>Remove</span></a></div>
-                        </div>
-                    </li>
-                `;
+                    </div>
+                </div>
+            </li>`;
                     total += cartItem.product.new_price * cartItem.quantity;
                 });
                 $('#minicart-items').html(html);
@@ -605,6 +609,9 @@
              * 3. Stripe Integration
              * ========================================= */
             var stripe = Stripe("{{ config('services.stripe.key') }}");
+            var elements = stripe.elements();
+            var card = elements.create('card');
+            card.mount('#card-element');
 
             /** =========================================
              * 4. Show Credit Card Modal
@@ -616,105 +623,16 @@
             });
 
             /** =========================================
-             * 5. Credit Card Input Formatting & Brand Detection
-             * ========================================= */
-            $('#cardNumber').on('input', function() {
-                let value = $(this).val().replace(/\D/g, '').substring(0, 16);
-                let formatted = value.replace(/(.{4})/g, '$1 ').trim();
-                $(this).val(formatted);
-
-                // Detect brand
-                let brand = getCardBrand(value);
-                $('#cardBrandIcon').attr('src', brand.icon).show();
-
-                if (formatted.length === 19) {
-                    $('#expiryDate').focus();
-                }
-            });
-
-            $('#expiryDate').on('input', function() {
-                let value = $(this).val().replace(/\D/g, '').substring(0, 4);
-                if (value.length >= 3) {
-                    value = value.substring(0, 2) + '/' + value.substring(2);
-                }
-                $(this).val(value);
-                if (value.length === 5) {
-                    $('#cvv').focus();
-                }
-            });
-
-            $('#cvv').on('input', function() {
-                this.value = this.value.replace(/\D/g, '').substring(0, 4);
-            });
-
-            function getCardBrand(number) {
-                let patterns = {
-                    visa: /^4/,
-                    mastercard: /^5[1-5]/,
-                    amex: /^3[47]/
-                };
-                if (patterns.visa.test(number)) return {
-                    name: 'Visa',
-                    icon: '/icons/visa.png'
-                };
-                if (patterns.mastercard.test(number)) return {
-                    name: 'MasterCard',
-                    icon: '/icons/mastercard.png'
-                };
-                if (patterns.amex.test(number)) return {
-                    name: 'AMEX',
-                    icon: '/icons/amex.png'
-                };
-                return {
-                    name: 'Unknown',
-                    icon: '/icons/default-card.png'
-                };
-            }
-
-            $('#creditCardModal').on('shown.bs.modal', function() {
-                var elements = stripe.elements();
-                var card = elements.create('card');
-                card.mount('#card-element');
-            });
-
-            /** =========================================
-             * 6. Save Card Button Logic
+             * 5. Save Card Button Logic
              * ========================================= */
             $('#saveCardBtn').click(function() {
-                $(this).prop('disabled', true).text('Processing...');
-                let cardNumber = $('#cardNumber').val().replace(/\s/g, '');
-                let expiry = $('#expiryDate').val();
-                let cvv = $('#cvv').val();
-                var elements = stripe.elements();
-                var card = elements.create('card');
-
-                $('.invalid-feedback').hide();
-
-                let valid = true;
-                if (!isValidCardNumber(cardNumber)) {
-                    $('#cardNumber').next('.invalid-feedback').show();
-                    valid = false;
-                }
-                if (!isValidExpiry(expiry)) {
-                    $('#expiryDate').next('.invalid-feedback').show();
-                    valid = false;
-                }
-                if (!/^[0-9]{3,4}$/.test(cvv)) {
-                    $('#cvv').next('.invalid-feedback').show();
-                    valid = false;
-                }
-
-                if (!valid) {
-                    $(this).prop('disabled', false).text('Save Card');
-                    return;
-                }
-
-                let [month, year] = expiry.split('/');
-                year = '20' + year;
+                var btn = $(this);
+                btn.prop('disabled', true).text('Processing...');
 
                 stripe.createToken(card).then(function(result) {
                     if (result.error) {
                         alert(result.error.message);
+                        btn.prop('disabled', false).text('Save Card');
                     } else {
                         $('<input>').attr({
                             type: 'hidden',
@@ -729,39 +647,12 @@
             });
 
             /** =========================================
-             * 7. Validation Functions
-             * ========================================= */
-            function isValidCardNumber(number) {
-                let sum = 0,
-                    shouldDouble = false;
-                for (let i = number.length - 1; i >= 0; i--) {
-                    let digit = parseInt(number.charAt(i));
-                    if (shouldDouble) {
-                        digit *= 2;
-                        if (digit > 9) digit -= 9;
-                    }
-                    sum += digit;
-                    shouldDouble = !shouldDouble;
-                }
-                return (sum % 10) === 0 && number.length >= 13;
-            }
-
-            function isValidExpiry(expiry) {
-                if (!/^\d{2}\/\d{2}$/.test(expiry)) return false;
-                let [month, year] = expiry.split('/').map(Number);
-                if (month < 1 || month > 12) return false;
-                let now = new Date();
-                let currentYear = now.getFullYear() % 100;
-                let currentMonth = now.getMonth() + 1;
-                return (year > currentYear) || (year === currentYear && month >= currentMonth);
-            }
-
-            /** =========================================
-             * 8. AJAX Order Submission
+             * 6. AJAX Order Submission
              * ========================================= */
             $('#place-order').submit(function(e) {
                 e.preventDefault();
                 var form = $(this);
+
                 $.ajax({
                     url: '{{ route('orders.store') }}',
                     type: 'POST',
