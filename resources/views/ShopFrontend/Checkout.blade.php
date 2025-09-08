@@ -832,7 +832,8 @@
 
                 if (isValid) {
                     alert('Card details validated successfully!');
-                    $('#cardPaymentModal').modal('hide');
+                    var modal = bootstrap.Modal.getInstance(document.getElementById('creditCardModal'));
+                    modal.hide();
                 }
             });
 
