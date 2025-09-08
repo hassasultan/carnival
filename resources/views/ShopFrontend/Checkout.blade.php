@@ -566,7 +566,16 @@
             // Payment method toggle
             $('input[name="payment_method"]').on('change', function() {
                 if ($(this).val() === 'card') {
-                    $('#card-details').slideDown();
+                    $('#card-details').slideDown(function() {
+                        if (!window.cardMounted) {
+                            const stripe = Stripe("{{ env('STRIPE_KEY') }}");
+                            const elements = stripe.elements();
+                            window.cardElement = elements.create('card');
+                            window.cardElement.mount('#card-element');
+                            window.stripe = stripe;
+                            window.cardMounted = true;
+                        }
+                    });
                 } else {
                     $('#card-details').slideUp();
                 }
