@@ -40,38 +40,6 @@ class PaymentController extends Controller
         return response()->json($charge);
     }
 
-    public function createToken(Request $request)
-    {
-        dd($request->all());
-        $request->validate([
-            'card_number' => 'required|digits_between:13,19',
-            'exp_month'   => 'required|integer|min:1|max:12',
-            'exp_year'    => 'required|integer|min:' . date('Y'),
-            'cvc'         => 'required|digits:3',
-        ]);
-
-        try {
-            $token = \Stripe\Token::create([
-                'card' => [
-                    'number'    => $request->card_number,
-                    'exp_month' => $request->exp_month,
-                    'exp_year'  => $request->exp_year,
-                    'cvc'       => $request->cvc,
-                ]
-            ]);
-
-            return response()->json([
-                'status' => true,
-                'token'  => $token->id
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'status' => false,
-                'error'  => $e->getMessage()
-            ], 400);
-        }
-    }
-
     public function splitPayment(Request $request)
     {
         $order = Order::with(['items.product.user.vendor'])->findOrFail($request->order_id);
