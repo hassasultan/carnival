@@ -100,7 +100,7 @@ class OrderController extends Controller
         Cart::where('user_id', $user_id)->delete();
 
         // ✅ If payment method is stripe, process payment
-        if ($request->payment_method === 'stripe') {
+        if ($request->payment_method === 'card') {
             $paymentController = new PaymentController();
             $request->merge([
                 'order_id' => $order->id,

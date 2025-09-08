@@ -504,30 +504,70 @@
     <!-- Custom scripts -->
     <script>
         $(document).ready(function() {
-            $('#place-order').submit(function(event) {
-                event.preventDefault();
-                var formData = $(this).serialize();
-                var formDataObject = {};
-                $(this).serializeArray().forEach(function(item) {
-                    formDataObject[item.name] = item.value;
-                });
-                var isValid = true;
-                Object.keys(formDataObject).forEach(function(fieldName) {
-                    var fieldValue = formDataObject[fieldName];
-                    if (!fieldValue.trim()) {
-                        alert('Please fill out all required fields.');
-                        isValid = false;
-                        return false;
+            $(document).ready(function() {
+                $('#place-order').submit(function(event) {
+                    event.preventDefault();
+
+                    var paymentMethod = $('input[name="payment_method"]:checked').val();
+                    var form = $(this);
+                    var formDataObject = {};
+                    form.serializeArray().forEach(function(item) {
+                        formDataObject[item.name] = item.value;
+                    });
+
+                    // Validate fields
+                    var isValid = true;
+                    Object.keys(formDataObject).forEach(function(fieldName) {
+                        var fieldValue = formDataObject[fieldName];
+                        if (!fieldValue.trim()) {
+                            alert('Please fill out all required fields.');
+                            isValid = false;
+                            return false;
+                        }
+                    });
+
+                    if (!isValid) return;
+
+                    // Only generate Stripe token if card is selected
+                    if (paymentMethod === 'card') {
+                        var cardData = {
+                            number: $('#card_number').val(),
+                            exp_month: $('#expiry_month').val(),
+                            exp_year: $('#expiry_year').val(),
+                            cvc: $('#cvv').val()
+                        };
+
+                        Stripe.setPublishableKey('pk_test_XXXX'); // Replace with your key
+
+                        Stripe.createToken(cardData, function(status, response) {
+                            if (response.error) {
+                                alert(response.error.message);
+                            } else {
+                                // Add token to form and submit via AJAX
+                                $('<input>').attr({
+                                    type: 'hidden',
+                                    name: 'stripeToken',
+                                    value: response.id
+                                }).appendTo(form);
+
+                                submitOrder(form);
+                            }
+                        });
+                    } else {
+                        // Non-card payment
+                        submitOrder(form);
                     }
                 });
-                if (isValid) {
+
+                function submitOrder(form) {
                     $.ajax({
                         url: '{{ route('orders.store') }}',
                         type: 'POST',
-                        data: formData,
+                        data: form.serialize(),
                         dataType: 'json',
                         success: function(response) {
                             alert('Order placed successfully!');
+                            // Optionally redirect or update UI
                         },
                         error: function(xhr, status, error) {
                             alert('Failed to place order. Please try again later.');
@@ -535,6 +575,38 @@
                     });
                 }
             });
+
+            // $('#place-order').submit(function(event) {
+            //     event.preventDefault();
+            //     var formData = $(this).serialize();
+            //     var formDataObject = {};
+            //     $(this).serializeArray().forEach(function(item) {
+            //         formDataObject[item.name] = item.value;
+            //     });
+            //     var isValid = true;
+            //     Object.keys(formDataObject).forEach(function(fieldName) {
+            //         var fieldValue = formDataObject[fieldName];
+            //         if (!fieldValue.trim()) {
+            //             alert('Please fill out all required fields.');
+            //             isValid = false;
+            //             return false;
+            //         }
+            //     });
+            //     if (isValid) {
+            //         $.ajax({
+            //             url: '{{ route('orders.store') }}',
+            //             type: 'POST',
+            //             data: formData,
+            //             dataType: 'json',
+            //             success: function(response) {
+            //                 alert('Order placed successfully!');
+            //             },
+            //             error: function(xhr, status, error) {
+            //                 alert('Failed to place order. Please try again later.');
+            //             }
+            //         });
+            //     }
+            // });
         });
 
         function cartQuantity(id, perform) {
