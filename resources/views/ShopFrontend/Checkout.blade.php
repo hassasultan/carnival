@@ -628,7 +628,16 @@
             $('#amount-right').text($('#slider-range').slider('values', 1));
 
             /** ------------------------------
-             * 3. Stripe Checkout + Modal
+             * 3. Show Credit Card Modal when payment_method=card
+             * ------------------------------ */
+            $(document).on('change', 'input[name="payment_method"]', function() {
+                if ($(this).val() === 'card') {
+                    $('#creditCardModal').modal('show');
+                }
+            });
+
+            /** ------------------------------
+             * 4. Stripe Integration
              * ------------------------------ */
             var stripe = Stripe("{{ config('services.stripe.key') }}");
             var elements = stripe.elements();
@@ -640,12 +649,6 @@
                 }
             });
             cardElement.mount('#card-element');
-
-            $('input[name="payment_method"]').on('change', function() {
-                if ($(this).val() === 'card') {
-                    $('#creditCardModal').modal('show');
-                }
-            });
 
             $('#saveCardBtn').click(function() {
                 stripe.createToken(cardElement).then(function(result) {
@@ -664,7 +667,7 @@
             });
 
             /** ------------------------------
-             * 4. AJAX Order Submission
+             * 5. AJAX Order Submission
              * ------------------------------ */
             $('#place-order').submit(function(e) {
                 e.preventDefault();
@@ -681,6 +684,7 @@
                     }
                 });
             });
+
         });
     </script>
 @endsection
