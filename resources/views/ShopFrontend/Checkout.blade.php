@@ -479,7 +479,6 @@
     <script>
         (function($) {
             "use strict";
-
             $(document).ready(function() {
 
                 // ===== Stripe Setup =====
@@ -495,14 +494,22 @@
                     }
                 }
 
-                // Show/hide card details based on payment method
-                $('input[name="payment_method"]').on('change', function() {
-                    if ($(this).val() === 'card') {
-                        $('#card-details').slideDown(mountCard);
+                // ===== Payment Method Toggle =====
+                function toggleCardDetails() {
+                    const selected = $('input[name="payment_method"]:checked').val();
+                    if (selected === 'card') {
+                        $('#card-details').slideDown(300,
+                        mountCard); // Callback ensures mount runs after slideDown
                     } else {
-                        $('#card-details').slideUp();
+                        $('#card-details').slideUp(300);
                     }
-                });
+                }
+
+                // Initial check (in case card is pre-selected)
+                toggleCardDetails();
+
+                // Listen for changes
+                $(document).on('change', 'input[name="payment_method"]', toggleCardDetails);
 
                 // ===== Form Submission =====
                 $('#place-order').submit(function(event) {
