@@ -332,35 +332,8 @@
                         {{-- <button class="button">Continue</button> --}}
                     </div>
                     <div id="card-details" class="box-border" style="display: none;">
-                        <ul>
-                            <li class="row">
-                                <div class="col-sm-6">
-                                    <label for="card_number" class="required">Card Number</label>
-                                    <input type="text" class="form-control input" name="card_number"
-                                        id="card_number">
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="card_name" class="required">Card Holder Name</label>
-                                    <input type="text" class="form-control input" name="card_name" id="card_name">
-                                </div>
-                            </li>
-                            <li class="row">
-                                <div class="col-sm-4">
-                                    <label for="expiry_month" class="required">Expiry Month</label>
-                                    <input type="text" class="form-control input" name="expiry_month"
-                                        id="expiry_month" placeholder="MM">
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="expiry_year" class="required">Expiry Year</label>
-                                    <input type="text" class="form-control input" name="expiry_year" id="expiry_year"
-                                        placeholder="YYYY">
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="cvv" class="required">CVV</label>
-                                    <input type="text" class="form-control input" name="cvv" id="cvv">
-                                </div>
-                            </li>
-                        </ul>
+                        <div id="card-element"></div>
+                        <div id="card-errors" role="alert"></div>
                     </div>
                     <h3 class="checkout-sep">5. Order Review</h3>
                     <div class="box-border">
@@ -502,218 +475,58 @@
 
 @section('script')
     <!-- Custom scripts -->
+    <script src="https://js.stripe.com/v3/"></script>
     <script>
         $(document).ready(function() {
-            $(document).ready(function() {
-                $('#place-order').submit(function(event) {
-                    event.preventDefault();
+            const stripe = Stripe("{{ env('STRIPE_KEY') }}"); // Your publishable key
+            const elements = stripe.elements();
+            const cardElement = elements.create('card');
+            cardElement.mount('#card-element');
 
-                    var paymentMethod = $('input[name="payment_method"]:checked').val();
-                    var form = $(this);
-                    var formDataObject = {};
-                    form.serializeArray().forEach(function(item) {
-                        formDataObject[item.name] = item.value;
-                    });
+            $('#place-order').submit(function(event) {
+                event.preventDefault();
 
-                    // Validate fields
-                    var isValid = true;
-                    Object.keys(formDataObject).forEach(function(fieldName) {
-                        var fieldValue = formDataObject[fieldName];
-                        if (!fieldValue.trim()) {
-                            alert('Please fill out all required fields.');
-                            isValid = false;
-                            return false;
+                var paymentMethod = $('input[name="payment_method"]:checked').val();
+                var form = $(this);
+
+                // Validate required fields here (optional)
+
+                if (paymentMethod === 'card') {
+                    stripe.createToken(cardElement).then(function(result) {
+                        if (result.error) {
+                            $('#card-errors').text(result.error.message);
+                        } else {
+                            $('<input>').attr({
+                                type: 'hidden',
+                                name: 'stripeToken',
+                                value: result.token.id
+                            }).appendTo(form);
+
+                            submitOrder(form);
                         }
                     });
-
-                    if (!isValid) return;
-
-                    // Only generate Stripe token if card is selected
-                    if (paymentMethod === 'card') {
-                        var cardData = {
-                            number: $('#card_number').val(),
-                            exp_month: $('#expiry_month').val(),
-                            exp_year: $('#expiry_year').val(),
-                            cvc: $('#cvv').val()
-                        };
-
-                        Stripe.setPublishableKey('pk_test_XXXX'); // Replace with your key
-
-                        Stripe.createToken(cardData, function(status, response) {
-                            if (response.error) {
-                                alert(response.error.message);
-                            } else {
-                                // Add token to form and submit via AJAX
-                                $('<input>').attr({
-                                    type: 'hidden',
-                                    name: 'stripeToken',
-                                    value: response.id
-                                }).appendTo(form);
-
-                                submitOrder(form);
-                            }
-                        });
-                    } else {
-                        // Non-card payment
-                        submitOrder(form);
-                    }
-                });
-
-                function submitOrder(form) {
-                    $.ajax({
-                        url: '{{ route('orders.store') }}',
-                        type: 'POST',
-                        data: form.serialize(),
-                        dataType: 'json',
-                        success: function(response) {
-                            alert('Order placed successfully!');
-                            // Optionally redirect or update UI
-                        },
-                        error: function(xhr, status, error) {
-                            alert('Failed to place order. Please try again later.');
-                        }
-                    });
+                } else {
+                    submitOrder(form);
                 }
             });
 
-            // $('#place-order').submit(function(event) {
-            //     event.preventDefault();
-            //     var formData = $(this).serialize();
-            //     var formDataObject = {};
-            //     $(this).serializeArray().forEach(function(item) {
-            //         formDataObject[item.name] = item.value;
-            //     });
-            //     var isValid = true;
-            //     Object.keys(formDataObject).forEach(function(fieldName) {
-            //         var fieldValue = formDataObject[fieldName];
-            //         if (!fieldValue.trim()) {
-            //             alert('Please fill out all required fields.');
-            //             isValid = false;
-            //             return false;
-            //         }
-            //     });
-            //     if (isValid) {
-            //         $.ajax({
-            //             url: '{{ route('orders.store') }}',
-            //             type: 'POST',
-            //             data: formData,
-            //             dataType: 'json',
-            //             success: function(response) {
-            //                 alert('Order placed successfully!');
-            //             },
-            //             error: function(xhr, status, error) {
-            //                 alert('Failed to place order. Please try again later.');
-            //             }
-            //         });
-            //     }
-            // });
-        });
-
-        function cartQuantity(id, perform) {
-            if (perform == 'plus') {
-                if (parseInt($('#qty-' + id).val()) < parseInt($('#qty-' + id).attr('maxlength'))) {
-                    getVal = $('#qty-' + id).val();
-                    newVal = 1 + parseInt(getVal);
-                    $('#qty-' + id).val(newVal);
-                    price = parseInt($('#new-price-' + id).attr('data-val'));
-                    new_price = price * parseInt(newVal);
-                    $('#ind-total-' + id).html(new_price + '$');
-                    total = parseInt($('#net-total').attr('data-val'));
-                    net_total = total + parseInt(price);
-                    $('#net-total').attr('data-val', net_total);
-                    $('.net-total').html(net_total + '$');
-                }
-            }
-            if (perform == 'minus') {
-                if (parseInt($('#qty-' + id).val()) > 0) {
-                    getVal = $('#qty-' + id).val();
-                    if (parseInt(getVal) != 1) {
-                        newVal = parseInt(getVal) - 1;
-                        $('#qty-' + id).val(newVal);
-                        price = parseInt($('#new-price-' + id).attr('data-val'));
-                        new_price = price * parseInt(newVal);
-                        $('#ind-total-' + id).html(new_price + '$');
-                        total = parseInt($('#net-total').attr('data-val'));
-                        net_total = total - parseInt(price);
-                        $('#net-total').attr('data-val', net_total);
-                        $('.net-total').html(net_total + '$');
-                    }
-                }
-            }
-            var productId = id;
-            var quantity = $('#qty-' + id).val();
-            auth = "{{ auth()->check() }}";
-            console.log(auth);
-            if (auth != true) {
-                window.location.href = '/login';
-            } else {
+            function submitOrder(form) {
                 $.ajax({
-                    type: 'GET',
-                    url: '{{ route('add.to.cart') }}',
-                    data: {
-                        product_id: productId,
-                        quantity: quantity,
-                        type: 'product',
-                    },
+                    url: '{{ route('orders.store') }}',
+                    type: 'POST',
+                    data: form.serialize(),
+                    dataType: 'json',
                     success: function(response) {
-
-                        console.log(response);
-                        var cartItems = response;
-                        var html = '';
-                        var total = 0;
-                        var productHtml = '';
-                        $.each(cartItems, function(index, cartItem) {
-                            // Construct HTML for each cart item
-                            var image = null;
-                            console.log(cartItem.product.image);
-                            if (cartItem.product.image != null && cartItem.product.image != '') {
-                                image = "{{ asset('productImage/') }}/" + cartItem.product.image;
-                            } else {
-                                image =
-                                    'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                            }
-                            productHtml += `
-                                <li class="product-item cart-row-${cartItem.id}">
-                                    <a class="product-item-photo" href="#" title="${cartItem.product.title}">
-                                        <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
-                                    </a>
-                                    <div class="product-item-details">
-                                        <strong class="product-item-name">
-                                            <a href="#">${cartItem.product.title}</a>
-                                        </strong>
-                                        <div class="product-item-price">
-                                            <span class="price">$${cartItem.product.new_price.toFixed(2)}</span>
-                                        </div>
-                                        <div class="product-item-qty">
-                                            <span class="label">Qty: </span><span class="number">${cartItem.quantity}</span>
-                                        </div>
-                                        <div class="product-item-actions">
-                                            <a class="action delete delete-cart" data-id="${cartItem.id}" href="javascript:void(0);" title="Remove item">
-                                                <span>Remove</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                            `;
-                            total += cartItem.product.new_price * cartItem.quantity;
-                        });
-                        $('#minicart-items').html(productHtml);
-                        $('#cart-price').html('$' + total);
-                        $('.counter-price').html('$' + total);
-                        $('.counter-number').html(cartItems.length);
-                        $('.counter-label').html(cartItems.length + '<span>Items</span>');
-
-                        // Insert the generated HTML into the designated container
-                        // alert('Product added to cart successfully!');
+                        alert('Order placed successfully!');
                     },
-                    error: function(xhr, status, error) {
-                        alert('Error adding product to cart:', error);
-                        console.error('Error adding product to cart:', error);
+                    error: function(xhr) {
+                        alert('Failed to place order. Please try again later.');
                     }
                 });
             }
-        }
+        });
     </script>
+
 
     <script>
         (function($) {
