@@ -745,6 +745,7 @@
 
         })(jQuery);
     </script>
+    
     {{-- credit card + modal --}}
     <script>
         $(document).ready(function() {
