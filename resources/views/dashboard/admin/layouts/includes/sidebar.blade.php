@@ -429,7 +429,7 @@
             </p>
             <ul class="navbar-nav flex-fill w-100 mb-2">
                 <li class="nav-item dropdown">
-                    <a href="#ui-events" data-bs-toggle="collapse"
+                    <a href="#ui-events" data-toggle="collapse"
                         aria-expanded="{{ Route::is('*events*') || Route::is('*tickets*') ? 'true' : 'false' }}"
                         class="dropdown-toggle nav-link {{ Route::is('*events*') || Route::is('*tickets*') ? 'active' : '' }}">
                         <i class="fe fe-calendar fe-16"></i>
