@@ -429,6 +429,34 @@
             </p>
             <ul class="navbar-nav flex-fill w-100 mb-2">
                 <li class="nav-item dropdown">
+                    <a href="#ui-events" data-toggle="collapse"
+                        aria-expanded="{{ Route::is('events.*') || Route::is('tickets.*') || Route::is('events_country_tabs.*') ? 'true' : 'false' }}"
+                        class="dropdown-toggle nav-link {{ Route::is('events.*') || Route::is('tickets.*') || Route::is('events_country_tabs.*') ? '' : '' }}">
+                        <i class="fe fe-calendar fe-16"></i>
+                        <span class="ml-3 item-text">Events</span>
+                    </a>
+                    <ul class="collapse list-unstyled w-100 {{ Route::is('events.*') || Route::is('tickets.*') || Route::is('events_country_tabs.*') ? 'show' : '' }}"
+                        id="ui-events">
+                        <li class="nav-item @if (Route::is('events.index')) active @endif">
+                            <a class="nav-link" href="{{ route('events.index') }}">
+                                <span class="ml-1 item-text">Events</span>
+                            </a>
+                        </li>
+                        <li class="nav-item @if (Route::is('tickets.index')) active @endif">
+                            <a class="nav-link" href="{{ route('tickets.index') }}">
+                                <span class="ml-1 item-text">Tickets Types</span>
+                            </a>
+                        </li>
+                        <li class="nav-item @if (Route::is('events_country_tabs.index')) active @endif">
+                            <a class="nav-link" href="{{ route('events_country_tabs.index') }}">
+                                <span class="ml-1 item-text">Events Tabs</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item dropdown">
                     <a href="#ui-events" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                         <i class="fe fe-calendar fe-16"></i>
                         <span class="ml-3 item-text">Events</span>
@@ -450,7 +478,7 @@
                         </li>
                     </ul>
                 </li>
-            </ul>
+            </ul> --}}
         @endPackagePermission
 
         <!-- Appointments -->
