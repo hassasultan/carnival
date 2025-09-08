@@ -528,20 +528,29 @@
                     $('.input').removeClass('error');
                     $('.error-msg').remove();
 
-                    // Required fields
-                    $('input.required, select.required').each(function() {
-                        if ($(this).val() === '' || $(this).val() === null) {
+                    // Fields to validate
+                    const requiredFields = [
+                        '#first_name', '#last_name', '#email_address', '#address', '#city', '#postal_code',
+                        '#telephone',
+                        '#first_name_1', '#last_name_1', '#email_address_1', '#address_1', '#city_1',
+                        '#postal_code_1', '#telephone_1',
+                        'select[name="state"]', 'select[name="country"]', 'select[name="state1"]',
+                        'select[name="country1"]'
+                    ];
+
+                    requiredFields.forEach(function(selector) {
+                        const field = $(selector);
+                        if (field.length && (field.val() === '' || field.val() === null)) {
                             valid = false;
-                            $(this).addClass('error');
-                            $(this).after(
+                            field.addClass('error');
+                            field.after(
                                 '<span class="error-msg" style="color:red;font-size:12px;">This field is required</span>'
                                 );
                         }
                     });
 
                     // Email validation
-                    const emailFields = ['#email_address', '#email_address_1'];
-                    emailFields.forEach(function(sel) {
+                    ['#email_address', '#email_address_1'].forEach(function(sel) {
                         const val = $(sel).val();
                         if (val && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
                             valid = false;
