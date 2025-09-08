@@ -753,78 +753,98 @@
     {{-- credit card + modal --}}
     <script>
         $(document).ready(function() {
-            // Show modal when Credit Card is selected
+            var stripe = Stripe("{{ config('services.stripe.key') }}"); // Use your public key
+
+            // Show credit card modal when card payment is selected
             $('input[name="payment_method"]').on('change', function() {
                 if ($(this).val() === 'card') {
-                    $('#creditCardModal').modal('show');
+                    $('#creditCardModal').modal('show'); // Bootstrap 3 modal
                 }
             });
 
-            // Card number formatting and brand detection
+            // Auto-format card number with spaces
             $('#cardNumber').on('input', function() {
                 let value = $(this).val().replace(/\D/g, '').substring(0, 16);
-                let formatted = value.replace(/(.{4})/g, '$1 ').trim();
-                $(this).val(formatted);
-
-                // Detect card brand
-                let brandIcon = '<i class="glyphicon glyphicon-credit-card"></i>';
-                if (/^4/.test(value)) {
-                    brandIcon = '<img src="/images/visa.png" style="height:20px;">';
-                } else if (/^5[1-5]/.test(value)) {
-                    brandIcon = '<img src="/images/mastercard.png" style="height:20px;">';
-                }
-                $('#cardBrandIcon').html(brandIcon);
+                $(this).val(value.replace(/(.{4})/g, '$1 ').trim());
             });
 
-            // Expiry date formatting
+            // Auto-format expiry as MM/YY
             $('#expiryDate').on('input', function() {
                 let value = $(this).val().replace(/\D/g, '').substring(0, 4);
-                if (value.length >= 3) {
-                    value = value.substring(0, 2) + '/' + value.substring(2);
-                }
+                if (value.length >= 3) value = value.substring(0, 2) + '/' + value.substring(2);
                 $(this).val(value);
             });
 
-            // Save Card button click
-            $('#saveCardBtn').on('click', function() {
+            // Validate and create Stripe token
+            $('#saveCardBtn').click(function() {
+                $('.error-card, .error-expiry, .error-cvv').text('');
+
                 let cardNumber = $('#cardNumber').val().replace(/\s/g, '');
                 let expiry = $('#expiryDate').val();
                 let cvv = $('#cvv').val();
                 let errors = false;
 
-                // Reset previous errors
-                $('#creditCardForm .form-control').parent().removeClass('has-error');
-                $('#creditCardForm .invalid-feedback').hide();
-
-                // Validate card number (Luhn check)
                 if (!isValidCardNumber(cardNumber)) {
-                    $('#cardNumber').closest('.form-group').addClass('has-error');
-                    $('#cardNumber').siblings('.invalid-feedback').show();
+                    $('.error-card').text('Invalid card number');
                     errors = true;
                 }
-
-                // Validate expiry date
                 if (!isValidExpiry(expiry)) {
-                    $('#expiryDate').closest('.form-group').addClass('has-error');
-                    $('#expiryDate').siblings('.invalid-feedback').show();
+                    $('.error-expiry').text('Invalid expiry date');
                     errors = true;
                 }
-
-                // Validate CVV
                 if (!/^[0-9]{3}$/.test(cvv)) {
-                    $('#cvv').closest('.form-group').addClass('has-error');
-                    $('#cvv').siblings('.invalid-feedback').show();
+                    $('.error-cvv').text('Invalid CVV');
                     errors = true;
                 }
 
                 if (errors) return;
 
-                // ✅ If all validations pass
-                alert('Card details saved successfully!');
-                $('#creditCardModal').modal('hide');
+                // Split expiry into month/year
+                let [month, year] = expiry.split('/');
+                year = '20' + year;
+
+                // Create Stripe token
+                stripe.createToken('card', {
+                    number: cardNumber,
+                    exp_month: month,
+                    exp_year: year,
+                    cvc: cvv
+                }).then(function(result) {
+                    if (result.error) {
+                        alert(result.error.message);
+                    } else {
+                        // Add token to form and submit
+                        $('<input>').attr({
+                            type: 'hidden',
+                            name: 'stripeToken',
+                            value: result.token.id
+                        }).appendTo('#place-order');
+
+                        $('#creditCardModal').modal('hide');
+                        $('#place-order').submit();
+                    }
+                });
             });
 
-            // Luhn algorithm for card number validation
+            // Handle order form submission with AJAX
+            $('#place-order').submit(function(e) {
+                e.preventDefault();
+                var form = $(this);
+
+                $.ajax({
+                    url: '{{ route('orders.store') }}',
+                    type: 'POST',
+                    data: form.serialize(),
+                    success: function(response) {
+                        alert('Order placed successfully!');
+                    },
+                    error: function(xhr) {
+                        alert('Error placing order: ' + xhr.responseText);
+                    }
+                });
+            });
+
+            // Validate card number using Luhn algorithm
             function isValidCardNumber(number) {
                 let sum = 0,
                     shouldDouble = false;
@@ -840,7 +860,7 @@
                 return (sum % 10) === 0 && number.length >= 13;
             }
 
-            // Validate expiry date (MM/YY and future date)
+            // Validate expiry date (MM/YY) and check if future date
             function isValidExpiry(expiry) {
                 if (!/^\d{2}\/\d{2}$/.test(expiry)) return false;
                 let [month, year] = expiry.split('/').map(Number);

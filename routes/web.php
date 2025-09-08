@@ -163,6 +163,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/account-details', [UserAccountDetailController::class, 'createEdit'])->name('account.details');
     Route::post('/account-details', [UserAccountDetailController::class, 'storeOrUpdate'])->name('account.details.save');
+
+    // stripe token
+    Route::post('/stripe/create-token', [PaymentController::class, 'createToken'])->name('stripe.create.token');
 });
 
 // ✅ Admin & Dashboard Routes (with middleware)
