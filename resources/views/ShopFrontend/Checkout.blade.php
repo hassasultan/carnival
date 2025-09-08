@@ -478,52 +478,56 @@
                     </div>
                 </form>
             </div>
-
         </div>
-
-
     </main><!-- end MAIN -->
 
-
-
     <!-- Credit Card Modal -->
-    <div class="modal fade" id="creditCardModal" tabindex="-1" aria-labelledby="creditCardModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="creditCardModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="creditCardModalLabel">Enter Credit Card Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+            <div class="modal-content rounded-3 shadow-lg">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title"><i class="bi bi-credit-card"></i> Enter Credit Card Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form id="creditCardForm" novalidate>
+                <div class="modal-body p-4">
+                    <form id="creditCardForm">
+                        <!-- Card Number -->
                         <div class="mb-3">
-                            <label for="card_number" class="form-label">Card Number</label>
-                            <input type="text" class="form-control" id="card_number" name="card_number"
-                                maxlength="19" placeholder="4242 4242 4242 4242">
-                            <div class="invalid-feedback">Please enter a valid 16-digit card number.
+                            <label for="cardNumber" class="form-label">Card Number</label>
+                            <div class="input-group">
+                                <input type="text" id="cardNumber" class="form-control"
+                                    placeholder="4242 4242 4242 4242" maxlength="19" required>
+                                <span class="input-group-text bg-light" id="cardBrandIcon"><i
+                                        class="bi bi-credit-card-2-front"></i></span>
+                            </div>
+                            <div class="invalid-feedback">Please enter a valid card number.</div>
+                        </div>
+
+                        <!-- Expiry & CVV -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="expiryDate" class="form-label">Expiry (MM/YY)</label>
+                                <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY"
+                                    maxlength="5" required>
+                                <div class="invalid-feedback">Enter a valid expiry date.</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cvv" class="form-label">CVV</label>
+                                <input type="password" id="cvv" class="form-control" placeholder="123"
+                                    maxlength="3" required>
+                                <div class="invalid-feedback">Enter 3-digit CVV.</div>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="expiry_date" class="form-label">Expiry Date (MM/YY)</label>
-                            <input type="text" class="form-control" id="expiry_date" name="expiry_date"
-                                maxlength="5" placeholder="MM/YY">
-                            <div class="invalid-feedback">Please enter a valid expiry date (MM/YY).
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="tpin" class="form-label">TPIN</label>
-                            <input type="password" class="form-control" id="tpin" name="tpin" maxlength="4"
-                                placeholder="4-digit TPIN">
-                            <div class="invalid-feedback">TPIN must be 4 digits.</div>
-                        </div>
+
+                        <!-- Note -->
+                        <p class="text-muted small mt-2"><i class="bi bi-lock"></i> Your payment is secure and encrypted.
+                        </p>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" id="saveCardDetails" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" id="saveCardBtn" class="btn btn-primary">Save Card</button>
                 </div>
             </div>
         </div>
@@ -745,36 +749,35 @@
 
         })(jQuery);
     </script>
-    
+
     {{-- credit card + modal --}}
     <script>
         $(document).ready(function() {
-            // Show modal when credit card option is selected
-            $('#radio_button_6').on('change', function() {
-                if ($(this).is(':checked')) {
-                    $('#creditCardModal').modal({
-                        backdrop: 'static',
-                        keyboard: false
-                    });
+            // Show modal when Credit Card is selected
+            $('input[name="payment_method"]').on('change', function() {
+                if ($(this).val() === 'card') {
                     $('#creditCardModal').modal('show');
                 }
             });
 
-            // Format card number with spaces
-            $('#card_number').on('input', function() {
+            // Card number formatting and brand detection
+            $('#cardNumber').on('input', function() {
                 let value = $(this).val().replace(/\D/g, '').substring(0, 16);
-                let formatted = value.match(/.{1,4}/g)?.join(' ') || '';
+                let formatted = value.replace(/(.{4})/g, '$1 ').trim();
                 $(this).val(formatted);
-            });
 
-            // Auto focus next field
-            $('#card_number').on('keyup', function() {
-                if ($(this).val().replace(/\s/g, '').length === 16) {
-                    $('#expiry_date').focus();
+                // Detect card brand
+                let brandIcon = '<i class="glyphicon glyphicon-credit-card"></i>';
+                if (/^4/.test(value)) {
+                    brandIcon = '<img src="/images/visa.png" style="height:20px;">';
+                } else if (/^5[1-5]/.test(value)) {
+                    brandIcon = '<img src="/images/mastercard.png" style="height:20px;">';
                 }
+                $('#cardBrandIcon').html(brandIcon);
             });
 
-            $('#expiry_date').on('input', function() {
+            // Expiry date formatting
+            $('#expiryDate').on('input', function() {
                 let value = $(this).val().replace(/\D/g, '').substring(0, 4);
                 if (value.length >= 3) {
                     value = value.substring(0, 2) + '/' + value.substring(2);
@@ -782,68 +785,71 @@
                 $(this).val(value);
             });
 
-            $('#expiry_date').on('keyup', function() {
-                if ($(this).val().length === 5) {
-                    $('#tpin').focus();
-                }
-            });
-
-            // Validate and submit
-            $('#saveCardDetails').on('click', function() {
-                let isValid = true;
+            // Save Card button click
+            $('#saveCardBtn').on('click', function() {
+                let cardNumber = $('#cardNumber').val().replace(/\s/g, '');
+                let expiry = $('#expiryDate').val();
+                let cvv = $('#cvv').val();
+                let errors = false;
 
                 // Reset previous errors
-                $('.help-block').remove();
-                $('.has-error').removeClass('has-error');
+                $('#creditCardForm .form-control').parent().removeClass('has-error');
+                $('#creditCardForm .invalid-feedback').hide();
 
-                // Card number validation
-                let cardNumber = $('#card_number').val().replace(/\s/g, '');
-                if (cardNumber.length !== 16) {
-                    $('#card_number').closest('.mb-3').addClass('has-error')
-                        .append(
-                            '<span class="help-block">Please enter a valid 16-digit card number.</span>');
-                    isValid = false;
+                // Validate card number (Luhn check)
+                if (!isValidCardNumber(cardNumber)) {
+                    $('#cardNumber').closest('.form-group').addClass('has-error');
+                    $('#cardNumber').siblings('.invalid-feedback').show();
+                    errors = true;
                 }
 
-                // Expiry date validation
-                let expiryDate = $('#expiry_date').val();
-                if (/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
-                    let [month, year] = expiryDate.split('/');
-                    let currentYear = new Date().getFullYear() % 100;
-                    let currentMonth = new Date().getMonth() + 1;
+                // Validate expiry date
+                if (!isValidExpiry(expiry)) {
+                    $('#expiryDate').closest('.form-group').addClass('has-error');
+                    $('#expiryDate').siblings('.invalid-feedback').show();
+                    errors = true;
+                }
 
-                    if (parseInt(year) < currentYear || (parseInt(year) === currentYear && parseInt(month) <
-                            currentMonth)) {
-                        $('#expiry_date').closest('.mb-3').addClass('has-error')
-                            .append('<span class="help-block">Card has expired.</span>');
-                        isValid = false;
+                // Validate CVV
+                if (!/^[0-9]{3}$/.test(cvv)) {
+                    $('#cvv').closest('.form-group').addClass('has-error');
+                    $('#cvv').siblings('.invalid-feedback').show();
+                    errors = true;
+                }
+
+                if (errors) return;
+
+                // ✅ If all validations pass
+                alert('Card details saved successfully!');
+                $('#creditCardModal').modal('hide');
+            });
+
+            // Luhn algorithm for card number validation
+            function isValidCardNumber(number) {
+                let sum = 0,
+                    shouldDouble = false;
+                for (let i = number.length - 1; i >= 0; i--) {
+                    let digit = parseInt(number.charAt(i));
+                    if (shouldDouble) {
+                        digit *= 2;
+                        if (digit > 9) digit -= 9;
                     }
-                } else {
-                    $('#expiry_date').closest('.mb-3').addClass('has-error')
-                        .append(
-                        '<span class="help-block">Please enter a valid expiry date (MM/YY).</span>');
-                    isValid = false;
+                    sum += digit;
+                    shouldDouble = !shouldDouble;
                 }
+                return (sum % 10) === 0 && number.length >= 13;
+            }
 
-                // TPIN validation
-                let tpin = $('#tpin').val();
-                if (!/^\d{4}$/.test(tpin)) {
-                    $('#tpin').closest('.mb-3').addClass('has-error')
-                        .append('<span class="help-block">TPIN must be 4 digits.</span>');
-                    isValid = false;
-                }
-
-                if (isValid) {
-                    alert('Card details validated successfully!');
-                    $('#creditCardModal').modal('hide');
-                }
-            });
-
-            // Remove error on input
-            $('input').on('input', function() {
-                $(this).closest('.mb-3').removeClass('has-error');
-                $(this).siblings('.help-block').remove();
-            });
+            // Validate expiry date (MM/YY and future date)
+            function isValidExpiry(expiry) {
+                if (!/^\d{2}\/\d{2}$/.test(expiry)) return false;
+                let [month, year] = expiry.split('/').map(Number);
+                if (month < 1 || month > 12) return false;
+                let now = new Date();
+                let currentYear = now.getFullYear() % 100;
+                let currentMonth = now.getMonth() + 1;
+                return (year > currentYear) || (year === currentYear && month >= currentMonth);
+            }
         });
     </script>
 @endsection
