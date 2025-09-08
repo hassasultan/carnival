@@ -474,7 +474,6 @@
 @endsection
 
 @section('script')
-    <!-- Stripe JS -->
     <script src="https://js.stripe.com/v3/"></script>
     <script>
         (function($) {
@@ -516,31 +515,65 @@
                 // ===== Toggle Card Details =====
                 function toggleCardDetails() {
                     const selected = $('input[name="payment_method"]:checked').val();
-                    if (selected === 'card') {
-                        $('#card-details').slideDown(300, mountCard);
-                    } else {
-                        $('#card-details').slideUp(300);
-                    }
+                    if (selected === 'card') $('#card-details').slideDown(300, mountCard);
+                    else $('#card-details').slideUp(300);
                 }
-
-                // Initial check (in case card is pre-selected)
                 toggleCardDetails();
-
-                // Listen for changes on payment method
                 $(document).on('change', 'input[name="payment_method"]', toggleCardDetails);
+
+                // ===== Form Validation =====
+                function validateForm() {
+                    let valid = true;
+                    // Clear previous errors
+                    $('.input').removeClass('error');
+                    $('.error-msg').remove();
+
+                    // Required fields
+                    $('input.required, select.required').each(function() {
+                        if ($(this).val() === '' || $(this).val() === null) {
+                            valid = false;
+                            $(this).addClass('error');
+                            $(this).after(
+                                '<span class="error-msg" style="color:red;font-size:12px;">This field is required</span>'
+                                );
+                        }
+                    });
+
+                    // Email validation
+                    const emailFields = ['#email_address', '#email_address_1'];
+                    emailFields.forEach(function(sel) {
+                        const val = $(sel).val();
+                        if (val && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+                            valid = false;
+                            $(sel).addClass('error');
+                            $(sel).after(
+                                '<span class="error-msg" style="color:red;font-size:12px;">Invalid email</span>'
+                                );
+                        }
+                    });
+
+                    return valid;
+                }
 
                 // ===== Form Submission =====
                 $('#place-order').submit(function(event) {
                     event.preventDefault();
-                    const paymentMethod = $('input[name="payment_method"]:checked').val();
                     const form = $(this);
+
+                    if (!validateForm()) {
+                        $('html, body').animate({
+                            scrollTop: $(".error").first().offset().top - 100
+                        }, 500);
+                        return false;
+                    }
+
+                    const paymentMethod = $('input[name="payment_method"]:checked').val();
 
                     if (paymentMethod === 'card') {
                         stripe.createToken(cardElement).then(function(result) {
                             if (result.error) {
                                 $('#card-errors').text(result.error.message);
                             } else {
-                                // Append token to form and submit via AJAX
                                 $('<input>').attr({
                                     type: 'hidden',
                                     name: 'stripeToken',
@@ -562,47 +595,24 @@
                         dataType: 'json',
                         success: function(response) {
                             alert('Order placed successfully!');
-                            // Optional: redirect to thank you page
-                            // window.location.href = '/thank-you';
                         },
                         error: function(xhr) {
                             let msg = 'Failed to place order. Please try again later.';
-                            if (xhr.responseJSON && xhr.responseJSON.message) {
-                                msg = xhr.responseJSON.message;
-                            }
+                            if (xhr.responseJSON && xhr.responseJSON.message) msg = xhr.responseJSON
+                                .message;
                             alert(msg);
                         }
                     });
-                }
-
-                // ===== Price Slider (if needed) =====
-                if ($('#slider-range').length) {
-                    $('#slider-range').slider({
-                        range: true,
-                        min: 0,
-                        max: 500,
-                        values: [0, 300],
-                        slide: function(event, ui) {
-                            $('#amount-left').text(ui.values[0]);
-                            $('#amount-right').text(ui.values[1]);
-                        }
-                    });
-                    $('#amount-left').text($('#slider-range').slider('values', 0));
-                    $('#amount-right').text($('#slider-range').slider('values', 1));
                 }
 
                 // ===== Quantity +/- buttons =====
                 window.cartQuantity = function(productId, type) {
                     let qtyInput = $('#qty-' + productId);
                     let current = parseInt(qtyInput.val());
-                    if (type === 'plus') {
-                        current++;
-                    } else if (type === 'minus' && current > 1) {
-                        current--;
-                    }
+                    if (type === 'plus') current++;
+                    else if (type === 'minus' && current > 1) current--;
                     qtyInput.val(current);
 
-                    // Update individual total
                     let price = parseFloat($('#new-price-' + productId).data('val'));
                     $('#ind-total-' + productId + ' span').text((price * current).toFixed(2) + ' $');
 
@@ -620,11 +630,9 @@
                 $(document).on('click', '.delete-cart', function() {
                     const id = $(this).data('id');
                     $('.cart-row-' + id).remove();
-                    // Optional: Update total after deletion
                 });
 
             });
-
         })(jQuery);
     </script>
 @endsection
