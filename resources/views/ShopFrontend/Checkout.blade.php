@@ -479,27 +479,45 @@
     <script>
         (function($) {
             "use strict";
+
             $(document).ready(function() {
 
                 // ===== Stripe Setup =====
-                window.stripe = Stripe("{{ env('STRIPE_KEY') }}"); // Publishable key
-                const elements = window.stripe.elements();
-                window.cardMounted = false;
+                const stripe = Stripe("{{ config('services.stripe.key') }}"); // Publishable key
+                const elements = stripe.elements();
+                let cardMounted = false;
+                let cardElement;
 
                 function mountCard() {
-                    if (!window.cardMounted) {
-                        window.cardElement = elements.create('card');
-                        window.cardElement.mount('#card-element');
-                        window.cardMounted = true;
+                    if (!cardMounted) {
+                        cardElement = elements.create('card', {
+                            hidePostalCode: true,
+                            style: {
+                                base: {
+                                    color: '#32325d',
+                                    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                                    fontSmoothing: 'antialiased',
+                                    fontSize: '16px',
+                                    '::placeholder': {
+                                        color: '#a0aec0'
+                                    }
+                                },
+                                invalid: {
+                                    color: '#fa755a',
+                                    iconColor: '#fa755a'
+                                }
+                            }
+                        });
+                        cardElement.mount('#card-element');
+                        cardMounted = true;
                     }
                 }
 
-                // ===== Payment Method Toggle =====
+                // ===== Toggle Card Details =====
                 function toggleCardDetails() {
                     const selected = $('input[name="payment_method"]:checked').val();
                     if (selected === 'card') {
-                        $('#card-details').slideDown(300,
-                        mountCard); // Callback ensures mount runs after slideDown
+                        $('#card-details').slideDown(300, mountCard);
                     } else {
                         $('#card-details').slideUp(300);
                     }
@@ -508,7 +526,7 @@
                 // Initial check (in case card is pre-selected)
                 toggleCardDetails();
 
-                // Listen for changes
+                // Listen for changes on payment method
                 $(document).on('change', 'input[name="payment_method"]', toggleCardDetails);
 
                 // ===== Form Submission =====
@@ -518,11 +536,11 @@
                     const form = $(this);
 
                     if (paymentMethod === 'card') {
-                        // Stripe token creation
-                        window.stripe.createToken(window.cardElement).then(function(result) {
+                        stripe.createToken(cardElement).then(function(result) {
                             if (result.error) {
                                 $('#card-errors').text(result.error.message);
                             } else {
+                                // Append token to form and submit via AJAX
                                 $('<input>').attr({
                                     type: 'hidden',
                                     name: 'stripeToken',
@@ -544,26 +562,66 @@
                         dataType: 'json',
                         success: function(response) {
                             alert('Order placed successfully!');
+                            // Optional: redirect to thank you page
+                            // window.location.href = '/thank-you';
                         },
                         error: function(xhr) {
-                            alert('Failed to place order. Please try again later.');
+                            let msg = 'Failed to place order. Please try again later.';
+                            if (xhr.responseJSON && xhr.responseJSON.message) {
+                                msg = xhr.responseJSON.message;
+                            }
+                            alert(msg);
                         }
                     });
                 }
 
-                // ===== Price Slider =====
-                $('#slider-range').slider({
-                    range: true,
-                    min: 0,
-                    max: 500,
-                    values: [0, 300],
-                    slide: function(event, ui) {
-                        $('#amount-left').text(ui.values[0]);
-                        $('#amount-right').text(ui.values[1]);
+                // ===== Price Slider (if needed) =====
+                if ($('#slider-range').length) {
+                    $('#slider-range').slider({
+                        range: true,
+                        min: 0,
+                        max: 500,
+                        values: [0, 300],
+                        slide: function(event, ui) {
+                            $('#amount-left').text(ui.values[0]);
+                            $('#amount-right').text(ui.values[1]);
+                        }
+                    });
+                    $('#amount-left').text($('#slider-range').slider('values', 0));
+                    $('#amount-right').text($('#slider-range').slider('values', 1));
+                }
+
+                // ===== Quantity +/- buttons =====
+                window.cartQuantity = function(productId, type) {
+                    let qtyInput = $('#qty-' + productId);
+                    let current = parseInt(qtyInput.val());
+                    if (type === 'plus') {
+                        current++;
+                    } else if (type === 'minus' && current > 1) {
+                        current--;
                     }
+                    qtyInput.val(current);
+
+                    // Update individual total
+                    let price = parseFloat($('#new-price-' + productId).data('val'));
+                    $('#ind-total-' + productId + ' span').text((price * current).toFixed(2) + ' $');
+
+                    // Update net total
+                    let netTotal = 0;
+                    $('td.price span').each(function() {
+                        let val = parseFloat($(this).text());
+                        if (!isNaN(val)) netTotal += val;
+                    });
+                    $('#net-total strong').text(netTotal.toFixed(2) + ' $');
+                    $('.net-total').data('val', netTotal.toFixed(2));
+                };
+
+                // ===== Delete cart item =====
+                $(document).on('click', '.delete-cart', function() {
+                    const id = $(this).data('id');
+                    $('.cart-row-' + id).remove();
+                    // Optional: Update total after deletion
                 });
-                $('#amount-left').text($('#slider-range').slider('values', 0));
-                $('#amount-right').text($('#slider-range').slider('values', 1));
 
             });
 
