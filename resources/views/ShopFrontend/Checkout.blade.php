@@ -8,16 +8,6 @@
     catalog-product-view catalog-view_op1 page-order
 @endsection
 @section('main')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .modal-backdrop {
-            z-index: 1040 !important;
-        }
-
-        .modal {
-            z-index: 1050 !important;
-        }
-    </style>
     <!-- MAIN -->
     <main class="site-main">
 
@@ -503,7 +493,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="creditCardModalLabel">Enter Credit Card Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form id="creditCardForm" novalidate>
@@ -530,7 +522,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="button" id="saveCardDetails" class="btn btn-primary">Save</button>
                 </div>
             </div>
@@ -756,14 +748,14 @@
     {{-- credit card + modal --}}
     <script>
         $(document).ready(function() {
-            // Show modal when credit card option selected
+            // Show modal when credit card option is selected
             $('#radio_button_6').on('change', function() {
                 if ($(this).is(':checked')) {
-                    var modal = new bootstrap.Modal(document.getElementById('creditCardModal'), {
+                    $('#creditCardModal').modal({
                         backdrop: 'static',
                         keyboard: false
                     });
-                    modal.show();
+                    $('#creditCardModal').modal('show');
                 }
             });
 
@@ -774,7 +766,7 @@
                 $(this).val(formatted);
             });
 
-            // Auto move to next field after valid input
+            // Auto focus next field
             $('#card_number').on('keyup', function() {
                 if ($(this).val().replace(/\s/g, '').length === 16) {
                     $('#expiry_date').focus();
@@ -799,56 +791,57 @@
             $('#saveCardDetails').on('click', function() {
                 let isValid = true;
 
+                // Reset previous errors
+                $('.help-block').remove();
+                $('.has-error').removeClass('has-error');
+
                 // Card number validation
                 let cardNumber = $('#card_number').val().replace(/\s/g, '');
                 if (cardNumber.length !== 16) {
-                    $('#card_number').addClass('is-invalid');
+                    $('#card_number').closest('.mb-3').addClass('has-error')
+                        .append(
+                            '<span class="help-block">Please enter a valid 16-digit card number.</span>');
                     isValid = false;
-                } else {
-                    $('#card_number').removeClass('is-invalid');
                 }
 
-                // Expiry date validation with future check
+                // Expiry date validation
                 let expiryDate = $('#expiry_date').val();
                 if (/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
                     let [month, year] = expiryDate.split('/');
-                    let currentYear = new Date().getFullYear() % 100; // last 2 digits
+                    let currentYear = new Date().getFullYear() % 100;
                     let currentMonth = new Date().getMonth() + 1;
 
                     if (parseInt(year) < currentYear || (parseInt(year) === currentYear && parseInt(month) <
                             currentMonth)) {
-                        $('#expiry_date').addClass('is-invalid');
-                        $('#expiry_date').siblings('.invalid-feedback').text('Card has expired.');
+                        $('#expiry_date').closest('.mb-3').addClass('has-error')
+                            .append('<span class="help-block">Card has expired.</span>');
                         isValid = false;
-                    } else {
-                        $('#expiry_date').removeClass('is-invalid');
                     }
                 } else {
-                    $('#expiry_date').addClass('is-invalid');
-                    $('#expiry_date').siblings('.invalid-feedback').text(
-                        'Please enter a valid expiry date (MM/YY).');
+                    $('#expiry_date').closest('.mb-3').addClass('has-error')
+                        .append(
+                        '<span class="help-block">Please enter a valid expiry date (MM/YY).</span>');
                     isValid = false;
                 }
 
                 // TPIN validation
                 let tpin = $('#tpin').val();
                 if (!/^\d{4}$/.test(tpin)) {
-                    $('#tpin').addClass('is-invalid');
+                    $('#tpin').closest('.mb-3').addClass('has-error')
+                        .append('<span class="help-block">TPIN must be 4 digits.</span>');
                     isValid = false;
-                } else {
-                    $('#tpin').removeClass('is-invalid');
                 }
 
                 if (isValid) {
                     alert('Card details validated successfully!');
-                    var modal = bootstrap.Modal.getInstance(document.getElementById('creditCardModal'));
-                    modal.hide();
+                    $('#creditCardModal').modal('hide');
                 }
             });
 
             // Remove error on input
             $('input').on('input', function() {
-                $(this).removeClass('is-invalid');
+                $(this).closest('.mb-3').removeClass('has-error');
+                $(this).siblings('.help-block').remove();
             });
         });
     </script>
