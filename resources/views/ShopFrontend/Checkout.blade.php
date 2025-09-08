@@ -482,47 +482,37 @@
     </main><!-- end MAIN -->
 
     <!-- Credit Card Modal -->
-    <div class="modal fade" id="creditCardModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-3 shadow-lg">
-                <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title"><i class="bi bi-credit-card"></i> Enter Credit Card Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+    <div class="modal fade" id="creditCardModal" tabindex="-1" role="dialog" aria-labelledby="creditCardModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="creditCardModalLabel">Enter Credit Card Details</h4>
                 </div>
-                <div class="modal-body p-4">
-                    <form id="creditCardForm">
-                        <!-- Card Number -->
-                        <div class="mb-3">
-                            <label for="cardNumber" class="form-label">Card Number</label>
-                            <div class="input-group">
-                                <input type="text" id="cardNumber" class="form-control"
-                                    placeholder="4242 4242 4242 4242" maxlength="19" required>
-                                <span class="input-group-text bg-light" id="cardBrandIcon"><i
-                                        class="bi bi-credit-card-2-front"></i></span>
-                            </div>
-                            <div class="invalid-feedback">Please enter a valid card number.</div>
-                        </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" id="cardNumber" class="form-control" placeholder="1234 1234 1234 1234">
+                        <div class="invalid-feedback text-danger">Invalid card number</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Expiry (MM/YY)</label>
+                        <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY">
+                        <div class="invalid-feedback text-danger">Invalid expiry</div>
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="text" id="cvv" class="form-control" placeholder="123">
+                        <div class="invalid-feedback text-danger">Invalid CVV</div>
+                    </div>
 
-                        <!-- Expiry & CVV -->
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="expiryDate" class="form-label">Expiry (MM/YY)</label>
-                                <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY"
-                                    maxlength="5" required>
-                                <div class="invalid-feedback">Enter a valid expiry date.</div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="cvv" class="form-label">CVV</label>
-                                <input type="password" id="cvv" class="form-control" placeholder="123"
-                                    maxlength="3" required>
-                                <div class="invalid-feedback">Enter 3-digit CVV.</div>
-                            </div>
-                        </div>
-
-                        <!-- Note -->
-                        <p class="text-muted small mt-2"><i class="bi bi-lock"></i> Your payment is secure and encrypted.
-                        </p>
-                    </form>
+                    <div class="form-group">
+                        <label>Card Information</label>
+                        <div id="card-element" class="form-control" style="height: 40px; padding-top: 8px;"></div>
+                        <div id="card-errors" class="text-danger" style="margin-top:8px;"></div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -697,6 +687,12 @@
                 };
             }
 
+            $('#creditCardModal').on('shown.bs.modal', function() {
+                var elements = stripe.elements();
+                var card = elements.create('card');
+                card.mount('#card-element');
+            });
+
             /** =========================================
              * 6. Save Card Button Logic
              * ========================================= */
@@ -705,6 +701,8 @@
                 let cardNumber = $('#cardNumber').val().replace(/\s/g, '');
                 let expiry = $('#expiryDate').val();
                 let cvv = $('#cvv').val();
+                var elements = stripe.elements();
+                var card = elements.create('card');
 
                 $('.invalid-feedback').hide();
 
@@ -730,15 +728,9 @@
                 let [month, year] = expiry.split('/');
                 year = '20' + year;
 
-                stripe.createToken('card', {
-                    number: cardNumber,
-                    exp_month: month,
-                    exp_year: year,
-                    cvc: cvv
-                }).then(function(result) {
+                stripe.createToken(card).then(function(result) {
                     if (result.error) {
                         alert(result.error.message);
-                        $('#saveCardBtn').prop('disabled', false).text('Save Card');
                     } else {
                         $('<input>').attr({
                             type: 'hidden',
