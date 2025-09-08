@@ -487,8 +487,7 @@
             <div class="modal-content rounded-3 shadow-lg">
                 <div class="modal-header bg-dark text-white">
                     <h5 class="modal-title"><i class="bi bi-credit-card"></i> Enter Credit Card Details</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
                 </div>
                 <div class="modal-body p-4">
                     <form id="creditCardForm">
@@ -526,7 +525,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     <button type="button" id="saveCardBtn" class="btn btn-primary">Save Card</button>
                 </div>
             </div>
@@ -535,302 +534,141 @@
 @endsection
 
 @section('script')
-    <!-- Custom scripts -->
     <script>
         $(document).ready(function() {
-            $('#place-order').submit(function(event) {
-                event.preventDefault();
-                var formData = $(this).serialize();
-                var formDataObject = {};
-                $(this).serializeArray().forEach(function(item) {
-                    formDataObject[item.name] = item.value;
-                });
-                var isValid = true;
-                Object.keys(formDataObject).forEach(function(fieldName) {
-                    var fieldValue = formDataObject[fieldName];
-                    if (!fieldValue.trim()) {
-                        alert('Please fill out all required fields.');
-                        isValid = false;
-                        return false;
-                    }
-                });
-                if (isValid) {
-                    $.ajax({
-                        url: '{{ route('orders.store') }}',
-                        type: 'POST',
-                        data: formData,
-                        dataType: 'json',
-                        success: function(response) {
-                            alert('Order placed successfully!');
-                        },
-                        error: function(xhr, status, error) {
-                            alert('Failed to place order. Please try again later.');
-                        }
-                    });
-                }
-            });
-        });
-        // $('.place-order').click(function() {
-        //     $(this).attr('disabled', true);
-        //     var productId = $(this).closest('.product-item').find('.product-item-photo').data(
-        //         'product_id');
-        //     var quantity = $(this).closest('.product-item').find('.product-item-qty .number').text();
 
-        //     console.log('productId:', productId);
-        //     console.log('quantity:', quantity);
-
-        //     var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-        //     $.ajaxSetup({
-        //         headers: {
-        //             'X-CSRF-TOKEN': csrfToken
-        //         }
-        //     });
-
-        //     $.ajax({
-        //         type: 'POST',
-        //         url: '{{ route('orders.store') }}',
-        //         data: {
-        //             product_id: productId,
-        //             quantity: quantity
-        //         },
-        //         success: function(response) {
-        //             location.reload();
-        //             // alert('Order created successfully!');
-        //         },
-        //         error: function(xhr, status, error) {
-        //             console.error('Error adding product to cart:', error);
-        //         }
-        //     });
-        // });
-
-        // });
-
-        function cartQuantity(id, perform) {
-            if (perform == 'plus') {
-                if (parseInt($('#qty-' + id).val()) < parseInt($('#qty-' + id).attr('maxlength'))) {
-                    getVal = $('#qty-' + id).val();
-                    newVal = 1 + parseInt(getVal);
-                    $('#qty-' + id).val(newVal);
-                    price = parseInt($('#new-price-' + id).attr('data-val'));
-                    new_price = price * parseInt(newVal);
-                    $('#ind-total-' + id).html(new_price + '$');
-                    total = parseInt($('#net-total').attr('data-val'));
-                    net_total = total + parseInt(price);
-                    $('#net-total').attr('data-val', net_total);
-                    $('.net-total').html(net_total + '$');
-                }
-            }
-            if (perform == 'minus') {
-                if (parseInt($('#qty-' + id).val()) > 0) {
-                    getVal = $('#qty-' + id).val();
-                    if (parseInt(getVal) != 1) {
-                        newVal = parseInt(getVal) - 1;
+            /** ------------------------------
+             * 1. Cart Quantity Update
+             * ------------------------------ */
+            window.cartQuantity = function(id, perform) {
+                if (perform === 'plus') {
+                    if (parseInt($('#qty-' + id).val()) < parseInt($('#qty-' + id).attr('maxlength'))) {
+                        let newVal = parseInt($('#qty-' + id).val()) + 1;
                         $('#qty-' + id).val(newVal);
-                        price = parseInt($('#new-price-' + id).attr('data-val'));
-                        new_price = price * parseInt(newVal);
-                        $('#ind-total-' + id).html(new_price + '$');
-                        total = parseInt($('#net-total').attr('data-val'));
-                        net_total = total - parseInt(price);
-                        $('#net-total').attr('data-val', net_total);
-                        $('.net-total').html(net_total + '$');
+                        updateCartPrice(id, newVal, 'plus');
                     }
                 }
-            }
-            var productId = id;
-            var quantity = $('#qty-' + id).val();
-            auth = "{{ auth()->check() }}";
-            console.log(auth);
-            if (auth != true) {
-                window.location.href = '/login';
-            } else {
+                if (perform === 'minus') {
+                    if (parseInt($('#qty-' + id).val()) > 1) {
+                        let newVal = parseInt($('#qty-' + id).val()) - 1;
+                        $('#qty-' + id).val(newVal);
+                        updateCartPrice(id, newVal, 'minus');
+                    }
+                }
+            };
+
+            function updateCartPrice(id, qty, action) {
+                let price = parseInt($('#new-price-' + id).attr('data-val'));
+                $('#ind-total-' + id).html((price * qty) + '$');
+                let total = parseInt($('#net-total').attr('data-val'));
+                let net_total = action === 'plus' ? total + price : total - price;
+                $('#net-total').attr('data-val', net_total);
+                $('.net-total').html(net_total + '$');
+
+                // Update cart via AJAX
                 $.ajax({
                     type: 'GET',
                     url: '{{ route('add.to.cart') }}',
                     data: {
-                        product_id: productId,
-                        quantity: quantity,
+                        product_id: id,
+                        quantity: qty,
                         type: 'product',
                     },
                     success: function(response) {
-
-                        console.log(response);
-                        var cartItems = response;
-                        var html = '';
-                        var total = 0;
-                        var productHtml = '';
-                        $.each(cartItems, function(index, cartItem) {
-                            // Construct HTML for each cart item
-                            var image = null;
-                            console.log(cartItem.product.image);
-                            if (cartItem.product.image != null && cartItem.product.image != '') {
-                                image = "{{ asset('productImage/') }}/" + cartItem.product.image;
-                            } else {
-                                image =
-                                    'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                            }
-                            productHtml += `
-                                <li class="product-item cart-row-${cartItem.id}">
-                                    <a class="product-item-photo" href="#" title="${cartItem.product.title}">
-                                        <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
-                                    </a>
-                                    <div class="product-item-details">
-                                        <strong class="product-item-name">
-                                            <a href="#">${cartItem.product.title}</a>
-                                        </strong>
-                                        <div class="product-item-price">
-                                            <span class="price">$${cartItem.product.new_price.toFixed(2)}</span>
-                                        </div>
-                                        <div class="product-item-qty">
-                                            <span class="label">Qty: </span><span class="number">${cartItem.quantity}</span>
-                                        </div>
-                                        <div class="product-item-actions">
-                                            <a class="action delete delete-cart" data-id="${cartItem.id}" href="javascript:void(0);" title="Remove item">
-                                                <span>Remove</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                            `;
-                            total += cartItem.product.new_price * cartItem.quantity;
-                        });
-                        $('#minicart-items').html(productHtml);
-                        $('#cart-price').html('$' + total);
-                        $('.counter-price').html('$' + total);
-                        $('.counter-number').html(cartItems.length);
-                        $('.counter-label').html(cartItems.length + '<span>Items</span>');
-
-                        // Insert the generated HTML into the designated container
-                        // alert('Product added to cart successfully!');
+                        updateMiniCart(response);
                     },
-                    error: function(xhr, status, error) {
-                        alert('Error adding product to cart:', error);
-                        console.error('Error adding product to cart:', error);
+                    error: function() {
+                        alert('Error updating cart.');
                     }
                 });
             }
-        }
-    </script>
 
-    <script>
-        (function($) {
-
-            "use strict";
-
-            $(document).ready(function() {
-
-                /*  [ Filter by price ]
-
-                - - - - - - - - - - - - - - - - - - - - */
-
-                $('#slider-range').slider({
-
-                    range: true,
-
-                    min: 0,
-
-                    max: 500,
-
-                    values: [0, 300],
-
-                    slide: function(event, ui) {
-
-                        $('#amount-left').text(ui.values[0]);
-                        $('#amount-right').text(ui.values[1]);
-
-                    }
-
+            function updateMiniCart(cartItems) {
+                let html = '';
+                let total = 0;
+                $.each(cartItems, function(index, cartItem) {
+                    let image = cartItem.product.image ?
+                        "{{ asset('productImage/') }}/" + cartItem.product.image :
+                        'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                    html += `
+                <li class="product-item cart-row-${cartItem.id}">
+                    <a class="product-item-photo" href="#" title="${cartItem.product.title}">
+                        <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
+                    </a>
+                    <div class="product-item-details">
+                        <strong class="product-item-name"><a href="#">${cartItem.product.title}</a></strong>
+                        <div class="product-item-price"><span class="price">$${cartItem.product.new_price.toFixed(2)}</span></div>
+                        <div class="product-item-qty"><span class="label">Qty: </span><span class="number">${cartItem.quantity}</span></div>
+                        <div class="product-item-actions"><a class="action delete delete-cart" data-id="${cartItem.id}" href="javascript:void(0);" title="Remove item"><span>Remove</span></a></div>
+                    </div>
+                </li>
+            `;
+                    total += cartItem.product.new_price * cartItem.quantity;
                 });
+                $('#minicart-items').html(html);
+                $('#cart-price, .counter-price').html('$' + total);
+                $('.counter-number').html(cartItems.length);
+                $('.counter-label').html(cartItems.length + '<span>Items</span>');
+            }
 
-                $('#amount-left').text($('#slider-range').slider('values', 0));
-
-                $('#amount-right').text($('#slider-range').slider('values', 1));
+            /** ------------------------------
+             * 2. Price Filter (jQuery UI)
+             * ------------------------------ */
+            $('#slider-range').slider({
+                range: true,
+                min: 0,
+                max: 500,
+                values: [0, 300],
+                slide: function(event, ui) {
+                    $('#amount-left').text(ui.values[0]);
+                    $('#amount-right').text(ui.values[1]);
+                }
             });
+            $('#amount-left').text($('#slider-range').slider('values', 0));
+            $('#amount-right').text($('#slider-range').slider('values', 1));
 
-        })(jQuery);
-    </script>
+            /** ------------------------------
+             * 3. Stripe Checkout + Modal
+             * ------------------------------ */
+            var stripe = Stripe("{{ config('services.stripe.key') }}");
+            var elements = stripe.elements();
+            var cardElement = elements.create('card', {
+                style: {
+                    base: {
+                        fontSize: '16px'
+                    }
+                }
+            });
+            cardElement.mount('#card-element');
 
-    {{-- credit card + modal --}}
-    <script>
-        $(document).ready(function() {
-            var stripe = Stripe("{{ config('services.stripe.key') }}"); // Use your public key
-
-            // Show credit card modal when card payment is selected
             $('input[name="payment_method"]').on('change', function() {
                 if ($(this).val() === 'card') {
-                    $('#creditCardModal').modal('show'); // Bootstrap 3 modal
+                    $('#creditCardModal').modal('show');
                 }
             });
 
-            // Auto-format card number with spaces
-            $('#cardNumber').on('input', function() {
-                let value = $(this).val().replace(/\D/g, '').substring(0, 16);
-                $(this).val(value.replace(/(.{4})/g, '$1 ').trim());
-            });
-
-            // Auto-format expiry as MM/YY
-            $('#expiryDate').on('input', function() {
-                let value = $(this).val().replace(/\D/g, '').substring(0, 4);
-                if (value.length >= 3) value = value.substring(0, 2) + '/' + value.substring(2);
-                $(this).val(value);
-            });
-
-            // Validate and create Stripe token
             $('#saveCardBtn').click(function() {
-                $('.error-card, .error-expiry, .error-cvv').text('');
-
-                let cardNumber = $('#cardNumber').val().replace(/\s/g, '');
-                let expiry = $('#expiryDate').val();
-                let cvv = $('#cvv').val();
-                let errors = false;
-
-                if (!isValidCardNumber(cardNumber)) {
-                    $('.error-card').text('Invalid card number');
-                    errors = true;
-                }
-                if (!isValidExpiry(expiry)) {
-                    $('.error-expiry').text('Invalid expiry date');
-                    errors = true;
-                }
-                if (!/^[0-9]{3}$/.test(cvv)) {
-                    $('.error-cvv').text('Invalid CVV');
-                    errors = true;
-                }
-
-                if (errors) return;
-
-                // Split expiry into month/year
-                let [month, year] = expiry.split('/');
-                year = '20' + year;
-
-                // Create Stripe token
-                stripe.createToken('card', {
-                    number: cardNumber,
-                    exp_month: month,
-                    exp_year: year,
-                    cvc: cvv
-                }).then(function(result) {
+                stripe.createToken(cardElement).then(function(result) {
                     if (result.error) {
-                        alert(result.error.message);
+                        $('#card-errors').text(result.error.message);
                     } else {
-                        // Add token to form and submit
                         $('<input>').attr({
                             type: 'hidden',
                             name: 'stripeToken',
                             value: result.token.id
                         }).appendTo('#place-order');
-
                         $('#creditCardModal').modal('hide');
                         $('#place-order').submit();
                     }
                 });
             });
 
-            // Handle order form submission with AJAX
+            /** ------------------------------
+             * 4. AJAX Order Submission
+             * ------------------------------ */
             $('#place-order').submit(function(e) {
                 e.preventDefault();
                 var form = $(this);
-
                 $.ajax({
                     url: '{{ route('orders.store') }}',
                     type: 'POST',
@@ -843,33 +681,6 @@
                     }
                 });
             });
-
-            // Validate card number using Luhn algorithm
-            function isValidCardNumber(number) {
-                let sum = 0,
-                    shouldDouble = false;
-                for (let i = number.length - 1; i >= 0; i--) {
-                    let digit = parseInt(number.charAt(i));
-                    if (shouldDouble) {
-                        digit *= 2;
-                        if (digit > 9) digit -= 9;
-                    }
-                    sum += digit;
-                    shouldDouble = !shouldDouble;
-                }
-                return (sum % 10) === 0 && number.length >= 13;
-            }
-
-            // Validate expiry date (MM/YY) and check if future date
-            function isValidExpiry(expiry) {
-                if (!/^\d{2}\/\d{2}$/.test(expiry)) return false;
-                let [month, year] = expiry.split('/').map(Number);
-                if (month < 1 || month > 12) return false;
-                let now = new Date();
-                let currentYear = now.getFullYear() % 100;
-                let currentMonth = now.getMonth() + 1;
-                return (year > currentYear) || (year === currentYear && month >= currentMonth);
-            }
         });
     </script>
 @endsection
