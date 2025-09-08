@@ -317,6 +317,65 @@
                     <div class="box-border">
                         <ul>
                             <li>
+                                <label for="radio_button_5">
+                                    <input checked name="payment_method" id="radio_button_5" type="radio"
+                                        value="cash">
+                                    Check / Money order
+                                </label>
+                            </li>
+                            <li>
+                                <label for="radio_button_6">
+                                    <input name="payment_method" id="radio_button_6" value="card" type="radio">
+                                    Credit card (saved)
+                                </label>
+                            </li>
+                        </ul>
+
+                        <!-- Credit Card Modal -->
+                        <div class="modal fade" id="creditCardModal" tabindex="-1"
+                            aria-labelledby="creditCardModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="creditCardModalLabel">Enter Credit Card Details</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="creditCardForm" novalidate>
+                                            <div class="mb-3">
+                                                <label for="card_number" class="form-label">Card Number</label>
+                                                <input type="text" class="form-control" id="card_number"
+                                                    name="card_number" maxlength="19" placeholder="4242 4242 4242 4242">
+                                                <div class="invalid-feedback">Please enter a valid 16-digit card number.
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="expiry_date" class="form-label">Expiry Date (MM/YY)</label>
+                                                <input type="text" class="form-control" id="expiry_date"
+                                                    name="expiry_date" maxlength="5" placeholder="MM/YY">
+                                                <div class="invalid-feedback">Please enter a valid expiry date (MM/YY).
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="tpin" class="form-label">TPIN</label>
+                                                <input type="password" class="form-control" id="tpin"
+                                                    name="tpin" maxlength="4" placeholder="4-digit TPIN">
+                                                <div class="invalid-feedback">TPIN must be 4 digits.</div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" id="saveCardDetails" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- <ul>
+                            <li>
                                 <label for="radio_button_5"><input checked="" name="payment_method"
                                         id="radio_button_5" type="radio" value="cash"> Check / Money order</label>
                             </li>
@@ -328,7 +387,7 @@
                                     card (saved)</label>
                             </li>
 
-                        </ul>
+                        </ul> --}}
                         {{-- <button class="button">Continue</button> --}}
                     </div>
                     <h3 class="checkout-sep">5. Order Review</h3>
@@ -347,9 +406,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        @php
-                                            $total = 0;
-                                        @endphp
+                                    @php
+                                        $total = 0;
+                                    @endphp
                                     @if (count($cartItem) > 0)
                                         @foreach ($cartItem as $row)
                                             @php
@@ -456,7 +515,7 @@
                                 </tfoot>
                             </table>
                             @if (count($cartItem) > 0)
-                            <button class="button pull-right place-order" type="submit">Place Order</button>
+                                <button class="button pull-right place-order" type="submit">Place Order</button>
                             @endif
                         </div>
                     </div>
@@ -683,5 +742,99 @@
             });
 
         })(jQuery);
+    </script>
+    {{-- credit card + modal --}}
+    <script>
+        $(document).ready(function() {
+            // Show modal when credit card option selected
+            $('input[name="payment_method"]').on('change', function() {
+                if ($(this).val() === 'card') {
+                    $('#cardPaymentModal').modal('show');
+                }
+            });
+
+            // Format card number with spaces
+            $('#card_number').on('input', function() {
+                let value = $(this).val().replace(/\D/g, '').substring(0, 16);
+                let formatted = value.match(/.{1,4}/g)?.join(' ') || '';
+                $(this).val(formatted);
+            });
+
+            // Auto move to next field after valid input
+            $('#card_number').on('keyup', function() {
+                if ($(this).val().replace(/\s/g, '').length === 16) {
+                    $('#expiry_date').focus();
+                }
+            });
+
+            $('#expiry_date').on('input', function() {
+                let value = $(this).val().replace(/\D/g, '').substring(0, 4);
+                if (value.length >= 3) {
+                    value = value.substring(0, 2) + '/' + value.substring(2);
+                }
+                $(this).val(value);
+            });
+
+            $('#expiry_date').on('keyup', function() {
+                if ($(this).val().length === 5) {
+                    $('#tpin').focus();
+                }
+            });
+
+            // Validate and submit
+            $('#saveCardDetails').on('click', function() {
+                let isValid = true;
+
+                // Card number validation
+                let cardNumber = $('#card_number').val().replace(/\s/g, '');
+                if (cardNumber.length !== 16) {
+                    $('#card_number').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#card_number').removeClass('is-invalid');
+                }
+
+                // Expiry date validation with future check
+                let expiryDate = $('#expiry_date').val();
+                if (/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
+                    let [month, year] = expiryDate.split('/');
+                    let currentYear = new Date().getFullYear() % 100; // last 2 digits
+                    let currentMonth = new Date().getMonth() + 1;
+
+                    if (parseInt(year) < currentYear || (parseInt(year) === currentYear && parseInt(month) <
+                            currentMonth)) {
+                        $('#expiry_date').addClass('is-invalid');
+                        $('#expiry_date').siblings('.invalid-feedback').text('Card has expired.');
+                        isValid = false;
+                    } else {
+                        $('#expiry_date').removeClass('is-invalid');
+                    }
+                } else {
+                    $('#expiry_date').addClass('is-invalid');
+                    $('#expiry_date').siblings('.invalid-feedback').text(
+                        'Please enter a valid expiry date (MM/YY).');
+                    isValid = false;
+                }
+
+                // TPIN validation
+                let tpin = $('#tpin').val();
+                if (!/^\d{4}$/.test(tpin)) {
+                    $('#tpin').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#tpin').removeClass('is-invalid');
+                }
+
+                if (isValid) {
+                    alert('Card details validated successfully!');
+                    $('#cardPaymentModal').modal('hide');
+                }
+            });
+
+            // Remove error on input
+            $('input').on('input', function() {
+                $(this).removeClass('is-invalid');
+            });
+        });
     </script>
 @endsection
