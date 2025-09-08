@@ -8,6 +8,8 @@
     catalog-product-view catalog-view_op1 page-order
 @endsection
 @section('main')
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- MAIN -->
     <main class="site-main">
 
