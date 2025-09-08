@@ -306,7 +306,7 @@
 <script src="{{ asset('shopAssets/js/arcticmodal/jquery.arcticmodal.js') }}"></script>
 
 <!-- Stripe JS -->
-<script src="https://js.stripe.com/v3/"></script>
+<script src="https://js.stripe.com/v3/" data-enable-telemetry="false"></script>
 
 <!-- Main -->
 <script type="text/javascript" src="{{ asset('shopAssets/js/main.js') }}"></script>
