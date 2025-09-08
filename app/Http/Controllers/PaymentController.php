@@ -44,7 +44,7 @@ class PaymentController extends Controller
     {
         $order = Order::with(['items.product.user.vendor'])->findOrFail($request->order_id);
 
-        if ($order->payment_method !== 'stripe') {
+        if ($order->payment_method !== 'card') {
             return response()->json(['error' => 'Only Stripe payments can be split'], 400);
         }
 

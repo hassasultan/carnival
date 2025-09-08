@@ -36,7 +36,6 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
         $user_id = Auth::id();
         $cartItems = Cart::with('product')->where('user_id', $user_id)->get();
 
