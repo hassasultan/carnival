@@ -536,41 +536,6 @@
                 }
             });
         });
-        // $('.place-order').click(function() {
-        //     $(this).attr('disabled', true);
-        //     var productId = $(this).closest('.product-item').find('.product-item-photo').data(
-        //         'product_id');
-        //     var quantity = $(this).closest('.product-item').find('.product-item-qty .number').text();
-
-        //     console.log('productId:', productId);
-        //     console.log('quantity:', quantity);
-
-        //     var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-        //     $.ajaxSetup({
-        //         headers: {
-        //             'X-CSRF-TOKEN': csrfToken
-        //         }
-        //     });
-
-        //     $.ajax({
-        //         type: 'POST',
-        //         url: '{{ route('orders.store') }}',
-        //         data: {
-        //             product_id: productId,
-        //             quantity: quantity
-        //         },
-        //         success: function(response) {
-        //             location.reload();
-        //             // alert('Order created successfully!');
-        //         },
-        //         error: function(xhr, status, error) {
-        //             console.error('Error adding product to cart:', error);
-        //         }
-        //     });
-        // });
-
-        // });
 
         function cartQuantity(id, perform) {
             if (perform == 'plus') {
