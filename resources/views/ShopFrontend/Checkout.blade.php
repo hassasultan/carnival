@@ -749,7 +749,8 @@
             // Show modal when credit card option selected
             $('input[name="payment_method"]').on('change', function() {
                 if ($(this).val() === 'card') {
-                    $('#cardPaymentModal').modal('show');
+                    var modal = new bootstrap.Modal(document.getElementById('creditCardModal'));
+                    modal.show();
                 }
             });
 
