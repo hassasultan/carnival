@@ -493,22 +493,6 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Card Number</label>
-                        <input type="text" id="cardNumber" class="form-control" placeholder="1234 1234 1234 1234">
-                        <div class="invalid-feedback text-danger">Invalid card number</div>
-                    </div>
-                    <div class="form-group">
-                        <label>Expiry (MM/YY)</label>
-                        <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY">
-                        <div class="invalid-feedback text-danger">Invalid expiry</div>
-                    </div>
-                    <div class="form-group">
-                        <label>CVV</label>
-                        <input type="text" id="cvv" class="form-control" placeholder="123">
-                        <div class="invalid-feedback text-danger">Invalid CVV</div>
-                    </div>
-
-                    <div class="form-group">
                         <label>Card Information</label>
                         <div id="card-element" class="form-control" style="height: 40px; padding-top: 8px;"></div>
                         <div id="card-errors" class="text-danger" style="margin-top:8px;"></div>

@@ -42,6 +42,7 @@ class PaymentController extends Controller
 
     public function createToken(Request $request)
     {
+        dd($request->all());
         $request->validate([
             'card_number' => 'required|digits_between:13,19',
             'exp_month'   => 'required|integer|min:1|max:12',
