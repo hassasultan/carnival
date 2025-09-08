@@ -474,111 +474,90 @@
 @endsection
 
 @section('script')
-    <!-- Custom scripts -->
+    <!-- Stripe JS -->
     <script src="https://js.stripe.com/v3/"></script>
     <script>
-        $(document).ready(function() {
-            const stripe = Stripe("{{ env('STRIPE_KEY') }}"); // Your publishable key
-            const elements = stripe.elements();
-            const cardElement = elements.create('card');
-            cardElement.mount('#card-element');
-
-            $('#place-order').submit(function(event) {
-                event.preventDefault();
-
-                var paymentMethod = $('input[name="payment_method"]:checked').val();
-                var form = $(this);
-
-                // Validate required fields here (optional)
-
-                if (paymentMethod === 'card') {
-                    stripe.createToken(cardElement).then(function(result) {
-                        if (result.error) {
-                            $('#card-errors').text(result.error.message);
-                        } else {
-                            $('<input>').attr({
-                                type: 'hidden',
-                                name: 'stripeToken',
-                                value: result.token.id
-                            }).appendTo(form);
-
-                            submitOrder(form);
-                        }
-                    });
-                } else {
-                    submitOrder(form);
-                }
-            });
-
-            function submitOrder(form) {
-                $.ajax({
-                    url: '{{ route('orders.store') }}',
-                    type: 'POST',
-                    data: form.serialize(),
-                    dataType: 'json',
-                    success: function(response) {
-                        alert('Order placed successfully!');
-                    },
-                    error: function(xhr) {
-                        alert('Failed to place order. Please try again later.');
-                    }
-                });
-            }
-        });
-    </script>
-
-
-    <script>
         (function($) {
-
             "use strict";
 
             $(document).ready(function() {
 
-                /*  [ Filter by price ]
+                // ===== Stripe Setup =====
+                window.stripe = Stripe("{{ env('STRIPE_KEY') }}"); // Publishable key
+                const elements = window.stripe.elements();
+                window.cardMounted = false;
 
-                - - - - - - - - - - - - - - - - - - - - */
-
-                $('#slider-range').slider({
-
-                    range: true,
-
-                    min: 0,
-
-                    max: 500,
-
-                    values: [0, 300],
-
-                    slide: function(event, ui) {
-
-                        $('#amount-left').text(ui.values[0]);
-                        $('#amount-right').text(ui.values[1]);
-
+                function mountCard() {
+                    if (!window.cardMounted) {
+                        window.cardElement = elements.create('card');
+                        window.cardElement.mount('#card-element');
+                        window.cardMounted = true;
                     }
+                }
 
+                // Show/hide card details based on payment method
+                $('input[name="payment_method"]').on('change', function() {
+                    if ($(this).val() === 'card') {
+                        $('#card-details').slideDown(mountCard);
+                    } else {
+                        $('#card-details').slideUp();
+                    }
                 });
 
-                $('#amount-left').text($('#slider-range').slider('values', 0));
+                // ===== Form Submission =====
+                $('#place-order').submit(function(event) {
+                    event.preventDefault();
+                    const paymentMethod = $('input[name="payment_method"]:checked').val();
+                    const form = $(this);
 
-                $('#amount-right').text($('#slider-range').slider('values', 1));
-            });
+                    if (paymentMethod === 'card') {
+                        // Stripe token creation
+                        window.stripe.createToken(window.cardElement).then(function(result) {
+                            if (result.error) {
+                                $('#card-errors').text(result.error.message);
+                            } else {
+                                $('<input>').attr({
+                                    type: 'hidden',
+                                    name: 'stripeToken',
+                                    value: result.token.id
+                                }).appendTo(form);
+                                submitOrder(form);
+                            }
+                        });
+                    } else {
+                        submitOrder(form);
+                    }
+                });
 
-            // Payment method toggle
-            $('input[name="payment_method"]').on('change', function() {
-                if ($(this).val() === 'card') {
-                    $('#card-details').slideDown(function() {
-                        if (!window.cardMounted) {
-                            const stripe = Stripe("{{ env('STRIPE_KEY') }}");
-                            const elements = stripe.elements();
-                            window.cardElement = elements.create('card');
-                            window.cardElement.mount('#card-element');
-                            window.stripe = stripe;
-                            window.cardMounted = true;
+                function submitOrder(form) {
+                    $.ajax({
+                        url: '{{ route('orders.store') }}',
+                        type: 'POST',
+                        data: form.serialize(),
+                        dataType: 'json',
+                        success: function(response) {
+                            alert('Order placed successfully!');
+                        },
+                        error: function(xhr) {
+                            alert('Failed to place order. Please try again later.');
                         }
                     });
-                } else {
-                    $('#card-details').slideUp();
                 }
+
+                // ===== Price Slider =====
+                $('#slider-range').slider({
+                    range: true,
+                    min: 0,
+                    max: 500,
+                    values: [0, 300],
+                    slide: function(event, ui) {
+                        $('#amount-left').text(ui.values[0]);
+                        $('#amount-right').text(ui.values[1]);
+                    }
+                });
+                $('#amount-left').text($('#slider-range').slider('values', 0));
+                $('#amount-right').text($('#slider-range').slider('values', 1));
+
             });
 
         })(jQuery);
