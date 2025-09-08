@@ -9,7 +9,15 @@
 @endsection
 @section('main')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .modal-backdrop {
+            z-index: 1040 !important;
+        }
 
+        .modal {
+            z-index: 1050 !important;
+        }
+    </style>
     <!-- MAIN -->
     <main class="site-main">
 
@@ -333,49 +341,6 @@
                             </li>
                         </ul>
 
-                        <!-- Credit Card Modal -->
-                        <div class="modal fade" id="creditCardModal" tabindex="-1"
-                            aria-labelledby="creditCardModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="creditCardModalLabel">Enter Credit Card Details</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form id="creditCardForm" novalidate>
-                                            <div class="mb-3">
-                                                <label for="card_number" class="form-label">Card Number</label>
-                                                <input type="text" class="form-control" id="card_number"
-                                                    name="card_number" maxlength="19" placeholder="4242 4242 4242 4242">
-                                                <div class="invalid-feedback">Please enter a valid 16-digit card number.
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="expiry_date" class="form-label">Expiry Date (MM/YY)</label>
-                                                <input type="text" class="form-control" id="expiry_date"
-                                                    name="expiry_date" maxlength="5" placeholder="MM/YY">
-                                                <div class="invalid-feedback">Please enter a valid expiry date (MM/YY).
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="tpin" class="form-label">TPIN</label>
-                                                <input type="password" class="form-control" id="tpin"
-                                                    name="tpin" maxlength="4" placeholder="4-digit TPIN">
-                                                <div class="invalid-feedback">TPIN must be 4 digits.</div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Cancel</button>
-                                        <button type="button" id="saveCardDetails" class="btn btn-primary">Save</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         {{-- <ul>
                             <li>
                                 <label for="radio_button_5"><input checked="" name="payment_method"
@@ -528,11 +493,52 @@
 
 
     </main><!-- end MAIN -->
+
+
+
+    <!-- Credit Card Modal -->
+    <div class="modal fade" id="creditCardModal" tabindex="-1" aria-labelledby="creditCardModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="creditCardModalLabel">Enter Credit Card Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="creditCardForm" novalidate>
+                        <div class="mb-3">
+                            <label for="card_number" class="form-label">Card Number</label>
+                            <input type="text" class="form-control" id="card_number" name="card_number"
+                                maxlength="19" placeholder="4242 4242 4242 4242">
+                            <div class="invalid-feedback">Please enter a valid 16-digit card number.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expiry_date" class="form-label">Expiry Date (MM/YY)</label>
+                            <input type="text" class="form-control" id="expiry_date" name="expiry_date"
+                                maxlength="5" placeholder="MM/YY">
+                            <div class="invalid-feedback">Please enter a valid expiry date (MM/YY).
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tpin" class="form-label">TPIN</label>
+                            <input type="password" class="form-control" id="tpin" name="tpin" maxlength="4"
+                                placeholder="4-digit TPIN">
+                            <div class="invalid-feedback">TPIN must be 4 digits.</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" id="saveCardDetails" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- Custom scripts -->
     <script>
         $(document).ready(function() {
@@ -751,9 +757,12 @@
     <script>
         $(document).ready(function() {
             // Show modal when credit card option selected
-            $('input[name="payment_method"]').on('change', function() {
-                if ($(this).val() === 'card') {
-                    var modal = new bootstrap.Modal(document.getElementById('creditCardModal'));
+            $('#radio_button_6').on('change', function() {
+                if ($(this).is(':checked')) {
+                    var modal = new bootstrap.Modal(document.getElementById('creditCardModal'), {
+                        backdrop: 'static',
+                        keyboard: false
+                    });
                     modal.show();
                 }
             });
