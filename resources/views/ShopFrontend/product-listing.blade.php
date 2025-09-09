@@ -1776,42 +1776,42 @@
                                     'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
                             }
                             var productHtml = `
-                        <li class="col-sm-4 product-item">
-                            <div class="product-item-opt-1">
-                                <div class="product-item-info">
-                                    <div class="product-item-photo">
-                                        <a href="{{ route('get.products.detail', '') }}/${product.slug}" class="product-item-img"><img style="width:200px;height:200px;" src="${image}"
-                                                alt="${product.title}"></a>
-                                        <div class="product-item-actions">
-                                            <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
-                                            <a href="#" class="btn btn-compare"><span>compare</span></a>
-                                            <a href="#" class="btn btn-quickview"><span>quickview</span></a>
-                                        </div>
-                                        <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
-                                        <span class="product-item-label label-price">${percentageDiscount}% <span>off</span></span>
-                                    </div>
-                                    <div class="product-item-detail">
-                                        <strong class="product-item-name"><a href="{{ route('get.products.detail', '') }}/${product.slug}">${product.title}</a></strong>
-                                        <div class="clearfix">
-                                            <div class="product-item-price">
-                                                <span class="price">$${product.new_price}</span>
-                                                <span class="old-price">$${product.old_price}</span>
+                                <li class="col-sm-4 product-item">
+                                    <div class="product-item-opt-1">
+                                        <div class="product-item-info">
+                                            <div class="product-item-photo">
+                                                <a href="{{ route('get.products.detail', '') }}/${product.slug}" class="product-item-img"><img style="width:200px;height:200px;" src="${image}"
+                                                        alt="${product.title}"></a>
+                                                <div class="product-item-actions">
+                                                    <a href="#" class="btn btn-wishlist"><span>wishlist</span></a>
+                                                    <a href="#" class="btn btn-compare"><span>compare</span></a>
+                                                    <a href="#" class="btn btn-quickview"><span>quickview</span></a>
+                                                </div>
+                                                <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                                <span class="product-item-label label-price">${percentageDiscount}% <span>off</span></span>
                                             </div>
-                                            <div class="product-reviews-summary">
-                                                <div class="rating-summary">
-                                                    <div class="rating-result" title="${percentageDiscount}%">
-                                                        <span style="width:${percentageDiscount}%">
-                                                            <span><span>${percentageDiscount}</span>% of <span>100</span></span>
-                                                        </span>
+                                            <div class="product-item-detail">
+                                                <strong class="product-item-name"><a href="{{ route('get.products.detail', '') }}/${product.slug}">${product.title}</a></strong>
+                                                <div class="clearfix">
+                                                    <div class="product-item-price">
+                                                        <span class="price">$${product.new_price}</span>
+                                                        <span class="old-price">$${product.old_price}</span>
+                                                    </div>
+                                                    <div class="product-reviews-summary">
+                                                        <div class="rating-summary">
+                                                            <div class="rating-result" title="${percentageDiscount}%">
+                                                                <span style="width:${percentageDiscount}%">
+                                                                    <span><span>${percentageDiscount}</span>% of <span>100</span></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </li>
-                    `;
+                                </li>
+                            `;
                             $('#product-listing').append(productHtml);
                         });
 
@@ -2062,5 +2062,108 @@
             });
 
         })(jQuery);
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.btn-cart').click(function() {
+                var productId = $(this).data('product_id');
+                var quantity = 1;
+                auth = "{{ auth()->check() }}";
+                console.log(auth);
+                if (auth != true) {
+                    window.location.href = '/login';
+                } else {
+                    $.ajax({
+                        type: 'GET',
+                        url: '{{ route('add.to.cart') }}',
+                        data: {
+                            product_id: productId,
+                            quantity: quantity,
+                            type: 'product',
+                        },
+                        success: function(response) {
+
+                            console.log(response);
+                            var cartItems = response;
+                            var html = '';
+                            var total = 0;
+                            var productHtml = '';
+                            $.each(cartItems, function(index, cartItem) {
+                                // Construct HTML for each cart item
+                                var image = null;
+                                console.log(cartItem.product.image);
+                                if (cartItem.product.image != null && cartItem.product
+                                    .image != '') {
+                                    image = "{{ asset('productImage/') }}/" + cartItem
+                                        .product.image;
+                                } else {
+                                    image =
+                                        'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                                }
+                                productHtml += `
+                                    <li class="product-item cart-row-${cartItem.id}">
+                                        <a class="product-item-photo" href="#" title="${cartItem.product.title}">
+                                            <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
+                                        </a>
+                                        <div class="product-item-details">
+                                            <strong class="product-item-name">
+                                                <a href="#">${cartItem.product.title}</a>
+                                            </strong>
+                                            <div class="product-item-price">
+                                                <span class="price">$${cartItem.product.new_price.toFixed(2)}</span>
+                                            </div>
+                                            <div class="product-item-qty">
+                                                <span class="label">Qty: </span><span class="number">${cartItem.quantity}</span>
+                                            </div>
+                                            <div class="product-item-actions">
+                                                <a class="action delete delete-cart" data-id="${cartItem.id}" href="javascript:void(0);" title="Remove item">
+                                                    <span>Remove</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                `;
+                                total += cartItem.product.new_price * cartItem.quantity;
+                            });
+                            $('#minicart-items').html(productHtml);
+                            $('#minicart-items2').html(productHtml);
+                            $('#cart-price').html('$' + total);
+                            $('#cart-price2').html('$' + total);
+                            $('.counter-price').html('$' + total);
+                            $('.counter-number').html(cartItems.length);
+                            $('.total-cart-items').html(cartItems.length);
+                            $('.counter-label').html(cartItems.length + '<span>Items</span>');
+
+                            // Insert the generated HTML into the designated container
+                            // alert('Product added to cart successfully!');
+                            Swal.fire({
+                                title: '✅ Product Added!',
+                                text: 'The product has been added to your cart successfully.',
+                                icon: 'success',
+                                showDenyButton: true,
+                                confirmButtonText: 'Go to Checkout',
+                                denyButtonText: 'OK',
+                                confirmButtonColor: '#3085d6',
+                                denyButtonColor: '#6c757d'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "{{ route('check.out') }}";
+                                }
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            Swal.fire({
+                                title: '❌ Error!',
+                                text: 'Error adding product to cart. Please try again.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                            console.error('Error adding product to cart:', error);
+                        }
+                    });
+                }
+            });
+        });
     </script>
 @endsection
