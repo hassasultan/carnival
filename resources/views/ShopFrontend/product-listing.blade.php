@@ -2066,7 +2066,7 @@
 
     <script>
         $(document).ready(function() {
-            $('.btn-cart').click(function() {
+            $(document).on('click', '.btn-cart', function() {
                 var productId = $(this).data('product_id');
                 var quantity = 1;
                 auth = "{{ auth()->check() }}";
