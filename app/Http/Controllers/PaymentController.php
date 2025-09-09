@@ -105,6 +105,8 @@ class PaymentController extends Controller
                 continue;
             }
 
+            dd($charge, $itemAmount, $adminCommission, $vendorCommission, $subvendorCommission, $vendorAccountId, $owner);
+
             // ✅ Transfer to Vendor
             if ($vendorCommission > 0 && $vendorAccountId) {
                 $transfers[] = Transfer::create([

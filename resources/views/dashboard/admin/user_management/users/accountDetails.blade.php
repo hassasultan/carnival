@@ -35,11 +35,11 @@
                     value="{{ old('account_number', $accountDetail->account_number ?? '') }}">
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="ifsc_code">IFSC Code</label>
                 <input type="text" name="ifsc_code" class="form-control"
                     value="{{ old('ifsc_code', $accountDetail->ifsc_code ?? '') }}">
-            </div>
+            </div> --}}
 
             <div class="form-group">
                 <label for="swift_code">SWIFT Code</label>

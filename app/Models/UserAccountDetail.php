@@ -15,7 +15,7 @@ class UserAccountDetail extends Model
         'bank_name',
         'account_holder_name',
         'account_number',
-        'ifsc_code',
+        // 'ifsc_code',
         'swift_code',
         'paypal_email',
         'upi_id'
