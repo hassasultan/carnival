@@ -11,8 +11,9 @@ class OrderItem extends Model
 
     protected $fillable = [
         'order_id',
-        'product_id',
+        'product_id', // ids of product / events / costumes
         'quantity',
+        'type', // to distinguish between product / events / costumes
         'price',
     ];
 

@@ -54,9 +54,14 @@ class Costume extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+
     public function variants()
     {
         return $this->belongsToMany(Variant::class)->withPivot('value', 'status');
+    }
+
+    public function orderItems()
+    {
+        return $this->morphMany(OrderItem::class, 'orderable');
     }
 }

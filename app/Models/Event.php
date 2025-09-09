@@ -78,6 +78,21 @@ class Event extends Model
         return $this->hasMany(EventTicket::class);
     }
 
+    public function getPriceAttribute()
+    {
+        return $this->tickets()->orderBy('id', 'asc')->value('price');
+    }
+
+    public function getMinTicketPriceAttribute()
+    {
+        return $this->tickets()->min('price');
+    }
+
+    public function getMaxTicketPriceAttribute()
+    {
+        return $this->tickets()->max('price');
+    }
+
     public function getStartDateAttribute($value)
     {
         return \Carbon\Carbon::parse($value)->format('m/d/Y');
@@ -97,5 +112,10 @@ class Event extends Model
     {
         return $this->belongsToMany(Carnival::class, 'pivot_carnival_events', 'event_id', 'carnival_id')
             ->withTimestamps();
+    }
+
+    public function orderItems()
+    {
+        return $this->morphMany(OrderItem::class, 'orderable');
     }
 }

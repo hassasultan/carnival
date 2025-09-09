@@ -125,4 +125,9 @@ class Product extends Model
     {
         return $query->where('is_new', true);
     }
+
+    public function orderItems()
+    {
+        return $this->morphMany(OrderItem::class, 'orderable');
+    }
 }

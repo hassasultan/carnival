@@ -37,18 +37,29 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $user_id = Auth::id();
-        $cartItems = Cart::with('product')->where('user_id', $user_id)->get();
+        $cartItems = Cart::with(['product', 'event', 'music'])->where('user_id', $user_id)->get();
 
         if ($cartItems->isEmpty()) {
             return response()->json(['error' => 'Cart is empty'], 400);
         }
 
+        // ✅ Calculate total dynamically based on type
         $total = 0;
         foreach ($cartItems as $cartItem) {
-            $total += $cartItem->product->new_price * $cartItem->quantity;
+            $price = 0;
+
+            if ($cartItem->type === 'product' && $cartItem->product) {
+                $price = $cartItem->product->new_price;
+            } elseif ($cartItem->type === 'event' && $cartItem->event) {
+                $price = $cartItem->event->price;
+            } elseif ($cartItem->type === 'music' && $cartItem->music) {
+                $price = $cartItem->music->price;
+            }
+
+            $total += $price * $cartItem->quantity;
         }
 
-        // Create the order
+        // ✅ Create the order
         $order = Order::create([
             'user_id' => $user_id,
             'order_num' => $this->generateOrderNumber(),
@@ -57,7 +68,7 @@ class OrderController extends Controller
             'total_amount' => $total,
         ]);
 
-        // Save billing & shipping
+        // ✅ Save billing
         OrdersBilling::create([
             'order_id' => $order->id,
             'first_name' => $request->first_name,
@@ -73,6 +84,7 @@ class OrderController extends Controller
             'fax' => $request->fax,
         ]);
 
+        // ✅ Save shipping
         OrderShipping::create([
             'order_id' => $order->id,
             'first_name_1' => $request->first_name_1,
@@ -88,17 +100,30 @@ class OrderController extends Controller
             'fax_1' => $request->fax_1,
         ]);
 
+        // ✅ Save order items dynamically
         foreach ($cartItems as $cartItem) {
+            $price = 0;
+
+            if ($cartItem->type === 'product' && $cartItem->product) {
+                $price = $cartItem->product->new_price;
+            } elseif ($cartItem->type === 'event' && $cartItem->event) {
+                $price = $cartItem->event->price;
+            } elseif ($cartItem->type === 'music' && $cartItem->music) {
+                $price = $cartItem->music->price;
+            }
+
             $order->items()->create([
                 'product_id' => $cartItem->product_id,
+                'type' => $cartItem->type,
                 'quantity' => $cartItem->quantity,
-                'price' => $cartItem->product->new_price,
+                'price' => $price,
             ]);
         }
 
+        // ✅ Clear cart
         Cart::where('user_id', $user_id)->delete();
 
-        // ✅ If payment method is stripe, process payment
+        // ✅ Handle Stripe payment if payment method is 'card'
         if ($request->payment_method === 'card') {
             $paymentController = new PaymentController();
             $request->merge([
