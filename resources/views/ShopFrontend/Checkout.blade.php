@@ -612,11 +612,13 @@
                                         <p><strong>Order Total:</strong> $${response.total}</p>
                                     `,
                                 icon: 'success',
-                                confirmButtonText: 'Go to Orders',
-                                footer: '<a href="/orders">View all your orders</a>'
+                                confirmButtonText: 'OK'
+                                // confirmButtonText: 'Go to Orders',
+                                // footer: '<a href="/orders">View all your orders</a>'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    window.location.href = '/orders';
+                                    // window.location.href = '/orders';
+                                    window.location.reload();
                                 }
                             });
                         },
