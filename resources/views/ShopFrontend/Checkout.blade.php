@@ -475,6 +475,8 @@
 
 @section('script')
     <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.22/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.22/dist/sweetalert2.min.js"></script>
     <script>
         (function($) {
             "use strict";
@@ -545,7 +547,7 @@
                             field.addClass('error');
                             field.after(
                                 '<span class="error-msg" style="color:red;font-size:12px;">This field is required</span>'
-                                );
+                            );
                         }
                     });
 
@@ -557,7 +559,7 @@
                             $(sel).addClass('error');
                             $(sel).after(
                                 '<span class="error-msg" style="color:red;font-size:12px;">Invalid email</span>'
-                                );
+                            );
                         }
                     });
 
@@ -603,13 +605,31 @@
                         data: form.serialize(),
                         dataType: 'json',
                         success: function(response) {
-                            alert('Order placed successfully!');
+                            Swal.fire({
+                                title: '✅ Order Placed Successfully!',
+                                html: `
+                                        <p>Your order has been created successfully.</p>
+                                        <p><strong>Order Total:</strong> $${response.total}</p>
+                                    `,
+                                icon: 'success',
+                                confirmButtonText: 'Go to Orders',
+                                footer: '<a href="/orders">View all your orders</a>'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = '/orders';
+                                }
+                            });
                         },
                         error: function(xhr) {
                             let msg = 'Failed to place order. Please try again later.';
                             if (xhr.responseJSON && xhr.responseJSON.message) msg = xhr.responseJSON
                                 .message;
-                            alert(msg);
+                            Swal.fire({
+                                title: '❌ Failed!',
+                                text: msg,
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
                         }
                     });
                 }
