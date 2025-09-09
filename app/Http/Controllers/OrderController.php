@@ -120,9 +120,6 @@ class OrderController extends Controller
             ]);
         }
 
-        // ✅ Clear cart
-        // Cart::where('user_id', $user_id)->delete();
-
         // ✅ Handle Stripe payment if payment method is 'card'
         if ($request->payment_method === 'card') {
             $paymentController = new PaymentController();
@@ -133,6 +130,9 @@ class OrderController extends Controller
 
             return $paymentController->splitPayment($request);
         }
+
+        // ✅ Clear cart
+        Cart::where('user_id', $user_id)->delete();
 
         return response()->json(['message' => 'Order created successfully', 'total' => $total]);
     }
