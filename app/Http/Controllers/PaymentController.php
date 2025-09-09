@@ -110,6 +110,7 @@ class PaymentController extends Controller
                 'vendorAccountId' => $vendorAccountId,
                 'vendorCommission' => $vendorCommission,
                 'subvendorCommission' => $subvendorCommission,
+                'owner' => $owner,
                 'role' => optional($owner->role)->slug,
             ]);
 
