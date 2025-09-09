@@ -105,14 +105,13 @@ class PaymentController extends Controller
                 continue;
             }
 
-            dd([
-                'adminCommission' => $adminCommission,
-                'vendorAccountId' => $vendorAccountId,
-                'vendorCommission' => $vendorCommission,
-                'subvendorCommission' => $subvendorCommission,
-                'owner' => $owner,
-                'role' => optional($owner->role)->slug,
-            ]);
+            // dd([
+            //     'adminCommission' => $adminCommission,
+            //     'vendorAccountId' => $vendorAccountId,
+            //     'vendorCommission' => $vendorCommission,
+            //     'subvendorCommission' => $subvendorCommission,
+            //     'owner' => $owner,
+            // ]);
 
             // ✅ Transfer to Vendor
             if ($vendorCommission > 0 && $vendorAccountId) {
