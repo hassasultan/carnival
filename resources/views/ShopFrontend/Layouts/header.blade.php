@@ -18,6 +18,8 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.22/dist/sweetalert2.min.css">
+
     @if (Route::is('front.track.order') || Route::is('front.blog.list') || Route::is('front.blog.detail'))
         <link rel="stylesheet" type="text/css" href="{{ asset('shopAssets/css/wocommerce.css') }}" />
     @endif
@@ -66,11 +68,12 @@
             object-fit: cover;
             border-radius: 10px;
         }
-        .detail-desc
-        {
+
+        .detail-desc {
             height: 30px;
             overflow: hidden;
         }
+
         @keyframes loading {
             0% {
                 left: -100%;

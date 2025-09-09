@@ -475,8 +475,6 @@
 
 @section('script')
     <script src="https://js.stripe.com/v3/"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.22/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.22/dist/sweetalert2.min.js"></script>
     <script>
         (function($) {
             "use strict";

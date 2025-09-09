@@ -482,9 +482,9 @@
                                             <span class="icon fas fa-globe"></span>
                                             <span class="text">Region:</span>
                                             @if ($user->vendor->region != null)
-                                            <a href="javascript:void(0);">{{ $user->vendor->region->name}}</a>
+                                                <a href="javascript:void(0);">{{ $user->vendor->region->name }}</a>
                                             @else
-                                            N/A
+                                                N/A
                                             @endif
                                         </div>
 
@@ -521,7 +521,7 @@
                                                 <span class="text">Weight:</span>
                                                 <a href="javascript:void(0);">{{ $user->weight }}</a>
                                             </div>
-                                            @if ( $user->carnival_id != 0)
+                                            @if ($user->carnival_id != 0)
                                                 <div class="contact-item">
                                                     <span class="text">Bust:</span>
                                                     <a href="javascript:void(0);">{{ $user->bust }}</a>
@@ -541,12 +541,12 @@
                                             <div class="contact-item">
                                                 <span class="text">About:</span>
                                                 <a href="javascript:void(0);" class="about-text">
-                                                    {{$user->vendor->short_description}}
+                                                    {{ $user->vendor->short_description }}
                                                 </a>
                                                 @if (strlen($user->vendor->short_description) > 200)
                                                     <a href="javascript:void(0);" class="see-more">See More</a>
                                                     <span class="full-text" style="display: none;">
-                                                        {{$user->vendor->short_description}}
+                                                        {{ $user->vendor->short_description }}
                                                         <a href="javascript:void(0);" class="see-less">See Less</a>
                                                     </span>
                                                 @endif
@@ -933,10 +933,30 @@
                             $('.counter-label').html(cartItems.length + '<span>Items</span>');
 
                             // Insert the generated HTML into the designated container
-                            alert('Product added to cart successfully!');
+                            // alert('Product added to cart successfully!');
+                            Swal.fire({
+                                title: '✅ Product Added!',
+                                text: 'The product has been added to your cart successfully.',
+                                icon: 'success',
+                                showDenyButton: true,
+                                confirmButtonText: 'Go to Checkout',
+                                denyButtonText: 'OK',
+                                confirmButtonColor: '#3085d6',
+                                denyButtonColor: '#6c757d'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "{{ route('check.out') }}";
+                                }
+                            });
                         },
                         error: function(xhr, status, error) {
-                            alert('Error adding product to cart:', error);
+                            // alert('Error adding product to cart:', error);
+                            Swal.fire({
+                                title: '❌ Error!',
+                                text: 'Error adding product to cart. Please try again.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
                             console.error('Error adding product to cart:', error);
                         }
                     });

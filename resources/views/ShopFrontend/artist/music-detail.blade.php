@@ -387,21 +387,21 @@
                                         {{ $music->release_date }}
                                     </div>
                                     @if ($music->for_sale == 'for_sale')
-                                    <div class="product-options-bottom clearfix">
-                                        <div class="actions">
-                                            @if (Auth::check())
-                                                <button type="button" title="Add to Cart" class="action btn-cart"
-                                                    data-music_id="{{ $music->id }}">
-                                                    <span>Add to Cart</span>
-                                                </button>
-                                            @else
-                                                <a href="{{ route('customer.login') }}" title="Add to Cart"
-                                                    class="action btn-cart btn">
-                                                    <span>Add to Cart</span>
-                                                </a>
-                                            @endif
+                                        <div class="product-options-bottom clearfix">
+                                            <div class="actions">
+                                                @if (Auth::check())
+                                                    <button type="button" title="Add to Cart" class="action btn-cart"
+                                                        data-music_id="{{ $music->id }}">
+                                                        <span>Add to Cart</span>
+                                                    </button>
+                                                @else
+                                                    <a href="{{ route('customer.login') }}" title="Add to Cart"
+                                                        class="action btn-cart btn">
+                                                        <span>Add to Cart</span>
+                                                    </a>
+                                                @endif
+                                            </div>
                                         </div>
-                                    </div>
                                     @endif
                                     <div class="contact-item">
                                         <video controls style="width: 400px;">
@@ -739,10 +739,30 @@
                             $('.counter-label').html(cartItems.length + '<span>Items</span>');
 
                             // Insert the generated HTML into the designated container
-                            alert('Product added to cart successfully!');
+                            // alert('Product added to cart successfully!');
+                            Swal.fire({
+                                title: '✅ Product Added!',
+                                text: 'The product has been added to your cart successfully.',
+                                icon: 'success',
+                                showDenyButton: true,
+                                confirmButtonText: 'Go to Checkout',
+                                denyButtonText: 'OK',
+                                confirmButtonColor: '#3085d6',
+                                denyButtonColor: '#6c757d'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "{{ route('check.out') }}";
+                                }
+                            });
                         },
                         error: function(xhr, status, error) {
-                            alert('Error adding product to cart:', error);
+                            // alert('Error adding product to cart:', error);
+                            Swal.fire({
+                                title: '❌ Error!',
+                                text: 'Error adding product to cart. Please try again.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
                             console.error('Error adding product to cart:', error);
                         }
                     });

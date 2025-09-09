@@ -549,7 +549,8 @@
                                                     <td class="ovic_bundle-check check-column">
                                                         <p>LAST WAVE
                                                             Sales end on Sep 21, 2024 03:00 PM</p>
-                                                            <span>Last Batch - Available Now Until September 21st At 3:00pm Or Until Quantities Last</span>
+                                                        <span>Last Batch - Available Now Until September 21st At 3:00pm Or
+                                                            Until Quantities Last</span>
                                                     </td>
                                                     <td class="ovic_bundle-thumb column-thumb">
                                                         <p>CAD $50.00</p>
@@ -573,11 +574,11 @@
                                     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 eventview-no-padding">
                                         {{-- <p>No tickets available for purchase now.</p> --}}
                                         <!--<div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" id="notify-ticks-avail" name="notify-ticks-avail" >
-                                                    Notify Me When Tickets Become Available
-                                                </label>
-                                            </div> -->
+                                                    <label>
+                                                        <input type="checkbox" id="notify-ticks-avail" name="notify-ticks-avail" >
+                                                        Notify Me When Tickets Become Available
+                                                    </label>
+                                                </div> -->
                                         <div class="checkbox-round">
                                             <div>
                                                 <label class="switchaction">
@@ -607,11 +608,11 @@
                                             <span class="text-danger noti_first_name subscribe_notification_error"></span>
                                         </div>
                                         <!--
-                                            <div class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-r">
-                                                <label>Last name<span>*</span></label>
-                                                <input type='text' id="noti_last_name" class="form-control" placeholder="Enter last name" name='noti_last_name'  />
-                                            </div>
-                                            -->
+                                                <div class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-r">
+                                                    <label>Last name<span>*</span></label>
+                                                    <input type='text' id="noti_last_name" class="form-control" placeholder="Enter last name" name='noti_last_name'  />
+                                                </div>
+                                                -->
                                         <div
                                             class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-l">
                                             <label>Email<span>*</span></label>
@@ -621,11 +622,11 @@
                                                 class="text-danger noti_email_address subscribe_notification_error"></span>
                                         </div>
                                         <!--
-                                            <div class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-r">
-                                                <label>Contact no.</label>
-                                                <input type='text' class="form-control" placeholder="Enter Contact no" id="noti_contact_no" class='form-control' name='noti_contact_no'  />
-                                            </div>
-                                            -->
+                                                <div class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-r">
+                                                    <label>Contact no.</label>
+                                                    <input type='text' class="form-control" placeholder="Enter Contact no" id="noti_contact_no" class='form-control' name='noti_contact_no'  />
+                                                </div>
+                                                -->
 
 
                                         <div
@@ -660,11 +661,13 @@
                         <div class="col-md-4">
                             <h2>Location</h2>
                             <div class="map-div col-lg-12 col-sm-12 col-md-12 col-xs-12 eventview-no-padding map-setting">
-                                <a href="https://www.ticketgateway.com/venues/mystic-lounge" target="_blank" class="hidden-xs">
+                                <a href="https://www.ticketgateway.com/venues/mystic-lounge" target="_blank"
+                                    class="hidden-xs">
                                     Mystic Lounge,<br> 50 Kennedy Road S, Canada</a>
                                 <iframe id="gmap_canvas"
                                     src="https://maps.google.com/maps?q=50%2BKennedy%2BRoad%2BS%2C%2BCanada&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0" height="400px" width="100%"></iframe>
+                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0" height="400px"
+                                    width="100%"></iframe>
 
 
                             </div>
@@ -1302,10 +1305,29 @@
                             $('.counter-label').html(cartItems.length + '<span>Items</span>');
 
                             // Insert the generated HTML into the designated container
-                            alert('Product added to cart successfully!');
+                            // alert('Product added to cart successfully!');
+                            Swal.fire({
+                                title: '✅ Product Added!',
+                                text: 'The product has been added to your cart successfully.',
+                                icon: 'success',
+                                showDenyButton: true,
+                                confirmButtonText: 'Go to Checkout',
+                                denyButtonText: 'OK',
+                                confirmButtonColor: '#3085d6',
+                                denyButtonColor: '#6c757d'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "{{ route('check.out') }}";
+                                }
+                            });
                         },
                         error: function(xhr, status, error) {
-                            alert('Error adding product to cart:', error);
+                            Swal.fire({
+                                title: '❌ Error!',
+                                text: 'Error adding product to cart. Please try again.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
                             console.error('Error adding product to cart:', error);
                         }
                     });

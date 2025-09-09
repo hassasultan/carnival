@@ -753,10 +753,30 @@
                             $('.counter-label').html(cartItems.length + '<span>Items</span>');
 
                             // Insert the generated HTML into the designated container
-                            alert('Product added to cart successfully!');
+                            // alert('Product added to cart successfully!');
+                            Swal.fire({
+                                title: '✅ Product Added!',
+                                text: 'The product has been added to your cart successfully.',
+                                icon: 'success',
+                                showDenyButton: true,
+                                confirmButtonText: 'Go to Checkout',
+                                denyButtonText: 'OK',
+                                confirmButtonColor: '#3085d6',
+                                denyButtonColor: '#6c757d'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "{{ route('check.out') }}";
+                                }
+                            });
                         },
                         error: function(xhr, status, error) {
-                            alert('Error adding product to cart:', error);
+                            // alert('Error adding product to cart:', error);
+                            Swal.fire({
+                                title: '❌ Error!',
+                                text: 'Error adding product to cart. Please try again.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
                             console.error('Error adding product to cart:', error);
                         }
                     });

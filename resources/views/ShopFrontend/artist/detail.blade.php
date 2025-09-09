@@ -464,10 +464,18 @@
                                             Viewed </a></li>
                                     <li role="presentation"><a href="#floor1-3" id="new-arr-tab" role="tab"
                                             data-toggle="tab">New Arrivals <span class="label-cat">12</span></a></li>
-                                    <li role="presentation"><a href="#floor1-4-women" onclick="genderProduct('women','vendors-women-div')" role="tab" data-toggle="tab">Women</a></li>
-                                    <li role="presentation"><a href="#floor1-4-men" onclick="genderProduct('men','vendors-men-div')" role="tab" data-toggle="tab">Men</a></li>
-                                    <li role="presentation"><a href="#floor1-4-kids" onclick="genderProduct('kids','vendors-kids-div')" role="tab" data-toggle="tab">Kids</a></li>
-                                    <li role="presentation"><a href="#floor1-4-accessories" onclick="genderProduct('accessories','vendors-accessories-div')" role="tab" data-toggle="tab">Accessories</a></li>
+                                    <li role="presentation"><a href="#floor1-4-women"
+                                            onclick="genderProduct('women','vendors-women-div')" role="tab"
+                                            data-toggle="tab">Women</a></li>
+                                    <li role="presentation"><a href="#floor1-4-men"
+                                            onclick="genderProduct('men','vendors-men-div')" role="tab"
+                                            data-toggle="tab">Men</a></li>
+                                    <li role="presentation"><a href="#floor1-4-kids"
+                                            onclick="genderProduct('kids','vendors-kids-div')" role="tab"
+                                            data-toggle="tab">Kids</a></li>
+                                    <li role="presentation"><a href="#floor1-4-accessories"
+                                            onclick="genderProduct('accessories','vendors-accessories-div')"
+                                            role="tab" data-toggle="tab">Accessories</a></li>
                                     @foreach ($categories as $row)
                                         <li role="presentation"><a href="#floor1-4-{{ $row->id }}"
                                                 onclick="catProduct({{ $row->id }},'vendors-cat-div-{{ $row->id }}')"
@@ -1044,8 +1052,8 @@
                                                 @endif
                                             @endforeach
                                             @foreach ($subCategories->unique() as $subCategory)
-                                                <li role="presentation"><a href="#floor2-subcat-{{ $subCategory['id'] }}"
-                                                        role="tab"
+                                                <li role="presentation"><a
+                                                        href="#floor2-subcat-{{ $subCategory['id'] }}" role="tab"
                                                         onclick="subcatProduct({{ $subCategory['id'] }},'vendors-subcat-div-{{ $subCategory['id'] }}')"
                                                         data-toggle="tab">{{ $subCategory['title'] }}</a></li>
                                             @endforeach
@@ -1485,7 +1493,8 @@
                                     </div>
 
                                     <!-- tab 7 - Accessories -->
-                                    <div class="tab-pane fade" id="floor-accessories-{{ $row->id }}" role="tabpanel">
+                                    <div class="tab-pane fade" id="floor-accessories-{{ $row->id }}"
+                                        role="tabpanel">
                                         <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="0"
                                             data-responsive='{
                                         "0":{"items":1},
@@ -1558,11 +1567,13 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <a href="" class="box-img"><img
-                                    src="{{ asset('shopAssets/images/media/index1/banner7-1.jpg') }}" alt="banner"></a>
+                                    src="{{ asset('shopAssets/images/media/index1/banner7-1.jpg') }}"
+                                    alt="banner"></a>
                         </div>
                         <div class="col-sm-6">
                             <a href="" class="box-img"><img
-                                    src="{{ asset('shopAssets/images/media/index1/banner7-2.jpg') }}" alt="banner"></a>
+                                    src="{{ asset('shopAssets/images/media/index1/banner7-2.jpg') }}"
+                                    alt="banner"></a>
                         </div>
                     </div>
                 </div>
@@ -2037,7 +2048,8 @@
         function printTiles(id, products) {
             $('#' + id).empty();
             $.each(products, function(index, product) {
-                var image = product.image ? "{{ asset('productImage/') }}/" + product.image : "{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}";
+                var image = product.image ? "{{ asset('productImage/') }}/" + product.image :
+                    "{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}";
                 var productHtml = `
                     <div class="product-item product-item-opt-1">
                         <div class="product-item-info">
@@ -2206,10 +2218,30 @@
                             $('.counter-label').html(cartItems.length + '<span>Items</span>');
 
                             // Insert the generated HTML into the designated container
-                            alert('Product added to cart successfully!');
+                            // alert('Product added to cart successfully!');
+                            Swal.fire({
+                                title: '✅ Product Added!',
+                                text: 'The product has been added to your cart successfully.',
+                                icon: 'success',
+                                showDenyButton: true,
+                                confirmButtonText: 'Go to Checkout',
+                                denyButtonText: 'OK',
+                                confirmButtonColor: '#3085d6',
+                                denyButtonColor: '#6c757d'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "{{ route('check.out') }}";
+                                }
+                            });
                         },
                         error: function(xhr, status, error) {
-                            alert('Error adding product to cart:', error);
+                            // alert('Error adding product to cart:', error);
+                            Swal.fire({
+                                title: '❌ Error!',
+                                text: 'Error adding product to cart. Please try again.',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
                             console.error('Error adding product to cart:', error);
                         }
                     });
