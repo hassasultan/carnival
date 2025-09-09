@@ -1787,7 +1787,7 @@
                                                     <a href="#" class="btn btn-compare"><span>compare</span></a>
                                                     <a href="#" class="btn btn-quickview"><span>quickview</span></a>
                                                 </div>
-                                                <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                                <button class="btn btn-cart" type="button" data-product_id="${product.id}"><span>Add to Cart</span></button>
                                                 <span class="product-item-label label-price">${percentageDiscount}% <span>off</span></span>
                                             </div>
                                             <div class="product-item-detail">
