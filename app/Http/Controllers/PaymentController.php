@@ -94,13 +94,13 @@ class PaymentController extends Controller
             $itemAmount = $item->price * $item->quantity;
             $adminCommission = $itemAmount * 0.05; // 5% platform fee
 
-            if ($owner->role && $owner->role->slug === 'vendor') {
+            if ($owner->role && $owner->role->name === 'vendor') {
                 $vendorCommission = $itemAmount - $adminCommission;
-            } elseif ($owner->role && $owner->role->slug === 'subvendor') {
+            } elseif ($owner->role && $owner->role->name === 'subvendor') {
                 $vendor = $owner->vendor; // Parent vendor
                 $vendorCommission = $itemAmount * 0.10; // 10% to vendor
                 $subvendorCommission = $itemAmount - $adminCommission - $vendorCommission;
-            } elseif ($owner->role && $owner->role->slug === 'admin') {
+            } elseif ($owner->role && $owner->role->name === 'admin') {
                 // ✅ Admin owns the product - funds remain in main account (no transfer)
                 continue;
             }
