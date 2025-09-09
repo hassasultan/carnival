@@ -121,7 +121,7 @@ class OrderController extends Controller
         }
 
         // ✅ Clear cart
-        Cart::where('user_id', $user_id)->delete();
+        // Cart::where('user_id', $user_id)->delete();
 
         // ✅ Handle Stripe payment if payment method is 'card'
         if ($request->payment_method === 'card') {
