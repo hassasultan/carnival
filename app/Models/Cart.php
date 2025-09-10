@@ -65,7 +65,7 @@ class Cart extends Model
                         ? $event->tickets->sortBy('id')->first()->price
                         : 'FREE',
                     'image' => $event?->banner
-                        ? asset('eventImages/' . $event->banner)
+                        ? asset('eventBanner/' . $event->banner)
                         : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg',
                 ];
             case 'music':
