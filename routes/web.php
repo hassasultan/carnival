@@ -201,6 +201,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::resource('services', ServiceController::class);
     Route::resource('orders', OrderController::class);
     Route::get('orders/{id}/invoice', [OrderController::class, 'invoice'])->name('orders.invoice');
+    Route::get('orders/{id}/invoice/pdf', [OrderController::class, 'invoicePdf'])->name('orders.invoice.pdf');
     Route::resource('carnivals', CarnivalController::class);
     Route::resource('regions', RegionController::class);
     Route::resource('our_services', OurServiceController::class);

@@ -71,6 +71,12 @@
 </head>
 
 <body>
+    <div style="text-align: right; margin-bottom: 20px;">
+        <a href="{{ route('orders.invoice.pdf', $order->id) }}" class="btn btn-primary" target="_blank">
+            Download PDF
+        </a>
+    </div>
+
     <div class="invoice-box">
         {{-- Header --}}
         <table>
