@@ -77,7 +77,7 @@ class Cart extends Model
             default: // product
                 return [
                     'title' => $this->product?->name,
-                    'price' => $this->product?->price ?? 0,
+                    'price' => $this->product?->new_price ?? 0,
                     'image' => $this->product?->image 
                         ? asset('productImage/' . $this->product->image) 
                         : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg',
