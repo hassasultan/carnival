@@ -594,32 +594,32 @@
                     });
                 }
 
-                // ===== Quantity +/- buttons =====
-                window.cartQuantity = function(productId, type) {
-                    let qtyInput = $('#qty-' + productId);
-                    let current = parseInt(qtyInput.val());
-                    if (type === 'plus') current++;
-                    else if (type === 'minus' && current > 1) current--;
-                    qtyInput.val(current);
+                // // ===== Quantity +/- buttons =====
+                // window.cartQuantity = function(productId, type) {
+                //     let qtyInput = $('#qty-' + productId);
+                //     let current = parseInt(qtyInput.val());
+                //     if (type === 'plus') current++;
+                //     else if (type === 'minus' && current > 1) current--;
+                //     qtyInput.val(current);
 
-                    let price = parseFloat($('#new-price-' + productId).data('val'));
-                    $('#ind-total-' + productId + ' span').text((price * current).toFixed(2) + ' $');
+                //     let price = parseFloat($('#new-price-' + productId).data('val'));
+                //     $('#ind-total-' + productId + ' span').text((price * current).toFixed(2) + ' $');
 
-                    // Update net total
-                    let netTotal = 0;
-                    $('td.price span').each(function() {
-                        let val = parseFloat($(this).text());
-                        if (!isNaN(val)) netTotal += val;
-                    });
-                    $('#net-total strong').text(netTotal.toFixed(2) + ' $');
-                    $('.net-total').data('val', netTotal.toFixed(2));
-                };
+                //     // Update net total
+                //     let netTotal = 0;
+                //     $('td.price span').each(function() {
+                //         let val = parseFloat($(this).text());
+                //         if (!isNaN(val)) netTotal += val;
+                //     });
+                //     $('#net-total strong').text(netTotal.toFixed(2) + ' $');
+                //     $('.net-total').data('val', netTotal.toFixed(2));
+                // };
 
-                // ===== Delete cart item =====
-                $(document).on('click', '.delete-cart', function() {
-                    const id = $(this).data('id');
-                    $('.cart-row-' + id).remove();
-                });
+                // // ===== Delete cart item =====
+                // $(document).on('click', '.delete-cart', function() {
+                //     const id = $(this).data('id');
+                //     $('.cart-row-' + id).remove();
+                // });
 
             });
         })(jQuery);
