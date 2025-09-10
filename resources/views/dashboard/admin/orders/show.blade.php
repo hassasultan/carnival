@@ -122,7 +122,7 @@
                                                 @elseif($item->event)
                                                     {{ $item->event->category->name ?? '-' }}
                                                 @elseif($item->music)
-                                                    {{ $item->music->category->name ?? '-' }}
+                                                    N/A
                                                 @elseif($item->costume)
                                                     {{ $item->costume->category->name ?? '-' }}
                                                 @endif
@@ -185,7 +185,8 @@
                                         <p><strong>Variants:</strong>
                                             @foreach ($item->product->variants as $variant)
                                                 {{ $variant->name }}
-                                                ({{ $variant->pivot->value }}){{ !$loop->last ? ',' : '' }}
+                                                ({{ $variant->pivot->value }})
+                                                {{ !$loop->last ? ',' : '' }}
                                             @endforeach
                                         </p>
                                         <p><strong>Images:</strong>
