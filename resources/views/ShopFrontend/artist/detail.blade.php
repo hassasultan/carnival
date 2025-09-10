@@ -2181,7 +2181,7 @@
                                     detail.image :
                                     'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
 
-                                productHtml += `
+                                eventHtml += `
                                     <li class="product-item cart-row-${cartItem.id}">
                                         <a class="product-item-photo" href="#" title="${detail.title}">
                                             <img class="product-image-photo" src="${image}" alt="${detail.title}">
