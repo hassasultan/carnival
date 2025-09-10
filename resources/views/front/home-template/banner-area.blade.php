@@ -237,7 +237,6 @@
                                                                             @else
                                                                                 <img src="{{ $imageUrl }}"
                                                                                     alt="Carnival Image"
-                                                                                    style="height: "
                                                                                     style="width: 100% !important; height: 70vh !important; object-fit: cover !important;">
                                                                             @endif
                                                                         </div>
