@@ -270,7 +270,6 @@ class OrderController extends Controller
             'billing'
         ])->findOrFail($id);
 
-        // Just return the Blade view (HTML)
         return view('dashboard.admin.orders.invoice', compact('order'));
     }
 
