@@ -275,18 +275,17 @@ class OrderController extends Controller
     }
 
     public function invoicePdf($id)
-{
-    $order = Order::with([
-        'user',
-        'items.product',
-        'shipping',
-        'billing'
-    ])->findOrFail($id);
+    {
+        $order = Order::with([
+            'user',
+            'items.product',
+            'shipping',
+            'billing'
+        ])->findOrFail($id);
 
-    $pdf = Pdf::setOptions(['isRemoteEnabled' => true])
-        ->loadView('dashboard.admin.orders.invoice', compact('order'));
+        $pdf = Pdf::setOptions(['isRemoteEnabled' => true])
+            ->loadView('dashboard.admin.orders.invoice', compact('order'));
 
-    return $pdf->download("invoice-{$order->order_num}.pdf");
-}
-
+        return $pdf->download("invoice-{$order->order_num}.pdf");
+    }
 }
