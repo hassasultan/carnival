@@ -376,7 +376,7 @@
 
                                                     @if (Auth::check())
                                                         <button type="button" title="Add to Cart" class="action btn-cart"
-                                                            data-event_id="1">
+                                                            data-event_id="{{ $event->id }}">
                                                             <span>Add to Cart</span>
                                                         </button>
                                                     @else
