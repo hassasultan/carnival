@@ -351,60 +351,42 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $total = 0;
-                                    @endphp
+                                    @php $total = 0; @endphp
                                     @if (count($cartItem) > 0)
                                         @foreach ($cartItem as $row)
                                             @php
-                                                $total += $row->product->new_price * $row->quantity;
+                                                $details = $row->item_details;
+                                                $lineTotal =
+                                                    (is_numeric($details['price']) ? $details['price'] : 0) *
+                                                    $row->quantity;
+                                                $total += $lineTotal;
                                             @endphp
                                             <tr class="cart-row-{{ $row->id }}">
                                                 <td class="cart_product">
                                                     <a href="#">
-                                                        @if ($row->product->image != null && $row->product->image != '')
-                                                            <img src="{{ asset('productImage/' . $row->product->image) }}"
-                                                                alt="Product">
-                                                        @else
-                                                            <img src='https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg'
-                                                                alt="Product">
-                                                        @endif
+                                                        <img src="{{ $details['image'] }}" alt="Item">
                                                     </a>
                                                 </td>
                                                 <td class="cart_description">
-                                                    <p class="product-name"><a
-                                                            href="{{ route('front.vendor.products', $row->product->slug) }}">{{ $row->product->title }}
-                                                        </a></p>
-                                                    <small class="cart_ref">SKU : #123654999</small><br>
-                                                    <small><a href="#">Color : Beige</a></small><br>
-                                                    <small><a href="#">Size : S</a></small>
+                                                    <p class="product-name">{{ $details['title'] }}</p>
                                                 </td>
-                                                <td class="cart_avail"><span class="label label-success">
-                                                        {{ $row->product->stock_condition }}</span></td>
-                                                <td class="price" id="new-price-{{ $row->product_id }}"
-                                                    data-val="{{ $row->product->new_price }}">
-                                                    <span>{{ $row->product->new_price }} $</span>
+                                                <td class="cart_avail">
+                                                    {{-- if product, show stock; otherwise show "Available" --}}
+                                                    <span class="label label-success">
+                                                        {{ $row->product->stock_condition ?? 'Available' }}
+                                                    </span>
+                                                </td>
+                                                <td class="price" data-val="{{ $details['price'] }}">
+                                                    <span>
+                                                        {{ is_numeric($details['price']) ? $details['price'] . ' $' : $details['price'] }}
+                                                    </span>
                                                 </td>
                                                 <td class="qty">
-
-                                                    <input minlength="1" maxlength="12" readonly name="qty1"
-                                                        id="qty-{{ $row->product_id }}" value="{{ $row->quantity }}"
+                                                    <input readonly name="qty1" value="{{ $row->quantity }}"
                                                         class="form-control input-sm" type="text">
-                                                    <span data-field="qty1"
-                                                        onclick="cartQuantity({{ $row->product_id }},'minus')"
-                                                        data-type="minus" class="btn-number-checkout"><i
-                                                            class="fa fa-caret-up"></i></span>
-                                                    <span data-field="qty1" data-type="plus"
-                                                        onclick="cartQuantity({{ $row->product_id }},'plus')"
-                                                        class="btn-number-checkout"><i
-                                                            class="fa fa-caret-down"></i></span>
                                                 </td>
-                                                <td class="price" id="ind-total-{{ $row->product_id }}">
-                                                    @php
-                                                        $new_price =
-                                                            (int) $row->product->new_price * (int) $row->quantity;
-                                                    @endphp
-                                                    <span>{{ $new_price }} $</span>
+                                                <td class="price">
+                                                    <span>{{ $lineTotal }} $</span>
                                                 </td>
                                                 <td class="action">
                                                     <a href="javascript:void(0);" class="delete-cart"
@@ -413,8 +395,9 @@
                                             </tr>
                                         @endforeach
                                     @else
-                                        <strong>Cart has Empty</strong>
+                                        <strong>Cart is Empty</strong>
                                     @endif
+
                                     {{-- <tr>
                                         <td class="cart_product">
                                             <a href="#"><img
