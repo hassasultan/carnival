@@ -133,7 +133,7 @@
             // Handle pagination click
             $(document).on('click', '.pagination a', function(event) {
                 event.preventDefault();
-                let page = $(this).attr('href').split('page=')[1];
+                let page = $(this).data('page');
                 if (page && page !== currentPage) {
                     fetchOrders(page);
                 }
