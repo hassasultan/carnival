@@ -76,7 +76,7 @@
         <table>
             <tr>
                 <td>
-                    <img src="{{ public_path('shopAssets/images/logo.png') }}" alt="Logo" class="logo"><br>
+                    <img src="{{ asset('shopAssets/images/logo.png') }}" alt="Logo" class="logo"><br>
                     <h2>Invoice</h2>
                     <strong>Order #:</strong> {{ $order->order_num }}<br>
                     <strong>Date:</strong> {{ $order->created_at->format('d M, Y') }}<br>
