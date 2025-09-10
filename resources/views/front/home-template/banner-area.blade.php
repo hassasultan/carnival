@@ -144,20 +144,6 @@
                                     /* Reduced from 100px */
                                 }
 
-                                .slider-block-left {
-                                    height: 70vh;
-                                    /* or clamp(400px, 70vh, 900px) for responsive scaling */
-                                    display: flex;
-                                    align-items: center;
-                                }
-
-                                .slider-block-left img,
-                                .slider-block-left video {
-                                    width: 100% !important;
-                                    height: 100% !important;
-                                    object-fit: cover !important;
-                                }
-
                                 @media screen and (max-width: 480px) {
                                     .slider-extra {
                                         min-height: auto;
@@ -246,10 +232,12 @@
 
                                                                             @if (in_array($extension, ['mp4', 'webm', 'ogg']))
                                                                                 <video src="{{ $imageUrl }}"
+                                                                                style="height: 70rem !important; width: 100%;"
                                                                                     controls loop autoplay muted>
-                                                                                @else
-                                                                                    <img src="{{ $imageUrl }}"
-                                                                                        alt="Carnival Image">
+                                                                            @else
+                                                                                <img src="{{ $imageUrl }}"
+                                                                                style="height: 70rem !important; width: 100%;"
+                                                                                    alt="Carnival Image">
                                                                             @endif
                                                                         </div>
                                                                     @endforeach
