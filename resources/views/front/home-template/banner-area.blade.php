@@ -1,3 +1,12 @@
+<style>
+    .slider .slide-new img,
+    .slider .slide-new video {
+        width: 100%;
+        height: 70vh;
+        /* fixed relative height */
+        object-fit: cover;
+    }
+</style>
 {{-- <div class="full-height">
     <div class="video-wrapper"> --}}
 <div class="full-height" style="height: auto !important;">
@@ -133,13 +142,15 @@
 
                                 /* Fix header overlap issue */
                                 .slider-block {
-                                    margin-top: 50px; /* Reduced from 80px */
+                                    margin-top: 50px;
+                                    /* Reduced from 80px */
                                     padding-top: 15px;
                                 }
 
                                 /* Alternative: if you need more space */
                                 .full-height {
-                                    padding-top: 60px; /* Reduced from 100px */
+                                    padding-top: 60px;
+                                    /* Reduced from 100px */
                                 }
 
                                 @media screen and (max-width: 480px) {
@@ -153,12 +164,14 @@
 
                                     /* Mobile adjustments for header spacing */
                                     .slider-block {
-                                        margin-top: 30px; /* Less space on mobile */
+                                        margin-top: 30px;
+                                        /* Less space on mobile */
                                         padding-top: 10px;
                                     }
 
                                     .full-height {
-                                        padding-top: 40px; /* Less space on mobile */
+                                        padding-top: 40px;
+                                        /* Less space on mobile */
                                     }
                                 }
                             </style>
@@ -171,28 +184,8 @@
                                                 <div class="col-xs-12 col-sm-10 col-sm-offset-1">
                                                     <div class="slider-block clearfix">
                                                         <div class="slider-block-left slider-extra">
-                                                            {{-- <img class="center-image" src="{{ asset($row->banner) }}"
-                                                                alt=""> --}}
                                                             <div class="city-entry bg-grey-2 city-entry-new"
                                                                 id="city-entry-{{ $row->id }}">
-                                                                {{-- <div
-                                                                    class="tour-block tour-block-s-9 hover-green radius-5 underline-block">
-                                                                    <div class="tour-layer delay-1"></div>
-                                                                    <img src="https://carnivalguide.co/travel/img/home/city_1.jpg"
-                                                                        class="res-img" alt="">
-                                                                    <div class="tour-caption">
-                                                                        <div class="vertical-align">
-                                                                            <h3 class="underline hover-it">
-                                                                                St.Vincent
-                                                                            </h3>
-                                                                            <div class="weth-icon">
-                                                                                <img src="https://carnivalguide.co/travel/img/weather_icon_small.png"
-                                                                                    alt="">
-                                                                                <b>+32<sup>o</sup>C</b>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> --}}
                                                                 <div class="city-desc">
                                                                     <div class="tab-wrapper">
                                                                         <div class="tab-nav-wrapper">
@@ -229,32 +222,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            {{-- <div class="slider-container new-slider"
-                                                                id="new-slider-{{ $key }}">
-                                                                <div class="slider">
-                                                                    <div class="slide">
-                                                                        <img src="https://carnivalguide.co/new/img/home/vincymas-2024.jpg"
-                                                                            alt="Image 1">
-                                                                    </div>
-                                                                    <div class="slide">
-                                                                        <video
-                                                                            src="https://carnivalguide.co/travel/video/soca.mp4"
-                                                                            controls loop autoplay muted></video>
-                                                                    </div>
-                                                                    <div class="slide">
-                                                                        <img src="http://127.0.0.1:8000/testimonial/cover/1721141270_testimonal_1.jpg"
-                                                                            alt="Image 2">
-                                                                    </div>
-                                                                    <div class="slide">
-                                                                        <video
-                                                                            src="https://carnivalguide.co/travel/video/soca.mp4"
-                                                                            controls loop autoplay muted></video>
-                                                                    </div>
-                                                                </div>
-                                                                <button class="prev">❮</button>
-                                                                <button class="next">❯</button>
-                                                            </div> --}}
-
                                                             <div class="slider new-slider"
                                                                 id="new-slider-{{ $row->id }}">
                                                                 <div class="slides">
