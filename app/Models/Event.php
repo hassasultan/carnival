@@ -80,11 +80,13 @@ class Event extends Model
 
     public function getPriceAttribute()
     {
-        $tickets = $this->tickets;
-        if ($tickets->isNotEmpty()) {
-            return $tickets->sortBy('id')->first()->price;
+        if ($this->relationLoaded('tickets')) {
+            $firstTicket = $this->tickets->sortBy('id')->first();
+        } else {
+            $firstTicket = $this->tickets()->orderBy('id')->first();
         }
-        return null;
+
+        return $firstTicket ? $firstTicket->price : null;
     }
 
     public function getMinTicketPriceAttribute()
