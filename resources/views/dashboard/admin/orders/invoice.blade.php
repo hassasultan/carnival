@@ -238,23 +238,23 @@
                             @endif
                         </td>
                         <td data-label="Qty" class="text-center">{{ $item->quantity }}</td>
-                        <td data-label="Price" class="text-right">{{ number_format($item->price, 2) }}</td>
+                        <td data-label="Price" class="text-right">{{ number_format((float) $item->price, 2) }}</td>
                         <td data-label="Subtotal" class="text-right">
-                            {{ number_format($item->price * $item->quantity, 2) }}</td>
+                            {{ number_format((float) $item->price * $item->quantity, 2) }}</td>
                     </tr>
                 @endforeach
                 <tr class="totals-row">
                     <td colspan="3" class="text-right">Subtotal</td>
                     <td class="text-right">
-                        {{ number_format($order->items->sum(fn($i) => $i->price * $i->quantity), 2) }}</td>
+                        {{ number_format((float) $order->items->sum(fn($i) => $i->price * $i->quantity), 2) }}</td>
                 </tr>
                 <tr>
                     <td colspan="3" class="text-right">Shipping</td>
-                    <td class="text-right">{{ number_format($order->shipping_price, 2) }}</td>
+                    <td class="text-right">{{ number_format((float) $order->shipping_price, 2) }}</td>
                 </tr>
                 <tr class="totals-row">
                     <td colspan="3" class="text-right">Grand Total</td>
-                    <td class="text-right">{{ number_format($order->total_amount, 2) }}</td>
+                    <td class="text-right">{{ number_format((float) $order->total_amount, 2) }}</td>
                 </tr>
             </tbody>
         </table>
