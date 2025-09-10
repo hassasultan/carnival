@@ -338,7 +338,7 @@
                     <h3 class="checkout-sep">5. Order Review</h3>
                     <div class="box-border">
                         <div class="table-responsive">
-                            <table class="table table-bordered  cart_summary">
+                            <table class="table table-bordered cart_summary">
                                 <thead>
                                     <tr>
                                         <th class="cart_product">Product</th>
@@ -356,9 +356,8 @@
                                         @foreach ($cartItem as $row)
                                             @php
                                                 $details = $row->item_details;
-                                                $lineTotal =
-                                                    (is_numeric($details['price']) ? $details['price'] : 0) *
-                                                    $row->quantity;
+                                                $unitPrice = is_numeric($details['price']) ? $details['price'] : 0;
+                                                $lineTotal = $unitPrice * $row->quantity;
                                                 $total += $lineTotal;
                                             @endphp
                                             <tr class="cart-row-{{ $row->id }}">
@@ -371,29 +370,27 @@
                                                     <p class="product-name">{{ $details['title'] }}</p>
                                                 </td>
                                                 <td class="cart_avail">
-                                                    {{-- if product, show stock; otherwise show "Available" --}}
                                                     <span class="label label-success">
                                                         {{ $row->product->stock_condition ?? 'Available' }}
                                                     </span>
                                                 </td>
-                                                <td class="price" data-val="{{ $details['price'] }}">
-                                                    <span>
-                                                        {{ is_numeric($details['price']) ? $details['price'] . ' $' : $details['price'] }}
-                                                    </span>
+                                                <td class="price" id="new-price-{{ $row->id }}"
+                                                    data-val="{{ $unitPrice }}">
+                                                    <span>{{ is_numeric($details['price']) ? number_format($unitPrice, 2) . ' $' : $details['price'] }}</span>
                                                 </td>
                                                 <td class="qty">
                                                     <div class="input-group input-group-sm">
-                                                        <button type="button" class="btn btn-default qty-btn"
-                                                            data-type="minus" data-id="{{ $row->id }}">-</button>
+                                                        <button type="button" class="btn btn-default"
+                                                            onclick="cartQuantity({{ $row->id }}, 'minus')">-</button>
                                                         <input readonly id="qty-{{ $row->id }}"
                                                             value="{{ $row->quantity }}" class="form-control text-center"
                                                             type="text" style="max-width:50px;">
-                                                        <button type="button" class="btn btn-default qty-btn"
-                                                            data-type="plus" data-id="{{ $row->id }}">+</button>
+                                                        <button type="button" class="btn btn-default"
+                                                            onclick="cartQuantity({{ $row->id }}, 'plus')">+</button>
                                                     </div>
                                                 </td>
-                                                <td class="price">
-                                                    <span>{{ $lineTotal }} $</span>
+                                                <td class="price" id="ind-total-{{ $row->id }}">
+                                                    <span>{{ number_format($lineTotal, 2) }} $</span>
                                                 </td>
                                                 <td class="action">
                                                     <a href="javascript:void(0);" class="delete-cart"
@@ -402,50 +399,23 @@
                                             </tr>
                                         @endforeach
                                     @else
-                                        <strong>Cart is Empty</strong>
+                                        <tr>
+                                            <td colspan="7" class="text-center"><strong>Cart is Empty</strong></td>
+                                        </tr>
                                     @endif
-
-                                    {{-- <tr>
-                                        <td class="cart_product">
-                                            <a href="#"><img
-                                                    src="{{ asset('images/media/detail/product-100x122.jpg') }}"
-                                                    alt="Product"></a>
-                                        </td>
-                                        <td class="cart_description">
-                                            <p class="product-name"><a href="#">Frederique Constant </a></p>
-                                            <small class="cart_ref">SKU : #123654999</small><br>
-                                            <small><a href="#">Color : Beige</a></small><br>
-                                            <small><a href="#">Size : S</a></small>
-                                        </td>
-                                        <td class="cart_avail"><span class="label label-success">In stock</span></td>
-                                        <td class="price"><span>61,19 €</span></td>
-                                        <td class="qty">
-    
-                                            <input minlength="1" maxlength="12" name="qty0" id="qty0"
-                                                value="1" class="form-control input-sm" type="text">
-                                            <span data-field="qty0" data-type="minus" class="btn-number"><i
-                                                    class="fa fa-caret-up"></i></span>
-                                            <span data-field="qty0" data-type="plus" class="btn-number"><i
-                                                    class="fa fa-caret-down"></i></span>
-                                        </td>
-                                        <td class="price">
-                                            <span>61,19 €</span>
-                                        </td>
-                                        <td class="action">
-                                            <a href="#">Delete item</a>
-                                        </td>
-                                    </tr> --}}
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <td colspan="2" rowspan="2"></td>
                                         <td colspan="3">Total products (tax incl.)</td>
-                                        <td colspan="2" class="net-total">{{ $total }} $</td>
+                                        <td colspan="2" class="net-total">{{ number_format($total, 2) }} $</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3"><strong>Total</strong></td>
                                         <td colspan="2" class="net-total" id="net-total"
-                                            data-val="{{ $total }}"><strong>{{ $total }} $</strong></td>
+                                            data-val="{{ $total }}">
+                                            <strong>{{ number_format($total, 2) }} $</strong>
+                                        </td>
                                     </tr>
                                 </tfoot>
                             </table>
