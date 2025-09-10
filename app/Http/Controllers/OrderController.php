@@ -257,8 +257,11 @@ class OrderController extends Controller
             'items.product.features',
             'items.product.variants',
             'items.product.product_images',
-            'shipping',
-            'billing',
+            'items.event.category',
+            'items.event.tickets',
+            'items.music.category',
+            'items.shipping',
+            'items.billing',
         ]);
 
         return view('dashboard.admin.orders.show', compact('order'));

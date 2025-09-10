@@ -52,81 +52,29 @@
                                 </tr>
                             </table>
 
-                            {{-- Billing Info --}}
+                            {{-- Billing --}}
                             @if ($order->billing)
                                 <h4 class="mt-4 mb-3">Billing Address</h4>
                                 <table class="table table-bordered">
-                                    <tr>
-                                        <th>Name</th>
-                                        <td>{{ $order->billing->name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Email</th>
-                                        <td>{{ $order->billing->email }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Phone</th>
-                                        <td>{{ $order->billing->phone }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Address</th>
-                                        <td>{{ $order->billing->address }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>City</th>
-                                        <td>{{ $order->billing->city }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>State</th>
-                                        <td>{{ $order->billing->state }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Country</th>
-                                        <td>{{ $order->billing->country }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Zip</th>
-                                        <td>{{ $order->billing->zip }}</td>
-                                    </tr>
+                                    @foreach (['name', 'email', 'phone', 'address', 'city', 'state', 'country', 'zip'] as $field)
+                                        <tr>
+                                            <th>{{ ucfirst($field) }}</th>
+                                            <td>{{ $order->billing->$field }}</td>
+                                        </tr>
+                                    @endforeach
                                 </table>
                             @endif
 
-                            {{-- Shipping Info --}}
+                            {{-- Shipping --}}
                             @if ($order->shipping)
                                 <h4 class="mt-4 mb-3">Shipping Address</h4>
                                 <table class="table table-bordered">
-                                    <tr>
-                                        <th>Name</th>
-                                        <td>{{ $order->shipping->name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Email</th>
-                                        <td>{{ $order->shipping->email }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Phone</th>
-                                        <td>{{ $order->shipping->phone }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Address</th>
-                                        <td>{{ $order->shipping->address }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>City</th>
-                                        <td>{{ $order->shipping->city }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>State</th>
-                                        <td>{{ $order->shipping->state }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Country</th>
-                                        <td>{{ $order->shipping->country }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Zip</th>
-                                        <td>{{ $order->shipping->zip }}</td>
-                                    </tr>
+                                    @foreach (['name', 'email', 'phone', 'address', 'city', 'state', 'country', 'zip'] as $field)
+                                        <tr>
+                                            <th>{{ ucfirst($field) }}</th>
+                                            <td>{{ $order->shipping->$field }}</td>
+                                        </tr>
+                                    @endforeach
                                 </table>
                             @endif
 
@@ -151,15 +99,14 @@
                                         @php $details = $item->item_details; @endphp
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            {{-- Item Title + Image --}}
                                             <td>
                                                 @if ($item->type === 'product')
                                                     🛒
-                                                @elseif ($item->type === 'event')
+                                                @elseif($item->type === 'event')
                                                     🎟
-                                                @elseif ($item->type === 'music')
+                                                @elseif($item->type === 'music')
                                                     🎵
-                                                @elseif ($item->type === 'costume')
+                                                @elseif($item->type === 'costume')
                                                     👗
                                                 @endif
                                                 {{ $details['title'] ?? 'Unknown Item' }}
@@ -169,37 +116,58 @@
                                                         alt="{{ $details['title'] }}">
                                                 @endif
                                             </td>
-
-                                            {{-- Category --}}
                                             <td>
-                                                {{ $item->product->category->name ?? ($item->event->category->name ?? ($item->music->category->name ?? ($item->costume->category->name ?? '-'))) }}
+                                                @if ($item->product)
+                                                    {{ $item->product->category->name ?? '-' }}
+                                                @elseif($item->event)
+                                                    {{ $item->event->category->name ?? '-' }}
+                                                @elseif($item->music)
+                                                    {{ $item->music->category->name ?? '-' }}
+                                                @elseif($item->costume)
+                                                    {{ $item->costume->category->name ?? '-' }}
+                                                @endif
                                             </td>
-
-                                            {{-- Subcategory --}}
                                             <td>
-                                                {{ $item->product->subcategory->name ?? ($item->costume->subcategory->name ?? '-') }}
+                                                @if ($item->product)
+                                                    {{ $item->product->subcategory->name ?? '-' }}
+                                                @elseif($item->costume)
+                                                    {{ $item->costume->subcategory->name ?? '-' }}
+                                                @else
+                                                    -
+                                                @endif
                                             </td>
-
-                                            {{-- Brand / Extra --}}
                                             <td>
-                                                {{ $item->product->brand->name ?? ($item->event->venue ?? ($item->music->label ?? ($item->type === 'costume' ? 'Costume' : '-'))) }}
+                                                @if ($item->product)
+                                                    {{ $item->product->brand->name ?? '-' }}
+                                                @elseif($item->event)
+                                                    {{ $item->event->venue ?? '-' }}
+                                                @elseif($item->music)
+                                                    {{ $item->music->label ?? '-' }}
+                                                @elseif($item->costume)
+                                                    Costume
+                                                @endif
                                             </td>
-
                                             <td>${{ number_format((float) $details['price'], 2) }}</td>
                                             <td>{{ $item->quantity }}</td>
                                             <td>${{ number_format((float) $details['price'] * $item->quantity, 2) }}</td>
-
-                                            {{-- Status --}}
                                             <td>
-                                                {{ $item->product->status ?? ($item->event->status ?? ($item->music->status ?? ($item->costume->status ?? '-'))) }}
+                                                @if ($item->product)
+                                                    {{ $item->product->status }}
+                                                @elseif($item->event)
+                                                    {{ $item->event->status }}
+                                                @elseif($item->music)
+                                                    {{ $item->music->status ?? '-' }}
+                                                @elseif($item->costume)
+                                                    {{ $item->costume->status ?? '-' }}
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
 
-                            {{-- Product Extra Info --}}
-                            <h4 class="mt-4 mb-3">Product Details (Relations)</h4>
+                            {{-- Extra details only for products --}}
+                            <h4 class="mt-4 mb-3">Product Extra Details</h4>
                             @foreach ($order->items as $item)
                                 @if ($item->type === 'product' && $item->product)
                                     <div class="border p-3 mb-3">
