@@ -53,7 +53,7 @@
                             </table>
 
                             {{-- Billing Info --}}
-                            @if (isset($order->billing))
+                            @if ($order->billing)
                                 <h4 class="mt-4 mb-3">Billing Address</h4>
                                 <table class="table table-bordered">
                                     <tr>
@@ -92,7 +92,7 @@
                             @endif
 
                             {{-- Shipping Info --}}
-                            @if (isset($order->shipping))
+                            @if ($order->shipping)
                                 <h4 class="mt-4 mb-3">Shipping Address</h4>
                                 <table class="table table-bordered">
                                     <tr>
@@ -172,55 +172,26 @@
 
                                             {{-- Category --}}
                                             <td>
-                                                @if ($item->product)
-                                                    {{ $item->product->category->name ?? '-' }}
-                                                @elseif ($item->event)
-                                                    {{ $item->event->category->name ?? '-' }}
-                                                @elseif ($item->costume)
-                                                    {{ $item->costume->category->name ?? '-' }}
-                                                @elseif ($item->music)
-                                                    {{ $item->music->category->name ?? '-' }}
-                                                @endif
+                                                {{ $item->product->category->name ?? ($item->event->category->name ?? ($item->music->category->name ?? ($item->costume->category->name ?? '-'))) }}
                                             </td>
 
                                             {{-- Subcategory --}}
                                             <td>
-                                                @if ($item->product)
-                                                    {{ $item->product->subcategory->name ?? '-' }}
-                                                @elseif ($item->costume)
-                                                    {{ $item->costume->subcategory->name ?? '-' }}
-                                                @else
-                                                    -
-                                                @endif
+                                                {{ $item->product->subcategory->name ?? ($item->costume->subcategory->name ?? '-') }}
                                             </td>
 
                                             {{-- Brand / Extra --}}
                                             <td>
-                                                @if ($item->product)
-                                                    {{ $item->product->brand->name ?? '-' }}
-                                                @elseif ($item->event)
-                                                    {{ $item->event->venue ?? '-' }}
-                                                @elseif ($item->costume)
-                                                    Costume
-                                                @elseif ($item->music)
-                                                    {{ $item->music->label ?? '-' }}
-                                                @endif
+                                                {{ $item->product->brand->name ?? ($item->event->venue ?? ($item->music->label ?? ($item->type === 'costume' ? 'Costume' : '-'))) }}
                                             </td>
 
                                             <td>${{ number_format((float) $details['price'], 2) }}</td>
                                             <td>{{ $item->quantity }}</td>
                                             <td>${{ number_format((float) $details['price'] * $item->quantity, 2) }}</td>
 
+                                            {{-- Status --}}
                                             <td>
-                                                @if ($item->product)
-                                                    {{ $item->product->status }}
-                                                @elseif ($item->event)
-                                                    {{ $item->event->status }}
-                                                @elseif ($item->costume)
-                                                    {{ $item->costume->status }}
-                                                @elseif ($item->music)
-                                                    {{ $item->music->status ?? '-' }}
-                                                @endif
+                                                {{ $item->product->status ?? ($item->event->status ?? ($item->music->status ?? ($item->costume->status ?? '-'))) }}
                                             </td>
                                         </tr>
                                     @endforeach
