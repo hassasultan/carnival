@@ -70,7 +70,7 @@ class Cart extends Model
                 ];
             case 'music':
                 return [
-                    'title' => $this->music?->song_title,
+                    'title' => $this->music?->real_name,
                     'price' => $this->music?->price ?? 0,
                     'image' => $this->music?->cover_image
                         ? asset('musicCovers/' . $this->music->cover_image)
@@ -84,7 +84,7 @@ class Cart extends Model
                 ];
             default: // product
                 return [
-                    'title' => $this->product?->name,
+                    'title' => $this->product?->title,
                     'price' => $this->product?->new_price ?? 0,
                     'image' => $this->product?->image
                         ? asset('productImage/' . $this->product->image)
