@@ -148,30 +148,29 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($order->items as $index => $item)
+                                        @php $details = $item->item_details; @endphp
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
+                                            {{-- Item Title + Image --}}
                                             <td>
-                                                @if ($item->type === 'product' && $item->product)
-                                                    {{ $item->product->title }}
-                                                    @if ($item->product->image)
-                                                        <br>
-                                                        <img src="{{ asset('productImage/' . $item->product->image) }}"
-                                                            width="60" alt="Product">
-                                                    @endif
-                                                @elseif ($item->type === 'event' && $item->event)
-                                                    🎟 {{ $item->event->name }}
-                                                    @if ($item->event->banner)
-                                                        <br>
-                                                        <img src="{{ asset('eventBanners/' . $item->event->banner) }}"
-                                                            width="60" alt="Event">
-                                                    @endif
-                                                @elseif ($item->type === 'costume' && $item->costume)
-                                                    👗 {{ $item->costume->title }}
-                                                @else
-                                                    Unknown Item
+                                                @if ($item->type === 'product')
+                                                    🛒
+                                                @elseif ($item->type === 'event')
+                                                    🎟
+                                                @elseif ($item->type === 'music')
+                                                    🎵
+                                                @elseif ($item->type === 'costume')
+                                                    👗
+                                                @endif
+                                                {{ $details['title'] ?? 'Unknown Item' }}
+                                                @if (!empty($details['image']))
+                                                    <br>
+                                                    <img src="{{ $details['image'] }}" width="60"
+                                                        alt="{{ $details['title'] }}">
                                                 @endif
                                             </td>
 
+                                            {{-- Category --}}
                                             <td>
                                                 @if ($item->product)
                                                     {{ $item->product->category->name ?? '-' }}
@@ -179,9 +178,12 @@
                                                     {{ $item->event->category->name ?? '-' }}
                                                 @elseif ($item->costume)
                                                     {{ $item->costume->category->name ?? '-' }}
+                                                @elseif ($item->music)
+                                                    {{ $item->music->category->name ?? '-' }}
                                                 @endif
                                             </td>
 
+                                            {{-- Subcategory --}}
                                             <td>
                                                 @if ($item->product)
                                                     {{ $item->product->subcategory->name ?? '-' }}
@@ -192,6 +194,7 @@
                                                 @endif
                                             </td>
 
+                                            {{-- Brand / Extra --}}
                                             <td>
                                                 @if ($item->product)
                                                     {{ $item->product->brand->name ?? '-' }}
@@ -199,12 +202,15 @@
                                                     {{ $item->event->venue ?? '-' }}
                                                 @elseif ($item->costume)
                                                     Costume
+                                                @elseif ($item->music)
+                                                    {{ $item->music->label ?? '-' }}
                                                 @endif
                                             </td>
 
-                                            <td>${{ number_format((float) $item->price, 2) }}</td>
+                                            <td>${{ number_format((float) $details['price'], 2) }}</td>
                                             <td>{{ $item->quantity }}</td>
-                                            <td>${{ number_format((float) $item->price * $item->quantity, 2) }}</td>
+                                            <td>${{ number_format((float) $details['price'] * $item->quantity, 2) }}</td>
+
                                             <td>
                                                 @if ($item->product)
                                                     {{ $item->product->status }}
@@ -212,6 +218,8 @@
                                                     {{ $item->event->status }}
                                                 @elseif ($item->costume)
                                                     {{ $item->costume->status }}
+                                                @elseif ($item->music)
+                                                    {{ $item->music->status ?? '-' }}
                                                 @endif
                                             </td>
                                         </tr>
@@ -222,31 +230,32 @@
                             {{-- Product Extra Info --}}
                             <h4 class="mt-4 mb-3">Product Details (Relations)</h4>
                             @foreach ($order->items as $item)
-                                <div class="border p-3 mb-3">
-                                    <h5>{{ $item->product->title }}</h5>
-                                    <p><strong>Description:</strong> {!! $item->product->description !!}</p>
-                                    <p><strong>Condition:</strong> {{ $item->product->condition }}</p>
-                                    <p><strong>Stock:</strong> {{ $item->product->stock_condition }}</p>
-                                    <p><strong>Discount:</strong> {{ $item->product->discount }}%</p>
-                                    <p><strong>Tags:</strong> {{ $item->product->tags }}</p>
-                                    <p><strong>Features:</strong>
-                                        @foreach ($item->product->features as $feature)
-                                            {{ $feature->name }}{{ !$loop->last ? ',' : '' }}
-                                        @endforeach
-                                    </p>
-                                    <p><strong>Variants:</strong>
-                                        @foreach ($item->product->variants as $variant)
-                                            {{ $variant->name }}
-                                            ({{ $variant->pivot->value }})
-                                            {{ !$loop->last ? ',' : '' }}
-                                        @endforeach
-                                    </p>
-                                    <p><strong>Images:</strong>
-                                        @foreach ($item->product->product_images as $img)
-                                            <img src="{{ asset('variant_images/' . $img->image) }}" width="50">
-                                        @endforeach
-                                    </p>
-                                </div>
+                                @if ($item->type === 'product' && $item->product)
+                                    <div class="border p-3 mb-3">
+                                        <h5>{{ $item->product->title }}</h5>
+                                        <p><strong>Description:</strong> {!! $item->product->description !!}</p>
+                                        <p><strong>Condition:</strong> {{ $item->product->condition }}</p>
+                                        <p><strong>Stock:</strong> {{ $item->product->stock_condition }}</p>
+                                        <p><strong>Discount:</strong> {{ $item->product->discount }}%</p>
+                                        <p><strong>Tags:</strong> {{ $item->product->tags }}</p>
+                                        <p><strong>Features:</strong>
+                                            @foreach ($item->product->features as $feature)
+                                                {{ $feature->name }}{{ !$loop->last ? ',' : '' }}
+                                            @endforeach
+                                        </p>
+                                        <p><strong>Variants:</strong>
+                                            @foreach ($item->product->variants as $variant)
+                                                {{ $variant->name }}
+                                                ({{ $variant->pivot->value }}){{ !$loop->last ? ',' : '' }}
+                                            @endforeach
+                                        </p>
+                                        <p><strong>Images:</strong>
+                                            @foreach ($item->product->product_images as $img)
+                                                <img src="{{ asset('variant_images/' . $img->image) }}" width="50">
+                                            @endforeach
+                                        </p>
+                                    </div>
+                                @endif
                             @endforeach
 
                         </div>
