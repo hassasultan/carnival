@@ -50,6 +50,54 @@
     </tbody>
 </table>
 
-<div class="mt-3">
-    {!! $orders->appends(request()->query())->links() !!}
-</div>
+<!-- Custom Pagination -->
+@if ($orders->hasPages())
+    <div class="d-flex justify-content-center mt-4">
+        <nav aria-label="Orders pagination">
+            <ul class="pagination">
+                <!-- Previous Page Link -->
+                @if ($orders->onFirstPage())
+                    <li class="page-item disabled">
+                        <span class="page-link">Previous</span>
+                    </li>
+                @else
+                    <li class="page-item">
+                        <a class="page-link pagination-link" href="#"
+                            data-page="{{ $orders->currentPage() - 1 }}">Previous</a>
+                    </li>
+                @endif
+
+                <!-- Pagination Elements -->
+                @foreach ($orders->getUrlRange(1, $orders->lastPage()) as $page => $url)
+                    @if ($page == $orders->currentPage())
+                        <li class="page-item active">
+                            <span class="page-link">{{ $page }}</span>
+                        </li>
+                    @else
+                        <li class="page-item">
+                            <a class="page-link pagination-link" href="#"
+                                data-page="{{ $page }}">{{ $page }}</a>
+                        </li>
+                    @endif
+                @endforeach
+
+                <!-- Next Page Link -->
+                @if ($orders->hasMorePages())
+                    <li class="page-item">
+                        <a class="page-link pagination-link" href="#"
+                            data-page="{{ $orders->currentPage() + 1 }}">Next</a>
+                    </li>
+                @else
+                    <li class="page-item disabled">
+                        <span class="page-link">Next</span>
+                    </li>
+                @endif
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Pagination Info -->
+    <div class="text-center text-muted mt-2">
+        Showing {{ $orders->firstItem() ?? 0 }} to {{ $orders->lastItem() ?? 0 }} of {{ $orders->total() }} orders
+    </div>
+@endif
