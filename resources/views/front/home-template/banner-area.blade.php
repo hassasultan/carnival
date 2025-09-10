@@ -1,12 +1,3 @@
-<style>
-    .slider .slide-new img,
-    .slider .slide-new video {
-        width: 100%;
-        height: 70vh;
-        /* fixed relative height */
-        object-fit: cover;
-    }
-</style>
 {{-- <div class="full-height">
     <div class="video-wrapper"> --}}
 <div class="full-height" style="height: auto !important;">
@@ -241,11 +232,13 @@
 
                                                                             @if (in_array($extension, ['mp4', 'webm', 'ogg']))
                                                                                 <video src="{{ $imageUrl }}"
-                                                                                    controls loop autoplay
-                                                                                    muted></video>
+                                                                                    controls loop autoplay muted
+                                                                                    style="width: 100% !important; height: 70vh !important; object-fit: cover !important;"></video>
                                                                             @else
                                                                                 <img src="{{ $imageUrl }}"
-                                                                                    alt="Carnival Image">
+                                                                                    alt="Carnival Image"
+                                                                                    style="height: "
+                                                                                    style="width: 100% !important; height: 70vh !important; object-fit: cover !important;">
                                                                             @endif
                                                                         </div>
                                                                     @endforeach
