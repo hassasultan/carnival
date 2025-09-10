@@ -259,7 +259,6 @@ class OrderController extends Controller
             'items.product.product_images',
             'items.event.category',
             'items.event.tickets',
-            'items.music.category',
             'items.shipping',
             'items.billing',
         ]);
