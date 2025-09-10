@@ -136,10 +136,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Product</th>
+                                        <th>Item</th>
                                         <th>Category</th>
                                         <th>Subcategory</th>
-                                        <th>Brand</th>
+                                        <th>Brand / Extra</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Total</th>
@@ -151,20 +151,69 @@
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             <td>
-                                                {{ $item->product->title }}
-                                                @if ($item->product->image)
-                                                    <br>
-                                                    <img src="{{ $item->product->image ? asset('productImage/' . $item->product->image) : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg' }}" width="60"
-                                                        alt="Product Image">
+                                                @if ($item->type === 'product' && $item->product)
+                                                    {{ $item->product->title }}
+                                                    @if ($item->product->image)
+                                                        <br>
+                                                        <img src="{{ asset('productImage/' . $item->product->image) }}"
+                                                            width="60" alt="Product">
+                                                    @endif
+                                                @elseif ($item->type === 'event' && $item->event)
+                                                    🎟 {{ $item->event->name }}
+                                                    @if ($item->event->banner)
+                                                        <br>
+                                                        <img src="{{ asset('eventBanners/' . $item->event->banner) }}"
+                                                            width="60" alt="Event">
+                                                    @endif
+                                                @elseif ($item->type === 'costume' && $item->costume)
+                                                    👗 {{ $item->costume->title }}
+                                                @else
+                                                    Unknown Item
                                                 @endif
                                             </td>
-                                            <td>{{ $item->product->category->name ?? '-' }}</td>
-                                            <td>{{ $item->product->subcategory->name ?? '-' }}</td>
-                                            <td>{{ $item->product->brand->name ?? '-' }}</td>
+
+                                            <td>
+                                                @if ($item->product)
+                                                    {{ $item->product->category->name ?? '-' }}
+                                                @elseif ($item->event)
+                                                    {{ $item->event->category->name ?? '-' }}
+                                                @elseif ($item->costume)
+                                                    {{ $item->costume->category->name ?? '-' }}
+                                                @endif
+                                            </td>
+
+                                            <td>
+                                                @if ($item->product)
+                                                    {{ $item->product->subcategory->name ?? '-' }}
+                                                @elseif ($item->costume)
+                                                    {{ $item->costume->subcategory->name ?? '-' }}
+                                                @else
+                                                    -
+                                                @endif
+                                            </td>
+
+                                            <td>
+                                                @if ($item->product)
+                                                    {{ $item->product->brand->name ?? '-' }}
+                                                @elseif ($item->event)
+                                                    {{ $item->event->venue ?? '-' }}
+                                                @elseif ($item->costume)
+                                                    Costume
+                                                @endif
+                                            </td>
+
                                             <td>${{ number_format((float) $item->price, 2) }}</td>
                                             <td>{{ $item->quantity }}</td>
                                             <td>${{ number_format((float) $item->price * $item->quantity, 2) }}</td>
-                                            <td>{{ $item->product->status }}</td>
+                                            <td>
+                                                @if ($item->product)
+                                                    {{ $item->product->status }}
+                                                @elseif ($item->event)
+                                                    {{ $item->event->status }}
+                                                @elseif ($item->costume)
+                                                    {{ $item->costume->status }}
+                                                @endif
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -188,7 +237,8 @@
                                     <p><strong>Variants:</strong>
                                         @foreach ($item->product->variants as $variant)
                                             {{ $variant->name }}
-                                            ({{ $variant->pivot->value }}){{ !$loop->last ? ',' : '' }}
+                                            ({{ $variant->pivot->value }})
+                                            {{ !$loop->last ? ',' : '' }}
                                         @endforeach
                                     </p>
                                     <p><strong>Images:</strong>
