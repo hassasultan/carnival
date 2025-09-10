@@ -200,6 +200,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::resource('musics', MusicController::class);
     Route::resource('services', ServiceController::class);
     Route::resource('orders', OrderController::class);
+    Route::get('orders/{id}/invoice', [OrderController::class, 'invoice'])->name('orders.invoice');
     Route::resource('carnivals', CarnivalController::class);
     Route::resource('regions', RegionController::class);
     Route::resource('our_services', OurServiceController::class);
