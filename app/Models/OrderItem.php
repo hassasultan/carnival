@@ -41,4 +41,48 @@ class OrderItem extends Model
     {
         return $this->belongsTo(Costume::class);
     }
+
+    public function getItemDetailsAttribute()
+    {
+        switch ($this->type) {
+            case 'event':
+                $event = $this->event;
+
+                if ($event && !$event->relationLoaded('tickets')) {
+                    $event->load('tickets');
+                }
+
+                return [
+                    'title' => $event?->name,
+                    'price' => $event && $event->tickets->isNotEmpty()
+                        ? $event->tickets->sortBy('id')->first()->price
+                        : 'FREE',
+                    'image' => $event?->banner
+                        ? asset('eventBanner/' . $event->banner)
+                        : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg',
+                ];
+            case 'music':
+                return [
+                    'title' => $this->music?->real_name,
+                    'price' => $this->music?->price ?? 0,
+                    'image' => $this->music?->cover_image
+                        ? asset('musicCovers/' . $this->music->cover_image)
+                        : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg',
+                ];
+            case 'costume':
+                return [
+                    'title' => $this->costume?->title,
+                    'price' => $this->costume?->new_price ?? 0,
+                    'image' => $this->costume?->image ?? 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg',
+                ];
+            default: // product
+                return [
+                    'title' => $this->product?->title,
+                    'price' => $this->product?->new_price ?? 0,
+                    'image' => $this->product?->image
+                        ? asset('productImage/' . $this->product->image)
+                        : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg',
+                ];
+        }
+    }
 }

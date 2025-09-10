@@ -21,7 +21,7 @@ class OrderController extends Controller
         /** @var \App\Models\User|null $user */
         $user = Auth::user();
 
-        $query = Order::with(['user', 'items.product'])->latest();
+        $query = Order::with(['user', 'items.product', 'items.event.tickets', 'items.music', 'items.costume'])->latest();
 
         // If not admin → restrict orders to vendor’s products
         if (!$user->isAdmin()) {
@@ -56,6 +56,17 @@ class OrderController extends Controller
 
         if ($request->filled('date_to')) {
             $query->whereDate('created_at', '<=', $request->date_to);
+        }
+
+        if (!$user->isAdmin()) {
+            $query->whereHas('items', function ($q) use ($user) {
+                $q->where(function ($sub) use ($user) {
+                    $sub->whereHas('product', fn($q) => $q->where('user_id', $user->id))
+                        ->orWhereHas('event', fn($q) => $q->where('user_id', $user->id))
+                        ->orWhereHas('music', fn($q) => $q->where('user_id', $user->id))
+                        ->orWhereHas('costume', fn($q) => $q->where('user_id', $user->id));
+                });
+            });
         }
 
         // --- Pagination ---

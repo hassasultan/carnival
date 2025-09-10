@@ -25,9 +25,9 @@
                     <ul style="padding-left: 15px; margin:0;">
                         @foreach ($order->items as $item)
                             <li>
-                                {{ $item->product?->title ?? 'Deleted Product' }}
+                                {{ $item->item_details['title'] ?? 'Deleted Item' }}
                                 (x{{ $item->quantity }})
-                                - ${{ number_format((float) $item->price, 2) }}
+                                - ${{ number_format((float) $item->item_details['price'], 2) }}
                             </li>
                         @endforeach
                     </ul>
