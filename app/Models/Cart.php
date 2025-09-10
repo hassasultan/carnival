@@ -55,7 +55,7 @@ class Cart extends Model
             case 'event':
                 return [
                     'title' => $this->event?->name,
-                    'price' => $this->event?->price ?? 'FREE',
+                    'price' => $this->event?->tickets[0]->price ?? 'FREE',
                     'image' => $this->event?->banner 
                         ? asset('eventImages/' . $this->event->banner) 
                         : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg',
