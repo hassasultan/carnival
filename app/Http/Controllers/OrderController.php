@@ -270,9 +270,8 @@ class OrderController extends Controller
             'billing'
         ])->findOrFail($id);
 
-        $pdf = Pdf::setOptions(['isRemoteEnabled' => true])
+$pdf = Pdf::setOptions(['isRemoteEnabled' => true])
           ->loadView('dashboard.admin.orders.invoice', compact('order'));
-
 
         return $pdf->download("invoice-{$order->order_num}.pdf");
     }
