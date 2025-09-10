@@ -53,11 +53,19 @@ class Cart extends Model
     {
         switch ($this->type) {
             case 'event':
+                $event = $this->event;
+
+                if ($event && !$event->relationLoaded('tickets')) {
+                    $event->load('tickets');
+                }
+
                 return [
-                    'title' => $this->event?->name,
-                    'price' => $this->event?->tickets[0]->price ?? 'FREE',
-                    'image' => $this->event?->banner 
-                        ? asset('eventImages/' . $this->event->banner) 
+                    'title' => $event?->name,
+                    'price' => $event && $event->tickets->isNotEmpty()
+                        ? $event->tickets->sortBy('id')->first()->price
+                        : 'FREE',
+                    'image' => $event?->banner
+                        ? asset('eventImages/' . $event->banner)
                         : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg',
                 ];
             case 'music':
@@ -78,8 +86,8 @@ class Cart extends Model
                 return [
                     'title' => $this->product?->name,
                     'price' => $this->product?->new_price ?? 0,
-                    'image' => $this->product?->image 
-                        ? asset('productImage/' . $this->product->image) 
+                    'image' => $this->product?->image
+                        ? asset('productImage/' . $this->product->image)
                         : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg',
                 ];
         }
