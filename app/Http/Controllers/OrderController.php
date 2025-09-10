@@ -151,7 +151,7 @@ class OrderController extends Controller
                 'product_id' => $cartItem->product_id,
                 'type' => $cartItem->type,
                 'quantity' => $cartItem->quantity,
-                'price' => $price,
+                'price' => $price ?? 0,
             ]);
         }
 
