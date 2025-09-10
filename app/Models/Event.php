@@ -78,17 +78,6 @@ class Event extends Model
         return $this->hasMany(EventTicket::class);
     }
 
-    public function getPriceAttribute()
-    {
-        if ($this->relationLoaded('tickets')) {
-            $firstTicket = $this->tickets->sortBy('id')->first();
-        } else {
-            $firstTicket = $this->tickets()->orderBy('id')->first();
-        }
-
-        return $firstTicket ? $firstTicket->price : null;
-    }
-
     public function getMinTicketPriceAttribute()
     {
         return $this->tickets()->min('price');
