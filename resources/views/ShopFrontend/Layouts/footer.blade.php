@@ -432,29 +432,10 @@
             let qtyInput = $('#qty-' + id);
             let current = parseInt(qtyInput.val());
 
-            if (type === 'plus') {
-                current++;
-            } else if (type === 'minus' && current > 1) {
-                current--;
-            }
+            if (type === 'plus') current++;
+            else if (type === 'minus' && current > 1) current--;
 
-            qtyInput.val(current);
-
-            // update line total
-            let price = parseFloat($('.cart-row-' + id).find('.price[data-val]').data('val'));
-            let lineTotal = (price * current).toFixed(2);
-            $('.cart-row-' + id).find('td.price span').last().text(lineTotal + ' $');
-
-            // update net total
-            let netTotal = 0;
-            $('td.price span').each(function() {
-                let val = parseFloat($(this).text());
-                if (!isNaN(val)) netTotal += val;
-            });
-            $('#net-total strong').text(netTotal.toFixed(2) + ' $');
-            $('.net-total').data('val', netTotal.toFixed(2));
-
-            // optional: update quantity in DB via AJAX
+            // send AJAX to update DB
             $.ajax({
                 type: 'POST',
                 url: '{{ route('update.cart') }}',
@@ -464,7 +445,31 @@
                     quantity: current
                 },
                 success: function(response) {
-                    console.log('Cart updated', response);
+                    if (response.success) {
+                        // update input value
+                        qtyInput.val(current);
+
+                        // update line total for this row
+                        let cartItem = response.cart.find(item => item.id == id);
+                        if (cartItem) {
+                            let price = parseFloat(cartItem.details.price) || 0;
+                            let lineTotal = (price * cartItem.quantity).toFixed(2);
+                            $('.cart-row-' + id).find('td.price span').last().text(
+                                lineTotal + ' $');
+                        }
+
+                        // recalc net total
+                        let netTotal = 0;
+                        response.cart.forEach(item => {
+                            let price = parseFloat(item.details.price) || 0;
+                            netTotal += price * item.quantity;
+                        });
+                        $('#net-total strong').text(netTotal.toFixed(2) + ' $');
+                        $('.net-total').data('val', netTotal.toFixed(2));
+                    }
+                },
+                error: function(err) {
+                    console.error('Cart update failed', err);
                 }
             });
         });
