@@ -94,9 +94,56 @@ class AddToCartController extends Controller
         $cartItem = Cart::where('user_id', $user_id)->get();
         return view('ShopFrontend.Checkout', compact('cartItem'));
     }
-    public function delete_cart_item($id)
+
+    public function update(Request $request)
     {
-        $cartItem = Cart::find($id)->delete();
-        return true;
+        $request->validate([
+            'id'       => 'required|integer|exists:carts,id',
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        $cartItem = Cart::findOrFail($request->id);
+        $cartItem->quantity = $request->quantity;
+        $cartItem->save();
+
+        // reload cart with relations so frontend stays updated
+        $cartItems = Cart::with(['product', 'event', 'event.tickets', 'music', 'costume'])
+            ->where('user_id', $cartItem->user_id)
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'id'       => $item->id,
+                    'quantity' => $item->quantity,
+                    'details'  => $item->item_details,
+                ];
+            });
+
+        return response()->json([
+            'success' => true,
+            'cart'    => $cartItems,
+        ]);
+    }
+
+    public function remove($id)
+    {
+        $cartItem = Cart::findOrFail($id);
+        $cartItem->delete();
+
+        // reload updated cart for frontend
+        $cartItems = Cart::with(['product', 'event', 'event.tickets', 'music', 'costume'])
+            ->where('user_id', auth()->id())
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'id'       => $item->id,
+                    'quantity' => $item->quantity,
+                    'details'  => $item->item_details,
+                ];
+            });
+
+        return response()->json([
+            'success' => true,
+            'cart'    => $cartItems,
+        ]);
     }
 }

@@ -129,6 +129,7 @@ Route::post('/contact-submit', [ContactController::class, 'submitForm'])->name('
 Route::get('/add_to_cart', [AddToCartController::class, 'addCart'])->name('add.to.cart');
 Route::get('/check-out', [AddToCartController::class, 'checkout'])->name('check.out');
 Route::get('/remove/to/cart/{id}', [AddToCartController::class, 'remove'])->name('remove.to.cart');
+Route::post('/cart/update', [AddToCartController::class, 'update'])->name('update.cart');
 
 // ✅ Utility routes
 Route::get('/get-subcategories/{categoryId}', [ProductController::class, 'getsubCategories'])->name('get.subcategories');

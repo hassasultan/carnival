@@ -399,22 +399,78 @@
 @yield('script')
 <script>
     $(document).ready(function() {
-        $('.delete-cart').click(function() {
-            var id = $(this).attr('data-id');
+        $(document).on('click', '.delete-cart', function() {
+            let id = $(this).data('id');
+
             $.ajax({
                 type: 'GET',
-                url: '{{ route('remove.to.cart', '') }}/' + id,
+                url: '{{ url('/remove/to/cart') }}/' + id,
                 success: function(response) {
-                    $('.cart-row-' + id).remove();
+                    if (response.success) {
+                        $('.cart-row-' + id).remove();
+
+                        // recalc total
+                        let netTotal = 0;
+                        $('td.price span').each(function() {
+                            let val = parseFloat($(this).text());
+                            if (!isNaN(val)) netTotal += val;
+                        });
+                        $('#net-total strong').text(netTotal.toFixed(2) + ' $');
+                        $('.net-total').data('val', netTotal.toFixed(2));
+
+                        // optionally refresh mini-cart
+                        console.log('Updated cart:', response.cart);
+                    }
+                }
+            });
+        });
+
+        // Quantity +/- handler
+        $(document).on('click', '.qty-btn', function() {
+            let id = $(this).data('id');
+            let type = $(this).data('type');
+            let qtyInput = $('#qty-' + id);
+            let current = parseInt(qtyInput.val());
+
+            if (type === 'plus') {
+                current++;
+            } else if (type === 'minus' && current > 1) {
+                current--;
+            }
+
+            qtyInput.val(current);
+
+            // update line total
+            let price = parseFloat($('.cart-row-' + id).find('.price[data-val]').data('val'));
+            let lineTotal = (price * current).toFixed(2);
+            $('.cart-row-' + id).find('td.price span').last().text(lineTotal + ' $');
+
+            // update net total
+            let netTotal = 0;
+            $('td.price span').each(function() {
+                let val = parseFloat($(this).text());
+                if (!isNaN(val)) netTotal += val;
+            });
+            $('#net-total strong').text(netTotal.toFixed(2) + ' $');
+            $('.net-total').data('val', netTotal.toFixed(2));
+
+            // optional: update quantity in DB via AJAX
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('update.cart') }}',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: id,
+                    quantity: current
                 },
-                error: function(xhr, status, error) {
-                    alert('Error delete product from cart:', error);
-                    console.error('Error adding product to cart:', error);
+                success: function(response) {
+                    console.log('Cart updated', response);
                 }
             });
         });
     });
 </script>
+
 </body>
 
 </html>

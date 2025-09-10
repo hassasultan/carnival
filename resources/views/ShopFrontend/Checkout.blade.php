@@ -382,8 +382,15 @@
                                                     </span>
                                                 </td>
                                                 <td class="qty">
-                                                    <input readonly name="qty1" value="{{ $row->quantity }}"
-                                                        class="form-control input-sm" type="text">
+                                                    <div class="input-group input-group-sm">
+                                                        <button type="button" class="btn btn-default qty-btn"
+                                                            data-type="minus" data-id="{{ $row->id }}">-</button>
+                                                        <input readonly id="qty-{{ $row->id }}"
+                                                            value="{{ $row->quantity }}" class="form-control text-center"
+                                                            type="text" style="max-width:50px;">
+                                                        <button type="button" class="btn btn-default qty-btn"
+                                                            data-type="plus" data-id="{{ $row->id }}">+</button>
+                                                    </div>
                                                 </td>
                                                 <td class="price">
                                                     <span>{{ $lineTotal }} $</span>
