@@ -41,7 +41,7 @@ class AddToCartController extends Controller
         }
 
         // Get all items again for updated cart
-        $cartItems = Cart::with(['product', 'event', 'music', 'costume'])
+        $cartItems = Cart::with(['product', 'event', 'event.tickets', 'music', 'costume'])
             ->where('user_id', $user_id)
             ->get()
             ->map(function ($item) {
