@@ -247,7 +247,6 @@ class OrderController extends Controller
             'items.product.variants',
             'items.product.product_images',
             'shipping',
-            'details',
             'billing',
         ]);
 
