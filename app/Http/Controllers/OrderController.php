@@ -255,9 +255,13 @@ class OrderController extends Controller
 
     public function generateOrderNumber()
     {
-        $timestamp = now()->timestamp;
-        $randomString = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 6);
-        $orderNumber = 'ORD-' . $timestamp . '-' . $randomString;
+        $today = now()->format('mdY');
+
+        do {
+            $countToday = Order::whereDate('created_at', now()->toDateString())->count() + 1;
+            $orderNumber = 'ORD-' . $today . '-' . str_pad($countToday, 4, '0', STR_PAD_LEFT);
+        } while (Order::where('order_num', $orderNumber)->exists());
+
         return $orderNumber;
     }
 
