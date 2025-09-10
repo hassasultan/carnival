@@ -4,10 +4,6 @@
     <div class="container">
         <h2>User Account Details</h2>
 
-        @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
-
         <form action="{{ route('account.details.save') }}" method="POST">
             @csrf
 

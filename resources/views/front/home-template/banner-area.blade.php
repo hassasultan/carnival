@@ -144,32 +144,19 @@
                                     /* Reduced from 100px */
                                 }
 
-                                .slider-block {
+                                .slider-block-left {
+                                    height: 70vh;
+                                    /* or clamp(400px, 70vh, 900px) for responsive scaling */
                                     display: flex;
-                                    align-items: stretch;
-                                    /* both columns same height */
+                                    align-items: center;
                                 }
 
-                                .slider-block-left,
-                                .slider-block-right {
-                                    flex: 1;
-                                }
-
-                                .slider {
-                                    width: 100%;
-                                    /* make it fill the column */
-                                    height: 100%;
-                                    /* match right column height */
-                                }
-
-                                .slide-new img,
-                                .slide-new video {
+                                .slider-block-left img,
+                                .slider-block-left video {
                                     width: 100% !important;
                                     height: 100% !important;
                                     object-fit: cover !important;
-                                    /* keeps aspect ratio but fills space */
                                 }
-
 
                                 @media screen and (max-width: 480px) {
                                     .slider-extra {
