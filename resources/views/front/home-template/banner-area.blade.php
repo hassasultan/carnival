@@ -144,6 +144,33 @@
                                     /* Reduced from 100px */
                                 }
 
+                                .slider-block {
+                                    display: flex;
+                                    align-items: stretch;
+                                    /* both columns same height */
+                                }
+
+                                .slider-block-left,
+                                .slider-block-right {
+                                    flex: 1;
+                                }
+
+                                .slider {
+                                    width: 100%;
+                                    /* make it fill the column */
+                                    height: 100%;
+                                    /* match right column height */
+                                }
+
+                                .slide-new img,
+                                .slide-new video {
+                                    width: 100% !important;
+                                    height: 100% !important;
+                                    object-fit: cover !important;
+                                    /* keeps aspect ratio but fills space */
+                                }
+
+
                                 @media screen and (max-width: 480px) {
                                     .slider-extra {
                                         min-height: auto;
@@ -232,36 +259,14 @@
 
                                                                             @if (in_array($extension, ['mp4', 'webm', 'ogg']))
                                                                                 <video src="{{ $imageUrl }}"
-                                                                                    controls loop autoplay muted
-                                                                                    style="width: 100% !important; height: 70vh !important; object-fit: cover !important;"></video>
-                                                                            @else
-                                                                                <img src="{{ $imageUrl }}"
-                                                                                    alt="Carnival Image"
-                                                                                    style="width: 100% !important; height: 70vh !important; object-fit: cover !important;">
+                                                                                    controls loop autoplay muted>
+                                                                                @else
+                                                                                    <img src="{{ $imageUrl }}"
+                                                                                        alt="Carnival Image">
                                                                             @endif
                                                                         </div>
                                                                     @endforeach
                                                                 </div>
-                                                                {{-- <div class="slides">
-                                                                            <div class="slide-new active">
-                                                                                <img src="https://carnivalguide.co/new/img/home/vincymas-2024.jpg"
-                                                                                    alt="Image 1">
-                                                                            </div>
-                                                                            <div class="slide-new">
-                                                                                <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg"
-                                                                                    alt="Image 2">
-                                                                            </div>
-                                                                            <div class="slide-new">
-                                                                                <video
-                                                                                    src="https://carnivalguide.co/travel/video/soca.mp4"
-                                                                                    controls loop autoplay
-                                                                                    muted></video>
-                                                                            </div>
-                                                                            <div class="slide-new">
-                                                                                <img src="https://carnivalguide.co/new/img/home/testimonal_3.jpg"
-                                                                                    alt="Image 4">
-                                                                            </div>
-                                                                        </div> --}}
 
                                                                 <!-- Navigation buttons -->
                                                                 <button class="prev"
@@ -321,40 +326,6 @@
                                                                     {{ $endMonth }}{{ $endDay }}<sup>{{ $endSuffix }}</sup>
                                                                 </strong>
                                                             </div>
-                                                            {{-- <div class="sb-price color-dark-2">
-                                                                        @php
-                                                                            $date = \Carbon\Carbon::parse(
-                                                                                $row->start_date,
-                                                                            );
-                                                                            $day = $date->day;
-                                                                            $month = $date->format('M');
-
-                                                                            // Add suffix to day
-                                                                            $suffix = match ($day % 10) {
-                                                                                1 => $day == 11 ? 'th' : 'st',
-                                                                                2 => $day == 12 ? 'th' : 'nd',
-                                                                                3 => $day == 13 ? 'th' : 'rd',
-                                                                                default => 'th',
-                                                                            };
-
-                                                                            $enddate = \Carbon\Carbon::parse(
-                                                                                $row->end_date,
-                                                                            );
-                                                                            $endday = $enddate->day;
-                                                                            $endmonth = $enddate->format('M');
-
-                                                                            // Add suffix to day
-                                                                            $endsuffix = match ($endday % 10) {
-                                                                                1 => $endday == 11 ? 'th' : 'st',
-                                                                                2 => $endday == 12 ? 'th' : 'nd',
-                                                                                3 => $endday == 13 ? 'th' : 'rd',
-                                                                                default => 'th',
-                                                                            };
-                                                                        @endphp
-                                                                        <strong>
-                                                                            {{ $month }}{{ $day }}<sup>{{ $suffix }}</sup> - {{ $endmonth }}{{ $endday }}<sup>{{ $endsuffix }}</sup>
-                                                                        </strong>
-                                                                    </div> --}}
                                                             <div class="sb-text">{!! Str::limit($row->description, 250, ' rest ...') !!}
                                                             </div>
                                                             <a href="{{ route('events.view.more', $row->id) }}"
