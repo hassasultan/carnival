@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Order;
 use App\Models\OrderShipping;
 use App\Models\OrdersBilling;
@@ -15,20 +16,54 @@ use App\Http\Controllers\PaymentController;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         /** @var \App\Models\User|null $user */
         $user = Auth::user();
 
-        if ($user->isAdmin()) {
-            $orders = Order::with(['user', 'items.product'])->latest()->paginate(10);
-        } else {
-            $orders = Order::whereHas('items.product', function ($q) use ($user) {
+        $query = Order::with(['user', 'items.product'])->latest();
+
+        // If not admin → restrict orders to vendor’s products
+        if (!$user->isAdmin()) {
+            $query->whereHas('items.product', function ($q) use ($user) {
                 $q->where('user_id', $user->id);
-            })
-                ->with(['user', 'items.product'])
-                ->latest()
-                ->paginate(10);
+            });
+        }
+
+        // --- Filters ---
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('order_num', 'like', "%{$search}%")
+                    ->orWhereHas('user', function ($sub) use ($search) {
+                        $sub->where('name', 'like', "%{$search}%")
+                            ->orWhere('email', 'like', "%{$search}%");
+                    });
+            });
+        }
+
+        if ($request->filled('payment')) {
+            $query->where('payment_method', $request->payment);
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->filled('date_from')) {
+            $query->whereDate('created_at', '>=', $request->date_from);
+        }
+
+        if ($request->filled('date_to')) {
+            $query->whereDate('created_at', '<=', $request->date_to);
+        }
+
+        // --- Pagination ---
+        $orders = $query->paginate(10);
+
+        // --- AJAX check ---
+        if ($request->ajax()) {
+            return view('dashboard.admin.orders.partials.order_table', compact('orders'))->render();
         }
 
         return view('dashboard.admin.orders.index', compact('orders'));
@@ -225,5 +260,19 @@ class OrderController extends Controller
         $randomString = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 6);
         $orderNumber = 'ORD-' . $timestamp . '-' . $randomString;
         return $orderNumber;
+    }
+
+    public function invoice($id)
+    {
+        $order = Order::with([
+            'user',
+            'items.product',
+            'shipping',
+            'billing'
+        ])->findOrFail($id);
+
+        $pdf = Pdf::loadView('dashboard.admin.orders.invoice', compact('order'));
+
+        return $pdf->download("invoice-{$order->order_num}.pdf");
     }
 }
