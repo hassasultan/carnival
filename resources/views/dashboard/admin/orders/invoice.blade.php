@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>Invoice #{{ $order->order_num }}</title>
     <link rel="icon" type="image/png" href="{{ asset('shopAssets/images/logo.png') }}">
+    <!-- Favicon -->
     <style>
         body {
             font-family: DejaVu Sans, sans-serif;
