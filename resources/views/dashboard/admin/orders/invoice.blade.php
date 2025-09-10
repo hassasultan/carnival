@@ -5,46 +5,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Invoice #{{ $order->order_num }}</title>
+    <link rel="icon" type="image/png" href="{{ asset('shopAssets/images/logo.png') }}">
     <style>
         body {
             font-family: DejaVu Sans, sans-serif;
-            font-size: 13px;
+            font-size: 14px;
             color: #333;
-        }
-
-        .invoice-box {
-            width: 100%;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #eee;
-        }
-
-        h2,
-        h4 {
             margin: 0;
-            padding: 5px 0;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+
+        .invoice-wrapper {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .invoice-header img {
+            max-height: 60px;
+        }
+
+        .invoice-header h2 {
+            margin: 5px 0 0;
+        }
+
+        h4 {
+            margin: 10px 0 5px;
+            color: #444;
         }
 
         table {
             width: 100%;
-            line-height: inherit;
-            text-align: left;
             border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table thead {
+            background: #f5f5f5;
+        }
+
+        table th,
+        table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #e5e5e5;
+        }
+
+        table th {
+            font-weight: bold;
+            font-size: 13px;
         }
 
         table td {
-            padding: 8px;
-            vertical-align: top;
-        }
-
-        table tr.heading td {
-            background: #f5f5f5;
-            border-bottom: 1px solid #ddd;
-            font-weight: bold;
-        }
-
-        table tr.item td {
-            border-bottom: 1px solid #f5f5f5;
+            font-size: 13px;
         }
 
         .text-right {
@@ -55,125 +79,188 @@
             text-align: center;
         }
 
-        .total-row td {
+        .totals-row td {
             font-weight: bold;
             border-top: 2px solid #333;
         }
 
-        .mb-20 {
-            margin-bottom: 20px;
+        .download-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 13px;
         }
 
-        .logo {
-            max-height: 60px;
+        .download-btn:hover {
+            background: #0056b3;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 30px;
+            color: #777;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .invoice-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tr {
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 10px;
+            }
+
+            td {
+                border: none;
+                padding: 5px 0;
+                text-align: right;
+                position: relative;
+            }
+
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                text-align: left;
+                font-weight: bold;
+                color: #555;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div style="text-align: right; margin-bottom: 20px;">
-        <a href="{{ route('orders.invoice.pdf', $order->id) }}" class="btn btn-primary" target="_blank">
-            Download PDF
-        </a>
-    </div>
+    <div class="invoice-wrapper">
+        <div style="text-align: right; margin-bottom: 20px;">
+            <a href="{{ route('orders.invoice.pdf', $order->id) }}" class="download-btn" target="_blank">
+                Download PDF
+            </a>
+        </div>
 
-    <div class="invoice-box">
-        {{-- Header --}}
-        <table>
-            <tr>
-                <td>
-                    <img src="{{ asset('shopAssets/images/logo.png') }}" alt="Logo" class="logo"><br>
-                    <h2>Invoice</h2>
+        <div class="invoice-header">
+            <div>
+                <img src="{{ asset('shopAssets/images/logo.png') }}" alt="Logo">
+                <h2>Invoice</h2>
+                <p>
                     <strong>Order #:</strong> {{ $order->order_num }}<br>
                     <strong>Date:</strong> {{ $order->created_at->format('d M, Y') }}<br>
-                    <strong>Payment Method:</strong> {{ ucfirst($order->payment_method) }}
-                </td>
-                <td class="text-right">
-                    <h4>Customer</h4>
+                    <strong>Payment:</strong> {{ ucfirst($order->payment_method) }}
+                </p>
+            </div>
+            <div>
+                <h4>Customer</h4>
+                <p>
                     {{ $order->user->name ?? '' }}<br>
                     {{ $order->user->email ?? '' }}
-                </td>
-            </tr>
-        </table>
+                </p>
+            </div>
+        </div>
 
-        {{-- Billing & Shipping --}}
-        <table class="mb-20">
-            <tr>
-                <td>
-                    <h4>Billing Address</h4>
-                    @if ($order->billing)
-                        {{ $order->billing->first_name }} {{ $order->billing->last_name }}<br>
-                        {{ $order->billing->company_name }}<br>
-                        {{ $order->billing->address }}<br>
-                        {{ $order->billing->city }}, {{ $order->billing->state }}
-                        {{ $order->billing->postal_code }}<br>
-                        {{ $order->billing->country }}<br>
-                        Phone: {{ $order->billing->telephone }}
-                    @endif
-                </td>
-                <td>
-                    <h4>Shipping Address</h4>
-                    @if ($order->shipping)
-                        {{ $order->shipping->first_name_1 }} {{ $order->shipping->last_name_1 }}<br>
-                        {{ $order->shipping->company_name_1 }}<br>
-                        {{ $order->shipping->address_1 }}<br>
-                        {{ $order->shipping->city_1 }}, {{ $order->shipping->state1 }}
-                        {{ $order->shipping->postal_code_1 }}<br>
-                        {{ $order->shipping->country1 }}<br>
-                        Phone: {{ $order->shipping->telephone_1 }}
-                    @endif
-                </td>
-            </tr>
-        </table>
-
-        {{-- Items --}}
         <table>
-            <tr class="heading">
-                <td>Item</td>
-                <td class="text-center">Qty</td>
-                <td class="text-right">Price</td>
-                <td class="text-right">Subtotal</td>
-            </tr>
-
-            @foreach ($order->items as $item)
-                <tr class="item">
+            <thead>
+                <tr>
+                    <th>Billing Address</th>
+                    <th>Shipping Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
                     <td>
-                        @if ($item->type === 'product')
-                            {{ $item->product->title ?? 'Product Removed' }}
-                        @elseif($item->type === 'event')
-                            {{ \App\Models\Event::find($item->product_id)?->name ?? 'Event Removed' }}
-                        @elseif($item->type === 'costume')
-                            {{ \App\Models\Costume::find($item->product_id)?->title ?? 'Costume Removed' }}
-                        @else
-                            Unknown Item
+                        @if ($order->billing)
+                            {{ $order->billing->first_name }} {{ $order->billing->last_name }}<br>
+                            {{ $order->billing->company_name }}<br>
+                            {{ $order->billing->address }}<br>
+                            {{ $order->billing->city }}, {{ $order->billing->state }}
+                            {{ $order->billing->postal_code }}<br>
+                            {{ $order->billing->country }}<br>
+                            Phone: {{ $order->billing->telephone }}
                         @endif
                     </td>
-                    <td class="text-center">{{ $item->quantity }}</td>
-                    <td class="text-right">{{ number_format($item->price, 2) }}</td>
-                    <td class="text-right">{{ number_format($item->price * $item->quantity, 2) }}</td>
+                    <td>
+                        @if ($order->shipping)
+                            {{ $order->shipping->first_name_1 }} {{ $order->shipping->last_name_1 }}<br>
+                            {{ $order->shipping->company_name_1 }}<br>
+                            {{ $order->shipping->address_1 }}<br>
+                            {{ $order->shipping->city_1 }}, {{ $order->shipping->state1 }}
+                            {{ $order->shipping->postal_code_1 }}<br>
+                            {{ $order->shipping->country1 }}<br>
+                            Phone: {{ $order->shipping->telephone_1 }}
+                        @endif
+                    </td>
                 </tr>
-            @endforeach
-
-            {{-- Totals --}}
-            <tr class="total-row">
-                <td colspan="3" class="text-right">Subtotal</td>
-                <td class="text-right">{{ number_format($order->items->sum(fn($i) => $i->price * $i->quantity), 2) }}
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3" class="text-right">Shipping</td>
-                <td class="text-right">{{ number_format($order->shipping_price, 2) }}</td>
-            </tr>
-            <tr class="total-row">
-                <td colspan="3" class="text-right">Grand Total</td>
-                <td class="text-right">{{ number_format($order->total_amount, 2) }}</td>
-            </tr>
+            </tbody>
         </table>
 
-        {{-- Footer --}}
-        <p class="text-center" style="margin-top:30px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th class="text-center">Qty</th>
+                    <th class="text-right">Price</th>
+                    <th class="text-right">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($order->items as $item)
+                    <tr>
+                        <td data-label="Item">
+                            @if ($item->type === 'product')
+                                {{ $item->product->title ?? 'Product Removed' }}
+                            @elseif($item->type === 'event')
+                                {{ \App\Models\Event::find($item->product_id)?->name ?? 'Event Removed' }}
+                            @elseif($item->type === 'costume')
+                                {{ \App\Models\Costume::find($item->product_id)?->title ?? 'Costume Removed' }}
+                            @else
+                                Unknown Item
+                            @endif
+                        </td>
+                        <td data-label="Qty" class="text-center">{{ $item->quantity }}</td>
+                        <td data-label="Price" class="text-right">{{ number_format($item->price, 2) }}</td>
+                        <td data-label="Subtotal" class="text-right">
+                            {{ number_format($item->price * $item->quantity, 2) }}</td>
+                    </tr>
+                @endforeach
+                <tr class="totals-row">
+                    <td colspan="3" class="text-right">Subtotal</td>
+                    <td class="text-right">
+                        {{ number_format($order->items->sum(fn($i) => $i->price * $i->quantity), 2) }}</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-right">Shipping</td>
+                    <td class="text-right">{{ number_format($order->shipping_price, 2) }}</td>
+                </tr>
+                <tr class="totals-row">
+                    <td colspan="3" class="text-right">Grand Total</td>
+                    <td class="text-right">{{ number_format($order->total_amount, 2) }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="footer">
             Thank you for shopping with us!
-        </p>
+        </div>
     </div>
 </body>
 
