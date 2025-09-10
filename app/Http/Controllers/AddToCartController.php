@@ -12,46 +12,87 @@ class AddToCartController extends Controller
     public function addCart(Request $request)
     {
         $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'quantity' => 'required|integer|min:1',
-            'type' => 'required',
+            'product_id' => 'required|integer',
+            'quantity'   => 'required|integer|min:1',
+            'type'       => 'required|in:product,event,music,costume',
         ]);
 
         if (!Auth::check()) {
             return response()->json(['error' => 'User is not authenticated'], 401);
         }
 
-        // $product = Product::findOrFail($request->product_id);
-        // if (!$product->isAvailable()) {
-        //     return response()->json(['error' => 'Product is not available'], 400);
-        // }
-
         $user_id = Auth::id();
 
-        $cartItem = Cart::with('user','product', 'event', 'music')->where('user_id', $user_id)
+        // Check if cart item exists for same product & type
+        $cartItem = Cart::where('user_id', $user_id)
             ->where('product_id', $request->product_id)
+            ->where('type', $request->type)
             ->first();
 
         if ($cartItem) {
             $cartItem->update(['quantity' => $cartItem->quantity + $request->quantity]);
         } else {
-            $newCart = Cart::create([
-                'user_id' => $user_id,
+            $cartItem = Cart::create([
+                'user_id'    => $user_id,
                 'product_id' => $request->product_id,
-                'quantity' => $request->quantity,
-                'type' => $request->type,
+                'quantity'   => $request->quantity,
+                'type'       => $request->type,
             ]);
         }
-        $cartItem = Cart::with('user','product', 'event', 'music')->where('user_id', $user_id)->get();
 
-        return  $cartItem;
+        // Get all items again for updated cart
+        $cartItems = Cart::with(['product', 'event', 'music', 'costume'])
+            ->where('user_id', $user_id)
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'id'       => $item->id,
+                    'quantity' => $item->quantity,
+                    'details'  => $item->item_details, // unified accessor
+                ];
+            });
+
+        return response()->json($cartItems);
     }
+
+    // public function addCart(Request $request)
+    // {
+    //     $request->validate([
+    //         'product_id' => 'required|exists:products,id',
+    //         'quantity' => 'required|integer|min:1',
+    //         'type' => 'required',
+    //     ]);
+
+    //     if (!Auth::check()) {
+    //         return response()->json(['error' => 'User is not authenticated'], 401);
+    //     }
+
+    //     $user_id = Auth::id();
+
+    //     $cartItem = Cart::with('user','product', 'event', 'music', 'costume')->where('user_id', $user_id)
+    //         ->where('product_id', $request->product_id)
+    //         ->first();
+
+    //     if ($cartItem) {
+    //         $cartItem->update(['quantity' => $cartItem->quantity + $request->quantity]);
+    //     } else {
+    //         $newCart = Cart::create([
+    //             'user_id' => $user_id,
+    //             'product_id' => $request->product_id,
+    //             'quantity' => $request->quantity,
+    //             'type' => $request->type,
+    //         ]);
+    //     }
+    //     $cartItem = Cart::with('user','product', 'event', 'music')->where('user_id', $user_id)->get();
+
+    //     return  $cartItem;
+    // }
+
     public function checkout()
     {
         $user_id = Auth::id();
         $cartItem = Cart::where('user_id', $user_id)->get();
-        return view('ShopFrontend.Checkout',compact('cartItem'));
-
+        return view('ShopFrontend.Checkout', compact('cartItem'));
     }
     public function delete_cart_item($id)
     {

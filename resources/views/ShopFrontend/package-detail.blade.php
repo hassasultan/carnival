@@ -574,11 +574,11 @@
                                     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 eventview-no-padding">
                                         {{-- <p>No tickets available for purchase now.</p> --}}
                                         <!--<div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id="notify-ticks-avail" name="notify-ticks-avail" >
-                                                        Notify Me When Tickets Become Available
-                                                    </label>
-                                                </div> -->
+                                                        <label>
+                                                            <input type="checkbox" id="notify-ticks-avail" name="notify-ticks-avail" >
+                                                            Notify Me When Tickets Become Available
+                                                        </label>
+                                                    </div> -->
                                         <div class="checkbox-round">
                                             <div>
                                                 <label class="switchaction">
@@ -608,11 +608,11 @@
                                             <span class="text-danger noti_first_name subscribe_notification_error"></span>
                                         </div>
                                         <!--
-                                                <div class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-r">
-                                                    <label>Last name<span>*</span></label>
-                                                    <input type='text' id="noti_last_name" class="form-control" placeholder="Enter last name" name='noti_last_name'  />
-                                                </div>
-                                                -->
+                                                    <div class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-r">
+                                                        <label>Last name<span>*</span></label>
+                                                        <input type='text' id="noti_last_name" class="form-control" placeholder="Enter last name" name='noti_last_name'  />
+                                                    </div>
+                                                    -->
                                         <div
                                             class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-l">
                                             <label>Email<span>*</span></label>
@@ -622,11 +622,11 @@
                                                 class="text-danger noti_email_address subscribe_notification_error"></span>
                                         </div>
                                         <!--
-                                                <div class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-r">
-                                                    <label>Contact no.</label>
-                                                    <input type='text' class="form-control" placeholder="Enter Contact no" id="noti_contact_no" class='form-control' name='noti_contact_no'  />
-                                                </div>
-                                                -->
+                                                    <div class="form-group col-lg-6 col-sm-6 col-md-6 col-xs-12 eventview-no-padding-r">
+                                                        <label>Contact no.</label>
+                                                        <input type='text' class="form-control" placeholder="Enter Contact no" id="noti_contact_no" class='form-control' name='noti_contact_no'  />
+                                                    </div>
+                                                    -->
 
 
                                         <div
@@ -1259,28 +1259,25 @@
                             var total = 0;
                             var productHtml = '';
                             $.each(cartItems, function(index, cartItem) {
-                                // Construct HTML for each cart item
-                                var image = null;
-                                console.log(cartItem.product.image);
-                                if (cartItem.product.image != null && cartItem.product
-                                    .image != '') {
-                                    image = "{{ asset('productImage/') }}/" + cartItem
-                                        .product.image;
-                                } else {
-                                    image =
-                                        'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                                }
+                                // Unified details
+                                var detail = cartItem.details;
+
+                                // Use fallback image if missing
+                                var image = detail.image && detail.image !== '' ?
+                                    detail.image :
+                                    'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+
                                 productHtml += `
                                     <li class="product-item cart-row-${cartItem.id}">
-                                        <a class="product-item-photo" href="#" title="${cartItem.product.title}">
-                                            <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
+                                        <a class="product-item-photo" href="#" title="${detail.title}">
+                                            <img class="product-image-photo" src="${image}" alt="${detail.title}">
                                         </a>
                                         <div class="product-item-details">
                                             <strong class="product-item-name">
-                                                <a href="#">${cartItem.product.title}</a>
+                                                <a href="#">${detail.title}</a>
                                             </strong>
                                             <div class="product-item-price">
-                                                <span class="price">$${cartItem.product.new_price.toFixed(2)}</span>
+                                                <span class="price">$${parseFloat(detail.price).toFixed(2)}</span>
                                             </div>
                                             <div class="product-item-qty">
                                                 <span class="label">Qty: </span><span class="number">${cartItem.quantity}</span>
@@ -1293,8 +1290,47 @@
                                         </div>
                                     </li>
                                 `;
-                                total += cartItem.product.new_price * cartItem.quantity;
+                                total += parseFloat(detail.price) * cartItem.quantity;
                             });
+
+                            // $.each(cartItems, function(index, cartItem) {
+                            //     // Construct HTML for each cart item
+                            //     var image = null;
+                            //     var detail = cartItem.details;
+                            //     console.log(cartItem.product.image);
+                            //     if (cartItem.product.image != null && cartItem.product
+                            //         .image != '') {
+                            //         image = "{{ asset('productImage/') }}/" + cartItem
+                            //             .product.image;
+                            //     } else {
+                            //         image =
+                            //             'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                            //     }
+                            //     productHtml += `
+                        //         <li class="product-item cart-row-${cartItem.id}">
+                        //             <a class="product-item-photo" href="#" title="${cartItem.product.title}">
+                        //                 <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
+                        //             </a>
+                        //             <div class="product-item-details">
+                        //                 <strong class="product-item-name">
+                        //                     <a href="#">${cartItem.product.title}</a>
+                        //                 </strong>
+                        //                 <div class="product-item-price">
+                        //                     <span class="price">$${cartItem.product.new_price.toFixed(2)}</span>
+                        //                 </div>
+                        //                 <div class="product-item-qty">
+                        //                     <span class="label">Qty: </span><span class="number">${cartItem.quantity}</span>
+                        //                 </div>
+                        //                 <div class="product-item-actions">
+                        //                     <a class="action delete delete-cart" data-id="${cartItem.id}" href="javascript:void(0);" title="Remove item">
+                        //                         <span>Remove</span>
+                        //                     </a>
+                        //                 </div>
+                        //             </div>
+                        //         </li>
+                        //     `;
+                            //     total += cartItem.product.new_price * cartItem.quantity;
+                            // });
                             $('#minicart-items').html(productHtml);
                             $('#minicart-items2').html(productHtml);
                             $('#cart-price').html('$' + total);

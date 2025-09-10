@@ -32,6 +32,11 @@ class OrderItem extends Model
         return $this->belongsTo(Event::class);
     }
 
+    public function music()
+    {
+        return $this->belongsTo(Music::class, 'product_id');
+    }
+
     public function costume()
     {
         return $this->belongsTo(Costume::class);

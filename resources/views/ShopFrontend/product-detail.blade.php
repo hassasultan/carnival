@@ -1322,28 +1322,25 @@
                             var total = 0;
                             var productHtml = '';
                             $.each(cartItems, function(index, cartItem) {
-                                // Construct HTML for each cart item
-                                var image = null;
-                                console.log(cartItem.product.image);
-                                if (cartItem.product.image != null && cartItem.product
-                                    .image != '') {
-                                    image = "{{ asset('productImage/') }}/" + cartItem
-                                        .product.image;
-                                } else {
-                                    image =
-                                        'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
-                                }
+                                // Unified details
+                                var detail = cartItem.details;
+
+                                // Use fallback image if missing
+                                var image = detail.image && detail.image !== '' ?
+                                    detail.image :
+                                    'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+
                                 productHtml += `
                                     <li class="product-item cart-row-${cartItem.id}">
-                                        <a class="product-item-photo" href="#" title="${cartItem.product.title}">
-                                            <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
+                                        <a class="product-item-photo" href="#" title="${detail.title}">
+                                            <img class="product-image-photo" src="${image}" alt="${detail.title}">
                                         </a>
                                         <div class="product-item-details">
                                             <strong class="product-item-name">
-                                                <a href="#">${cartItem.product.title}</a>
+                                                <a href="#">${detail.title}</a>
                                             </strong>
                                             <div class="product-item-price">
-                                                <span class="price">$${cartItem.product.new_price.toFixed(2)}</span>
+                                                <span class="price">$${parseFloat(detail.price).toFixed(2)}</span>
                                             </div>
                                             <div class="product-item-qty">
                                                 <span class="label">Qty: </span><span class="number">${cartItem.quantity}</span>
@@ -1356,8 +1353,45 @@
                                         </div>
                                     </li>
                                 `;
-                                total += cartItem.product.new_price * cartItem.quantity;
+                                total += parseFloat(detail.price) * cartItem.quantity;
                             });
+                            // $.each(cartItems, function(index, cartItem) {
+                            //     // Construct HTML for each cart item
+                            //     var image = null;
+                            //     console.log(cartItem.product.image);
+                            //     if (cartItem.product.image != null && cartItem.product
+                            //         .image != '') {
+                            //         image = "{{ asset('productImage/') }}/" + cartItem
+                            //             .product.image;
+                            //     } else {
+                            //         image =
+                            //             'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg';
+                            //     }
+                            //     productHtml += `
+                            //         <li class="product-item cart-row-${cartItem.id}">
+                            //             <a class="product-item-photo" href="#" title="${cartItem.product.title}">
+                            //                 <img class="product-image-photo" src="${image}" alt="${cartItem.product.title}">
+                            //             </a>
+                            //             <div class="product-item-details">
+                            //                 <strong class="product-item-name">
+                            //                     <a href="#">${cartItem.product.title}</a>
+                            //                 </strong>
+                            //                 <div class="product-item-price">
+                            //                     <span class="price">$${cartItem.product.new_price.toFixed(2)}</span>
+                            //                 </div>
+                            //                 <div class="product-item-qty">
+                            //                     <span class="label">Qty: </span><span class="number">${cartItem.quantity}</span>
+                            //                 </div>
+                            //                 <div class="product-item-actions">
+                            //                     <a class="action delete delete-cart" data-id="${cartItem.id}" href="javascript:void(0);" title="Remove item">
+                            //                         <span>Remove</span>
+                            //                     </a>
+                            //                 </div>
+                            //             </div>
+                            //         </li>
+                            //     `;
+                            //     total += cartItem.product.new_price * cartItem.quantity;
+                            // });
                             $('#minicart-items').html(productHtml);
                             $('#minicart-items2').html(productHtml);
                             $('#cart-price').html('$' + total);

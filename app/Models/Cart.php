@@ -11,7 +11,7 @@ class Cart extends Model
 
     protected $fillable = [
         'user_id',
-        'type',
+        'type', // product, event, costume, music
         'product_id',
         'quantity',
     ];
@@ -22,6 +22,7 @@ class Cart extends Model
         'deleted_at',
     ];
 
+    // relationships
     public function product()
     {
         return $this->belongsTo(Product::class);
@@ -32,6 +33,11 @@ class Cart extends Model
         return $this->belongsTo(Event::class, 'product_id');
     }
 
+    public function costume()
+    {
+        return $this->belongsTo(Costume::class, 'product_id');
+    }
+
     public function music()
     {
         return $this->belongsTo(Music::class, 'product_id');
@@ -40,5 +46,42 @@ class Cart extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    // 🔹 unified accessor for displaying cart item
+    public function getItemDetailsAttribute()
+    {
+        switch ($this->type) {
+            case 'event':
+                return [
+                    'title' => $this->event?->name,
+                    'price' => $this->event?->min_ticket_price ?? 0,
+                    'image' => $this->event?->banner 
+                        ? asset('eventImages/' . $this->event->banner) 
+                        : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg',
+                ];
+            case 'music':
+                return [
+                    'title' => $this->music?->song_title,
+                    'price' => $this->music?->price ?? 0,
+                    'image' => $this->music?->cover_image
+                        ? asset('musicCovers/' . $this->music->cover_image)
+                        : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg',
+                ];
+            case 'costume':
+                return [
+                    'title' => $this->costume?->title,
+                    'price' => $this->costume?->new_price ?? 0,
+                    'image' => $this->costume?->image ?? 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg',
+                ];
+            default: // product
+                return [
+                    'title' => $this->product?->name,
+                    'price' => $this->product?->price ?? 0,
+                    'image' => $this->product?->image 
+                        ? asset('productImage/' . $this->product->image) 
+                        : 'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg',
+                ];
+        }
     }
 }
