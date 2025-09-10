@@ -379,13 +379,13 @@
                                                     <span>{{ is_numeric($details['price']) ? number_format($unitPrice, 2) . ' $' : $details['price'] }}</span>
                                                 </td>
                                                 <td class="qty">
-                                                    <div class="input-group input-group-sm">
-                                                        <button type="button" class="btn btn-default"
-                                                            onclick="cartQuantity({{ $row->id }}, 'minus')">-</button>
+                                                    <div class="input-group" style="max-width:120px;">
+                                                        <button type="button" class="btn btn-outline-secondary btn-sm"
+                                                            onclick="cartQuantity({{ $row->id }}, 'minus')">−</button>
                                                         <input readonly id="qty-{{ $row->id }}"
                                                             value="{{ $row->quantity }}" class="form-control text-center"
-                                                            type="text" style="max-width:50px;">
-                                                        <button type="button" class="btn btn-default"
+                                                            type="text" style="width:50px; padding:0 5px;">
+                                                        <button type="button" class="btn btn-outline-secondary btn-sm"
                                                             onclick="cartQuantity({{ $row->id }}, 'plus')">+</button>
                                                     </div>
                                                 </td>
