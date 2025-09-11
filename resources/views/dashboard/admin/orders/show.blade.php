@@ -112,8 +112,7 @@
                                                 {{ $details['title'] ?? 'Unknown Item' }}
                                                 @if (!empty($details['image']))
                                                     <br>
-                                                    <img src="{{ $details['image'] }}"
-                                                        style="max-width:60px; max-height:60px;"
+                                                    <img src="{{ $details['image'] }}" width="60" height="60"
                                                         alt="{{ $details['title'] }}">
                                                 @endif
                                             </td>
