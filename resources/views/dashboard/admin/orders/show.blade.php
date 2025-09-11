@@ -93,7 +93,6 @@
                                             <th>Price</th>
                                             <th>Qty</th>
                                             <th>Total</th>
-                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -108,13 +107,12 @@
                                                             height="60" alt="{{ $details['title'] }}">
                                                     @endif
                                                 </td>
-                                                <td>{{ $item->product->category->name ?? '-' }}</td>
-                                                <td>{{ $item->product->subcategory->name ?? '-' }}</td>
+                                                <td>{{ $item->product->category->title ?? '-' }}</td>
+                                                <td>{{ $item->product->subcategory->title ?? '-' }}</td>
                                                 <td>{{ $item->product->brand->title ?? '-' }}</td>
                                                 <td>${{ number_format((float) $details['price'], 2) }}</td>
                                                 <td>{{ $item->quantity }}</td>
                                                 <td>${{ number_format($details['price'] * $item->quantity, 2) }}</td>
-                                                <td>{{ $item->product->status }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -135,7 +133,6 @@
                                             <th>Price</th>
                                             <th>Qty</th>
                                             <th>Total</th>
-                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -156,8 +153,8 @@
                                                             height="60" alt="{{ $details['title'] }}">
                                                     @endif
                                                 </td>
-                                                <td>{{ $item->event->category->name ?? '-' }}</td>
-                                                <td>{{ $item->event->venue ?? '-' }}</td>
+                                                <td>{{ $item->event->category->title ?? '-' }}</td>
+                                                <td>{{ $item->event->country->name ?? '-' }}</td>
                                                 <td>
                                                     {{ is_numeric($details['price'] ?? null) ? '$' . number_format($price, 2) : $details['price'] ?? '-' }}
                                                 </td>
@@ -165,7 +162,6 @@
                                                 <td>
                                                     {{ $price > 0 ? '$' . number_format($total, 2) : $details['price'] ?? '-' }}
                                                 </td>
-                                                <td>{{ $item->event->status }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -185,7 +181,6 @@
                                             <th>Price</th>
                                             <th>Qty</th>
                                             <th>Total</th>
-                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -204,7 +199,6 @@
                                                 <td>${{ number_format((float) $details['price'], 2) }}</td>
                                                 <td>{{ $item->quantity }}</td>
                                                 <td>${{ number_format($details['price'] * $item->quantity, 2) }}</td>
-                                                <td>{{ $item->music->status ?? '-' }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -225,7 +219,6 @@
                                             <th>Price</th>
                                             <th>Qty</th>
                                             <th>Total</th>
-                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -240,12 +233,11 @@
                                                             height="60" alt="{{ $details['title'] }}">
                                                     @endif
                                                 </td>
-                                                <td>{{ $item->costume->category->name ?? '-' }}</td>
-                                                <td>{{ $item->costume->subcategory->name ?? '-' }}</td>
+                                                <td>{{ $item->costume->category->title ?? '-' }}</td>
+                                                <td>{{ $item->costume->subcategory->title ?? '-' }}</td>
                                                 <td>${{ number_format((float) $details['price'], 2) }}</td>
                                                 <td>{{ $item->quantity }}</td>
                                                 <td>${{ number_format($details['price'] * $item->quantity, 2) }}</td>
-                                                <td>{{ $item->costume->status ?? '-' }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
