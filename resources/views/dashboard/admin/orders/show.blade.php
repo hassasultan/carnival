@@ -152,7 +152,8 @@
                                                 </td>
                                                 <td>{{ $item->event->category->name ?? '-' }}</td>
                                                 <td>{{ $item->event->venue ?? '-' }}</td>
-                                                <td>${{ number_format((float) $details['price'], 2) }}</td>
+                                                <td>${{ number_format((is_numeric($details['price']) ? $details['price'] : 0) * $item->quantity, 2) }}
+                                                </td>
                                                 <td>{{ $item->quantity }}</td>
                                                 <td>${{ number_format($details['price'] * $item->quantity, 2) }}</td>
                                                 <td>{{ $item->event->status }}</td>
