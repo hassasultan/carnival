@@ -78,125 +78,169 @@
                                 </table>
                             @endif
 
-                            {{-- Order Items --}}
-                            <h4 class="mt-4 mb-3">Order Items</h4>
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Item</th>
-                                        <th>Category</th>
-                                        <th>Subcategory</th>
-                                        <th>Brand / Extra</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($order->items as $index => $item)
-                                        @php $details = $item->item_details; @endphp
+                            {{-- Products --}}
+                            @php $products = $order->items->where('type','product'); @endphp
+                            @if ($products->isNotEmpty())
+                                <h4 class="mt-4 mb-3">Products</h4>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $index + 1 }}</td>
-                                            <td>
-                                                @if ($item->type === 'product')
-                                                    🛒
-                                                @elseif($item->type === 'event')
-                                                    🎟
-                                                @elseif($item->type === 'music')
-                                                    🎵
-                                                @elseif($item->type === 'costume')
-                                                    👗
-                                                @endif
-                                                {{ $details['title'] ?? 'Unknown Item' }}
-                                                @if (!empty($details['image']))
-                                                    <br>
-                                                    <img src="{{ $details['image'] }}" width="60" height="60"
-                                                        alt="{{ $details['title'] }}">
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if ($item->product)
-                                                    {{ $item->product->category->name ?? '-' }}
-                                                @elseif($item->event)
-                                                    {{ $item->event->category->name ?? '-' }}
-                                                @elseif($item->music)
-                                                    N/A
-                                                @elseif($item->costume)
-                                                    {{ $item->costume->category->name ?? '-' }}
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if ($item->product)
-                                                    {{ $item->product->subcategory->name ?? '-' }}
-                                                @elseif($item->costume)
-                                                    {{ $item->costume->subcategory->name ?? '-' }}
-                                                @else
-                                                    -
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if ($item->product)
-                                                    {{ $item->product->brand->name ?? '-' }}
-                                                @elseif($item->event)
-                                                    {{ $item->event->venue ?? '-' }}
-                                                @elseif($item->music)
-                                                    {{ $item->music->label ?? '-' }}
-                                                @elseif($item->costume)
-                                                    Costume
-                                                @endif
-                                            </td>
-                                            <td>${{ number_format((float) $details['price'], 2) }}</td>
-                                            <td>{{ $item->quantity }}</td>
-                                            <td>${{ number_format((float) $details['price'] * $item->quantity, 2) }}</td>
-                                            <td>
-                                                @if ($item->product)
-                                                    {{ $item->product->status }}
-                                                @elseif($item->event)
-                                                    {{ $item->event->status }}
-                                                @elseif($item->music)
-                                                    {{ $item->music->status ?? '-' }}
-                                                @elseif($item->costume)
-                                                    {{ $item->costume->status ?? '-' }}
-                                                @endif
-                                            </td>
+                                            <th>#</th>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <th>Subcategory</th>
+                                            <th>Brand</th>
+                                            <th>Price</th>
+                                            <th>Qty</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($products as $index => $item)
+                                            @php $details = $item->item_details; @endphp
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>
+                                                    🛒 {{ $details['title'] }}
+                                                    @if (!empty($details['image']))
+                                                        <br><img src="{{ $details['image'] }}" width="60"
+                                                            height="60" alt="{{ $details['title'] }}">
+                                                    @endif
+                                                </td>
+                                                <td>{{ $item->product->category->name ?? '-' }}</td>
+                                                <td>{{ $item->product->subcategory->name ?? '-' }}</td>
+                                                <td>{{ $item->product->brand->title ?? '-' }}</td>
+                                                <td>${{ number_format((float) $details['price'], 2) }}</td>
+                                                <td>{{ $item->quantity }}</td>
+                                                <td>${{ number_format($details['price'] * $item->quantity, 2) }}</td>
+                                                <td>{{ $item->product->status }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
 
-                            {{-- Extra details only for products --}}
-                            <h4 class="mt-4 mb-3">Product Extra Details</h4>
-                            @foreach ($order->items as $item)
-                                @if ($item->type === 'product' && $item->product)
-                                    <div class="border p-3 mb-3">
-                                        <h5>{{ $item->product->title }}</h5>
-                                        <p><strong>Description:</strong> {!! $item->product->description !!}</p>
-                                        <p><strong>Condition:</strong> {{ $item->product->condition }}</p>
-                                        <p><strong>Stock:</strong> {{ $item->product->stock_condition }}</p>
-                                        <p><strong>Discount:</strong> {{ $item->product->discount }}%</p>
-                                        <p><strong>Tags:</strong> {{ $item->product->tags }}</p>
-                                        <p><strong>Features:</strong>
-                                            @foreach ($item->product->features as $feature)
-                                                {{ $feature->name }}{{ !$loop->last ? ',' : '' }}
-                                            @endforeach
-                                        </p>
-                                        <p><strong>Variants:</strong>
-                                            @foreach ($item->product->variants as $variant)
-                                                {{ $variant->name }}
-                                                ({{ $variant->pivot->value }})
-                                                {{ !$loop->last ? ',' : '' }}
-                                            @endforeach
-                                        </p>
-                                        <p><strong>Images:</strong>
-                                            @foreach ($item->product->product_images as $img)
-                                                <img src="{{ asset('variant_images/' . $img->image) }}" width="50">
-                                            @endforeach
-                                        </p>
-                                    </div>
-                                @endif
-                            @endforeach
+                            {{-- Events --}}
+                            @php $events = $order->items->where('type','event'); @endphp
+                            @if ($events->isNotEmpty())
+                                <h4 class="mt-4 mb-3">Events</h4>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <th>Venue</th>
+                                            <th>Price</th>
+                                            <th>Qty</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($events as $index => $item)
+                                            @php $details = $item->item_details; @endphp
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>
+                                                    🎟 {{ $details['title'] }}
+                                                    @if (!empty($details['image']))
+                                                        <br><img src="{{ $details['image'] }}" width="60"
+                                                            height="60" alt="{{ $details['title'] }}">
+                                                    @endif
+                                                </td>
+                                                <td>{{ $item->event->category->name ?? '-' }}</td>
+                                                <td>{{ $item->event->venue ?? '-' }}</td>
+                                                <td>${{ number_format((float) $details['price'], 2) }}</td>
+                                                <td>{{ $item->quantity }}</td>
+                                                <td>${{ number_format($details['price'] * $item->quantity, 2) }}</td>
+                                                <td>{{ $item->event->status }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
+
+                            {{-- Music --}}
+                            @php $musics = $order->items->where('type','music'); @endphp
+                            @if ($musics->isNotEmpty())
+                                <h4 class="mt-4 mb-3">Music</h4>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Title</th>
+                                            <th>Label</th>
+                                            <th>Price</th>
+                                            <th>Qty</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($musics as $index => $item)
+                                            @php $details = $item->item_details; @endphp
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>
+                                                    🎵 {{ $details['title'] }}
+                                                    @if (!empty($details['image']))
+                                                        <br><img src="{{ $details['image'] }}" width="60"
+                                                            height="60" alt="{{ $details['title'] }}">
+                                                    @endif
+                                                </td>
+                                                <td>{{ $item->music->label ?? '-' }}</td>
+                                                <td>${{ number_format((float) $details['price'], 2) }}</td>
+                                                <td>{{ $item->quantity }}</td>
+                                                <td>${{ number_format($details['price'] * $item->quantity, 2) }}</td>
+                                                <td>{{ $item->music->status ?? '-' }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
+
+                            {{-- Costumes --}}
+                            @php $costumes = $order->items->where('type','costume'); @endphp
+                            @if ($costumes->isNotEmpty())
+                                <h4 class="mt-4 mb-3">Costumes</h4>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <th>Subcategory</th>
+                                            <th>Price</th>
+                                            <th>Qty</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($costumes as $index => $item)
+                                            @php $details = $item->item_details; @endphp
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>
+                                                    👗 {{ $details['title'] }}
+                                                    @if (!empty($details['image']))
+                                                        <br><img src="{{ $details['image'] }}" width="60"
+                                                            height="60" alt="{{ $details['title'] }}">
+                                                    @endif
+                                                </td>
+                                                <td>{{ $item->costume->category->name ?? '-' }}</td>
+                                                <td>{{ $item->costume->subcategory->name ?? '-' }}</td>
+                                                <td>${{ number_format((float) $details['price'], 2) }}</td>
+                                                <td>{{ $item->quantity }}</td>
+                                                <td>${{ number_format($details['price'] * $item->quantity, 2) }}</td>
+                                                <td>{{ $item->costume->status ?? '-' }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
 
                         </div>
                     </div>
