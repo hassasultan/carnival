@@ -29,7 +29,7 @@ class OrderItem extends Model
 
     public function event()
     {
-        return $this->belongsTo(Event::class);
+        return $this->belongsTo(Event::class, 'product_id');
     }
 
     public function music()
@@ -39,7 +39,7 @@ class OrderItem extends Model
 
     public function costume()
     {
-        return $this->belongsTo(Costume::class);
+        return $this->belongsTo(Costume::class, 'product_id');
     }
 
     public function getItemDetailsAttribute()
