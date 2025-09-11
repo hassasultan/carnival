@@ -140,7 +140,13 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($events as $index => $item)
-                                            @php $details = $item->item_details; @endphp
+                                            @php
+                                                $details = $item->item_details;
+                                                $price = is_numeric($details['price'] ?? null)
+                                                    ? (float) $details['price']
+                                                    : 0;
+                                                $total = $price * ($item->quantity ?? 0);
+                                            @endphp
                                             <tr>
                                                 <td>{{ $index + 1 }}</td>
                                                 <td>
@@ -152,10 +158,13 @@
                                                 </td>
                                                 <td>{{ $item->event->category->name ?? '-' }}</td>
                                                 <td>{{ $item->event->venue ?? '-' }}</td>
-                                                <td>${{ number_format((is_numeric($details['price']) ? $details['price'] : 0) * $item->quantity, 2) }}
+                                                <td>
+                                                    {{ is_numeric($details['price'] ?? null) ? '$' . number_format($price, 2) : $details['price'] ?? '-' }}
                                                 </td>
-                                                <td>{{ $item->quantity }}</td>
-                                                <td>${{ number_format($details['price'] * $item->quantity, 2) }}</td>
+                                                <td>{{ $item->quantity ?? 0 }}</td>
+                                                <td>
+                                                    {{ $price > 0 ? '$' . number_format($total, 2) : $details['price'] ?? '-' }}
+                                                </td>
                                                 <td>{{ $item->event->status }}</td>
                                             </tr>
                                         @endforeach
