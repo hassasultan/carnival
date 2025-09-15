@@ -38,7 +38,7 @@
                                         <div class="dropdown-menu dropdown-menu-right shadow">
                                             <a class="dropdown-item" href="{{ route('our-team.edit', $team->id) }}"><i
                                                     class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>
-                                            <form action="{{ route('our_team.destroy', $team->id) }}" method="POST">
+                                            <form action="{{ route('our-team.destroy', $team->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="dropdown-item"><i

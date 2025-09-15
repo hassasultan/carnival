@@ -358,7 +358,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/our-team/{id}', [OurTeamController::class, 'show'])->name('our_team.show');
     Route::get('/our-team/{id}/edit', [OurTeamController::class, 'edit'])->name('our_team.edit');
     Route::put('/our-team/{id}', [OurTeamController::class, 'update'])->name('our_team.update');
-    Route::delete('/our-team/{id}', [OurTeamController::class, 'destroy'])->name('our_team.destroy');
+    Route::delete('/our-team/{id}', [OurTeamController::class, 'destroy'])->name('our-team.destroy');
 });
 
 Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
