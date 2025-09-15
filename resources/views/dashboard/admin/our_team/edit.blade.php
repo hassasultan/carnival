@@ -9,7 +9,7 @@
                     <strong class="card-title">Team Member Information</strong>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('our_team.update', $teamMember->id) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('our-team.update', $teamMember->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">

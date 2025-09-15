@@ -9,7 +9,7 @@
         <div class="row my-4">
             <!-- data table -->
             <div class="col-md-12">
-                <a href="{{ route('our_team.create') }}" class="btn btn-primary mb-2">Add Team Member</a>
+                <a href="{{ route('our-team.create') }}" class="btn btn-primary mb-2">Add Team Member</a>
                 <div class="card shadow">
                     <div class="card-body">
                         <!-- table -->
@@ -36,7 +36,7 @@
                                             <span class="text-muted sr-only">Action</span>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right shadow">
-                                            <a class="dropdown-item" href="{{ route('our_team.edit', $team->id) }}"><i
+                                            <a class="dropdown-item" href="{{ route('our-team.edit', $team->id) }}"><i
                                                     class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>
                                             <form action="{{ route('our_team.destroy', $team->id) }}" method="POST">
                                                 @csrf

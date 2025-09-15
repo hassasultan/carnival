@@ -42,7 +42,7 @@ class OurTeamController extends Controller
 
         OurTeam::create($validatedData);
 
-        return redirect()->route('our_team.index')->with('success', 'Team member added successfully.');
+        return redirect()->route('our-team.index')->with('success', 'Team member added successfully.');
     }
 
     public function show($id)
@@ -89,7 +89,7 @@ class OurTeamController extends Controller
 
             $teamMember->update($validatedData);
 
-            return redirect()->route('our_team.index')->with('success', 'Team member updated successfully.');
+            return redirect()->route('our-team.index')->with('success', 'Team member updated successfully.');
         } catch (Exception $ex) {
             return redirect()->back()->with('error', $ex->getMessage());
         }
@@ -106,6 +106,6 @@ class OurTeamController extends Controller
 
         $teamMember->delete();
 
-        return redirect()->route('our_team.index')->with('success', 'Team member deleted successfully.');
+        return redirect()->route('our-team.index')->with('success', 'Team member deleted successfully.');
     }
 }
