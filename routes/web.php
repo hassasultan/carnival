@@ -117,6 +117,9 @@ Route::controller(FrontendConroller::class)->group(function () {
     Route::get('/carnival-banner_details', 'loadBannerDetails')->name('front.carnival.banner_details');
 });
 
+    // get features by category
+    Route::get('/get-features/{categoryId}', [ProductController::class, 'getFeaturesByCategory'])->name('get.features.by.category');
+
 // ✅ Subscriber
 Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe.store');
 
