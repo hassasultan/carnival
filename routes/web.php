@@ -118,6 +118,7 @@ Route::controller(FrontendConroller::class)->group(function () {
 });
 
 // get features by category
+
 Route::get('/get-features/{categoryId}', [ProductController::class, 'getFeaturesByCategory'])->name('get.features.by.category');
 
 // ✅ Subscriber

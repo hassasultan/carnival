@@ -255,6 +255,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/get-categories/{packageId}', [EventController::class, 'getCategories'])->name('get.categories');
 
     // get features by category
+    
     Route::get('/get-features/{categoryId}', [ProductController::class, 'getFeaturesByCategory'])->name('get.features.by.category');
 
     //musics
