@@ -136,6 +136,7 @@
                                     margin-top: 50px;
                                     /* Reduced from 80px */
                                     padding-top: 15px;
+                                    height: 70rem !important;
                                 }
 
                                 /* Alternative: if you need more space */
