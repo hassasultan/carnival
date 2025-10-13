@@ -353,6 +353,10 @@
 
             // Handle form submission via AJAX for creating a new product
             $('#createProductForm').submit(function(event) {
+                $('#saveProductBtn').prop('disabled', true);
+
+                // Show loading indicator (you can replace this with your own spinner or text)
+                $('#saveProductBtn').text('Submitting...');
                 console.log('new prod create');
                 event.preventDefault();
                 var formData = new FormData($(this)[0]);
