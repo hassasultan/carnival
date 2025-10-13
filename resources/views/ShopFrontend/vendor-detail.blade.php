@@ -2098,7 +2098,6 @@
                                         data-responsive='{
                                             "0":{"items":1},
                                             "480":{"items":2},
-                                            "480":{"items":2},
                                             "768":{"items":3},
                                             "992":{"items":4}
                                         }'
@@ -2293,12 +2292,11 @@
                                 <div role="tabpanel" class="tab-pane fade" id="tabproduct2">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
                                         data-responsive='{
-                            "0":{"items":1},
-                            "480":{"items":2},
-                            "480":{"items":2},
-                            "768":{"items":3},
-                            "992":{"items":4}
-                        }'
+                                            "0":{"items":1},
+                                            "480":{"items":2},
+                                            "768":{"items":3},
+                                            "992":{"items":4}
+                                        }'
                                         id="on-sell-div">
 
                                         <div class="product-item  product-item-opt-1 ">
@@ -2487,12 +2485,11 @@
                                 <div role="tabpanel" class="tab-pane fade" id="tabproduct3">
                                     <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
                                         data-responsive='{
-                            "0":{"items":1},
-                            "480":{"items":2},
-                            "480":{"items":2},
-                            "768":{"items":3},
-                            "992":{"items":4}
-                        }'
+                                            "0":{"items":1},
+                                            "480":{"items":2},
+                                            "768":{"items":3},
+                                            "992":{"items":4}
+                                        }'
                                         id="new-product-div">
 
                                         <div class="product-item  product-item-opt-1 ">
@@ -3779,44 +3776,45 @@
             $.each(products, function(index, product) {
                 var image = product.image ? "{{ asset('productImage/') }}/" + product.image : "{{ asset('shopAssets/images/media/index1/floor1-1.jpg') }}";
                 var productHtml = `
-                    <div class="product-item  product-item-opt-1 ">
-                                            <div class="product-item-info">
-                                                <div class="product-item-photo">
-                                                    <a class="product-item-img" href=""><img alt="product name"
-                                                            src="{{ asset('shopAssets/images/media/index1/sellers1.jpg') }}"></a>
-                                                    <div class="product-item-actions">
-                                                        <a class="btn btn-wishlist"
-                                                            href=""><span>wishlist</span></a>
-                                                        <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                        <a class="btn btn-quickview"
-                                                            href=""><span>quickview</span></a>
-                                                    </div>
-                                                    <button type="button" class="btn btn-cart"><span>Add to
-                                                            Cart</span></button>
-                                                    <span class="product-item-label label-price">30%
-                                                        <span>off</span></span>
-                                                </div>
-                                                <div class="product-item-detail">
-                                                    <strong class="product-item-name"><a href="">Maecenas consequat
-                                                            mauris</a></strong>
-                                                    <div class="clearfix">
-                                                        <div class="product-item-price">
-                                                            <span class="price">$45.00</span>
-                                                            <span class="old-price">$52.00</span>
-                                                        </div>
-                                                        <div class="product-reviews-summary">
-                                                            <div class="rating-summary">
-                                                                <div title="80%" class="rating-result">
-                                                                    <span style="width:80%">
-                                                                        <span><span>80</span>% of <span>100</span></span>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                    <div class="product-item product-item-opt-1">
+                        <div class="product-item-info">
+                            <div class="product-item-photo">
+                                <a class="product-item-img" href="">
+                                    <img alt="product name" src="${image}">
+                                </a>
+                                <div class="product-item-actions">
+                                    <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
+                                    <a class="btn btn-compare" href=""><span>compare</span></a>
+                                    <a class="btn btn-quickview" href=""><span>quickview</span></a>
+                                </div>
+                                <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
+                                ${product.discount ? `
+                                    <span class="product-item-label label-price">${product.discount}%
+                                        <span>off</span>
+                                    </span>
+                                ` : ''}
+                            </div>
+                            <div class="product-item-detail">
+                                <strong class="product-item-name"><a href="">${product.title}</a></strong>
+                                <div class="clearfix">
+                                    <div class="product-item-price">
+                                        <span class="price">$${product.new_price}</span>
+                                        ${product.old_price ? `<span class="old-price">$${product.old_price}</span>` : ''}
+                                    </div>
+                                    <div class="product-reviews-summary">
+                                        <div class="rating-summary">
+                                            <div title="${product.discount || 0}%" class="rating-result">
+                                                <span style="width:${product.discount || 0}%">
+                                                    <span><span>${product.discount || 0}</span>% of <span>100</span></span>
+                                                </span>
                                             </div>
-                                        </div>                `;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
                 $('#' + id).append(productHtml);
             });
         }
