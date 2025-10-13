@@ -3791,6 +3791,11 @@
                                     <a class="btn btn-quickview" href=""><span>quickview</span></a>
                                 </div>
                                 <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
+                                ${product.discount ? `
+                                    <span class="product-item-label label-price">${product.discount}%
+                                        <span>off</span>
+                                    </span>
+                                ` : ''}
                             </div>
                             <div class="product-item-detail">
                                 <strong class="product-item-name"><a href="">${product.title}</a></strong>
