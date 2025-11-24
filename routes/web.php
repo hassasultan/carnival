@@ -174,6 +174,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
 
+    Route::get('/get-categories/{packageId}', [EventController::class, 'getCategories'])->name('get.categories');
+
     // user management
     Route::get('/users', [UserManagementController::class, 'indexUser'])->name('users.index');
     Route::get('/get-users', [UserManagementController::class, 'getUsers'])->name('admin.users.index');
