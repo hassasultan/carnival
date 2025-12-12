@@ -1,6 +1,11 @@
 {{-- @extends('dashboard.admin.layouts.app') --}}
 @extends('dashboard.admin.layouts.app')
 
+<form id="delete-form" method="POST" style="display:none">
+    @csrf
+    @method('DELETE')
+</form>
+
 @section('content')
     <style>
         .skeleton-container {
@@ -229,16 +234,24 @@
                 html += '<span class="text-muted sr-only">Action</span>';
                 html += '</button>';
                 html += '<div class="dropdown-menu dropdown-menu-right shadow">';
-                html += '<a class="dropdown-item" href="'+ currentUrl +'"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
-                // html += '<a class="dropdown-item" href="' + currentUrl + '/' + row.id +
-                //     '/edit"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
-                // html += '<a class="dropdown-item" href="#"><i class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove</a>';
-                // html += '<a class="dropdown-item" href="#"><i class="fe fe-flag fe-12 mr-3 text-muted"></i>Assign</a>';
+                html += '<a class="dropdown-item" href="' + currentUrl +
+                    '"><i class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>';
+                html += '<a class="dropdown-item" href="javascript:void(0);" onclick="deleteBlog(' + row.id +
+                    ')"><i class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove</a>';
                 html += '</div></td>';
                 html += '</tr>';
                 i++;
             });
             $('#user-table-body').html(html);
+        }
+
+        function deleteBlog(id) {
+            if (confirm('Are you sure you want to delete this blog?')) {
+                var deleteRoute = "{{ route('blogs.destroy', ':id') }}";
+                var url = deleteRoute.replace(':id', id);
+                $('#delete-form').attr('action', url);
+                $('#delete-form').submit();
+            }
         }
         pre = 0;
         nxt = 0;
