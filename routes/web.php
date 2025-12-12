@@ -1,57 +1,53 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AddToCartController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CarnivalCommitteeController;
+use App\Http\Controllers\CarnivalController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CostumeController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventsCountryTabController;
+use App\Http\Controllers\FAQController;
+use App\Http\Controllers\FAQPageController;
+use App\Http\Controllers\FeatureController;
+use App\Http\Controllers\FrontendConroller;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvestorController;
+use App\Http\Controllers\ModelBookingController;
+use App\Http\Controllers\MusicController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OurServiceController;
+use App\Http\Controllers\OurTeamController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PermissionsController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegionController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolePermissionController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SiteGalleryController;
+use App\Http\Controllers\StateController;
+use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\TestimonialsController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UserAccountDetailController;
+use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\VariantController;
+use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\{
-    HomeController,
-    AdminController,
-    RoleController,
-    PermissionsController,
-    RolePermissionController,
-    VendorController,
-    UserAccountDetailController,
-    PackageController,
-    CategoryController,
-    ProductController,
-    EventController,
-    SubcategoryController,
-    TicketController,
-    VariantController,
-    UserManagementController,
-    BlogsController,
-    CostumeController,
-    MusicController,
-    ServiceController,
-    AppointmentController,
-    FrontendConroller,
-    OrderController,
-    AddToCartController,
-    CustomerController,
-    CarnivalController,
-    CarnivalCommitteeController,
-    RegionController,
-    OurServiceController,
-    SiteGalleryController,
-    InvestorController,
-    BrandController,
-    CountryController,
-    CityController,
-    EventsCountryTabController,
-    TestimonialsController,
-    BannerController,
-    AdvertisementController,
-    VendorGalleryController,
-    SubvendorGalleryController,
-    ModelBookingController,
-    FAQController,
-    FAQPageController,
-    ContactController,
-    OurTeamController,
-    SubscriberController,
-    StateController,
-    FeatureController,
-    PaymentController
-};
+use Illuminate\Support\Facades\Route;
 
 // ✅ Frontend Routes Group
 Route::controller(FrontendConroller::class)->group(function () {
@@ -138,7 +134,7 @@ Route::post('/cart/update', [AddToCartController::class, 'update'])->name('updat
 // ✅ Utility routes
 Route::get('/get-subcategories/{categoryId}', [ProductController::class, 'getsubCategories'])->name('get.subcategories');
 Route::get('/register/new/user/{id}', [CarnivalCommitteeController::class, 'create'])->name('register.new.user');
-Route::get('/unauthorized', fn() => view('unauthorized'))->name('unauthorized');
+Route::get('/unauthorized', fn () => view('unauthorized'))->name('unauthorized');
 Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingleUser'])->name('get.single.user');
 Route::get('/get-countries', [CarnivalController::class, 'getCountriesByRegion'])->name('get.countries');
 Route::get('/get-cities', [CarnivalController::class, 'getCitiesByCountry'])->name('get.cities');
@@ -201,6 +197,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::resource('blogs', BlogsController::class)->except(['update']);
     Route::put('/blogs/{blog}', [BlogsController::class, 'update'])->name('blogs.update');
     Route::resource('categories', CategoryController::class);
+    Route::get('/categories/{id}/deletion-details', [CategoryController::class, 'getDeletionDetails'])->name('categories.deletion-details');
     Route::resource('subcategories', SubcategoryController::class);
     Route::resource('features', FeatureController::class);
     Route::resource('states', StateController::class);
@@ -247,7 +244,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::put('/variants/{variant}', [VariantController::class, 'update'])->name('variants.update');
     Route::delete('/variants/{variant}', [VariantController::class, 'destroy'])->name('variants.destroy');
 
-    //appointments
+    // appointments
     Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
     Route::get('/appointments/add', [AppointmentController::class, 'create'])->name('appointments.create');
     Route::post('/appointments/check-conflict', [AppointmentController::class, 'checkConflict'])->name('appointments.check-conflict');
