@@ -38,13 +38,13 @@
                                         <option value="0">False</option>
                                     </select>
                                 </div>
-                                {{-- <div class="form-group mb-3">
+                                <div class="form-group mb-3">
                                     <label for="product">Product</label>
                                     <select id="product" name="product" class="form-control" required>
                                         <option value="1">True</option>
                                         <option value="0">False</option>
                                     </select>
-                                </div> --}}
+                                </div>
                                 <div class="form-group mb-3">
                                     <label for="costume">Costume</label>
                                     <select id="costume" name="costume" class="form-control" required>
