@@ -1,60 +1,60 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\PermissionsController;
-use App\Http\Controllers\RolePermissionController;
-use App\Http\Controllers\VendorController;
-use App\Http\Controllers\SubVendorController;
-use App\Http\Controllers\PackageController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\SubcategoryController;
-use App\Http\Controllers\TicketController;
-use App\Http\Controllers\VariantController;
-use App\Http\Controllers\UserManagementController;
-use App\Http\Controllers\BlogsController;
-use App\Http\Controllers\CostumeController;
-use App\Http\Controllers\Vendor\BlogController;
-use App\Http\Controllers\SubVendor\SubVendorBlogController;
-use App\Http\Controllers\Vendor\VendorCostumeController;
-use App\Http\Controllers\SubVendor\SubVendorCostumeController;
-// use App\Http\Controllers\Vendor\VendorProductController;
-// use App\Http\Controllers\SubVendor\SubVendorProductController;
-use App\Http\Controllers\MusicController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\AppointmentController;
-use App\Http\Controllers\FrontendConroller;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AddToCartController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\CarnivalController;
-use App\Http\Controllers\CarnivalCommitteeController;
-use App\Http\Controllers\RegionController;
-use App\Http\Controllers\OurServiceController;
-use App\Http\Controllers\SiteGalleryController;
-use App\Http\Controllers\InvestorController;
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CountryController;
-use App\Http\Controllers\CityController;
-use App\Http\Controllers\EventsCountryTabController;
-use App\Http\Controllers\TestimonialsController;
-use App\Http\Controllers\BannerController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdvertisementController;
-use App\Http\Controllers\VendorGalleryController;
-use App\Http\Controllers\SubvendorGalleryController;
-use App\Http\Controllers\ModelBookingController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CarnivalCommitteeController;
+use App\Http\Controllers\CarnivalController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CostumeController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventsCountryTabController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\FAQPageController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\OurTeamController;
-use App\Http\Controllers\SubscriberController;
-use App\Http\Controllers\StateController;
 use App\Http\Controllers\FeatureController;
+use App\Http\Controllers\FrontendConroller;
+use App\Http\Controllers\HomeController;
+// use App\Http\Controllers\Vendor\VendorProductController;
+// use App\Http\Controllers\SubVendor\SubVendorProductController;
+use App\Http\Controllers\InvestorController;
+use App\Http\Controllers\ModelBookingController;
+use App\Http\Controllers\MusicController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OurServiceController;
+use App\Http\Controllers\OurTeamController;
+use App\Http\Controllers\PackageController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PermissionsController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegionController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolePermissionController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SiteGalleryController;
+use App\Http\Controllers\StateController;
+use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\SubVendor\SubVendorBlogController;
+use App\Http\Controllers\SubVendor\SubVendorCostumeController;
+use App\Http\Controllers\SubVendorController;
+use App\Http\Controllers\SubvendorGalleryController;
+use App\Http\Controllers\TestimonialsController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\VariantController;
+use App\Http\Controllers\Vendor\BlogController;
+use App\Http\Controllers\Vendor\VendorCostumeController;
+use App\Http\Controllers\VendorController;
+use App\Http\Controllers\VendorGalleryController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,7 +142,6 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-
 // get subcategories
 Route::get('/get-subcategories/{categoryId}', [ProductController::class, 'getsubCategories'])->name('get.subcategories');
 
@@ -163,13 +162,10 @@ Route::get('/carnival-banner_details', [FrontendConroller::class, 'loadBannerDet
 
 Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe.store');
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/edit-Profile/{id}', [VendorController::class, 'editProfile'])->name('dashboard.edit.profile');
     Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
 });
-
-
 
 // Admin Routes
 Route::middleware('admin')->prefix('dashboard')->group(function () {
@@ -213,7 +209,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     // Events Crud
     Route::resource('events', EventController::class);
 
-    //blogs
+    // blogs
     Route::resource('blogs', BlogsController::class)->except(['update']);
     Route::put('/blogs/{blog}', [BlogsController::class, 'update'])->name('blogs.update');
     // });
@@ -255,22 +251,22 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/get-categories/{packageId}', [EventController::class, 'getCategories'])->name('get.categories');
 
     // get features by category
-    
+
     Route::get('/get-features/{categoryId}', [ProductController::class, 'getFeaturesByCategory'])->name('get.features.by.category');
 
-    //musics
+    // musics
     Route::resource('musics', MusicController::class);
 
-    //services
+    // services
     Route::resource('services', ServiceController::class);
 
-    //orders
+    // orders
     Route::resource('orders', OrderController::class);
 
-    //carnivals
+    // carnivals
     Route::resource('carnivals', CarnivalController::class);
 
-    //appointments
+    // appointments
     Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
     Route::get('/appointments/add', [AppointmentController::class, 'create'])->name('appointments.create');
     Route::post('/appointments/check-conflict', [AppointmentController::class, 'checkConflict'])->name('appointments.check-conflict');
@@ -301,22 +297,22 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     // Regions CRUD
     Route::resource('regions', RegionController::class);
 
-    //Our Service CRUD
+    // Our Service CRUD
     Route::resource('our_services', OurServiceController::class);
 
-    //Gallery CRUD
+    // Gallery CRUD
     Route::resource('site_gallery', SiteGalleryController::class);
 
-    //Investor CRUD
+    // Investor CRUD
     Route::resource('investors', InvestorController::class);
 
-    //Brands CRUD
+    // Brands CRUD
     Route::resource('brands', BrandController::class);
 
-    //Countries CRUD
+    // Countries CRUD
     Route::resource('countries', CountryController::class);
 
-    //Cities CRUD
+    // Cities CRUD
     Route::resource('cities', CityController::class);
 
     // Events tabs
@@ -366,7 +362,6 @@ Route::get('/get_single_user/{id}', [UserManagementController::class, 'getSingle
 
 Route::get('/get-countries', [CarnivalController::class, 'getCountriesByRegion'])->name('get.countries');
 Route::get('/get-cities', [CarnivalController::class, 'getCitiesByCountry'])->name('get.cities');
-
 
 // Vendor Routes
 // Route::middleware('vendor')->prefix('vendor')->group(function () {
@@ -441,7 +436,6 @@ Route::get('/get-cities', [CarnivalController::class, 'getCitiesByCountry'])->na
 //     Route::get('queen-show/', [VendorController::class, 'queenShow'])->name('vendor.queen.show');
 // });
 
-
 // // SubVendor Routes
 // Route::middleware('subVendor')->prefix('subVendor')->group(function () {
 
@@ -499,7 +493,6 @@ Route::get('/get-cities', [CarnivalController::class, 'getCitiesByCountry'])->na
 //     Route::delete('/musics/{id}', [MusicController::class, 'destroy'])->name('subvendor.musics.destroy');
 // });
 
-
 // Customer Routes
 Route::middleware('auth')->prefix('user')->group(function () {
 
@@ -511,8 +504,7 @@ Route::middleware('auth')->prefix('user')->group(function () {
     Route::post('/profile/update', [CustomerController::class, 'profileUpdate'])->name('users.profile.update');
 });
 
-
-//Frontend Routes
+// Frontend Routes
 
 // Route::get('/mascamps', function(){
 //     return view('ShopFrontend.vendors');
@@ -543,7 +535,6 @@ Route::post('/carnivals/{carnival}/events', [CarnivalController::class, 'updateE
 Route::get('/stripe-test', [PaymentController::class, 'testStripe']);
 Route::post('/charge', [PaymentController::class, 'chargeCustomer'])->name('stripe.charge');
 Route::post('/split-payment', [PaymentController::class, 'splitPayment'])->name('stripe.split.payment');
-
 
 // STRIPE_KEY=pk_test_xxxxxxxxxxxxx
 // STRIPE_SECRET=sk_test_xxxxxxxxxxxxx

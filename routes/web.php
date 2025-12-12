@@ -252,4 +252,29 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('/appointments/{variant}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
     Route::put('/appointments/{variant}', [AppointmentController::class, 'update'])->name('appointments.update');
     Route::delete('/appointments/{variant}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
+    // get head_team
+    Route::get('/get/head_team/{id}', [CarnivalController::class, 'head_team'])->name('get.head.team');
+
+    // get head_team
+    Route::post('/update/head_team', [CarnivalController::class, 'carnivalHead'])->name('update.carnival.head');
+
+    // assign carnivals to mascamp
+    Route::post('/assign/mascamps', [CarnivalController::class, 'assignModels'])->name('assign.models');
+    Route::delete('carnivals/{carnival}/images/{image}', [CarnivalController::class, 'deleteImage'])
+        ->name('carnivals.delete.image');
+    Route::delete('carnivals/{carnival}/banners/{image}', [CarnivalController::class, 'deleteBanner'])
+        ->name('carnivals.delete.banner');
+    Route::delete('carnivals/{carnival}/flyers/{image}', [CarnivalController::class, 'deleteFlyer'])
+        ->name('carnivals.delete.flyer');
+    // assign carnivals to mascamp
+    Route::post('/assign/carnival-member', [CarnivalController::class, 'assignCarnivalMember'])->name('assign.CarnivalMember');
+
+    Route::get('carnivals/{id}/assigned-mascamps', [CarnivalController::class, 'getAssignedMascamps'])->name('carnivals.assigned.mascamps');
+
 });
+
+// Misc Routes
+Route::get('/get-carnivals/members/{id}', [CarnivalController::class, 'getCarnivalsMembers'])->name('get.carnivals.members');
+
+Route::get('/carnivals/{carnival}/events', [CarnivalController::class, 'getEvents'])->name('carnivals.events.get');
+Route::post('/carnivals/{carnival}/events', [CarnivalController::class, 'updateEvents'])->name('carnivals.events.update');
