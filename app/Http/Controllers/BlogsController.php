@@ -15,7 +15,12 @@ class BlogsController extends Controller
     //
     public function index(Request $request)
     {
-        $blogs = Blogs::with("category", "user", "region");
+        $blogs = Blogs::select('id', 'title', 'status', 'created_at', 'user_id', 'category_id', 'region_id')
+            ->with([
+                "category:id,title", 
+                "user:id,first_name,last_name", 
+                "region:id,name"
+            ]);
         if ($request->has('search') && $request->search != null && $request->search != '') {
             $blogs = $blogs->where('title', 'LIKE', '%' . $request->search . '%');
         }

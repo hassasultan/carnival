@@ -1,77 +1,75 @@
 @extends('dashboard.admin.layouts.app')
 
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <h2 class="mb-2 page-title">Package Permissions</h2>
-            <p class="card-text">Package Permissions table.</p>
-            <div class="row my-4">
-                <!-- data table -->
-                <div class="col-md-12">
-                    <a href="{{ route('role_permissions.create') }}" class="btn btn-primary mb-2">Add New Package
-                        Permission</a>
-                    <div class="card shadow">
-                        <div class="card-body">
-                            <!-- table -->
-                            <table class="table datatables" id="dataTable-1">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Sr#</th>
-                                        <th>Package</th>
-                                        <th>Permissions</th>
-                                        <th>Date</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php $counter = 1; @endphp <!-- Initialize counter -->
-                                    @foreach ($packagePermissions as $role)
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input">
-                                                    <label class="custom-control-label"></label>
-                                                </div>
-                                            </td>
-                                            <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
-                                            <td>{{ $role->title }}</td>
-                                            <td>
-                                                @foreach ($role->permissions as $permission)
-                                                    {{ $permission->display_name }} <br>
-                                                @endforeach
-                                            </td>
-                                            <td>{{ $role->created_at }}</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button
-                                                        class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted"
-                                                        type="button" data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <span class="text-muted sr-only">Action</span>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-right shadow">
-                                                        <a class="dropdown-item"
-                                                            href="{{ route('role_permissions.edit', $role->id) }}"><i
-                                                                class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a>
-                                                        <form action="{{ route('role_permissions.destroy', $role->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="dropdown-item"><i
-                                                                    class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+
+<div class="row justify-content-center">
+    <div class="col-12">
+        <h2 class="mb-2 page-title">Package Permissions</h2>
+        <p class="card-text">Package Permissions table.</p>
+        <div class="row my-4">
+            <!-- data table -->
+            <div class="col-md-12">
+                <a href="{{ route('role_permissions.create') }}" class="btn btn-primary mb-2">Add New Package Permission</a>
+                <div class="card shadow">
+                    <div class="card-body">
+                        <!-- table -->
+                        <table class="table datatables" id="dataTable-1">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Sr#</th>
+                                    <th>Package</th>
+                                    <th>Permissions</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php $counter = 1; @endphp <!-- Initialize counter -->
+                                @foreach ($packagePermissions as $role)
+                                <tr>
+                                    <td>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input">
+                                            <label class="custom-control-label"></label>
+                                        </div>
+                                    </td>
+                                    <td>{{ $counter++ }}</td> <!-- Increment and display counter -->
+                                    <td>{{ $role->title }}</td>
+                                    <td>
+                                        @foreach($role->permissions as $permission)
+                                            {{ $permission->display_name }} <br>
+                                        @endforeach
+                                    </td>
+                                    <td>{{ $role->created_at }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-sm rounded dropdown-toggle more-horizontal text-muted"
+                                                type="button" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                <span class="text-muted sr-only">Action</span>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right shadow">
+                                                {{-- <a class="dropdown-item" href="{{ route('role_permissions.edit', $role->id) }}"><i
+                                                        class="fe fe-edit-2 fe-12 mr-3 text-muted"></i>Edit</a> --}}
+                                                <form action="{{ route('role_permissions.destroy', $role->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="dropdown-item"><i
+                                                            class="fe fe-trash fe-12 mr-3 text-muted"></i>Remove</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                </div> <!-- data table -->
-            </div> <!-- end section -->
-        </div> <!-- .col-12 -->
-    </div>
+                </div>
+            </div> <!-- data table -->
+        </div> <!-- end section -->
+    </div> <!-- .col-12 -->
+</div>
+
 @endsection
